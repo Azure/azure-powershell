@@ -1,0 +1,209 @@
+{
+  "Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover+[NoContext]+UnplannedExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "01277413-d688-4fcb-9260-453469a9de5f" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationFabric" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationFabric_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "01277413-d688-4fcb-9260-453469a9de5f 6/23/2023 8:53:35 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "01277413-d688-4fcb-9260-453469a9de5f" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "62bc880d-055d-4b8e-b407-0d320afc18a0" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230623T205335Z:62bc880d-055d-4b8e-b407-0d320afc18a0" ],
+        "Date": [ "Fri, 23 Jun 2023 20:53:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "895" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"A2Ademo-EastUS\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics\",\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS\",\"properties\":{\"friendlyName\":\"East US\",\"encryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"rolloverEncryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"internalIdentifier\":\"9c03365a-aad2-53e7-94a2-25d6db187cc1\",\"bcdrState\":\"Valid\",\"customDetails\":{\"instanceType\":\"Azure\",\"location\":\"eastus\",\"containerIds\":[\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/09017a92-e19d-52bb-8740-2d910cdba430\"]},\"healthErrorDetails\":[],\"health\":\"Normal\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover+[NoContext]+UnplannedExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d9d7e586-a3f8-4d8f-84ba-20f3c133b2d6" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\Get-AzRecoveryServicesReplicationProtectionContainer" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationProtectionContainer_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d9d7e586-a3f8-4d8f-84ba-20f3c133b2d6 6/23/2023 8:53:36 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "d9d7e586-a3f8-4d8f-84ba-20f3c133b2d6" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "a9eba507-68f7-4dde-848d-6dea89dd694b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230623T205336Z:a9eba507-68f7-4dde-848d-6dea89dd694b" ],
+        "Date": [ "Fri, 23 Jun 2023 20:53:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "584" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"East US\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":4,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover+[NoContext]+UnplannedExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "9d0fa77f-ec15-42a0-9c8e-4eebe1354151" ],
+        "CommandName": [ "Az.RecoveryServices.internal\\Get-AzRecoveryServicesReplicationProtectedItem" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationProtectedItem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9d0fa77f-ec15-42a0-9c8e-4eebe1354151 6/23/2023 8:53:37 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "9d0fa77f-ec15-42a0-9c8e-4eebe1354151" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "b0bee7ef-796e-4ac2-8949-f117345a3b18" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230623T205337Z:b0bee7ef-796e-4ac2-8949-f117345a3b18" ],
+        "Date": [ "Fri, 23 Jun 2023 20:53:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "8617" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck\",\"name\":\"replicatedvmtestcheck\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems\",\"properties\":{\"friendlyName\":\"a2atestingvmbugs\",\"protectedItemType\":\"\",\"protectableItemId\":null,\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationRecoveryServicesProviders/7c2b55e9-63e3-562d-b98e-46bd565fec06\",\"primaryFabricFriendlyName\":\"East US\",\"primaryFabricProvider\":\"AzureFabric\",\"recoveryFabricFriendlyName\":\"West US 2\",\"recoveryFabricId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric\",\"primaryProtectionContainerFriendlyName\":\"A2AEastUSProtectionContainer\",\"recoveryProtectionContainerFriendlyName\":\"demoProtectionContainerA2A\",\"protectionState\":\"Protected\",\"protectionStateDescription\":\"Protected\",\"activeLocation\":\"Primary\",\"testFailoverState\":\"None\",\"testFailoverStateDescription\":\"None\",\"switchProviderState\":\"None\",\"switchProviderStateDescription\":null,\"allowedOperations\":[\"UnplannedFailover\",\"DisableProtection\",\"TestFailover\"],\"replicationHealth\":\"Normal\",\"failoverHealth\":\"Warning\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Warning\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"161011\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test failover has been done on the virtual machine \u0027a2atestingvmbugs\u0027.\",\"possibleCauses\":\"No successful test failover has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test failover on the virtual machine.\",\"creationTimeUtc\":\"2023-06-23T17:30:01.1679476Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"1b481e38-85e8-55cd-9e16-41a6695c612f\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"}],\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationPolicies/A2APolicy\",\"policyFriendlyName\":\"A2APolicy\",\"currentScenario\":{\"scenarioName\":\"None\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/None\",\"startTime\":\"1753-01-01T01:01:01Z\"},\"failoverRecoveryPointId\":null,\"providerSpecificDetails\":{\"instanceType\":\"A2A\",\"fabricObjectId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/abhinav_test/providers/microsoft.compute/virtualmachines/a2atestingvmbugs\",\"initialPrimaryZone\":\"\",\"initialPrimaryFabricLocation\":\"eastus\",\"initialRecoveryZone\":\"\",\"initialPrimaryExtendedLocation\":null,\"initialRecoveryExtendedLocation\":null,\"initialRecoveryFabricLocation\":\"westus2\",\"multiVmGroupId\":\"65a034cc-524d-4c74-a0d8-6f90b4f778cc\",\"multiVmGroupName\":\"\",\"multiVmGroupCreateOption\":\"AutoCreated\",\"managementId\":\"55246016-f3d9-4cc1-9947-6c7f28cd65cf\",\"protectedDisks\":null,\"unprotectedDisks\":null,\"protectedManagedDisks\":[{\"diskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/abhinav_test/providers/microsoft.compute/disks/a2atestingvmbugs_osdisk_1_ab987a8a6cdd4e40935be4b016e33563\",\"recoveryResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2avmrecoveryrg\",\"recoveryTargetDiskId\":null,\"recoveryReplicaDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2avmrecoveryrg/providers/Microsoft.Compute/disks/a2atestingvmbugs_OsDisk_1_ab987a8a6cdd4e40935be4b016e33563-ASRReplica\",\"recoveryOrignalTargetDiskId\":null,\"recoveryReplicaDiskAccountType\":\"Premium_LRS\",\"recoveryTargetDiskAccountType\":\"Premium_LRS\",\"recoveryDiskEncryptionSetId\":null,\"primaryDiskEncryptionSetId\":null,\"diskName\":\"a2atestingvmbugs_OsDisk_1_ab987a8a6cdd4e40935be4b016e33563\",\"diskCapacityInBytes\":32212254720,\"primaryStagingAzureStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/abhinav_test/providers/Microsoft.Storage/storageAccounts/a2aprimarycachestorage\",\"diskType\":\"OperatingSystem\",\"resyncRequired\":false,\"monitoringPercentageCompletion\":null,\"monitoringJobType\":null,\"dataPendingInStagingStorageAccountInMB\":0.0,\"dataPendingAtSourceAgentInMB\":2.4453125,\"diskState\":\"Protected\",\"allowedDiskLevelOperation\":[],\"isDiskEncrypted\":false,\"secretIdentifier\":null,\"dekKeyVaultArmId\":null,\"isDiskKeyEncrypted\":false,\"keyIdentifier\":null,\"kekKeyVaultArmId\":null,\"failoverDiskName\":\"a2atestingvmbugs_OsDisk_1_ab987a8a6cdd4e40935be4b016e33563\",\"tfoDiskName\":\"a2atestingvmbugs_OsDisk_1_ab987a8a6cdd4e40935be4b016e33563-ASRtest\"}],\"recoveryBootDiagStorageAccountId\":null,\"primaryFabricLocation\":\"eastus\",\"recoveryFabricLocation\":\"westus2\",\"osType\":\"Linux\",\"recoveryAzureVMSize\":\"Standard_D2s_v3\",\"recoveryAzureVMName\":\"a2atestingvmbugs\",\"recoveryAzureResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2avmrecoveryrg\",\"recoveryCloudService\":null,\"recoveryAvailabilitySet\":null,\"selectedRecoveryAzureNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/a2arecoveryrg/providers/microsoft.network/virtualnetworks/a2arecoveryvnet\",\"selectedTfoAzureNetworkId\":null,\"vmNics\":[{\"nicId\":\"520d4ef6-9d4e-5f4e-8b43-97d1ab3290a7\",\"replicaNicId\":null,\"sourceNicArmId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/abhinav_test/providers/Microsoft.Network/networkInterfaces/a2atestingvmbugs409_z1\",\"vMNetworkName\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/abhinav_test/providers/Microsoft.Network/virtualNetworks/abhi-testing-vnet\",\"recoveryVMNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourcegroups/a2arecoveryrg/providers/microsoft.network/virtualnetworks/a2arecoveryvnet\",\"ipConfigs\":[{\"name\":\"ipconfig1\",\"isPrimary\":true,\"subnetName\":\"default\",\"staticIPAddress\":\"10.31.0.9\",\"ipAddressType\":\"Dynamic\",\"isSeletedForFailover\":true,\"recoverySubnetName\":\"default\",\"recoveryStaticIPAddress\":\"\",\"recoveryIPAddressType\":\"Dynamic\",\"recoveryPublicIPAddressId\":null,\"recoveryLBBackendAddressPoolIds\":null,\"tfoSubnetName\":null,\"tfoStaticIPAddress\":null,\"tfoPublicIPAddressId\":null,\"tfoLBBackendAddressPoolIds\":null}],\"selectionType\":\"SelectedByDefault\",\"recoveryNetworkSecurityGroupId\":null,\"enableAcceleratedNetworkingOnRecovery\":true,\"tfoVMNetworkId\":null,\"tfoNetworkSecurityGroupId\":null,\"enableAcceleratedNetworkingOnTfo\":null,\"recoveryNicName\":null,\"recoveryNicResourceGroupName\":null,\"reuseExistingNic\":false,\"tfoRecoveryNicName\":null,\"tfoRecoveryNicResourceGroupName\":null,\"tfoReuseExistingNic\":false,\"targetNicName\":null}],\"vmSyncedConfigDetails\":{\"tags\":{\"azsecpack\":\"nonprod\",\"createdOnDate\":\"06/14/2023 11:48:13\",\"platformsettings.host_environment.service.platform_optedin_for_rootcerts\":\"true\"},\"inputEndpoints\":[]},\"monitoringPercentageCompletion\":null,\"monitoringJobType\":null,\"lastHeartbeat\":\"2023-06-23T20:51:40.1398267Z\",\"agentVersion\":\"9.54.6715.1\",\"agentExpiryDate\":\"9999-12-31T23:59:59.9999999\",\"isReplicationAgentUpdateRequired\":false,\"agentCertificateExpiryDate\":\"2026-06-04T09:38:40Z\",\"isReplicationAgentCertificateUpdateRequired\":false,\"recoveryFabricObjectId\":null,\"vmProtectionState\":\"Protected\",\"vmProtectionStateDescription\":\"Protected\",\"lifecycleId\":\"9609d1f5-74d9-4f0e-b5b5-9688f82a8a3c\",\"testFailoverRecoveryFabricObjectId\":null,\"rpoInSeconds\":122,\"lastRpoCalculatedTime\":\"2023-06-23T20:47:34.518997Z\",\"rtoInSeconds\":null,\"primaryAvailabilityZone\":\"1\",\"recoveryAvailabilityZone\":null,\"primaryExtendedLocation\":null,\"recoveryExtendedLocation\":null,\"vmEncryptionType\":\"NotEncrypted\",\"tfoAzureVMName\":\"a2atestingvmbugs-test\",\"recoveryAzureGeneration\":\"V2\",\"recoveryProximityPlacementGroupId\":null,\"autoProtectionOfDataDisk\":\"Disabled\",\"recoveryVirtualMachineScaleSetId\":null,\"recoveryCapacityReservationGroupId\":null},\"recoveryContainerId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainerA2A\",\"eventCorrelationId\":\"c4945048-f3c2-4fd9-b8c4-e6c3eb8c4ba5\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover+[NoContext]+UnplannedExpanded+$POST+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck/unplannedFailover?api-version=2023-02-01+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck/unplannedFailover?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"A2A\",\r\n      \"cloudServiceCreationOption\": \"AutoCreateCloudService\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "161" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectedItems/replicatedvmtestcheck/operationresults/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3?api-version=2023-02-01" ],
+        "Retry-After": [ "30" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationOperationStatus/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3?api-version=2023-02-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "d3d74742-2429-4dfa-842b-d2bab2711fbe" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "28d935e9-8572-4207-ba99-f9cd25c3e02b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230623T205338Z:28d935e9-8572-4207-ba99-f9cd25c3e02b" ],
+        "Date": [ "Fri, 23 Jun 2023 20:53:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover+[NoContext]+UnplannedExpanded+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3?api-version=2023-02-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "1cda3082-beda-4e71-99e0-f64309406bcd" ],
+        "CommandName": [ "Get-AzRecoveryServicesReplicationJob" ],
+        "FullCommandName": [ "Get-AzRecoveryServicesReplicationJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.RecoveryServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "1cda3082-beda-4e71-99e0-f64309406bcd" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "19f3f7a7-d294-4872-854d-2c3502f365ce" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230623T205338Z:19f3f7a7-d294-4872-854d-2c3502f365ce" ],
+        "Date": [ "Fri, 23 Jun 2023 20:53:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3\",\"name\":\"2fedfd1c-02e4-46a9-b9b2-dc338fffd5b3\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"d3d74742-2429-4dfa-842b-d2bab2711fbe ActivityId: 28d935e9-8572-4207-ba99-f9cd25c3e02b\",\"scenarioName\":\"UnplannedFailover\",\"friendlyName\":\"Failover\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"UnplannedFailoverPreflightChecksTask\",\"name\":\"VmUfoPrerequisitesCheck\",\"startTime\":\"2023-06-23T20:53:38.6934142Z\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Prerequisites check for failover\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"ShutdownVmOnPrimaryForUFO\",\"name\":\"VmShutdownVmOnPrimary\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Shut down the virtual machine\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"PrepareForUnPlannedFailoverTask\",\"name\":\"VmPrepareForUnPlannedFailover\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Synchronizing the latest changes\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"FailoverTask\",\"name\":\"VmFailover\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Start failover\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]},{\"taskId\":\"StartVmOnSecondary\",\"name\":\"VmFoStartVmOnSecondary\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Start the replica virtual machine\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2023-06-23T20:53:38.1069447Z\",\"allowedActions\":[\"Cancel\"],\"targetObjectId\":\"1b481e38-85e8-55cd-9e16-41a6695c612f\",\"targetObjectName\":\"a2atestingvmbugs\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"FailoverJobDetails\",\"protectedItemDetails\":[],\"affectedObjectDetails\":{\"primaryVmId\":\"1b481e38-85e8-55cd-9e16-41a6695c612f\",\"primaryVmName\":\"a2atestingvmbugs\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"a2atestingvmbugs\",\"protectionProfileId\":\"5c98c053-7685-577b-81c6-2c1a0186e8f2\",\"primaryCloudId\":\"09017a92-e19d-52bb-8740-2d910cdba430\",\"primaryCloudName\":\"A2AEastUSProtectionContainer\",\"recoveryCloudId\":\"83af2aa4-bd3c-5607-911c-084e5ebd562b\",\"recoveryCloudName\":\"demoProtectionContainerA2A\",\"primaryVmmId\":\"9c03365a-aad2-53e7-94a2-25d6db187cc1\",\"primaryVmmName\":\"East US\",\"recoveryVmmId\":\"e8671f66-82b0-587f-b87e-41e495473274\",\"recoveryVmmName\":\"West US 2\",\"primaryFabricProviderId\":\"Azure\",\"recoveryFabricProviderId\":\"Azure\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}

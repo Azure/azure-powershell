@@ -150,9 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmUpdateReplicationProtectedItemInputInternal)this).LicenseType = (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType?) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmUpdateReplicationProtectedItemInputInternal)this).LicenseType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType.CreateFrom);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -215,9 +215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmUpdateReplicationProtectedItemInputInternal)this).LicenseType = (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType?) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmUpdateReplicationProtectedItemInputInternal)this).LicenseType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType.CreateFrom);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

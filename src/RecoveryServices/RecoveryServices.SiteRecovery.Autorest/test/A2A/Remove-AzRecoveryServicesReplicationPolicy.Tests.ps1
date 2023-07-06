@@ -18,6 +18,6 @@ Describe 'Remove-AzRecoveryServicesReplicationPolicy' {
     It 'Delete' {
         $obj = Get-AzRecoveryServicesReplicationPolicy -PolicyName $env.a2aCreateRemovePolicy -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId
         $obj.Count | Should Not BeNullOrEmpty
-        {Remove-AzRecoveryServicesReplicationPolicy -Policy $obj -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId} | Should Not Throw
+        { Remove-AzRecoveryServicesReplicationPolicy -Policy $obj -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId } | Should -Not -Throw
     }
 }

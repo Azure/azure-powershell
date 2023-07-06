@@ -20,19 +20,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
         public string FailoverDirection { get => this._failoverDirection; set => this._failoverDirection = value; }
 
-        /// <summary>Internal Acessors for ProviderSpecificDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverInputPropertiesInternal.ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UnplannedFailoverProviderSpecificInput()); set { {_providerSpecificDetail = value;} } }
-
         /// <summary>Backing field for <see cref="ProviderSpecificDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput _providerSpecificDetail;
 
         /// <summary>Provider specific settings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UnplannedFailoverProviderSpecificInput()); set => this._providerSpecificDetail = value; }
-
-        /// <summary>The class type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInputInternal)ProviderSpecificDetail).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInputInternal)ProviderSpecificDetail).InstanceType = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UnplannedFailoverProviderSpecificInput()); set => this._providerSpecificDetail = value; }
 
         /// <summary>Backing field for <see cref="SourceSiteOperation" /> property.</summary>
         private string _sourceSiteOperation;
@@ -59,14 +52,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         SerializedName = @"failoverDirection",
         PossibleTypes = new [] { typeof(string) })]
         string FailoverDirection { get; set; }
-        /// <summary>The class type.</summary>
+        /// <summary>Provider specific settings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        string ProviderSpecificDetailInstanceType { get; set; }
+        Description = @"Provider specific settings.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput) })]
+        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput ProviderSpecificDetail { get; set; }
         /// <summary>Source site operations status.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
@@ -85,8 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         string FailoverDirection { get; set; }
         /// <summary>Provider specific settings.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput ProviderSpecificDetail { get; set; }
-        /// <summary>The class type.</summary>
-        string ProviderSpecificDetailInstanceType { get; set; }
         /// <summary>Source site operations status.</summary>
         string SourceSiteOperation { get; set; }
 

@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzRecoveryServicesRepl
 }
 
 Describe 'Update-AzRecoveryServicesReplicationProtectedItem' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2ampfabricname
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.a2amppcname
+        $protectedItem = Get-AzRecoveryServicesReplicationProtectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName $env.protectedItemtest
+        $providerSpecificinput = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AUpdateReplicationProtectedItemInput]::new()
+        $providerSpecificinput.ReplicationScenario="ReplicateAzureToAzure"
+        $output = Update-AzRecoveryServicesReplicationProtectedItem -ReplicatedProtectedItem $protectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProviderSpecificDetail $providerSpecificinput
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Update' -skip {

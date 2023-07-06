@@ -17,18 +17,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesReplica
 Describe 'Get-AzRecoveryServicesReplicationProtectionContainer' {
     It 'List1' {
         $output = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'List' {
         $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2aFabricName
         $output = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -Fabric $fabric -SubscriptionId $env.a2aSubscriptionId
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
         $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2aFabricName
         $output = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -Fabric $fabric -ProtectionContainer $env.a2aProtectionContainerName -SubscriptionId $env.a2aSubscriptionId
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 }

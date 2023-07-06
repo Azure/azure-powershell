@@ -19,16 +19,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput __updateReplicationProtectedItemProviderInput = new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UpdateReplicationProtectedItemProviderInput();
 
-        /// <summary>The class type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inherited)]
-        public string InstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)__updateReplicationProtectedItemProviderInput).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)__updateReplicationProtectedItemProviderInput).InstanceType = value ; }
-
         /// <summary>Backing field for <see cref="LicenseType" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType? _licenseType;
 
         /// <summary>The license type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType? LicenseType { get => this._licenseType; set => this._licenseType = value; }
+
+        /// <summary>The class type.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inherited)]
+        public string ReplicationScenario { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)__updateReplicationProtectedItemProviderInput).ReplicationScenario; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)__updateReplicationProtectedItemProviderInput).ReplicationScenario = value ; }
 
         /// <summary>Backing field for <see cref="TargetAvailabilitySetId" /> property.</summary>
         private string _targetAvailabilitySetId;

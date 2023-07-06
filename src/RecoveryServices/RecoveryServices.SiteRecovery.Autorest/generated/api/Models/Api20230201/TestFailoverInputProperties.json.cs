@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 return;
             }
-            {_providerSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonObject>("providerSpecificDetails"), out var __jsonProviderSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.TestFailoverProviderSpecificInput.FromJson(__jsonProviderSpecificDetails) : ProviderSpecificDetail;}
             {_failoverDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString>("failoverDirection"), out var __jsonFailoverDirection) ? (string)__jsonFailoverDirection : (string)FailoverDirection;}
             {_networkType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString>("networkType"), out var __jsonNetworkType) ? (string)__jsonNetworkType : (string)NetworkType;}
             {_networkId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString>("networkId"), out var __jsonNetworkId) ? (string)__jsonNetworkId : (string)NetworkId;}
+            {_providerSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonObject>("providerSpecificDetails"), out var __jsonProviderSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.TestFailoverProviderSpecificInput.FromJson(__jsonProviderSpecificDetails) : ProviderSpecificDetail;}
             AfterFromJson(json);
         }
 
@@ -103,10 +103,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 return container;
             }
-            AddIf( null != this._providerSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) this._providerSpecificDetail.ToJson(null,serializationMode) : null, "providerSpecificDetails" ,container.Add );
             AddIf( null != (((object)this._failoverDirection)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString(this._failoverDirection.ToString()) : null, "failoverDirection" ,container.Add );
             AddIf( null != (((object)this._networkType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString(this._networkType.ToString()) : null, "networkType" ,container.Add );
             AddIf( null != (((object)this._networkId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString(this._networkId.ToString()) : null, "networkId" ,container.Add );
+            AddIf( null != this._providerSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) this._providerSpecificDetail.ToJson(null,serializationMode) : null, "providerSpecificDetails" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

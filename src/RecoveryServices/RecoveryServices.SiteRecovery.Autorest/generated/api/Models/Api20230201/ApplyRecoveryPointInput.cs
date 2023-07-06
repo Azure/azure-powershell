@@ -16,9 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputProperties Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ApplyRecoveryPointInputProperties()); set { {_property = value;} } }
 
-        /// <summary>Internal Acessors for ProviderSpecificDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputInternal.ProviderSpecificDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetail = value; }
-
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputProperties _property;
 
@@ -26,9 +23,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ApplyRecoveryPointInputProperties()); set => this._property = value; }
 
-        /// <summary>The class type.</summary>
+        /// <summary>Provider specific input for applying recovery point.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetailInstanceType = value ; }
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput ProviderSpecificDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputPropertiesInternal)Property).ProviderSpecificDetail = value ; }
 
         /// <summary>The recovery point Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inlined)]
@@ -44,14 +41,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
     public partial interface IApplyRecoveryPointInput :
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.IJsonSerializable
     {
-        /// <summary>The class type.</summary>
+        /// <summary>Provider specific input for applying recovery point.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        string ProviderSpecificDetailInstanceType { get; set; }
+        Description = @"Provider specific input for applying recovery point.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput) })]
+        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput ProviderSpecificDetail { get; set; }
         /// <summary>The recovery point Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
@@ -70,8 +67,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointInputProperties Property { get; set; }
         /// <summary>Provider specific input for applying recovery point.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput ProviderSpecificDetail { get; set; }
-        /// <summary>The class type.</summary>
-        string ProviderSpecificDetailInstanceType { get; set; }
         /// <summary>The recovery point Id.</summary>
         string RecoveryPointId { get; set; }
 

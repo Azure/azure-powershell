@@ -96,9 +96,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
                 return;
             }
             // actually deserialize
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
                 return;
             }
             // actually deserialize
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

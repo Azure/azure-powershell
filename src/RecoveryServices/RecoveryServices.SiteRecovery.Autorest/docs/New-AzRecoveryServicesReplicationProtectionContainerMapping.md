@@ -38,9 +38,9 @@ New-AzRecoveryServicesReplicationProtectionContainerMapping -MappingName "demoma
 ```
 
 ```output
-Id                                                                                                                                                                                                                                                                                                 Location Name    Type
---                                                                                                                                                                                                                                                                                                 -------- ----    ----
-/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectionContainerMappings/testmappingcmd			demomap	Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings
+Id                                                                                                                                                                                                                                                                                                 Location Name			Type
+--                                                                                                                                                                                                                                                                                                 -------- ----			----
+/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer/replicationProtectionContainerMappings/testmappingcmd			testmappingcmd	Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings
 ```
 
 Creates a New azure protection container mapping in a recovery services vault.

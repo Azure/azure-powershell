@@ -84,9 +84,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 return container;
             }
-            AddIf( null != this._providerSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) this._providerSpecificDetail.ToJson(null,serializationMode) : null, "providerSpecificDetails" ,container.Add );
             AddIf( null != (((object)this._failoverDirection)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString(this._failoverDirection.ToString()) : null, "failoverDirection" ,container.Add );
             AddIf( null != (((object)this._sourceSiteOperation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString(this._sourceSiteOperation.ToString()) : null, "sourceSiteOperations" ,container.Add );
+            AddIf( null != this._providerSpecificDetail ? (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonNode) this._providerSpecificDetail.ToJson(null,serializationMode) : null, "providerSpecificDetails" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 return;
             }
-            {_providerSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonObject>("providerSpecificDetails"), out var __jsonProviderSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UnplannedFailoverProviderSpecificInput.FromJson(__jsonProviderSpecificDetails) : ProviderSpecificDetail;}
             {_failoverDirection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString>("failoverDirection"), out var __jsonFailoverDirection) ? (string)__jsonFailoverDirection : (string)FailoverDirection;}
             {_sourceSiteOperation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonString>("sourceSiteOperations"), out var __jsonSourceSiteOperations) ? (string)__jsonSourceSiteOperations : (string)SourceSiteOperation;}
+            {_providerSpecificDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Json.JsonObject>("providerSpecificDetails"), out var __jsonProviderSpecificDetails) ? Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UnplannedFailoverProviderSpecificInput.FromJson(__jsonProviderSpecificDetails) : ProviderSpecificDetail;}
             AfterFromJson(json);
         }
     }

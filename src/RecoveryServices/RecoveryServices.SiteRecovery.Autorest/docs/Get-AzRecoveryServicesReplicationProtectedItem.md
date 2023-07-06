@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesReplicationProtectedItem
 
 ## SYNOPSIS
-Gets the details of an ASR replication protected item.
+Gets the list of ASR replication protected items in the vault.
 
 ## SYNTAX
 
@@ -21,44 +21,67 @@ Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName <String> -Reso
 
 ### Get
 ```
-Get-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
+Get-AzRecoveryServicesReplicationProtectedItem -ProtectionContainer <IProtectionContainer>
  -ReplicatedProtectedItemName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
+Get-AzRecoveryServicesReplicationProtectedItem -ProtectionContainer <IProtectionContainer>
  -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the details of an ASR replication protected item.
+Gets the list of ASR replication protected items in the vault.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all the replication protected item
 ```powershell
-{{ Add code here }}
+Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault"
 ```
 
 ```output
-{{ Add output here }}
+Location Name              Type
+-------- ----              ----
+         replicatedvmtest  Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
+         replicatedvmtest2 Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
 ```
 
-{{ Add description here }}
+Lists all the replication protected item in a recovery services vault
 
-### Example 2: {{ Add title here }}
+### Example 2: List all the replication protected item linked with a protection container
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProtectionContainer $protectioncontainer
 ```
 
 ```output
-{{ Add output here }}
+Location Name              Type
+-------- ----              ----
+         replicatedvmtest  Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
+         replicatedvmtest2 Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
 ```
 
-{{ Add description here }}
+Lists all the replication protected item linked with a protection container in a recovery services vault
+
+### Example 3: Get a replication protected item linked with a protection container with a replicated protected item name
+```powershell
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName "replicatedvmtest"
+```
+
+```output
+Location Name              Type
+-------- ----              ----
+         replicatedvmtest  Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
+```
+
+Gets a replication protected item linked with a protection container with a replicated protected item name in a recovery services vault
 
 ## PARAMETERS
 
@@ -72,21 +95,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricName
-Fabric unique name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,11 +116,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -ProtectionContainer
+Unique Protection Container Object
+To construct, see NOTES section for PROTECTIONCONTAINER properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
 Parameter Sets: Get, List
 Aliases:
 
@@ -211,6 +220,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PROTECTIONCONTAINER <IProtectionContainer>`: Unique Protection Container Object
+  - `[Location <String>]`: Resource Location
+  - `[FabricFriendlyName <String>]`: Fabric friendly name.
+  - `[FabricType <String>]`: The fabric type.
+  - `[FriendlyName <String>]`: The name.
+  - `[PairingStatus <String>]`: The pairing status of this cloud.
+  - `[ProtectedItemCount <Int32?>]`: Number of protected PEs.
+  - `[Role <String>]`: The role of this cloud.
 
 ## RELATED LINKS
 

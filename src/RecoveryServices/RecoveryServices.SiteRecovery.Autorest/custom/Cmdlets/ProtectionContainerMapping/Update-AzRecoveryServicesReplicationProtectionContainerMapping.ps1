@@ -140,7 +140,21 @@ function Update-AzRecoveryServicesReplicationProtectionContainerMapping {
 
     process {
         try {
-            $protectionContainerString = $PrimaryProtectionContainer.id.Split("/")
+            $replicationscenario = $ProviderSpecificInput.ReplicationScenario
+            if($replicationscenario -eq "ReplicateAzureToAzure") {
+                $ProviderSpecificInput.ReplicationScenario = "A2A"
+            }
+            else {
+                throw "Provided replication scenario is not supported. Only ReplicateAzureToAzure is supported."
+            }
+
+            if(-not [string]::IsNullOrEmpty($PrimaryProtectionContainer.id)) {
+                $protectionContainerString = $PrimaryProtectionContainer.id.Split("/")
+            }
+            else {
+                throw 'Protection Container does not contain an ARM Id. Please check the protection container details'
+            }
+
             $protectionContainerName = $protectionContainerString[-1]
             $fabricName = $protectionContainerString[-3]
 

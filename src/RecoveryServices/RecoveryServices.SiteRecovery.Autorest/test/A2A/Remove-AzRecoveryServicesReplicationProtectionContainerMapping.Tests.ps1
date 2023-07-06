@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRecoveryServicesRepl
 
 Describe 'Remove-AzRecoveryServicesReplicationProtectionContainerMapping' {
     It 'DeleteExpanded' {
-        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -FabricName $env.a2ampfabricname -SubscriptionId $env.a2aSubscriptionId
-        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -Fabric $fabric -ProtectionContainer $env.a2amppcname -SubscriptionId $env.a2aSubscriptionId
-        $pcmapping = Get-AzRecoveryServicesReplicationProtectionContainerMapping -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -ProtectionContainer $protectioncontainer -MappingName $env.mappingName -SubscriptionId $env.a2aSubscriptionId
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2aFabricName
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.a2apcName
+        $pcmapping = Get-AzRecoveryServicesReplicationProtectionContainerMapping -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -ProtectionContainer $protectioncontainer -MappingName $env.delcreatemap -SubscriptionId $env.a2aSubscriptionId
         {Remove-AzRecoveryServicesReplicationProtectionContainerMapping -ProtectionContainerMapping $pcmapping -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -SubscriptionId $env.a2aSubscriptionId} | Should Not Throw
     }
 

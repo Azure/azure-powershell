@@ -148,6 +148,10 @@ function New-AzRecoveryServicesReplicationProtectionContainer {
                 throw "Provided replication scenario is not supported. Only ReplicateAzureToAzure is supported."
             }
 
+            if($ProviderSpecificInput.ReplicationScenario -eq "A2A" -and $Fabric.CustomDetailInstanceType -ne "Azure") {
+                throw "Input fabric instance type and input replication scenario cannot be different"
+            }
+
             $fabricName = $Fabric.Name
 
             $null = $PSBoundParameters.Remove("Fabric")

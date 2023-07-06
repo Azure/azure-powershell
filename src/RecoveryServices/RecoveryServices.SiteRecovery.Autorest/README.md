@@ -47,6 +47,12 @@ directive:
     - FabricSpecificCreationInput
     - ReplicationProviderSpecificContainerMappingInput
     - ReplicationProviderSpecificUpdateContainerMappingInput
+    - EnableProtectionProviderSpecificInput
+    - UpdateReplicationProtectedItemProviderInput
+    - TestFailoverProviderSpecificInput
+    - UnplannedFailoverProviderSpecificInput
+    - ApplyRecoveryPointProviderSpecificInput
+    - ReplicationProviderSpecificSettings
   # Remove variants not in scope
   - where:
       verb: Add
@@ -94,6 +100,11 @@ directive:
       variant: ^Create$|^Update$
     remove: true
   - where:
+      verb: ^New$|^Remove$|^Update$
+      subject: ReplicationProtectedItem
+      variant: ^Create$|^Delete$|^Update$
+    remove: true
+  - where:
       verb: Remove
       subject: ReplicationProtectionContainerMapping
       variant: Delete
@@ -101,6 +112,21 @@ directive:
   - where:
       verb: Clear
       subject: ReplicationProtectionContainerMapping
+    remove: true
+  - where:
+      verb: Test
+      subject: ^ReplicationProtectedItemFailover$|^ReplicationProtectedItemFailoverCleanup$
+      variant: Test
+    remove: true
+  - where:
+      verb: Invoke
+      subject: UnplannedReplicationProtectedItemFailover
+      variant: Unplanned
+    remove: true
+  - where:
+      verb: Add
+      subject: ReplicationProtectedItemRecoveryPoint
+      variant: Apply
     remove: true
   - where:
       verb: Remove
@@ -159,7 +185,7 @@ directive:
     hide: true
   - where:
       verb: Remove
-      subject: ^ReplicationFabric$|^ReplicationProtectionContainerMapping$
+      subject: ^ReplicationFabric$|^ReplicationProtectedItem$|^ReplicationProtectionContainerMapping$
     hide: true
   - where:
       verb: ^Clear$|^New$|^Update$
@@ -167,8 +193,24 @@ directive:
     hide: true
   - where:
       verb: Get
-      subject: ^ReplicationProtectionContainer$|^ReplicationProtectionContainerMapping$
+      subject: ^ReplicationProtectionContainer$|^ReplicationProtectionContainerMapping$|^ReplicationProtectedItem$|^RecoveryPoint$
       variant: ^Get$|^List$
+    hide: true
+  - where:
+      verb: ^New$|^Update$
+      subject: ReplicationProtectedItem
+    hide: true
+  - where:
+      verb: Test
+      subject: ^ReplicationProtectedItemFailover$|^ReplicationProtectedItemFailoverCleanup$
+    hide: true
+  - where:
+      verb: Invoke
+      subject: ^UnplannedReplicationProtectedItemFailover$|^CommitReplicationProtectedItemFailover$
+    hide: true
+  - where:
+      verb: Add
+      subject: ReplicationProtectedItemRecoveryPoint
     hide: true
   - where:
       verb: New
@@ -176,7 +218,7 @@ directive:
     hide: true
   # Rename some model properties
   - where:
-      model-name: ^A2APolicyCreationInput$|^PolicyProviderSpecificInput$|^A2ACrossClusterMigrationPolicyCreationInput$|^InMagePolicyInput$|^HyperVReplicaAzurePolicyInput$|^HyperVReplicaBluePolicyInput$|^HyperVReplicaPolicyInput$|^InMageRcmFailbackPolicyCreationInput$|^InMageRcmPolicyCreationInput$|^InMageAzureV2PolicyInput$|^VMwareCbtPolicyCreationInput$|^FabricSpecificCreationInput$|^AzureFabricCreationInput$|^InMageRcmFabricCreationInput$|^VMwareV2FabricCreationInput$|^ReplicationProviderSpecificContainerCreationInput$|^A2AContainerCreationInput$|^A2ACrossClusterMigrationContainerCreationInput$|^VMwareCbtContainerCreationInput$|^ReplicationProviderSpecificContainerMappingInput$|^A2AContainerMappingInput$|^VMwareCbtContainerMappingInput$
+      model-name: ^A2APolicyCreationInput$|^PolicyProviderSpecificInput$|^A2ACrossClusterMigrationPolicyCreationInput$|^InMagePolicyInput$|^HyperVReplicaAzurePolicyInput$|^HyperVReplicaBluePolicyInput$|^HyperVReplicaPolicyInput$|^InMageRcmFailbackPolicyCreationInput$|^InMageRcmPolicyCreationInput$|^InMageAzureV2PolicyInput$|^VMwareCbtPolicyCreationInput$|^FabricSpecificCreationInput$|^AzureFabricCreationInput$|^InMageRcmFabricCreationInput$|^VMwareV2FabricCreationInput$|^ReplicationProviderSpecificContainerCreationInput$|^A2AContainerCreationInput$|^A2ACrossClusterMigrationContainerCreationInput$|^VMwareCbtContainerCreationInput$|^ReplicationProviderSpecificContainerMappingInput$|^A2AContainerMappingInput$|^VMwareCbtContainerMappingInput$|^EnableProtectionProviderSpecificInput$|^A2ACrossClusterMigrationEnableProtectionInput$|^A2AEnableProtectionInput$|^HyperVReplicaAzureEnableProtectionInput$|^InMageAzureV2EnableProtectionInput$|^InMageEnableProtectionInput$|^InMageRcmEnableProtectionInput$|^UpdateReplicationProtectedItemProviderInput$|^A2AUpdateReplicationProtectedItemInput$|^HyperVReplicaAzureUpdateReplicationProtectedItemInput$|^InMageAzureV2UpdateReplicationProtectedItemInput$|^InMageRcmUpdateReplicationProtectedItemInput$|^TestFailoverProviderSpecificInput$|^A2ATestFailoverInput$|^HyperVReplicaAzureTestFailoverInput$|^InMageAzureV2TestFailoverInput$|^InMageRcmTestFailoverInput$|^InMageTestFailoverInput$|^UnplannedFailoverProviderSpecificInput$|^A2AUnplannedFailoverInput$|^HyperVReplicaAzureUnplannedFailoverInput$|^InMageAzureV2UnplannedFailoverInput$|^InMageRcmUnplannedFailoverInput$|^InMageUnplannedFailoverInput$|^ReplicationProviderSpecificUpdateContainerMappingInput$|^A2AUpdateContainerMappingInput$|^InMageRcmUpdateContainerMappingInput$|^ApplyRecoveryPointProviderSpecificInput$|^A2AApplyRecoveryPointInput$|^A2ACrossClusterMigrationApplyRecoveryPointInput$|^HyperVReplicaAzureApplyRecoveryPointInput$|^InMageAzureV2ApplyRecoveryPointInput$|^InMageRcmApplyRecoveryPointInput$
       property-name: InstanceType
     set:
       property-name: ReplicationScenario

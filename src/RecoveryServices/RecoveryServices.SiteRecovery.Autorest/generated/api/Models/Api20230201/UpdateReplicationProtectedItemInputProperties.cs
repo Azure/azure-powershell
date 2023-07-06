@@ -30,19 +30,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType? LicenseType { get => this._licenseType; set => this._licenseType = value; }
 
-        /// <summary>Internal Acessors for ProviderSpecificDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemInputPropertiesInternal.ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UpdateReplicationProtectedItemProviderInput()); set { {_providerSpecificDetail = value;} } }
-
         /// <summary>Backing field for <see cref="ProviderSpecificDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput _providerSpecificDetail;
 
         /// <summary>The provider specific input to update replication protected item.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UpdateReplicationProtectedItemProviderInput()); set => this._providerSpecificDetail = value; }
-
-        /// <summary>The class type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)ProviderSpecificDetail).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInputInternal)ProviderSpecificDetail).InstanceType = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.UpdateReplicationProtectedItemProviderInput()); set => this._providerSpecificDetail = value; }
 
         /// <summary>Backing field for <see cref="RecoveryAvailabilitySetId" /> property.</summary>
         private string _recoveryAvailabilitySetId;
@@ -126,14 +119,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         SerializedName = @"licenseType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType) })]
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType? LicenseType { get; set; }
-        /// <summary>The class type.</summary>
+        /// <summary>The provider specific input to update replication protected item.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        string ProviderSpecificDetailInstanceType { get; set; }
+        Description = @"The provider specific input to update replication protected item.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput) })]
+        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput ProviderSpecificDetail { get; set; }
         /// <summary>The target availability set Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
@@ -207,8 +200,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType? LicenseType { get; set; }
         /// <summary>The provider specific input to update replication protected item.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput ProviderSpecificDetail { get; set; }
-        /// <summary>The class type.</summary>
-        string ProviderSpecificDetailInstanceType { get; set; }
         /// <summary>The target availability set Id.</summary>
         string RecoveryAvailabilitySetId { get; set; }
         /// <summary>Target Azure VM name given by the user.</summary>

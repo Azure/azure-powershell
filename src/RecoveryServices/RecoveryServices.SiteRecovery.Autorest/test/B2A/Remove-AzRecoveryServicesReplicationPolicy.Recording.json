@@ -16,18 +16,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/e7115e5b-4bed-4597-a618-010b929acf17?api-version=2023-02-01" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/bd9d48ff-3408-482b-8280-9f2088ec0c4c?api-version=2023-02-01" ],
         "Retry-After": [ "30" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49 6/6/2023 11:43:31 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/e7115e5b-4bed-4597-a618-010b929acf17?api-version=2023-02-01" ],
+        "x-ms-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e 6/12/2023 1:40:21 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/bd9d48ff-3408-482b-8280-9f2088ec0c4c?api-version=2023-02-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49" ],
+        "x-ms-client-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "4d1292c5-0910-4d61-baac-81b1c0c86d29" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114332Z:4d1292c5-0910-4d61-baac-81b1c0c86d29" ],
-        "Date": [ "Tue, 06 Jun 2023 11:43:31 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "66f7106d-d510-4677-b142-ab2160f54de0" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134021Z:66f7106d-d510-4677-b142-ab2160f54de0" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:21 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -36,15 +36,15 @@
       "Content": null
     }
   },
-  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/e7115e5b-4bed-4597-a618-010b929acf17?api-version=2023-02-01+2": {
+  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/bd9d48ff-3408-482b-8280-9f2088ec0c4c?api-version=2023-02-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/e7115e5b-4bed-4597-a618-010b929acf17?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/bd9d48ff-3408-482b-8280-9f2088ec0c4c?api-version=2023-02-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e" ],
         "CommandName": [ "Az.RecoveryServices.internal\\New-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "New-AzRecoveryServicesReplicationPolicy_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -59,21 +59,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/e7115e5b-4bed-4597-a618-010b929acf17" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/bd9d48ff-3408-482b-8280-9f2088ec0c4c" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49" ],
+        "x-ms-client-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "6dd53cc1-e99d-49d4-8bb5-1f9b4687b440" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114403Z:6dd53cc1-e99d-49d4-8bb5-1f9b4687b440" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:03 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11930" ],
+        "x-ms-correlation-request-id": [ "56003622-a977-4ec4-8c1e-7611d5de1a28" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134052Z:56003622-a977-4ec4-8c1e-7611d5de1a28" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "216" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"e7115e5b-4bed-4597-a618-010b929acf17\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-06T11:43:31.8882601Z\",\"endTime\":\"2023-06-06T11:43:32.0000000Z\",\"percentComplete\":null}"
+      "Content": "{\"error\":null,\"id\":null,\"name\":\"bd9d48ff-3408-482b-8280-9f2088ec0c4c\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-12T13:40:21.5273717Z\",\"endTime\":\"2023-06-12T13:40:22.0000000Z\",\"percentComplete\":null}"
     }
   },
   "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a?api-version=2023-02-01+3": {
@@ -83,8 +83,8 @@
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e" ],
         "CommandName": [ "Az.RecoveryServices.internal\\New-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "New-AzRecoveryServicesReplicationPolicy_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -99,14 +99,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49 6/6/2023 11:44:03 AM" ],
+        "x-ms-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e 6/12/2023 1:40:52 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "be1c7f55-e2ed-4a22-8add-ce4197ecac49" ],
+        "x-ms-client-request-id": [ "4df9ff7c-40ac-4644-a710-c959f797c10e" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "c18fe93a-a7cc-40c7-83b8-fa36569dd7ef" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114403Z:c18fe93a-a7cc-40c7-83b8-fa36569dd7ef" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:03 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11929" ],
+        "x-ms-correlation-request-id": [ "8eb40791-a3ed-4ceb-b316-5bdf20a205b3" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134052Z:8eb40791-a3ed-4ceb-b316-5bdf20a205b3" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "561" ],
@@ -122,8 +122,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies?api-version=2023-02-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "bcf51f89-8a83-4a3b-9b92-5c5dd0dae91d" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "79e7d1d7-dbcd-48c8-980c-e76a3ca8cf64" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -139,21 +139,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "bcf51f89-8a83-4a3b-9b92-5c5dd0dae91d 6/6/2023 11:44:04 AM" ],
+        "x-ms-request-id": [ "79e7d1d7-dbcd-48c8-980c-e76a3ca8cf64 6/12/2023 1:40:53 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "bcf51f89-8a83-4a3b-9b92-5c5dd0dae91d" ],
+        "x-ms-client-request-id": [ "79e7d1d7-dbcd-48c8-980c-e76a3ca8cf64" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "8895f255-e3bd-4e0e-9d8b-47bb7a799f66" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114404Z:8895f255-e3bd-4e0e-9d8b-47bb7a799f66" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:04 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11928" ],
+        "x-ms-correlation-request-id": [ "bd55204c-d005-4222-aa2c-e46e11eac138" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134053Z:bd55204c-d005-4222-aa2c-e46e11eac138" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3255" ],
+        "Content-Length": [ "1851" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a\",\"name\":\"replicapolicy5h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy5h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy3h2a\",\"name\":\"replicapolicy3h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy3h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy2h2a\",\"name\":\"replicapolicy2h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy2h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a\",\"name\":\"replicapolicy5h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy5h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}],\"nextLink\":null}"
     }
   },
   "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a?api-version=2023-02-01+5": {
@@ -162,8 +162,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a?api-version=2023-02-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "3c572fff-d509-4903-addf-ff5446511eb9" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "469d893f-7a25-4e27-b67a-479a242d79b7" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -179,14 +179,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "3c572fff-d509-4903-addf-ff5446511eb9 6/6/2023 11:44:04 AM" ],
+        "x-ms-request-id": [ "469d893f-7a25-4e27-b67a-479a242d79b7 6/12/2023 1:40:53 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "3c572fff-d509-4903-addf-ff5446511eb9" ],
+        "x-ms-client-request-id": [ "469d893f-7a25-4e27-b67a-479a242d79b7" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "8b13f0b0-b437-487d-bc41-5ac26588cfb1" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114404Z:8b13f0b0-b437-487d-bc41-5ac26588cfb1" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:04 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11927" ],
+        "x-ms-correlation-request-id": [ "9942d7a5-b6c9-4ff2-84d0-7d8d07ac8204" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134053Z:9942d7a5-b6c9-4ff2-84d0-7d8d07ac8204" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "561" ],
@@ -202,8 +202,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a?api-version=2023-02-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a" ],
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d" ],
         "CommandName": [ "Az.RecoveryServices.internal\\Remove-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesReplicationPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -218,18 +218,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01" ],
+        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01" ],
         "Retry-After": [ "30" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a 6/6/2023 11:44:05 AM" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01" ],
+        "x-ms-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d 6/12/2023 1:40:54 PM" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a" ],
+        "x-ms-client-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "cb37894a-f9c6-4316-8d8b-74f262e00f36" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114405Z:cb37894a-f9c6-4316-8d8b-74f262e00f36" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:05 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "2e43f7b7-31a4-41af-8c15-7bd37bdacd2a" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134054Z:2e43f7b7-31a4-41af-8c15-7bd37bdacd2a" ],
+        "Date": [ "Mon, 12 Jun 2023 13:40:54 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -238,15 +238,15 @@
       "Content": null
     }
   },
-  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01+7": {
+  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a" ],
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d" ],
         "CommandName": [ "Az.RecoveryServices.internal\\Remove-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesReplicationPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -261,32 +261,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/a53ff6f6-5d86-4504-9962-99b9f11448f5" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/ef45804f-e52a-4701-b56b-f5f19c15ff24" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a" ],
+        "x-ms-client-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "19fa6c90-4e82-4d32-85c3-1fc69b92b99c" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114436Z:19fa6c90-4e82-4d32-85c3-1fc69b92b99c" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:35 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "x-ms-correlation-request-id": [ "96ffcae6-1e83-4076-bf29-6703d7d995c7" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134125Z:96ffcae6-1e83-4076-bf29-6703d7d995c7" ],
+        "Date": [ "Mon, 12 Jun 2023 13:41:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "216" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":null,\"id\":null,\"name\":\"a53ff6f6-5d86-4504-9962-99b9f11448f5\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-06T11:44:05.4363518Z\",\"endTime\":\"2023-06-06T11:44:06.0000000Z\",\"percentComplete\":null}"
+      "Content": "{\"error\":null,\"id\":null,\"name\":\"ef45804f-e52a-4701-b56b-f5f19c15ff24\",\"properties\":null,\"status\":\"Succeeded\",\"startTime\":\"2023-06-12T13:40:54.4879517Z\",\"endTime\":\"2023-06-12T13:40:54.0000000Z\",\"percentComplete\":null}"
     }
   },
-  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01+8": {
+  "Remove-AzRecoveryServicesReplicationPolicy+[NoContext]+Delete+$GET+https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy5h2a/operationresults/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01",
       "Content": null,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "0120cd63-78ed-4502-9888-d5ed06d9518a" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "274d693f-7dd3-44d8-a244-0c151f951a9d" ],
         "CommandName": [ "Az.RecoveryServices.internal\\Remove-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesReplicationPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -301,15 +301,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/a53ff6f6-5d86-4504-9962-99b9f11448f5", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/a53ff6f6-5d86-4504-9962-99b9f11448f5" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/a53ff6f6-5d86-4504-9962-99b9f11448f5?api-version=2023-02-01" ],
+        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/ef45804f-e52a-4701-b56b-f5f19c15ff24", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationJobs/ef45804f-e52a-4701-b56b-f5f19c15ff24" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationOperationStatus/ef45804f-e52a-4701-b56b-f5f19c15ff24?api-version=2023-02-01" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "00000000-0000-0000-0000-000000000000" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "a0f93748-d64c-4648-8e25-0dcff7ca6000" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114436Z:a0f93748-d64c-4648-8e25-0dcff7ca6000" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:36 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11925" ],
+        "x-ms-correlation-request-id": [ "fd98d6ad-12cb-4849-ad28-3d09fbba832c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134125Z:fd98d6ad-12cb-4849-ad28-3d09fbba832c" ],
+        "Date": [ "Mon, 12 Jun 2023 13:41:25 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -323,8 +323,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies?api-version=2023-02-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "4816de21-32f0-4106-9f10-8afaa198c50a" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "26c64127-a37e-4800-9c38-0929d3b15bac" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -340,21 +340,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "4816de21-32f0-4106-9f10-8afaa198c50a 6/6/2023 11:44:37 AM" ],
+        "x-ms-request-id": [ "26c64127-a37e-4800-9c38-0929d3b15bac 6/12/2023 1:41:26 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "4816de21-32f0-4106-9f10-8afaa198c50a" ],
+        "x-ms-client-request-id": [ "26c64127-a37e-4800-9c38-0929d3b15bac" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "989a1a77-d5d1-415e-8f2a-31217b041a06" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230606T114437Z:989a1a77-d5d1-415e-8f2a-31217b041a06" ],
-        "Date": [ "Tue, 06 Jun 2023 11:44:36 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
+        "x-ms-correlation-request-id": [ "d18797ad-7d3e-4404-804e-9711890f0780" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230612T134126Z:d18797ad-7d3e-4404-804e-9711890f0780" ],
+        "Date": [ "Mon, 12 Jun 2023 13:41:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2693" ],
+        "Content-Length": [ "1289" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy3h2a\",\"name\":\"replicapolicy3h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy3h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy2h2a\",\"name\":\"replicapolicy2h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy2h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":0,\"replicationInterval\":5,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}],\"nextLink\":null}"
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicy4h2a\",\"name\":\"replicapolicy4h2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicy4h2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":10,\"applicationConsistentSnapshotFrequencyInHours\":3,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":null}}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.RecoveryServices/vaults/HyperV2AzureVault/replicationPolicies/replicapolicyh2a\",\"name\":\"replicapolicyh2a\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"replicapolicyh2a\",\"providerSpecificDetails\":{\"instanceType\":\"HyperVReplicaAzure\",\"recoveryPointHistoryDurationInHours\":6,\"applicationConsistentSnapshotFrequencyInHours\":1,\"replicationInterval\":300,\"encryption\":\"Disabled\",\"activeStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ASRTesting/providers/Microsoft.Storage/storageAccounts/hyperv2azurestorageeus\"}}}],\"nextLink\":null}"
     }
   }
 }

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRecoveryServicesRepl
 Describe 'Remove-AzRecoveryServicesReplicationProtectionContainer' {
     It 'Delete' {
         $fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2aFabricName
-        $protectionConatiner=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -Fabric $fabric -ProtectionContainer $env.a2apcName -SubscriptionId $env.a2aSubscriptionId
-        {Remove-AzRecoveryServicesReplicationProtectionContainer -ProtectionContainer $protectionConatiner -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName} | Should Not Throw
+        $protectionConatiner=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -Fabric $fabric -ProtectionContainer $env.dela2apcName -SubscriptionId $env.a2aSubscriptionId
+        { Remove-AzRecoveryServicesReplicationProtectionContainer -ProtectionContainer $protectionConatiner -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName } | Should -Not -Throw
     }
 }

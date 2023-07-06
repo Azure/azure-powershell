@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: RecoveryServices cmdlets
 ### [Add-AzRecoveryServicesReplicationProtectedItemDisk](Add-AzRecoveryServicesReplicationProtectedItemDisk.md)
 Operation to add disks(s) to the replication protected item.
 
-### [Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint](Add-AzRecoveryServicesReplicationProtectedItemRecoveryPoint.md)
-The operation to change the recovery point of a failed over replication protected item.
-
 ### [Clear-AzRecoveryServicesReplicationFabric](Clear-AzRecoveryServicesReplicationFabric.md)
 The operation to purge(force delete) an Azure Site Recovery fabric.
 
@@ -77,7 +74,7 @@ Gets the details of a replication policy.
 The operation to get the details of a protectable item.
 
 ### [Get-AzRecoveryServicesReplicationProtectedItem](Get-AzRecoveryServicesReplicationProtectedItem.md)
-Gets the details of an ASR replication protected item.
+Gets the list of ASR replication protected items in the vault.
 
 ### [Get-AzRecoveryServicesReplicationProtectionContainer](Get-AzRecoveryServicesReplicationProtectionContainer.md)
 Lists the protection containers in a vault.
@@ -133,6 +130,9 @@ The operation to start the planned failover of a recovery plan.
 
 ### [Invoke-AzRecoveryServicesRenewReplicationFabricCertificate](Invoke-AzRecoveryServicesRenewReplicationFabricCertificate.md)
 Renews the connection certificate for the ASR replication fabric.
+
+### [Invoke-AzRecoveryServicesReplicationProtectedItemApplyRecoveryPoint](Invoke-AzRecoveryServicesReplicationProtectedItemApplyRecoveryPoint.md)
+The operation to change the recovery point of a failed over replication protected item.
 
 ### [Invoke-AzRecoveryServicesReprotectReplicationProtectedItem](Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.md)
 Operation to reprotect or reverse replicate a failed over replication protected item.
@@ -200,6 +200,12 @@ The operation to configure vault setting.
 
 ### [New-AzRecoveryServicesReplicationvCenter](New-AzRecoveryServicesReplicationvCenter.md)
 The operation to create a vCenter object..
+
+### [New-AzRecoveryServicesReplicationVmNicConfig](New-AzRecoveryServicesReplicationVmNicConfig.md)
+
+
+### [New-AzRecoveryServicesReplicationVmNicIPConfig](New-AzRecoveryServicesReplicationVmNicIPConfig.md)
+
 
 ### [Remove-AzRecoveryServicesReplicationFabric](Remove-AzRecoveryServicesReplicationFabric.md)
 The operation to delete or remove an Azure Site Recovery fabric.

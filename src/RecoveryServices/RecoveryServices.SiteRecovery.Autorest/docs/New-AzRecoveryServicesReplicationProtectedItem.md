@@ -12,21 +12,12 @@ The operation to create an ASR replication protected item (Enable replication).
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
+New-AzRecoveryServicesReplicationProtectedItem -ProtectionContainerMapping <IProtectionContainerMapping>
  -ReplicatedProtectedItemName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-PolicyId <String>] [-ProtectableItemId <String>]
- [-ProviderSpecificDetailInstanceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
- -ReplicatedProtectedItemName <String> -ResourceGroupName <String> -ResourceName <String>
- -Input <IEnableProtectionInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -LogStorageAccountId <String> -ProviderSpecificDetail <IEnableProtectionProviderSpecificInput>
+ [-SubscriptionId <String>] [-ProtectableItemId <String>] [-RecoveryAzureStorageAccountId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,27 +25,25 @@ The operation to create an ASR replication protected item (Enable replication).
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a replication protected item
 ```powershell
-{{ Add code here }}
+$protectionInput=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AEnableProtectionInput]::new()
+$protectionInput.FabricObjectId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/abhinav_test/providers/Microsoft.Compute/virtualMachines/a2avmtest"
+$protectionInput.ReplicationScenario="ReplicateAzureToAzure"
+$protectionInput.RecoveryResourceGroupId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2avmrecoveryrg"
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+$pcmap=Get-AzRecoveryServicesReplicationProtectionContainerMapping -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProtectionContainer $protectioncontainer -MappingName "A2AprimaryToRecovery"
+New-AzRecoveryServicesReplicationProtectedItem -ProtectionContainerMapping $pcmap -ReplicatedProtectedItemName "replicatedvmtest2" -ResourceGroupName "a2arecoveryrg" -resourceName "a2arecoveryvault" -ProviderSpecificDetail $protectionInput -LogStorageAccountId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/abhinav_test/providers/Microsoft.Storage/storageAccounts/a2aprimarycachestorage"
 ```
 
 ```output
-{{ Add output here }}
+Id                                                                                                                                                                                                 Location Name                                 Type
+--                                                                                                                                                                                                 -------- ----                                 ----
+/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationJobs/5b71e458-9c1b-465e-be75-938d9fdacf4b          5b71e458-9c1b-465e-be75-938d9fdacf4b Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates new replication protected item in a recovery services vault
 
 ## PARAMETERS
 
@@ -74,8 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -89,8 +77,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricName
-Name of the fabric.
+### -LogStorageAccountId
+Primary Staging Azure Storage Account Id.
 
 ```yaml
 Type: System.String
@@ -101,22 +89,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Input
-Enable protection input.
-To construct, see NOTES section for INPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionInput
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -135,27 +107,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyId
-The Policy Id.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProtectableItemId
 The protectable item Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,11 +122,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -ProtectionContainerMapping
+Protection container mapping object.
+To construct, see NOTES section for PROTECTIONCONTAINERMAPPING properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerMapping
 Parameter Sets: (All)
 Aliases:
 
@@ -180,12 +138,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderSpecificDetailInstanceType
-The class type.
+### -ProviderSpecificDetail
+The ReplicationProviderInput.
+For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object.
+For San provider, it will be SanEnableProtectionInput object.
+For HyperVReplicaAzure provider, it can be null.
+To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInput
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAzureStorageAccountId
+Primary Staging Azure Storage Account Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -291,11 +268,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionInput
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IJob
 
 ## NOTES
 
@@ -306,10 +281,51 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUT <IEnableProtectionInput>`: Enable protection input.
-  - `[PolicyId <String>]`: The Policy Id.
-  - `[ProtectableItemId <String>]`: The protectable item Id.
-  - `[ProviderSpecificDetailInstanceType <String>]`: The class type.
+`PROTECTIONCONTAINERMAPPING <IProtectionContainerMapping>`: Protection container mapping object.
+  - `[Location <String>]`: Resource Location
+  - `[Health <String>]`: Health of pairing.
+  - `[HealthErrorDetail <IHealthError[]>]`: Health error.
+    - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+    - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+    - `[EntityId <String>]`: ID of the entity.
+    - `[ErrorCategory <String>]`: Category of error.
+    - `[ErrorCode <String>]`: Error code.
+    - `[ErrorId <String>]`: The health error unique id.
+    - `[ErrorLevel <String>]`: Level of error.
+    - `[ErrorMessage <String>]`: Error message.
+    - `[ErrorSource <String>]`: Source of error.
+    - `[ErrorType <String>]`: Type of error.
+    - `[InnerHealthError <IInnerHealthError[]>]`: The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+      - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+      - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+      - `[EntityId <String>]`: ID of the entity.
+      - `[ErrorCategory <String>]`: Category of error.
+      - `[ErrorCode <String>]`: Error code.
+      - `[ErrorId <String>]`: The health error unique id.
+      - `[ErrorLevel <String>]`: Level of error.
+      - `[ErrorMessage <String>]`: Error message.
+      - `[ErrorSource <String>]`: Source of error.
+      - `[ErrorType <String>]`: Type of error.
+      - `[PossibleCaus <String>]`: Possible causes of error.
+      - `[RecommendedAction <String>]`: Recommended action to resolve error.
+      - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+      - `[SummaryMessage <String>]`: Summary message of the entity.
+    - `[PossibleCaus <String>]`: Possible causes of error.
+    - `[RecommendedAction <String>]`: Recommended action to resolve error.
+    - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+    - `[SummaryMessage <String>]`: Summary message of the entity.
+  - `[PolicyFriendlyName <String>]`: Friendly name of replication policy.
+  - `[PolicyId <String>]`: Policy ARM Id.
+  - `[ProviderSpecificDetailInstanceType <String>]`: Gets the class type. Overridden in derived classes.
+  - `[SourceFabricFriendlyName <String>]`: Friendly name of source fabric.
+  - `[SourceProtectionContainerFriendlyName <String>]`: Friendly name of source protection container.
+  - `[State <String>]`: Association Status.
+  - `[TargetFabricFriendlyName <String>]`: Friendly name of target fabric.
+  - `[TargetProtectionContainerFriendlyName <String>]`: Friendly name of paired container.
+  - `[TargetProtectionContainerId <String>]`: Paired protection container ARM ID.
+
+`PROVIDERSPECIFICDETAIL <IEnableProtectionProviderSpecificInput>`: The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.
+  - `ReplicationScenario <String>`: The class type.
 
 ## RELATED LINKS
 

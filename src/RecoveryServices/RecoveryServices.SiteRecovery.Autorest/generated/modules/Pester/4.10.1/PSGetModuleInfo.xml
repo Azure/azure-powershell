@@ -52,8 +52,23 @@
         </TN>
         <DCT>
           <En>
-            <S N="Key">Command</S>
+            <S N="Key">Cmdlet</S>
             <Obj N="Value" RefId="4">
+              <TNRef RefId="1" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="4" />
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="4" />
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="5">
               <TNRef RefId="1" />
               <LST>
                 <S>Describe</S>
@@ -95,18 +110,7 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">RoleCapability</S>
-            <Obj N="Value" RefId="5">
-              <TNRef RefId="1" />
-              <LST />
-            </Obj>
-          </En>
-          <En>
-            <S N="Key">DscResource</S>
-            <Ref N="Value" RefId="5" />
-          </En>
-          <En>
-            <S N="Key">Function</S>
+            <S N="Key">Command</S>
             <Obj N="Value" RefId="6">
               <TNRef RefId="1" />
               <LST>
@@ -149,12 +153,8 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">Workflow</S>
-            <Ref N="Value" RefId="5" />
-          </En>
-          <En>
-            <S N="Key">Cmdlet</S>
-            <Ref N="Value" RefId="5" />
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="4" />
           </En>
         </DCT>
       </Obj>
@@ -179,15 +179,15 @@
           <S N="releaseNotes">https://github.com/pester/Pester/releases/tag/4.10.1</S>
           <S N="isLatestVersion">False</S>
           <S N="isAbsoluteLatestVersion">False</S>
-          <S N="versionDownloadCount">4734043</S>
-          <S N="downloadCount">14841441</S>
+          <S N="versionDownloadCount">4807355</S>
+          <S N="downloadCount">15079646</S>
           <S N="packageSize">887295</S>
           <S N="published">2/7/2020 7:57:31 PM +05:30</S>
           <S N="created">2/7/2020 7:57:31 PM +05:30</S>
-          <S N="lastUpdated">6/16/2023 1:29:05 PM +05:30</S>
+          <S N="lastUpdated">7/5/2023 8:50:54 AM +05:30</S>
           <S N="tags">powershell unit_testing bdd tdd mocking PSEdition_Core PSEdition_Desktop Windows Linux MacOS PSModule PSFunction_Describe PSCommand_Describe PSFunction_Context PSCommand_Context PSFunction_It PSCommand_It PSFunction_Should PSCommand_Should PSFunction_Mock PSCommand_Mock PSFunction_Assert-MockCalled PSCommand_Assert-MockCalled PSFunction_Assert-VerifiableMock PSCommand_Assert-VerifiableMock PSFunction_Assert-VerifiableMocks PSCommand_Assert-VerifiableMocks PSFunction_New-Fixture PSCommand_New-Fixture PSFunction_Get-TestDriveItem PSCommand_Get-TestDriveItem PSFunction_Invoke-Pester PSCommand_Invoke-Pester PSFunction_Setup PSCommand_Setup PSFunction_In PSCommand_In PSFunction_InModuleScope PSCommand_InModuleScope PSFunction_Invoke-Mock PSCommand_Invoke-Mock PSFunction_BeforeEach PSCommand_BeforeEach PSFunction_AfterEach PSCommand_AfterEach PSFunction_BeforeAll PSCommand_BeforeAll PSFunction_AfterAll PSCommand_AfterAll PSFunction_Get-MockDynamicParameter PSCommand_Get-MockDynamicParameter PSFunction_Set-DynamicParameterVariable PSCommand_Set-DynamicParameterVariable PSFunction_Set-TestInconclusive PSCommand_Set-TestInconclusive PSFunction_Set-ItResult PSCommand_Set-ItResult PSFunction_SafeGetCommand PSCommand_SafeGetCommand PSFunction_New-PesterOption PSCommand_New-PesterOption PSFunction_New-MockObject PSCommand_New-MockObject PSFunction_Add-AssertionOperator PSCommand_Add-AssertionOperator PSFunction_Get-ShouldOperator PSCommand_Get-ShouldOperator PSFunction_Invoke-Gherkin PSCommand_Invoke-Gherkin PSFunction_Find-GherkinStep PSCommand_Find-GherkinStep PSFunction_GherkinStep PSCommand_GherkinStep PSFunction_BeforeEachFeature PSCommand_BeforeEachFeature PSFunction_AfterEachFeature PSCommand_AfterEachFeature PSFunction_BeforeEachScenario PSCommand_BeforeEachScenario PSFunction_AfterEachScenario PSCommand_AfterEachScenario PSIncludes_Function</S>
           <S N="developmentDependency">False</S>
-          <S N="updated">2023-06-16T13:29:05Z</S>
+          <S N="updated">2023-07-05T08:50:54Z</S>
           <S N="NormalizedVersion">4.10.1</S>
           <S N="Authors">Pester Team</S>
           <S N="IsPrerelease">false</S>

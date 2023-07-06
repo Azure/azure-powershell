@@ -164,7 +164,14 @@ function New-AzRecoveryServicesReplicationProtectionContainerMapping {
 
             $TargetProtectionContainerId = $RecoveryProtectionContainer.Id
             $PolicyId = $Policy.Id
-            $protectionContainerString = $PrimaryProtectionContainer.id.Split("/")
+
+            if(-not [string]::IsNullOrEmpty($PrimaryProtectionContainer.id)) {
+                $protectionContainerString = $PrimaryProtectionContainer.id.Split("/")
+            }
+            else {
+                throw 'Protection Container does not contain an ARM Id. Please check the protection container details'
+            }
+
             $protectionContainerName = $protectionContainerString[-1]
             $fabricName = $protectionContainerString[-3]
 

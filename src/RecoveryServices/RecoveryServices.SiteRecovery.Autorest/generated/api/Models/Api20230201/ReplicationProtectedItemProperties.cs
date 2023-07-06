@@ -98,9 +98,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         /// <summary>Internal Acessors for CurrentScenario</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ICurrentScenarioDetails Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItemPropertiesInternal.CurrentScenario { get => (this._currentScenario = this._currentScenario ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.CurrentScenarioDetails()); set { {_currentScenario = value;} } }
 
-        /// <summary>Internal Acessors for ProviderSpecificDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItemPropertiesInternal.ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ReplicationProviderSpecificSettings()); set { {_providerSpecificDetail = value;} } }
-
         /// <summary>Backing field for <see cref="PolicyFriendlyName" /> property.</summary>
         private string _policyFriendlyName;
 
@@ -171,11 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
 
         /// <summary>The Replication provider custom settings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ReplicationProviderSpecificSettings()); set => this._providerSpecificDetail = value; }
-
-        /// <summary>Gets the Instance type.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inlined)]
-        public string ProviderSpecificDetailInstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettingsInternal)ProviderSpecificDetail).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettingsInternal)ProviderSpecificDetail).InstanceType = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings ProviderSpecificDetail { get => (this._providerSpecificDetail = this._providerSpecificDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ReplicationProviderSpecificSettings()); set => this._providerSpecificDetail = value; }
 
         /// <summary>Backing field for <see cref="RecoveryContainerId" /> property.</summary>
         private string _recoveryContainerId;
@@ -430,14 +423,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         SerializedName = @"protectionStateDescription",
         PossibleTypes = new [] { typeof(string) })]
         string ProtectionStateDescription { get; set; }
-        /// <summary>Gets the Instance type.</summary>
+        /// <summary>The Replication provider custom settings.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets the Instance type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        string ProviderSpecificDetailInstanceType { get; set; }
+        Description = @"The Replication provider custom settings.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings) })]
+        Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings ProviderSpecificDetail { get; set; }
         /// <summary>The recovery container Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
@@ -573,8 +566,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         string ProtectionStateDescription { get; set; }
         /// <summary>The Replication provider custom settings.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificSettings ProviderSpecificDetail { get; set; }
-        /// <summary>Gets the Instance type.</summary>
-        string ProviderSpecificDetailInstanceType { get; set; }
         /// <summary>The recovery container Id.</summary>
         string RecoveryContainerId { get; set; }
         /// <summary>The friendly name of recovery fabric.</summary>

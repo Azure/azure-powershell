@@ -140,9 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AEnableProtectionInputInternal)this).RecoveryCapacityReservationGroupId = (string) content.GetValueForProperty("RecoveryCapacityReservationGroupId",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AEnableProtectionInputInternal)this).RecoveryCapacityReservationGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             if (content.Contains("DiskEncryptionInfoDiskEncryptionKeyInfo"))
             {
@@ -265,9 +265,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AEnableProtectionInputInternal)this).RecoveryCapacityReservationGroupId = (string) content.GetValueForProperty("RecoveryCapacityReservationGroupId",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AEnableProtectionInputInternal)this).RecoveryCapacityReservationGroupId, global::System.Convert.ToString);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             if (content.Contains("DiskEncryptionInfoDiskEncryptionKeyInfo"))
             {

@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "4a78a95b-99cd-4794-bdc4-bb1c05dea7bf" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "58f41b42-ff63-4141-bb88-8f1584469d2e" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationProtectionContainer_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,21 +23,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "4a78a95b-99cd-4794-bdc4-bb1c05dea7bf 6/16/2023 1:30:30 PM" ],
+        "x-ms-request-id": [ "58f41b42-ff63-4141-bb88-8f1584469d2e 7/5/2023 8:56:21 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "4a78a95b-99cd-4794-bdc4-bb1c05dea7bf" ],
+        "x-ms-client-request-id": [ "58f41b42-ff63-4141-bb88-8f1584469d2e" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "86080bca-e296-4e63-bd50-c338e260567e" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133030Z:86080bca-e296-4e63-bd50-c338e260567e" ],
-        "Date": [ "Fri, 16 Jun 2023 13:30:30 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "d02303bd-a65c-4907-bd55-138bea88068d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230705T085621Z:d02303bd-a65c-4907-bd55-138bea88068d" ],
+        "Date": [ "Wed, 05 Jul 2023 08:56:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3492" ],
+        "Content-Length": [ "3493" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"East US\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":4,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainerA2A\",\"name\":\"demoProtectionContainerA2A\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainerA2A\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer2\",\"name\":\"A2AEastUSProtectionContainer2\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer2\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainer\",\"name\":\"demoProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/testcontainercmd\",\"name\":\"testcontainercmd\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"testcontainercmd\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Ademo-EastUS/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"East US\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":5,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainerA2A\",\"name\":\"demoProtectionContainerA2A\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainerA2A\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer2\",\"name\":\"A2AEastUSProtectionContainer2\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer2\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainer\",\"name\":\"demoProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/testcontainercmd\",\"name\":\"testcontainercmd\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"testcontainercmd\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
@@ -48,8 +48,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "ebf7c492-7b39-4edf-aeb3-76d6e48b4dbd" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "32c41b2c-14e6-4bcb-8cca-3ce7fa115033" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationFabric" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationFabric_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,14 +65,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "ebf7c492-7b39-4edf-aeb3-76d6e48b4dbd 6/16/2023 1:30:30 PM" ],
+        "x-ms-request-id": [ "32c41b2c-14e6-4bcb-8cca-3ce7fa115033 7/5/2023 8:56:21 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "ebf7c492-7b39-4edf-aeb3-76d6e48b4dbd" ],
+        "x-ms-client-request-id": [ "32c41b2c-14e6-4bcb-8cca-3ce7fa115033" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "c3980b26-d10e-4950-ba13-c89097c42988" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133030Z:c3980b26-d10e-4950-ba13-c89097c42988" ],
-        "Date": [ "Fri, 16 Jun 2023 13:30:30 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "de7c3292-03a1-4c8a-b3f8-7ea9df8a35e3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230705T085621Z:de7c3292-03a1-4c8a-b3f8-7ea9df8a35e3" ],
+        "Date": [ "Wed, 05 Jul 2023 08:56:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1900" ],
@@ -90,8 +90,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "c652322d-9acb-4ec3-8259-58d4265c2605" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "6fc016d1-f17f-4d81-8871-c8a3b616eb57" ],
         "CommandName": [ "Az.RecoveryServices.internal\\Get-AzRecoveryServicesReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationProtectionContainer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -107,21 +107,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c652322d-9acb-4ec3-8259-58d4265c2605 6/16/2023 1:30:31 PM" ],
+        "x-ms-request-id": [ "6fc016d1-f17f-4d81-8871-c8a3b616eb57 7/5/2023 8:56:22 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "c652322d-9acb-4ec3-8259-58d4265c2605" ],
+        "x-ms-client-request-id": [ "6fc016d1-f17f-4d81-8871-c8a3b616eb57" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "f6561caa-7d93-4bdb-a0b2-9bbdeb07d830" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133031Z:f6561caa-7d93-4bdb-a0b2-9bbdeb07d830" ],
-        "Date": [ "Fri, 16 Jun 2023 13:30:31 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "42fb79dd-c70b-42b3-8011-0ee44d03b157" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230705T085622Z:42fb79dd-c70b-42b3-8011-0ee44d03b157" ],
+        "Date": [ "Wed, 05 Jul 2023 08:56:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2907" ],
+        "Content-Length": [ "2908" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainerA2A\",\"name\":\"demoProtectionContainerA2A\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainerA2A\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer2\",\"name\":\"A2AEastUSProtectionContainer2\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer2\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainer\",\"name\":\"demoProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Primary\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/testcontainercmd\",\"name\":\"testcontainercmd\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"testcontainercmd\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer\",\"name\":\"A2AEastUSProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainerA2A\",\"name\":\"demoProtectionContainerA2A\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainerA2A\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/A2AEastUSProtectionContainer2\",\"name\":\"A2AEastUSProtectionContainer2\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"A2AEastUSProtectionContainer2\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/demoProtectionContainer\",\"name\":\"demoProtectionContainer\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"demoProtectionContainer\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"Paired\",\"role\":\"Recovery\",\"fabricSpecificDetails\":null}},{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2arecoveryvault/replicationFabrics/A2Aprimaryfabric/replicationProtectionContainers/testcontainercmd\",\"name\":\"testcontainercmd\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers\",\"properties\":{\"fabricFriendlyName\":\"West US 2\",\"friendlyName\":\"testcontainercmd\",\"fabricType\":\"Azure\",\"protectedItemCount\":0,\"pairingStatus\":\"NotPaired\",\"role\":\"\",\"fabricSpecificDetails\":null}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   },
@@ -132,8 +132,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "a6eecb47-1dd6-4e86-ad4e-8ab795858818" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "8f032351-70b3-47e4-a068-0fc958ca5153" ],
         "CommandName": [ "Get-AzRecoveryServicesReplicationFabric" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationFabric_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -149,14 +149,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a6eecb47-1dd6-4e86-ad4e-8ab795858818 6/16/2023 1:30:31 PM" ],
+        "x-ms-request-id": [ "8f032351-70b3-47e4-a068-0fc958ca5153 7/5/2023 8:56:22 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "a6eecb47-1dd6-4e86-ad4e-8ab795858818" ],
+        "x-ms-client-request-id": [ "8f032351-70b3-47e4-a068-0fc958ca5153" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "a9ad5428-857d-4f2a-b5ca-a57cf8d10774" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133031Z:a9ad5428-857d-4f2a-b5ca-a57cf8d10774" ],
-        "Date": [ "Fri, 16 Jun 2023 13:30:31 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "633a6e08-4f55-4137-9aaf-da2cbc6a6996" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230705T085622Z:633a6e08-4f55-4137-9aaf-da2cbc6a6996" ],
+        "Date": [ "Wed, 05 Jul 2023 08:56:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1900" ],
@@ -174,8 +174,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "471c716c-92d8-402e-97af-ae047cf0de21" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "c18ce1f3-8463-4d9d-a9ab-f2973ecf7457" ],
         "CommandName": [ "Az.RecoveryServices.internal\\Get-AzRecoveryServicesReplicationProtectionContainer" ],
         "FullCommandName": [ "Get-AzRecoveryServicesReplicationProtectionContainer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -191,14 +191,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "471c716c-92d8-402e-97af-ae047cf0de21 6/16/2023 1:30:32 PM" ],
+        "x-ms-request-id": [ "c18ce1f3-8463-4d9d-a9ab-f2973ecf7457 7/5/2023 8:56:24 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "471c716c-92d8-402e-97af-ae047cf0de21" ],
+        "x-ms-client-request-id": [ "c18ce1f3-8463-4d9d-a9ab-f2973ecf7457" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "6fffd481-a7ed-423d-ac12-142093edd78c" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230616T133032Z:6fffd481-a7ed-423d-ac12-142093edd78c" ],
-        "Date": [ "Fri, 16 Jun 2023 13:30:32 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "9362e0a1-7e65-4bdd-bddd-d8330dda3771" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230705T085624Z:9362e0a1-7e65-4bdd-bddd-d8330dda3771" ],
+        "Date": [ "Wed, 05 Jul 2023 08:56:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "587" ],

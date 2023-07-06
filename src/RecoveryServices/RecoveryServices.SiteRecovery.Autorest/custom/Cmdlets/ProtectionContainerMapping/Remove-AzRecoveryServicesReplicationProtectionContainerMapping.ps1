@@ -125,7 +125,14 @@ function Remove-AzRecoveryServicesReplicationProtectionContainerMapping {
     process {
         try {
             $mappingName = $ProtectionContainerMapping.Name
-            $protectionContainermapString = $ProtectionContainerMapping.id.Split("/")
+
+            if(-not [string]::IsNullOrEmpty($ProtectionContainerMapping.id)) {
+                $protectionContainermapString = $ProtectionContainerMapping.id.Split("/")
+            }
+            else {
+                throw 'Protection container mapping does not contain an ARM Id. Please check the protection container mapping details'
+            }
+            
             $protectionContainerName = $protectionContainermapString[-3]
             $fabricName = $protectionContainermapString[-5]
 

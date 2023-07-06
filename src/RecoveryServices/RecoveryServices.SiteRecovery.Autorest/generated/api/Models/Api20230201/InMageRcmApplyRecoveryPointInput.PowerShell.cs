@@ -107,9 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmApplyRecoveryPointInputInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmApplyRecoveryPointInputInternal)this).RecoveryPointId, global::System.Convert.ToString);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -132,9 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmApplyRecoveryPointInputInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IInMageRcmApplyRecoveryPointInputInternal)this).RecoveryPointId, global::System.Convert.ToString);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzRecoveryServicesReplicationProtectedItem_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description(@"Gets the details of an ASR replication protected item.")]

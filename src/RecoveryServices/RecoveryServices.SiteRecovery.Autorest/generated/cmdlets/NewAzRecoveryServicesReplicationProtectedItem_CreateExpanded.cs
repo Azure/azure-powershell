@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzRecoveryServicesReplicationProtectedItem_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description(@"The operation to create an ASR replication protected item (Enable replication).")]
@@ -145,16 +146,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Path)]
         public string ProtectionContainerName { get => this._protectionContainerName; set => this._protectionContainerName = value; }
 
-        /// <summary>The class type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The class type.")]
+        /// <summary>
+        /// The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider,
+        /// it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ProviderSpecificDetailInstanceType { get => _inputBody.ProviderSpecificDetailInstanceType ?? null; set => _inputBody.ProviderSpecificDetailInstanceType = value; }
+        Description = @"The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IEnableProtectionProviderSpecificInput ProviderSpecificDetail { get => _inputBody.ProviderSpecificDetail ?? null /* object */; set => _inputBody.ProviderSpecificDetail = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

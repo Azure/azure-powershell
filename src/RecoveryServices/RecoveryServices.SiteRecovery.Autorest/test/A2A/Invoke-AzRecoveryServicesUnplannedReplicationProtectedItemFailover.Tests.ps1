@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzRecoveryServicesUnpl
 }
 
 Describe 'Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover' {
-    It 'UnplannedExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UnplannedExpanded' {
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2ampfabricname
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.a2amppcname
+        $protectedItem = Get-AzRecoveryServicesReplicationProtectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName $env.unplannedfailvm
+        $providerSpecificinput = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AUnplannedFailoverInput]::new()
+        $providerSpecificinput.CloudServiceCreationOption = "AutoCreateCloudService"
+        $providerSpecificinput.ReplicationScenario = "ReplicateAzureToAzure"
+        $output = Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover -ReplicatedProtectedItem $protectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProviderSpecificDetail $providerSpecificinput
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Unplanned' -skip {

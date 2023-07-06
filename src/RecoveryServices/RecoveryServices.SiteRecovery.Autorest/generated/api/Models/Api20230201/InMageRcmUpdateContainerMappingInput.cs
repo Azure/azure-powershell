@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
 
         /// <summary>The class type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Inherited)]
-        public string InstanceType { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)__replicationProviderSpecificUpdateContainerMappingInput).InstanceType; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)__replicationProviderSpecificUpdateContainerMappingInput).InstanceType = value ; }
+        public string ReplicationScenario { get => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)__replicationProviderSpecificUpdateContainerMappingInput).ReplicationScenario; set => ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)__replicationProviderSpecificUpdateContainerMappingInput).ReplicationScenario = value ; }
 
         /// <summary>Creates an new <see cref="InMageRcmUpdateContainerMappingInput" /> instance.</summary>
         public InMageRcmUpdateContainerMappingInput()

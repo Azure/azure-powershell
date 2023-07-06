@@ -31,3 +31,11 @@
   * `AzRecoveryServicesReplicationFabric`
   * `AzRecoveryServicesReplicationProtectionContainer`
   * `AzRecoveryServicesReplicationProtectionContainerMapping`
+  * `AzRecoveryServicesReplicationProtectedItem`
+  * `AzRecoveryServicesReplicationProtectedItemFailOver`
+  * `AzRecoveryServicesReplicationProtectedItemFailOverCleanup`
+  * `AzRecoveryServicesUnplannedReplicationProtectedItemFailover`
+  * `AzRecoveryServicesCommitReplicationProtectedItemFailover`
+  * `AzRecoveryServicesReplicationProtectedItemApplyRecoveryPoint`
+  * `AzRecoveryServicesReplicationVMNicConfig`
+  * `AzRecoveryServicesReplicationVMNicIPConfig`

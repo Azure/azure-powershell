@@ -15,8 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzRecoveryServicesReplic
 }
 
 Describe 'Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup' {
-    It 'TestExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'TestExpanded' {
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2ampfabricname
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.a2amppcname
+        $protectedItem = Get-AzRecoveryServicesReplicationProtectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName $env.protectedItemtest
+        $output = Test-AzRecoveryServicesReplicationProtectedItemFailoverCleanup -CleanupTestItem $protectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Comment "failover cleanup"
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Test' -skip {

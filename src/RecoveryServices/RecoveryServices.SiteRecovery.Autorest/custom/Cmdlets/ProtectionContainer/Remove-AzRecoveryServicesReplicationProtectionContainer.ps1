@@ -123,7 +123,13 @@ function Remove-AzRecoveryServicesReplicationProtectionContainer {
 
     process {
         try {
-            $protectionContainerString = $ProtectionContainer.id.Split("/")
+            if(-not [string]::IsNullOrEmpty($ProtectionContainer.id)) {
+                $protectionContainerString = $ProtectionContainer.id.Split("/")
+            }
+            else {
+                throw 'Protection Container does not contain an ARM Id. Please check the protection container details'
+            }
+
             $protectionContainerName = $protectionContainerString[-1]
             $fabricName = $protectionContainerString[-3]
 

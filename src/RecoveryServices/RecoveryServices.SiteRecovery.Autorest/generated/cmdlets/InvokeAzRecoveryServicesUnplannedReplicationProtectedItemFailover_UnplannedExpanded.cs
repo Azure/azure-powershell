@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] UnplannedFailover=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzRecoveryServicesUnplannedReplicationProtectedItemFailover_UnplannedExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description(@"Operation to initiate a failover of the replication protected item.")]
@@ -134,16 +135,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Path)]
         public string ProtectionContainerName { get => this._protectionContainerName; set => this._protectionContainerName = value; }
 
-        /// <summary>The class type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The class type.")]
+        /// <summary>Provider specific settings.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Provider specific settings.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ProviderSpecificDetailInstanceType { get => _failoverInputBody.ProviderSpecificDetailInstanceType ?? null; set => _failoverInputBody.ProviderSpecificDetailInstanceType = value; }
+        Description = @"Provider specific settings.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUnplannedFailoverProviderSpecificInput ProviderSpecificDetail { get => _failoverInputBody.ProviderSpecificDetail ?? null /* object */; set => _failoverInputBody.ProviderSpecificDetail = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

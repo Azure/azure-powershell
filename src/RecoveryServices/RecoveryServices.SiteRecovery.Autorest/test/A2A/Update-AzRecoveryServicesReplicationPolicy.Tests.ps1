@@ -24,7 +24,7 @@ Describe 'Update-AzRecoveryServicesReplicationPolicy' {
         $policy.RecoveryPointHistory=4420
         $policy.ReplicationScenario="ReplicateAzureToAzure"
         $output=Update-AzRecoveryServicesReplicationPolicy -Policy $policyDesc -ResourceGroupName $env.a2aResourceGroupName -ResourceName $env.a2aVaultName -SubscriptionId $env.a2aSubscriptionId -ReplicationProviderSetting $policy
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Update' -skip {

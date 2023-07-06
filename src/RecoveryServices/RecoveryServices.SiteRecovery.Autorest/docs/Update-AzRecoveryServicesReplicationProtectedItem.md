@@ -12,22 +12,13 @@ The operation to update the recovery settings of an ASR replication protected it
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
- -ReplicatedProtectedItemName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-EnableRdpOnTargetOption <String>] [-LicenseType <LicenseType>]
- [-ProviderSpecificDetailInstanceType <String>] [-RecoveryAvailabilitySetId <String>]
+Update-AzRecoveryServicesReplicationProtectedItem -ReplicatedProtectedItem <IReplicationProtectedItem>
+ -ResourceGroupName <String> -ResourceName <String>
+ -ProviderSpecificDetail <IUpdateReplicationProtectedItemProviderInput> [-SubscriptionId <String>]
+ [-EnableRdpOnTargetOption <String>] [-LicenseType <LicenseType>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryAzureVMName <String>] [-RecoveryAzureVMSize <String>] [-SelectedRecoveryAzureNetworkId <String>]
- [-SelectedSourceNicId <String>] [-SelectedTfoAzureNetworkId <String>] [-VMNic <IVMNicInputDetails[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzRecoveryServicesReplicationProtectedItem -FabricName <String> -ProtectionContainerName <String>
- -ReplicatedProtectedItemName <String> -ResourceGroupName <String> -ResourceName <String>
- -UpdateProtectionInput <IUpdateReplicationProtectedItemInput> [-SubscriptionId <String>]
+ [-SelectedSourceNicId <String>] [-SelectedTfoAzureNetworkId <String>] [-VMNic <VMNicConfig>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,27 +27,23 @@ The operation to update the recovery settings of an ASR replication protected it
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update details of a replicated protected item
 ```powershell
-{{ Add code here }}
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+$replicatedItem=Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName "replicatedvmtest"
+$providerSpecificinput=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AUpdateReplicationProtectedItemInput]::new()
+$providerSpecificinput.ReplicationScenario="ReplicateAzureToAzure"
+Update-AzRecoveryServicesReplicationProtectedItem -ReplicatedProtectedItem $replicatedItem -ResourceName "a2arecoveryvault" -ResourceGroupName "a2arecoveryrg" -ProviderSpecificDetail $providerSpecificinput
 ```
 
 ```output
-{{ Add output here }}
+Location Name             Type
+-------- ----             ----
+         replicatedvmtest Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Updates some details of a replicated protected item in a recovery services vault
 
 ## PARAMETERS
 
@@ -76,8 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -97,25 +83,10 @@ String value of SrsDataContract.EnableRDPOnTargetOption enum.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricName
-Fabric name.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +98,7 @@ License type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -152,30 +123,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectionContainerName
-Protection container name.
+### -ProviderSpecificDetail
+The provider specific input to update replication protected item.
+To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderSpecificDetailInstanceType
-The class type.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,7 +144,7 @@ The target availability set Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,7 +159,7 @@ Target Azure VM name given by the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -217,7 +174,7 @@ Target Azure VM size.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,11 +184,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicatedProtectedItemName
-Replication protected item name.
+### -ReplicatedProtectedItem
+Replication protected item Object.
+To construct, see NOTES section for REPLICATEDPROTECTEDITEM properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +235,7 @@ Target Azure Network Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -292,7 +250,7 @@ The selected source nic Id which will be used as the primary nic during failover
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -307,7 +265,7 @@ The Azure Network Id for test failover.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -332,29 +290,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateProtectionInput
-Update replication protected item input.
-To construct, see NOTES section for UPDATEPROTECTIONINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemInput
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -VMNic
 The list of VM nic details.
-To construct, see NOTES section for VMNIC properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IVMNicInputDetails[]
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.VMNicConfig
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -400,11 +341,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemInput
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IJob
 
 ## NOTES
 
@@ -415,69 +354,73 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`UPDATEPROTECTIONINPUT <IUpdateReplicationProtectedItemInput>`: Update replication protected item input.
-  - `[EnableRdpOnTargetOption <String>]`: The selected option to enable RDP\SSH on target vm after failover. String value of SrsDataContract.EnableRDPOnTargetOption enum.
-  - `[LicenseType <LicenseType?>]`: License type.
-  - `[ProviderSpecificDetailInstanceType <String>]`: The class type.
-  - `[RecoveryAvailabilitySetId <String>]`: The target availability set Id.
-  - `[RecoveryAzureVMName <String>]`: Target Azure VM name given by the user.
-  - `[RecoveryAzureVMSize <String>]`: Target Azure VM size.
-  - `[SelectedRecoveryAzureNetworkId <String>]`: Target Azure Network Id.
-  - `[SelectedSourceNicId <String>]`: The selected source nic Id which will be used as the primary nic during failover.
-  - `[SelectedTfoAzureNetworkId <String>]`: The Azure Network Id for test failover.
-  - `[VMNic <IVMNicInputDetails[]>]`: The list of VM nic details.
-    - `[EnableAcceleratedNetworkingOnRecovery <Boolean?>]`: Whether the NIC has accelerated networking enabled.
-    - `[EnableAcceleratedNetworkingOnTfo <Boolean?>]`: Whether the test NIC has accelerated networking enabled.
-    - `[IPConfig <IIPConfigInputDetails[]>]`: The IP configurations to be used by NIC during test failover and failover.
-      - `[IPConfigName <String>]`: 
-      - `[IsPrimary <Boolean?>]`: 
-      - `[IsSeletedForFailover <Boolean?>]`: 
-      - `[RecoveryLbBackendAddressPoolId <String[]>]`: 
-      - `[RecoveryPublicIPAddressId <String>]`: 
-      - `[RecoveryStaticIPAddress <String>]`: 
-      - `[RecoverySubnetName <String>]`: 
-      - `[TfoLbBackendAddressPoolId <String[]>]`: 
-      - `[TfoPublicIPAddressId <String>]`: 
-      - `[TfoStaticIPAddress <String>]`: 
-      - `[TfoSubnetName <String>]`: 
-    - `[NicId <String>]`: The nic Id.
-    - `[RecoveryNetworkSecurityGroupId <String>]`: The id of the NSG associated with the NIC.
-    - `[RecoveryNicName <String>]`: The name of the NIC to be used when creating target NICs.
-    - `[RecoveryNicResourceGroupName <String>]`: The resource group of the NIC to be used when creating target NICs.
-    - `[ReuseExistingNic <Boolean?>]`: A value indicating whether an existing NIC is allowed to be reused during failover subject to availability.
-    - `[SelectionType <String>]`: Selection type for failover.
-    - `[TargetNicName <String>]`: Target NIC name.
-    - `[TfoNetworkSecurityGroupId <String>]`: The NSG to be used by NIC during test failover.
-    - `[TfoNicName <String>]`: The name of the NIC to be used when creating target NICs in TFO.
-    - `[TfoNicResourceGroupName <String>]`: The resource group of the NIC to be used when creating target NICs in TFO.
-    - `[TfoReuseExistingNic <Boolean?>]`: A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
+`PROVIDERSPECIFICDETAIL <IUpdateReplicationProtectedItemProviderInput>`: The provider specific input to update replication protected item.
+  - `ReplicationScenario <String>`: The class type.
 
-`VMNIC <IVMNicInputDetails[]>`: The list of VM nic details.
-  - `[EnableAcceleratedNetworkingOnRecovery <Boolean?>]`: Whether the NIC has accelerated networking enabled.
-  - `[EnableAcceleratedNetworkingOnTfo <Boolean?>]`: Whether the test NIC has accelerated networking enabled.
-  - `[IPConfig <IIPConfigInputDetails[]>]`: The IP configurations to be used by NIC during test failover and failover.
-    - `[IPConfigName <String>]`: 
-    - `[IsPrimary <Boolean?>]`: 
-    - `[IsSeletedForFailover <Boolean?>]`: 
-    - `[RecoveryLbBackendAddressPoolId <String[]>]`: 
-    - `[RecoveryPublicIPAddressId <String>]`: 
-    - `[RecoveryStaticIPAddress <String>]`: 
-    - `[RecoverySubnetName <String>]`: 
-    - `[TfoLbBackendAddressPoolId <String[]>]`: 
-    - `[TfoPublicIPAddressId <String>]`: 
-    - `[TfoStaticIPAddress <String>]`: 
-    - `[TfoSubnetName <String>]`: 
-  - `[NicId <String>]`: The nic Id.
-  - `[RecoveryNetworkSecurityGroupId <String>]`: The id of the NSG associated with the NIC.
-  - `[RecoveryNicName <String>]`: The name of the NIC to be used when creating target NICs.
-  - `[RecoveryNicResourceGroupName <String>]`: The resource group of the NIC to be used when creating target NICs.
-  - `[ReuseExistingNic <Boolean?>]`: A value indicating whether an existing NIC is allowed to be reused during failover subject to availability.
-  - `[SelectionType <String>]`: Selection type for failover.
-  - `[TargetNicName <String>]`: Target NIC name.
-  - `[TfoNetworkSecurityGroupId <String>]`: The NSG to be used by NIC during test failover.
-  - `[TfoNicName <String>]`: The name of the NIC to be used when creating target NICs in TFO.
-  - `[TfoNicResourceGroupName <String>]`: The resource group of the NIC to be used when creating target NICs in TFO.
-  - `[TfoReuseExistingNic <Boolean?>]`: A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
+`REPLICATEDPROTECTEDITEM <IReplicationProtectedItem>`: Replication protected item Object.
+  - `[Location <String>]`: Resource Location
+  - `[ActiveLocation <String>]`: The Current active location of the PE.
+  - `[AllowedOperation <String[]>]`: The allowed operations on the Replication protected item.
+  - `[CurrentScenarioJobId <String>]`: ARM Id of the job being executed.
+  - `[CurrentScenarioName <String>]`: Scenario name.
+  - `[CurrentScenarioStartTime <DateTime?>]`: Start time of the workflow.
+  - `[EventCorrelationId <String>]`: The correlation Id for events associated with this protected item.
+  - `[FailoverHealth <String>]`: The consolidated failover health for the VM.
+  - `[FailoverRecoveryPointId <String>]`: The recovery point ARM Id to which the Vm was failed over.
+  - `[FriendlyName <String>]`: The name.
+  - `[HealthError <IHealthError[]>]`: List of health errors.
+    - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+    - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+    - `[EntityId <String>]`: ID of the entity.
+    - `[ErrorCategory <String>]`: Category of error.
+    - `[ErrorCode <String>]`: Error code.
+    - `[ErrorId <String>]`: The health error unique id.
+    - `[ErrorLevel <String>]`: Level of error.
+    - `[ErrorMessage <String>]`: Error message.
+    - `[ErrorSource <String>]`: Source of error.
+    - `[ErrorType <String>]`: Type of error.
+    - `[InnerHealthError <IInnerHealthError[]>]`: The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+      - `[CreationTimeUtc <DateTime?>]`: Error creation time (UTC).
+      - `[CustomerResolvability <HealthErrorCustomerResolvability?>]`: Value indicating whether the health error is customer resolvable.
+      - `[EntityId <String>]`: ID of the entity.
+      - `[ErrorCategory <String>]`: Category of error.
+      - `[ErrorCode <String>]`: Error code.
+      - `[ErrorId <String>]`: The health error unique id.
+      - `[ErrorLevel <String>]`: Level of error.
+      - `[ErrorMessage <String>]`: Error message.
+      - `[ErrorSource <String>]`: Source of error.
+      - `[ErrorType <String>]`: Type of error.
+      - `[PossibleCaus <String>]`: Possible causes of error.
+      - `[RecommendedAction <String>]`: Recommended action to resolve error.
+      - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+      - `[SummaryMessage <String>]`: Summary message of the entity.
+    - `[PossibleCaus <String>]`: Possible causes of error.
+    - `[RecommendedAction <String>]`: Recommended action to resolve error.
+    - `[RecoveryProviderErrorMessage <String>]`: DRA error message.
+    - `[SummaryMessage <String>]`: Summary message of the entity.
+  - `[LastSuccessfulFailoverTime <DateTime?>]`: The Last successful failover time.
+  - `[LastSuccessfulTestFailoverTime <DateTime?>]`: The Last successful test failover time.
+  - `[PolicyFriendlyName <String>]`: The name of Policy governing this PE.
+  - `[PolicyId <String>]`: The ID of Policy governing this PE.
+  - `[PrimaryFabricFriendlyName <String>]`: The friendly name of the primary fabric.
+  - `[PrimaryFabricProvider <String>]`: The fabric provider of the primary fabric.
+  - `[PrimaryProtectionContainerFriendlyName <String>]`: The name of primary protection container friendly name.
+  - `[ProtectableItemId <String>]`: The protected item ARM Id.
+  - `[ProtectedItemType <String>]`: The type of protected item type.
+  - `[ProtectionState <String>]`: The protection status.
+  - `[ProtectionStateDescription <String>]`: The protection state description.
+  - `[ProviderSpecificDetail <IReplicationProviderSpecificSettings>]`: The Replication provider custom settings.
+    - `InstanceType <String>`: Gets the Instance type.
+  - `[RecoveryContainerId <String>]`: The recovery container Id.
+  - `[RecoveryFabricFriendlyName <String>]`: The friendly name of recovery fabric.
+  - `[RecoveryFabricId <String>]`: The Arm Id of recovery fabric.
+  - `[RecoveryProtectionContainerFriendlyName <String>]`: The name of recovery container friendly name.
+  - `[RecoveryServicesProviderId <String>]`: The recovery provider ARM Id.
+  - `[ReplicationHealth <String>]`: The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+  - `[SwitchProviderState <String>]`: The switch provider state.
+  - `[SwitchProviderStateDescription <String>]`: The switch provider state description.
+  - `[TestFailoverState <String>]`: The Test failover state.
+  - `[TestFailoverStateDescription <String>]`: The Test failover state description.
 
 ## RELATED LINKS
 

@@ -13,12 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInputInternal
     {
 
-        /// <summary>Backing field for <see cref="InstanceType" /> property.</summary>
-        private string _instanceType;
+        /// <summary>Backing field for <see cref="ReplicationScenario" /> property.</summary>
+        private string _replicationScenario;
 
         /// <summary>The class type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.PropertyOrigin.Owned)]
-        public string InstanceType { get => this._instanceType; set => this._instanceType = value; }
+        public string ReplicationScenario { get => this._replicationScenario; set => this._replicationScenario = value; }
 
         /// <summary>Creates an new <see cref="ApplyRecoveryPointProviderSpecificInput" /> instance.</summary>
         public ApplyRecoveryPointProviderSpecificInput()
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
         Description = @"The class type.",
         SerializedName = @"instanceType",
         PossibleTypes = new [] { typeof(string) })]
-        string InstanceType { get; set; }
+        string ReplicationScenario { get; set; }
 
     }
     /// Provider specific input for apply recovery point.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
 
     {
         /// <summary>The class type.</summary>
-        string InstanceType { get; set; }
+        string ReplicationScenario { get; set; }
 
     }
 }

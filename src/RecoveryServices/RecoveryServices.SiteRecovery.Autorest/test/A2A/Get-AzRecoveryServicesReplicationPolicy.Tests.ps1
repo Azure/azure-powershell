@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesReplica
 Describe 'Get-AzRecoveryServicesReplicationPolicy' {
     It 'List' {
         $output = Get-AzRecoveryServicesReplicationPolicy -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Get' {
         $output = Get-AzRecoveryServicesReplicationPolicy -PolicyName $env.a2aPolicyName -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId
-        $output.Count | Should Not BeNullOrEmpty
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 }

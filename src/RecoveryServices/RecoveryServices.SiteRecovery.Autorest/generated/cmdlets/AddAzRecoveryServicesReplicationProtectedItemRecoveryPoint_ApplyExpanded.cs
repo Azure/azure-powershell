@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
     /// <remarks>
     /// [OpenAPI] ApplyRecoveryPoint=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Add, @"AzRecoveryServicesReplicationProtectedItemRecoveryPoint_ApplyExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Description(@"The operation to change the recovery point of a failed over replication protected item.")]
@@ -125,16 +126,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Path)]
         public string ProtectionContainerName { get => this._protectionContainerName; set => this._protectionContainerName = value; }
 
-        /// <summary>The class type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The class type.")]
+        /// <summary>Provider specific input for applying recovery point.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Provider specific input for applying recovery point.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The class type.",
-        SerializedName = @"instanceType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ProviderSpecificDetailInstanceType { get => _applyRecoveryPointInputBody.ProviderSpecificDetailInstanceType ?? null; set => _applyRecoveryPointInputBody.ProviderSpecificDetailInstanceType = value; }
+        Description = @"Provider specific input for applying recovery point.",
+        SerializedName = @"providerSpecificDetails",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IApplyRecoveryPointProviderSpecificInput ProviderSpecificDetail { get => _applyRecoveryPointInputBody.ProviderSpecificDetail ?? null /* object */; set => _applyRecoveryPointInputBody.ProviderSpecificDetail = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]

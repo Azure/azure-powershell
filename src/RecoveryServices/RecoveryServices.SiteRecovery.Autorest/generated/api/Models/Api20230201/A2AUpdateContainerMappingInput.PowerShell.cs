@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AUpdateContainerMappingInputInternal)this).AutomationAccountAuthenticationType = (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.AutomationAccountAuthenticationType?) content.GetValueForProperty("AutomationAccountAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AUpdateContainerMappingInputInternal)this).AutomationAccountAuthenticationType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.AutomationAccountAuthenticationType.CreateFrom);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AUpdateContainerMappingInputInternal)this).AutomationAccountAuthenticationType = (Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.AutomationAccountAuthenticationType?) content.GetValueForProperty("AutomationAccountAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IA2AUpdateContainerMappingInputInternal)this).AutomationAccountAuthenticationType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.AutomationAccountAuthenticationType.CreateFrom);
             }
-            if (content.Contains("InstanceType"))
+            if (content.Contains("ReplicationScenario"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).InstanceType, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).ReplicationScenario = (string) content.GetValueForProperty("ReplicationScenario",((Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProviderSpecificUpdateContainerMappingInputInternal)this).ReplicationScenario, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
