@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id : "",
+                    Subscription = DefaultProfile.DefaultContext.Subscription ?? "",
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
