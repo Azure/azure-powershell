@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRule
 
 ## SYNOPSIS
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
 ```
 
 ## DESCRIPTION
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ## EXAMPLES
 
@@ -771,4 +771,3 @@ ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Proc
     - `[Identifier <String>]`: the V3 identifier of the entity
 
 ## RELATED LINKS
-

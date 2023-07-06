@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Description
-Commit the migrated Azure Frontdoor(Standard/Premium) profile.
+Commit the migrated Azure Front Door(Standard/Premium) profile..
 .Example
 PS C:\> {{ Add code here }}
 {{ Add output here }}
@@ -25,7 +25,7 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/enable-azfrontdoorcdnprofilemigration
 #>
@@ -93,6 +93,12 @@ function Enable-AzFrontDoorCdnProfileMigration {
         # Run the command asynchronously
         ${NoWait},
 
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
         [System.Uri]
@@ -117,6 +123,5 @@ function Enable-AzFrontDoorCdnProfileMigration {
         Write-Host("Start to migrate.")
         Write-Host("This process will disable your Front Door (classic) profile and move all your traffic and configurations to the new Front Door profile.")
         Az.Cdn.internal\Invoke-AzCdnCommitProfileMigration @PSBoundParameters
-        Write-Host("Migrate succeeded.")
     }
 }

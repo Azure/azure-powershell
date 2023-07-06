@@ -112,6 +112,7 @@ function Start-AzMigrateTestMigration {
     
     process {
         $null = $PSBoundParameters.Remove('TargetObjectID')
+        $null = $PSBoundParameters.Remove('OsUpgradeVersion')
         $null = $PSBoundParameters.Remove('TestNetworkID')
         $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('ResourceGroupName')

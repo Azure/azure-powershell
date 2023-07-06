@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnprofile
 #>
 function Update-AzCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -95,7 +95,7 @@ function Update-AzCdnProfile {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Profile tags
         ${Tag},
@@ -163,32 +163,39 @@ function Update-AzCdnProfile {
     process {
         $hasTag = $PSBoundParameters.Remove('Tag')
         $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $hasNoWait = $PSBoundParameters.Remove('NoWait')
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
             $cdnProfile = Get-AzCdnProfile @PSBoundParameters
-        }else {
+        } else {
             throw "Not supported ParameterSetName."
         }
 
-        if($null -eq $cdnProfile)
-        {
+        if ($null -eq $cdnProfile) {
             throw "Provided cdnProfile does not exist."
-        }else{
-            if ($hasTag)
-            {
+        } else {
+            if ($hasTag) {
                 $PSBoundParameters.Add('Tag', ${Tag})
             }
 
-            if ($hasOriginResponseTimeout)
-            {
+            if ($hasOriginResponseTimeout) {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
             }
 
-            if(-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', ${AsJob})
+            }
+
+            if ($hasNoWait) {
+                $PSBoundParameters.Add('NoWait', ${NoWait})
+            }
+
+            if (-Not (ISFrontDoorCdnProfile($cdnProfile.SkuName))){
                 Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
-            }else{
+            } else {
                 throw "Provided cdnProfile does not exist."
             }
         }

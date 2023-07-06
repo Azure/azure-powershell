@@ -1,0 +1,154 @@
+parameters:
+- name: TargetBranch
+  displayName: Branch this module will generated to
+  type: string
+  default: main
+- name: ServiceName
+  displayName: Service to OOB release
+  type: string
+  default: Databricks
+- name: Preview
+  displayName: Is preview version
+  type: boolean
+  default: false
+stages:
+- stage: OOBRelease
+  displayName: OOBRelease
+  jobs:
+  - job: OOBRelease
+    timeoutInMinutes: 180
+    pool: pool-windows-2019
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: custom
+        custom: msbuild
+        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
+    - pwsh: |
+          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
+      displayName: 'Bump up version'
+    - task: AzurePowerShell@5
+      inputs:
+          azureSubscription: '$(AzureSubscription)'
+          ScriptType: 'InlineScript'
+          azurePowerShellVersion: 'LatestVersion'
+          inline: |
+              Set-AzContext -Tenant $(TenantId) -SubscriptionId $(SubscriptionId)
+              $Token = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
+              git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+              git config user.name "azure-powershell-bot"
+              git checkout -b codeoob/${{ parameters.ServiceName }}
+              git add -A
+              if (${{ parameters.Preview }} -eq $true) {
+                git reset -- ./tools/Tools.Common/SerializedCmdlets/Az.${{ parameters.ServiceName }}.json
+              }
+              git commit -m "Bump up version for ${{ parameters.ServiceName }}"
+              git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+              git push origin codeoob/${{ parameters.ServiceName }} --force;
+              $Title = "Migrate ${{ parameters.ServiceName }} from oob to main"
+              $HeadBranch = "codeoob/${{ parameters.ServiceName }}"
+              $BaseBranch = "${{ parameters.TargetBranch }}"
+              $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
+              ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description -Draft $true
+      displayName: Create PR to main branch
+    - task: PowerShell@2
+      displayName: get changelog info
+      inputs:
+        targetType: 'inline'
+        script: |
+          $readme = Get-ChildItem -Path "./src/${{ parameters.ServiceName }}" -name ChangeLog.md -Recurse
+          $mdContent = Get-Content -Path "src/${{ parameters.ServiceName }}/$readme" -Raw
+          $pattern = '(?s)## Version (\d+\.\d+\.\d)+[\s\S]*?\n(.*?)(?=\n## Version \d+\.\d+\.\d+|$)'
+          $matches = [regex]::Match($mdcontent, $pattern)
+          if ($matches.Success) {
+              $versionNumber = $matches.Groups[1].Value
+              $versionChanges = $matches.Groups[2].Value.Trim()
+          }
+          $jsonData = @{
+            ModuleName = "${{ parameters.ServiceName }}"
+            VersionNumber = "$versionNumber"
+            VersionChanges = "$versionChanges"
+            IsPreview = “${{ parameters.Preview }}“
+          }
+          $jsonString = $jsonData | ConvertTo-Json
+          $jsonString | Out-File -FilePath "VersionInfo.json"
+          $folderPath = "OOB"
+          $fileName = "VersionInfo.json"
+          New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
+          $filePath = Join-Path -Path $folderPath -ChildPath $fileName
+          $jsonString | Out-File -FilePath $filePath
+          $content = @"
+            The OOB build is ready. Please give it a test and let us know if it's OK to publish.
+
+            How to install:
+            - Install the Az.Tools.Installer module.
+                ``````powershell
+                Install-Module -Name Az.Tools.Installer -Repository PSGallery
+                ``````
+            - Install the latest Az.Accounts module unless the OOB build requires a specific version.
+                ``````powershell
+                Install-Module Az.Accounts -Repository PSGallery 
+                ``````
+            - Use Az.Tools.Installer to install the OOB build.
+                ``````powershell
+                Install-AzModule -Path $(BlobUrl)/Az.${{ parameters.ServiceName }}.$versionNumber.nupkg
+                ``````
+
+          "@
+          $readmePath = "OOB/README.md"
+          $content | Out-File -FilePath $readmePath
+
+    - task: PowerShell@2
+      displayName: publish oob tools
+      inputs:
+        targetType: 'inline'
+        script: |
+          Copy-Item .\tools\ModulePublisher.psd1 -Destination OOB
+          Copy-Item .\tools\ModulePublisher.psm1 -Destination OOB
+          Copy-Item .\tools\NuGet.exe -Destination OOB
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: OOB
+        ArtifactName: OOB
+- stage: Codesign
+  dependsOn: OOBRelease
+  jobs:
+  - template: ./code-sign.yml
+    parameters:
+      OOBBranch: codeoob/${{ parameters.ServiceName }}
+  - job: PulishForTest
+    dependsOn: Release
+    steps:
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'OOB'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'artifacts'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    - task: AzurePowerShell@5
+      displayName: 'Push packages to storage account'
+      inputs:
+        azureSubscription: '$(AzureSubscription)'
+        ScriptType: InlineScript
+        azurePowerShellVersion: LatestVersion
+        pwsh: true
+        Inline: |
+          $jsonFilePath = "$(System.ArtifactsDirectory)/OOB/VersionInfo.json"
+          $jsonContent = Get-Content -Path $jsonFilePath -Raw
+          $jsonObject = $jsonContent | ConvertFrom-Json
+          $versionNumber = $jsonObject.VersionNumber
+          $versionChanges = $jsonObject.VersionChanges
+          $moduleName = $jsonObject.ModuleName
+          $context = New-AzStorageContext -StorageAccountName "$(TestStorageAccountName)"
+          $package = Get-Item "$(System.ArtifactsDirectory)/artifacts/Az.$moduleName.$versionNumber.nupkg"
+          $package | Set-AzStorageBlobContent -Container "public" -Context $context -Force
+
+
+
