@@ -15,7 +15,7 @@
 
 $ArtifactsFolder = "$PSScriptRoot/../../../artifacts"
 $FilesChangedPaths = "$ArtifactsFolder/FilesChanged.txt"
-$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/VerifyGenSdkIssues.csv"
+$ExceptionFilePath = "$ArtifactsFolder/StaticAnalysisResults/GeneratedSdkIssues.csv"
 
 Class GeneratedSdkIssue {
     [String]$Module
@@ -52,7 +52,8 @@ try{
     autorest --reset
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
-        $ModuleName = ($_ -split "\/|\\")[1]
+        $ModuleName = "Az." + ($_ -split "\/|\\")[1]
+
         # Direct to the Sdk directory
         Write-Host "Directing to " "$PSScriptRoot/../../../$_"
         cd "$PSScriptRoot/../../../$_"
