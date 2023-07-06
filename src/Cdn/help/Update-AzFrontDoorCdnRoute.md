@@ -155,7 +155,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -386,7 +386,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -467,7 +467,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute
 
 ## NOTES
 
@@ -487,7 +487,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

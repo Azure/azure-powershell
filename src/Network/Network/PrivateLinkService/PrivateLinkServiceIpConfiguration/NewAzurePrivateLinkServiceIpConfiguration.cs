@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +26,6 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSPrivateLinkServiceIpConfiguration),
-        DeprecatedOutputProperties = new string[] { "PublicIPAddress" },
-        NewOutputProperties = new string[] { "Primary" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceIpConfig"), OutputType(typeof(PSPrivateLinkServiceIpConfiguration))]
     public class NewAzurePrivateLinkServiceIpConfiguration : NetworkBaseCmdlet
     {
@@ -54,7 +51,6 @@ namespace Microsoft.Azure.Commands.Network
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
 
-        [CmdletParameterBreakingChange("PublicIpAddress", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "PublicIpAddress")]

@@ -377,7 +377,7 @@ function Test-AzResourceGroupDeploymentWithName
         [switch] [Parameter()] $Pre,
         [hashtable] [Parameter()] $TemplateObject,
         [hashtable] [Parameter()] $TemplateParameterObject,
-        [Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode] [Parameter()] $Mode
+        [Microsoft.Azure.Management.Resources.Models.DeploymentMode] [Parameter()] $Mode
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile

@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofile
 #>
 function Update-AzFrontDoorCdnProfile {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -95,7 +95,7 @@ function Update-AzFrontDoorCdnProfile {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Profile tags
         ${Tag},
@@ -179,37 +179,51 @@ function Update-AzFrontDoorCdnProfile {
     process {
         $hasTag = $PSBoundParameters.Remove('Tag')
         $hasOriginResponseTimeout = $PSBoundParameters.Remove('OriginResponseTimeoutSecond')
+        $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
+        $hasIdentityUserAssignedIdentity = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $hasNoWait = $PSBoundParameters.Remove('NoWait')
+        
 
         if ($PSCmdlet.ParameterSetName -eq 'UpdateExpanded') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
         } elseif ($PSCmdlet.ParameterSetName -eq 'UpdateViaIdentityExpanded') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile @PSBoundParameters
-        }else {
+        } else {
             throw "Not supported ParameterSetName."
         }
 
-        if($null -eq $frontDoorCdnProfile)
-        {
+        if($null -eq $frontDoorCdnProfile) {
             throw "Provided FrontDoorCdnProfile does not exist."
         }
-        else
-        {
-            if ($hasTag)
-            {
+        else {
+            if ($hasTag) {
                 $PSBoundParameters.Add('Tag', ${Tag})
             }
 
-            if ($hasOriginResponseTimeout)
-            {
+            if ($hasOriginResponseTimeout) {
                 $PSBoundParameters.Add('OriginResponseTimeoutSecond', ${OriginResponseTimeoutSecond})
             }
-            
-            if(ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName))
-            {
-                Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
+
+            if ($hasIdentityType) {
+                $PSBoundParameters.Add('IdentityType', ${IdentityType})
             }
-            else
-            {
+
+            if ($hasIdentityUserAssignedIdentity) {
+                $PSBoundParameters.Add('IdentityUserAssignedIdentity', ${IdentityUserAssignedIdentity})
+            }
+
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', ${AsJob})
+            }
+
+            if ($hasNoWait) {
+                $PSBoundParameters.Add('NoWait', ${NoWait})
+            }
+            
+            if (ISFrontDoorCdnProfile($frontDoorCdnProfile.SkuName)) {
+                Az.Cdn.internal\Update-AzCdnProfile @PSBoundParameters
+            } else {
                 throw "Provided FrontDoorCdnProfile does not exist."
             }
         }

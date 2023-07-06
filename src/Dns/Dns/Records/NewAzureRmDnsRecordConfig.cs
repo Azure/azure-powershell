@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = ParameterSetTxt)]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(DnsRecordBase.TxtRecordMinLength, DnsRecordBase.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = ParameterSetSrv)]

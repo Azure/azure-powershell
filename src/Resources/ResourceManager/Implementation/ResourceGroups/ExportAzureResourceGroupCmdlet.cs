@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceIds;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
-        [CmdletParameterBreakingChange("ApiVersion", ChangeDescription = "Parameter is being deprecated without being replaced. Using the lastest possible API version will become the default behavior.")]
         [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
         public override string ApiVersion { get; set; }
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Options = this.GetExportOptions(),
                     };
 
-                    var exportedTemplate = ResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
+                    var exportedTemplate = NewResourceManagerSdkClient.ExportResourceGroup(ResourceGroupName, parameters);
 
                     var template = exportedTemplate.Template;
                     contents = template.ToString();

@@ -64,6 +64,20 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetModels()
+        {
+            TestRunner.RunTestScript("Test-GetAzureCognitiveServicesModels");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUsages()
+        {
+            TestRunner.RunTestScript("Test-GetAzureCognitiveServicesUsages");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAsyncAccountOperations()
         {
             TestRunner.RunTestScript("Test-AsyncAccountOperations");
@@ -157,9 +171,9 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetUsages()
+        public void TestGetAccountUsages()
         {
-            TestRunner.RunTestScript("Test-GetUsages");
+            TestRunner.RunTestScript("Test-GetAccountUsages");
         }
 
         [Fact]

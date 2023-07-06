@@ -338,8 +338,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
-                        ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
-                        secondaryRegion = BackupUtils.regionMap[vault.Location];
+                        throw new PSArgumentException(Resources.VaultLocationRequiredForCRR);
                     }
                     providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
                 }

@@ -15,8 +15,8 @@ Imports data from blobs to Azure Redis Cache.
 
 ```
 Import-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Files <String[]> [-Format <String>]
- [-PreferredDataArchiveAuthMethod <String>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PreferredDataArchiveAuthMethod <String>] [-StorageSubscriptionId <String>] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,6 +152,21 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the cache.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageSubscriptionId
+Subscription id of the storage container containing files to import using Managed Identity.
 
 ```yaml
 Type: System.String

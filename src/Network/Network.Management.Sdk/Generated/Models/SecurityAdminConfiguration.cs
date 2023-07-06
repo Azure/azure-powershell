@@ -46,14 +46,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Succeeded', 'Updating',
         /// 'Deleting', 'Failed'</param>
+        /// <param name="resourceGuid">Unique identifier for this
+        /// resource.</param>
         /// <param name="systemData">The system metadata related to this
         /// resource.</param>
-        public SecurityAdminConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>), string provisioningState = default(string), SystemData systemData = default(SystemData))
+        public SecurityAdminConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>), string provisioningState = default(string), string resourceGuid = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type, etag)
         {
             Description = description;
             ApplyOnNetworkIntentPolicyBasedServices = applyOnNetworkIntentPolicyBasedServices;
             ProvisioningState = provisioningState;
+            ResourceGuid = resourceGuid;
             SystemData = systemData;
             CustomInit();
         }
@@ -81,6 +84,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets unique identifier for this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
         /// Gets the system metadata related to this resource.

@@ -26,13 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
         public string ContactProfileName { get => this._contactProfileName; set => this._contactProfileName = value; }
 
-        /// <summary>Backing field for <see cref="GroundStationName" /> property.</summary>
-        private string _groundStationName;
-
-        /// <summary>Ground Station name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Origin(Microsoft.Azure.PowerShell.Cmdlets.Orbital.PropertyOrigin.Owned)]
-        public string GroundStationName { get => this._groundStationName; set => this._groundStationName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -100,14 +93,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         SerializedName = @"contactProfileName",
         PossibleTypes = new [] { typeof(string) })]
         string ContactProfileName { get; set; }
-        /// <summary>Ground Station name.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Ground Station name.",
-        SerializedName = @"groundStationName",
-        PossibleTypes = new [] { typeof(string) })]
-        string GroundStationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(
         Required = false,
@@ -165,8 +150,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models
         string ContactName { get; set; }
         /// <summary>Contact Profile name.</summary>
         string ContactProfileName { get; set; }
-        /// <summary>Ground Station name.</summary>
-        string GroundStationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of Azure region.</summary>

@@ -22,5 +22,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public const string Moving = "Moving";
         public const string Failed = "Failed";
         public const string Succeeded = "Succeeded";
+        public const string Disabled = "Disabled";
+        public const string Canceled = "Canceled";
     }
 }

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.2
+* Updated data collection mechanism
+* Improvements in command parsing mechanism
+
 ## Version 1.1.1
 * Updated data collection mechanism
 

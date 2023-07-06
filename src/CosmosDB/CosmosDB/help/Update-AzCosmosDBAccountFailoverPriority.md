@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBAccountFailoverPriority
 
 ## SYNOPSIS
-Update Failover Region Priority of a CosmosDB Account.
+Update Failover Region Priority of a Cosmos DB Account.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzCosmosDBAccountFailoverPriority -FailoverPolicy <String[]> -InputObject
 ```
 
 ## DESCRIPTION
-Update Failover Region Priority of a CosmosDB Account.
+Update Failover Region Priority of a Cosmos DB Account.
 
 ## EXAMPLES
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-CosmosDB Account object
+Cosmos DB Account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults

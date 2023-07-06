@@ -27,12 +27,12 @@ This path is relative to the origin path specified in the endpoint configuration
 Test-AzCdnProbe -ProbeUrl "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateProbeOutput
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azcdnprobe
 #>
 function Test-AzCdnProbe {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IValidateProbeOutput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
