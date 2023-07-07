@@ -12,7 +12,7 @@
 RootModule = './Az.DesktopVirtualization.psm1'
 
 # Version number of this module.
-ModuleVersion = '4.1.0'
+ModuleVersion = '5.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -134,7 +134,7 @@ PrivateData = @{
         ReleaseNotes = '* Added Get-AzWvdPrivateLinkResource, Get-AzWvdPrivateLinkConnection, and Remove-AzWvdPrivateLinkConnection cmdlets.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
