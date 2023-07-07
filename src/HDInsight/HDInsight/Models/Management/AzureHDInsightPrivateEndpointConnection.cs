@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,15 +25,15 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightPrivateEndpointConnection
     {
-        public AzureHDInsightPrivateEndpointConnection(PrivateEndpointConnection privateEndpointConnection)
+        public AzureHDInsightPrivateEndpointConnection(HDInsightPrivateEndpointConnectionData privateEndpointConnection)
         {
             Id = privateEndpointConnection.Id;
             Name = privateEndpointConnection.Name;
-            Type = privateEndpointConnection.Type;
+            Type = privateEndpointConnection.ResourceType;
             LinkIdentifier = privateEndpointConnection.LinkIdentifier;
-            PrivateEndpoint = new AzureHDInsightPrivateEndpoint(privateEndpointConnection.PrivateEndpoint);
-            PrivateLinkServiceConnectionState = new AzureHDInsightPrivateLinkServiceConnectionState(privateEndpointConnection.PrivateLinkServiceConnectionState);
-            ProvisioningState = privateEndpointConnection.ProvisioningState;
+            PrivateEndpoint = new AzureHDInsightPrivateEndpoint(privateEndpointConnection.PrivateEndpointId);
+            PrivateLinkServiceConnectionState = new AzureHDInsightPrivateLinkServiceConnectionState(privateEndpointConnection.ConnectionState);
+            ProvisioningState = privateEndpointConnection.ProvisioningState.ToString();
         }
 
 

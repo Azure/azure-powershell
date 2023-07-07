@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             CertificateData = certificateData;
         }
 
-        public AzureHDInsightSshPublicKey(SshPublicKey sshPublicKey)
+        public AzureHDInsightSshPublicKey(HDInsightSshPublicKey sshPublicKey)
         {
             CertificateData = sshPublicKey?.CertificateData;
         }

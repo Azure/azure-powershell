@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Management.HDInsight.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Azure.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -13,14 +13,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             PrincipalId = principalId;
             ClientId = clientId;
-            TenantId = tenantId;
         }
 
         public AzureHDInsightUserAssignedIdentity(UserAssignedIdentity userAssignedIdentity)
         {
-            PrincipalId = userAssignedIdentity?.PrincipalId;
-            ClientId = userAssignedIdentity?.ClientId;
-            TenantId = userAssignedIdentity?.TenantId;
+            PrincipalId = userAssignedIdentity?.PrincipalId.ToString();
+            ClientId = userAssignedIdentity?.ClientId.ToString();
         }
 
         public string PrincipalId { get; }

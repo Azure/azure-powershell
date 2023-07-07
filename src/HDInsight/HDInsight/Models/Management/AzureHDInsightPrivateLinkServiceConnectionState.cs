@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightPrivateLinkServiceConnectionState
     {
-        public AzureHDInsightPrivateLinkServiceConnectionState(PrivateLinkServiceConnectionState privateLinkServiceConnectionState)
+        public AzureHDInsightPrivateLinkServiceConnectionState(HDInsightPrivateLinkServiceConnectionState privateLinkServiceConnectionState)
         {
-            Status = privateLinkServiceConnectionState.Status;
+            Status = privateLinkServiceConnectionState.Status.ToString();
             Description = privateLinkServiceConnectionState.Description;
             ActionsRequired = privateLinkServiceConnectionState.ActionsRequired;
         }

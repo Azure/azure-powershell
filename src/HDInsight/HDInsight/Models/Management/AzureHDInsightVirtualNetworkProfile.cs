@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -32,9 +33,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Subnet = subnet;
         }
 
-        public AzureHDInsightVirtualNetworkProfile(VirtualNetworkProfile virtualNetworkProfile)
+        public AzureHDInsightVirtualNetworkProfile(HDInsightVirtualNetworkProfile virtualNetworkProfile)
         {
-            Id = virtualNetworkProfile.Id;
+            Id = virtualNetworkProfile.Id.ToString();
             Subnet = virtualNetworkProfile.Subnet;
         }
 

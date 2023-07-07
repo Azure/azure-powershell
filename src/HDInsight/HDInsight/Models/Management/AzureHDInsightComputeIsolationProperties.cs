@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HostSku = hostSku;
         }
 
-        public AzureHDInsightComputeIsolationProperties(ComputeIsolationProperties computeIsolationProperties = null)
+        public AzureHDInsightComputeIsolationProperties(HDInsightComputeIsolationProperties computeIsolationProperties = null)
         {
             EnableComputeIsolation = computeIsolationProperties?.EnableComputeIsolation;
             HostSku = computeIsolationProperties?.HostSku;

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             SshProfile = sshProfile;
         }
 
-        public AzureHDInsightLinuxOperatingSystemProfile(LinuxOperatingSystemProfile linuxOperatingSystemProfile)
+        public AzureHDInsightLinuxOperatingSystemProfile(HDInsightLinuxOSProfile linuxOperatingSystemProfile)
         {
             Username = linuxOperatingSystemProfile?.Username;
             Password = linuxOperatingSystemProfile?.Password;
-            SshProfile = linuxOperatingSystemProfile?.SshProfile != null ? new AzureHDInsightSshProfile(linuxOperatingSystemProfile.SshProfile) : null;
+            SshProfile = linuxOperatingSystemProfile?.SshPublicKeys != null ? new AzureHDInsightSshProfile(linuxOperatingSystemProfile.SshPublicKeys) : null;
         }
 
         /// <summary>

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ScriptActions = scriptActions;
         }
 
-        public AzureHDInsightRole(Role role)
+        public AzureHDInsightRole(HDInsightClusterRole role)
         {
             Name = role.Name;
             MinInstanceCount = role.MinInstanceCount;
             TargetInstanceCount = role.TargetInstanceCount;
-            AutoscaleConfiguration = role.AutoscaleConfiguration != null ? new AzureHDInsightAutoscale(role.AutoscaleConfiguration) : null;
-            HardwareProfile = role.HardwareProfile != null ? new AzureHDInsightHardwareProfile(role.HardwareProfile) : null;
-            OsProfile = role.OsProfile != null ? new AzureHDInsightOsProfile(role.OsProfile) : null;
+            AutoscaleConfiguration = role.AutoScaleConfiguration != null ? new AzureHDInsightAutoscale(role.AutoScaleConfiguration) : null;
+            HardwareProfile = role.HardwareVmSize != null ? new AzureHDInsightHardwareProfile(role.HardwareVmSize) : null;
+            OsProfile = role.OSLinuxProfile != null ? new AzureHDInsightOsProfile(role.OSLinuxProfile) : null;
             VirtualNetworkProfile = role.VirtualNetworkProfile != null ? new AzureHDInsightVirtualNetworkProfile(role.VirtualNetworkProfile) : null;
             DataDisksGroups = role.DataDisksGroups?.Select(dataDisk => new AzureHDInsightDataDisksGroups(dataDisk)).ToList();
             ScriptActions = role.ScriptActions?.Select(script => new AzureHDInsightScriptAction(script)).ToList();

@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -36,9 +37,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             Name = connectivityEndpoint?.Name;
             Protocol = connectivityEndpoint?.Protocol;
-            Location = connectivityEndpoint?.Location;
+            Location = connectivityEndpoint?.EndpointLocation;
             Port = connectivityEndpoint?.Port;
-            PrivateIPAddress = connectivityEndpoint?.PrivateIPAddress;
+            PrivateIPAddress = connectivityEndpoint?.PrivateIPAddress.ToString();
         }
 
         /// <summary>

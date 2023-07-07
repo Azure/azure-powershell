@@ -1,6 +1,9 @@
-﻿using Microsoft.Azure.Management.HDInsight.Models;
+﻿using Azure.Core;
+using Azure.ResourceManager.HDInsight.Models;
+using Azure.ResourceManager.Resources.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -9,28 +12,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHDInsightIPConfiguration() { }
 
-        public AzureHDInsightIPConfiguration(IPConfiguration ipConfiguration)
+        public AzureHDInsightIPConfiguration(HDInsightIPConfiguration ipConfiguration)
         {
             Id = ipConfiguration.Id;
             Name = ipConfiguration.Name;
-            Type = ipConfiguration.Type;
-            ProvisioningState = ipConfiguration.ProvisioningState;
-            Primary = ipConfiguration.Primary;
-            PrivateIPAddress = ipConfiguration.PrivateIPAddress;
-            PrivateIPAllocationMethod = ipConfiguration.PrivateIPAllocationMethod;
-            Subnet = ipConfiguration.Subnet?.Id;
+            Type = ipConfiguration.ResourceType;
+            ProvisioningState = ipConfiguration.ProvisioningState.ToString();
+            Primary = ipConfiguration.IsPrimary;
+            PrivateIPAddress = ipConfiguration.PrivateIPAddress.ToString();
+            PrivateIPAllocationMethod = ipConfiguration.PrivateIPAllocationMethod.ToString();
+            Subnet = ipConfiguration.SubnetId;
         }
 
-        public IPConfiguration ToIPConfiguration()
+        public HDInsightIPConfiguration ToIPConfiguration()
         {
-            return new IPConfiguration()
-            {
-                Name = this.Name,
-                Primary = this.Primary,
-                PrivateIPAddress = this.PrivateIPAddress,
-                PrivateIPAllocationMethod = this.PrivateIPAllocationMethod,
-                Subnet = new ResourceId(this.Subnet)
-            };
+            return ArmHDInsightModelFactory.HDInsightIPConfiguration(
+                new ResourceIdentifier(this.Id), this.Name, new ResourceType(this.Type), new HDInsightPrivateLinkConfigurationProvisioningState(this.ProvisioningState), this.Primary,
+                IPAddress.Parse(this.PrivateIPAddress), new HDInsightPrivateIPAllocationMethod(this.PrivateIPAllocationMethod), new ResourceIdentifier(this.Subnet));
         }
 
         public string Id { get; }
