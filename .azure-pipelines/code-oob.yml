@@ -7,20 +7,30 @@ parameters:
   displayName: Service to OOB release
   type: string
   default: Databricks
+- name: BumpUpVersion
+  displayName: Need BumpUpVersion
+  type: boolean
+  default: true
+- name: PreviewSuffix
+  displayName: Add "-Preview" Suffix after version number
+  type: boolean
+  default: false
 - name: Preview
-  displayName: Is preview version
+  displayName: Is preview version(Including < 1.0.0)
   type: boolean
   default: false
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
   jobs:
-  - job: OOBRelease
+  - job: BumpUpVersion
     timeoutInMinutes: 180
     pool: pool-windows-2019
+    condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
     steps:
     - task: DotNetCoreCLI@2
       displayName: Build
+      condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
       inputs:
         command: custom
         custom: msbuild
@@ -28,6 +38,7 @@ stages:
     - pwsh: |
           .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
       displayName: 'Bump up version'
+      condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
     - task: AzurePowerShell@5
       inputs:
           azureSubscription: '$(AzureSubscription)'
@@ -52,6 +63,7 @@ stages:
               $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
               ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description -Draft $true
       displayName: Create PR to main branch
+      condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
     - task: PowerShell@2
       displayName: get changelog info
       inputs:
@@ -64,6 +76,9 @@ stages:
           if ($matches.Success) {
               $versionNumber = $matches.Groups[1].Value
               $versionChanges = $matches.Groups[2].Value.Trim()
+          }
+          if ($PreviewSuffix) {
+            $versionNumber += $PreviewSuffix
           }
           $jsonData = @{
             ModuleName = "${{ parameters.ServiceName }}"
@@ -98,6 +113,11 @@ stages:
           "@
           $readmePath = "OOB/README.md"
           $content | Out-File -FilePath $readmePath
+          if (${{ parameters.BumpUpVersion }} -eq $true) {
+              echo "##vso[task.setvariable variable=BumpUpBranch]codeoob/${{ parameters.ServiceName }}"
+          } else {
+              echo "##vso[task.setvariable variable=BumpUpBranch]none"
+          }
 
     - task: PowerShell@2
       displayName: publish oob tools
@@ -116,7 +136,7 @@ stages:
   jobs:
   - template: ./code-sign.yml
     parameters:
-      OOBBranch: codeoob/${{ parameters.ServiceName }}
+      OOBBranch: $(BumpUpBranch)
   - job: PulishForTest
     dependsOn: Release
     steps:
