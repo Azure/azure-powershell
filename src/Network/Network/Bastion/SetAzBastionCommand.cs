@@ -1,4 +1,18 @@
-﻿namespace Microsoft.Azure.Commands.Network.Bastion
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.Azure.Commands.Network.Bastion
 {
     using System;
     using System.Collections;
@@ -128,12 +142,36 @@
                         }
                         #endregion
 
-                        #region Feature Validations
+                        #region Feature validations and updates
                         ValidateFeatures(this.InputObject, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
+                        if (this.EnableKerberos.HasValue)
+                        {
+                            this.InputObject.EnableKerberos = this.EnableKerberos.Value;
+                        }
+                        if (this.DisableCopyPaste.HasValue)
+                        {
+                            this.InputObject.DisableCopyPaste = this.DisableCopyPaste.Value;
+                        }
+                        if (this.EnableTunneling.HasValue)
+                        {
+                            this.InputObject.EnableTunneling = this.EnableTunneling.Value;
+                        }
+                        if (this.EnableIpConnect.HasValue)
+                        {
+                            this.InputObject.EnableIpConnect = this.EnableIpConnect.Value;
+                        }
+                        if (this.EnableShareableLink.HasValue)
+                        {
+                            this.InputObject.EnableShareableLink = this.EnableShareableLink.Value;
+                        }
                         #endregion
 
-                        #region Scale Unit Validations
+                        #region Scale unit validations and update
                         ValidateScaleUnits(this.InputObject, this.ScaleUnit);
+                        if (this.ScaleUnit.HasValue)
+                        {
+                            this.InputObject.ScaleUnit = this.ScaleUnit.Value;
+                        }
                         #endregion
 
                         MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);

@@ -1,18 +1,29 @@
-﻿// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Net;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Network.Models.Bastion;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net;
+
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.Network.Models.Bastion;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Management.Network;
+    using MNM = Management.Network.Models;
+
     public abstract class BastionBaseCmdlet : NetworkBaseCmdlet
     {
         public IBastionHostsOperations BastionClient
@@ -161,7 +172,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                     case PSBastionSku.Basic:
                         if (scaleUnits != PSBastion.MinimumScaleUnits)
                         {
-                            throw new ArgumentException($"Please select scale units value between {PSBastion.MinimumScaleUnits} and {PSBastion.MaximumScaleUnits}");
+                            throw new ArgumentException($"Bastion scalable host is available on Standard SKU");
                         }
                         break;
                     case PSBastionSku.Standard:
@@ -192,19 +203,19 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 switch (skuTierValue)
                 {
                     case PSBastionSku.Basic:
-                        if (disableCopyPaste != false)
+                        if (disableCopyPaste != null && disableCopyPaste != false)
                         {
                             throw new ArgumentException($"Toggling copy/paste is available on Standard SKU or higher");
                         }
-                        if (enableTunneling != false)
+                        if (enableTunneling != null && enableTunneling != false)
                         {
                             throw new ArgumentException($"Toggling tunneling is available on Standard SKU or higher");
                         }
-                        if (enableIpConnect != false)
+                        if (enableIpConnect != null && enableIpConnect != false)
                         {
                             throw new ArgumentException($"Toggling IP connect is available on Standard SKU or higher");
                         }
-                        if (enableShareableLink != false)
+                        if (enableShareableLink != null && enableShareableLink != false)
                         {
                             throw new ArgumentException($"Toggling shareable link is available on Standard SKU or higher");
                         }

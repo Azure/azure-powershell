@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",

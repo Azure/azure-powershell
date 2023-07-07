@@ -14,16 +14,17 @@
 
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
+    using System;
+    using System.Collections;
+    using System.ComponentModel;
+    using System.Management.Automation;
+
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network;
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-    using System.Management.Automation;
     using MNM = Management.Network.Models;
 
     [Cmdlet(VerbsCommon.New,
@@ -267,10 +268,34 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             #region Feature Validations
             ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
+            if (this.EnableKerberos.HasValue)
+            {
+                bastion.EnableKerberos = this.EnableKerberos.Value;
+            }
+            if (this.DisableCopyPaste.HasValue)
+            {
+                bastion.DisableCopyPaste = this.DisableCopyPaste.Value;
+            }
+            if (this.EnableTunneling.HasValue)
+            {
+                bastion.EnableTunneling = this.EnableTunneling.Value;
+            }
+            if (this.EnableIpConnect.HasValue)
+            {
+                bastion.EnableIpConnect = this.EnableIpConnect.Value;
+            }
+            if (this.EnableShareableLink.HasValue)
+            {
+                bastion.EnableShareableLink = this.EnableShareableLink.Value;
+            }
             #endregion
 
             #region Scale Unit Validations
             ValidateScaleUnits(bastion, this.ScaleUnit);
+            if (this.ScaleUnit.HasValue)
+            {
+                bastion.ScaleUnit = this.ScaleUnit.Value;
+            }
             #endregion
 
             if (this.VirtualNetwork != null)

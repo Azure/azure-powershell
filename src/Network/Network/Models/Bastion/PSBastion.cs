@@ -16,11 +16,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+
     using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
-    using System.Linq;
-    using System.ComponentModel;
 
     public class PSBastion : PSTopLevelResource
     {
@@ -60,31 +61,31 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
-        [Ps1Xml(Label = "Sku Name", Target = ViewControl.List, ScriptBlock = "$_.Sku.Name")]
-        [DefaultValue(PSBastionSku.Basic)]
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.All, ScriptBlock = "$_.Sku.Name")]
+        [DefaultValue(PSBastionSku.Standard)]
         public PSBastionSku Sku { get; set; }
 
-        [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
+        [Ps1Xml(Label = "Scale Units", Target = ViewControl.All)]
         [DefaultValue(2)]
         public int? ScaleUnit { get; set; }
 
-        [Ps1Xml(Label = "Kerberos", Target = ViewControl.List)]
+        [Ps1Xml(Label = "Kerberos", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? EnableKerberos { get; set; }
 
-        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.List)]
+        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? DisableCopyPaste { get; set; }
 
-        [Ps1Xml(Label = "Native Client Support", Target = ViewControl.List)]
+        [Ps1Xml(Label = "Native Client Support", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? EnableTunneling { get; set; }
 
-        [Ps1Xml(Label = "IP Connect", Target = ViewControl.List)]
+        [Ps1Xml(Label = "IP Connect", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? EnableIpConnect { get; set; }
 
-        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.List)]
+        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? EnableShareableLink { get; set; }
 
