@@ -30,9 +30,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateManagedInstance()
+        public void TestManualStartStopManagedInstance()
         {
-            TestRunner.RunTestScript("Test-StartStopManagedInstance");
+            TestRunner.RunTestScript("Test-ManualStartStopManagedInstance");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStartStopScheduleManagedInstance()
+        {
+            TestRunner.RunTestScript("Test-ScheduleStartStopManagedInstance");
         }
     }
 }

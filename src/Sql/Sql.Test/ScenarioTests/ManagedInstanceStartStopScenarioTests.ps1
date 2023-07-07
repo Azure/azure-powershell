@@ -16,24 +16,72 @@
 	.SYNOPSIS
 	Tests starting and stopping a managed instance
 #>
-function Test-StartStopManagedInstance
+function Test-ManualStartStopManagedInstance
 {
 	$rg = Create-ResourceGroupForTest
 
-	$defaultParams = Get-DefaultManagedInstanceParameters
-	$managedInstanceName = Get-ManagedInstanceName
-
  	try
  	{
-		 $managedInstance = Create-ManagedInstanceForTest $rg
+		 $managedInstance = Create-ManagedInstanceForTest $rg $null $null $true
 
-		 Stop-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName
-		 Start-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName
+		 Stop-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -Force
+		 Start-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName -Force
 
 		 $mi = Get-AzSqlInstance -Name $managedInstance.ManagedInstanceName -ResourceGroupName $rg.ResourceGroupName
 
-		 $mi | Stop-AzSqlInstance
-		 $mi | Start-AzSqlInstance
+		 $mi | Stop-AzSqlInstance -Force
+		 $mi | Start-AzSqlInstance -Force
+ 	}
+ 	finally
+ 	{
+		Remove-ResourceGroupForTest $rg
+ 	}
+}
+
+
+<#
+	.SYNOPSIS
+	Tests scheduling starting and stopping a managed instance
+#>
+function Test-ScheduleStartStopManagedInstance
+{
+	$rg = Create-ResourceGroupForTest
+
+ 	try
+ 	{
+		 $managedInstance = Create-ManagedInstanceForTest $rg $null $null $true
+		 $managedInstanceName = $managedInstance.ManagedInstanceName
+
+		 $scheduleItem = New-AzSqlInstanceScheduleItem -StartDay Monday -StartTime "04:00" -StopDay Friday -StopTime "14:00"
+
+		 $managedInstanceSchedule = New-AzSqlInstanceStartStopSchedule `
+				-InstanceName $managedInstanceName `
+				-ResourceGroupName $rg.ResourceGroupName `
+				-Description "powershell schedule" `
+				-ScheduleItems $scheduleItem `
+				-TimeZone "Central Europe Standard Time" `
+				-Force
+
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StartDay $scheduleItem.StartDay
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StartTime $scheduleItem.StartTime
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StopDay $scheduleItem.StopDay
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StopTime $scheduleItem.StopTime
+
+		$managedInstanceSchedule = Get-AzSqlInstanceStartStopSchedule `
+				-InstanceName $managedInstanceName `
+				-ResourceGroupName $rg.ResourceGroupName
+
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StartDay $scheduleItem.StartDay
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StartTime $scheduleItem.StartTime
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StopDay $scheduleItem.StopDay
+		 Assert-AreEqual $managedInstanceSchedule.ScheduleList[0].StopTime $scheduleItem.StopTime
+
+		Remove-AzSqlInstanceStartStopSchedule `
+				-InstanceName $managedInstanceName `
+				-ResourceGroupName $rg.ResourceGroupName `
+				-Force
+
+		Assert-Throws { Get-AzSqlInstanceStartStopSchedule -InstanceName $managedInstanceName -ResourceGroupName $rg.ResourceGroupName }
  	}
  	finally
  	{
