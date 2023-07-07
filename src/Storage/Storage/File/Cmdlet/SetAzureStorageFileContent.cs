@@ -313,7 +313,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         {
                             // TODO: should make sure track1 file object attributes get?
                             ShareFileProperties fileProperties = fileClient.GetProperties(this.CmdletCancellationToken).Value;
-                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));                            
+                            OutputStream.WriteObject(taskId, new AzureStorageFile(fileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
                         }
                     }
                 }

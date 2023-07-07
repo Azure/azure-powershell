@@ -883,7 +883,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             for (int i = 0; i < fileUri.Segments.Length; i++)
             {
                 noLastSegment += fileUri.Segments[i].TrimEnd('.', '/');
-                if (NamingUtil.PathSeparators.Contains(fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0]))
+                if (fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0] == '/')
                 {
                     noLastSegment += fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0];
                 }

@@ -133,37 +133,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-
-            if (this.DisAllowSourceTrailingDot)
-            {
-                this.ClientOptions.AllowSourceTrailingDot = false;
-            }
-            if (this.DisAllowDestTrailingDot)
-            {
-                this.ClientOptions.AllowTrailingDot = false;
-            }
-
             ShareFileClient srcFileClient;
+            ShareFileClient srcFileClient2ForRename;
             ShareFileClient destFileClient;
-
-            ShareServiceClient fileServiceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
 
             switch (ParameterSetName)
             {
                 case ShareNameParameterSet:
-                    srcFileClient = fileServiceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.SourcePath);
-                    destFileClient = fileServiceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
+                    ShareClientOptions sourceClientOptions = this.createClientOptions();
+                    ShareClientOptions destClientOptions = this.ClientOptions;
+
+                    if (this.DisAllowSourceTrailingDot)
+                    {
+                        sourceClientOptions.AllowTrailingDot = false;
+                        destClientOptions.AllowSourceTrailingDot = false;
+                    }
+                    if (this.DisAllowDestTrailingDot)
+                    {
+                        destClientOptions.AllowTrailingDot = false;
+                    }
+
+                    srcFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, sourceClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.SourcePath);
+                    srcFileClient2ForRename = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.SourcePath);
+                    destFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 case FileObjectParameterSet:
                     srcFileClient = this.ShareFileClient;
+                    srcFileClient2ForRename = srcFileClient;
                     destFileClient = srcFileClient.GetParentShareClient().GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 case ShareObjectParameterSet:
                     srcFileClient = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.SourcePath);
+                    srcFileClient2ForRename = srcFileClient;
                     destFileClient = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 case DirectoryObjectParameterSet:
                     srcFileClient = this.ShareDirectoryClient.GetFileClient(this.SourcePath);
+                    srcFileClient2ForRename = srcFileClient;
                     destFileClient = srcFileClient.GetParentShareClient().GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 default:
@@ -186,7 +192,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         FilePermission = this.Permission,
                     };
 
-                    destFileClient = srcFileClient.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
+                    destFileClient = srcFileClient2ForRename.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
 
                     ShareFileProperties fileProperties = destFileClient.GetProperties(this.CmdletCancellationToken).Value;
                     WriteObject(new AzureStorageFile(destFileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));

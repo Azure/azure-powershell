@@ -108,32 +108,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (this.DisAllowSourceTrailingDot)
-            {
-                this.ClientOptions.AllowSourceTrailingDot = false;
-            }
-            if (this.DisAllowDestTrailingDot)
-            {
-                this.ClientOptions.AllowTrailingDot = false;
-            }
-
             ShareDirectoryClient srcDirectoryClient;
+            ShareDirectoryClient srcDirectoryClientForRename;
             ShareFileClient destFileClient;
-
-            ShareServiceClient fileServiceClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, ClientOptions);
 
             switch (ParameterSetName)
             {
                 case ShareNameParameterSet:
-                    srcDirectoryClient = fileServiceClient.GetShareClient(this.ShareName).GetDirectoryClient(this.SourcePath);
-                    destFileClient = fileServiceClient.GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
+                    ShareClientOptions sourceClientOptions = this.createClientOptions();
+                    ShareClientOptions destClientOptions = this.ClientOptions;
+
+                    if (this.DisAllowSourceTrailingDot)
+                    {
+                        sourceClientOptions.AllowTrailingDot = false;
+                        destClientOptions.AllowSourceTrailingDot = false;
+                    }
+                    if (this.DisAllowDestTrailingDot)
+                    {
+                        destClientOptions.AllowTrailingDot = false;
+                    }
+
+                    srcDirectoryClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, sourceClientOptions).GetShareClient(this.ShareName).GetDirectoryClient(this.SourcePath);
+                    srcDirectoryClientForRename = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetDirectoryClient(this.SourcePath);
+                    destFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 case ShareObjectParameterSet:
                     srcDirectoryClient = this.ShareClient.GetDirectoryClient(this.SourcePath);
+                    srcDirectoryClientForRename = srcDirectoryClient;
                     destFileClient = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 case DirectoryObjectParameterSet:
                     srcDirectoryClient = this.ShareDirectoryClient;
+                    srcDirectoryClientForRename = srcDirectoryClient;
                     destFileClient = srcDirectoryClient.GetParentShareClient().GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
                 default:
@@ -156,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         FilePermission = this.Permission,
                     };
 
-                    ShareDirectoryClient destDirectoryClient = srcDirectoryClient.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
+                    ShareDirectoryClient destDirectoryClient = srcDirectoryClientForRename.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
 
                     ShareDirectoryProperties dirProperties = destDirectoryClient.GetProperties(this.CmdletCancellationToken).Value;
                     WriteObject(new AzureStorageFileDirectory(destDirectoryClient, (AzureStorageContext)this.Context, dirProperties, ClientOptions));

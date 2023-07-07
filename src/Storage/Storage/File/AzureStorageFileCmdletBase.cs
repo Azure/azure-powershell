@@ -178,17 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 if (clientOptions == null)
                 {
-                    clientOptions = new ShareClientOptions();
-                    clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
-                    if (this.DisAllowTrailingDot.IsPresent)
-                    {
-                        clientOptions.AllowTrailingDot = false;
-                    }
-                    else
-                    {
-                        clientOptions.AllowTrailingDot = true;
-                    }
-                    clientOptions.AllowSourceTrailingDot = true;
+                    clientOptions = createClientOptions();
                     return clientOptions;
                 }
                 else
@@ -198,6 +188,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
         private ShareClientOptions clientOptions = null;
+
+        public ShareClientOptions createClientOptions()
+        {
+            ShareClientOptions clientOptions = new ShareClientOptions();
+            clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+            if (this.DisAllowTrailingDot.IsPresent)
+            {
+                clientOptions.AllowTrailingDot = false;
+            }
+            else
+            {
+                clientOptions.AllowTrailingDot = true;
+            }
+            clientOptions.AllowSourceTrailingDot = true;
+            return clientOptions;
+        }
 
         public static AzureStorageContext GetStorageContextFromTrack1FileServiceClient(CloudFileClient fileServiceClient, IAzureContext DefaultContext = null)
         {
