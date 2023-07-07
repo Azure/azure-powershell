@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 4.1.0
+## Version 5.0.0
 * Added Get-AzWvdPrivateLinkResource, Get-AzWvdPrivateLinkConnection, and Remove-AzWvdPrivateLinkConnection cmdlets.
 ## Version 4.0.0
 * Upgraded API version to 2022-09-09
