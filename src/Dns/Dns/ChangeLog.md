@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.
 
 ## Version 1.1.2
 * Update references in .psd1 to use relative path

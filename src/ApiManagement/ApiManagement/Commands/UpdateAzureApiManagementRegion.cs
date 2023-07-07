@@ -1,4 +1,4 @@
-﻿//  
+//  
 // Copyright (c) Microsoft.  All rights reserved.
 // 
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
