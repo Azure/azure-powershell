@@ -11,13 +11,18 @@ parameters:
   displayName: Is preview version
   type: boolean
   default: false
+- name: BumpUpVersion
+  displayName: Need BumpUpVersion
+  type: boolean
+  default: true
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
   jobs:
-  - job: OOBRelease
+  - job: BumpUpVersion
     timeoutInMinutes: 180
     pool: pool-windows-2019
+    condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
     steps:
     - task: DotNetCoreCLI@2
       displayName: Build
@@ -52,6 +57,11 @@ stages:
               $Description = "Migrate ${{ parameters.ServiceName }} from oob to ${{parameters.TargetBranch}}"
               ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description -Draft $true
       displayName: Create PR to main branch
+  - job: PublishArtifact
+    timeoutInMinutes: 180
+    pool: pool-windows-2019
+    dependsOn: BumpUpVersion
+    steps:
     - task: PowerShell@2
       displayName: get changelog info
       inputs:
@@ -98,6 +108,11 @@ stages:
           "@
           $readmePath = "OOB/README.md"
           $content | Out-File -FilePath $readmePath
+          if (${{ parameters.BumpUpVersion }} -eq $true) {
+              echo "##vso[task.setvariable variable=BumpUpBranch]codeoob/${{ parameters.ServiceName }}"
+          } else {
+              echo "##vso[task.setvariable variable=BumpUpBranch]none"
+          }
 
     - task: PowerShell@2
       displayName: publish oob tools
@@ -116,7 +131,7 @@ stages:
   jobs:
   - template: ./code-sign.yml
     parameters:
-      OOBBranch: codeoob/${{ parameters.ServiceName }}
+      OOBBranch: $(BumpUpBranch)
   - job: PulishForTest
     dependsOn: Release
     steps:
