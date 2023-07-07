@@ -7,10 +7,6 @@ parameters:
   displayName: Service to OOB release
   type: string
   default: Databricks
-- name: Preview
-  displayName: Is preview version(Including < 1.0.0)
-  type: boolean
-  default: false
 - name: BumpUpVersion
   displayName: Need BumpUpVersion
   type: boolean
@@ -19,10 +15,10 @@ parameters:
   displayName: Add "-Preview" Suffix after version number
   type: boolean
   default: false
-- name: BumpUpVersion
-  displayName: Need BumpUpVersion
+- name: Preview
+  displayName: Is preview version(Including < 1.0.0)
   type: boolean
-  default: true
+  default: false
 stages:
 - stage: OOBRelease
   displayName: OOBRelease
