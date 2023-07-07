@@ -67,6 +67,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlMaterializedViewCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlMaterializedViewCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRoleCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRoleCmdlets");

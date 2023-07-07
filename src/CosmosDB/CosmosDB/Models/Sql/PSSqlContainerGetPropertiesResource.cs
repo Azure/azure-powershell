@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using Microsoft.Azure.Management.CosmosDB.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 
     public class PSSqlContainerGetPropertiesResource 
     {
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ClientEncryptionPolicy = new PSClientEncryptionPolicy(sqlContainerGetPropertiesResource.ClientEncryptionPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
             AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
+            MaterializedViewDefinition = new PSMaterializedViewDefinition(sqlContainerGetPropertiesResource.MaterializedViewDefinition);
             _rid = sqlContainerGetPropertiesResource._rid;
             _ts = sqlContainerGetPropertiesResource._ts;
             _etag = sqlContainerGetPropertiesResource._etag;
@@ -73,6 +75,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the client encryption policy for the container.
         public PSClientEncryptionPolicy ClientEncryptionPolicy { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the materializedview definition for the container.
+        public PSMaterializedViewDefinition MaterializedViewDefinition { get; set; }
 
         //
         // Summary:
