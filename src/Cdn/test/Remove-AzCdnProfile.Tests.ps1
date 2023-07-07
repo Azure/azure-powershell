@@ -24,7 +24,22 @@ Describe 'Remove-AzCdnProfile'  {
         New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         Write-Host -ForegroundColor Green "Remove cdnProfileName"
-        Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res = Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res | Should -BeNullOrEmpty
+    }
+
+    # Use "PassThru" parameter to test
+    It 'Delete' {
+        $cdnProfileName = 'p-psName010'
+        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft"
+        
+        Write-Host -ForegroundColor Green "New cdnProfileName"
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Write-Host -ForegroundColor Green "Remove cdnProfileName"
+        $res = Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -PassThru
+        $res | Should -Be "True"
     }
 
     It 'DeleteViaIdentity' {

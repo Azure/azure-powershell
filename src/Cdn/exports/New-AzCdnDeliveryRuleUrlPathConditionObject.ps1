@@ -23,12 +23,12 @@ Create an in-memory object for DeliveryRuleUrlPathCondition.
 New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleUrlPathConditionObject
 #>
 function New-AzCdnDeliveryRuleUrlPathConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleUrlPathCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlPathCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

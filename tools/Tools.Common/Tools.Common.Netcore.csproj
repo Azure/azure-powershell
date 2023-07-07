@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Tools.Common</AssemblyName>
     <RootNamespace>Tools.Common</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <Content Include="SerializedCmdlets\*.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="AllowList.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AzureStackExceptions.csv" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

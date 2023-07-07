@@ -36,7 +36,7 @@ $cvgMessageHeader80 = "|Type|Title|Current Coverage|Last Coverage|Description|`n
 
 $rptData | Where-Object Module -in $testedModules | ForEach-Object {
     $module = $_.Module
-    Write-Host "##[section]Validating test coverage for module $module..."
+    Write-Host "##[section]Validating test coverage for module $module ..."
 
     $cmdCvg = $_.CommandCoverage
     $cmdCvgD = [decimal]$cmdCvg.TrimEnd("%") / 100

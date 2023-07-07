@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePoolMode { get; set; } = "System";
 
         [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
         public string DnsServiceIP { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DockerBridgeCidr", "11.0.0", "6.0.0", ChangeDescription = "DockerBridgeCidr parameter will be deprecated in Az 11.0.0 without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
@@ -461,10 +463,6 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DnsServiceIP = DnsServiceIP;
             }
-            if (this.IsParameterBound(c => c.DockerBridgeCidr))
-            {
-                networkProfile.DockerBridgeCidr = DockerBridgeCidr;
-            }
             if (this.IsParameterBound(c => c.OutboundType))
             {
                 networkProfile.OutboundType = OutboundType;
@@ -483,7 +481,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 windowsProfile = new ManagedClusterWindowsProfile(WindowsProfileAdminUserName,
                     WindowsProfileAdminUserPassword?.ConvertToString());
-                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool()) 
+                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool())
                 {
                     windowsProfile.LicenseType = "Windows_Server";
                 }
@@ -504,6 +502,9 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.NodeOsSKU))
             {
                 defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+                if (NodeOsSKU.ToLower().Equals("cblmariner") || NodeOsSKU.ToLower().Equals("mariner")) {
+                    WriteWarning("The NodeOsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The NodeOsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
@@ -586,7 +587,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableFIPS.IsPresent)
             {
-                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool(); 
+                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
             }
             if (this.IsParameterBound(c => c.GpuInstanceProfile))
             {
@@ -594,7 +595,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodeHostGroupID)) {
                 defaultAgentPoolProfile.HostGroupID = NodeHostGroupID;
-            } 
+            }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
 

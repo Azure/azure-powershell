@@ -38,9 +38,6 @@ To create the parameters described below, construct a hash table containing the 
 NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual network rules.
   VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   [Action <Action?>]: The action of virtual network rule.
-
-.Link
-https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]

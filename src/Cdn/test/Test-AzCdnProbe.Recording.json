@@ -1,8 +1,8 @@
 {
-  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview+1": {
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2023-05-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2023-05-01",
       "Content": "{\r\n  \"probeURL\": \"https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,14 +18,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6d9a3dcc-5c2e-4271-9a0a-dcb28fa0e17a" ],
-        "x-ms-client-request-id": [ "57e0723a-7eb3-41a5-9a32-10b1033980b4" ],
+        "x-ms-request-id": [ "5eb9a7c3-786c-46a6-9911-8f43e5e13577" ],
+        "x-ms-client-request-id": [ "2016258c-a58e-4de6-a194-d019334a36b4" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
-        "x-ms-correlation-request-id": [ "25a886dc-61f3-4fd8-895f-e9873805a787" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230517T153815Z:25a886dc-61f3-4fd8-895f-e9873805a787" ],
+        "x-ms-correlation-request-id": [ "a054eecc-d640-4e0c-a3eb-4b65e0e5cffb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230530T025017Z:a054eecc-d640-4e0c-a3eb-4b65e0e5cffb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 May 2023 15:38:15 GMT" ]
+        "Date": [ "Tue, 30 May 2023 02:50:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "50" ],
@@ -36,10 +36,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview+2": {
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2023-05-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2023-05-01",
       "Content": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -55,14 +55,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "e6d4756b-49f1-4999-b4ca-64b612eaa454" ],
-        "x-ms-client-request-id": [ "2233b0ab-e2e2-4d3f-aec6-9e8d236cb7fa" ],
+        "x-ms-request-id": [ "f4c4442a-7c24-45e4-8e5f-27b5583f2461" ],
+        "x-ms-client-request-id": [ "bcda004d-4280-4a6e-8588-9b501d55ba6a" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
-        "x-ms-correlation-request-id": [ "14878e71-0317-4d36-a001-c4e12c64c031" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230517T153816Z:14878e71-0317-4d36-a001-c4e12c64c031" ],
+        "x-ms-correlation-request-id": [ "c9b77d50-95c8-4591-a002-4647cceadeaa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230530T025018Z:c9b77d50-95c8-4591-a002-4647cceadeaa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 May 2023 15:38:16 GMT" ]
+        "Date": [ "Tue, 30 May 2023 02:50:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "194" ],

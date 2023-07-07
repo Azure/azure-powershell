@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.SignalR.private.dll'
   FormatsToProcess = './Az.SignalR.format.ps1xml'
-  FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 'Get-AzWebPubSubSku', 'Get-AzWebPubSubUsage', 'New-AzWebPubSub', 'New-AzWebPubSubHub', 'New-AzWebPubSubKey', 'Remove-AzWebPubSub', 'Remove-AzWebPubSubHub', 'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub', '*'
+  FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubCustomCertificate', 'Get-AzWebPubSubCustomDomain', 'Get-AzWebPubSubHub', 'Get-AzWebPubSubKey', 'Get-AzWebPubSubSku', 'Get-AzWebPubSubUsage', 'New-AzWebPubSub', 'New-AzWebPubSubCustomCertificate', 'New-AzWebPubSubCustomDomain', 'New-AzWebPubSubEventHubEndpointObject', 'New-AzWebPubSubEventNameFilterObject', 'New-AzWebPubSubHub', 'New-AzWebPubSubKey', 'Remove-AzWebPubSub', 'Remove-AzWebPubSubCustomCertificate', 'Remove-AzWebPubSubCustomDomain', 'Remove-AzWebPubSubHub', 'Restart-AzWebPubSub', 'Test-AzWebPubSubNameAvailability', 'Update-AzWebPubSub', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

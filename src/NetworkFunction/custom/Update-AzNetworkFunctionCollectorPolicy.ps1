@@ -35,8 +35,6 @@ EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
 INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
   [ResourceId <String>]: Resource ID.
   [SourceType <SourceType?>]: Ingestion source type.
-.Link
-https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 #>
 function Update-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]

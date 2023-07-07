@@ -24,12 +24,12 @@ $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
 New-AzCdnPurgeParametersObject -ContentPath $contentPath
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.PurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
 #>
 function New-AzCdnPurgeParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.PurgeParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

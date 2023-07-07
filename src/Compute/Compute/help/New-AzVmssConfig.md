@@ -159,6 +159,61 @@ $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
 ```
 
+### Example 5: Create a Vmss with the security type TrustedLaunch
+```powershell
+ $rgname = "rganme";
+ $loc = "eastus";
+ New-AzResourceGroup -Name $rgname -Location $loc -Force;
+# VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
+$vmssSize = 'Standard_D4s_v3';
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2016-datacenter-gensecond";
+$securityType = "TrustedLaunch";
+$enable = $true;
+$disable = $false;
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+
+# NRP
+$subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+$subnetId = $vnet.Subnets[0].Id;
+
+# New VMSS Parameters
+$vmssName1 = 'vmss1' + $rgname;
+$vmssName2 = 'vmss2' + $rgname;
+$vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+$adminUsername = <Username>;
+$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
+$imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+$imgRef.PublisherName = $PublisherName;
+$imgRef.Offer = $Offer;
+$imgRef.Skus = $SKU;
+$imgRef.Version = "latest";
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
+
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+    | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+    | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+    | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+    -ImageReferencePublisher $imgRef.PublisherName;
+    
+# VMSS Creation using VMSSConfig for Trusted Launch SecurityType
+$vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+$result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
+$vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+
+# Validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+#$vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+#$vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+```
+
+This example Creates a new VMSS using VMSSConfig object for the Trusted Launch Security Type and validates flags SecureBoot and Vtpm as True by default.
+
 ## PARAMETERS
 
 ### -AutomaticRepairAction

@@ -1,4 +1,4 @@
-# Variable 'ADOToken' and 'BotAccessToken' was defined in the Variables tab
+# Variable 'BotAccessToken', 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run
@@ -10,14 +10,24 @@ jobs:
 - job: UpdateJson
   displayName: Update fabricbot.json
   steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: 'Azure SDK Infrastructure'
+      ScriptType: 'InlineScript'
+      Inline: |
+        $ADOTokenValue = Get-AzKeyVaultSecret -VaultName ${env:KEYVAULTNAME} -Name ${env:ADOTOKENNAME} -AsPlainText
+        Write-Host "##vso[task.setvariable variable=ADOToken;issecret=true]$ADOTokenValue"       
+      azurePowerShellVersion: 'LatestVersion'
+    displayName: Get ADOToken from Key Vault
+
   - pwsh: |
       ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
     displayName: Update fabricbot.json file locally
-      
+
   - pwsh: |
       $gitStatus = git status -s
       if (-not $gitStatus) {
-          Write-Host "The wiki has no changes ."
+          Write-Host "The wiki has no changes."
           Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
       } else {
           Write-Host "There are changes in the repository."

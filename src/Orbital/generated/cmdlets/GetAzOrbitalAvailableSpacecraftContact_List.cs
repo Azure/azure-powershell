@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
     /// [OpenAPI] ListAvailableContacts=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzOrbitalAvailableSpacecraftContact_List", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Orbital.Description(@"Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Orbital.Generated]
     public partial class GetAzOrbitalAvailableSpacecraftContact_List : global::System.Management.Automation.PSCmdlet,
@@ -56,9 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Orbital.Orbital Client => Microsoft.Azure.PowerShell.Cmdlets.Orbital.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Orbital.ParameterCategory.Azure)]
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters _parameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters _parameter;
 
         /// <summary>Parameters that define the contact resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Parameters that define the contact resource.", ValueFromPipeline = true)]
@@ -120,8 +121,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         ReadOnly = false,
         Description = @"Parameters that define the contact resource.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters Parameter { get => this._parameter; set => this._parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters Parameter { get => this._parameter; set => this._parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.HttpPipeline" /> that the remote call will use.
@@ -181,24 +182,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -431,12 +432,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -453,7 +454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, SubscriptionId=SubscriptionId, Name=Name, body=Parameter })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -471,12 +472,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Orbital.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult">Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContactsListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContactsListResult> response)
         {
             using( NoSynchronizationContext )
             {

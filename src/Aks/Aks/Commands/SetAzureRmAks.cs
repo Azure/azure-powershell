@@ -463,24 +463,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
-            string acrResourceId = null;
-            try
-            {
-                //Find Acr resourceId first
-                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
-                var acrObjects = RmClient.Resources.List(acrQuery);
-                acrResourceId = acrObjects.First().Id;
-            }
-            catch (Exception)
-            {
-                throw new AzPSArgumentException(
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
-                    acrParameterName,
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
-            }
+            string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
 
             var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
-            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId);
+            var spObjectId = getSPObjectId(acsServicePrincipal);
+
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId, acrResourceId, spObjectId);
             if (roleAssignment == null)
             {
                 throw new AzPSInvalidOperationException(

@@ -16,7 +16,7 @@ This cmdlet exports an SSH configuration file that can be used to connect to Azu
 ```
 Export-AzSshConfig -ResourceGroupName <String> -Name <String> -ConfigFilePath <String>
  [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp] [-LocalUser <String>] [-Port <String>]
- [-ResourceType <String>] [-CertificateFile <String>] [-Overwrite] [-KeysDestinationFolder <String>]
+ [-ResourceType <String>] [-CertificateFile <String>] [-Overwrite] [-KeysDestinationFolder <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,15 @@ Export-AzSshConfig -ResourceGroupName <String> -Name <String> -ConfigFilePath <S
 ```
 Export-AzSshConfig -Ip <String> -ConfigFilePath <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>]
  [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-Overwrite]
- [-KeysDestinationFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeysDestinationFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Export-AzSshConfig -ResourceId <String> -ConfigFilePath <String> [-PublicKeyFile <String>]
  [-PrivateKeyFile <String>] [-UsePrivateIp] [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>]
- [-Overwrite] [-KeysDestinationFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Overwrite] [-KeysDestinationFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +41,6 @@ For example:
 rsync -e 'ssh -F /path/to/config'.
 Users can create ssh config files that use AAD issued certificates or local user credentials.
 Important note: When connecting to Azure Arc resources, this cmdlet requires the Az.Ssh.ArcProxy module to also be installed in the client machine. The cmdlet will attempt to install the module from the PowerShell Gallery, but the user also has the option to install it themselves. It is important that the user also has permission to execute the Proxy files in the Az.Ssh.ArcProxy module, or the connection will fail. You can find the Az.Ssh.ArcServer module in the PowerShell Gallery: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy.
-
 
 ## EXAMPLES
 
@@ -134,6 +134,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="requestId">The guid to correlate the telemetry event and the http request.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Null when no request is made. The boolean values indicates a request is made and whether it's successful.</returns>
-        public Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken);
+        public Task<(bool, CommandLineSummary)?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken);
 
         /// <summary>
         /// Record the history from PSReadLine.

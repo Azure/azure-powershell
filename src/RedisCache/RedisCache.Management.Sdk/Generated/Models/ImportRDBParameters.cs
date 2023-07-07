@@ -37,11 +37,15 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="preferredDataArchiveAuthMethod">Preferred auth method
         /// to communicate to storage account used for data archive, specify
         /// SAS or ManagedIdentity, default value is SAS</param>
-        public ImportRDBParameters(IList<string> files, string format = default(string), string preferredDataArchiveAuthMethod = default(string))
+        /// <param name="storageSubscriptionId">Subscription id of the storage
+        /// container containing files to import using Managed
+        /// Identity.</param>
+        public ImportRDBParameters(IList<string> files, string format = default(string), string preferredDataArchiveAuthMethod = default(string), string storageSubscriptionId = default(string))
         {
             Format = format;
             Files = files;
             PreferredDataArchiveAuthMethod = preferredDataArchiveAuthMethod;
+            StorageSubscriptionId = storageSubscriptionId;
             CustomInit();
         }
 
@@ -69,6 +73,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [JsonProperty(PropertyName = "preferred-data-archive-auth-method")]
         public string PreferredDataArchiveAuthMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription id of the storage container containing
+        /// files to import using Managed Identity.
+        /// </summary>
+        [JsonProperty(PropertyName = "storage-subscription-id")]
+        public string StorageSubscriptionId { get; set; }
 
         /// <summary>
         /// Validate the object.
