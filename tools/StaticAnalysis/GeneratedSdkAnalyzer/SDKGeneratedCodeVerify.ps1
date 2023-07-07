@@ -74,6 +74,8 @@ try{
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
         }
+        # Prevent EOL changes detected
+        git config --global core.autocrlf false
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
