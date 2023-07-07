@@ -42,6 +42,9 @@ function setupEnv() {
     $env.testNetworkType = "VmNetworkAsInput"
     $env.recoverypoint = "fdb30f02-20dd-4499-9b5f-fdcf70a20830"
     $env.unplannedfailvm = "abhinavVmProtected"
+    $env.reprotectvm = "replicatedvmtestcheck"
+    $env.reversemap = "demoProtectionContainerA2A"
+    $env.reversemapname = "reversemapping"
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

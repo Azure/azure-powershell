@@ -3039,6 +3039,182 @@ end {
 
 <#
 .Synopsis
+Operation to switch protection from one container to another or one replication provider to another.
+.Description
+Operation to switch protection from one container to another or one replication provider to another.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROVIDERSPECIFICDETAIL <ISwitchProtectionProviderSpecificInput>: Provider specific switch protection input.
+  ReplicationScenario <String>: Gets the Instance type.
+.Link
+https://docs.microsoft.com/powershell/module/az.recoveryservices/switch-azrecoveryservicesreplicationprotectioncontainerprotection
+#>
+function Switch-AzRecoveryServicesReplicationProtectionContainerProtection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainer])]
+[CmdletBinding(DefaultParameterSetName='SwitchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # Unique fabric name.
+    ${FabricName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # Protection container name.
+    ${ProtectionContainerName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription Id.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ISwitchProtectionProviderSpecificInput]
+    # Provider specific switch protection input.
+    # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
+    ${ProviderSpecificDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # The unique replication protected item name.
+    ${ReplicationProtectedItemName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            SwitchExpanded = 'Az.RecoveryServices.private\Switch-AzRecoveryServicesReplicationProtectionContainerProtection_SwitchExpanded';
+        }
+        if (('SwitchExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Operation to clean up the test failover of a replication protected item.
 .Description
 Operation to clean up the test failover of a replication protected item.
@@ -3545,6 +3721,270 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.RecoveryServices.private\Update-AzRecoveryServicesReplicationPolicy_UpdateExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+The operation to update the recovery settings of an ASR replication protected item.
+.Description
+The operation to update the recovery settings of an ASR replication protected item.
+.Example
+$fabric=Get-AzRecoveryServicesReplicationFabric -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -FabricName "A2Ademo-EastUS"
+$protectioncontainer=Get-AzRecoveryServicesReplicationProtectionContainer -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -Fabric $fabric -ProtectionContainer "A2AEastUSProtectionContainer"
+$replicatedItem=Get-AzRecoveryServicesReplicationProtectedItem -ResourceGroupName "a2arecoveryrg" -ResourceName "a2arecoveryvault" -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName "replicatedvmtest"
+$providerSpecificinput=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2AUpdateReplicationProtectedItemInput]::new()
+$providerSpecificinput.ReplicationScenario="ReplicateAzureToAzure"
+Update-AzRecoveryServicesReplicationProtectedItem -ReplicatedProtectedItem $replicatedItem -ResourceName "a2arecoveryvault" -ResourceGroupName "a2arecoveryrg" -ProviderSpecificDetail $providerSpecificinput
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PROVIDERSPECIFICDETAIL <IUpdateReplicationProtectedItemProviderInput>: The provider specific input to update replication protected item.
+  ReplicationScenario <String>: The class type.
+
+VMNIC <IVMNicInputDetails[]>: The list of VM nic details.
+  [EnableAcceleratedNetworkingOnRecovery <Boolean?>]: Whether the NIC has accelerated networking enabled.
+  [EnableAcceleratedNetworkingOnTfo <Boolean?>]: Whether the test NIC has accelerated networking enabled.
+  [IPConfig <IIPConfigInputDetails[]>]: The IP configurations to be used by NIC during test failover and failover.
+    [IPConfigName <String>]: 
+    [IsPrimary <Boolean?>]: 
+    [IsSeletedForFailover <Boolean?>]: 
+    [RecoveryLbBackendAddressPoolId <String[]>]: 
+    [RecoveryPublicIPAddressId <String>]: 
+    [RecoveryStaticIPAddress <String>]: 
+    [RecoverySubnetName <String>]: 
+    [TfoLbBackendAddressPoolId <String[]>]: 
+    [TfoPublicIPAddressId <String>]: 
+    [TfoStaticIPAddress <String>]: 
+    [TfoSubnetName <String>]: 
+  [NicId <String>]: The nic Id.
+  [RecoveryNetworkSecurityGroupId <String>]: The id of the NSG associated with the NIC.
+  [RecoveryNicName <String>]: The name of the NIC to be used when creating target NICs.
+  [RecoveryNicResourceGroupName <String>]: The resource group of the NIC to be used when creating target NICs.
+  [ReuseExistingNic <Boolean?>]: A value indicating whether an existing NIC is allowed to be reused during failover subject to availability.
+  [SelectionType <String>]: Selection type for failover.
+  [TargetNicName <String>]: Target NIC name.
+  [TfoNetworkSecurityGroupId <String>]: The NSG to be used by NIC during test failover.
+  [TfoNicName <String>]: The name of the NIC to be used when creating target NICs in TFO.
+  [TfoNicResourceGroupName <String>]: The resource group of the NIC to be used when creating target NICs in TFO.
+  [TfoReuseExistingNic <Boolean?>]: A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
+.Link
+https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesreplicationprotecteditem
+#>
+function Update-AzRecoveryServicesReplicationProtectedItem {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IReplicationProtectedItem])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # Fabric name.
+    ${FabricName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # Protection container name.
+    ${ProtectionContainerName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # Replication protected item name.
+    ${ReplicatedProtectedItemName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The subscription Id.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # The selected option to enable RDP\SSH on target vm after failover.
+    # String value of SrsDataContract.EnableRDPOnTargetOption enum.
+    ${EnableRdpOnTargetOption},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.LicenseType]
+    # License type.
+    ${LicenseType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IUpdateReplicationProtectedItemProviderInput]
+    # The provider specific input to update replication protected item.
+    # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
+    ${ProviderSpecificDetail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # The target availability set Id.
+    ${RecoveryAvailabilitySetId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # Target Azure VM name given by the user.
+    ${RecoveryAzureVMName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # Target Azure VM size.
+    ${RecoveryAzureVMSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # Target Azure Network Id.
+    ${SelectedRecoveryAzureNetworkId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # The selected source nic Id which will be used as the primary nic during failover.
+    ${SelectedSourceNicId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [System.String]
+    # The Azure Network Id for test failover.
+    ${SelectedTfoAzureNetworkId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IVMNicInputDetails[]]
+    # The list of VM nic details.
+    # To construct, see NOTES section for VMNIC properties and create a hash table.
+    ${VMNic},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            UpdateExpanded = 'Az.RecoveryServices.private\Update-AzRecoveryServicesReplicationProtectedItem_UpdateExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

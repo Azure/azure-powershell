@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2023-07-05" time="14:55:39">
-  <environment os-version="10.0.22000" machine-name="MININT-3RDDDQ0" clr-version="Unknown" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition4" user-domain="MININT-3RDDDQ0" cwd="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest" user="Administrator" nunit-version="2.5.8.0" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2023-07-06" time="18:08:57">
+  <environment user="Administrator" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition4" clr-version="Unknown" nunit-version="2.5.8.0" os-version="10.0.22000" cwd="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest" machine-name="MININT-3RDDDQ0" user-domain="MININT-3RDDDQ0" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="8.5888" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="26.7625" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test/Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Tests.ps1" executed="True" result="Success" success="True" time="8.5888" asserts="0" description="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test/Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test/Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Tests.ps1" executed="True" result="Ignored" success="True" time="26.7625" asserts="0" description="C:\azure-powershell\src\RecoveryServices\RecoveryServices.SiteRecovery.Autorest\test/Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover" executed="True" result="Success" success="True" time="8.0566" asserts="0" description="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover">
+          <test-suite type="TestFixture" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem" executed="True" result="Ignored" success="True" time="26.1082" asserts="0" description="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem">
             <results>
-              <test-case description="Commit" name="Invoke-AzRecoveryServicesCommitReplicationProtectedItemFailover.Commit" time="7.3" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ReprotectExpanded" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.ReprotectExpanded" time="25.2293" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Reprotect" name="Invoke-AzRecoveryServicesReprotectReplicationProtectedItem.Reprotect" time="0" asserts="0" success="True" result="Ignored" executed="False" />
             </results>
           </test-suite>
         </results>

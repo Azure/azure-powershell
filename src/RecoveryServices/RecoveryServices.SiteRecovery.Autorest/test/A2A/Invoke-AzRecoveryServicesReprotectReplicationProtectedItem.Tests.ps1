@@ -15,8 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzRecoveryServicesRepr
 }
 
 Describe 'Invoke-AzRecoveryServicesReprotectReplicationProtectedItem' {
-    It 'ReprotectExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ReprotectExpanded' {
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2ampfabricname
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.a2amppcname
+        $protectedItem = Get-AzRecoveryServicesReplicationProtectedItem -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProtectionContainer $protectioncontainer -ReplicatedProtectedItemName $env.reprotectvm
+        $fabric = Get-AzRecoveryServicesReplicationFabric -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -FabricName $env.a2aFabricName
+        $protectioncontainer = Get-AzRecoveryServicesReplicationProtectionContainer -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -Fabric $fabric -ProtectionContainer $env.reversemap
+        $pcmap = Get-AzRecoveryServicesReplicationProtectionContainerMapping -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProtectionContainer $protectioncontainer -MappingName $env.reversemapname
+        $reverseInput = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.A2ASwitchProtectionInput]::new()
+        $reverseInput.RecoveryResourceGroupId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/abhinav_test"
+        $reverseInput.ReplicationScenario = "ReplicateAzureToAzure"
+        $output = Invoke-AzRecoveryServicesReverseReplicationProtectedItem -ReplicatedProtectedItem $protectedItem -ProtectionContainerMapping $pcmap -ResourceName $env.a2aVaultName -ResourceGroupName $env.a2aResourceGroupName -SubscriptionId $env.a2aSubscriptionId -ProviderSpecificDetail $reverseInput -LogStorageAccountId "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2arecoveryrg/providers/Microsoft.Storage/storageAccounts/a2areversestorage"
+        $output.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'Reprotect' -skip {

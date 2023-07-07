@@ -143,6 +143,9 @@ The operation to reprotect(reverse replicate) a recovery plan.
 ### [Invoke-AzRecoveryServicesResyncReplicationMigrationItem](Invoke-AzRecoveryServicesResyncReplicationMigrationItem.md)
 The operation to resynchronize replication of an ASR migration item.
 
+### [Invoke-AzRecoveryServicesReverseReplicationProtectedItem](Invoke-AzRecoveryServicesReverseReplicationProtectedItem.md)
+Operation to switch protection from one container to another or one replication provider to another.
+
 ### [Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover](Invoke-AzRecoveryServicesUnplannedReplicationProtectedItemFailover.md)
 Operation to initiate a failover of the replication protected item.
 
@@ -273,9 +276,6 @@ The operation to initiate pause replication of the item.
 
 ### [Switch-AzRecoveryServicesReplicationProtectedItemProvider](Switch-AzRecoveryServicesReplicationProtectedItemProvider.md)
 Operation to initiate a switch provider of the replication protected item.
-
-### [Switch-AzRecoveryServicesReplicationProtectionContainerProtection](Switch-AzRecoveryServicesReplicationProtectionContainerProtection.md)
-Operation to switch protection from one container to another or one replication provider to another.
 
 ### [Test-AzRecoveryServicesReplicationFabricConsistency](Test-AzRecoveryServicesReplicationFabricConsistency.md)
 The operation to perform a consistency check on the fabric.

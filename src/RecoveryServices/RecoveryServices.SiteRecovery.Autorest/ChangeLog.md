@@ -39,3 +39,4 @@
   * `AzRecoveryServicesReplicationProtectedItemApplyRecoveryPoint`
   * `AzRecoveryServicesReplicationVMNicConfig`
   * `AzRecoveryServicesReplicationVMNicIPConfig`
+  * `AzRecoveryServicesReverseReplicationProtectedItem`
