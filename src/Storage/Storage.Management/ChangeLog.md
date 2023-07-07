@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support OAuth authentication on File service cmdlets
+    - `New-AzStorageContext`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+    - `Get-AzStorageFileHandle`
+    - `Close-AzStorageFileHandle`
+* Support get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
+    - `Get-AzStorageShare`
 
 ## Version 5.8.0
 * Supported TierToCold and TierToHot in Storage account management policy
