@@ -1,10 +1,10 @@
 parameters:
 - name: TargetBranch
-  displayName: Branch this module will generated to
+  displayName: Bump up info would merge to which branch
   type: string
   default: main
 - name: ServiceName
-  displayName: Service to OOB release
+  displayName: OOB release Service
   type: string
   default: Databricks
 - name: BumpUpVersion
