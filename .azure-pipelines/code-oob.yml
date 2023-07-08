@@ -28,7 +28,6 @@ stages:
   - job: BumpUpVersion
     timeoutInMinutes: 180
     pool: pool-windows-2019
-    condition: and(succeeded(), eq('${{ parameters.BumpUpVersion }}', 'true'))
     steps:
     - task: DotNetCoreCLI@2
       displayName: Build
