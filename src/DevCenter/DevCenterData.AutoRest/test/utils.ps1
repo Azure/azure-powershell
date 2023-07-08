@@ -48,7 +48,7 @@ function setupEnv() {
     $gitHubPath = "/Environments"
     $devBoxDefinitionName = RandomString -allChars $false -len 6
     $osStorageType = "ssd_1024gb"
-    $skuName = "general_a_8c32gb_v1"
+    $skuName = "general_a_8c32gb1024ssd_v2"
     $imageName = "MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     $imageReferenceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName + "/galleries/Default/images/" + $imageName
     $imageVersion = "1.0.0"
@@ -126,6 +126,15 @@ function setupEnv() {
 
     New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
     Write-Host -ForegroundColor Magenta "Deployed dev box template"
+
+    $msi = Get-AzUserAssignedIdentity -Name $managedIdentityName -ResourceGroupName $resourceGroup
+    $principalId = $msi.PrincipalId
+    $devboxTemplate2 = Get-Content .\test\deploymentTemplates\parameter2.json | ConvertFrom-Json
+    $devboxTemplate2.managedIdentityPrincipalId = $principalId
+    Set-Content -Path .\test\deploymentTemplates\parameter2.json -Value (ConvertTo-Json $devboxTemplate2)
+
+    New-AzDeployment -Location $location -TemplateFile .\test\deploymentTemplates\template2.json -TemplateParameterFile .\test\deploymentTemplates\parameter2.json
+    Write-Host -ForegroundColor Magenta "Deployed dev box template2"
 
     #use Az Resource Graph instead
     $endpoint = GetEndpoint -project $projectName -resourceGroup $resourceGroup
