@@ -64,6 +64,11 @@ Get-AzDevCenterDevDevBox -DevCenter <String> -ProjectName <String> -UserId <Stri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByDevCenter
+```
+Get-AzDevCenterDevDevBox -DevCenter <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a Dev Box
 
@@ -114,7 +119,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, List2ByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, List2ByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True

@@ -15,15 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterDevSchedule'))
 }
 
 Describe 'Get-AzDevCenterDevSchedule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $schedule = Get-AzDevCenterDevSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+        $schedule.Type | Should -Be "StopDevBox"
+
+        $schedule = Get-AzDevCenterDevSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+        $schedule.Type | Should -Be "StopDevBox"
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $scheduleInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName}
+        
+        $schedule = Get-AzDevCenterDevSchedule -Endpoint $env.endpoint -InputObject $scheduleInput
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+        $schedule.Type | Should -Be "StopDevBox"
+
+        $schedule = Get-AzDevCenterDevSchedule -DevCenter $env.devCenterName -InputObject $scheduleInput
+        $schedule.Frequency | Should -Be "Daily"
+        $schedule.Name | Should -Be "default"
+        $schedule.Time | Should -Be "18:30"
+        $schedule.TimeZone | Should -Be "America/Los_Angeles"
+        $schedule.Type | Should -Be "StopDevBox"
     }
 }

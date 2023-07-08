@@ -12,10 +12,13 @@
       "value": "pwshRgkr45vc"
     },
     "devCenterName": {
-      "value": "pwshDc0wx4ot"
+      "value": "pwshDc0wx4oa"
     },
     "projectName": {
       "value": "pwshProjvpruh9"
+    },
+    "projectName2": {
+      "value": "pwshProjvpru19"
     },
     "location": {
       "value": "canadacentral"
@@ -27,7 +30,7 @@
       "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/amlim-test/providers/Microsoft.Network/virtualNetworks/amlim-vnet-canadacentral/subnets/default"
     },
     "networkConnectionName": {
-      "value": "860mzd"
+      "value": "860mzdda"
     },
     "catalogName": {
       "value": "sgbfe4"
@@ -42,7 +45,7 @@
       "value": "p8d3sv"
     },
     "imageReferenceId": {
-      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkr45vc/providers/Microsoft.DevCenter/devcenters/pwshDc0wx4ot/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
+      "value": "/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRgkr45vc/providers/Microsoft.DevCenter/devcenters/pwshDc0wx4oa/galleries/Default/images/MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     },
     "skuName": {
       "value": "general_a_8c32gb_v1"
@@ -53,14 +56,17 @@
     "keyVaultName": {
       "value": "dummy"
     },
-    "tenantId": {
-      "value": "003b06c3-d471-4452-9686-9e7f3ca85f0a"
-    },
     "environmentTypeName": {
       "value": "o3urnh"
     },
     "poolName": {
       "value": "fzmci1"
+    },
+    "poolName2": {
+      "value": "fzmci12"
+    },
+    "userObjectId": {
+      "value": "c3c951b7-d307-4c40-9495-70bd562d98d5"
     }
   }
 }

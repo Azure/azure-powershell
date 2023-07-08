@@ -62,6 +62,7 @@ function Get-AzDevCenterDevDevBox {
         ${Endpoint},
     
         [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='List2ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]

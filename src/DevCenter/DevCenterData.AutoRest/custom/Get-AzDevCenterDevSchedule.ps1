@@ -149,7 +149,13 @@ function Get-AzDevCenterDevSchedule {
         }
 
         $Default = "default"
-        $null = $PSBoundParameters.Add("ScheduleName", $Default)
+
+        if ($PSBoundParameters.ContainsKey('InputObject')) {
+            $InputObject.ScheduleName = $Default
+            $PSBoundParameters["InputObject"] = $InputObject
+        } else {
+            $null = $PSBoundParameters.Add("ScheduleName", $Default)
+        }
 
         Az.DevCenterdata.internal\Get-AzDevCenterDevSchedule @PSBoundParameters
     } 

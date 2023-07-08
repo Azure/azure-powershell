@@ -274,7 +274,6 @@ function setupEnv() {
     $devboxTemplate.parameters.skuName.value = $skuName
     $devboxTemplate.parameters.osStorageType.value = $osStorageType
     $devboxTemplate.parameters.keyVaultName.value = $keyVaultName
-    $devboxTemplate.parameters.tenantId.value = $env.Tenant
     $devboxTemplate.parameters.environmentTypeName.value = $environmentTypeName
     $devboxTemplate.parameters.poolName.value = $poolName
     $devboxTemplate.parameters.sigId.value = $sigId

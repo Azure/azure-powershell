@@ -16,10 +16,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterDevDevBoxRemot
 
 Describe 'Get-AzDevCenterDevDevBoxRemoteConnection' {
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $connection = Get-AzDevCenterDevDevBoxRemoteConnection -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
+
+        $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
+        $connection.WebUrl | Should -Not -BeNullOrEmpty
+
+        $connection = Get-AzDevCenterDevDevBoxRemoteConnection -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+        $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
+        $connection.WebUrl | Should -Not -BeNullOrEmpty
+
+        }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName;}
+
+        $connection = Get-AzDevCenterDevDevBoxRemoteConnection -Endpoint $env.endpoint -InputObject $devBoxInput
+        $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
+        $connection.WebUrl | Should -Not -BeNullOrEmpty
+
+        $connection = Get-AzDevCenterDevDevBoxRemoteConnection -DevCenter $env.devCenterName -InputObject $devBoxInput
+        $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
+        $connection.WebUrl | Should -Not -BeNullOrEmpty
     }
 }

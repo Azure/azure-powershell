@@ -82,6 +82,9 @@ directive:
       subject: ^(.*)
       parameter-name: Filter
     hide: true
+  - from: swagger-document
+    where: $.definitions.EnvironmentUpdateProperties.properties.parameters
+    transform: $["additionalProperties"] = true
   - where:
       subject: ^(.*)
     hide: true

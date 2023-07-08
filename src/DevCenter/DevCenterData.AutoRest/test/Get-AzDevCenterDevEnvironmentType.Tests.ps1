@@ -16,6 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterDevEnvironment
 
 Describe 'Get-AzDevCenterDevEnvironmentType' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $listOfEnvTypes = Get-AzDevCenterDevEnvironmentType -Endpoint $env.endpoint -ProjectName $env.projectName
+        $listOfEnvTypes.Count | Should -Be 1
+
+        $listOfEnvTypes = Get-AzDevCenterDevEnvironmentType -DevCenter $env.devCenterName -ProjectName $env.projectName
+        $listOfEnvTypes.Count | Should -Be 1
+    
     }
 }

@@ -15,15 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterDevCatalog'))
 }
 
 Describe 'Get-AzDevCenterDevCatalog' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfCatalogs = Get-AzDevCenterDevCatalog -Endpoint $env.endpoint -ProjectName $env.projectName
+        $listOfCatalogs.Count | Should -Be 1
+
+        $listOfCatalogs = Get-AzDevCenterDevCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName
+        $listOfCatalogs.Count | Should -Be 1
+
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $catalog = Get-AzDevCenterDevCatalog -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName 
+        $catalog.Name | Should -Be $env.catalogName
+
+
+        $catalog = Get-AzDevCenterDevCatalog -DevCenter $env.devCenterName ProjectName $env.projectName -CatalogName $env.catalogName 
+        $catalog.Name | Should -Be $env.catalogName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $catalogInput = @{"CatalogName" = $env.catalogName; "ProjectName" = $env.projectName}
+        $catalog = Get-AzDevCenterDevCatalog -Endpoint $env.endpoint -InputObject $catalogInput 
+        $catalog.Name | Should -Be $env.catalogName
+
+        $catalog = Get-AzDevCenterDevCatalog -DevCenter $env.devCenterName -InputObject $catalogInput 
+        $catalog.Name | Should -Be $env.catalogName
+
     }
 }

@@ -16,14 +16,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterDevProject'))
 
 Describe 'Get-AzDevCenterDevProject' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $listOfProjects = Get-AzDevCenterDevProject -Endpoint $env.endpoint
+        $listOfProjects.Count | Should -Be 2
+
+        $listOfProjects = Get-AzDevCenterDevProject -DevCenter $env.devCenterName
+        $listOfProjects.Count | Should -Be 2
+
+        }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $project = Get-AzDevCenterDevProject -Endpoint $env.endpoint -ProjectName $env.projectName
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 10
+
+        $project = Get-AzDevCenterDevProject -DevCenter $env.devCenterName -ProjectName $env.projectName
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 10
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $poolInput = @{"ProjectName" = $env.projectName}
+        $project = Get-AzDevCenterDevProject -Endpoint $env.endpoint -InputObject $poolInput
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 10
+
+        $project = Get-AzDevCenterDevProject -DevCenter $env.devCenterName -InputObject $poolInput
+        $project.Name | Should -Be $env.projectName
+        $project.MaxDevBoxesPerUser | Should -Be 10
     }
 }

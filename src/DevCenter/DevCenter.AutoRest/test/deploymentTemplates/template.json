@@ -56,10 +56,6 @@
         "keyVaultName": {
             "type": "string"
         },
-        "tenantId": {
-            "type": "string"
-
-        },
         "environmentTypeName": {
             "type": "string"
         },

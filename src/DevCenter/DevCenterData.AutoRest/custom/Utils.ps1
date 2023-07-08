@@ -1,11 +1,11 @@
 function GetEndpointFromResourceGraph {
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
-        [Parameter(Mandatory = $true, HelpMessage = 'Name of the dev center')]
+        [Parameter(Mandatory, HelpMessage = 'Name of the dev center')]
         [System.String]
         ${DevCenter},
 
-        [Parameter(Mandatory = $false, HelpMessage = 'Name of the project')]
+        [Parameter(HelpMessage = 'Name of the project')]
         [System.String]
         ${Project}
 
@@ -28,7 +28,7 @@ function GetEndpointFromResourceGraph {
             + "| extend devCenterName = devCenterArr[array_length(devCenterArr) -1]  "`
             + "| where devCenterName =~ '$DevCenter' | take 1 "`
             + "| extend devCenterUri = properties.devCenterUri | project devCenterUri"
-        $argResponse = Az.ResourceGraph\Search-AzGraph $query
+        $argResponse = Az.ResourceGraph\Search-AzGraph -Query $query
         $devCenterUri = $argResponse.devCenterUri
         if (!$devCenterUri) {
             $azContext = Get-AzContext
