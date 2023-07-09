@@ -1612,7 +1612,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "ExpressRoute" $expected.GatewayType
-	  # Assert-AreEqual "Enabled" $expected.AdminState
+	  Assert-AreEqual "Enabled" $expected.AdminState
 
       # Create a second gateway
       $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
@@ -1625,7 +1625,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "ExpressRoute" $expected.GatewayType
-	  # Assert-AreEqual "Enabled" $expected.AdminState
+	  Assert-AreEqual "Enabled" $expected.AdminState
 
       # Update second gw to disabled Adminstate
       $vng2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
@@ -1633,7 +1633,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState
       Set-AzVirtualNetworkGateway -VirtualNetworkGateway $vng2
 
       $vng2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2	
-	  # Assert-AreEqual "Disabled" $vng2.AdminState
+	  Assert-AreEqual "Disabled" $vng2.AdminState
       
       # Delete both virtualNetworkGateways
       $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -PassThru -Force

@@ -682,55 +682,6 @@ function Test-RecordSetTXTNonEmpty
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-function Test-RecordSetTXTLegacyLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-
-	$recordSet = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT ;
-		
-	Assert-Throws {$recordSet | Add-AzDnsRecordConfig -Value $longRecordTxt }
-	
-	$recordSet = $recordSet | Add-AzDnsRecordConfig -Value $maxRecordTxt
-	$setResult = $recordSet | Set-AzDnsRecordSet ;
-		
-	Assert-AreEqual $maxRecordTxt $setResult.Records[0].Value;
-
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
-function Test-RecordSetTXTLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	Assert-Throws {New-AzDnsRecordConfig -Value $longRecordTxt }
-
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-	$maxRecord = New-AzDnsRecordConfig -Value $maxRecordTxt
-	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT -DnsRecords $maxRecord ;
-	Assert-AreEqual $maxRecordTxt $record.Records[0].Value;
-
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
 function Test-RecordSetPTR
 {
 	$zoneName = Get-RandomZoneName

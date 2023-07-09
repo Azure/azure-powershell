@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix the issue of $Host conflicting with system parameter $Host
+
+## Version 1.0.1
+* Fixed the issue of $Host conflicting with system parameter $Host
 
 ## Version 1.0.0
 * General availability for module Az.StorageMover
@@ -26,4 +28,3 @@
 
 ## Version 0.1.0
 * First preview release for module Az.StorageMover
-
