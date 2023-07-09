@@ -74,18 +74,26 @@ try{
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
         }
+        
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
-            $changes = $changes.replace("  ", "`n")
-            $ExceptionList += [GeneratedSdkIssue]@{
+            # Prevent EOL changes detected
+            git config --global core.safecrlf false
+            git config --global core.autocrlf true
+            $diff = git diff
+            if($diff -ne $null){
+                $changes = $changes.replace("  ", "`n")
+                $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Sdk = $_;
                     Severity = 1;
                     ProblemId = $GenSdkChanged
                     Description = "Generated code for $ModuleName is not up to date or you have updated generated Sdk."
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
+                }
             }
+            
         }
         Set-Location $SavePath
     }
