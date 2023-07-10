@@ -171,6 +171,7 @@
 
     <Exec Command="echo ##vso[task.setvariable variable=BuildAzPredictor;]true" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
     <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse -Include '*.deps.json' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
   <Target Name="BuildNormalModules">
