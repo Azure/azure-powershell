@@ -21,6 +21,20 @@
 * Updated SDK via autorest.powershell.
 * Supported creationTime filter in Blob Inventory
     - `New-AzStorageBlobInventoryPolicyRule`
+* Supported traling dot in Azure file and directory name by default
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileCopyState`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileHandle`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
 * Upgraded Azure.Core to 1.35.0.
 * [Breaking Change] Removed prefix '?' of the created SAS token
     - `New-AzStorageBlobSasToken`
