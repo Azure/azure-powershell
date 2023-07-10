@@ -109,8 +109,9 @@ stages:
               git push origin codeoob/${{ parameters.ServiceName }} --force;
               $Title = "Migrate ${{ parameters.ServiceName }} from oob to main"
               $HeadBranch = "codeoob/${{ parameters.ServiceName }}"
-              $BaseBranch = "$(Build.SourceBranchName)"
-              $Description = "Migrate ${{ parameters.ServiceName }} from oob to $(Build.SourceBranchName)"
+              $BaseBranch = "$(Build.SourceBranch)"
+              $BaseBranch = $BaseBranch.Replace("refs/heads/", "")
+              $Description = "Migrate ${{ parameters.ServiceName }} from oob to $BaseBranch"
               ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $Token -Description $Description -Draft $true
       displayName: Create PR to main branch
       condition: and(succeeded(), eq(variables['NeedBumpUp'], 'true'))
