@@ -50,8 +50,14 @@ Clears the vulnerability assessment settings of a managed instance.
 ### [Clear-AzSqlServerVulnerabilityAssessmentSetting](Clear-AzSqlServerVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a server.
 
+### [Complete-AzSqlInstanceDatabaseCopy](Complete-AzSqlInstanceDatabaseCopy.md)
+Complete online copy operation of a managed database.
+
 ### [Complete-AzSqlInstanceDatabaseLogReplay](Complete-AzSqlInstanceDatabaseLogReplay.md)
 Completes Log Replay service for the given database.
+
+### [Complete-AzSqlInstanceDatabaseMove](Complete-AzSqlInstanceDatabaseMove.md)
+Complete online move operation of a managed database.
 
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
@@ -61,6 +67,9 @@ Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
 Copies a long term retention backup to a target database.  
+
+### [Copy-AzSqlInstanceDatabase](Copy-AzSqlInstanceDatabase.md)
+Copy managed database to another managed instance.
 
 ### [Disable-AzSqlDatabaseLedgerDigestUpload](Disable-AzSqlDatabaseLedgerDigestUpload.md)
 Disables uploading ledger digests to Azure Blob storage or to Azure Confidential Ledger.
@@ -74,11 +83,11 @@ Disables Azure AD only authentication for a specific SQL Managed Instance.
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
-### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
-Disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
-
 ### [Disable-AzSqlInstanceDatabaseLedgerDigestUpload](Disable-AzSqlInstanceDatabaseLedgerDigestUpload.md)
 Disables uploading ledger digests to Azure Blob storage or Azure Confidential Ledger in Azure SQL Managed Instance.
+
+### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
 
 ### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Disables Azure AD only authentication for a specific SQL Server.
@@ -98,11 +107,11 @@ Enables Azure AD only authentication for a specific SQL Managed Instance.
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
 
-### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
-Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL Managed Instance database.
-
 ### [Enable-AzSqlInstanceDatabaseLedgerDigestUpload](Enable-AzSqlInstanceDatabaseLedgerDigestUpload.md)
 Enables uploading ledger digests to an Azure Storage account or Azure Confidential Ledger for a database in an Azure SQL Managed Instance.
+
+### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL Managed Instance database.
 
 ### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Enables Azure AD only authentication for a specific SQL Server.
@@ -272,6 +281,9 @@ Gets a managed database's long term retention policy
 ### [Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Get-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Gets a backup short term retention policy.
 
+### [Get-AzSqlInstanceDatabaseCopyOperation](Get-AzSqlInstanceDatabaseCopyOperation.md)
+Get managed database copy operation details
+
 ### [Get-AzSqlInstanceDatabaseGeoBackup](Get-AzSqlInstanceDatabaseGeoBackup.md)
 Returns information about Azure SQL Managed Instance database redundant backup.
 
@@ -283,6 +295,9 @@ Gets the Log Replay service status.
 
 ### [Get-AzSqlInstanceDatabaseLongTermRetentionBackup](Get-AzSqlInstanceDatabaseLongTermRetentionBackup.md)
 Gets long term retention backup(s).
+
+### [Get-AzSqlInstanceDatabaseMoveOperation](Get-AzSqlInstanceDatabaseMoveOperation.md)
+Get managed database move operation details
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
@@ -354,7 +369,7 @@ Gets the auditing settings of an Azure SQL server.
 Gets communication links for elastic database transactions between database servers.
 
 ### [Get-AzSqlServerConfigurationOption](Get-AzSqlServerConfigurationOption.md)
-Gets server configuration option of an Azure SQL Managed Instance.
+Returns information about server configuration options for Azure SQL Managed Instance.
 
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
@@ -440,8 +455,14 @@ Failovers an Azure SQL Managed Instance.
 ### [Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlInstanceTransparentDataEncryptionProtectorRevalidation.md)
 Revalidates the Managed Instance Encryption Protector AKV key
 
+### [Invoke-AzSqlServerExternalGovernanceStatusRefresh](Invoke-AzSqlServerExternalGovernanceStatusRefresh.md)
+Refreshes the value of external governance on the server.
+
 ### [Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation](Invoke-AzSqlServerTransparentDataEncryptionProtectorRevalidation.md)
 Revalidates the Server Encryption Protector AKV key
+
+### [Move-AzSqlInstanceDatabase](Move-AzSqlInstanceDatabase.md)
+Move managed database to another managed instance.
 
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
@@ -786,7 +807,7 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerConfigurationOption](Set-AzSqlServerConfigurationOption.md)
-Sets the value of a server configuration option on Azure SQL Managed Instance.
+Sets the value for a server configuration option on Azure SQL Managed Instance.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
@@ -842,8 +863,14 @@ Stops a job given it's job execution id
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
 
+### [Stop-AzSqlInstanceDatabaseCopy](Stop-AzSqlInstanceDatabaseCopy.md)
+Stop copy operation of a managed database.
+
 ### [Stop-AzSqlInstanceDatabaseLogReplay](Stop-AzSqlInstanceDatabaseLogReplay.md)
 Cancels the Log Replay service by dropping the database.
+
+### [Stop-AzSqlInstanceDatabaseMove](Stop-AzSqlInstanceDatabaseMove.md)
+Stop move operation of a managed database.
 
 ### [Stop-AzSqlInstanceOperation](Stop-AzSqlInstanceOperation.md)
 Stops a SQL managed instance's operations.
@@ -900,6 +927,4 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
-
-
 
