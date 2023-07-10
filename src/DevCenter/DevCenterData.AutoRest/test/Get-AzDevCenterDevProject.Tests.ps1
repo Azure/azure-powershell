@@ -27,21 +27,21 @@ Describe 'Get-AzDevCenterDevProject' {
     It 'Get' -skip {
         $project = Get-AzDevCenterDevProject -Endpoint $env.endpoint -ProjectName $env.projectName
         $project.Name | Should -Be $env.projectName
-        $project.MaxDevBoxesPerUser | Should -Be 10
+        $project.MaxDevBoxesPerUser | Should -Be 20
 
         $project = Get-AzDevCenterDevProject -DevCenter $env.devCenterName -ProjectName $env.projectName
         $project.Name | Should -Be $env.projectName
-        $project.MaxDevBoxesPerUser | Should -Be 10
+        $project.MaxDevBoxesPerUser | Should -Be 20
     }
 
     It 'GetViaIdentity' -skip {
         $poolInput = @{"ProjectName" = $env.projectName}
         $project = Get-AzDevCenterDevProject -Endpoint $env.endpoint -InputObject $poolInput
         $project.Name | Should -Be $env.projectName
-        $project.MaxDevBoxesPerUser | Should -Be 10
+        $project.MaxDevBoxesPerUser | Should -Be 20
 
         $project = Get-AzDevCenterDevProject -DevCenter $env.devCenterName -InputObject $poolInput
         $project.Name | Should -Be $env.projectName
-        $project.MaxDevBoxesPerUser | Should -Be 10
+        $project.MaxDevBoxesPerUser | Should -Be 20
     }
 }

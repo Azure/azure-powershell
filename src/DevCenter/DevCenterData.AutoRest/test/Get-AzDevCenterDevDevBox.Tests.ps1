@@ -38,9 +38,9 @@ Describe 'Get-AzDevCenterDevDevBox' {
     }
 
     It 'Get' -skip {
-        $devbox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId $env.userObjectId -Name $env.devboxName
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId $env.userObjectId -Name $env.devboxName
 
-        $devbox.Name | Should -Be $env.devboxName
+        $devBox.Name | Should -Be $env.devboxName
         $devBox.User | Should -Be $env.userObjectId
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
@@ -59,9 +59,9 @@ Describe 'Get-AzDevCenterDevDevBox' {
         $devBox.ProvisioningState | Should -Be "Succeeded"
         $devBox.PowerState | Should -Be "Running"
 
-        $devbox = Get-AzDevCenterDevDevBox -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.devboxName
+        $devBox = Get-AzDevCenterDevDevBox -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.devboxName
 
-        $devbox.Name | Should -Be $env.devboxName
+        $devBox.Name | Should -Be $env.devboxName
         $devBox.User | Should -Be $env.userObjectId
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
@@ -84,9 +84,9 @@ Describe 'Get-AzDevCenterDevDevBox' {
 
     It 'GetViaIdentity' -skip {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
-        $devbox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
 
-        $devbox.Name | Should -Be $env.devboxName
+        $devBox.Name | Should -Be $env.devboxName
         $devBox.User | Should -Be $env.userObjectId
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
@@ -105,9 +105,9 @@ Describe 'Get-AzDevCenterDevDevBox' {
         $devBox.ProvisioningState | Should -Be "Succeeded"
         $devBox.PowerState | Should -Be "Running"
 
-        $devbox = Get-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput 
+        $devBox = Get-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput 
 
-        $devbox.Name | Should -Be $env.devboxName
+        $devBox.Name | Should -Be $env.devboxName
         $devBox.User | Should -Be $env.userObjectId
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
