@@ -823,5 +823,9 @@
   {
     "module": "StorageCache",
     "alias": "StorageCache"
+  },
+  {
+    "module": "NewRelic",
+    "alias": "NewRelic"
   }
 ]
