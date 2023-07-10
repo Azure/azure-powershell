@@ -231,8 +231,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private void CreateSelfSignedCertificate(string vaultUri, out string thumbprint, out KeyVaultCertificateWithPolicy certificateBundle, out string outputFilePath)
         {
             outputFilePath = string.Empty;
+
             CertificatePolicy policy = CertificatePolicy.Default;
-            
+            policy.EnhancedKeyUsage.Add("1.3.6.1.5.5.7.3.1");
+            policy.EnhancedKeyUsage.Add("1.3.6.1.5.5.7.3.2");
+           
             CertificateClient keyVaultCertificateClient = new CertificateClient(new Uri(vaultUri), new DefaultAzureCredential());
             SecretClient keyVaultSecretClient = new SecretClient(new Uri(vaultUri), new DefaultAzureCredential());
 
