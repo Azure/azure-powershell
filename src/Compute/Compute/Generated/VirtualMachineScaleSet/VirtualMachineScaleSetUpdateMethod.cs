@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.",
             ValueFromPipelineByPropertyName = true)]
+        [ValidateSet(ValidateSetValues.Replace, ValidateSetValues.Restart, ValidateSetValues.Reimage, IgnoreCase = true)]
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
         public string AutomaticRepairAction { get; set; }
 
