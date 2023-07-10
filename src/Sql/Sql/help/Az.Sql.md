@@ -338,6 +338,9 @@ Returns information about an Azure SQL Instance pool's usage.
 ### [Get-AzSqlInstanceServerTrustCertificate](Get-AzSqlInstanceServerTrustCertificate.md)
 Returns information about server trust certificate.
 
+### [Get-AzSqlInstanceStartStopSchedule](Get-AzSqlInstanceStartStopSchedule.md)
+Get start/stop schedule for Azure SQL Managed Instance
+
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
@@ -518,8 +521,14 @@ Creates a new instance link.
 ### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
 Creates an Azure SQL Instance pool.
 
+### [New-AzSqlInstanceScheduleItem](New-AzSqlInstanceScheduleItem.md)
+Helper command for creating ScheduleItem object that is uses for New-AzSqlInstanceStartStopSchedule cmdlet
+
 ### [New-AzSqlInstanceServerTrustCertificate](New-AzSqlInstanceServerTrustCertificate.md)
 Creates a new server trust certificate.
+
+### [New-AzSqlInstanceStartStopSchedule](New-AzSqlInstanceStartStopSchedule.md)
+Creates start/stop schedule for Azure SQL Managed Instance
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -637,6 +646,9 @@ Removes an Azure SQL Instance pool.
 
 ### [Remove-AzSqlInstanceServerTrustCertificate](Remove-AzSqlInstanceServerTrustCertificate.md)
 Removes a server trust certificate.
+
+### [Remove-AzSqlInstanceStartStopSchedule](Remove-AzSqlInstanceStartStopSchedule.md)
+Removes start stop schedule for Azure SQL Managed Instance
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -842,6 +854,9 @@ Starts a vulnerability assessment scan.
 ### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
 Starts a job, returning a job execution id that can be polled to view it's status
 
+### [Start-AzSqlInstance](Start-AzSqlInstance.md)
+Starts Azure SQL Managed Instance
+
 ### [Start-AzSqlInstanceDatabaseLogReplay](Start-AzSqlInstanceDatabaseLogReplay.md)
 Starts a Log Replay service with the given parameters.
 
@@ -862,6 +877,9 @@ Stops a job given it's job execution id
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
+
+### [Stop-AzSqlInstance](Stop-AzSqlInstance.md)
+Stops Azure SQL Managed Instance
 
 ### [Stop-AzSqlInstanceDatabaseCopy](Stop-AzSqlInstanceDatabaseCopy.md)
 Stop copy operation of a managed database.
