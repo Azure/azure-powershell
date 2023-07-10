@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support traling dot in Azure file and directory name by default
+* Supported traling dot in Azure file and directory name by default
     - `Close-AzStorageFileHandle`
     - `Get-AzStorageFile`
     - `Get-AzStorageFileCopyState`
