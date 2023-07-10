@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.12.4
 * Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].
 
 ## Version 2.12.3

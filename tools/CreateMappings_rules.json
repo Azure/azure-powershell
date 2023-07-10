@@ -819,5 +819,13 @@
   {
     "module": "Qumulo",
     "alias": "Qumulo"
+  },
+  {
+    "module": "StorageCache",
+    "alias": "StorageCache"
+  },
+  {
+    "module": "NewRelic",
+    "alias": "NewRelic"
   }
 ]
