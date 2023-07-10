@@ -14,7 +14,7 @@ Helper command for creating ScheduleItem object that is uses for New-AzSqlInstan
 
 ```
 New-AzSqlInstanceScheduleItem -StartDay <DayOfWeek> -StartTime <String> -StopDay <DayOfWeek> -StopTime <String>
- [-ScheduleItems <ScheduleItem[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ScheduleList <ScheduleItem[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,9 +33,9 @@ Creates one schedule item thats starts on Monday at 9 AM and stops on Friday at 
 ```powershell
 $mi = Get-AzSqlInstanceStartStopSchedule -InstanceName instance-name -ResourceGroupName rg-name
 
-$existingSchedule = $mi.ScheduleItems
+$existingSchedule = $mi.ScheduleList
 
-$newSchedule = New-AzSqlInstanceScheduleItem -StartDay Monday -StopDay Friday -StartTime "09:00" -StopTime "17:00" -ScheduleItems $existingSchedule
+$newSchedule = New-AzSqlInstanceScheduleItem -StartDay Monday -StopDay Friday -StartTime "09:00" -StopTime "17:00" -ScheduleList $existingSchedule
 ```
 
 Appends one more schedule item thats starts on Monday at 9 AM and stops on Friday at 5 PM on the existing schedule of the instance-name Azure SQL Managed Instance.
@@ -57,7 +57,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduleItems
+### -ScheduleList
 Existing schedule items to append new one on.
 
 ```yaml

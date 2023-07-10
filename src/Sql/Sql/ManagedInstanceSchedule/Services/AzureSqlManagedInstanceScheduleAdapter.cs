@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Services
                                                                            string managedInstanceName,
                                                                            string timezone,
                                                                            string description,
-                                                                           ScheduleItem[] scheduleItems)
+                                                                           ScheduleItem[] ScheduleList)
         {
             var response = Communicator.SetSchedule(resourceGroupName, managedInstanceName, new AzureSqlManagedInstanceScheduleModel()
             {
                 Description = description,
                 TimeZoneId = timezone,
-                ScheduleList = scheduleItems
+                ScheduleList = ScheduleList
             });
 
             return new AzureSqlManagedInstanceScheduleModel(response);

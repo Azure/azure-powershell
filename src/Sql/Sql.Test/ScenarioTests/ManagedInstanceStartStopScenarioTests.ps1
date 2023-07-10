@@ -58,7 +58,7 @@ function Test-ScheduleStartStopManagedInstance
 				-InstanceName $managedInstanceName `
 				-ResourceGroupName $rg.ResourceGroupName `
 				-Description "powershell schedule" `
-				-ScheduleItems $scheduleItem `
+				-ScheduleList $scheduleItem `
 				-TimeZone "Central Europe Standard Time" `
 				-Force
 

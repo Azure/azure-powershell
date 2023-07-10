@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Cmdlet
         public string StopTime { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true)]
-        public ScheduleItem[] ScheduleItems { get; set; }
+        public ScheduleItem[] ScheduleList { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Cmdlet
                 StopTime = StopTime.ToString()
             };
 
-            if (ScheduleItems != null && ScheduleItems.Length > 0)
+            if (ScheduleList != null && ScheduleList.Length > 0)
             {
-                var list = ScheduleItems.ToList();
+                var list = ScheduleList.ToList();
                 list.Add(newItem);
 
                 WriteObject(list);

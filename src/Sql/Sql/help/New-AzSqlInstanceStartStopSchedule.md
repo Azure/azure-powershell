@@ -14,14 +14,14 @@ Creates start/stop schedule for Azure SQL Managed Instance
 
 ### NewInstanceScheduleInputParameters (Default)
 ```
-New-AzSqlInstanceStartStopSchedule -InstanceName <String> -TimeZone <String> -ScheduleItems <ScheduleItem[]>
+New-AzSqlInstanceStartStopSchedule -InstanceName <String> -TimeZone <String> -ScheduleList <ScheduleItem[]>
  [-Description <String>] [-Force] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewInstanceScheduleByInstanceModelInputParameters
 ```
-New-AzSqlInstanceStartStopSchedule -TimeZone <String> -ScheduleItems <ScheduleItem[]> [-Description <String>]
+New-AzSqlInstanceStartStopSchedule -TimeZone <String> -ScheduleList <ScheduleItem[]> [-Description <String>]
  -InstanceModel <AzureSqlManagedInstanceModel> [-Force] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Creates start/stop schedule for Azure SQL Managed Instance
 ### Example 1
 ```powershell
 $newSchedule = New-AzSqlInstanceScheduleItem -StartDay Monday -StopDay Friday -StartTime "09:00" -StopTime "17:00"
-New-AzSqlInstanceStartStopSchedule -InstanceName managed-instance-v2 -ResourceGroupName CustomerExperienceTeam_RG -ScheduleItems $newSchedule -TimeZone "Central Europe Standard Time"
+New-AzSqlInstanceStartStopSchedule -InstanceName managed-instance-v2 -ResourceGroupName CustomerExperienceTeam_RG -ScheduleList $newSchedule -TimeZone "Central Europe Standard Time"
 ```
 
 Creates new start/stop schedule that starts at Monday 9 AM and stops at Friday 5 PM.
@@ -43,11 +43,11 @@ Creates new start/stop schedule that starts at Monday 9 AM and stops at Friday 5
 ```powershell
 $mi = Get-AzSqlInstanceStartStopSchedule -InstanceName instance-name -ResourceGroupName rg-name
 
-$existingSchedule = $mi.ScheduleItems
+$existingSchedule = $mi.ScheduleList
 
-$newSchedule = New-AzSqlInstanceScheduleItem -StartDay Monday -StopDay Friday -StartTime "09:00" -StopTime "17:00" -ScheduleItems $existingSchedule
+$newSchedule = New-AzSqlInstanceScheduleItem -StartDay Monday -StopDay Friday -StartTime "09:00" -StopTime "17:00" -ScheduleList $existingSchedule
 
-New-AzSqlInstanceStartStopSchedule -InstanceName managed-instance-v2 -ResourceGroupName CustomerExperienceTeam_RG -ScheduleItems $newSchedule -TimeZone "Central Europe Standard Time"
+New-AzSqlInstanceStartStopSchedule -InstanceName managed-instance-v2 -ResourceGroupName CustomerExperienceTeam_RG -ScheduleList $newSchedule -TimeZone "Central Europe Standard Time"
 ```
 
 Updates existing start/stop schedule with new schedule item starts at Monday 9 AM and stops at Friday 5 PM.
@@ -144,7 +144,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduleItems
+### -ScheduleList
 Array of valid SheduleItem objects.
 
 ```yaml

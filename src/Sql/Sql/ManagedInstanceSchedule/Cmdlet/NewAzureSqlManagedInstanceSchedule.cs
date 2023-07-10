@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Cmdlet
         /// Gets or sets schedule items
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Array of valid SheduleItem objects.")]
-        public ScheduleItem[] ScheduleItems { get; set; }
+        public ScheduleItem[] ScheduleList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The description of the schedule.")]
         public string Description { get; set; }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceSchedule.Cmdlet
         {
             if (Force || ShouldContinue("Are you sure you want to create start/stop schedule? The new schedule will replace existing one.", "Removing start/stop schedule"))
             {
-                return ModelAdapter.CreateOrUpdateSchedule(ResourceGroupName, InstanceName, TimeZone, Description, ScheduleItems);
+                return ModelAdapter.CreateOrUpdateSchedule(ResourceGroupName, InstanceName, TimeZone, Description, ScheduleList);
             }
 
             return null;
