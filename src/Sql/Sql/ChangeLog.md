@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adding new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
 
 ## Version 4.8.0
 * Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
