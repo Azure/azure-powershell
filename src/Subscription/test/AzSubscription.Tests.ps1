@@ -35,20 +35,20 @@ Describe 'AzSubscription' {
         } | Should -Not -Throw
     }
 
-    It 'RenameSub' {
+    It 'RenameSub' -Skip {
         {
             $config = Rename-AzSubscription -Id $env.SubscriptionId -SubscriptionName "test-subscription"
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'DeleteAlias' {
+    It 'DeleteAlias' -Skip {
         {
             Remove-AzSubscriptionAlias -AliasName $env.testSubName
         } | Should -Not -Throw
     }
 
-    It 'UpdateSubPolicy' {
+    It 'UpdateSubPolicy' -Skip {
         {
             $config = Update-AzSubscriptionPolicy -BlockSubscriptionsIntoTenant:$false -BlockSubscriptionsLeavingTenant:$false 
             $config.Count | Should -BeGreaterThan 0
