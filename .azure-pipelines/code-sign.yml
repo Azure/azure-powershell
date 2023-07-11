@@ -17,7 +17,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-          if ('${{ parameters.OOBBranch }}' -eq 'none') {
+          if ('${{ parameters.OOBBranch }}' -ne 'none') {
             git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
             git fetch origin
             git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
