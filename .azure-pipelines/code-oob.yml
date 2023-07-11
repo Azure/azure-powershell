@@ -74,7 +74,8 @@ stages:
           $content | Out-File -FilePath $readmePath
 
           if ($NeedBumpUp) {
-              echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]codeoob/${{ parameters.ServiceName }}"
+              echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]oob/${{ parameters.ServiceName }}"
+
           } else {
               echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]none"
           }
