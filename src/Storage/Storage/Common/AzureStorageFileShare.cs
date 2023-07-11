@@ -230,13 +230,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         // Convert Track2 File share object to Track 1 file share object
         public static CloudFileShare GetTrack1FileShareClient(ShareClient shareClient, StorageCredentials credentials)
         {
-            if (credentials.IsSAS) // the Uri already contains credentail.
-            {
-                credentials = null;
-            }
             if (credentials.IsToken)
             {
                 return new InvalidCloudFileShare(shareClient.Uri, credentials);
+            }
+            if (credentials.IsSAS) // the Uri already contains credentail.
+            {
+                credentials = null;
             }
             CloudFileShare track1CloudFileShare = new CloudFileShare(shareClient.Uri, credentials);
             return track1CloudFileShare;
