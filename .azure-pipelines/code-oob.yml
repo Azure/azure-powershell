@@ -74,7 +74,7 @@ stages:
           $content | Out-File -FilePath $readmePath
 
           if ($NeedBumpUp) {
-              echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]oob/${{ parameters.ServiceName }}"
+              echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]$(BranchPrefix)/${{ parameters.ServiceName }}"
 
           } else {
               echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]none"
@@ -98,18 +98,18 @@ stages:
           inline: |
               Set-AzContext -Tenant $(TenantId) -SubscriptionId $(SubscriptionId)
               $Token = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-              git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
-              git config user.name "azure-powershell-bot"
-              git checkout -b codeoob/${{ parameters.ServiceName }}
+              git config user.email "$(GithubEmail)"
+              git config user.name "$(GithubUsername)"
+              git checkout -b $(BranchPrefix)/${{ parameters.ServiceName }}
               git add -A
               if ($${{ parameters.Preview }}) {
                 git reset -- ./tools/Tools.Common/SerializedCmdlets/Az.${{ parameters.ServiceName }}.json
               }
               git commit -m "Bump up version for ${{ parameters.ServiceName }}"
               git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
-              git push origin codeoob/${{ parameters.ServiceName }} --force;
+              git push origin $(BranchPrefix)/${{ parameters.ServiceName }} --force;
               $Title = "Migrate ${{ parameters.ServiceName }} from oob to main"
-              $HeadBranch = "codeoob/${{ parameters.ServiceName }}"
+              $HeadBranch = "$(BranchPrefix)/${{ parameters.ServiceName }}"
               $BaseBranch = "$(Build.SourceBranch)"
               $BaseBranch = $BaseBranch.Replace("refs/heads/", "")
               $Description = "Migrate ${{ parameters.ServiceName }} from oob to $BaseBranch"
