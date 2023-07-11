@@ -1,4 +1,4 @@
-
+  
 # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
@@ -467,7 +467,7 @@ public static int hashForArtifact(String artifact)
                 Write-Host $Id
 
                 $kvspnid = $Id
-                $gwyStorageAccount = Get-AzResource -ResourceName $GateWayStorageAcName -ResourceGroupName $ResourceGroupName 
+                $gwyStorageAccount = Get-AzResource -ResourceName $GateWayStorageAcName -ResourceGroupName $ResourceGroupName
                 $lsaStorageAccount = Get-AzResource -ResourceName $LogStorageAcName -ResourceGroupName $ResourceGroupName
                 $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
                 $lsaRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -542,7 +542,7 @@ public static int hashForArtifact(String artifact)
             $policyName = $MigratePrefix + $SiteName + "policy"
             $existingPolicyObject = Get-AzMigrateReplicationPolicy -PolicyName $policyName -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$existingPolicyObject) {
-                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtPolicyCreationInput]::new()
+                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.VMwareCbtPolicyCreationInput]::new()
                 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
                 $providerSpecificPolicy.InstanceType = "VMwareCbt"
                 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 360
@@ -566,7 +566,7 @@ public static int hashForArtifact(String artifact)
                         Write-Host $mappingName, " for ", $applianceName, $LogStringSkipping
                     }
                     else {
-                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtContainerMappingInput]::new()
+                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.VMwareCbtContainerMappingInput]::new()
                         $providerSpecificInput.InstanceType = "VMwareCbt"
                         $providerSpecificInput.TargetLocation = $TargetRegion
                         if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {

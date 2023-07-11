@@ -15,15 +15,15 @@ Starts the test migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String>
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateTestMigration -InputObject <IMigrationItem> -TestNetworkID <String>
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,8 +65,7 @@ By machine id.
 ### Example 2: By input object
 ```powershell
 $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -SubscriptionId $env.srsSubscriptionId
-$nic = New-AzMigrateTestNicMapping -NicID "a2399354-653a-464e-a567-d30ef5467a31" -TestNicSubnet "subnet1"
-Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork' -NicToUpdate $nic
+Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 ```
 
 ```output
@@ -118,7 +117,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -134,7 +133,23 @@ Updates the NIC for the Azure VM to be created.
 To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtNicInput[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OsUpgradeVersion
+Specifies the target version to which the Os has to be upgraded to.
+The valid values can be selected from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob
 
 ## NOTES
 
@@ -217,6 +232,11 @@ To create the parameters described below, construct a hash table containing the 
 `NICTOUPDATE <IVMwareCbtNicInput[]>`: Updates the NIC for the Azure VM to be created.
   - `IsPrimaryNic <String>`: A value indicating whether this is the primary NIC.
   - `NicId <String>`: The NIC Id.
+  - `[IsSelectedForMigration <String>]`: A value indicating whether this NIC is selected for migration.
+  - `[TargetNicName <String>]`: Target NIC name.
+  - `[TargetStaticIPAddress <String>]`: The static IP address.
+  - `[TargetSubnetName <String>]`: Target subnet name.
+  - `[TestStaticIPAddress <String>]`: The test static IP address.
   - `[TestSubnetName <String>]`: The test subnet name.
 
 ## RELATED LINKS

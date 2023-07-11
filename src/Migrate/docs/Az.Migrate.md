@@ -41,6 +41,9 @@ Method to get run as account.
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 Retrieves the details of the replicating server.
 
+### [Get-AzMigrateServerReplicationStatus](Get-AzMigrateServerReplicationStatus.md)
+Retrieves the details of the replicating server.
+
 ### [Get-AzMigrateSite](Get-AzMigrateSite.md)
 Method to get a site.
 
@@ -68,7 +71,7 @@ The operation to create a protection container mapping.
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 Starts replication for the specified server.
 
-### [New-AzTestMigrateNicMapping](New-AzTestMigrateNicMapping.md)
+### [New-AzMigrateTestNicMapping](New-AzMigrateTestNicMapping.md)
 Creates an object to update NIC properties of a test migrating server.
 
 ### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
