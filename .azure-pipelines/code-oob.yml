@@ -4,7 +4,7 @@ parameters:
   type: string
   default: Databricks
 - name: Preview
-  displayName: Is preview version(Including < 1.0.0)
+  displayName: Is preview version? (version is "x.y.z-preview" or major version is 0)
   type: boolean
   default: false
 variables:
