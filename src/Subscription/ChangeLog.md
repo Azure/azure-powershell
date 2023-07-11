@@ -18,7 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Api version to 2021-10-01.
 
-## Version 0.1.0
-* First preview release for module Az.Subscription
+## Version 0.9.0
+* Fixed `New-AzSubscriptionAlias` cmdlet to make the Workload parameter mandatory.
 
+## Version 0.8.1
+* Updated Microsoft.Azure.Management.Subscription .Net SDK version to 2.0.0
+
+## Version 0.8.0
+* Added new cmdlets `New-AzSubscriptionAlias`,`Get-AzSubscriptionAlias`,`Remove-AzSubscriptionAlias` and Removed cmdlet `New-AzSubscription`
+
+## Version 0.7.3
+* Added new cmdlet `Update-AzSubscription`
+
+## Version 0.7.2
+* Update references in .psd1 to use relative path
