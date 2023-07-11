@@ -50,6 +50,9 @@ Method to get run as account.
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
 Retrieves the details of the replicating server.
 
+### [Get-AzMigrateServerReplicationStatus](Get-AzMigrateServerReplicationStatus.md)
+Retrieves the details of the replicating server.
+
 ### [Get-AzMigrateSite](Get-AzMigrateSite.md)
 Method to get a site.
 

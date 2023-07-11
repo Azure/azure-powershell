@@ -22,7 +22,7 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 #>
 function Remove-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,8 +33,8 @@ function Remove-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
-        # Specifies the replcating server for which the replication needs to be disabled. The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem]
+        # Specifies the machine object of the replicating server.
         ${InputObject},
 
         [Parameter()]
