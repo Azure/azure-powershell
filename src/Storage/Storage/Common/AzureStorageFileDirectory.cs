@@ -145,13 +145,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         // Convert Track2 File Dir object to Track 1 file Dir object
         public static CloudFileDirectory GetTrack1FileDirClient(ShareDirectoryClient shareFileDirClient, StorageCredentials credentials)
         {
-            if (credentials.IsSAS) // the Uri already contains credentail.
-            {
-                credentials = null;
-            }
             if (credentials.IsToken)
             {
                 return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
+            }
+            if (credentials.IsSAS) // the Uri already contains credentail.
+            {
+                credentials = null;
             }
             CloudFileDirectory track1CloudFileDir;
             track1CloudFileDir = new CloudFileDirectory(shareFileDirClient.Uri, credentials);
