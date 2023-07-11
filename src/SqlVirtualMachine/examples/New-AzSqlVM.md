@@ -51,19 +51,6 @@ Create a SQL virtual machine with DR billing tag.
 
 ### Example 5
 ```powershell
-New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AdditionalFeatureServerConfigurationIsRServicesEnabled
-```
-
-```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
-```
-
-Create a SQL virtual machine with Enable R services in SQL2016 onwards.
-
-### Example 6
-```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
 -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 ` 
 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl ` 
@@ -79,7 +66,7 @@ eastus		sqlvm1		ResourceGroup01
 
 Create a SQL virtual machine and configure auto backup settings.
 
-### Example 7
+### Example 6
 ```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday ` 
 -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
@@ -93,23 +80,7 @@ eastus		sqlvm1		ResourceGroup01
 
 Create a SQL virtual machine and configure auto patching settings.
 
-### Example 8
-```powershell
-$password = "P@ssw0rd"
-$encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force 
-New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'centralus' -SqlConnectivityUpdateSettingConnectivityType private ` 
--SqlConnectivityUpdateSettingPort 1433 -SqlConnectivityUpdateSettingSqlAuthUpdateUserName sa_user ` 
--SqlConnectivityUpdateSettingSqlAuthUpdatePassword $encryptionpassword
-
-```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
-```
-
-Create a SQL virtual machine and configure SQL connectivity settings.
-
-### Example 9
+### Example 7
 ```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AssessmentSettingEnable
 ```
@@ -122,37 +93,7 @@ eastus		sqlvm1		ResourceGroup01
 
 Create a SQL virtual machine and configure assessment settings.
 
-### Example 10
-```powershell
-New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -KeyVaultCredentialSettingAzureKeyVaultUrl 'keyvault url' `
--KeyVaultCredentialSettingCredentialName 'cred1' `
--KeyVaultCredentialSettingEnable `
--KeyVaultCredentialSettingServicePrincipalName 'clientid' `
--KeyVaultCredentialSettingServicePrincipalSecret 'sp secret value'
-```
-
-```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
-```
-
-Create a SQL virtual machine and configure key vault settings.
-
-### Example 11
-```powershell
-New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -SqlManagementType 'Lightweight'
-```
-
-```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
-```
-
-Create a SQL virtual machine with Lightweight mode.
-
-### Example 12
+### Example 8
 ```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
 ```
