@@ -1,0 +1,99 @@
+---
+external help file:
+Module Name: Az.Spring
+online version: https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentJarUploadedObject
+schema: 2.0.0
+---
+
+# New-AzSpringAppDeploymentJarUploadedObject
+
+## SYNOPSIS
+Create an in-memory object for JarUploadedUserSourceInfo.
+
+## SYNTAX
+
+```
+New-AzSpringAppDeploymentJarUploadedObject [-JvmOption <String>] [-RuntimeVersion <String>]
+ [-Version <String>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create an in-memory object for JarUploadedUserSourceInfo.
+
+## EXAMPLES
+
+### Example 1: Create an in-memory object for JarUploadedUserSourceInfo
+```powershell
+New-AzSpringAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
+```
+
+```output
+RelativePath                     Version JvmOption RuntimeVersion
+------------                     ------- --------- --------------
+/resource/asd451212asdasd578454d                   Java_8
+```
+
+Create an in-memory object for JarUploadedUserSourceInfo.
+
+## PARAMETERS
+
+### -JvmOption
+JVM parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeVersion
+Runtime version of the Jar file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.JarUploadedUserSourceInfo
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+
