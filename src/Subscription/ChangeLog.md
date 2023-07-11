@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update Api version to 2021-10-01.
+* Upgrade API version to 2021-10-01.
 
 ## Version 0.9.0
 * Fixed `New-AzSubscriptionAlias` cmdlet to make the Workload parameter mandatory.
