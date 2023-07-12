@@ -831,5 +831,9 @@
   {
     "module": "Quantum",
     "alias": "Quantum"
+  },
+  {
+    "module": "GraphServices",
+    "alias": "GraphServices"
   }
 ]

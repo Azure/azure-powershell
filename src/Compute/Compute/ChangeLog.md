@@ -30,6 +30,7 @@
   The non-versioned image aliases were updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
 * Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
 * Changed to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
+* Changed the region for example 3 to eastus2 in the `New-AzVM` doc to resolve SKU not available errors.
 
 ## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
