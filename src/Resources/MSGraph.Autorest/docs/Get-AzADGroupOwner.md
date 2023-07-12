@@ -37,7 +37,7 @@ For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayNa
 
 ### Example 1: List owners of a group
 ```powershell
-$groupId = (Get-AzADGroup -DispalyName "someGroup").Id
+$groupId = (Get-AzADGroup -DisplayName "someGroup").Id
 Get-AzADGroupOwner -GroupId $groupId
 ```
 
