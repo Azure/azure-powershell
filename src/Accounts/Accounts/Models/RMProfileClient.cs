@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 { AzureAccount.AccountType.ManagedService, ProfileMessages.MSITenantDomainNotFound }
                             };
                         string typeMessage = typeMessageMap.ContainsKey(account.Type) ? typeMessageMap[account.Type] : string.Empty;
-                        throw new ArgumentNullException(string.Format("{0} {1}", baseMessage, typeMessage), e);
+                        throw new ArgumentNullException(string.Format($"{e.Message}{Environment.NewLine}{baseMessage} {typeMessage}"), e);
                     }
 
                     if (TryGetTenantSubscription(
