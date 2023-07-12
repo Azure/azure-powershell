@@ -101,9 +101,9 @@ Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process
         foreach ($member in $members) {
             switch ($member.OdataType) {
                 '#microsoft.graph.user' {
-                    Assert-AreEqual $user.Id $member.Id
-                    Assert-AreEqual $userPrincipalName $member.UserPrincipalName
-                    Remove-AzADGroupMember -GroupObjectId $group1.Id -MemberObjectId $user.Id
+                    Assert-AreEqual $user1.Id $member.Id
+                    Assert-AreEqual $userPrincipalName1 $member.UserPrincipalName
+                    Remove-AzADGroupMember -GroupObjectId $group1.Id -MemberObjectId $user1.Id
                 }
                 '#microsoft.graph.group' {
                     Assert-AreEqual $group2.Id $member.Id
@@ -112,8 +112,11 @@ Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process
             }
         }
     } finally {
-        if ($user) {
-            Remove-AzADUser -ObjectId $user.Id
+        if ($user1) {
+            Remove-AzADUser -ObjectId $user1.Id
+        }
+        if ($user2) {
+            Remove-AzADUser -ObjectId $user2.Id
         }
         if ($group2) {
             Remove-AzADGroup -ObjectId $group2.Id
