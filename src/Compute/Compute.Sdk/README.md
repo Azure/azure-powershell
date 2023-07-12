@@ -45,8 +45,9 @@ directive:
 
 
 ### 
-``` yaml 
-input-file:
+``` yaml
+commit: 6107f258542bc16f1fdb5c377225246b71ce2143
+input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/computeRPCommon.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/virtualMachineScaleSet.json
