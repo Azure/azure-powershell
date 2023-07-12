@@ -125,14 +125,14 @@
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)" OutputFile="$(RepoArtifacts)/FilesChanged.txt">
-      <Output TaskParameter="FilesChanged" PropertyName="FilesChanged" />
+      <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" Condition="'$(IsGenerateBased)' == 'true'"/>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/CreateFilterMappings.ps1&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
-    <CIFilterTask FilesChanged="$(FilesChanged)" TargetModule="$(TargetModule)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
+    <CIFilterTask FilesChanged="@(FilesChanged)" TargetModule="$(TargetModule)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
       <Output TaskParameter="BuildCsprojList" ItemName="BuildCsprojList" />
       <Output TaskParameter="TestCsprojList" ItemName="TestCsprojList" />
       <Output TaskParameter="SubTasks" PropertyName="SubTasks" />
