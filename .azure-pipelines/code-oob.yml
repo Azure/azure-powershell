@@ -101,7 +101,7 @@ stages:
               git config user.email "$(GithubEmail)"
               git config user.name "$(GithubUsername)"
               git checkout -b $(BranchPrefix)/${{ parameters.ServiceName }}
-              git add -A
+              git add -A ':!OOB'
               if ($${{ parameters.Preview }}) {
                 git reset -- ./tools/Tools.Common/SerializedCmdlets/Az.${{ parameters.ServiceName }}.json
               }
