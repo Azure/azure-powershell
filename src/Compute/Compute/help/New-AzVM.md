@@ -159,7 +159,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
-$LocationName = "westus"
+$LocationName = "eastus2"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
 $VMName = "MyVM"
