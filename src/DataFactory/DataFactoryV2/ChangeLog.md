@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added DisablePublish to Set_AzDataFactoryV2 Command
 
 ## Version 1.16.13
 * Updated ADF .Net SDK version to 9.2.0
