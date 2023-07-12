@@ -348,7 +348,7 @@ function Test-GetNextHop
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
-        #Get pablic IP address
+        #Get public IP address
         $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
         #Get Nic for Source IP address
@@ -626,7 +626,7 @@ function Test-PacketCaptureV2
         # Deploy resources
         Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
         
-        #Get pablic IP address
+        #Get public IP address
         $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
         # Create Resource group for Network Watcher
