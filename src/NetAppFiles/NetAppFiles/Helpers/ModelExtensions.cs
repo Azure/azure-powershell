@@ -381,7 +381,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 FileAccessLogs = volume.FileAccessLogs,
                 DataStoreResourceId = volume.DataStoreResourceId,
                 ProvisionedAvailabilityZone = volume.ProvisionedAvailabilityZone,
-                IsLargeVolume = volume.IsLargeVolume
+                IsLargeVolume = volume.IsLargeVolume,
+                ActualThroughputMibps = volume.ActualThroughputMibps,
+                OriginatingResourceId = volume.OriginatingResourceId
             };
         }
 

@@ -14,23 +14,16 @@
 
 <#
 .SYNOPSIS
-Test QuotaLimits
+Test QueryRegionInfo
 #>
-function Test-QuotaLimit
+function Test-QueryRegionInfo
 {
-    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
-    $quotaLimitName = "totalTiBsPerSubscription"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
     try
     {        
-        # get limits list 
-        $retrievedLimits = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation
-        Assert-NotNull $retrievedLimits
-        Assert-True {$retrievedLimits.Length -gt 0}
-
-        # get limit by name 
-        $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -Name $quotaLimitName
-        Assert-NotNull $retrievedLimit
-        Assert-AreEqual "$resourceLocation/$quotaLimitName" $retrievedLimit.Name
+        # get regionInfo list 
+        $regionInfo = Get-AzNetAppFilesRegionInfo -Location $resourceLocation
+        Assert-NotNull $regionInfo        
     }
     finally
     {
