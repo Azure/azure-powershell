@@ -71,7 +71,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="authnotrequired">Specifies whether the authentication
         /// is disabled. Setting this property is highly discouraged from
         /// security point of view.</param>
-        public RedisCommonPropertiesRedisConfiguration(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string))
+        /// <param name="storageSubscriptionId">SubscriptionId of the storage
+        /// account for persistence (aof/rdb) using ManagedIdentity.</param>
+        public RedisCommonPropertiesRedisConfiguration(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string), string storageSubscriptionId = default(string))
         {
             AdditionalProperties = additionalProperties;
             RdbBackupEnabled = rdbBackupEnabled;
@@ -90,6 +92,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             PreferredDataPersistenceAuthMethod = preferredDataPersistenceAuthMethod;
             ZonalConfiguration = zonalConfiguration;
             Authnotrequired = authnotrequired;
+            StorageSubscriptionId = storageSubscriptionId;
             CustomInit();
         }
 
@@ -213,6 +216,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [JsonProperty(PropertyName = "authnotrequired")]
         public string Authnotrequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscriptionId of the storage account for persistence
+        /// (aof/rdb) using ManagedIdentity.
+        /// </summary>
+        [JsonProperty(PropertyName = "storage-subscription-id")]
+        public string StorageSubscriptionId { get; set; }
 
     }
 }

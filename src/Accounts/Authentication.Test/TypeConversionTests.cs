@@ -74,7 +74,7 @@ namespace Common.Authentication.Test
         [Theory]
         [InlineData("TestAll", true, "https://login.microsoftonline.com", "https://management.core.windows.net/",
             "Common", "https://mangement.azure.com/dataLakeJobs", "https://management.azure.com/dataLakeFiles",
-            ".keyvault.azure.com", "https://keyvault.azure.com/", "https://gallery.azure.com",
+            ".keyvault.azure.com", "https://keyvault.azure.com/", "",
             "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com",
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",

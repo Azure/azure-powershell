@@ -30,7 +30,7 @@ function Test-GetArcConfig
 
         Install-Module Az.Ssh.ArcProxy -Scope CurrentUser -Repository PsGallery -Force -AllowClobber
 
-        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000 -Force
 
         Assert-NotNull $configEntry
         Assert-AreEqual $configEntry.Host "$ResourceGroupName-$MachineName"
@@ -67,7 +67,6 @@ function Test-GetArcConfig
         Uninstall-Module Az.Ssh.ArcProxy -ErrorAction Ignore
         Remove-Item ./config -ErrorAction Ignore -Force
         Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
-        Remove-Item (Join-Path $HOME ".clientsshproxy") -ErrorAction Ignore -Force -Recurse
         if (-not $isPlayback) { Stop-Agent -AgentPath $agent }
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
