@@ -420,7 +420,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             TestCsprojList = influencedModuleInfo[TEST_PHASE].ToArray();
             if (influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
             {
-                SubTaskList = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
+                SubTasks = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
             }
 
             return true;
@@ -449,7 +449,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             BuildCsprojList = new string[0];
             TestCsprojList = new string[0];
-            SubTaskList = "";
+            SubTasks = "";
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
