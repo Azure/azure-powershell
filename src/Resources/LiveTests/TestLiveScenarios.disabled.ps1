@@ -66,26 +66,37 @@ Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process
         $today = (Get-Date).tostring('yyyy-MM-dd')
         $groupName1 = $today + 'testgroup' + (New-LiveTestRandomName)
         $groupName2 = $today + 'testgroup' + (New-LiveTestRandomName)
-        $userName = $today + 'testuser' + (New-LiveTestRandomName)
+        $userName1 = $today + 'testuser1' + (New-LiveTestRandomName)
+        $userName2 = $today + 'testuser2' + (New-LiveTestRandomName)
         
         $groupMailNickName1 = New-LiveTestRandomName
         $groupMailNickName2 = New-LiveTestRandomName
-        $userMailNickName = New-LiveTestRandomName
-        $userPrincipalName = $userMailNickName + 'microsoft.com#EXT#@AzureSDKTeam.onmicrosoft.com'
+        $userMailNickName1 = New-LiveTestRandomName
+        $userPrincipalName1 = $userMailNickName1 + 'microsoft.com#EXT#@AzureSDKTeam.onmicrosoft.com'
+        $userMailNickName2 = New-LiveTestRandomName
+        $userPrincipalName2 = $userMailNickName2 + 'microsoft.com#EXT#@AzureSDKTeam.onmicrosoft.com'
 
         $group1 = New-AzADGroup -DisplayName $groupName1 -MailNickname $groupMailNickName1
         $group1 = Get-AzADGroup -DisplayName $groupName1
         $group2 = New-AzADGroup -DisplayName $groupName2 -MailNickname $groupMailNickName2
         $group2 = Get-AzADGroup -DisplayName $groupName2
 
+        #Password has to contain at least one upper case letter
         $password = 'A' + (New-LiveTestRandomName)
         $password = ConvertTo-SecureString -AsPlainText -Force $password
-        $user = New-AzADUser -DisplayName $userName -Password $password -AccountEnabled $true -MailNickname $userMailNickname -UserPrincipalName $userPrincipalName
-        $user = Get-AzADUser -DisplayName $userName
+        $user1 = New-AzADUser -DisplayName $userName1 -Password $password -AccountEnabled $true -MailNickname $userMailNickname1 -UserPrincipalName $userPrincipalName1
+        $user1 = Get-AzADUser -DisplayName $userName1
+        $user2 = New-AzADUser -DisplayName $userName2 -Password $password -AccountEnabled $true -MailNickname $userMailNickname2 -UserPrincipalName $userPrincipalName2
+        $user2 = Get-AzADUser -DisplayName $userName2
 
-        Add-AzADGroupMember -TargetGroupObjectId $group1.Id -MemberObjectId $group2.Id, $user.Id
+        Add-AzADGroupMember -TargetGroupObjectId $group1.Id -MemberObjectId $group2.Id, $user1.Id
 
-        #TODO: test type of group member and properties, for example, user principal name from user
+        New-AzADGroupOwner -GroupId $group1.Id -OwnerId $user2.Id
+        New-AzADGroupOwner -GroupId $group1.Id -OwnerId $user1.Id
+        $owners = Get-AzADGroupOwner -GroupId $group1.Id
+        Assert-NotNullOrEmpty $owners[0]
+        Remove-AzADGroupOwner -GroupId $group1.Id -OwnerId $owners[0].Id
+
         $members = Get-AzADGroupMember -GroupObjectId $group1.Id
         foreach ($member in $members) {
             switch ($member.OdataType) {
