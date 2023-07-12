@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string[] TestCsprojList { get; set; }
 
         [Output]
-        public string SubTaskList { get; set; }
+        public string SubTasks { get; set; }
 
         private const string TaskMappingConfigName = ".ci-config.json";
 
