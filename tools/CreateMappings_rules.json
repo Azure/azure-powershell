@@ -827,5 +827,9 @@
   {
     "module": "NewRelic",
     "alias": "NewRelic"
+  },
+  {
+    "module": "GraphServices",
+    "alias": "GraphServices"
   }
 ]
