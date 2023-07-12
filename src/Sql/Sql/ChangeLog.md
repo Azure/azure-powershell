@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adding new cmdlets for Azure SQL Managed Instance start/stop schedule
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
     - 'Start-AzSqlInstance',
     - 'Stop-AzSqlInstance',
     - 'Get-AzSqlInstanceStartStopSchedule',
