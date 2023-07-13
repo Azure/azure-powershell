@@ -1336,25 +1336,28 @@ function Test-ApplicationGatewayBasicSkuCRUD
 		Assert-NotNull $trustedRoot02
 		Assert-AreEqual $getgw.BackendHttpSettingsCollection[0].TrustedRootCertificates.Count 1
 
-		# Next: Manual sku gateway
-
-		# Set
-		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
-
 		# check sku
-		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
+		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
 		Assert-NotNull $sku01
 		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Basic
 		Assert-AreEqual $sku01.Tier Basic
 
+		Set-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 1 -ApplicationGateway $getgw 
+
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 1
+		Assert-AreEqual $sku02.Name Basic
+		Assert-AreEqual $sku02.Tier Basic
+
 		# Next: Set Identity on an existing gateway without identity
 		# First, Removing identity from the gateway
-		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw01
+		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw
 
 		# Set Application Gateway
-		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw01
-		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw01)
+		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw
+		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw)
 
 		# Set identity
 		Set-AzApplicationGatewayIdentity -ApplicationGateway $getgw02 -UserAssignedIdentityId $identity.Id
@@ -1368,9 +1371,9 @@ function Test-ApplicationGatewayBasicSkuCRUD
 
 
 		# Stop Application Gateway
-		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $getgw01
+		$getgw04 = Stop-AzApplicationGateway -ApplicationGateway $getgw03
 
-		Assert-AreEqual "Stopped" $getgw1.OperationalState
+		Assert-AreEqual "Stopped" $getgw04.OperationalState
 
 		# Delete Application Gateway
 		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
