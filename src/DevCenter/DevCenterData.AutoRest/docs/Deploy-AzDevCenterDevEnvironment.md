@@ -38,6 +38,36 @@ Deploy-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName
  [-Parameter <IAny>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ReplaceViaIdentity
+```
+Deploy-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Name <String>
+ -ProjectName <String> -Body <IEnvironment> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReplaceViaIdentityByDevCenter
+```
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Name <String>
+ -ProjectName <String> -Body <IEnvironment> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReplaceViaIdentityExpanded
+```
+Deploy-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Name <String>
+ -ProjectName <String> -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ -Parameter <IAny> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReplaceViaIdentityExpandedByDevCenter
+```
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Name <String>
+ -ProjectName <String> -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ -Parameter <IAny> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Creates or updates an environment.
 
@@ -88,7 +118,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
-Parameter Sets: Replace, ReplaceByDevCenter
+Parameter Sets: Replace, ReplaceByDevCenter, ReplaceViaIdentity, ReplaceViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -103,7 +133,7 @@ Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -134,7 +164,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter
+Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter, ReplaceViaIdentityByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -149,7 +179,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Replace, ReplaceExpanded
+Parameter Sets: Replace, ReplaceExpanded, ReplaceViaIdentity, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,7 +194,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -179,13 +209,29 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+Parameter Sets: ReplaceViaIdentity, ReplaceViaIdentityByDevCenter, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -224,10 +270,10 @@ Parameters object for the environment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IAny
-Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter, ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -303,6 +349,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
 
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -330,6 +378,18 @@ To create the parameters described below, construct a hash table containing the 
   - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
   - `[OperationLocation <String>]`: 
   - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
+
+`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
+  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
+  - `[CatalogName <String>]`: The name of the catalog
+  - `[DefinitionName <String>]`: The name of the environment definition
+  - `[DevBoxName <String>]`: The name of a Dev Box.
+  - `[EnvironmentName <String>]`: The name of the environment.
+  - `[Id <String>]`: Resource identity path
+  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
+  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
+  - `[ScheduleName <String>]`: The name of a schedule.
+  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 
