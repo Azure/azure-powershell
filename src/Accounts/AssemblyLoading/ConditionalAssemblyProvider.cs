@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: add a tool to update assembly versions after replacing the assemblies. (Can it support newly introduced assemblies?)
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
-                CreateAssembly("netcoreapp2.1", "Azure.Core", "1.31.0.0").WithPowerShellCore(),
+                CreateAssembly("netcoreapp2.1", "Azure.Core", "1.33.0.0").WithPowerShellCore(),
                 CreateAssembly("netcoreapp2.1", "Microsoft.Identity.Client", "4.49.1.0").WithPowerShellCore(),
                 CreateAssembly("netcoreapp3.1", "Microsoft.Identity.Client.Extensions.Msal", "2.23.0.0").WithPowerShellCore(),
 
