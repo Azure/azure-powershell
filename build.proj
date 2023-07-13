@@ -196,6 +196,9 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" Condition="'$(CodeSign)' == 'true'" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
+
+    <!-- Delete .deps.json files -->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse -Include '*.deps.json' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
