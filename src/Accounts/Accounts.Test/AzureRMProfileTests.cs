@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenantDomain = MockSubscriptionClientFactory.GetTenantDomainFromId(DefaultTenant.ToString());
             var mockOpenIDConfig = new Mock<IOpenIDConfiguration>();
             mockOpenIDConfig.SetupGet(p => p.AbsoluteUri).Returns(string.Format(uriPattern, tenantDomain));
-            mockOpenIDConfig.SetupGet(p => p.TenantId).Throws(new AggregateException("Internal OpenIDConfiguration Doc Error."));
+            mockOpenIDConfig.SetupGet(p => p.TenantId).Throws(new InvalidOperationException("Internal OpenIDConfiguration Doc Error."));
 
             Assert.Throws<ArgumentNullException>(() => client.Login(
                 Context.Account,

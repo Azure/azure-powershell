@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             factoryMock.Setup(f => f.ReadAsStringAsync(It.IsAny<Uri>())).ReturnsAsync(contentFailure);
 
             IOpenIDConfiguration config = new OpenIDConfiguration(testDomain, AADAuthority, httpClientFactory: factoryMock.Object);
-            Assert.Throws<AggregateException>(() => config.TenantId);
+            Assert.Throws<InvalidOperationException>(() => config.TenantId);
             factoryMock.Verify(f => f.ReadAsStringAsync(It.IsAny<Uri>()), Times.Once);
         }
 
