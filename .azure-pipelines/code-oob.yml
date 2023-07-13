@@ -43,7 +43,7 @@ stages:
               $versionNumber = $matches.Groups[1].Value
               $versionChanges = $matches.Groups[2].Value.Trim()
           }
-          if ($${{ parameters.Preview }} -and ([version]$versionNumber -ge [version]1.0.0)) {
+          if ($${{ parameters.Preview }} -and ([version]$versionNumber -ge [version]"1.0.0")) {
             $versionNumber += "-preview"
             echo "##vso[task.setvariable variable=NeedBumpUp]false"
             $NeedBumpUp = $false
