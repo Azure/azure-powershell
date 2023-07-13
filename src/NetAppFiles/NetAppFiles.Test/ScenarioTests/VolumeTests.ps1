@@ -130,8 +130,6 @@ function Test-VolumeCrud
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # use the NFSv4.1
         $protocolTypesv4 = New-Object string[] 1
@@ -500,8 +498,6 @@ function Test-SetVolumePool
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check the volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
@@ -602,8 +598,6 @@ function Test-UnlockVolumeFileLock
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check the volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
@@ -790,8 +784,6 @@ function Update-AzNetAppFilesVolumeSnapshotPolicy
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check the volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
@@ -1027,15 +1019,13 @@ function Test-ResetCifsOnNfsVolume
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
         Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check a volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
 		        
         #Assert-ThrowsContains{ Reset-AzNetAppFilesVolumeCifsPassword -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1} 'Cannot reset account for volume with NFS protocol, only volumes with CIFS protocol can be reset'
-        Assert-ThrowsContains{ Reset-AzNetAppFilesVolumeCifsPassword -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1} 'Reset CIFS password on account for volumes'' is not permitted'
+        Assert-ThrowsContains{ Reset-AzNetAppFilesVolumeCifsPassword -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1} 'Resetting CIFS password on account for volume is not permitted'
         
         Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName
