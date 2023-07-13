@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             AbsoluteUri = new Uri(Authority, Path).AbsoluteUri;
         }
 
-        public async Task<string> Open(IHttpOperationsFactory httpClientFactory)
+        public async Task<string> GetIssuerAsync(IHttpOperationsFactory httpClientFactory)
         {
             var url = new Uri(AbsoluteUri);
             if (!Uri.IsWellFormedUriString(url.AbsoluteUri, UriKind.Absolute))
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {
                     if (_httpClientFactory != null)
                     {
-                        var issuer = Open(_httpClientFactory).Result;
+                        var issuer = GetIssuerAsync(_httpClientFactory).ConfigureAwait(false).GetAwaiter().GetResult();
                         var parts = issuer.SplitRemoveEmpty('/');
                         if (parts.Length < 3 || !Guid.TryParse(parts[2], out Guid _))
                         {

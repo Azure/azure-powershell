@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
     public interface IOpenIDConfiguration
     {
         /// <summary>
-        /// Open a OpenID configuration doc from server.
+        /// Get async Issuer of a OpenID configuration doc from server.
         /// </summary>
         /// <param name="httpOperationsFactory">HTTP client factory to retrieve OpenID configuration from server.</param>
-        Task<string> Open(IHttpOperationsFactory httpOperationsFactory);
+        Task<string> GetIssuerAsync(IHttpOperationsFactory httpOperationsFactory);
 
         /// <summary>
         /// Tenant Id parsed from OpenID configuration doc
