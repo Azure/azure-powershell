@@ -16,18 +16,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterDevEnvironment
 
 Describe 'New-AzDevCenterDevEnvironment' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
+        -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+
+        New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+    -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+        }
 
     It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>] -Body
+        <IEnvironment>
+
+        New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>] -Body
+        <IEnvironment>
+        }
 
     It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
+        New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
+        }
 
     It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
+        -EnvironmentDefinitionName <String> -EnvironmentType <String>
+
+        New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
+    -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+        }
 }

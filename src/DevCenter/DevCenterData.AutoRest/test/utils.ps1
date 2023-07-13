@@ -150,8 +150,16 @@ function setupEnv() {
 
     $envName = RandomString -allChars $false -len 6
     $envName2 = RandomString -allChars $false -len 6
+    $envNameToDelete = RandomString -allChars $false -len 6
+    $envNameToDelete2 = RandomString -allChars $false -len 6
+    $envNameToDelete3 = RandomString -allChars $false -len 6
+    $envNameToDelete4 = RandomString -allChars $false -len 6
     $env.Add("envName", $envName)
     $env.Add("envName2", $envName2)
+    $env.Add("envNameToDelete", $envNameToDelete)
+    $env.Add("envNameToDelete2", $envNameToDelete2)
+    $env.Add("envNameToDelete3", $envNameToDelete3)
+    $env.Add("envNameToDelete4", $envNameToDelete4)
     $sandbox = "Sandbox"
     $functionApp = "FunctionApp"
     $functionAppParameters = @{"name" = "pwsh-envTest" }
@@ -164,9 +172,10 @@ function setupEnv() {
     New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
     New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
-
-
-    #TODO: Create dev boxes
+    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete3 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete4 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

@@ -16,10 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterDevDevBox'))
 
 Describe 'Start-AzDevCenterDevDevBox' {
     It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Start-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+        Start-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName 
+       }
 
     It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
+
+        Start-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
+        Start-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+        }
 }

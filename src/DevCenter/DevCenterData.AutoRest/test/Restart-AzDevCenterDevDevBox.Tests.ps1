@@ -16,10 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restart-AzDevCenterDevDevBox'
 
 Describe 'Restart-AzDevCenterDevDevBox' {
     It 'Restart' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+        Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName
+        }
 
     It 'RestartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
+
+        Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
+        Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+        }
 }

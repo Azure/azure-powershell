@@ -16,10 +16,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterDevDevBox')
 
 Describe 'Remove-AzDevCenterDevDevBox' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Remove-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name "devbox1" -ProjectName $env.projectName
+        { Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox1" } | Should -Throw
+
+        Remove-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name "devbox2" -ProjectName $env.projectName
+        { Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox2" } | Should -Throw
+
+        }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $devBoxInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox3" }
+        $devBoxInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox4" }
+
+        Remove-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput 
+        { Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox3" } | Should -Throw
+
+        Remove-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput2
+        { Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox4" } | Should -Throw
+       }
 }

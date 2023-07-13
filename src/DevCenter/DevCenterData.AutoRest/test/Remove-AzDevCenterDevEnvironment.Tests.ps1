@@ -16,10 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterDevEnvironm
 
 Describe 'Remove-AzDevCenterDevEnvironment' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Remove-AzDevCenterDevEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete -ProjectName $env.projectName
+        { Get-AzDevCenterDevEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete } | Should -Throw
+
+        Remove-AzDevCenterDevEnvironment -DevCenter $env.devCenterName  $env.envNameToDelete2  -ProjectName $env.projectName
+        { Get-AzDevCenterDevEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete2 } | Should -Throw
+
+        }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $envInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "EnvironmentName" = $env.envNameToDelete3 }
+        $envInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "EnvironmentName" = $env.envNameToDelete4 }
+
+        Remove-AzDevCenterDevEnvironment -Endpoint $env.endpoint -InputObject $envInput
+        { Get-AzDevCenterDevEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete3 } | Should -Throw
+
+        Remove-AzDevCenterDevEnvironment -DevCenter $env.devCenterName  -InputObject $envInput2
+        { Get-AzDevCenterDevEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete4 } | Should -Throw
+
+        }
 }

@@ -13,13 +13,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterDevEnvironment
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-
+# missing identity? 
 Describe 'Set-AzDevCenterDevEnvironment' {
     It 'ReplaceExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Set-AzDevCenterDevEnvironment -Endpoint $env.endpoint -Name <String> -ProjectName $env.projectName [-UserId <String>]
+        -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+        }
 
     It 'Replace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Set-AzDevCenterDevEnvironment -Endpoint $env.endpoint -Name <String> -ProjectName $env.projectName [-UserId <String>] -Body
+        <IEnvironment>    }
 }
