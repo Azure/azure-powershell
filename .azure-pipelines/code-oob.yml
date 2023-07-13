@@ -19,6 +19,15 @@ stages:
     variables:
       NeedBumpUp: true
     steps:
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: custom
+        custom: msbuild
+        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
+    - pwsh: |
+          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
+      displayName: 'Bump up version'
     - task: PowerShell@2
       displayName: get changelog info
       name: outputinfo
@@ -79,17 +88,6 @@ stages:
           } else {
               echo "##vso[task.setvariable variable=BumpUpBranch;isOutput=true]none"
           }
-    - task: DotNetCoreCLI@2
-      displayName: Build
-      condition: and(succeeded(), eq(variables['NeedBumpUp'], 'true'))
-      inputs:
-        command: custom
-        custom: msbuild
-        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
-    - pwsh: |
-          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
-      displayName: 'Bump up version'
-      condition: and(succeeded(), eq(variables['NeedBumpUp'], 'true'))
     - task: AzurePowerShell@5
       inputs:
           azureSubscription: '$(AzureSubscription)'
