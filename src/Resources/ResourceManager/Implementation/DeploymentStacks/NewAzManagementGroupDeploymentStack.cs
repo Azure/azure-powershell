@@ -205,7 +205,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Tag = TagsConversionHelper.CreateTagHashtable(currentStack.Tags);
                 }
  
-
                 Action createOrUpdateAction = () =>
                 {
                     var deploymentStack = DeploymentStacksSdkClient.ManagementGroupCreateOrUpdateDeploymentStack(
