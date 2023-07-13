@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed network IP address range of network rule.")]
-        [ValidateCount(0, 127)]
         [ValidateNotNull]
         public string[] IpAddressRange { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies allowed virtual network resource identifier of network rule.")]
-        [ValidateCount(0, 127)]
         [ValidateNotNull]
         public string[] VirtualNetworkResourceId { get; set; }
 

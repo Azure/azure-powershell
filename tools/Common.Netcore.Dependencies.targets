@@ -3,22 +3,22 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24"/>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Monitor" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.PolicyInsights" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.76-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.76-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Monitor" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.PolicyInsights" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Storage.Management" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.78-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.78-preview"/>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
@@ -37,7 +37,7 @@
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-    <StorageToolsPath>$(NugetPackageRoot)\microsoft.azure.powershell.storage\1.3.76-preview\tools\</StorageToolsPath>
+    <StorageToolsPath>$(NugetPackageRoot)\microsoft.azure.powershell.storage\1.3.78-preview\tools\</StorageToolsPath>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>

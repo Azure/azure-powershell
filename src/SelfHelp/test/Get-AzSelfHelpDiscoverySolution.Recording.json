@@ -1,0 +1,49 @@
+{
+  "Get-AzSelfHelpDiscoverySolution+[NoContext]+List+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/nbz6t0k2xj/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": ["1"],
+        "x-ms-client-request-id": ["fab9b88d-cb99-4917-84ed-a6d6690256d0"],
+        "CommandName": ["Get-AzSelfHelpDiscoverySolution"],
+        "FullCommandName": ["Get-AzSelfHelpDiscoverySolution_List"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.3.4",
+          "Az.SelfHelp/0.1.0"
+        ],
+        "Authorization": ["[Filtered]"]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-request-id": ["5162fc78-bee2-4144-805a-ac802c91848a"],
+        "x-ms-ratelimit-remaining-subscription-reads": ["11999"],
+        "Server": ["Microsoft-IIS/10.0"],
+        "X-Powered-By": ["ASP.NET"],
+        "x-ms-correlation-request-id": ["5162fc78-bee2-4144-805a-ac802c91848a"],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20230511T161718Z:5162fc78-bee2-4144-805a-ac802c91848a"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Thu, 11 May 2023 16:17:18 GMT"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["105"],
+        "Content-Type": ["application/json"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Gateway-Public-Dev-useast/providers/Microsoft.Network/applicationGateways/DiagRp-AppGw-Public-Dev-bl/providers/Microsoft.Help/discoverySolutions/AppGwBlockedNetworkRoutesAzurePortalInsight\",\"name\":\"AppGwBlockedNetworkRoutesAzurePortalInsight\",\"type\":\"Microsoft.Help/discoverySolutions\",\"properties\":{\"solutionId\":\"AppGwBlockedNetworkRoutesAzurePortalInsight\",\"solutionType\":\"Diagnostics\",\"description\":\"Helps diagnose blocking routes for application gateway management/outbound-internet traffic.\",\"requiredParameterSets\":[[\"ResourceUri\"]]}},{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Gateway-Public-Dev-useast/providers/Microsoft.Network/applicationGateways/DiagRp-AppGw-Public-Dev-bl/providers/Microsoft.Help/discoverySolutions/AppGwControlPlaneConnectivityAzurePortalInsight\",\"name\":\"AppGwControlPlaneConnectivityAzurePortalInsight\",\"type\":\"Microsoft.Help/discoverySolutions\",\"properties\":{\"solutionId\":\"AppGwControlPlaneConnectivityAzurePortalInsight\",\"solutionType\":\"Diagnostics\",\"description\":\"Helps diagnose application gateway control-plane connectivity issues\",\"requiredParameterSets\":[[\"ResourceUri\"]]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

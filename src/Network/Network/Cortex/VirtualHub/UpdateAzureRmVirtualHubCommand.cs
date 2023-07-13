@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,14 +79,12 @@ namespace Microsoft.Azure.Commands.Network
         public string AddressPrefix { get; set; }
 
         public const String ChangeDesc = "HubVnetConnection parameter is deprecated. Use *VirtualHubVnetConnection* commands";
-        [CmdletParameterBreakingChange("HubVnetConnection", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
 
         public const String RTv1ChangeDesc = "Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.";
-        [CmdletParameterBreakingChange("RouteTable", ChangeDescription = RTv1ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The route table associated with this Virtual Hub.")]
@@ -104,7 +102,6 @@ namespace Microsoft.Azure.Commands.Network
         public string Sku { get; set; }
 
         public const String PreferredGWChangeDesc = "PreferredRoutingGateway parameter will be deprecated. Use *HubRoutingPreference* parameter";
-        [CmdletParameterBreakingChange("PreferredRoutingGateway", ChangeDescription = PreferredGWChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Preferred Routing Gateway to Route On-Prem traffic from VNET")]

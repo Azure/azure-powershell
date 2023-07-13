@@ -1570,3 +1570,84 @@ function Test-VirtualNetworkGatewayMultiAuth
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway AdminState test
+#>
+function Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState
+{
+ # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $vnetGatewayConfigName2 = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "centraluseuap"
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static 
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -AdminState "Enabled" 
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "ExpressRoute" $expected.GatewayType
+	  Assert-AreEqual "Enabled" $expected.AdminState
+
+      # Create a second gateway
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Static 
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip -Subnet $subnet
+
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2 -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -AdminState "Enabled" 
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "ExpressRoute" $expected.GatewayType
+	  Assert-AreEqual "Enabled" $expected.AdminState
+
+      # Update second gw to disabled Adminstate
+      $vng2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
+      $vng2.Adminstate = "Disabled";
+      Set-AzVirtualNetworkGateway -VirtualNetworkGateway $vng2
+
+      $vng2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2	
+	  Assert-AreEqual "Disabled" $vng2.AdminState
+      
+      # Delete both virtualNetworkGateways
+      $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+
+      $delete = Remove-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2 -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}

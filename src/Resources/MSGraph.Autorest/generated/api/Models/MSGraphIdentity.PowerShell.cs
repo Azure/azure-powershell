@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
             }
+            if (content.Contains("DirectoryObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).DirectoryObjectId = (string) content.GetValueForProperty("DirectoryObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).DirectoryObjectId, global::System.Convert.ToString);
+            }
             if (content.Contains("MemberId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId = (string) content.GetValueForProperty("MemberId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).MemberId, global::System.Convert.ToString);
@@ -168,6 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
             if (content.Contains("GroupId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DirectoryObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).DirectoryObjectId = (string) content.GetValueForProperty("DirectoryObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).DirectoryObjectId, global::System.Convert.ToString);
             }
             if (content.Contains("MemberId"))
             {

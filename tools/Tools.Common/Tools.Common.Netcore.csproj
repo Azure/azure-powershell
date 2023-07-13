@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <Content Include="SerializedCmdlets\*.json" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="AllowList.csv" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AzureStackExceptions.csv" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

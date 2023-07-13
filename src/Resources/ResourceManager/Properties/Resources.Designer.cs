@@ -359,6 +359,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The deployment &apos;{0}&apos; failed with error(s). Showing {1} out of {2} error(s)..
+        /// </summary>
+        internal static string DeploymentStackOperationOuterError {
+            get {
+                return ResourceManager.GetString("DeploymentStackOperationOuterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find a deployment with name &apos;{0}&apos;..
         /// </summary>
         internal static string DeploymentWithNameNotFound {

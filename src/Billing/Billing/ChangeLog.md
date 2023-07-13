@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.3
+* Fixed page continuation for Consumption PriceSheet cmdlet
+
 ## Version 2.0.2
 * Fixed skip token for Consumption PriceSheet cmdlet
 

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Upgraded API version to 2023-05-01
 * Fixed known issue for `Update-AzCdnProfile`, `Update-AzFrontDoorCdnProfile`, `Remove-AzCdnProfile`, `Remove-AzCdnProfile`
 

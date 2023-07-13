@@ -535,6 +535,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='deploymentName'>
         /// The name of the deployment associated with the Cognitive Services Account
         /// </param>
+        /// <param name='sku'>
+        /// </param>
         /// <param name='properties'>
         /// Properties of Cognitive Services account deployment.
         /// </param>
@@ -544,10 +546,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Deployment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Deployment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Deployment> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<Deployment> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, sku, properties, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -590,6 +592,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='deploymentName'>
         /// The name of the deployment associated with the Cognitive Services Account
         /// </param>
+        /// <param name='sku'>
+        /// </param>
         /// <param name='properties'>
         /// Properties of Cognitive Services account deployment.
         /// </param>
@@ -614,7 +618,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Deployment>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Deployment>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -676,9 +680,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "deploymentName");
             }
-            Deployment deployment = new Deployment();
-            if (properties != null)
+            if (sku != null)
             {
+                sku.Validate();
+            }
+            Deployment deployment = new Deployment();
+            if (sku != null || properties != null)
+            {
+                deployment.Sku = sku;
                 deployment.Properties = properties;
             }
             // Tracing

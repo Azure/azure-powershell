@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Management.CognitiveServices
         public virtual IResourceSkusOperations ResourceSkus { get; private set; }
 
         /// <summary>
+        /// Gets the IUsagesOperations.
+        /// </summary>
+        public virtual IUsagesOperations Usages { get; private set; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -100,6 +105,11 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Gets the ICommitmentTiersOperations.
         /// </summary>
         public virtual ICommitmentTiersOperations CommitmentTiers { get; private set; }
+
+        /// <summary>
+        /// Gets the IModelsOperations.
+        /// </summary>
+        public virtual IModelsOperations Models { get; private set; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.
@@ -365,14 +375,16 @@ namespace Microsoft.Azure.Management.CognitiveServices
             Accounts = new AccountsOperations(this);
             DeletedAccounts = new DeletedAccountsOperations(this);
             ResourceSkus = new ResourceSkusOperations(this);
+            Usages = new UsagesOperations(this);
             Operations = new Operations(this);
             CommitmentTiers = new CommitmentTiersOperations(this);
+            Models = new ModelsOperations(this);
             PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
             PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             Deployments = new DeploymentsOperations(this);
             CommitmentPlans = new CommitmentPlansOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-12-01";
+            ApiVersion = "2023-05-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

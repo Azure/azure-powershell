@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 2.12.4
+* Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].
+* Enabled customers to login with an valid domain using Service Principal [#20728]
+
 ## Version 2.12.3
 * Updated System.Security.Permissions to 4.7.0.
 
