@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateHyperscaleElasticPoolReplicaCount");
         }
 
-        [Fact(Skip = "Cannot re-record. Need MS changes to deploy till canary region.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdateWithPreferredEnclaveType()
         {
