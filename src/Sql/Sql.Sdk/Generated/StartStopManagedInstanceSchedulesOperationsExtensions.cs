@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Management.Sql
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for ManagedInstanceVulnerabilityAssessmentsOperations.
+    /// Extension methods for StartStopManagedInstanceSchedulesOperations.
     /// </summary>
-    public static partial class ManagedInstanceVulnerabilityAssessmentsOperationsExtensions
+    public static partial class StartStopManagedInstanceSchedulesOperationsExtensions
     {
             /// <summary>
-            /// Gets the managed instance's vulnerability assessment.
+            /// Lists the managed instance's Start/Stop schedules.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -32,155 +32,15 @@ namespace Microsoft.Azure.Management.Sql
             /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
+            /// The name of the managed instance.
             /// </param>
-            public static ManagedInstanceVulnerabilityAssessment Get(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName)
-            {
-                return operations.GetAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets the managed instance's vulnerability assessment.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ManagedInstanceVulnerabilityAssessment> GetAsync(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Creates or updates the managed instance's vulnerability assessment. Learn
-            /// more about setting SQL vulnerability assessment with managed identity -
-            /// https://docs.microsoft.com/azure/azure-sql/database/sql-database-vulnerability-assessment-storage
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested resource.
-            /// </param>
-            public static ManagedInstanceVulnerabilityAssessment CreateOrUpdate(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceVulnerabilityAssessment parameters)
-            {
-                return operations.CreateOrUpdateAsync(resourceGroupName, managedInstanceName, parameters).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Creates or updates the managed instance's vulnerability assessment. Learn
-            /// more about setting SQL vulnerability assessment with managed identity -
-            /// https://docs.microsoft.com/azure/azure-sql/database/sql-database-vulnerability-assessment-storage
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
-            /// </param>
-            /// <param name='parameters'>
-            /// The requested resource.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<ManagedInstanceVulnerabilityAssessment> CreateOrUpdateAsync(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName, ManagedInstanceVulnerabilityAssessment parameters, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, parameters, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Removes the managed instance's vulnerability assessment.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
-            /// </param>
-            public static void Delete(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName)
-            {
-                operations.DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Removes the managed instance's vulnerability assessment.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessment is
-            /// defined.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task DeleteAsync(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Gets the managed instance's vulnerability assessment policies.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessments is
-            /// defined.
-            /// </param>
-            public static IPage<ManagedInstanceVulnerabilityAssessment> ListByInstance(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName)
+            public static IPage<StartStopManagedInstanceSchedule> ListByInstance(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName)
             {
                 return operations.ListByInstanceAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the managed instance's vulnerability assessment policies.
+            /// Lists the managed instance's Start/Stop schedules.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -190,13 +50,12 @@ namespace Microsoft.Azure.Management.Sql
             /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='managedInstanceName'>
-            /// The name of the managed instance for which the vulnerability assessments is
-            /// defined.
+            /// The name of the managed instance.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ManagedInstanceVulnerabilityAssessment>> ListByInstanceAsync(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<StartStopManagedInstanceSchedule>> ListByInstanceAsync(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByInstanceWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -205,7 +64,136 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets the managed instance's vulnerability assessment policies.
+            /// Gets the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static StartStopManagedInstanceSchedule Get(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                return operations.GetAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StartStopManagedInstanceSchedule> GetAsync(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='parameters'>
+            /// The requested managed instance Start/Stop schedule.
+            /// </param>
+            public static StartStopManagedInstanceSchedule CreateOrUpdate(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName, StartStopManagedInstanceSchedule parameters)
+            {
+                return operations.CreateOrUpdateAsync(resourceGroupName, managedInstanceName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='parameters'>
+            /// The requested managed instance Start/Stop schedule.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StartStopManagedInstanceSchedule> CreateOrUpdateAsync(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName, StartStopManagedInstanceSchedule parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static void Delete(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                operations.DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes the managed instance's Start/Stop schedule.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this IStartStopManagedInstanceSchedulesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Lists the managed instance's Start/Stop schedules.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -213,13 +201,13 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<ManagedInstanceVulnerabilityAssessment> ListByInstanceNext(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string nextPageLink)
+            public static IPage<StartStopManagedInstanceSchedule> ListByInstanceNext(this IStartStopManagedInstanceSchedulesOperations operations, string nextPageLink)
             {
                 return operations.ListByInstanceNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the managed instance's vulnerability assessment policies.
+            /// Lists the managed instance's Start/Stop schedules.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -230,7 +218,7 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ManagedInstanceVulnerabilityAssessment>> ListByInstanceNextAsync(this IManagedInstanceVulnerabilityAssessmentsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<StartStopManagedInstanceSchedule>> ListByInstanceNextAsync(this IStartStopManagedInstanceSchedulesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByInstanceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

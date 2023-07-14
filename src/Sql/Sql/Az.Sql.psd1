@@ -302,13 +302,21 @@ CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh',
                'Set-AzSqlServerConfigurationOption', 
                'Enable-AzSqlInstanceDatabaseLedgerDigestUpload', 
                'Disable-AzSqlInstanceDatabaseLedgerDigestUpload', 
-               'Get-AzSqlInstanceDatabaseLedgerDigestUpload', 
-               'Copy-AzSqlInstanceDatabase', 'Move-AzSqlInstanceDatabase', 
-               'Complete-AzSqlInstanceDatabaseMove', 
-               'Complete-AzSqlInstanceDatabaseCopy', 
-               'Stop-AzSqlInstanceDatabaseMove', 'Stop-AzSqlInstanceDatabaseCopy', 
-               'Get-AzSqlInstanceDatabaseCopyOperation', 
-               'Get-AzSqlInstanceDatabaseMoveOperation'
+               'Get-AzSqlInstanceDatabaseLedgerDigestUpload',
+               'Copy-AzSqlInstanceDatabase',
+               'Move-AzSqlInstanceDatabase',
+               'Complete-AzSqlInstanceDatabaseMove',
+               'Complete-AzSqlInstanceDatabaseCopy',
+               'Stop-AzSqlInstanceDatabaseMove',
+               'Stop-AzSqlInstanceDatabaseCopy',
+               'Get-AzSqlInstanceDatabaseCopyOperation',
+               'Get-AzSqlInstanceDatabaseMoveOperation',
+               'Start-AzSqlInstance',
+               'Stop-AzSqlInstance',
+               'Get-AzSqlInstanceStartStopSchedule',
+               'New-AzSqlInstanceStartStopSchedule',
+               'Remove-AzSqlInstanceStartStopSchedule',
+               'New-AzSqlInstanceScheduleItem'
 
 # Variables to export from this module
 # VariablesToExport = @()

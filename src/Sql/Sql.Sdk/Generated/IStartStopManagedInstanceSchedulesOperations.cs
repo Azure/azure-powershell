@@ -19,21 +19,20 @@ namespace Microsoft.Azure.Management.Sql
     using System.Threading.Tasks;
 
     /// <summary>
-    /// ServerVulnerabilityAssessmentsOperations operations.
+    /// StartStopManagedInstanceSchedulesOperations operations.
     /// </summary>
-    public partial interface IServerVulnerabilityAssessmentsOperations
+    public partial interface IStartStopManagedInstanceSchedulesOperations
     {
         /// <summary>
-        /// Gets the server's vulnerability assessment.
+        /// Lists the managed instance's Start/Stop schedules.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
         /// portal.
         /// </param>
-        /// <param name='serverName'>
-        /// The name of the server for which the vulnerability assessment is
-        /// defined.
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,24 +49,47 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerVulnerabilityAssessment>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<StartStopManagedInstanceSchedule>>> ListByInstanceWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Creates or updates the server's vulnerability assessment. Learn
-        /// more about setting SQL vulnerability assessment with managed
-        /// identity -
-        /// https://docs.microsoft.com/azure/azure-sql/database/sql-database-vulnerability-assessment-storage
+        /// Gets the managed instance's Start/Stop schedule.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
         /// portal.
         /// </param>
-        /// <param name='serverName'>
-        /// The name of the server for which the vulnerability assessment is
-        /// defined.
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StartStopManagedInstanceSchedule>> GetWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates the managed instance's Start/Stop schedule.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
         /// </param>
         /// <param name='parameters'>
-        /// The requested resource.
+        /// The requested managed instance Start/Stop schedule.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -84,18 +106,17 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ServerVulnerabilityAssessment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, ServerVulnerabilityAssessment parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StartStopManagedInstanceSchedule>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, StartStopManagedInstanceSchedule parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Removes the server's vulnerability assessment.
+        /// Deletes the managed instance's Start/Stop schedule.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can
         /// obtain this value from the Azure Resource Manager API or the
         /// portal.
         /// </param>
-        /// <param name='serverName'>
-        /// The name of the server for which the vulnerability assessment is
-        /// defined.
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -109,38 +130,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Lists the vulnerability assessment policies associated with a
-        /// server.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can
-        /// obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<ServerVulnerabilityAssessment>>> ListByServerWithHttpMessagesAsync(string resourceGroupName, string serverName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Lists the vulnerability assessment policies associated with a
-        /// server.
+        /// Lists the managed instance's Start/Stop schedules.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -160,6 +152,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ServerVulnerabilityAssessment>>> ListByServerNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<StartStopManagedInstanceSchedule>>> ListByInstanceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
