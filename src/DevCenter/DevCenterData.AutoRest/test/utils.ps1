@@ -97,7 +97,6 @@ function setupEnv() {
     $env.Add("timeZone", $timeZone)
     $env.Add("subnetId", $subnetId)
 
-
     $devboxTemplate = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
     $devboxTemplate.parameters.managedIdentityName.value = $managedIdentityName
     $devboxTemplate.parameters.subscriptionId.value = $env.SubscriptionId
@@ -162,11 +161,37 @@ function setupEnv() {
     $env.Add("envNameToDelete4", $envNameToDelete4)
     $sandbox = "Sandbox"
     $functionApp = "FunctionApp"
-    $functionAppParameters = @{"name" = "pwsh-envTest" }
+    $functionAppName1 = RandomString -allChars $false -len 6
+    $functionAppParameters = @{"name" = $functionAppName1 }
     $env.Add("sandbox", $sandbox)
     $env.Add("functionApp", $functionApp)
+    $env.Add("functionAppName1", $functionAppName1)
     $env.Add("functionAppParameters", $functionAppParameters)
 
+    $functionAppName2 = RandomString -allChars $false -len 6
+    $functionAppName3 = RandomString -allChars $false -len 6
+    $functionAppName4 = RandomString -allChars $false -len 6
+    $functionAppName5 = RandomString -allChars $false -len 6
+    $functionAppName6 = RandomString -allChars $false -len 6
+    $functionAppName7 = RandomString -allChars $false -len 6
+    $functionAppName8 = RandomString -allChars $false -len 6
+    $functionAppName9 = RandomString -allChars $false -len 6
+    $functionAppName10 = RandomString -allChars $false -len 6
+    $functionAppName11 = RandomString -allChars $false -len 6
+    $functionAppName12 = RandomString -allChars $false -len 6
+    $functionAppName13 = RandomString -allChars $false -len 6
+    $env.Add("functionAppName2", $functionAppName2)
+    $env.Add("functionAppName3", $functionAppName3)
+    $env.Add("functionAppName4", $functionAppName4)
+    $env.Add("functionAppName5", $functionAppName5)
+    $env.Add("functionAppName6", $functionAppName6)
+    $env.Add("functionAppName7", $functionAppName7)
+    $env.Add("functionAppName8", $functionAppName8)
+    $env.Add("functionAppName9", $functionAppName9)
+    $env.Add("functionAppName10", $functionAppName10)
+    $env.Add("functionAppName11", $functionAppName11)
+    $env.Add("functionAppName12", $functionAppName12)
+    $env.Add("functionAppName13", $functionAppName13)
 
     New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
     New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2

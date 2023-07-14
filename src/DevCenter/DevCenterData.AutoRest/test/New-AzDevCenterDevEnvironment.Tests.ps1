@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterDevEnvironment
 
 Describe 'New-AzDevCenterDevEnvironment' {
     It 'CreateExpanded' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName6 }
 
         $environment = New-AzDevCenterDevEnvironment -Endpoint $env.endpoint -Name "envtest1" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
         $environment.CatalogName | Should -Be $env.catalogName
@@ -35,7 +35,7 @@ Describe 'New-AzDevCenterDevEnvironment' {
         }
 
     It 'Create' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName7 }
         $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
         $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
 
@@ -59,7 +59,7 @@ Describe 'New-AzDevCenterDevEnvironment' {
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest5"}
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest6"}
 
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName8 }
         $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
         $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
 
@@ -79,7 +79,7 @@ Describe 'New-AzDevCenterDevEnvironment' {
         }
 
     It 'CreateViaIdentity' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName9 }
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7"}
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8"}
 

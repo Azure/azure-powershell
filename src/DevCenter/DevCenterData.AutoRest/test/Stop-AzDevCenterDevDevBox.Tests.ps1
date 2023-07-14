@@ -16,13 +16,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzDevCenterDevDevBox'))
 
 Describe 'Stop-AzDevCenterDevDevBox' {
     It 'Stop' -skip {
-        Stop-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
-        Stop-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName     }
+        $stopAction = Stop-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+        $stopAction.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Stopped"
+        $devBox.PowerState | Should -Be "Hibernated"
+
+        $stopAction = Stop-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName  
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Stopped"
+        $devBox.PowerState | Should -Be "Hibernated"
+   
+    }
 
     It 'StopViaIdentity' -skip {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
 
-        Stop-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
-        Stop-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput  
+        $stopAction = Stop-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
+        $stopAction.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Stopped"
+        $devBox.PowerState | Should -Be "Hibernated"
+
+        $stopAction = Stop-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput 
+        $stopAction.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Stopped"
+        $devBox.PowerState | Should -Be "Hibernated"
+ 
       }
 }

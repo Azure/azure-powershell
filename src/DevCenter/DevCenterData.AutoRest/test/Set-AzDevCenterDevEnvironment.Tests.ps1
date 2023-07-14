@@ -13,10 +13,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterDevEnvironment
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-# missing identity? 
 Describe 'Set-AzDevCenterDevEnvironment' {
     It 'ReplaceExpanded' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName10 }
 
         $environment = Set-AzDevCenterDevEnvironment -Endpoint $env.endpoint -Name "envtest1" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
         $environment.CatalogName | Should -Be $env.catalogName
@@ -35,7 +34,7 @@ Describe 'Set-AzDevCenterDevEnvironment' {
         }
 
     It 'Replace' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName11}
         $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
         $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
 
@@ -59,7 +58,7 @@ Describe 'Set-AzDevCenterDevEnvironment' {
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest5"}
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest6"}
 
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName12 }
         $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
         $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
 
@@ -79,7 +78,7 @@ Describe 'Set-AzDevCenterDevEnvironment' {
         }
 
     It 'ReplaceViaIdentity' -skip {
-        $functionAppParameters = @{"name" = "pwsh-envTest" }
+        $functionAppParameters = @{"name" = $env.functionAppName13 }
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7"}
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8"}
 

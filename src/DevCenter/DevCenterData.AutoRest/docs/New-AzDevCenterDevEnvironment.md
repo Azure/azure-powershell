@@ -364,7 +364,8 @@ To create the parameters described below, construct a hash table containing the 
   - `CatalogName <String>`: Name of the catalog.
   - `DefinitionName <String>`: Name of the environment definition.
   - `Type <String>`: Environment type.
-  - `[Parameter <IAny>]`: Parameters object for the environment.
+  - `[Parameter <IEnvironmentUpdatePropertiesParameters>]`: Parameters object for the environment.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
   - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
     - `Code <String>`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.

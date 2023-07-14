@@ -16,14 +16,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restart-AzDevCenterDevDevBox'
 
 Describe 'Restart-AzDevCenterDevDevBox' {
     It 'Restart' -skip {
-        Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
-        Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName
+        $restartOperation = Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+        $restartOperation.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Started"
+        $devBox.PowerState | Should -Be "Running"
+
+        $restartOperation = Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName
+        $restartOperation.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Started"
+        $devBox.PowerState | Should -Be "Running"
         }
 
     It 'RestartViaIdentity' -skip {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
 
-        Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
-        Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+        $restartOperation = Restart-AzDevCenterDevDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
+        $restartOperation.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Started"
+        $devBox.PowerState | Should -Be "Running"
+
+        $restartOperation = Restart-AzDevCenterDevDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+        $restartOperation.Status | Should -Be "Succeeded"
+        $devBox = Get-AzDevCenterDevDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox.ActionState | Should -Be "Started"
+        $devBox.PowerState | Should -Be "Running"
         }
 }
