@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.CosmosDB.Models;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models
+namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     public class PSMaterializedViewDefinition
     {
@@ -24,6 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models
 
         public PSMaterializedViewDefinition(MaterializedViewDefinition materializedViewDefinition)
         {
+            if (materializedViewDefinition == null)
+            {
+                return;
+            }
+
             this.SourceCollectionId = materializedViewDefinition.SourceCollectionId;
             this.SourceCollectionRid = materializedViewDefinition.SourceCollectionRid;
             this.Definition = materializedViewDefinition.Definition;
