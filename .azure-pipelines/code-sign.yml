@@ -17,10 +17,11 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-          git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
-          git fetch origin
-          git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
-    condition: and(succeeded(), ne('${{ parameters.OOBBranch }}', 'none'))
+          if ('${{ parameters.OOBBranch }}' -ne 'none') {
+            git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+            git fetch origin
+            git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
+          }
   - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
     displayName: 'Install platyPS'
 
