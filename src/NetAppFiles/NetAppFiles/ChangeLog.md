@@ -18,11 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-    * Updated to api-version 2022-11-01
-        - Additional information about change #1
+    * Updated to api-version 2022-11-01        
     * Added `Identity` to NetAppAccountPatch
-        - Additional information about change #2
-        - Additional information about change #2
     * Added `ActualThroughputMibps` and `OriginatingResourceId`
     * Added `SnapshotDirectoryVisible` to Update-AzNetAppFilesVolume
         - If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
