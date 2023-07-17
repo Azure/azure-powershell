@@ -301,6 +301,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 }
 
                 virtualMachineConfiguration.omObject.DataDisks = CreateSyncedList(virtualMachineConfiguration.DataDisks, ps => ps.omObject);
+                virtualMachineConfiguration.omObject.Extensions = CreateSyncedList(virtualMachineConfiguration.Extensions, ps => ps.omObject);
             }
         }
 

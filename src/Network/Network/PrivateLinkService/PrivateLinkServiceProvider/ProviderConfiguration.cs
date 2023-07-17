@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DeviceUpdate/accounts", "2020-03-01-preview", true, true);
             RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01", true, true);
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview", true, true);
+            RegisterConfiguration("Microsoft.ElasticSan/elasticSans", "2022-12-01-preview", true, false);
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);

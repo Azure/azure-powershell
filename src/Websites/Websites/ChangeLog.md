@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added AppServicePlan management support for P0V3 and P*mv3 tiers
 
 ## Version 3.0.1
 * Increased timeout for Publish-AzWebApp command
