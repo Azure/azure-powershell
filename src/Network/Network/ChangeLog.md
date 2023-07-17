@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
 
 ## Version 6.1.0
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.
