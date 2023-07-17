@@ -1260,7 +1260,7 @@ function Test-ApplicationGatewayBasicSkuCRUD
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -1397,7 +1397,7 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -1575,7 +1575,7 @@ function Test-ApplicationGatewayBasicSkuMigration
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
