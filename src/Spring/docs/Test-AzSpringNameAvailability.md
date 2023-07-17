@@ -12,8 +12,40 @@ Checks that the resource name is valid and is not already in use.
 
 ## SYNTAX
 
+### CheckExpanded (Default)
 ```
 Test-AzSpringNameAvailability -Location <String> -Name <String> -Type <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Check
+```
+Test-AzSpringNameAvailability -Location <String> -AvailabilityParameter <INameAvailabilityParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzSpringNameAvailability -InputObject <ISpringIdentity>
+ -AvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzSpringNameAvailability -InputObject <ISpringIdentity> -Name <String> -Type <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzSpringNameAvailability -Location <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzSpringNameAvailability -Location <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,6 +69,22 @@ Checks that the resource name is valid and is not already in use.
 
 ## PARAMETERS
 
+### -AvailabilityParameter
+Name availability parameters payload
+To construct, see NOTES section for AVAILABILITYPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.INameAvailabilityParameters
+Parameter Sets: Check, CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -53,12 +101,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 the region
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: True
@@ -73,7 +167,7 @@ Name to be checked
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -89,7 +183,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: False
@@ -104,7 +198,7 @@ Type of the resource to check name availability
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -150,13 +244,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.INameAvailabilityParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.INameAvailability
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.INameAvailability
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

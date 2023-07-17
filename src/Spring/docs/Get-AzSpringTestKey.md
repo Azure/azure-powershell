@@ -13,7 +13,7 @@ List test keys for a Service.
 ## SYNTAX
 
 ```
-Get-AzSpringTestKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzSpringTestKey -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,8 +53,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Service resource.
+### -ResourceGroupName
+The name of the resource group that contains the resource.
+You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
@@ -68,9 +69,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group that contains the resource.
-You can obtain this value from the Azure Resource Manager API or the portal.
+### -ServiceName
+The name of the Service resource.
 
 ```yaml
 Type: System.String
@@ -138,11 +138,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ITestKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ITestKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

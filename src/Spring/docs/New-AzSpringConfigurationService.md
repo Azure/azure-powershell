@@ -12,10 +12,39 @@ Create the default Application Configuration Service or update the existing Appl
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>]
  [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentitySpring
+```
+New-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
+ -ConfigurationServiceResource <IConfigurationServiceResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentitySpringExpanded
+```
+New-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +83,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConfigurationServiceResource
+Application Configuration Service resource
+To construct, see NOTES section for CONFIGURATIONSERVICERESOURCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
+Parameter Sets: CreateViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,11 +120,41 @@ Repositories of Application Configuration Service git property.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IConfigurationServiceGitRepository[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceGitRepository[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,7 +182,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -122,7 +197,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -132,13 +207,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -184,31 +275,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IConfigurationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`GITREPOSITORY <IConfigurationServiceGitRepository[]>`: Repositories of Application Configuration Service git property.
-  - `Label <String>`: Label of the repository
-  - `Name <String>`: Name of the repository
-  - `Pattern <String[]>`: Collection of patterns of the repository
-  - `Uri <String>`: URI of the repository
-  - `[HostKey <String>]`: Public sshKey of git repository.
-  - `[HostKeyAlgorithm <String>]`: SshKey algorithm of git repository.
-  - `[Password <String>]`: Password of git repository basic auth.
-  - `[PrivateKey <String>]`: Private sshKey algorithm of git repository.
-  - `[SearchPath <String[]>]`: Searching path of the repository
-  - `[StrictHostKeyChecking <Boolean?>]`: Strict host key checking or not.
-  - `[Username <String>]`: Username of git repository basic auth.
 
 ## RELATED LINKS
 

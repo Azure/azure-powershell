@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentSourceUploadedObject
+online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentsourceuploadedobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentSourceUploadedObject [-ArtifactSelector <String>] [-RuntimeVersion <String>]
- [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentSourceUploadedObject [-ArtifactSelector <String>] [-RelativePath <String>]
+ [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Selector for the artifact to be used for the deployment for multi-module projects.
 This should be
         the relative path to the target module/project.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelativePath
+Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String
@@ -91,11 +106,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.SourceUploadedUserSourceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.SourceUploadedUserSourceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

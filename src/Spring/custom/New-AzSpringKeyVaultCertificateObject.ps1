@@ -21,41 +21,40 @@ Create an in-memory object for KeyVaultCertificateProperties.
 Create an in-memory object for KeyVaultCertificateProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.KeyVaultCertificateProperties
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.KeyVaultCertificateProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringKeyVaultCertificateObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringkeyvaultcertificateobject
 #>
 function New-AzSpringKeyVaultCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.KeyVaultCertificateProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.KeyVaultCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The certificate version of key vault.")]
         [string]
-        $Version,
+        $CertVersion,
         [Parameter(HelpMessage="Optional. If set to true, it will not import private key from key vault.")]
         [bool]
         $ExcludePrivateKey,
         [Parameter(Mandatory, HelpMessage="The certificate name of key vault.")]
         [string]
-        $Name,
+        $KeyVaultCertName,
         [Parameter(Mandatory, HelpMessage="The vault uri of user key vault.")]
         [string]
         $VaultUri
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.KeyVaultCertificateProperties]::New()
-        $Object.Type = "KeyVaultCertificate"
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.KeyVaultCertificateProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('Version')) {
-            $Object.CertVersion = $Version
+        if ($PSBoundParameters.ContainsKey('CertVersion')) {
+            $Object.CertVersion = $CertVersion
         }
         if ($PSBoundParameters.ContainsKey('ExcludePrivateKey')) {
             $Object.ExcludePrivateKey = $ExcludePrivateKey
         }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.KeyVaultCertName = $Name
+        if ($PSBoundParameters.ContainsKey('KeyVaultCertName')) {
+            $Object.KeyVaultCertName = $KeyVaultCertName
         }
         if ($PSBoundParameters.ContainsKey('VaultUri')) {
             $Object.VaultUri = $VaultUri

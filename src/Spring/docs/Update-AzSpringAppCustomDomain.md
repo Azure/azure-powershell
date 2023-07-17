@@ -19,10 +19,52 @@ Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -ResourceGroupNa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityApp
+```
+Update-AzSpringAppCustomDomain -AppInputObject <ISpringIdentity> -Name <String>
+ -DomainResource <ICustomDomainResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityAppExpanded
+```
+Update-AzSpringAppCustomDomain -AppInputObject <ISpringIdentity> -Name <String> [-CertName <String>]
+ [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSpringAppCustomDomain -InputObject <ISpringIdentity> [-CertName <String>] [-Thumbprint <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpring
+```
+Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
+ -DomainResource <ICustomDomainResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
+ [-CertName <String>] [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,12 +102,28 @@ Update custom domain of one lifecycle application by pipeline.
 
 ## PARAMETERS
 
+### -AppInputObject
+Identity Parameter
+To construct, see NOTES section for APPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentityAppExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AppName
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -95,7 +153,7 @@ The bound certificate name of domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -121,6 +179,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainResource
+Custom domain resource payload.
+To construct, see NOTES section for DOMAINRESOURCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainResource
+Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -137,12 +211,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the custom domain resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApp, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -173,7 +277,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -188,7 +292,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -198,13 +302,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -219,7 +339,7 @@ The thumbprint of bound certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -265,42 +385,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainResource
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ICustomDomainResource
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISpringIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
-  - `[AppName <String>]`: The name of the App resource.
-  - `[BindingName <String>]`: The name of the Binding resource.
-  - `[BuildName <String>]`: The name of the build resource.
-  - `[BuildResultName <String>]`: The name of the build result resource.
-  - `[BuildServiceName <String>]`: The name of the build service resource.
-  - `[BuilderName <String>]`: The name of the builder resource.
-  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
-  - `[BuildpackName <String>]`: The name of the buildpack resource.
-  - `[CertificateName <String>]`: The name of the certificate resource.
-  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
-  - `[DeploymentName <String>]`: The name of the Deployment resource.
-  - `[DomainName <String>]`: The name of the custom domain resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ServiceName <String>]`: The name of the Service resource.
-  - `[ServiceRegistryName <String>]`: The name of Service Registry.
-  - `[StackName <String>]`: The name of the stack resource.
-  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

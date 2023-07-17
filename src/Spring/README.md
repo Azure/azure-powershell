@@ -55,9 +55,12 @@ input-file:
     
 title: Spring
 module-version: 0.1.0
+subject-prefix: $(service-name)
+
+identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-identity-correction-for-post: true
+enable-parent-pipeline-input-for-list: false
 
 directive:
   - where:
@@ -77,51 +80,8 @@ directive:
   - where:
       verb: Set
     remove: true
-  # First rename parameter of the Get-AzSpringService, then rename cmdlet to Get-AzSpring.
-  - where: 
-      subject: ^Service$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
 
-  - where: 
-      subject: ^Service$
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
-
-  - where: 
-      subject: ^Service$
-      parameter-name: NetworkProfileAppNetworkResourceGroup
-    set:
-      parameter-name: NetworkProfileResourceGroup
-
-  - where: 
-      subject: ^Service$
-      parameter-name: NetworkProfileAppSubnetId
-    set:
-      parameter-name: NetworkProfileSubnetId
-
-  - where: 
-      subject: ^Service$
-      parameter-name: NetworkProfileServiceRuntimeNetworkResourceGroup
-    set:
-      parameter-name: NetworkProfileServiceResourceGroup
-
-  - where: 
-      subject: ^Service$
-      parameter-name: NetworkProfileServiceRuntimeSubnetId
-    set:
-      parameter-name: NetworkProfileServiceSubnetId
-  # Customization for add default locatio value when not pass location parameter
-  - where:
-      verb: New
-      subject: ^Service$
-    hide: true
-  - where:
-      subject: ^Service(.*)
-    set:
-      subject: $1
-#------------------------------------------------------------------------------
-# rename subject
+  # rename subject
   - where:
       subject: ^Binding$
     set:
@@ -143,60 +103,45 @@ directive:
       subject: AppDeploymentLogFileUrl
 
   - where:
-      subject: ^DeploymentHeapDump$
-    set:
-      subject: AppDeploymentHeapDump
-
-  - where:
-      subject: ^DeploymentThreadDump$
-    set:
-      subject: AppDeploymentThreadDump
-
-  - where:
       subject: ^DeploymentJfr$
     set:
       subject: AppDeploymentJfr
 
   - where:
-      verb: Update
       subject: ^ConfigServerPatch$
     set:
       subject: ConfigServer
 
   - where:
-      verb: Update
       subject: ^MonitoringSettingPatch$
     set:
       subject: MonitoringSetting
 
   - where:
-      verb: Test
       subject: ^AppDomain$
     set:
       subject: AppCustomDomain
-      
+
 # remove cmdlet
+  - where:
+      subject: ^DeploymentHeapDump$
+    set:
+      subject: AppDeploymentHeapDump
   - where:
       subject: AppDeploymentHeapDump
     remove: true
+
+  - where:
+      subject: ^DeploymentThreadDump$
+    set:
+      subject: AppDeploymentThreadDump
   - where:
       subject: AppDeploymentThreadDump
     remove: true
-# remove variant
-# |Certificate|ConfigurationService
+
+  # remove variant
   - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-  - where: 
-      subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
-      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
-    remove: true
-  
-  - where:
-      verb: Get
-      subject: BuildServiceBuildResultLog
-      variant: GetViaIdentity
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -204,7 +149,6 @@ directive:
       subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
       variant: List
     remove: true
-    
 
   - where: 
       subject: ^TestKey$
@@ -244,12 +188,31 @@ directive:
       variant: ^Start$|^StartViaIdentity$
     remove: true
 
+  # ReName parameter
   - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
+      subject: ^Service$
+      parameter-name: NetworkProfileAppNetworkResourceGroup
+    set:
+      parameter-name: NetworkProfileResourceGroup
 
-# rename parameter
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileAppSubnetId
+    set:
+      parameter-name: NetworkProfileSubnetId
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileServiceRuntimeNetworkResourceGroup
+    set:
+      parameter-name: NetworkProfileServiceResourceGroup
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileServiceRuntimeSubnetId
+    set:
+      parameter-name: NetworkProfileServiceSubnetId
+
   - where:
       subject: ^AppDeployment$
       parameter-name: ^DeploymentSetting(.*)
@@ -424,14 +387,25 @@ directive:
   - where:
       subject: ^BuildServiceBuild$
     hide: true
+
   - where:
       subject: ^BuildServiceBuildResult$
     hide: true
+
   - where:
       subject: ^BuildServiceBuildResultLog$
     hide: true
 
-  # Customization for add default locatio value when not pass location parameter
+  # Customization
+  - where:
+      verb: New
+      subject: ^Service$
+    hide: true
+  - where:
+      subject: ^Service(.*)
+    set:
+      subject: $1
+
   - where:
       verb: New
       subject: ^App$
@@ -537,20 +511,25 @@ directive:
     - UserSourceInfo
     - CertificateProperties
 
-  - model-cmdlet:
-      # - BuildpacksGroupProperties
-      # - BuildpackProperties
-      - ConfigurationServiceGitRepository
-      - GitPatternRepository
-      # - KeyVaultCertificateProperties
-      # - ContentCertificateProperties
-    # - LoadedCertificate
-    # --> rename  New-AzSpringLoadedCertificateObject New-AzSpringAppLoadedCertificateObject
-    # - JarUploadedUserSourceInfo
-    # --> rename New-AzSpringDeploymentJarUploadedObject --> New-AzSpringAppDeploymentJarUploadedObject
-    # - NetCoreZipUploadedUserSourceInfo
-    # --> rename New-AzSpringDeploymentNetCoreZipUploadedObject --> New-AzSpringAppDeploymentNetCoreZipUploadedObject
-    # - SourceUploadedUserSourceInfo
-    # --> rename New-AzSpringDeploymentSourceUploadedObject --> New-AzSpringAppDeploymentSourceUploadedObject
-      # - BuildResultUserSourceInfo --> New-AzSpringAppDeploymentBuildResultObject
+  # - model-cmdlet:
+  #   - model-name: BuildpacksGroupProperties
+  #     model-cmdlet: New-AzSpringBuildpacksGroupObject
+  #   - model-name: BuildpackProperties
+  #     model-cmdlet: New-AzSpringBuildpackObject
+  #   - model-name: ConfigurationServiceGitRepository
+  #   - model-name: GitPatternRepository
+  #   - model-name: KeyVaultCertificateProperties
+  #     model-cmdlet: New-AzSpringKeyVaultCertificateObject
+  #   - model-name: ContentCertificateProperties
+  #     model-cmdlet: New-AzSpringContentCertificateObject
+  #   - model-name: LoadedCertificate
+  #     model-cmdlet: New-AzSpringAppLoadedCertificateObject
+  #   - model-name: JarUploadedUserSourceInfo
+  #     model-cmdlet: New-AzSpringAppDeploymentJarUploadedObject
+  #   - model-name: NetCoreZipUploadedUserSourceInfo
+  #     model-cmdlet: New-AzSpringAppDeploymentNetCoreZipUploadedObject
+  #   - model-name: SourceUploadedUserSourceInfo
+  #     model-cmdlet: New-AzSpringAppDeploymentSourceUploadedObject
+  #   - model-name: BuildResultUserSourceInfo
+  #     model-cmdlet: New-AzSpringAppDeploymentBuildResultObject
 ```

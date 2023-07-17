@@ -21,36 +21,40 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.NetCoreZipUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.NetCoreZipUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentNetCoreZipUploadedObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentnetcorezipuploadedobject
 #>
 function New-AzSpringAppDeploymentNetCoreZipUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.NetCoreZipUploadedUserSourceInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.NetCoreZipUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The path to the .NET executable relative to zip root.")]
         [string]
-        $MainEntryPath,
+        $NetCoreMainEntryPath,
         [Parameter(HelpMessage="Runtime version of the .Net file.")]
         [string]
         $RuntimeVersion,
+        [Parameter(HelpMessage="Relative path of the storage which stores the source.")]
+        [string]
+        $RelativePath,
         [Parameter(HelpMessage="Version of the source.")]
         [string]
         $Version
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
-        $Object.Type = 'NetCoreZip'
-        $Object.RelativePath = '<default>'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.NetCoreZipUploadedUserSourceInfo]::New()
 
-        if ($PSBoundParameters.ContainsKey('MainEntryPath')) {
-            $Object.NetCoreMainEntryPath = $MainEntryPath
+        if ($PSBoundParameters.ContainsKey('NetCoreMainEntryPath')) {
+            $Object.NetCoreMainEntryPath = $NetCoreMainEntryPath
         }
         if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
             $Object.RuntimeVersion = $RuntimeVersion
+        }
+        if ($PSBoundParameters.ContainsKey('RelativePath')) {
+            $Object.RelativePath = $RelativePath
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version

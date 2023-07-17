@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IAppResource
 https://learn.microsoft.com/powershell/module/az.Spring/deploy-azSpringapp
 #>
 function Deploy-AzSpringApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='DeployAppForStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -240,19 +240,19 @@ function DeployStandardSpringApp {
     $deployment = Get-AzSpringAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
     if ($deployment.Source.Type -eq 'Jar')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.JarUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.JarUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }
     if ($deployment.Source.Type -eq 'NetCoreZip')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.NetCoreZipUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }
     if ($deployment.Source.Type -eq 'Source')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.SourceUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.SourceUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }

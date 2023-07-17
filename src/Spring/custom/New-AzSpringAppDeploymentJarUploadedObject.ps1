@@ -21,12 +21,12 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 Create an in-memory object for JarUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.JarUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.JarUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentJarUploadedObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentjaruploadedobject
 #>
 function New-AzSpringAppDeploymentJarUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.JarUploadedUserSourceInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.JarUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,21 +36,25 @@ function New-AzSpringAppDeploymentJarUploadedObject {
         [Parameter(HelpMessage="Runtime version of the Jar file.")]
         [string]
         $RuntimeVersion,
+        [Parameter(HelpMessage="Relative path of the storage which stores the source.")]
+        [string]
+        $RelativePath,
         [Parameter(HelpMessage="Version of the source.")]
         [string]
         $Version
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.JarUploadedUserSourceInfo]::New()
-        $Object.Type = 'Jar'
-        $Object.RelativePath = '<default>'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.JarUploadedUserSourceInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('JvmOption')) {
             $Object.JvmOption = $JvmOption
         }
         if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
             $Object.RuntimeVersion = $RuntimeVersion
+        }
+        if ($PSBoundParameters.ContainsKey('RelativePath')) {
+            $Object.RelativePath = $RelativePath
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version

@@ -12,8 +12,41 @@ Regenerate a test key for a Service.
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
-New-AzSpringTestKey -Name <String> -ResourceGroupName <String> -KeyType <TestKeyType>
+New-AzSpringTestKey -ResourceGroupName <String> -ServiceName <String> -KeyType <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Regenerate
+```
+New-AzSpringTestKey -ResourceGroupName <String> -ServiceName <String>
+ -RegenerateTestKeyRequest <IRegenerateTestKeyRequestPayload> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaIdentity
+```
+New-AzSpringTestKey -InputObject <ISpringIdentity>
+ -RegenerateTestKeyRequest <IRegenerateTestKeyRequestPayload> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzSpringTestKey -InputObject <ISpringIdentity> -KeyType <String> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzSpringTestKey -ResourceGroupName <String> -ServiceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzSpringTestKey -ResourceGroupName <String> -ServiceName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,12 +86,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyType
-Type of the test key
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Support.TestKeyType
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -68,18 +117,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Service resource.
+### -JsonString
+Json string supplied to the Regenerate operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyType
+Type of the test key
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegenerateTestKeyRequest
+Regenerate test key request payload
+To construct, see NOTES section for REGENERATETESTKEYREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IRegenerateTestKeyRequestPayload
+Parameter Sets: Regenerate, RegenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,7 +169,22 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceName
+The name of the Service resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -105,7 +200,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: False
@@ -151,13 +246,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IRegenerateTestKeyRequestPayload
+
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ITestKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ITestKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

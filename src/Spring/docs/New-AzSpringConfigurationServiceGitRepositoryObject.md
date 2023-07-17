@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-AzSpringConfigurationServiceGitRepositoryObject
+online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringconfigurationservicegitrepositoryobject
 schema: 2.0.0
 ---
 
@@ -210,11 +210,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ConfigurationServiceGitRepository
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ConfigurationServiceGitRepository
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

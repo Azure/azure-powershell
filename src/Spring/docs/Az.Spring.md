@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Spring
-Module Guid: d2085965-2fd8-49f4-b175-e0dfd391e290
+Module Guid: f3f8e32f-ee2e-4bbd-ae45-4a269662faec
 Download Help Link: https://learn.microsoft.com/powershell/module/az.spring
 Help Version: 1.0.0.0
 Locale: en-US
@@ -90,7 +90,7 @@ Create a new App or update an exiting App.
 Create a new Binding or update an exiting Binding.
 
 ### [New-AzSpringAppCustomDomain](New-AzSpringAppCustomDomain.md)
-Create or update custom domain of one lifecycle application.
+Create custom domain of one lifecycle application.
 
 ### [New-AzSpringAppDeployment](New-AzSpringAppDeployment.md)
 Create a new Deployment or update an exiting Deployment.
@@ -111,7 +111,7 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Create an in-memory object for LoadedCertificate.
 
 ### [New-AzSpringBuildpackBinding](New-AzSpringBuildpackBinding.md)
-Create or update a buildpack binding.
+Create a buildpack binding.
 
 ### [New-AzSpringBuildpackObject](New-AzSpringBuildpackObject.md)
 Create an in-memory object for BuildpackProperties.
@@ -120,13 +120,13 @@ Create an in-memory object for BuildpackProperties.
 Create an in-memory object for BuildpacksGroupProperties.
 
 ### [New-AzSpringBuildServiceAgentPool](New-AzSpringBuildServiceAgentPool.md)
-Create or update build service agent pool.
+Update build service agent pool.
 
 ### [New-AzSpringBuildServiceBuilder](New-AzSpringBuildServiceBuilder.md)
-Create or update a KPack builder.
+Create a KPack builder.
 
 ### [New-AzSpringCertificate](New-AzSpringCertificate.md)
-Create or update certificate resource.
+Create certificate resource.
 
 ### [New-AzSpringConfigurationService](New-AzSpringConfigurationService.md)
 Create the default Application Configuration Service or update the existing Application Configuration Service.
@@ -142,6 +142,9 @@ Create an in-memory object for GitPatternRepository.
 
 ### [New-AzSpringKeyVaultCertificateObject](New-AzSpringKeyVaultCertificateObject.md)
 Create an in-memory object for KeyVaultCertificateProperties.
+
+### [New-AzSpringRegistry](New-AzSpringRegistry.md)
+Create the default Service Registry or update the existing Service Registry.
 
 ### [New-AzSpringTestKey](New-AzSpringTestKey.md)
 Regenerate a test key for a Service.
@@ -215,8 +218,26 @@ Update custom domain of one lifecycle application.
 ### [Update-AzSpringAppDeployment](Update-AzSpringAppDeployment.md)
 Operation to update an exiting Deployment.
 
+### [Update-AzSpringBuildpackBinding](Update-AzSpringBuildpackBinding.md)
+Create a buildpack binding.
+
+### [Update-AzSpringBuildService](Update-AzSpringBuildService.md)
+Create a KPack build.
+
+### [Update-AzSpringBuildServiceAgentPool](Update-AzSpringBuildServiceAgentPool.md)
+Update build service agent pool.
+
+### [Update-AzSpringBuildServiceBuilder](Update-AzSpringBuildServiceBuilder.md)
+Create a KPack builder.
+
+### [Update-AzSpringCertificate](Update-AzSpringCertificate.md)
+Create certificate resource.
+
 ### [Update-AzSpringConfigServer](Update-AzSpringConfigServer.md)
 Update the config server.
+
+### [Update-AzSpringConfigurationService](Update-AzSpringConfigurationService.md)
+Create the default Application Configuration Service or update the existing Application Configuration Service.
 
 ### [Update-AzSpringMonitoringSetting](Update-AzSpringMonitoringSetting.md)
 Update the Monitoring Setting.

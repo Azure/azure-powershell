@@ -21,12 +21,12 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Create an in-memory object for SourceUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.SourceUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.SourceUploadedUserSourceInfo
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentSourceUploadedObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentsourceuploadedobject
 #>
 function New-AzSpringAppDeploymentSourceUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.SourceUploadedUserSourceInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.SourceUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,21 +37,25 @@ function New-AzSpringAppDeploymentSourceUploadedObject {
         [Parameter(HelpMessage="Runtime version of the source file.")]
         [string]
         $RuntimeVersion,
+        [Parameter(HelpMessage="Relative path of the storage which stores the source.")]
+        [string]
+        $RelativePath,
         [Parameter(HelpMessage="Version of the source.")]
         [string]
         $Version
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.SourceUploadedUserSourceInfo]::New()
-        $Object.Type = 'Source'
-        $Object.RelativePath = '<default>'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.SourceUploadedUserSourceInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('ArtifactSelector')) {
             $Object.ArtifactSelector = $ArtifactSelector
         }
         if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
             $Object.RuntimeVersion = $RuntimeVersion
+        }
+        if ($PSBoundParameters.ContainsKey('RelativePath')) {
+            $Object.RelativePath = $RelativePath
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentNetCoreZipUploadedObject
+online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentnetcorezipuploadedobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentNetCoreZipUploadedObject [-MainEntryPath <String>] [-RuntimeVersion <String>]
- [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentNetCoreZipUploadedObject [-NetCoreMainEntryPath <String>] [-RelativePath <String>]
+ [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +37,23 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 ## PARAMETERS
 
-### -MainEntryPath
+### -NetCoreMainEntryPath
 The path to the .NET executable relative to zip root.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelativePath
+Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String
@@ -89,11 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.NetCoreZipUploadedUserSourceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.NetCoreZipUploadedUserSourceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

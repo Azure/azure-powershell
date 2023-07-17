@@ -20,15 +20,17 @@ Create a new Service or update an exiting Service.
 .Description
 Create a new Service or update an exiting Service.
 .Example
-New-AzSpring -ResourceGroupName spring-cloud-rp -name spring-cloud-service -Location eastus
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IServiceResource
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-azSpring
+https://learn.microsoft.com/powershell/module/az.spring/new-azspring
 #>
 function New-AzSpring {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -53,79 +55,92 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # The GEO location of the resource.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Name of the resource group containing network resources for customer apps in Azure Spring Apps
     ${NetworkProfileResourceGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Azure Spring Apps service reserved CIDR
     ${NetworkProfileServiceCidr},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Name of the resource group containing network resources of Azure Spring Apps Service Runtime
     ${NetworkProfileServiceResourceGroup},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
     ${NetworkProfileServiceSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
     ${NetworkProfileSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Int32]
     # Current capacity of the target resource
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Name of the Sku
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Tier of the Sku
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # .
     ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

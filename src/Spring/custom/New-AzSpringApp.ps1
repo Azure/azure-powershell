@@ -20,23 +20,71 @@ Create a new App or update an exiting App.
 .Description
 Create a new App or update an exiting App.
 .Example
-New-AzSpringApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+APPRESOURCE <IAppResource>: App resource payload
+  [AddonConfig <IAppResourcePropertiesAddonConfigs>]: Collection of addons
+    [(Any) <IAddonProfile>]: This indicates any property can be added to this object.
+      [(Any) <Object>]: This indicates any property can be added to this object.
+  [EnableEndToEndTl <Boolean?>]: Indicate if end to end TLS is enabled.
+  [Fqdn <String>]: Fully qualified dns Name.
+  [HttpsOnly <Boolean?>]: Indicate if only https is allowed.
+  [IdentityPrincipalId <String>]: Principal Id of system-assigned managed identity.
+  [IdentityTenantId <String>]: Tenant Id of system-assigned managed identity.
+  [IdentityType <String>]: Type of the managed identity
+  [LoadedCertificate <List<ILoadedCertificate>>]: Collection of loaded certificates
+    ResourceId <String>: Resource Id of loaded certificate
+    [LoadTrustStore <Boolean?>]: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
+  [Location <String>]: The GEO location of the application, always the same with its parent resource
+  [PersistentDiskMountPath <String>]: Mount path of the persistent disk
+  [PersistentDiskSizeInGb <Int32?>]: Size of the persistent disk in GB
+  [Public <Boolean?>]: Indicates whether the App exposes public endpoint
+  [TemporaryDiskMountPath <String>]: Mount path of the temporary disk
+  [TemporaryDiskSizeInGb <Int32?>]: Size of the temporary disk in GB
+
 LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
   ResourceId <String>: Resource Id of loaded certificate
   [LoadTrustStore <Boolean?>]: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
+
+SPRINGINPUTOBJECT <ISpringIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the build service agent pool resource.
+  [AppName <String>]: The name of the App resource.
+  [BindingName <String>]: The name of the Binding resource.
+  [BuildName <String>]: The name of the build resource.
+  [BuildResultName <String>]: The name of the build result resource.
+  [BuildServiceName <String>]: The name of the build service resource.
+  [BuilderName <String>]: The name of the builder resource.
+  [BuildpackBindingName <String>]: The name of the Buildpack Binding Name
+  [BuildpackName <String>]: The name of the buildpack resource.
+  [CertificateName <String>]: The name of the certificate resource.
+  [ConfigurationServiceName <String>]: The name of Application Configuration Service.
+  [DeploymentName <String>]: The name of the Deployment resource.
+  [DomainName <String>]: The name of the custom domain resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ServiceName <String>]: The name of the Service resource.
+  [ServiceRegistryName <String>]: The name of Service Registry.
+  [StackName <String>]: The name of the stack resource.
+  [SubscriptionId <String>]: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-azSpringapp
+https://learn.microsoft.com/powershell/module/az.spring/new-azspringapp
 #>
 function New-AzSpringApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -46,20 +94,26 @@ param(
     # The name of the App resource.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Path')]
     [System.String]
     # The name of the Service resource.
     ${ServiceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -67,100 +121,142 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+    ${SpringInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.IAppResourcePropertiesAddonConfigs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResourcePropertiesAddonConfigs]))]
     [System.Collections.Hashtable]
     # Collection of addons
     ${AddonConfig},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicate if end to end TLS is enabled.
     ${EnableEndToEndTl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Fully qualified dns Name.
     ${Fqdn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicate if only https is allowed.
     ${HttpsOnly},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Principal Id of system-assigned managed identity.
     ${IdentityPrincipalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Tenant Id of system-assigned managed identity.
     ${IdentityTenantId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Spring.Support.ManagedIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Support.ManagedIdentityType]
+    [System.String]
     # Type of the managed identity
     ${IdentityType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ILoadedCertificate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ILoadedCertificate[]]
     # Collection of loaded certificates
     # To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
     ${LoadedCertificate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # The GEO location of the application, always the same with its parent resource
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Mount path of the persistent disk
     ${PersistentDiskMountPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Int32]
     # Size of the persistent disk in GB
     ${PersistentDiskSizeInGb},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicates whether the App exposes public endpoint
     ${Public},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.String]
     # Mount path of the temporary disk
     ${TemporaryDiskMountPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
     [System.Int32]
     # Size of the temporary disk in GB
     ${TemporaryDiskSizeInGb},
+
+    [Parameter(ParameterSetName='CreateViaIdentitySpring', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource]
+    # App resource payload
+    # To construct, see NOTES section for APPRESOURCE properties and create a hash table.
+    ${AppResource},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -214,6 +310,7 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
+
     process {
         if (-not $PSBoundParameters.ContainsKey('Location')) {
             $ResourceGroup = Get-AzResourceGroup -Name $ResourceGroupName

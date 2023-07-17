@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppDeploymentBuildResultObject
+online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringappdeploymentbuildresultobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for BuildResultUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentBuildResultObject [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentBuildResultObject [-BuildResultId <String>] [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ Version BuildResultId
 Create an in-memory object for BuildResultUserSourceInfo.
 
 ## PARAMETERS
+
+### -BuildResultId
+Resource id of an existing succeeded build result under the same Spring instance.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Version
 Version of the source.
@@ -58,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.BuildResultUserSourceInfo
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.BuildResultUserSourceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

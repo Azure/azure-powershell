@@ -21,12 +21,12 @@ Create an in-memory object for BuildpackProperties.
 Create an in-memory object for BuildpackProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.BuildpackProperties
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.BuildpackProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringBuildpackObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringbuildpackobject
 #>
 function New-AzSpringBuildpackObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.BuildpackProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.BuildpackProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzSpringBuildpackObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.BuildpackProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.BuildpackProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

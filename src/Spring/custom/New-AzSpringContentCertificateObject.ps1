@@ -21,12 +21,12 @@ Create an in-memory object for ContentCertificateProperties.
 Create an in-memory object for ContentCertificateProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ContentCertificateProperties
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ContentCertificateProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringContentCertificateObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringcontentcertificateobject
 #>
 function New-AzSpringContentCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ContentCertificateProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ContentCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,8 +36,8 @@ function New-AzSpringContentCertificateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ContentCertificateProperties]::New()
-        $Object.Type = 'ContentCertificate'
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ContentCertificateProperties]::New()
+
         if ($PSBoundParameters.ContainsKey('Content')) {
             $Object.Content = $Content
         }

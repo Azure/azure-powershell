@@ -53,11 +53,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.ISupportedRuntimeVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAvailableRuntimeVersions
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

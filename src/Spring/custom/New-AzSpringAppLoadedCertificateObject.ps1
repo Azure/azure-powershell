@@ -21,12 +21,12 @@ Create an in-memory object for LoadedCertificate.
 Create an in-memory object for LoadedCertificate.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.LoadedCertificate
+Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.LoadedCertificate
 .Link
-https://learn.microsoft.com/powershell/module/az.Spring/new-AzSpringAppLoadedCertificateObject
+https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringapploadedcertificateobject
 #>
 function New-AzSpringAppLoadedCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.LoadedCertificate')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.LoadedCertificate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzSpringAppLoadedCertificateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20220401.LoadedCertificate]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.LoadedCertificate]::New()
 
         if ($PSBoundParameters.ContainsKey('LoadTrustStore')) {
             $Object.LoadTrustStore = $LoadTrustStore
