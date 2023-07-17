@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -73,7 +74,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
@@ -189,6 +189,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
                 var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
 
+                var currentStack = DeploymentStacksSdkClient.GetResourceGroupDeploymentStack(ResourceGroupName, Name, throwIfNotExists: false);
+                if (currentStack != null && Tag == null)
+                {
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentStack.Tags);
+                }
+
                 Action createOrUpdateAction = () =>
                     {
                     var deploymentStack = DeploymentStacksSdkClient.ResourceGroupCreateOrUpdateDeploymentStack(
@@ -212,10 +218,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteObject(deploymentStack);
                 };
 
-                if (!Force.IsPresent && DeploymentStacksSdkClient.GetResourceGroupDeploymentStack(
-                        ResourceGroupName,
-                        Name,
-                        throwIfNotExists: false) == null)
+                if (!Force.IsPresent && currentStack == null)
                 {
                     string confirmationMessage =
                         $"The DeploymentStack '{Name}' you're trying to modify does not exist in '{ResourceGroupName}'. Do you want to create a new stack?";
