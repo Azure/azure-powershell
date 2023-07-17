@@ -823,5 +823,17 @@
   {
     "module": "StorageCache",
     "alias": "StorageCache"
+  },
+  {
+    "module": "NewRelic",
+    "alias": "NewRelic"
+  },
+  {
+    "module": "Quantum",
+    "alias": "Quantum"
+  },
+  {
+    "module": "GraphServices",
+    "alias": "GraphServices"
   }
 ]
