@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzDatabricksVNetPeering_UpdateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDatabricksVNetPeering_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates vNet Peering for workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
-    public partial class SetAzDatabricksVNetPeering_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -134,6 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity _inputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -144,20 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>The name of the workspace vNet peering.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the workspace vNet peering.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the workspace vNet peering.",
-        SerializedName = @"peeringName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
-        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -211,38 +205,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string RemoteVirtualNetworkId { get => _virtualNetworkPeeringParametersBody.RemoteVirtualNetworkId ?? null; set => _virtualNetworkPeeringParametersBody.RemoteVirtualNetworkId = value; }
 
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
-        private string _subscriptionId;
-
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The ID of the target subscription.",
-        SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(
-        Name = @"",
-        Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
-        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
         /// <summary>
         /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote
         /// peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have
@@ -257,20 +219,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         SerializedName = @"useRemoteGateways",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter UseRemoteGateway { get => _virtualNetworkPeeringParametersBody.UseRemoteGateway ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualNetworkPeeringParametersBody.UseRemoteGateway = value; }
-
-        /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
-        private string _workspaceName;
-
-        /// <summary>The name of the workspace.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the workspace.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the workspace.",
-        SerializedName = @"workspaceName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
-        public string WorkspaceName { get => this._workspaceName; set => this._workspaceName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -315,10 +263,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of SetAzDatabricksVNetPeering_UpdateExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets.SetAzDatabricksVNetPeering_UpdateExpanded Clone()
+        /// <returns>a duplicate instance of UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets.UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded Clone()
         {
-            var clone = new SetAzDatabricksVNetPeering_UpdateExpanded();
+            var clone = new UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -332,10 +280,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._virtualNetworkPeeringParametersBody = this._virtualNetworkPeeringParametersBody;
-            clone.ResourceGroupName = this.ResourceGroupName;
-            clone.WorkspaceName = this.WorkspaceName;
-            clone.SubscriptionId = this.SubscriptionId;
-            clone.Name = this.Name;
             return clone;
         }
 
@@ -489,12 +433,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VNetPeeringCreateOrUpdate(ResourceGroupName, WorkspaceName, SubscriptionId, Name, _virtualNetworkPeeringParametersBody, onOk, onDefault, this, Pipeline);
+                    if (InputObject?.Id != null)
+                    {
+                        await this.Client.VNetPeeringCreateOrUpdateViaIdentity(InputObject.Id, _virtualNetworkPeeringParametersBody, onOk, onDefault, this, Pipeline);
+                    }
+                    else
+                    {
+                        // try to call with PATH parameters from Input Object
+                        if (null == InputObject.ResourceGroupName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.WorkspaceName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.WorkspaceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.SubscriptionId)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.PeeringName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.PeeringName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.VNetPeeringCreateOrUpdate(InputObject.ResourceGroupName ?? null, InputObject.WorkspaceName ?? null, InputObject.SubscriptionId ?? null, InputObject.PeeringName ?? null, _virtualNetworkPeeringParametersBody, onOk, onDefault, this, Pipeline);
+                    }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,WorkspaceName=WorkspaceName,SubscriptionId=SubscriptionId,Name=Name,body=_virtualNetworkPeeringParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_virtualNetworkPeeringParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -506,19 +474,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzDatabricksVNetPeering_UpdateExpanded" /> cmdlet class.
-        /// </summary>
-        public SetAzDatabricksVNetPeering_UpdateExpanded()
-        {
-
-        }
-
         /// <summary>Interrupts currently running code within the command.</summary>
         protected override void StopProcessing()
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// Intializes a new instance of the <see cref="UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// </summary>
+        public UpdateAzDatabricksVNetPeering_UpdateViaIdentityExpanded()
+        {
+
         }
 
         /// <summary>
@@ -548,14 +516,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, SubscriptionId=SubscriptionId, Name=Name, body=_virtualNetworkPeeringParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_virtualNetworkPeeringParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, SubscriptionId=SubscriptionId, Name=Name, body=_virtualNetworkPeeringParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_virtualNetworkPeeringParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
