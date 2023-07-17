@@ -89,41 +89,6 @@ function Test-NewAzureRmServiceFabricCluster
 	Assert-Null $newClsuter.CertificateCommonNames
 }
 
-function Test-NewAzureRmServiceFabricClusterWithSelfSignedCert
-{
-    $clusterName = "azurermsfclustertptest2"
-	$cluster
-    $resourceGroupName = "sfclassicrg4"
-    $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
-	$keyVaultName = "sfclassickv4"
-	$location = 'southcentralus'
-	$objectId = 'db48033c-06c2-4f9a-87d9-a33753ce43c0'
-	$userName = 'mwesigwaguma@microsoft.com'
-	$servPrincipalName = 'SFRPAzPowershellTestCredential'
-
-	#Import-Module "D:\repos\azure-powershell\artifacts\Debug\Az.KeyVault\Az.KeyVault.psd1"
-	
-	#Import-Module "D:\repos\azure-powershell\artifacts\Debug\Az.Resources\Az.Resources.psd1"
-
-	#Install-PackageProvider -Name NuGet
-	
-	#Install-Module -Name Az.Resources -Scope AllUsers -AllowClobber -Force
-
-	#Import-Module D:/repos/azure-powershell/tools/Modules/TestFx-Tasks.psd1
-
-	#Set-TestFxEnvironment -ServicePrincipalId "b4f91a72-fd09-4e86-9280-7e0eae864947" -ServicePrincipalSecret "LDT8Q~NcuJCHaIviuf.vOvM97SulzsNhbTWDrbaY" -SubscriptionId b36cdf46-b75d-4dc2-9fe1-1296ee8c623d -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -RecorderMode "Record"
-	
-	#$resourceGrp = New-AzResourceGroup -Name $resourceGroupName -Location $location
-	#$keyvault = New-AzKeyVault -Name $keyVaultName  -ResourceGroupName $resourceGroupName  -Location $location
-	#$accessPolicy = Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName  -ObjectId $objectId -PermissionsToSecrets get,list,set,delete -PermissionsToCertificates get,list,delete,create,update
-
-    $cluster = New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword -KeyVaultName $keyVaultName `
-       -TemplateFile (Join-Path $pwd '\Resources\template.json') -ParameterFile (Join-Path $pwd '\Resources\parameters.json') -Verbose
-
-	Assert-NotNull Cluster
-	Assert-NotNull Cluster.Certificate
-}
-
 function Test-NewAzureRmServiceFabricClusterCNCert
 {
     $clusterName = "azurermsfcntest"
