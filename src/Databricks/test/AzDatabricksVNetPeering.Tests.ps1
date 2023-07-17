@@ -14,35 +14,35 @@ if (($null -eq $TestName) -or ($TestName -contains 'AzDatabricksVNetPeering')) {
 }
 
 Describe 'AzDatabricksVNetPeering' {
-    It 'CreateExpanded' -Skip {
+    It 'CreateExpanded' {
         {
             $config = New-AzDatabricksVNetPeering -Name $env.vNetName1 -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.vNetName)"
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'List' -Skip {
+    It 'List' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -Skip {
+    It 'Get' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -Skip {
+    It 'UpdateExpanded' {
         { 
             $config = Update-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1 -AllowForwardedTraffic $True
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -Skip {
+    It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config = Update-AzDatabricksVNetPeering -InputObject $config -AllowForwardedTraffic $True
@@ -50,7 +50,7 @@ Describe 'AzDatabricksVNetPeering' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         { 
             Remove-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
         } | Should -Not -Throw
