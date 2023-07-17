@@ -16,18 +16,32 @@ Update a DeviceGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzSphereDeviceGroup -CatalogName <String> -Name <String> -ProductName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AllowCrashDumpsCollection <AllowCrashDumpCollection>] [-Description <String>] [-OSFeedType <OSFeedType>]
- [-RegionalDataBoundary <RegionalDataBoundary>] [-UpdatePolicy <UpdatePolicy>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AllowCrashDumpsCollection <String>]
+ [-Description <String>] [-OSFeedType <String>] [-RegionalDataBoundary <String>] [-UpdatePolicy <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityCatalogExpanded
+```
+Update-AzSphereDeviceGroup -CatalogInputObject <ISphereIdentity> -Name <String> -ProductName <String>
+ [-AllowCrashDumpsCollection <String>] [-Description <String>] [-OSFeedType <String>]
+ [-RegionalDataBoundary <String>] [-UpdatePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSphereDeviceGroup -InputObject <ISphereIdentity>
- [-AllowCrashDumpsCollection <AllowCrashDumpCollection>] [-Description <String>] [-OSFeedType <OSFeedType>]
- [-RegionalDataBoundary <RegionalDataBoundary>] [-UpdatePolicy <UpdatePolicy>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSphereDeviceGroup -InputObject <ISphereIdentity> [-AllowCrashDumpsCollection <String>]
+ [-Description <String>] [-OSFeedType <String>] [-RegionalDataBoundary <String>] [-UpdatePolicy <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProductExpanded
+```
+Update-AzSphereDeviceGroup -Name <String> -ProductInputObject <ISphereIdentity>
+ [-AllowCrashDumpsCollection <String>] [-Description <String>] [-OSFeedType <String>]
+ [-RegionalDataBoundary <String>] [-UpdatePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +56,7 @@ Update a DeviceGroup.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -53,7 +67,7 @@ Update a DeviceGroup.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -64,7 +78,7 @@ Update a DeviceGroup.
 Flag to define if the user allows for crash dump collection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.AllowCrashDumpCollection
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,6 +101,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: UpdateViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,7 +187,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded, UpdateViaIdentityProductExpanded
 Aliases: DeviceGroupName
 
 Required: True
@@ -186,7 +216,7 @@ Accept wildcard characters: False
 Operating system feed type of the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.OSFeedType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,12 +227,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProductInputObject
+Identity Parameter
+To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: UpdateViaIdentityProductExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProductName
 Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -216,7 +262,7 @@ Accept wildcard characters: False
 Regional data boundary for the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.RegionalDataBoundary
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +308,7 @@ Accept wildcard characters: False
 Update policy of the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.UpdatePolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -313,28 +359,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDeviceGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISphereIdentity>`: Identity Parameter
-  - `[CatalogName <String>]`: Name of catalog
-  - `[DeploymentName <String>]`: Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
-  - `[DeviceGroupName <String>]`: Name of device group.
-  - `[DeviceName <String>]`: Device name
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: Image name. Use .default for image creation.
-  - `[ProductName <String>]`: Name of product.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SerialNumber <String>]`: Serial number of the certificate. Use '.default' to get current active certificate.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

@@ -13,10 +13,37 @@ Use '.unassigned' or '.default' for the device group and product names to claim 
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DeviceId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityCatalogExpanded
+```
+New-AzSphereDevice -CatalogInputObject <ISphereIdentity> -GroupName <String> -Name <String>
+ -ProductName <String> [-DeviceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityDeviceGroupExpanded
+```
+New-AzSphereDevice -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeviceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSphereDevice -InputObject <ISphereIdentity> [-DeviceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProductExpanded
+```
+New-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
+ [-DeviceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +58,7 @@ Use '.unassigned' or '.default' for the device group and product names to claim 
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -42,7 +69,7 @@ Use '.unassigned' or '.default' for the device group and product names to claim 
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -64,12 +91,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -95,6 +138,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeviceGroupInputObject
+Identity Parameter
+To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityDeviceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DeviceId
 Device ID
 
@@ -115,7 +174,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityProductExpanded
 Aliases: DeviceGroupName
 
 Required: True
@@ -125,12 +184,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Device name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityDeviceGroupExpanded, CreateViaIdentityProductExpanded
 Aliases: DeviceName
 
 Required: True
@@ -155,12 +230,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProductInputObject
+Identity Parameter
+To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityProductExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProductName
 Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -176,7 +267,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -191,7 +282,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -237,13 +328,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDevice
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

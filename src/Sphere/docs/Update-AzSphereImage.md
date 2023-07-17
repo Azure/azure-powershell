@@ -1,55 +1,40 @@
 ---
 external help file:
 Module Name: Az.Sphere
-online version: https://learn.microsoft.com/powershell/module/az.sphere/new-azspheredeployment
+online version: https://learn.microsoft.com/powershell/module/az.sphere/update-azsphereimage
 schema: 2.0.0
 ---
 
-# New-AzSphereDeployment
+# Update-AzSphereImage
 
 ## SYNOPSIS
-Create a Deployment.
-'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
+Create a Image
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <String> -ProductName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DeployedImage <IImage[]>] [-DeploymentId <String>]
+Update-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Image <String>] [-ImageId <String>] [-RegionalDataBoundary <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCatalogExpanded
+### UpdateViaIdentityCatalogExpanded
 ```
-New-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -Name <String>
- -ProductName <String> [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityDeviceGroupExpanded
-```
-New-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeployedImage <IImage[]>]
- [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzSphereDeployment -InputObject <ISphereIdentity> [-DeployedImage <IImage[]>] [-DeploymentId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityProductExpanded
-```
-New-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzSphereImage -CatalogInputObject <ISphereIdentity> -Name <String> [-Image <String>]
+ [-ImageId <String>] [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzSphereImage -InputObject <ISphereIdentity> [-Image <String>] [-ImageId <String>]
+ [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a Deployment.
-'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
+Create a Image
 
 ## EXAMPLES
 
@@ -98,7 +83,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityCatalogExpanded
+Parameter Sets: UpdateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -113,7 +98,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -139,24 +124,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeployedImage
-Images deployed
-To construct, see NOTES section for DEPLOYEDIMAGE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentId
-Deployment ID
+### -Image
+Image as a UTF-8 encoded base 64 string on image create.
+This field contains the image URI on image reads.
 
 ```yaml
 Type: System.String
@@ -170,31 +140,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeviceGroupInputObject
-Identity Parameter
-To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityDeviceGroupExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DeviceGroupName
-Name of device group.
+### -ImageId
+Image ID
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityProductExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,7 +161,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -218,13 +172,13 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Deployment name.
-Use .default for deployment creation and to get the current deployment for the associated device group.
+Image name.
+Use .default for image creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityDeviceGroupExpanded, CreateViaIdentityProductExpanded
-Aliases: DeploymentName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded
+Aliases: ImageName
 
 Required: True
 Position: Named
@@ -248,31 +202,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProductInputObject
-Identity Parameter
-To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityProductExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProductName
-Name of product.
+### -RegionalDataBoundary
+Regional data boundary for an image
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -300,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -350,7 +288,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage
 
 ## NOTES
 

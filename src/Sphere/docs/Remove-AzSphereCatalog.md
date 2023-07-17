@@ -220,24 +220,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISphereIdentity>`: Identity Parameter
-  - `[CatalogName <String>]`: Name of catalog
-  - `[DeploymentName <String>]`: Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
-  - `[DeviceGroupName <String>]`: Name of device group.
-  - `[DeviceName <String>]`: Device name
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: Image name. Use .default for image creation.
-  - `[ProductName <String>]`: Name of product.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SerialNumber <String>]`: Serial number of the certificate. Use '.default' to get current active certificate.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
 

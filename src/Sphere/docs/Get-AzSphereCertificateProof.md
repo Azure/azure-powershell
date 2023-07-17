@@ -1,51 +1,73 @@
 ---
 external help file:
 Module Name: Az.Sphere
-online version: https://learn.microsoft.com/powershell/module/az.sphere/remove-azspheredevice
+online version: https://learn.microsoft.com/powershell/module/az.sphere/get-azspherecertificateproof
 schema: 2.0.0
 ---
 
-# Remove-AzSphereDevice
+# Get-AzSphereCertificateProof
 
 ## SYNOPSIS
-Delete a Device
+Gets the proof of possession nonce.
 
 ## SYNTAX
 
-### Delete (Default)
+### RetrieveExpanded (Default)
 ```
-Remove-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzSphereDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
+ -ProofOfPossessionNonce <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityCatalog
+### Retrieve
 ```
-Remove-AzSphereDevice -CatalogInputObject <ISphereIdentity> -GroupName <String> -Name <String>
- -ProductName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
+ -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaIdentity
+```
+Get-AzSphereCertificateProof -InputObject <ISphereIdentity>
+ -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaIdentityCatalog
+```
+Get-AzSphereCertificateProof -CatalogInputObject <ISphereIdentity> -SerialNumber <String>
+ -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaIdentityCatalogExpanded
+```
+Get-AzSphereCertificateProof -CatalogInputObject <ISphereIdentity> -SerialNumber <String>
+ -ProofOfPossessionNonce <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaIdentityExpanded
+```
+Get-AzSphereCertificateProof -InputObject <ISphereIdentity> -ProofOfPossessionNonce <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaJsonFilePath
+```
+Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
+ -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentityDeviceGroup
+### RetrieveViaJsonString
 ```
-Remove-AzSphereDevice -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityProduct
-```
-Remove-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
+ -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Device
+Gets the proof of possession nonce.
 
 ## EXAMPLES
 
@@ -73,28 +95,13 @@ Delete a Device
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CatalogInputObject
 Identity Parameter
 To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentityCatalog
+Parameter Sets: RetrieveViaIdentityCatalog, RetrieveViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -109,7 +116,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
 Aliases:
 
 Required: True
@@ -135,44 +142,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeviceGroupInputObject
-Identity Parameter
-To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentityDeviceGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GroupName
-Name of device group.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCatalog, DeleteViaIdentityProduct
-Aliases: DeviceGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: RetrieveViaIdentity, RetrieveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -182,13 +158,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Device name
+### -JsonFilePath
+Path of Json file supplied to the Retrieve operation
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCatalog, DeleteViaIdentityDeviceGroup, DeleteViaIdentityProduct
-Aliases: DeviceName
+Parameter Sets: RetrieveViaJsonFilePath
+Aliases:
 
 Required: True
 Position: Named
@@ -197,64 +173,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -JsonString
+Json string supplied to the Retrieve operation
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RetrieveViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -ProofOfPossessionNonce
+The proof of possession nonce
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RetrieveExpanded, RetrieveViaIdentityCatalogExpanded, RetrieveViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProductInputObject
-Identity Parameter
-To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
+### -ProofOfPossessionNonceRequest
+Request for the proof of possession nonce
+To construct, see NOTES section for PROOFOFPOSSESSIONNONCEREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentityProduct
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProofOfPossessionNonceRequest
+Parameter Sets: Retrieve, RetrieveViaIdentity, RetrieveViaIdentityCatalog
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProductName
-Name of product.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCatalog
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -264,7 +225,23 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SerialNumber
+Serial number of the certificate.
+Use '.default' to get current active certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaIdentityCatalog, RetrieveViaIdentityCatalogExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
 Aliases:
 
 Required: True
@@ -278,8 +255,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
 Aliases:
 
 Required: False
@@ -325,11 +302,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProofOfPossessionNonceRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProofOfPossessionNonceResponse
 
 ## NOTES
 

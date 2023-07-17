@@ -12,10 +12,25 @@ Create a Image
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Image <String>] [-ImageId <String>] [-RegionalDataBoundary <RegionalDataBoundary>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Image <String>] [-ImageId <String>] [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityCatalogExpanded
+```
+New-AzSphereImage -CatalogInputObject <ISphereIdentity> -Name <String> [-Image <String>] [-ImageId <String>]
+ [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSphereImage -InputObject <ISphereIdentity> [-Image <String>] [-ImageId <String>]
+ [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +44,7 @@ Create a Image
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -40,7 +55,7 @@ Create a Image
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -62,12 +77,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -124,13 +155,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Image name.
 Use .default for image creation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
 Aliases: ImageName
 
 Required: True
@@ -159,7 +206,7 @@ Accept wildcard characters: False
 Regional data boundary for an image
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.RegionalDataBoundary
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -191,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -237,13 +284,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IImage
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

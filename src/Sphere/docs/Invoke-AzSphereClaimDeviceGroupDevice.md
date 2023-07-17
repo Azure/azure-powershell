@@ -1,55 +1,48 @@
 ---
 external help file:
 Module Name: Az.Sphere
-online version: https://learn.microsoft.com/powershell/module/az.sphere/new-azspheredeployment
+online version: https://learn.microsoft.com/powershell/module/az.sphere/invoke-azsphereclaimdevicegroupdevice
 schema: 2.0.0
 ---
 
-# New-AzSphereDeployment
+# Invoke-AzSphereClaimDeviceGroupDevice
 
 ## SYNOPSIS
-Create a Deployment.
-'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
+Bulk claims the devices.
+Use '.unassigned' or '.default' for the device group and product names when bulk claiming devices to a catalog only.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### ClaimExpanded (Default)
 ```
-New-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <String> -ProductName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DeployedImage <IImage[]>] [-DeploymentId <String>]
+Invoke-AzSphereClaimDeviceGroupDevice -CatalogName <String> -DeviceGroupName <String> -ProductName <String>
+ -ResourceGroupName <String> -DeviceIdentifier <String[]> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCatalogExpanded
+### ClaimViaIdentityCatalogExpanded
 ```
-New-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -Name <String>
- -ProductName <String> [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSphereClaimDeviceGroupDevice -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String>
+ -ProductName <String> -DeviceIdentifier <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityDeviceGroupExpanded
+### ClaimViaIdentityExpanded
 ```
-New-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeployedImage <IImage[]>]
- [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Invoke-AzSphereClaimDeviceGroupDevice -InputObject <ISphereIdentity> -DeviceIdentifier <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ClaimViaIdentityProductExpanded
+```
+Invoke-AzSphereClaimDeviceGroupDevice -DeviceGroupName <String> -ProductInputObject <ISphereIdentity>
+ -DeviceIdentifier <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
-```
-New-AzSphereDeployment -InputObject <ISphereIdentity> [-DeployedImage <IImage[]>] [-DeploymentId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityProductExpanded
-```
-New-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create a Deployment.
-'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
+Bulk claims the devices.
+Use '.unassigned' or '.default' for the device group and product names when bulk claiming devices to a catalog only.
 
 ## EXAMPLES
 
@@ -98,7 +91,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityCatalogExpanded
+Parameter Sets: ClaimViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -113,7 +106,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: ClaimExpanded
 Aliases:
 
 Required: True
@@ -139,59 +132,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeployedImage
-Images deployed
-To construct, see NOTES section for DEPLOYEDIMAGE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentId
-Deployment ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeviceGroupInputObject
-Identity Parameter
-To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityDeviceGroupExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DeviceGroupName
 Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityProductExpanded
+Parameter Sets: ClaimExpanded, ClaimViaIdentityCatalogExpanded, ClaimViaIdentityProductExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeviceIdentifier
+Device identifiers of the devices to be claimed.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -207,29 +168,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: ClaimViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Deployment name.
-Use .default for deployment creation and to get the current deployment for the associated device group.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityDeviceGroupExpanded, CreateViaIdentityProductExpanded
-Aliases: DeploymentName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -254,7 +199,7 @@ To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityProductExpanded
+Parameter Sets: ClaimViaIdentityProductExpanded
 Aliases:
 
 Required: True
@@ -269,7 +214,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
+Parameter Sets: ClaimExpanded, ClaimViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -285,7 +230,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: ClaimExpanded
 Aliases:
 
 Required: True
@@ -300,7 +245,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: ClaimExpanded
 Aliases:
 
 Required: False
@@ -350,7 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment
+### System.Boolean
 
 ## NOTES
 

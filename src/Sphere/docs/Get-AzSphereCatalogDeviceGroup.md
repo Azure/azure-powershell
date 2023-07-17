@@ -12,9 +12,46 @@ List the device groups for the catalog.
 
 ## SYNTAX
 
+### ListExpanded (Default)
 ```
 Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DeviceGroupName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String>
+ -ListDeviceGroupsRequest <IListDeviceGroupsRequest> [-SubscriptionId <String[]>] [-Filter <String>]
+ [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ListViaIdentityCatalog
+```
+Get-AzSphereCatalogDeviceGroup -CatalogInputObject <ISphereIdentity>
+ -ListDeviceGroupsRequest <IListDeviceGroupsRequest> [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaIdentityCatalogExpanded
+```
+Get-AzSphereCatalogDeviceGroup -CatalogInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
+ [-Skip <Int32>] [-Top <Int32>] [-DeviceGroupName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -47,12 +84,28 @@ List the device groups for the catalog.
 
 ## PARAMETERS
 
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: ListViaIdentityCatalog, ListViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
 Aliases:
 
 Required: True
@@ -83,7 +136,7 @@ Device Group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpanded, ListViaIdentityCatalogExpanded
 Aliases:
 
 Required: False
@@ -108,6 +161,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListDeviceGroupsRequest
+Request of the action to list device groups for a catalog.
+To construct, see NOTES section for LISTDEVICEGROUPSREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IListDeviceGroupsRequest
+Parameter Sets: List, ListViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Maxpagesize
 The maximum number of result items per page.
 
@@ -129,7 +228,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
 Aliases:
 
 Required: True
@@ -159,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
 Aliases:
 
 Required: False
@@ -220,13 +319,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IListDeviceGroupsRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDeviceGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

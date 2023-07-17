@@ -54,32 +54,15 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 nested-object-to-string: true
 
+use-extension:
+  "@autorest/powershell": "4.x"
+
 directive:
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-    hide: true
+      variant: ^(Create|Update|Generate|Claim)(?!.*?Expanded)
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     hide: true
-  # Remove request
-  - where:
-      subject: CatalogDeviceGroup
-      variant: ^List$
-    remove: true
-  - where:
-      subject: CertificateProof
-      varient: ^Retrieve$|^RetrieveViaIdentity$
-    remove: true
-  - where:
-      subject: ClaimDeviceGroupDevice
-      varient: ^Claim$|^ClaimViaIdentity$
-    remove: true
-  - where:
-      subject: DeviceCapabilityImage
-      varient: ^Generate$|^GenerateViaIdentity$
-    remove: true
 ```

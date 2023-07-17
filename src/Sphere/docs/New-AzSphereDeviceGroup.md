@@ -13,11 +13,35 @@ Create a DeviceGroup.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzSphereDeviceGroup -CatalogName <String> -Name <String> -ProductName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AllowCrashDumpsCollection <AllowCrashDumpCollection>] [-Description <String>]
- [-OSFeedType <OSFeedType>] [-RegionalDataBoundary <RegionalDataBoundary>] [-UpdatePolicy <UpdatePolicy>]
+ [-SubscriptionId <String>] [-AllowCrashDumpsCollection <String>] [-Description <String>]
+ [-OSFeedType <String>] [-RegionalDataBoundary <String>] [-UpdatePolicy <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityCatalogExpanded
+```
+New-AzSphereDeviceGroup -CatalogInputObject <ISphereIdentity> -Name <String> -ProductName <String>
+ [-AllowCrashDumpsCollection <String>] [-Description <String>] [-OSFeedType <String>]
+ [-RegionalDataBoundary <String>] [-UpdatePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSphereDeviceGroup -InputObject <ISphereIdentity> [-AllowCrashDumpsCollection <String>]
+ [-Description <String>] [-OSFeedType <String>] [-RegionalDataBoundary <String>] [-UpdatePolicy <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProductExpanded
+```
+New-AzSphereDeviceGroup -Name <String> -ProductInputObject <ISphereIdentity>
+ [-AllowCrashDumpsCollection <String>] [-Description <String>] [-OSFeedType <String>]
+ [-RegionalDataBoundary <String>] [-UpdatePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +56,7 @@ Create a DeviceGroup.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -43,7 +67,7 @@ Create a DeviceGroup.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -54,7 +78,7 @@ Create a DeviceGroup.
 Flag to define if the user allows for crash dump collection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.AllowCrashDumpCollection
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,12 +104,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -126,12 +166,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityProductExpanded
 Aliases: DeviceGroupName
 
 Required: True
@@ -160,7 +216,7 @@ Accept wildcard characters: False
 Operating system feed type of the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.OSFeedType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,12 +227,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProductInputObject
+Identity Parameter
+To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: CreateViaIdentityProductExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProductName
 Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -190,7 +262,7 @@ Accept wildcard characters: False
 Regional data boundary for the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.RegionalDataBoundary
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +279,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -222,7 +294,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -236,7 +308,7 @@ Accept wildcard characters: False
 Update policy of the device group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Support.UpdatePolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,13 +355,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDeviceGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -20,10 +20,30 @@ Update-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityCatalogExpanded
+```
+Update-AzSphereDevice -CatalogInputObject <ISphereIdentity> -GroupName <String> -Name <String>
+ -ProductName <String> [-DeviceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityDeviceGroupExpanded
+```
+Update-AzSphereDevice -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeviceGroupId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSphereDevice -InputObject <ISphereIdentity> [-DeviceGroupId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProductExpanded
+```
+Update-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
+ [-DeviceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +58,7 @@ Use '.unassigned' or '.default' for the device group and product names to move a
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -49,7 +69,7 @@ Use '.unassigned' or '.default' for the device group and product names to move a
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -68,6 +88,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: UpdateViaIdentityCatalogExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -117,12 +153,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeviceGroupInputObject
+Identity Parameter
+To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: UpdateViaIdentityDeviceGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GroupName
 Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded, UpdateViaIdentityProductExpanded
 Aliases: DeviceGroupName
 
 Required: True
@@ -153,7 +205,7 @@ Device name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded, UpdateViaIdentityDeviceGroupExpanded, UpdateViaIdentityProductExpanded
 Aliases: DeviceName
 
 Required: True
@@ -178,12 +230,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProductInputObject
+Identity Parameter
+To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: UpdateViaIdentityProductExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProductName
 Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -264,28 +332,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDevice
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISphereIdentity>`: Identity Parameter
-  - `[CatalogName <String>]`: Name of catalog
-  - `[DeploymentName <String>]`: Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
-  - `[DeviceGroupName <String>]`: Name of device group.
-  - `[DeviceName <String>]`: Device name
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: Image name. Use .default for image creation.
-  - `[ProductName <String>]`: Name of product.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SerialNumber <String>]`: Serial number of the certificate. Use '.default' to get current active certificate.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

@@ -12,10 +12,17 @@ Lists deployments for catalog.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzSphereCatalogDeployment -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaIdentityCatalog
+```
+Get-AzSphereCatalogDeployment -CatalogInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
+ [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,12 +54,28 @@ Lists deployments for catalog.
 
 ## PARAMETERS
 
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: ListViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -114,7 +137,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -144,7 +167,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -205,13 +228,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.Api20220901Preview.IDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

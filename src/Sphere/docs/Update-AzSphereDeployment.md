@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Sphere
-online version: https://learn.microsoft.com/powershell/module/az.sphere/new-azspheredeployment
+online version: https://learn.microsoft.com/powershell/module/az.sphere/update-azspheredeployment
 schema: 2.0.0
 ---
 
-# New-AzSphereDeployment
+# Update-AzSphereDeployment
 
 ## SYNOPSIS
 Create a Deployment.
@@ -13,36 +13,36 @@ Create a Deployment.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <String> -ProductName <String>
+Update-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DeployedImage <IImage[]>] [-DeploymentId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCatalogExpanded
+### UpdateViaIdentityCatalogExpanded
 ```
-New-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -Name <String>
+Update-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -Name <String>
  -ProductName <String> [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityDeviceGroupExpanded
+### UpdateViaIdentityDeviceGroupExpanded
 ```
-New-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeployedImage <IImage[]>]
+Update-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-DeployedImage <IImage[]>]
  [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
-New-AzSphereDeployment -InputObject <ISphereIdentity> [-DeployedImage <IImage[]>] [-DeploymentId <String>]
+Update-AzSphereDeployment -InputObject <ISphereIdentity> [-DeployedImage <IImage[]>] [-DeploymentId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityProductExpanded
+### UpdateViaIdentityProductExpanded
 ```
-New-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
+Update-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
  [-DeployedImage <IImage[]>] [-DeploymentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -98,7 +98,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityCatalogExpanded
+Parameter Sets: UpdateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -113,7 +113,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -176,7 +176,7 @@ To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityDeviceGroupExpanded
+Parameter Sets: UpdateViaIdentityDeviceGroupExpanded
 Aliases:
 
 Required: True
@@ -191,7 +191,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityProductExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded, UpdateViaIdentityProductExpanded
 Aliases:
 
 Required: True
@@ -207,7 +207,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -223,7 +223,7 @@ Use .default for deployment creation and to get the current deployment for the a
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded, CreateViaIdentityDeviceGroupExpanded, CreateViaIdentityProductExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded, UpdateViaIdentityDeviceGroupExpanded, UpdateViaIdentityProductExpanded
 Aliases: DeploymentName
 
 Required: True
@@ -254,7 +254,7 @@ To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityProductExpanded
+Parameter Sets: UpdateViaIdentityProductExpanded
 Aliases:
 
 Required: True
@@ -269,7 +269,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -285,7 +285,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -300,7 +300,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

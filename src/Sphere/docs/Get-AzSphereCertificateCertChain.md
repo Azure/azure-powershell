@@ -24,6 +24,12 @@ Get-AzSphereCertificateCertChain -InputObject <ISphereIdentity> [-DefaultProfile
  [-WhatIf] [<CommonParameters>]
 ```
 
+### RetrieveViaIdentityCatalog
+```
+Get-AzSphereCertificateCertChain -CatalogInputObject <ISphereIdentity> -SerialNumber <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieves cert chain.
 
@@ -52,6 +58,22 @@ Retrieves cert chain.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -CatalogInputObject
+Identity Parameter
+To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: RetrieveViaIdentityCatalog
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -CatalogName
 Name of catalog
@@ -122,7 +144,7 @@ Use '.default' to get current active certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve
+Parameter Sets: Retrieve, RetrieveViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -187,28 +209,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICertificateChainResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISphereIdentity>`: Identity Parameter
-  - `[CatalogName <String>]`: Name of catalog
-  - `[DeploymentName <String>]`: Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
-  - `[DeviceGroupName <String>]`: Name of device group.
-  - `[DeviceName <String>]`: Device name
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: Image name. Use .default for image creation.
-  - `[ProductName <String>]`: Name of product.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SerialNumber <String>]`: Serial number of the certificate. Use '.default' to get current active certificate.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
