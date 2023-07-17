@@ -1,56 +1,56 @@
 {
-  "New-AzElasticSan+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh?api-version=2021-11-20-preview+1": {
+  "New-AzElasticSan+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgo1emr6d5/providers/Microsoft.ElasticSan/elasticSans/testsano1emr6d5?api-version=2022-12-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh?api-version=2021-11-20-preview",
-      "Content": "{\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"southcentralusstg\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Premium_LRS\"\r\n    },\r\n    \"availabilityZones\": [ \"zone1\" ],\r\n    \"baseSizeTiB\": 1,\r\n    \"extendedCapacitySizeTiB\": 6\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgo1emr6d5/providers/Microsoft.ElasticSan/elasticSans/testsano1emr6d5?api-version=2022-12-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Premium_LRS\"\r\n    },\r\n    \"baseSizeTiB\": 1,\r\n    \"extendedCapacitySizeTiB\": 6\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "275" ]
+        "Content-Length": [ "230" ]
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview" ],
         "Retry-After": [ "17" ],
-        "x-ms-request-id": [ "6a41f813-d9a7-4ee0-817a-aa5b05693c84" ],
+        "x-ms-request-id": [ "cd888b79-8d0e-47d1-8bd8-291188cc7e46" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
-        "x-ms-correlation-request-id": [ "5a437e10-74d4-4b75-a0fd-9e1ff2929bf3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102615Z:5a437e10-74d4-4b75-a0fd-9e1ff2929bf3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-correlation-request-id": [ "c9fa9cd2-cc01-4c6b-a565-6ed2f21f1200" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230717T062446Z:c9fa9cd2-cc01-4c6b-a565-6ed2f21f1200" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 10:26:14 GMT" ]
+        "Date": [ "Mon, 17 Jul 2023 06:24:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "788" ],
+        "Content-Length": [ "782" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Creating\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh\",\"name\":\"testsan2jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:26:14.6273329Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:26:14.6273329Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
+      "Content": "{\"location\":\"eastus2euap\",\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Creating\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgo1emr6d5/providers/Microsoft.ElasticSan/elasticSans/testsano1emr6d5\",\"name\":\"testsano1emr6d5\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2023-07-17T06:24:46.6765451Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2023-07-17T06:24:46.6765451Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview+2": {
+  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "2835e739-db1c-4129-8f61-1c7aeb0b244f" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "5222ce7e-4724-4ccb-86f8-1fa91a8dcc0c" ],
         "CommandName": [ "New-AzElasticSan" ],
         "FullCommandName": [ "New-AzElasticSan_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ElasticSan/0.2.0" ]
       },
       "ContentHeaders": {
       }
@@ -60,16 +60,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview" ],
         "Retry-After": [ "17" ],
-        "x-ms-request-id": [ "ee04184f-5f60-40b5-97be-71cf53d2f990" ],
+        "x-ms-request-id": [ "a4862bf8-7720-48f0-9309-ba6b6a1d60d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
-        "x-ms-correlation-request-id": [ "39413862-5252-44e1-9dc0-8fc672614f6e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102632Z:39413862-5252-44e1-9dc0-8fc672614f6e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "219264c1-b3d0-4849-8937-efc3a6ef36aa" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230717T062504Z:219264c1-b3d0-4849-8937-efc3a6ef36aa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 10:26:32 GMT" ]
+        "Date": [ "Mon, 17 Jul 2023 06:25:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "text/plain; charset=utf-8" ],
@@ -80,20 +80,20 @@
       "isContentBase64": false
     }
   },
-  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview+3": {
+  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/southcentralusstg/asyncoperations/6a41f813-d9a7-4ee0-817a-aa5b05693c84?monitor=true\u0026api-version=2021-11-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "2835e739-db1c-4129-8f61-1c7aeb0b244f" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "5222ce7e-4724-4ccb-86f8-1fa91a8dcc0c" ],
         "CommandName": [ "New-AzElasticSan" ],
         "FullCommandName": [ "New-AzElasticSan_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ElasticSan/0.2.0" ]
       },
       "ContentHeaders": {
       }
@@ -103,38 +103,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "18c7cc4d-8272-494b-a812-1a12d7eb77a6" ],
+        "x-ms-request-id": [ "b5d651cb-2562-4fbd-9518-e3d7bb5493fe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
-        "x-ms-correlation-request-id": [ "43c68de0-c57a-4de6-8070-90b9d79a9956" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102650Z:43c68de0-c57a-4de6-8070-90b9d79a9956" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
+        "x-ms-correlation-request-id": [ "43b42b70-6753-4d59-952d-6407b355eda7" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230717T062522Z:43b42b70-6753-4d59-952d-6407b355eda7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 10:26:49 GMT" ]
+        "Date": [ "Mon, 17 Jul 2023 06:25:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "789" ],
+        "Content-Length": [ "783" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh\",\"name\":\"testsan2jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:26:14.6273329Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:26:14.6273329Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
+      "Content": "{\"location\":\"eastus2euap\",\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgo1emr6d5/providers/Microsoft.ElasticSan/elasticSans/testsano1emr6d5\",\"name\":\"testsano1emr6d5\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2023-07-17T06:24:46.6765451Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2023-07-17T06:24:46.6765451Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh?api-version=2021-11-20-preview+4": {
+  "New-AzElasticSan+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh?api-version=2021-11-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/locations/eastus2euap/asyncoperations/cd888b79-8d0e-47d1-8bd8-291188cc7e46?monitor=true\u0026api-version=2022-12-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "2835e739-db1c-4129-8f61-1c7aeb0b244f" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "5222ce7e-4724-4ccb-86f8-1fa91a8dcc0c" ],
         "CommandName": [ "New-AzElasticSan" ],
         "FullCommandName": [ "New-AzElasticSan_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.6", "Az.ElasticSan/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ElasticSan/0.2.0" ]
       },
       "ContentHeaders": {
       }
@@ -144,21 +144,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1d1f29c7-13ae-4404-b923-fdff30d71e87" ],
+        "x-ms-request-id": [ "6a85eb32-21c5-4459-8d6c-17351c3c7736" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
-        "x-ms-correlation-request-id": [ "3c2a2bbb-90ba-49a1-816b-bb16ffe9d4fd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102650Z:3c2a2bbb-90ba-49a1-816b-bb16ffe9d4fd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "x-ms-correlation-request-id": [ "500803cd-6140-4142-8811-019fe6577a88" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230717T062523Z:500803cd-6140-4142-8811-019fe6577a88" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 10:26:50 GMT" ]
+        "Date": [ "Mon, 17 Jul 2023 06:25:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "789" ],
+        "Content-Length": [ "783" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testsan2jxnvboh\",\"name\":\"testsan2jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:26:14.6273329Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:26:14.6273329Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
+      "Content": "{\"location\":\"eastus2euap\",\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrgo1emr6d5/providers/Microsoft.ElasticSan/elasticSans/testsano1emr6d5\",\"name\":\"testsano1emr6d5\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2023-07-17T06:24:46.6765451Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2023-07-17T06:24:46.6765451Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
       "isContentBase64": false
     }
   }

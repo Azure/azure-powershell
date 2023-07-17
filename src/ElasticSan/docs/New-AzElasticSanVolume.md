@@ -15,9 +15,9 @@ Create a Volume.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-CreationDataCreateSource <VolumeCreateOption>]
- [-CreationDataSourceUri <String>] [-SizeGiB <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> -SizeGiB <Int64> [-SubscriptionId <String>]
+ [-CreationDataCreateSource <VolumeCreateOption>] [-CreationDataSourceUri <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -35,9 +35,9 @@ New-AzElasticSanVolume -InputObject <IElasticSanIdentity> -Parameter <IVolume> [
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-CreationDataCreateSource <VolumeCreateOption>]
- [-CreationDataSourceUri <String>] [-SizeGiB <Int64>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzElasticSanVolume -InputObject <IElasticSanIdentity> -SizeGiB <Int64>
+ [-CreationDataCreateSource <VolumeCreateOption>] [-CreationDataSourceUri <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -203,7 +204,7 @@ Response for Volume request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -238,7 +239,7 @@ Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -256,21 +257,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Azure resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -326,13 +312,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 
 ## NOTES
 
@@ -346,24 +332,23 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
   - `[ElasticSanName <String>]`: The name of the ElasticSan.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The name of the Private Endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
   - `[VolumeName <String>]`: The name of the Volume.
 
 `PARAMETER <IVolume>`: Response for Volume request.
-  - `[Tag <IResourceTags>]`: Azure resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CreationDataCreateSource <VolumeCreateOption?>]`: This enumerates the possible sources of a volume creation.
-  - `[CreationDataSourceUri <String>]`: If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
-  - `[SizeGiB <Int64?>]`: Volume size.
-  - `[StorageTargetStatus <OperationalStatus?>]`: Operational status of the iSCSI Target.
+  - `SizeGiB <Int64>`: Volume size.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[CreationDataCreateSource <VolumeCreateOption?>]`: This enumerates the possible sources of a volume creation.
+  - `[CreationDataSourceUri <String>]`: If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
+  - `[StorageTargetStatus <OperationalStatus?>]`: Operational status of the iSCSI Target.
 
 ## RELATED LINKS
 

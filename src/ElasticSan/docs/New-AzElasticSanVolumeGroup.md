@@ -17,7 +17,7 @@ Create a Volume Group.
 New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Encryption <EncryptionType>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <StorageTargetType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -37,7 +37,7 @@ New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> -Parameter <IVolu
 ```
 New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <EncryptionType>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <StorageTargetType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +119,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -199,7 +200,7 @@ The list of virtual network rules.
 To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -230,7 +231,7 @@ Response for Volume Group request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -287,21 +288,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Azure resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -338,13 +324,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 
 ## NOTES
 
@@ -358,6 +344,7 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
   - `[ElasticSanName <String>]`: The name of the ElasticSan.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The name of the Private Endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
@@ -368,19 +355,17 @@ To create the parameters described below, construct a hash table containing the 
   - `[Action <Action?>]`: The action of virtual network rule.
 
 `PARAMETER <IVolumeGroup>`: Response for Volume Group request.
-  - `[Tag <IResourceTags>]`: Azure resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Encryption <EncryptionType?>]`: Type of encryption
-  - `[NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]`: The list of virtual network rules.
-    - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-    - `[Action <Action?>]`: The action of virtual network rule.
-  - `[ProtocolType <StorageTargetType?>]`: Type of storage target
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Encryption <EncryptionType?>]`: Type of encryption
+  - `[NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]`: The list of virtual network rules.
+    - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+    - `[Action <Action?>]`: The action of virtual network rule.
+  - `[ProtocolType <StorageTargetType?>]`: Type of storage target
 
 ## RELATED LINKS
 
