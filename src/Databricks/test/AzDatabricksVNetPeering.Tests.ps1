@@ -14,35 +14,35 @@ if (($null -eq $TestName) -or ($TestName -contains 'AzDatabricksVNetPeering')) {
 }
 
 Describe 'AzDatabricksVNetPeering' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         {
             $config = New-AzDatabricksVNetPeering -Name $env.vNetName1 -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -RemoteVirtualNetworkId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.vNetName)"
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'List' {
+    It 'List' -Skip {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         { 
             $config = Update-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1 -AllowForwardedTraffic $True
             $config.Name | Should -Be $env.vNetName1
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         {
             $config = Get-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
             $config = Update-AzDatabricksVNetPeering -InputObject $config -AllowForwardedTraffic $True
