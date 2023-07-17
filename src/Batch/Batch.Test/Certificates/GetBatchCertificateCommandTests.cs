@@ -27,8 +27,10 @@ using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
+
 namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 {
+    [Obsolete]
     public class GetBatchCertificateCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchCertificateCommand cmdlet;
