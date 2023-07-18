@@ -45,7 +45,7 @@ Update an Volume.
 
 ### Example 1: Update an Elastic SAN volume
 ```powershell
-$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -Tag @{tag3 = "value3"} -SizeGib 120
+$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 ```
 
 ```output
@@ -65,7 +65,6 @@ SystemDataCreatedByType        : Application
 SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
 SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType   : Application
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                           : Microsoft.ElasticSan/ElasticSans
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```

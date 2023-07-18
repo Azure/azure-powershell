@@ -26,6 +26,7 @@ function setupEnv() {
 
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testelasticsanrg" + $env.RandomString
+    $env.ResourceGroupName2 = "yifanz1"
     $env.Location = "eastus2euap"
 
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
@@ -42,6 +43,7 @@ function setupEnv() {
     $env.ElasticSanLocation = "eastus2euap"
     $env.ElasticSanName1 = "testelasticsan1" + $env.RandomString
     $env.ElasticSanName2 = "testelasticsan2" + $env.RandomString
+    $env.ElasticSanName3 = "testpreviewes2"
     $env.BaseSizeTib = 1
     $env.ExtendedCapacitySizeTib = 6 
     $env.ElasticSanTags = @{tag1 = "value1"; tag2 = "value2"}
