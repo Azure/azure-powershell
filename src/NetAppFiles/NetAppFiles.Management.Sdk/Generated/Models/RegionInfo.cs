@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         /// <remarks>
         /// Provides storage to network proximity information in the region.
-        /// Possible values include: 'Default', 'T1', 'T2', 'T1AndT2'
+        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2',
+        /// 'T1AndT2', 'T1AndAcrossT2', 'T2AndAcrossT2', 'T1AndT2AndAcrossT2'
         /// </remarks>
         [JsonProperty(PropertyName = "storageToNetworkProximity")]
         public string StorageToNetworkProximity { get; set; }

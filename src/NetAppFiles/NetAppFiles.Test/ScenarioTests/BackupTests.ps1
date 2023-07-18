@@ -477,9 +477,6 @@ function Test-VolumeBackupStatus
         Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
-        Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check the volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1

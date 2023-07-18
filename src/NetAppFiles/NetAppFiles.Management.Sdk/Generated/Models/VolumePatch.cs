@@ -67,7 +67,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// enabled for the volume.</param>
         /// <param name="coolnessPeriod">Specifies the number of days after
         /// which data that is not accessed by clients will be tiered.</param>
-        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?))
+        /// <param name="snapshotDirectoryVisible">If enabled (true) the volume
+        /// will contain a read-only snapshot directory which provides access
+        /// to each of the volume's snapshots.</param>
+        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), bool? snapshotDirectoryVisible = default(bool?))
         {
             Location = location;
             Id = id;
@@ -85,6 +88,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             UnixPermissions = unixPermissions;
             CoolAccess = coolAccess;
             CoolnessPeriod = coolnessPeriod;
+            SnapshotDirectoryVisible = snapshotDirectoryVisible;
             CustomInit();
         }
 
@@ -216,6 +220,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.coolnessPeriod")]
         public int? CoolnessPeriod { get; set; }
+
+        /// <summary>
+        /// Gets or sets if enabled (true) the volume will contain a read-only
+        /// snapshot directory which provides access to each of the volume's
+        /// snapshots.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.snapshotDirectoryVisible")]
+        public bool? SnapshotDirectoryVisible { get; set; }
 
         /// <summary>
         /// Validate the object.
