@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate_Validate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector body, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsCreateOrUpdate_Validate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector body, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessConnectorsDelete(string resourceGroupName, string connectorName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// </returns>
         public async global::System.Threading.Tasks.Task AccessConnectorsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -589,9 +589,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsGet(string resourceGroupName, string connectorName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsGet(string resourceGroupName, string connectorName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -630,9 +630,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -759,9 +759,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -799,9 +799,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.AccessConnectorListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -921,9 +921,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -959,9 +959,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1007,7 +1007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.AccessConnectorListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnectorListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1076,9 +1076,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsUpdate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsUpdate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1122,9 +1122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AccessConnectorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AccessConnectorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-10-01-preview";
+            var apiVersion = @"2023-05-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1179,7 +1179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.AccessConnector.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AccessConnectorsUpdate_Validate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AccessConnectorsUpdate_Validate(string resourceGroupName, string connectorName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

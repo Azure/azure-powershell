@@ -8,15 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Extensions;
     using System;
 
-    /// <summary>Gets an azure databricks accessConnector.</summary>
+    /// <summary>Creates vNet Peering for workspace.</summary>
     /// <remarks>
-    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDatabricksAccessConnector_GetViaIdentity")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Gets an azure databricks accessConnector.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDatabricksVNetPeering_UpdateExpanded", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates vNet Peering for workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
-    public partial class GetAzDatabricksAccessConnector_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
+    public partial class UpdateAzDatabricksVNetPeering_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -33,6 +34,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Peerings in a VirtualNetwork resource</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering _virtualNetworkPeeringParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.VirtualNetworkPeering();
+
+        /// <summary>
+        /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.",
+        SerializedName = @"allowForwardedTraffic",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AllowForwardedTraffic { get => _virtualNetworkPeeringParametersBody.AllowForwardedTraffic ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualNetworkPeeringParametersBody.AllowForwardedTraffic = value; }
+
+        /// <summary>
+        /// If gateway links can be used in remote virtual networking to link to this virtual network.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If gateway links can be used in remote virtual networking to link to this virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If gateway links can be used in remote virtual networking to link to this virtual network.",
+        SerializedName = @"allowGatewayTransit",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AllowGatewayTransit { get => _virtualNetworkPeeringParametersBody.AllowGatewayTransit ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualNetworkPeeringParametersBody.AllowGatewayTransit = value; }
+
+        /// <summary>
+        /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.",
+        SerializedName = @"allowVirtualNetworkAccess",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AllowVirtualNetworkAccess { get => _virtualNetworkPeeringParametersBody.AllowVirtualNetworkAccess ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualNetworkPeeringParametersBody.AllowVirtualNetworkAccess = value; }
+
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
@@ -40,6 +88,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Databricks Client => Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.ClientAPI;
+
+        /// <summary>A list of address blocks reserved for this virtual network in CIDR notation.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of address blocks reserved for this virtual network in CIDR notation.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of address blocks reserved for this virtual network in CIDR notation.",
+        SerializedName = @"addressPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] DatabricksAddressSpacePrefix { get => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.DatabrickAddressSpaceAddressPrefix = value; }
+
+        /// <summary>The Id of the databricks virtual network.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the databricks virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Id of the databricks virtual network.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DatabricksVirtualNetworkId { get => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId ?? null; set => _virtualNetworkPeeringParametersBody.DatabrickVirtualNetworkId = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -63,14 +134,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity _inputObject;
-
-        /// <summary>Identity Parameter</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -81,6 +144,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the workspace vNet peering.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the workspace vNet peering.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the workspace vNet peering.",
+        SerializedName = @"peeringName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
+        /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.HttpPipeline" /> that the remote call will use.
@@ -103,6 +188,90 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>A list of address blocks reserved for this virtual network in CIDR notation.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of address blocks reserved for this virtual network in CIDR notation.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of address blocks reserved for this virtual network in CIDR notation.",
+        SerializedName = @"addressPrefixes",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] RemoteAddressSpacePrefix { get => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix ?? null /* arrayOf */; set => _virtualNetworkPeeringParametersBody.RemoteAddressSpaceAddressPrefix = value; }
+
+        /// <summary>The Id of the remote virtual network.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the remote virtual network.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Id of the remote virtual network.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RemoteVirtualNetworkId { get => _virtualNetworkPeeringParametersBody.RemoteVirtualNetworkId ?? null; set => _virtualNetworkPeeringParametersBody.RemoteVirtualNetworkId = value; }
+
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
+
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(
+        Name = @"",
+        Description =@"",
+        Script = @"(Get-AzContext).Subscription.Id")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>
+        /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote
+        /// peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have
+        /// this flag set to true. This flag cannot be set if virtual network already has a gateway.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.",
+        SerializedName = @"useRemoteGateways",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter UseRemoteGateway { get => _virtualNetworkPeeringParametersBody.UseRemoteGateway ?? default(global::System.Management.Automation.SwitchParameter); set => _virtualNetworkPeeringParametersBody.UseRemoteGateway = value; }
+
+        /// <summary>Backing field for <see cref="WorkspaceName" /> property.</summary>
+        private string _workspaceName;
+
+        /// <summary>The name of the workspace.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the workspace.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the workspace.",
+        SerializedName = @"workspaceName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.ParameterCategory.Path)]
+        public string WorkspaceName { get => this._workspaceName; set => this._workspaceName = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -120,12 +289,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -145,16 +314,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
         }
 
-        /// <summary>Performs clean-up after the command execution</summary>
-        protected override void EndProcessing()
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of UpdateAzDatabricksVNetPeering_UpdateExpanded</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets.UpdateAzDatabricksVNetPeering_UpdateExpanded Clone()
         {
-
+            var clone = new UpdateAzDatabricksVNetPeering_UpdateExpanded();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone._virtualNetworkPeeringParametersBody = this._virtualNetworkPeeringParametersBody;
+            clone.ResourceGroupName = this.ResourceGroupName;
+            clone.WorkspaceName = this.WorkspaceName;
+            clone.SubscriptionId = this.SubscriptionId;
+            clone.Name = this.Name;
+            return clone;
         }
 
-        /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzDatabricksAccessConnector_GetViaIdentity" /> cmdlet class.
-        /// </summary>
-        public GetAzDatabricksAccessConnector_GetViaIdentity()
+        /// <summary>Performs clean-up after the command execution</summary>
+        protected override void EndProcessing()
         {
 
         }
@@ -189,8 +375,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.Debug:
@@ -202,6 +388,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     {
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.DelayBeforePolling:
+                    {
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            var data = messageData();
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        break;
                     }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.Databricks.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
@@ -221,9 +425,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
             try
             {
                 // work
-                using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token) )
+                if (ShouldProcess($"Call remote 'VNetPeeringCreateOrUpdate' operation"))
                 {
-                    asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token);
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
+                    {
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token);
+                        }
+                    }
                 }
             }
             catch (global::System.AggregateException aggregateException)
@@ -270,32 +489,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    if (InputObject?.Id != null)
-                    {
-                        await this.Client.AccessConnectorsGetViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
-                    }
-                    else
-                    {
-                        // try to call with PATH parameters from Input Object
-                        if (null == InputObject.ResourceGroupName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        if (null == InputObject.ConnectorName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ConnectorName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        if (null == InputObject.SubscriptionId)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        await this.Client.AccessConnectorsGet(InputObject.ResourceGroupName ?? null, InputObject.ConnectorName ?? null, InputObject.SubscriptionId ?? null, onOk, onDefault, this, Pipeline);
-                    }
+                    await this.Client.VNetPeeringCreateOrUpdate(ResourceGroupName, WorkspaceName, SubscriptionId, Name, _virtualNetworkPeeringParametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,WorkspaceName=WorkspaceName,SubscriptionId=SubscriptionId,Name=Name,body=_virtualNetworkPeeringParametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -312,6 +511,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// Intializes a new instance of the <see cref="UpdateAzDatabricksVNetPeering_UpdateExpanded" /> cmdlet class.
+        /// </summary>
+        public UpdateAzDatabricksVNetPeering_UpdateExpanded()
+        {
+
         }
 
         /// <summary>
@@ -341,14 +548,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, SubscriptionId=SubscriptionId, Name=Name, body=_virtualNetworkPeeringParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, SubscriptionId=SubscriptionId, Name=Name, body=_virtualNetworkPeeringParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -358,12 +565,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering> response)
         {
             using( NoSynchronizationContext )
             {
@@ -375,7 +582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering
                 WriteObject((await response));
             }
         }
