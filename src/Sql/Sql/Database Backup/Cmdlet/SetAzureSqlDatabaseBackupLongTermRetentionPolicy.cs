@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 MonthlyRetention = "P0D";
                 YearlyRetention = "P0D";
                 WeekOfYear = 1;
+                MakeBackupsImmutable = null;
             }
 
             return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()

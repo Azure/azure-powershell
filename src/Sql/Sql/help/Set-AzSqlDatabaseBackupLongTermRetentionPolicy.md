@@ -22,7 +22,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-Serve
 ### RemovePolicy
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-MakeBackupsImmutable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
