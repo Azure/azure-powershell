@@ -138,6 +138,10 @@ directive:
   - where:
       subject: AppDeploymentThreadDump
     remove: true
+  - where:
+      verb: Update
+      subject: BuildpackBinding
+    remove: true
 
   # remove variant
   - where: 

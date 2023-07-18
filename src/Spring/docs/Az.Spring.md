@@ -218,9 +218,6 @@ Update custom domain of one lifecycle application.
 ### [Update-AzSpringAppDeployment](Update-AzSpringAppDeployment.md)
 Operation to update an exiting Deployment.
 
-### [Update-AzSpringBuildpackBinding](Update-AzSpringBuildpackBinding.md)
-Create a buildpack binding.
-
 ### [Update-AzSpringBuildService](Update-AzSpringBuildService.md)
 Create a KPack build.
 

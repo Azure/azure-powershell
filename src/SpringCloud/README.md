@@ -556,7 +556,6 @@ directive:
 
   - where:
       subject-prefix: SpringCloud
-      # verb: Deploy|Disable|Enable|Get|New|Remove|Restart|Start|Stop|Test|Update
     set:
       preview-message: Az.SpringCloud last version update, Az.SpringCloud will be renamed to Az.Spring.
 ```
