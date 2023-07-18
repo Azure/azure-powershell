@@ -163,8 +163,8 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 5: Connect using a Managed Service Identity
 
-This example connects using the Managed Service Identity (MSI) of the host environment. For example,
-you sign into Azure from a virtual machine that has an assigned MSI.
+This example connects using a system-assigned Managed Service Identity (MSI) of the host
+environment. For example, you sign into Azure from a virtual machine that has an assigned MSI.
 
 ```powershell
 Connect-AzAccount -Identity
