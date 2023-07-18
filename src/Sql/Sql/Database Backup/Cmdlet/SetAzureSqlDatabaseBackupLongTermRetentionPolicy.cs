@@ -171,7 +171,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 MonthlyRetention = "P0D";
                 YearlyRetention = "P0D";
                 WeekOfYear = 1;
-                MakeBackupsImmutable = null;
             }
 
             return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>()
@@ -186,7 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
                     WeekOfYear = WeekOfYear,
-                    MakeBackupsImmutable = this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null
+                    MakeBackupsImmutable = RemovePolicy.IsPresent ? null : (this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null)
                 }
             };
         }
