@@ -61,6 +61,66 @@ function Test-TagCreateOrUpdateWithResourceIdParamsForResource
     Test-TagCreateOrUpdateWithResourceIdParams $resourceId
 }
 
+<#
+.SYNOPSIS
+Utility method to test async CreateOrUpdate for Tags within tracked resources and subscription.
+#>
+function Test-TagCreateOrUpdateAsyncWithResourceIdParams($resourceId)
+{
+    # Setup
+    $expected = @{"key1"="value1"; "key2"="value2";}
+
+    try
+    {
+        # Test
+        $res = New-AzTag -ResourceId $resourceId -Tag $expected
+        # Write-Host "Comparing the following host"
+        # Write-Debug "Comparing the following debug"
+        # Write-Debug ($res | Out-String)
+        # Write-Debug ($res | Format-Table | Out-String)
+        # Write-Host "sleeping host"
+        # Write-Debug "sleeping  debug"
+        Start-TestSleep -Seconds 180
+        # Write-Host "waking host"
+        # Write-Debug "waking debug"
+        $res2 = Get-AzTag -ResourceId $resourceId
+        # Write-Debug "Status of res debug is:"
+        # Write-Host "Status of res host is:"
+        # Write-Debug ($res2 | Out-String)
+        # Write-Debug ($res2 | Format-Table | Out-String)
+        # Write-Host ($res2.ProvisioningState | Out-String)
+        [hashtable]$actual = $res2.Properties.TagsProperty
+        
+        # Write-Host ($res2.TagsProperty | Out-String)
+        # Write-Host ($res2.Properties | Format-Table | Out-String)
+
+        # Write-Debug "Comparing the following" 
+        # $str = $expected | Out-String
+        # Write-Host $str -ForegroundColor Red
+        # $str = $actual | Out-String
+        # Write-Host $str -ForegroundColor Red
+        # Assert
+        Assert-True { AreHashtableEqual $expected $actual }
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzTag -ResourceId $resourceId
+    } 
+}
+
+<#
+.SYNOPSIS
+Tests creating or updating tags on tracked resource.
+#>
+function Test-TagCreateOrUpdateAsyncWithResourceIdParamsForResource
+{
+    # Setup
+    $resourceId = NewTestResourcePurviewAccount
+
+    Test-TagCreateOrUpdateAsyncWithResourceIdParams $resourceId
+}
+
 
 <#
 .SYNOPSIS
@@ -143,6 +203,74 @@ function Test-TagUpdateWithResourceIdParamsForResource
     Test-UpdateWithResourceIdParams $resourceId
 }
 
+<#
+.SYNOPSIS
+Utility method to test async updating tags on subscription and tracked resource, including Merge, Replace, and Delete Operation.
+#>
+function Test-UpdateAsyncWithResourceIdParams($resourceId)
+{
+    # Setup
+    $original = @{"key1"="value1"; "key2"="value2";}
+    New-AzTag -ResourceId $resourceId -Tag $original
+    Start-TestSleep -Seconds 180
+
+    try
+    {
+        # Test
+        {
+            # merge operation
+            $merged = @{"key1"="value1"; "key3"="value3";}
+            $res = Update-AzTag -ResourceId $resourceId -Tag $merged -Operation Merge
+
+            $expected = @{"key1"="value1"; "key2"="value2"; "key3"="value3";}
+            [hashtable]$actual = $res.Properties.TagsProperty
+
+            # Assert
+            Assert-True { AreHashtableEqual $expected $actual }
+        }
+
+        {
+            # replace operation
+            $replaced = @{"key1"="value1"; "key3"="value3";}
+            $res = Update-AzTag -ResourceId $resourceId -Tag $replaced -Operation Replace
+
+            $expected = $replaced
+            [hashtable]$actual = $res.Properties.TagsProperty
+
+            # Assert
+            Assert-True { AreHashtableEqual $expected $actual }
+        }
+
+        {
+            # delete operation
+            $deleted = @{"key1"="value1"; "key3"="value3";}
+            $res = Update-AzTag -ResourceId $resourceId -Tag $deleted -Operation Delete
+
+            $expected = null
+            [hashtable]$actual = $res.Properties.TagsProperty
+
+            # Assert
+            Assert-True { AreHashtableEqual $expected $actual }
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzTag -ResourceId $resourceId
+    } 
+}
+
+<#
+.SYNOPSIS
+Tests async updating tags on tracked resource.
+#>
+function Test-TagUpdateAsyncWithResourceIdParamsForResource
+{
+    # Setup
+    $resourceId = NewTestResourcePurviewAccount
+
+    Test-UpdateAsyncWithResourceIdParams $resourceId
+}
 
 <#
 .SYNOPSIS
@@ -249,6 +377,46 @@ function Test-TagDeleteWithResourceIdParamsForResource
 
 <#
 .SYNOPSIS
+Utility method to test Delete for Tags within tracked resources and subscription.
+#>
+function Test-TagDeleteAsyncWithResourceIdParams($resourceId)
+{
+    # Setup
+    $original = @{"key1"="value1"; "key2"="value2";}
+    New-AzTag -ResourceId $resourceId -Tag $original
+    Start-TestSleep -Seconds 180
+
+    try 
+    {
+        # Test
+        Remove-AzTag -ResourceId $resourceId  
+        Start-TestSleep -Seconds 180
+        $actual = Get-AzTag -ResourceId $resourceId
+
+        # Assert
+        Assert-AreEqual $actual.Properties.TagsProperty.Count 0
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzTag -ResourceId $resourceId
+    }        
+}
+
+<#
+.SYNOPSIS
+Tests getting tags on tracked resource.
+#>
+function Test-TagDeleteAsyncWithResourceIdParamsForResource
+{
+    # Setup
+    $resourceId = NewTestResourcePurviewAccount
+
+    Test-TagDeleteAsyncWithResourceIdParams $resourceId
+}
+
+<#
+.SYNOPSIS
 utility method to get default subscriptionId
 #>
 function GetDefaultSubscriptionId
@@ -265,13 +433,13 @@ utility method to create resource group
 #>
 function NewTestResourceGroup
 {
-    $rgName = "RG-Test05"
+    $rgName = Get-ResourceGroupName
     $location = "Central US"
 
-    $existed = Get-AzureRmResourceGroup -Name $rgName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+    $existed = Get-AzResourceGroup -Name $rgName -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
     if($notPresent) {
-        $existed = New-AzureRmResourceGroup -Name $rgName -Location $location
+        $existed = New-AzResourceGroup -Name $rgName -Location $location
 	}
   
     return $existed
@@ -285,18 +453,40 @@ function NewTestResource
 {
     $rg = NewTestResourceGroup
 
-    $resourceName = "RS-Test05"
+    $resourceName = Get-ResourceName
     $resourceId = $rg.ResourceId + "/providers/microsoft.web/sites/" + $resourceName
 
-    $location = "Central US"
+    $location = "West Central US"
     $property = @{test="test-tag"}
     $resourceType = "microsoft.web/sites"
     
-    $existed = Get-AzureRmResource -ResourceId $resourceId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+    $existed = Get-AzResource -ResourceId $resourceId -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
     if($notPresent) {
-        $existed = New-AzureRmResource -Location $location -Properties $property -ResourceName $resourceName -ResourceType $resourceType -ResourceGroupName $rg.ResourceGroupName -Force
+        $existed = New-AzResource -Location $location -Properties $property -ResourceName $resourceName -ResourceType $resourceType -ResourceGroupName $rg.ResourceGroupName -Force
 	}
     
+    return $resourceId
+}
+
+<#
+.SYNOPSIS
+utility method to creare resource
+#>
+function NewTestResourcePurviewAccount
+{
+    $rg = NewTestResourceGroup
+    $resourceName = Get-ResourceName
+    $resourceId = $rg.ResourceId + "/providers/Microsoft.Purview/accounts/" + $resourceName
+
+    $location = "westus"
+    $property = @{test="test-tag"}
+    $resourceType = "microsoft.purview/accounts"
+
+    $existed = Get-AzResource -ResourceId $resourceId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+    if ($notPresent) {
+        $existed = New-AzPurviewAccount -Name $resourceName -ResourceGroupName $rg.ResourceGroupName -IdentityType SystemAssigned -Location $location -Tag $property -SkuCapacity 4 -SkuName Standard
+    }
+
     return $resourceId
 }

@@ -79,5 +79,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-TagDeleteWithResourceIdParamsForResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TagCreateOrUpdateAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagCreateOrUpdateAsyncWithResourceIdParamsForResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TagUpdateAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagUpdateAsyncWithResourceIdParamsForResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TagDeleteAsyncWithResourceIdParamsForResource()
+        {
+            TestRunner.RunTestScript("Test-TagDeleteAsyncWithResourceIdParamsForResource");
+        }
     }
 }

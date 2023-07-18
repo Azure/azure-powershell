@@ -1,0 +1,925 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3Mz9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f2ae250e-43e2-4996-bffd-5aaa420e7144"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "26b5e1c4-498b-4c58-98d2-a6461069a0b2"
+        ],
+        "x-ms-correlation-request-id": [
+          "26b5e1c4-498b-4c58-98d2-a6461069a0b2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213523Z:26b5e1c4-498b-4c58-98d2-a6461069a0b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:35:22 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "98"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'ps4173' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3Mz9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "HEAD",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e96880b0-b9c8-436c-aff3-db0d002b1492"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "b831b320-8667-476d-ae13-30758d5c287c"
+        ],
+        "x-ms-correlation-request-id": [
+          "b831b320-8667-476d-ae13-30758d5c287c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213523Z:b831b320-8667-476d-ae13-30758d5c287c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:35:23 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3Mz9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e96880b0-b9c8-436c-aff3-db0d002b1492"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "32"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"Central US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "443eeb41-35dd-436c-8d14-ca68a27f2693"
+        ],
+        "x-ms-correlation-request-id": [
+          "443eeb41-35dd-436c-8d14-ca68a27f2693"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213524Z:443eeb41-35dd-436c-8d14-ca68a27f2693"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:35:24 GMT"
+        ],
+        "Content-Length": [
+          "212"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173\",\r\n  \"name\": \"ps4173\",\r\n  \"type\": \"Microsoft.Resources/resourceGroups\",\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Purview?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUHVydmlldz9hcGktdmVyc2lvbj0yMDIxLTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dc251630-b3f8-4c5f-990e-66488a2d6c4c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "444d78e9-5059-4c3d-a4fb-ac1deb8cf350"
+        ],
+        "x-ms-correlation-request-id": [
+          "444d78e9-5059-4c3d-a4fb-ac1deb8cf350"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213524Z:444d78e9-5059-4c3d-a4fb-ac1deb8cf350"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:35:23 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "3875"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/providers/Microsoft.Purview\",\r\n  \"namespace\": \"Microsoft.Purview\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"73c2949e-da2d-457a-9607-fcc665198967\",\r\n      \"roleDefinitionId\": \"1BC09725-0C9B-4F57-A3D0-FCCF4EB40120\",\r\n      \"managedByRoleDefinitionId\": \"9e3af657-a8ff-583c-a75c-2fe7c4bcb635\"\r\n    },\r\n    {\r\n      \"applicationId\": \"fd642066-7bfc-4b65-9463-6a08841c12f0\",\r\n      \"roleDefinitionId\": \"5b3958cb-0439-42e1-80e3-cae077d0d5e8\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"accounts\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Canada Central\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"UAE North\",\r\n        \"Japan East\",\r\n        \"Switzerland North\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"Qatar Central\",\r\n        \"West US 3\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"defaultApiVersion\": \"2021-07-01\",\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity, SupportsTags, SupportsLocation\"\r\n    },\r\n    {\r\n      \"resourceType\": \"accounts/kafkaConfigurations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Canada Central\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"UAE North\",\r\n        \"Japan East\",\r\n        \"Switzerland North\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"Qatar Central\",\r\n        \"West US 3\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-11-01-preview\",\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"setDefaultAccount\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"defaultApiVersion\": \"2021-07-01\",\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"removeDefaultAccount\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"defaultApiVersion\": \"2021-07-01\",\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"getDefaultAccount\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"defaultApiVersion\": \"2021-07-01\",\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"defaultApiVersion\": \"2021-07-01\",\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"South Central US\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"UAE North\",\r\n        \"Japan East\",\r\n        \"Switzerland North\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"Qatar Central\",\r\n        \"West US 3\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\",\r\n        \"2021-07-01\",\r\n        \"2020-12-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/listFeatures\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Canada Central\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"UAE North\",\r\n        \"Japan East\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"Qatar Central\",\r\n        \"West US 3\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"West Europe\",\r\n        \"Southeast Asia\",\r\n        \"Canada Central\",\r\n        \"South Central US\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"UK South\",\r\n        \"France Central\",\r\n        \"Korea Central\",\r\n        \"UAE North\",\r\n        \"Japan East\",\r\n        \"Switzerland North\",\r\n        \"West US\",\r\n        \"South Africa North\",\r\n        \"Qatar Central\",\r\n        \"West US 3\",\r\n        \"Australia East\",\r\n        \"North Europe\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2021-12-01\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\",\r\n  \"registrationPolicy\": \"RegistrationRequired\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733?api-version=2021-12-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzJjMmY2N2FmLTA5ZjktNGQ2MC1iMDUxLWM1ZDk1NmQyYzlhNy9yZXNvdXJjZUdyb3Vwcy9wczQxNzMvcHJvdmlkZXJzL01pY3Jvc29mdC5QdXJ2aWV3L2FjY291bnRzL3BzNzczMz9hcGktdmVyc2lvbj0yMDIxLTEyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dc251630-b3f8-4c5f-990e-66488a2d6c4c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/3.17.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "9966e3d9-dac2-4f42-9210-6dfe75337918"
+        ],
+        "x-ms-correlation-request-id": [
+          "9966e3d9-dac2-4f42-9210-6dfe75337918"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213524Z:9966e3d9-dac2-4f42-9210-6dfe75337918"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:35:24 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "211"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Purview/accounts/ps7733' under resource group 'ps4173' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzJjMmY2N2FmLTA5ZjktNGQ2MC1iMDUxLWM1ZDk1NmQyYzlhNy9yZXNvdXJjZUdyb3Vwcy9wczQxNzMvcHJvdmlkZXJzL01pY3Jvc29mdC5QdXJ2aWV3L2FjY291bnRzL3BzNzczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a90c7289-1f0d-445b-97c1-47d12bd46efe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "99"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/fee971e7-900a-4bea-8c26-72389955100a?api-version=2021-07-01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "776d555c-1e27-4e4d-aac7-d6dac36af8c5"
+        ],
+        "x-ms-correlation-request-id": [
+          "776d555c-1e27-4e4d-aac7-d6dac36af8c5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213842Z:776d555c-1e27-4e4d-aac7-d6dac36af8c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:38:41 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/fee971e7-900a-4bea-8c26-72389955100a?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3My9wcm92aWRlcnMvTWljcm9zb2Z0LlB1cnZpZXcvYWNjb3VudHMvcHM3NzMzL29wZXJhdGlvblJlc3VsdHMvZmVlOTcxZTctOTAwYS00YmVhLThjMjYtNzIzODk5NTUxMDBhP2FwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a90c7289-1f0d-445b-97c1-47d12bd46efe"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/fee971e7-900a-4bea-8c26-72389955100a?api-version=2021-07-01"
+        ],
+        "api-supported-versions": [
+          "2020-12-01-preview, 2021-07-01, 2021-12-01, 2023-05-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "dbe2c4bc-f7c8-4a1e-9591-0dfcd019bbb1"
+        ],
+        "x-ms-correlation-request-id": [
+          "dbe2c4bc-f7c8-4a1e-9591-0dfcd019bbb1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213912Z:dbe2c4bc-f7c8-4a1e-9591-0dfcd019bbb1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:39:12 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/fee971e7-900a-4bea-8c26-72389955100a?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3My9wcm92aWRlcnMvTWljcm9zb2Z0LlB1cnZpZXcvYWNjb3VudHMvcHM3NzMzL29wZXJhdGlvblJlc3VsdHMvZmVlOTcxZTctOTAwYS00YmVhLThjMjYtNzIzODk5NTUxMDBhP2FwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a90c7289-1f0d-445b-97c1-47d12bd46efe"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "api-supported-versions": [
+          "2020-12-01-preview, 2021-07-01, 2021-12-01, 2023-05-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "e577c78f-9d1b-4379-ae5a-e3f9c195bd41"
+        ],
+        "x-ms-correlation-request-id": [
+          "e577c78f-9d1b-4379-ae5a-e3f9c195bd41"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T213942Z:e577c78f-9d1b-4379-ae5a-e3f9c195bd41"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:39:41 GMT"
+        ],
+        "Content-Length": [
+          "1759"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"properties\": {\r\n    \"cloudConnectors\": {\r\n      \"awsExternalId\": \"887de307-8ce3-484d-bad3-d2624e3f78c6\"\r\n    },\r\n    \"friendlyName\": \"ps7733\",\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByObjectId\": \"9b2c2fab-2ce6-43cb-8431-de186f679254\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"endpoints\": {\r\n      \"catalog\": \"https://ps7733.purview.azure.com/catalog\",\r\n      \"scan\": \"https://ps7733.purview.azure.com/scan\",\r\n      \"guardian\": \"https://ps7733.purview.azure.com/guardian\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointConnections\": [],\r\n    \"managedResources\": {\r\n      \"resourceGroup\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv\",\r\n      \"storageAccount\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.Storage/storageAccounts/scanwestusxkotiwe\",\r\n      \"eventHubNamespace\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.EventHub/namespaces/Atlas-50b06597-7b21-4e75-954f-99aa5fa0d307\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"managedResourceGroupName\": \"managed-rg-adkhnpv\"\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733\",\r\n  \"name\": \"ps7733\",\r\n  \"type\": \"Microsoft.Purview/accounts\",\r\n  \"location\": \"westus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"5dfd6b02-1b21-4f7c-9f21-3e365a20eeb1\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"lastModifiedBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-07-18T21:35:33.6597975Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzJjMmY2N2FmLTA5ZjktNGQ2MC1iMDUxLWM1ZDk1NmQyYzlhNy9yZXNvdXJjZUdyb3Vwcy9wczQxNzMvcHJvdmlkZXJzL01pY3Jvc29mdC5QdXJ2aWV3L2FjY291bnRzL3BzNzczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fa1109b6-0611-49de-9da7-e67ab29cf168"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "23acc0e0-588d-4e89-a43a-86db4d1ec878"
+        ],
+        "x-ms-correlation-request-id": [
+          "23acc0e0-588d-4e89-a43a-86db4d1ec878"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214243Z:23acc0e0-588d-4e89-a43a-86db4d1ec878"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:42:42 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "276"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Resources/tags\",\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzJjMmY2N2FmLTA5ZjktNGQ2MC1iMDUxLWM1ZDk1NmQyYzlhNy9yZXNvdXJjZUdyb3Vwcy9wczQxNzMvcHJvdmlkZXJzL01pY3Jvc29mdC5QdXJ2aWV3L2FjY291bnRzL3BzNzczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a80e583c-2e23-46db-9780-e785e696c604"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "d9d94f1f-44dd-4c6e-bd19-2cdb88e41984"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9d94f1f-44dd-4c6e-bd19-2cdb88e41984"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214243Z:d9d94f1f-44dd-4c6e-bd19-2cdb88e41984"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:42:43 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "276"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Resources/tags\",\r\n  \"properties\": {\r\n    \"tags\": {\r\n      \"key1\": \"value1\",\r\n      \"key2\": \"value2\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "//subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/providers/Microsoft.Resources/tags/default?api-version=2022-09-01",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzJjMmY2N2FmLTA5ZjktNGQ2MC1iMDUxLWM1ZDk1NmQyYzlhNy9yZXNvdXJjZUdyb3Vwcy9wczQxNzMvcHJvdmlkZXJzL01pY3Jvc29mdC5QdXJ2aWV3L2FjY291bnRzL3BzNzczMy9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy90YWdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a80e583c-2e23-46db-9780-e785e696c604"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/8fb45df6-155a-4469-915d-565184de0cc3?api-version=2021-07-01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "d754dfe6-68be-488a-857c-430e723628fb"
+        ],
+        "x-ms-correlation-request-id": [
+          "d754dfe6-68be-488a-857c-430e723628fb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214246Z:d754dfe6-68be-488a-857c-430e723628fb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:42:46 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/8fb45df6-155a-4469-915d-565184de0cc3?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3My9wcm92aWRlcnMvTWljcm9zb2Z0LlB1cnZpZXcvYWNjb3VudHMvcHM3NzMzL29wZXJhdGlvblJlc3VsdHMvOGZiNDVkZjYtMTU1YS00NDY5LTkxNWQtNTY1MTg0ZGUwY2MzP2FwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a80e583c-2e23-46db-9780-e785e696c604"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/8fb45df6-155a-4469-915d-565184de0cc3?api-version=2021-07-01"
+        ],
+        "api-supported-versions": [
+          "2020-12-01-preview, 2021-07-01, 2021-12-01, 2023-05-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "f2326eaf-dac4-416b-817e-92b8ab9e33bb"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2326eaf-dac4-416b-817e-92b8ab9e33bb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214316Z:f2326eaf-dac4-416b-817e-92b8ab9e33bb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:43:16 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/8fb45df6-155a-4469-915d-565184de0cc3?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3My9wcm92aWRlcnMvTWljcm9zb2Z0LlB1cnZpZXcvYWNjb3VudHMvcHM3NzMzL29wZXJhdGlvblJlc3VsdHMvOGZiNDVkZjYtMTU1YS00NDY5LTkxNWQtNTY1MTg0ZGUwY2MzP2FwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a80e583c-2e23-46db-9780-e785e696c604"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "api-supported-versions": [
+          "2020-12-01-preview, 2021-07-01, 2021-12-01, 2023-05-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "e66d05bc-9a0e-404a-8238-9ac688fd0b4e"
+        ],
+        "x-ms-correlation-request-id": [
+          "e66d05bc-9a0e-404a-8238-9ac688fd0b4e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214347Z:e66d05bc-9a0e-404a-8238-9ac688fd0b4e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:43:47 GMT"
+        ],
+        "Content-Length": [
+          "1728"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"properties\": {\r\n    \"cloudConnectors\": {\r\n      \"awsExternalId\": \"887de307-8ce3-484d-bad3-d2624e3f78c6\"\r\n    },\r\n    \"friendlyName\": \"ps7733\",\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByObjectId\": \"9b2c2fab-2ce6-43cb-8431-de186f679254\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"endpoints\": {\r\n      \"catalog\": \"https://ps7733.purview.azure.com/catalog\",\r\n      \"scan\": \"https://ps7733.purview.azure.com/scan\",\r\n      \"guardian\": \"https://ps7733.purview.azure.com/guardian\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointConnections\": [],\r\n    \"managedResources\": {\r\n      \"resourceGroup\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv\",\r\n      \"storageAccount\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.Storage/storageAccounts/scanwestusxkotiwe\",\r\n      \"eventHubNamespace\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.EventHub/namespaces/Atlas-50b06597-7b21-4e75-954f-99aa5fa0d307\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"managedResourceGroupName\": \"managed-rg-adkhnpv\"\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733\",\r\n  \"name\": \"ps7733\",\r\n  \"type\": \"Microsoft.Purview/accounts\",\r\n  \"location\": \"westus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"5dfd6b02-1b21-4f7c-9f21-3e365a20eeb1\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"lastModifiedBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-07-18T21:35:33.6597975Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourcegroups/ps4173/providers/Microsoft.Purview/accounts/ps7733/operationResults/8fb45df6-155a-4469-915d-565184de0cc3?api-version=2021-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMyZjY3YWYtMDlmOS00ZDYwLWIwNTEtYzVkOTU2ZDJjOWE3L3Jlc291cmNlZ3JvdXBzL3BzNDE3My9wcm92aWRlcnMvTWljcm9zb2Z0LlB1cnZpZXcvYWNjb3VudHMvcHM3NzMzL29wZXJhdGlvblJlc3VsdHMvOGZiNDVkZjYtMTU1YS00NDY5LTkxNWQtNTY1MTg0ZGUwY2MzP2FwaS12ZXJzaW9uPTIwMjEtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a80e583c-2e23-46db-9780-e785e696c604"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "api-supported-versions": [
+          "2020-12-01-preview, 2021-07-01, 2021-12-01, 2023-05-01-preview"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "7aafe95b-2f6e-407a-88e1-a54fca159b30"
+        ],
+        "x-ms-correlation-request-id": [
+          "7aafe95b-2f6e-407a-88e1-a54fca159b30"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230718T214347Z:7aafe95b-2f6e-407a-88e1-a54fca159b30"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 18 Jul 2023 21:43:47 GMT"
+        ],
+        "Content-Length": [
+          "1728"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"properties\": {\r\n    \"cloudConnectors\": {\r\n      \"awsExternalId\": \"887de307-8ce3-484d-bad3-d2624e3f78c6\"\r\n    },\r\n    \"friendlyName\": \"ps7733\",\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByObjectId\": \"9b2c2fab-2ce6-43cb-8431-de186f679254\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"endpoints\": {\r\n      \"catalog\": \"https://ps7733.purview.azure.com/catalog\",\r\n      \"scan\": \"https://ps7733.purview.azure.com/scan\",\r\n      \"guardian\": \"https://ps7733.purview.azure.com/guardian\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointConnections\": [],\r\n    \"managedResources\": {\r\n      \"resourceGroup\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv\",\r\n      \"storageAccount\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.Storage/storageAccounts/scanwestusxkotiwe\",\r\n      \"eventHubNamespace\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/managed-rg-adkhnpv/providers/Microsoft.EventHub/namespaces/Atlas-50b06597-7b21-4e75-954f-99aa5fa0d307\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"managedResourceGroupName\": \"managed-rg-adkhnpv\"\r\n  },\r\n  \"id\": \"/subscriptions/2c2f67af-09f9-4d60-b051-c5d956d2c9a7/resourceGroups/ps4173/providers/Microsoft.Purview/accounts/ps7733\",\r\n  \"name\": \"ps7733\",\r\n  \"type\": \"Microsoft.Purview/accounts\",\r\n  \"location\": \"westus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"5dfd6b02-1b21-4f7c-9f21-3e365a20eeb1\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-07-18T21:35:33.6597975Z\",\r\n    \"lastModifiedBy\": \"fb2b8227-2ea3-43c5-b357-0379ed954481\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-07-18T21:35:33.6597975Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-TagCreateOrUpdateAsyncWithResourceIdParamsForResource": [
+      "ps4173",
+      "ps7733"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "2c2f67af-09f9-4d60-b051-c5d956d2c9a7"
+  }
+}
