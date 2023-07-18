@@ -74,32 +74,10 @@ function Test-TagCreateOrUpdateAsyncWithResourceIdParams($resourceId)
     {
         # Test
         $res = New-AzTag -ResourceId $resourceId -Tag $expected
-        # Write-Host "Comparing the following host"
-        # Write-Debug "Comparing the following debug"
-        # Write-Debug ($res | Out-String)
-        # Write-Debug ($res | Format-Table | Out-String)
-        # Write-Host "sleeping host"
-        # Write-Debug "sleeping  debug"
         Start-TestSleep -Seconds 180
-        # Write-Host "waking host"
-        # Write-Debug "waking debug"
         $res2 = Get-AzTag -ResourceId $resourceId
-        # Write-Debug "Status of res debug is:"
-        # Write-Host "Status of res host is:"
-        # Write-Debug ($res2 | Out-String)
-        # Write-Debug ($res2 | Format-Table | Out-String)
-        # Write-Host ($res2.ProvisioningState | Out-String)
         [hashtable]$actual = $res2.Properties.TagsProperty
         
-        # Write-Host ($res2.TagsProperty | Out-String)
-        # Write-Host ($res2.Properties | Format-Table | Out-String)
-
-        # Write-Debug "Comparing the following" 
-        # $str = $expected | Out-String
-        # Write-Host $str -ForegroundColor Red
-        # $str = $actual | Out-String
-        # Write-Host $str -ForegroundColor Red
-        # Assert
         Assert-True { AreHashtableEqual $expected $actual }
     }
     finally
