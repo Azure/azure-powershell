@@ -1284,6 +1284,8 @@ function Test-ApplicationGatewayBasicSkuCRUD
 
 	try
 	{
+		Connect-AzAccount -UseDeviceAuthentication
+
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
@@ -1291,6 +1293,9 @@ function Test-ApplicationGatewayBasicSkuCRUD
 		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
 		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
 		# Create public ip
 		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
@@ -1316,8 +1321,11 @@ function Test-ApplicationGatewayBasicSkuCRUD
 		# sku
 		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
 
+		# appgw identity
+		$appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id
+
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+		$appgw = New-AzApplicationGateway -Identity $appgwIdentity -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
 
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -1345,14 +1353,29 @@ function Test-ApplicationGatewayBasicSkuCRUD
 		Assert-AreEqual $sku02.Name Basic
 		Assert-AreEqual $sku02.Tier Basic
 
+		# Next: Set Identity on an existing gateway without identity
+		# First, Removing identity from the gateway
+		Remove-AzApplicationGatewayIdentity -ApplicationGateway $getgw
+
 		# Set Application Gateway
 		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw
 		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw)
 
-		# Stop Application Gateway
-		$getgw03 = Stop-AzApplicationGateway -ApplicationGateway $getgw02
+		# Set identity
+		Set-AzApplicationGatewayIdentity -ApplicationGateway $getgw02 -UserAssignedIdentityId $identity.Id
 
-		Assert-AreEqual "Stopped" $getgw03.OperationalState
+		# Set Application Gateway
+		$getgw03 = Set-AzApplicationGateway -ApplicationGateway $getgw02
+		$identity01 = Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw03
+		Assert-AreEqual $identity01.UserAssignedIdentities.Count 1
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].PrincipalId
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].ClientId
+
+
+		# Stop Application Gateway
+		$getgw04 = Stop-AzApplicationGateway -ApplicationGateway $getgw03
+
+		Assert-AreEqual "Stopped" $getgw04.OperationalState
 
 		# Delete Application Gateway
 		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
@@ -1423,6 +1446,8 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 
 	try
 	{
+		Connect-AzAccount -UseDeviceAuthentication
+
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
@@ -1430,6 +1455,9 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
 		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
 
 		# Create public ip
 		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
@@ -1455,8 +1483,11 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 		# sku
 		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
 
+		# appgw identity
+		$appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id
+
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+		$appgw = New-AzApplicationGateway -Identity $appgwIdentity -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
 
 		# Get Application Gateway
 		$createdAppGw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -1582,6 +1613,9 @@ function Test-ApplicationGatewayBasicSkuMigration
 		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
+		# Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $rgname
+
 		# Create public ip
 		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
 
@@ -1606,8 +1640,11 @@ function Test-ApplicationGatewayBasicSkuMigration
 		# sku
 		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
 
+		# appgw identity
+		$appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentity $identity.Id
+
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+		$appgw = New-AzApplicationGateway -Identity $appgwIdentity -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
 
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
