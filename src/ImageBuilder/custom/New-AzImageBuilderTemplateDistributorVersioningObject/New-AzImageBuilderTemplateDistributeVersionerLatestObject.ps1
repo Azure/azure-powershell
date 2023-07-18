@@ -23,19 +23,16 @@ Create an in-memory object for DistributeVersionerLatest.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
 .Link
-https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributorversioningobject
+https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionerlatestobject
 #>
-function New-AzImageBuilderTemplateDistributorVersioningObject_DistributeVersionerLatest {
+function New-AzImageBuilderTemplateDistributeVersionerLatestObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Major version for the generated version number. Determine what is `"latest`" based on versions with this value as the major version. -1 is equivalent to leaving it unset.")]
         [int]
-        $Major,
-        [Parameter(Mandatory, HelpMessage="Version numbering scheme to be used.")]
-        [string]
-        $Scheme
+        $Major
     )
 
     process {
@@ -44,9 +41,7 @@ function New-AzImageBuilderTemplateDistributorVersioningObject_DistributeVersion
         if ($PSBoundParameters.ContainsKey('Major')) {
             $Object.Major = $Major
         }
-        if ($PSBoundParameters.ContainsKey('Scheme')) {
-            $Object.Scheme = $Scheme
-        }
+        $Object.Scheme = "Latest"
         return $Object
     }
 }

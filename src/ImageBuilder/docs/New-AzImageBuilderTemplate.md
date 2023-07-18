@@ -16,7 +16,7 @@ Create or update a virtual machine image template
 ```
 New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
  -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
- -UserAssignedIdentity <Hashtable> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
+ -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
  [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
  [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>]
  [-VMBootState <VMBootOptimizationState>] [-VMProfileOsdiskSizeGb <Int32>]
@@ -400,11 +400,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
+### -UserAssignedIdentityId
 
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

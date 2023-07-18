@@ -23,24 +23,19 @@ Create an in-memory object for DistributeVersionerSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributorversioningobject
+https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionersourceobject
 #>
-function New-AzImageBuilderTemplateDistributorVersioningObject_DistributeVersionerSource {
+function New-AzImageBuilderTemplateDistributeVersionerSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Version numbering scheme to be used.")]
-        [string]
-        $Scheme
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerSource]::New()
 
-        if ($PSBoundParameters.ContainsKey('Scheme')) {
-            $Object.Scheme = $Scheme
-        }
+        $Object.Scheme = "Source"
         return $Object
     }
 }

@@ -1,25 +1,19 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributorversioningobject
+online version: https://learn.microsoft.com/powershell/module/Az.ImageBuilder/new-azimagebuildertemplatedistributeversionerlatestobject
 schema: 2.0.0
 ---
 
-# New-AzImageBuilderTemplateDistributorVersioningObject
+# New-AzImageBuilderTemplateDistributeVersionerLatestObject
 
 ## SYNOPSIS
 Create an in-memory object for DistributeVersionerLatest.
 
 ## SYNTAX
 
-### DistributeVersionerLatest (Default)
 ```
-New-AzImageBuilderTemplateDistributorVersioningObject -Scheme <String> [-Major <Int32>] [<CommonParameters>]
-```
-
-### DistributeVersionerSource
-```
-New-AzImageBuilderTemplateDistributorVersioningObject -Scheme <String> [<CommonParameters>]
+New-AzImageBuilderTemplateDistributeVersionerLatestObject [-Major <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,25 +52,10 @@ Determine what is "latest" based on versions with this value as the major versio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: DistributeVersionerLatest
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scheme
-Version numbering scheme to be used.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,8 +70,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerLatest
-
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.DistributeVersionerSource
 
 ## NOTES
 

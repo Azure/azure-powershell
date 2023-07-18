@@ -26,11 +26,14 @@ Create or update a virtual machine image template
 ### [New-AzImageBuilderTemplateCustomizerObject](New-AzImageBuilderTemplateCustomizerObject.md)
 Create an in-memory object for ImageTemplateCustomizer.
 
+### [New-AzImageBuilderTemplateDistributeVersionerLatestObject](New-AzImageBuilderTemplateDistributeVersionerLatestObject.md)
+Create an in-memory object for DistributeVersionerLatest.
+
+### [New-AzImageBuilderTemplateDistributeVersionerSourceObject](New-AzImageBuilderTemplateDistributeVersionerSourceObject.md)
+Create an in-memory object for DistributeVersionerSource.
+
 ### [New-AzImageBuilderTemplateDistributorObject](New-AzImageBuilderTemplateDistributorObject.md)
 Create an in-memory object for ImageTemplateDistributor.
-
-### [New-AzImageBuilderTemplateDistributorVersioningObject](New-AzImageBuilderTemplateDistributorVersioningObject.md)
-Create an in-memory object for DistributeVersionerLatest.
 
 ### [New-AzImageBuilderTemplateSourceObject](New-AzImageBuilderTemplateSourceObject.md)
 Create an in-memory object for ImageTemplateSource.
