@@ -1284,7 +1284,7 @@ function Test-ApplicationGatewayBasicSkuCRUD
 
 	try
 	{
-		Connect-AzAccount
+		Connect-AzAccount -UseDeviceAuthentication
 
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
@@ -1446,7 +1446,7 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 
 	try
 	{
-		Connect-AzAccount
+		Connect-AzAccount -UseDeviceAuthentication
 
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
@@ -1603,7 +1603,7 @@ function Test-ApplicationGatewayBasicSkuMigration
 
 	try
 	{
-		Connect-AzAccount
+		Connect-AzAccount -UseDeviceAuthentication
 
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
