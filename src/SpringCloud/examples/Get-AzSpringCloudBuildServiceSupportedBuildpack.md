@@ -27,4 +27,3 @@ tanzu-buildpacks-python springcloudrg     tanzu-buildpacks/python
 ```
 
 Get the supported buildpack resource by name.
-

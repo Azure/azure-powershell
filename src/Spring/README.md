@@ -511,25 +511,25 @@ directive:
     - UserSourceInfo
     - CertificateProperties
 
-  # - model-cmdlet:
-  #   - model-name: BuildpacksGroupProperties
-  #     model-cmdlet: New-AzSpringBuildpacksGroupObject
-  #   - model-name: BuildpackProperties
-  #     model-cmdlet: New-AzSpringBuildpackObject
-  #   - model-name: ConfigurationServiceGitRepository
-  #   - model-name: GitPatternRepository
-  #   - model-name: KeyVaultCertificateProperties
-  #     model-cmdlet: New-AzSpringKeyVaultCertificateObject
-  #   - model-name: ContentCertificateProperties
-  #     model-cmdlet: New-AzSpringContentCertificateObject
-  #   - model-name: LoadedCertificate
-  #     model-cmdlet: New-AzSpringAppLoadedCertificateObject
-  #   - model-name: JarUploadedUserSourceInfo
-  #     model-cmdlet: New-AzSpringAppDeploymentJarUploadedObject
-  #   - model-name: NetCoreZipUploadedUserSourceInfo
-  #     model-cmdlet: New-AzSpringAppDeploymentNetCoreZipUploadedObject
-  #   - model-name: SourceUploadedUserSourceInfo
-  #     model-cmdlet: New-AzSpringAppDeploymentSourceUploadedObject
-  #   - model-name: BuildResultUserSourceInfo
-  #     model-cmdlet: New-AzSpringAppDeploymentBuildResultObject
+  - model-cmdlet:
+    - model-name: BuildpacksGroupProperties
+      cmdlet-name: New-AzSpringBuildpacksGroupObject
+    - model-name: BuildpackProperties
+      cmdlet-name: New-AzSpringBuildpackObject
+    - model-name: ConfigurationServiceGitRepository
+    - model-name: GitPatternRepository
+    - model-name: KeyVaultCertificateProperties
+      cmdlet-name: New-AzSpringKeyVaultCertificateObject
+    - model-name: ContentCertificateProperties
+      cmdlet-name: New-AzSpringContentCertificateObject
+    - model-name: LoadedCertificate
+      cmdlet-name: New-AzSpringAppLoadedCertificateObject
+    - model-name: JarUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
+    - model-name: NetCoreZipUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
+    - model-name: SourceUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
+    - model-name: BuildResultUserSourceInfo
+      cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
 ```

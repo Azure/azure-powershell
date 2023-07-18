@@ -25,4 +25,3 @@ default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022
 ```
 
 Get the Service Registry and its properties.
-

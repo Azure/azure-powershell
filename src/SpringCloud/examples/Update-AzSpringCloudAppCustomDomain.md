@@ -25,4 +25,3 @@ springcloud-service.azuremicroservices.io
 ```
 
 Update custom domain of one lifecycle application by pipeline.
-

@@ -3,9 +3,6 @@
 Remove-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal01 -BuilderName default -Name binging01
 ```
 
-```output
-```
-
 Operation to delete a Buildpack Binding.
 
 ### Example 2: Operation to delete a Buildpack Binding by pipeline
@@ -13,8 +10,4 @@ Operation to delete a Buildpack Binding.
 Get-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal01 -BuilderName default -Name binging01 | Remove-AzSpringBuildpackBinding
 ```
 
-```output
-```
-
 Operation to delete a Buildpack Binding by pipeline.
-

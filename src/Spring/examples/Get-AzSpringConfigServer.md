@@ -10,4 +10,3 @@ default Springrg     Succeeded
 ```
 
 Get all properties of the config server.
-

@@ -23,4 +23,3 @@ cert01 lucas-rg-test
 ```
 
 Get a certificate resource by name.
-

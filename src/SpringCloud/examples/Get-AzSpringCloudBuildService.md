@@ -23,4 +23,3 @@ default springcloudrg     Succeeded         0.5.2        2                  4Gi
 ```
 
 Get a build service resource of the enterprise spring cloud.
-

@@ -3,9 +3,6 @@
 Remove-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service
 ```
 
-```output
-```
-
 Disable the default Application Configuration Service.
 
 ### Example 2: Disable the default Application Configuration Service by pipeline
@@ -13,8 +10,4 @@ Disable the default Application Configuration Service.
 Get-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service | Remove-AzSpringConfigurationService
 ```
 
-```output
-```
-
 Disable the default Application Configuration Service by pipeline.
-

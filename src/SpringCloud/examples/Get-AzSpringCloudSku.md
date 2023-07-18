@@ -175,4 +175,3 @@ Location             Name ResourceType            Tier
 ```
 
 Lists all of the available skus of the Microsoft.AppPlatform provider.
-

@@ -10,4 +10,3 @@ HostKey HostKeyAlgorithm Label  Name Password Pattern   PrivateKey SearchPath St
 ```
 
 Create an in-memory object for ConfigurationServiceGitRepository.
-

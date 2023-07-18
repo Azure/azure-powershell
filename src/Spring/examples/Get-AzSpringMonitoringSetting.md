@@ -23,4 +23,3 @@ default azurespringrg     Succeeded         True
 ```
 
 Get the Monitoring Setting and its properties by pipeline.
-

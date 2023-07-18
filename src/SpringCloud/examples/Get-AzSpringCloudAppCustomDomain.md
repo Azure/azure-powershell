@@ -25,4 +25,3 @@ springcloud-service.azuremicroservices.io
 ```
 
 Get the custom domain of one lifecycle application.
-

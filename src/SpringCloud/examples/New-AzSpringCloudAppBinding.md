@@ -10,4 +10,3 @@ redisService redis SpringCloud-gp-junxi Microsoft.Cache
 ```
 
 Create a new Binding or update an exiting Binding.
-

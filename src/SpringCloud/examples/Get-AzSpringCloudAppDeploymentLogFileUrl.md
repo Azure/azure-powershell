@@ -19,4 +19,3 @@ url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541
 ```
 
 Get deployment log file URL by pipeline.
-

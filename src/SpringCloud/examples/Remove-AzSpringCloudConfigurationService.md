@@ -3,9 +3,6 @@
 Remove-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service
 ```
 
-```output
-```
-
 Disable the default Application Configuration Service.
 
 ### Example 2: Disable the default Application Configuration Service by pipeline
@@ -13,8 +10,4 @@ Disable the default Application Configuration Service.
 Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service | Remove-AzSpringCloudConfigurationService
 ```
 
-```output
-```
-
 Disable the default Application Configuration Service by pipeline.
-
