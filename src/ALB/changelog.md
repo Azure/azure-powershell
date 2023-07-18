@@ -1,0 +1,15 @@
+## Version 0.2.0
+* Initial release - public preview
+    - New cmdlets added:
+        - Get-AzAlb
+        - Get-AzAlbAssociation
+        - Get-AzAlbFrontend
+        - New-AzAlb
+        - New-AzAlbAssociation
+        - New-AzAlbFrontend
+        - Remove-AzAlb
+        - Remove-AzAlbAssociation
+        - Remove-AzAlbFrontend
+        - Update-AzAlb
+        - Update-AzAlbAssociation
+        - Update-AzAlbFrontend
