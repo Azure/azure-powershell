@@ -898,24 +898,21 @@ Test SQL materializedview cmdlets using all parameter sets
 #>
 function Test-SqlMaterializedViewCmdlets
 {
-  $AccountName = "dbaccount62-1"
-  $rgName = "CosmosDBResourceGroup62"
+  $AccountName = "dbaccount-mv"
+  $rgName = "CosmosDBResourceGroup-mv"
   $DatabaseName = "dbName1"
   $ContainerName = "srcContainerName"
-  $MaterializedViewContainerName = "mvContainerName"
+  $MVContainerName = "mvContainerName"
+  $capabilities = @("enableMaterializedViews")
 
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
 
   $ThroughputValue = 1200
   $UpdatedThroughputValue = 1100
-  $UpdatedThroughputValue2 = 1000
-  $UpdatedThroughputValue3 = 900
 
   $ContainerThroughputValue = 800
   $UpdatedContainerThroughputValue = 700
-  $UpdatedContainerThroughputValue2 = 600
-  $UpdatedContainerThroughputValue3 = 500
 
   $location = "East US"
   $apiKind = "Sql"
@@ -924,14 +921,13 @@ function Test-SqlMaterializedViewCmdlets
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableMaterializedViews 1
 
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
 
-      $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
-      
+  #    $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName      
       $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
       
       $newMaterializedViewDefinition = New-Object Microsoft.Azure.Management.CosmosDB.Models.MaterializedViewDefinition
@@ -939,16 +935,22 @@ function Test-SqlMaterializedViewCmdlets
       $newMaterializedViewDefinition.Definition = "select * from Root"
       $newPSMaterializedViewDefinition = [Microsoft.Azure.Commands.CosmosDB.Models.PSMaterializedViewDefinition]::new($newMaterializedViewDefinition)
 
-      $NewMVContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $MVContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
-      $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $MVContainerName -Throughput $UpdatedContainerThroughputValue
+      $NewMVContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $MVContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -MaterializedViewDefinition $newPSMaterializedViewDefinition
+      $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
+
+	  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $MVContainerName -Throughput $UpdatedContainerThroughputValue
       Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
+	  
+	  $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
 
       Remove-AzCosmosDBSqlContainer -InputObject $NewMVContainer
       Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
       Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
   }
   Finally{
-      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MaterializedViewContainerName
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
