@@ -161,6 +161,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public int? CoolnessPeriod { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
+        public SwitchParameter SnapshotDirectoryVisible { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
@@ -249,6 +254,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 UnixPermissions = UnixPermission,
                 CoolAccess = CoolAccess,
                 CoolnessPeriod = CoolnessPeriod,
+                SnapshotDirectoryVisible = SnapshotDirectoryVisible
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
