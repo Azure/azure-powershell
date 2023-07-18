@@ -300,7 +300,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[RetryAfter <Int32?>]`: 
   - `[SubnetId <String>]`: Association ID.
 
 ## RELATED LINKS

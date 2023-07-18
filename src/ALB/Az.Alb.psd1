@@ -1,5 +1,5 @@
 @{
-  GUID = 'a1900132-313a-43e6-b9f5-4df9927b8429'
+  GUID = '92762db8-9171-4011-a557-ba882db9018e'
   RootModule = './Az.Alb.psm1'
   ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
