@@ -1284,8 +1284,6 @@ function Test-ApplicationGatewayBasicSkuCRUD
 
 	try
 	{
-		Connect-AzAccount
-
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
@@ -1446,8 +1444,6 @@ function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
 
 	try
 	{
-		Connect-AzAccount
-
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
@@ -1603,8 +1599,6 @@ function Test-ApplicationGatewayBasicSkuMigration
 
 	try
 	{
-		Connect-AzAccount
-
 		# Create the resource group
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
