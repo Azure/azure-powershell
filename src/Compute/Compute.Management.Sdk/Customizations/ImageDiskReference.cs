@@ -25,10 +25,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="id">A relative uri containing either a Platform Image
         /// Repository, user image, or Azure Compute Gallery image
         /// reference.</param>
-        /// <param name="sharedGalleryImageId">A relative uri containing a
-        /// direct shared Azure Compute Gallery image reference.</param>
-        /// <param name="communityGalleryImageId">A relative uri containing a
-        /// community Azure Compute Gallery image reference.</param>
         /// <param name="lun">If the disk is created from an image's data disk,
         /// this is an index that indicates which of the data disks in the
         /// image to use. For OS disks, this field is null.</param>

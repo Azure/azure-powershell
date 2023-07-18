@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="burstingEnabled">Set to true to enable bursting beyond
         /// the provisioned performance target of the disk. Bursting is
         /// disabled by default. Does not apply to Ultra disks.</param>
-        /// <param name="purchasePlan">Purchase plan information to be added on
+        /// <param name="purchasePlan">Purchase plan information to be added on </param>
         public DiskUpdate(OperatingSystemTypes? osType, int? diskSizeGB, EncryptionSettingsCollection encryptionSettingsCollection, long? diskIOPSReadWrite, long? diskMBpsReadWrite, long? diskIOPSReadOnly, long? diskMBpsReadOnly, int? maxShares, Encryption encryption, string networkAccessPolicy, string diskAccessId, string tier, bool? burstingEnabled, PurchasePlan purchasePlan)
         {
             OsType = osType;

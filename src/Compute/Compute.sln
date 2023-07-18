@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "Compute.Autorest\Az.Compute.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Sdk", "Compute.Sdk\Compute.Sdk.csproj", "{99574727-29C1-42ED-A26B-13F396DBCA29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Management.Sdk", "Compute.Management.Sdk\Compute.Management.Sdk.csproj", "{99574727-29C1-42ED-A26B-13F396DBCA29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

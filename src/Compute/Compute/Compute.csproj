@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
-    <ProjectReference Include="..\Compute.Sdk\Compute.Sdk.csproj" />
+    <ProjectReference Include="..\Compute.Management.Sdk\Compute.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

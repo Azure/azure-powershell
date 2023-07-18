@@ -63,14 +63,6 @@
         /// using private endpoints on disks.</param>
         /// <param name="supportsHibernation">Indicates the OS on a snapshot
         /// supports hibernation.</param>
-        /// <param name="publicNetworkAccess">Possible values include:
-        /// 'Enabled', 'Disabled'</param>
-        /// <param name="completionPercent">Percentage complete for the
-        /// background copy when a resource is created via the CopyStart
-        /// operation.</param>
-        /// <param name="supportedCapabilities">List of supported capabilities
-        /// (like Accelerated Networking) for the image from which the source
-        /// disk from the snapshot was originally created.</param>
         public Snapshot(string location, CreationData creationData, string id, string name, string type, IDictionary<string, string> tags, string managedBy, SnapshotSku sku, ExtendedLocation extendedLocation, System.DateTime? timeCreated, OperatingSystemTypes? osType, string hyperVGeneration, PurchasePlan purchasePlan, int? diskSizeGB, long? diskSizeBytes = default(long?), string diskState = default(string), string uniqueId = default(string), EncryptionSettingsCollection encryptionSettingsCollection = default(EncryptionSettingsCollection), string provisioningState = default(string), bool? incremental = default(bool?), Encryption encryption = default(Encryption), string networkAccessPolicy = default(string), string diskAccessId = default(string), bool? supportsHibernation = default(bool?))
                     : base(location, id, name, type, tags)
         {
