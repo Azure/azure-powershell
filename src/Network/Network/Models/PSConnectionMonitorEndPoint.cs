@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string CoverageLevel { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSConnectionMonitorEndPointLocationDetails LocationDetails { get; set; }
+
         [JsonIgnore]
         public string ScopeText
         {

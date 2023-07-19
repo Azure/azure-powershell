@@ -522,13 +522,21 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.ConnectionMonitorEndpointMustHaveName);
             }
 
-            if (string.IsNullOrEmpty(endpoint.ResourceId) && string.IsNullOrEmpty(endpoint.Address))
-            {
-                throw new PSArgumentException(Properties.Resources.MissedPropertiesInConnectionMonitorEndpoint);
-            }
-
             this.ValidateEndpointType(endpoint);
-            this.ValidateEndpointResourceId(endpoint);
+
+            if (endpoint.Type == EndpointType.AzureArcNetwork)
+            {
+                this.ValidateAzureArcNetworkEndpoint(endpoint);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(endpoint.ResourceId) && string.IsNullOrEmpty(endpoint.Address))
+                {
+                    throw new PSArgumentException(Properties.Resources.MissedPropertiesInConnectionMonitorEndpoint);
+                }
+
+                this.ValidateEndpointResourceId(endpoint);
+            }
         }
 
         public void ValidateTestConfiguration(PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration)
@@ -609,18 +617,23 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(endpoint.ResourceId))
             {
-                throw new PSArgumentException(Properties.Resources.ResourceIDNotSupportedInAzureArcNetworkEndpoint, endpoint.Name);
+                throw new PSArgumentException(string.Format(Properties.Resources.ResourceIDNotSupportedInAzureArcNetworkEndpoint, endpoint.Name));
+            }
+
+            if (endpoint.LocationDetails == null || endpoint.LocationDetails.Region == null)
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.RegionNotSpecifiedInAzureArcNetworkEndpoint, endpoint.Name));
             }
 
             if (endpoint.Scope.Include.Any() != true)
             {
-                throw new PSArgumentException(Properties.Resources.AzureArcNetworkEndpointMissingScope, endpoint.Name);
+                throw new PSArgumentException(string.Format(Properties.Resources.AzureArcNetworkEndpointMissingScope, endpoint.Name));
             }
 
             IEnumerable<string> includedSubnetMasks = endpoint.Scope.Include.Select(i => i.Address).Where(entry => !string.IsNullOrEmpty(entry));
             if (includedSubnetMasks?.Any() != true)
             {
-                throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
             }
 
             foreach (string subnetMask in includedSubnetMasks)
@@ -631,7 +644,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 catch
                 {
-                    throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
                 }
             }
 
@@ -641,7 +654,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     if (!IPAddress.TryParse(item.Address, out IPAddress ipAddress))
                     {
-                        throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                        throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
                     }
 
                     bool isInSubnet = false;
@@ -657,7 +670,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (!isInSubnet)
                     {
-                        throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                        throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
                     }
                 }
             }

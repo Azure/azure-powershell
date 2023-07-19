@@ -1213,6 +1213,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AzureArcNetwork endpoint {0} must have Region.
+        /// </summary>
+        internal static string RegionNotSpecifiedInAzureArcNetworkEndpoint {
+            get {
+                return ResourceManager.GetString("RegionNotSpecifiedInAzureArcNetworkEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
         internal static string RemoveResourceMessage {

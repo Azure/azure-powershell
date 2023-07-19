@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Network
              ParameterSetName = "MMAWorkspaceNetwork")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpoint scope.",
+            HelpMessage = "Azure Arc Network.",
              ParameterSetName = "AzureArcNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
@@ -173,8 +173,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "List of IPs which need to be excluded into endpoint scope.",
             ParameterSetName = "AzureVMSS")]
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpoint scope.",
+            Mandatory = false,
+            HelpMessage = "Azure Arc Network.",
              ParameterSetName = "AzureArcNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
@@ -199,6 +199,13 @@ namespace Microsoft.Azure.Commands.Network
         [PSArgumentCompleter("Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full")]
         public string CoverageLevel { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Azure Arc Network.",
+             ParameterSetName = "AzureArcNetwork")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -209,7 +216,8 @@ namespace Microsoft.Azure.Commands.Network
                 Type = this.GetEndpointType(),
                 ResourceId = this.ResourceId,
                 Address = this.Address,
-                CoverageLevel = this.CoverageLevel
+                CoverageLevel = this.CoverageLevel,
+                LocationDetails = AzureArcNetwork.IsPresent ? new PSConnectionMonitorEndPointLocationDetails { Region = this?.Location } : null
             };
 
             if (this.IncludeItem != null || this.ExcludeItem != null)
@@ -241,14 +249,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (AzureArcNetwork.IsPresent)
-            {
-                this.ValidateAzureArcNetworkEndpoint(endpoint);
-            }
-            else
-            {
-                this.ValidateEndpoint(endpoint);
-            }
+            this.ValidateEndpoint(endpoint);
 
             WriteObject(endpoint);
         }
@@ -294,6 +295,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return string.Empty;
         }
-
     }
 }
