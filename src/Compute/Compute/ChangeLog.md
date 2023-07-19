@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
 
 ## Version 6.1.0
 * Added useful examples to the `New-AzVMConfig` help doc.

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
 
 ## Version 2.12.4
 * Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].
