@@ -73,11 +73,16 @@ function Test-TagCreateOrUpdateAsyncWithResourceIdParams($resourceId)
     try
     {
         # Test
-        $res = New-AzTag -ResourceId $resourceId -Tag $expected
+        $newTagres = New-AzTag -ResourceId $resourceId -Tag $expected
+        $res = Get-AzTag -ResourceId $resourceId
+
+        [hashtable]$actual = $res.Properties.TagsProperty
+        Assert-False { AreHashtableEqual $expected $actual }
+
         Start-TestSleep -Seconds 180
-        $res2 = Get-AzTag -ResourceId $resourceId
-        [hashtable]$actual = $res2.Properties.TagsProperty
+        $res = Get-AzTag -ResourceId $resourceId
         
+        [hashtable]$actual = $res.Properties.TagsProperty
         Assert-True { AreHashtableEqual $expected $actual }
     }
     finally
@@ -190,7 +195,7 @@ function Test-UpdateAsyncWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
-    Start-TestSleep -Seconds 180
+    Start-TestSleep -Seconds 120
 
     try
     {
@@ -199,7 +204,8 @@ function Test-UpdateAsyncWithResourceIdParams($resourceId)
             # merge operation
             $merged = @{"key1"="value1"; "key3"="value3";}
             $res = Update-AzTag -ResourceId $resourceId -Tag $merged -Operation Merge
-
+            Start-TestSleep -Seconds 120
+    
             $expected = @{"key1"="value1"; "key2"="value2"; "key3"="value3";}
             [hashtable]$actual = $res.Properties.TagsProperty
 
@@ -211,6 +217,7 @@ function Test-UpdateAsyncWithResourceIdParams($resourceId)
             # replace operation
             $replaced = @{"key1"="value1"; "key3"="value3";}
             $res = Update-AzTag -ResourceId $resourceId -Tag $replaced -Operation Replace
+            Start-TestSleep -Seconds 120
 
             $expected = $replaced
             [hashtable]$actual = $res.Properties.TagsProperty
@@ -223,6 +230,7 @@ function Test-UpdateAsyncWithResourceIdParams($resourceId)
             # delete operation
             $deleted = @{"key1"="value1"; "key3"="value3";}
             $res = Update-AzTag -ResourceId $resourceId -Tag $deleted -Operation Delete
+            Start-TestSleep -Seconds 120
 
             $expected = null
             [hashtable]$actual = $res.Properties.TagsProperty
