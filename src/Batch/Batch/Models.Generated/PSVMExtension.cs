@@ -62,6 +62,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public System.Boolean? EnableAutomaticUpgrade
+        {
+            get
+            {
+                return this.omObject.EnableAutomaticUpgrade;
+            }
+            set
+            {
+                this.omObject.EnableAutomaticUpgrade = value;
+            }
+        }
+        
         public string Name
         {
             get

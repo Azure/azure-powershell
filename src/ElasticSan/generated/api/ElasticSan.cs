@@ -26,9 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansCreate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansCreate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -142,7 +142,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -226,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -243,13 +244,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -276,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ElasticSansCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -285,7 +286,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -308,9 +308,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansDelete(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansDelete(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -350,9 +350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -417,8 +417,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -566,7 +566,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -588,9 +587,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansGet(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansGet(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -631,9 +630,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -684,7 +683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -702,13 +701,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -743,7 +742,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -762,9 +760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -802,9 +800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -853,7 +851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -871,13 +869,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ElasticSanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -911,7 +909,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
             }
         }
 
@@ -925,9 +922,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -963,9 +960,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1011,7 +1008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1029,13 +1026,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ElasticSanList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1081,9 +1078,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1127,9 +1124,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ElasticSansUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ElasticSansUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1184,7 +1181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ElasticSansUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1197,7 +1194,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1281,7 +1279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -1298,13 +1296,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ElasticSan.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1331,7 +1329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ElasticSansUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ElasticSansUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1340,7 +1338,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -1359,9 +1356,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1395,9 +1392,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1440,7 +1437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1458,13 +1455,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ElasticSanOperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1495,6 +1492,1120 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
+        /// <summary>
+        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="body">Private Endpoint Connection Approval object.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreate(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + global::System.Uri.EscapeDataString(elasticSanName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Private Endpoint Connection Approval object.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ElasticSan/elasticSans/(?<elasticSanName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var elasticSanName = _match.Groups["elasticSanName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + elasticSanName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsCreate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsCreate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="body">Private Endpoint Connection Approval object.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
+                await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
+                await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
+                await eventListener.AssertRegEx(nameof(elasticSanName),elasticSanName,@"^[A-Za-z0-9]+((-|_)[a-z0-9A-Z]+)*$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified private endpoint connection associated with the Elastic San
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + global::System.Uri.EscapeDataString(elasticSanName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified private endpoint connection associated with the Elastic San
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ElasticSan/elasticSans/(?<elasticSanName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var elasticSanName = _match.Groups["elasticSanName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + elasticSanName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
+                await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
+                await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
+                await eventListener.AssertRegEx(nameof(elasticSanName),elasticSanName,@"^[A-Za-z0-9]+((-|_)[a-z0-9A-Z]+)*$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+            }
+        }
+
+        /// <summary>Gets the specified private endpoint connection associated with the Elastic San</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + global::System.Uri.EscapeDataString(elasticSanName)
+                        + "/privateEndpointConnections/"
+                        + global::System.Uri.EscapeDataString(privateEndpointConnectionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the specified private endpoint connection associated with the Elastic San</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ElasticSan/elasticSans/(?<elasticSanName>[^/]+)/privateEndpointConnections/(?<privateEndpointConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var elasticSanName = _match.Groups["elasticSanName"].Value;
+                var privateEndpointConnectionName = _match.Groups["privateEndpointConnectionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + elasticSanName
+                        + "/privateEndpointConnections/"
+                        + privateEndpointConnectionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="privateEndpointConnectionName">The name of the Private Endpoint connection.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
+                await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
+                await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
+                await eventListener.AssertRegEx(nameof(elasticSanName),elasticSanName,@"^[A-Za-z0-9]+((-|_)[a-z0-9A-Z]+)*$");
+                await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+            }
+        }
+
+        /// <summary>List all Private Endpoint Connections associated with the Elastic San.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + global::System.Uri.EscapeDataString(elasticSanName)
+                        + "/privateEndpointConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List all Private Endpoint Connections associated with the Elastic San.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ElasticSan/elasticSans/(?<elasticSanName>[^/]+)/privateEndpointConnections$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var elasticSanName = _match.Groups["elasticSanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + elasticSanName
+                        + "/privateEndpointConnections"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateEndpointConnectionsList_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="PrivateEndpointConnectionsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.PrivateEndpointConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
+                await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
+                await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
+                await eventListener.AssertRegEx(nameof(elasticSanName),elasticSanName,@"^[A-Za-z0-9]+((-|_)[a-z0-9A-Z]+)*$");
+            }
+        }
+
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByElasticSan(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + global::System.Uri.EscapeDataString(elasticSanName)
+                        + "/privateLinkResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesListByElasticSan_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesListByElasticSanViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-12-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ElasticSan/elasticSans/(?<elasticSanName>[^/]+)/privateLinkResources$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateLinkResources'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var elasticSanName = _match.Groups["elasticSanName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ElasticSan/elasticSans/"
+                        + elasticSanName
+                        + "/privateLinkResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.PrivateLinkResourcesListByElasticSan_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="PrivateLinkResourcesListByElasticSan" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesListByElasticSan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.PrivateLinkResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="PrivateLinkResourcesListByElasticSan" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="elasticSanName">The name of the ElasticSan.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesListByElasticSan_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
+                await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
+                await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
+                await eventListener.AssertRegEx(nameof(elasticSanName),elasticSanName,@"^[A-Za-z0-9]+((-|_)[a-z0-9A-Z]+)*$");
+            }
+        }
+
         /// <summary>List all the available Skus in the region and information related to them</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="Filter">Specify $filter='location eq <location>' to filter on location.</param>
@@ -1506,9 +2617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1547,9 +2658,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1597,7 +2708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SkusList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1615,13 +2726,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.SkuInformationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.SkuInformationList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1670,9 +2781,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsCreate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsCreate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1718,9 +2829,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1778,7 +2889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1791,7 +2902,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1875,7 +2987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -1892,13 +3004,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1926,7 +3038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1935,7 +3047,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -1963,9 +3074,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsDelete(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsDelete(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2007,9 +3118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2064,7 +3175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2077,8 +3188,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -2191,7 +3302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2227,7 +3338,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -2254,9 +3364,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsGet(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsGet(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2299,9 +3409,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2355,7 +3465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2373,13 +3483,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2415,7 +3525,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -2439,9 +3548,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSan(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSan(string subscriptionId, string resourceGroupName, string elasticSanName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2481,9 +3590,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSanViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSanViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2535,7 +3644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsListByElasticSan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2553,13 +3662,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VolumeGroupList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VolumeGroupList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2594,7 +3703,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -2616,9 +3724,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2664,9 +3772,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumeGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumeGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2724,7 +3832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2737,7 +3845,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -2821,7 +3930,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -2838,13 +3947,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VolumeGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2872,7 +3981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumeGroupsUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VolumeGroupsUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2881,7 +3990,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -2910,9 +4018,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesCreate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesCreate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2960,9 +4068,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3023,7 +4131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3036,7 +4144,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -3120,7 +4229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -3137,13 +4246,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3172,7 +4281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VolumesCreate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3181,7 +4290,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -3214,9 +4322,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesDelete(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesDelete(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3260,9 +4368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3320,7 +4428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3333,8 +4441,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
-                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -3447,7 +4555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3484,7 +4592,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -3516,9 +4623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesGet(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesGet(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3563,9 +4670,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3622,7 +4729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3640,13 +4747,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3683,7 +4790,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -3712,9 +4818,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesListByVolumeGroup(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesListByVolumeGroup(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3756,9 +4862,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesListByVolumeGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesListByVolumeGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3813,7 +4919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesListByVolumeGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumesListByVolumeGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3831,13 +4937,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VolumeList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VolumeList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3873,7 +4979,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);
@@ -3900,9 +5005,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesUpdate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3950,9 +5055,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VolumesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VolumesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-11-20-preview";
+            var apiVersion = @"2022-12-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4013,7 +5118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VolumesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4026,7 +5131,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: azure-async-operation
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -4110,7 +5216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         }
                         // we are done polling, do a request on final target?
                         // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Method.Get);
 
                         // drop the old response
                         _response?.Dispose();
@@ -4127,13 +5233,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.Volume.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4162,7 +5268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VolumesUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VolumesUpdate_Validate(string subscriptionId, string resourceGroupName, string elasticSanName, string volumeGroupName, string volumeName, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate body, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4171,7 +5277,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
-                await eventListener.AssertRegEx(nameof(resourceGroupName),resourceGroupName,@"^[-\w\._]*[0-9A-Za-z]$");
                 await eventListener.AssertNotNull(nameof(elasticSanName),elasticSanName);
                 await eventListener.AssertMinimumLength(nameof(elasticSanName),elasticSanName,3);
                 await eventListener.AssertMaximumLength(nameof(elasticSanName),elasticSanName,24);

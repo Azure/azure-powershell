@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Management.NetApp
             VolumeGroups = new VolumeGroupsOperations(this);
             Subvolumes = new SubvolumesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-09-01";
+            ApiVersion = "2022-11-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

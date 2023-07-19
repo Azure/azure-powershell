@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -80,7 +81,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string DeploymentSubscriptionId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
@@ -199,6 +199,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // construct deploymentScope if ResourceGroup was provided
                 var deploymentScope = "/subscriptions/" + DeploymentSubscriptionId;
 
+                var currentStack = DeploymentStacksSdkClient.GetManagementGroupDeploymentStack(ManagementGroupId, Name, throwIfNotExists: false);
+                if (currentStack != null && Tag == null)
+                {
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentStack.Tags);
+                }
+ 
                 Action createOrUpdateAction = () =>
                 {
                     var deploymentStack = DeploymentStacksSdkClient.ManagementGroupCreateOrUpdateDeploymentStack(
@@ -224,10 +230,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteObject(deploymentStack);
                 };
 
-                if (!Force.IsPresent && DeploymentStacksSdkClient.GetManagementGroupDeploymentStack(
-                        ManagementGroupId,
-                        Name,
-                        throwIfNotExists: false) != null)
+                if (!Force.IsPresent && currentStack == null)
                 {
                     string confirmationMessage = $"The DeploymentStack '{Name}' you're trying to create already exists in ManagementGroup '{ManagementGroupId}'. " +
                         $"Do you want to overwrite it\n?" +

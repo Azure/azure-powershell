@@ -646,13 +646,20 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         recurrences.Add(new MonthlyRecurrence(daysOfMonth, ScheduleReccurence2StartTime, ScheduleReccurence2EndTime));
                     }
                 }
-
-                schedule = new Schedule(
+                if (string.IsNullOrEmpty(ScheduleEndDateTime)) {
+                    schedule = new Schedule(
+                    effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
+                    timeZone: ScheduleTimeZone == null ? "UTC" : ScheduleTimeZone,
+                    recurrences: recurrences
+                    );
+                } else {
+                    schedule = new Schedule(
                     effectiveFrom: ScheduleStartDateTime.Split(' ')[0] + "T" + ScheduleStartDateTime.Split(' ')[1],
                     effectiveUntil: ScheduleEndDateTime.Split(' ')[0] + "T" + ScheduleEndDateTime.Split(' ')[1],
                     timeZone: ScheduleTimeZone == null ? "UTC" : ScheduleTimeZone,
                     recurrences: recurrences
                     );
+                }
             }
 
             return schedule;
