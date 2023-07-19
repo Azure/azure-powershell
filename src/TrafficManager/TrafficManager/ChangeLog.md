@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+Added a new API `CheckTrafficManagerNameAvailabilityV2`.
+
 ## Version 1.2.0
 * Added a new optional parameter `AlwaysServe` for endpoints.
 

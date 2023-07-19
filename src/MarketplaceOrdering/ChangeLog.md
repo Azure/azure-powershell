@@ -34,4 +34,3 @@
 
 ## Version 1.0.0
 * General availability of `Az.MarketplaceOrdering` module
-

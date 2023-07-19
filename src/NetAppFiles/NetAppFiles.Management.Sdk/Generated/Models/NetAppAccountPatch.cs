@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryption">Encryption settings</param>
         /// <param name="disableShowmount">Shows the status of disableShowmount
         /// for all volumes under the subscription, null equals false</param>
-        public NetAppAccountPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), IList<ActiveDirectory> activeDirectories = default(IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?))
+        /// <param name="identity">The identity used for the resource.</param>
+        public NetAppAccountPatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string provisioningState = default(string), IList<ActiveDirectory> activeDirectories = default(IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
         {
             Location = location;
             Id = id;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             ActiveDirectories = activeDirectories;
             Encryption = encryption;
             DisableShowmount = disableShowmount;
+            Identity = identity;
             CustomInit();
         }
 
@@ -120,6 +122,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? DisableShowmount { get; private set; }
 
         /// <summary>
+        /// Gets or sets the identity used for the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
@@ -140,6 +148,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (Encryption != null)
             {
                 Encryption.Validate();
+            }
+            if (Identity != null)
+            {
+                Identity.Validate();
             }
         }
     }

@@ -20,15 +20,15 @@ Creates or updates azure databricks accessConnector.
 .Description
 Creates or updates azure databricks accessConnector.
 .Example
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Link
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 #>
 function New-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

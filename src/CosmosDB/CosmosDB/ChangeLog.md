@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.11.1
+* Locations showed in response included status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
+
+## Version 1.11.0
 * Added support for Continuous 7 Days backup mode.
 * Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 
@@ -101,22 +106,22 @@
 
 ## Version 0.2.0
 * Introduced support for throughput Migration, allowing custoers to migrate their resources from manually provisioned throughput to autoscaled throughput. Customers can use this feature using the following cmdlets:
-    - 'Invoke-AzCosmosDBSqlContainerThroughputMigration', 
-    - 'Invoke-AzCosmosDBSqlDatabaseThroughputMigration', 
-    - 'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration', 
-    - 'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration', 
-    - 'Invoke-AzCosmosDBGremlinGraphThroughputMigration', 
-    - 'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration', 
-    - 'Invoke-AzCosmosDBCassandraTableThroughputMigration', 
-    - 'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration', 
+    - 'Invoke-AzCosmosDBSqlContainerThroughputMigration',
+    - 'Invoke-AzCosmosDBSqlDatabaseThroughputMigration',
+    - 'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration',
+    - 'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration',
+    - 'Invoke-AzCosmosDBGremlinGraphThroughputMigration',
+    - 'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration',
+    - 'Invoke-AzCosmosDBCassandraTableThroughputMigration',
+    - 'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration',
     - 'Invoke-AzCosmosDBTableThroughputMigration'
 
 ## Version 0.1.6
-* Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput. 
+* Introduced support for Autoscale, as a result of which all cmdlets which create or modify resources with throughput have an additional parameter called AutoscaleMaxThroughput.
 * New-AzCosmosDBAccount cmdlet was updated with new paramters: EnableFreeTier, EnableAnalyticalStorage, ServerVersion, IpRule.
 * Update-AzCosmosDBAccount was updated with: EnableAnalyticalStorage and IpRule.
 * IpRangeFilter is deprecated, IpRule should be used, for both New-AzCosmosDBAccount and Update-AzCosmosDBAccount.
-* New-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBCollection, New-AzCosmosDBCassandraTable and Update-AzCosmosDBCassandraTable cmdlets allow specifying AnalyticalStorageTTL. 
+* New-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBCollection, New-AzCosmosDBCassandraTable and Update-AzCosmosDBCassandraTable cmdlets allow specifying AnalyticalStorageTTL.
 
 ## Version 0.1.5
 * PSDatabaseAccount is renamed to PSDatabaseAccountGetResults
@@ -127,12 +132,12 @@
     Get-AzCosmosDBCassandraKeyspace, Get-AzCosmosDBCassandraTable,
     Get-AzCosmosDBMongoDBCollection, Get-AzCosmosDBMongoDBDatabase
 * Introduces KeyVaultKeyUri as a paramter in PSCosmosDBAccount, enabling BYOK feature
-* Updates the Azure.Management.CosmosDB Sdk Version to 1.1.1 
+* Updates the Azure.Management.CosmosDB Sdk Version to 1.1.1
 * Replaces Set-AzCosmosDB* cmdlets with New-AzCosmosDB* and Update-AzComsosDB* cmdlets.
-The following cmdlets are added: 
-    New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger, 
-    New-AzCosmosDBSqlUserDefinedFunction, 
-    Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger, 
+The following cmdlets are added:
+    New-AzCosmosDBSqlStoredProcedure, New-AzCosmosDBSqlTrigger,
+    New-AzCosmosDBSqlUserDefinedFunction,
+    Update-AzCosmosDBSqlStoredProcedure, Update-AzCosmosDBSqlTrigger,
     Update-AzCosmosDBSqlUserDefinedFunction, New-AzCosmosDBSqlContainer,
     New-AzCosmosDBSqlDatabase, Update-AzCosmosDBSqlContainer,
     Update-AzCosmosDBSqlDatabase,
@@ -141,9 +146,9 @@ The following cmdlets are added:
     New-AzCosmosDBTable, Update-AzCosmosDBTable,
     Update-AzCosmosDBCassandraKeyspace, Update-AzCosmosDBCassandraTable,
     New-AzCosmosDBCassandraKeyspace, New-AzCosmosDBCassandraTable,
-    Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase, 
-    New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase  
-The following cmdlets are deprecated and would no longer be maintained: 
+    Update-AzCosmosDBMongoDBCollection, Update-AzCosmosDBMongoDBDatabase,
+    New-AzCosmosDBMongoDBCollection, New-AzCosmosDBMongoDBDatabase
+The following cmdlets are deprecated and would no longer be maintained:
     Set-AzCosmosDBSqlStoredProcedure, Set-AzCosmosDBSqlTrigger,
     Set-AzCosmosDBSqlUserDefinedFunction, Set-AzCosmosDBSqlContainer,
     Set-AzCosmosDBSqlDatabase, Set-AzCosmosDBGremlinDatabase,
@@ -167,11 +172,11 @@ The following cmdlets are deprecated and would no longer be maintained:
 * Bug Fixes
 
 ## Version 0.1.2
-* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2
     -Fix bugs related to https://github.com/Azure/azure-sdk-for-net/issues/10639
 
 ## Version 0.1.2
-* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2 
+* Updated the Azure.Management.CosmosDB Sdk Version to 1.0.2
     - Fix bugs related to https://github.com/Azure/azure-sdk-for-net/issues/10639
 
 ## Version 0.1.1
@@ -183,4 +188,3 @@ The following cmdlets are deprecated and would no longer be maintained:
 
 ## Version 0.1.0
 * Preview release of `Az.CosmosDB` module
-

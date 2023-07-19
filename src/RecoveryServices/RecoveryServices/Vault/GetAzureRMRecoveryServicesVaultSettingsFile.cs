@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Certificate.
         /// </summary>
-        [CmdletParameterBreakingChange("Certificate", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChangeWithVersion("Certificate", "11.0.0", "7.0.0", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = false)]

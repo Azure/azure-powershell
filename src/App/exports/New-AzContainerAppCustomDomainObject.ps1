@@ -27,7 +27,7 @@ $customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificate
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
 .Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain])]
@@ -63,7 +63,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

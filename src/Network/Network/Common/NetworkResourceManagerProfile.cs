@@ -229,6 +229,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.AddProfile<NetworkResourceManagerProfile>();
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
+                cfg.CreateMap<CNM.PSResourceIdNfv, MNM.RoutingConfigurationNfvSubResource>();
+                cfg.CreateMap<MNM.RoutingConfigurationNfvSubResource, CNM.PSResourceIdNfv>();
 
                 // Map request error exceptions between SDK and PowerShell
                 cfg.CreateMap<MNM.Error, Rest.Azure.CloudError>();
@@ -1267,6 +1269,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
                 cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
                 cfg.CreateMap<CNM.PSStaticRoutesConfig, MNM.StaticRoutesConfig>();
+                cfg.CreateMap<CNM.PSRoutingConfigurationNfv, MNM.RoutingConfigurationNfv>();
+                cfg.CreateMap<CNM.PSPropagatedRouteTableNfv, MNM.PropagatedRouteTableNfv>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
@@ -1275,6 +1279,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
                 cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
                 cfg.CreateMap<MNM.StaticRoutesConfig, CNM.PSStaticRoutesConfig>();
+                cfg.CreateMap<MNM.RoutingConfigurationNfv, CNM.PSRoutingConfigurationNfv>();
+                cfg.CreateMap<MNM.PropagatedRouteTableNfv, CNM.PSPropagatedRouteTableNfv>();
 
                 //// Virtual Hub Routing Intent
                 // CNM to MNM
@@ -1292,6 +1298,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSRouteMapRuleCriterion, MNM.Criterion>();
                 cfg.CreateMap<CNM.PSRouteMapRuleAction, MNM.Action>();
                 cfg.CreateMap<CNM.PSRouteMapRuleActionParameter, MNM.Parameter>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteList, MNM.VirtualHubEffectiveRouteList>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRoute, MNM.VirtualHubEffectiveRoute>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteMapRouteList, MNM.EffectiveRouteMapRouteList>();
+                cfg.CreateMap<CNM.PSVirtualHubEffectiveRouteMapRoute, MNM.EffectiveRouteMapRoute>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.RouteMap, CNM.PSRouteMap>();
@@ -1299,6 +1309,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.Criterion, CNM.PSRouteMapRuleCriterion>();
                 cfg.CreateMap<MNM.Action, CNM.PSRouteMapRuleAction > ();
                 cfg.CreateMap<MNM.Parameter, CNM.PSRouteMapRuleActionParameter> ();
+                cfg.CreateMap<MNM.VirtualHubEffectiveRouteList, CNM.PSVirtualHubEffectiveRouteList>();
+                cfg.CreateMap<MNM.VirtualHubEffectiveRoute, CNM.PSVirtualHubEffectiveRoute>();
+                cfg.CreateMap<MNM.EffectiveRouteMapRouteList, CNM.PSVirtualHubEffectiveRouteMapRouteList>();
+                cfg.CreateMap<MNM.EffectiveRouteMapRoute, CNM.PSVirtualHubEffectiveRouteMapRoute>();
 
                 // Virtual wan Point to site
                 // MNM to CNM
@@ -1555,6 +1569,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceNicProperties, MNM.VirtualApplianceNicProperties>();
                 cfg.CreateMap<CNM.PSVirtualApplianceSite, MNM.VirtualApplianceSite>();
                 cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceConnection, MNM.NetworkVirtualApplianceConnection>();
 
                 // MNM to CNM
                 // Where CNM - models from Powershell
@@ -1568,6 +1583,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
                 cfg.CreateMap<MNM.VirtualApplianceAdditionalNicProperties, CNM.PSVirtualApplianceAdditionalNicProperties>();
+                cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
 
                 // NetworkManager
                 // CNM to MNMs

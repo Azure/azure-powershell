@@ -191,11 +191,13 @@ foreach ($moduleName in $allModules) {
         $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
     }
 
-    Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
-    Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
-    Write-Host "##[section]`"$moduleName`" test coverage % : $cvgCommand" -ForegroundColor Green
+    if ($CalcBaseline.IsPresent) {
+        Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
+        Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
+        Write-Host "##[section]`"$moduleName`" test coverage % : $cvgCommand" -ForegroundColor Green
 
-    Write-Host
+        Write-Host
+    }
 }
 
 if ($CalcBaseline.IsPresent) {
@@ -207,8 +209,8 @@ if ($CalcBaseline.IsPresent) {
         CommandCoverage = $cvgOverall
     }
     $cvgReportOverall | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
-}
 
-Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
-Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta
-Write-Host "##[section]Overall test coverage % : $cvgOverall" -ForegroundColor Magenta
+    Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
+    Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta
+    Write-Host "##[section]Overall test coverage % : $cvgOverall" -ForegroundColor Magenta
+}

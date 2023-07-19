@@ -63,6 +63,45 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore
         /// </exception>
         Task<AzureOperationResponse<IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ODataQuery<BMSRPQueryObject> odataQuery = default(ODataQuery<BMSRPQueryObject>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Provides the information of the backed up data identified using
+        /// RecoveryPointID.
+        /// </summary>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is
+        /// present.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with backed up item.
+        /// </param>
+        /// <param name='containerName'>
+        /// Container name associated with backed up item.
+        /// </param>
+        /// <param name='protectedItemName'>
+        /// Backed up item name whose backup data needs to be fetched.
+        /// </param>
+        /// <param name='recoveryPointId'>
+        /// RecoveryPointID represents the backed up data to be fetched.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="NewErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RecoveryPointResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Lists the backup copies for the backed up item.
         /// </summary>
         /// <param name='nextPageLink'>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Fixed iops and high availability parameters issue
+
 ## Version 1.1.0
 * Added `PublicNetworkAccess` to `Update-AzMySqlServer` [#19189]
 

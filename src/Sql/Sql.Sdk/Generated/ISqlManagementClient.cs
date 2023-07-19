@@ -144,11 +144,6 @@ namespace Microsoft.Azure.Management.Sql
         IEncryptionProtectorsOperations EncryptionProtectors { get; }
 
         /// <summary>
-        /// Gets the IFailoverGroupsOperations.
-        /// </summary>
-        IFailoverGroupsOperations FailoverGroups { get; }
-
-        /// <summary>
         /// Gets the IInstancePoolsOperations.
         /// </summary>
         IInstancePoolsOperations InstancePools { get; }
@@ -379,11 +374,6 @@ namespace Microsoft.Azure.Management.Sql
         ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; }
 
         /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        IManagedInstancesOperations ManagedInstances { get; }
-
-        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations.
         /// </summary>
         IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; }
@@ -512,6 +502,26 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedDatabasesOperations.
         /// </summary>
         IManagedDatabasesOperations ManagedDatabases { get; }
+
+        /// <summary>
+        /// Gets the IFailoverGroupsOperations.
+        /// </summary>
+        IFailoverGroupsOperations FailoverGroups { get; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; }
+
+        /// <summary>
+        /// Gets the IManagedInstancesOperations.
+        /// </summary>
+        IManagedInstancesOperations ManagedInstances { get; }
+
+        /// <summary>
+        /// Gets the IStartStopManagedInstanceSchedulesOperations.
+        /// </summary>
+        IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; }
 
     }
 }

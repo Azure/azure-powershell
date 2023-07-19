@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Track2Models = global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Sas;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerSASToken", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
     {

@@ -23,6 +23,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     internal interface IAzContext
     {
         /// <summary>
+        /// Gets the installation id that's associate with an Azure cli command.
+        /// </summary>
+        public string InstallationId { get; }
+
+        /// <summary>
         /// Gets the hashed user account id. A empty string if the user doesn't log in.
         /// </summary>
         public string HashUserId { get; }
@@ -61,6 +66,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Gets whether the user is an internal user.
         /// </summary>
         public bool IsInternal { get; }
+
+        /// <summary>
+        /// Gets the host environment where the module runs.
+        /// </summary>
+        public string HostEnvironment { get; }
 
         /// <summary>
         /// Gets the minimum PowerShell Runspace. This isn't the necessary the same one as the PowerShell environment that Az

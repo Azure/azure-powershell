@@ -22,6 +22,50 @@ $resourceIdForFileDB = $resourceId
 $policyName = "HourlyLogBackup"
 $instanceName = "sqlinstance;mssqlserver"
 
+function Test-AzureVmWorkloadCrossRegionRestore
+{
+	$resourceGroupName = "hiagarg"
+	$vaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"
+	$sourceDBName = "model"
+	$location = "centraluseuap"
+	$recoveryPointId = "164200650492022" # $rp[1].RecoveryPointId
+
+	$targetResourceGroup = "clitest-rg-donotuse"
+	$targetVault = "clitest-vault-secondary-donotuse"
+	$targetDBName = "model_restored_6_26_2023_1751"
+	$overwrite = "Yes"
+
+	try
+	{   
+		$secvault = Get-AzRecoveryServicesVault -ResourceGroupName $targetResourceGroup -Name $targetVault
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vaultId -UseSecondaryRegion | Where-Object { $_.Name -match "model" }
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vaultId -UseSecondaryRegion -RecoveryPointId $recoveryPointId
+
+		$seccontainer =  Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $secvault.ID
+		$secitem = Get-AzRecoveryServicesBackupItem -Container $seccontainer -VaultId $secvault.ID -WorkloadType MSSQL
+
+		$targetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -VaultId $secvault.ID		 
+
+		$workloadConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $rp[0] -TargetItem $targetInstance -AlternateWorkloadRestore -VaultId $vaultId -TargetContainer $seccontainer[0] -UseSecondaryRegion
+
+		$workloadConfig.RestoredDBName = $targetDBName
+		$workloadConfig.OverwriteWLIfpresent = $overwrite
+
+		$crrJob = Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $workloadConfig -VaultId $vaultID -RestoreToSecondaryRegion -VaultLocation $location
+  
+		while($crrJob.Status -eq "InProgress"){
+			Start-TestSleep -Seconds 12
+			$crrJob = Get-AzRecoveryServicesBackupJobDetail -VaultId $vaultId -UseSecondaryRegion -JobId $crrJob.JobId -VaultLocation $location
+		}
+
+		Assert-True {$crrJob.Status -eq "Completed"}
+	}
+	finally	
+	{						
+		# no cleanup
+	}
+}
+
 function Test-AzureVmWorkloadCrossSubscriptionRestore
 {
 	$resourceGroupName = "sqlcontainer-pstest-rg"

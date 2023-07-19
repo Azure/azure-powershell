@@ -213,9 +213,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
         /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
         /// <param name="allowDataLoss">Whether the failover operation will allow data loss</param>
+        /// <param name="tryPlannedBeforeForcedFailover">Whether the failover operation will try planned before forced failover</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureSqlFailoverGroupModel Failover(string resourceGroupName, string serverName, string failoverGroupName, bool allowDataLoss)
+        internal AzureSqlFailoverGroupModel Failover(string resourceGroupName, string serverName, string failoverGroupName, bool allowDataLoss, bool tryPlannedBeforeForcedFailover)
         {
+            if (tryPlannedBeforeForcedFailover)
+            {
+                Communicator.TryPlannedBeforeForcedFailover(resourceGroupName, serverName, failoverGroupName);
+                return null;
+            }
             if (!allowDataLoss)
             {
                 Communicator.Failover(resourceGroupName, serverName, failoverGroupName);

@@ -120,7 +120,9 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Get-AzNetAppFilesVolumeQuotaRule', 
                'New-AzNetAppFilesVolumeQuotaRule', 
                'Update-AzNetAppFilesVolumeQuotaRule', 
-               'Remove-AzNetAppFilesVolumeQuotaRule'
+               'Remove-AzNetAppFilesVolumeQuotaRule',
+               'Get-AzNetAppFilesVolumeGroupIdListForLDAPUser',
+               'Get-AzNetAppFilesRegionInfo'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -152,7 +154,9 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'New-AnfVolumeGroup', 'Remove-AnfVolumeGroup', 
                'Reset-AnfVolumeCifsPassword', 'Get-AnfVolumeQuotaRule', 
                'New-AnfVolumeQuotaRule', 'Update-AnfVolumeQuotaRule', 
-               'Remove-AnfVolumeQuotaRule'
+               'Remove-AnfVolumeQuotaRule',
+               'Get-AnfVolumeGroupIdListForLDAPUser',
+               'Get-AnfRegionInfo'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Get endpoints and metadata for an instance of Azure services.
+`GalleryUrl` will be removed from ArmMetadata and so Azure PowerShell will no longer provide for its value in `PSAzureEnvironment`. Currently `GalleryUrl` is not used in Azure PowerShell products. Please do not reply on `GalleryUrl` anymore. 
 
 ## SYNTAX
 

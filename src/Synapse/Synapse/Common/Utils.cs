@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -238,8 +239,10 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         {
             var result = operation.WaitForCompletionResponseAsync().Result;
             var responseContent = result.Content;
-            if (responseContent?.ToString().IsEmptyOrWhiteSpace() == false)
+            
+            if (responseContent?.ToString() != "{}" && responseContent?.ToString().IsEmptyOrWhiteSpace() == false)
             {
+
                 throw new Exception(responseContent?.ToString());
             }
             return result;

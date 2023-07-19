@@ -16,61 +16,29 @@
 
 <#
 .Synopsis
-Gets the specified available ground station.
+Returns list of available ground stations.
 .Description
-Gets the specified available ground station.
+Returns list of available ground stations.
 .Example
 Get-AzOrbitalAvailableGroundStation -Capability 'EarthObservation'
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
-  [ContactName <String>]: Contact name.
-  [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
-  [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
-  [OperationId <String>]: The ID of an ongoing async operation.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SpacecraftName <String>]: Spacecraft ID.
-  [SubscriptionId <String>]: The ID of the target subscription.
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStation
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablegroundstation
 #>
 function Get-AzOrbitalAvailableGroundStation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableGroundStation])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableGroundStation])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('GroundStationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
-    [System.String]
-    # Ground Station name.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter])]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.CapabilityParameter]
@@ -82,7 +50,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -134,7 +103,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -151,11 +120,9 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_Get';
-            GetViaIdentity = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_GetViaIdentity';
             List = 'Az.Orbital.private\Get-AzOrbitalAvailableGroundStation_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -212,30 +179,30 @@ A contact is available if the spacecraft is visible from the ground station for 
 Returns list of available contacts.
 A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
 .Example
-$dateS = Get-Date -Day 22 -Month 7
-$dateE = Get-Date -Day 23 -Month 7
+$dateS = Get-Date -Day 9 -Month 5 -AsUTC
+$dateE = Get-Date -Day 10 -Month 5 -AsUTC
 
-Get-AzOrbitalAvailableSpacecraftContact -Name AQUA -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName WESTUS2_1 -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile
+Get-AzOrbitalAvailableSpacecraftContact -Name SwedenAQUASpacecraft -ResourceGroupName azpstest-gp -EndTime $dateE -StartTime $dateS -GroundStationName Microsoft_Gavle -ContactProfileId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PARAMETER <IContactParameters>: Parameters that define the contact resource.
+  ContactProfileId <String>: Resource ID.
   EndTime <DateTime>: End time of a contact (ISO 8601 UTC standard).
   GroundStationName <String>: Name of Azure Ground Station.
   StartTime <DateTime>: Start time of a contact (ISO 8601 UTC standard).
-  [ContactProfileId <String>]: Resource ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalavailablespacecraftcontact
 #>
 function Get-AzOrbitalAvailableSpacecraftContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IAvailableContacts])]
 [CmdletBinding(DefaultParameterSetName='ListExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -261,10 +228,16 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactParameters]
     # Parameters that define the contact resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='ListExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${ContactProfileId},
 
     [Parameter(ParameterSetName='ListExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -284,18 +257,13 @@ param(
     # Start time of a contact (ISO 8601 UTC standard).
     ${StartTime},
 
-    [Parameter(ParameterSetName='ListExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${ContactProfileId},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -359,7 +327,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -443,7 +411,7 @@ Get-AzOrbitalContactProfile -ResourceGroupName azpstest-gp -Name azps-orbital-co
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -452,7 +420,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -463,7 +430,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalcontactprofile
 #>
 function Get-AzOrbitalContactProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -511,7 +478,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -563,7 +531,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -640,12 +608,14 @@ Gets the specified contact in a specified resource group.
 .Description
 Gets the specified contact in a specified resource group.
 .Example
-Get-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName AQUA
+Get-AzOrbitalSpacecraftContact -Name contact-05-09-2023-07:09:41 -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft
+.Example
+Get-AzOrbitalSpacecraftContact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -654,7 +624,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -665,7 +634,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraftcontact
 #>
 function Get-AzOrbitalSpacecraftContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -718,7 +687,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -770,7 +740,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -855,7 +825,7 @@ Get-AzOrbitalSpacecraft -ResourceGroupName azpstest-gp -Name AQUA
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -864,7 +834,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -875,7 +844,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitalspacecraft
 #>
 function Get-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -923,7 +892,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -975,7 +945,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1052,14 +1022,14 @@ Creates or updates a contact profile.
 .Description
 Creates or updates a contact profile.
 .Example
-$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 55555 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
+$linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_VM -EndPointPort 51103 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration na -ModulationConfiguration aqua_direct_broadcast
 
-$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
+$profileLink = New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction Downlink -Name RHCP_Downlink -Polarization RHCP -EirpdBw 0 -GainOverTemperature 0
 
-New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -SubscriptionId 9e223dbe-3399-4e19-88eb-0975f02ac87f -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 10 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
+New-AzOrbitalContactProfile -Name azps-orbital-contactprofile -ResourceGroupName azpstest-gp -Location westus2 -AutoTrackingConfiguration xBand -EventHubUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.EventHub/namespaces/eventhub-test -Link $profileLink -MinimumElevationDegree 5 -MinimumViableContactDuration PT1M -NetworkConfigurationSubnetId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Network/virtualNetworks/orbital-virtualnetwork/subnets/orbital-vn
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1069,7 +1039,7 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
   Channel <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
     BandwidthMHz <Single>: Bandwidth in MHz.
     CenterFrequencyMHz <Single>: Center Frequency in MHz.
-    EndPointIPAddress <String>: IP Address.
+    EndPointIPAddress <String>: IP Address (IPv4).
     EndPointName <String>: Name of an end point.
     EndPointPort <String>: TCP port to listen on to receive data.
     EndPointProtocol <Protocol>: Protocol either UDP or TCP.
@@ -1078,16 +1048,20 @@ LINK <IContactProfileLink[]>: Links of the Contact Profile. Describes RF links, 
     [DemodulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
     [EncodingConfiguration <String>]: Currently unused.
     [ModulationConfiguration <String>]: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  Direction <Direction>: Direction (uplink or downlink).
+  Direction <Direction>: Direction (Uplink or Downlink).
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
   [EirpdBw <Single?>]: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  [GainOverTemperature <Single?>]: Gain To Noise Temperature in db/K. It is the required G/T by the customer. Not used yet.
+  [GainOverTemperature <Single?>]: Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
+
+THIRDPARTYCONFIGURATION <IContactProfileThirdPartyConfiguration[]>: Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
+  MissionConfiguration <String>: Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
+  ProviderName <String>: Name of the third-party provider.
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
 #>
 function New-AzOrbitalContactProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1112,10 +1086,26 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLink[]]
+    # Links of the Contact Profile.
+    # Describes RF links, modem processing, and IP endpoints.
+    # To construct, see NOTES section for LINK properties and create a hash table.
+    ${Link},
+
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways.
+    # Needs to be at least a class C subnet, and should not have any IP created in it.
+    ${NetworkConfigurationSubnetId},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.AutoTrackingConfiguration])]
@@ -1130,15 +1120,6 @@ param(
     # ARM resource identifier of the Event Hub used for telemetry.
     # Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
     ${EventHubUri},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLink[]]
-    # Links of the Contact Profile.
-    # Describes RF links, modem processing, and IP endpoints.
-    # To construct, see NOTES section for LINK properties and create a hash table.
-    ${Link},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -1156,24 +1137,27 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways.
-    # Needs to be at least a class C subnet, and should not have any IP created in it.
-    ${NetworkConfigurationSubnetId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileThirdPartyConfiguration[]]
+    # Third-party mission configuration of the Contact Profile.
+    # Describes RF links, modem processing, and IP endpoints.
+    # To construct, see NOTES section for THIRDPARTYCONFIGURATION properties and create a hash table.
+    ${ThirdPartyConfiguration},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1237,7 +1221,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1311,18 +1295,18 @@ Creates a contact.
 .Description
 Creates a contact.
 .Example
-$dateS = Get-Date -Day 22
-$dateE = Get-Date -Day 23
+$dateS = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 06 -Second 07
+$dateE = Get-Date -Year 2023 -Month 5 -Day 10 -Hour 11 -Minute 16 -Second 21
 
-New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName AQUA -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile" -GroundStationName "WESTUS2_1" -ReservationStartTime $dateS -ReservationEndTime $dateE
+New-AzOrbitalSpacecraftContact -Name azps-orbital-contact -ResourceGroupName azpstest-gp -SpacecraftName SwedenAQUASpacecraft -ContactProfileId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/Sweden-contactprofile" -GroundStationName "Microsoft_Gavle" -ReservationStartTime $dateS -ReservationEndTime $dateE
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraftcontact
 #>
 function New-AzOrbitalSpacecraftContact {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContact])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContact])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1352,25 +1336,25 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # Resource ID.
     ${ContactProfileId},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # Azure Ground Station name.
     ${GroundStationName},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.DateTime]
     # Reservation end time of a contact (ISO 8601 UTC standard).
     ${ReservationEndTime},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.DateTime]
     # Reservation start time of a contact (ISO 8601 UTC standard).
@@ -1381,7 +1365,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1445,7 +1430,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1521,10 +1506,10 @@ Creates or updates a spacecraft resource.
 .Example
 $linkObject = New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -Direction 'Downlink' -Name spacecraftlink -Polarization 'RHCP'
 
-New-AzOrbitalSpacecraft -Name AQUA -ResourceGroupName azpstest-gp -Location westus2 -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   21259.45143715  .00000131  00000-0  39210-4 0  9998" -TleLine2 "2 27424  98.2138 199.4906 0001886  51.3958  60.0011 14.57112434 30322"
+New-AzOrbitalSpacecraft -Name AQUA -ResourceGroupName azpstest-gp -Location westus2 -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   23128.13172751  .00001518  00000+0  34030-3 0  9995" -TleLine2 "2 27424  98.2850  72.6931 0000969  56.1431 359.6436 14.58017750117525"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1533,14 +1518,14 @@ To create the parameters described below, construct a hash table containing the 
 LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
   BandwidthMHz <Single>: Bandwidth in MHz.
   CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  Direction <Direction>: Direction (uplink or downlink).
+  Direction <Direction>: Direction (Uplink or Downlink).
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
 function New-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1565,18 +1550,36 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftLink[]]
+    # Immutable list of Spacecraft links.
+    # To construct, see NOTES section for LINK properties and create a hash table.
+    ${Link},
+
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftLink[]]
-    # Immutable list of Spacecraft links.
-    # To construct, see NOTES section for LINK properties and create a hash table.
-    ${Link},
+    [System.String]
+    # Title line of the two-line element set (TLE).
+    ${TitleLine},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Line 1 of the two-line element set (TLE).
+    ${TleLine1},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Line 2 of the two-line element set (TLE).
+    ${TleLine2},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -1592,29 +1595,12 @@ param(
     ${Tag},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Title line of the two-line element set (TLE).
-    ${TitleLine},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Line 1 of the two-line element set (TLE).
-    ${TleLine1},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Line 2 of the two-line element set (TLE).
-    ${TleLine2},
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1678,7 +1664,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1766,7 +1752,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -1813,7 +1798,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1883,7 +1869,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1972,7 +1958,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -2025,7 +2010,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2095,7 +2081,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2184,7 +2170,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -2231,7 +2216,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2301,7 +2287,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2383,7 +2369,7 @@ Get-AzOrbitalContactProfile -ResourceGroupName azpstest-gp -Name azps-orbital-co
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2392,7 +2378,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -2403,7 +2388,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalcontactprofile
 #>
 function Update-AzOrbitalContactProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfile])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2435,7 +2420,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2445,7 +2430,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2509,7 +2495,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2592,7 +2578,7 @@ Update-AzOrbitalSpacecraft -InputObject $spacecraftObject -Tag @{"123"="abc"}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IOrbitalIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2601,7 +2587,6 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
   [ContactName <String>]: Contact name.
   [ContactProfileName <String>]: Contact Profile name.
-  [GroundStationName <String>]: Ground Station name.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -2612,7 +2597,7 @@ INPUTOBJECT <IOrbitalIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
 #>
 function Update-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -2644,7 +2629,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ITagsObjectTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2654,7 +2639,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2718,7 +2704,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2796,12 +2782,12 @@ Create an in-memory object for ContactProfileLinkChannel.
 New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 -CenterFrequencyMHz 2106.4063 -EndPointIPAddress 10.0.1.0 -EndPointName AQUA_command -EndPointPort 4000 -EndPointProtocol TCP -Name channel1 -DecodingConfiguration na -DemodulationConfiguration na -EncodingConfiguration AQUA_CMD_CCSDS -ModulationConfiguration AQUA_UPLINK_BPSK
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel
 .Link
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2881,7 +2867,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2957,7 +2943,7 @@ $linkChannel = New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz 0.036 
 New-AzOrbitalContactProfileLinkObject -Channel $linkChannel -Direction uplink -Name RHCP_UL -Polarization RHCP -EirpdBw 45 -GainOverTemperature 0
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2966,7 +2952,7 @@ To create the parameters described below, construct a hash table containing the 
 CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
   BandwidthMHz <Single>: Bandwidth in MHz.
   CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  EndPointIPAddress <String>: IP Address.
+  EndPointIPAddress <String>: IP Address (IPv4).
   EndPointName <String>: Name of an end point.
   EndPointPort <String>: TCP port to listen on to receive data.
   EndPointProtocol <Protocol>: Protocol either UDP or TCP.
@@ -2979,12 +2965,12 @@ CHANNEL <IContactProfileLinkChannel[]>: Contact Profile Link Channel.
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLink])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLinkChannel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.IContactProfileLinkChannel[]]
     # Contact Profile Link Channel.
     # To construct, see NOTES section for CHANNEL properties and create a hash table.
     ${Channel},
@@ -3032,7 +3018,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3103,15 +3089,15 @@ Create an in-memory object for SpacecraftLink.
 .Description
 Create an in-memory object for SpacecraftLink.
 .Example
-New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direction 'uplink' -Name spacecraftlink -Polarization 'LHCP'
+New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 50 -CenterFrequencyMHz 50 -Direction 'Uplink' -Name spacecraftlink -Polarization 'LHCP'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink
 .Link
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalSpacecraftLinkObject
 #>
 function New-AzOrbitalSpacecraftLinkObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.SpacecraftLink])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3157,7 +3143,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

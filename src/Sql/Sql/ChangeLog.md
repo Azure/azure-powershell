@@ -18,9 +18,32 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlets 'Get-AzSqlInstanceDatabaseLedgerDigestUpload', 'Disable-AzSqlInstanceDatabaseLedgerDigestUpload', and 'Enable-AzSqlInstanceDatabaseLedgerDigestUpload'
-* Added -EnableLedger parameter to 'New-AzSqlInstanceDatabase'
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
+
+## Version 4.8.0
+* Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
+* Added new cmdlets for managed database move and copy operations
+    - 'Copy-AzSqlInstanceDatabase'
+    - 'Move-AzSqlInstanceDatabase'
+    - 'Complete-AzSqlInstanceDatabaseCopy'
+    - 'Stop-AzSqlInstanceDatabaseCopy'
+    - 'Complete-AzSqlInstanceDatabaseMove'
+    - 'Stop-AzSqlInstanceDatabaseMove'
+    - 'Get-AzSqlInstanceDatabaseMoveOperation'
+    - 'Get-AzSqlInstanceDatabaseCopyOperation'
+
+
+## Version 4.7.0
+* Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`
+* Added `EnableLedger` parameter to `New-AzSqlInstanceDatabase`
 * Added `PreferredEnclaveType` parameter to `NewAzureSqlElasticPool` and `SetAzureSqlElasticPool` cmdlet
+* Added "None" as an option for -MinimalTlsVersion for the cmdlet 'Set-AzSqlServer'
 
 ## Version 4.6.0
 * Added new cmdlets for managing server configuration options

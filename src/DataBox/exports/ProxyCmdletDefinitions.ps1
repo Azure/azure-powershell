@@ -453,7 +453,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "XXXX XXXX
 $transferConfiguration = New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="False"}
 $customerDiskDetails = New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxCustomerDisk" -DataExportDetail  @(@{ AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"; "TransferConfiguration"=$transferConfiguration }) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ReturnToCustomerPackageDetailCarrierAccountNumber "00000"
 
-New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportToAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
+New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportFromAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IJobResource
@@ -1682,6 +1682,7 @@ Create an in-memory object for DataBoxCustomerDiskJobDetails.
 $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroup/providers/Microsoft.Storage/storageAccounts/YourStorageAccount"
 $contactDetail = New-AzDataBoxContactDetailsObject -ContactName "XXXX XXXX" -EmailList @("emailId") -Phone "0000000000"
 $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "XXXX XXXX" -StateOrProvince "XX" -Country "XX" -City "XXXX XXXX" -PostalCode "00000" -AddressType "Commercial"
+$importDiskDetailsCollection = @{"XXXXXX"= @{ManifestFile = "xyz.txt"; ManifestHash = "xxxx"; BitLockerKey = "xxx"}}  
 
 New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxCustomerDisk" -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ImportDiskDetailsCollection $importDiskDetailsCollection -ReturnToCustomerPackageDetailCarrierAccountNumber "00000"
 

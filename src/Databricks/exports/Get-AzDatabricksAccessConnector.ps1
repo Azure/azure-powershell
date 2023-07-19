@@ -22,16 +22,14 @@ Gets an azure databricks accessConnector.
 .Example
 Get-AzDatabricksAccessConnector
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
-.Example
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus | Get-AzDatabricksAccessConnector
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +48,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
 #>
 function Get-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -38,7 +38,7 @@ RUN if [ "${LATEST}" = True ] ; then \
         tdnf install -y tar gzip && \
         tdnf clean all && \ 
         tar -zxvf ./latest.tar.gz -C ./latest  && \
-        pwsh -Command ./latest/InstallModule.ps1 ;\
+        pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers ;\
     else \
         # install old azure-powershell from PSGallery
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \

@@ -25,7 +25,7 @@ New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 .Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem])]
@@ -53,7 +53,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
