@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// endpoint.</param>
         /// <param name="type">The endpoint type. Possible values include:
         /// 'AzureVM', 'AzureVNet', 'AzureSubnet', 'ExternalAddress',
-        /// 'MMAWorkspaceMachine', 'MMAWorkspaceNetwork', 'AzureArcVM',
+        /// 'MMAWorkspaceMachine', 'MMAWorkspaceNetwork', 'AzureArcVM','AzureArcNetwork'
         /// 'AzureVMSS'</param>
         /// <param name="resourceId">Resource ID of the connection monitor
         /// endpoint.</param>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets the endpoint type. Possible values include: 'AzureVM',
         /// 'AzureVNet', 'AzureSubnet', 'ExternalAddress',
-        /// 'MMAWorkspaceMachine', 'MMAWorkspaceNetwork', 'AzureArcVM',
+        /// 'MMAWorkspaceMachine', 'MMAWorkspaceNetwork', 'AzureArcVM','AzureArcNetwork'
         /// 'AzureVMSS'
         /// </summary>
         [JsonProperty(PropertyName = "type")]

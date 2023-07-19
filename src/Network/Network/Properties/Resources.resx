@@ -783,4 +783,13 @@
   <data name="ConfirmMessage" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="AzureArcNetworkEndpointMissingScope" xml:space="preserve">
+    <value>Mandatory field 'IncludeItem' must have at least one 'address' for endpoint {0}.</value>
+  </data>
+  <data name="InvalidScopeinAzureArcNetworkEndpoint" xml:space="preserve">
+    <value>Invalid scope in AzureArcNetwork endpoint {0}. Only subnet prefixes are allowed in include scope. Exclude scope can only contain IPs part of included subnets.</value>
+  </data>
+  <data name="ResourceIDNotSupportedInAzureArcNetworkEndpoint" xml:space="preserve">
+    <value>ResourceId is not supported for arc network endpoint {0}.</value>
+  </data>
 </root>

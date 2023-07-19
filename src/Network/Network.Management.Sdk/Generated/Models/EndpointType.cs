@@ -24,5 +24,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string MMAWorkspaceNetwork = "MMAWorkspaceNetwork";
         public const string AzureArcVM = "AzureArcVM";
         public const string AzureVMSS = "AzureVMSS";
+        public const string AzureArcNetwork = "AzureArcNetwork";
     }
 }

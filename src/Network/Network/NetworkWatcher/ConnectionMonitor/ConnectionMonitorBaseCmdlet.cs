@@ -600,6 +600,69 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public void ValidateAzureArcNetworkEndpoint(PSNetworkWatcherConnectionMonitorEndpointObject endpoint)
+        {
+            if (string.IsNullOrEmpty(endpoint.Name))
+            {
+                throw new PSArgumentException(Properties.Resources.ConnectionMonitorEndpointMustHaveName);
+            }
+
+            if (!string.IsNullOrEmpty(endpoint.ResourceId))
+            {
+                throw new PSArgumentException(Properties.Resources.ResourceIDNotSupportedInAzureArcNetworkEndpoint, endpoint.Name);
+            }
+
+            if (endpoint.Scope.Include.Any() != true)
+            {
+                throw new PSArgumentException(Properties.Resources.AzureArcNetworkEndpointMissingScope, endpoint.Name);
+            }
+
+            IEnumerable<string> includedSubnetMasks = endpoint.Scope.Include.Select(i => i.Address).Where(entry => !string.IsNullOrEmpty(entry));
+            if (includedSubnetMasks?.Any() != true)
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+            }
+
+            foreach (string subnetMask in includedSubnetMasks)
+            {
+                try
+                {
+                    // IPValidator.ValidateAddressPrefix(subnetMask, null);
+                }
+                catch
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                }
+            }
+
+            if (endpoint.Scope.Exclude?.Any() == true)
+            {
+                foreach (var item in endpoint.Scope.Exclude)
+                {
+                    if (!IPAddress.TryParse(item.Address, out IPAddress ipAddress))
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                    }
+
+                    bool isInSubnet = false;
+                    foreach (string subnetMask in includedSubnetMasks)
+                    {
+                        if (true)
+                        // if (IPValidator.SubnetContainsIpAddress(subnetMask, item.Address))
+                        {
+                            isInSubnet = true;
+                            break;
+                        }
+                    }
+
+                    if (!isInSubnet)
+                    {
+                        throw new PSArgumentException(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name);
+                    }
+                }
+            }
+        }
+
         private void AddTestConfigurationsToConnectionMonitorTestGroup(
             PSNetworkWatcherConnectionMonitorTestGroupObject testGroup,
             ConnectionMonitorTestGroup cmTestGroup,
@@ -803,7 +866,8 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.Equals(endpoint.Type, "AzureVM", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "AzureVNet", StringComparison.OrdinalIgnoreCase)
                 && !string.Equals(endpoint.Type, "AzureSubnet", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "MMAWorkspaceMachine", StringComparison.OrdinalIgnoreCase)
                 && !string.Equals(endpoint.Type, "MMAWorkspaceNetwork", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "ExternalAddress", StringComparison.OrdinalIgnoreCase)
-                && !string.Equals(endpoint.Type, "AzureVMSS", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "AzureArcVM", StringComparison.OrdinalIgnoreCase))
+                && !string.Equals(endpoint.Type, "AzureVMSS", StringComparison.OrdinalIgnoreCase) && !string.Equals(endpoint.Type, "AzureArcVM", StringComparison.OrdinalIgnoreCase)
+                && !string.Equals(endpoint.Type, "AzureArcNetwork", StringComparison.OrdinalIgnoreCase))
             {
                 throw new PSArgumentException(Properties.Resources.InvalidEndpointType, endpoint.Name);
             }
@@ -868,7 +932,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new PSArgumentException(Properties.Resources.InvalidEndpointResourceIdForSpecifiedType, endpoint.Type);
                 }
             }
-            else if (string.Equals(endpoint.Type, "AzureArcVM", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(endpoint.Type, "AzureArcVM", StringComparison.OrdinalIgnoreCase) || string.Equals(endpoint.Type, "AzureArcNetwork", StringComparison.OrdinalIgnoreCase))
             {
                 if (!resourceType.Equals("machines", StringComparison.OrdinalIgnoreCase))
                 {

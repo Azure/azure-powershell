@@ -15,12 +15,15 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true), 
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true),
         OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointObject))]
     public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
@@ -77,6 +80,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Azure ArcVM endpoint switch.",
             ParameterSetName = "AzureArcVM")]
         public SwitchParameter AzureArcVM { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Azure AzureArcNetwork endpoint switch.",
+            ParameterSetName = "AzureArcNetwork")]
+        public SwitchParameter AzureArcNetwork { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -140,6 +149,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "MMAWorkspaceNetwork")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "List of items which need to be included into endpoint scope.",
+             ParameterSetName = "AzureArcNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
 
@@ -159,6 +172,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "List of IPs which need to be excluded into endpoint scope.",
             ParameterSetName = "AzureVMSS")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "List of items which need to be included into endpoint scope.",
+             ParameterSetName = "AzureArcNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
 
@@ -224,7 +241,14 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            this.ValidateEndpoint(endpoint);
+            if (AzureArcNetwork.IsPresent)
+            {
+                this.ValidateAzureArcNetworkEndpoint(endpoint);
+            }
+            else
+            {
+                this.ValidateEndpoint(endpoint);
+            }
 
             WriteObject(endpoint);
         }
@@ -263,8 +287,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 return "AzureArcVM";
             }
+            else if (AzureArcNetwork.IsPresent)
+            {
+                return "AzureArcNetwork";
+            }
 
             return string.Empty;
         }
+
     }
 }

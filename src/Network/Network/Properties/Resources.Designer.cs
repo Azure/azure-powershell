@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mandatory field &apos;IncludeItem&apos; must have at least one &apos;address&apos; for endpoint {0}..
+        /// </summary>
+        internal static string AzureArcNetworkEndpointMissingScope {
+            get {
+                return ResourceManager.GetString("AzureArcNetworkEndpointMissingScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
         internal static string ChecksFailedPercentIsOutOfRange {
@@ -889,6 +898,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid scope in AzureArcNetwork endpoint {0}. Only subnet prefixes are allowed in include scope. Exclude scope can only contain IPs part of included subnets..
+        /// </summary>
+        internal static string InvalidScopeinAzureArcNetworkEndpoint {
+            get {
+                return ResourceManager.GetString("InvalidScopeinAzureArcNetworkEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of status code ranges in HTTPConfiguration. Example of valid values: &apos;100&apos;, &apos;200-205&apos;, &apos;3xx&apos;. Codes should be between 100 and 600..
         /// </summary>
         internal static string InvalidStatusCodeRangesFormat {
@@ -1344,6 +1362,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceIDIsMissingInEndpointWithFilter {
             get {
                 return ResourceManager.GetString("ResourceIDIsMissingInEndpointWithFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceId is not supported for arc network endpoint {0}..
+        /// </summary>
+        internal static string ResourceIDNotSupportedInAzureArcNetworkEndpoint {
+            get {
+                return ResourceManager.GetString("ResourceIDNotSupportedInAzureArcNetworkEndpoint", resourceCulture);
             }
         }
         
