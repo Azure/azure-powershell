@@ -39,10 +39,7 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 # pin the swagger version by using the commit id instead of branch name
-#commit: 4ff04ab2f7c19a83ca1c83d7189238930ca0d1ae # testing
-#commit: e7fa731fdc72d810a74bf4c83184e3d64661067e # testing
 commit: f7c77a57cf879e3938f5084c3d0cf0611b5834e7
-#branch: main
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
