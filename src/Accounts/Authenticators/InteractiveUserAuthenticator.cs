@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
             var options = new InteractiveBrowserCredentialOptions()

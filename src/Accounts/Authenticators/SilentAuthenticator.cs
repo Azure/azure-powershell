@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
             SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
             var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(SilentAuthenticator),
