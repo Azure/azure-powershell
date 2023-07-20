@@ -15,8 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAlb'))
 }
 
 Describe 'Remove-AzAlb' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
+            Remove-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
+            $alb = Get-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
+            $alb.name | Should -Not -Contain $env.albName
+         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

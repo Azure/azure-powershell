@@ -18,6 +18,12 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.albName = "test-alb"
+    $env.albAssociationName = "test-association"
+    $env.albFrontendName = "test-frontend"
+    $env.region = "northcentralus"
+    $env.resourceGroup = "test-rg"
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -20,7 +20,11 @@ Describe 'Get-AzAlb' {
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
+            $alb = Get-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
+            $alb.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
     }
 
     It 'List1' -skip {
