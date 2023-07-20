@@ -188,7 +188,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[AdminUserEnabled <Boolean?>]`: The value that indicates whether the admin user is enabled.
   - `[AnonymousPullEnabled <Boolean?>]`: Enables registry-wide pull from unauthenticated clients.
   - `[AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]`: The value that indicates whether the policy is enabled or not.
-  - `[AzureAsyncOperation <String>]`: 
   - `[DataEndpointEnabled <Boolean?>]`: Enable a single data endpoint per region for serving data.
   - `[EncryptionStatus <EncryptionStatus?>]`: Indicates whether or not the encryption is enabled for container registry.
   - `[ExportPolicyStatus <ExportPolicyStatus?>]`: The value that indicates whether the policy is enabled or not.

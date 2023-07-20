@@ -68,7 +68,7 @@ directive:
   hide: true
 # Remove the unexpanded parameter set
 - where:
-    variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaIdentity$|^ImportViaIdentity$|^ImportViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^PingViaIdentity$|^Check$|^RegenerateViaIdentity$
+    variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaIdentity$|^ImportViaIdentity$|^ImportViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^PingViaIdentity$|^Check$|^RegenerateViaIdentity$|^Generate$|^GenerateViaIdentity$
   remove: true
 - where:
     subject: PrivateEndpointConnection
