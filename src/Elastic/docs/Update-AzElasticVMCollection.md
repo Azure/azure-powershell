@@ -14,15 +14,27 @@ Update the vm details that will be monitored by the Elastic monitor resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-OperationName <OperationName>] [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Update-AzElasticVMCollection -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-OperationName <String>] [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticVMCollection -InputObject <IElasticIdentity> [-OperationName <OperationName>]
+Update-AzElasticVMCollection -InputObject <IElasticIdentity> [-OperationName <String>]
  [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzElasticVMCollection -MonitorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzElasticVMCollection -MonitorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,24 +42,37 @@ Update the vm details that will be monitored by the Elastic monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Update the vm details that will be monitored by the Elastic monitor resource
+### Example 1: Update the VM details that will be monitored by the Elastic monitor resource
 ```powershell
-Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+Update-AzElasticVMCollection -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01'
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource
+Update the VM details that will be monitored by the Elastic monitor resource.
 
-### Example 2: Update the vm details that will be monitored by the Elastic monitor resource by pipeline
+### Example 2: Update the VM details that will be monitored by the Elastic monitor resource via JSON string
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticVMCollection -OperationName Delete -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+$vmCollProps = @{
+    vmResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01"
+    operationName = "Add"
+}
+$vmCollPropsJson = ConvertTo-Json -InputObject $vmCollProps
+Update-AzElasticVMCollection -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor02 -JsonString $vmCollPropsJson
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource by pipeline.
+Update the VM details that will be monitored by the Elastic monitor resource via JSON string.
+
+### Example 3: Update the VM details that will be monitored by the Elastic monitor resource via pipeline
+```powershell
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor02 | Update-AzElasticVMCollection -OperationName Delete -VMResourceId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01'
+```
+
+Update the VM details that will be monitored by the Elastic monitor resource via pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -77,12 +102,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -96,8 +151,8 @@ Accept wildcard characters: False
 Operation to be performed for given VM.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.OperationName
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -127,7 +182,7 @@ The name of the resource group to which the Elastic resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -144,7 +199,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -159,7 +214,7 @@ ARM id of the VM resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,20 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

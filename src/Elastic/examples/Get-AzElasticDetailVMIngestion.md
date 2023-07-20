@@ -1,26 +1,25 @@
-### Example 1: List the vm ingestion details that will be monitored by the Elastic monitor resource
+### Example 1: List the VM ingestion details that will be monitored by the Elastic monitor resource
 ```powershell
-Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+Get-AzElasticDetailVMIngestion -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01
 ```
 
 ```output
-CloudId                                  IngestionKey
--------                                  ------------
-elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
+CloudId
+-------
+Monitor01:xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This command lists the vm ingestion details that will be monitored by the Elastic monitor resource.
+List the VM ingestion details that will be monitored by the Elastic monitor resource.
 
-### Example 2: List the vm ingestion details that will be monitored by the Elastic monitor resource by pipeline
+### Example 2: List the VM ingestion details that will be monitored by the Elastic monitor resource via pipeline
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v | Get-AzElasticDetailVMIngestion
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor02 | Get-AzElasticDetailVMIngestion
 ```
 
 ```output
-CloudId                                  IngestionKey
--------                                  ------------
-elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
+CloudId
+-------
+Monitor02:xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This command lists the vm ingestion details that will be monitored by the Elastic monitor resource by pipeline.
-
+List the VM ingestion details that will be monitored by the Elastic monitor resource via pipeline.

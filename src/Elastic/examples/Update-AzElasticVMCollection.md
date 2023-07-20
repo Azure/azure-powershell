@@ -1,14 +1,25 @@
-### Example 1: Update the vm details that will be monitored by the Elastic monitor resource
+### Example 1: Update the VM details that will be monitored by the Elastic monitor resource
 ```powershell
-Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+Update-AzElasticVMCollection -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01'
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource
+Update the VM details that will be monitored by the Elastic monitor resource.
 
-### Example 2: Update the vm details that will be monitored by the Elastic monitor resource by pipeline
+### Example 2: Update the VM details that will be monitored by the Elastic monitor resource via JSON string
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticVMCollection -OperationName Delete -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+$vmCollProps = @{
+    vmResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01"
+    operationName = "Add"
+}
+$vmCollPropsJson = ConvertTo-Json -InputObject $vmCollProps
+Update-AzElasticVMCollection -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor02 -JsonString $vmCollPropsJson
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource by pipeline.
+Update the VM details that will be monitored by the Elastic monitor resource via JSON string.
 
+### Example 3: Update the VM details that will be monitored by the Elastic monitor resource via pipeline
+```powershell
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor02 | Update-AzElasticVMCollection -OperationName Delete -VMResourceId '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGroup01/providers/Microsoft.Compute/virtualMachines/LinuxVM01'
+```
+
+Update the VM details that will be monitored by the Elastic monitor resource via pipeline.

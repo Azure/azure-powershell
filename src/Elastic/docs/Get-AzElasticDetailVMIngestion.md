@@ -14,7 +14,7 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ### Details (Default)
 ```
-Get-AzElasticDetailVMIngestion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzElasticDetailVMIngestion -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,36 +29,37 @@ List the vm ingestion details that will be monitored by the Elastic monitor reso
 
 ## EXAMPLES
 
-### Example 1: List the vm ingestion details that will be monitored by the Elastic monitor resource
+### Example 1: List the VM ingestion details that will be monitored by the Elastic monitor resource
 ```powershell
-Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
+Get-AzElasticDetailVMIngestion -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01
 ```
 
 ```output
-CloudId                                  IngestionKey
--------                                  ------------
-elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
+CloudId
+-------
+Monitor01:xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This command lists the vm ingestion details that will be monitored by the Elastic monitor resource.
+List the VM ingestion details that will be monitored by the Elastic monitor resource.
 
-### Example 2: List the vm ingestion details that will be monitored by the Elastic monitor resource by pipeline
+### Example 2: List the VM ingestion details that will be monitored by the Elastic monitor resource via pipeline
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v | Get-AzElasticDetailVMIngestion
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor02 | Get-AzElasticDetailVMIngestion
 ```
 
 ```output
-CloudId                                  IngestionKey
--------                                  ------------
-elastic-rhqz1v:xxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
+CloudId
+-------
+Monitor02:xxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This command lists the vm ingestion details that will be monitored by the Elastic monitor resource by pipeline.
+List the VM ingestion details that will be monitored by the Elastic monitor resource via pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,7 +89,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Monitor resource name
 
 ```yaml
@@ -175,23 +176,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMIngestionDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IVMIngestionDetailsResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

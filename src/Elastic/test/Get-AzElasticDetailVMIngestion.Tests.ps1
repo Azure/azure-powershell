@@ -16,13 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticDetailVMIngestio
 
 Describe 'Get-AzElasticDetailVMIngestion' {
     It 'Details' {
-        { Get-AzElasticDetailVMIngestion -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
+        {
+            Get-AzElasticDetailVMIngestion -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+        } | Should -Not -Throw
     }
 
     It 'DetailsViaIdentity' {
-        { 
-            $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
-            Get-AzElasticDetailVMIngestion -InputObject $elastic
+        {
+            $monitor = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02
+            Get-AzElasticDetailVMIngestion -InputObject $monitor
         } | Should -Not -Throw
     }
 }

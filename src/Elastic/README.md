@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Elastic service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -31,21 +31,23 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: eee9cbba738edde2ea48ea0c826f84619e2561df
+branch: 73d8ea03558929411b9f2e6be533e63409a2252c
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elastic/resource-manager/Microsoft.Elastic/stable/2020-07-01/elastic.json
+  - $(repo)/specification/elastic/resource-manager/Microsoft.Elastic/stable/2023-06-01/elastic.json
+
+use-extension:
+  "@autorest/powershell": "4.x"
+
+enable-parent-pipeline-input-for-list: true
 
 title: Elastic
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-
 directive:
-  # Swagger issue that the ProvisioningState should readonly.
+  # Swagger issue that the ProvisioningState should be readonly.
   - from: swagger-document
     where: $.definitions.MonitorProperties.properties.provisioningState
     transform: >-
@@ -63,8 +65,45 @@ directive:
           "$ref": "#/definitions/ProvisioningState"
         }
 
+  # Disable LRO for New-AzElasticCreateAndAssociateIPFilter and New-AzElasticCreateAndAssociatePlFilter
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/upgrade"].post
+    transform: $["x-ms-long-running-operation"] = false
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociateIPFilter"].post
+    transform: $["x-ms-long-running-operation"] = false
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociatePLFilter"].post
+    transform: $["x-ms-long-running-operation"] = false
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/associateTrafficFilter"].post
+    transform: $["x-ms-long-running-operation"] = false
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachTrafficFilter"].post
+    transform: $["x-ms-long-running-operation"] = false
+
   - where:
       verb: Set
+    remove: true
+
+  - where:
+      subject: Monitor
+      variant: ^Upgrade
+    set:
+      subject: MonitorVersion
+
+  - where:
+      variant: ^(Create|Update|Upgrade)(?!.*?(Expanded|JsonString|JsonFilePath))
+      subject: ExternalUser|TagRule|MonitorVersion
+    remove: true
+
+  - where:
+      variant: ^Get$
+      subject: OrganizationApiKey
     remove: true
 
   # The service not planning to support it in the near future.
@@ -74,13 +113,14 @@ directive:
     remove: true
 
   # Only name allowed for a tag rule is default.
-  - where: 
-      verb: Get
-      subject: TagRule
-      variant: List
-    remove: true
   - where:
-      verb: Get|New
+      verb: Get|Update
+      subject: TagRule
+      variant: ^List$|^ListViaIdentityMonitor$|^UpdateViaIdentityExpanded$
+    remove: true
+
+  - where:
+      verb: Get|New|Update
       subject: TagRule
       parameter-name: RuleSetName
     hide: true
@@ -89,11 +129,48 @@ directive:
         script: '"default"'
 
   - where:
-      verb: Get|New|Update|Remove|Invoke
-      subject: DeploymentInfo|MonitoredResource|VMHost|DetailVMIngestion|VMCollection
-      parameter-name: MonitorName
+      verb: Get
+      subject: ListAssociatedTrafficFilter
     set:
-      parameter-name: Name
+      subject: AssociatedTrafficFilter
+
+  - where:
+      verb: Join
+      subject: AssociateTrafficFilter
+    set:
+      verb: Mount
+      subject: TrafficFilter
+
+  - where:
+      verb: Update
+      subject: DetachTrafficFilter
+    set:
+      verb: Dismount
+      subject: TrafficFilter
+
+  - where:
+      verb: Remove
+      subject: TrafficFilter
+    set:
+      subject: UnassociatedTrafficFilter
+
+  - where:
+      verb: New
+      subject: CreateAndAssociateIPFilter
+    set:
+      subject: IPFilter
+
+  - where:
+      verb: New
+      subject: CreateAndAssociatePlFilter
+    set:
+      subject: PrivateLinkFilter
+
+  - where:
+      verb: Remove
+      subject: DetachAndDeleteTrafficFilter
+    set:
+      subject: TrafficFilter
 
   - where:
       parameter-name: SkuName
@@ -126,6 +203,7 @@ directive:
           - Name
           - ProvisioningState
 
-  # - model-cmdlet:
-  #   - FilteringTag
+  - model-cmdlet:
+    - model-name: FilteringTag
+      model-cmdlet: New-AzElasticFilteringTagObject
 ```

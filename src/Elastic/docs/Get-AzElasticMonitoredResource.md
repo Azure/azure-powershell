@@ -12,9 +12,16 @@ List the resources currently being monitored by the Elastic monitor resource.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzElasticMonitoredResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListViaIdentityMonitor
+```
+Get-AzElasticMonitoredResource -MonitorInputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +31,43 @@ List the resources currently being monitored by the Elastic monitor resource.
 
 ### Example 1: List the resources currently being monitored by the Elastic monitor resource
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticMonitoredResource -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+```output
+ReasonForLogsStatus            SendingLog
+-------------------            ----------
+CapturedByRules                True
+CapturedByRules                True
+CapturedByRules                True
+DiagnosticSettingsLimitReached False
+DiagnosticSettingsLimitReached False
+```
+
+List the resources currently being monitored by the Elastic monitor resource.
+
+### Example 2: List the resources currently being monitored by the Elastic monitor resource via pipeline
+```powershell
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor01 | Get-AzElasticMonitoredResource
+```
+
+```output
+ReasonForLogsStatus            SendingLog
+-------------------            ----------
+CapturedByRules                True
+CapturedByRules                True
+CapturedByRules                True
+DiagnosticSettingsLimitReached False
+DiagnosticSettingsLimitReached False
+```
+
+List the resources currently being monitored by the Elastic monitor resource via pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -46,12 +81,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorInputObject
+Identity Parameter
+To construct, see NOTES section for MONITORINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: ListViaIdentityMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -66,7 +117,7 @@ The name of the resource group to which the Elastic resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -83,7 +134,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -129,13 +180,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

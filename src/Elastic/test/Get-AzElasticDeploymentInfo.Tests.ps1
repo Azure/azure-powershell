@@ -16,6 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticDeploymentInfo')
 
 Describe 'Get-AzElasticDeploymentInfo' {
     It 'List' {
-        { Get-AzElasticDeploymentInfo -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
+        {
+            Get-AzElasticDeploymentInfo -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
+        } | Should -Not -Throw
+    }
+
+    It 'ListViaIdentityMonitor' {
+        {
+            $monitor = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02
+            Get-AzElasticDeploymentInfo -MonitorInputObject $monitor
+        } | Should -Not -Throw
     }
 }

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticVMHost'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticVersion'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzElasticVMHost.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzElasticVersion.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticVMHost'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzElasticVMHost' {
+Describe 'Get-AzElasticVersion' {
     It 'List' {
-        { Get-AzElasticVMHost -ResourceGroupName $env.resourceGroup -Name $env.elasticName01 } | Should -Not -Throw
+        {
+            Get-AzElasticVersion -Region $env.location
+        } | Should -Not -Throw
     }
 }

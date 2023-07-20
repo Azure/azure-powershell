@@ -1,14 +1,13 @@
-### Example 1: Create a in-memory object for FilteringTag used when creating tag rules
+### Example 1: Create filtering tag object
+
 ```powershell
-$ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
-New-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02 -LogRuleFilteringTag $ft
+New-AzElasticFilteringTagObject -Action Include -Name TagName -Value TagVal
 ```
 
 ```output
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Action  Name    Value
+------  ----    -----
+Include TagName TagVal
 ```
 
-This command creates a in-memory object for FilteringTag used when creating tag rules
-
+Create filtering tag object.

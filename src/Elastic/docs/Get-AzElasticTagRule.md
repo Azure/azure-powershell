@@ -18,9 +18,9 @@ Get-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-Subscri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentityMonitor
 ```
-Get-AzElasticTagRule -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzElasticTagRule -MonitorInputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,34 +30,69 @@ Get a tag rule set for a given monitor resource.
 
 ### Example 1: Get a tag rule set for a given monitor resource
 ```powershell
-Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
+Get-AzElasticTagRule -ResourceGroupName ElasticResourceGroup01 -MonitorName Monitor01
 ```
 
 ```output
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         azure-elastic-test
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGr
+                               oup01/providers/Microsoft.Elastic/monitors/Monitor01/tagRules/default
+LogRuleFilteringTag          : {}
+LogRuleSendAadLog            : True
+LogRuleSendActivityLog       : True
+LogRuleSendSubscriptionLog   : True
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : ElasticResourceGroup01
+SystemDataCreatedAt          : 07/17/2023 06:42:52
+SystemDataCreatedBy          : user@contoso.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 07/19/2023 09:37:58
+SystemDataLastModifiedBy     : user@contoso.com
+SystemDataLastModifiedByType : User
+Type                         : microsoft.elastic/monitors/tagrules
 ```
 
-This command gets a tag rule set for a given monitor resource.
+Get a tag rule set for a given monitor resource.
 
-### Example 2: Get a tag rule set for a given monitor resource by pipeline
+### Example 2: Get a tag rule set for a given monitor resource via pipeline
 ```powershell
-New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 | Get-AzElasticTagRule
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor02 | Get-AzElasticTagRule
 ```
 
 ```output
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         azure-elastic-test
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ElasticResourceGr
+                               oup01/providers/Microsoft.Elastic/monitors/Monitor02/tagRules/default
+LogRuleFilteringTag          : {{
+                                 "name": "Tag1Name",
+                                 "value": "Tag1Val",
+                                 "action": "Include"
+                               }, {
+                                 "name": "Tag2Name",
+                                 "value": "Tag2Val",
+                                 "action": "Exclude"
+                               }}
+LogRuleSendAadLog            : True
+LogRuleSendActivityLog       : True
+LogRuleSendSubscriptionLog   : False
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : ElasticResourceGroup01
+SystemDataCreatedAt          : 07/19/2023 09:38:28
+SystemDataCreatedBy          : user@contoso.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 07/19/2023 09:38:28
+SystemDataLastModifiedBy     : user@contoso.com
+SystemDataLastModifiedByType : User
+Type                         : microsoft.elastic/monitors/tagrules
 ```
 
-This command gets a tag rule set for a given monitor resource by pipeline.
+Get a tag rule set for a given monitor resource via pipeline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -71,13 +106,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -MonitorInputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+To construct, see NOTES section for MONITORINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -143,23 +178,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

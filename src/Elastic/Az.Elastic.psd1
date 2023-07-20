@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Elastic.private.dll'
   FormatsToProcess = './Az.Elastic.format.ps1xml'
-  FunctionsToExport = 'Get-AzElasticDeploymentInfo', 'Get-AzElasticDetailVMIngestion', 'Get-AzElasticMonitor', 'Get-AzElasticMonitoredResource', 'Get-AzElasticTagRule', 'Get-AzElasticVMHost', 'New-AzElasticFilteringTagObject', 'New-AzElasticMonitor', 'New-AzElasticTagRule', 'Remove-AzElasticMonitor', 'Update-AzElasticMonitor', 'Update-AzElasticVMCollection', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Dismount-AzElasticTrafficFilter', 'Get-AzElasticAllTrafficFilter', 'Get-AzElasticAssociatedTrafficFilter', 'Get-AzElasticDeploymentInfo', 'Get-AzElasticDetailUpgradableVersion', 'Get-AzElasticDetailVMIngestion', 'Get-AzElasticMonitor', 'Get-AzElasticMonitoredResource', 'Get-AzElasticOrganizationApiKey', 'Get-AzElasticTagRule', 'Get-AzElasticVersion', 'Get-AzElasticVMHost', 'Mount-AzElasticTrafficFilter', 'New-AzElasticExternalUser', 'New-AzElasticFilteringTagObject', 'New-AzElasticIPFilter', 'New-AzElasticMonitor', 'New-AzElasticPrivateLinkFilter', 'New-AzElasticTagRule', 'Remove-AzElasticMonitor', 'Remove-AzElasticTrafficFilter', 'Remove-AzElasticUnassociatedTrafficFilter', 'Update-AzElasticExternalUser', 'Update-AzElasticMonitor', 'Update-AzElasticMonitorVersion', 'Update-AzElasticTagRule', 'Update-AzElasticVMCollection'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Elastic'

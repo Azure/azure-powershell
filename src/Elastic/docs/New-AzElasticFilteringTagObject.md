@@ -1,39 +1,38 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/Az.Elastic/new-azelasticfilteringtagobject
 schema: 2.0.0
 ---
 
 # New-AzElasticFilteringTagObject
 
 ## SYNOPSIS
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## SYNTAX
 
 ```
-New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzElasticFilteringTagObject [-Action <String>] [-Name <String>] [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for FilteringTag used when creating tag rules
+### Example 1: Create filtering tag object
 ```powershell
-$ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
-New-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02 -LogRuleFilteringTag $ft
+New-AzElasticFilteringTagObject -Action Include -Name TagName -Value TagVal
 ```
 
 ```output
-Name    Type
-----    ----
-default microsoft.elastic/monitors/tagrules
+Action  Name    Value
+------  ----    -----
+Include TagName TagVal
 ```
 
-This command creates a in-memory object for FilteringTag used when creating tag rules
+Create filtering tag object.
 
 ## PARAMETERS
 
@@ -41,7 +40,7 @@ This command creates a in-memory object for FilteringTag used when creating tag 
 Valid actions for a filtering tag.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.TagAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,11 +88,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.FilteringTag
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

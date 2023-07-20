@@ -23,11 +23,6 @@ Get-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzElasticMonitor -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzElasticMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
@@ -39,69 +34,100 @@ Get the properties of a specific monitor resource.
 
 ## EXAMPLES
 
-### Example 1: List all elastic monitors under a subscription
+### Example 1: List all monitors under the specified subscription
 ```powershell
 Get-AzElasticMonitor
 ```
 
 ```output
-Name                           SkuName                         MonitoringStatus Location      ResourceGroupName
-----                           -------                         ---------------- --------      -----------------
-kk-elastictest02               ess-monthly-consumption_Monthly Enabled          westus2       kk-rg
-kk-elastictest03               ess-monthly-consumption_Monthly Enabled          westus2       kk-rg
-wusDeployValidate              ess-monthly-consumption_Monthly Enabled          westus2       poshett-rg
-poshett-WestUS2-01             staging_Monthly                 Enabled          westus2       poshett-rg
-hashahdemo01                   staging_Monthly                 Enabled          westus2       test-sub
+Name      SkuName                         MonitoringStatus Location
+----      -------                         ---------------- --------
+Monitor01 ess-monthly-consumption_Monthly Enabled          eastus
+Monitor02 ess-monthly-consumption_Monthly Enabled          eastus
+Monitor03 ess-monthly-consumption_Monthly Enabled          eastus
+Monitor04 ess-monthly-consumption_Monthly Enabled          westus
+Monitor05 ess-monthly-consumption_Monthly Enabled          westus
 ```
 
-This command lists all elastic monitors under a subscription.
+List all monitors under the specified subscription.
 
-### Example 2: List all elastic monitors under a resource group
+### Example 2: List all monitors under the specified resource group
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName azure-elastic-test
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01
 ```
 
 ```output
-Name             SkuName                         MonitoringStatus Location ResourceGroupName
-----             -------                         ---------------- -------- -----------------
-elastic-portal01 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-portal02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-pwsh01   ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-pwsh02   ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+Name      SkuName                         MonitoringStatus Location
+----      -------                         ---------------- --------
+Monitor01 ess-monthly-consumption_Monthly Enabled          eastus
+Monitor02 ess-monthly-consumption_Monthly Enabled          eastus
+Monitor03 ess-monthly-consumption_Monthly Enabled          eastus
 ```
 
-This command lists all elastic monitors under a resource group.
+List all monitors under the specified resource group.
 
 ### Example 3: Get the properties of a specific monitor resource
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticMonitor -ResourceGroupName ElasticResourceGroup01 -Name Monitor01
 ```
 
 ```output
-Name           SkuName                         MonitoringStatus Location ResourceGroupName
-----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+CompanyInfoBusiness                           :
+CompanyInfoCountry                            :
+CompanyInfoDomain                             :
+CompanyInfoEmployeesNumber                    :
+CompanyInfoState                              :
+ElasticCloudDeploymentAzureSubscriptionId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ElasticCloudDeploymentElasticsearchRegion     : azure-eastus
+ElasticCloudDeploymentElasticsearchServiceUrl : https://d77db1126b14406da269f44d9207cadc.eastus.azure.elastic-cloud
+                                                .com
+ElasticCloudDeploymentId                      : 4c9b72a426d0f2531f5da53b755ae829
+ElasticCloudDeploymentKibanaServiceUrl        : https://25e81d6794fb4750a53df7b321ef05f7.eastus.azure.elastic-cloud
+                                                .com:9243
+ElasticCloudDeploymentKibanaSsoUrl            : /sso/v1/go/ec:1836023263:kibana-monitor01?acs=https://monitor01.kb.
+                                                eastus.azure.elastic-cloud.com:9243/api/security/saml/callback&sp_l
+                                                ogin_url=https://monitor01.kb.eastus.azure.elastic-cloud.com:9243
+ElasticCloudDeploymentName                    : Monitor01
+ElasticCloudUserElasticCloudSsoDefaultUrl     : https://cloud.elastic.co
+ElasticCloudUserEmailAddress                  : user@contoso.com
+ElasticCloudUserId                            : xxxxxxxx
+GenerateApiKey                                : False
+Id                                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/
+                                                ElasticResourceGroup01/providers/Microsoft.Elastic/monitors/Monitor
+                                                01
+IdentityPrincipalId                           :
+IdentityTenantId                              :
+IdentityType                                  :
+LiftrResourceCategory                         : MonitorLogs
+LiftrResourcePreference                       : 0
+Location                                      : eastus
+MonitoringStatus                              : Enabled
+Name                                          : Monitor01
+ProvisioningState                             : Succeeded
+ResourceGroupName                             : ElasticResourceGroup01
+SkuName                                       : ess-monthly-consumption_Monthly
+SystemDataCreatedAt                           : 07/17/2023 05:20:39
+SystemDataCreatedBy                           : user@contoso.com
+SystemDataCreatedByType                       : User
+SystemDataLastModifiedAt                      : 07/17/2023 05:20:39
+SystemDataLastModifiedBy                      : user@contoso.com
+SystemDataLastModifiedByType                  : User
+Tag                                           : {}
+Type                                          : microsoft.elastic/monitors
+UserInfoCompanyName                           :
+UserInfoEmailAddress                          :
+UserInfoFirstName                             :
+UserInfoLastName                              :
+Version                                       :
 ```
 
-This command gets the properties of a specific monitor resource.
-
-### Example 4: Get the properties of a specific monitor resource by pipeline
-```powershell
-New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com' | Get-AzElasticMonitor
-```
-
-```output
-Name           SkuName                         MonitoringStatus Location ResourceGroupName
-----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-```
-
-This command gets the properties of a specific monitor resource by pipeline.
+Get the properties of a specific monitor resource.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,22 +138,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +178,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,27 +193,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 
