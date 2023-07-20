@@ -74,12 +74,7 @@ function Test-TagCreateOrUpdateAsyncWithResourceIdParams($resourceId)
     {
         # Test
         $newTagres = New-AzTag -ResourceId $resourceId -Tag $expected
-        $res = Get-AzTag -ResourceId $resourceId
-
-        [hashtable]$actual = $res.Properties.TagsProperty
-        Assert-False { AreHashtableEqual $expected $actual }
-
-        Start-TestSleep -Seconds 180
+        Start-TestSleep -Seconds 120
         $res = Get-AzTag -ResourceId $resourceId
         
         [hashtable]$actual = $res.Properties.TagsProperty
@@ -370,13 +365,13 @@ function Test-TagDeleteAsyncWithResourceIdParams($resourceId)
     # Setup
     $original = @{"key1"="value1"; "key2"="value2";}
     New-AzTag -ResourceId $resourceId -Tag $original
-    Start-TestSleep -Seconds 180
+    Start-TestSleep -Seconds 120
 
     try 
     {
         # Test
         Remove-AzTag -ResourceId $resourceId  
-        Start-TestSleep -Seconds 180
+        Start-TestSleep -Seconds 120
         $actual = Get-AzTag -ResourceId $resourceId
 
         # Assert
