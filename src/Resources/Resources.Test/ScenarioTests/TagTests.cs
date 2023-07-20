@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TagCreateOrUpdateAsyncWithResourceIdParamsForResource()
         {
@@ -89,7 +88,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TagUpdateAsyncWithResourceIdParamsForResource()
         {
@@ -97,7 +95,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TagDeleteAsyncWithResourceIdParamsForResource()
         {
