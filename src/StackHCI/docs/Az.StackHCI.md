@@ -44,8 +44,17 @@ Gets Remote Support Session History Details.
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
+### [Initialize-AzStackHciArcSettingDisableProcess](Initialize-AzStackHciArcSettingDisableProcess.md)
+Initializes ARC Disable process on the cluster
+
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
+
+### [Invoke-AzStackHciConsentAndInstallDefaultExtensions](Invoke-AzStackHciConsentAndInstallDefaultExtensions.md)
+Add consent time for default extensions and initiate extensions installation
+
+### [Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit](Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit.md)
+Extends Software Assurance Benefit to a cluster
 
 ### [New-AzStackHciArcSetting](New-AzStackHciArcSetting.md)
 Create ArcSetting for HCI cluster.

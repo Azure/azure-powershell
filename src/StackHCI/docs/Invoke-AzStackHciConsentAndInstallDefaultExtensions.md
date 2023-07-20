@@ -1,53 +1,68 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextensions
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciArcSetting
+# Invoke-AzStackHciConsentAndInstallDefaultExtensions
 
 ## SYNOPSIS
-Delete ArcSetting resource details of HCI Cluster.
+Add consent time for default extensions and initiate extensions installation
 
 ## SYNTAX
 
-### Delete (Default)
+### And (Default)
 ```
-Remove-AzStackHciArcSetting -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Invoke-AzStackHciConsentAndInstallDefaultExtensions -ArcSettingName <String> -ClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### AndViaIdentity
 ```
-Remove-AzStackHciArcSetting -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzStackHciConsentAndInstallDefaultExtensions -InputObject <IStackHciIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete ArcSetting resource details of HCI Cluster.
+Add consent time for default extensions and initiate extensions installation
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster -Name default
+{{ Add code here }}
 ```
 
-Removes a particular arcSettings of a cluster.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ArcSettingName
+The name of the proxy resource holding details of HCI ArcSetting information.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: And
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -59,7 +74,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: And
 Aliases:
 
 Required: True
@@ -90,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: AndViaIdentity
 Aliases:
 
 Required: True
@@ -100,58 +115,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the proxy resource holding details of HCI ArcSetting information.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ArcSettingName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: And
 Aliases:
 
 Required: True
@@ -166,7 +136,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: And
 Aliases:
 
 Required: False
@@ -216,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
 
 ## NOTES
 

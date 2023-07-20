@@ -1,43 +1,73 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciarcsetting
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/initialize-azstackhciarcsettingdisableprocess
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciArcSetting
+# Initialize-AzStackHciArcSettingDisableProcess
 
 ## SYNOPSIS
-Delete ArcSetting resource details of HCI Cluster.
+Initializes ARC Disable process on the cluster
 
 ## SYNTAX
 
-### Delete (Default)
+### Initialize (Default)
 ```
-Remove-AzStackHciArcSetting -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzStackHciArcSetting -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Initialize-AzStackHciArcSettingDisableProcess -ArcSettingName <String> -ClusterName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### InitializeViaIdentity
+```
+Initialize-AzStackHciArcSettingDisableProcess -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Delete ArcSetting resource details of HCI Cluster.
+Initializes ARC Disable process on the cluster
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster -Name default
+{{ Add code here }}
 ```
 
-Removes a particular arcSettings of a cluster.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ArcSettingName
+The name of the proxy resource holding details of HCI ArcSetting information.
+
+```yaml
+Type: System.String
+Parameter Sets: Initialize
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -59,7 +89,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Initialize
 Aliases:
 
 Required: True
@@ -90,28 +120,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: InitializeViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the proxy resource holding details of HCI ArcSetting information.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ArcSettingName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,7 +166,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Initialize
 Aliases:
 
 Required: True
@@ -166,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Initialize
 Aliases:
 
 Required: False

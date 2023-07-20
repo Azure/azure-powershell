@@ -81,8 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -167,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 
 ## NOTES
 
@@ -178,7 +177,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
+INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
   - `[ClusterName <String>]`: The name of the cluster.
   - `[ExtensionName <String>]`: The name of the machine extension.

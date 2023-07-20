@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the StackHci service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,14 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ad5110c7ba2113d5f77946338231f45ac4d09c82
+branch: 5758cc23b0022e403d876662d9799f02c9bba3e6
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/arcSettings.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/clusters.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/arcSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/clusters.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/extensions.json
 
 module-version: 1.1.0
 title: StackHCI
@@ -66,6 +66,11 @@ inlining-threshold: 50
 resourcegroup-append: true 
 
 directive:
+  - where:
+      verb: Invoke
+      subject: AndArcSetting
+    set:
+      subject: ConsentAndInstallDefaultExtensions
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
