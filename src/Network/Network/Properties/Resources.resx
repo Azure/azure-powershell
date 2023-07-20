@@ -792,6 +792,9 @@
   <data name="ResourceIDNotSupportedInAzureArcNetworkEndpoint" xml:space="preserve">
     <value>ResourceId is not supported for arc network endpoint {0}.</value>
   </data>
+  <data name="AzureArcNetworkEndpointMustHaveSubscriptionId" xml:space="preserve">
+    <value>Required field 'SubscriptionId' is missing in AzureArcNetwork endpoint {0}.</value>
+  </data>
   <data name="RegionNotSpecifiedInAzureArcNetworkEndpoint" xml:space="preserve">
     <value>AzureArcNetwork endpoint {0} must have Region.</value>
   </data>

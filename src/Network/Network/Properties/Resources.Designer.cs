@@ -304,6 +304,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Required field &apos;SubscriptionId&apos; is missing in AzureArcNetwork endpoint {0}..
+        /// </summary>
+        internal static string AzureArcNetworkEndpointMustHaveSubscriptionId {
+            get {
+                return ResourceManager.GetString("AzureArcNetworkEndpointMustHaveSubscriptionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
         internal static string ChecksFailedPercentIsOutOfRange {
@@ -1213,7 +1222,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AzureArcNetwork endpoint {0} must have Region.
+        ///   Looks up a localized string similar to AzureArcNetwork endpoint {0} must have Region..
         /// </summary>
         internal static string RegionNotSpecifiedInAzureArcNetworkEndpoint {
             get {

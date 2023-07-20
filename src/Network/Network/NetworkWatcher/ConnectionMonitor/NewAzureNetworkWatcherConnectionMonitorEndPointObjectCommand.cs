@@ -206,6 +206,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "SubscriptionId for Arc Network endpoint.",
+             ParameterSetName = "AzureArcNetwork")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -217,7 +224,8 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceId = this.ResourceId,
                 Address = this.Address,
                 CoverageLevel = this.CoverageLevel,
-                LocationDetails = AzureArcNetwork.IsPresent ? new PSConnectionMonitorEndPointLocationDetails { Region = this?.Location } : null
+                LocationDetails = AzureArcNetwork.IsPresent ? new PSConnectionMonitorEndPointLocationDetails { Region = this?.Location } : null,
+                SubscriptionId = this.SubscriptionId
             };
 
             if (this.IncludeItem != null || this.ExcludeItem != null)

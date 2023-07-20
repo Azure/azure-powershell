@@ -620,6 +620,11 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceIDNotSupportedInAzureArcNetworkEndpoint, endpoint.Name));
             }
 
+            if (string.IsNullOrEmpty(endpoint.SubscriptionId))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.AzureArcNetworkEndpointMustHaveSubscriptionId, endpoint.Name));
+            }
+
             if (endpoint.LocationDetails == null || endpoint.LocationDetails.Region == null)
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.RegionNotSpecifiedInAzureArcNetworkEndpoint, endpoint.Name));
@@ -1024,7 +1029,9 @@ namespace Microsoft.Azure.Commands.Network
                     Type = sourceEndpoint.Type,
                     ResourceId = sourceEndpoint.ResourceId,
                     Address = sourceEndpoint.Address,
-                    CoverageLevel = sourceEndpoint.CoverageLevel
+                    CoverageLevel = sourceEndpoint.CoverageLevel,
+                    LocationDetails = new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = sourceEndpoint?.LocationDetails?.Region },
+                    SubscriptionId = sourceEndpoint.SubscriptionId,
                 };
 
                 // Add ConnectionMonitorEndpointScope
@@ -1102,7 +1109,9 @@ namespace Microsoft.Azure.Commands.Network
                     Type = destinationEndpoint.Type,
                     ResourceId = destinationEndpoint.ResourceId,
                     Address = destinationEndpoint.Address,
-                    CoverageLevel = destinationEndpoint.CoverageLevel
+                    CoverageLevel = destinationEndpoint.CoverageLevel,
+                    LocationDetails = new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = destinationEndpoint?.LocationDetails?.Region },
+                    SubscriptionId = destinationEndpoint.SubscriptionId
                 };
 
                 // Add ConnectionMonitorEndpointScope
