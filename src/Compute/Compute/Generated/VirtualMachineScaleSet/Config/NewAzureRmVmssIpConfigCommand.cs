@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vIpConfigurations.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vIpConfigurations.Primary = this.Primary.IsPresent;
             vIpConfigurations.PrivateIPAddressVersion = this.IsParameterBound(c => c.PrivateIPAddressVersion) ? this.PrivateIPAddressVersion : null;
-            vIpConfigurations.Id = this.IsParameterBound(c => c.Id) ? this.Id : null;
+            //vIpConfigurations.Id = this.IsParameterBound(c => c.Id) ? this.Id : null;
 
             // SubnetId
             if (this.IsParameterBound(c => c.SubnetId))

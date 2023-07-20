@@ -135,7 +135,7 @@ The list of virtual network rules.
 To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]
 Parameter Sets: NetworkRuleObject
 Aliases:
 
@@ -243,11 +243,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 
 ## NOTES
 

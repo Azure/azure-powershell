@@ -20,14 +20,14 @@ Update an Volume.
 .Description
 Update an Volume.
 .Example
-$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -Tag @{tag3 = "value3"} -SizeGib 120
+$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,6 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -43,13 +44,11 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 
 PARAMETER <IVolumeUpdate>: Response for Volume request.
   [SizeGiB <Int64?>]: Volume size.
-  [Tag <IVolumeUpdateTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
 #>
 function Update-AzElasticSanVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -101,7 +100,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate]
     # Response for Volume request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -112,14 +111,6 @@ param(
     [System.Int64]
     # Volume size.
     ${SizeGiB},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

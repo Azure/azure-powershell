@@ -3309,7 +3309,7 @@ function Test-VirtualMachineScaleSetRepairsAction
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 
         # Create LoadBalancer
@@ -3364,11 +3364,18 @@ function Test-VirtualMachineScaleSetRepairsAction
         Assert-AreEqual $repairAction1 $vmssNew.AutomaticRepairsPolicy.RepairAction;
 
         # Update Vmss test
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair:$false;
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -AutomaticRepairAction $repairAction2;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $false -AutomaticRepairAction $repairAction2; 
 
         $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $repairAction2 $vmssUp.AutomaticRepairsPolicy.RepairAction;
+        Assert-AreEqual $false $vmssUp.AutomaticRepairsPolicy.Enabled;
+
+        # Update back to True
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $true -AutomaticRepairAction $repairAction1; 
+
+        $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $repairAction1 $vmssUp.AutomaticRepairsPolicy.RepairAction;
+        Assert-AreEqual $true $vmssUp.AutomaticRepairsPolicy.Enabled;
 
     }
     finally

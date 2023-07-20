@@ -23,12 +23,12 @@ List all the available Skus in the region and information related to them
 Get-AzElasticSanSkuList
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformation
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 #>
 function Get-AzElasticSanSkuList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

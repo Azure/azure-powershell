@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("VolumeName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName = (string) content.GetValueForProperty("VolumeName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).VolumeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
