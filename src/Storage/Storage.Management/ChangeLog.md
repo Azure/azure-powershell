@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.8.1
 * Supported traling dot in Azure file and directory name by default
     - `Close-AzStorageFileHandle`
     - `Get-AzStorageFile`
