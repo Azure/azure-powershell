@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Storage.Files.Shares;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.Azure.Storage;
@@ -774,14 +776,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             ShareServiceClient shareServiceClient;
-            string connectionString = context.ConnectionString;
-
-            // remove the "?" at the begin of SAS if any
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+            if (context.StorageAccount!= null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
-                connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                if (context.ShareTokenIntent != null)
+                {
+                    options.ShareTokenIntent = context.ShareTokenIntent.Value;   
+                }
+                shareServiceClient = new ShareServiceClient(context.StorageAccount.FileEndpoint, context.Track2OauthToken, options);
             }
-            shareServiceClient = new ShareServiceClient(connectionString, options);
+            else  //sas , key or Anonymous, use connection string
+            {
+                string connectionString = context.ConnectionString;
+
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                shareServiceClient = new ShareServiceClient(connectionString, options);
+            }
             return shareServiceClient;
         }
 
