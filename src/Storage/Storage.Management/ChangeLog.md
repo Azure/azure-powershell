@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support OAuth authentication on File service cmdlets
+* Supported OAuth authentication on File service cmdlets
     - `New-AzStorageContext`
     - `Get-AzStorageFile`
     - `Get-AzStorageFileContent`
@@ -31,7 +31,7 @@
     - `Stop-AzStorageFileCopy`
     - `Get-AzStorageFileHandle`
     - `Close-AzStorageFileHandle`
-* Support get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
+* Supported get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
     - `Get-AzStorageShare`
 
 ## Version 5.8.0
