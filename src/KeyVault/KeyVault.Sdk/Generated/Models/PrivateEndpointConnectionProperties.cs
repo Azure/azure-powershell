@@ -8,29 +8,21 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     using System.Linq;
 
     /// <summary>
-    /// Private endpoint connection item.
+    /// Properties of the private endpoint connection resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnectionItem
+    public partial class PrivateEndpointConnectionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnectionItem class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-        public PrivateEndpointConnectionItem()
+        public PrivateEndpointConnectionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnectionItem class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-
-        /// <param name="id">Id of private endpoint connection.
-        /// </param>
-
-        /// <param name="etag">Modified whenever there is a change in the state of private endpoint
-        /// connection.
-        /// </param>
 
         /// <param name="privateEndpoint">Properties of the private endpoint object.
         /// </param>
@@ -41,11 +33,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="provisioningState">Provisioning state of the private endpoint connection.
         /// Possible values include: 'Succeeded', 'Creating', 'Updating', 'Deleting',
         /// 'Failed', 'Disconnected'</param>
-        public PrivateEndpointConnectionItem(string id = default(string), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
+        public PrivateEndpointConnectionProperties(PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
 
         {
-            this.Id = id;
-            this.Etag = etag;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             this.ProvisioningState = provisioningState;
@@ -59,34 +49,21 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
 
         /// <summary>
-        /// Gets or sets id of private endpoint connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets modified whenever there is a change in the state of private
-        /// endpoint connection.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; set; }
-
-        /// <summary>
         /// Gets or sets properties of the private endpoint object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets approval state of the private link connection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
         /// Gets or sets provisioning state of the private endpoint connection. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Disconnected&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; set; }
     }
 }

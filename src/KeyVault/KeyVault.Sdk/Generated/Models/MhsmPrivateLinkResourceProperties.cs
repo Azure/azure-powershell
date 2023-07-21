@@ -8,37 +8,21 @@ namespace Microsoft.Azure.Management.KeyVault.Models
     using System.Linq;
 
     /// <summary>
-    /// A private link resource
+    /// Properties of a private link resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : Resource
+    public partial class MhsmPrivateLinkResourceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the MhsmPrivateLinkResourceProperties class.
         /// </summary>
-        public PrivateLinkResource()
+        public MhsmPrivateLinkResourceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the MhsmPrivateLinkResourceProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified identifier of the key vault resource.
-        /// </param>
-
-        /// <param name="name">Name of the key vault resource.
-        /// </param>
-
-        /// <param name="type">Resource type of the key vault resource.
-        /// </param>
-
-        /// <param name="location">Azure location of the key vault resource.
-        /// </param>
-
-        /// <param name="tags">Tags assigned to the key vault resource.
-        /// </param>
 
         /// <param name="groupId">Group identifier of private link resource.
         /// </param>
@@ -48,9 +32,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="requiredZoneNames">Required DNS zone names of the the private link resource.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public MhsmPrivateLinkResourceProperties(string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type, location, tags)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
@@ -67,19 +50,19 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <summary>
         /// Gets group identifier of private link resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.groupId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; private set; }
 
         /// <summary>
         /// Gets required member names of private link resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredMembers")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredMembers")]
         public System.Collections.Generic.IList<string> RequiredMembers {get; private set; }
 
         /// <summary>
         /// Gets or sets required DNS zone names of the the private link resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredZoneNames")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredZoneNames")]
         public System.Collections.Generic.IList<string> RequiredZoneNames {get; set; }
     }
 }
