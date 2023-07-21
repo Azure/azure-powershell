@@ -1030,7 +1030,8 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceId = sourceEndpoint.ResourceId,
                     Address = sourceEndpoint.Address,
                     CoverageLevel = sourceEndpoint.CoverageLevel,
-                    LocationDetails = new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = sourceEndpoint?.LocationDetails?.Region },
+                    LocationDetails = sourceEndpoint.Type == EndpointType.AzureArcNetwork ?
+                    new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = sourceEndpoint?.LocationDetails?.Region } : null,
                     SubscriptionId = sourceEndpoint.SubscriptionId,
                 };
 
@@ -1110,7 +1111,8 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceId = destinationEndpoint.ResourceId,
                     Address = destinationEndpoint.Address,
                     CoverageLevel = destinationEndpoint.CoverageLevel,
-                    LocationDetails = new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = destinationEndpoint?.LocationDetails?.Region },
+                    LocationDetails = destinationEndpoint.Type == EndpointType.AzureArcNetwork ?
+                    new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = destinationEndpoint?.LocationDetails?.Region } : null,
                     SubscriptionId = destinationEndpoint.SubscriptionId
                 };
 
