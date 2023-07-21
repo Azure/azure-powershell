@@ -25,7 +25,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 
 ###
 ``` yaml
-commit: main
+commit: 1671d2db822c68a800edddd1e20fe65db1624216
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/applicationGateway.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/applicationGatewayWafDynamicManifests.json
