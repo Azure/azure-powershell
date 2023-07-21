@@ -76,7 +76,7 @@ $cred = New-Object System.Management.Automation.PSCredential ($user, $securePass
 $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 2, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 4.
 
-Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
+Update-AzVM -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1. 
 # Hyperthreading is now disabled for this VM.
 ```
