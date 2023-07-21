@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Refresh counters.
 ```powershell
-{{ Add code here }}
+Update-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName azps-panlr -Priority 1 -FirewallName azps-firewall -ResourceGroupName azps_test_group_pan -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Refresh counters.

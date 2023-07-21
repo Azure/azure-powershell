@@ -11,6 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: PaloAltoNetworks cmdlets
 
 ## Az.PaloAltoNetworks Cmdlets
+### [Get-AzPaloAltoNetworksCertificateObjectLocalRulestack](Get-AzPaloAltoNetworksCertificateObjectLocalRulestack.md)
+Get a CertificateObjectLocalRulestackResource
+
 ### [Get-AzPaloAltoNetworksFirewall](Get-AzPaloAltoNetworksFirewall.md)
 Get a FirewallResource
 
@@ -68,6 +71,9 @@ Commit rulestack configuration
 ### [Invoke-AzPaloAltoNetworksRevertLocalRulestack](Invoke-AzPaloAltoNetworksRevertLocalRulestack.md)
 Revert rulestack configuration
 
+### [New-AzPaloAltoNetworksCertificateObjectLocalRulestack](New-AzPaloAltoNetworksCertificateObjectLocalRulestack.md)
+Create a CertificateObjectLocalRulestackResource
+
 ### [New-AzPaloAltoNetworksFirewall](New-AzPaloAltoNetworksFirewall.md)
 Create a FirewallResource
 
@@ -86,14 +92,17 @@ Create a LocalRulesResource
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
 Create a LocalRulestackResource
 
-### [New-AzPaloAltoNetworksNetworkProfileObject](New-AzPaloAltoNetworksNetworkProfileObject.md)
-Create an in-memory object for NetworkProfile.
-
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Create a PrefixListResource
 
+### [New-AzPaloAltoNetworksProfileObject](New-AzPaloAltoNetworksProfileObject.md)
+Create an in-memory object for NetworkProfile.
+
 ### [New-AzPaloAltoNetworksTagInfoObject](New-AzPaloAltoNetworksTagInfoObject.md)
 Create an in-memory object for TagInfo.
+
+### [Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack](Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack.md)
+Delete a CertificateObjectLocalRulestackResource
 
 ### [Remove-AzPaloAltoNetworksFirewall](Remove-AzPaloAltoNetworksFirewall.md)
 Delete a FirewallResource

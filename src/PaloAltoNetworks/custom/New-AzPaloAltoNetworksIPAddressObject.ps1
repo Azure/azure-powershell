@@ -23,7 +23,7 @@ Create an in-memory object for IPAddress.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress
 .Link
-https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksIPAddressObject
+https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksipaddressobject
 #>
 function New-AzPaloAltoNetworksIPAddressObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress')]

@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List LocalRulesResource by LocalRulestackName.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRule -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr
 ```
 
 ```output
-{{ Add output here }}
+RuleName   RuleState Priority ResourceGroupName
+--------   --------- -------- -----------------
+azps-ruler ENABLED   1        azps_test_group_pan
 ```
 
-{{ Add description here }}
+List LocalRulesResource by LocalRulestackName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a LocalRulesResource by priority.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRule -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Priority 1
 ```
 
 ```output
-{{ Add output here }}
+RuleName   RuleState Priority ResourceGroupName
+--------   --------- -------- -----------------
+azps-ruler ENABLED   1        azps_test_group_pan
 ```
 
-{{ Add description here }}
-
+Get a LocalRulesResource by priority.

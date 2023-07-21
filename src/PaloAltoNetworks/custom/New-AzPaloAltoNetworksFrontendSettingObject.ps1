@@ -23,7 +23,7 @@ Create an in-memory object for FrontendSetting.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting
 .Link
-https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksFrontendSettingObject
+https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksfrontendsettingobject
 #>
 function New-AzPaloAltoNetworksFrontendSettingObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting')]

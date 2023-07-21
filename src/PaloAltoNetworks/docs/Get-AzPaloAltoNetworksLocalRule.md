@@ -14,13 +14,13 @@ Get a LocalRulesResource
 
 ### List (Default)
 ```
-Get-AzPaloAltoNetworksLocalRule -ResourceGroupName <String> -StackName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPaloAltoNetworksLocalRule -Priority <String> -ResourceGroupName <String> -StackName <String>
+Get-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,27 +35,31 @@ Get a LocalRulesResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List LocalRulesResource by LocalRulestackName.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRule -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr
 ```
 
 ```output
-{{ Add output here }}
+RuleName   RuleState Priority ResourceGroupName
+--------   --------- -------- -----------------
+azps-ruler ENABLED   1        azps_test_group_pan
 ```
 
-{{ Add description here }}
+List LocalRulesResource by LocalRulestackName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a LocalRulesResource by priority.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRule -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Priority 1
 ```
 
 ```output
-{{ Add output here }}
+RuleName   RuleState Priority ResourceGroupName
+--------   --------- -------- -----------------
+azps-ruler ENABLED   1        azps_test_group_pan
 ```
 
-{{ Add description here }}
+Get a LocalRulesResource by priority.
 
 ## PARAMETERS
 
@@ -91,6 +95,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LocalRulestackName
+LocalRulestack resource name
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Priority
 Local Rule priority
 
@@ -114,21 +133,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Get, List
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StackName
-LocalRulestack resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases: LocalRulestackName
 
 Required: True
 Position: Named

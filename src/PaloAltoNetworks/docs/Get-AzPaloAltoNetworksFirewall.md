@@ -40,27 +40,44 @@ Get a FirewallResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List FirewallResource by subscription.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksFirewall
 ```
 
 ```output
-{{ Add output here }}
+Location           Name           MarketplaceDetailPublisherId ProvisioningState ResourceGroupName
+--------           ----           ---------------------------- ----------------- -----------------
+australiasoutheast azps-firewall  paloaltonetworks             Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
+List FirewallResource by subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a FirewallResource by ResourceGroupName.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksFirewall -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+Location           Name           MarketplaceDetailPublisherId ProvisioningState ResourceGroupName
+--------           ----           ---------------------------- ----------------- -----------------
+australiasoutheast azps-firewall  paloaltonetworks             Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
+Get a FirewallResource by ResourceGroupName.
+
+### Example 3: Get a FirewallResource by name.
+```powershell
+Get-AzPaloAltoNetworksFirewall -ResourceGroupName azps_test_group_pan -Name azps-firewall
+```
+
+```output
+Location           Name           MarketplaceDetailPublisherId ProvisioningState ResourceGroupName
+--------           ----           ---------------------------- ----------------- -----------------
+australiasoutheast azps-firewall  paloaltonetworks             Succeeded         azps_test_group_pan
+```
+
+Get a FirewallResource by name.
 
 ## PARAMETERS
 

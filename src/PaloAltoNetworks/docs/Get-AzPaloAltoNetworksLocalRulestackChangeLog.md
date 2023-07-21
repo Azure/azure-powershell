@@ -29,27 +29,18 @@ Get changelog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get changelog.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRulestackChangeLog -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+Change LastCommitted          LastModified
+------ -------------          ------------
+{}     2023-07-18 02:30:40 AM 2023-07-18 09:23:09 AM
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get changelog.
 
 ## PARAMETERS
 

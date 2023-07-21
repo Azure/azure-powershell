@@ -30,27 +30,18 @@ support info for rulestack.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: support info for rulestack.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRulestackSupportInfo -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+AccountId AccountRegistered FreeTrial FreeTrialCreditLeft FreeTrialDaysLeft HelpUrl                ProductSerial ProductSku  RegisterUrl
+--------- ----------------- --------- ------------------- ----------------- -------                ------------- ----------  -----------
+          FALSE             FALSE     0                   0                 https://live.paloalto… PAN-CLOUD-NGFW-AZURE-PAYG https://support.palo…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+support info for rulestack.
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PaloAltoNetworks
-online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksFrontendSettingObject
+online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksfrontendsettingobject
 schema: 2.0.0
 ---
 
@@ -24,27 +24,18 @@ Create an in-memory object for FrontendSetting.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for FrontendSetting.
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksFrontendSettingObject -BackendConfigurationPort "80" -FrontendConfigurationPort "80" -Name "azps-panfs" -Protocol 'TCP' -Address "20.22.91.251" -BackendConfigurationAddress1 "20.22.32.136" -BackendConfigurationAddressResourceId "/subscriptions/{subId}/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp2" -FrontendConfigurationAddressResourceId "/subscriptions/{subId}/resourceGroups/mj-liftr-integration/providers/Microsoft.Network/publicIPAddresses/mj-liftr-integration-frontendSettingIp1"
 ```
 
 ```output
-{{ Add output here }}
+Name       Protocol
+----       --------
+azps-panfs TCP
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for FrontendSetting.
 
 ## PARAMETERS
 

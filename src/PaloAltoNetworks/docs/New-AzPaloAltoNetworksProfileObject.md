@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.PaloAltoNetworks
-online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksNetworkProfileObject
+online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksprofileobject
 schema: 2.0.0
 ---
 
-# New-AzPaloAltoNetworksNetworkProfileObject
+# New-AzPaloAltoNetworksProfileObject
 
 ## SYNOPSIS
 Create an in-memory object for NetworkProfile.
@@ -13,7 +13,7 @@ Create an in-memory object for NetworkProfile.
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksNetworkProfileObject -EnableEgressNat <EgressNat> -NetworkType <NetworkType>
+New-AzPaloAltoNetworksProfileObject -EnableEgressNat <EgressNat> -NetworkType <NetworkType>
  -PublicIP <IIPAddress[]> [-EgressNatIP <IIPAddress[]>] [-VHubAddressSpace <String>]
  [-VHubResourceId <String>] [-VnetAddressSpace <String>]
  [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
@@ -32,27 +32,20 @@ Create an in-memory object for NetworkProfile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NetworkProfile.
 ```powershell
-{{ Add code here }}
+$publicIP = New-AzPaloAltoNetworksIPAddressObject -ResourceId /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/publicIPAddresses/azps-network-publicipaddresses
+
+New-AzPaloAltoNetworksProfileObject -EnableEgressNat DISABLED -PublicIP $publicIP -NetworkType VNET -VnetConfigurationIPOfTrustSubnetForUdrAddress 10.1.1.0/24 -VnetConfigurationTrustSubnetResourceId /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/virtualNetworks/azps-network/subnets/default -VnetConfigurationUnTrustSubnetResourceId /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/virtualNetworks/azps-network/subnets/default2 -VnetResourceId /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/virtualNetworks/azps-network
 ```
 
 ```output
-{{ Add output here }}
+EnableEgressNat NetworkType
+--------------- -----------
+DISABLED        VNET
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NetworkProfile.
 
 ## PARAMETERS
 

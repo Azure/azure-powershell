@@ -35,27 +35,31 @@ Get a FqdnListLocalRulestackResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List FqdnListLocalRulestackResource by LocalRulestackName.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksFqdnListLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+azps-panfllr Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
+List FqdnListLocalRulestackResource by LocalRulestackName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a FqdnListLocalRulestackResource by name.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksFqdnListLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Name azps-panfllr
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+azps-panfllr Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
+Get a FqdnListLocalRulestackResource by name.
 
 ## PARAMETERS
 

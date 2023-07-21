@@ -18,6 +18,30 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+
+    $LocalRulestackName = "azps-" + (RandomString -allChars $false -len 4)
+    $PrefixListLocalRulestackName = "azps-" + (RandomString -allChars $false -len 4)
+    $FqdnListLocalRulestack = "azps-" + (RandomString -allChars $false -len 4)
+    $LocalRuleName = "azps-" + (RandomString -allChars $false -len 4)
+    $CertificateObjectLocalRulestackName = "azps-" + (RandomString -allChars $false -len 4)
+
+    $env.Add("LocalRulestackName", $LocalRulestackName)
+    $env.Add("PrefixListLocalRulestackName", $PrefixListLocalRulestackName)
+    $env.Add("FqdnListLocalRulestack", $FqdnListLocalRulestack)
+    $env.Add("LocalRuleName", $LocalRuleName)
+    $env.Add("CertificateObjectLocalRulestackName", $CertificateObjectLocalRulestackName)
+    
+    $env.Add("location", "eastus")
+
+    # Create the test group
+    write-host "start to create test group"
+    $resourceGroup = "azps-testcase-pan"
+    $env.Add("resourceGroup", $resourceGroup)
+    
+    # Use mock environment, so we donnot run this cmdlet.
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +51,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

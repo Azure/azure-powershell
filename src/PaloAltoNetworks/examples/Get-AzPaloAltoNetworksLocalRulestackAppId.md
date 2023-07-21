@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: List of AppIds for LocalRulestack ApiVersion.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRulestackAppId -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+100bao
+104apci-supervisory
+104apci-unnumbered
+104apci-unnumbered-startdt-act
+104apci-unnumbered-startdt-con
+...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+List of AppIds for LocalRulestack ApiVersion.

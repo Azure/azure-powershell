@@ -37,7 +37,7 @@ input-file:
   - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2022-08-29/PaloAltoNetworks.Cloudngfw.json
 
 title: PaloAltoNetworks
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
@@ -45,6 +45,42 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/commit"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "The request has been received but not yet acted upon."
+        },
+        "default": {
+          "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/53f6cced1504a476ba001c9d7250ab195e9c299b/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/revert"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "204": {
+          "description": "There is no content to send for this request, but the headers may be useful. "
+        },
+        "default": {
+          "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/53f6cced1504a476ba001c9d7250ab195e9c299b/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Save$|^SaveViaIdentity$
     remove: true
@@ -77,9 +113,6 @@ directive:
 # We can exclude GlobalRulestack. All GlobalRulestack APIs are not in use.
   - where:
       subject: CertificateObjectGlobalRulestack
-    remove: true
-  - where:
-      subject: CertificateObjectLocalRulestack
     remove: true
   - where:
       subject: FirewallGlobalRulestack
@@ -120,4 +153,73 @@ directive:
   - where:
       subject: RevertGlobalRulestack
     remove: true
+
+  - where:
+      parameter-name: StackName
+    set:
+      parameter-name: LocalRulestackName
+    clear-alias: true
+
+  - where:
+      model-name: LocalRulestackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: PrefixListResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: FqdnListLocalRulestackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: LocalRulesResource
+    set:
+      format-table:
+        properties:
+          - RuleName
+          - RuleState
+          - Priority
+          - ResourceGroupName
+  - where:
+      model-name: FirewallResource
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - MarketplaceDetailPublisherId
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: FirewallStatusResource
+    set:
+      format-table:
+        properties:
+          - IsPanoramaManaged
+          - HealthStatus
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: CertificateObjectLocalRulestackResource
+    set:
+      format-table:
+        properties:
+          - CertificateSelfSigned
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
 ```

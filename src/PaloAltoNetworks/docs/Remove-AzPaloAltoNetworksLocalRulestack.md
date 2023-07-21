@@ -29,27 +29,12 @@ Delete a LocalRulestackResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a LocalRulestackResource.
 ```powershell
-{{ Add code here }}
+Remove-AzPaloAltoNetworksLocalRulestack -Name azps-panlr -ResourceGroupName azps_test_group_pan
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a LocalRulestackResource.
 
 ## PARAMETERS
 

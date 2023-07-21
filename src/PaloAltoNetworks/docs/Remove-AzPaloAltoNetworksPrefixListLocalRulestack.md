@@ -30,27 +30,12 @@ Delete a PrefixListResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a PrefixListResource.
 ```powershell
-{{ Add code here }}
+Remove-AzPaloAltoNetworksPrefixListLocalRulestack -LocalRulestackName azps-panlr -Name azps-panpflr -ResourceGroupName azps_test_group_pan
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a PrefixListResource.
 
 ## PARAMETERS
 

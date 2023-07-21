@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: List of Firewalls associated with Rulestack.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksLocalRulestackFirewall -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+azps-firewall(azps_test_group_pan)
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+List of Firewalls associated with Rulestack.

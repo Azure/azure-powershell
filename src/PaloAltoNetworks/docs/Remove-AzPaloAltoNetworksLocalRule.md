@@ -14,7 +14,7 @@ Delete a LocalRulesResource
 
 ### Delete (Default)
 ```
-Remove-AzPaloAltoNetworksLocalRule -Priority <String> -ResourceGroupName <String> -StackName <String>
+Remove-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,27 +30,12 @@ Delete a LocalRulesResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a LocalRulesResource.
 ```powershell
-{{ Add code here }}
+Remove-AzPaloAltoNetworksLocalRule -LocalRulestackName azps-panlr -Priority 1 -ResourceGroupName azps_test_group_pan
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a LocalRulesResource.
 
 ## PARAMETERS
 
@@ -98,6 +83,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LocalRulestackName
+LocalRulestack resource name
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,21 +154,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Delete
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StackName
-LocalRulestack resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: LocalRulestackName
 
 Required: True
 Position: Named

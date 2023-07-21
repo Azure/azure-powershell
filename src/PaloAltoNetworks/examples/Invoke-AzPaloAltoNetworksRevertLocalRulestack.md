@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Revert rulestack configuration.
 ```powershell
-{{ Add code here }}
+Invoke-AzPaloAltoNetworksRevertLocalRulestack -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Revert rulestack configuration.

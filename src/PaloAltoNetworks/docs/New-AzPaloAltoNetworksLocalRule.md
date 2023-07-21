@@ -13,7 +13,7 @@ Create a LocalRulesResource
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksLocalRule -Priority <String> -ResourceGroupName <String> -StackName <String>
+New-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> -ResourceGroupName <String>
  -RuleName <String> [-SubscriptionId <String>] [-ActionType <ActionEnum>] [-Application <String[]>]
  [-AuditComment <String>] [-CategoryFeed <String[]>] [-CategoryUrlCustom <String[]>]
  [-DecryptionRuleType <DecryptionRuleTypeEnum>] [-Description <String>] [-DestinationCidr <String[]>]
@@ -30,27 +30,18 @@ Create a LocalRulesResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a LocalRulesResource.
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksLocalRule -Priority 1 -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -RuleName azps-ruler -Description testing
 ```
 
 ```output
-{{ Add output here }}
+RuleName   RuleState Priority ResourceGroupName
+--------   --------- -------- -----------------
+azps-ruler ENABLED   1        azps_test_group_pan
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a LocalRulesResource.
 
 ## PARAMETERS
 
@@ -310,6 +301,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LocalRulestackName
+LocalRulestack resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NegateDestination
 cidr should not be 'any'
 
@@ -500,21 +506,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StackName
-LocalRulestack resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: LocalRulestackName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -29,27 +29,18 @@ Log Profile for Firewall
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Log Profile for Firewall.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksFirewallLogProfile -FirewallName azps-firewall -ResourceGroupName azps_test_group_pan
 ```
 
 ```output
-{{ Add output here }}
+LogOption        LogType
+---------        -------
+SAME_DESTINATION TRAFFIC
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Log Profile for Firewall.
 
 ## PARAMETERS
 

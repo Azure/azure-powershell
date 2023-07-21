@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List PrefixListResource by LocalRulestackName.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksPrefixListLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+azps-panpflr Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
+List PrefixListResource by LocalRulestackName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a PrefixListResource by name.
 ```powershell
-{{ Add code here }}
+Get-AzPaloAltoNetworksPrefixListLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Name azps-panpflr
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+azps-panpflr Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
-
+Get a PrefixListResource by name.

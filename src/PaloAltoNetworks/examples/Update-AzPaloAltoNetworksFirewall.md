@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a FirewallResource.
 ```powershell
-{{ Add code here }}
+Update-AzPaloAltoNetworksFirewall -Name azps-firewall -ResourceGroupName azps_test_group_pan -Tag @{"123"="abc"}
 ```
 
 ```output
-{{ Add output here }}
+Location           Name           MarketplaceDetailPublisherId ProvisioningState ResourceGroupName
+--------           ----           ---------------------------- ----------------- -----------------
+australiasoutheast azps-firewall  paloaltonetworks             Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Update a FirewallResource.

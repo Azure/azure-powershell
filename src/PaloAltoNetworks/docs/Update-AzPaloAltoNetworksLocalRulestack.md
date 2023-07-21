@@ -43,27 +43,18 @@ Update a LocalRulestackResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a LocalRulestackResource.
 ```powershell
-{{ Add code here }}
+Update-AzPaloAltoNetworksLocalRulestack -Name azps-panlr -ResourceGroupName azps_test_group_pan -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Name       Location ProvisioningState ResourceGroupName
+----       -------- ----------------- -----------------
+azps-panlr eastus   Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update a LocalRulestackResource.
 
 ## PARAMETERS
 

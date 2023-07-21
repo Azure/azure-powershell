@@ -1,40 +1,41 @@
 ---
 external help file:
 Module Name: Az.PaloAltoNetworks
-online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/remove-azpaloaltonetworksfirewall
+online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworkscertificateobjectlocalrulestack
 schema: 2.0.0
 ---
 
-# Remove-AzPaloAltoNetworksFirewall
+# New-AzPaloAltoNetworksCertificateObjectLocalRulestack
 
 ## SYNOPSIS
-Delete a FirewallResource
+Create a CertificateObjectLocalRulestackResource
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <String> -Name <String>
+ -ResourceGroupName <String> -CertificateSelfSigned <BooleanEnum> [-SubscriptionId <String>]
+ [-AuditComment <String>] [-CertificateSignerResourceId <String>] [-Description <String>] [-Etag <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a FirewallResource
+Create a CertificateObjectLocalRulestackResource
 
 ## EXAMPLES
 
-### Example 1: Delete a FirewallResource.
+### Example 1: Create a CertificateObjectLocalRulestackResource.
 ```powershell
-Remove-AzPaloAltoNetworksFirewall -Name azps-firewall -ResourceGroupName azps_test_group_pan
+New-AzPaloAltoNetworksCertificateObjectLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Name azps-pancor -CertificateSelfSigned 'TRUE'
 ```
 
-Delete a FirewallResource.
+```output
+CertificateSelfSigned Name        ProvisioningState ResourceGroupName
+--------------------- ----        ----------------- -----------------
+TRUE                  azps-pancor Succeeded         azps_test_group_pan
+```
+
+Create a CertificateObjectLocalRulestackResource.
 
 ## PARAMETERS
 
@@ -43,6 +44,51 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuditComment
+comment for this object
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateSelfSigned
+use certificate self signed
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateSignerResourceId
+Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,29 +115,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Description
+user description for this object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Etag
+read only string representing last create or update
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalRulestackName
+LocalRulestack resource name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Firewall resource name
+certificate name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: FirewallName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -115,28 +190,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -151,7 +211,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,30 +257,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

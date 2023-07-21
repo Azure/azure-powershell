@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for IPAddress.
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksIPAddressObject -ResourceId /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/publicIPAddresses/azps-network-publicipaddresses
 ```
 
 ```output
-{{ Add output here }}
+Address ResourceId
+------- ----------
+        /subscriptions/{subId}/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/publicIPAddresses/azps-network-publicipaddresses
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for IPAddress.

@@ -23,7 +23,7 @@ Create an in-memory object for TagInfo.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo
 .Link
-https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksTagInfoObject
+https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworkstaginfoobject
 #>
 function New-AzPaloAltoNetworksTagInfoObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo')]

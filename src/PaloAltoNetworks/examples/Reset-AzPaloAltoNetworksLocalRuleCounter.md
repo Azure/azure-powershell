@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Reset counters.
 ```powershell
-{{ Add code here }}
+Reset-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan -Priority: 1
 ```
 
 ```output
-{{ Add output here }}
+FirewallName Priority RuleListName RuleName                RuleStackName
+------------ -------- ------------ --------                -------------
+             1        azps-ruler   cloud-ngfw-default-rule azps-panlr
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Reset counters.

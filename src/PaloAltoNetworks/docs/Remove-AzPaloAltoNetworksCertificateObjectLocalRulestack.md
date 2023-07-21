@@ -1,40 +1,41 @@
 ---
 external help file:
 Module Name: Az.PaloAltoNetworks
-online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/remove-azpaloaltonetworksfirewall
+online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/remove-azpaloaltonetworkscertificateobjectlocalrulestack
 schema: 2.0.0
 ---
 
-# Remove-AzPaloAltoNetworksFirewall
+# Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack
 
 ## SYNOPSIS
-Delete a FirewallResource
+Delete a CertificateObjectLocalRulestackResource
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack -InputObject <IPaloAltoNetworksIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a FirewallResource
+Delete a CertificateObjectLocalRulestackResource
 
 ## EXAMPLES
 
-### Example 1: Delete a FirewallResource.
+### Example 1: Delete a CertificateObjectLocalRulestackResource.
 ```powershell
-Remove-AzPaloAltoNetworksFirewall -Name azps-firewall -ResourceGroupName azps_test_group_pan
+Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Name azps-pancor
 ```
 
-Delete a FirewallResource.
+Delete a CertificateObjectLocalRulestackResource.
 
 ## PARAMETERS
 
@@ -85,13 +86,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Firewall resource name
+### -LocalRulestackName
+LocalRulestack resource name
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: FirewallName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+certificate name
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
 
 Required: True
 Position: Named

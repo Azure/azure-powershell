@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PaloAltoNetworks
-online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksTagInfoObject
+online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworkstaginfoobject
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Create an in-memory object for TagInfo.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for TagInfo.
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksTagInfoObject -Key "abc" -Value "123"
 ```
 
 ```output
-{{ Add output here }}
+Key Value
+--- -----
+abc 123
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for TagInfo.
 
 ## PARAMETERS
 

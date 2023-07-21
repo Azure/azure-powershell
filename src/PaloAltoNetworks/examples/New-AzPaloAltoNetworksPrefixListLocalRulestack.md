@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a PrefixListResource.
 ```powershell
-{{ Add code here }}
+New-AzPaloAltoNetworksPrefixListLocalRulestack -Name azps-panpflr -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan -PrefixList "10.10.10.0/24" -Description "creating prefix list"
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+azps-panpflr Succeeded         azps_test_group_pan
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a PrefixListResource.

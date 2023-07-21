@@ -133,27 +133,16 @@ Log Profile for Firewall
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Log Profile for Firewall.
 ```powershell
-{{ Add code here }}
+Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName azps-firewall -ResourceGroupName azps_test_group_pan -LogType TRAFFIC -LogOption SAME_DESTINATION -CommonDestinationMonitorConfigurationsId /subscriptions/{subId}/resourceGroups/sudh_fire_test/providers/Microsoft.OperationalInsights/workspaces/testAnalyticsX -CommonDestinationMonitorConfigurationsPrimaryKey 7******Q== -CommonDestinationMonitorConfigurationsSecondaryKey 7******w== -CommonDestinationMonitorConfigurationsSubscriptionId /subscriptions/{subId} -CommonDestinationMonitorConfigurationsWorkspace {guid} -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Log Profile for Firewall.
 
 ## PARAMETERS
 

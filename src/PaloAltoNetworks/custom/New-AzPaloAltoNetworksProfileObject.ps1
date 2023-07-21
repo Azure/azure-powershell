@@ -23,9 +23,9 @@ Create an in-memory object for NetworkProfile.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile
 .Link
-https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-AzPaloAltoNetworksNetworkProfileObject
+https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksprofileobject
 #>
-function New-AzPaloAltoNetworksNetworkProfileObject {
+function New-AzPaloAltoNetworksProfileObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
