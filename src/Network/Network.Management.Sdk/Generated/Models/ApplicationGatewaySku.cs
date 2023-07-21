@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2',
         /// 'WAF_v2', 'Basic'</param>
         /// <param name="tier">Tier of an application gateway. Possible values
-        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2', 'Basic'</param>
+        /// include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2',
+        /// 'Basic'</param>
         /// <param name="capacity">Capacity (instance count) of an application
         /// gateway.</param>
         public ApplicationGatewaySku(string name = default(string), string tier = default(string), int? capacity = default(int?))

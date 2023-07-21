@@ -12,13 +12,11 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ApplicationGatewayTierTypes.
+    /// Defines values for SyncMode.
     /// </summary>
-    public static class ApplicationGatewayTierTypes
+    public static class SyncMode
     {
-        public const string Standard = "Standard";
-        public const string WAF = "WAF";
-        public const string StandardV2 = "Standard_v2";
-        public const string WAFV2 = "WAF_v2";
+        public const string Automatic = "Automatic";
+        public const string Manual = "Manual";
     }
 }
