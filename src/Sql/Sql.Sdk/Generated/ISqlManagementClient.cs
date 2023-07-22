@@ -518,10 +518,5 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IManagedInstancesOperations ManagedInstances { get; }
 
-        /// <summary>
-        /// Gets the IStartStopManagedInstanceSchedulesOperations.
-        /// </summary>
-        IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; }
-
     }
 }
