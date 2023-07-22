@@ -11,21 +11,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     public partial class Replication :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResource"
         /// />
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.Resource();
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.DoNotFormat]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>The resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Inherited)]
@@ -167,15 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy? ZoneRedundancy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationPropertiesInternal)Property).ZoneRedundancy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationPropertiesInternal)Property).ZoneRedundancy = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy)""); }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Creates an new <see cref="Replication" /> instance.</summary>
         public Replication()
         {
@@ -199,13 +182,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResource
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>The provisioning state of the replication at the time the operation was called.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
@@ -265,7 +241,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     internal partial interface IReplicationInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResourceInternal
     {
-        string AzureAsyncOperation { get; set; }
         /// <summary>The properties of the replication.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplicationProperties Property { get; set; }
         /// <summary>The provisioning state of the replication at the time the operation was called.</summary>

@@ -224,6 +224,20 @@ param(
     ${RequiredNsgRule},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+    # The network access type for accessing workspace.
+    # Set value to disabled to access workspace only via private link.
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The value which should be used for this field.
+    ${EnableNoPublicIP},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
