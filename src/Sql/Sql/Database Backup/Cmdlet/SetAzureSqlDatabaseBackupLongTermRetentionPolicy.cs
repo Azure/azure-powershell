@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -46,6 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Parameter set name for Yearly Retention.
         /// </summary>
         private const string YearlyRetentionRequiredSet = "YearlyRetentionRequired";
+
+        /// <summary>
+        /// Parameter set name for MakeBackupsImmutable.
+        /// </summary>
+        private const string MakeBackupsImmutableSet = "MakeBackupsImmutable";
 
         /// <summary>
         /// Parameter set for clearing the long term retention V2 policy.
@@ -113,6 +119,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int WeekOfYear { get; set; }
 
         /// <summary>
+        /// Gets or sets the setting whether to make LTR backups immutable.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = MakeBackupsImmutableSet,
+            HelpMessage = "Whether to make LTR backups immutable.")]
+        public SwitchParameter MakeBackupsImmutable { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -170,7 +184,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
-                    WeekOfYear = WeekOfYear
+                    WeekOfYear = WeekOfYear,
+                    MakeBackupsImmutable = RemovePolicy.IsPresent ? null : (this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null)
                 }
             };
         }

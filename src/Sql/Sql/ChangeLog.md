@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `makeBackupsImmutable` optional parameter to `Set-SqlDatabaseLongTermRetentionPolicy`
 * Added new cmdlets for Azure SQL Managed Instance start/stop schedule
     - 'Start-AzSqlInstance',
     - 'Stop-AzSqlInstance',
