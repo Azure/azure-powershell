@@ -15,12 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAlbFrontend'))
 }
 
 Describe 'Get-AzAlbFrontend' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            (Get-AzAlbFrontend -AlbName $env.albName -ResourceGroupName $env.resourceGroup).Count | Should -BeGreaterThan 1
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $alb = Get-AzAlbFrontend -Name ($env.albFrontendName+"1") -AlbName $env.albName -ResourceGroupName $env.resourceGroup
+            $alb.ProvisioningState | Should -Be 'Succeeded'
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

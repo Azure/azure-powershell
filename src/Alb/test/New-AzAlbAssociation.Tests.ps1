@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAlbAssociation'))
 }
 
 Describe 'New-AzAlbAssociation' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         { 
-            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region 
-            $alb = New-AzAlbAssociation -Name $env.albAssociation -AlbName $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region 
-            $alb.ProvisioningState | Should -Be 'Succeeded'
+            $albAssoc = New-AzAlbAssociation -Name $env.albAssociationName -AlbName $env.associationAlbName -ResourceGroupName $env.resourceGroup -Location $env.Region -SubnetId $env.extraSubnetId
+            $albAssoc.ProvisioningState | Should -Be 'Succeeded'
          } | Should -Not -Throw
     }
 

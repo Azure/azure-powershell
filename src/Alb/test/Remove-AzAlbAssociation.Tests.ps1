@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAlbAssociation'))
 }
 
 Describe 'Remove-AzAlbAssociation' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'-skip {
+        { 
+            Remove-AzAlbAssociation -Name $env.albAssociationName -AlbName $env.removeAlbName -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

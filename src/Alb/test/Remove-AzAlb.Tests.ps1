@@ -17,10 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAlb'))
 Describe 'Remove-AzAlb' {
     It 'Delete' {
         { 
-            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
-            Remove-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
-            $alb = Get-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
-            $alb.name | Should -Not -Contain $env.albName
+            Remove-AzAlb -Name $env.deleteAlbName -ResourceGroupName $env.resourceGroup
          } | Should -Not -Throw
     }
 

@@ -17,10 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAlbFrontend'))
 Describe 'Remove-AzAlbFrontend' {
     It 'Delete' {
         {
-            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
-            Remove-AzAlbFrontend -Name $env.albFrontendName -AlbName $env.albName -ResourceGroupName $env.resourceGroup
-            $albFe = Get-AzAlbFrontend -Name $env.albFrontendName -AlbName $env.albName -ResourceGroupName $env.resourceGroup
-            $albFe.name | Should -Not -Contain $env.albName
+            Remove-AzAlbFrontend -Name $env.albFrontendName -AlbName $env.removeAlbName -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 

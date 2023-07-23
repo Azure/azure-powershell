@@ -1,0 +1,837 @@
+{
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association?api-version=2023-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association?api-version=2023-05-01-preview",
+      "Content": "{\n  \"location\": \"northcentralus\",\n  \"properties\": {\n    \"subnet\": {\n      \"id\": \"/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/extra-alb-subnet\"\n    },\n    \"associationType\": \"subnets\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "281" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "a375947c-2f5e-45bc-8a0c-5a98edbbeea2", "a375947c-2f5e-45bc-8a0c-5a98edbbeea2" ],
+        "x-ms-correlation-request-id": [ "17145878-3a34-48ff-8e45-e5c7b44fdb95" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213850Z:17145878-3a34-48ff-8e45-e5c7b44fdb95" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:38:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "678" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"associationType\": \"subnets\",\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/extra-alb-subnet\"\r\n    },\r\n    \"provisioningState\": \"Updating\"\r\n  },\r\n  \"id\": \"/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association\",\r\n  \"name\": \"test-association\",\r\n  \"type\": \"Microsoft.ServiceNetworking/TrafficControllers/Associations\",\r\n  \"etag\": \"38fa09c0-ae30-4213-9527-f216c074c08a\",\r\n  \"location\": \"NorthCentralUS\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "0d4c0484-611d-4e71-bf88-1167717d5ccf", "0d4c0484-611d-4e71-bf88-1167717d5ccf" ],
+        "x-ms-correlation-request-id": [ "163aa2fb-c3cc-4ed3-bf32-e02f07137627" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213900Z:163aa2fb-c3cc-4ed3-bf32-e02f07137627" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "f8b2f528-278a-4de9-922a-a655d044aad1", "f8b2f528-278a-4de9-922a-a655d044aad1" ],
+        "x-ms-correlation-request-id": [ "b1a1fcf6-150d-4f81-8c58-08fb094f6d46" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213910Z:b1a1fcf6-150d-4f81-8c58-08fb094f6d46" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "8beb9a08-bc80-470c-8389-76cdec6339b5", "8beb9a08-bc80-470c-8389-76cdec6339b5" ],
+        "x-ms-correlation-request-id": [ "feb42255-6e16-41f3-a541-f6a7cc75d481" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213920Z:feb42255-6e16-41f3-a541-f6a7cc75d481" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "8773cb0e-0fc7-41af-880c-7464ff943e93", "8773cb0e-0fc7-41af-880c-7464ff943e93" ],
+        "x-ms-correlation-request-id": [ "d3bdbb91-7e9c-49f0-8b53-4853a2743d52" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213931Z:d3bdbb91-7e9c-49f0-8b53-4853a2743d52" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "da3c116e-ba28-441d-b389-72a2ad2c0ef9", "da3c116e-ba28-441d-b389-72a2ad2c0ef9" ],
+        "x-ms-correlation-request-id": [ "662a1a06-2dc6-47ab-8842-61b0caab9063" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213941Z:662a1a06-2dc6-47ab-8842-61b0caab9063" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "9e533785-94f2-40f7-b661-ee4e3a7740d0", "9e533785-94f2-40f7-b661-ee4e3a7740d0" ],
+        "x-ms-correlation-request-id": [ "dbf6c949-d834-4433-a26b-f2ed81492288" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T213951Z:dbf6c949-d834-4433-a26b-f2ed81492288" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:39:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "f3f6abe0-8e02-4f65-a97b-b9e58268a746", "f3f6abe0-8e02-4f65-a97b-b9e58268a746" ],
+        "x-ms-correlation-request-id": [ "a2eec9ad-ef3c-4129-b273-23d378d9959a" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214001Z:a2eec9ad-ef3c-4129-b273-23d378d9959a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "a349ad42-49f8-4987-882f-3569084529bb", "a349ad42-49f8-4987-882f-3569084529bb" ],
+        "x-ms-correlation-request-id": [ "808a4e0d-5889-4ccf-aadf-3babd27f3e81" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214011Z:808a4e0d-5889-4ccf-aadf-3babd27f3e81" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "5d0502b6-57d2-4199-b966-bcf15fa8d5b1", "5d0502b6-57d2-4199-b966-bcf15fa8d5b1" ],
+        "x-ms-correlation-request-id": [ "01197dd4-ec7f-453e-917c-8a1385975fed" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214021Z:01197dd4-ec7f-453e-917c-8a1385975fed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "d2861a87-ffb2-4e1e-9cde-77ac107ec7de", "d2861a87-ffb2-4e1e-9cde-77ac107ec7de" ],
+        "x-ms-correlation-request-id": [ "fe98bcff-e0ab-4173-8816-cc45765c9f2b" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214031Z:fe98bcff-e0ab-4173-8816-cc45765c9f2b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "0e30fbba-1f4f-4749-91e0-8cb0fdcc48d5", "0e30fbba-1f4f-4749-91e0-8cb0fdcc48d5" ],
+        "x-ms-correlation-request-id": [ "9f89b052-a76d-4348-bd96-2cf275500112" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214041Z:9f89b052-a76d-4348-bd96-2cf275500112" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "5996a02e-6858-443e-bd42-8acd11262b55", "5996a02e-6858-443e-bd42-8acd11262b55" ],
+        "x-ms-correlation-request-id": [ "a89adb13-bcef-4df4-b566-9a01f12ebf9c" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214051Z:a89adb13-bcef-4df4-b566-9a01f12ebf9c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:40:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "1a509719-90ca-449e-bc3d-385e4090ab1f", "1a509719-90ca-449e-bc3d-385e4090ab1f" ],
+        "x-ms-correlation-request-id": [ "bc4cb889-9927-4d3e-a314-55b8078e3739" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214101Z:bc4cb889-9927-4d3e-a314-55b8078e3739" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "b19c3fb2-e863-4a90-8f0c-cbdc0e9d00fd", "b19c3fb2-e863-4a90-8f0c-cbdc0e9d00fd" ],
+        "x-ms-correlation-request-id": [ "3de9af76-bc54-4490-beab-ef8202222647" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214111Z:3de9af76-bc54-4490-beab-ef8202222647" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "ea1c2a55-4a68-4d79-8036-2d9e5b6504d4", "ea1c2a55-4a68-4d79-8036-2d9e5b6504d4" ],
+        "x-ms-correlation-request-id": [ "6d710a67-9544-418f-84ea-56c4f33ccfbb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214121Z:6d710a67-9544-418f-84ea-56c4f33ccfbb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "3b50570c-4afa-44f1-903c-2016c55f28fa", "3b50570c-4afa-44f1-903c-2016c55f28fa" ],
+        "x-ms-correlation-request-id": [ "6f620a17-64a8-40e3-90c4-8509732bf848" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214132Z:6f620a17-64a8-40e3-90c4-8509732bf848" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-request-id": [ "29cb2065-2956-4fa2-8d7f-28005c1881d4", "29cb2065-2956-4fa2-8d7f-28005c1881d4" ],
+        "x-ms-correlation-request-id": [ "933c9c3c-355e-4ef0-a421-955b5946badf" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214142Z:933c9c3c-355e-4ef0-a421-955b5946badf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "30" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"InProgress\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/providers/Microsoft.ServiceNetworking/locations/northcentralus/operations/a375947c-2f5e-45bc-8a0c-5a98edbbeea2?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "62e4e55e-893a-4b65-b2b5-858cdf7bac49", "62e4e55e-893a-4b65-b2b5-858cdf7bac49" ],
+        "x-ms-correlation-request-id": [ "87caf765-2414-46ad-820a-309a25cb6e85" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214152Z:87caf765-2414-46ad-820a-309a25cb6e85" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzAlbAssociation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association?api-version=2023-05-01-preview+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association?api-version=2023-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "66433cdb-98eb-4876-9db1-d7388390ee29" ],
+        "CommandName": [ "New-AzAlbAssociation" ],
+        "FullCommandName": [ "New-AzAlbAssociation_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Alb/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"38fa09c0-ae30-4213-9527-f216c074c08a\"" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-request-id": [ "6aa0c94a-cfac-4002-9273-eab8eb0bacef" ],
+        "x-ms-correlation-request-id": [ "6aa0c94a-cfac-4002-9273-eab8eb0bacef" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230723T214152Z:6aa0c94a-cfac-4002-9273-eab8eb0bacef" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 23 Jul 2023 21:41:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "679" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"associationType\": \"subnets\",\r\n    \"subnet\": {\r\n      \"id\": \"/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/extra-alb-subnet\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/711d99a7-fd79-4ce7-9831-ea1afa18442e/resourceGroups/test-rg/providers/Microsoft.ServiceNetworking/trafficControllers/association-test-alb/associations/test-association\",\r\n  \"name\": \"test-association\",\r\n  \"type\": \"Microsoft.ServiceNetworking/TrafficControllers/Associations\",\r\n  \"etag\": \"38fa09c0-ae30-4213-9527-f216c074c08a\",\r\n  \"location\": \"NorthCentralUS\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -18,11 +18,19 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.resourceGroup = "test-rg"
+    $env.vnetName = "test-vnet"
+    $env.subnetName = "alb-subnet"
+    $env.extraSubnetName = "extra-alb-subnet"
     $env.albName = "test-alb"
+    $env.removeAlbName = ("remove-{0}" -f $env.albName)
+    $env.deleteAlbName = ("delete-{0}" -f $env.albName)
+    $env.associationAlbName = ("association-{0}" -f $env.albName)
     $env.albAssociationName = "test-association"
     $env.albFrontendName = "test-frontend"
     $env.region = "northcentralus"
-    $env.resourceGroup = "test-rg"
+    $env.subnetId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}" -f $env.SubscriptionId, $env.resourceGroup, $env.vnetName, $env.subnetName)
+    $env.extraSubnetId = ("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}" -f $env.SubscriptionId, $env.resourceGroup, $env.vnetName, $env.extraSubnetName)
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -30,6 +38,11 @@ function setupEnv() {
         $envFile = 'localEnv.json'
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+
+    # Build dependent resources
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.region
+    New-AzDeployment -TemplateFile "/src/Alb/test/prereqs.json" -Mode Complete -ResourceGroupName $env.resourceGroup -TemplateParameterObject @{}
+    
 }
 function cleanupEnv() {
     # Clean resources you create for testing

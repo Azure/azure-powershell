@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAlbFrontend'))
 Describe 'New-AzAlbFrontend' {
     It 'CreateExpanded' {
         {
-            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region 
-            $alb = New-AzAlbFrontend -Name $env.albFrontendName -AlbName $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
+            $feName = $env.albFrontendName+"new"
+            $alb = New-AzAlbFrontend -Name $feName -AlbName $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
             $alb.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }

@@ -15,20 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAlb'))
 }
 
 Describe 'Get-AzAlb' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            (Get-AzAlb).Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
-            New-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup -Location $env.Region
             $alb = Get-AzAlb -Name $env.albName -ResourceGroupName $env.resourceGroup
             $alb.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            (Get-AzAlb -ResourceGroupName $env.resourceGroup).Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
