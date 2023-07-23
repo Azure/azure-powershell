@@ -17,36 +17,9 @@ Updates the state of a VMSS.
 ```
 Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-AutomaticOSUpgrade <Boolean>]
- [-AutomaticRepairGracePeriod <String>] [-BootDiagnosticsEnabled <Boolean>]
- [-BootDiagnosticsStorageUri <String>] [-CustomData <String>] [-DisableAutoRollback <Boolean>]
- [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
- [-EnableAutomaticUpdate <Boolean>] [-ImageReferenceId <String>] [-ImageReferenceOffer <String>]
- [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>]
- [-ImageUri <String>] [-LicenseType <String>] [-ManagedDiskStorageAccountType <String>]
- [-MaxBatchInstancePercent <Int32>] [-MaxPrice <Double>] [-MaxUnhealthyInstancePercent <Int32>]
- [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-OsDiskCaching <CachingTypes>]
- [-OsDiskWriteAccelerator <Boolean>] [-Overprovision <Boolean>] [-ScaleInPolicyForceDeletion <Boolean>]
- [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-ProximityPlacementGroupId <String>]
- [-ScaleInPolicy <String[]>] [-SinglePlacementGroup <Boolean>] [-SkipExtensionsOnOverprovisionedVMs <Boolean>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
- [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
- [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
- [-UserData <String>] [-AutomaticRepairAction <String>] [-BaseRegularPriorityCount <Int32>]
- [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
- [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ExplicitIdentityParameterSet
-```
-Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-AutomaticOSUpgrade <Boolean>]
- [-AutomaticRepairGracePeriod <String>] [-BootDiagnosticsEnabled <Boolean>]
- [-BootDiagnosticsStorageUri <String>] [-CustomData <String>] [-DisableAutoRollback <Boolean>]
- [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticRepair <Boolean>]
- [-EnableAutomaticUpdate <Boolean>] [-IdentityId <String[]>] -IdentityType <ResourceIdentityType>
+ [-AutomaticRepairGracePeriod <String>] [-EnableAutomaticRepair <Boolean>] [-AutomaticRepairAction <String>]
+ [-BootDiagnosticsEnabled <Boolean>] [-BootDiagnosticsStorageUri <String>] [-CustomData <String>]
+ [-DisableAutoRollback <Boolean>] [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticUpdate <Boolean>]
  [-ImageReferenceId <String>] [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>]
  [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>] [-ImageUri <String>] [-LicenseType <String>]
  [-ManagedDiskStorageAccountType <String>] [-MaxBatchInstancePercent <Int32>] [-MaxPrice <Double>]
@@ -59,10 +32,38 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-Tag <Hashtable>] [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>]
  [-TerminateScheduledEvents <Boolean>] [-TimeZone <String>] [-UltraSSDEnabled <Boolean>]
  [-UpgradePolicyMode <UpgradeMode>] [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob]
- [-EncryptionAtHost <Boolean>] [-UserData <String>] [-AutomaticRepairAction <String>]
- [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>]
- [-OSImageScheduledEventEnabled] [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionAtHost <Boolean>] [-UserData <String>] [-BaseRegularPriorityCount <Int32>]
+ [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-AutomaticOSUpgrade <Boolean>]
+ [-AutomaticRepairGracePeriod <String>] [-EnableAutomaticRepair <Boolean>] [-AutomaticRepairAction <String>]
+ [-BootDiagnosticsEnabled <Boolean>] [-BootDiagnosticsStorageUri <String>] [-CustomData <String>]
+ [-DisableAutoRollback <Boolean>] [-DisablePasswordAuthentication <Boolean>] [-EnableAutomaticUpdate <Boolean>]
+ [-IdentityId <String[]>] -IdentityType <ResourceIdentityType> [-ImageReferenceId <String>]
+ [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>]
+ [-ImageReferenceVersion <String>] [-ImageUri <String>] [-LicenseType <String>]
+ [-ManagedDiskStorageAccountType <String>] [-MaxBatchInstancePercent <Int32>] [-MaxPrice <Double>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
+ [-OsDiskCaching <CachingTypes>] [-OsDiskWriteAccelerator <Boolean>] [-Overprovision <Boolean>]
+ [-ScaleInPolicyForceDeletion <Boolean>] [-PauseTimeBetweenBatches <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-ProximityPlacementGroupId <String>] [-ScaleInPolicy <String[]>] [-SinglePlacementGroup <Boolean>]
+ [-SkipExtensionsOnOverprovisionedVMs <Boolean>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>]
+ [-TerminateScheduledEvents <Boolean>] [-TimeZone <String>] [-UltraSSDEnabled <Boolean>]
+ [-UpgradePolicyMode <UpgradeMode>] [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob]
+ [-EncryptionAtHost <Boolean>] [-UserData <String>] [-BaseRegularPriorityCount <Int32>]
+ [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
+ [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +128,7 @@ Type of repair action (replace, restart, reimage) that will be used for repairin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Replace, Restart, Reimage
 
 Required: False
 Position: Named
@@ -300,6 +302,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -799,6 +831,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
