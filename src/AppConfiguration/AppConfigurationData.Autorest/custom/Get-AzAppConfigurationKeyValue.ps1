@@ -153,14 +153,8 @@ function Get-AzAppConfigurationKeyValue {
                 $PSBoundParameters['OutBuffer'] = 1
             }
             $parameterSet = $PSCmdlet.ParameterSetName
-            if (-not $PSBoundParameters.ContainsKey("Key")) {
+            if ((-not $PSBoundParameters.ContainsKey("Key")) -or (Test-WildcardExpression -str $Key)) {
                 $parameterSet = 'List'
-            }
-            else
-            {
-                if (Test-WildcardExpression -str $Key) {
-                    $parameterSet = 'List'
-                }
             }
     
             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
