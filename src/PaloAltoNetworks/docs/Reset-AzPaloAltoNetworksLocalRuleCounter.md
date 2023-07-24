@@ -32,7 +32,7 @@ Reset counters
 
 ### Example 1: Reset counters.
 ```powershell
-Reset-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan -Priority: 1
+Reset-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan -Priority 1
 ```
 
 ```output
