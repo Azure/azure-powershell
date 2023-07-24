@@ -263,6 +263,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
         public bool? HasSentHttpRequest { get; set; }
 
+        public CommandLineSummary PredictorSummary { get; set; }
+
         public string CommandLine { get; set; }
 
         public bool IsCommandSuccess { get; set; }

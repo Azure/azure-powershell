@@ -31,16 +31,16 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: ce6d86734f244e44e4ae39952f62c324d8fe6817
+branch: 3794130ff888bf159dc93dd8d673415863df0cd6
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2022-12-01-preview/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
@@ -98,4 +98,7 @@ directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"].get
     transform: $["description"] = "Get either a list of all volumes from a volume group or get a single volume from a volume group."
+  - where:
+      subject: ^PrivateEndpointConnection$|^PrivateLinkResource$
+    hide: true
 ```

@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.App","New-AzContainerAppManagedEnvCert","1","1","Invalid_Cmdlet","5000","1","New-SelfSignedCertificate is not a valid command name.","New-SelfSignedCertificate -DnsName 'www.fabrikam.com', 'www.contoso.com' -CertStoreLocation 'cert:\LocalMachine\My'","Check the spell of New-SelfSignedCertificate."

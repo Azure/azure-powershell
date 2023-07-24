@@ -43,6 +43,60 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
+        /// Verify that a telemetry event is sent when a new RequestPredictionTelemetry event is created.
+        /// </summary>
+        [Fact]
+        public void VerifyTelemetrySentOnNewRequestPredictionTelemetryData()
+        {
+            var expectedTelemetryCount = 1;
+            var firstRequestId = Guid.NewGuid().ToString();
+            var secondRequestId = Guid.NewGuid().ToString();
+
+            var telemetryClient = new MockAzPredictorTelemetryClient();
+
+            telemetryClient.ExceptedTelemetryDispatchCount = expectedTelemetryCount;
+            telemetryClient.FlushAtDispatch = false;
+            telemetryClient.ResetWaitingTasks();
+
+            telemetryClient.RequestId = firstRequestId;;
+            telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
+                        new List<string>(),
+                        hasSentHttpRequest: true,
+                        exception: null,
+                        predictorSummary: new CommandLineSummary(3, 3, null)));
+
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+            // We have updated the cached aggregated data.
+            Assert.Equal(firstRequestId, telemetryClient.RecordedAggregatedData.RequestId);
+            // We haven't sent this telemetry yet.
+            Assert.Equal(0, telemetryClient.RecordedTelemetry.Count);
+
+            telemetryClient.ExceptedTelemetryDispatchCount = 1;
+            telemetryClient.FlushAtDispatch = false;
+            telemetryClient.ResetWaitingTasks();
+
+            telemetryClient.RequestId = secondRequestId;
+            telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
+                        new List<string>()
+                        {
+                            AzPredictorConstants.CommandPlaceholder,
+                            AzPredictorConstants.CommandPlaceholder
+                        },
+                        hasSentHttpRequest: true,
+                        exception: null,
+                        predictorSummary: new CommandLineSummary(10, 10, null)));
+
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+
+            // We should send the cached aggregated data before recording the new RequestPredictionTelemetryData
+            Assert.Equal(1, telemetryClient.RecordedTelemetry.Count);
+            Assert.Equal(firstRequestId, telemetryClient.RecordedTelemetry[0].Properties["RequestId"]);
+
+            // Now the cached aggregated data is updated with the new RequestPredictionTelemetryData
+            Assert.Equal(secondRequestId, telemetryClient.RecordedAggregatedData.RequestId);
+        }
+
+        /// <summary>
         /// Verify that the unsupported commands are replaced with placeholders in <see cref="AzPredictor.OnCommandLineAccepted"/>.
         /// </summary>
         [Theory]
@@ -584,6 +638,47 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedUserInput, ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
+            Assert.Equal(expectedUserInput, telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameUserInput]);
+        }
+
+        /// <summary>
+        /// Verify that we only record unique user input in the telemetry.
+        /// </summary>
+        [Fact]
+        public void VerifySeparateUserInput()
+        {
+            var userInputs = new string[]
+            {
+                "Get-AzContext",
+                "get-azcontext",
+                "Get-AzResourceGroup -Location westus2 -Name rg1",
+                "Set-",
+                "git",
+                "ls",
+            };
+
+            var expectedUserInputValue = new string[]
+            {
+                "Get-AzContext",
+                "Get-AzResourceGroup -Location *** -Name ***",
+                "Set-",
+                "start_of_snippet",
+            };
+
+            var expectedTelemetryCount = userInputs.Length;
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+
+            foreach (var input in userInputs)
+            {
+                var predictionContext = PredictionContext.Create(input);
+                var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
+            }
+
+            Assert.NotNull(telemetryClient.GetSuggestionData.Suggestion);
+            VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
+
+            Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
+            Assert.Equal(string.Join(AzPredictorTelemetryClient._StringValueConcatenator, expectedUserInputValue), telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNameUserInput]);
         }
 
         /// <summary>
