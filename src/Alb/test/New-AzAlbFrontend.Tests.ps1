@@ -22,8 +22,4 @@ Describe 'New-AzAlbFrontend' {
             $alb.ProvisioningState | Should -Be 'Succeeded'
         } | Should -Not -Throw
     }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

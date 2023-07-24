@@ -69,7 +69,7 @@ directive:
       subject: $1
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 # Param and table formatting
   - where:
