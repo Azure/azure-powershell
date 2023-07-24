@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added new cmdlet `New-AzContainerRegistryCredentials`
 ## Version 4.0.0
 * Updated module to autorest based
 ## Version 3.0.4
