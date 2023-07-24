@@ -1,0 +1,39 @@
+{
+  "Update-AzNetworkCloudL3Network+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network?api-version=2023-07-01",
+      "Content": "{\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"830b2ab6-0000-0100-0000-6494c2200000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "cc143a12-1fb8-4e71-bbd8-9d9ba876ccf2" ],
+        "x-ms-correlation-request-id": [ "91b91766-fffd-4a7f-b2f9-5fa3eaf0f003" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230622T215024Z:91b91766-fffd-4a7f-b2f9-5fa3eaf0f003" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Jun 2023 21:50:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1468" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network\",\"name\":\"l3network\",\"type\":\"microsoft.networkcloud/l3networks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-hostedresources-4ae3464d/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-22T21:49:51.6490568Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-22T21:50:24.2587547Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"ipv4ConnectedPrefix\":\"10.1.100.0/24\",\"ipv6ConnectedPrefix\":\"fd01:1::0/64\",\"l3IsolationDomainId\":\"/subscriptions/fabricsubs/resourceGroups/fabric-rg/providers/Microsoft.NetworkFabric/L3IsolationDomains/l3isolationdomain1\",\"vlan\":1001,\"interfaceName\":\"l3netw-0cc89\",\"ipAllocationType\":\"DualStack\",\"hybridAksPluginType\":\"SRIOV\",\"hybridAksIpamEnabled\":\"True\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/anpankie-sim/providers/Microsoft.NetworkCloud/clusters/simulator\",\"associatedResourceIds\":[],\"hybridAksClustersAssociatedIds\":[],\"virtualMachinesAssociatedIds\":[],\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"all resource creation succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
