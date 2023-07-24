@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHciCluster'))
 
 Describe 'New-AzStackHciCluster' {
     It 'CreateExpanded' {
-        New-AzStackHciCluster -Name $env.ClusterName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -AadClientId $env.AadClientId -AadTenantId $env.AadTenantId -Location $env.Location
+        New-AzStackHciCluster -Name $env.ClusterName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -Location $env.Location
     }
 }

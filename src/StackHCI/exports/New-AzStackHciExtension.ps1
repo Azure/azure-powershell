@@ -26,12 +26,12 @@ $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name "MicrosoftMonitoringAgent" -ResourceGroupName test-rg -ExtensionParameterPublisher "Microsoft.Compute" -ExtensionParameterType "MicrosoftMonitoringAgent" -ExtensionParameterProtectedSetting $Settings
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -76,13 +76,19 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+    ${ExtensionParameterEnableAutomaticUpgrade},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # How the extension handler should be forced to update even if the extension configuration has not changed.
     ${ExtensionParameterForceUpdateTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersProtectedSettings]))]
     [System.Collections.Hashtable]
     # Protected settings (may contain secrets).
     ${ExtensionParameterProtectedSetting},
@@ -95,7 +101,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersSettings]))]
     [System.Collections.Hashtable]
     # Json formatted public settings for the extension.
     ${ExtensionParameterSetting},
@@ -110,6 +116,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the version of the script handler.
+    # Latest version would be used if not specified.
     ${ExtensionParameterTypeHandlerVersion},
 
     [Parameter()]
