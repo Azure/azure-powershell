@@ -7,9 +7,12 @@ param(
 Write-Host "Processing PR $PrUrl with label $LabelName"
 
 $CommentDict = @{
-    "DO NOT SQUASH" = @"
+    "DO NOT SQUASH 🚫" = @"
 ‼️ Please merge this PR with commits! You can enable this option in the setting page.
 ‼️ Remember close that option after merging this PR!
+"@
+    "Do Not Merge 🚫" = @"
+‼️ DO NOT MERGE THIS PR ‼️
 "@
     "Breaking Change Release" = @"
 To PR author,
