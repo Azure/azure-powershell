@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="makeBackupsImmutable">The setting whether to make LTR
+        /// backups immutable</param>
         /// <param name="weeklyRetention">The weekly retention policy for an
         /// LTR backup in an ISO 8601 format.</param>
         /// <param name="monthlyRetention">The monthly retention policy for an
@@ -43,9 +45,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// LTR backup in an ISO 8601 format.</param>
         /// <param name="weekOfYear">The week of year to take the yearly backup
         /// in an ISO 8601 format.</param>
-        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
+        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), bool? makeBackupsImmutable = default(bool?), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
             : base(id, name, type)
         {
+            MakeBackupsImmutable = makeBackupsImmutable;
             WeeklyRetention = weeklyRetention;
             MonthlyRetention = monthlyRetention;
             YearlyRetention = yearlyRetention;
@@ -57,6 +60,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the setting whether to make LTR backups immutable
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.makeBackupsImmutable")]
+        public bool? MakeBackupsImmutable { get; set; }
 
         /// <summary>
         /// Gets or sets the weekly retention policy for an LTR backup in an

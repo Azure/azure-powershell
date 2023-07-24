@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "LedgerDigestUploads", "2021-02-01-preview"),
                 new Tuple<string, string, string>("Sql", "LongTermRetentionBackups", "2021-05-01-preview"),
                 new Tuple<string, string, string>("Sql", "LongTermRetentionManagedInstanceBackups", "2021-05-01-preview"),
-                new Tuple<string, string, string>("Sql", "LongTermRetentionPolicies", "2020-11-01-preview"),
+                new Tuple<string, string, string>("Sql", "LongTermRetentionPolicies", "2023-02-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedBackupShortTermRetentionPolicies", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseAdvancedThreatProtectionSettings", "2022-02-01-preview"),
                 new Tuple<string, string, string>("Sql", "ManagedDatabaseMoveOperations", "2022-08-01-preview"),
