@@ -723,11 +723,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (psRuleSet.IpAddressRanges != null && psRuleSet.IpAddressRanges.Count > 0)
                 {
-                    updatedRuleSet.IpRules = psRuleSet.IpAddressRanges.Select(ipAddress => new IPRule { Value = ipAddress }).ToList();
+                    updatedRuleSet.IPRules = psRuleSet.IpAddressRanges.Select(ipAddress => new IPRule { Value = ipAddress }).ToList();
                 }
                 else
                 {   // Send empty array [] to server to override default
-                    updatedRuleSet.IpRules = new List<IPRule>();
+                    updatedRuleSet.IPRules = new List<IPRule>();
                 }
 
                 if (psRuleSet.VirtualNetworkResourceIds != null && psRuleSet.VirtualNetworkResourceIds.Count > 0)

@@ -7,15 +7,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 {
 
     /// <summary>
-    /// Defines values for IdentityType.
+    /// Defines values for ManagedHsmSkuFamily.
     /// </summary>
 
 
-    public static class IdentityType
+    public static class ManagedHsmSkuFamily
     {
-        public const string User = "User";
-        public const string Application = "Application";
-        public const string ManagedIdentity = "ManagedIdentity";
-        public const string Key = "Key";
+        public const string B = "B";
     }
 }
