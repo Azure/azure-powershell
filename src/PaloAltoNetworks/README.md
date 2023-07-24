@@ -222,4 +222,10 @@ directive:
           - Name
           - ProvisioningState
           - ResourceGroupName
+
+  # When service team fixes the bug in swagger related to nextlink, we can generate these commands out.
+  - where:
+      verb: Get
+      subject: FirewallSupportInfo|LocalRuleCounter|LocalRulestackAdvancedSecurityObject|LocalRulestackCountry|LocalRulestackPredefinedUrlCategory|LocalRulestackSecurityService
+    remove: true
 ```

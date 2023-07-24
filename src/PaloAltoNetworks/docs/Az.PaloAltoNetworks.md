@@ -23,23 +23,14 @@ Log Profile for Firewall
 ### [Get-AzPaloAltoNetworksFirewallStatus](Get-AzPaloAltoNetworksFirewallStatus.md)
 Get a FirewallStatusResource
 
-### [Get-AzPaloAltoNetworksFirewallSupportInfo](Get-AzPaloAltoNetworksFirewallSupportInfo.md)
-support info for firewall.
-
 ### [Get-AzPaloAltoNetworksFqdnListLocalRulestack](Get-AzPaloAltoNetworksFqdnListLocalRulestack.md)
 Get a FqdnListLocalRulestackResource
 
 ### [Get-AzPaloAltoNetworksLocalRule](Get-AzPaloAltoNetworksLocalRule.md)
 Get a LocalRulesResource
 
-### [Get-AzPaloAltoNetworksLocalRuleCounter](Get-AzPaloAltoNetworksLocalRuleCounter.md)
-Get counters
-
 ### [Get-AzPaloAltoNetworksLocalRulestack](Get-AzPaloAltoNetworksLocalRulestack.md)
 Get a LocalRulestackResource
-
-### [Get-AzPaloAltoNetworksLocalRulestackAdvancedSecurityObject](Get-AzPaloAltoNetworksLocalRulestackAdvancedSecurityObject.md)
-Get the list of advanced security objects
 
 ### [Get-AzPaloAltoNetworksLocalRulestackAppId](Get-AzPaloAltoNetworksLocalRulestackAppId.md)
 List of AppIds for LocalRulestack ApiVersion
@@ -47,17 +38,8 @@ List of AppIds for LocalRulestack ApiVersion
 ### [Get-AzPaloAltoNetworksLocalRulestackChangeLog](Get-AzPaloAltoNetworksLocalRulestackChangeLog.md)
 Get changelog
 
-### [Get-AzPaloAltoNetworksLocalRulestackCountry](Get-AzPaloAltoNetworksLocalRulestackCountry.md)
-List of countries for Rulestack
-
 ### [Get-AzPaloAltoNetworksLocalRulestackFirewall](Get-AzPaloAltoNetworksLocalRulestackFirewall.md)
 List of Firewalls associated with Rulestack
-
-### [Get-AzPaloAltoNetworksLocalRulestackPredefinedUrlCategory](Get-AzPaloAltoNetworksLocalRulestackPredefinedUrlCategory.md)
-List predefined URL categories for rulestack
-
-### [Get-AzPaloAltoNetworksLocalRulestackSecurityService](Get-AzPaloAltoNetworksLocalRulestackSecurityService.md)
-List the security services for rulestack
 
 ### [Get-AzPaloAltoNetworksLocalRulestackSupportInfo](Get-AzPaloAltoNetworksLocalRulestackSupportInfo.md)
 support info for rulestack.
