@@ -839,5 +839,9 @@
   {
     "module": "Alb",
     "alias": "Alb"
+  },
+  {
+    "module": "PaloAltoNetworks",
+    "alias": "PaloAltoNetworks"
   }
 ]
