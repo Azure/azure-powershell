@@ -56,7 +56,8 @@ This command creates a project for a Storage mover.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,7 +106,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -198,11 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProject
 
 ## NOTES
 
@@ -214,13 +215,13 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `PROJECT <IProject>`: The Project resource.
-  - `[Description <String>]`: A description for the Project.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Description <String>]`: A description for the Project.
 
 ## RELATED LINKS
 
