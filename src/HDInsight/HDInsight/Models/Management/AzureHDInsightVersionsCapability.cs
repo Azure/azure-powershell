@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightVersionsCapability
     {
-        public AzureHDInsightVersionsCapability(VersionsCapability versionsCapability)
+        public AzureHDInsightVersionsCapability(HDInsightVersionsCapability versionsCapability)
         {
             Available = new List<AzureHDInsightVersionSpec>();
             int? count = versionsCapability?.Available?.Count;

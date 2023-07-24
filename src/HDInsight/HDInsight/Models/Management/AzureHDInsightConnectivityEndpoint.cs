@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Protocol = connectivityEndpoint?.Protocol;
             Location = connectivityEndpoint?.EndpointLocation;
             Port = connectivityEndpoint?.Port;
-            PrivateIPAddress = connectivityEndpoint?.PrivateIPAddress.ToString();
+            PrivateIPAddress = connectivityEndpoint?.PrivateIPAddress?.ToString();
         }
 
         /// <summary>

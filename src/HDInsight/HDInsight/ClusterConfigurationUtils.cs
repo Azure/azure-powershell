@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public static AzureHDInsightDefaultStorageAccount GetDefaultStorageAccountDetails(
             string version,
-            IDictionary<string, string> coreSiteConfiguration,
-            IDictionary<string, string> clusterIdentityConfiguration = null)
+            IReadOnlyDictionary<string, string> coreSiteConfiguration,
+            IReadOnlyDictionary<string, string> clusterIdentityConfiguration = null)
         {
             string key = version.Equals("2.1") ? Constants.ClusterConfiguration.DefaultStorageAccountNameKeyOld
                 : Constants.ClusterConfiguration.DefaultStorageAccountNameKey;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return null;
         }
 
-        public static List<string> GetAdditionStorageAccounts(IDictionary<string, string> configuration, string defaultAccount)
+        public static List<string> GetAdditionStorageAccounts(IReadOnlyDictionary<string, string> configuration, string defaultAccount)
         {
             // Parse the storage account names from the key and exclude the default one
             return (from key in configuration.Keys

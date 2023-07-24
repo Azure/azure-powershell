@@ -14,7 +14,6 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
@@ -122,14 +121,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         It.Is<AzureHDInsightConfig>(
                             c =>
                                 c.Configurations != null &&
-                                ((sparkVersion == 1 && c.Configurations.ContainsKey(ConfigurationKey.SparkDefaults) &&
-                                c.Configurations[ConfigurationKey.SparkDefaults]["spark.executor.instances"].Equals(sparkDefaults["spark.executor.instances"]) &&
-                                c.Configurations.ContainsKey(ConfigurationKey.SparkThriftConf) &&
-                                c.Configurations[ConfigurationKey.SparkThriftConf]["spark.executor.cores"].Equals(sparkThriftConf["spark.executor.cores"])) ||
-                                (sparkVersion == 2 &&  c.Configurations.ContainsKey(ConfigurationKey.Spark2Defaults) &&
-                                c.Configurations[ConfigurationKey.Spark2Defaults]["spark.executor.instances"].Equals(sparkDefaults["spark.executor.instances"]) &&
-                                c.Configurations.ContainsKey(ConfigurationKey.Spark2ThriftConf) &&
-                                c.Configurations[ConfigurationKey.Spark2ThriftConf]["spark.executor.cores"].Equals(sparkThriftConf["spark.executor.cores"]))))),
+                                ((sparkVersion == 1 && c.Configurations.ContainsKey(Constants.ConfigurationKey.SparkDefaults) &&
+                                c.Configurations[Constants.ConfigurationKey.SparkDefaults]["spark.executor.instances"].Equals(sparkDefaults["spark.executor.instances"]) &&
+                                c.Configurations.ContainsKey(Constants.ConfigurationKey.SparkThriftConf) &&
+                                c.Configurations[Constants.ConfigurationKey.SparkThriftConf]["spark.executor.cores"].Equals(sparkThriftConf["spark.executor.cores"])) ||
+                                (sparkVersion == 2 &&  c.Configurations.ContainsKey(Constants.ConfigurationKey.Spark2Defaults) &&
+                                c.Configurations[Constants.ConfigurationKey.Spark2Defaults]["spark.executor.instances"].Equals(sparkDefaults["spark.executor.instances"]) &&
+                                c.Configurations.ContainsKey(Constants.ConfigurationKey.Spark2ThriftConf) &&
+                                c.Configurations[Constants.ConfigurationKey.Spark2ThriftConf]["spark.executor.cores"].Equals(sparkThriftConf["spark.executor.cores"]))))),
                 Times.Once);
         }
     }

@@ -15,10 +15,12 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Azure.Core;
+using Azure.ResourceManager.HDInsight;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
 {
@@ -86,14 +88,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             return httpEndpoint;
         }
 
-        protected string GetResourceGroupByAccountName(string clusterName)
+        public string GetResourceGroupByAccountName(string clusterName)
         {
             try
             {
-                var clusterId = HDInsightManagementClient.ListClusters().First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
-                var rgStart = clusterId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) + ("resourceGroups/".Length);
-                var rgLength = (clusterId.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
-                return clusterId.Substring(rgStart, rgLength);
+                //ResourceIdentifier clusterId = HDInsightManagementClient.ListClusters().First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
+                IList<HDInsightClusterData> clusters = HDInsightManagementClient.ListClusters();
+                ResourceIdentifier clusterId = clusters.First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
+                return clusterId.ResourceGroupName;
             }
             catch
             {
@@ -111,8 +113,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
 
             var cluster = result.FirstOrDefault();
-            var coreSiteConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.CoreSite);
-            var clusterIdentityConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.ClusterIdentity);
+            var coreSiteConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, Constants.ConfigurationKey.CoreSite);
+            var clusterIdentityConfiguration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, Constants.ConfigurationKey.ClusterIdentity);
 
             var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
                                                 cluster.Properties.ClusterVersion,
@@ -133,10 +135,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             Dictionary<string, Dictionary<string, string>> nodeTypeAndClusterTypeAndVmSizeDict = null;
             try
             {
-                BillingResponseListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
+                HDInsightBillingSpecsListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
 
                 /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValulePair<SPARK, STANDARD_A2_V2>> */
-                var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VmSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
+                var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VmSizeFilters.Where(filter => filter.FilterMode.Equals(HDInsightFilterMode.Default)).SelectMany(x =>
                 {
                     var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VmSizes, (clusterType, vmSize) =>
                     {

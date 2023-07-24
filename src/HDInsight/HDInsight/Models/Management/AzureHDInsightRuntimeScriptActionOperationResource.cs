@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             }
             else
             {
-                OperationState = AsyncOperationState.Succeeded.ToString();
+                OperationState = HDInsightAsyncOperationState.Succeeded.ToString();
             }
         }
 

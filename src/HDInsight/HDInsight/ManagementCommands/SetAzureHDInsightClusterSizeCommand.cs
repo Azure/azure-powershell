@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Linq;
 using System.Management.Automation;
 
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterSize"),OutputType(typeof(AzureHDInsightCluster))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
     {
-        private ClusterResizeParameters resizeParams;
+        private HDInsightClusterResizeContent resizeParams;
         #region Input Parameter Definitions
 
         [Parameter(
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public SetAzureHDInsightClusterSizeCommand()
         {
-            resizeParams = new ClusterResizeParameters();
+            resizeParams = new HDInsightClusterResizeContent();
         }
 
         public override void ExecuteCmdlet()

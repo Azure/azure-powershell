@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
     {
         public AzureHDInsightRegionalQuotaCapability(RegionalQuotaCapability regionalQuotaCapability)
         {
-            this.RegionName = regionalQuotaCapability.RegionName;
+            this.RegionName = regionalQuotaCapability.Region;
             this.CoresUsed = regionalQuotaCapability.CoresUsed;
             this.CoresAvailable = regionalQuotaCapability.CoresAvailable;
         }

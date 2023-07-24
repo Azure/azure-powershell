@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     internal class Utils
     {
-        public static Role ExtractRole(string nodeType, ComputeProfile computeProfile)
+        public static HDInsightClusterRole ExtractRole(string nodeType,IList<HDInsightClusterRole> computeRoles)
         {
-            return computeProfile?.Roles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
+            return computeRoles?.FirstOrDefault(role => role.Name.Equals(nodeType.ToLower()));
         }
 
         public static string GetResourceNameFromResourceId(string resourceId)

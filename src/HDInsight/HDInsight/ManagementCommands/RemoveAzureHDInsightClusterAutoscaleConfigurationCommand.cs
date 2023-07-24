@@ -16,11 +16,12 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
+using Azure.ResourceManager.HDInsight;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -94,10 +95,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess(ClusterName))
             {
-                AutoscaleConfigurationUpdateParameter parameter = new AutoscaleConfigurationUpdateParameter();
+                HDInsightAutoScaleConfigurationUpdateContent parameter = new HDInsightAutoScaleConfigurationUpdateContent();
                 HDInsightManagementClient.UpdateAutoScaleConfiguration(ResourceGroupName, ClusterName, parameter);
 
-                Cluster cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
+                HDInsightClusterData cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
                 WriteObject(new AzureHDInsightCluster(cluster));
             }
         }

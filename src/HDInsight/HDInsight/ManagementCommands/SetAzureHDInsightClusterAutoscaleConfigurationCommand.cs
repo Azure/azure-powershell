@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using Azure.ResourceManager.HDInsight;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -229,10 +230,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             var clusterBeforeUpdate = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
-            Autoscale autoscaleConfig = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), clusterBeforeUpdate.Properties.ComputeProfile)?.AutoscaleConfiguration;
+            HDInsightAutoScaleConfiguration autoscaleConfig = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), clusterBeforeUpdate.Properties.ComputeRoles)?.AutoScaleConfiguration;
             if (autoscaleConfig == null)
             {
-                autoscaleConfig = new Autoscale();
+                autoscaleConfig = new HDInsightAutoScaleConfiguration();
             }
 
             switch (ParameterSetName)
@@ -245,7 +246,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
                     if (autoscaleConfig.Capacity == null)
                     {
-                        autoscaleConfig.Capacity = new AutoscaleCapacity(MinWorkerNodeCount, MaxWorkerNodeCount);
+                        autoscaleConfig.Capacity = new HDInsightAutoScaleCapacity()
+                        {
+                            MaxInstanceCount = MaxWorkerNodeCount,
+                            MinInstanceCount = MinWorkerNodeCount
+                        };
+                        
                     }
                     else
                     {
@@ -270,7 +276,12 @@ namespace Microsoft.Azure.Commands.HDInsight
                     if (autoscaleConfig.Recurrence == null)
                     {
                         var schedules = Condition?.Select(conditon => conditon.ToAutoscaleSchedule()).ToList();
-                        autoscaleConfig.Recurrence = new AutoscaleRecurrence(TimeZone, schedules);
+                        autoscaleConfig.Recurrence = new HDInsightAutoScaleRecurrence();
+                        autoscaleConfig.Recurrence.TimeZone = TimeZone;
+                        foreach (var schedule in schedules)
+                        {
+                            autoscaleConfig.Recurrence.Schedule.Add(schedule);
+                        }
                     }
                     else
                     {
@@ -281,7 +292,11 @@ namespace Microsoft.Azure.Commands.HDInsight
 
                         if (this.IsParameterBound(c => c.Condition))
                         {
-                            autoscaleConfig.Recurrence.Schedule = Condition?.Select(conditon => conditon.ToAutoscaleSchedule()).ToList();
+                            List<HDInsightAutoScaleSchedule> hdInsightAutoScaleSchedules = Condition?.Select(conditon => conditon.ToAutoscaleSchedule()).ToList();
+                            foreach (var item in hdInsightAutoScaleSchedules)
+                            {
+                                autoscaleConfig.Recurrence.Schedule.Add(item);
+                            }
                         }
                     }
                     break;
@@ -297,9 +312,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess(ClusterName))
             {
-                HDInsightManagementClient.UpdateAutoScaleConfiguration(ResourceGroupName, ClusterName, new AutoscaleConfigurationUpdateParameter(autoscaleConfig));
+                HDInsightManagementClient.UpdateAutoScaleConfiguration(ResourceGroupName, ClusterName, new HDInsightAutoScaleConfigurationUpdateContent() { AutoScale = autoscaleConfig});
 
-                Cluster cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
+                HDInsightClusterData cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
                 WriteObject(new AzureHDInsightCluster(cluster));
             }
         }

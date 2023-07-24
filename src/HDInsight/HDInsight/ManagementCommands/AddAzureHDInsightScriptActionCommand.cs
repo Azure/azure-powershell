@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The node on which to apply the action.")]
-        public ClusterNodeType NodeType { get; set; }
+        public RuntimeScriptActionClusterNodeType NodeType { get; set; }
 
         [Parameter(Position = 2,
             Mandatory = true,

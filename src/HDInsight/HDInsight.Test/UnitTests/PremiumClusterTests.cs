@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -21,6 +21,8 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
+using Azure.Core;
+using System;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -60,25 +62,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             // cmdlet.ClusterTier = Tier.Premium;
             cmdlet.SshCredential = _httpCred;
-            var cluster = new Cluster(id: "id", name: ClusterName, location: Location)
-            {
-                Location = Location,
-                Properties = new ClusterGetProperties
-                {
-                    ClusterVersion = "3.6",
-                    ClusterState = "Running",
-                    ClusterDefinition = new ClusterDefinition
-                    {
-                        Kind = ClusterType
-                    },
-                    QuotaInfo = new QuotaInfo
-                    {
-                        CoresUsed = 24
-                    },
-                    OsType = "Linux",
-                    Tier = "Premium"
-                }
-            };
+            
+            var cluster = ArmHDInsightModelFactory.HDInsightClusterData(id: new ResourceIdentifier("id"), name: ClusterName, location: Location);
+            cluster.Properties = new HDInsightClusterProperties(new HDInsightClusterDefinition());
+
+            cluster.Properties.ClusterVersion = "3.6";
+            cluster.Properties.ClusterState = "Running";
+            cluster.Properties.ClusterDefinition.Kind = ClusterType;
+            cluster.Properties.QuotaInfoCoresUsed = 24;
+            cluster.Properties.OSType = "Linux";
+            cluster.Properties.Tier = "Premium";
+
             var coreConfigs = new Dictionary<string, string>
             {
                 {"fs.defaultFS", "wasb://giyertestcsmv2@" + StorageName},
@@ -99,13 +93,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 {"core-site", coreConfigs},
                 {"gateway", gatewayConfigs}
             };
-            var serializedConfig = JsonConvert.SerializeObject(configurations);
+            var serializedConfig = BinaryData.FromObjectAsJson(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParametersExtended>(
+            hdinsightManagementMock.Setup(c => c.CreateCluster(ResourceGroupName, ClusterName, It.Is<HDInsightClusterCreateOrUpdateContent>(
                              parameters => parameters.Location == Location &&
                              parameters.Properties.ClusterDefinition.Kind == ClusterType &&
-                             parameters.Properties.OsType == "Linux"
+                             parameters.Properties.OSType == "Linux"
                              )))
             .Returns(cluster)
             .Verifiable();
@@ -121,8 +115,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType.ToString() == "Linux" &&
-                    clusterout.ClusterTier.ToString() == "Premium")),
+                    clusterout.OperatingSystemType == "Linux" &&
+                    clusterout.ClusterTier == "Premium")),
                     Times.Once);
         }
     }

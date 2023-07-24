@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.HDInsight.Models;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            var azureMonitorParams = new AzureMonitorRequest
+            var azureMonitorParams = new HDInsightAzureMonitorExtensionEnableContent
             {
                 WorkspaceId = WorkspaceId,
                 PrimaryKey = PrimaryKey

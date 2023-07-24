@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +32,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public AzureHDInsightHardwareProfile(string vmSize = null)
         {
             VmSize = vmSize;
-        }
-
-        public AzureHDInsightHardwareProfile(HardwareProfile hardwareProfile)
-        {
-            VmSize = hardwareProfile.VmSize;
         }
 
         /// <summary>

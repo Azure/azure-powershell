@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
                 }
                 var cluster = HDInsightManagementClient.Get(ResourceGroupName, ClusterName);
-                var autoscale = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), cluster.Properties.ComputeProfile)?.AutoscaleConfiguration;
+                var autoscale = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(), cluster.Properties.ComputeRoles)?.AutoScaleConfiguration;
                 autoscaleConfiguration = autoscale != null ? new AzureHDInsightAutoscale(autoscale) : null;
             }
 

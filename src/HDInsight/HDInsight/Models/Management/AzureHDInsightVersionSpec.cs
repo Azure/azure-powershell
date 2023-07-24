@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightVersionSpec
     {
-        public AzureHDInsightVersionSpec(VersionSpec versionSpec)
+        public AzureHDInsightVersionSpec(HDInsightVersionSpec versionSpec)
         {
             this.FriendlyName = versionSpec?.FriendlyName;
             this.DisplayName = versionSpec?.DisplayName;
@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public string FriendlyName { get; set; }
         public string DisplayName { get; set; }
         public string IsDefault { get; set; }
-        public IDictionary<string, string> ComponentVersions { get; set; }
+        public IReadOnlyDictionary<string, string> ComponentVersions { get; set; }
     }
 }

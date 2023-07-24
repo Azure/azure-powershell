@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightVmSizeCompatibilityFilter
     {
-        public AzureHDInsightVmSizeCompatibilityFilter(VmSizeCompatibilityFilterV2 vmSizeCompatibilityFilter)
+        public AzureHDInsightVmSizeCompatibilityFilter(HDInsightVmSizeCompatibilityFilterV2 vmSizeCompatibilityFilter)
         {
-            this.FilterMode = vmSizeCompatibilityFilter?.FilterMode;
-            this.Regions = vmSizeCompatibilityFilter?.Regions;
-            this.ClusterFlavors = vmSizeCompatibilityFilter?.ClusterFlavors;
-            this.NodeTypes = vmSizeCompatibilityFilter?.NodeTypes;
-            this.ClusterVersions = vmSizeCompatibilityFilter?.ClusterVersions;
-            this.Vmsizes = vmSizeCompatibilityFilter?.VmSizes;
+            this.FilterMode = vmSizeCompatibilityFilter?.FilterMode.ToString();
+            this.Regions = vmSizeCompatibilityFilter?.Regions.ToList();
+            this.ClusterFlavors = vmSizeCompatibilityFilter?.ClusterFlavors.ToList();
+            this.NodeTypes = vmSizeCompatibilityFilter?.NodeTypes.ToList();
+            this.ClusterVersions = vmSizeCompatibilityFilter?.ClusterVersions.ToList();
+            this.Vmsizes = vmSizeCompatibilityFilter?.VmSizes.ToList();
         }
         public string FilterMode { get; set; }
         public IList<string> Regions { get; set; }

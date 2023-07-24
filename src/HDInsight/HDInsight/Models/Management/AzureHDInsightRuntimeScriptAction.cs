@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Linq;
 
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public AzureHDInsightRuntimeScriptAction(RuntimeScriptAction runtimeScriptAction)
         {
             Name = runtimeScriptAction.Name;
-            Uri =  runtimeScriptAction.Uri != null ? new Uri(runtimeScriptAction.Uri) : null;
+            Uri =  runtimeScriptAction.Uri != null ? runtimeScriptAction.Uri : null;
             Parameters = runtimeScriptAction.Parameters;
             NodeTypes = runtimeScriptAction.Roles.ToArray();
             ApplicationName = runtimeScriptAction.ApplicationName;

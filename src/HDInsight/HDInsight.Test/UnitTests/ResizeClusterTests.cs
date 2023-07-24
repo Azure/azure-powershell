@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Net;
 using Xunit;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -45,24 +46,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanResizeCluster()
         {
-            var cluster = new Cluster(id: "id", name: ClusterName + "1", location: Location)
-            {
-                Location = Location,
-                Properties = new ClusterGetProperties
-                {
-                    ClusterVersion = "3.6",
-                    ClusterState = "Running",
-                    ClusterDefinition = new ClusterDefinition
-                    {
-                        Kind = ClusterType
-                    },
-                    QuotaInfo = new QuotaInfo
-                    {
-                        CoresUsed = 24
-                    },
-                    OsType = "Linux"
-                },
-            };
+            var cluster = ArmHDInsightModelFactory.HDInsightClusterData(id: new ResourceIdentifier("id"), name: ClusterName + "2", location: Location);
+            cluster.Properties = new HDInsightClusterProperties(new HDInsightClusterDefinition());
+
+            cluster.Properties.ClusterVersion = "3.6";
+            cluster.Properties.ClusterState = "Running";
+            cluster.Properties.ClusterDefinition.Kind = ClusterType;
+            cluster.Properties.QuotaInfoCoresUsed = 24;
+            cluster.Properties.OSType = "Linux";
 
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
                 .Returns(cluster)
@@ -75,7 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(
                 c =>
                     c.ResizeCluster(ResourceGroupName, ClusterName,
-                        It.Is<ClusterResizeParameters>(
+                        It.Is<HDInsightClusterResizeContent>(
                             param => param.TargetInstanceCount == targetcount)))
                 .Verifiable();
 

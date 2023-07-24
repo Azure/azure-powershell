@@ -15,11 +15,12 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -85,21 +86,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            var scriptAction = new RuntimeScriptAction
-            {
-                Name = Name,
-                Parameters = Parameters,
-                Roles = NodeTypes.Select(n => n.ToString()).ToList(),
-                Uri = Uri.IsAbsoluteUri ? Uri.AbsoluteUri : Uri.ToString()
-            };
+            RuntimeScriptAction scriptAction = ArmHDInsightModelFactory.RuntimeScriptAction(Name, Uri.IsAbsoluteUri ? new Uri(Uri.AbsoluteUri) : Uri, Parameters, NodeTypes.Select(n => n.ToString()).ToList());
 
-            var scriptActions = new List<RuntimeScriptAction> { scriptAction };
-
-            var executeScriptActionParameters = new ExecuteScriptActionParameters
-            {
-                ScriptActions = scriptActions,
-                PersistOnSuccess = PersistOnSuccess.IsPresent
-            };
+            var executeScriptActionParameters = new ExecuteScriptActionContent(PersistOnSuccess.IsPresent);
+            executeScriptActionParameters.ScriptActions.Add(scriptAction);
 
             ErrorResponseException errorResponse = null;
             try

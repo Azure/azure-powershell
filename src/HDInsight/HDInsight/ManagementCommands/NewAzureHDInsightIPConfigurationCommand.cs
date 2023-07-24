@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [PSArgumentCompleter("dynamic", "static")]
         public string PrivateIPAllocationMethod
         {
-            get { return _ipConfiguration.PrivateIPAllocationMethod; }
+            get { return _ipConfiguration.PrivateIPAllocationMethod.ToString(); }
             set { _ipConfiguration.PrivateIPAllocationMethod = value; }
         }
 

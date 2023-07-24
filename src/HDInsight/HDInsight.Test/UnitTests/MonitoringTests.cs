@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 PrimaryKey = ""
             };
 
-            var clusterMonitoringParams = new ClusterMonitoringRequest
+            var clusterMonitoringParams = new HDInsightClusterEnableClusterMonitoringContent
             {
                 WorkspaceId = "",
                 PrimaryKey = ""
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             hdinsightManagementMock.Setup(
                 c => c.EnableMonitoring(ResourceGroupName, ClusterName,
-                It.Is<ClusterMonitoringRequest>(
+                It.Is<HDInsightClusterEnableClusterMonitoringContent>(
                     param => param.WorkspaceId == clusterMonitoringParams.WorkspaceId &&
                                 param.PrimaryKey == clusterMonitoringParams.PrimaryKey)))
                 .Verifiable();
@@ -75,11 +75,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.GetMonitoring(ResourceGroupName, ClusterName))
-                .Returns(new ClusterMonitoringResponse
-                {
-                    ClusterMonitoringEnabled = true,
-                    WorkspaceId = "1d364e89-bb71-4503-aa3d-a23535aea7bd"
-                })
+                .Returns(ArmHDInsightModelFactory.HDInsightClusterExtensionStatus(true,"1d364e89-bb71-4503-aa3d-a23535aea7bd"))
                 .Verifiable();
 
             getMonitoringcmdlet.ExecuteCmdlet();

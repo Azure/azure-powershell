@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightGatewaySettings
     {
-        public AzureHDInsightGatewaySettings(GatewaySettings gatewaySettings)
+        public AzureHDInsightGatewaySettings(HDInsightClusterGatewaySettings gatewaySettings)
         {
-            this.IsCredentialEnabled = gatewaySettings.IsCredentialEnabled;
+            this.IsCredentialEnabled = gatewaySettings.IsCredentialEnabled.ToString();
             this.UserName = gatewaySettings.UserName;
             this.Password = gatewaySettings.Password;
         }

@@ -1,0 +1,65 @@
+﻿//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Rest;
+
+namespace Microsoft.Azure.Commands.HDInsight.Models
+{
+    /// <summary>
+    /// Exception thrown for an invalid response with ErrorResponse
+    /// information.
+    /// </summary>
+    public partial class ErrorResponseException : RestException
+    {
+        /// <summary>
+        /// Gets information about the associated HTTP request.
+        /// </summary>
+        public HttpRequestMessageWrapper Request { get; set; }
+
+        /// <summary>
+        /// Gets information about the associated HTTP response.
+        /// </summary>
+        public HttpResponseMessageWrapper Response { get; set; }
+
+        /// <summary>
+        /// Gets or sets the body object.
+        /// </summary>
+        public ErrorResponse Body { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the ErrorResponseException class.
+        /// </summary>
+        public ErrorResponseException()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the ErrorResponseException class.
+        /// </summary>
+        /// <param name="message">The exception message.</param>
+        public ErrorResponseException(string message)
+            : this(message, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the ErrorResponseException class.
+        /// </summary>
+        /// <param name="message">The exception message.</param>
+        /// <param name="innerException">Inner exception.</param>
+        public ErrorResponseException(string message, System.Exception innerException)
+            : base(message, innerException)
+        {
+        }
+    }
+}

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -43,20 +43,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanGetProperties()
         {
             var features = new string[] { "feature1", "feature2" };
-            var versions = new Dictionary<string, VersionsCapability> { { "key", new VersionsCapability() } };
-            var regions = new Dictionary<string, RegionsCapability> { { "eastus", new RegionsCapability() } };
-            var capabilitiesResult = new CapabilitiesResult
-            {
-                Features = features,
-                Versions = versions,
-                Regions = regions
-            };
+            var versions = new Dictionary<string, HDInsightVersionsCapability> { { "key", ArmHDInsightModelFactory.HDInsightVersionsCapability() } };
+            var regions = new Dictionary<string, RegionsCapability> { { "eastus", ArmHDInsightModelFactory.RegionsCapability() } };
 
-            var billingResponseResult = new BillingResponseListResult()
-            {
-                VmSizes = new List<string>(),
-                VmSizeFilters = new List<VmSizeCompatibilityFilterV2>()
-            };
+            var capabilitiesResult = ArmHDInsightModelFactory.HDInsightCapabilitiesResult(versions, regions, features);
+
+            var billingResponseResult = ArmHDInsightModelFactory.HDInsightBillingSpecsListResult();
 
             var propertiesResponse = new AzureHDInsightCapabilities(capabilitiesResult, billingResponseResult);
 
@@ -72,8 +64,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<AzureHDInsightCapabilities>(
                             resp =>
-                                resp.Features == propertiesResponse.Features
-                                && resp.Regions["eastus"].Available == propertiesResponse.Regions["eastus"].Available
+                                resp.Features[0] == propertiesResponse.Features[0]
+                                && resp.Features[1] == propertiesResponse.Features[1]
+                                && resp.Regions["eastus"].Available.Count == propertiesResponse.Regions["eastus"].Available.Count
                                 && resp.Versions.Count == propertiesResponse.Versions.Count), true),
                 Times.Once);
         }

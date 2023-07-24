@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
     {
         public AzureHDInsightRegionsCapability(RegionsCapability regionsCapability)
         {
-            this.Available = regionsCapability?.Available;
+            this.Available = regionsCapability?.Available.ToList();
         }
 
         /// <summary>

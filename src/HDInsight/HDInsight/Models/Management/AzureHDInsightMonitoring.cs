@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightMonitoring
     {
-        public AzureHDInsightMonitoring(ClusterMonitoringResponse clusterMonitoringResponse)
+        public AzureHDInsightMonitoring(HDInsightClusterExtensionStatus clusterMonitoringResponse)
         {
-            ClusterMonitoringEnabled = clusterMonitoringResponse.ClusterMonitoringEnabled ?? false;
+            ClusterMonitoringEnabled = clusterMonitoringResponse.IsClusterMonitoringEnabled ?? false;
             WorkspaceId = clusterMonitoringResponse.WorkspaceId;
         }
 

@@ -23,6 +23,9 @@ using System;
 using Azure.Identity;
 using Azure.ResourceManager.Resources;
 using Azure;
+using Azure.Core;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -30,8 +33,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHdInsightManagementClient(IAzureContext context)
         {
-            HdInsightManagementClient = new ArmClient(new DefaultAzureCredential());
-            //SubscriptionId = HdInsightManagementClient.GetDefaultSubscriptionAsync().Result.Data.SubscriptionId;
+            HdInsightManagementClient = new ArmClient(new AzurePowerShellCredential(), context.Subscription.Id.ToString());
+            //SubscriptionId = new ResourceIdentifier(context.Subscription.Id.ToString());
         }
 
         /// <summary>
@@ -41,12 +44,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         private ArmClient HdInsightManagementClient { get; set; }
 
-        //private String SubscriptionId { get; set; }
+        //private ResourceIdentifier SubscriptionId { get; set; }
 
         public virtual HDInsightClusterData CreateCluster(string resourceGroupName, string clusterName, HDInsightClusterCreateOrUpdateContent createParams)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
-            
+            //string v = JsonConvert.SerializeObject(createParams, Formatting.Indented);
             ArmOperation<HDInsightClusterResource> armOperation = resourceGroup.GetHDInsightClusters().CreateOrUpdateAsync(WaitUntil.Completed, clusterName, createParams).GetAwaiter().GetResult();
             return armOperation.Value.Data;
         }
@@ -80,15 +83,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual IList<HDInsightClusterData> ListClusters()
         {
             var toReturn = new List<HDInsightClusterData>();
-            IAsyncEnumerator<HDInsightClusterResource> asyncEnumerator = HdInsightManagementClient.GetDefaultSubscription().GetHDInsightClustersAsync().GetAsyncEnumerator();
-
-            if(asyncEnumerator.Current != null)
+            Pageable<HDInsightClusterResource> clusters = HdInsightManagementClient.GetDefaultSubscription().GetHDInsightClusters();
+            foreach(HDInsightClusterResource cluster in clusters)
             {
-                toReturn.Add(asyncEnumerator.Current.Data);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current.Data);
+                toReturn.Add(cluster.Data);
             }
 
             return toReturn;
@@ -98,14 +96,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var toReturn = new List<HDInsightClusterData>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
-            IAsyncEnumerator<HDInsightClusterResource> asyncEnumerator = resourceGroup.GetHDInsightClusters().GetAllAsync().GetAsyncEnumerator();
-            if(asyncEnumerator.Current != null)
+            Pageable<HDInsightClusterResource> clusters = resourceGroup.GetHDInsightClusters().GetAll();
+
+            foreach(HDInsightClusterResource cluster in clusters)
             {
-                toReturn.Add(asyncEnumerator.Current.Data);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current.Data);
+                toReturn.Add(cluster.Data);
             }
 
             return toReturn;
@@ -121,14 +116,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.ResizeAsync(WaitUntil.Completed,HDInsightRoleName.Workernode, resizeParams);
+            cluster.ResizeAsync(WaitUntil.Completed, HDInsightRoleName.Workernode, resizeParams).GetAwaiter().GetResult();
         }
 
         public virtual void ExecuteScriptActions(string resourceGroupName, string clusterName, ExecuteScriptActionContent executeScriptActionParameters)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.ExecuteScriptActionsAsync(WaitUntil.Completed, executeScriptActionParameters);
+            cluster.ExecuteScriptActionsAsync(WaitUntil.Completed, executeScriptActionParameters).GetAwaiter().GetResult();
         }
 
         public virtual RuntimeScriptActionDetail GetScriptExecutionDetail(string resourceGroupName, string clusterName, long scriptExecutionId)
@@ -143,14 +138,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var toReturn = new List<RuntimeScriptActionDetail>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            IAsyncEnumerator<RuntimeScriptActionDetail> asyncEnumerator = cluster.GetScriptActionsAsync().GetAsyncEnumerator();
-            if(asyncEnumerator.Current != null)
+            Pageable<RuntimeScriptActionDetail> runtimeScriptActionDetails = cluster.GetScriptActions();
+
+            foreach (var item in runtimeScriptActionDetails)
             {
-                toReturn.Add(asyncEnumerator.Current);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current);
+                toReturn.Add(item);
             }
             return toReturn;
         }
@@ -160,14 +152,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var toReturn = new List<RuntimeScriptActionDetail>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            IAsyncEnumerator<RuntimeScriptActionDetail> asyncEnumerator = cluster.GetScriptExecutionHistoriesAsync().GetAsyncEnumerator();
-            if(asyncEnumerator.Current != null)
+            Pageable<RuntimeScriptActionDetail> runtimeScriptActionDetails = cluster.GetScriptExecutionHistories();
+            foreach (var item in runtimeScriptActionDetails)
             {
-                toReturn.Add(asyncEnumerator.Current);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current);
+                toReturn.Add(item);
             }
 
             return toReturn;
@@ -177,28 +165,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.DeleteScriptActionAsync(scriptName);
+            cluster.DeleteScriptActionAsync(scriptName).GetAwaiter().GetResult();
         }
 
         public virtual void PromoteScript(string resourceGroupName, string clusterName, long scriptExecutionId)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.PromoteScriptExecutionHistoryAsync(scriptExecutionId.ToString());
+            cluster.PromoteScriptExecutionHistoryAsync(scriptExecutionId.ToString()).GetAwaiter().GetResult();
         }
 
-        public virtual void DeleteCluster(string resourceGroupName, string clusterName)
+        public virtual void DeleteClusterAsync(string resourceGroupName, string clusterName)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.DeleteAsync(WaitUntil.Completed);
+            cluster.DeleteAsync(WaitUntil.Completed).GetAwaiter().GetResult();
         }
 
         public virtual void UpdateGatewayCredential(string resourceGroupName, string clusterName, HDInsightClusterUpdateGatewaySettingsContent updateGatewaySettingsParameters)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.UpdateGatewaySettingsAsync(WaitUntil.Completed, updateGatewaySettingsParameters);
+            cluster.UpdateGatewaySettingsAsync(WaitUntil.Completed, updateGatewaySettingsParameters).GetAwaiter().GetResult();
         }
 
         public virtual HDInsightClusterGatewaySettings GetGatewaySettings(string resourceGroupName, string clusterName)
@@ -240,14 +228,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.EnableClusterMonitoringExtensionAsync(WaitUntil.Completed, clusterMonitoringParameters);
+            cluster.EnableClusterMonitoringExtensionAsync(WaitUntil.Completed, clusterMonitoringParameters).GetAwaiter().GetResult();
         }
 
         public virtual void DisableMonitoring(string resourceGroupName, string clusterName)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.DisableClusterMonitoringExtensionAsync(WaitUntil.Completed);
+            cluster.DisableClusterMonitoringExtensionAsync(WaitUntil.Completed).GetAwaiter().GetResult();
         }
 
         public virtual HDInsightClusterExtensionStatus GetMonitoring(string resourceGroupName, string clusterName)
@@ -261,14 +249,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.EnableAzureMonitorExtensionAsync(WaitUntil.Completed, azureMonitorRequestParameters);
+            cluster.EnableAzureMonitorExtensionAsync(WaitUntil.Completed, azureMonitorRequestParameters).GetAwaiter().GetResult();
         }
 
         public virtual void DisableAzureMonitor(string resourceGroupName, string clusterName)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.DisableAzureMonitorExtensionAsync(WaitUntil.Completed);
+            cluster.DisableAzureMonitorExtensionAsync(WaitUntil.Completed).GetAwaiter().GetResult();
         }
 
         public virtual HDInsightAzureMonitorExtensionStatus GetAzureMonitor(string resourceGroupName, string clusterName)
@@ -282,7 +270,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.RotateDiskEncryptionKeyAsync(WaitUntil.Completed, parameters);
+            cluster.RotateDiskEncryptionKeyAsync(WaitUntil.Completed, parameters).GetAwaiter().GetResult();
         }
 
         public virtual IList<HDInsightClusterHostInfo> GetHosts(string resourceGroupName, string clusterName)
@@ -290,14 +278,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var toReturn = new List<HDInsightClusterHostInfo>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            IAsyncEnumerator<HDInsightClusterHostInfo> asyncEnumerator = cluster.GetVirtualMachineHostsAsync().GetAsyncEnumerator();
-            if(asyncEnumerator.Current != null)
+            Pageable<HDInsightClusterHostInfo> clusterHostInfos = cluster.GetVirtualMachineHosts();
+            foreach (var item in clusterHostInfos)
             {
-                toReturn.Add(asyncEnumerator.Current);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current);
+                toReturn.Add(item);
             }
 
             return toReturn;
@@ -307,14 +291,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.RestartVirtualMachineHostsAsync(WaitUntil.Completed, hosts);
+            cluster.RestartVirtualMachineHostsAsync(WaitUntil.Completed, hosts).GetAwaiter().GetResult();
         }
 
         public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, HDInsightAutoScaleConfigurationUpdateContent autoscaleConfigurationUpdateParameter)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.UpdateAutoScaleConfigurationAsync(WaitUntil.Completed, HDInsightRoleName.Workernode, autoscaleConfigurationUpdateParameter);
+            cluster.UpdateAutoScaleConfigurationAsync(WaitUntil.Completed, HDInsightRoleName.Workernode, autoscaleConfigurationUpdateParameter).GetAwaiter().GetResult();
         }
 
         public virtual HDInsightBillingSpecsListResult ListBillingSpecs(string location)
@@ -327,15 +311,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var toReturn = new List<HDInsightPrivateLinkResourceData>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            IAsyncEnumerator<HDInsightPrivateLinkResource> asyncEnumerator = cluster.GetHDInsightPrivateLinkResources().GetAllAsync().GetAsyncEnumerator();
+            Pageable<HDInsightPrivateLinkResource> privateLinkResources = cluster.GetHDInsightPrivateLinkResources().GetAll();
 
-            if(asyncEnumerator.Current != null)
+            foreach (var item in privateLinkResources)
             {
-                toReturn.Add(asyncEnumerator.Current.Data);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current.Data);
+                toReturn.Add(item.Data);
             }
 
             return toReturn;
@@ -346,14 +326,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var toReturn = new List<HDInsightPrivateEndpointConnectionData>();
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            IAsyncEnumerator<HDInsightPrivateEndpointConnectionResource> asyncEnumerator = cluster.GetHDInsightPrivateEndpointConnections().GetAllAsync().GetAsyncEnumerator();
-            if(asyncEnumerator.Current != null)
+            Pageable<HDInsightPrivateEndpointConnectionResource> privateEndpointConnectionResources = cluster.GetHDInsightPrivateEndpointConnections().GetAll();
+            foreach (var item in privateEndpointConnectionResources)
             {
-                toReturn.Add(asyncEnumerator.Current.Data);
-            }
-            while(asyncEnumerator.MoveNextAsync().Result)
-            {
-                toReturn.Add(asyncEnumerator.Current.Data);
+                toReturn.Add(item.Data);
             }
 
             return toReturn;
@@ -363,7 +339,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
-            cluster.GetHDInsightPrivateEndpointConnections().GetAsync(privateEndpointConnectionName).GetAwaiter().GetResult().Value.DeleteAsync(WaitUntil.Completed);
+            cluster.GetHDInsightPrivateEndpointConnections().GetAsync(privateEndpointConnectionName).GetAwaiter().GetResult().Value.DeleteAsync(WaitUntil.Completed).GetAwaiter().GetResult();
         }
 
         public virtual HDInsightPrivateEndpointConnectionData UpdatePrivateEndpointConnection(string resourceGroupName, string clusterName, string privateEndpointConnectionName, HDInsightPrivateEndpointConnectionData privateEndpointConnectionParameter)
@@ -372,26 +348,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
             return cluster.GetHDInsightPrivateEndpointConnections().CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, privateEndpointConnectionParameter).GetAwaiter().GetResult().Value.Data;
 
-        }
-        private void ResetClusterIdentity(HDInsightClusterCreateOrUpdateContent createParams, string aadAuthority, string dataLakeAudience)
-        {
-            var configuation = createParams.Properties.ClusterDefinition.Configurations;
-           
-            Dictionary<string, object> clusterIdentity;
-            Dictionary<string, Dictionary<string, object>> dictionary = configuation.ToObjectFromJson<Dictionary<string,Dictionary<string,object>>>();
-
-            if(!dictionary.TryGetValue("clusterIdentity", out clusterIdentity))
-            {
-                return;
-            }
-            clusterIdentity["clusterIdentity.resourceUri"]=dataLakeAudience;
-
-            object aadTenantIdWithUrl;
-            clusterIdentity.TryGetValue("clusterIdentity.aadTenantId", out aadTenantIdWithUrl);
-
-            const string defaultPubliCloudAadAuthority= "https://login.windows.net/";
-            string newAadTenantIdWithUrl = aadTenantIdWithUrl?.ToString().Replace(defaultPubliCloudAadAuthority, aadAuthority);
-            clusterIdentity["clusterIdentity.aadTenantId"]=newAadTenantIdWithUrl;
         }
     }
 }

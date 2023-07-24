@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             PrincipalId = clusterIdentity?.PrincipalId.ToString();
             TenantId = clusterIdentity?.TenantId.ToString();
-            Type = clusterIdentity.ManagedServiceIdentityType.ToString();
-            UserAssignedIdentities =clusterIdentity?.UserAssignedIdentities != null ? new Dictionary<string, AzureHDInsightUserAssignedIdentity>() : null;
+            Type = clusterIdentity?.ManagedServiceIdentityType.ToString();
+            UserAssignedIdentities = clusterIdentity?.UserAssignedIdentities != null ? new Dictionary<string, AzureHDInsightUserAssignedIdentity>() : null;
             if (UserAssignedIdentities != null)
             {
                 foreach( var entry in clusterIdentity.UserAssignedIdentities)

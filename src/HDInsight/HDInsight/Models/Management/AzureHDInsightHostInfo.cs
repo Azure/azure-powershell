@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightHostInfo
     {
-        public AzureHDInsightHostInfo(HostInfo hostInfo)
+        public AzureHDInsightHostInfo(HDInsightClusterHostInfo hostInfo)
         {
             name = hostInfo?.Name;
             Fqdn = hostInfo?.Fqdn;
-            EffectiveDiskEncryptionKeyUrl = hostInfo?.EffectiveDiskEncryptionKeyUrl;
+            EffectiveDiskEncryptionKeyUrl = hostInfo?.EffectiveDiskEncryptionKeyUri?.ToString();
         }
 
         /// <summary>

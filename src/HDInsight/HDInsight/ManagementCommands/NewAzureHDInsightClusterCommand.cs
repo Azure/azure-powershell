@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
@@ -32,6 +32,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using Azure.ResourceManager.Models;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private Dictionary<string, Dictionary<string, string>> clusterConfigurations;
         private Dictionary<string, string> clusterComponentVersion;
         private Dictionary<string, string> clusterAdditionalStorageAccounts;
-        private Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions;
+        private Dictionary<RuntimeScriptActionClusterNodeType, List<ScriptAction>> clusterScriptActions;
         private const string CertificateFilePathSet = "CertificateFilePath";
         private const string CertificateFileContentsSet = "CertificateFileContents";
         private const string DefaultParameterSet = "Default";
@@ -235,7 +237,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
-        public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
+        public Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
         [Parameter(HelpMessage = "Gets or sets the StorageContainer name for the default Azure Storage Account")]
         public string StorageContainer { get; set; }
@@ -277,16 +279,16 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string SubnetName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
-        [PSArgumentCompleter(Management.HDInsight.Models.OSType.Linux)]
+        [PSArgumentCompleter("Linux")]
         public string OSType
 
         {
-            get { return string.IsNullOrEmpty(_osType)? Management.HDInsight.Models.OSType.Linux : _osType; }
+            get { return string.IsNullOrEmpty(_osType)? HDInsightOSType.Linux.ToString() : _osType; }
             set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        [PSArgumentCompleter(Tier.Standard, Tier.Premium)]
+        //[PSArgumentCompleter(Tier.Standard, Tier.Premium)]
         public string ClusterTier { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets SSH credential.")]
@@ -331,7 +333,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        //[PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RsaOaep.ToString(), JsonWebKeyEncryptionAlgorithm.RsaOaep256.ToString(), JsonWebKeyEncryptionAlgorithm.Rsa15.ToString())]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -362,11 +364,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string KafkaClientGroupName { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the resource provider connection type.")]
-        [PSArgumentCompleter(Management.HDInsight.Models.ResourceProviderConnection.Inbound, Management.HDInsight.Models.ResourceProviderConnection.Outbound)]
+        //[PSArgumentCompleter(HDInsightResourceProviderConnection.Inbound as string, HDInsightResourceProviderConnection.Outbound.ToString())]
         public string ResourceProviderConnection { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the private link type.")]
-        [PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
+        //[PSArgumentCompleter(Management.HDInsight.Models.PrivateLink.Enabled, Management.HDInsight.Models.PrivateLink.Disabled)]
         public string PrivateLink { get; set; }
 
         [Parameter(HelpMessage = "Enables HDInsight compute isolation feature.")]
@@ -390,8 +392,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             clusterAdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Dictionary<string, string>>();
             clusterConfigurations = new Dictionary<string, Dictionary<string, string>>();
-            ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
-            clusterScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
+            ScriptActions = new Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>>();
+            clusterScriptActions = new Dictionary<RuntimeScriptActionClusterNodeType, List<ScriptAction>>();
             ComponentVersion = new Dictionary<string, string>();
             clusterComponentVersion = new Dictionary<string, string>();
         }
@@ -412,18 +414,19 @@ namespace Microsoft.Azure.Commands.HDInsight
             ClusterCreateHelper.AddClusterCredentialToGatewayConfig(HttpCredential, clusterConfigurations);
 
             // Construct OS Profile
-            OsProfile osProfile = ClusterCreateHelper.CreateOsProfile(SshCredential, SshPublicKey);
+            HDInsightLinuxOSProfile osProfile = ClusterCreateHelper.CreateOsProfile(SshCredential, SshPublicKey);
 
             // Construct Virtual Network Profile
-            VirtualNetworkProfile vnetProfile = ClusterCreateHelper.CreateVirtualNetworkProfile(VirtualNetworkId, SubnetName);
+            HDInsightVirtualNetworkProfile vnetProfile = ClusterCreateHelper.CreateVirtualNetworkProfile(VirtualNetworkId, SubnetName);
 
             // Handle storage account
-            StorageProfile storageProfile = new StorageProfile() { Storageaccounts = new List<StorageAccount> { } };
+            //StorageProfile storageProfile = new StorageProfile() { Storageaccounts = new List<HDInsightStorageAccountInfo> { } };
+            IList<HDInsightStorageAccountInfo> storageAccounts = new List<HDInsightStorageAccountInfo>();
 
             if (StorageAccountType == null || StorageAccountType == StorageType.AzureStorage)
             {
                 var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, this.DefaultContext.Environment.StorageEndpointSuffix);
-                storageProfile.Storageaccounts.Add(azureStorageAccount);
+                storageAccounts.Add(azureStorageAccount);
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStore)
             {
@@ -432,7 +435,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             else if (StorageAccountType == StorageType.AzureDataLakeStorageGen2)
             {
                 var adlsgen2Account = ClusterCreateHelper.CreateAdlsGen2StorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageFileSystem, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
-                storageProfile.Storageaccounts.Add(adlsgen2Account);
+                storageAccounts.Add(adlsgen2Account);
             }
 
             // Handle additional storage accounts
@@ -487,7 +490,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 kafkaRestProperties = new KafkaRestProperties()
                 {
-                    ClientGroupInfo = new ClientGroupInfo(KafkaClientGroupName, KafkaClientGroupId)
+                    ClientGroupInfo = new ClientGroupInfo()
+                    {
+                        GroupName = KafkaClientGroupName,
+                        GroupId = KafkaClientGroupId
+                    }
                 };
             }
 
@@ -495,54 +502,49 @@ namespace Microsoft.Azure.Commands.HDInsight
             var defaultVmSizeConfigurations = GetDefaultVmsizesConfigurations(Location);
 
             // Compute profile contains headnode, workernode, zookeepernode, edgenode, kafkamanagementnode, idbrokernode, etc.
-            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, isKafkaRestProxyEnable, KafkaManagementNodeSize, EnableIDBroker.IsPresent, defaultVmSizeConfigurations);
+            IList<HDInsightClusterRole> computeProfileRoles = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, isKafkaRestProxyEnable, KafkaManagementNodeSize, EnableIDBroker.IsPresent, defaultVmSizeConfigurations);
 
             // Handle SecurityProfile
-            SecurityProfile securityProfile = ClusterCreateHelper.ConvertAzureHDInsightSecurityProfileToSecurityProfile(SecurityProfile, AssignedIdentity);
+            HDInsightSecurityProfile securityProfile = ClusterCreateHelper.ConvertAzureHDInsightSecurityProfileToSecurityProfile(SecurityProfile, AssignedIdentity);
 
             // Handle DisksPerWorkerNode feature
-            Role workerNode = Utils.ExtractRole(ClusterNodeType.WorkerNode.ToString(), computeProfile);
+            HDInsightClusterRole workerNode = Utils.ExtractRole(RuntimeScriptActionClusterNodeType.WorkerNode.ToString(), computeProfileRoles);
             if (DisksPerWorkerNode > 0)
             {
-                workerNode.DataDisksGroups = new List<DataDisksGroups>()
-                {
-                    new DataDisksGroups()
+                workerNode.DataDisksGroups.Add(
+                    new HDInsightClusterDataDiskGroup()
                     {
                         DisksPerNode = DisksPerWorkerNode
                     }
-                };
+                );
             }
 
             // Handle ClusterIdentity
-            ClusterIdentity clusterIdentity = null;
+            ManagedServiceIdentity clusterIdentity = null;
             if (AssignedIdentity != null || StorageAccountManagedIdentity != null)
             {
-                clusterIdentity = new ClusterIdentity
-                {
-                    Type = ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
-                };
+                clusterIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned);
                 if (AssignedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
+                    clusterIdentity.UserAssignedIdentities.Add(new ResourceIdentifier(AssignedIdentity), new UserAssignedIdentity());
                 }
                 if (StorageAccountManagedIdentity != null)
                 {
-                    clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
+                    clusterIdentity.UserAssignedIdentities.Add(new ResourceIdentifier(StorageAccountManagedIdentity), new UserAssignedIdentity());
                 }
             }
 
             // Handle CMK feature
-            DiskEncryptionProperties diskEncryptionProperties = null;
+            HDInsightDiskEncryptionProperties diskEncryptionProperties = null;
             if (EncryptionKeyName != null && EncryptionKeyVersion != null && EncryptionVaultUri != null)
             {
-                diskEncryptionProperties = new DiskEncryptionProperties()
+                diskEncryptionProperties = new HDInsightDiskEncryptionProperties()
                 {
                     KeyName = EncryptionKeyName,
                     KeyVersion = EncryptionKeyVersion,
-                    VaultUri = EncryptionVaultUri,
-                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOAEP,
-                    MsiResourceId = AssignedIdentity
+                    VaultUri = new Uri(EncryptionVaultUri),
+                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RsaOaep,
+                    MsiResourceId = new ResourceIdentifier(AssignedIdentity)
                 };
             }
 
@@ -551,73 +553,108 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 if (diskEncryptionProperties != null)
                 {
-                    diskEncryptionProperties.EncryptionAtHost = EncryptionAtHost;
+                    diskEncryptionProperties.IsEncryptionAtHostEnabled = EncryptionAtHost;
                 }
                 else
                 {
-                    diskEncryptionProperties = new DiskEncryptionProperties()
+                    diskEncryptionProperties = new HDInsightDiskEncryptionProperties()
                     {
-                        EncryptionAtHost = EncryptionAtHost
+                        IsEncryptionAtHostEnabled = EncryptionAtHost
                     };
                 }
             }
 
             // Handle autoscale featurer
-            Autoscale autoscaleParameter = null;
+            HDInsightAutoScaleConfiguration autoscaleParameter = null;
             if (AutoscaleConfiguration != null)
             {
                 autoscaleParameter = AutoscaleConfiguration.ToAutoscale();
-                workerNode.AutoscaleConfiguration = autoscaleParameter;
+                workerNode.AutoScaleConfiguration = autoscaleParameter;
             }
 
             // Handle relay outound and private link feature
-            NetworkProperties networkProperties = null;
+            HDInsightClusterNetworkProperties networkProperties = null;
             if (ResourceProviderConnection != null || PrivateLink != null)
             {
-                networkProperties = new NetworkProperties(ResourceProviderConnection, PrivateLink);
+                networkProperties = new HDInsightClusterNetworkProperties();
+                networkProperties.ResourceProviderConnection = ResourceProviderConnection;
+                networkProperties.PrivateLink = PrivateLink;
             }
 
             // Handle compute isolation properties
-            ComputeIsolationProperties computeIsolationProperties = null;
+            HDInsightComputeIsolationProperties computeIsolationProperties = null;
             if (EnableComputeIsolation.IsPresent)
             {
-                computeIsolationProperties = new ComputeIsolationProperties(EnableComputeIsolation.IsPresent, ComputeIsolationHostSku);
+                computeIsolationProperties = new HDInsightComputeIsolationProperties()
+                {
+                    EnableComputeIsolation = EnableComputeIsolation.IsPresent,
+                    HostSku = ComputeIsolationHostSku
+                };
             }
 
             // Construct cluster create parameter
-            ClusterCreateParametersExtended createParams = new ClusterCreateParametersExtended
+            HDInsightClusterCreateOrUpdateContent createParams = new HDInsightClusterCreateOrUpdateContent
             {
                 Location = Location,
                 //Tags = Tags,  //To Do add this Tags parameter
-                Zones = Zone,
-                Properties = new ClusterCreateProperties
+                Properties = new HDInsightClusterCreateOrUpdateProperties
                 {
-                    Tier = ClusterTier,
-                    ClusterDefinition = new ClusterDefinition
+                    ClusterDefinition = new HDInsightClusterDefinition()
                     {
-                        Kind = ClusterType ?? "Hadoop",
-                        ComponentVersion = clusterComponentVersion,
-                        Configurations = clusterConfigurations
+                        Kind = ClusterType ?? "Hadoop"
                     },
-                    ClusterVersion = Version ?? "default",
+                    ClusterVersion = Version ?? "4.0",
                     KafkaRestProperties = kafkaRestProperties,
-                    ComputeProfile = computeProfile,
-                    OsType = OSType,
+                    OSType = new HDInsightOSType(OSType),
                     SecurityProfile = securityProfile,
-                    StorageProfile = storageProfile,
                     DiskEncryptionProperties = diskEncryptionProperties,
-                    //handle Encryption In Transit feature
-                    EncryptionInTransitProperties = EncryptionInTransit != null ? new EncryptionInTransitProperties()
-                    {
-                        IsEncryptionInTransitEnabled = EncryptionInTransit
-                    } : null,
+
                     MinSupportedTlsVersion = MinSupportedTlsVersion,
                     NetworkProperties = networkProperties,
                     ComputeIsolationProperties= computeIsolationProperties,
-                    PrivateLinkConfigurations = PrivateLinkConfiguration !=null ? PrivateLinkConfiguration.Select(item=> item.ToPrivateLinkConfiguration()).ToList(): null
                 },
                 Identity = clusterIdentity
             };
+            createParams.Properties.ClusterDefinition.Configurations = BinaryData.FromObjectAsJson(clusterConfigurations);
+
+            createParams.Properties.Tier = new HDInsightTier();
+            if (ClusterTier != null)
+            {
+                createParams.Properties.Tier = ClusterTier;
+            }
+
+            if(Zone != null)
+            {
+                foreach(var item in Zone)
+                {
+                     createParams.Zones.Add(item);
+                }
+            }
+
+            foreach(var item in clusterComponentVersion)
+            {
+                createParams.Properties.ClusterDefinition.ComponentVersion.Add(item);
+            }
+
+            foreach(var item in computeProfileRoles)
+            {
+                createParams.Properties.ComputeRoles.Add(item);
+            }
+
+            foreach(var item in storageAccounts)
+            {
+                createParams.Properties.StorageAccounts.Add(item);
+            }
+
+            createParams.Properties.IsEncryptionInTransitEnabled = EncryptionInTransit != null ? EncryptionInTransit : null;
+
+            if(PrivateLinkConfiguration != null)
+            {
+                foreach (var item in PrivateLinkConfiguration)
+                {
+                    createParams.Properties.PrivateLinkConfigurations.Add(item.ToPrivateLinkConfiguration());
+                }
+            }
 
             var cluster = HDInsightManagementClient.CreateCluster(ResourceGroupName, ClusterName, createParams);
 

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             : base(runtimeScriptActionDetail)
         {
             ScriptExecutionId = runtimeScriptActionDetail.ScriptExecutionId ?? 0;
-            StartTime = DateTime.Parse(runtimeScriptActionDetail.StartTime, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
-            EndTime = DateTime.Parse(runtimeScriptActionDetail.EndTime, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+            StartTime = DateTime.Parse(runtimeScriptActionDetail.StartOn.ToString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+            EndTime = DateTime.Parse(runtimeScriptActionDetail.EndOn.ToString(), CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
             Status = runtimeScriptActionDetail.Status;
             Operation = runtimeScriptActionDetail.Operation;
 

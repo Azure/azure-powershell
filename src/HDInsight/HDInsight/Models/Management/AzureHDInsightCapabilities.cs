@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,17 +20,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
     public class AzureHDInsightCapabilities
     {
-        public AzureHDInsightCapabilities(CapabilitiesResult capabilitiesResult, BillingResponseListResult billingResponseListResult)
+        public AzureHDInsightCapabilities(HDInsightCapabilitiesResult capabilitiesResult, HDInsightBillingSpecsListResult billingResponseListResult)
         {
             this.Versions = capabilitiesResult?.Versions?.ToDictionary(item => item.Key, item => new AzureHDInsightVersionsCapability(item.Value));
 
             this.Regions = capabilitiesResult?.Regions?.ToDictionary(item => item.Key, item => new AzureHDInsightRegionsCapability(item.Value));
 
-            this.VmSizes = billingResponseListResult?.VmSizes;
+            this.VmSizes = billingResponseListResult?.VmSizes.ToList();
 
             this.VmSizeFilters = billingResponseListResult?.VmSizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
 
-            this.Features = capabilitiesResult?.Features;
+            this.Features = capabilitiesResult?.Features.ToList();
 
             this.Quota = new AzureHDInsightQuotaCapability(capabilitiesResult?.Quota);
         }

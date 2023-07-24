@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -119,24 +117,24 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             _configurations = Config.Configurations ?? new Dictionary<string, Hashtable>();
 
-            AddConfigToConfigurations(Core, ConfigurationKey.CoreSite);
-            AddConfigToConfigurations(HiveSite, ConfigurationKey.HiveSite);
-            AddConfigToConfigurations(HiveEnv, ConfigurationKey.HiveEnv);
-            AddConfigToConfigurations(OozieSite, ConfigurationKey.OozieSite);
-            AddConfigToConfigurations(OozieEnv, ConfigurationKey.OozieEnv);
-            AddConfigToConfigurations(WebHCat, ConfigurationKey.WebHCatSite);
-            AddConfigToConfigurations(HBaseSite, ConfigurationKey.HBaseSite);
-            AddConfigToConfigurations(HBaseEnv, ConfigurationKey.HBaseEnv);
-            AddConfigToConfigurations(Storm, ConfigurationKey.StormSite);
-            AddConfigToConfigurations(Yarn, ConfigurationKey.YarnSite);
-            AddConfigToConfigurations(MapRed, ConfigurationKey.MapRedSite);
-            AddConfigToConfigurations(Tez, ConfigurationKey.TezSite);
-            AddConfigToConfigurations(Hdfs, ConfigurationKey.HdfsSite);
+            AddConfigToConfigurations(Core, Constants.ConfigurationKey.CoreSite);
+            AddConfigToConfigurations(HiveSite, Constants.ConfigurationKey.HiveSite);
+            AddConfigToConfigurations(HiveEnv, Constants.ConfigurationKey.HiveEnv);
+            AddConfigToConfigurations(OozieSite, Constants.ConfigurationKey.OozieSite);
+            AddConfigToConfigurations(OozieEnv, Constants.ConfigurationKey.OozieEnv);
+            AddConfigToConfigurations(WebHCat, Constants.ConfigurationKey.WebHCatSite);
+            AddConfigToConfigurations(HBaseSite, Constants.ConfigurationKey.HBaseSite);
+            AddConfigToConfigurations(HBaseEnv, Constants.ConfigurationKey.HBaseEnv);
+            AddConfigToConfigurations(Storm, Constants.ConfigurationKey.StormSite);
+            AddConfigToConfigurations(Yarn, Constants.ConfigurationKey.YarnSite);
+            AddConfigToConfigurations(MapRed, Constants.ConfigurationKey.MapRedSite);
+            AddConfigToConfigurations(Tez, Constants.ConfigurationKey.TezSite);
+            AddConfigToConfigurations(Hdfs, Constants.ConfigurationKey.HdfsSite);
             AddConfigToConfigurations(RServer, RServerConfigurationKey);
-            AddConfigToConfigurations(SparkDefaults, ConfigurationKey.SparkDefaults);
-            AddConfigToConfigurations(SparkThriftConf, ConfigurationKey.SparkThriftConf);
-            AddConfigToConfigurations(Spark2Defaults, ConfigurationKey.Spark2Defaults);
-            AddConfigToConfigurations(Spark2ThriftConf, ConfigurationKey.Spark2ThriftConf);
+            AddConfigToConfigurations(SparkDefaults, Constants.ConfigurationKey.SparkDefaults);
+            AddConfigToConfigurations(SparkThriftConf, Constants.ConfigurationKey.SparkThriftConf);
+            AddConfigToConfigurations(Spark2Defaults, Constants.ConfigurationKey.Spark2Defaults);
+            AddConfigToConfigurations(Spark2ThriftConf, Constants.ConfigurationKey.Spark2ThriftConf);
 
             WriteObject(Config);
         }

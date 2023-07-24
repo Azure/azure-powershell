@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             try
             {
                 IDictionary<string, string> coreSiteClusterConfiguration;
-                HDInsightManagementClient.ListConfigurations(resourceGroupName, clusterName).Configurations.TryGetValue(ConfigurationKey.CoreSite, out coreSiteClusterConfiguration);
+                HDInsightManagementClient.ListConfigurations(resourceGroupName, clusterName).Configurations.TryGetValue(Constants.ConfigurationKey.CoreSite, out coreSiteClusterConfiguration);
                 coreSiteClusterConfiguration?.TryGetValue(Constants.ClusterConfiguration.StorageAccountKeyPrefix + DefaultStorageAccountName, out storageAccountKey);
             }
             catch (CloudException cloudEx)

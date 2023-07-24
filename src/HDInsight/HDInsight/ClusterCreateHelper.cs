@@ -11,8 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.Core;
+using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,37 +100,37 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
-        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, string defaultStorageSuffix)
+        public static HDInsightStorageAccountInfo CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, string defaultStorageSuffix)
         {
             storageContainer = storageContainer ?? clusterName.ToLower();
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
             storageAccountName = storageAccountName + string.Format(Constants.StorageConfigurations.BlobStorageSuffixValueFormat, defaultStorageSuffix);
 
-            return new StorageAccount()
+            HDInsightStorageAccountInfo storageAccountInfo = new HDInsightStorageAccountInfo()
             {
                 Name = storageAccountName,
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
-                ResourceId = storageResourceId
             };
+            return storageAccountInfo;
         }
 
-        public static StorageAccount CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, string msiResourceId, string defaultStorageSuffix)
+        public static HDInsightStorageAccountInfo CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, string msiResourceId, string defaultStorageSuffix)
         {
             storageFileSystem = storageFileSystem ?? clusterName.ToLower();
 
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
             storageAccountName = storageAccountName + string.Format(Constants.StorageConfigurations.Adlsgen2StorageSuffixValueFormat, defaultStorageSuffix);
 
-            return new StorageAccount()
+            return new HDInsightStorageAccountInfo()
             {
                 Name = storageAccountName,
                 IsDefault = true,
                 FileSystem = storageFileSystem,
                 Key = storageAccountkey,
-                MsiResourceId = msiResourceId,
-                ResourceId = storageResourceId
+                MsiResourceId = new ResourceIdentifier(msiResourceId),
+                ResourceId = new ResourceIdentifier(storageResourceId)
             };
         }
 
@@ -204,70 +207,63 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 });
         }
 
-        public static VirtualNetworkProfile CreateVirtualNetworkProfile(string virtualNetworkId, string subnetName)
+        public static HDInsightVirtualNetworkProfile CreateVirtualNetworkProfile(string virtualNetworkId, string subnetName)
         {
             if (string.IsNullOrEmpty(virtualNetworkId) && string.IsNullOrEmpty(subnetName))
             {
                 return null;
             }
 
-            VirtualNetworkProfile vnetProfile = new VirtualNetworkProfile(virtualNetworkId, string.Format("{0}/subnets/{1}", virtualNetworkId, subnetName));
+            HDInsightVirtualNetworkProfile vnetProfile = new HDInsightVirtualNetworkProfile()
+            {
+                Id = new ResourceIdentifier(virtualNetworkId),
+                Subnet = string.Format("{0}/subnets/{1}", virtualNetworkId, subnetName)
+            };
             return vnetProfile;
         }
 
-        public static OsProfile CreateOsProfile(PSCredential sshCredential, string sshPublicKey)
+        public static HDInsightLinuxOSProfile CreateOsProfile(PSCredential sshCredential, string sshPublicKey)
         {
             string sshUserName = sshCredential?.UserName;
             string sshPassword = sshCredential?.Password?.ConvertToString();
-            List<SshPublicKey> sshPublicKeys = new List<SshPublicKey>();
+
+            HDInsightLinuxOSProfile linuxOSProfile = new HDInsightLinuxOSProfile
+            {
+                Password = sshPassword,
+                Username = sshUserName
+            };
+
             if (!string.IsNullOrEmpty(sshPublicKey))
             {
-                sshPublicKeys.Add(new SshPublicKey
+                linuxOSProfile.SshPublicKeys.Add(new HDInsightSshPublicKey
                 {
                     CertificateData = sshPublicKey
                 });
             }
 
-            SshProfile sshProfile = null;
-            if (sshPublicKeys.Count > 0)
-            {
-                sshProfile = new SshProfile
-                {
-                    PublicKeys = sshPublicKeys.ToArray()
-                };
-            }
-
-            return new OsProfile
-            {
-                LinuxOperatingSystemProfile = new LinuxOperatingSystemProfile
-                {
-                    SshProfile = sshProfile,
-                    Password = sshPassword,
-                    Username = sshUserName
-                }
-            };
+            return linuxOSProfile;
         }
 
-        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, bool isKafakaRestProxyEnable=false, string kafkaManagementNodeSize = null, bool isIDBrokerEnable = false, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations=null)
+        public static IList<HDInsightClusterRole> CreateComputeProfile(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, Dictionary<RuntimeScriptActionClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, bool isKafakaRestProxyEnable=false, string kafkaManagementNodeSize = null, bool isIDBrokerEnable = false, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations=null)
         {
-            List<Role> roles = new List<Role>();
+            List<HDInsightClusterRole> roles = new List<HDInsightClusterRole>();
 
             // Create head node
             headNodeSize = headNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.HeadNodeRole, defaultVmSizeConfigurations);
-            List<ScriptAction> headNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.HeadNode);
-            Role headNode = CreateHeadNodeRole(osProfile, vnetProfile, headNodeScriptActions, headNodeSize);
+            List<ScriptAction> headNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, RuntimeScriptActionClusterNodeType.HeadNode);
+            HDInsightClusterRole headNode = CreateHeadNodeRole(osProfile, vnetProfile, headNodeScriptActions, headNodeSize);
             roles.Add(headNode);
 
             // Create worker node
             workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.WorkerNodeRole, defaultVmSizeConfigurations);
-            List<ScriptAction> workerNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.WorkerNode);
-            Role workerNode = CreateWorkerNodeRole(osProfile, vnetProfile, workerNodeScriptActions, workerNodeCount, workerNodeSize);
+            List<ScriptAction> workerNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, RuntimeScriptActionClusterNodeType.WorkerNode);
+            HDInsightClusterRole workerNode = CreateWorkerNodeRole(osProfile, vnetProfile, workerNodeScriptActions, workerNodeCount, workerNodeSize);
             roles.Add(workerNode);
 
             // Create Zookeeper Node
             zookeeperNodeSize= zookeeperNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.ZookeeperNodeRole, defaultVmSizeConfigurations);
-            List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
-            Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
+            List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, RuntimeScriptActionClusterNodeType.ZookeeperNode);
+            HDInsightClusterRole zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
             roles.Add(zookeeperNode);
 
             // RServer & MLServices clusters contain an additional edge node. Return here for all other types.
@@ -276,7 +272,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 // Set up edgenode and add to collection.
                 const int edgeNodeCount = 1;
                 edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.EdgeNodeRole, defaultVmSizeConfigurations); ;
-                Role edgeNode = CreateEdgeNodeRole(osProfile, vnetProfile, null, edgeNodeCount, edgeNodeSize);
+                HDInsightClusterRole edgeNode = CreateEdgeNodeRole(osProfile, vnetProfile, null, edgeNodeCount, edgeNodeSize);
                 roles.Add(edgeNode);
             }
 
@@ -284,7 +280,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             if (isIDBrokerEnable)
             {
                 string idBrokerNodeSize= GetNodeSize(clusterType, Constants.ClusterRoleType.HIBNodeRole, defaultVmSizeConfigurations);
-                Role idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile, idBrokerNodeSize);
+                HDInsightClusterRole idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile, idBrokerNodeSize);
                 roles.Add(idBrokerNode);
             }
 
@@ -292,61 +288,66 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             if (isKafakaRestProxyEnable)
             {
                 kafkaManagementNodeSize = kafkaManagementNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.KafkaManagementNodeRole, defaultVmSizeConfigurations);
-                Role kafkaManagementNode = CreateKafkaManagementNode(osProfile, vnetProfile, kafkaManagementNodeSize);
+                HDInsightClusterRole kafkaManagementNode = CreateKafkaManagementNode(osProfile, vnetProfile, kafkaManagementNodeSize);
                 roles.Add(kafkaManagementNode);
             }
-            return new ComputeProfile(roles);
+            return roles;
         }
 
-        public static Role CreateHeadNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> headNodeScriptActions, string headNodeSize)
+        public static HDInsightClusterRole CreateHeadNodeRole(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, List<ScriptAction> headNodeScriptActions, string headNodeSize)
         {
             const int headNodeCount = 2;
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.HeadNode, headNodeScriptActions, headNodeCount, headNodeSize);
         }
 
-        public static Role CreateWorkerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> workerNodeScriptActions, int workerNodeCount, string workerNodeSize)
+        public static HDInsightClusterRole CreateWorkerNodeRole(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, List<ScriptAction> workerNodeScriptActions, int workerNodeCount, string workerNodeSize)
         {
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.WorkerNode, workerNodeScriptActions, workerNodeCount, workerNodeSize);
         }
 
-        public static Role CreateZookeeperNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> zookeeperNodeScriptActions, string zookeeperNodeSize)
+        public static HDInsightClusterRole CreateZookeeperNodeRole(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, List<ScriptAction> zookeeperNodeScriptActions, string zookeeperNodeSize)
         {
             const int zookeeperNodeCount = 3;
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.ZookeeperNode, zookeeperNodeScriptActions, zookeeperNodeCount, zookeeperNodeSize);
         }
 
-        public static Role CreateEdgeNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, List<ScriptAction> edgeNodeScriptActions, int edgeNodeCount, string edgeNodeSize)
+        public static HDInsightClusterRole CreateEdgeNodeRole(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, List<ScriptAction> edgeNodeScriptActions, int edgeNodeCount, string edgeNodeSize)
         {
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.EdgeNode, edgeNodeScriptActions, edgeNodeCount, edgeNodeSize);
         }
 
-        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile,string idBrokerNodeSize)
+        public static HDInsightClusterRole CreateIdBrokerNodeRole(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile,string idBrokerNodeSize)
         {
             const int idBrokerNodeCount = 2;
             return CreateCommonRole(null, vnetProfile, AzureHDInsightClusterNodeType.IdBrokerNode, null, idBrokerNodeCount, idBrokerNodeSize);
         }
 
-        public static Role CreateKafkaManagementNode(OsProfile osProfile, VirtualNetworkProfile vnetProfile, string kafkaManagementNodeSize)
+        public static HDInsightClusterRole CreateKafkaManagementNode(HDInsightLinuxOSProfile osProfile, HDInsightVirtualNetworkProfile vnetProfile, string kafkaManagementNodeSize)
         {
             const int kafkaManagementNodeCount = 2;
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.KafkaManagementNode, null, kafkaManagementNodeCount, kafkaManagementNodeSize);
         }
 
-        private static Role CreateCommonRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile, AzureHDInsightClusterNodeType nodeType, List<ScriptAction> scriptActions, int instanceCount,
+        private static HDInsightClusterRole CreateCommonRole(HDInsightLinuxOSProfile OSLinuxProfile, HDInsightVirtualNetworkProfile vnetProfile, AzureHDInsightClusterNodeType nodeType, List<ScriptAction> scriptActions, int instanceCount,
             string vmSize)
         {
-            return new Role
+            HDInsightClusterRole clusterRole = new HDInsightClusterRole
             {
                 Name = nodeType.ToString().ToLower(),
                 TargetInstanceCount = instanceCount,
-                HardwareProfile = vmSize != null ? new HardwareProfile
-                {
-                    VmSize = vmSize
-                } : null,
+                HardwareVmSize = vmSize != null ? vmSize: null,
                 VirtualNetworkProfile = vnetProfile,
-                OsProfile = osProfile,
-                ScriptActions = scriptActions
+                OSLinuxProfile = OSLinuxProfile,
             };
+            if(scriptActions != null)
+            {
+                foreach(var scription in scriptActions)
+                {
+                    clusterRole.ScriptActions.Add(scription);
+                }
+            }
+
+            return clusterRole;
         }
 
         public static string GetNodeSize(string clusterType, string nodeRoleType)
@@ -380,27 +381,44 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return vmSize;
         }
 
-        public static SecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile, string assignedIdentity)
+        public static HDInsightSecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile, string assignedIdentity)
         {
             if (azureHDInsightSecurityProfile == null) return null;
 
-            SecurityProfile securityProfile = new SecurityProfile(DirectoryType.ActiveDirectory);
+            HDInsightSecurityProfile securityProfile = new HDInsightSecurityProfile();
+            securityProfile.DirectoryType = AuthenticationDirectoryType.ActiveDirectory;
             securityProfile.Domain = Utils.GetResourceNameFromResourceId(azureHDInsightSecurityProfile.DomainResourceId);
             securityProfile.OrganizationalUnitDN = azureHDInsightSecurityProfile.OrganizationalUnitDN;
-            securityProfile.LdapsUrls = azureHDInsightSecurityProfile.LdapsUrls;
+            foreach(var item in azureHDInsightSecurityProfile.LdapsUrls)
+            {
+                securityProfile.LdapUris.Add(new Uri(item));
+            }
+
             if (azureHDInsightSecurityProfile.DomainUserCredential != null)
             {
                 securityProfile.DomainUsername = azureHDInsightSecurityProfile.DomainUserCredential.UserName;
                 securityProfile.DomainUserPassword = azureHDInsightSecurityProfile.DomainUserCredential.Password?.ConvertToString();
             }
-            securityProfile.ClusterUsersGroupDNs = azureHDInsightSecurityProfile.ClusterUsersGroupDNs;
-            securityProfile.AaddsResourceId = azureHDInsightSecurityProfile.DomainResourceId;
-            securityProfile.MsiResourceId = assignedIdentity;
+
+            foreach(var item in azureHDInsightSecurityProfile.ClusterUsersGroupDNs)
+            {
+                securityProfile.ClusterUsersGroupDNs.Add(item);
+            }
+
+            if(azureHDInsightSecurityProfile.DomainResourceId != null)
+            {
+                securityProfile.AaddsResourceId = new ResourceIdentifier(azureHDInsightSecurityProfile.DomainResourceId);
+            }
+
+            if(assignedIdentity != null)
+            {
+                securityProfile.MsiResourceId = new ResourceIdentifier(assignedIdentity);
+            }
 
             return securityProfile;
         }
 
-        private static List<ScriptAction> GetScriptActionsForRoleType(Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, ClusterNodeType nodeType)
+        private static List<ScriptAction> GetScriptActionsForRoleType(Dictionary<RuntimeScriptActionClusterNodeType, List<ScriptAction>> clusterScriptActions, RuntimeScriptActionClusterNodeType nodeType)
         {
             if (clusterScriptActions == null) return null;
             List<ScriptAction> scriptActions;
@@ -419,7 +437,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return config;
         }
 
-        public static bool CheckEnableKafkaRestProxy(NetworkProperties networkProperties)
+        public static bool CheckEnableKafkaRestProxy(HDInsightClusterNetworkProperties networkProperties)
         {
             return networkProperties != null;
         }

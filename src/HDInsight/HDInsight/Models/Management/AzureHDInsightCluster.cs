@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var clusterSecurityProfile = cluster.Properties.SecurityProfile;
             SecurityProfile = clusterSecurityProfile != null ? new AzureHDInsightSecurityProfile()
             {
-                DomainResourceId = clusterSecurityProfile.AaddsResourceId,
+                DomainResourceId = clusterSecurityProfile.AaddsResourceId.ToString(),
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
                 OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
-                LdapsUrls = clusterSecurityProfile.LdapUris != null ? clusterSecurityProfile.LdapUris.Select(uri => uri.ToString()).ToArray() : null,
+                LdapsUrls = clusterSecurityProfile.LdapUris != null ? clusterSecurityProfile.LdapUris.Select(uri => uri.OriginalString).ToArray() : null,
                 ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;
 

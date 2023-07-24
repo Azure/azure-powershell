@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            var rotateParams = new ClusterDiskEncryptionParameters
+            var rotateParams = new HDInsightClusterDiskEncryptionContent
             {
                 KeyName = EncryptionKeyName,
                 KeyVersion = EncryptionKeyVersion,
-                VaultUri = EncryptionVaultUri
+                VaultUri = new System.Uri(EncryptionVaultUri)
             };
 
             HDInsightManagementClient.RotateDiskEncryptionKey(ResourceGroupName, Name, rotateParams);

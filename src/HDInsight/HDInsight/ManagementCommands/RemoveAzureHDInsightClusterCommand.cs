@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
+            HDInsightManagementClient.DeleteClusterAsync(ResourceGroupName, ClusterName);
 
             if (this.PassThru.IsPresent)
             {
