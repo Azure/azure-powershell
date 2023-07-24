@@ -1,12 +1,10 @@
 {
-  "AadTenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-  "SubscriptionId": "ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb",
-  "ClusterName": "pwsh-Clusterqvip",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "ClusterName": "pwsh-Clustert4l0",
+  "Tenant": "c76bd4d1-bea3-45ea-be1b-4a745a675d07",
+  "ExtensionPublisher": "Microsoft.EnterpriseCloud.Monitoring",
   "ArcSettingName": "default",
-  "ResourceGroup": "azurestackhci-pwsh-rg-h2",
-  "AadClientId": "0f3bfc4e-a233-4570-9b77-2a1dd759cc9b",
+  "SubscriptionId": "680d0dad-59aa-4464-adf3-b34b2b427e8c",
+  "ResourceGroup": "azurestackhci-pwsh-rg-jh",
   "ExtensionName": "MicrosoftMonitoringAgent",
-  "Location": "eastus",
-  "ExtensionPublisher": "Microsoft.EnterpriseCloud.Monitoring"
+  "Location": "eastus"
 }

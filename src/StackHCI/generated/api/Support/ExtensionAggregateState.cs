@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
     public partial struct ExtensionAggregateState :
         System.IEquatable<ExtensionAggregateState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Accepted = @"Accepted";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Canceled = @"Canceled";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Connected = @"Connected";
@@ -36,9 +38,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState PartiallySucceeded = @"PartiallySucceeded";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Provisioning = @"Provisioning";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Succeeded = @"Succeeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState Updating = @"Updating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ExtensionAggregateState UpgradeFailedRollbackSucceeded = @"UpgradeFailedRollbackSucceeded";
 
         /// <summary>the value for an instance of the <see cref="ExtensionAggregateState" /> Enum.</summary>
         private string _value { get; set; }

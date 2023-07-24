@@ -4,7 +4,7 @@ Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSe
 ```
 
 ```output
-Name                     ResourceGroupName
+Name                     Resource Group
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```
