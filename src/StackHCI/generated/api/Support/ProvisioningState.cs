@@ -14,11 +14,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Canceled = @"Canceled";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Connected = @"Connected";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Creating = @"Creating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Deleted = @"Deleted";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Deleting = @"Deleting";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState DisableInProgress = @"DisableInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Disconnected = @"Disconnected";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Error = @"Error";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Failed = @"Failed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState InProgress = @"InProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Moving = @"Moving";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState NotSpecified = @"NotSpecified";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState PartiallyConnected = @"PartiallyConnected";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState PartiallySucceeded = @"PartiallySucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Provisioning = @"Provisioning";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Succeeded = @"Succeeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ProvisioningState Updating = @"Updating";
 
         /// <summary>the value for an instance of the <see cref="ProvisioningState" /> Enum.</summary>
         private string _value { get; set; }

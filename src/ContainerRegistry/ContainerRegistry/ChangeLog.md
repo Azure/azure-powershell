@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.33.0.
+* Added new cmdlet `New-AzContainerRegistryCredentials`
 
 ## Version 4.0.0
 * Updated module to autorest based

@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Updated to api-version 2023-03-01.
+* Cmdlets added:
+    - Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit : Enable Software Assurance for a cluster
+    - Invoke-AzStackHciConsentAndInstallDefaultExtensions : Consent to installing default extensions on the cluster
 ## Version 2.0.0
 * Made Region parameter mandatory in `Register-AzStackHCI` cmdlet.
 * Removed EnableAzureArcServer parameter from `Register-AzStackHCI` cmdlet.
