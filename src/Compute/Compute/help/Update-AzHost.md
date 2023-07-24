@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzHost
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates the Dedicated Host.
 
 ## SYNTAX
 
@@ -26,21 +26,36 @@ Update-AzHost [-Sku <String>] [-AutoReplaceOnFailure <Boolean>] [-LicenseType <D
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet can be used to update the Dedicated Host Sku, LicenseType and AutoReplaceOnFailure property.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Update-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Sku $skuName
 ```
 
-{{ Add example description here }}
+```output
+ResourceGroupName    : myrg01
+PlatformFaultDomain  : 0
+AutoReplaceOnFailure : True
+HostId               : 00000000-0000-0000-0000-000000000000
+ProvisioningTime     : 7/25/2019 8:34:16 PM
+ProvisioningState    : Succeeded
+Sku                  : 
+  Name               : ESv3-Type1
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01/hosts/myhost01
+Name                 : myhost01
+Location             : eastus
+Tags                 : {"key1":"val2"}
+```
+
+This command updates the given Sku of a host.
 
 ## PARAMETERS
 
 ### -AutoReplaceOnFailure
-{{ Fill AutoReplaceOnFailure Description }}
+Specifies whether the host should be replaced automatically in case of a failure. 
 
 ```yaml
 Type: Boolean
@@ -70,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostGroupName
-{{ Fill HostGroupName Description }}
+Name of the Host Group.
 
 ```yaml
 Type: String
@@ -85,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-{{ Fill LicenseType Description }}
+Specifies the software license type that will be applied to the VMs deployed on the host. Possible values are: None, Windows_Server_Hybrid, and Windows_Server_Perpetual.  Default value is None.
 
 ```yaml
 Type: DedicatedHostLicenseTypes
@@ -101,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Specifies the name of the Host to be updated.
 
 ```yaml
 Type: String
@@ -116,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+The name of the resource group.
 
 ```yaml
 Type: String
@@ -131,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Resource Id of the Host to be updated.
 
 ```yaml
 Type: String

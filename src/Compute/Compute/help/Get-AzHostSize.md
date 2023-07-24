@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzHostSize
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get List of possible Host Sizes.
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Get-AzHostSize [-ResourceGroupName] <String> [-HostGroupName] <String> [[-HostNa
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get List of possible Host Sizes.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzHostSize -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -HostName $hostName
 ```
 
-{{ Add example description here }}
+```output
+Dsv3-Type1
+```
+
+This command return the possible host sizes.
 
 ## PARAMETERS
 
@@ -47,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostGroupName
-{{ Fill HostGroupName Description }}
+The name of the Host Group.
 
 ```yaml
 Type: String
@@ -62,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostName
-{{ Fill HostName Description }}
+The name of the Dedicated Host.
 
 ```yaml
 Type: String
@@ -77,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Name of Resource Group.
 
 ```yaml
 Type: String
