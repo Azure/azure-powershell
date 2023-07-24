@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppConfiguration", "AppConf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfiguration", "AppConfiguration.Autorest\Az.AppConfiguration.csproj", "{7471E985-C6E7-4E56-92ED-A6D6FEB74A41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AppConfigurationdata", "AppConfigurationData.Autorest\Az.AppConfigurationdata.csproj", "{3621FCB1-7EA6-4E7A-A709-D404C5FDE389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{7471E985-C6E7-4E56-92ED-A6D6FEB74A41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7471E985-C6E7-4E56-92ED-A6D6FEB74A41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7471E985-C6E7-4E56-92ED-A6D6FEB74A41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3621FCB1-7EA6-4E7A-A709-D404C5FDE389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3621FCB1-7EA6-4E7A-A709-D404C5FDE389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3621FCB1-7EA6-4E7A-A709-D404C5FDE389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3621FCB1-7EA6-4E7A-A709-D404C5FDE389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
