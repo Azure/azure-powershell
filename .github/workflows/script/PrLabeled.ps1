@@ -7,8 +7,20 @@ param(
 Write-Host "Processing PR $PrUrl with label $LabelName"
 
 $CommentDict = @{
-    "Breaking Change Release" = "Azure PowerShell breaking change policy, please refer to [Breaking Change Definition](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-definition)"
-    "Breaking Change - attribute" = "Please check, the attribute is missing in the breaking change or the attribute setting is incorrect, please refer to [Breaking Changes Attribute Help](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-attribute-help)"
+    "DO NOT SQUASH" = @"
+‼️ Please merge this PR with commits! You can enable this option in the setting page.
+‼️ Remember close that option after merging this PR!
+"@
+    "Breaking Change Release" = @"
+To PR author,
+This PR was labeled "Breaking Change Release" because it contains breaking changes.
+According to our [policy](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-policy), breaking changes can only take place during major release and must be preannounced.
+Please follow our [guide](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-progress) on the detailed steps.
+"@
+    "needs-revision" = @"
+This PR was labeled "needs-revision" because it has unresolved review comments or CI failures.
+Please resolve all open review comments and make sure all CI checks are green. Refer to our guide (link TBD) to troubleshoot common CI failures.
+"@
 }
 
 
