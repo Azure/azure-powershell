@@ -17,7 +17,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-ConflictPolicy <String>] [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>]
  [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
  [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
- [-PersistentVolumeRestoreMode <String>] [<CommonParameters>]
+ [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,7 +169,7 @@ Namespaces mapping from source namespaces to target namespaces to resolve namesp
 To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -186,6 +187,22 @@ Default value is RestoreWithVolumeData
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreHookReference
+Hook reference to be executed during restore.
+To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -216,6 +233,10 @@ To create the parameters described below, construct a hash table containing the 
 
 `NAMESPACEMAPPING <KubernetesClusterRestoreCriteriaNamespaceMappings>`: Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`RESTOREHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during restore.
+  - `[Name <String>]`: Name of the resource
+  - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS
 

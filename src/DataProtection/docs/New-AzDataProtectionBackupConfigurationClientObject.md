@@ -14,10 +14,11 @@ Creates new backup configuration object
 
 ```
 New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
- [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>] [-IncludeAllContainer]
- [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
- [-LabelSelector <String[]>] [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>]
- [-StorageAccountResourceGroupName <String>] [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
+ [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
+ [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
+ [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
+ [-VaultedBackupContainer <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +55,22 @@ BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
 This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
 
 ## PARAMETERS
+
+### -BackupHookReference
+Hook reference to be executed during backup.
+To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatasourceType
 Datasource Type
@@ -253,6 +270,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BACKUPHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during backup.
+  - `[Name <String>]`: Name of the resource
+  - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS
 

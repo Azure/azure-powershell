@@ -149,7 +149,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -302,7 +302,7 @@ Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteria
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -459,7 +459,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
 
 ## NOTES
 
@@ -477,6 +477,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
+      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
       - `[Type <String>]`: DatasourceType of the resource.
@@ -495,11 +496,15 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
+      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+    - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+      - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
+      - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
     - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
@@ -516,6 +521,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]`: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]`: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
+  - `[RestoreHookReference <INamespacedNameResource[]>]`: Gets or sets the restore hook references. This property sets the hook reference to be executed during restore.
+    - `[Name <String>]`: Name of the resource
+    - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS
 

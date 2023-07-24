@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The IdentityType to be added to the resource guard, example: SystemAssigned, None
+This parameter is no longer in use and will be depricated
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardResource
 
 ## NOTES
 

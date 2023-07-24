@@ -53,6 +53,12 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 ### [Get-AzDataProtectionResourceGuard](Get-AzDataProtectionResourceGuard.md)
 Returns a ResourceGuard belonging to a resource group.
 
+### [Get-AzDataProtectionResourceGuardMapping](Get-AzDataProtectionResourceGuardMapping.md)
+Returns the ResourceGuardProxy object associated with the vault, and that matches the name in the request
+
+### [Get-AzDataProtectionSoftDeletedBackupInstance](Get-AzDataProtectionSoftDeletedBackupInstance.md)
+Gets a deleted backup instance with name in a backup vault
+
 ### [Initialize-AzDataProtectionBackupInstance](Initialize-AzDataProtectionBackupInstance.md)
 Initializes Backup instance Request object for configuring backup
 
@@ -83,6 +89,9 @@ Creates new Schedule object
 ### [New-AzDataProtectionResourceGuard](New-AzDataProtectionResourceGuard.md)
 Creates a resource guard under a resource group
 
+### [New-AzDataProtectionResourceGuardMapping](New-AzDataProtectionResourceGuardMapping.md)
+Creates or Updates a ResourceGuardProxy
+
 ### [New-AzDataProtectionRestoreConfigurationClientObject](New-AzDataProtectionRestoreConfigurationClientObject.md)
 Creates new restore configuration object
 
@@ -100,6 +109,9 @@ Deletes a BackupVault resource from the resource group.
 
 ### [Remove-AzDataProtectionResourceGuard](Remove-AzDataProtectionResourceGuard.md)
 Deletes a ResourceGuard resource from the resource group.
+
+### [Remove-AzDataProtectionResourceGuardMapping](Remove-AzDataProtectionResourceGuardMapping.md)
+Deletes the ResourceGuardProxy
 
 ### [Resume-AzDataProtectionBackupInstanceProtection](Resume-AzDataProtectionBackupInstanceProtection.md)
 This operation will resume protection for a stopped backup instance
@@ -130,6 +142,12 @@ Validate whether adhoc backup will be successful or not
 
 ### [Test-AzDataProtectionBackupInstanceRestore](Test-AzDataProtectionBackupInstanceRestore.md)
 Validates if Restore can be triggered for a DataSource
+
+### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
+
+
+### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
+Unlocks the critical operation which is protected by the resource guard
 
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance

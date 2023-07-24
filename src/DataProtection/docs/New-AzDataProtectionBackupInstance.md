@@ -147,7 +147,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource
 Parameter Sets: (All)
 Aliases:
 
@@ -304,6 +304,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
+      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
       - `[Type <String>]`: DatasourceType of the resource.
@@ -322,11 +323,15 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
+      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+    - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+      - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
+      - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
     - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS

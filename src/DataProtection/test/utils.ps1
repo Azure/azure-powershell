@@ -61,6 +61,14 @@ function setupEnv() {
         BackupRuleName = "BackupHourly"
     }
 
+    $SoftDeleteVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "pstest-diskrg"
+        VaultName = "pstest-disk-vault2"
+        DiskId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk2"
+        BackupRuleName = "BackupDaily"
+    }
+
     $BlobsRestoreVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "BlobBackup-BugBash"
@@ -144,6 +152,12 @@ function setupEnv() {
         TargetCrossSubStorageAccountRGName = "hiagaTestRG"
     }
 
+    $BackupConfigVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        StorageAccountResourceGroup = "blob-pstest-rg"
+        StorageAccountName = "blobpstestsa"
+    }
+
     $CrossSubscriptionRestoreVariables = @{
         ResourceGroupName = "CSRTestRg"
         VaultName = "CSRPortalTestVault"
@@ -151,6 +165,17 @@ function setupEnv() {
         TargetContainerArmId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/akneemasaecy/blobServices/default/containers/oss-csr-container"
         TargetContainerURI =  "https://akneemasaecy.blob.core.windows.net/oss-csr-container"
         FileNamePrefix = "oss-csr-pstest-restoreasfiles"
+    }
+
+    $MUAVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "hiagarg"
+        VaultName = "mua-pstest-backupvault" # "mua-pstest-vault-eacan"
+        Location = "centraluseuap" #"eastasia"
+        ResourceGuardName = "mua-pstest-dpp-ccy-resguard"
+        ResourceGuardRGName = "hiaga-rg"
+        ResourceGuardSubscription = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        BackupInstanceName = "alrpstestvm-datadisk-000-20220808-115835" # "eacan-pstest-disk"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -166,6 +191,9 @@ function setupEnv() {
     $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
+    $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
+    $env.add("TestBackupConfig", $BackupConfigVariables) | Out-Null
+    $env.add("TestMUA", $MUAVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

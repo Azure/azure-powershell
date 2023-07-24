@@ -106,9 +106,9 @@ Describe 'New-AzDataProtectionBackupInstance' {
 
         # restore
         if($rps -ne $null){
-            $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData  -IncludeClusterScopeResource $true # -NamespaceMapping  @{"default"="restore-default";"ns1"="ns2"}
+            $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData  -IncludeClusterScopeResource $true # -NamespaceMapping  @{"default"="restore-default";"ns1"="ns2"}
 
-            $aksRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService  -SourceDataStore OperationalStore -RestoreLocation $dataSourceLocation -RestoreType OriginalLocation -RecoveryPoint $rps[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -BackupInstance $backupInstance 
+            $aksRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService  -SourceDataStore OperationalStore -RestoreLocation $dataSourceLocation -RestoreType OriginalLocation -RecoveryPoint $rps[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -BackupInstance $backupInstance
 
             # Set-AzDataProtectionMSIPermission -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $aksRestoreRequest -SnapshotResourceGroupId $snapshotResourceGroupId
 
