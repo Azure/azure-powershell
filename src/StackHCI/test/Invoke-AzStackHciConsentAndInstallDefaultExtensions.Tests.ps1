@@ -15,11 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzStackHciConsentAndIn
 }
 
 Describe 'Invoke-AzStackHciConsentAndInstallDefaultExtensions' {
-    It 'And' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'AndViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'And' {
+        $job = Invoke-AzStackHciConsentAndInstallDefaultExtensions -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup  
+        $job.DefaultExtension | Should -Not -BeNullOrEmpty
     }
 }

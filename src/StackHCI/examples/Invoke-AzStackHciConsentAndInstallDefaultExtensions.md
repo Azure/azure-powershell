@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciConsentAndInstallDefaultExtensions -ResourceGroupName "test-rg" -ClusterName "test-clus"
 ```
 
 ```output
-{{ Add output here }}
+Resource Group AggregateState
+-------------- --------------
+test-rg  Connected
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Consent for installation of default extensions. ArcSettings resource is returned. 
 

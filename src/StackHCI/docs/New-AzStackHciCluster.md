@@ -48,9 +48,9 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 ```
 
 ```output
-Location   Name       ResourceGroupName
---------   ----       -----------------
-westeurope myCluster2 test-rg
+Location    Name      Resource Group
+--------    ----      -----------------
+westeurope  myCluster test-rg
 ```
 
 This command creates a Stack HCI cluster with DiagnosticLevel = "Off" and WindowsServerSubscription = "Enabled".
@@ -134,7 +134,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

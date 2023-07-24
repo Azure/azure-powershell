@@ -15,19 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzStackHciExtendCluste
 }
 
 Describe 'Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit' {
-    It 'ExtendExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Extend' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ExtendViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ExtendViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    #need actual machine to execute this test 
+    It 'Extend' -Skip {
+        Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroup -SoftwareAssuranceIntent "Enable" 
     }
 }

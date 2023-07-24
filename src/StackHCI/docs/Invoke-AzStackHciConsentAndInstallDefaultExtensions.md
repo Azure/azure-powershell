@@ -14,9 +14,8 @@ Add consent time for default extensions and initiate extensions installation
 
 ### And (Default)
 ```
-Invoke-AzStackHciConsentAndInstallDefaultExtensions -ArcSettingName <String> -ClusterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzStackHciConsentAndInstallDefaultExtensions -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AndViaIdentity
@@ -30,44 +29,22 @@ Add consent time for default extensions and initiate extensions installation
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciConsentAndInstallDefaultExtensions -ResourceGroupName "test-rg" -ClusterName "test-clus"
 ```
 
 ```output
-{{ Add output here }}
+Resource Group AggregateState
+-------------- --------------
+test-rg  Connected
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Consent for installation of default extensions.
+ArcSettings resource is returned.
 
 ## PARAMETERS
-
-### -ArcSettingName
-The name of the proxy resource holding details of HCI ArcSetting information.
-
-```yaml
-Type: System.String
-Parameter Sets: And
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClusterName
 The name of the cluster.
@@ -85,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -197,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStackHciIdentity>: Identity Parameter
+`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
   - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
   - `[ClusterName <String>]`: The name of the cluster.
   - `[ExtensionName <String>]`: The name of the machine extension.

@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg"
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Enable Software Assurance on a cluster, by default the intent is "enable". 
 
-### Example 2: {{ Add title here }}
+### Example 2: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable Software Assurance on a cluster. 
+
 

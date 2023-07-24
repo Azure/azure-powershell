@@ -45,27 +45,19 @@ Extends Software Assurance Benefit to a cluster
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg"
 ```
 
-```output
-{{ Add output here }}
-```
+Enable Software Assurance on a cluster, by default the intent is "enable".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: 
 ```powershell
-{{ Add code here }}
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Disable Software Assurance on a cluster.
 
 ## PARAMETERS
 
@@ -100,7 +92,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -187,7 +180,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "Enable"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -260,7 +253,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStackHciIdentity>: Identity Parameter
+`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
   - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
   - `[ClusterName <String>]`: The name of the cluster.
   - `[ExtensionName <String>]`: The name of the machine extension.
@@ -268,7 +261,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>: .
+`SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>`: .
   - `[SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]`: Customer Intent for Software Assurance Benefit.
 
 ## RELATED LINKS

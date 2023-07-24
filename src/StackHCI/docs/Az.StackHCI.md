@@ -44,9 +44,6 @@ Gets Remote Support Session History Details.
 ### [Get-AzStackHCIVMAttestation](Get-AzStackHCIVMAttestation.md)
 Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on a node.
 
-### [Initialize-AzStackHciArcSettingDisableProcess](Initialize-AzStackHciArcSettingDisableProcess.md)
-Initializes ARC Disable process on the cluster
-
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
 

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the StackHci service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -66,6 +66,7 @@ inlining-threshold: 50
 resourcegroup-append: true 
 
 directive:
+  # Rename function
   - where:
       verb: Invoke
       subject: AndArcSetting
@@ -114,6 +115,27 @@ directive:
     set:
       default:
         script: '"default"'
+  - where:
+      verb: Invoke
+      subject: ConsentAndInstallDefaultExtensions
+      parameter-name: ArcSettingName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Set Enable by default 
+  - where:
+      verb: Invoke
+      subject: ExtendClusterSoftwareAssuranceBenefit
+      parameter-name: SoftwareAssuranceIntent
+    set:
+      default:
+        script: '"Enable"'
+  # Remove Initialize-AzStackHCIArcSettingDisableProcess
+  - where:
+      verb: Initialize
+      subject: ArcSettingDisableProcess
+    remove: true 
   # Update ExtensionParameters.settings
   - from: swagger-document
     where: $.definitions.ExtensionParameters.properties.settings
@@ -122,4 +144,33 @@ directive:
   - from: swagger-document
     where: $.definitions.ExtensionParameters.properties.protectedSettings
     transform: $["additionalProperties"] = true
+  # format tables for models 
+  - where:
+      model-name: Cluster
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+        labels:
+          ResourceGroupName: Resource Group
+  - where:
+      model-name: ArcSetting
+    set:
+      format-table:
+        properties:
+          - ResourceGroupName
+          - AggregateState
+        labels:
+          ResourceGroupName: Resource Group
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+        labels:
+          ResourceGroupName: Resource Group
 ```
