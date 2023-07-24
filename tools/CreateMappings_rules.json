@@ -835,5 +835,9 @@
   {
     "module": "GraphServices",
     "alias": "GraphServices"
+  },
+  {
+    "module": "Alb",
+    "alias": "Alb"
   }
 ]
