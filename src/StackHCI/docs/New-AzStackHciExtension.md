@@ -15,10 +15,11 @@ Create Extension for HCI cluster.
 ```
 New-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ExtensionParameterAutoUpgradeMinorVersion]
- [-ExtensionParameterForceUpdateTag <String>] [-ExtensionParameterProtectedSetting <Hashtable>]
- [-ExtensionParameterPublisher <String>] [-ExtensionParameterSetting <Hashtable>]
- [-ExtensionParameterType <String>] [-ExtensionParameterTypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExtensionParameterEnableAutomaticUpgrade] [-ExtensionParameterForceUpdateTag <String>]
+ [-ExtensionParameterProtectedSetting <Hashtable>] [-ExtensionParameterPublisher <String>]
+ [-ExtensionParameterSetting <Hashtable>] [-ExtensionParameterType <String>]
+ [-ExtensionParameterTypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name                     ResourceGroupName
+Name                     Resource Group
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```
@@ -46,7 +47,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name                     ResourceGroupName
+Name                     Resource Group
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```
@@ -119,6 +120,21 @@ Accept wildcard characters: False
 ### -ExtensionParameterAutoUpgradeMinorVersion
 Indicates whether the extension should use a newer minor version if one is available at deployment time.
 Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtensionParameterEnableAutomaticUpgrade
+Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -209,6 +225,7 @@ Accept wildcard characters: False
 
 ### -ExtensionParameterTypeHandlerVersion
 Specifies the version of the script handler.
+Latest version would be used if not specified.
 
 ```yaml
 Type: System.String
@@ -321,7 +338,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 
 ## NOTES
 

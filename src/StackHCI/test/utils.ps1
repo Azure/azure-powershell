@@ -21,10 +21,9 @@ function setupEnv() {
     $aadTenantId = (Get-AzContext).Tenant.Id
     $env.Tenant = $aadTenantId
     $resourceGroup = 'azurestackhci-pwsh-rg-' + (RandomString -allChars $false -len 2)
-    New-AzResourceGroup -Name $resourceGroup -Location eastus
+    New-AzResourceGroup -Name $resourceGroup -SubscriptionId $subscriptionId -Location eastus
     Write-Host -ForegroundColor Green "Resource Group Created" $resourceGroup
 
-    $aadClientId = [guid]::NewGuid()
     $resourceLocation = "eastus"
     $clusterName = "pwsh-Cluster" + (RandomString -allChars $false -len 4)
     $arcSettingName = "default"
@@ -33,20 +32,18 @@ function setupEnv() {
 
     $env.Add("ResourceGroup", $resourceGroup)
     $env.Add("ClusterName", $clusterName)
-    $env.Add("AadClientId", $aadClientId)
-    $env.Add("AadTenantId", $aadTenantId)
     $env.Add("Location", $resourceLocation)
     $env.Add("ArcSettingName", $arcSettingName)
     $env.Add("ExtensionName", $extensionName)
     $env.Add("ExtensionPublisher", $extensionPublisher)
 
-    $cluster = New-AzStackHciCluster -Name $clusterName -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    $cluster = New-AzStackHciCluster -Name $clusterName -ResourceGroupName $resourceGroup -Location $resourceLocation
     Write-Host -ForegroundColor Green "Cluster Created" $cluster.Name
 
-    $clusterremove = New-AzStackHciCluster -Name "$($clusterName)-remove" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    $clusterremove = New-AzStackHciCluster -Name "$($clusterName)-remove" -ResourceGroupName $resourceGroup -Location $resourceLocation
     Write-Host -ForegroundColor Green "Cluster Created" $clusterremove.Name
 
-    $clusterremove2 = New-AzStackHciCluster -Name "$($clusterName)-remove2" -ResourceGroupName $resourceGroup -AadTenantId $aadTenantId -AadClientId $aadClientId -Location $resourceLocation
+    $clusterremove2 = New-AzStackHciCluster -Name "$($clusterName)-remove2" -ResourceGroupName $resourceGroup -Location $resourceLocation
     Write-Host -ForegroundColor Green "Cluster Created" $clusterremove2.Name
 
     $arcSetting = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName $clusterName
@@ -55,7 +52,7 @@ function setupEnv() {
     $arcSetting2 = New-AzStackHciArcSetting -ResourceGroupName $resourceGroup -ClusterName "$($clusterName)-remove2"
     Write-Host -ForegroundColor Green "ArcSetting Created" $arcSetting2.Name
 
-    $extension = New-AzStackHciExtension -ArcSettingName $arcSetting.Name -ClusterName $cluster.Name -Name $extensionName -ResourceGroupName $resourceGroup -ExtensionParameterPublisher $extensionPublisher
+    $extension = New-AzStackHciExtension -ArcSettingName $arcSetting.Name -ClusterName $cluster.Name -Name $extensionName -ResourceGroupName $resourceGroup -ExtensionParameterPublisher $extensionPublisher -ExtensionParameterType $extensionName
     Write-Host -ForegroundColor Green "Extension Created" $extension.Name
 
     # For any resources you created for test, you should add it to $env here.
@@ -67,7 +64,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Write-Host -ForegroundColor Green "Cleaning up " $env.ResourceGroup
-    Remove-AzResourceGroup -Name $env.ResourceGroup
+    Write-Host -ForegroundColor Green "Cleaning up " $resourceGroup
+    Remove-AzResourceGroup -Name $resourceGroup
 }
 
