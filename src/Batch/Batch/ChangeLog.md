@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 4.1.0
+
 * Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
 
 * deprecated cmdlets: `Get-AzBatchCertificate` and `New-AzBatchCertificate`
