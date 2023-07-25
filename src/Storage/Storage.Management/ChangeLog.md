@@ -33,6 +33,8 @@
     - `Close-AzStorageFileHandle`
 * Supported get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
     - `Get-AzStorageShare`
+* Updated Azure.Core to 1.33.0.
+
 
 ## Version 5.8.0
 * Supported TierToCold and TierToHot in Storage account management policy
