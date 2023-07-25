@@ -33,7 +33,6 @@ Deletes the virtual network rule with the given name.
 ### Example 1: Remove PostgreSql server Virtual Network Rule by name
 ```powershell
 Remove-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql server Virtual Network Rule by name.
@@ -42,7 +41,6 @@ This cmdlet removes PostgreSql server Virtual Network Rule by name.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
 Remove-AzPostgreSqlVirtualNetworkRule -InputObject $ID
-
 ```
 
 These cmdlets remove PostgreSql server Virtual Network Rule by identity.
@@ -65,7 +63,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,7 +236,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
+`INPUTOBJECT <IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

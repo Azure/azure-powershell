@@ -32,7 +32,6 @@ Deletes a server.
 ### Example 1: Remove PostgreSql server by resourceGroup and server name
 ```powershell
 Remove-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
-
 ```
 
 This cmdlet removes PostgreSql server by resourceGroup and server name.
@@ -41,7 +40,6 @@ This cmdlet removes PostgreSql server by resourceGroup and server name.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer"
 Remove-AzPostgreSqlServer -InputObject $ID
-
 ```
 
 These cmdlets remove PostgreSql server by identity.
@@ -64,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -221,7 +220,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
+`INPUTOBJECT <IPostgreSqlIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
