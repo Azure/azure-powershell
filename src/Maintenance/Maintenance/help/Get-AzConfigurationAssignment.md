@@ -13,10 +13,9 @@ List configurationAssignments for resource.
 ## SYNTAX
 
 ```
-Get-AzConfigurationAssignment [[-ResourceGroupName] <String>] [[-ProviderName] <String>]
- [-ResourceParentType <String>] [-ResourceParentName <String>] [[-ResourceType] <String>]
- [[-ResourceName] <String>] [[-ConfigurationAssignmentName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
+ [-ResourceParentType <String>] [-ResourceParentName <String>] [-ResourceType] <String>
+ [-ResourceName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,21 +40,6 @@ List configurationAssignments for dedicated host.
 
 ## PARAMETERS
 
-### -ConfigurationAssignmentName
-The configuration assignment name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -79,7 +63,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -94,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -109,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -154,7 +138,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)

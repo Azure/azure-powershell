@@ -13,12 +13,11 @@ Register configuration for resource.
 ## SYNTAX
 
 ```
-New-AzConfigurationAssignment [[-ResourceGroupName] <String>] [[-ProviderName] <String>]
- [-ResourceParentType <String>] [-ResourceParentName <String>] [[-ResourceType] <String>]
- [[-ResourceName] <String>] -ConfigurationAssignmentName <String> [-ResourceId <String>] [-Location <String>]
- -MaintenanceConfigurationId <String> [-FilterResourceType <String[]>] [-FilterLocation <String[]>]
- [-FilterTag <String>] [-FilterOperator <String>] [-FilterOsType <String[]>] [-FilterResourceGroup <String[]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
+ [-ResourceParentType <String>] [-ResourceParentName <String>] [-ResourceType] <String>
+ [-ResourceName] <String> -ConfigurationAssignmentName <String> [-ResourceId <String>] -Location <String>
+ -MaintenanceConfigurationId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,96 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FilterLocation
-Allowed locations for dynamic scope.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterOperator
-Tag filter operator for dynamic scope.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterOsType
-Operating system type for dynamic scope.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterResourceGroup
-Operating system type for dynamic scope.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterResourceType
-Allowed resource types for dynamic scope.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilterTag
-Allowed resource types for dynamic scope.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The location without spaces for the resource.
 
@@ -188,7 +97,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -218,7 +127,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -233,7 +142,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -263,7 +172,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -308,7 +217,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
