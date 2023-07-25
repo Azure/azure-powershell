@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using Microsoft.Azure.Management.CosmosDB.Models;
-    using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models;
 
     public class PSSqlContainerGetPropertiesResource 
     {
