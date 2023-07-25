@@ -10,8 +10,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
     public partial struct NodeExtensionState :
         System.IEquatable<NodeExtensionState>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Accepted = @"Accepted";
-
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Canceled = @"Canceled";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Connected = @"Connected";
@@ -28,17 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Failed = @"Failed";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState InProgress = @"InProgress";
-
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Moving = @"Moving";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState NotSpecified = @"NotSpecified";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState PartiallyConnected = @"PartiallyConnected";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState PartiallySucceeded = @"PartiallySucceeded";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Provisioning = @"Provisioning";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeExtensionState Succeeded = @"Succeeded";
 

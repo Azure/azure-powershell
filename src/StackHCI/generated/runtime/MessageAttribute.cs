@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
 
         //The version the change is effective from, non mandatory
         public string DeprecateByVersion { get; }
-        public string DeprecateByAzVersion { get; }
+        public bool DeprecateByVersionSet { get; } = false;
 
         //The date on which the change comes in effect
         public DateTime ChangeInEfectByDate { get; }
@@ -32,18 +32,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
         //New way fo calling the cmdlet
         public string NewWay { get; set; }
 
-        public GenericBreakingChangeAttribute(string message, string deprecateByAzVersion, string deprecateByVersion)
+        public GenericBreakingChangeAttribute(string message)
         {
             _message = message;
-            this.DeprecateByAzVersion = deprecateByAzVersion;
-            this.DeprecateByVersion = deprecateByVersion;
         }
 
-        public GenericBreakingChangeAttribute(string message, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate)
+        public GenericBreakingChangeAttribute(string message, string deprecateByVersion)
         {
             _message = message;
             this.DeprecateByVersion = deprecateByVersion;
-            this.DeprecateByAzVersion = deprecateByAzVersion;
+            this.DeprecateByVersionSet = true;
+        }
+
+        public GenericBreakingChangeAttribute(string message, string deprecateByVersion, string changeInEfectByDate)
+        {
+            _message = message;
+            this.DeprecateByVersion = deprecateByVersion;
+            this.DeprecateByVersionSet = true;
 
             if (DateTime.TryParse(changeInEfectByDate, new CultureInfo("en-US"), DateTimeStyles.None, out DateTime result))
             {
@@ -81,8 +86,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
                 writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate.ToString("d")));
             }
 
-            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByAzVersion, this.DeprecateByAzVersion));
-            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
+            if (DeprecateByVersionSet)
+            {
+                writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
+            }
 
             if (OldWay != null && NewWay != null)
             {
@@ -107,13 +114,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
 
         public string ReplacementCmdletName { get; set; }
 
-        public CmdletBreakingChangeAttribute(string deprecateByAzVersion, string deprecateByVersion) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
+        public CmdletBreakingChangeAttribute() :
+            base(string.Empty)
         {
         }
 
-        public CmdletBreakingChangeAttribute(string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
+        public CmdletBreakingChangeAttribute(string deprecateByVersione) :
+             base(string.Empty, deprecateByVersione)
+        {
+        }
+
+        public CmdletBreakingChangeAttribute(string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
         }
 
@@ -134,15 +146,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
     public class ParameterSetBreakingChangeAttribute : GenericBreakingChangeAttribute
     {
         public string[] ChangedParameterSet { set; get; }
-
-        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByAzVersion, string deprecateByVersion) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
+        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet) :
+            base(string.Empty)
         {
             ChangedParameterSet = changedParameterSet;
         }
 
-        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
+        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByVersione) :
+             base(string.Empty, deprecateByVersione)
+        {
+            ChangedParameterSet = changedParameterSet;
+        }
+
+        public ParameterSetBreakingChangeAttribute(string[] changedParameterSet, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
             ChangedParameterSet = changedParameterSet;
         }
@@ -202,14 +219,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
 
         public String NewParameterType { get; set; }
 
-        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByAzVersion, string deprecateByVersion) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
+        public ParameterBreakingChangeAttribute(string nameOfParameterChanging) :
+            base(string.Empty)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
-        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
+        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion) :
+             base(string.Empty, deprecateByVersion)
+        {
+            this.NameOfParameterChanging = nameOfParameterChanging;
+        }
+
+        public ParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
@@ -275,14 +298,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime
 
         public string[] NewOutputProperties { get; set; }
 
-        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByAzVersion, string deprecateByVersion) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion)
+        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType) :
+            base(string.Empty)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
         }
 
-        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByAzVersion, string deprecateByVersion, string changeInEfectByDate) :
-             base(string.Empty, deprecateByAzVersion, deprecateByVersion, changeInEfectByDate)
+        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByVersion) :
+             base(string.Empty, deprecateByVersion)
+        {
+            this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
+        }
+
+        public OutputBreakingChangeAttribute(string deprecatedCmdletOutputType, string deprecateByVersion, string changeInEfectByDate) :
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputType;
         }

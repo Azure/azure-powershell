@@ -4,7 +4,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name                     Resource Group
+Name                     ResourceGroupName
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```
@@ -18,7 +18,7 @@ New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name
 ```
 
 ```output
-Name                     Resource Group
+Name                     ResourceGroupName
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```

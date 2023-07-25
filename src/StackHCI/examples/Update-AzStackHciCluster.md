@@ -4,7 +4,7 @@ Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPro
 ```
 
 ```output
-Location Name       Resource Group
+Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   myCluster3 test-rg
 ```
