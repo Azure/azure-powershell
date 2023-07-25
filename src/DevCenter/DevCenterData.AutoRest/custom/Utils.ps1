@@ -74,7 +74,7 @@ function GetDelayedActionTimeFromAllActions {
     ) 
 
     process {
-        $action = Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ProjectName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ProjectName `
             $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $excludedDate = [DateTime]::ParseExact("0001-01-01T00:00:00.0000000", "yyyy-MM-ddTHH:mm:ss.fffffff", $null)
@@ -117,7 +117,7 @@ function GetDelayedActionTimeFromActionName {
     ) 
 
     process {
-        $action = Az.DevCenterdata.internal\Get-AzDevCenterDevDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
             -ProjectName $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
 

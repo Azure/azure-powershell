@@ -193,14 +193,14 @@ function setupEnv() {
     $env.Add("functionAppName12", $functionAppName12)
     $env.Add("functionAppName13", $functionAppName13)
 
-    New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
-    New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete3 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envNameToDelete4 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete3 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete4 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
