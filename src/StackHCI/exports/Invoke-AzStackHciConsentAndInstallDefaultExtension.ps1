@@ -20,7 +20,7 @@ Add consent time for default extensions and initiate extensions installation
 .Description
 Add consent time for default extensions and initiate extensions installation
 .Example
-Invoke-AzStackHciConsentAndInstallDefaultExtensions -ResourceGroupName "test-rg" -ClusterName "test-clus"
+Invoke-AzStackHciConsentAndInstallDefaultExtension -ResourceGroupName "test-rg" -ClusterName "test-clus"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -39,9 +39,9 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextensions
+https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextension
 #>
-function Invoke-AzStackHciConsentAndInstallDefaultExtensions {
+function Invoke-AzStackHciConsentAndInstallDefaultExtension {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='And', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -147,8 +147,8 @@ begin {
         }
 
         $mapping = @{
-            And = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtensions_And';
-            AndViaIdentity = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtensions_AndViaIdentity';
+            And = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtension_And';
+            AndViaIdentity = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtension_AndViaIdentity';
         }
         if (('And') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ArcSettingName')) {
             $PSBoundParameters['ArcSettingName'] = "default"
