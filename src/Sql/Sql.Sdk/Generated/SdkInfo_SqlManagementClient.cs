@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "DatabaseVulnerabilityAssessmentScans", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "DatabaseVulnerabilityAssessments", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "Databases", "2014-04-01"),
-                new Tuple<string, string, string>("Sql", "Databases", "2022-08-01-preview"),
+                new Tuple<string, string, string>("Sql", "Databases", "2023-02-01-preview"),
                 new Tuple<string, string, string>("Sql", "DistributedAvailabilityGroups", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolActivities", "2014-04-01"),
                 new Tuple<string, string, string>("Sql", "ElasticPoolDatabaseActivities", "2014-04-01"),

@@ -92,7 +92,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/ManagedDatabaseSensitivityLabels.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/SensitivityLabels.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/IPv6FirewallRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/Databases.json
+  - https://github.com/viparek/azure-rest-api-specs/blob/8f9c9d20d5539159a8dd5848d91c351207a2bc4a/specification/sql/resource-manager/Microsoft.Sql/preview/2023-02-01-preview/Databases.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ReplicationLinks.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/VirtualClusters.json
   - https://raw.githubusercontent.com/Azure/azure-rest-api-specs/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/ManagedDatabaseAdvancedThreatProtectionSettings.json
