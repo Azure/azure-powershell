@@ -25,13 +25,6 @@ Update-AzSpringCertificate -InputObject <ISpringIdentity> [-Property <ICertifica
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentitySpring
-```
-Update-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity>
- -CertificateResource <ICertificateResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentitySpringExpanded
 ```
 Update-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity>
@@ -83,22 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CertificateResource
-Certificate resource payload.
-To construct, see NOTES section for CERTIFICATERESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateResource
-Parameter Sets: UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -136,7 +113,7 @@ The name of the certificate resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded
 Aliases: CertificateName
 
 Required: True
@@ -167,7 +144,7 @@ To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateProperties
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -214,7 +191,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -275,8 +252,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

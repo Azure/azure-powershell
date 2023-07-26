@@ -24,12 +24,6 @@ Get-AzSpringConfigurationService -InputObject <ISpringIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
-### GetViaIdentitySpring
-```
-Get-AzSpringConfigurationService -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get the Application Configuration Service and its properties.
 
@@ -125,22 +119,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: GetViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

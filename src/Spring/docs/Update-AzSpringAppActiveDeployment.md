@@ -25,13 +25,6 @@ Update-AzSpringAppActiveDeployment -InputObject <ISpringIdentity> [-DeploymentNa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetViaIdentitySpring
-```
-Update-AzSpringAppActiveDeployment -Name <String> -SpringInputObject <ISpringIdentity>
- -ActiveDeploymentCollection <IActiveDeploymentCollection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### SetViaIdentitySpringExpanded
 ```
 Update-AzSpringAppActiveDeployment -Name <String> -SpringInputObject <ISpringIdentity>
@@ -87,22 +80,6 @@ default 2022/7/1 3:41:45    *********@microsoft.com User                    2022
 Set existing Deployment under the app as active by pipeline.
 
 ## PARAMETERS
-
-### -ActiveDeploymentCollection
-Object that includes an array of Deployment resource name and set them as active.
-To construct, see NOTES section for ACTIVEDEPLOYMENTCOLLECTION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IActiveDeploymentCollection
-Parameter Sets: SetViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -201,7 +178,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentitySpring, SetViaIdentitySpringExpanded, SetViaJsonFilePath, SetViaJsonString
+Parameter Sets: SetExpanded, SetViaIdentitySpringExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -263,7 +240,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: SetViaIdentitySpring, SetViaIdentitySpringExpanded
+Parameter Sets: SetViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -324,8 +301,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IActiveDeploymentCollection
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

@@ -36,12 +36,6 @@ Get-AzSpringBuildServiceSupportedStack -BuildServiceInputObject <ISpringIdentity
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentitySpring
-```
-Get-AzSpringBuildServiceSupportedStack -Name <String> -SpringInputObject <ISpringIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get the supported stack resource.
 
@@ -129,7 +123,7 @@ The name of the stack resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuildService, GetViaIdentitySpring
+Parameter Sets: Get, GetViaIdentityBuildService
 Aliases:
 
 Required: True
@@ -167,22 +161,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: GetViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

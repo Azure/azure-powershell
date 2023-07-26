@@ -38,12 +38,6 @@ Remove-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentitySpring
-```
-Remove-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Operation to delete a Buildpack Binding
 
@@ -101,7 +95,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
+Parameter Sets: Delete, DeleteViaIdentityBuildService
 Aliases:
 
 Required: True
@@ -164,7 +158,7 @@ The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuilder, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
+Parameter Sets: Delete, DeleteViaIdentityBuilder, DeleteViaIdentityBuildService
 Aliases: BuildpackBindingName
 
 Required: True
@@ -232,22 +226,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: DeleteViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

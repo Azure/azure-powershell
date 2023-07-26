@@ -26,20 +26,6 @@ Test-AzSpringConfigurationService -InputObject <ISpringIdentity>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentitySpring
-```
-Test-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
- -Setting <IConfigurationServiceSettings> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateViaIdentitySpringExpanded
-```
-Test-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
- [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ValidateViaJsonFilePath
 ```
 Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String> -JsonFilePath <String>
@@ -111,7 +97,7 @@ To construct, see NOTES section for GITREPOSITORY properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceGitRepository[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -213,38 +199,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Setting
-The settings of Application Configuration Service.
-To construct, see NOTES section for SETTING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceSettings
-Parameter Sets: ValidateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -296,8 +250,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceSettings
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

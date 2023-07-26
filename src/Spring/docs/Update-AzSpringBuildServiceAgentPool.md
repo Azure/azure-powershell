@@ -12,43 +12,10 @@ Update build service agent pool.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzSpringBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-PoolSizeName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityBuildService
-```
-Update-AzSpringBuildServiceAgentPool -BuildServiceInputObject <ISpringIdentity>
- -AgentPoolResource <IBuildServiceAgentPoolResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityBuildServiceExpanded
-```
-Update-AzSpringBuildServiceAgentPool -BuildServiceInputObject <ISpringIdentity> [-PoolSizeName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzSpringBuildServiceAgentPool -InputObject <ISpringIdentity> [-PoolSizeName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpring
-```
-Update-AzSpringBuildServiceAgentPool -SpringInputObject <ISpringIdentity>
- -AgentPoolResource <IBuildServiceAgentPoolResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpringExpanded
-```
-Update-AzSpringBuildServiceAgentPool -SpringInputObject <ISpringIdentity> [-PoolSizeName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,22 +47,6 @@ Update build service agent pool.
 
 ## PARAMETERS
 
-### -AgentPoolResource
-The build service agent pool resource
-To construct, see NOTES section for AGENTPOOLRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildServiceAgentPoolResource
-Parameter Sets: UpdateViaIdentityBuildService, UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -108,22 +59,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceInputObject
-Identity Parameter
-To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityBuildService, UpdateViaIdentityBuildServiceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -140,22 +75,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -179,7 +98,7 @@ The name of build service agent pool size
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +114,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -210,7 +129,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -220,29 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -287,10 +190,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildServiceAgentPoolResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 
 ## OUTPUTS
 

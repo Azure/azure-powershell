@@ -20,27 +20,6 @@ New-AzSpringBuildServiceBuilder -Name <String> -ResourceGroupName <String> -Serv
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityBuildService
-```
-New-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringIdentity> -Name <String>
- -BuilderResource <IBuilderResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityBuildServiceExpanded
-```
-New-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringIdentity> -Name <String>
- [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentitySpring
-```
-New-AzSpringBuildServiceBuilder -Name <String> -SpringInputObject <ISpringIdentity>
- -BuilderResource <IBuilderResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringBuildServiceBuilder -Name <String> -SpringInputObject <ISpringIdentity>
@@ -97,51 +76,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuilderResource
-KPack Builder resource
-To construct, see NOTES section for BUILDERRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuilderResource
-Parameter Sets: CreateViaIdentityBuildService, CreateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -BuildpackGroup
 Builder buildpack groups.
 To construct, see NOTES section for BUILDPACKGROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildpacksGroupProperties[]
-Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceInputObject
-Identity Parameter
-To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentityBuildService, CreateViaIdentityBuildServiceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -258,7 +205,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -273,7 +220,7 @@ Id of the ClusterStack.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -288,7 +235,7 @@ Version of the ClusterStack
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -349,8 +296,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuilderResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

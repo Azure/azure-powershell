@@ -21,13 +21,6 @@ Update-AzSpringAppDeployment -AppName <String> -Name <String> -ResourceGroupName
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityApp
-```
-Update-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String>
- -DeploymentResource <IDeploymentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityAppExpanded
 ```
 Update-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String> [-Active]
@@ -43,13 +36,6 @@ Update-AzSpringAppDeployment -InputObject <ISpringIdentity> [-Active] [-AddonCon
  [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpring
-```
-Update-AzSpringAppDeployment -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- -DeploymentResource <IDeploymentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySpringExpanded
@@ -146,7 +132,7 @@ To construct, see NOTES section for APPINPUTOBJECT properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentityAppExpanded
+Parameter Sets: UpdateViaIdentityAppExpanded
 Aliases:
 
 Required: True
@@ -161,7 +147,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -199,22 +185,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentResource
-Deployment resource payload
-To construct, see NOTES section for DEPLOYMENTRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentResource
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -284,7 +254,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApp, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: DeploymentName
 
 Required: True
@@ -441,7 +411,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -502,8 +472,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

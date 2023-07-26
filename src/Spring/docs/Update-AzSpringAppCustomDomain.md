@@ -19,13 +19,6 @@ Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -ResourceGroupNa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityApp
-```
-Update-AzSpringAppCustomDomain -AppInputObject <ISpringIdentity> -Name <String>
- -DomainResource <ICustomDomainResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityAppExpanded
 ```
 Update-AzSpringAppCustomDomain -AppInputObject <ISpringIdentity> -Name <String> [-CertName <String>]
@@ -37,13 +30,6 @@ Update-AzSpringAppCustomDomain -AppInputObject <ISpringIdentity> -Name <String> 
 ```
 Update-AzSpringAppCustomDomain -InputObject <ISpringIdentity> [-CertName <String>] [-Thumbprint <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpring
-```
-Update-AzSpringAppCustomDomain -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- -DomainResource <ICustomDomainResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySpringExpanded
@@ -108,7 +94,7 @@ To construct, see NOTES section for APPINPUTOBJECT properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentityAppExpanded
+Parameter Sets: UpdateViaIdentityAppExpanded
 Aliases:
 
 Required: True
@@ -123,7 +109,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -179,22 +165,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainResource
-Custom domain resource payload.
-To construct, see NOTES section for DOMAINRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainResource
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -246,7 +216,7 @@ The name of the custom domain resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApp, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -308,7 +278,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -384,8 +354,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

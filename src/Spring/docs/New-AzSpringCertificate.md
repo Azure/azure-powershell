@@ -19,13 +19,6 @@ New-AzSpringCertificate -Name <String> -ResourceGroupName <String> -ServiceName 
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentitySpring
-```
-New-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity>
- -CertificateResource <ICertificateResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity>
@@ -80,22 +73,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertificateResource
-Certificate resource payload.
-To construct, see NOTES section for CERTIFICATERESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateResource
-Parameter Sets: CreateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -228,7 +205,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -289,8 +266,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

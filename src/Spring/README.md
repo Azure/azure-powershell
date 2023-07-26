@@ -145,51 +145,98 @@ directive:
 
   # remove variant
   - where: 
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentitySpring$
+    remove: true
+  - where: 
+      variant: ^Update$|^UpdateViaIdentity$|^UpdateViaIdentitySpring$
+    remove: true
+  - where: 
+      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
+    remove: true
+
+  - where: 
+      subject: BuildpackBinding
+      variant: ^GetViaIdentitySpring$|^CreateViaIdentityBuilder$|^CreateViaIdentityBuildService$|^CreateViaIdentityBuildServiceExpanded$|^DeleteViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: BuildService
+      variant: ^GetViaIdentitySpring$|^List$|^UpdateViaIdentityBuildService$|^UpdateViaIdentityBuildServiceExpanded$|^UpdateViaIdentitySpringExpanded$
+    remove: true
+
+  - where: 
+      subject: BuildServiceAgentPool
+      variant: ^GetViaIdentitySpring$|^GetViaIdentityBuildService$|^List$|^UpdateViaIdentityBuildService$|^UpdateViaIdentityExpanded$|^UpdateViaIdentityBuildServiceExpanded$|^UpdateViaIdentitySpringExpanded$
+    remove: true
+
+  - where: 
+      subject: BuildServiceBuilder
+      variant: ^GetViaIdentitySpring$|^CreateViaIdentityBuildService$|^CreateViaIdentityBuildServiceExpanded$|^DeleteViaIdentitySpring$|^UpdateViaIdentityBuildService$|^UpdateViaIdentitySpringExpanded$
+    remove: true
+
+  - where: 
+      subject: BuildServiceSupportedBuildpack
+      variant: ^GetViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: BuildServiceSupportedStack
+      variant: ^GetViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: ConfigurationService
+      variant: ^GetViaIdentitySpring$|^List$|^DeleteViaIdentitySpring$|^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$|^ValidateViaIdentitySpringExpanded$|^UpdateViaIdentitySpringExpanded$
     remove: true
 
   - where:
-      verb: Get
-      subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
-      variant: List
+      subject: Registry
+      variant: ^List$
     remove: true
 
   - where: 
-      subject: ^TestKey$
-      variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+      subject: AppBinding
+      variant: ^CreateViaIdentityApp$
     remove: true
 
   - where: 
-      subject: ^AppActiveDeployment$
-      variant: ^SetViaIdentity$|^Set$
+      subject: AppCustomDomain
+      variant: ^CreateViaIdentityApp$|^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$|^UpdateViaIdentityApp$
     remove: true
 
   - where: 
-      subject: ^DeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+      subject: AppDeployment
+      variant: ^CreateViaIdentityApp$|^UpdateViaIdentityApp$
+    remove: true
+
+  - where: 
+      subject: TestKey
+      variant: ^Regenerate$|^RegenerateViaIdentity$
+    remove: true
+
+  - where: 
+      subject: AppDeploymentJfr
+      variant: ^StartViaIdentityApp$|^StartViaIdentitySpring$|^Start$|^StartViaIdentity$|
     remove: true
 
   - where:
-      verb: Test 
-      subject: ^AppCustomDomain$
+      subject: ConfigServer
       variant: ^Validate$|^ValidateViaIdentity$
     remove: true
 
-  - where:
-      verb: Test 
-      subject: ^ConfigServer$|^ConfigurationService$
-      variant: ^Validate$|^ValidateViaIdentity$
-    remove: true
-
-  - where:
-      verb: Test 
-      subject: ^NameAvailability$
+  - where: 
+      subject: NameAvailability
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
 
-  - where:
-      subject: ^AppDeploymentJfr$
-      variant: ^Start$|^StartViaIdentity$
+  - where: 
+      subject: AppActiveDeployment
+      variant: ^SetViaIdentitySpring$|^SetViaIdentity$|^Set$
+    remove: true
+
+  - where: 
+      subject: AppBinding
+      variant: ^UpdateViaIdentityApp$
     remove: true
 
   # ReName parameter

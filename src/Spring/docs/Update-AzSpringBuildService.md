@@ -19,37 +19,11 @@ Update-AzSpringBuildService -BuildName <String> -ResourceGroupName <String> -Ser
  [-RelativePath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityBuildService
-```
-Update-AzSpringBuildService -BuildName <String> -BuildServiceInputObject <ISpringIdentity> -Build <IBuild>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityBuildServiceExpanded
-```
-Update-AzSpringBuildService -BuildName <String> -BuildServiceInputObject <ISpringIdentity>
- [-AgentPool <String>] [-Builder <String>] [-Env <Hashtable>] [-RelativePath <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSpringBuildService -InputObject <ISpringIdentity> [-AgentPool <String>] [-Builder <String>]
  [-Env <Hashtable>] [-RelativePath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpring
-```
-Update-AzSpringBuildService -BuildName <String> -SpringInputObject <ISpringIdentity> -Build <IBuild>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpringExpanded
-```
-Update-AzSpringBuildService -BuildName <String> -SpringInputObject <ISpringIdentity> [-AgentPool <String>]
- [-Builder <String>] [-Env <Hashtable>] [-RelativePath <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +60,7 @@ The resource id of agent pool
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -96,28 +70,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Build
-Build resource payload
-To construct, see NOTES section for BUILD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuild
-Parameter Sets: UpdateViaIdentityBuildService, UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Builder
 The resource id of builder to build the source code
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,29 +90,13 @@ The name of the build resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildService, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceInputObject
-Identity Parameter
-To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityBuildService, UpdateViaIdentityBuildServiceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -179,7 +121,7 @@ The environment variables for this build
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,7 +152,7 @@ The relative path of source code
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -248,22 +190,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -318,8 +244,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuild
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

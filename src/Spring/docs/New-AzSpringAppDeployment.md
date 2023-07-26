@@ -21,13 +21,6 @@ New-AzSpringAppDeployment -AppName <String> -Name <String> -ResourceGroupName <S
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityApp
-```
-New-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String>
- -DeploymentResource <IDeploymentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityAppExpanded
 ```
 New-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String> [-Active]
@@ -35,13 +28,6 @@ New-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String> [-Act
  [-ResourceRequestMemory <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
  [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentitySpring
-```
-New-AzSpringAppDeployment -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- -DeploymentResource <IDeploymentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySpringExpanded
@@ -142,7 +128,7 @@ To construct, see NOTES section for APPINPUTOBJECT properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentityApp, CreateViaIdentityAppExpanded
+Parameter Sets: CreateViaIdentityAppExpanded
 Aliases:
 
 Required: True
@@ -157,7 +143,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpring, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -195,22 +181,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentResource
-Deployment resource payload
-To construct, see NOTES section for DEPLOYMENTRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentResource
-Parameter Sets: CreateViaIdentityApp, CreateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -421,7 +391,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -482,8 +452,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

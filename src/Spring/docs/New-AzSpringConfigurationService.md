@@ -19,13 +19,6 @@ New-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <Strin
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentitySpring
-```
-New-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
- -ConfigurationServiceResource <IConfigurationServiceResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringConfigurationService -SpringInputObject <ISpringIdentity>
@@ -80,22 +73,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationServiceResource
-Application Configuration Service resource
-To construct, see NOTES section for CONFIGURATIONSERVICERESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
-Parameter Sets: CreateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -213,7 +190,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -274,8 +251,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

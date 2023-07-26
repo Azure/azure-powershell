@@ -19,12 +19,6 @@ Update-AzSpringAppBinding -AppName <String> -Name <String> -ResourceGroupName <S
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityApp
-```
-Update-AzSpringAppBinding -AppInputObject <ISpringIdentity> -Name <String> -BindingResource <IBindingResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityAppExpanded
 ```
 Update-AzSpringAppBinding -AppInputObject <ISpringIdentity> -Name <String> [-BindingParameter <Hashtable>]
@@ -36,13 +30,6 @@ Update-AzSpringAppBinding -AppInputObject <ISpringIdentity> -Name <String> [-Bin
 ```
 Update-AzSpringAppBinding -InputObject <ISpringIdentity> [-BindingParameter <Hashtable>] [-Key <String>]
  [-ResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentitySpring
-```
-Update-AzSpringAppBinding -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- -BindingResource <IBindingResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -106,7 +93,7 @@ To construct, see NOTES section for APPINPUTOBJECT properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentityAppExpanded
+Parameter Sets: UpdateViaIdentityAppExpanded
 Aliases:
 
 Required: True
@@ -121,7 +108,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -158,22 +145,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BindingResource
-Binding resource payload
-To construct, see NOTES section for BINDINGRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBindingResource
-Parameter Sets: UpdateViaIdentityApp, UpdateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -259,7 +230,7 @@ The name of the Binding resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApp, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentitySpringExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: BindingName
 
 Required: True
@@ -336,7 +307,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: UpdateViaIdentitySpring, UpdateViaIdentitySpringExpanded
+Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -397,8 +368,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBindingResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

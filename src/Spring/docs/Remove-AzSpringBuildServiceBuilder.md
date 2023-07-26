@@ -31,12 +31,6 @@ Remove-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringIdentity> -N
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentitySpring
-```
-Remove-AzSpringBuildServiceBuilder -Name <String> -SpringInputObject <ISpringIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Delete a KPack builder.
 
@@ -126,7 +120,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
+Parameter Sets: Delete, DeleteViaIdentityBuildService
 Aliases:
 
 Required: True
@@ -194,22 +188,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: DeleteViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

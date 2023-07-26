@@ -41,12 +41,6 @@ Get-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISp
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentitySpring
-```
-Get-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a buildpack binding by name.
 
@@ -117,7 +111,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuildService, GetViaIdentitySpring, List
+Parameter Sets: Get, GetViaIdentityBuildService, List
 Aliases:
 
 Required: True
@@ -180,7 +174,7 @@ The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuilder, GetViaIdentityBuildService, GetViaIdentitySpring
+Parameter Sets: Get, GetViaIdentityBuilder, GetViaIdentityBuildService
 Aliases: BuildpackBindingName
 
 Required: True
@@ -218,22 +212,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: GetViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

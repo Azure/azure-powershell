@@ -143,9 +143,6 @@ Create an in-memory object for GitPatternRepository.
 ### [New-AzSpringKeyVaultCertificateObject](New-AzSpringKeyVaultCertificateObject.md)
 Create an in-memory object for KeyVaultCertificateProperties.
 
-### [New-AzSpringRegistry](New-AzSpringRegistry.md)
-Create the default Service Registry or update the existing Service Registry.
-
 ### [New-AzSpringTestKey](New-AzSpringTestKey.md)
 Regenerate a test key for a Service.
 
@@ -181,9 +178,6 @@ Restart the deployment.
 
 ### [Start-AzSpringAppDeployment](Start-AzSpringAppDeployment.md)
 Start the deployment.
-
-### [Start-AzSpringAppDeploymentJfr](Start-AzSpringAppDeploymentJfr.md)
-Start JFR
 
 ### [Stop-AzSpringAppDeployment](Stop-AzSpringAppDeployment.md)
 Stop the deployment.

@@ -24,18 +24,6 @@ Get-AzSpringBuildServiceAgentPool -InputObject <ISpringIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### GetViaIdentityBuildService
-```
-Get-AzSpringBuildServiceAgentPool -BuildServiceInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentitySpring
-```
-Get-AzSpringBuildServiceAgentPool -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get build service agent pool.
 
@@ -68,22 +56,6 @@ default Springrg     Succeeded         2           4Gi            S1
 Get a build service agent pool by pipeline.
 
 ## PARAMETERS
-
-### -BuildServiceInputObject
-Identity Parameter
-To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: GetViaIdentityBuildService
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -145,22 +117,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SpringInputObject
-Identity Parameter
-To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: GetViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
