@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             try
             {
-                CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabase(ResourceGroupName, AccountName, DatabaseName);
+                CosmosDBManagementClient.MongoDbResources.GetMongoDBDatabase(ResourceGroupName, AccountName, DatabaseName);
             }
             catch (CloudException e)
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             try
             {
-                CosmosDBManagementClient.MongoDBResources.GetMongoDBCollection(ResourceGroupName, AccountName, DatabaseName, Name);
+                CosmosDBManagementClient.MongoDbResources.GetMongoDBCollection(ResourceGroupName, AccountName, DatabaseName, Name);
             }
             catch (CloudException e)
             {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Location = Location
             };
 
-            BackupInformation backupInformation = CosmosDBManagementClient.MongoDBResources.RetrieveContinuousBackupInformation(ResourceGroupName, AccountName, DatabaseName, Name, continuousBackupRestoreLocation);
+            BackupInformation backupInformation = CosmosDBManagementClient.MongoDbResources.RetrieveContinuousBackupInformation(ResourceGroupName, AccountName, DatabaseName, Name, continuousBackupRestoreLocation);
             WriteObject(new PSMongoDBBackupInformation(backupInformation));
 
             return;
