@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextensions
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextension
 schema: 2.0.0
 ---
 
-# Invoke-AzStackHciConsentAndInstallDefaultExtensions
+# Invoke-AzStackHciConsentAndInstallDefaultExtension
 
 ## SYNOPSIS
 Add consent time for default extensions and initiate extensions installation
@@ -14,13 +14,13 @@ Add consent time for default extensions and initiate extensions installation
 
 ### And (Default)
 ```
-Invoke-AzStackHciConsentAndInstallDefaultExtensions -ClusterName <String> -ResourceGroupName <String>
+Invoke-AzStackHciConsentAndInstallDefaultExtension -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AndViaIdentity
 ```
-Invoke-AzStackHciConsentAndInstallDefaultExtensions -InputObject <IStackHciIdentity>
+Invoke-AzStackHciConsentAndInstallDefaultExtension -InputObject <IStackHciIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,14 +31,13 @@ Add consent time for default extensions and initiate extensions installation
 
 ### Example 1: 
 ```powershell
-Invoke-AzStackHciConsentAndInstallDefaultExtensions -ResourceGroupName "test-rg" -ClusterName "test-clus"
+Invoke-AzStackHciConsentAndInstallDefaultExtension -ResourceGroupName "test-rg" -ClusterName "test-clus"
 ```
 
 ```output
 Resource Group AggregateState
 -------------- --------------
 test-rg  Connected
-
 ```
 
 Consent for installation of default extensions.

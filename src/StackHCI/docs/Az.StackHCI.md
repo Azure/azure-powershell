@@ -47,7 +47,7 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
 
-### [Invoke-AzStackHciConsentAndInstallDefaultExtensions](Invoke-AzStackHciConsentAndInstallDefaultExtensions.md)
+### [Invoke-AzStackHciConsentAndInstallDefaultExtension](Invoke-AzStackHciConsentAndInstallDefaultExtension.md)
 Add consent time for default extensions and initiate extensions installation
 
 ### [Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit](Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit.md)
