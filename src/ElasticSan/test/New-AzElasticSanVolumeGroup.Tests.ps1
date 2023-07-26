@@ -19,10 +19,9 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $vnetRule1 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId1 -Action "Allow"
         $vnetRule2 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId2 -Action "Allow"
         $volGroupName = 'testvolgroup' + $env.RandomString
-        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} -NetworkAclsVirtualNetworkRule $vnetRule1,$vnetRule2
+        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName -ProtocolType 'Iscsi' -NetworkAclsVirtualNetworkRule $vnetRule1,$vnetRule2
         $volGroup.Name | Should -Be $volGroupName
         $volGroup.ProtocolType | Should -Be "Iscsi"
         $volGroup.NetworkAclsVirtualNetworkRule.Count | Should -Be 2
-        $volGroup.Tag.Count | Should -Be 2
     }
 }

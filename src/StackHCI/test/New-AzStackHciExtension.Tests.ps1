@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStackHciExtension'))
 
 Describe 'New-AzStackHciExtension' {
     It 'CreateExpanded' {
-        New-AzStackHciExtension -ArcSettingName $env.ArcSettingName -ClusterName $env.ClusterName -Name $env.ExtensionName -ResourceGroupName $env.ResourceGroup -ExtensionParameterPublisher $env.ExtensionPublisher
+        New-AzStackHciExtension -ArcSettingName $env.ArcSettingName -ClusterName $env.ClusterName -Name $env.ExtensionName -ResourceGroupName $env.ResourceGroup -ExtensionParameterPublisher $env.ExtensionPublisher -ExtensionParameterType $env.ExtensionName
     }
 }

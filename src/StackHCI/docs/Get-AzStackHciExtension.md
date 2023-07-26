@@ -40,7 +40,7 @@ Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSe
 ```
 
 ```output
-Name                     ResourceGroupName
+Name                     Resource Group
 ----                     -----------------
 MicrosoftMonitoringAgent test-rg
 ```
@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 
 ## NOTES
 

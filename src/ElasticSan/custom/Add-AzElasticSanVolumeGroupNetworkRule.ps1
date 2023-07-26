@@ -25,11 +25,11 @@ Add a list of virtual network rules to a VolumeGroup
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
   [Action <Action?>]: The action of virtual network rule.
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]])]
     [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory)]
@@ -75,7 +75,7 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
     
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory, ValueFromPipeline=$true)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]]
         # The list of virtual network rules.
         # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
         ${NetworkAclsVirtualNetworkRule},
@@ -168,9 +168,9 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
             return
         }
         
-        $originalRules = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule]]$volumeGroup.NetworkAclsVirtualNetworkRule
+        $originalRules = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule]]$volumeGroup.NetworkAclsVirtualNetworkRule
         if ($originalRules.count -eq 0) {
-            $originalRules = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule]
+            $originalRules = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule]
         }
         
         switch ($PScmdlet.ParameterSetName) {

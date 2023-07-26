@@ -1,17 +1,17 @@
 {
-  "Remove-AzStackHciExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+1": {
+  "Remove-AzStackHciExtension+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "334838e8-11f3-4a81-8e2b-930f7e438103" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "7ae5b3e4-9e50-4940-9619-2685d8841c05" ],
         "CommandName": [ "Remove-AzStackHciExtension" ],
         "FullCommandName": [ "Remove-AzStackHciExtension_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.0", "Az.StackHCI/1.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,18 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "ef7e655c-a02c-4df4-8095-15351ae37203" ],
-        "x-ms-request-id": [ "3f3737af-daed-47ea-b35a-54e6066418e0" ],
-        "x-ms-correlation-request-id": [ "f9e1f099-1a38-4b62-93fd-44198e122d89" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220615T110032Z:f9e1f099-1a38-4b62-93fd-44198e122d89" ],
+        "mise-correlation-id": [ "32633378-9414-4f45-8206-746bf9537d20" ],
+        "x-ms-request-id": [ "284ae900-e364-4f55-a93c-a77b1ba2fbd9" ],
+        "x-ms-correlation-request-id": [ "0b1021c3-3667-4d4b-960a-c83cad45897e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 15 Jun 2022 11:00:31 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T092040Z:0b1021c3-3667-4d4b-960a-c83cad45897e" ],
+        "Date": [ "Mon, 24 Jul 2023 09:20:39 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
