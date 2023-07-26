@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.9.0
 * Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.
 * Added cmdlets for group owner
     - `Get-AzADGroupOwner`
