@@ -1262,11 +1262,12 @@ function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation True
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation "True"
 
 	Remove-ResourceGroupForTest $rg
 }
@@ -1285,7 +1286,7 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation True
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -1297,6 +1298,7 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 	
 	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation "True"
 
 	Remove-ResourceGroupForTest $rg
 }
