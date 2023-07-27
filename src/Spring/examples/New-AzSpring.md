@@ -1,6 +1,6 @@
 ### Example 1: Create or update a new standard spring cloud service 
 ```powershell
-New-AzSpring -ResourceGroupName Springrg -Name spring-pwsh01 -Location eastus
+New-AzSpring -ResourceGroupName azps_test_group_spring -Name azps-spring -Location eastus
 ```
 
 ```output
@@ -14,13 +14,13 @@ Create or update a new standard spring cloud service.
 
 ### Example 2: Create or update a new enterprise spring cloud service 
 ```powershell
-New-AzSpring -ResourceGroupName Springrg -Name espring-pwsh01 -Location eastus -SkuTier "Enterprise" -SkuName "E0"
+New-AzSpring -ResourceGroupName azps_test_group_spring -Name eazps-spring -Location eastus -SkuTier "Enterprise" -SkuName "E0"
 ```
 
 ```output
 Location Name           SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 -------- ----           -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-eastus   espring-pwsh01 7/22/2022 7:35:40 AM v-diya@microsoft.com User                    7/22/2022 7:35:40 AM     v-diya@microsoft.com     User                         Springrg
+eastus   eazps-spring 7/22/2022 7:35:40 AM v-diya@microsoft.com User                    7/22/2022 7:35:40 AM     v-diya@microsoft.com     User                         azps_test_group_spring
 ```
 
 Create or update a new enterprise spring cloud service .

@@ -59,7 +59,7 @@ Create a new App or update an exiting App.
 
 ### Example 1: Create a new App or update an exiting App
 ```powershell
-New-AzSpringApp -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service -Name tools
+New-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName Spring-service -Name tools
 ```
 
 ```output

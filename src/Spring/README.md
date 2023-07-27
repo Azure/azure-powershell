@@ -61,6 +61,7 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 enable-parent-pipeline-input-for-list: false
+auto-switch-view: false
 
 directive:
   - where:
@@ -465,6 +466,18 @@ directive:
       verb: Remove
       subject: ^Registry$
     hide: true
+
+  - where:
+      model-name: ServiceResource
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ProvisioningState
+          - SkuName
+          - SkuTier
+          - ResourceGroupName
 
   - where:
       model-name: BindingResource
