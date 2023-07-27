@@ -31,7 +31,7 @@ Type                         : microsoft.storagemover/storagemovers/projects/job
 
 This command gets all the job definitions under a specific Storage mover.
 
-### Example 2: Get a specific job definition
+### Example 2: Get a specific job definition 
 ```powershell
 Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myJob1
 ```
