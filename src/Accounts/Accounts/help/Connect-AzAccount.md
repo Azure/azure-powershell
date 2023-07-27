@@ -137,7 +137,7 @@ authenticates as a service principal.
 $SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecurePassword
 Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
 
@@ -163,8 +163,8 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 5: Connect using a Managed Service Identity
 
-This example connects using the Managed Service Identity (MSI) of the host environment. For example,
-you sign into Azure from a virtual machine that has an assigned MSI.
+This example connects using a system-assigned Managed Service Identity (MSI) of the host
+environment. For example, you sign into Azure from a virtual machine that has an assigned MSI.
 
 ```powershell
 Connect-AzAccount -Identity

@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotConnectedRecently = @"NotConnectedRecently";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotSpecified = @"NotSpecified";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotYetRegistered = @"NotYetRegistered";
 
         /// <summary>the value for an instance of the <see cref="Status" /> Enum.</summary>

@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.
+* Updated help doc for `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss` to include parameters that were previously added for Trusted Launch features.
+* Updated Azure.Core to 1.33.0.
 
 ## Version 6.1.0
 * Added useful examples to the `New-AzVMConfig` help doc.
@@ -29,8 +32,9 @@
 * Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
   The non-versioned image aliases were updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
 * Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
-* Changed to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
+* Changes to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
 * Changed the region for example 3 to eastus2 in the `New-AzVM` doc to resolve SKU not available errors.
+* Added new cmdlets `Get-AzHostSize` and `Update-AzHost`.
 
 ## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.

@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
+* Updated Azure.Core to 1.33.0
 
 ## Version 2.12.4
 * Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].

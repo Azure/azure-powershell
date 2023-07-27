@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets to support data plane operation:
+  - `Get-AzAppConfigurationKey`
+  - `Get-AzAppConfigurationKeyValue`
+  - `Get-AzAppConfigurationLabel`
+  - `Get-AzAppConfigurationRevision`
+  - `Remove-AzAppConfigurationKeyValue`
+  - `Remove-AzAppConfigurationLock`
+  - `Set-AzAppConfigurationKeyValue`
+  - `Set-AzAppConfigurationLock`
+  - `Test-AzAppConfigurationKeyValue`
 
 ## Version 1.2.0
 * Added cmdlets `Get-AzAppConfigurationDeletedStore` and `Clear-AzAppConfigurationDeletedStore`
