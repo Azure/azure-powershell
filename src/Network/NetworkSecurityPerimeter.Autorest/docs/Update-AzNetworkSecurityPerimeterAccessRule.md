@@ -226,7 +226,6 @@ Accept wildcard characters: False
 
 ### -Perimeter
 Inbound rule specified by the perimeter id
-To construct, see NOTES section for PERIMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
@@ -409,9 +408,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`PERIMETER <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id
-  - `[Id <String>]`: NSP id in the ARM id format.
 
 `SUBSCRIPTION <ISubscriptionId[]>`: Subscription ids
   - `[Id <String>]`: Subscription id in the ARM id format.
