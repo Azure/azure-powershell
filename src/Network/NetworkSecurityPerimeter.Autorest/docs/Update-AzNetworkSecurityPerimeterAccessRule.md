@@ -17,17 +17,17 @@ Updates an access rule.
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
  [-EmailAddress <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
- [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <ArrayList>] [-Direction <String>] [-EmailAddress <ArrayList>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-PhoneNumber <ArrayList>]
+ [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,21 +214,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Perimeter
-Inbound rule specified by the perimeter id
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
 Parameter Sets: (All)
 Aliases:
 
