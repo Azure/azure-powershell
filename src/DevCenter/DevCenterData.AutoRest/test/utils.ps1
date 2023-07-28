@@ -65,9 +65,9 @@ function setupEnv() {
     # New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
     # #Replace with real values
-    # $gitHubSecretIdentifier = "https://amlim-kv.vault.azure.net/secrets/envTest/0a79f15246ce4b35a13957367b422cab"
+    # $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
     # $keyVaultName = "amlim-kv"
-    # $gitHubUri = "https://github.com/am-lim/deployment-environments.git"
+    # $gitHubUri = "https://github.com/fake/fake.git"
     # $userObjectId = "c3c951b7-d307-4c40-9495-70bd562d98d5"
 
     # $env.Add("resourceGroup", $resourceGroup)
