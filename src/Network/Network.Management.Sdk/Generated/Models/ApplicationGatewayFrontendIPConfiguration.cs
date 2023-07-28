@@ -48,14 +48,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// frontend IP configuration resource. Possible values include:
         /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
-        /// <param name="httpListeners">Reference to the application gateway
-        /// http listeners.</param>
         /// <param name="name">Name of the frontend IP configuration that is
         /// unique within an Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayFrontendIPConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), SubResource privateLinkConfiguration = default(SubResource), string provisioningState = default(string), SubResource httpListeners = default(SubResource), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayFrontendIPConfiguration(string id = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), SubResource privateLinkConfiguration = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             PrivateIPAddress = privateIPAddress;
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Management.Network.Models
             PublicIPAddress = publicIPAddress;
             PrivateLinkConfiguration = privateLinkConfiguration;
             ProvisioningState = provisioningState;
-            HttpListeners = httpListeners;
             Name = name;
             Etag = etag;
             Type = type;
@@ -116,12 +113,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
-
-        /// <summary>
-        /// Gets reference to the application gateway http listeners.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.httpListeners")]
-        public SubResource HttpListeners { get; private set; }
 
         /// <summary>
         /// Gets or sets name of the frontend IP configuration that is unique

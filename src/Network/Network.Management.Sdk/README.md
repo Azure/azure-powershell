@@ -25,10 +25,10 @@ license-header: MICROSOFT_MIT_NO_VERSION
 
 ###
 ``` yaml
-commit: 1671d2db822c68a800edddd1e20fe65db1624216
+commit: 2a4fc9da93229e16716dc34ec5275ed94a918ac4
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-02-01/applicationGateway.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-02-01/applicationGatewayWafDynamicManifests.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/applicationGateway.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/applicationGatewayWafDynamicManifests.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/applicationSecurityGroup.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/availableDelegations.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2023-04-01/availableServiceAliases.json
