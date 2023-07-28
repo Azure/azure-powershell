@@ -195,6 +195,8 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
       $User = $InputObject.UserId
     }
 
+    Write-Host $Action
+
     if ($null -eq $Action) {
       $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $Project `
         -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User

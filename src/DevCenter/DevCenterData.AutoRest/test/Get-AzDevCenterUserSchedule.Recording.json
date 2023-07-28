@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "79" ],
-        "x-ms-client-request-id": [ "29b2e792-07e4-44cb-b0fd-a76018ded17e" ],
+        "x-ms-unique-id": [ "97" ],
+        "x-ms-client-request-id": [ "4a7e7298-34f7-4971-b5ba-e473c3b5816d" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserSchedule" ],
         "FullCommandName": [ "Get-AzDevCenterUserSchedule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -20,13 +20,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:12 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:44 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "59c51873-dec8-4ebd-9999-84f2e7aca376" ],
-        "x-ms-client-request-id": [ "29b2e792-07e4-44cb-b0fd-a76018ded17e" ],
+        "x-ms-correlation-request-id": [ "d3514a63-17cb-4b89-9702-0bab9d67c37f" ],
+        "x-ms-client-request-id": [ "4a7e7298-34f7-4971-b5ba-e473c3b5816d" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "292" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:55.2622051Z" ],
+        "X-Rate-Limit-Remaining": [ "295" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:35.7861307Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
@@ -44,8 +44,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "80" ],
-        "x-ms-client-request-id": [ "fb2c52ba-89bf-4f04-b922-4fbb7296dfc3" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "f2912430-d047-4444-9eb3-1c5393e279a9" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserSchedule" ],
         "FullCommandName": [ "Get-AzDevCenterUserSchedule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -58,13 +58,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:13 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:46 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "d3835aac-dd31-4e7d-8cfd-46d7c922816d" ],
-        "x-ms-client-request-id": [ "fb2c52ba-89bf-4f04-b922-4fbb7296dfc3" ],
+        "x-ms-correlation-request-id": [ "b2c50ed7-4710-4f5c-9fe6-6dff52481c2f" ],
+        "x-ms-client-request-id": [ "f2912430-d047-4444-9eb3-1c5393e279a9" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "282" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:22.9645965Z" ],
+        "X-Rate-Limit-Remaining": [ "281" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:06.1677347Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
@@ -82,8 +82,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "81" ],
-        "x-ms-client-request-id": [ "050af2bb-65b1-4d0e-a6b5-8f7648adea6c" ],
+        "x-ms-unique-id": [ "99" ],
+        "x-ms-client-request-id": [ "8c65bdea-66e1-45fe-a8c9-99017cc6cfe8" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserSchedule" ],
         "FullCommandName": [ "Get-AzDevCenterUserSchedule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -96,13 +96,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:13 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:46 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "2ebd5853-5f62-420e-ae69-5d66b9b40c48" ],
-        "x-ms-client-request-id": [ "050af2bb-65b1-4d0e-a6b5-8f7648adea6c" ],
+        "x-ms-correlation-request-id": [ "536fb2cc-7a43-4c20-b80e-73f8f73f8e36" ],
+        "x-ms-client-request-id": [ "8c65bdea-66e1-45fe-a8c9-99017cc6cfe8" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "282" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:23.5097123Z" ],
+        "X-Rate-Limit-Remaining": [ "280" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:05.1191295Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
@@ -120,8 +120,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "40eb8a0e-eeab-4734-ada7-3ca259512925" ],
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "1efc15f8-6dc7-4d37-bb3f-817f3b348c6a" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserSchedule" ],
         "FullCommandName": [ "Get-AzDevCenterUserSchedule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -134,13 +134,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:14 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "be032085-23db-4114-9f16-21c9b3478f03" ],
-        "x-ms-client-request-id": [ "40eb8a0e-eeab-4734-ada7-3ca259512925" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:47 GMT" ],
+        "Connection": [ "close" ],
+        "x-ms-correlation-request-id": [ "a0eea303-fd32-455e-b7c3-04df846dff1d" ],
+        "x-ms-client-request-id": [ "1efc15f8-6dc7-4d37-bb3f-817f3b348c6a" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "291" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:55.2622051Z" ],
+        "X-Rate-Limit-Remaining": [ "294" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:35.7861307Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {

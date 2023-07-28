@@ -35,18 +35,18 @@ Describe 'Deploy-AzDevCenterUserEnvironment' {
 
     It 'ReplaceViaIdentity' {
         $functionAppParameters = @{"name" = $env.functionAppName5 }
-        $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7" }
-        $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8" }
+        $envInput1 = @{"UserId" = "me";}
+        $envInput2 = @{"UserId" = "me";}
 
 
-        $environment = Deploy-AzDevCenterUserEnvironment -Endpoint $env.endpoint -InputObject $envInput1 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+        $environment = Deploy-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest7" -InputObject $envInput1 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.sandbox
         $environment.Name | Should -Be "envtest7"
         $environment.Type | Should -Be $env.environmentTypeName
         $environment.User | Should -Be $env.userObjectId
 
-        $environment = Deploy-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -InputObject $envInput2 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
+        $environment = Deploy-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest8" -InputObject $envInput2 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.functionApp
         $environment.Name | Should -Be "envtest8"

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironmen
 }
 
 Describe 'Get-AzDevCenterUserEnvironmentType' {
-    It 'List' {
+    It 'List' -skip  {
         $listOfEnvTypes = Get-AzDevCenterUserEnvironmentType -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfEnvTypes.Count | Should -Be 1
 

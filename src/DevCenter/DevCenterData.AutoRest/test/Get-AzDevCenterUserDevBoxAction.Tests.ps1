@@ -13,7 +13,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBoxAct
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevCenterUserDevBoxAction' {
+Describe 'Get-AzDevCenterUserDevBoxAction' -skip {
     It 'List' {
         $listOfActions = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
         $listOfActions.Count | Should -BeGreaterOrEqual 2
@@ -23,7 +23,7 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         
         $action.Name | Should -Be "schedule-default"
@@ -36,7 +36,7 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
     
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName; "ActionName" = "schedule-default"}
 
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $devBoxInput

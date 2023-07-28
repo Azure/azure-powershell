@@ -19,7 +19,7 @@ Describe 'Remove-AzDevCenterUserEnvironment' {
         Remove-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete -ProjectName $env.projectName
         { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete } | Should -Throw
 
-        Remove-AzDevCenterUserEnvironment -DevCenter $env.devCenterName  $env.envNameToDelete2  -ProjectName $env.projectName
+        Remove-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name $env.envNameToDelete2  -ProjectName $env.projectName
         { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete2 } | Should -Throw
 
         }

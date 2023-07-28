@@ -35,18 +35,18 @@ Describe 'Set-AzDevCenterUserEnvironment' {
 
     It 'ReplaceViaIdentity' {
         $functionAppParameters = @{"name" = $env.functionAppName13 }
-        $envInput1 = @{"UserId" = "me"; "EnvironmentName" = "envtest7"}
-        $envInput2 = @{"UserId" = "me"; "EnvironmentName" = "envtest8"}
+        $envInput1 = @{"UserId" = "me";}
+        $envInput2 = @{"UserId" = "me";}
 
 
-        $environment = Set-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -InputObject $envInput1 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+        $environment = Set-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest7" -ProjectName $env.projectName -InputObject $envInput1 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.sandbox
         $environment.Name | Should -Be "envtest7"
         $environment.Type | Should -Be $env.environmentTypeName
         $environment.User | Should -Be $env.userObjectId
 
-        $environment = Set-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -ProjectName $env.projectName -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
+        $environment = Set-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest8" -ProjectName $env.projectName -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.functionApp
         $environment.Name | Should -Be "envtest8"

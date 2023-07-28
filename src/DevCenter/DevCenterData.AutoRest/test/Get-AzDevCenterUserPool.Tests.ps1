@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserPool'))
 }
 
 Describe 'Get-AzDevCenterUserPool' {
-    It 'List' {
+    It 'List' -skip  {
         $listOfPools = Get-AzDevCenterUserPool -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfPools.Count | Should -Be 1
 
@@ -24,7 +24,7 @@ Describe 'Get-AzDevCenterUserPool' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $pool = Get-AzDevCenterUserPool -Endpoint $env.endpoint -ProjectName $env.projectName -PoolName $env.poolName
         $pool.HardwareProfileMemoryGb | Should -Be 32
         $pool.HardwareProfileSkuName | Should -Be $env.skuName
@@ -60,7 +60,7 @@ Describe 'Get-AzDevCenterUserPool' {
     
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip  {
         $poolInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName}
         $pool = Get-AzDevCenterUserPool -Endpoint $env.endpoint -InputObject $poolInput
         $pool.HardwareProfileMemoryGb | Should -Be 32

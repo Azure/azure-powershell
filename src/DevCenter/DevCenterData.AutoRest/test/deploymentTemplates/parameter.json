@@ -54,7 +54,7 @@
       "value": "ssd_1024gb"
     },
     "keyVaultName": {
-      "value": "dummy"
+      "value": "amlim-kv"
     },
     "environmentTypeName": {
       "value": "m780es"

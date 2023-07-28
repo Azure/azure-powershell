@@ -29,7 +29,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $catalog | Should -Be $env.catalogName
 
 
-        $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName ProjectName $env.projectName -CatalogName $env.catalogName 
+        $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
         $catalog | Should -Be $env.catalogName
     }
 

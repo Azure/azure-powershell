@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "67" ],
-        "x-ms-client-request-id": [ "387ba6a0-440e-4f73-abab-5bc9e3406ed6" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "5b63c2d5-05a5-4d91-bc1a-47902822d9ad" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironmentType" ],
         "FullCommandName": [ "Get-AzDevCenterUserEnvironmentType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -20,13 +20,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:02 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:34 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "68ec4226-a391-4830-aa24-3bc41506ae95" ],
-        "x-ms-client-request-id": [ "387ba6a0-440e-4f73-abab-5bc9e3406ed6" ],
+        "x-ms-correlation-request-id": [ "19d8a90a-40da-4d8b-bf64-05fa67306d22" ],
+        "x-ms-client-request-id": [ "5b63c2d5-05a5-4d91-bc1a-47902822d9ad" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "296" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:55.2622051Z" ],
+        "X-Rate-Limit-Remaining": [ "286" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:06.1677347Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
@@ -44,8 +44,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "68" ],
-        "x-ms-client-request-id": [ "47411dfd-0728-4bf2-8e7b-a72741eed565" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "97b3c03b-5eb2-4fd0-9a40-ddc8050d9499" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironmentType" ],
         "FullCommandName": [ "Get-AzDevCenterUserEnvironmentType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -58,13 +58,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Wed, 26 Jul 2023 06:01:04 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 00:24:35 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "b95ec0f1-d785-4447-86ee-c38b04a16beb" ],
-        "x-ms-client-request-id": [ "47411dfd-0728-4bf2-8e7b-a72741eed565" ],
+        "x-ms-correlation-request-id": [ "2862147d-2271-4a13-8943-e60b53089dcb" ],
+        "x-ms-client-request-id": [ "97b3c03b-5eb2-4fd0-9a40-ddc8050d9499" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "286" ],
-        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:22.9645965Z" ],
+        "X-Rate-Limit-Remaining": [ "285" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T00:25:05.1191295Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
