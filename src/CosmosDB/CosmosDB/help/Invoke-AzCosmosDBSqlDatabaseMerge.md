@@ -37,7 +37,7 @@ The **Invoke-AzCosmosDBSqlDatabaseMerge** cmdlet merges the partitions for a giv
 
 ### Example 1
 ```powershell
-PS C:\>Invoke-AzCosmosDBSqlDatabaseMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
+Invoke-AzCosmosDBSqlDatabaseMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
 ```
 
 ```output

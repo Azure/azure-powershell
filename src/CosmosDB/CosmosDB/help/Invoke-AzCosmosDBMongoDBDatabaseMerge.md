@@ -37,7 +37,7 @@ The **Invoke-AzCosmosDBMongoDBDatabaseMerge** cmdlet merges the partitions for a
 
 ### Example 1
 ```powershell
-PS C:\>Invoke-AzCosmosDBMongoDBDatabaseMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
+Invoke-AzCosmosDBMongoDBDatabaseMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
 ```
 
 ```output
