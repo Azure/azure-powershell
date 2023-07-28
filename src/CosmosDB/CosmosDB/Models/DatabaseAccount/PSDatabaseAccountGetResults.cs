@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
             CreateMode = databaseAccountGetResults.CreateMode;
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
+            EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
         }
 
         //
@@ -223,5 +224,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
         public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether materialized views is enabled.
+        public bool? EnableMaterializedViews { get; set; }
     }
 }

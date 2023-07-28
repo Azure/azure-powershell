@@ -894,6 +894,70 @@ function Test-SqlThroughputCmdlets
 
 <#
 .SYNOPSIS
+Test SQL materializedview cmdlets using all parameter sets
+#>
+function Test-SqlMaterializedViewCmdlets
+{
+  $AccountName = "dbaccount-mv"
+  $rgName = "CosmosDBResourceGroup-mv"
+  $DatabaseName = "dbName1"
+  $ContainerName = "srcContainerName"
+  $MVContainerName = "mvContainerName"
+  $capabilities = @("enableMaterializedViews")
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+
+  $ContainerThroughputValue = 800
+  $UpdatedContainerThroughputValue = 700
+
+  $location = "East US"
+  $apiKind = "Sql"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableMaterializedViews 1
+
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  #    $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName      
+      $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      
+      $newMaterializedViewDefinition = New-Object Microsoft.Azure.Management.CosmosDB.Models.MaterializedViewDefinition
+      $newMaterializedViewDefinition.SourceCollectionId = $ContainerName
+      $newMaterializedViewDefinition.Definition = "select * from Root"
+      $newPSMaterializedViewDefinition = [Microsoft.Azure.Commands.CosmosDB.Models.PSMaterializedViewDefinition]::new($newMaterializedViewDefinition)
+
+      $NewMVContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $MVContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -MaterializedViewDefinition $newPSMaterializedViewDefinition
+      $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
+
+	  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $MVContainerName -Throughput $UpdatedContainerThroughputValue
+      Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
+	  
+	  $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
+
+      Remove-AzCosmosDBSqlContainer -InputObject $NewMVContainer
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
+      Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
 Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
@@ -1616,6 +1680,42 @@ function Test-SqlContainerMergeCmdlet
       New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
       Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
       $physicalPartitionStorageInfos = Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test sql database merge cmdlet
+#>
+function Test-SqlDatabaseMergeCmdlet
+{
+  $AccountName = "mergetest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ContainerThroughputValue
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBSqlDatabaseMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
       Assert-AreEqual $physicalPartitionStorageInfos.Count 1
       if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
       {

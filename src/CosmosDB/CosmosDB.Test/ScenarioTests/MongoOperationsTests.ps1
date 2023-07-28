@@ -1022,3 +1022,38 @@ function Test-MongoDBCollectionMergeCmdlet
       Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBDatabaseMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ContainerThroughputValue
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBDatabaseMerge -ResourceGroupName $rgName -AccountName $AccountName -Name $DatabaseName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}

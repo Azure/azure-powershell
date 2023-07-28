@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";
+        public const string EnableMaterializedViewsHelpMessage = "Bool to indicate if Materializedviews is enabled on the account.";
         public const string EnableBurstCapacityHelpMessage = "Bool to indicate if Burst Capacity is enabled on the account.";
         public const string ServerVersionHelpMessage = "ServerVersion, valid only in case of MongoDB Accounts.";
         public const string NetworkAclBypassHelpMessage = "Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.";
@@ -136,6 +137,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
+        public const string SqlContainerMaterializedViewHelpMessage = "Materializedview Definition";
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";

@@ -219,8 +219,10 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBSqlDatabasePerPartitionThroughput', 
                'Update-AzCosmosDBSqlDatabasePerPartitionThroughput', 
                'Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput', 
-               'Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput', 
-               'New-AzCosmosDBPhysicalPartitionThroughputObject'
+               'Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput',
+               'New-AzCosmosDBPhysicalPartitionThroughputObject',
+               'Invoke-AzCosmosDbMongoDbDatabaseMerge',
+               'Invoke-AzCosmosDbSqlDatabaseMerge'
 
 # Variables to export from this module
 # VariablesToExport = @()

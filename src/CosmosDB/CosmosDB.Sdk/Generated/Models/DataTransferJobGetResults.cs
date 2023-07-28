@@ -136,12 +136,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Destination");
             }
-            if (WorkerCount != null)
+            if (WorkerCount < 0)
             {
-                if (WorkerCount < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "WorkerCount", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "WorkerCount", 0);
             }
         }
     }

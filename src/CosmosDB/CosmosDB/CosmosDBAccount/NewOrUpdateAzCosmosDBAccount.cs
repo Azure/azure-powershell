@@ -110,6 +110,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
         public string AnalyticalStorageSchemaType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableMaterializedViewsHelpMessage)]
+        public bool? EnableMaterializedViews { get; set; }
+
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
             ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
