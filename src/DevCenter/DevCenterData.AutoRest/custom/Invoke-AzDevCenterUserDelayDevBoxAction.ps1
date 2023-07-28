@@ -185,7 +185,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
     $User = $UserId
 
     if ($PSBoundParameters.ContainsKey('InputObject')) {
-      if ($null -eq $InputObject.UserId) {
+      if ([string]::IsNullOrEmpty($InputObject.UserId)) {
         $InputObject.UserId = "me"
         $PSBoundParameters["InputObject"] = $InputObject
       }
@@ -197,7 +197,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
 
     Write-Host $Action
 
-    if ($null -eq $Action) {
+    if ([string]::IsNullOrEmpty($Action)) {
       $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $Project `
         -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User
     }

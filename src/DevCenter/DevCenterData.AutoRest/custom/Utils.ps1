@@ -76,12 +76,19 @@ function GetDelayedActionTimeFromAllActions {
     process {
         $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ProjectName `
             $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
+
+        if (!$action) {
+            $action = "No actions were found."
+            Write-Error $action -ErrorAction Stop
+        }
         
         $excludedDate = [DateTime]::ParseExact("0001-01-01T00:00:00.0000000", "yyyy-MM-ddTHH:mm:ss.fffffff", $null)
         $actionWithEarliestScheduledTime = $action |
         Where-Object { $null -ne $_.NextScheduledTime -and $_.NextScheduledTime -ne $excludedDate } |
         Sort-Object NextScheduledTime | Select-Object -First 1
- 
+
+
+
         $newScheduledTime = $actionWithEarliestScheduledTime.NextScheduledTime + $DelayTime
 
         return $newScheduledTime
@@ -119,6 +126,7 @@ function GetDelayedActionTimeFromActionName {
     process {
         $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
             -ProjectName $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
+        
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
 
         return $newScheduledTime
