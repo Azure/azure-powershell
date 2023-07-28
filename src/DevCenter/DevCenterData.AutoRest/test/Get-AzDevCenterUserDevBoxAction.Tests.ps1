@@ -18,8 +18,10 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
         $listOfActions = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
         $listOfActions.Count | Should -BeGreaterOrEqual 2
 
-        $listOfActions = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
-        $listOfActions.Count | Should -BeGreaterOrEqual 2
+        if ($Record -or $Live) {
+            $listOfActions = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+            $listOfActions.Count | Should -BeGreaterOrEqual 2
+        }
 
     }
 
@@ -29,24 +31,28 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
 
-        $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
+        if ($Record -or $Live) {
+            $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
 
-        $action.Name | Should -Be "schedule-default"
-        $action.ActionType | Should -Be "Stop"
+            $action.Name | Should -Be "schedule-default"
+            $action.ActionType | Should -Be "Stop"
+        }
     
     }
 
     It 'GetViaIdentity' -skip {
-        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName; "ActionName" = "schedule-default"}
+        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName; "ActionName" = "schedule-default" }
 
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $devBoxInput
 
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
 
-        $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -InputObject $devBoxInput
+        if ($Record -or $Live) {
+            $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -InputObject $devBoxInput
 
-        $action.Name | Should -Be "schedule-default"
-        $action.ActionType | Should -Be "Stop"
+            $action.Name | Should -Be "schedule-default"
+            $action.ActionType | Should -Be "Stop"
+        }
     }
 }

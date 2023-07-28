@@ -19,8 +19,10 @@ Describe 'Get-AzDevCenterUserEnvironmentType' {
         $listOfEnvTypes = Get-AzDevCenterUserEnvironmentType -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfEnvTypes.Count | Should -Be 1
 
+        if ($Record -or $Live) {
         $listOfEnvTypes = Get-AzDevCenterUserEnvironmentType -DevCenter $env.devCenterName -ProjectName $env.projectName
         $listOfEnvTypes.Count | Should -Be 1
+        }
     
     }
 }

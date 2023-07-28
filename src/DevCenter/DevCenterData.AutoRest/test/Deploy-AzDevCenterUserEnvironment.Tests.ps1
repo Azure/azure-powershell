@@ -24,19 +24,20 @@ Describe 'Deploy-AzDevCenterUserEnvironment' {
         $environment.Type | Should -Be $env.environmentTypeName
         $environment.User | Should -Be $env.userObjectId
 
-
-        $environment = Deploy-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest2" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.sandbox
-        $environment.Name | Should -Be "envtest2"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
+        if ($Record -or $Live) {
+            $environment = Deploy-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest2" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+            $environment.CatalogName | Should -Be $env.catalogName
+            $environment.DefinitionName | Should -Be $env.sandbox
+            $environment.Name | Should -Be "envtest2"
+            $environment.Type | Should -Be $env.environmentTypeName
+            $environment.User | Should -Be $env.userObjectId
+        }
     }
 
     It 'ReplaceViaIdentity' -skip {
         $functionAppParameters = @{"name" = $env.functionAppName9 }
-        $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7"}
-        $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8"}
+        $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7" }
+        $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8" }
 
 
         $environment = Deploy-AzDevCenterUserEnvironment -Endpoint $env.endpoint -InputObject $envInput1 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
@@ -46,12 +47,14 @@ Describe 'Deploy-AzDevCenterUserEnvironment' {
         $environment.Type | Should -Be $env.environmentTypeName
         $environment.User | Should -Be $env.userObjectId
 
-        $environment = Deploy-AzDevCenterUserEnvironment -Endpoint $env.endpoint -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.functionApp
-        $environment.Name | Should -Be "envtest8"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
+        if ($Record -or $Live) {
+            $environment = Deploy-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
+            $environment.CatalogName | Should -Be $env.catalogName
+            $environment.DefinitionName | Should -Be $env.functionApp
+            $environment.Name | Should -Be "envtest8"
+            $environment.Type | Should -Be $env.environmentTypeName
+            $environment.User | Should -Be $env.userObjectId
+        }
     }
 }
 

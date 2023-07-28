@@ -1,308 +1,4 @@
 {
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/devboxes?api-version=2023-04-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "ecadec62-0381-4633-9810-4e8f18361f75" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:27 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "d437c4c0-ee1f-40be-80a0-69a75280fbd7" ],
-        "x-ms-client-request-id": [ "ecadec62-0381-4633-9810-4e8f18361f75" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "298" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:34:55.1708471Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "3088" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"4fwrtd\",\n      \"projectName\": \"pwshProjt69b30\",\n      \"poolName\": \"dxu5mw\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"2a784c31-4380-40df-ac71-18782949789f\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T03:05:18.2143879+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k507fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Started\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k607fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"38b90907-ddde-4414-89b3-6e5743a041bd\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-28T01:35:00.9817723+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes?api-version=2023-04-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "cee448a0-a21e-494f-8ea7-e704a161844a" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List1" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:27 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "5490c417-4e8e-4828-a4a3-856d99ebde5a" ],
-        "x-ms-client-request-id": [ "cee448a0-a21e-494f-8ea7-e704a161844a" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "298" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.5853293Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "3088" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"4fwrtd\",\n      \"projectName\": \"pwshProjt69b30\",\n      \"poolName\": \"dxu5mw\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"2a784c31-4380-40df-ac71-18782949789f\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T03:05:18.2143879+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k507fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Started\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k607fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"38b90907-ddde-4414-89b3-6e5743a041bd\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-28T01:35:00.9817723+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes?api-version=2023-04-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "1e8bd1a9-9971-4cf1-95df-ec5c616809a9" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List2" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:28 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "ea7b7b7f-b084-4747-936d-af491e0c4ad8" ],
-        "x-ms-client-request-id": [ "1e8bd1a9-9971-4cf1-95df-ec5c616809a9" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "298" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.9350889Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "2065" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"k507fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Started\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k607fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"38b90907-ddde-4414-89b3-6e5743a041bd\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-28T01:35:00.9817723+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/devboxes?api-version=2023-04-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "03bbb00c-e05b-433b-b597-1f24e049374b" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:36 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "c434148b-090f-442d-9178-ba964e84114a" ],
-        "x-ms-client-request-id": [ "03bbb00c-e05b-433b-b597-1f24e049374b" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "297" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:34:55.1708471Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "3088" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"4fwrtd\",\n      \"projectName\": \"pwshProjt69b30\",\n      \"poolName\": \"dxu5mw\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"2a784c31-4380-40df-ac71-18782949789f\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T03:05:18.2143879+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k507fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Started\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k607fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"38b90907-ddde-4414-89b3-6e5743a041bd\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-28T01:35:00.9817723+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/users/me/devboxes?api-version=2023-04-01+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/users/me/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "aec3c6bf-bcbf-4ad6-a186-67e9b6949809" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List1" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:37 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "8105947b-9822-4f69-8d2c-3ae27ab18c07" ],
-        "x-ms-client-request-id": [ "aec3c6bf-bcbf-4ad6-a186-67e9b6949809" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "296" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.5853293Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "3088" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"4fwrtd\",\n      \"projectName\": \"pwshProjt69b30\",\n      \"poolName\": \"dxu5mw\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"2a784c31-4380-40df-ac71-18782949789f\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T03:05:18.2143879+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k507fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Started\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    },\n    {\n      \"name\": \"k607fd\",\n      \"projectName\": \"pwshProja68gny\",\n      \"poolName\": \"nzboe1\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"38b90907-ddde-4414-89b3-6e5743a041bd\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-28T01:35:00.9817723+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProjt69b30/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes?api-version=2023-04-01+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProjt69b30/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "54bb555c-e25d-4e7a-95b1-834729dadec9" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_List2" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:38 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "69283da8-f4d5-43a4-8803-46b179cb92e3" ],
-        "x-ms-client-request-id": [ "54bb555c-e25d-4e7a-95b1-834729dadec9" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "297" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.9350889Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "1042" ]
-      },
-      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"4fwrtd\",\n      \"projectName\": \"pwshProjt69b30\",\n      \"poolName\": \"dxu5mw\",\n      \"hibernateSupport\": \"Enabled\",\n      \"provisioningState\": \"Succeeded\",\n      \"actionState\": \"Unknown\",\n      \"powerState\": \"Running\",\n      \"uniqueId\": \"2a784c31-4380-40df-ac71-18782949789f\",\n      \"location\": \"canadacentral\",\n      \"osType\": \"Windows\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"hardwareProfile\": {\n        \"vCPUs\": 8,\n        \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n        \"memoryGB\": 32\n      },\n      \"storageProfile\": {\n        \"osDisk\": {\n          \"diskSizeGB\": 1024\n        }\n      },\n      \"imageReference\": {\n        \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n        \"version\": \"1.0.0\",\n        \"operatingSystem\": \"Windows11\",\n        \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n        \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n      },\n      \"createdTime\": \"2023-07-26T03:05:18.2143879+00:00\",\n      \"localAdministrator\": \"Enabled\"\n    }\n  ]\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes/k507fd?api-version=2023-04-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes/k507fd?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "3079922c-d28d-46d8-9c2d-8e637df16468" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:38 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "a20f52c9-3474-49b9-81bc-cc48fc895e56" ],
-        "x-ms-client-request-id": [ "3079922c-d28d-46d8-9c2d-8e637df16468" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "296" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:34:55.1708471Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "893" ]
-      },
-      "Content": "{\n  \"name\": \"k507fd\",\n  \"projectName\": \"pwshProja68gny\",\n  \"poolName\": \"nzboe1\",\n  \"hibernateSupport\": \"Enabled\",\n  \"provisioningState\": \"Succeeded\",\n  \"actionState\": \"Started\",\n  \"powerState\": \"Running\",\n  \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n  \"location\": \"canadacentral\",\n  \"osType\": \"Windows\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"hardwareProfile\": {\n    \"vCPUs\": 8,\n    \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n    \"memoryGB\": 32\n  },\n  \"storageProfile\": {\n    \"osDisk\": {\n      \"diskSizeGB\": 1024\n    }\n  },\n  \"imageReference\": {\n    \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n    \"version\": \"1.0.0\",\n    \"operatingSystem\": \"Windows11\",\n    \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n    \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n  },\n  \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n  \"localAdministrator\": \"Enabled\"\n}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDevCenterUserDevBox+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k507fd?api-version=2023-04-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k507fd?api-version=2023-04-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "d12324d9-3db2-4b33-a2dc-1829f0d61f7e" ],
-        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
-        "FullCommandName": [ "Get-AzDevCenterUserDevBox_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:40 GMT" ],
-        "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "a85ac91c-748f-465b-ab4d-b50001753d5a" ],
-        "x-ms-client-request-id": [ "d12324d9-3db2-4b33-a2dc-1829f0d61f7e" ],
-        "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "295" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.5853293Z" ],
-        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Content-Length": [ "893" ]
-      },
-      "Content": "{\n  \"name\": \"k507fd\",\n  \"projectName\": \"pwshProja68gny\",\n  \"poolName\": \"nzboe1\",\n  \"hibernateSupport\": \"Enabled\",\n  \"provisioningState\": \"Succeeded\",\n  \"actionState\": \"Started\",\n  \"powerState\": \"Running\",\n  \"uniqueId\": \"33be1ba8-c55e-4cd3-9ec5-5ea6f801384e\",\n  \"location\": \"canadacentral\",\n  \"osType\": \"Windows\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"hardwareProfile\": {\n    \"vCPUs\": 8,\n    \"skuName\": \"general_a_8c32gb1024ssd_v2\",\n    \"memoryGB\": 32\n  },\n  \"storageProfile\": {\n    \"osDisk\": {\n      \"diskSizeGB\": 1024\n    }\n  },\n  \"imageReference\": {\n    \"name\": \"MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os\",\n    \"version\": \"1.0.0\",\n    \"operatingSystem\": \"Windows11\",\n    \"osBuildNumber\": \"win11-22h2-ent-cpc-os\",\n    \"publishedDate\": \"2022-09-20T00:00:00+00:00\"\n  },\n  \"createdTime\": \"2023-07-26T04:13:06.7046137+00:00\",\n  \"localAdministrator\": \"Enabled\"\n}",
-      "isContentBase64": false
-    }
-  },
   "Get-AzDevCenterUserDevBox+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/devboxes/k507fd?api-version=2023-04-01+1": {
     "Request": {
       "Method": "GET",
@@ -310,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "9b36609f-1b48-4b1f-8e70-5315af6a1ef1" ],
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "c4f8a64f-c008-4f15-b840-6ba666a9753f" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
         "FullCommandName": [ "Get-AzDevCenterUserDevBox_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -324,13 +20,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:40 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 18:33:38 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "27cb01a5-8182-4393-8d80-b2b79aec8706" ],
-        "x-ms-client-request-id": [ "9b36609f-1b48-4b1f-8e70-5315af6a1ef1" ],
+        "x-ms-correlation-request-id": [ "41b17adb-7e05-4ca6-bba2-469b3aa010d6" ],
+        "x-ms-client-request-id": [ "c4f8a64f-c008-4f15-b840-6ba666a9753f" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "296" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:35:25.9350889Z" ],
+        "X-Rate-Limit-Remaining": [ "298" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T18:34:07.1688886Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
@@ -348,8 +44,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "0a1f3e2e-77ad-4854-9948-e728f8cfc66f" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "06452982-8688-4e3b-9508-7c17c2f21fa2" ],
         "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserDevBox" ],
         "FullCommandName": [ "Get-AzDevCenterUserDevBox_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -362,13 +58,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 28 Jul 2023 04:34:41 GMT" ],
+        "Date": [ "Fri, 28 Jul 2023 18:33:40 GMT" ],
         "Connection": [ "keep-alive" ],
-        "x-ms-correlation-request-id": [ "c63c529d-7651-4ed2-bd7b-73e182cd3313" ],
-        "x-ms-client-request-id": [ "0a1f3e2e-77ad-4854-9948-e728f8cfc66f" ],
+        "x-ms-correlation-request-id": [ "af2b0c6e-bf8b-4c3d-91e0-ed54de66d960" ],
+        "x-ms-client-request-id": [ "06452982-8688-4e3b-9508-7c17c2f21fa2" ],
         "X-Rate-Limit-Limit": [ "1m" ],
-        "X-Rate-Limit-Remaining": [ "295" ],
-        "X-Rate-Limit-Reset": [ "2023-07-28T04:34:55.1708471Z" ],
+        "X-Rate-Limit-Remaining": [ "298" ],
+        "X-Rate-Limit-Reset": [ "2023-07-28T18:34:37.4245443Z" ],
         "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
       },
       "ContentHeaders": {
