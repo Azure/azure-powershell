@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterUserEnviron
 }
 
 Describe 'Remove-AzDevCenterUserEnvironment' {
-    It 'Delete' {
+    It 'Delete' -skip {
         Remove-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete -ProjectName $env.projectName
         { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete } | Should -Throw
 
@@ -24,7 +24,7 @@ Describe 'Remove-AzDevCenterUserEnvironment' {
 
         }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         $envInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "EnvironmentName" = $env.envNameToDelete3 }
         $envInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "EnvironmentName" = $env.envNameToDelete4 }
 

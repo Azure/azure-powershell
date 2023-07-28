@@ -65,9 +65,9 @@ function setupEnv() {
     # New-AzResourceGroup -Name $resourceGroup -Location "canadacentral"
 
     # #Replace with real values
-    # $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
+    # $gitHubSecretIdentifier = "https://amlim-kv.vault.azure.net/secrets/envTest/0a79f15246ce4b35a13957367b422cab"
     # $keyVaultName = "amlim-kv"
-    # $gitHubUri = "https://github.com/fake/fake.git"
+    # $gitHubUri = "https://github.com/am-lim/deployment-environments.git"
     # $userObjectId = "c3c951b7-d307-4c40-9495-70bd562d98d5"
 
     # $env.Add("resourceGroup", $resourceGroup)
@@ -200,10 +200,10 @@ function setupEnv() {
 
     # New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     # New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
-    New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
-    New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete2 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
-    New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete3 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
-    New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete4 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+    # New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+    # New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete2 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+    # New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete3 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+    # New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name $env.envNameToDelete4 -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
     
     # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
     # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2

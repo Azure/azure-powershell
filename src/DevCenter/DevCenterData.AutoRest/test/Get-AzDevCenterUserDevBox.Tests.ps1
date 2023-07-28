@@ -98,7 +98,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"

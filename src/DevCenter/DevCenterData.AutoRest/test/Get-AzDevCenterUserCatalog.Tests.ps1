@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserCatalog'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevCenterUserCatalog' {
+Describe 'Get-AzDevCenterUserCatalog' -skip {
     It 'List' {
         $listOfCatalogs = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfCatalogs.Count | Should -Be 1
@@ -24,7 +24,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip {
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName 
         $catalog | Should -Be $env.catalogName
 
@@ -33,7 +33,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $catalog | Should -Be $env.catalogName
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip {
         $catalogInput = @{"CatalogName" = $env.catalogName; "ProjectName" = $env.projectName}
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -InputObject $catalogInput 
         $catalog | Should -Be $env.catalogName

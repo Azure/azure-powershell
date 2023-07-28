@@ -13,8 +13,8 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBoxAct
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevCenterUserDevBoxAction' -skip {
-    It 'List' {
+Describe 'Get-AzDevCenterUserDevBoxAction' {
+    It 'List' -skip {
         $listOfActions = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
         $listOfActions.Count | Should -BeGreaterOrEqual 2
 

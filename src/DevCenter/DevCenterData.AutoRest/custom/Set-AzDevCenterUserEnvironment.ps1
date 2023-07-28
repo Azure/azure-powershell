@@ -126,8 +126,8 @@ function Set-AzDevCenterUserEnvironment {
 
     [Parameter(ParameterSetName = 'ReplaceExpanded')]
     [Parameter(ParameterSetName = 'ReplaceExpandedByDevCenter')]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpanded')]
+    [Parameter(ParameterSetName = 'ReplaceViaIdentityExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentUpdatePropertiesParameters]))]
     [System.Collections.Hashtable]
