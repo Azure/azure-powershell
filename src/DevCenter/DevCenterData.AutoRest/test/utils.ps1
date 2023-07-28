@@ -66,8 +66,8 @@ function setupEnv() {
 
     # #Replace with real values
     # $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
-    # $keyVaultName = "amlim-kv"
-    # $gitHubUri = "https://github.com/am-lim/deployment-environments.git"
+    # $keyVaultName = "dummy"
+    # $gitHubUri = "https://github.com/fake/fake.git"
     # $userObjectId = "c3c951b7-d307-4c40-9495-70bd562d98d5"
 
     # $env.Add("resourceGroup", $resourceGroup)
