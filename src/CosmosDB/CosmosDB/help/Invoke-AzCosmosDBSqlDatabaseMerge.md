@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://learn.microsoft.com/en-us/powershell/module/az.cosmosdb/invoke-AzCosmosDBSqlDatabaseMerge
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/invoke-azcosmosdbsqldatabasemerge
 schema: 2.0.0
 ---
 
