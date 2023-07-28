@@ -69,7 +69,8 @@ This command updates the description of a project.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -134,7 +135,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProjectUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -227,13 +228,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProjectUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IProject
 
 ## NOTES
 

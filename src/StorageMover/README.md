@@ -31,15 +31,15 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-brach: 470c544393281cc986c9b343fa441f54576bc0bc
+brach: c53808ba54beef57059371708f1fa6949a11a280
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-03-01/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2023-07-01-preview/storagemover.json
 
 # For new RP, the version is 0.1.0
-module-version: 1.0.0
+module-version: 1.1.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
@@ -147,4 +147,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('ShouldProcess($\"Call remote \'AgentsDelete\' operation\")', 'true');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ISystemData');
 ```

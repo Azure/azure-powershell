@@ -15,21 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageMoverJobRun'))
 }
 
 Describe 'Get-AzStorageMoverJobRun' {
-    BeforeAll {
+    It 'Get/List JobRun, Start/Stop JobDefinition' {
         $job = Start-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
-    }
-
-    It 'List' {
+        $job | Should -Not -Be $null
         $jobRunList = Get-AzStorageMoverJobRun -JobDefinitionName $env.JobDefinitionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName
         $jobRunList.Count | Should -BeGreaterOrEqual 1
-    }
-
-    It 'Get' {
         $jobRunName = $job.Split("/")[-1]
         $jobRun = Get-AzStorageMoverJobRun -Name $jobRunName -JobDefinitionName $env.JobDefinitionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName
         $jobRun.AgentName | Should -Be $env.AgentName 
         $jobRun.SourceName | Should -Be $env.NfsEndpointName 
         $jobRun.TargetName | Should -Be $env.ContainerEndpointName
         $jobRun.Name | SHould -Be $jobRunName
+        $job = Stop-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
+        $job | Should -Not -Be $null
     }
 }
