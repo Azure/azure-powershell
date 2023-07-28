@@ -15,15 +15,15 @@ if (($null -eq $TestName) -or ($TestName -contains 'Stop-AzDevCenterUserDevBox')
 
 Describe 'Stop-AzDevCenterUserDevBox' {
     It 'Stop' -skip {
-        $stopAction = Stop-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+        $stopAction = Stop-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox1 -ProjectName $env.projectName
         $stopAction.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox1 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Stopped"
         $devBox.PowerState | Should -Be "Hibernated"
 
         if ($Record -or $Live) {
-            $stopAction = Stop-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName  
-            $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+            $stopAction = Stop-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.skipDevBox2 -ProjectName $env.projectName  
+            $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox2 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Stopped"
             $devBox.PowerState | Should -Be "Hibernated"
         }
@@ -31,18 +31,19 @@ Describe 'Stop-AzDevCenterUserDevBox' {
     }
 
     It 'StopViaIdentity' -skip {
-        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName }
+        $devBoxInput = @{"DevBoxName" = $env.skipDevBox3; "UserId" = "me"; "ProjectName" = $env.projectName }
+        $devBoxInput = @{"DevBoxName" = $env.skipDevBox4; "UserId" = "me"; "ProjectName" = $env.projectName }
 
         $stopAction = Stop-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
         $stopAction.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox3 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Stopped"
         $devBox.PowerState | Should -Be "Hibernated"
 
         if ($Record -or $Live) {
             $stopAction = Stop-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput 
             $stopAction.Status | Should -Be "Succeeded"
-            $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+            $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox4 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Stopped"
             $devBox.PowerState | Should -Be "Hibernated"
         }
