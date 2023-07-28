@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterUserDevBox')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzDevCenterUserDevBox' -skip {
-    It 'Start' {
+Describe 'Start-AzDevCenterUserDevBox' {
+    It 'Start' -skip {
         $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName
         $startOperation.Status | Should -Be "Succeeded"
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"

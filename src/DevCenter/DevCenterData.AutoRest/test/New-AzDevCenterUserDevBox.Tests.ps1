@@ -13,8 +13,8 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterUserDevBox'))
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterUserDevBox' -skip {
-    It 'CreateExpanded' {
+Describe 'New-AzDevCenterUserDevBox' {
+    It 'CreateExpanded' -skip {
         $devBox = New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name "devbox3" -ProjectName $env.projectName -PoolName $env.poolName
         $devBox.Name | Should -Be "devbox3"
         $devBox.User | Should -Be $env.userObjectId

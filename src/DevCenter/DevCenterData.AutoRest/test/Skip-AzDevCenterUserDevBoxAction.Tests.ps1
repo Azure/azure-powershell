@@ -34,8 +34,8 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
     }
 
     It 'SkipViaIdentity' {
-        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox2; "ActionName" = "schedule-default" }
-        $actionInput2 = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox3; "ActionName" = "schedule-default" }
+        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox2; "ActionName" = "schedule-default"; "UserId" = "me" }
+        $actionInput2 = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox3; "ActionName" = "schedule-default"; "UserId" = "me"}
 
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox2 -ProjectName $env.projectName -ActionName "schedule-default"
         $skipTimeSpan = New-TimeSpan -Days 1
