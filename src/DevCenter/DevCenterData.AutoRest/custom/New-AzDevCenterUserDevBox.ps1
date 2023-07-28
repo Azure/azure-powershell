@@ -65,9 +65,7 @@ function New-AzDevCenterUserDevBox {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox])]
   [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-    [Parameter(ParameterSetName = 'Create', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentity', Mandatory)]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
@@ -75,37 +73,29 @@ function New-AzDevCenterUserDevBox {
     ${Endpoint},
   
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
   
-    [Parameter(ParameterSetName = 'Create', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateByDevCenter', Mandatory)]
     [Alias('DevBoxName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${Name},
   
-    [Parameter(ParameterSetName = 'Create', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'CreateByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
   
-    [Parameter(ParameterSetName = 'Create')]
     [Parameter(ParameterSetName = 'CreateExpanded')]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
-    [Parameter(ParameterSetName = 'CreateByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
     [System.String]
@@ -113,25 +103,13 @@ function New-AzDevCenterUserDevBox {
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
   
-    [Parameter(ParameterSetName = 'CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-  
-    [Parameter(ParameterSetName = 'Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'CreateViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'CreateByDevCenter', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox]
-    # A Dev Box
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
   
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]

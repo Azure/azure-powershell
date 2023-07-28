@@ -15,16 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserPool'))
 }
 
 Describe 'Get-AzDevCenterUserPool' {
-    It 'List' -skip {
+    It 'List' {
         $listOfPools = Get-AzDevCenterUserPool -Endpoint $env.endpoint -ProjectName $env.projectName
-        $listOfPools.Count | Should -Be 2
+        $listOfPools.Count | Should -Be 1
 
         $listOfPools = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -ProjectName $env.projectName
-        $listOfPools.Count | Should -Be 2
+        $listOfPools.Count | Should -Be 1
 
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $pool = Get-AzDevCenterUserPool -Endpoint $env.endpoint -ProjectName $env.projectName -PoolName $env.poolName
         $pool.HardwareProfileMemoryGb | Should -Be 32
         $pool.HardwareProfileSkuName | Should -Be $env.skuName
@@ -41,7 +41,7 @@ Describe 'Get-AzDevCenterUserPool' {
         $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
         $pool.StopOnDisconnectStatus | Should -Be "Enabled"
 
-        $pool = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -ProjectName $env.projectName -PoolName $env.
+        $pool = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -ProjectName $env.projectName -PoolName $env.poolName
         $pool.HardwareProfileMemoryGb | Should -Be 32
         $pool.HardwareProfileSkuName | Should -Be $env.skuName
         $pool.HardwareProfileVCpUs | Should -Be 8
@@ -60,7 +60,7 @@ Describe 'Get-AzDevCenterUserPool' {
     
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $poolInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName}
         $pool = Get-AzDevCenterUserPool -Endpoint $env.endpoint -InputObject $poolInput
         $pool.HardwareProfileMemoryGb | Should -Be 32

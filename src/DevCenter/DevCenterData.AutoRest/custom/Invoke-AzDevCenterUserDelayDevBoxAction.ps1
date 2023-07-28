@@ -179,13 +179,29 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
-    if (-not $PSBoundParameters.ContainsKey('ActionName')) {
-      $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $ProjectName `
-        -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
+    $Project = $ProjectName
+    $DevBox = $DevBoxName
+    $Action = $ActionName
+    $User = $UserId
+
+    if ($PSBoundParameters.ContainsKey('InputObject')) {
+      if ($null -eq $InputObject.UserId) {
+        $InputObject.UserId = "me"
+        $PSBoundParameters["InputObject"] = $InputObject
+      }
+      $Project = $InputObject.ProjectName
+      $DevBox = $InputObject.DevBoxName
+      $Action = $InputObject.ActionName
+      $User = $InputObject.UserId
+    }
+
+    if ($null -eq $Action) {
+      $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $Project `
+        -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User
     }
     else {
-      $Until = GetDelayedActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
-        -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
+      $Until = GetDelayedActionTimeFromActionName -ActionName $Action -Endpoint $Endpoint `
+        -Project $Project -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User
     }
 
     $null = $PSBoundParameters.Add("Until", $Until)

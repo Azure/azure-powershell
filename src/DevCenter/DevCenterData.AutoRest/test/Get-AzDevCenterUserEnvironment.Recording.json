@@ -1,0 +1,306 @@
+{
+  "Get-AzDevCenterUserEnvironment+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environments?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environments?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "24366f72-e6fa-4517-b628-4e02b79e0b86" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:48 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "b518c938-b94f-400c-bb34-763fec24d701" ],
+        "x-ms-client-request-id": [ "24366f72-e6fa-4517-b628-4e02b79e0b86" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "292" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:23.5097123Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "3805" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"smv3q9\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kecfh8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kecfh8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"pq2f39\"\n      }\n    },\n    {\n      \"name\": \"uwqne8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-uwqne8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"c5dqaf\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-c5dqaf\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"q52klh\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-q52klh\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kfh3c4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kfh3c4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest1\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest1\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"tijokm\"\n      }\n    },\n    {\n      \"name\": \"envtest2\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest2\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest3\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest3\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"j8uhx4\"\n      }\n    },\n    {\n      \"name\": \"envtest4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+List+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environments?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/environments?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "501fc042-58d0-417a-bd63-f139c4629b91" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:49 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "9275ab00-9fca-4563-91f3-97f5451e1553" ],
+        "x-ms-client-request-id": [ "501fc042-58d0-417a-bd63-f139c4629b91" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "290" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:00:52.6361973Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "3805" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"smv3q9\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kecfh8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kecfh8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"pq2f39\"\n      }\n    },\n    {\n      \"name\": \"uwqne8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-uwqne8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"c5dqaf\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-c5dqaf\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"q52klh\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-q52klh\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kfh3c4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kfh3c4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest1\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest1\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"tijokm\"\n      }\n    },\n    {\n      \"name\": \"envtest2\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest2\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest3\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest3\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"j8uhx4\"\n      }\n    },\n    {\n      \"name\": \"envtest4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "b3a38987-5025-4bae-8ccc-c5a5a546dbfa" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:49 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "390eb595-c287-426c-9ca5-1137b950e670" ],
+        "x-ms-client-request-id": [ "b3a38987-5025-4bae-8ccc-c5a5a546dbfa" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "291" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:22.9645965Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "321" ]
+      },
+      "Content": "{\n  \"name\": \"smv3q9\",\n  \"environmentType\": \"m780es\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"provisioningState\": \"Succeeded\",\n  \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n  \"catalogName\": \"x3vu7b\",\n  \"environmentDefinitionName\": \"Sandbox\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+Get+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/kecfh8?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/kecfh8?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "e429228e-2acc-4abd-aba1-c7e2881b0dd4" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:51 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "bc8447e6-601c-44ab-bfc1-e22ad883eb5b" ],
+        "x-ms-client-request-id": [ "e429228e-2acc-4abd-aba1-c7e2881b0dd4" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "291" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:23.5097123Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "369" ]
+      },
+      "Content": "{\n  \"name\": \"kecfh8\",\n  \"environmentType\": \"m780es\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"provisioningState\": \"Succeeded\",\n  \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kecfh8\",\n  \"catalogName\": \"x3vu7b\",\n  \"environmentDefinitionName\": \"FunctionApp\",\n  \"parameters\": {\n    \"name\": \"pq2f39\"\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "4f14d8cc-6f0d-4516-b408-f88f55ad4a02" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:52 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "ec3108b2-35ca-413d-bb3c-818a2677dad4" ],
+        "x-ms-client-request-id": [ "4f14d8cc-6f0d-4516-b408-f88f55ad4a02" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "289" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:00:52.6361973Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "3805" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"smv3q9\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kecfh8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kecfh8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"pq2f39\"\n      }\n    },\n    {\n      \"name\": \"uwqne8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-uwqne8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"c5dqaf\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-c5dqaf\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"q52klh\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-q52klh\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kfh3c4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kfh3c4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest1\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest1\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"tijokm\"\n      }\n    },\n    {\n      \"name\": \"envtest2\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest2\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest3\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest3\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"j8uhx4\"\n      }\n    },\n    {\n      \"name\": \"envtest4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+List1+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "b20cc1ff-2533-45cb-b52d-0c32dd72c86f" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:53 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "5326223e-2135-4e8c-9ea1-e2c1433cee35" ],
+        "x-ms-client-request-id": [ "b20cc1ff-2533-45cb-b52d-0c32dd72c86f" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "290" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:22.9645965Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "3805" ]
+      },
+      "Content": "{\n  \"value\": [\n    {\n      \"name\": \"smv3q9\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kecfh8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kecfh8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"pq2f39\"\n      }\n    },\n    {\n      \"name\": \"uwqne8\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-uwqne8\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"c5dqaf\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-c5dqaf\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"q52klh\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-q52klh\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"kfh3c4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-kfh3c4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest1\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest1\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"tijokm\"\n      }\n    },\n    {\n      \"name\": \"envtest2\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest2\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    },\n    {\n      \"name\": \"envtest3\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest3\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"FunctionApp\",\n      \"parameters\": {\n        \"name\": \"j8uhx4\"\n      }\n    },\n    {\n      \"name\": \"envtest4\",\n      \"environmentType\": \"m780es\",\n      \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n      \"provisioningState\": \"Succeeded\",\n      \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-envtest4\",\n      \"catalogName\": \"x3vu7b\",\n      \"environmentDefinitionName\": \"Sandbox\"\n    }\n  ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "7375e12f-f0ee-4aee-9c4f-794f372bfa4b" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:54 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "305b7ce0-943d-4525-8fdf-92359eb8784e" ],
+        "x-ms-client-request-id": [ "7375e12f-f0ee-4aee-9c4f-794f372bfa4b" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "290" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:23.5097123Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "321" ]
+      },
+      "Content": "{\n  \"name\": \"smv3q9\",\n  \"environmentType\": \"m780es\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"provisioningState\": \"Succeeded\",\n  \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n  \"catalogName\": \"x3vu7b\",\n  \"environmentDefinitionName\": \"Sandbox\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDevCenterUserEnvironment+[NoContext]+GetViaIdentity+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshdc645vnb.canadacentral.devcenter.azure.com/projects/pwshProja68gny/users/me/environments/smv3q9?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "10bdc8c5-ec2c-4e81-9084-129708cf68d7" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironment" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironment_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Wed, 26 Jul 2023 06:00:55 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "198df3bd-ddaf-43c5-80d6-92fda09b85a0" ],
+        "x-ms-client-request-id": [ "10bdc8c5-ec2c-4e81-9084-129708cf68d7" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-07-26T06:01:55.2622051Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "321" ]
+      },
+      "Content": "{\n  \"name\": \"smv3q9\",\n  \"environmentType\": \"m780es\",\n  \"user\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"provisioningState\": \"Succeeded\",\n  \"resourceGroupId\": \"/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshproja68gny-smv3q9\",\n  \"catalogName\": \"x3vu7b\",\n  \"environmentDefinitionName\": \"Sandbox\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

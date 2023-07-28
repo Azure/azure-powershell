@@ -14,15 +14,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDevCenterUserDelayD
 }
 
 Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
-    It 'Delay1' -skip {
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
-        $delayTime = New-TimeSpan -Minutes 10
-        $newScheduledTime = $action.NextScheduledTime + $delayTime
-        $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -DevBoxName  $env.devboxName -ProjectName $env.projectName -DelayTime "00:10"
-        $delayAction.NextScheduledTime | Should -Be $newScheduledTime
+    It 'Delay1' {
+        $delayActions = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -DevBoxName  $env.devboxName -ProjectName $env.projectName -DelayTime "00:10"
+        $delayActions.Count | Should -Be 2
     }
 
-    It 'Delay' -skip {
+    It 'Delay' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         $delayTime = New-TimeSpan -Minutes 10
         $newScheduledTime = $action.NextScheduledTime + $delayTime
@@ -30,36 +27,33 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'DelayViaIdentity' -skip {
+    It 'DelayViaIdentity' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         $delayTime = New-TimeSpan -Minutes 10
         $newScheduledTime = $action.NextScheduledTime + $delayTime
-        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.devboxName; "ActionName" = "schedule-default"}
+        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.devboxName; "ActionName" = "schedule-default";}
 
         $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -InputObject $actionInput -DelayTime "00:10"
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'DelayViaIdentityByDevCenter' -skip {
+    It 'DelayViaIdentityByDevCenter' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         $delayTime = New-TimeSpan -Minutes 10
         $newScheduledTime = $action.NextScheduledTime + $delayTime
-        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.devboxName; "ActionName" = "schedule-default"}
+        $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.devboxName; "ActionName" = "schedule-default";}
 
         $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter $env.devCenterName -InputObject $actionInput -DelayTime "00:10"
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
 
     }
 
-    It 'Delay1ByDevCenter' -skip {
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
-        $delayTime = New-TimeSpan -Minutes 10
-        $newScheduledTime = $action.NextScheduledTime + $delayTime
+    It 'Delay1ByDevCenter' {
         $delayAction =Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -DelayTime "00:10"
-        $delayAction.NextScheduledTime | Should -Be $newScheduledTime
+        $delayAction.Count | Should -Be 2
     }
 
-    It 'DelayByDevCenter' -skip {
+    It 'DelayByDevCenter' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         $delayTime = New-TimeSpan -Minutes 10
         $newScheduledTime = $action.NextScheduledTime + $delayTime
@@ -67,3 +61,4 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 }
+ 

@@ -25,13 +25,13 @@ Describe 'Remove-AzDevCenterUserDevBox' {
         }
 
     It 'DeleteViaIdentity' -skip {
-        $devBoxInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox3" }
-        $devBoxInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox4" }
+        $devBoxInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox5" }
+        $devBoxInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox6" }
 
         Remove-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput 
-        { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox3" } | Should -Throw
+        { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox5" } | Should -Throw
 
         Remove-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput2
-        { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox4" } | Should -Throw
+        { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name "devbox6" } | Should -Throw
        }
 }

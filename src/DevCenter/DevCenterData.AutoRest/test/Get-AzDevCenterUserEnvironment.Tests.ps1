@@ -13,9 +13,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironmen
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-#Add parameter check
 Describe 'Get-AzDevCenterUserEnvironment' {
-    It 'List' -skip {
+    It 'List' {
         $listOfEnvs = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfEnvs.Count | Should -BeGreaterOrEqual 2
 
@@ -23,7 +22,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $listOfEnvs.Count | Should -BeGreaterOrEqual 2
         }
 
-    It 'Get' -skip {
+    It 'Get' {
         $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envName
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.sandbox
@@ -32,7 +31,8 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
 
         $environment = Get-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.envName2
-        #add parameter
+        $environment.Parameter.Keys[0] | Should -Be "name"
+        $environment.Parameter.Values[0] | Should -Be $env.functionAppName1
         $environment.CatalogName | Should -Be $env.catalogName
         $environment.DefinitionName | Should -Be $env.functionApp
         $environment.Name | Should -Be $env.envName2
@@ -40,7 +40,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $listOfEnvs = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" 
         $listOfEnvs.Count | Should -BeGreaterOrEqual 2
 
@@ -49,7 +49,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
     
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $envInput = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = $env.envName}
 
         $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -InputObject $envInput

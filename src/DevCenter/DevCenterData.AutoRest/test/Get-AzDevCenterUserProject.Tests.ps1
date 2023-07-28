@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserProject'))
 }
 
 Describe 'Get-AzDevCenterUserProject' {
-    It 'List' -skip {
+    It 'List' {
         $listOfProjects = Get-AzDevCenterUserProject -Endpoint $env.endpoint
         $listOfProjects.Count | Should -Be 2
 
@@ -24,7 +24,7 @@ Describe 'Get-AzDevCenterUserProject' {
 
         }
 
-    It 'Get' -skip {
+    It 'Get' {
         $project = Get-AzDevCenterUserProject -Endpoint $env.endpoint -ProjectName $env.projectName
         $project.Name | Should -Be $env.projectName
         $project.MaxDevBoxesPerUser | Should -Be 20
@@ -34,7 +34,7 @@ Describe 'Get-AzDevCenterUserProject' {
         $project.MaxDevBoxesPerUser | Should -Be 20
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $poolInput = @{"ProjectName" = $env.projectName}
         $project = Get-AzDevCenterUserProject -Endpoint $env.endpoint -InputObject $poolInput
         $project.Name | Should -Be $env.projectName

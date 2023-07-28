@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Restart-AzDevCenterUserDevBox
 }
 
 Describe 'Restart-AzDevCenterUserDevBox' {
-    It 'Restart' -skip {
+    It 'Restart' {
         $restartOperation = Restart-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
         $restartOperation.Status | Should -Be "Succeeded"
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
@@ -29,7 +29,7 @@ Describe 'Restart-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
         }
 
-    It 'RestartViaIdentity' -skip {
+    It 'RestartViaIdentity' {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
 
         $restartOperation = Restart-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput

@@ -15,52 +15,28 @@ Creates or updates an environment.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateByDevCenter
-```
-New-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -Body <IEnvironment>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
 ```
 New-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <IAny>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityByDevCenter
-```
-New-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Body <IEnvironment>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
 New-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,19 +45,27 @@ Creates or updates an environment.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -100,28 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Properties of an environment.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
-Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CatalogName
 Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -152,7 +120,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByDevCenter, CreateExpandedByDevCenter, CreateViaIdentityByDevCenter, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: CreateExpandedByDevCenter, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -167,7 +135,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -182,7 +150,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -197,7 +165,7 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -213,7 +181,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -228,7 +196,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -257,8 +225,8 @@ Accept wildcard characters: False
 Parameters object for the environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IAny
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +241,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -289,7 +257,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: False
@@ -335,8 +303,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 
 ## OUTPUTS
@@ -351,22 +317,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IEnvironment>`: Properties of an environment.
-  - `CatalogName <String>`: Name of the catalog.
-  - `DefinitionName <String>`: Name of the environment definition.
-  - `Type <String>`: Environment type.
-  - `[Parameter <IEnvironmentUpdatePropertiesParameters>]`: Parameters object for the environment.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
-    - `Code <String>`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    - `Message <String>`: A message describing the error, intended to be suitable for display in a user interface.
-    - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
-    - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
-  - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
-  - `[OperationLocation <String>]`: 
-  - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
 `INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
   - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.

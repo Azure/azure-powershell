@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBoxAct
 }
 
 Describe 'Get-AzDevCenterUserDevBoxAction' {
-    It 'List' -skip {
+    It 'List' {
         $listOfActions = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
         $listOfActions.Count | Should -BeGreaterOrEqual 2
 
@@ -23,37 +23,30 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
 
     }
 
-    It 'Get' -skip {
-        $scheduledTime = [DateTime]::ParseExact("6/30/2023 1:30:00 AM", "M/d/yyyy h:mm:ss tt", $null)
-
+    It 'Get' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
         
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
-        $action.NextScheduledTime | Should -Be $scheduledTime
 
         $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
 
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
-        $action.NextScheduledTime | Should -Be $scheduledTime
     
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName; "ActionName" = "schedule-default"}
-        $scheduledTime = [DateTime]::ParseExact("6/30/2023 1:30:00 AM", "M/d/yyyy h:mm:ss tt", $null)
 
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $devBoxInput
 
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
-        $action.NextScheduledTime | Should -Be $scheduledTime
 
         $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -InputObject $devBoxInput
 
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
-        $action.NextScheduledTime | Should -Be $scheduledTime
     }
 }

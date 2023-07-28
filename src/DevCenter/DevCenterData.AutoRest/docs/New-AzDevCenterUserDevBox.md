@@ -19,35 +19,11 @@ New-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String> -Body <IDevBox>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateByDevCenter
-```
-New-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> -Body <IDevBox>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateExpandedByDevCenter
 ```
 New-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> -PoolName <String>
  [-UserId <String>] [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Body <IDevBox>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityByDevCenter
-```
-New-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Body <IDevBox>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -69,19 +45,27 @@ Creates or replaces a Dev Box.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -97,22 +81,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-A Dev Box
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
-Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -137,7 +105,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByDevCenter, CreateExpandedByDevCenter, CreateViaIdentityByDevCenter, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: CreateExpandedByDevCenter, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -152,7 +120,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -168,7 +136,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -183,7 +151,7 @@ Indicates whether the owner of the Dev Box is a local administrator.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,7 +166,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases: DevBoxName
 
 Required: True
@@ -228,7 +196,7 @@ The name of the Dev Box pool this machine belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -243,7 +211,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -259,7 +227,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: False
@@ -305,8 +273,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 
 ## OUTPUTS
@@ -321,18 +287,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IDevBox>`: A Dev Box
-  - `PoolName <String>`: The name of the Dev Box pool this machine belongs to.
-  - `[Code <String>]`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-  - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
-    - `Code <String>`: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    - `Message <String>`: A message describing the error, intended to be suitable for display in a user interface.
-    - `[Detail <ICloudErrorBody[]>]`: A list of additional details about the error.
-    - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
-  - `[LocalAdministrator <LocalAdminStatus?>]`: Indicates whether the owner of the Dev Box is a local administrator.
-  - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
-  - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
 
 `INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
   - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.

@@ -53,19 +53,27 @@ Gets an action.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 

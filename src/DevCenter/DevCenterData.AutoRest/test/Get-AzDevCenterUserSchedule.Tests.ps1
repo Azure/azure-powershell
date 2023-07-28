@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserSchedule')
 }
 
 Describe 'Get-AzDevCenterUserSchedule' {
-    It 'Get' -skip {
+    It 'Get' {
         $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"
@@ -31,7 +31,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $schedule.Type | Should -Be "StopDevBox"
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $scheduleInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName}
         
         $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -InputObject $scheduleInput

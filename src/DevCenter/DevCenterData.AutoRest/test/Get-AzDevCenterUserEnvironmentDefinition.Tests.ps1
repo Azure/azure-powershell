@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironme
 }
 
 Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
-    It 'List' -skip {
+    It 'List' {
         $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfEnvDefs.Count | Should -Be 3
 
@@ -24,7 +24,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
     
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName  
         $listOfEnvDefs.Count | Should -Be 3
     
@@ -32,7 +32,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
         $listOfEnvDefs.Count | Should -Be 3
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $envDef = Get-AzDevCenterUserEnvironmentDefinition -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName -DefinitionName $env.sandbox
         $envDef.CatalogName | Should -Be $env.catalogName
         $envDef.Name | Should -Be $env.sandbox
@@ -48,7 +48,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
         
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $envDefInput = @{"ProjectName" = $env.projectName; "CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox}
 
         $envDef = Get-AzDevCenterUserEnvironmentDefinition -Endpoint $env.endpoint -InputObject $envDefInput

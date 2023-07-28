@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterUserEnvironmen
 }
 
 Describe 'New-AzDevCenterUserEnvironment' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $functionAppParameters = @{"name" = $env.functionAppName6 }
 
         $environment = New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest1" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
@@ -34,51 +34,7 @@ Describe 'New-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
         }
 
-    It 'Create' -skip {
-        $functionAppParameters = @{"name" = $env.functionAppName7 }
-        $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
-        $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
-
-
-        $environment = New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest3" -ProjectName $env.projectName -Body $functionAppBody
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.functionApp
-        $environment.Name | Should -Be "envtest3"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
-
-        $environment = New-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest4" -ProjectName $env.projectName -Body $sandboxBody
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.sandbox
-        $environment.Name | Should -Be "envtest4"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
-        }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest5"}
-        $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest6"}
-
-        $functionAppParameters = @{"name" = $env.functionAppName8 }
-        $functionAppBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.functionApp; "Type" = $env.environmentTypeName; "Parameter" = $functionAppParameters}
-        $sandboxBody = @{"CatalogName" = $env.catalogName; "DefinitionName" = $env.sandbox; "Type" = $env.environmentTypeName}
-
-        $environment = New-AzDevCenterUserEnvironment -Endpoint $env.endpoint -InputObject $envInput1 -Body $sandboxBody
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.sandbox
-        $environment.Name | Should -Be "envtest5"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
-
-        $environment = New-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -InputObject $envInput2 -Body $functionAppBody
-        $environment.CatalogName | Should -Be $env.catalogName
-        $environment.DefinitionName | Should -Be $env.functionApp
-        $environment.Name | Should -Be "envtest6"
-        $environment.Type | Should -Be $env.environmentTypeName
-        $environment.User | Should -Be $env.userObjectId
-        }
-
-    It 'CreateViaIdentity' -skip {
+    It 'CreateViaIdentity' {
         $functionAppParameters = @{"name" = $env.functionAppName9 }
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7"}
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8"}

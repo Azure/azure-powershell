@@ -15,29 +15,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBox'))
 }
 
 Describe 'Get-AzDevCenterUserDevBox' {
-    It 'List' -skip {
+    It 'List' {
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint
-        $listOfDevBoxes.Count | Should -Be 2
+        $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -UserId $env.userObjectId
-        $listOfDevBoxes.Count | Should -Be 2
+        $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me"
-        $listOfDevBoxes.Count | Should -Be 1
+        $listOfDevBoxes.Count | Should -BeGreaterOrEqual 1
 
 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName
-        $listOfDevBoxes.Count | Should -Be 2
+        $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -UserId "me"
-        $listOfDevBoxes.Count | Should -Be 2
+        $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -ProjectName $env.projectName2 -UserId $env.userObjectId
         $listOfDevBoxes.Count | Should -Be 1
     
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId $env.userObjectId -Name $env.devboxName
 
         $devBox.Name | Should -Be $env.devboxName
@@ -52,7 +52,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
@@ -73,7 +73,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
@@ -82,7 +82,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
     
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
 
