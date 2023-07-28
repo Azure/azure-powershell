@@ -1,105 +1,25 @@
-### Example 1: Update Spring Cloud Service by name
+### Example 1: Update Spring Cloud Service by name.
 ```powershell
-Update-AzSpring -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service 
+Update-AzSpring -ResourceGroupName azps_test_group_spring -Name azps-spring -Tag @{"abc"="123"}
 ```
 
 ```output
-ConfigServerPropertiesErrorCode                  :
-ConfigServerPropertiesErrorMessage               :
-ConfigServerPropertyState                        : Succeeded
-GitPropertyHostKey                               :
-GitPropertyHostKeyAlgorithm                      :
-GitPropertyLabel                                 :
-GitPropertyPassword                              :
-GitPropertyPrivateKey                            :
-GitPropertyRepository                            :
-GitPropertySearchPath                            :
-GitPropertyStrictHostKeyChecking                 :
-GitPropertyUri                                   :
-GitPropertyUsername                              :
-Id                                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service
-Location                                         : eastus
-Name                                             : spring-cloud-service
-NetworkProfileAppNetworkResourceGroup            :
-NetworkProfileAppSubnetId                        :
-NetworkProfileServiceCidr                        :
-NetworkProfileServiceRuntimeNetworkResourceGroup :
-NetworkProfileServiceRuntimeSubnetId             :
-ProvisioningState                                : Succeeded
-ServiceId                                        : e5e964885b4146b1a91e9bfc17971ee5
-SkuCapacity                                      :
-SkuName                                          : S0
-SkuTier                                          : Standard
-Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TrackedResourceTags
-TraceAppInsightInstrumentationKey                :
-TraceEnabled                                     : False
-TraceErrorCode                                   :
-TraceErrorMessage                                :
-TraceState                                       : Succeeded
-Type                                             : Microsoft.AppPlatform/Spring
-Version                                          : 2
-ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerGitProperty
-ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerProperties
-ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerSettings
-ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Error
-NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.NetworkProfile
-Property                                         : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ClusterResourceProperties
-Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Sku
-Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TraceProperties
-TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Error
+Location Name        ProvisioningState SkuName SkuTier    ResourceGroupName
+-------- ----        ----------------- ------- -------    -----------------
+eastus   azps-spring Succeeded         S0      Standard   azps_test_group_spring
 ```
 
 Update Spring Cloud Service by name.
 
-### Example 2: Update Spring Cloud Service by pipeline
+### Example 2: Update Spring Cloud Service by pipeline.
 ```powershell
-Get-AzSpring -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service | Update-AzSpring
+Get-AzSpring -ResourceGroupName azps_test_group_spring -Name azps-spring | Update-AzSpring -Tag @{"abc"="123"}
 ```
 
 ```output
-ConfigServerPropertiesErrorCode                  :
-ConfigServerPropertiesErrorMessage               :
-ConfigServerPropertyState                        : Succeeded
-GitPropertyHostKey                               :
-GitPropertyHostKeyAlgorithm                      :
-GitPropertyLabel                                 :
-GitPropertyPassword                              :
-GitPropertyPrivateKey                            :
-GitPropertyRepository                            :
-GitPropertySearchPath                            :
-GitPropertyStrictHostKeyChecking                 :
-GitPropertyUri                                   :
-GitPropertyUsername                              :
-Id                                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service
-Location                                         : eastus
-Name                                             : spring-cloud-service
-NetworkProfileAppNetworkResourceGroup            :
-NetworkProfileAppSubnetId                        :
-NetworkProfileServiceCidr                        :
-NetworkProfileServiceRuntimeNetworkResourceGroup :
-NetworkProfileServiceRuntimeSubnetId             :
-ProvisioningState                                : Succeeded
-ServiceId                                        : e5e964885b4146b1a91e9bfc17971ee5
-SkuCapacity                                      :
-SkuName                                          : S0
-SkuTier                                          : Standard
-Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TrackedResourceTags
-TraceAppInsightInstrumentationKey                :
-TraceEnabled                                     : False
-TraceErrorCode                                   :
-TraceErrorMessage                                :
-TraceState                                       : Succeeded
-Type                                             : Microsoft.AppPlatform/Spring
-Version                                          : 2
-ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerGitProperty
-ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerProperties
-ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ConfigServerSettings
-ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Error
-NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.NetworkProfile
-Property                                         : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ClusterResourceProperties
-Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Sku
-Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TraceProperties
-TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.Error
+Location Name        ProvisioningState SkuName SkuTier    ResourceGroupName
+-------- ----        ----------------- ------- -------    -----------------
+eastus   azps-spring Succeeded         S0      Standard   azps_test_group_spring
 ```
 
 Update Spring Cloud Service by pipeline.

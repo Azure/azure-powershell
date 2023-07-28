@@ -13,8 +13,8 @@ Create an in-memory object for KeyVaultCertificateProperties.
 ## SYNTAX
 
 ```
-New-AzSpringKeyVaultCertificateObject -KeyVaultCertName <String> -VaultUri <String> [-CertVersion <String>]
- [-ExcludePrivateKey <Boolean>] [<CommonParameters>]
+New-AzSpringKeyVaultCertificateObject -Name <String> -VaultUri <String> [-ExcludePrivateKey <Boolean>]
+ [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ Create an in-memory object for KeyVaultCertificateProperties
 
 ## PARAMETERS
 
-### -CertVersion
-The certificate version of key vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ExcludePrivateKey
 Optional.
 If set to true, it will not import private key from key vault.
@@ -68,7 +53,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyVaultCertName
+### -Name
 The certificate name of key vault.
 
 ```yaml
@@ -92,6 +77,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+The certificate version of key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

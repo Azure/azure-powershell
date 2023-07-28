@@ -480,6 +480,16 @@ directive:
           - ResourceGroupName
 
   - where:
+      model-name: AppResource
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+
+  - where:
       model-name: BindingResource
     set:
       format-table:
@@ -575,25 +585,26 @@ directive:
     - UserSourceInfo
     - CertificateProperties
 
-  - model-cmdlet:
-    - model-name: BuildpacksGroupProperties
-      cmdlet-name: New-AzSpringBuildpacksGroupObject
-    - model-name: BuildpackProperties
-      cmdlet-name: New-AzSpringBuildpackObject
-    - model-name: ConfigurationServiceGitRepository
-    - model-name: GitPatternRepository
-    - model-name: KeyVaultCertificateProperties
-      cmdlet-name: New-AzSpringKeyVaultCertificateObject
-    - model-name: ContentCertificateProperties
-      cmdlet-name: New-AzSpringContentCertificateObject
-    - model-name: LoadedCertificate
-      cmdlet-name: New-AzSpringAppLoadedCertificateObject
-    - model-name: JarUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
-    - model-name: NetCoreZipUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
-    - model-name: SourceUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
-    - model-name: BuildResultUserSourceInfo
-      cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
+  # Modifications were made to the command
+  # - model-cmdlet:
+  #   - model-name: BuildpacksGroupProperties
+  #     cmdlet-name: New-AzSpringBuildpacksGroupObject
+  #   - model-name: BuildpackProperties
+  #     cmdlet-name: New-AzSpringBuildpackObject
+  #   - model-name: ConfigurationServiceGitRepository
+  #   - model-name: GitPatternRepository
+  #   - model-name: KeyVaultCertificateProperties
+  #     cmdlet-name: New-AzSpringKeyVaultCertificateObject
+  #   - model-name: ContentCertificateProperties
+  #     cmdlet-name: New-AzSpringContentCertificateObject
+  #   - model-name: LoadedCertificate
+  #     cmdlet-name: New-AzSpringAppLoadedCertificateObject
+  #   - model-name: JarUploadedUserSourceInfo
+  #     cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
+  #   - model-name: NetCoreZipUploadedUserSourceInfo
+  #     cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
+  #   - model-name: SourceUploadedUserSourceInfo
+  #     cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
+  #   - model-name: BuildResultUserSourceInfo
+  #     cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
 ```

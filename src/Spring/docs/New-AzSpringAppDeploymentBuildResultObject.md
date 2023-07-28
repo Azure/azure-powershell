@@ -13,7 +13,7 @@ Create an in-memory object for BuildResultUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentBuildResultObject [-BuildResultId <String>] [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentBuildResultObject [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,21 +35,6 @@ Version BuildResultId
 Create an in-memory object for BuildResultUserSourceInfo.
 
 ## PARAMETERS
-
-### -BuildResultId
-Resource id of an existing succeeded build result under the same Spring instance.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Version
 Version of the source.

@@ -121,7 +121,6 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateViaIdentitySpring', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentitySpringExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity]
@@ -230,13 +229,6 @@ param(
     [System.Int32]
     # Size of the temporary disk in GB
     ${TemporaryDiskSizeInGb},
-
-    [Parameter(ParameterSetName='CreateViaIdentitySpring', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource]
-    # App resource payload
-    # To construct, see NOTES section for APPRESOURCE properties and create a hash table.
-    ${AppResource},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Spring.Category('Body')]

@@ -13,8 +13,8 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentSourceUploadedObject [-ArtifactSelector <String>] [-RelativePath <String>]
- [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentSourceUploadedObject [-ArtifactSelector <String>] [-RuntimeVersion <String>]
+ [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,21 +41,6 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Selector for the artifact to be used for the deployment for multi-module projects.
 This should be
         the relative path to the target module/project.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelativePath
-Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String

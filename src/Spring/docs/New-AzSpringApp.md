@@ -22,12 +22,6 @@ New-AzSpringApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentitySpring
-```
-New-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> -AppResource <IAppResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
@@ -57,15 +51,15 @@ Create a new App or update an exiting App.
 
 ## EXAMPLES
 
-### Example 1: Create a new App or update an exiting App
+### Example 1: Create a new App or update an exiting App.
 ```powershell
-New-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName Spring-service -Name tools
+New-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring -Name tools
 ```
 
 ```output
-Name  SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
-----  ------------------- -------------------     ----------------------- ------------------------ ------------------------
-tools 2022/6/28 8:33:27   ******@microsoft.com    User                    2022/6/28 8:33:27         ******@microsoft.com
+Location Name  ProvisioningState ResourceGroupName
+-------- ----  ----------------- -----------------
+eastus   tools Succeeded         azps_test_group_spring
 ```
 
 Create a new App or update an exiting App.
@@ -84,22 +78,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AppResource
-App resource payload
-To construct, see NOTES section for APPRESOURCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
-Parameter Sets: CreateViaIdentitySpring
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -397,7 +375,7 @@ To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: CreateViaIdentitySpring, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -488,8 +466,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
 

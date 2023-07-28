@@ -13,8 +13,8 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringAppDeploymentJarUploadedObject [-JvmOption <String>] [-RelativePath <String>]
- [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentJarUploadedObject [-JvmOption <String>] [-RuntimeVersion <String>]
+ [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,21 +39,6 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 
 ### -JvmOption
 JVM parameter.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelativePath
-Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String
