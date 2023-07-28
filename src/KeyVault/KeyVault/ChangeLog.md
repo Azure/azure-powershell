@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.10.1
 * Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]
 * Updated Azure.Core to 1.33.0.
 
