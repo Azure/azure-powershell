@@ -12,34 +12,32 @@ Creates or updates an environment.
 
 ## SYNTAX
 
-### ReplaceExpanded (Default)
+### CreateExpanded (Default)
 ```
 Set-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReplaceExpandedByDevCenter
+### CreateExpandedByDevCenter
 ```
 Set-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReplaceViaIdentityExpanded
+### CreateViaIdentityExpanded
 ```
-Set-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -Name <String>
- -ProjectName <String> -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
- -Parameter <Hashtable> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReplaceViaIdentityExpandedByDevCenter
+### CreateViaIdentityExpandedByDevCenter
 ```
-Set-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -Name <String>
- -ProjectName <String> -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
- -Parameter <Hashtable> [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +120,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpandedByDevCenter, ReplaceViaIdentityExpandedByDevCenter
+Parameter Sets: CreateExpandedByDevCenter, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -137,7 +135,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,7 +181,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: ReplaceViaIdentityExpanded, ReplaceViaIdentityExpandedByDevCenter
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -198,7 +196,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -231,7 +229,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,7 +241,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -259,7 +257,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: False

@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserCatalog'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevCenterUserCatalog' -skip {
-    It 'List' {
+Describe 'Get-AzDevCenterUserCatalog' {
+    It 'List' -skip {
         $listOfCatalogs = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfCatalogs.Count | Should -Be 1
 
