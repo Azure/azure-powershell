@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Skip-AzDevCenterUserDevBoxAc
 }
 
 Describe 'Skip-AzDevCenterUserDevBoxAction' {
-    It 'Skip' {
+    It 'Skip' -skip {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox1 -ProjectName $env.projectName -ActionName "schedule-default"
         $skipTimeSpan = New-TimeSpan -Days 1
         $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
@@ -23,17 +23,19 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox1 -ProjectName $env.projectName -ActionName "schedule-default"
         $action.NextScheduledTime | Should -Be $newScheduledTime
 
-        
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
-        $skipTimeSpan = New-TimeSpan -Days 1
-        $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
+        if ($Record -or $Live) {
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
+            $skipTimeSpan = New-TimeSpan -Days 1
+            $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
 
-        Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
-        $action.NextScheduledTime | Should -Be $newScheduledTime
+            Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
+            $action.NextScheduledTime | Should -Be $newScheduledTime
+        }
+
     }
 
-    It 'SkipViaIdentity' {
+    It 'SkipViaIdentity' -skip {
         $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox2; "ActionName" = "schedule-default"; "UserId" = "me" }
         $actionInput2 = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox3; "ActionName" = "schedule-default"; "UserId" = "me"}
 
@@ -43,12 +45,14 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
         Skip-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $actionInput
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox2 -ProjectName $env.projectName -ActionName "schedule-default"
         $action.NextScheduledTime | Should -Be $newScheduledTime
-
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
-        $skipTimeSpan = New-TimeSpan -Days 1
-        $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
-        Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName  -InputObject $actionInput2
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
-        $action.NextScheduledTime | Should -Be $newScheduledTime
+    
+        if ($Record -or $Live) {
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
+            $skipTimeSpan = New-TimeSpan -Days 1
+            $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
+            Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName  -InputObject $actionInput2
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
+            $action.NextScheduledTime | Should -Be $newScheduledTime
+        }
     }
 }
