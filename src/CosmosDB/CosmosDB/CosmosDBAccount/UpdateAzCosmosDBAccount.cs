@@ -106,6 +106,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             }
+            if(EnableMaterializedViews != null)
+            {
+                databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =

@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-request-id": [
           "45b1224d-c77b-46c1-a95b-55dada2dcdf4"
@@ -294,7 +294,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11990"
         ],
         "x-ms-request-id": [
           "b7773049-a0e2-4c9b-8920-6a99d56a53f0"
@@ -354,7 +354,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
+          "11989"
         ],
         "x-ms-request-id": [
           "c97a4065-67cc-426c-ac55-b9bf84b502a2"
@@ -414,7 +414,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
+          "11988"
         ],
         "x-ms-request-id": [
           "0eb1a41b-1bbe-4d3c-b76f-ee9238da4c92"
@@ -1239,7 +1239,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11993"
         ],
         "x-ms-request-id": [
           "ad58d715-8cdf-48f6-aa56-45f6299eb783"
@@ -1656,14 +1656,14 @@
           "Thu, 21 Dec 2023 01:29:21 GMT"
         ],
         "Content-Length": [
-          "22"
+          "7756"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: 2e3d58cc-8c7e-462a-826a-adcadc8eaa9e, Request URI: /apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586943s, RequestStats: \\\\r\\\\nRequestStartTime: 2023-07-20T12:47:54.5406028Z, RequestEndTime: 2023-07-20T12:47:54.5422864Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:46:58.3286908Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.313,\\\\\\\"memory\\\\\\\":644627468.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0614,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":578},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:47:08.3387379Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.285,\\\\\\\"memory\\\\\\\":644621808.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.1233,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":578},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:47:18.3488702Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.636,\\\\\\\"memory\\\\\\\":644626256.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0451,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":579},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:47:28.3589022Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.324,\\\\\\\"memory\\\\\\\":644631864.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0324,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":578},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:47:38.3686477Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.146,\\\\\\\"memory\\\\\\\":644631536.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0274,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":578},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-07-20T12:47:48.3785246Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.724,\\\\\\\"memory\\\\\\\":644644524.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0425,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":578}]}\\\\r\\\\nRequestStart: 2023-07-20T12:47:54.5408347Z; ResponseTime: 2023-07-20T12:47:54.5422800Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.9:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586943s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.823, ActivityId: 2e3d58cc-8c7e-462a-826a-adcadc8eaa9e, RetryAfterInMs: , ReplicaHealthStatuses: [rntbd://10.0.1.9:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586943s:Connected,rntbd://10.0.1.11:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586945s:Connected,rntbd://10.0.1.7:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586944s:Unknown], TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5407433Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0071},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5407504Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0023},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5407527Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0752},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5408279Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.0825},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5419104Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0448},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5419552Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4554743Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4555147Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4918146Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":451,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\nRequestStart: 2023-07-20T12:47:54.5408794Z; ResponseTime: 2023-07-20T12:47:54.5422864Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.11:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586945s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.858, ActivityId: 2e3d58cc-8c7e-462a-826a-adcadc8eaa9e, RetryAfterInMs: , ReplicaHealthStatuses: [rntbd://10.0.1.9:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586943s:Connected,rntbd://10.0.1.7:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586944s:Unknown,rntbd://10.0.1.11:11000/apps/5cf0530c-5bd5-4b94-81f2-8f3c3a7c4f07/services/55993c00-fbcf-482c-8b02-f41bbdc35f76/partitions/3685044d-c11c-44d1-9228-84380eeec276/replicas/133339185068586945s:Connected], TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5408362Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0028},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5408390Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0016},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5408406Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0357},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5408763Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.1019},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5419782Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0537},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-07-20T12:47:54.5420319Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4555455Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4555618Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-07-20T12:47:54.4919253Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":451,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/dbName, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup51-3/providers/Microsoft.DocumentDB/databaseAccounts/gremlin-db1051-3/gremlinDatabases/dbName/graphs?api-version=2023-11-15",
@@ -2475,7 +2475,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11991"
         ],
         "x-ms-request-id": [
           "e5a2974e-5392-417c-91cd-433be6914e61"
@@ -2760,13 +2760,13 @@
           "Thu, 21 Dec 2023 01:32:41 GMT"
         ],
         "Content-Length": [
-          "22"
+          "458"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup51-3/providers/Microsoft.DocumentDB/databaseAccounts/gremlin-db1051-3/gremlinDatabases/dbName\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases\",\r\n  \"name\": \"dbName\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\",\r\n      \"_rid\": \"pDExAA==\",\r\n      \"_self\": \"dbs/pDExAA==/\",\r\n      \"_etag\": \"\\\"0000520d-0000-0100-0000-64b92d020000\\\"\",\r\n      \"_colls\": \"colls/\",\r\n      \"_users\": \"users/\",\r\n      \"_ts\": 1689857282\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -2916,7 +2916,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-request-id": [
           "8394a87e-e8cd-4711-bb1a-468ea25e7bcc"

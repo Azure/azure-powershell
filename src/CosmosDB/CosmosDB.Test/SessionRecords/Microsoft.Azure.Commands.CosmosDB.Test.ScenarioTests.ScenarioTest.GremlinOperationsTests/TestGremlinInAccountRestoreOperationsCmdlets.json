@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-request-id": [
           "3dd9de21-7308-4d76-9c00-d7f7142ff77a"
@@ -720,7 +720,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11989"
         ],
         "x-ms-request-id": [
           "db60e4f0-76df-42c9-8e82-89fadb0bdb2d"
@@ -738,7 +738,7 @@
           "Thu, 21 Dec 2023 01:48:29 GMT"
         ],
         "Content-Length": [
-          "458"
+          "7775"
         ],
         "Content-Type": [
           "application/json"
@@ -1254,7 +1254,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11991"
         ],
         "x-ms-request-id": [
           "d77295a8-6908-4dcc-bcf9-03c3948d22ed"
@@ -1965,7 +1965,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
           "cca0b78c-3672-40a3-8fa8-907d17a829f0"
@@ -2172,7 +2172,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11988"
         ],
         "x-ms-request-id": [
           "2c69bf3b-ee2c-481d-b769-96be084d6e09"
@@ -3876,13 +3876,13 @@
           "Thu, 21 Dec 2023 01:55:51 GMT"
         ],
         "Content-Length": [
-          "21"
+          "1289"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup51-2/providers/Microsoft.DocumentDB/databaseAccounts/gremlin-db1051-2/gremlinDatabases/dbName/graphs/graph1\",\r\n      \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n      \"name\": \"graph1\",\r\n      \"properties\": {\r\n        \"resource\": {\r\n          \"id\": \"graph1\",\r\n          \"indexingPolicy\": {\r\n            \"indexingMode\": \"consistent\",\r\n            \"automatic\": true,\r\n            \"includedPaths\": [\r\n              {\r\n                \"path\": \"/*\"\r\n              }\r\n            ],\r\n            \"excludedPaths\": [\r\n              {\r\n                \"path\": \"/\\\"_etag\\\"/?\"\r\n              }\r\n            ]\r\n          },\r\n          \"partitionKey\": {\r\n            \"paths\": [\r\n              \"/foo\"\r\n            ],\r\n            \"kind\": \"Hash\"\r\n          },\r\n          \"uniqueKeyPolicy\": {\r\n            \"uniqueKeys\": []\r\n          },\r\n          \"conflictResolutionPolicy\": {\r\n            \"mode\": \"LastWriterWins\",\r\n            \"conflictResolutionPath\": \"/_ts\",\r\n            \"conflictResolutionProcedure\": \"\"\r\n          },\r\n          \"backupPolicy\": {\r\n            \"type\": 1\r\n          },\r\n          \"restoreParameters\": {\r\n            \"instanceId\": \"6e8772bb-1639-4b97-b487-91b4ee8030f0\",\r\n            \"restoreTimestampInUtc\": \"2023-07-20T13:23:18Z\",\r\n            \"restoreSource\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/restorableDatabaseAccounts/ac4f23f0-6e7d-4f53-b0e1-ec65bdceb2e5\"\r\n          },\r\n          \"geospatialConfig\": {\r\n            \"type\": \"Geography\"\r\n          },\r\n          \"_rid\": \"htc2AKDRUWE=\",\r\n          \"_ts\": 1689859709,\r\n          \"_self\": \"dbs/htc2AA==/colls/htc2AKDRUWE=/\",\r\n          \"_etag\": \"\\\"0000720b-0000-0100-0000-64b9367d0000\\\"\",\r\n          \"_docs\": \"docs/\",\r\n          \"_sprocs\": \"sprocs/\",\r\n          \"_triggers\": \"triggers/\",\r\n          \"_udfs\": \"udfs/\",\r\n          \"_conflicts\": \"conflicts/\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -5697,13 +5697,13 @@
           "Thu, 21 Dec 2023 02:14:19 GMT"
         ],
         "Content-Length": [
-          "22"
+          "1289"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup51-2/providers/Microsoft.DocumentDB/databaseAccounts/gremlin-db1051-2/gremlinDatabases/dbName/graphs/graph1\",\r\n      \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n      \"name\": \"graph1\",\r\n      \"properties\": {\r\n        \"resource\": {\r\n          \"id\": \"graph1\",\r\n          \"indexingPolicy\": {\r\n            \"indexingMode\": \"consistent\",\r\n            \"automatic\": true,\r\n            \"includedPaths\": [\r\n              {\r\n                \"path\": \"/*\"\r\n              }\r\n            ],\r\n            \"excludedPaths\": [\r\n              {\r\n                \"path\": \"/\\\"_etag\\\"/?\"\r\n              }\r\n            ]\r\n          },\r\n          \"partitionKey\": {\r\n            \"paths\": [\r\n              \"/foo\"\r\n            ],\r\n            \"kind\": \"Hash\"\r\n          },\r\n          \"uniqueKeyPolicy\": {\r\n            \"uniqueKeys\": []\r\n          },\r\n          \"conflictResolutionPolicy\": {\r\n            \"mode\": \"LastWriterWins\",\r\n            \"conflictResolutionPath\": \"/_ts\",\r\n            \"conflictResolutionProcedure\": \"\"\r\n          },\r\n          \"backupPolicy\": {\r\n            \"type\": 1\r\n          },\r\n          \"restoreParameters\": {\r\n            \"instanceId\": \"5bd14654-70d6-4192-ac20-5134478e1028\",\r\n            \"restoreTimestampInUtc\": \"2023-07-20T13:23:18Z\",\r\n            \"restoreSource\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/restorableDatabaseAccounts/ac4f23f0-6e7d-4f53-b0e1-ec65bdceb2e5\"\r\n          },\r\n          \"geospatialConfig\": {\r\n            \"type\": \"Geography\"\r\n          },\r\n          \"_rid\": \"htc2AKDRUWE=\",\r\n          \"_ts\": 1689860651,\r\n          \"_self\": \"dbs/htc2AA==/colls/htc2AKDRUWE=/\",\r\n          \"_etag\": \"\\\"00007f0b-0000-0100-0000-64b93a2b0000\\\"\",\r\n          \"_docs\": \"docs/\",\r\n          \"_sprocs\": \"sprocs/\",\r\n          \"_triggers\": \"triggers/\",\r\n          \"_udfs\": \"udfs/\",\r\n          \"_conflicts\": \"conflicts/\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

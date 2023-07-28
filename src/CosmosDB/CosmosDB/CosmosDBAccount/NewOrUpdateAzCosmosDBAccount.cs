@@ -115,7 +115,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
         [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
+        
         public string MinimalTlsVersion { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableMaterializedViewsHelpMessage)]
+        public bool? EnableMaterializedViews { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {

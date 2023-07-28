@@ -22,7 +22,7 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-EnableBurstCapacity <Boolean>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnableMaterializedViews <Boolean>] [-EnablePartitionMerge <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-EnableBurstCapacity <Boolean>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnableMaterializedViews <Boolean>] [-EnablePartitionMerge <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-EnableBurstCapacity <Boolean>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnablePartitionMerge <Boolean>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-EnableMaterializedViews <Boolean>] [-EnablePartitionMerge <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -297,6 +297,22 @@ Bool to indicate if Burst Capacity is enabled on the account.
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableMaterializedViews
+Bool to indicate if Materializedviews is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
 Required: False
 Position: Named
 Default value: None

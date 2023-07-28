@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="createMode">Enum to indicate the mode of resource creation.
         /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
+        
+        /// <param name="materializedViewDefinition">The configuration for
+        /// defining Materialized Views. This must be specified only for
+        /// creating a Materialized View container.</param>
 
         /// <param name="computedProperties">List of computed properties
         /// </param>
@@ -80,6 +84,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.AnalyticalStorageTtl = analyticalStorageTtl;
             this.RestoreParameters = restoreParameters;
             this.CreateMode = createMode;
+            this.MaterializedViewDefinition = materializedViewDefinition;
             this.ComputedProperties = computedProperties;
             this.Rid = rid;
             this.Ts = ts;
@@ -163,6 +168,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public System.Collections.Generic.IList<ComputedProperty> ComputedProperties {get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration for defining Materialized Views.
+        /// This must be specified only for creating a Materialized View
+        /// container.
+        /// </summary>
+        [JsonProperty(PropertyName = "materializedViewDefinition")]
+        public MaterializedViewDefinition MaterializedViewDefinition { get; set; }
+
+        /// <summary>
         /// Gets a system generated property. A unique identifier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "_rid")]
@@ -205,11 +218,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.ClientEncryptionPolicy.Validate();
             }
-
-
-
-
-
+            
+            if (MaterializedViewDefinition != null)
+            {
+                MaterializedViewDefinition.Validate();
+            }
         }
     }
 }

@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
+            EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
         }
 
         //
@@ -240,5 +241,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
         public string MinimalTlsVersion { get; set; }
+        // Summary:
+        //     Gets or sets flag to indicate whether materialized views is enabled.
+        public bool? EnableMaterializedViews { get; set; }
     }
 }

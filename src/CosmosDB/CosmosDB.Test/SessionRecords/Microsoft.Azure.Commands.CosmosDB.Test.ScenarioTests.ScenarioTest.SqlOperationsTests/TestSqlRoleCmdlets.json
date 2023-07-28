@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourcegroups/rgtest9921232873?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlZ3JvdXBzL3JndGVzdDk5MjEyMzI4NzM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourcegroups/rgtest9921232873?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlZ3JvdXBzL3JndGVzdDk5MjEyMzI4NzM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-request-id": [
           "37c34cc3-8eb1-4ee6-9231-94c50f93d639"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/rgtest9921232873\",\r\n  \"name\": \"rgtest9921232873\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/rgtest9921232873\",\r\n  \"name\": \"rgtest9921232873\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -4737,14 +4737,14 @@
           "Sat, 16 Dec 2023 15:10:29 GMT"
         ],
         "Content-Length": [
-          "22"
+          "209"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Unable to find a SQL Role Definition with ID [cf31c3a1-20f5-4ff1-bdd0-5e0782617e22].\\r\\nActivityId: 71a96741-72ee-4409-8149-ad6a4c83d9fb, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleAssignments/a2ccaf94-3c39-4728-b892-95edeef0e754/operationResults/4de3a432-6a50-495b-ac8d-166ce70788d5?api-version=2023-11-15&t=638383361999783883&c=MIIHADCCBeigAwIBAgITHgOPMCVriuS4-lWO9AAAA48wJTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMxMTAxMTk0NDE0WhcNMjQxMDI2MTk0NDE0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOVYjGR__tDbQAkWmgTzkuhLkeLHMZF4BUrWy0rFsX2EQ-jKcnRoDb5IHA8d5kzQwRSfOsVkMYLJuxNfSVVkrT-2bRtOmLA39FjlxIxE-eeCClqoDypQUkMQFt03BhhgviChly_GAB1VdMVAtOkAqyDD7YkPdR2axUfPszW3havSW-NiPjXkJezv1WPkDjGs7VhIBdJ276lVsVC2AXVfTa_AH34QbGAVCgFq8f8RTHFAF3kuyznwrhR89pSFJZDGMu3zaigorG-qTVP15VUl0SThQRKENFzEVVIr40ndWscX0MCYmJQFpzB426gRb4aM5DABy8TfY3hU0Ma6Pqs5vu0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQ2lSwc1_ggaso1He0vGUt5JD_O-zAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIw8F0494wN-l6CjjUdzUshsBr2wClEmC0dDhWd1f3feZIai44cKuTS3gtIM6iwdptdi2IL_bKhFk-6Fn-JXtbxsNzIJ8XXeKHhpzJVCU9MsZAFp3UQVp3udzC1s2K_AXSg-OCDXxNEARdl-WK7qOyoEscw8w8gjgQG2Ci1QnqpZZj3XNFuKivIpxFcC8b0hYbFHXp6mX3gSSX-JIvFbcilXTjD7Akh4wCqJ0qr_UVakf6f0hcmwRwI6pxk0EVSIZDDpivRgNJousujO4E5jLDLfevJch5BD-VERxY6bIKFRBYRq5WNGU96UKZ842RWmWmjml7ckpZd5e1UD5ErqHLA&s=ThNMs16wNaUXyOpOfGFNG-mn7hLLUPY3vINn-94NDUkJ9hMQk3CncZiIOAmutHtRDbQjxgyFnP_aImE4WKvgtW3PG4sX4EMsqgA_9CR1ENlMinIbp7fmBDAez0PxFdDRnl8CIjSd3shUoOyrNdr53-OJVNhonFOGpPevMqqctmYBaV_HkK3vYhhe65bQVvlhuUTH1PO_HhyZxojCkcJbHEXs7xk7-TyKmhayJj8mvBp9lBdmNFnIfU5us03XXllFHwseGY7eIEwlHLgOnuHmxkA8VHYLXRuNGhOhlG8KRfUUj4in0i4qWUe9J9g_wc8MRTbdXVG-WtHQIq8zbol1oA&h=7UWdWNKdS6PP-izbF5XxnifGdwTO9PVTCmaXbGQJ43c",
@@ -5598,7 +5598,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14995"
+          "14998"
         ],
         "x-ms-request-id": [
           "dbd9d2ed-408c-456e-b3cd-5c1ba886ab5a"
@@ -5622,6 +5622,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "23587e98-b6ac-4328-a753-03bcd3c8e744"
+    "SubscriptionId": "12053b8f-cab5-4f5c-9c1a-870580142abd"
   }
 }

@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public System.Collections.Generic.IList<CassandraError> Errors {get; set; }
 
         /// <summary>
+        /// Gets or sets list relevant information about any errors about
+        /// cluster, data center and connection error.
+        /// </summary>
+        [JsonProperty(PropertyName = "errors")]
+        public IList<CassandraError> Errors { get; set; }
+
+        /// <summary>
         /// Gets or sets list of the status of each datacenter in this cluster.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dataCenters")]

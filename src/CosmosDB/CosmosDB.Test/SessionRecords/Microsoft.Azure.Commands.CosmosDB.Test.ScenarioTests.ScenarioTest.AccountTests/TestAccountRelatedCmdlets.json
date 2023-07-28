@@ -222,7 +222,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11967"
         ],
         "x-ms-request-id": [
           "35735278-4bed-4109-99b4-929b8916047b"
@@ -285,7 +285,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11965"
         ],
         "x-ms-request-id": [
           "c462c11d-749d-4742-984b-33b28d459307"
@@ -714,7 +714,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11964"
         ],
         "x-ms-request-id": [
           "854664ee-7c71-4c98-b559-7228592eb898"
