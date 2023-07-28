@@ -223,13 +223,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (keystore != null)
             {
                 var account = context.Account;
-                if (account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                if (account != null && account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
                 {
                     keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())
                         , account.ExtendedProperties.GetProperty(AzureAccount.Property.ServicePrincipalSecret).ConvertToSecureString());
                     account.ExtendedProperties.Remove(AzureAccount.Property.ServicePrincipalSecret);
                 }
-                if (account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                if (account != null && account.IsPropertySet(AzureAccount.Property.CertificatePassword))
                 {
                     keystore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())
     , account.ExtendedProperties.GetProperty(AzureAccount.Property.CertificatePassword).ConvertToSecureString());
@@ -239,23 +239,73 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return context;
         }
 
+        /// <summary>
+        /// Refill the credentials from AzKeyStore to profile. Used for profile export.
+        /// </summary>
+        public AzureRmProfile RefillCredentialsFromKeyStore()
+        {
+            AzKeyStore keystore = null;
+            AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
+            AzureRmProfile ret = this.DeepClone();
+            if (keystore != null)
+            {
+                foreach (var context in ret.Contexts)
+                {
+                    var account = context.Value.Account;
+                    if (account != null && !account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                    {
+                        try
+                        {
+                            var secret = keystore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, account.GetTenants().First())).ConvertToString();
+                            account.ExtendedProperties.SetProperty(AzureAccount.Property.ServicePrincipalSecret, secret);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                    if (account != null && !account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                    {
+                        try
+                        {
+                            var secret = keystore.GetSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, account.GetTenants().First())).ConvertToString();
+                            account.ExtendedProperties.SetProperty(AzureAccount.Property.CertificatePassword, secret);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+
+            }
+            return ret;
+        }
+
         private void LoadImpl(string contents)
         {
         }
 
+        /// <summary>
+        /// Creates new instance of AzureRMProfile with environment table initialized.
+        /// </summary>
+        public AzureRmProfile(bool initializeEnvironmentTable = true):this()
+        {
+            if (initializeEnvironmentTable)
+            {
+                EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
+
+                // Adding predefined environments
+                foreach (var env in AzureEnvironment.PublicEnvironments)
+                {
+                    EnvironmentTable[env.Key] = env.Value;
+                }
+            }
+        }
 
         /// <summary>
-        /// Creates new instance of AzureRMProfile.
+        /// Creates new instance of AzureRMProfile. used only in Json conversion.
         /// </summary>
-        public AzureRmProfile()
+        private AzureRmProfile()
         {
-            EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
-
-            // Adding predefined environments
-            foreach (var env in AzureEnvironment.PublicEnvironments)
-            {
-                EnvironmentTable[env.Key] = env.Value;
-            }
         }
 
         /// <summary>
@@ -263,7 +313,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         /// <param name="path">The location of profile file on disk.</param>
         /// <param name="shouldRefreshContextsFromCache"></param>
-        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this()
+        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this(true)
         {
             this.ShouldRefreshContextsFromCache = shouldRefreshContextsFromCache;
             Load(path);
@@ -530,14 +580,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 if (TryFindContext(context, out string oldName))
                 {
-                    var oldContext = Contexts[oldName].DeepCopy();
-                    oldContext.Update(context);
-                    context = oldContext;
+                    try
+                    {
+                        var oldContext = Contexts[oldName].DeepCopy();
+                        oldContext.Update(context);
+                        Contexts[oldName] = oldContext;
+                    }
+                    catch(Exception e)
+                    {
+                        throw e;
+                    }
                 }
                 Contexts[name] = context;
                 result = true;
             }
-
             return result;
         }
 
@@ -687,6 +743,34 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             this.CopyPropertiesFrom(other);
             return true;
+        }
+
+        /// <summary>
+        /// Deep clone the instance of AzureRMProfile.
+        /// </summary>
+        public AzureRmProfile DeepClone()
+        {
+            var profile = new AzureRmProfile(false);
+
+            foreach (var environment in this.EnvironmentTable)
+            {
+                profile.EnvironmentTable.Add(environment.Key, ((AzureEnvironment)environment.Value).DeepClone());
+            }
+
+            foreach (var context in this.Contexts)
+            {
+                profile.Contexts.Add(context.Key, context.Value.DeepCopy());
+            }
+
+            if (this.DefaultContext != null)
+            {
+                profile.DefaultContext = this.DefaultContext.DeepCopy();
+            }
+            profile.DefaultContextKey = this.DefaultContextKey;
+            profile.ProfilePath = this.ProfilePath;
+            profile.ShouldRefreshContextsFromCache = this.ShouldRefreshContextsFromCache;
+            profile.CopyPropertiesFrom(this);
+            return profile;
         }
 
         public AzureRmProfile ToProfile()
