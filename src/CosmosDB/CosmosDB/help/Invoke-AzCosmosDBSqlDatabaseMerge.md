@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzCosmosDBSqlDatabaseMerge
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Use this command to invoke a merge operation on a sql database under an existing Cosmos DB account.
 
 ## SYNTAX
 
@@ -31,16 +31,23 @@ Invoke-AzCosmosDBSqlDatabaseMerge [-Name <String>] -InputObject <PSSqlDatabaseGe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Invoke-AzCosmosDBSqlDatabaseMerge** cmdlet merges the partitions for a given container. It is a long running operation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>Invoke-AzCosmosDBSqlDatabaseMerge -ResourceGroupName "resourceGroupName" -AccountName "accountName" -Name "name"
 ```
 
-{{ Add example description here }}
+```output
+Id                  StorageInKB
+---                 ------------
+targetpartition0    100
+targetpartition1    100
+targetpartition2    100
+targetpartition3    100
+```
 
 ## PARAMETERS
 
@@ -75,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-{{ Fill Force Description }}
+Skips prompt Confirmation of the command.
 
 ```yaml
 Type: SwitchParameter
