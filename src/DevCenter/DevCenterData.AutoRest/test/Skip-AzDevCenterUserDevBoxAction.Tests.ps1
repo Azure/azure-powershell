@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Skip-AzDevCenterUserDevBoxAc
 }
 
 Describe 'Skip-AzDevCenterUserDevBoxAction' {
-    It 'Skip' -skip {
+    It 'Skip' {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox1 -ProjectName $env.projectName -ActionName "schedule-default"
         $skipTimeSpan = New-TimeSpan -Days 1
         $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
@@ -33,7 +33,7 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
         $action.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'SkipViaIdentity' -skip {
+    It 'SkipViaIdentity' {
         $actionInput = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox2; "ActionName" = "schedule-default" }
         $actionInput2 = @{"ProjectName" = $env.projectName; "DevBoxName" = $env.skipDevBox3; "ActionName" = "schedule-default" }
 

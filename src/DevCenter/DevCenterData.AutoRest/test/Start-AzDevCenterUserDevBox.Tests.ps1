@@ -14,17 +14,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterUserDevBox')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzDevCenterUserDevBox' {
-    It 'Start' -skip {
-        $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName
+Describe 'Start-AzDevCenterUserDevBox' -skip {
+    It 'Start' {
+        $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName
         $startOperation.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Started"
         $devBox.PowerState | Should -Be "Running"
 
-        $startOperation = Start-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName 
+        $startOperation = Start-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.devboxName3 -ProjectName $env.projectName 
         $startOperation.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Started"
         $devBox.PowerState | Should -Be "Running"
 
@@ -32,17 +32,17 @@ Describe 'Start-AzDevCenterUserDevBox' {
        }
 
     It 'StartViaIdentity' -skip {
-        $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName}
+        $devBoxInput = @{"DevBoxName" = $env.devboxName3; "UserId" = "me"; "ProjectName" = $env.projectName}
 
         $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
         $startOperation.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Started"
         $devBox.PowerState | Should -Be "Running"
 
         $startOperation = Start-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
         $startOperation.Status | Should -Be "Succeeded"
-        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
+        $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
         $devBox.ActionState | Should -Be "Started"
         $devBox.PowerState | Should -Be "Running"
 

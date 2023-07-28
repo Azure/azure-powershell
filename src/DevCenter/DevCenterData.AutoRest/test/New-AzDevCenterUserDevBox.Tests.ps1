@@ -13,10 +13,10 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterUserDevBox'))
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzDevCenterUserDevBox' {
-    It 'CreateExpanded' -skip {
-        $devBox = New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name "devbox1" -ProjectName $env.projectName -PoolName $env.poolName
-        $devBox.Name | Should -Be "devbox1"
+Describe 'New-AzDevCenterUserDevBox' -skip {
+    It 'CreateExpanded' {
+        $devBox = New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name "devbox3" -ProjectName $env.projectName -PoolName $env.poolName
+        $devBox.Name | Should -Be "devbox3"
         $devBox.User | Should -Be $env.userObjectId
         $devBox.ProjectName | Should -Be $env.projectName
         $devBox.poolName | Should -Be $env.poolName
@@ -28,7 +28,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
@@ -48,7 +48,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
@@ -73,7 +73,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"
@@ -93,7 +93,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.HibernateSupport | Should -Be "Enabled"
         $devBox.ImageReferenceName | Should -Be $env.imageName
         $devBox.HardwareProfileVCpUs | Should -Be 8
-        $devBox.HardwareProfileMemoryGb | Should -Be 64
+        $devBox.HardwareProfileMemoryGb | Should -Be 32
         $devBox.HardwareProfileSkuName | Should -Be $env.skuName
         $devBox.ImageReferenceOSBuildNumber | Should -Be "win11-22h2-ent-cpc-os"
         $devBox.ImageReferenceOperatingSystem | Should -Be "Windows11"

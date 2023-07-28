@@ -147,8 +147,10 @@ function setupEnv() {
 
     # $devboxName = RandomString -allChars $false -len 6
     # $devboxName2 = RandomString -allChars $false -len 6
+    # $devboxName3 = RandomString -allChars $false -len 6
     # $env.Add("devboxName", $devboxName)
     # $env.Add("devboxName2", $devboxName2)
+    # $env.Add("devboxName3", $devboxName3)
 
     # $envName = RandomString -allChars $false -len 6
     # $envName2 = RandomString -allChars $false -len 6
@@ -207,10 +209,22 @@ function setupEnv() {
     
     # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
     # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
-    # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox1 -ProjectName $projectName -PoolName $poolName
-    # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox2 -ProjectName $projectName -PoolName $poolName
-    # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox3 -ProjectName $projectName -PoolName $poolName
-    # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox4 -ProjectName $projectName -PoolName $poolName
+    # New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName3 -ProjectName $projectName -PoolName $poolName
+
+    # $skipDevBox1 = RandomString -allChars $false -len 6
+    # $skipDevBox2 = RandomString -allChars $false -len 6
+    # $skipDevBox3 = RandomString -allChars $false -len 6
+    # $skipDevBox4 = RandomString -allChars $false -len 6
+    # $env.Add("skipDevBox1", $skipDevBox1)
+    # $env.Add("skipDevBox2", $skipDevBox2)
+    # $env.Add("skipDevBox3", $skipDevBox3)
+    # $env.Add("skipDevBox4", $skipDevBox4)
+
+
+    #New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox1 -ProjectName $env.projectName -PoolName $env.poolName
+    #New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox2 -ProjectName $env.projectName -PoolName $env.poolName
+    #New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox3 -ProjectName $env.projectName -PoolName $env.poolName
+    #New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox4 -ProjectName $env.projectName -PoolName $env.poolName
 
     # For any resources you created for test, you should add it to $env here.
 
