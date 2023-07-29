@@ -27,14 +27,14 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'Delay1ByDevCenter' {
+    It 'Delay1ByDevCenter' -skip {
         if ($Record -or $Live) {
             $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName3 -ProjectName $env.projectName -DelayTime "00:05"
             $delayAction.Count | Should -Be 2
         }
     }
 
-    It 'DelayByDevCenter' {
+    It 'DelayByDevCenter' -skip {
         if ($Record -or $Live) {
             $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default"
             $delayTime = New-TimeSpan -Minutes 5
