@@ -55,13 +55,11 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
   param(
     [Parameter(ParameterSetName = 'Delay', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
 
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
@@ -76,42 +74,25 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
     # The name of an action that will take place on a Dev Box.
     ${ActionName},
 
-    [Parameter(ParameterSetName = 'Delay', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${DevBoxName},
 
-    [Parameter(ParameterSetName = 'Delay', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'Delay')]
-    [Parameter(ParameterSetName = 'Delay1')]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter')]
-    [Parameter(ParameterSetName = 'DelayByDevCenter')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
-
-    [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
@@ -179,31 +160,14 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
-    $Project = $ProjectName
-    $DevBox = $DevBoxName
-    $Action = $ActionName
-    $User = $UserId
 
-    if ($PSBoundParameters.ContainsKey('InputObject')) {
-      if ([string]::IsNullOrEmpty($InputObject.UserId)) {
-        $InputObject.UserId = "me"
-        $PSBoundParameters["InputObject"] = $InputObject
-      }
-      $Project = $InputObject.ProjectName
-      $DevBox = $InputObject.DevBoxName
-      $Action = $InputObject.ActionName
-      $User = $InputObject.UserId
-    }
-
-    Write-Host $Action
-
-    if ([string]::IsNullOrEmpty($Action)) {
-      $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $Project `
-        -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User
+    if ([string]::IsNullOrEmpty($ActionName)) {
+      $Until = GetDelayedActionTimeFromAllActions -Endpoint $Endpoint -Project $ProjectName `
+        -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
     }
     else {
-      $Until = GetDelayedActionTimeFromActionName -ActionName $Action -Endpoint $Endpoint `
-        -Project $Project -DevBoxName $DevBox -DelayTime $DelayTime -UserId $User
+      $Until = GetDelayedActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
+        -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $UserId
     }
 
     $null = $PSBoundParameters.Add("Until", $Until)
