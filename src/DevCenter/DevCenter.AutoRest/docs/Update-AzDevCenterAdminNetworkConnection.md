@@ -20,19 +20,6 @@ Update-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <Stri
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String>
- -Body <INetworkConnectionUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -Body <INetworkConnectionUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> [-DomainName <String>]
@@ -85,23 +72,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-The network connection properties for partial update.
-Properties not provided in the update request will not be changed.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnectionUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -123,7 +93,7 @@ Active Directory domain name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -138,7 +108,7 @@ The password for the account used to join domain
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +124,7 @@ Required format: admin@contoso.com.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,7 +140,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -185,7 +155,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -200,7 +170,7 @@ Name of the Network Connection that can be applied to a Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: NetworkConnectionName
 
 Required: True
@@ -230,7 +200,7 @@ Active Directory domain Organization Unit (OU)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +216,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -261,7 +231,7 @@ The subnet to attach Virtual Machines to
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,7 +246,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -291,7 +261,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -337,8 +307,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnectionUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
@@ -353,16 +321,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <INetworkConnectionUpdate>`: The network connection properties for partial update. Properties not provided in the update request will not be changed.
-  - `[Location <String>]`: The geo-location where the resource lives
-  - `[Tag <ITags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[DomainName <String>]`: Active Directory domain name
-  - `[DomainPassword <String>]`: The password for the account used to join domain
-  - `[DomainUsername <String>]`: The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
-  - `[OrganizationUnit <String>]`: Active Directory domain Organization Unit (OU)
-  - `[SubnetId <String>]`: The subnet to attach Virtual Machines to
 
 `INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
   - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.

@@ -22,14 +22,6 @@ Describe 'Update-AzDevCenterAdminProject' {
         $project.MaxDevBoxesPerUser | Should -Be 5 
        }
 
-    It 'Update' {
-        $body = @{"MaxDevBoxesPerUser" = 3 }
-        $project = Update-AzDevCenterAdminProject -Name $env.projectUpdate -ResourceGroupName $env.resourceGroup -Body $body
-        $project.DevCenterId | Should -Be $env.devCenterId
-        $project.Name | Should -Be $env.projectUpdate
-        $project.MaxDevBoxesPerUser | Should -Be 3 
-       }
-
     It 'UpdateViaIdentityExpanded' {
         $projectInput = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectUpdate
 
@@ -38,12 +30,4 @@ Describe 'Update-AzDevCenterAdminProject' {
         $project.Name | Should -Be $env.projectUpdate
         $project.MaxDevBoxesPerUser | Should -Be 5     }
 
-    It 'UpdateViaIdentity' {
-        $projectInput = Get-AzDevCenterAdminProject -ResourceGroupName $env.resourceGroup -Name $env.projectUpdate
-
-        $body = @{"MaxDevBoxesPerUser" = 3 }
-        $project = Update-AzDevCenterAdminProject -InputObject $projectInput -Body $body
-        $project.DevCenterId | Should -Be $env.devCenterId
-        $project.Name | Should -Be $env.projectUpdate
-        $project.MaxDevBoxesPerUser | Should -Be 3     }
 }

@@ -16,34 +16,34 @@
 
 <#
 .Synopsis
-Partially updates a Scheduled.
+Partially updates a Network Connection
 .Description
-Partially updates a Scheduled.
+Partially updates a Network Connection
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IScheduleUpdate
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnectionUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IScheduleUpdate>: The schedule properties for partial update. Properties not provided in the update request will not be changed.
+BODY <INetworkConnectionUpdate>: The network connection properties for partial update. Properties not provided in the update request will not be changed.
   [Location <String>]: The geo-location where the resource lives
   [Tag <ITags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [Frequency <ScheduledFrequency?>]: The frequency of this scheduled task.
-  [State <ScheduleEnableStatus?>]: Indicates whether or not this scheduled task is enabled.
-  [Time <String>]: The target time to trigger the action. The format is HH:MM.
-  [TimeZone <String>]: The IANA timezone id at which the schedule should execute.
-  [Type <ScheduledType?>]: Supported type this scheduled task represents.
+  [DomainName <String>]: Active Directory domain name
+  [DomainPassword <String>]: The password for the account used to join domain
+  [DomainUsername <String>]: The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
+  [OrganizationUnit <String>]: Active Directory domain Organization Unit (OU)
+  [SubnetId <String>]: The subnet to attach Virtual Machines to
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
@@ -64,90 +64,90 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The version of the image.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminschedule
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminnetworkconnection
 #>
-function Update-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
-  [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-  param(
-    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+function Update-AzDevCenterAdminNetworkConnection {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnection])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('NetworkConnectionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # Name of the pool.
-    ${PoolName},
+    # Name of the Network Connection that can be applied to a Pool.
+    ${Name},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of the project.
-    ${ProjectName},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Active Directory domain name
+    ${DomainName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The password for the account used to join domain
+    ${DomainPassword},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
+    # Required format: admin@contoso.com.
+    ${DomainUsername},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
-    # Indicates whether or not this scheduled task is enabled.
-    ${State},
+    [System.String]
+    # Active Directory domain Organization Unit (OU)
+    ${OrganizationUnit},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ITags]))]
+    [System.String]
+    # The subnet to attach Virtual Machines to
+    ${SubnetId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ITags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # The target time to trigger the action.
-    # The format is HH:MM.
-    ${Time},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # The IANA timezone id at which the schedule should execute.
-    ${TimeZone},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduledType]
-    # Supported type this scheduled task represents.
-    ${Type},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -208,10 +208,10 @@ function Update-AzDevCenterAdminSchedule {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-  process {
-    Az.DevCenter.internal\Update-AzDevCenterAdminSchedule @PSBoundParameters
-  }
+process {
+    Az.DevCenter.internal\Update-AzDevCenterAdminNetworkConnection @PSBoundParameters
+}
 
 }

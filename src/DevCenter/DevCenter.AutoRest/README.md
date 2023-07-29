@@ -89,10 +89,18 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
-# Matches any verb that is not Get or Remove for Pool
+# Remove Set per design review
   - where:
-      verb: ^(?!Get$|Remove$)
-      subject: Pool
+      verb: Set
+    remove: true
+# API not available yet
+  - where:
+      verb: Start
+      subject: PoolHealthCheck
+    hide: true
+# Matches any verb that is New, Update, Set
+  - where:
+      verb: ^(New|Update|Set)$
     hide: true
   - where:
       subject: ^(.*)

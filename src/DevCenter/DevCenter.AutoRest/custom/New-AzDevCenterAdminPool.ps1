@@ -77,7 +77,6 @@ function New-AzDevCenterAdminPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
         [Alias('PoolName')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
@@ -85,14 +84,12 @@ function New-AzDevCenterAdminPool {
         # Name of the pool.
         ${Name},
     
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The name of the project.
         ${ProjectName},
     
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
@@ -100,7 +97,6 @@ function New-AzDevCenterAdminPool {
         # The name is case insensitive.
         ${ResourceGroupName},
     
-        [Parameter(ParameterSetName = 'Create')]
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
@@ -108,21 +104,12 @@ function New-AzDevCenterAdminPool {
         # The ID of the target subscription.
         ${SubscriptionId},
     
-        [Parameter(ParameterSetName = 'CreateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-    
-        [Parameter(ParameterSetName = 'Create', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'CreateViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool]
-        # A pool of Virtual Machines.
-        # To construct, see NOTES section for BODY properties and create a hash table.
-        ${Body},
     
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
         [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
@@ -238,14 +225,7 @@ function New-AzDevCenterAdminPool {
     )
     
     process {
-
-        if ($PSBoundParameters.ContainsKey('Body')) {
-            $Body.LicenseType = "Windows_Client"
-            $PSBoundParameters["Body"] = $Body
-        }
-
         Az.DevCenter.internal\New-AzDevCenterAdminPool @PSBoundParameters
-    
     }
 }
     

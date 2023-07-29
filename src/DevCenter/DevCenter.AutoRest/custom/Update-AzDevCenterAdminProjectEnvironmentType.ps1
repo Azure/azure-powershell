@@ -16,35 +16,37 @@
 
 <#
 .Synopsis
-Partially updates a machine pool
+Partially updates a project environment type.
 .Description
-Partially updates a machine pool
+Partially updates a project environment type.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPoolUpdate
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentTypeUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IPoolUpdate>: The pool properties for partial update. Properties not provided in the update request will not be changed.
-  [Location <String>]: The geo-location where the resource lives
+BODY <IProjectEnvironmentTypeUpdate>: The project environment type for partial update. Properties not provided in the update request will not be changed.
+  [CreatorRoleAssignmentRole <IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles>]: A map of roles to assign to the environment creator.
+    [(Any) <IEnvironmentRole>]: This indicates any property can be added to this object.
+  [DeploymentTargetId <String>]: Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
+  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+  [IdentityUserAssignedIdentity <IUserAssignedIdentities>]: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+    [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
+  [Status <EnvironmentTypeEnableStatus?>]: Defines whether this Environment Type can be used in this Project.
   [Tag <ITags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [DevBoxDefinitionName <String>]: Name of a Dev Box definition in parent Project of this Pool
-  [LicenseType <LicenseType?>]: Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
-  [LocalAdministrator <LocalAdminStatus?>]: Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
-  [NetworkConnectionName <String>]: Name of a Network Connection in parent Project of this Pool
-  [StopOnDisconnectGracePeriodMinute <Int32?>]: The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-  [StopOnDisconnectStatus <StopOnDisconnectEnableStatus?>]: Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+  [UserRoleAssignment <IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments>]: Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
+    [(Any) <IUserRoleAssignmentValue>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
@@ -65,18 +67,17 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The version of the image.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminpool
+https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteradminprojectenvironmenttype
 #>
-function Update-AzDevCenterAdminPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
+function Update-AzDevCenterAdminProjectEnvironmentType {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('PoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # Name of the pool.
-    ${Name},
+    # The name of the environment type.
+    ${EnvironmentTypeName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
@@ -108,46 +109,44 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # Name of a Dev Box definition in parent Project of this Pool
-    ${DevBoxDefinitionName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus]
-    # Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
-    ${LocalAdministrator},
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles]))]
+    [System.Collections.Hashtable]
+    # A map of roles to assign to the environment creator.
+    ${CreatorRoleAssignmentRole},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+    # Id of a subscription that the environment type will be mapped to.
+    # The environment's resources will be deployed into this subscription.
+    ${DeploymentTargetId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # Name of a Network Connection in parent Project of this Pool
-    ${NetworkConnectionName},
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.EnvironmentTypeEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.Int32]
-    # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-    ${StopOnDisconnectGracePeriodMinute},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
-    # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-    ${StopOnDisconnectStatus},
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.EnvironmentTypeEnableStatus]
+    # Defines whether this Environment Type can be used in this Project.
+    ${Status},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -157,6 +156,15 @@ param(
     # Resource tags.
     ${Tag},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments]))]
+    [System.Collections.Hashtable]
+    # Role Assignments created on environment backing resources.
+    # This is a mapping from a user object ID to an object of role definition IDs.
+    ${UserRoleAssignment},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -165,12 +173,6 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -191,12 +193,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -219,7 +215,7 @@ param(
 )
 
 process {
-    Az.DevCenter.internal\Update-AzDevCenterAdminPool @PSBoundParameters
+    Az.DevCenter.internal\Update-AzDevCenterAdminProjectEnvironmentType @PSBoundParameters
 
 }
 

@@ -20,13 +20,4 @@ Describe 'New-AzDevCenterAdminProject' {
         $project.Name | Should -Be $env.projectNew
         $project.MaxDevBoxesPerUser | Should -Be 3
     }
-
-    It 'Create' {
-        $body = @{"DevCenterId" = $env.devCenterId; "Location" = $env.location; "MaxDevBoxesPerUser" = 3 }
-        $project = New-AzDevCenterAdminProject -Name $env.projectNew2 -ResourceGroupName $env.resourceGroup -Body $body
-        $project.DevCenterId | Should -Be $env.devCenterId
-        $project.Name | Should -Be $env.projectNew2
-        $project.MaxDevBoxesPerUser | Should -Be 3
-    }
-
 }

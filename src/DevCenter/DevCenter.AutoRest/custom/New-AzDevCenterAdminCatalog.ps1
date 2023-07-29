@@ -16,124 +16,155 @@
 
 <#
 .Synopsis
-Creates or updates a machine pool
+Creates or updates a catalog.
 .Description
-Creates or updates a machine pool
+Creates or updates a catalog.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IPool>: A pool of Virtual Machines.
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
+BODY <ICatalog>: Represents a catalog.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [DevBoxDefinitionName <String>]: Name of a Dev Box definition in parent Project of this Pool
-  [LicenseType <LicenseType?>]: Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
-  [LocalAdministrator <LocalAdminStatus?>]: Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
-  [NetworkConnectionName <String>]: Name of a Network Connection in parent Project of this Pool
-  [StopOnDisconnectGracePeriodMinute <Int32?>]: The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-  [StopOnDisconnectStatus <StopOnDisconnectEnableStatus?>]: Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+  [AdoGitBranch <String>]: Git branch.
+  [AdoGitPath <String>]: The folder where the catalog items can be found inside the repository.
+  [AdoGitSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+  [AdoGitUri <String>]: Git URI.
+  [GitHubBranch <String>]: Git branch.
+  [GitHubPath <String>]: The folder where the catalog items can be found inside the repository.
+  [GitHubSecretIdentifier <String>]: A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+  [GitHubUri <String>]: Git URI.
+
+INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
+  [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [CatalogName <String>]: The name of the Catalog.
+  [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
+  [DevCenterName <String>]: The name of the devcenter.
+  [EnvironmentTypeName <String>]: The name of the environment type.
+  [GalleryName <String>]: The name of the gallery.
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The name of the image.
+  [Location <String>]: The Azure region
+  [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
+  [OperationId <String>]: The ID of an ongoing async operation
+  [PoolName <String>]: Name of the pool.
+  [ProjectName <String>]: The name of the project.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The version of the image.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteradminpool
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmincatalog
 #>
-function Set-AzDevCenterAdminPool {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
-  [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-  param(
-    [Parameter(Mandatory)]
-    [Alias('PoolName')]
+function New-AzDevCenterAdminCatalog {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # Name of the pool.
+    # The name of the devcenter.
+    ${DevCenterName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Alias('CatalogName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Catalog.
     ${Name},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of the project.
-    ${ProjectName},
-
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName = 'Update', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool]
-    # A pool of Virtual Machines.
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+    # Git branch.
+    ${AdoGitBranch},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
-    # Name of a Dev Box definition in parent Project of this Pool
-    ${DevBoxDefinitionName},
+    # The folder where the catalog items can be found inside the repository.
+    ${AdoGitPath},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus]
-    # Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
-    ${LocalAdministrator},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
-    # Name of a Network Connection in parent Project of this Pool
-    ${NetworkConnectionName},
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${AdoGitSecretIdentifier},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.Int32]
-    # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-    ${StopOnDisconnectGracePeriodMinute},
+    [System.String]
+    # Git URI.
+    ${AdoGitUri},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
-    # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-    ${StopOnDisconnectStatus},
+    [System.String]
+    # Git branch.
+    ${GitHubBranch},
 
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+    [System.String]
+    # The folder where the catalog items can be found inside the repository.
+    ${GitHubPath},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
+    ${GitHubSecretIdentifier},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Git URI.
+    ${GitHubUri},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -194,16 +225,11 @@ function Set-AzDevCenterAdminPool {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-  process {
-    if ($PSBoundParameters.ContainsKey('Body')) {
-      $Body.LicenseType = "Windows_Client"
-      $PSBoundParameters["Body"] = $Body
-    }
 
-    Az.DevCenter.internal\Set-AzDevCenterAdminPool @PSBoundParameters
-
-  }
+process {
+    Az.DevCenter.internal\New-AzDevCenterAdminCatalog @PSBoundParameters
+}
 
 }

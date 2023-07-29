@@ -28,22 +28,6 @@ Describe 'Update-AzDevCenterAdminNetworkConnection' {
         $hybridNetworkConnection.DomainUsername | Should -Be $env.domainUsername    
     }
 
-    It 'Update' {
-        $body = @{"SubnetId" = $env.SubnetId ; "DomainPassword" = $null}
-        $networkConnection = Update-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionUpdate -ResourceGroupName $env.resourceGroup -Body $body
-        $networkConnection.DomainJoinType | Should -Be $env.aadJoinType
-        $networkConnection.Name | Should -Be $env.networkConnectionUpdate
-        $networkConnection.SubnetId | Should -Be $env.SubnetId
-
-        $body2 = @{"SubnetId" = $env.SubnetId; "DomainName" = $env.domainName; "DomainPassword" = $env.domainPassword; "DomainUsername" = $env.domainUsername }
-        $hybridNetworkConnection = Update-AzDevCenterAdminNetworkConnection -Name $env.networkConnectionHybridUpdate -ResourceGroupName $env.resourceGroup -Body $body2
-        $hybridNetworkConnection.DomainJoinType | Should -Be $env.hybridDomainJoinType
-        $hybridNetworkConnection.Name | Should -Be $env.networkConnectionHybridUpdate
-        $hybridNetworkConnection.SubnetId | Should -Be $env.SubnetId
-        $hybridNetworkConnection.DomainName | Should -Be $env.domainName
-        $hybridNetworkConnection.DomainUsername | Should -Be $env.domainUsername
-    }
-
     It 'UpdateViaIdentityExpanded' {
         $networkConnectionInput = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionUpdate
 
@@ -60,25 +44,5 @@ Describe 'Update-AzDevCenterAdminNetworkConnection' {
         $hybridNetworkConnection.SubnetId | Should -Be $env.SubnetId
         $hybridNetworkConnection.DomainName | Should -Be $env.domainName
         $hybridNetworkConnection.DomainUsername | Should -Be $env.domainUsername
-    }
-
-    It 'UpdateViaIdentity' {
-        $networkConnectionInput = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionUpdate
-
-        $body = @{"SubnetId" = $env.SubnetId ; "DomainPassword" = $null}
-        $networkConnection = Update-AzDevCenterAdminNetworkConnection -InputObject $networkConnectionInput -Body $body
-        $networkConnection.DomainJoinType | Should -Be $env.aadJoinType
-        $networkConnection.Name | Should -Be $env.networkConnectionUpdate
-        $networkConnection.SubnetId | Should -Be $env.SubnetId
-
-        $hybridNetworkConnectionInput = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName $env.resourceGroup -Name $env.networkConnectionHybridUpdate
-
-        $body2 = @{"SubnetId" = $env.SubnetId; "DomainName" = $env.domainName; "DomainPassword" = $env.domainPassword; "DomainUsername" = $env.domainUsername }
-        $hybridNetworkConnection = Update-AzDevCenterAdminNetworkConnection -InputObject $hybridNetworkConnectionInput -Body $body2
-        $hybridNetworkConnection.DomainJoinType | Should -Be $env.hybridDomainJoinType
-        $hybridNetworkConnection.Name | Should -Be $env.networkConnectionHybridUpdate
-        $hybridNetworkConnection.SubnetId | Should -Be $env.SubnetId
-        $hybridNetworkConnection.DomainName | Should -Be $env.domainName
-        $hybridNetworkConnection.DomainUsername | Should -Be $env.domainUsername    
     }
 }

@@ -24,17 +24,6 @@ Describe 'Update-AzDevCenterAdminEnvironmentType' {
         $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'Update' {
-        $tags = @{"dev1" = "test1" }
-        $body = @{"Tag" = $tags }
-
-        $envType = Update-AzDevCenterAdminEnvironmentType -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate -ResourceGroupName $env.resourceGroup -Body $body
-        $envType.Name | Should -Be $env.environmentTypeUpdate
-        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
-        $envTypeTag.Keys[0] | Should -Be "dev1"
-        $envTypeTag.Values[0] | Should -Be "test1"
-    }
-
     It 'UpdateViaIdentityExpanded' {
 
         $envTypeInput = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate
@@ -47,15 +36,4 @@ Describe 'Update-AzDevCenterAdminEnvironmentType' {
         $envTypeTag.Values[0] | Should -Be "test"
     }
 
-    It 'UpdateViaIdentity' {
-        $envTypeInput = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName $env.resourceGroup -DevCenterName $env.devCenterName -Name $env.environmentTypeUpdate
-        $tags = @{"dev1" = "test1" }
-        $body = @{"Tag" = $tags }
-
-        $envType = Update-AzDevCenterAdminEnvironmentType -InputObject $envTypeInput -Body $body
-        $envType.Name | Should -Be $env.environmentTypeUpdate
-        $envTypeTag = $envType.Tag | ConvertTo-Json | ConvertFrom-Json
-        $envTypeTag.Keys[0] | Should -Be "dev1"
-        $envTypeTag.Values[0] | Should -Be "test1"
-    }
 }

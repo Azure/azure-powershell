@@ -26,17 +26,4 @@ Describe 'New-AzDevCenterAdminDevBoxDefinition' {
         $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
         }
 
-    It 'Create'  {
-        $body = @{"Location" = $env.location; "ImageReferenceId" = $env.ImageReferenceId; "OSStorageType" = $env.osStorageType; "SkuName" = $env.skuName; "HibernateSupport" = "Enabled"}
-
-        $devBoxDefinition = New-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
-
-        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionNew2
-        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
-        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
-        $devBoxDefinition.SkuName | Should -Be $env.skuName
-        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
-        $devBoxDefinition.HibernateSupport | Should -Be "Enabled"
-    }
-
 }
