@@ -22,8 +22,15 @@ function Test-ScriptActionRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		# create cluster that will be used throughout test
-		$cluster = Create-Cluster
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.ResourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 		
 		$scriptActionName = Generate-Name("scriptaction")
 		$uri = "https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh"
@@ -60,7 +67,7 @@ function Test-ScriptActionRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		#Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		#Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

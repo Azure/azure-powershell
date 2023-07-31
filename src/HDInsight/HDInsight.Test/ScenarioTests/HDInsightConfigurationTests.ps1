@@ -34,13 +34,13 @@
 		$coreconfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 		$coreconfig.Add('coreconfig', 'corevalue')
 		Assert-Null $config.Configurations["core-site"]
-		$config = $config | Add-AzHDInsightConfigValues -Core $coreconfig
+		$config = $config | Add-AzHDInsightConfigValue -Core $coreconfig
 		Assert-NotNull $config.Configurations["core-site"]
 
 		$oozieconfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 		$oozieconfig.Add('oozieconfig', 'oozievalue')
 		Assert-Null $config.Configurations["oozie-site"]
-		$config = $config | Add-AzHDInsightConfigValues -OozieSite $coreconfig
+		$config = $config | Add-AzHDInsightConfigValue -OozieSite $coreconfig
 		Assert-NotNull $config.Configurations["oozie-site"]
 
 		#test Add-AzHDInsightMetastore
@@ -65,9 +65,10 @@
 		#test Set-AzHDInsightDefaultStorage
 		Assert-Null $config.DefaultStorageAccountName
 		Assert-Null $config.DefaultStorageAccountKey
-		$config = $config | Set-AzHDInsightDefaultStorage -StorageAccountName fakedefaultaccount -StorageAccountKey DEFAULTACCOUNTKEY==
-		Assert-NotNull $config.DefaultStorageAccountName
-		Assert-NotNull $config.DefaultStorageAccountKey
+		$config = $config | Set-AzHDInsightDefaultStorage -StorageAccountResourceId fakedefaultResourceId -StorageAccountKey DEFAULTACCOUNTKEY== -StorageAccountType AzureStorage
+		Assert-NotNull $config.StorageAccountResourceId
+		Assert-NotNull $config.StorageAccountKey
+		Assert-NotNull $config.StorageAccountType
 
 		#test Add-AzHDInsightComponentVersion
 		$componentName="Spark"
@@ -93,7 +94,7 @@
 		$organizationalUnitDN = "ou=testunitdn"
 		$ldapsUrls = ("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
 		$clusterUsersGroupDNs = ("groupdn1","groupdn2")
-		$config = $config | Add-AzHDInsightSecurityProfile -Domain $domain -DomainUserCredential $domainUserCredential -OrganizationalUnitDN $organizationalUnitDN -LdapsUrls $ldapsUrls -ClusterUsersGroupDNs $clusterUsersGroupDNs 
-		Assert-AreEqual $config.SecurityProfile.Domain $domain
+		$config = $config | Add-AzHDInsightSecurityProfile -DomainResourceId $domain -DomainUserCredential $domainUserCredential -OrganizationalUnitDN $organizationalUnitDN -LdapsUrls $ldapsUrls -ClusterUsersGroupDNs $clusterUsersGroupDNs 
+		Assert-AreEqual $config.SecurityProfile.DomainResourceId $domain
 		Assert-NotNull $config.SecurityProfile.LdapsUrls
     }

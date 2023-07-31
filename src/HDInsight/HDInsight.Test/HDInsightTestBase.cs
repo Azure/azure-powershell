@@ -16,12 +16,16 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Azure.ResourceManager.HDInsight;
+using System.Linq;
+using Azure.Core;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
@@ -29,7 +33,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         protected const string ClusterName = "hdicluster";
         protected const string ResourceGroupName = "hdi-rg1";
-        protected const string Location = "west us";
+        protected const string Location = "westus";
 
         protected string ClusterType = "Hadoop";
         protected string HdiVersion = "3.1";
@@ -58,27 +62,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public virtual void SetupManagementClientForJobTests()
         {
             // Update HDInsight Management properties for Job.
-            var cluster1 = new Cluster(
-                id: $"/subscriptions/{Guid.NewGuid()}/resourceGroups/{ResourceGroupName}/providers/Microsoft.HDInsight/clusters/{ClusterName}",
-                name: ClusterName, location: Location)
+            var cluster1 = ArmHDInsightModelFactory.HDInsightClusterData(id: new ResourceIdentifier($"/subscriptions/{Guid.NewGuid()}/resourceGroups/{ResourceGroupName}/providers/Microsoft.HDInsight/clusters/{ClusterName}"), name: ClusterName, location: Location);
+            cluster1.Properties = new HDInsightClusterProperties(new HDInsightClusterDefinition())
             {
-                Location = Location,
-                Properties = new ClusterGetProperties
-                {
-                    ClusterVersion = "3.6",
-                    ClusterState = "Running",
-                    ClusterDefinition = new ClusterDefinition
-                    {
-                        Kind = ClusterType
-                    },
-                    QuotaInfo = new QuotaInfo
-                    {
-                        CoresUsed = 24
-                    },
-                    OsType = "Linux",
-                    ConnectivityEndpoints = new List<ConnectivityEndpoint> { new ConnectivityEndpoint { Location = ClusterName, Name = "HTTPS" } }
-                }
+                ClusterVersion = "3.6",
+                ClusterState = "Running"
             };
+            cluster1.Properties.ClusterDefinition.Kind = ClusterType;
+            cluster1.Properties.QuotaInfoCoresUsed = 24;
+            cluster1.Properties.OSType = "Linux";
+            cluster1.Properties.ConnectivityEndpoints.Add(new ConnectivityEndpoint() { EndpointLocation = ClusterName, Name = "HTTPS"});
+
 
             var listresponse = new[] { cluster1 };
             hdinsightManagementMock.Setup(c => c.ListClusters())
@@ -86,7 +80,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Verifiable();
 
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(new List<Cluster> { cluster1 })
+                .Returns(new List<HDInsightClusterData> { cluster1 })
                 .Verifiable();
 
             var configurationResponse = new Dictionary<string, string>();
@@ -97,15 +91,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Returns(configurationResponse)
                 .Verifiable();
 
-            var listConfigurationsResponse = new ClusterConfigurations
-            {
-                Configurations = new Dictionary<string, IDictionary<string, string>>
+            var listConfigurationsResponse = ArmHDInsightModelFactory.HDInsightClusterConfigurations(new Dictionary<string, IDictionary<string, string>>
                 {
                     {
                         "core-site", configurationResponse
                     }
-                }
-            };
+                });
+
 
             hdinsightManagementMock.Setup(c => c.ListConfigurations(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(listConfigurationsResponse)

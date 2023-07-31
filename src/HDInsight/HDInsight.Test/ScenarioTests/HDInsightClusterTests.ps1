@@ -26,11 +26,13 @@ function Test-ClusterRelatedCommands{
 		$params= Prepare-ClusterCreateParameter
 
 		# test create cluster
-		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		#$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		#-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		#-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		#-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		#-MinSupportedTlsVersion $params.minSupportedTlsVersion
+
+		$cluster = Get-AzHDInsightCluster -resourceGroupName yuchen-test-ps -ClusterName hdi-ps-test8080
 
 		Assert-NotNull $cluster
 		
@@ -40,8 +42,40 @@ function Test-ClusterRelatedCommands{
 		
 		#test Set-AzHDInsightClusterSize
 		$resizeCluster = Set-AzHDInsightClusterSize -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
-		-TargetInstanceCount 3
+		-TargetInstanceCount 4
 		Assert-AreEqual $resizeCluster.CoresUsed 40
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		#Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		#Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
+Test Create Enable Secure Channel HDInsight Cluster
+#>
+
+function Test-ClusterEnableSecureChannelCommands{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter
+		$enableSecureChannel = $true
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel
+
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.EnableSecureChannel $enableSecureChannel
 	}
 	finally
 	{
@@ -50,7 +84,6 @@ function Test-ClusterRelatedCommands{
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
-
 
 <#
 .SYNOPSIS
@@ -104,7 +137,7 @@ function Test-CreateClusterWithEncryptionInTransit{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -Location "South Central US"
+		$params= Prepare-ClusterCreateParameter -Location "Japan East"
 		$encryptionInTransit=$true
 
 		# create cluster
@@ -136,7 +169,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_DS14_v2"
 		$headNodeSize="Standard_DS14_v2"
@@ -150,7 +183,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
 
-		Assert-AreEqual $cluster.DiskEncryption.EncryptionAtHost $encryptionAtHost
+		Assert-AreEqual $cluster.DiskEncryption.IsEncryptionAtHostEnabled $encryptionAtHost
 		
 	}
 	finally
@@ -172,7 +205,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "East US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 
 		# create autoscale cofiguration
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 4 -MaxWorkerNodeCount 5
@@ -249,7 +282,7 @@ function Test-CreateClusterWithKafkaRestProxy{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US" -clusterType Kafka
+		$params= Prepare-ClusterCreateParameter -location "Japan East" -clusterType Kafka
 		$kafkaClientGroupName="FakeClientGroup"
 		$kafkaClientGroupId="00000000-0000-0000-0000-000000000000"
 		$disksPerWorkerNode=2
@@ -287,11 +320,11 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
-		$subnetName="default"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/yuchentestPSVN"
+		$subnetName="testpssubnet"
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -325,16 +358,16 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 
 		# prepare custom ambari database
-		$databaseUserName="yourusername"
-		$databasePassword="******"
+		$databaseUserName="lyc-admin"
+		$databasePassword="Password1."
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
-		$sqlserver="yoursqlserver.database.windows.net"
-		$database="customambaridb"
+		$sqlserver="lycdevrpserver.database.windows.net"
+		$database="psAmbari3"
 
 		$config=New-AzHDInsightClusterConfig|Add-AzHDInsightMetastore `
         -SqlAzureServerName $sqlserver -DatabaseName $database `
@@ -369,11 +402,11 @@ function Test-CreateClusterWithComputeIsolation{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_E8S_v3"
 		$headNodeSize="Standard_E16S_v3"
-		$zookeeperNodeSize="Standard_E2S_v3"
+		$zookeeperNodeSize="Standard_E2_v3"
 
 		# create cluster
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -405,20 +438,20 @@ function Test-CreateClusterWithAvailabilityZones{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "East US"
 
 		# prepare custom ambari database
-		$databaseUserName="yourusername"
-		$databasePassword="******"
+		$databaseUserName="lyc-admin"
+		$databasePassword="Password1."
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
-		$sqlserver="yoursqlserver.database.windows.net"
-		$ambariDatabase="ambaridb"
-		$hiveDatabase ="hivedb"
-		$oozieDatabase = "ooziedb"
+		$sqlserver="lycdevrpserver.database.windows.net"
+		$ambariDatabase="zone1"
+		$hiveDatabase ="zone2"
+		$oozieDatabase = "zone3"
 
-		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/testpsVN8"
 		$subnetName="default"
 
 		# Create Ambari metastore
@@ -464,11 +497,19 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$httpUser="admin"
+		$textPassword= "YourPw!00953"
+		$httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
+		$sshUser="sshuser"
+		$sshPassword=$httpPassword
+		$httpCredential=New-Object System.Management.Automation.PSCredential($httpUser, $httpPassword)
+		$sshCredential=New-Object System.Management.Automation.PSCredential($sshUser, $sshPassword)
+		$storageContainer="testpspl"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
-		$subnetName="default"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/yuchentestPSVN2"
+		$subnetName="testps2"
 
 		$ipConfigName="ipconfig"
 		$privateIPAllocationMethod="dynamic" # the only supported IP allocation method for private link IP configuration is dynamic
@@ -483,11 +524,12 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-ClusterName $params.clusterName -ClusterSizeInNodes 4 -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-SshCredential $sshCredential `
+		-HttpCredential $httpCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 3.6 `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 4.0 `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
