@@ -18,21 +18,8 @@ Creates a NetworkSecurityPerimeterAccessRule
 ### Example 2: Creates a NetworkSecurityPerimeterAccessRule
 ```powershell
 
-$perimeter1 = @{
-  id='/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.Network/networkSecurityPerimeters/kaushal-nsp1'
-  perimeterGuid=''
-  location='eastus2euap'
-}
-
-$perimeter2 = @{
-  id='/subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup-1/providers/Microsoft.Network/networkSecurityPerimeters/kk-nsp4'
-  perimeterGuid='bcf8bf02-8b8a-4bcb-933d-2b575d94ec8f'
-  location='eastus2euap'
-}
-
-$networkSecurityPerimeters  =  @($perimeter1,$perimeter2)
-
-New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -Perimeter $networkSecurityPerimeters
+$emails = @("test123@microsoft.com", "test321@microsoft.com")
+New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
 
 ```
 
@@ -40,7 +27,7 @@ New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeter
 
 Location Name
 -------- ----
-         perimeter_ar
+         accessRule2
 
 ```
 Creates a NetworkSecurityPerimeterAccessRule
