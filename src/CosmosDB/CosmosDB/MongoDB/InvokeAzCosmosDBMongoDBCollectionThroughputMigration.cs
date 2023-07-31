@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(Name, "Migrating the CosmosDB MongoDB Collection throughput to Autoscale Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.MongoDBResources.MigrateMongoDBCollectionToAutoscale(
+                    CosmosDBManagementClient.MongoDbResources.MigrateMongoDBCollectionToAutoscale(
                     ResourceGroupName,
                     AccountName,
                     DatabaseName,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(Name, "Migrating the CosmosDB MongoDB Collection throughput to Manual Provisioning Policy."))
             {
                 ThroughputSettingsGetResults throughputSettingsGetResults = 
-                    CosmosDBManagementClient.MongoDBResources.MigrateMongoDBCollectionToManualThroughput(
+                    CosmosDBManagementClient.MongoDbResources.MigrateMongoDBCollectionToManualThroughput(
                     ResourceGroupName,
                     AccountName,
                     DatabaseName,

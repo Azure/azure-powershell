@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
             AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
             MaterializedViewDefinition = new PSMaterializedViewDefinition(sqlContainerGetPropertiesResource.MaterializedViewDefinition);
-            _rid = sqlContainerGetPropertiesResource._rid;
-            _ts = sqlContainerGetPropertiesResource._ts;
-            _etag = sqlContainerGetPropertiesResource._etag;
+            _rid = sqlContainerGetPropertiesResource.Rid;
+            _ts = sqlContainerGetPropertiesResource.Ts;
+            _etag = sqlContainerGetPropertiesResource.Etag;
         }
 
         //

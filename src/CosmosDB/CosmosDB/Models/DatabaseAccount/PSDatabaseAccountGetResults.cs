@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConsistencyPolicy = databaseAccountGetResults.ConsistencyPolicy;
             EnableAutomaticFailover = databaseAccountGetResults.EnableAutomaticFailover;
             IsVirtualNetworkFilterEnabled = databaseAccountGetResults.IsVirtualNetworkFilterEnabled;
-            IpRules = databaseAccountGetResults.IpRules;
+            IpRules = databaseAccountGetResults.IPRules;
             DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType;
             DocumentEndpoint = databaseAccountGetResults.DocumentEndpoint;
             ProvisioningState = databaseAccountGetResults.ProvisioningState;

@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             MongoRoleDefinitionGetResults mongoRoleDefinitionGetResults = null;
             try
             {
-                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoRoleDefinition(Id, ResourceGroupName, AccountName);
+                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoRoleDefinition(Id, ResourceGroupName, AccountName);
             }
             catch (CloudException e)
             {
@@ -126,14 +126,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             MongoRoleDefinitionCreateUpdateParameters mongoRoleDefinitionCreateUpdateParameters = new MongoRoleDefinitionCreateUpdateParameters(
                 roleName: RoleName ?? mongoRoleDefinitionGetResults.RoleName,
-                type: Type != null ? (MongoRoleDefinitionType)Enum.Parse(typeof(MongoRoleDefinitionType), Type) : mongoRoleDefinitionGetResults.MongoRoleDefinitionGetResultsType,
+                type: Type != null ? (MongoRoleDefinitionType)Enum.Parse(typeof(MongoRoleDefinitionType), Type) : mongoRoleDefinitionGetResults.PropertiesType,
                 databaseName: DatabaseName ?? mongoRoleDefinitionGetResults.DatabaseName,
                 privileges: privileges,
                 roles: roles);
 
             if (ShouldProcess(Id, "Updating the CosmosDB MongoDB Role Definition"))
             {
-                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                mongoRoleDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoRoleDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoRoleDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBRoleDefinitionGetResults(mongoRoleDefinitionGetResults));
             }
 

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             MongoDBDatabaseGetResults readMongoDatabaseGetResults = null;
             try
             {
-                readMongoDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabase(ResourceGroupName, AccountName, Name);
+                readMongoDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoDBDatabase(ResourceGroupName, AccountName, Name);
             }
             catch (CloudException e)
             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Creating a new CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 

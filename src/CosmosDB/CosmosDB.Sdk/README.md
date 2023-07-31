@@ -4,14 +4,16 @@ This directory contains the service clients of Az.CosmosDB module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest.cmd README.md --version=v2
+autorest --reset
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm

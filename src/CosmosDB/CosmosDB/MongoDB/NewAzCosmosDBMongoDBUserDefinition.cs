@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Creating a new CosmosDB MongoDB User Definition"))
             {
-                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoUserDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoUserDefinitionWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, mongoUserDefinitionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBUserDefinitionGetResults(mongoUserDefinitionGetResults));
             }
 

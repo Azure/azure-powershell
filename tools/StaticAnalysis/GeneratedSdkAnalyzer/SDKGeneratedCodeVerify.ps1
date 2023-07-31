@@ -29,6 +29,8 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
+$skipModules = @('Az.KeyVault', 'Az.CosmosDB')
+
 $MissReadMe = 9000
 $AutorestCSharpDetected = 9080
 $GenSdkChanged = 9090
@@ -186,7 +188,7 @@ try {
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
                 }
             }
-
+            
         }
         Set-Location $SavePath
     }

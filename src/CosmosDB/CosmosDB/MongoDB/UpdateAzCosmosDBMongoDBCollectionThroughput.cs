@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ShouldProcess(Name, "Updating the throughput value of a CosmosDB MongoDB Collection"))
             {
-                ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDBResources.UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, throughputSettingsUpdateParameters).GetAwaiter().GetResult().Body;
+                ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDbResources.UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, throughputSettingsUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             }
         }
