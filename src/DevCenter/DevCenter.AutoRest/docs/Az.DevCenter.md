@@ -138,45 +138,9 @@ Deletes a project environment type.
 ### [Remove-AzDevCenterAdminSchedule](Remove-AzDevCenterAdminSchedule.md)
 Deletes a Scheduled.
 
-### [Set-AzDevCenterAdminAttachedNetwork](Set-AzDevCenterAdminAttachedNetwork.md)
-Creates or updates an attached NetworkConnection.
-
-### [Set-AzDevCenterAdminCatalog](Set-AzDevCenterAdminCatalog.md)
-Creates or updates a catalog.
-
-### [Set-AzDevCenterAdminDevBoxDefinition](Set-AzDevCenterAdminDevBoxDefinition.md)
-Creates or updates a Dev Box definition.
-
-### [Set-AzDevCenterAdminDevCenter](Set-AzDevCenterAdminDevCenter.md)
-Creates or updates a devcenter resource
-
-### [Set-AzDevCenterAdminEnvironmentType](Set-AzDevCenterAdminEnvironmentType.md)
-Creates or updates an environment type.
-
-### [Set-AzDevCenterAdminGallery](Set-AzDevCenterAdminGallery.md)
-Creates or updates a gallery.
-
-### [Set-AzDevCenterAdminNetworkConnection](Set-AzDevCenterAdminNetworkConnection.md)
-Creates or updates a Network Connections resource
-
-### [Set-AzDevCenterAdminPool](Set-AzDevCenterAdminPool.md)
-Creates or updates a machine pool
-
-### [Set-AzDevCenterAdminProject](Set-AzDevCenterAdminProject.md)
-Creates or updates a project.
-
-### [Set-AzDevCenterAdminProjectEnvironmentType](Set-AzDevCenterAdminProjectEnvironmentType.md)
-Creates or updates a project environment type.
-
-### [Set-AzDevCenterAdminSchedule](Set-AzDevCenterAdminSchedule.md)
-Creates or updates a Schedule.
-
 ### [Start-AzDevCenterAdminNetworkConnectionHealthCheck](Start-AzDevCenterAdminNetworkConnectionHealthCheck.md)
 Triggers a new health check run.
 The execution and health check result can be tracked via the network Connection health check details
-
-### [Start-AzDevCenterAdminPoolHealthCheck](Start-AzDevCenterAdminPoolHealthCheck.md)
-Triggers a refresh of the pool status.
 
 ### [Sync-AzDevCenterAdminCatalog](Sync-AzDevCenterAdminCatalog.md)
 Syncs templates for a template source.

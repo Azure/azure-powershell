@@ -23,14 +23,4 @@ Describe 'New-AzDevCenterAdminCatalog' {
         $catalog.GitHubUri | Should -Be $env.gitHubUri
 
     }
-
-    It 'Create' {
-        $body = @{"GitHubBranch" = $env.gitHubBranch; "GitHubPath" = $env.gitHubPath; "GitHubSecretIdentifier" = $env.gitHubSecretIdentifier; "GitHubUri" = $env.gitHubUri}
-        $catalog = New-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogNew2 -ResourceGroupName $env.resourceGroup -Body $body
-        $catalog.Name | Should -Be $env.catalogNew2
-        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
-        $catalog.GitHubPath | Should -Be $env.gitHubPath
-        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
-        $catalog.GitHubUri | Should -Be $env.gitHubUri
-    }
 }

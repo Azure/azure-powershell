@@ -142,7 +142,7 @@
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]",
-                                "maxDevBoxesPerUser": 10
+                                "maxDevBoxesPerUser": 20
 
                             },
                             "dependsOn": [
@@ -156,7 +156,7 @@
                             "location": "[parameters('location')]",
                             "properties": {
                                 "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]",
-                                "maxDevBoxesPerUser": 10
+                                "maxDevBoxesPerUser": 20
 
                             },
                             "dependsOn": [

@@ -25,16 +25,4 @@ Describe 'New-AzDevCenterAdminPool' {
         $pool.LicenseType | Should -Be "Windows_Client"
     }
 
-    It 'Create' {
-        $body = @{"Location" = $env.location; "DevBoxDefinitionName" = $env.devBoxDefinitionName; "LocalAdministrator" = "Enabled" ; "NetworkConnectionName" = $env.attachedNetworkName; "StopOnDisconnectGracePeriodMinute" = 60; "StopOnDisconnectStatus" = "Enabled"}
-        $pool = New-AzDevCenterAdminPool -Name $env.poolNew2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body  
-        $pool.Name | Should -Be $env.poolNew2
-        $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
-        $pool.LocalAdministrator | Should -Be "Enabled"
-        $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
-        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
-        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
-        $pool.LicenseType | Should -Be "Windows_Client"
-    }
-
 }

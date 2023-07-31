@@ -22,17 +22,6 @@ Describe 'Update-AzDevCenterAdminCatalog' {
         $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier2
         $catalog.GitHubUri | Should -Be $env.gitHubUri
     }
-
-    It 'Update' {
-        $body = @{"GitHubPath" = $env.gitHubPath; "GitHubSecretIdentifier" = $env.gitHubSecretIdentifier }
-        $catalog = Update-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogUpdate -ResourceGroupName $env.resourceGroup -Body $body
-        $catalog.Name | Should -Be $env.catalogUpdate
-        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
-        $catalog.GitHubPath | Should -Be $env.gitHubPath
-        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
-        $catalog.GitHubUri | Should -Be $env.gitHubUri 
-    }
-
     It 'UpdateViaIdentityExpanded' {
         $catalogInput = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogUpdate -ResourceGroupName $env.resourceGroup
 
@@ -43,15 +32,4 @@ Describe 'Update-AzDevCenterAdminCatalog' {
         $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier2
         $catalog.GitHubUri | Should -Be $env.gitHubUri }
 
-    It 'UpdateViaIdentity' {
-        $catalogInput = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogUpdate -ResourceGroupName $env.resourceGroup
-
-        $body = @{"GitHubPath" = $env.gitHubPath; "GitHubSecretIdentifier" = $env.gitHubSecretIdentifier }
-        $catalog = Update-AzDevCenterAdminCatalog -InputObject $catalogInput -Body $body
-        $catalog.Name | Should -Be $env.catalogUpdate
-        $catalog.GitHubBranch | Should -Be $env.gitHubBranch
-        $catalog.GitHubPath | Should -Be $env.gitHubPath
-        $catalog.GitHubSecretIdentifier | Should -Be $env.gitHubSecretIdentifier
-        $catalog.GitHubUri | Should -Be $env.gitHubUri 
-    }
 }

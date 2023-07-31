@@ -1,7 +1,7 @@
 function GetEndpoint([string]$project, [string]$resourceGroup) {
-        $query = "Resources |where type =~'Microsoft.devcenter/projects' " 
-            + "| where name =~ '$project' "
-            + "| where resourceGroup =~ '$resourceGroup' "
+        $query = "Resources |where type =~'Microsoft.devcenter/projects' "`
+            + "| where name =~ '$project' "`
+            + "| where resourceGroup =~ '$resourceGroup' "`
             + "| take 1 "`
             + "| extend devCenterUri = properties.devCenterUri | project devCenterUri"
         $argResponse = Az.ResourceGraph\Search-AzGraph -Query $query
@@ -29,6 +29,7 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
@@ -48,7 +49,7 @@ function setupEnv() {
     $gitHubPath = "/Environments"
     $devBoxDefinitionName = RandomString -allChars $false -len 6
     $osStorageType = "ssd_1024gb"
-    $skuName = "general_a_8c32gb_v1"
+    $skuName = "general_a_8c32gb1024ssd_v2"
     $imageName = "MicrosoftWindowsDesktop_windows-ent-cpc_win11-22h2-ent-cpc-os"
     $imageReferenceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $devCenterName + "/galleries/Default/images/" + $imageName
     $imageVersion = "1.0.0"
@@ -64,7 +65,7 @@ function setupEnv() {
 
     #Replace with real values
     $gitHubSecretIdentifier = "https://dummyVault/dummy/00000000"
-    $keyVaultName = "dummy"
+    $keyVaultName = "amlim-kv"
     $gitHubUri = "https://github.com/fake/fake.git"
     $userObjectId = "c3c951b7-d307-4c40-9495-70bd562d98d5"
 
@@ -97,7 +98,6 @@ function setupEnv() {
     $env.Add("timeZone", $timeZone)
     $env.Add("subnetId", $subnetId)
 
-
     $devboxTemplate = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
     $devboxTemplate.parameters.managedIdentityName.value = $managedIdentityName
     $devboxTemplate.parameters.subscriptionId.value = $env.SubscriptionId
@@ -123,43 +123,110 @@ function setupEnv() {
     $devboxTemplate.parameters.userObjectId.value = $userObjectId
 
     Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $devboxTemplate)
-
+    Write-Host -ForegroundColor Magenta "Starting deployment of dev box template"
     New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name devboxTemplate -ResourceGroupName $resourceGroup
     Write-Host -ForegroundColor Magenta "Deployed dev box template"
+
+    $msi = Get-AzUserAssignedIdentity -Name $managedIdentityName -ResourceGroupName $resourceGroup
+    $principalId = $msi.PrincipalId
+    $devboxTemplate2 = Get-Content .\test\deploymentTemplates\parameter2.json | ConvertFrom-Json
+    $devboxTemplate2.parameters.managedIdentityPrincipalId.value = $principalId
+    Set-Content -Path .\test\deploymentTemplates\parameter2.json -Value (ConvertTo-Json $devboxTemplate2)
+
+    Write-Host -ForegroundColor Magenta "Starting deployment of dev box template2"
+    Az.Resources\New-AzDeployment -Location $location -TemplateFile .\test\deploymentTemplates\template2.json -TemplateParameterFile .\test\deploymentTemplates\parameter2.json -Name devboxTemplate2
+    Write-Host -ForegroundColor Magenta "Deployed dev box template2"
 
     #use Az Resource Graph instead
     $endpoint = GetEndpoint -project $projectName -resourceGroup $resourceGroup
     $env.Add("endpoint", $endpoint)
 
-    Connect-AzAccount -Tenant $env.Tenant -AccountId amlim@fidalgosh010.onmicrosoft.com
+    Connect-AzAccount -Tenant $env.Tenant -AccountId "amlim@fidalgosh010.onmicrosoft.com"
     Write-Host -ForegroundColor Magenta "Switched to non-guest account"
 
     $devboxName = RandomString -allChars $false -len 6
     $devboxName2 = RandomString -allChars $false -len 6
+    $devboxName3 = RandomString -allChars $false -len 6
     $env.Add("devboxName", $devboxName)
     $env.Add("devboxName2", $devboxName2)
+    $env.Add("devboxName3", $devboxName3)
 
     $envName = RandomString -allChars $false -len 6
     $envName2 = RandomString -allChars $false -len 6
+    $envNameToDelete = RandomString -allChars $false -len 6
+    $envNameToDelete2 = RandomString -allChars $false -len 6
+    $envNameToDelete3 = RandomString -allChars $false -len 6
+    $envNameToDelete4 = RandomString -allChars $false -len 6
     $env.Add("envName", $envName)
     $env.Add("envName2", $envName2)
+    $env.Add("envNameToDelete", $envNameToDelete)
+    $env.Add("envNameToDelete2", $envNameToDelete2)
+    $env.Add("envNameToDelete3", $envNameToDelete3)
+    $env.Add("envNameToDelete4", $envNameToDelete4)
     $sandbox = "Sandbox"
     $functionApp = "FunctionApp"
-    $functionAppParameters = @{"name" = "pwsh-envTest" }
+    $functionAppName1 = RandomString -allChars $false -len 6
+    $functionAppParameters = @{"name" = $functionAppName1 }
     $env.Add("sandbox", $sandbox)
     $env.Add("functionApp", $functionApp)
+    $env.Add("functionAppName1", $functionAppName1)
     $env.Add("functionAppParameters", $functionAppParameters)
 
+    $functionAppName2 = RandomString -allChars $false -len 6
+    $functionAppName3 = RandomString -allChars $false -len 6
+    $functionAppName4 = RandomString -allChars $false -len 6
+    $functionAppName5 = RandomString -allChars $false -len 6
+    $functionAppName6 = RandomString -allChars $false -len 6
+    $functionAppName7 = RandomString -allChars $false -len 6
+    $functionAppName8 = RandomString -allChars $false -len 6
+    $functionAppName9 = RandomString -allChars $false -len 6
+    $functionAppName10 = RandomString -allChars $false -len 6
+    $functionAppName11 = RandomString -allChars $false -len 6
+    $functionAppName12 = RandomString -allChars $false -len 6
+    $functionAppName13 = RandomString -allChars $false -len 6
+    $env.Add("functionAppName2", $functionAppName2)
+    $env.Add("functionAppName3", $functionAppName3)
+    $env.Add("functionAppName4", $functionAppName4)
+    $env.Add("functionAppName5", $functionAppName5)
+    $env.Add("functionAppName6", $functionAppName6)
+    $env.Add("functionAppName7", $functionAppName7)
+    $env.Add("functionAppName8", $functionAppName8)
+    $env.Add("functionAppName9", $functionAppName9)
+    $env.Add("functionAppName10", $functionAppName10)
+    $env.Add("functionAppName11", $functionAppName11)
+    $env.Add("functionAppName12", $functionAppName12)
+    $env.Add("functionAppName13", $functionAppName13)
 
-    New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
-    New-AzDevCenterDevDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    New-AzDevCenterDevEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
 
 
-    #TODO: Create dev boxes
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete3 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete4 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
+    
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName3 -ProjectName $projectName -PoolName $poolName
 
-    # For any resources you created for test, you should add it to $env here.
+    $skipDevBox1 = RandomString -allChars $false -len 6
+    $skipDevBox2 = RandomString -allChars $false -len 6
+    $skipDevBox3 = RandomString -allChars $false -len 6
+    $skipDevBox4 = RandomString -allChars $false -len 6
+    $env.Add("skipDevBox1", $skipDevBox1)
+    $env.Add("skipDevBox2", $skipDevBox2)
+    $env.Add("skipDevBox3", $skipDevBox3)
+    $env.Add("skipDevBox4", $skipDevBox4)
+
+
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox1 -ProjectName $projectName -PoolName $poolName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox2 -ProjectName $projectName -PoolName $poolName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox3 -ProjectName $projectName -PoolName $poolName
+    New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox4 -ProjectName $projectName -PoolName $poolName
+
+
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

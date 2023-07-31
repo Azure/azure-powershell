@@ -91,5 +91,5 @@ directive:
   - where:
       subject: ^(.*)
     set:
-      subject-prefix: DevCenterDev
+      subject-prefix: DevCenterUser
 ```

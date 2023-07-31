@@ -22,12 +22,4 @@ Describe 'New-AzDevCenterAdminAttachedNetwork' {
         $attachedNetwork.DomainJoinType | Should -Be "AzureADJoin"
     }
 
-    It 'Create' {
-        $body = @{"NetworkConnectionId" = $env.networkConnectionId}
-        $attachedNetwork = New-AzDevCenterAdminAttachedNetwork -ConnectionName $env.attachedNetworkNew2 -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
-        $attachedNetwork.Name | Should -Be $env.attachedNetworkNew2
-        $attachedNetwork.NetworkConnectionId | Should -Be $env.networkConnectionId
-        $attachedNetwork.DomainJoinType | Should -Be "AzureADJoin"
-    }
-
 }

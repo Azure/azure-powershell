@@ -23,15 +23,4 @@ Describe 'New-AzDevCenterAdminSchedule' {
         $schedule.Time | Should -Be "18:30"
         $schedule.TimeZone | Should -Be "America/Los_Angeles"
     }
-
-    It 'Create' {
-        $body = @{"State" = "Enabled"; "Time" = $env.time; "TimeZone" = $env.timeZone }
-        $schedule = New-AzDevCenterAdminSchedule -PoolName $env.poolForScheduleNew2 -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Body $body
-        $schedule.Frequency | Should -Be "Daily"
-        $schedule.Name | Should -Be "default"
-        $schedule.PropertiesType | Should -Be "StopDevBox"
-        $schedule.State | Should -Be "Enabled"
-        $schedule.Time | Should -Be "18:30"
-        $schedule.TimeZone | Should -Be "America/Los_Angeles"
-    }
 }

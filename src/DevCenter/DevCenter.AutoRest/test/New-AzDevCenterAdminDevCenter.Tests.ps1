@@ -23,16 +23,4 @@ Describe 'New-AzDevCenterAdminDevCenter' {
         $devcenter.IdentityType | Should -Be "UserAssigned"
     }
 
-    It 'Create' {
-        $identityHashTable = @{$env.identityId = @{} }
-        $body = @{"Location" = $env.location; "IdentityType" = "UserAssigned"; "IdentityUserAssignedIdentity" = $identityHashTable }
-
-        $devCenter = New-AzDevCenterAdminDevCenter -Name $env.devCenterNew2 -ResourceGroupName $env.resourceGroup -Body $body
-        $devCenter.Name | Should -Be $env.devCenterNew2
-        $devCenter.IdentityUserAssignedIdentity.Keys[0] | Should -Be $env.identityId
-        $identityHash = $devCenter.IdentityUserAssignedIdentity | ConvertTo-Json | ConvertFrom-Json
-        $identityHash.Keys[0] | Should -Be $env.identityId
-        $devcenter.IdentityType | Should -Be "UserAssigned"
-    }
-
 }

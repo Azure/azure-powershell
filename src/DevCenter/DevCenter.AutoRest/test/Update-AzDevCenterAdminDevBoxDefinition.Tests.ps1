@@ -27,18 +27,6 @@ Describe 'Update-AzDevCenterAdminDevBoxDefinition' {
         $devBoxDefinition.HibernateSupport | Should -Be "Disabled"
     }
 
-    It 'Update' {
-        $body = @{"ImageReferenceId" = $env.ImageReferenceId; "HibernateSupport" = "Enabled" }
-
-        $devBoxDefinition = Update-AzDevCenterAdminDevBoxDefinition -Name $env.devBoxDefinitionUpdate -DevCenterName $env.devCenterName -ResourceGroupName $env.resourceGroup -Body $body
-
-        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionUpdate
-        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
-        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
-        $devBoxDefinition.SkuName | Should -Be $env.skuName
-        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
-        $devBoxDefinition.HibernateSupport | Should -Be "Enabled" }
-
     It 'UpdateViaIdentityExpanded' {
         $id = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $env.devCenterName + "/devboxdefinitions/" + $env.devBoxDefinitionUpdate
         $devBoxDefinitionId = @{"Id" = $id }
@@ -55,19 +43,4 @@ Describe 'Update-AzDevCenterAdminDevBoxDefinition' {
         $devBoxDefinition.HibernateSupport | Should -Be "Disabled"
     }
 
-    It 'UpdateViaIdentity' {
-        $id = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroup + "/providers/Microsoft.DevCenter/devcenters/" + $env.devCenterName + "/devboxdefinitions/" + $env.devBoxDefinitionUpdate
-        $devBoxDefinitionId = @{"Id" = $id }
-
-        $body = @{"ImageReferenceId" = $env.ImageReferenceId; "HibernateSupport" = "Enabled" }
-
-        $devBoxDefinition = Update-AzDevCenterAdminDevBoxDefinition -InputObject $devBoxDefinitionId -Body $body
-
-        $devBoxDefinition.Name | Should -Be $env.devBoxDefinitionUpdate
-        $devBoxDefinition.ImageReferenceId | Should -Be $env.imageReferenceId
-        $devBoxDefinition.OSStorageType | Should -Be $env.osStorageType
-        $devBoxDefinition.SkuName | Should -Be $env.skuName
-        $devBoxDefinition.ImageReferenceExactVersion | Should -Be "1.0.0"
-        $devBoxDefinition.HibernateSupport | Should -Be "Enabled" 
-    }
 }

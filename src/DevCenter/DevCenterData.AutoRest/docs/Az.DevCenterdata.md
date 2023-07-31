@@ -11,66 +11,66 @@ Locale: en-US
 Microsoft Azure PowerShell: DevCenterdata cmdlets
 
 ## Az.DevCenterdata Cmdlets
-### [Deploy-AzDevCenterDevEnvironment](Deploy-AzDevCenterDevEnvironment.md)
+### [Deploy-AzDevCenterUserEnvironment](Deploy-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
-### [Get-AzDevCenterDevCatalog](Get-AzDevCenterDevCatalog.md)
+### [Get-AzDevCenterUserCatalog](Get-AzDevCenterUserCatalog.md)
 Gets the specified catalog within the project
 
-### [Get-AzDevCenterDevDevBox](Get-AzDevCenterDevDevBox.md)
+### [Get-AzDevCenterUserDevBox](Get-AzDevCenterUserDevBox.md)
 Gets a Dev Box
 
-### [Get-AzDevCenterDevDevBoxAction](Get-AzDevCenterDevDevBoxAction.md)
+### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
 
-### [Get-AzDevCenterDevDevBoxRemoteConnection](Get-AzDevCenterDevDevBoxRemoteConnection.md)
+### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
 Gets RDP Connection info
 
-### [Get-AzDevCenterDevEnvironment](Get-AzDevCenterDevEnvironment.md)
+### [Get-AzDevCenterUserEnvironment](Get-AzDevCenterUserEnvironment.md)
 Gets an environment
 
-### [Get-AzDevCenterDevEnvironmentDefinition](Get-AzDevCenterDevEnvironmentDefinition.md)
+### [Get-AzDevCenterUserEnvironmentDefinition](Get-AzDevCenterUserEnvironmentDefinition.md)
 Get an environment definition from a catalog.
 
-### [Get-AzDevCenterDevEnvironmentType](Get-AzDevCenterDevEnvironmentType.md)
+### [Get-AzDevCenterUserEnvironmentType](Get-AzDevCenterUserEnvironmentType.md)
 Lists all environment types configured for a project.
 
-### [Get-AzDevCenterDevPool](Get-AzDevCenterDevPool.md)
+### [Get-AzDevCenterUserPool](Get-AzDevCenterUserPool.md)
 Gets a pool
 
-### [Get-AzDevCenterDevProject](Get-AzDevCenterDevProject.md)
+### [Get-AzDevCenterUserProject](Get-AzDevCenterUserProject.md)
 Gets a project.
 
-### [Get-AzDevCenterDevSchedule](Get-AzDevCenterDevSchedule.md)
+### [Get-AzDevCenterUserSchedule](Get-AzDevCenterUserSchedule.md)
 Gets a schedule.
 
-### [Invoke-AzDevCenterDevDelayDevBoxAction](Invoke-AzDevCenterDevDelayDevBoxAction.md)
+### [Invoke-AzDevCenterUserDelayDevBoxAction](Invoke-AzDevCenterUserDelayDevBoxAction.md)
 Delays the occurrence of an action.
 
-### [New-AzDevCenterDevDevBox](New-AzDevCenterDevDevBox.md)
+### [New-AzDevCenterUserDevBox](New-AzDevCenterUserDevBox.md)
 Creates or replaces a Dev Box.
 
-### [New-AzDevCenterDevEnvironment](New-AzDevCenterDevEnvironment.md)
+### [New-AzDevCenterUserEnvironment](New-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
-### [Remove-AzDevCenterDevDevBox](Remove-AzDevCenterDevDevBox.md)
+### [Remove-AzDevCenterUserDevBox](Remove-AzDevCenterUserDevBox.md)
 Deletes a Dev Box.
 
-### [Remove-AzDevCenterDevEnvironment](Remove-AzDevCenterDevEnvironment.md)
+### [Remove-AzDevCenterUserEnvironment](Remove-AzDevCenterUserEnvironment.md)
 Deletes an environment and all its associated resources
 
-### [Restart-AzDevCenterDevDevBox](Restart-AzDevCenterDevDevBox.md)
+### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
 Restarts a Dev Box
 
-### [Set-AzDevCenterDevEnvironment](Set-AzDevCenterDevEnvironment.md)
+### [Set-AzDevCenterUserEnvironment](Set-AzDevCenterUserEnvironment.md)
 Creates or updates an environment.
 
-### [Skip-AzDevCenterDevDevBoxAction](Skip-AzDevCenterDevDevBoxAction.md)
+### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
 Skips an occurrence of an action.
 
-### [Start-AzDevCenterDevDevBox](Start-AzDevCenterDevDevBox.md)
+### [Start-AzDevCenterUserDevBox](Start-AzDevCenterUserDevBox.md)
 Starts a Dev Box
 
-### [Stop-AzDevCenterDevDevBox](Stop-AzDevCenterDevDevBox.md)
+### [Stop-AzDevCenterUserDevBox](Stop-AzDevCenterUserDevBox.md)
 Stops a Dev Box
 
