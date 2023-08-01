@@ -99,29 +99,4 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-  #breaking change warning
-  - where:
-      verb: New
-      subject: ^ApplicationGroup$|^HostPool$ 
-      parameter-name: MigrationRequestMigrationPath|MigrationRequestOperation
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        change-description: This is parameter will be deleted.
-  - where:
-      verb: New
-      subject: ^ScalingPlan$
-      parameter-name: HostPoolType
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        change-description: The allowed value of this parameter changed from 'BYODesktop, Personal, Pooled' to 'Pooled'
-  - where:
-      verb: Update
-      subject: ^ScalingPlan$
-      parameter-name: HostPoolType
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        change-description: This parameter will be deleted.
 ```

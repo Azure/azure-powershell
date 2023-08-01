@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSan'))
 Describe 'New-AzElasticSan' {
     It 'CreateExpanded' {
         $elasticSanName = "testsan" + $env.RandomString
-        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -AvailabilityZone "zone1" -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -Tag @{tag1="value1";tag2="value2"}
+        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -Tag @{tag1="value1";tag2="value2"}
         $elasticSan.Name | Should -Be $elasticSanName
         $elasticSan.BaseSizeTib | Should -Be $env.BaseSizeTib
         $elasticSan.ExtendedCapacitySizeTib | Should -Be $env.ExtendedCapacitySizeTib

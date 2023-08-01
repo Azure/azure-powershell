@@ -47,14 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ad5110c7ba2113d5f77946338231f45ac4d09c82
+branch: 5758cc23b0022e403d876662d9799f02c9bba3e6
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/arcSettings.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/clusters.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/arcSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/clusters.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/extensions.json
 
 module-version: 1.1.0
 title: StackHCI
@@ -66,6 +66,12 @@ inlining-threshold: 50
 resourcegroup-append: true 
 
 directive:
+  # Rename function
+  - where:
+      verb: Invoke
+      subject: AndArcSetting
+    set:
+      subject: ConsentAndInstallDefaultExtension
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -109,6 +115,27 @@ directive:
     set:
       default:
         script: '"default"'
+  - where:
+      verb: Invoke
+      subject: ConsentAndInstallDefaultExtension
+      parameter-name: ArcSettingName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Set Enable by default 
+  - where:
+      verb: Invoke
+      subject: ExtendClusterSoftwareAssuranceBenefit
+      parameter-name: SoftwareAssuranceIntent
+    set:
+      default:
+        script: '"Enable"'
+  # Remove Initialize-AzStackHCIArcSettingDisableProcess
+  - where:
+      verb: Initialize
+      subject: ArcSettingDisableProcess
+    remove: true 
   # Update ExtensionParameters.settings
   - from: swagger-document
     where: $.definitions.ExtensionParameters.properties.settings
@@ -117,4 +144,33 @@ directive:
   - from: swagger-document
     where: $.definitions.ExtensionParameters.properties.protectedSettings
     transform: $["additionalProperties"] = true
+  # format tables for models 
+  - where:
+      model-name: Cluster
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+        labels:
+          ResourceGroupName: Resource Group
+  - where:
+      model-name: ArcSetting
+    set:
+      format-table:
+        properties:
+          - ResourceGroupName
+          - AggregateState
+        labels:
+          ResourceGroupName: Resource Group
+  - where:
+      model-name: Extension
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+        labels:
+          ResourceGroupName: Resource Group
 ```

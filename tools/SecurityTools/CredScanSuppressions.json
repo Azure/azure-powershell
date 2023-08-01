@@ -1340,6 +1340,10 @@
     {
       "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestWhatIfWithQueryString.json",
       "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\\TestBatchAccountEndToEnd.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
     }
   ]
 }

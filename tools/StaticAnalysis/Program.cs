@@ -40,7 +40,8 @@ namespace StaticAnalysis
             "MissingAssemblies.csv",
             "SignatureIssues.csv",
             "ExampleIssues.csv",
-            "UXMetadataIssues.csv"
+            "UXMetadataIssues.csv",
+            "GeneratedSdkIssues.csv"
         };
 
         private static string ExceptionsDirectory { get; set; }
@@ -169,7 +170,7 @@ namespace StaticAnalysis
                 }
 
                 // https://stackoverflow.com/a/9737418/294804
-                var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+                var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath);
                 ExceptionsDirectory = Path.Combine(assemblyDirectory, "Exceptions");
                 bool useExceptions = !args.Any(a => a.Equals("--dont-use-exceptions") || a.Equals("-d"));
                 var useNetcore = args.Any(a => a.Equals("--use-netcore") || a.Equals("-u"));

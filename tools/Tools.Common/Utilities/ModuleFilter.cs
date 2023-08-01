@@ -16,7 +16,7 @@ namespace Tools.Common.Utilities
             }
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
-            var allowListFile = Path.Combine(versionControllerDirectory, "AllowList.csv");
+            var allowListFile = Path.Combine(versionControllerDirectory, "AzureStackExceptions.csv");
             if (File.Exists(allowListFile))
             {
                 var lines = File.ReadAllLines(allowListFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
