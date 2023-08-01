@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed API version used in `Set-AzSqlInstanceDatabaseSensitivityClassification`, `Remove-AzSqlInstanceDatabaseSensitivityClassification`, `Enable-AzSqlInstanceDatabaseSensitivityRecommendation`, and `Disable-AzSqlInstanceDatabaseSensitivityRecommendation` cmdlet
 
 ## Version 4.9.0
 * Added new cmdlets for Azure SQL Managed Instance start/stop schedule
