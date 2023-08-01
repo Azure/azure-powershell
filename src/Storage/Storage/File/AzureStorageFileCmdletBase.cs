@@ -212,5 +212,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 blobServiceClient.Credentials.AccountName,
                 DefaultContext);
         }
+
+        protected bool WithOauthCredential()
+        {
+            if(this.Channel != null && this.Channel.StorageContext != null && this.Channel.StorageContext.StorageAccount != null && this.Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

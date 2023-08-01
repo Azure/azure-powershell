@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             RoleName = sqlRoleDefinitionGetResults.RoleName;
             Id = sqlRoleDefinitionGetResults.Id;
-            Type = sqlRoleDefinitionGetResults.SqlRoleDefinitionGetResultsType.ToString();
+            Type = sqlRoleDefinitionGetResults.PropertiesType.ToString();
             Permissions = new List<Permission>(sqlRoleDefinitionGetResults.Permissions);
             AssignableScopes = new List<string>(sqlRoleDefinitionGetResults.AssignableScopes);
         }

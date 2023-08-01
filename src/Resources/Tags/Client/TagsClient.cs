@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Commands.Tags.Model;
-using SDKTagsObject = Microsoft.Azure.Management.ResourceManager.Models.Tags;
+using SDKTagsObject = Microsoft.Azure.Management.Resources.Models.Tags;
 
 namespace Microsoft.Azure.Commands.Tags.Client
 {
