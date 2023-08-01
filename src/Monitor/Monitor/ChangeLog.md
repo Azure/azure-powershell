@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `Add-AzMetriAlertRuleV2` and `Get-AzMetricAlertRuleV2` to support web tests criteria [#22350]
 
 ## Version 4.5.0
 * Added cmdlets for monitor workspace: 
