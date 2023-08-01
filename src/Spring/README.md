@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 0ae34dbf19d039effd9d366e6c12df38ca4c1c2a
+branch: 4b7481587132ce0bde5f0a6d6ab590129f7b7179
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/appplatform.json
+  - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/appplatform.json
     
 title: Spring
 module-version: 0.1.0
@@ -156,6 +156,21 @@ directive:
     remove: true
 
   - where: 
+      subject: DeploymentRemoteDebugging
+      variant: ^Enable$|^EnableViaIdentity$|^EnableViaIdentityApp$|^EnableViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: ApiPortalDomain
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: ApiPortalCustomDomain
+      variant: ^CreateViaIdentityApiPortal$|^UpdateViaIdentityApiPortal$
+    remove: true
+
+  - where: 
       subject: BuildpackBinding
       variant: ^GetViaIdentitySpring$|^CreateViaIdentityBuilder$|^CreateViaIdentityBuildService$|^CreateViaIdentityBuildServiceExpanded$|^DeleteViaIdentitySpring$
     remove: true
@@ -240,6 +255,21 @@ directive:
       variant: ^UpdateViaIdentityApp$
     remove: true
 
+  - where: 
+      subject: GatewayDomain
+      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$
+    remove: true
+
+  - where: 
+      subject: GatewayCustomDomain
+      variant: ^CreateViaIdentityGateway$|^UpdateViaIdentityGateway$
+    remove: true
+
+  - where: 
+      subject: GatewayRouteConfig
+      variant: ^CreateViaIdentityGateway$|^UpdateViaIdentityGateway$
+    remove: true
+
   # ReName parameter
   - where: 
       subject: ^Service$
@@ -264,12 +294,6 @@ directive:
       parameter-name: NetworkProfileServiceRuntimeSubnetId
     set:
       parameter-name: NetworkProfileServiceSubnetId
-
-  - where:
-      subject: ^AppDeployment$
-      parameter-name: ^DeploymentSetting(.*)
-    set:
-      parameter-name: $1
 
   - where:
       subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^AppDeploymentJfr$
@@ -587,18 +611,21 @@ directive:
 
   # Modifications were made to the command
   # - model-cmdlet:
+  #   - model-name: GatewayApiRoute
+  #   - model-name: CustomPersistentDiskResource
   #   - model-name: BuildpacksGroupProperties
+  #   - model-name: ConfigurationServiceGitRepository
+  #   - model-name: GitPatternRepository
+  #   - model-name: LoadedCertificate
   #     cmdlet-name: New-AzSpringBuildpacksGroupObject
   #   - model-name: BuildpackProperties
   #     cmdlet-name: New-AzSpringBuildpackObject
-  #   - model-name: ConfigurationServiceGitRepository
-  #   - model-name: GitPatternRepository
+  #   - model-name: DeploymentSettings
+  #     cmdlet-name: New-AzSpringDeploymentSettingObject
   #   - model-name: KeyVaultCertificateProperties
   #     cmdlet-name: New-AzSpringKeyVaultCertificateObject
   #   - model-name: ContentCertificateProperties
   #     cmdlet-name: New-AzSpringContentCertificateObject
-  #   - model-name: LoadedCertificate
-  #     cmdlet-name: New-AzSpringAppLoadedCertificateObject
   #   - model-name: JarUploadedUserSourceInfo
   #     cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
   #   - model-name: NetCoreZipUploadedUserSourceInfo

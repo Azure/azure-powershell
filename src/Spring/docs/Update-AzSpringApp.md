@@ -15,31 +15,44 @@ Operation to update an exiting App.
 ### UpdateExpanded (Default)
 ```
 Update-AzSpringApp -Name <String> -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>]
- [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-LoadedCertificate <ILoadedCertificate[]>]
- [-Location <String>] [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
- [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddonConfig <Hashtable>] [-ClientAuthCertificate <String[]>]
+ [-CustomPersistentDisk <ICustomPersistentDiskResource[]>] [-EnableEndToEndTl] [-HttpsOnly]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-IngressSettingBackendProtocol <String>]
+ [-IngressSettingReadTimeoutInSecond <Int32>] [-IngressSettingSendTimeoutInSecond <Int32>]
+ [-IngressSettingSessionAffinity <String>] [-IngressSettingSessionCookieMaxAge <Int32>]
+ [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
+ [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
+ [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringApp -InputObject <ISpringIdentity> [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-HttpsOnly]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
- [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
- [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
- [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSpringApp -InputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
+ [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
+ [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IngressSettingBackendProtocol <String>] [-IngressSettingReadTimeoutInSecond <Int32>]
+ [-IngressSettingSendTimeoutInSecond <Int32>] [-IngressSettingSessionAffinity <String>]
+ [-IngressSettingSessionCookieMaxAge <Int32>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
+ [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
+ [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySpringExpanded
 ```
 Update-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
+ [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
  [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
- [-IdentityType <String>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IngressSettingBackendProtocol <String>] [-IngressSettingReadTimeoutInSecond <Int32>]
+ [-IngressSettingSendTimeoutInSecond <Int32>] [-IngressSettingSessionAffinity <String>]
+ [-IngressSettingSessionCookieMaxAge <Int32>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
  [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
- [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -159,6 +172,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClientAuthCertificate
+Collection of certificate resource id.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomPersistentDisk
+List of custom persistent disks
+To construct, see NOTES section for CUSTOMPERSISTENTDISK properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomPersistentDiskResource[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -240,6 +284,96 @@ Type of the managed identity
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+Properties of user-assigned managed identities
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingBackendProtocol
+How ingress should communicate with this app backend service.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingReadTimeoutInSecond
+Ingress read time out in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSendTimeoutInSecond
+Ingress send time out in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSessionAffinity
+Type of the affinity, set this to Cookie to enable session affinity.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSessionCookieMaxAge
+Time in seconds until the cookie expires.
+
+```yaml
+Type: System.Int32
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -485,6 +619,21 @@ Size of the temporary disk in GB
 
 ```yaml
 Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetAddonPublicEndpoint
+Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 

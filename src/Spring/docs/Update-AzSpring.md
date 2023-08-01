@@ -14,15 +14,17 @@ Operation to update an exiting Service.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSpring -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpring -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IngressConfigReadTimeoutInSecond <Int32>] [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-VnetAddonLogStreamPublicEndpoint] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpring -InputObject <ISpringIdentity> [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
- [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzSpring -InputObject <ISpringIdentity> [-IngressConfigReadTimeoutInSecond <Int32>]
+ [-Location <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-VnetAddonLogStreamPublicEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -94,6 +96,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressConfigReadTimeoutInSecond
+Ingress read time out in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -275,6 +292,21 @@ Tags of the service which is a list of key value pairs that describe the resourc
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetAddonLogStreamPublicEndpoint
+Indicates whether the log stream in vnet injection instance could be accessed from internet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

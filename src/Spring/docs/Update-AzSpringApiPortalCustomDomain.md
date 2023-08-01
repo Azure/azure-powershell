@@ -1,34 +1,46 @@
 ---
 external help file:
 Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringbuildservice
+online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringapiportalcustomdomain
 schema: 2.0.0
 ---
 
-# Update-AzSpringBuildService
+# Update-AzSpringApiPortalCustomDomain
 
 ## SYNOPSIS
-Create a KPack build.
+Create the API portal custom domain.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSpringBuildService -BuildName <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-AgentPool <String>] [-Builder <String>] [-Env <Hashtable>]
- [-RelativePath <String>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String> -ResourceGroupName <String>
+ -ServiceName <String> [-SubscriptionId <String>] [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityApiPortalExpanded
+```
+Update-AzSpringApiPortalCustomDomain -ApiPortalInputObject <ISpringIdentity> -DomainName <String>
+ [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringBuildService -InputObject <ISpringIdentity> [-AgentPool <String>] [-Builder <String>]
- [-Env <Hashtable>] [-RelativePath <String>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringApiPortalCustomDomain -InputObject <ISpringIdentity> [-Thumbprint <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String>
+ -SpringInputObject <ISpringIdentity> [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a KPack build.
+Create the API portal custom domain.
 
 ## EXAMPLES
 
@@ -56,45 +68,46 @@ Create a KPack build.
 
 ## PARAMETERS
 
-### -AgentPool
-The resource id of agent pool
+### -ApiPortalInputObject
+Identity Parameter
+To construct, see NOTES section for APIPORTALINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Builder
-The resource id of builder to build the source code
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildName
-The name of the build resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: UpdateViaIdentityApiPortalExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ApiPortalName
+The name of API portal.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,15 +130,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Env
-The environment variables for this build
+### -DomainName
+The name of the API portal custom domain.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApiPortalExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,11 +161,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RelativePath
-The relative path of source code
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -179,40 +192,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceRequestCpu
-Optional Cpu allocated to the build resource.
-1 core can be represented by 1 or 1000m.
-The default value is 1, this should not exceed build service agent pool cpu size.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceRequestMemory
-Optional Memory allocated to the build resource.
-1 GB can be represented by 1Gi or 1024Mi.
-The default value is 2Gi, this should not exceed build service agent pool memory size.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServiceName
 The name of the Service resource.
 
@@ -228,6 +207,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -240,6 +235,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Thumbprint
+The thumbprint of bound certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -284,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuild
+### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IApiPortalCustomDomainResource
 
 ## NOTES
 

@@ -15,8 +15,7 @@ Operation to update an exiting Deployment.
 ### UpdateExpanded (Default)
 ```
 Update-AzSpringAppDeployment -AppName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-Active] [-AddonConfig <Hashtable>]
- [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
+ -ServiceName <String> [-SubscriptionId <String>] [-Active] [-DeploymentSetting <IDeploymentSettings>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -24,25 +23,23 @@ Update-AzSpringAppDeployment -AppName <String> -Name <String> -ResourceGroupName
 ### UpdateViaIdentityAppExpanded
 ```
 Update-AzSpringAppDeployment -AppInputObject <ISpringIdentity> -Name <String> [-Active]
- [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>]
- [-ResourceRequestMemory <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-DeploymentSetting <IDeploymentSettings>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
  [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringAppDeployment -InputObject <ISpringIdentity> [-Active] [-AddonConfig <Hashtable>]
- [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-Source <IUserSourceInfo>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSpringAppDeployment -InputObject <ISpringIdentity> [-Active]
+ [-DeploymentSetting <IDeploymentSettings>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySpringExpanded
 ```
 Update-AzSpringAppDeployment -AppName <String> -Name <String> -SpringInputObject <ISpringIdentity> [-Active]
- [-AddonConfig <Hashtable>] [-EnvironmentVariable <Hashtable>] [-ResourceRequestCpu <String>]
- [-ResourceRequestMemory <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
+ [-DeploymentSetting <IDeploymentSettings>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
  [-Source <IUserSourceInfo>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -101,21 +98,6 @@ Indicates whether the Deployment is active
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AddonConfig
-Collection of addons
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -188,11 +170,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentVariable
-Collection of environment variables
+### -DeploymentSetting
+Deployment settings of the Deployment
+To construct, see NOTES section for DEPLOYMENTSETTING properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentSettings
 Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -289,40 +272,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceRequestCpu
-Required CPU.
-1 core can be represented by 1 or 1000m.
-This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceRequestMemory
-Required memory.
-1 GB can be represented by 1Gi or 1024Mi.
-This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityAppExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
