@@ -14,20 +14,19 @@ Creates or updates a Network Connections resource
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DomainJoinType <DomainJoinType>] [-DomainName <String>]
- [-DomainPassword <String>] [-DomainUsername <String>] [-NetworkingResourceGroupName <String>]
- [-OrganizationUnit <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminNetworkConnection -Name <String> -ResourceGroupName <String>
+ -DomainJoinType <DomainJoinType> -Location <String> -SubnetId <String> [-SubscriptionId <String>]
+ [-DomainName <String>] [-DomainPassword <String>] [-DomainUsername <String>]
+ [-NetworkingResourceGroupName <String>] [-OrganizationUnit <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -Location <String>
- [-DomainJoinType <DomainJoinType>] [-DomainName <String>] [-DomainPassword <String>]
+New-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> -DomainJoinType <DomainJoinType>
+ -Location <String> -SubnetId <String> [-DomainName <String>] [-DomainPassword <String>]
  [-DomainUsername <String>] [-NetworkingResourceGroupName <String>] [-OrganizationUnit <String>]
- [-SubnetId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +97,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -266,7 +265,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

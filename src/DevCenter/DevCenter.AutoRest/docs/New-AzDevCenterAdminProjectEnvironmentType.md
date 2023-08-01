@@ -15,20 +15,20 @@ Creates or updates a project environment type.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-CreatorRoleAssignmentRole <Hashtable>]
- [-DeploymentTargetId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-Status <EnvironmentTypeEnableStatus>]
+ -ResourceGroupName <String> -DeploymentTargetId <String> -Status <EnvironmentTypeEnableStatus>
+ [-SubscriptionId <String>] [-CreatorRoleAssignmentRole <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity>
- [-CreatorRoleAssignmentRole <Hashtable>] [-DeploymentTargetId <String>]
+New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity> -DeploymentTargetId <String>
+ -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-Status <EnvironmentTypeEnableStatus>] [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +100,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +224,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.EnvironmentTypeEnable
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

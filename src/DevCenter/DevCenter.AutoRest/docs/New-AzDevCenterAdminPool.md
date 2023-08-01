@@ -14,17 +14,17 @@ Creates or updates a machine pool
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-LocalAdministrator <LocalAdminStatus>]
- [-NetworkConnectionName <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -DevBoxDefinitionName <String> -LocalAdministrator <LocalAdminStatus> -Location <String>
+ -NetworkConnectionName <String> [-SubscriptionId <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
  [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -Location <String> [-DevBoxDefinitionName <String>]
- [-LocalAdministrator <LocalAdminStatus>] [-NetworkConnectionName <String>]
+New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -DevBoxDefinitionName <String>
+ -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String>
  [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -97,7 +97,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +128,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,7 +173,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

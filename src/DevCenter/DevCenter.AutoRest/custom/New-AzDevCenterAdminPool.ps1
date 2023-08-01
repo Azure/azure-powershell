@@ -118,23 +118,23 @@ function New-AzDevCenterAdminPool {
         # The geo-location where the resource lives
         ${Location},
     
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [System.String]
         # Name of a Dev Box definition in parent Project of this Pool
         ${DevBoxDefinitionName},
     
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus]
         # Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
         ${LocalAdministrator},
     
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [System.String]
         # Name of a Network Connection in parent Project of this Pool
