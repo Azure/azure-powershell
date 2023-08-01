@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.4
 * Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.
 
 ## Version 1.0.3
