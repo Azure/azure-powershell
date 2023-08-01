@@ -321,7 +321,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"WPNQQFYzv3yFv7jDOWxK0IMHJqRLhECUsyUBqg4V2Zwiq7RBJ7oY323QtSYY9COnxILn1oyxRGvf+AStcYAnBw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"SF/wKKnkS672Onq66PWXj2K67+x5Z7+YbPZDrCiEopoXOdtTjkMw5v2R4txJ4kUczoZpr0SnE6Md+AStaXHY4A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
