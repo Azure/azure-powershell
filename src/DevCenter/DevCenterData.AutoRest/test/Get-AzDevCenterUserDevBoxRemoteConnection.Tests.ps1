@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBoxRem
 }
 
 Describe 'Get-AzDevCenterUserDevBoxRemoteConnection' {
-    It 'Get' -skip {
+    It 'Get'  {
         $connection = Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName
 
         $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
@@ -28,7 +28,7 @@ Describe 'Get-AzDevCenterUserDevBoxRemoteConnection' {
 
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity'  {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName; }
 
         $connection = Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint $env.endpoint -InputObject $devBoxInput

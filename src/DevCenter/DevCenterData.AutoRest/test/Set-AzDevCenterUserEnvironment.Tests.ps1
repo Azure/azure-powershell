@@ -13,7 +13,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Set-AzDevCenterUserEnvironme
     . ($mockingPath | Select-Object -First 1).FullName
 }
 Describe 'Set-AzDevCenterUserEnvironment' {
-    It 'ReplaceExpanded' -skip {
+    It 'ReplaceExpanded'  {
         $functionAppParameters = @{"name" = $env.functionAppName10 }
 
         $environment = Set-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest1" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
@@ -33,7 +33,7 @@ Describe 'Set-AzDevCenterUserEnvironment' {
         }
     }
 
-    It 'ReplaceViaIdentity' -skip {
+    It 'ReplaceViaIdentity'  {
         $functionAppParameters = @{"name" = $env.functionAppName9 }
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7" }
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8" }

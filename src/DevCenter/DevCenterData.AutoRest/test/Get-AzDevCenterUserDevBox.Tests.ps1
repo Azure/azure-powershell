@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBox'))
 }
 
 Describe 'Get-AzDevCenterUserDevBox' {
-    It 'List' -skip { 
+    It 'List' { 
         $listOfDevBoxes = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint
         $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
@@ -37,7 +37,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
     
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId $env.userObjectId -Name $env.devboxName
 
         $devBox.Name | Should -Be $env.devboxName
@@ -84,7 +84,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
     
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $devBoxInput = @{"DevBoxName" = $env.devBoxName; "UserId" = "me"; "ProjectName" = $env.projectName }
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
 
