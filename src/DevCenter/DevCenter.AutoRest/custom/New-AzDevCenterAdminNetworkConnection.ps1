@@ -113,8 +113,8 @@ param(
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DomainJoinType]
@@ -157,8 +157,8 @@ param(
     # Active Directory domain Organization Unit (OU)
     ${OrganizationUnit},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The subnet to attach Virtual Machines to

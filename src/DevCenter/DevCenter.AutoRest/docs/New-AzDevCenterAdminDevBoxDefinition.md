@@ -15,18 +15,18 @@ Creates or updates a Dev Box definition.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminDevBoxDefinition -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-HibernateSupport <HibernateSupport>]
- [-ImageReferenceId <String>] [-OSStorageType <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ImageReferenceId <String> -Location <String> -OSStorageType <String> -SkuName <String>
+ [-SubscriptionId <String>] [-HibernateSupport <HibernateSupport>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity> -Location <String>
- [-HibernateSupport <HibernateSupport>] [-ImageReferenceId <String>] [-OSStorageType <String>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminDevBoxDefinition -InputObject <IDevCenterIdentity> -ImageReferenceId <String>
+ -Location <String> -OSStorageType <String> -SkuName <String> [-HibernateSupport <HibernateSupport>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +130,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -206,7 +206,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -270,7 +270,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,15 +14,15 @@ Creates or updates a project.
 
 ### CreateExpanded (Default)
 ```
-New-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Description <String>] [-DevCenterId <String>] [-MaxDevBoxesPerUser <Int32>]
+New-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> -DevCenterId <String>
+ -Location <String> [-SubscriptionId <String>] [-Description <String>] [-MaxDevBoxesPerUser <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminProject -InputObject <IDevCenterIdentity> -Location <String> [-Description <String>]
- [-DevCenterId <String>] [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+New-AzDevCenterAdminProject -InputObject <IDevCenterIdentity> -DevCenterId <String> -Location <String>
+ [-Description <String>] [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -133,16 +133,16 @@ param(
     # To find out more see https://aka.ms/devbox/hibernate
     ${HibernateSupport},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Image ID, or Image version ID.
     # When Image ID is provided, its latest version will be used.
     ${ImageReferenceId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The storage type used for the Operating System disk of Dev Boxes created using this definition.
@@ -163,8 +163,8 @@ param(
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The name of the SKU.

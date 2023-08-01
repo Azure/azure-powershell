@@ -116,8 +116,8 @@ param(
     # Description of the project.
     ${Description},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Resource Id of an associated DevCenter

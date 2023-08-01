@@ -15,14 +15,14 @@ Creates or updates a Schedule.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-State <ScheduleEnableStatus>] [-Time <String>] [-TimeZone <String>]
+ -Time <String> -TimeZone <String> [-SubscriptionId <String>] [-State <ScheduleEnableStatus>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-State <ScheduleEnableStatus>]
- [-Time <String>] [-TimeZone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> -Time <String> -TimeZone <String>
+ [-State <ScheduleEnableStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -202,7 +202,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +217,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

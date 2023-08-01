@@ -12,19 +12,32 @@ Creates or updates a catalog.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateExpandedAdo (Default)
 ```
 New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>]
- [-AdoGitUri <String>] [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>]
+ [-AdoGitUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpandedGitHub
+```
+New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>]
  [-GitHubUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaIdentityExpandedAdo
 ```
 New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> [-AdoGitBranch <String>] [-AdoGitPath <String>]
- [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>] [-GitHubBranch <String>] [-GitHubPath <String>]
+ [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpandedGitHub
+```
+New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> [-GitHubBranch <String>] [-GitHubPath <String>]
  [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -63,7 +76,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
 Required: False
@@ -78,7 +91,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
 Required: False
@@ -93,7 +106,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
 Required: False
@@ -108,7 +121,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
 Required: False
@@ -154,7 +167,7 @@ The name of the devcenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpandedAdo, CreateExpandedGitHub
 Aliases:
 
 Required: True
@@ -169,7 +182,7 @@ Git branch.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
 Required: False
@@ -184,7 +197,7 @@ The folder where the catalog items can be found inside the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
 Required: False
@@ -199,7 +212,7 @@ A reference to the Key Vault secret containing a security token to authenticate 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
 Required: False
@@ -214,7 +227,7 @@ Git URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
 Required: False
@@ -230,7 +243,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpandedAdo, CreateViaIdentityExpandedGitHub
 Aliases:
 
 Required: True
@@ -245,7 +258,7 @@ The name of the Catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpandedAdo, CreateExpandedGitHub
 Aliases: CatalogName
 
 Required: True
@@ -276,7 +289,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpandedAdo, CreateExpandedGitHub
 Aliases:
 
 Required: True
@@ -291,10 +304,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpandedAdo, CreateExpandedGitHub
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False

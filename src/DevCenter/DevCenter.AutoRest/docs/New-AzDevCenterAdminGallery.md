@@ -15,13 +15,13 @@ Creates or updates a gallery.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminGallery -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-GalleryResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -GalleryResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminGallery -InputObject <IDevCenterIdentity> [-GalleryResourceId <String>]
+New-AzDevCenterAdminGallery -InputObject <IDevCenterIdentity> -GalleryResourceId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -108,7 +108,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

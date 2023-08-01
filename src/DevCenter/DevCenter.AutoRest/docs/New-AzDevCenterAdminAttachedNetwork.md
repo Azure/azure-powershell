@@ -15,13 +15,13 @@ Creates or updates an attached NetworkConnection.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminAttachedNetwork -ConnectionName <String> -DevCenterName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-NetworkConnectionId <String>]
+ -ResourceGroupName <String> -NetworkConnectionId <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminAttachedNetwork -InputObject <IDevCenterIdentity> [-NetworkConnectionId <String>]
+New-AzDevCenterAdminAttachedNetwork -InputObject <IDevCenterIdentity> -NetworkConnectionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
