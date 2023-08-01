@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
         public HashSet<string> WindowParameterKbNumberToExclude { get; set; }
         public HashSet<string> WindowParameterClassificationToInclude { get; set; }
         public bool? WindowParameterExcludeKbRequiringReboot { get; set; }
+        public string PreTask { get; set; }
+        public string PostTask { get; set; }
         public string InstallPatchRebootSetting { get; set; }
 
     }

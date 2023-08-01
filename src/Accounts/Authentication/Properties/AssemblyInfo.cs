@@ -43,8 +43,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.12.4")]
-[assembly: AssemblyFileVersion("2.12.4")]
+[assembly: AssemblyVersion("2.12.5")]
+[assembly: AssemblyFileVersion("2.12.5")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Authentication.Test")]
 #endif
