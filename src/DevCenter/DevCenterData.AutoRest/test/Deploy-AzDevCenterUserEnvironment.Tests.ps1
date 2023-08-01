@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Deploy-AzDevCenterUserEnviro
 }
 
 Describe 'Deploy-AzDevCenterUserEnvironment' {
-    It 'ReplaceExpanded' -skip {
+    It 'ReplaceExpanded' {
         $functionAppParameters = @{"name" = $env.functionAppName2 }
 
         $environment = Deploy-AzDevCenterUserEnvironment -Endpoint $env.endpoint -Name "envtest1" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
@@ -34,7 +34,7 @@ Describe 'Deploy-AzDevCenterUserEnvironment' {
         }
     }
 
-    It 'ReplaceViaIdentity' -skip {
+    It 'ReplaceViaIdentity' {
         $functionAppParameters = @{"name" = $env.functionAppName9 }
         $envInput1 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest7" }
         $envInput2 = @{"UserId" = "me"; "ProjectName" = $env.projectName; "EnvironmentName" = "envtest8" }

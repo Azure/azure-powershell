@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Stop-AzDevCenterUserDevBox')
 }
 
 Describe 'Stop-AzDevCenterUserDevBox' {
-    It 'Stop' -skip {
+    It 'Stop'  {
         $stopAction = Stop-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox1 -ProjectName $env.projectName
         $stopAction.Status | Should -Be "Succeeded"
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox1 -ProjectName $env.projectName -UserId "me"
@@ -30,7 +30,7 @@ Describe 'Stop-AzDevCenterUserDevBox' {
    
     }
 
-    It 'StopViaIdentity' -skip {
+    It 'StopViaIdentity'  {
         $devBoxInput1 = @{"DevBoxName" = $env.skipDevBox3; "UserId" = "me"; "ProjectName" = $env.projectName }
         $devBoxInput2 = @{"DevBoxName" = $env.skipDevBox4; "UserId" = "me"; "ProjectName" = $env.projectName }
 

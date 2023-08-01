@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterUserDevBox'))
 }
 
 Describe 'New-AzDevCenterUserDevBox' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded'  {
         $devBox = New-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name "devbox3" -ProjectName $env.projectName -PoolName $env.poolName
         $devBox.Name | Should -Be "devbox3"
         $devBox.User | Should -Be $env.userObjectId
@@ -58,7 +58,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         }
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'CreateViaIdentityExpanded'  {
         $devBoxInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox5" }
         $devBoxInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = "devbox6" }
 

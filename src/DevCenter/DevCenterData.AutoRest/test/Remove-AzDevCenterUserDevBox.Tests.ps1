@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzDevCenterUserDevBox
 }
 
 Describe 'Remove-AzDevCenterUserDevBox' {
-    It 'Delete' -skip {
+    It 'Delete'  {
         Remove-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.deleteDevBox1 -ProjectName $env.projectName
         { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.deleteDevBox1 } | Should -Throw
 
@@ -25,7 +25,7 @@ Describe 'Remove-AzDevCenterUserDevBox' {
 
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity'  {
         $devBoxInput = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = $env.deleteDevBox3 }
         $devBoxInput2 = @{"ProjectName" = $env.projectName; "UserId" = "me"; "DevBoxName" = $env.deleteDevBox4 }
 

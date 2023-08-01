@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserCatalog')
 }
 
 Describe 'Get-AzDevCenterUserCatalog' {
-    It 'List' -skip {
+    It 'List' {
         $listOfCatalogs = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName
         $listOfCatalogs.Count | Should -Be 1
 
@@ -25,7 +25,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
 
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName 
         $catalog | Should -Be $env.catalogName
 
@@ -35,7 +35,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         }
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $catalogInput = @{"CatalogName" = $env.catalogName; "ProjectName" = $env.projectName }
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -InputObject $catalogInput 
         $catalog | Should -Be $env.catalogName

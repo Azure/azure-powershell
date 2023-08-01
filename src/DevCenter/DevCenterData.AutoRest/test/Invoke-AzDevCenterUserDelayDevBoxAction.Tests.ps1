@@ -14,12 +14,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDevCenterUserDelayD
 }
 
 Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
-    It 'Delay1' -skip {
+    It 'Delay1'  {
         $delayActions = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -DevBoxName  $env.devboxName3 -ProjectName $env.projectName -DelayTime "00:05"
         $delayActions.Count | Should -Be 2
     }
 
-    It 'Delay' -skip {
+    It 'Delay'  {
         $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default"
         $delayTime = New-TimeSpan -Minutes 5
         $newScheduledTime = $action.NextScheduledTime + $delayTime
@@ -27,14 +27,14 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
         $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'Delay1ByDevCenter' -skip {
+    It 'Delay1ByDevCenter'  {
         if ($Record -or $Live) {
             $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName3 -ProjectName $env.projectName -DelayTime "00:05"
             $delayAction.Count | Should -Be 2
         }
     }
 
-    It 'DelayByDevCenter' -skip {
+    It 'DelayByDevCenter'  {
         if ($Record -or $Live) {
             $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default"
             $delayTime = New-TimeSpan -Minutes 5

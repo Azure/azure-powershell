@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterUserDevBox'
 }
 
 Describe 'Start-AzDevCenterUserDevBox' {
-    It 'Start' -skip {
+    It 'Start'  {
         $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName
         $startOperation.Status | Should -Be "Succeeded"
         $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
@@ -32,7 +32,7 @@ Describe 'Start-AzDevCenterUserDevBox' {
 
     }
 
-    It 'StartViaIdentity' -skip {
+    It 'StartViaIdentity'  {
         $devBoxInput = @{"DevBoxName" = $env.devboxName3; "UserId" = "me"; "ProjectName" = $env.projectName }
 
         $startOperation = Start-AzDevCenterUserDevBox -Endpoint $env.endpoint -InputObject $devBoxInput
