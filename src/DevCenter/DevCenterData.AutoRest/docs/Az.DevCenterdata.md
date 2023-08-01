@@ -62,9 +62,6 @@ Deletes an environment and all its associated resources
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
 Restarts a Dev Box
 
-### [Set-AzDevCenterUserEnvironment](Set-AzDevCenterUserEnvironment.md)
-Creates or updates an environment.
-
 ### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
 Skips an occurrence of an action.
 

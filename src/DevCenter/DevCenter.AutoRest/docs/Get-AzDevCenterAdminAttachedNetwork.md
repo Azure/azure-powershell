@@ -36,12 +36,6 @@ Get-AzDevCenterAdminAttachedNetwork -InputObject <IDevCenterIdentity> [-DefaultP
  [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzDevCenterAdminAttachedNetwork -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzDevCenterAdminAttachedNetwork -DevCenterName <String> -ResourceGroupName <String>
@@ -129,7 +123,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
