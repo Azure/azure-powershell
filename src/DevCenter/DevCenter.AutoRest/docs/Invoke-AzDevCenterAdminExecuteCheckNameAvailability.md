@@ -18,19 +18,6 @@ Invoke-AzDevCenterAdminExecuteCheckNameAvailability [-SubscriptionId <String>] [
  [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Execute
-```
-Invoke-AzDevCenterAdminExecuteCheckNameAvailability -NameAvailabilityRequest <ICheckNameAvailabilityRequest>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ExecuteViaIdentity
-```
-Invoke-AzDevCenterAdminExecuteCheckNameAvailability -InputObject <IDevCenterIdentity>
- -NameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ExecuteViaIdentityExpanded
 ```
 Invoke-AzDevCenterAdminExecuteCheckNameAvailability -InputObject <IDevCenterIdentity> [-Name <String>]
@@ -88,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: ExecuteViaIdentity, ExecuteViaIdentityExpanded
+Parameter Sets: ExecuteViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -103,7 +90,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,28 +100,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NameAvailabilityRequest
-The check availability request body.
-To construct, see NOTES section for NAMEAVAILABILITYREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityRequest
-Parameter Sets: Execute, ExecuteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Execute, ExecuteExpanded
+Parameter Sets: ExecuteExpanded
 Aliases:
 
 Required: False
@@ -149,7 +120,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExecuteExpanded, ExecuteViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,8 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
@@ -230,10 +199,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VersionName <String>]`: The version of the image.
-
-`NAMEAVAILABILITYREQUEST <ICheckNameAvailabilityRequest>`: The check availability request body.
-  - `[Name <String>]`: The name of the resource for which availability needs to be checked.
-  - `[Type <String>]`: The resource type.
 
 ## RELATED LINKS
 

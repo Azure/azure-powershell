@@ -98,6 +98,18 @@ directive:
       verb: Start
       subject: PoolHealthCheck
     hide: true
+# Hide invoke name availability
+  - where:
+      verb: Invoke 
+      subject: ExecuteCheckNameAvailability
+    hide: true
+  - where:
+      subject: ^(.*)
+# Hide Get Attached Network and Get DevBoxDefinition
+  - where:
+      verb: Get 
+      subject:  ^(AttachedNetwork|DevBoxDefinition)$
+    hide: true
 # Matches any verb that is New, Update, Set
   - where:
       verb: ^(New|Update|Set)$

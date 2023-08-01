@@ -22,19 +22,6 @@ New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -Projec
  [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
- -ResourceGroupName <String> -Body <IProjectEnvironmentType> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity> -Body <IProjectEnvironmentType>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity>
@@ -73,28 +60,12 @@ Creates or updates a project environment type.
 
 ## PARAMETERS
 
-### -Body
-Represents an environment type.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentType
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CreatorRoleAssignmentRole
 A map of roles to assign to the environment creator.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,7 +97,7 @@ The environment's resources will be deployed into this subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,7 +112,7 @@ The name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -156,7 +127,7 @@ Type of managed service identity (where both SystemAssigned and UserAssigned typ
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -173,7 +144,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,7 +160,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -204,7 +175,7 @@ The geo-location for the environment type
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -219,7 +190,7 @@ The name of the project.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -235,7 +206,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -250,7 +221,7 @@ Defines whether this Environment Type can be used in this Project.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.EnvironmentTypeEnableStatus
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +236,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -280,7 +251,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -296,7 +267,7 @@ This is a mapping from a user object ID to an object of role definition IDs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -342,8 +313,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProjectEnvironmentType
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 
 ## OUTPUTS
@@ -358,26 +327,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IProjectEnvironmentType>`: Represents an environment type.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[CreatorRoleAssignmentRole <IProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentRoles>]`: A map of roles to assign to the environment creator.
-    - `[(Any) <IEnvironmentRole>]`: This indicates any property can be added to this object.
-  - `[DeploymentTargetId <String>]`: Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
-  - `[IdentityType <ManagedServiceIdentityType?>]`: Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-  - `[IdentityUserAssignedIdentity <IUserAssignedIdentities>]`: The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-    - `[(Any) <IUserAssignedIdentity>]`: This indicates any property can be added to this object.
-  - `[Location <String>]`: The geo-location for the environment type
-  - `[Status <EnvironmentTypeEnableStatus?>]`: Defines whether this Environment Type can be used in this Project.
-  - `[Tag <ITags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[UserRoleAssignment <IProjectEnvironmentTypeUpdatePropertiesUserRoleAssignments>]`: Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-    - `[(Any) <IUserRoleAssignmentValue>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
   - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.

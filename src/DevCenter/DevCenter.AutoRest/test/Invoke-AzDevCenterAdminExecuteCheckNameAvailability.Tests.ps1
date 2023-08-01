@@ -23,16 +23,4 @@ Describe 'Invoke-AzDevCenterAdminExecuteCheckNameAvailability' {
         $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -Name $unusedName -Type "Microsoft.devcenter/devcenters"
         $avail.NameAvailable | Should -Be "True"
     }
-
-    It 'Execute' {
-        $hash1 =  @{"Name" = $env.devCenterName; "Type" = "Microsoft.devcenter/devcenters" }
-        $unusedName =  $env.devCenterName + "11"
-        $hash2 =  @{"Name" = $unusedName; "Type" = "Microsoft.devcenter/devcenters" }
-
-        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -NameAvailabilityRequest $hash1
-        $avail.Message | Should -Be "Failed to create the DevCenter as the name is already in use. DevCenter names must be unique within the tenant. Retry the operation with a different DevCenter name"
-
-        $avail = Invoke-AzDevCenterAdminExecuteCheckNameAvailability -NameAvailabilityRequest $hash2
-        $avail.NameAvailable | Should -Be "True" #check if this works or should be true
-    }
 }

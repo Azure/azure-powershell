@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DevCenterdata.private.dll'
   FormatsToProcess = './Az.DevCenterdata.format.ps1xml'
-  FunctionsToExport = 'Deploy-AzDevCenterUserEnvironment', 'Get-AzDevCenterUserCatalog', 'Get-AzDevCenterUserDevBox', 'Get-AzDevCenterUserDevBoxAction', 'Get-AzDevCenterUserDevBoxRemoteConnection', 'Get-AzDevCenterUserEnvironment', 'Get-AzDevCenterUserEnvironmentDefinition', 'Get-AzDevCenterUserEnvironmentType', 'Get-AzDevCenterUserPool', 'Get-AzDevCenterUserProject', 'Get-AzDevCenterUserSchedule', 'Invoke-AzDevCenterUserDelayDevBoxAction', 'New-AzDevCenterUserDevBox', 'New-AzDevCenterUserEnvironment', 'Remove-AzDevCenterUserDevBox', 'Remove-AzDevCenterUserEnvironment', 'Restart-AzDevCenterUserDevBox', 'Set-AzDevCenterUserEnvironment', 'Skip-AzDevCenterUserDevBoxAction', 'Start-AzDevCenterUserDevBox', 'Stop-AzDevCenterUserDevBox', '*'
+  FunctionsToExport = 'Deploy-AzDevCenterUserEnvironment', 'Get-AzDevCenterUserCatalog', 'Get-AzDevCenterUserDevBox', 'Get-AzDevCenterUserDevBoxAction', 'Get-AzDevCenterUserDevBoxRemoteConnection', 'Get-AzDevCenterUserEnvironment', 'Get-AzDevCenterUserEnvironmentDefinition', 'Get-AzDevCenterUserEnvironmentType', 'Get-AzDevCenterUserPool', 'Get-AzDevCenterUserProject', 'Get-AzDevCenterUserSchedule', 'Invoke-AzDevCenterUserDelayDevBoxAction', 'New-AzDevCenterUserDevBox', 'New-AzDevCenterUserEnvironment', 'Remove-AzDevCenterUserDevBox', 'Remove-AzDevCenterUserEnvironment', 'Restart-AzDevCenterUserDevBox', 'Skip-AzDevCenterUserDevBoxAction', 'Start-AzDevCenterUserDevBox', 'Stop-AzDevCenterUserDevBox', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
