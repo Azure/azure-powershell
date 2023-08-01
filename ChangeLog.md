@@ -1,3 +1,7 @@
+## 10.2.1 - August 2023
+#### Az.Resources 6.9.1
+* Bugfix for warning prompt conditional change in deployment stacks New-Az*DeploymentStack cmdlets.
+
 ## 10.2.0 - August 2023
 #### Az.Accounts 2.12.5
 * Changed output stream from debug stream to warning stream for 'CmdletPreviewAttribute'
