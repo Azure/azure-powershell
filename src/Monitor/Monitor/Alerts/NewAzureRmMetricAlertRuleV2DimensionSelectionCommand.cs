@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets IncludeValues parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The IncludeValues")]
+        [Parameter(ParameterSetName = "IncludeParameterSet", Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The IncludeValues")]
         public String[] ValuesToInclude { get; set; }
 
         /// <summary>
         /// Gets or sets ExcludeValues parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The ExcludeValues")]
+        [Parameter(ParameterSetName = "ExcludeParameterSet", Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ExcludeValues")]
         public String[] ValuesToExclude { get; set; }
 
 

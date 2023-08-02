@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `New-AzMetricAlertRuleV2DimensionSelection` to have "exclude" or "include" values only [#22256]
 
 ## Version 4.5.0
 * Added cmdlets for monitor workspace: 
