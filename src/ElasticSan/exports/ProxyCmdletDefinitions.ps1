@@ -23,12 +23,12 @@ List all the available Skus in the region and information related to them
 Get-AzElasticSanSkuList
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformation
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 #>
 function Get-AzElasticSanSkuList {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.ISkuInformation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -183,7 +183,7 @@ Get-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -192,6 +192,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -200,7 +201,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumegroup
 #>
 function Get-AzElasticSanVolumeGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -381,7 +382,7 @@ Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelas
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -390,6 +391,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -398,7 +400,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolume
 #>
 function Get-AzElasticSanVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -588,7 +590,7 @@ Get-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -597,6 +599,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -605,7 +608,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 #>
 function Get-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -777,9 +780,9 @@ Create a Volume Group.
 $virtualNetworkRule1 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
 $virtualNetworkRule2 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2" -Action Allow
 
-New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} -NetworkAclsVirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -NetworkAclsVirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2
 .Example
-New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} `
+New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' `
             -NetworkAclsVirtualNetworkRule (
                 @{VirtualNetworkResourceId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1";
                     Action="Allow"},
@@ -787,11 +790,11 @@ New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
                     Action="Allow"})
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -800,6 +803,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -810,24 +814,22 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
   [Action <Action?>]: The action of virtual network rule.
 
 PARAMETER <IVolumeGroup>: Response for Volume Group request.
-  [Tag <IResourceTags>]: Azure resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [Encryption <EncryptionType?>]: Type of encryption
-  [NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]: The list of virtual network rules.
-    VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-    [Action <Action?>]: The action of virtual network rule.
-  [ProtocolType <StorageTargetType?>]: Type of storage target
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Encryption <EncryptionType?>]: Type of encryption
+  [NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]: The list of virtual network rules.
+    VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+    [Action <Action?>]: The action of virtual network rule.
+  [ProtocolType <StorageTargetType?>]: Type of storage target
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
 #>
 function New-AzElasticSanVolumeGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -872,7 +874,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup]
     # Response for Volume Group request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -889,7 +891,7 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]]
     # The list of virtual network rules.
     # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
@@ -901,14 +903,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.StorageTargetType]
     # Type of storage target
     ${ProtocolType},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Azure resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1057,14 +1051,14 @@ Create a Volume.
 .Description
 Create a Volume.
 .Example
-New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1073,29 +1067,28 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 
 PARAMETER <IVolume>: Response for Volume request.
-  [Tag <IResourceTags>]: Azure resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [CreationDataCreateSource <VolumeCreateOption?>]: This enumerates the possible sources of a volume creation.
-  [CreationDataSourceUri <String>]: If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
-  [SizeGiB <Int64?>]: Volume size.
-  [StorageTargetStatus <OperationalStatus?>]: Operational status of the iSCSI Target.
+  SizeGiB <Int64>: Volume size.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [CreationDataCreateSource <VolumeCreateOption?>]: This enumerates the possible sources of a volume creation.
+  [CreationDataSourceUri <String>]: If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
+  [StorageTargetStatus <OperationalStatus?>]: Operational status of the iSCSI Target.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
 #>
 function New-AzElasticSanVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -1147,10 +1140,17 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume]
     # Response for Volume request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Volume size.
+    ${SizeGiB},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -1167,21 +1167,6 @@ param(
     # If createOption is Copy, this is the ARM id of the source snapshot or disk.
     # If createOption is Restore, this is the ARM-like id of the source disk restore point.
     ${CreationDataSourceUri},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.Int64]
-    # Volume size.
-    ${SizeGiB},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Azure resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1333,11 +1318,11 @@ Create ElasticSan.
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1346,31 +1331,32 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 
 PARAMETER <IElasticSan>: Response for ElasticSan request.
+  Location <String>: The geo-location where the resource lives
   BaseSizeTiB <Int64>: Base size of the Elastic San appliance in TiB.
   ExtendedCapacitySizeTiB <Int64>: Extended size of the Elastic San appliance in TiB.
   SkuName <SkuName>: The sku name.
-  [Location <String>]: The geo-location where the resource lives.
-  [Tag <IResourceTags>]: Azure resource tags.
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [AvailabilityZone <String[]>]: Logical zone for Elastic San resource; example: ["1"].
-  [SkuTier <SkuTier?>]: The sku tier.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [AvailabilityZone <String[]>]: Logical zone for Elastic San resource; example: ["1"].
+  [SkuTier <SkuTier?>]: The sku tier.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
 #>
 function New-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -1408,7 +1394,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan]
     # Response for ElasticSan request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -1429,6 +1415,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuName])]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuName]
@@ -1445,13 +1438,6 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuTier]
@@ -1461,9 +1447,9 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Azure resource tags.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
@@ -1627,6 +1613,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -1837,6 +1824,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -2053,6 +2041,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -2248,7 +2237,7 @@ $virtualNetworkRule2 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetwork
 
 Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -NetworkAclsVirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2
 .Example
-Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} `
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi'`
             -NetworkAclsVirtualNetworkRule (
                 @{VirtualNetworkResourceId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1";
                     Action="Allow"},
@@ -2256,11 +2245,11 @@ Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanNam
                     Action="Allow"})
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2269,6 +2258,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -2284,13 +2274,11 @@ PARAMETER <IVolumeGroupUpdate>: Volume Group request.
     VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
     [Action <Action?>]: The action of virtual network rule.
   [ProtocolType <StorageTargetType?>]: Type of storage target
-  [Tag <IVolumeGroupUpdateTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Update-AzElasticSanVolumeGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -2335,7 +2323,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate]
     # Volume Group request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2352,7 +2340,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]]
     # The list of virtual network rules.
     # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
@@ -2364,14 +2352,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.StorageTargetType]
     # Type of storage target
     ${ProtocolType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2520,14 +2500,14 @@ Update an Volume.
 .Description
 Update an Volume.
 .Example
-$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -Tag @{tag3 = "value3"} -SizeGib 120
+$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2536,6 +2516,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -2543,13 +2524,11 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 
 PARAMETER <IVolumeUpdate>: Response for Volume request.
   [SizeGiB <Int64?>]: Volume size.
-  [Tag <IVolumeUpdateTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolume
 #>
 function Update-AzElasticSanVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -2601,7 +2580,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate]
     # Response for Volume request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2612,14 +2591,6 @@ param(
     [System.Int64]
     # Volume size.
     ${SizeGiB},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdateTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2771,11 +2742,11 @@ Update a Elastic San.
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2784,6 +2755,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -2798,7 +2770,7 @@ PARAMETER <IElasticSanUpdate>: Response for ElasticSan update request.
 https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
 #>
 function Update-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -2836,7 +2808,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate]
     # Response for ElasticSan update request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -2858,7 +2830,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdateTags]))]
     [System.Collections.Hashtable]
     # Update tags
     ${Tag},
@@ -3021,9 +2993,9 @@ $virtualNetworkResourceId2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 Add-AzElasticSanVolumeGroupNetworkRule -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -NetworkAclsVirtualNetworkResourceId $virtualNetworkResourceId1,$virtualNetworkResourceId2
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3036,7 +3008,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
 https://learn.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolumegroupnetworkrule
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]])]
 [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3067,7 +3039,7 @@ param(
 
     [Parameter(ParameterSetName='NetworkRuleObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]]
     # The list of virtual network rules.
     # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
@@ -3226,12 +3198,12 @@ Create an in-memory object for VirtualNetworkRule.
 New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule
 .Link
 https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
 #>
 function New-AzElasticSanVirtualNetworkRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3350,9 +3322,9 @@ $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -E
 Remove-AzElasticSanVolumeGroupNetworkRule -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -NetworkAclsVirtualNetworkResourceId $virtualNetworkRuleResourceId1,$virtualNetworkRuleResourceId2
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3365,7 +3337,7 @@ NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual netwo
 https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumegroupnetworkrule
 #>
 function Remove-AzElasticSanVolumeGroupNetworkRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]])]
 [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3396,7 +3368,7 @@ param(
 
     [Parameter(ParameterSetName='NetworkRuleObject', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVirtualNetworkRule[]]
     # The list of virtual network rules.
     # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},

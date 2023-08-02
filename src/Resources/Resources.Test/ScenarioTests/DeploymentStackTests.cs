@@ -96,6 +96,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAndSetResourceGroupDeploymentStackWithTags()
+        {
+            TestRunner.RunTestScript("Test-NewAndSetResourceGroupDeploymentStackWithTags");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionDeploymentStack()
         {
             TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStack");
@@ -166,6 +173,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAndSetSubscriptionDeploymentStackWithTags()
+        {
+            TestRunner.RunTestScript("Test-NewAndSetSubscriptionDeploymentStackWithTags");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupDeploymentStack()
         {
             TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStack");
@@ -232,6 +246,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestRemoveManagementGroupDeploymentStack()
         {
             TestRunner.RunTestScript("Test-RemoveManagementGroupDeploymentStack");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAndSetManagementGroupDeploymentStackWithTags()
+        {
+            TestRunner.RunTestScript("Test-NewAndSetManagementGroupDeploymentStackWithTags");
         }
     }
 }

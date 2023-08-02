@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using FROM = Microsoft.Azure.Management.Maintenance.Models;
@@ -54,9 +55,27 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                 cfg.CreateMap<FROM.ApplyUpdate, TO.PSApplyUpdate>();
                 cfg.CreateMap<TO.PSApplyUpdate, FROM.ApplyUpdate>()
                     .ForMember(src => src.SystemData, s => s.Ignore());
-                cfg.CreateMap<FROM.ConfigurationAssignment, TO.PSConfigurationAssignment>();
+                cfg.CreateMap<FROM.ConfigurationAssignment, TO.PSConfigurationAssignment>()
+                    .ForMember(dest => dest.FilterResourceGroup, src => src.MapFrom(o => o.Filter.ResourceGroups))
+                    .ForMember(dest => dest.FilterLocation, src => src.MapFrom(o => o.Filter.Locations))
+                    .ForMember(dest => dest.FilterOsType, src => src.MapFrom(o => o.Filter.OsTypes))
+                    .ForMember(dest => dest.FilterTag, src => src.MapFrom(o => o.Filter.TagSettings.Tags))
+                    .ForMember(dest => dest.FilterOperator, src => src.MapFrom(o => o.Filter.TagSettings.FilterOperator))
+                    .ForMember(dest => dest.FilterResourceType, src => src.MapFrom(o => o.Filter.ResourceTypes))
+                    .AfterMap((src, dst) => {
+                         if (src?.Filter?.TagSettings?.Tags?.Any() ?? false)
+                         {
+                             dst.FilterTag = Newtonsoft.Json.JsonConvert.SerializeObject(src.Filter.TagSettings.Tags);
+                         }
+                    });
                 cfg.CreateMap<TO.PSConfigurationAssignment, FROM.ConfigurationAssignment>()
-                    .ForMember(src => src.SystemData, s => s.Ignore());
+                    .ForMember(src => src.SystemData, s => s.Ignore())
+                    .ForPath(dest => dest.Filter.ResourceGroups, src => src.MapFrom(o => o.FilterResourceGroup))
+                    .ForPath(dest => dest.Filter.Locations, src => src.MapFrom(o => o.FilterLocation))
+                    .ForPath(dest => dest.Filter.OsTypes, src => src.MapFrom(o => o.FilterOsType))
+                    .ForPath(dest => dest.Filter.TagSettings.Tags, src => src.MapFrom(o => o.FilterTag))
+                    .ForPath(dest => dest.Filter.TagSettings.FilterOperator, src => src.MapFrom(o => o.FilterOperator))
+                    .ForPath(dest => dest.Filter.ResourceTypes, src => src.MapFrom(o => o.FilterResourceType));
                 cfg.CreateMap<FROM.MaintenanceConfiguration, TO.PSMaintenanceConfiguration>()
                     .ForMember(dest => dest.InstallPatchRebootSetting, opt => opt.MapFrom(src => src.InstallPatches.RebootSetting))
                     .ForMember(dest => dest.LinuxParameterClassificationToInclude, opt => opt.MapFrom(src => src.InstallPatches.LinuxParameters.ClassificationsToInclude))
@@ -66,23 +85,10 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(dest => dest.WindowParameterExcludeKbRequiringReboot, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.ExcludeKbsRequiringReboot))
                     .ForMember(dest => dest.WindowParameterKbNumberToExclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToExclude))
                     .ForMember(dest => dest.WindowParameterKbNumberToInclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToInclude))
-                    .ForMember(dest => dest.PreTask, opt => opt.MapFrom(src => src.InstallPatches.PreTasks))
-                    .ForMember(dest => dest.PostTask, opt => opt.MapFrom(src => src.InstallPatches.PostTasks))
                     .ForMember(dest => dest.InstallPatchRebootSetting, opt => opt.MapFrom(src => src.InstallPatches.RebootSetting))
-                    .ForSourceMember(src => src.SystemData, s => s.Ignore())
-                    .ForSourceMember(src => src.InstallPatches, s => s.Ignore())
-                                        .ForPath(dst => dst.PostTask, s => s.Ignore())
-                    .ForPath(dst => dst.PreTask, s => s.Ignore())
-                    .AfterMap((src, dst) => {
-                        if (src?.InstallPatches?.PreTasks?.Any() ?? false)
-                        {
-                            dst.PreTask = Newtonsoft.Json.JsonConvert.SerializeObject(src.InstallPatches.PreTasks);
-                        }
-                        if (src?.InstallPatches?.PostTasks?.Any() ?? false)
-                        {
-                            dst.PostTask = Newtonsoft.Json.JsonConvert.SerializeObject(src.InstallPatches.PostTasks);
-                        }
-                    });
+                    .ForMember(dest => dest.PreTask, opt => opt.Ignore())
+                    .ForMember(dest => dest.PostTask, opt => opt.Ignore())
+                    .ForSourceMember(src => src.SystemData, s => s.Ignore());
                 cfg.CreateMap<TO.PSMaintenanceConfiguration, FROM.MaintenanceConfiguration>()
                     .ForPath(dest => dest.InstallPatches.LinuxParameters.ClassificationsToInclude, src => src.MapFrom(o => o.LinuxParameterClassificationToInclude))
                     .ForPath(dest => dest.InstallPatches.LinuxParameters.PackageNameMasksToInclude, src => src.MapFrom(o => o.LinuxParameterPackageNameMaskToInclude))
@@ -93,8 +99,6 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForPath(dest => dest.InstallPatches.WindowsParameters.KbNumbersToInclude, src => src.MapFrom(o => o.WindowParameterKbNumberToInclude))
                     .AfterMap((src, dst) => {
                         if (string.IsNullOrEmpty(src.InstallPatchRebootSetting) &&
-                            string.IsNullOrEmpty(src.PostTask) &&
-                            string.IsNullOrEmpty(src.PreTask) &&
                             !src.WindowParameterExcludeKbRequiringReboot.HasValue &&
                             IsEmpty(src.LinuxParameterClassificationToInclude) &&
                             IsEmpty(src.LinuxParameterPackageNameMaskToExclude) &&
@@ -105,17 +109,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                         {
                             dst.InstallPatches = null;
                         }
-                        else
-                        {
-                            if(string.IsNullOrEmpty(src.PreTask))
-                            {
-                                dst.InstallPatches.PreTasks = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FROM.TaskProperties>>(src.PreTask);
-                                dst.InstallPatches.PostTasks = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FROM.TaskProperties>>(src.PostTask);
-                            }
-                        }
                     })
-                    .ForPath(dest => dest.InstallPatches.PostTasks, s => s.Ignore())
-                    .ForPath(dest => dest.InstallPatches.PreTasks, s => s.Ignore())
                     .ForMember(dest => dest.SystemData, s => s.Ignore());
                 cfg.CreateMap<FROM.Update, TO.PSUpdate>();
                 cfg.CreateMap<TO.PSUpdate, FROM.Update>();

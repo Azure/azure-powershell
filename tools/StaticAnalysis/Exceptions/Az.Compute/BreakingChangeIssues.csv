@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Compute","Microsoft.Azure.Commands.Compute.Automation.UpdateAzureRmVmss","Update-AzVmss","0","2050","A validate set has been added for parameter 'AutomaticRepairAction' for cmdlet 'Update-AzVmss'.","Remove the validate set from parameter 'AutomaticRepairAction'."

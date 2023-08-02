@@ -19,8 +19,8 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -29,8 +29,9 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -39,8 +40,8 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -49,8 +50,9 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -326,6 +328,21 @@ The service level of the ANF volume
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotDirectoryVisible
+If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

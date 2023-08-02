@@ -25,7 +25,7 @@ Get-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
 #>
 function Get-AzStackHciArcSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -223,7 +223,7 @@ Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -240,7 +240,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcicluster
 #>
 function Get-AzStackHciCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -414,7 +414,7 @@ Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSe
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -431,7 +431,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciextension
 #>
 function Get-AzStackHciExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -608,6 +608,424 @@ end {
 
 <#
 .Synopsis
+Add consent time for default extensions and initiate extensions installation
+.Description
+Add consent time for default extensions and initiate extensions installation
+.Example
+Invoke-AzStackHciConsentAndInstallDefaultExtension -ResourceGroupName "test-rg" -ClusterName "test-clus"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStackHciIdentity>: Identity Parameter
+  [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
+  [ClusterName <String>]: The name of the cluster.
+  [ExtensionName <String>]: The name of the machine extension.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+.Link
+https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciconsentandinstalldefaultextension
+#>
+function Invoke-AzStackHciConsentAndInstallDefaultExtension {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
+[CmdletBinding(DefaultParameterSetName='And', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='And', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='And', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='And')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='AndViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            And = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtension_And';
+            AndViaIdentity = 'Az.StackHCI.private\Invoke-AzStackHciConsentAndInstallDefaultExtension_AndViaIdentity';
+        }
+        if (('And') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ArcSettingName')) {
+            $PSBoundParameters['ArcSettingName'] = "default"
+        }
+        if (('And') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Extends Software Assurance Benefit to a cluster
+.Description
+Extends Software Assurance Benefit to a cluster
+.Example
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg"
+.Example
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IStackHciIdentity>: Identity Parameter
+  [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
+  [ClusterName <String>]: The name of the cluster.
+  [ExtensionName <String>]: The name of the machine extension.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>: .
+  [SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]: Customer Intent for Software Assurance Benefit.
+.Link
+https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciextendclustersoftwareassurancebenefit
+#>
+function Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
+[CmdletBinding(DefaultParameterSetName='ExtendExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Extend', Mandatory)]
+    [Parameter(ParameterSetName='ExtendExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='Extend', Mandatory)]
+    [Parameter(ParameterSetName='ExtendExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Extend')]
+    [Parameter(ParameterSetName='ExtendExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ExtendViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Extend', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest]
+    # .
+    # To construct, see NOTES section for SOFTWAREASSURANCECHANGEREQUEST properties and create a hash table.
+    ${SoftwareAssuranceChangeRequest},
+
+    [Parameter(ParameterSetName='ExtendExpanded')]
+    [Parameter(ParameterSetName='ExtendViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='"Enable"')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent]
+    # Customer Intent for Software Assurance Benefit.
+    ${SoftwareAssuranceIntent},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Extend = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_Extend';
+            ExtendExpanded = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendExpanded';
+            ExtendViaIdentity = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaIdentity';
+            ExtendViaIdentityExpanded = 'Az.StackHCI.private\Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaIdentityExpanded';
+        }
+        if (('Extend', 'ExtendExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        if (('ExtendExpanded', 'ExtendViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SoftwareAssuranceIntent')) {
+            $PSBoundParameters['SoftwareAssuranceIntent'] = "Enable"
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Create ArcSetting for HCI cluster.
 .Description
 Create ArcSetting for HCI cluster.
@@ -615,12 +1033,12 @@ Create ArcSetting for HCI cluster.
 New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsetting
 #>
 function New-AzStackHciArcSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -820,12 +1238,12 @@ New-AzStackHciCluster -Name "myCluster" -ResourceGroupName "test-rg" -AadTenantI
 New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenantId "c76bd4d1-bea3-45ea-be1b-4a745a675d07" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "westeurope" -DesiredPropertyDiagnosticLevel "Off" -DesiredPropertyWindowsServerSubscription "Enabled"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
 #>
 function New-AzStackHciCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -900,8 +1318,38 @@ param(
     ${DesiredPropertyWindowsServerSubscription},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent]
+    # Customer Intent for Software Assurance Benefit.
+    ${SoftwareAssurancePropertySoftwareAssuranceIntent},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus]
+    # Status of the Software Assurance for the cluster.
+    ${SoftwareAssurancePropertySoftwareAssuranceStatus},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -1044,12 +1492,12 @@ $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name "MicrosoftMonitoringAgent" -ResourceGroupName test-rg -ExtensionParameterPublisher "Microsoft.Compute" -ExtensionParameterType "MicrosoftMonitoringAgent" -ExtensionParameterProtectedSetting $Settings
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 #>
 function New-AzStackHciExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1094,13 +1542,19 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+    ${ExtensionParameterEnableAutomaticUpgrade},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # How the extension handler should be forced to update even if the extension configuration has not changed.
     ${ExtensionParameterForceUpdateTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersProtectedSettings]))]
     [System.Collections.Hashtable]
     # Protected settings (may contain secrets).
     ${ExtensionParameterProtectedSetting},
@@ -1113,7 +1567,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersSettings]))]
     [System.Collections.Hashtable]
     # Json formatted public settings for the extension.
     ${ExtensionParameterSetting},
@@ -1128,6 +1582,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the version of the script handler.
+    # Latest version would be used if not specified.
     ${ExtensionParameterTypeHandlerVersion},
 
     [Parameter()]
@@ -1911,7 +2366,7 @@ Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPro
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1928,7 +2383,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
 #>
 function Update-AzStackHciCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1986,8 +2441,24 @@ param(
     ${DesiredPropertyWindowsServerSubscription},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

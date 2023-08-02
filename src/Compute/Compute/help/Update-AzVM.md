@@ -19,8 +19,9 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-OsDiskWriteAccelerator <Boolean>] [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>]
  [-EncryptionAtHost <Boolean>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-CapacityReservationGroupId <String>] [-AsJob] [-NoWait] [-UserData <String>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -30,6 +31,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-EncryptionAtHost <Boolean>]
  [-ProximityPlacementGroupId <String>] [-HostId <String>] [-CapacityReservationGroupId <String>] [-AsJob]
  [-NoWait] [-UserData <String>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,6 +41,7 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-UltraSSDEnabled <Boolean>] [-MaxPrice <Double>] [-EncryptionAtHost <Boolean>]
  [-ProximityPlacementGroupId <String>] [-HostId <String>] [-CapacityReservationGroupId <String>] [-AsJob]
  [-NoWait] [-UserData <String>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
+ [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +76,7 @@ $cred = New-Object System.Management.Automation.PSCredential ($user, $securePass
 $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 2, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 4.
 
-Update-AzVm -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
+Update-AzVM -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1. 
 # Hyperthreading is now disabled for this VM.
 ```
@@ -122,6 +125,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -288,6 +321,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

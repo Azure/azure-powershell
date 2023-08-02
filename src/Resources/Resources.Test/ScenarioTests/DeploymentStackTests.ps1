@@ -88,10 +88,9 @@ function Test-NewResourceGroupDeploymentStack
 		
 		# --- ParameterlessTemplateFileParameterSetName ---
 
-		# Test - Success (with tags)
-		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -Tag @{"key1" = "value1"; "key2" = "value2"} -DenySettingsMode None -Force
+		# Test - Success
+		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual 2 $deployment.Tags.Count
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -127,6 +126,46 @@ function Test-NewResourceGroupDeploymentStack
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests New operation on deployment stacks at the RG scope.
+#>
+function Test-NewAndSetResourceGroupDeploymentStackWithTags
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try 
+	{
+		# Prepare
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Test - Add Tags
+		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -Tag @{"key1" = "value1"; "key2" = "value2"} -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Keep Tags
+		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Clear Tags
+		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile blankTemplate.json -Tag @{} -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 0 $deployment.Tags.Count
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
 <#
 .SYNOPSIS
@@ -610,7 +649,7 @@ Tests NEW operation on deployment stacks at the SUB scope.
 function Test-NewSubscriptionDeploymentStack
 {
 	# Setup
-	$rname = "DanteStack1234"
+	$rname = Get-ResourceName
 	$location = "West US 2"
 
 	try 
@@ -619,10 +658,9 @@ function Test-NewSubscriptionDeploymentStack
 		
 		# --- ParameterlessTemplateFileParameterSetName ---
 
-		# Test - Success (with tags)
-		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -Tag @{"key1" = "value1"; "key2" = "value2"} -DenySettingsMode None -Force
+		# Test - Success
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual 2 $deployment.Tags.Count
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -654,6 +692,42 @@ function Test-NewSubscriptionDeploymentStack
         Remove-AzSubscriptionDeploymentStack -Name $rname -DeleteAll -Force
     }
 }
+
+<#
+.SYNOPSIS
+Tests NEW operation on deployment stacks at the SUB scope.
+#>
+function Test-NewAndSetSubscriptionDeploymentStackWithTags
+{
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West US 2"
+
+	try 
+	{
+		# Test - Add Tags
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -Tag @{"key1" = "value1"; "key2" = "value2"} -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Keep Tags
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Clear Tags
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile blankTemplate.json -Location $location -Tag @{} -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 0 $deployment.Tags.Count
+	}
+
+	finally
+    {
+        # Cleanup
+        Remove-AzSubscriptionDeploymentStack -Name $rname -DeleteAll -Force
+    }
+}
+
 
 <#
 .SYNOPSIS
@@ -1105,10 +1179,9 @@ function Test-NewManagementGroupDeploymentStack
 		
 		# --- ParameterlessTemplateFileParameterSetName ---
 
-		# Test - Success (with tags)
-		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Tag @{"key1" = "value1"; "key2" = "value2"} -Location $location -DenySettingsMode None -Force
+		# Test - Success
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-		Assert-AreEqual 2 $deployment.Tags.Count
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
@@ -1134,6 +1207,45 @@ function Test-NewManagementGroupDeploymentStack
         
     }
 }
+
+<#
+.SYNOPSIS
+Tests New operation on deployment stacks at the RG scope.
+#>
+function Test-NewAndSetManagementGroupDeploymentStackWithTags
+{
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$subId = (Get-AzContext).Subscription.SubscriptionId
+	$location = "West US 2"
+
+	try 
+	{
+		# Test - Add Tags
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Tag @{"key1" = "value1"; "key2" = "value2"} -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Keep Tags
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 2 $deployment.Tags.Count
+
+		# Test - Clear Tags
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Tag @{} -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+		Assert-AreEqual 0 $deployment.Tags.Count
+	}
+	
+	finally
+    {
+		# Cleanup
+		Remove-AzManagementGroupDeploymentStack $mgid $rname -DeleteAll -Force
+        
+    }
+}
+
 
 <#
 .SYNOPSIS

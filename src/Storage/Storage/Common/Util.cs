@@ -779,7 +779,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             ShareServiceClient shareServiceClient;
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context.StorageAccount!= null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 if (context.ShareTokenIntent != null)
                 {
@@ -792,7 +792,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string connectionString = context.ConnectionString;
 
                 // remove the "?" at the begin of SAS if any
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
                 {
                     connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
                 }

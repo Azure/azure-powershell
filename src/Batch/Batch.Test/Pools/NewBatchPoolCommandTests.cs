@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TargetNodeCommunicationMode = Microsoft.Azure.Batch.Common.NodeCommunicationMode.Simplified;
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
+            cmdlet.VirtualMachineConfiguration.Extensions = new List<PSVMExtension>
+            {
+                new PSVMExtension("sample-extension", "sample-publisher", "sample-type") { EnableAutomaticUpgrade = true },
+            };
+            cmdlet.VirtualMachineConfiguration.ContainerConfiguration = new PSContainerConfiguration() { Type = "CriCompatible" };
             cmdlet.VirtualMachineSize = "small";
             cmdlet.MountConfiguration = new[] {
                 new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))),
@@ -146,6 +151,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Publisher, requestParameters.VirtualMachineConfiguration.ImageReference.Publisher);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Offer, requestParameters.VirtualMachineConfiguration.ImageReference.Offer);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Sku, requestParameters.VirtualMachineConfiguration.ImageReference.Sku);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.Extensions[0].Name, requestParameters.VirtualMachineConfiguration.Extensions[0].Name);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.Extensions[0].Publisher, requestParameters.VirtualMachineConfiguration.Extensions[0].Publisher);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.Extensions[0].Type, requestParameters.VirtualMachineConfiguration.Extensions[0].Type);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.Extensions[0].EnableAutomaticUpgrade, requestParameters.VirtualMachineConfiguration.Extensions[0].EnableAutomaticUpgrade);
+            Assert.Equal(cmdlet.VirtualMachineConfiguration.ContainerConfiguration.Type, requestParameters.VirtualMachineConfiguration.ContainerConfiguration.Type);
             Assert.Equal(cmdlet.VirtualMachineSize, requestParameters.VmSize);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName);
             Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey);
@@ -198,6 +208,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             var networkConfiguration = new PSNetworkConfiguration();
             networkConfiguration.SubnetId = "fakeSubnetId";
+            networkConfiguration.EnableAcceleratedNetworking = true;
 
             cmdlet.Id = "testPool";
             cmdlet.VirtualMachineSize = "small";
@@ -206,6 +217,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
 
             string subnetId = null;
+            bool? enableAcceleratedNetworking = null;
 
             Action<BatchRequest<
                 PoolAddParameter,
@@ -214,6 +226,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 (request) =>
                 {
                     subnetId = request.Parameters.NetworkConfiguration.SubnetId;
+                    enableAcceleratedNetworking = request.Parameters.NetworkConfiguration.EnableAcceleratedNetworking;
                 };
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractPoolAction);
@@ -223,6 +236,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(cmdlet.NetworkConfiguration.SubnetId, subnetId);
+            Assert.Equal(cmdlet.NetworkConfiguration.EnableAcceleratedNetworking, enableAcceleratedNetworking);
         }
 
         [Fact]

@@ -64,6 +64,20 @@ Describe 'AzDatabricksWorkspace' {
         } | Should -Not -Throw
     }
 
+    It 'UpdateRequiredNsgRule-EnableNoPublicIP-PublicNetworkAccess' {
+        {
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName1 -ResourceGroupName $env.resourceGroup -RequiredNsgRule 'AllRules' -EnableNoPublicIP:$false -PublicNetworkAccess 'Enabled' -Tag @{"key" = "value" }
+            $config.RequiredNsgRule | Should -Be 'AllRules'
+            $config.EnableNoPublicIP | Should -Be 'false'
+            $config.PublicNetworkAccess | Should -Be 'Enabled'
+
+            $config = Update-AzDatabricksWorkspace -Name $env.workSpaceName1 -ResourceGroupName $env.resourceGroup -RequiredNsgRule 'NoAzureDatabricksRules' -EnableNoPublicIP:$true -PublicNetworkAccess 'Disabled'
+            $config.RequiredNsgRule | Should -Be 'NoAzureDatabricksRules'
+            $config.EnableNoPublicIP | Should -Be 'true'
+            $config.PublicNetworkAccess | Should -Be 'Disabled'
+        }
+    }
+
     It 'Delete' {
         { 
             Remove-AzDatabricksWorkspace -Name $env.workSpaceName2 -ResourceGroupName $env.resourceGroup

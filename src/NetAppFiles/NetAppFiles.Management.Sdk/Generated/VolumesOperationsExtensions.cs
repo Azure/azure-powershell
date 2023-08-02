@@ -507,6 +507,70 @@ namespace Microsoft.Azure.Management.NetApp
             }
 
             /// <summary>
+            /// Get Group Id List for LDAP User
+            /// </summary>
+            /// <remarks>
+            /// Returns the list of group Ids for a specific LDAP User
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='body'>
+            /// Returns group Id list for a specific LDAP user
+            /// </param>
+            public static GetGroupIdListForLDAPUserResponse ListGetGroupIdListForLdapUser(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLDAPUserRequest body)
+            {
+                return operations.ListGetGroupIdListForLdapUserAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get Group Id List for LDAP User
+            /// </summary>
+            /// <remarks>
+            /// Returns the list of group Ids for a specific LDAP User
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='body'>
+            /// Returns group Id list for a specific LDAP user
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GetGroupIdListForLDAPUserResponse> ListGetGroupIdListForLdapUserAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLDAPUserRequest body, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListGetGroupIdListForLdapUserWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Break volume replication
             /// </summary>
             /// <remarks>
@@ -1582,6 +1646,70 @@ namespace Microsoft.Azure.Management.NetApp
                 using (var _result = await operations.BeginBreakFileLocksWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Get Group Id List for LDAP User
+            /// </summary>
+            /// <remarks>
+            /// Returns the list of group Ids for a specific LDAP User
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='body'>
+            /// Returns group Id list for a specific LDAP user
+            /// </param>
+            public static GetGroupIdListForLDAPUserResponse BeginListGetGroupIdListForLdapUser(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLDAPUserRequest body)
+            {
+                return operations.BeginListGetGroupIdListForLdapUserAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get Group Id List for LDAP User
+            /// </summary>
+            /// <remarks>
+            /// Returns the list of group Ids for a specific LDAP User
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the NetApp account
+            /// </param>
+            /// <param name='poolName'>
+            /// The name of the capacity pool
+            /// </param>
+            /// <param name='volumeName'>
+            /// The name of the volume
+            /// </param>
+            /// <param name='body'>
+            /// Returns group Id list for a specific LDAP user
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GetGroupIdListForLDAPUserResponse> BeginListGetGroupIdListForLdapUserAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLDAPUserRequest body, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginListGetGroupIdListForLdapUserWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
                 }
             }
 

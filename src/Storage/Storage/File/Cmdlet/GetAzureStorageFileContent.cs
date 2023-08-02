@@ -206,6 +206,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 case LocalConstants.ShareParameterSetName:
                     fileToBeDownloaded = this.Share.GetRootDirectoryReference().GetFileReferenceByPath(path);
 
+                    if (this.ShareClient != null)
+                    {
+                        fileClientToBeDownloaded = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.Path);
+                    }
                     // Build and set storage context for the output object when
                     // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
                     if (ShouldSetContext(this.Context, this.Share.ServiceClient))
@@ -226,6 +230,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 case LocalConstants.DirectoryParameterSetName:
                     fileToBeDownloaded = this.Directory.GetFileReferenceByPath(path);
 
+                    if (this.ShareDirectoryClient != null)
+                    {
+                        fileClientToBeDownloaded = this.ShareDirectoryClient.GetFileClient(this.Path);
+                    }
                     // Build and set storage context for the output object when
                     // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
                     if (ShouldSetContext(this.Context, this.Directory.ServiceClient))

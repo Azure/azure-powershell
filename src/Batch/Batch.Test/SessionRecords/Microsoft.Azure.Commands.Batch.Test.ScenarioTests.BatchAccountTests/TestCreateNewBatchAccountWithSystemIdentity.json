@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/providers/Microsoft.Batch?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2g/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2g/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fd767ede-1bff-4bd9-8e34-deb5df1e856d"
+          "9934fc40-dcb3-462b-bcf0-e541cd9b69f4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "199adad1-ac88-4e8c-a396-e56c5ad869a5"
+          "acfdd371-efe5-4d2d-aa29-e3234733e72c"
         ],
         "x-ms-correlation-request-id": [
-          "199adad1-ac88-4e8c-a396-e56c5ad869a5"
+          "acfdd371-efe5-4d2d-aa29-e3234733e72c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171840Z:199adad1-ac88-4e8c-a396-e56c5ad869a5"
+          "SOUTHEASTASIA:20230616T072933Z:acfdd371-efe5-4d2d-aa29-e3234733e72c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:18:40 GMT"
+          "Fri, 16 Jun 2023 07:29:32 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -54,37 +54,37 @@
           "-1"
         ],
         "Content-Length": [
-          "8948"
+          "9611"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/providers/Microsoft.Batch\",\r\n  \"namespace\": \"Microsoft.Batch\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"ddbf3205-c6bd-46ae-8127-60eb93363864\",\r\n    \"roleDefinitionId\": \"b7f84953-1d03-4eab-9ea4-45f065258ff8\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"batchAccounts\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\",\r\n        \"2015-07-01\",\r\n        \"2014-05-01-privatepreview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/pools\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/detectors\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/certificates\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/quotas\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/accountOperationResults\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\",\r\n        \"2015-07-01\",\r\n        \"2014-05-01-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualMachineSkus\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/cloudServiceSkus\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/providers/Microsoft.Batch\",\r\n  \"namespace\": \"Microsoft.Batch\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"ddbf3205-c6bd-46ae-8127-60eb93363864\",\r\n    \"roleDefinitionId\": \"b7f84953-1d03-4eab-9ea4-45f065258ff8\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"batchAccounts\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\",\r\n        \"2015-07-01\",\r\n        \"2014-05-01-privatepreview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/pools\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/detectors\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"batchAccounts/certificates\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/quotas\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/checkNameAvailability\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/accountOperationResults\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\",\r\n        \"2021-01-01\",\r\n        \"2020-09-01\",\r\n        \"2020-05-01\",\r\n        \"2020-03-01-preview\",\r\n        \"2020-03-01\",\r\n        \"2019-08-01\",\r\n        \"2019-04-01\",\r\n        \"2018-12-01\",\r\n        \"2017-09-01\",\r\n        \"2017-05-01\",\r\n        \"2017-01-01\",\r\n        \"2015-12-01\",\r\n        \"2015-09-01\",\r\n        \"2015-07-01\",\r\n        \"2014-05-01-privatepreview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualMachineSkus\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/cloudServiceSkus\",\r\n      \"locations\": [\r\n        \"West Europe\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"North Central US\",\r\n        \"Brazil South\",\r\n        \"North Europe\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Japan East\",\r\n        \"Australia Southeast\",\r\n        \"Japan West\",\r\n        \"Korea South\",\r\n        \"Korea Central\",\r\n        \"Southeast Asia\",\r\n        \"South Central US\",\r\n        \"Australia East\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Germany West Central\",\r\n        \"Switzerland North\",\r\n        \"Norway East\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"East US\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2023-05-01\",\r\n        \"2022-10-01\",\r\n        \"2022-06-01\",\r\n        \"2022-01-01\",\r\n        \"2021-06-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourcegroups/ps4280?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlZ3JvdXBzL3BzNDI4MD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps2216?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzMjIxNj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f0bb46c9-849d-445f-9276-bde8fb2ee38e"
+          "8d81131d-e34b-4a56-ad01-f84aaa039a9f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "28"
+          "29"
         ]
       },
-      "RequestBody": "{\r\n  \"location\": \"westus\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westus2\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -96,13 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "a9ac4fd6-ec94-4f73-8037-f9769c25937d"
+          "5b09e04b-5773-4c80-9207-545d869e60b1"
         ],
         "x-ms-correlation-request-id": [
-          "a9ac4fd6-ec94-4f73-8037-f9769c25937d"
+          "5b09e04b-5773-4c80-9207-545d869e60b1"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171841Z:a9ac4fd6-ec94-4f73-8037-f9769c25937d"
+          "SOUTHEASTASIA:20230616T072936Z:5b09e04b-5773-4c80-9207-545d869e60b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +111,10 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:18:41 GMT"
+          "Fri, 16 Jun 2023 07:29:35 GMT"
         ],
         "Content-Length": [
-          "165"
+          "166"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,34 +123,34 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/ps4280\",\r\n  \"name\": \"ps4280\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps2216\",\r\n  \"name\": \"ps2216\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/ps4280/providers/Microsoft.Batch/batchAccounts/ps9329?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL3BzNDI4MC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM5MzI5P2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps2216/providers/Microsoft.Batch/batchAccounts/ps7122?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzMjIxNi9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM3MTIyP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d46f289b-7617-436f-8338-0ace97536bbb"
+          "44d90803-3256-41a3-a826-1d2a94b3258b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "144"
+          "145"
         ]
       },
-      "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -159,13 +159,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/ps4280/providers/Microsoft.Batch/batchAccounts/ps9329/operationResults/edb6e111-0328-4abc-9161-2a28b6065e64?api-version=2022-10-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps2216/providers/Microsoft.Batch/batchAccounts/ps7122/operationResults/ca9fcfc5-d752-4115-84c3-ab4d3eb9325a?api-version=2022-10-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-request-id": [
-          "edb6e111-0328-4abc-9161-2a28b6065e64"
+          "ca9fcfc5-d752-4115-84c3-ab4d3eb9325a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,13 +180,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "ad6f68da-0a1a-4416-80fb-4376f1cc2772"
+          "70a6f9a5-883e-45e7-86d3-288a8f83a135"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171844Z:ad6f68da-0a1a-4416-80fb-4376f1cc2772"
+          "SOUTHEASTASIA:20230616T072944Z:70a6f9a5-883e-45e7-86d3-288a8f83a135"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:18:43 GMT"
+          "Fri, 16 Jun 2023 07:29:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -199,17 +199,17 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/ps4280/providers/Microsoft.Batch/batchAccounts/ps9329/operationResults/edb6e111-0328-4abc-9161-2a28b6065e64?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlR3JvdXBzL3BzNDI4MC9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM5MzI5L29wZXJhdGlvblJlc3VsdHMvZWRiNmUxMTEtMDMyOC00YWJjLTkxNjEtMmEyOGI2MDY1ZTY0P2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps2216/providers/Microsoft.Batch/batchAccounts/ps7122/operationResults/ca9fcfc5-d752-4115-84c3-ab4d3eb9325a?api-version=2022-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlR3JvdXBzL3BzMjIxNi9wcm92aWRlcnMvTWljcm9zb2Z0LkJhdGNoL2JhdGNoQWNjb3VudHMvcHM3MTIyL29wZXJhdGlvblJlc3VsdHMvY2E5ZmNmYzUtZDc1Mi00MTE1LTg0YzMtYWI0ZDNlYjkzMjVhP2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d46f289b-7617-436f-8338-0ace97536bbb"
+          "44d90803-3256-41a3-a826-1d2a94b3258b"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Batch.BatchManagementClient/14.2.0.0"
         ]
       },
@@ -222,13 +222,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"0x8DAD4894D428D3A\""
+          "\"0x8DB6E3B7DD88BAB\""
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "debc2a58-6680-45f4-a052-88ec5d61637f"
+          "b7c7e7d2-1c46-4bb9-9ef1-4779366044a8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,16 +240,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "2d575bf6-f428-48a2-b48a-66df016028f2"
+          "dd54a4a5-6db5-469c-b0f8-4a698bdcac91"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171859Z:2d575bf6-f428-48a2-b48a-66df016028f2"
+          "SOUTHEASTASIA:20230616T072959Z:dd54a4a5-6db5-469c-b0f8-4a698bdcac91"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:18:59 GMT"
+          "Fri, 16 Jun 2023 07:29:59 GMT"
         ],
         "Content-Length": [
-          "3552"
+          "3776"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -258,28 +258,28 @@
           "-1"
         ],
         "Last-Modified": [
-          "Fri, 02 Dec 2022 17:18:59 GMT"
+          "Fri, 16 Jun 2023 07:29:59 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourceGroups/ps4280/providers/Microsoft.Batch/batchAccounts/ps9329\",\r\n  \"name\": \"ps9329\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps9329.westus.batch.azure.com\",\r\n    \"nodeManagementEndpoint\": \"a86db4cd-451d-435c-ae45-033cd1acd5b3.westus.service.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 0,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEIv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"Standard NCASv3_T4 Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardXEIDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"Standard NDASv4_A100 Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNPSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFXMDVSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCADSA100v4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDADSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEADSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"StandardNVADSA10v5Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": true,\r\n    \"lowPriorityCoreQuota\": 0,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"privateEndpointConnections\": [],\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    },\r\n    \"allowedAuthenticationModes\": [\r\n      \"SharedKey\",\r\n      \"AAD\",\r\n      \"TaskAuthenticationToken\"\r\n    ]\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"bbdd4900-a55d-4d08-9317-aa4482fdeff0\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourceGroups/ps2216/providers/Microsoft.Batch/batchAccounts/ps7122\",\r\n  \"name\": \"ps7122\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"ps7122.westus2.batch.azure.com\",\r\n    \"nodeManagementEndpoint\": \"81c3d72d-bc59-48d3-a4f0-48275a18c182.westus2.service.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"dedicatedCoreQuota\": 0,\r\n    \"dedicatedCoreQuotaPerVMFamily\": [\r\n      {\r\n        \"name\": \"standardAv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardESv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA0_A7Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardA8_A11Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"basicAFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHPromoFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardGSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNDSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHCSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBrsv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEAv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEASv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardMSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEIv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNVSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"Standard NCASv3_T4 Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardXEIDSv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"Standard NDASv4_A100 Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDCSv2Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNPSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardFXMDVSFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDDSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEDSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardNCADSA100v4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardDADSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEADSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"StandardNVADSA10v5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardEBDSv5Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHBv4Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardHXFamily\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLSv3Family\",\r\n        \"coreQuota\": 0\r\n      },\r\n      {\r\n        \"name\": \"standardLASv3Family\",\r\n        \"coreQuota\": 0\r\n      }\r\n    ],\r\n    \"dedicatedCoreQuotaPerVMFamilyEnforced\": true,\r\n    \"lowPriorityCoreQuota\": 0,\r\n    \"poolQuota\": 100,\r\n    \"activeJobAndJobScheduleQuota\": 300,\r\n    \"poolAllocationMode\": \"BatchService\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"privateEndpointConnections\": [],\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Batch\"\r\n    },\r\n    \"allowedAuthenticationModes\": [\r\n      \"SharedKey\",\r\n      \"AAD\",\r\n      \"TaskAuthenticationToken\"\r\n    ]\r\n  },\r\n  \"identity\": {\r\n    \"principalId\": \"72395c4c-8ce8-4f70-8b87-b09c7f660453\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/resourcegroups/ps4280?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL3Jlc291cmNlZ3JvdXBzL3BzNDI4MD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/resourcegroups/ps2216?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL3Jlc291cmNlZ3JvdXBzL3BzMjIxNj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a09f9701-560c-4ee5-a9f7-041c5465e3af"
+          "758871bc-bc98-4c0f-9857-def039c8b9df"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -291,7 +291,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -300,13 +300,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "80dd3bf6-2789-4f47-a09a-a07ccedef0df"
+          "1852e5b8-741d-441e-8394-0a8babeaa502"
         ],
         "x-ms-correlation-request-id": [
-          "80dd3bf6-2789-4f47-a09a-a07ccedef0df"
+          "1852e5b8-741d-441e-8394-0a8babeaa502"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171901Z:80dd3bf6-2789-4f47-a09a-a07ccedef0df"
+          "SOUTHEASTASIA:20230616T073001Z:1852e5b8-741d-441e-8394-0a8babeaa502"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -315,7 +315,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:19:00 GMT"
+          "Fri, 16 Jun 2023 07:30:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -328,15 +328,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -348,7 +348,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -357,13 +357,13 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "fefaf38d-4a02-4349-8336-0f1482ff9bc1"
+          "2c0e7088-66ed-4060-9a09-7d22dcfccbd2"
         ],
         "x-ms-correlation-request-id": [
-          "fefaf38d-4a02-4349-8336-0f1482ff9bc1"
+          "2c0e7088-66ed-4060-9a09-7d22dcfccbd2"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171916Z:fefaf38d-4a02-4349-8336-0f1482ff9bc1"
+          "SOUTHEASTASIA:20230616T073017Z:2c0e7088-66ed-4060-9a09-7d22dcfccbd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -372,7 +372,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:19:16 GMT"
+          "Fri, 16 Jun 2023 07:30:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -385,15 +385,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -405,7 +405,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -414,13 +414,13 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "7f2dee08-125b-48e1-a852-5490ecac5431"
+          "c9d7f518-46de-4ce2-a4df-abe4bdd88c2e"
         ],
         "x-ms-correlation-request-id": [
-          "7f2dee08-125b-48e1-a852-5490ecac5431"
+          "c9d7f518-46de-4ce2-a4df-abe4bdd88c2e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171931Z:7f2dee08-125b-48e1-a852-5490ecac5431"
+          "SOUTHEASTASIA:20230616T073032Z:c9d7f518-46de-4ce2-a4df-abe4bdd88c2e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -429,7 +429,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:19:31 GMT"
+          "Fri, 16 Jun 2023 07:30:32 GMT"
         ],
         "Expires": [
           "-1"
@@ -442,15 +442,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -462,7 +462,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -471,13 +471,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "944f4f83-cb4d-42dc-83b7-586d23d7cc15"
+          "8cd2e239-389d-4ae5-b563-8fa403f168e1"
         ],
         "x-ms-correlation-request-id": [
-          "944f4f83-cb4d-42dc-83b7-586d23d7cc15"
+          "8cd2e239-389d-4ae5-b563-8fa403f168e1"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T171946Z:944f4f83-cb4d-42dc-83b7-586d23d7cc15"
+          "SOUTHEASTASIA:20230616T073048Z:8cd2e239-389d-4ae5-b563-8fa403f168e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -486,7 +486,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:19:46 GMT"
+          "Fri, 16 Jun 2023 07:30:47 GMT"
         ],
         "Expires": [
           "-1"
@@ -499,15 +499,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -519,7 +519,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -528,13 +528,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "0147ef38-6c33-4fe6-8563-c760182f68dd"
+          "8e23af6a-2b79-48c4-8013-63eeee9bbe37"
         ],
         "x-ms-correlation-request-id": [
-          "0147ef38-6c33-4fe6-8563-c760182f68dd"
+          "8e23af6a-2b79-48c4-8013-63eeee9bbe37"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172002Z:0147ef38-6c33-4fe6-8563-c760182f68dd"
+          "SOUTHEASTASIA:20230616T073103Z:8e23af6a-2b79-48c4-8013-63eeee9bbe37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -543,7 +543,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:20:01 GMT"
+          "Fri, 16 Jun 2023 07:31:02 GMT"
         ],
         "Expires": [
           "-1"
@@ -556,15 +556,15 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -579,13 +579,13 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "4fde6c08-1067-4e26-8fa8-fe51c882887f"
+          "c9afe245-6711-436a-8bc9-9d10dddd183e"
         ],
         "x-ms-correlation-request-id": [
-          "4fde6c08-1067-4e26-8fa8-fe51c882887f"
+          "c9afe245-6711-436a-8bc9-9d10dddd183e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172017Z:4fde6c08-1067-4e26-8fa8-fe51c882887f"
+          "SOUTHEASTASIA:20230616T073118Z:c9afe245-6711-436a-8bc9-9d10dddd183e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -594,7 +594,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:20:16 GMT"
+          "Fri, 16 Jun 2023 07:31:18 GMT"
         ],
         "Expires": [
           "-1"
@@ -607,15 +607,15 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/67e11b19-95f8-4d96-a472-5f626c5445ec/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzQyODAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjdlMTFiMTktOTVmOC00ZDk2LWE0NzItNWY2MjZjNTQ0NWVjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpReU9EQXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/21abd678-18c5-4660-9fdd-8c5ba6b6fe1f/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzIyMTYtV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhYmQ2NzgtMThjNS00NjYwLTlmZGQtOGM1YmE2YjZmZTFmL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpJeU1UWXRWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.65"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.76"
         ]
       },
       "RequestBody": "",
@@ -630,13 +630,13 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "3be06a03-0a8e-49d6-bdab-4df2dcf9b62f"
+          "0af88cc9-3dd2-408d-80ca-40da4f5863c5"
         ],
         "x-ms-correlation-request-id": [
-          "3be06a03-0a8e-49d6-bdab-4df2dcf9b62f"
+          "0af88cc9-3dd2-408d-80ca-40da4f5863c5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20221202T172017Z:3be06a03-0a8e-49d6-bdab-4df2dcf9b62f"
+          "SOUTHEASTASIA:20230616T073119Z:0af88cc9-3dd2-408d-80ca-40da4f5863c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -645,7 +645,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 02 Dec 2022 17:20:16 GMT"
+          "Fri, 16 Jun 2023 07:31:19 GMT"
         ],
         "Expires": [
           "-1"
@@ -660,14 +660,14 @@
   ],
   "Names": {
     "Test-CreateNewBatchAccountWithSystemIdentity": [
-      "ps9329",
-      "ps4280"
+      "ps7122",
+      "ps2216"
     ]
   },
   "Variables": {
-    "SubscriptionId": "67e11b19-95f8-4d96-a472-5f626c5445ec",
-    "AZURE_BATCH_ACCOUNT": "mikebatcheast",
-    "AZURE_BATCH_ENDPOINT": "https://mikebatcheast.eastus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "mikeazure"
+    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
+    "AZURE_BATCH_ACCOUNT": "hoppeeastasia2",
+    "AZURE_BATCH_ENDPOINT": "https://hoppeeastasia2.eastasia.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "123"
   }
 }

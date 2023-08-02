@@ -25,7 +25,7 @@ Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPro
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
 #>
 function Update-AzStackHciCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -100,8 +100,24 @@ param(
     ${DesiredPropertyWindowsServerSubscription},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IClusterPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

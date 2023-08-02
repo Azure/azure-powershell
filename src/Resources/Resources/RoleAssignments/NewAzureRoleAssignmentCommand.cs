@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id,
+                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id : "",
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Resources
                 ConditionVersion = ConditionVersion,
             };
 
-            AuthorizationClient.ValidateScope(parameters.Scope, false);
+            AuthorizationClient.ValidateScope(parameters.Scope, true);
 
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }
