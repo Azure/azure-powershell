@@ -1203,11 +1203,12 @@ function Test-SaveAndRemoveSubscriptionDeploymentStackWithPipeOperator
 {
 	# Setup
 	$rname = Get-ResourceName
+	$location = "West US 2"
 
 	try 
 	{
 		# Prepare
-		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -DenySettingsMode None -Force
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# --- SaveByStackObjectSetName ---
@@ -1721,7 +1722,7 @@ function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
 		# Prepare
 		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
-
+	
 		# --- SaveByStackObjectSetName ---
 		$template = Get-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid | Save-AzManagementGroupDeploymentStackTemplate
 		Assert-NotNull $template
@@ -1733,7 +1734,6 @@ function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
 
 	finally
     {
-		# Cleanup
-		Remove-AzManagementGroupDeploymentStack $mgid $rname -DeleteAll -Force
+		# No cleanup needed, as the stack was deleted.
     }
 }
