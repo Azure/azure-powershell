@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Id = sqlDatabaseGetPropertiesResource.Id;
-            _rid = sqlDatabaseGetPropertiesResource._rid;
-            _ts = sqlDatabaseGetPropertiesResource._ts;
-            _etag = sqlDatabaseGetPropertiesResource._etag;
-            _colls = sqlDatabaseGetPropertiesResource._colls;
-            _users = sqlDatabaseGetPropertiesResource._users;
+            _rid = sqlDatabaseGetPropertiesResource.Rid;
+            _ts = sqlDatabaseGetPropertiesResource.Ts;
+            _etag = sqlDatabaseGetPropertiesResource.Etag;
+            _colls = sqlDatabaseGetPropertiesResource.Colls;
+            _users = sqlDatabaseGetPropertiesResource.Users;
         }
 
 
