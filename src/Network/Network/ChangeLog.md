@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for new Application Gateway SKU type, Basic SKU
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
@@ -36,7 +37,6 @@
     - `New-AzPublicIpAddress`
 * Fixed bug where HubRoutingPreference didn't show up when running 'Get-AzRouteServer'
 * Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
-* Added support for new Application Gateway SKU type, Basic SKU
 
 ## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.
