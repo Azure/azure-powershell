@@ -11,6 +11,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <summary>
         /// The account setting to be updated.
         /// </summary>
+        public string HsmName;
+
+        /// <summary>
+        /// The account setting to be updated.
+        /// </summary>
         public string Name;
 
         /// <summary>
@@ -25,7 +30,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public PSKeyVaultSetting() { }
 
-        public PSKeyVaultSetting(KeyVaultSetting keyVaultSetting) 
+
+        public PSKeyVaultSetting(KeyVaultSetting keyVaultSetting, string hsmName = null) 
         {
             if (null != keyVaultSetting)
             {
@@ -33,6 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 SettingType = keyVaultSetting.SettingType?.ToString();
                 Value = keyVaultSetting.Value.ToString();
             }
+            HsmName = hsmName;
         }
 
         public override string ToString() => $"{Name}={Value} ({SettingType ?? string.Empty})";

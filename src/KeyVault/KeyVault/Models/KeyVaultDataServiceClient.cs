@@ -2250,7 +2250,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultSetting UpdateManagedHsmSetting(string managedHsm, string settingName, PSKeyVaultSetting psSettingParams)
+        public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
         {
             throw new NotImplementedException();
         }

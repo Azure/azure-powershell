@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultSetting GetManagedHsmSetting(string managedHsm, string settingName);
 
-        PSKeyVaultSetting UpdateManagedHsmSetting(string managedHsm, string settingName, PSKeyVaultSetting psSettingParams);
+        PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams);
 
         #endregion
     }

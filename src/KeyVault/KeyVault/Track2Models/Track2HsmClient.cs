@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var client = CreateKeyVaultSettingsClient(managedHsmName);
             try
             {
-                return new PSKeyVaultSetting(client.GetSetting(settingName));
+                return new PSKeyVaultSetting(client.GetSetting(settingName), managedHsmName);
             }
             catch (Exception ex)
             {
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 GetSettingsResult result = client.GetSettings();
                 return null == result ? new List<PSKeyVaultSetting>() : 
-                    result.Settings?.Select(s => new PSKeyVaultSetting(s));
+                    result.Settings?.Select(s => new PSKeyVaultSetting(s, managedHsmName));
             }
             catch (Exception ex)
             {
@@ -716,23 +716,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
         }
 
-        internal PSKeyVaultSetting UpdateSetting(string managedHsmName, string settingName, PSKeyVaultSetting psSettingParams)
+        internal PSKeyVaultSetting UpdateSetting(PSKeyVaultSetting psSettingParams)
         {
-            if (string.IsNullOrEmpty(managedHsmName))
+            if (string.IsNullOrEmpty(psSettingParams?.HsmName))
                 throw new ArgumentNullException("managedHsmName");
-            if (string.IsNullOrEmpty(settingName))
-                throw new ArgumentNullException("settingName");
+            if (null == psSettingParams?.Value)
+                throw new ArgumentNullException("settingValue");
 
-            var client = CreateKeyVaultSettingsClient(managedHsmName);
+            var client = CreateKeyVaultSettingsClient(psSettingParams.HsmName);
             try
             {
-                KeyVaultSetting settingParams;
-
                 if (psSettingParams.SettingType.Equals("boolean"))
                 {
                     bool.TryParse(psSettingParams.Value, out var result);
-                    settingParams = new KeyVaultSetting(psSettingParams.Name, result);
-                    return new PSKeyVaultSetting(client.UpdateSetting(settingParams));
+                    return new PSKeyVaultSetting(client.UpdateSetting(new KeyVaultSetting(psSettingParams.Name, result)), psSettingParams.HsmName);
                 }
                 else
                 {

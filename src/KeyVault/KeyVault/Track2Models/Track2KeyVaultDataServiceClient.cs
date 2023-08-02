@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
         #endregion
 
-        #region
+        #region Setting
         public IEnumerable<PSKeyVaultSetting> GetManagedHsmSettings(string managedHsm)
         {
             return HsmClient.GetSettings(managedHsm);
@@ -632,9 +632,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.GetSetting(managedHsm, settingName);
         }
 
-        public PSKeyVaultSetting UpdateManagedHsmSetting(string managedHsm, string settingName, PSKeyVaultSetting psSettingParams)
+        public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
         {
-            return HsmClient.UpdateSetting(managedHsm, settingName, psSettingParams);
+            return HsmClient.UpdateSetting(psSettingParams);
         }
         #endregion
 
