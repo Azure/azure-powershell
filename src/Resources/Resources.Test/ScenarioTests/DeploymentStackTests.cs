@@ -103,6 +103,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSaveAndRemoveResourceGroupDeploymentStackWithPipeOperator()
+        {
+            TestRunner.RunTestScript("Test-SaveAndRemoveResourceGroupDeploymentStackWithPipeOperator");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionDeploymentStack()
         {
             TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStack");

@@ -593,6 +593,40 @@ function Test-SaveResourceGroupDeploymentStackTemplate
     }
 }
 
+ <#
+.SYNOPSIS
+Tests SAVE and REMOVE operation using pipe operator on deploymentStacks at RG scope.
+#>
+function Test-SaveAndRemoveResourceGroupDeploymentStackWithPipeOperator
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West US 2"
+
+	try 
+	{
+		# Prepare
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
+		# --- SaveByStackObjectSetName ---
+		$template = Get-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname | Save-AzResourceGroupDeploymentStackTemplate
+		Assert-NotNull $template
+
+		# --- RemoveByStackObjectSetName ---
+		$deployment = Get-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname | Remove-AzResourceGroupDeploymentStack -Force
+		Assert-Null $deployment
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 #### Subscription Scoped Stacks #####
 
 <#
@@ -1161,6 +1195,36 @@ function Test-GetManagementGroupDeploymentStack
     }
 }
 
+ <#
+.SYNOPSIS
+Tests SAVE and REMOVE operation using pipe operator on deploymentStacks at Sub scope.
+#>
+function Test-SaveAndRemoveSubscriptionDeploymentStackWithPipeOperator
+{
+	# Setup
+	$rname = Get-ResourceName
+
+	try 
+	{
+		# Prepare
+		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
+		# --- SaveByStackObjectSetName ---
+		$template = Get-AzSubscriptionDeploymentStack -Name $rname | Save-AzSubscriptionDeploymentStackTemplate
+		Assert-NotNull $template
+
+		# --- RemoveByStackObjectSetName ---
+		$deployment = Get-AzSubscriptionDeploymentStack -Name $rname | Remove-AzSubscriptionDeploymentStack -Force
+		Assert-Null $deployment
+	}
+
+	finally
+    {
+		# No need to cleanup as we already deleted stack.
+    }
+}
+
 <#
 .SYNOPSIS
 Tests New operation on deployment stacks at the RG scope.
@@ -1631,6 +1695,40 @@ function Test-SaveManagementGroupDeploymentStackTemplate
 		$deployment = Save-AzManagementGroupDeploymentStackTemplate -StackName $rname -ManagementGroupId $mgid
 		Assert-NotNull $deployment
 		Assert-NotNull $deployment.Template 
+	}
+
+	finally
+    {
+		# Cleanup
+		Remove-AzManagementGroupDeploymentStack $mgid $rname -DeleteAll -Force
+    }
+}
+
+ <#
+.SYNOPSIS
+Tests SAVE and REMOVE operation using pipe operator on deploymentStacks at MG scope.
+#>
+function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
+{
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West US 2"
+	$subId = (Get-AzContext).Subscription.SubscriptionId
+
+	try 
+	{
+		# Prepare
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
+		# --- SaveByStackObjectSetName ---
+		$template = Get-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid | Save-AzManagementGroupDeploymentStackTemplate
+		Assert-NotNull $template
+
+		# --- RemoveByStackObjectSetName ---
+		$deployment = Get-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid | Remove-AzManagementGroupDeploymentStack -Force
+		Assert-Null $deployment
 	}
 
 	finally
