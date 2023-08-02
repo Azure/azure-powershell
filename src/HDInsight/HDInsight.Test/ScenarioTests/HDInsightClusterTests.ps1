@@ -26,13 +26,11 @@ function Test-ClusterRelatedCommands{
 		$params= Prepare-ClusterCreateParameter
 
 		# test create cluster
-		#$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		#-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		#-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		#-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
-		#-MinSupportedTlsVersion $params.minSupportedTlsVersion
-
-		$cluster = Get-AzHDInsightCluster -resourceGroupName yuchen-test-ps -ClusterName hdi-ps-test8080
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
 		Assert-NotNull $cluster
 		
@@ -43,13 +41,13 @@ function Test-ClusterRelatedCommands{
 		#test Set-AzHDInsightClusterSize
 		$resizeCluster = Set-AzHDInsightClusterSize -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
 		-TargetInstanceCount 4
-		Assert-AreEqual $resizeCluster.CoresUsed 40
+		Assert-AreEqual $resizeCluster.CoresUsed 48
 	}
 	finally
 	{
 		# Delete cluster and resource group
-		#Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		#Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
 
@@ -323,7 +321,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		$params= Prepare-ClusterCreateParameter
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/yuchentestPSVN"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testPSVN"
 		$subnetName="testpssubnet"
 
 		# create cluster
@@ -358,7 +356,7 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter
 
 		# prepare custom ambari database
 		$databaseUserName="lyc-admin"
@@ -366,8 +364,8 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
-		$sqlserver="lycdevrpserver.database.windows.net"
-		$database="psAmbari3"
+		$sqlserver="yoursqlserver.database.windows.net"
+		$database="Ambari"
 
 		$config=New-AzHDInsightClusterConfig|Add-AzHDInsightMetastore `
         -SqlAzureServerName $sqlserver -DatabaseName $database `
@@ -402,7 +400,7 @@ function Test-CreateClusterWithComputeIsolation{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_E8S_v3"
 		$headNodeSize="Standard_E16S_v3"
@@ -451,7 +449,7 @@ function Test-CreateClusterWithAvailabilityZones{
 		$hiveDatabase ="zone2"
 		$oozieDatabase = "zone3"
 
-		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/testpsVN8"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testpsVN"
 		$subnetName="default"
 
 		# Create Ambari metastore
@@ -508,8 +506,8 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		$storageContainer="testpspl"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/yuchen-test-ps/providers/Microsoft.Network/virtualNetworks/yuchentestPSVN2"
-		$subnetName="testps2"
+		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testPSVN"
+		$subnetName="default"
 
 		$ipConfigName="ipconfig"
 		$privateIPAllocationMethod="dynamic" # the only supported IP allocation method for private link IP configuration is dynamic

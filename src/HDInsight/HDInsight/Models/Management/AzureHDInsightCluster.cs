@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
             EncryptionInTransit = cluster.Properties?.IsEncryptionInTransitEnabled;
+            EnableSecureChannel = cluster.Properties?.StorageAccounts[0]?.EnableSecureChannel;
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.EndpointLocation;
             var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeRoles)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
@@ -202,6 +203,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Default storage file system for this cluster.
         /// </summary>
         public string StorageFileSystem { get; set; }
+
+        /// <summary>
+        /// Enable secure channel or not, it's an optional field. Default value is false when cluster version less 5.1 and true when cluster version great or equal 5.1.
+        /// </summary>
+        public bool? EnableSecureChannel { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.

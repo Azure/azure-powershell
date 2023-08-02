@@ -19,16 +19,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Type = ipConfiguration.ResourceType;
             ProvisioningState = ipConfiguration.ProvisioningState.ToString();
             Primary = ipConfiguration.IsPrimary;
-            PrivateIPAddress = ipConfiguration.PrivateIPAddress.ToString();
+            PrivateIPAddress = ipConfiguration.PrivateIPAddress?.ToString();
             PrivateIPAllocationMethod = ipConfiguration.PrivateIPAllocationMethod.ToString();
             Subnet = ipConfiguration.SubnetId;
         }
 
         public HDInsightIPConfiguration ToIPConfiguration()
         {
-            return ArmHDInsightModelFactory.HDInsightIPConfiguration(
-                new ResourceIdentifier(this.Id), this.Name, new ResourceType(this.Type), new HDInsightPrivateLinkConfigurationProvisioningState(this.ProvisioningState), this.Primary,
-                IPAddress.Parse(this.PrivateIPAddress), new HDInsightPrivateIPAllocationMethod(this.PrivateIPAllocationMethod), new ResourceIdentifier(this.Subnet));
+            return new HDInsightIPConfiguration(Name)
+            {
+                IsPrimary = Primary,
+                PrivateIPAddress = this.PrivateIPAddress != null? IPAddress.Parse(this.PrivateIPAddress) : null,
+                PrivateIPAllocationMethod = this.PrivateIPAllocationMethod,
+                SubnetId = this.Subnet != null ? new ResourceIdentifier(this.Subnet) : null
+            };
         }
 
         public string Id { get; }

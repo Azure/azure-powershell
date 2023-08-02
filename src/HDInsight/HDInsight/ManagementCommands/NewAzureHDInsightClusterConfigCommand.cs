@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.StorageAccountKey = value; }
         }
 
+        [Parameter(HelpMessage = "Enable secure channel or not, it's an optional field.")]
+        public bool? EnableSecureChannel
+        {
+            get { return _config.EnableSecureChannel; }
+            set { _config.EnableSecureChannel = value; }
+        }
+
         [Parameter(HelpMessage = "Gets or sets the type of the default storage account.")]
         public StorageType StorageAccountType
         {

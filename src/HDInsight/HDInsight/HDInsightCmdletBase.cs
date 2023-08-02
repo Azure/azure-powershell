@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
         {
             try
             {
-                //ResourceIdentifier clusterId = HDInsightManagementClient.ListClusters().First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
                 IList<HDInsightClusterData> clusters = HDInsightManagementClient.ListClusters();
                 ResourceIdentifier clusterId = clusters.First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
                 return clusterId.ResourceGroupName;

@@ -17,15 +17,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Azure.ResourceManager.HDInsight;
 using Azure.ResourceManager.HDInsight.Models;
 using System.Collections.Generic;
-using System.Linq;
 using Azure.ResourceManager;
 using System;
 using Azure.Identity;
 using Azure.ResourceManager.Resources;
 using Azure;
-using Azure.Core;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -34,7 +30,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public AzureHdInsightManagementClient(IAzureContext context)
         {
             HdInsightManagementClient = new ArmClient(new AzurePowerShellCredential(), context.Subscription.Id.ToString());
-            //SubscriptionId = new ResourceIdentifier(context.Subscription.Id.ToString());
         }
 
         /// <summary>
@@ -49,7 +44,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual HDInsightClusterData CreateCluster(string resourceGroupName, string clusterName, HDInsightClusterCreateOrUpdateContent createParams)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
-            //string v = JsonConvert.SerializeObject(createParams, Formatting.Indented);
             ArmOperation<HDInsightClusterResource> armOperation = resourceGroup.GetHDInsightClusters().CreateOrUpdateAsync(WaitUntil.Completed, clusterName, createParams).GetAwaiter().GetResult();
             return armOperation.Value.Data;
         }
@@ -83,10 +77,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual IList<HDInsightClusterData> ListClusters()
         {
             var toReturn = new List<HDInsightClusterData>();
-            Pageable<HDInsightClusterResource> clusters = HdInsightManagementClient.GetDefaultSubscription().GetHDInsightClusters();
-            foreach(HDInsightClusterResource cluster in clusters)
+            IEnumerator<HDInsightClusterResource> enumerator = HdInsightManagementClient.GetDefaultSubscription().GetHDInsightClusters().GetEnumerator();
+
+            try
             {
-                toReturn.Add(cluster.Data);
+                while (enumerator.MoveNext())
+                {
+                    toReturn.Add(enumerator.Current.Data);
+                }
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
             }
 
             return toReturn;
