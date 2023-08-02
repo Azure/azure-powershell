@@ -13,7 +13,7 @@ parameters:
 - name: testFramework
   displayName: Test Framework
   type: string
-  default: netcoreapp3.1
+  default: net6.0
 - name: testPoolName
   displayName: Test Pool Name
   type: string
