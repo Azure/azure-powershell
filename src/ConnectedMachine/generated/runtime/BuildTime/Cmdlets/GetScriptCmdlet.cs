@@ -45,8 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
       }
       catch (System.Exception ee)
       {
-        System.Console.Error.WriteLine($"{ee.GetType().Name}: {ee.Message}");
-        System.Console.Error.WriteLine(ee.StackTrace);
+        System.Console.WriteLine($"${ee.GetType().Name}/{ee.StackTrace}");
         throw ee;
       }
     }

@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ImageDefault".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'ImageDefault'", "ImageDefault", global::System.Management.Automation.CompletionResultType.ParameterValue, "ImageDefault");
+                yield return new global::System.Management.Automation.CompletionResult("ImageDefault", "ImageDefault", global::System.Management.Automation.CompletionResultType.ParameterValue, "ImageDefault");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AutomaticByPlatform".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'AutomaticByPlatform'", "AutomaticByPlatform", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutomaticByPlatform");
+                yield return new global::System.Management.Automation.CompletionResult("AutomaticByPlatform", "AutomaticByPlatform", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutomaticByPlatform");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AutomaticByOS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'AutomaticByOS'", "AutomaticByOS", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutomaticByOS");
+                yield return new global::System.Management.Automation.CompletionResult("AutomaticByOS", "AutomaticByOS", global::System.Management.Automation.CompletionResultType.ParameterValue, "AutomaticByOS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Manual".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'Manual'", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
+                yield return new global::System.Management.Automation.CompletionResult("Manual", "Manual", global::System.Management.Automation.CompletionResultType.ParameterValue, "Manual");
             }
         }
     }

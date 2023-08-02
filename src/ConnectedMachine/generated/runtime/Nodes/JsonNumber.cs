@@ -33,12 +33,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json
 
         internal JsonNumber(float value)
         {
-            this.value = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            this.value = value.ToString();
         }
 
         internal JsonNumber(double value)
         {
-            this.value = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            this.value = value.ToString();
         }
 
         internal override JsonType Type => JsonType.Number;
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json
             => ulong.Parse(number.Value);
 
         public static implicit operator decimal(JsonNumber number)
-            => decimal.Parse(number.Value, System.Globalization.CultureInfo.InvariantCulture);
+            => decimal.Parse(number.Value);
 
         public static implicit operator Double(JsonNumber number)
-            => double.Parse(number.value, System.Globalization.CultureInfo.InvariantCulture);
+            => double.Parse(number.value);
 
         public static implicit operator float(JsonNumber number)
-            => float.Parse(number.value, System.Globalization.CultureInfo.InvariantCulture);
+            => float.Parse(number.value);
 
         public static implicit operator JsonNumber(short data)
             => new JsonNumber(data.ToString());
