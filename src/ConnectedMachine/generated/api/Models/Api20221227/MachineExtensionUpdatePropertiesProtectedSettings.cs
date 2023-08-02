@@ -1,0 +1,34 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
+
+    /// <summary>
+    /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    /// </summary>
+    public partial class MachineExtensionUpdatePropertiesProtectedSettings :
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpdatePropertiesProtectedSettings,
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpdatePropertiesProtectedSettingsInternal
+    {
+
+        /// <summary>
+        /// Creates an new <see cref="MachineExtensionUpdatePropertiesProtectedSettings" /> instance.
+        /// </summary>
+        public MachineExtensionUpdatePropertiesProtectedSettings()
+        {
+
+        }
+    }
+    /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    public partial interface IMachineExtensionUpdatePropertiesProtectedSettings :
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IAssociativeArray<global::System.Object>
+    {
+
+    }
+    /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    internal partial interface IMachineExtensionUpdatePropertiesProtectedSettingsInternal
+
+    {
+
+    }
+}

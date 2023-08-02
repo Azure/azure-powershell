@@ -1,0 +1,30 @@
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227
+{
+    using static Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Extensions;
+
+    /// <summary>Describes the Machine Extension Target Properties</summary>
+    public partial class ExtensionTarget :
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionTarget,
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionTargetInternal
+    {
+
+        /// <summary>Creates an new <see cref="ExtensionTarget" /> instance.</summary>
+        public ExtensionTarget()
+        {
+
+        }
+    }
+    /// Describes the Machine Extension Target Properties
+    public partial interface IExtensionTarget :
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionTargetProperties>
+    {
+
+    }
+    /// Describes the Machine Extension Target Properties
+    internal partial interface IExtensionTargetInternal
+
+    {
+
+    }
+}
