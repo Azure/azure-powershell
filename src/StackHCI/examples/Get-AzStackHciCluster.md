@@ -4,7 +4,7 @@ Get-AzStackHciCluster -ResourceGroupName test-rg
 ```
 
 ```output
-Location   Name       ResourceGroupName
+Location   Name       Resource Group
 --------   ----       -----------------
 eastus     myCluster3 test-rg
 eastus     myCluster  test-rg
@@ -19,7 +19,7 @@ Get-AzStackHciCluster -ResourceGroupName test-rg -ClusterName myCluster
 ```
 
 ```output
-Location Name      ResourceGroupName
+Location Name      Resource Group
 -------- ----      -----------------
 eastus   myCluster test-rg
 ```

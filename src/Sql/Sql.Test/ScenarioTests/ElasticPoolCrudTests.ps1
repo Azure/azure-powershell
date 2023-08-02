@@ -285,7 +285,7 @@ function Test-CreateHyperscaleElasticPoolWithReplica
 function Test-CreateElasticPoolWithPreferredEnclaveType
 {
 	# Setup
-	$location = "eastus2euap"
+	$location = "uksouth"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -293,7 +293,7 @@ function Test-CreateElasticPoolWithPreferredEnclaveType
 	{
 		## Create General Purpose pool with PreferredEnclaveType as Default
 		$poolName = Get-ElasticPoolName
-		$job = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 4 -Edition GeneralPurpose -ComputeGeneration Gen5 -PreferredEnclaveType Default -AsJob
 		$job | Wait-Job
 		$ep1 = $job.Output
@@ -304,7 +304,7 @@ function Test-CreateElasticPoolWithPreferredEnclaveType
 
 		## Create General Purpose pool with PreferredEnclaveType as VBS
 		$poolName = Get-ElasticPoolName
-		$job = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -VCore 4 -Edition GeneralPurpose -ComputeGeneration Gen5 -PreferredEnclaveType VBS -AsJob
 		$job | Wait-Job
 		$ep2 = $job.Output
@@ -592,13 +592,13 @@ function Test-UpdateHyperscaleElasticPoolReplicaCount
 function Test-UpdateElasticPoolWithPreferredEnclaveType
 {
 	# Setup
-	$location = "eastus2euap"
+	$location = "uksouth"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
 	## Create General Purpose pool with PreferredEnclaveType as Default
 	$poolName = Get-ElasticPoolName
-	$job = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+	$job = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -VCore 4 -Edition GeneralPurpose -ComputeGeneration Gen5 -PreferredEnclaveType Default -AsJob
 	$job | Wait-Job
 	$ep1 = $job.Output
@@ -610,7 +610,7 @@ function Test-UpdateElasticPoolWithPreferredEnclaveType
 	try
 	{
 		## Update with PreferredEnclaveType as VBS
-		$job = Set-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$job = Set-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -PreferredEnclaveType VBS -AsJob
 		$job | Wait-Job
 		$ep2 = $job.Output
@@ -620,7 +620,7 @@ function Test-UpdateElasticPoolWithPreferredEnclaveType
 		Assert-AreEqual VBS $ep2.PreferredEnclaveType
 
 		## Update with PreferredEnclaveType as Default
-		$job = Set-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$job = Set-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 				-ElasticPoolName $poolName -PreferredEnclaveType Default -AsJob
 		$job | Wait-Job
 		$ep3 = $job.Output
@@ -816,18 +816,17 @@ function Test-GetElasticPoolWithMaintenanceConfigurationId
 	.SYNOPSIS
 	Tests getting an elastic pool with preferred enclave type
 #>
-function Test-GetElasticPoolWithPreferredEnclaveType
+function Test-GetElasticPoolWithPreferredEnclaveType($location = "uksouth")
 {
 	# Setup
-	$location = "eastus2euap"
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
 	try
 	{
 		# Create General Purpose pool with PreferredEnclaveType as Default
 		$poolName = Get-ElasticPoolName
-		$ep1 = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$ep1 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -VCore 4 -Edition GeneralPurpose -ComputeGeneration Gen5 -PreferredEnclaveType Default
 
 		# Get created pool with PreferredEnclaveType as Default
@@ -837,7 +836,7 @@ function Test-GetElasticPoolWithPreferredEnclaveType
 		
 		# Create General Purpose pool with PreferredEnclaveType as VBS
 		$poolName = Get-ElasticPoolName
-		$ep2 = New-AzSqlElasticPool -ServerName $server -ResourceGroupName $rg `
+		$ep2 = New-AzSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-ElasticPoolName $poolName -VCore 4 -Edition GeneralPurpose -ComputeGeneration Gen5 -PreferredEnclaveType VBS
 
 		# Get created pool with PreferredEnclaveType as VBS

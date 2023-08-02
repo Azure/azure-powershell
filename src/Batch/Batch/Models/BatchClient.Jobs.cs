@@ -259,21 +259,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             jobOperations.TerminateJob(jobId, parameters.TerminateReason, parameters.AdditionalBehaviors);
         }
 
-        /// <summary>
-        /// Gets lifetime summary statistics for all of the jobs in the specified account.
-        /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="additionalBehaviors">Additional client behaviors to perform.</param>
-        public PSJobStatistics GetAllJobsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            WriteVerbose(Resources.GetAllJobsLifetimeStatistics);
-
-            JobOperations jobOperations = context.BatchOMClient.JobOperations;
-            JobStatistics jobStatistics = jobOperations.GetAllLifetimeStatistics(additionalBehaviors);
-            PSJobStatistics psJobStatistics = new PSJobStatistics(jobStatistics);
-
-            return psJobStatistics;
-        }
 
         /// <summary>
         /// Lists the job prep and release status matching the specified filter options.

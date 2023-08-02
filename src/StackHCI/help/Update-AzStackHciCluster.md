@@ -17,7 +17,8 @@ Update an HCI cluster.
 Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
+ [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,7 +26,8 @@ Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-Subscripti
 ```
 Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>]
  [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
+ [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,7 +42,7 @@ Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPro
 ```
 
 ```output
-Location Name       ResourceGroupName
+Location Name       Resource Group
 -------- ----       -----------------
 eastus   myCluster3 test-rg
 ```
@@ -115,6 +117,38 @@ Desired state of Windows Server Subscription.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.WindowsServerSubscription
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 
 ## NOTES
 

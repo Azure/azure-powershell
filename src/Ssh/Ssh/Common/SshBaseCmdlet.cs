@@ -40,9 +40,7 @@ using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Mode
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
-using System.Management.Automation.Host;
 using System.Management.Automation.Runspaces;
-using System.Collections.ObjectModel;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
 
@@ -67,7 +65,6 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal bool deleteCert;
         protected internal string proxyPath;
         protected internal ProgressRecord record;
-        protected internal EndpointAccessResource relayInfo;
         protected internal bool createdServiceConfig;
 
         protected internal readonly string[] supportedResourceTypes = {
@@ -342,7 +339,7 @@ namespace Microsoft.Azure.Commands.Ssh
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "When connecting to an Arc resource, do not ask for confirmation before updating the Service Configuration of the Connection Endpoint to match the target port.")]
+        [Parameter(Mandatory = false, HelpMessage = "When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.")]
         public SwitchParameter Force { get; set; }
 
         #endregion
@@ -528,17 +525,10 @@ namespace Microsoft.Azure.Commands.Ssh
             
             if (String.IsNullOrEmpty(proxyPath))
             {
-                Collection<ChoiceDescription> choices = new Collection<ChoiceDescription> { 
-                    new ChoiceDescription("N", "No"),
-                    new ChoiceDescription("Y", "Yes")
-                };
+                string caption = "Install Az.Ssh.ArcProxy module from the PowerShell Gallery";
+                string query = Resources.InstallProxyModuleQuery;
 
-                int userChoice = this.Host.UI.PromptForChoice(
-                    caption: Resources.InstallProxyModuleCaption,
-                    message: Resources.InstallProxyModuleMessage,
-                    choices: choices,
-                    defaultChoice: 0);
-                if (userChoice == 1)
+                if (Force || ShouldContinue(query, caption))
                 {
                     var installationResults = InvokeCommand.InvokeScript(
                         script: "Install-module Az.Ssh.ArcProxy -Repository PsGallery -Scope CurrentUser -MaximumVersion 1.9.9 -AllowClobber -Force",
@@ -546,10 +536,10 @@ namespace Microsoft.Azure.Commands.Ssh
                         writeToPipeline: PipelineResultTypes.Error,
                         input: null,
                         args: null);
-                    
+
                     proxyPath = SearchForInstalledProxyPath();
                 }
-                
+
             }
 
             if (!String.IsNullOrEmpty(proxyPath)) { return proxyPath; }
@@ -752,18 +742,16 @@ namespace Microsoft.Azure.Commands.Ssh
         private void CreateServiceConfiguration()
         {
             // If the user doesn't provide a port, they might be trying to connect to port 22 or a different port set on ssh_config.
-            string caption = Resources.ServiceConfigCreateConfirmCaptionDefaultPort;
+            string query = Resources.ServiceConfigCreateConfirmQueryDefaultPort;
             int port = 22;
             if (Port != null)
             {
                 port = Int32.Parse(Port);
-                caption = String.Format(Resources.ServiceConfigCreateConfirmCaptionExplicitPort, port);  
+                query = String.Format(Resources.ServiceConfigCreateConfirmQueryExplicitPort, port);
             }
 
-            string query = String.Format(Resources.ServiceConfigCreateConfirmQuery, port);
-
             // Need to come back to these messages
-            if (!Force.IsPresent && !ShouldContinue(caption, query))
+            if (!Force && !ShouldContinue(query, String.Format("Allow SSH connection to port {0}", port)))
             {
                 throw new AzPSApplicationException(String.Format(Resources.ServiceConfigCreateConfirmationDenied, port));
             }

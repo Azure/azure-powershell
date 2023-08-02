@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             authTokenSetter("Bearer", AccessToken);
         }
 
-        public string HomeAccountId => throw new NotImplementedException();
+        public string HomeAccountId { get; set; }
 
         public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
     }

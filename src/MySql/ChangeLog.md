@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Fixed iops and high availability parameters issue
 
 ## Version 1.1.0

@@ -462,7 +462,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             var maskedUserInput = telemetryData.IsSupported ?
-                CommandLineUtilities.MaskCommandLine(CommandLineUtilities.GetCommandAst(telemetryData.UserInput)) :
+                CommandLineUtilities.MaskCommandLine(telemetryData.UserInput) :
                 AzPredictorConstants.CommandPlaceholder;
 
             var suggestionSession = new SuggestionSession()
