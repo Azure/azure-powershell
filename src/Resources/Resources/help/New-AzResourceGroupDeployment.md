@@ -305,7 +305,7 @@ specified in the template.
 exist in the resource group but are not specified in the template.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
+Type: Microsoft.Azure.Management.Resources.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete
@@ -582,7 +582,7 @@ Accept wildcard characters: False
 The What-If result format.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
+Type: Microsoft.Azure.Management.Resources.Models.WhatIfResultFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResourceIdOnly, FullResourcePayloads

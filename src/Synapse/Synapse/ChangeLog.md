@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.2
+* Updated Azure.Core to 1.33.0.
+
+## Version 3.0.1
 * Fixed the issue for "Start-AzSynapseTrigger/Stop-AzSynapseTrigger" to not throw exception when Request Status is 202
 
 ## Version 3.0.0

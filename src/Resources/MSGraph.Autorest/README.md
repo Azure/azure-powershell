@@ -214,6 +214,41 @@ directive:
     hide: true
 
   - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^Create(?!.*?Expanded)
+    remove: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^CreateExpanded$
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: Id
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: IfMatch
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: DirectoryObjectId
+    set: 
+      parameter-name: OwnerId
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+    set:
+      subject: GroupOwner
+
+  - where:
       subject: UserSigned$
     hide: true
   - where:

@@ -737,7 +737,7 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 function Test-UpdateDatabaseWithPreferredEnclaveType()
 {
 	# Setup
-	$location = "eastus2euap"
+	$location = "uksouth"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 

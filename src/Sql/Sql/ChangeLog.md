@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.9.0
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
+
+## Version 4.8.0
 * Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
 * Added new cmdlets for managed database move and copy operations
     - 'Copy-AzSqlInstanceDatabase'

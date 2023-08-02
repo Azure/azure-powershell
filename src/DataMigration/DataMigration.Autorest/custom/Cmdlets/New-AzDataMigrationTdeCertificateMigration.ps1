@@ -208,6 +208,7 @@ function New-AzDataMigrationTdeCertificateMigration
                 "--networkShareDomain", $NetworkShareDomain
                 "--networkShareUserName", $NetworkShareUserName
                 "--networkSharePassword", $NetworkSharePasswordParam
+                "--clientType", "PS"
                 "--databaseName"
             )
 

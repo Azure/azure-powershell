@@ -133,20 +133,11 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The required Az.Ssh.ArcProxy module is not installed in this machine. Would you like this cmdlet to attempt to install the Az.Ssh.ArcProxy module from the PowerShell Gallery in the current user scope?.
+        ///   Looks up a localized string similar to The Az.Ssh.Proxy PowerShell module must be installed on the client machine to connect to Azure Arc resources. Installing the module to this machine is a one time operation, and you can choose to do it manually. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy). The required Az.Ssh.ArcProxy module is not installed in this machine. Would you like this cmdlet to attempt to install the Az.Ssh.ArcProxy module from the PowerShell Gallery in the current user  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string InstallProxyModuleCaption {
+        internal static string InstallProxyModuleQuery {
             get {
-                return ResourceManager.GetString("InstallProxyModuleCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Az.Ssh.Proxy PowerShell module must be installed on the client machine in order to connect to Azure Arc resources. Installing the module to this machine is a one time operation, and you can choose to do it manually. You can find the module in the PowerShell Gallery (see: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy)..
-        /// </summary>
-        internal static string InstallProxyModuleMessage {
-            get {
-                return ResourceManager.GetString("InstallProxyModuleMessage", resourceCulture);
+                return ResourceManager.GetString("InstallProxyModuleQuery", resourceCulture);
             }
         }
         
@@ -259,29 +250,20 @@ namespace Microsoft.Azure.Commands.Ssh.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Port 22 is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration. If you would like this cmdlet to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration..
+        ///   Looks up a localized string similar to Port 22 is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration. If you would like this cmdlet to update the Service Configuration to allow connections to a different port, please provide the -Port parameter or manually set up the Service Configuration. Would you like to update the current Service Configuration in the endpoint to allow connections to port 22?.
         /// </summary>
-        internal static string ServiceConfigCreateConfirmCaptionDefaultPort {
+        internal static string ServiceConfigCreateConfirmQueryDefaultPort {
             get {
-                return ResourceManager.GetString("ServiceConfigCreateConfirmCaptionDefaultPort", resourceCulture);
+                return ResourceManager.GetString("ServiceConfigCreateConfirmQueryDefaultPort", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Port {0} is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration..
+        ///   Looks up a localized string similar to Port {0} is not allowed for SSH connections in this resource. You must have owner or contributor roles in this resource to be able to change the service configuration. Would you like to update the current Service Configuration in the endpoint to allow connections to port {0}?.
         /// </summary>
-        internal static string ServiceConfigCreateConfirmCaptionExplicitPort {
+        internal static string ServiceConfigCreateConfirmQueryExplicitPort {
             get {
-                return ResourceManager.GetString("ServiceConfigCreateConfirmCaptionExplicitPort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Would you like to update the current Service Configuration in the endpoint to allow connections to port {0}?.
-        /// </summary>
-        internal static string ServiceConfigCreateConfirmQuery {
-            get {
-                return ResourceManager.GetString("ServiceConfigCreateConfirmQuery", resourceCulture);
+                return ResourceManager.GetString("ServiceConfigCreateConfirmQueryExplicitPort", resourceCulture);
             }
         }
         

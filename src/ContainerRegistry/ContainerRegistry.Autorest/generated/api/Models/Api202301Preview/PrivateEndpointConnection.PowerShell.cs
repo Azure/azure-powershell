@@ -117,10 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PrivateEndpointConnectionPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -209,10 +205,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.PrivateEndpointConnectionPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPrivateEndpointConnectionInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

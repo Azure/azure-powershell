@@ -734,7 +734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.generated.runtime.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Note :The change is expected to take effect from the version :  &apos;{0}&apos;
+        ///   Looks up a localized string similar to Note :The change is expected to take effect from version :  &apos;{0}&apos;
         ///
         ///.
         /// </summary>
@@ -743,6 +743,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.generated.runtime.Properties
             get
             {
                 return ResourceManager.GetString("BreakingChangesAttributesInEffectByVersion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Note :The change is expected to take effect from az version :  &apos;{0}&apos;
+        ///
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesInEffectByAzVersion
+        {
+            get
+            {
+                return ResourceManager.GetString("BreakingChangesAttributesInEffectByAzVersion", resourceCulture);
             }
         }
 

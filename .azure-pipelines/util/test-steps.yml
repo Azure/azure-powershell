@@ -31,6 +31,13 @@ steps:
     packageType: sdk
     version: 3.1.x
 
+- task: PowerShell@2
+  displayName: Remove pre-installed Az modules
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
+
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
@@ -54,13 +61,12 @@ steps:
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-   Import-Module (Join-Path -Path . -ChildPath Az.Accounts | Join-Path -ChildPath Az.Accounts.psd1) -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
     Write-Host $_.Directory.FullName
-    cd $rootFolder;
+    cd $rootFolder
     .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
    }
   workingDirectory: 'artifacts/Debug'

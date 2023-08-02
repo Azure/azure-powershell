@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ClientEncryptionPolicy = new PSClientEncryptionPolicy(sqlContainerGetPropertiesResource.ClientEncryptionPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(sqlContainerGetPropertiesResource.ConflictResolutionPolicy);
             AnalyticalStorageTtl = (int?)sqlContainerGetPropertiesResource.AnalyticalStorageTtl;
-            _rid = sqlContainerGetPropertiesResource._rid;
-            _ts = sqlContainerGetPropertiesResource._ts;
-            _etag = sqlContainerGetPropertiesResource._etag;
+            _rid = sqlContainerGetPropertiesResource.Rid;
+            _ts = sqlContainerGetPropertiesResource.Ts;
+            _etag = sqlContainerGetPropertiesResource.Etag;
         }
 
         //
