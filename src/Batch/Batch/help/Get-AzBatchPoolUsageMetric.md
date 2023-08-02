@@ -190,7 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
-
-[Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistic.md)
-
-[Get-AzBatchJobStatistics](./Get-AzBatchJobStatistic.md)
