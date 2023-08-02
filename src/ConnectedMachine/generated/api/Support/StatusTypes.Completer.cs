@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Connected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Connected", "Connected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connected");
+                yield return new global::System.Management.Automation.CompletionResult("'Connected'", "Connected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Connected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disconnected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disconnected", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
+                yield return new global::System.Management.Automation.CompletionResult("'Disconnected'", "Disconnected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disconnected");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Error".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Error", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
+                yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
             }
         }
     }
