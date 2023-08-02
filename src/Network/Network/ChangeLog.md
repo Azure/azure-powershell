@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for new Application Gateway SKU type, Basic SKU
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.
     -`Get-AzNetworkVirtualApplianceConnection`
 * Update cmdlets to return connections in Network Virtual Appliance
@@ -31,7 +32,6 @@
     - `New-AzPublicIpAddress`
 * Fixed bug where HubRoutingPreference didn't show up when running 'Get-AzRouteServer'
 * Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
-* Added support for new Application Gateway SKU type, Basic SKU
 
 ## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.
