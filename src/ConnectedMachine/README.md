@@ -40,14 +40,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 50ed15bd61ac79f2368d769df0c207a00b9e099f
+branch: 2ef47d44ce28c909893ead9b6485e8253ee5eed7
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/privateLinkScopes.json
 
-module-version: 0.5.0
+module-version: 1.0.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 
