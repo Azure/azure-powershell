@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
-        //[PSArgumentCompleter(Tier.Standard, "")]
+        [PSArgumentCompleter("Standard", "Premium")]
         public string ClusterTier
         {
             get { return _config.ClusterTier; }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        //[PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter("RSA-OAEP", "RSA-OAEP-256", "RSA1_5")]
         public string EncryptionAlgorithm
         {
             get { return _config.EncryptionAlgorithm; }

@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
-                EnableSecureChannel = enableSecureChannel,
-                ResourceId = new ResourceIdentifier(storageResourceId)
+                ResourceId = new ResourceIdentifier(storageResourceId),
+                EnableSecureChannel = enableSecureChannel
             };
             return storageAccountInfo;
         }
 
-        public static HDInsightStorageAccountInfo CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, string msiResourceId, string defaultStorageSuffix)
+        public static HDInsightStorageAccountInfo CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, bool? enableSecureChannel, string msiResourceId, string defaultStorageSuffix)
         {
             storageFileSystem = storageFileSystem ?? clusterName.ToLower();
 
@@ -132,7 +132,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 FileSystem = storageFileSystem,
                 Key = storageAccountkey,
                 MsiResourceId = new ResourceIdentifier(msiResourceId),
-                ResourceId = new ResourceIdentifier(storageResourceId)
+                ResourceId = new ResourceIdentifier(storageResourceId),
+                EnableSecureChannel = enableSecureChannel
             };
         }
 

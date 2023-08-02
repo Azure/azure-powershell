@@ -24,13 +24,11 @@ function Test-MonitoringRelatedCommands{
 		$location = "Japan East"
 		$params= Prepare-ClusterCreateParameter -location $location -clusterType Spark
 		# create cluster that will be used throughout test
-		#$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.ResourceGroupName `
-		#-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		#-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		#-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		#-MinSupportedTlsVersion $params.minSupportedTlsVersion
-
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-test-ps -ClusterName hdi-ps-test7844
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.ResourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
 		$workspaceName = Generate-Name("workspace-ps-test")
 		$resourceGroupName = $cluster.ResourceGroup
@@ -67,7 +65,7 @@ function Test-MonitoringRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

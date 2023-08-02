@@ -64,7 +64,7 @@ function Test-AutoscaleRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

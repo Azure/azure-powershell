@@ -322,7 +322,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testPSVN"
-		$subnetName="testpssubnet"
+		$subnetName="default"
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -359,8 +359,8 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		$params= Prepare-ClusterCreateParameter
 
 		# prepare custom ambari database
-		$databaseUserName="lyc-admin"
-		$databasePassword="Password1."
+		$databaseUserName="yourusername"
+		$databasePassword="******"
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
@@ -404,7 +404,7 @@ function Test-CreateClusterWithComputeIsolation{
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_E8S_v3"
 		$headNodeSize="Standard_E16S_v3"
-		$zookeeperNodeSize="Standard_E2_v3"
+		$zookeeperNodeSize="Standard_E2S_v3"
 
 		# create cluster
 		$cluster=New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -444,12 +444,12 @@ function Test-CreateClusterWithAvailabilityZones{
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
-		$sqlserver="lycdevrpserver.database.windows.net"
-		$ambariDatabase="zone1"
-		$hiveDatabase ="zone2"
-		$oozieDatabase = "zone3"
+		$sqlserver="yoursqlserver.database.windows.net"
+		$ambariDatabase="ambaridb"
+		$hiveDatabase ="hivedb"
+		$oozieDatabase = "ooziedb"
 
-		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testpsVN"
+		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
 		$subnetName="default"
 
 		# Create Ambari metastore
@@ -506,7 +506,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		$storageContainer="testpspl"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId="/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourcegroups/{resourcegroup}/providers/Microsoft.Network/virtualNetworks/testPSVN"
+		$vnetId="/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
 		$subnetName="default"
 
 		$ipConfigName="ipconfig"
@@ -522,7 +522,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		-ClusterName $params.clusterName -ClusterSizeInNodes 4 -ClusterType $params.clusterType `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-SshCredential $sshCredential `
 		-HttpCredential $httpCredential `

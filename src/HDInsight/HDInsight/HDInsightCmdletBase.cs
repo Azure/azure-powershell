@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             return httpEndpoint;
         }
 
-        public string GetResourceGroupByAccountName(string clusterName)
+        protected string GetResourceGroupByAccountName(string clusterName)
         {
             try
             {

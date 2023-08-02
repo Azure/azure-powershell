@@ -37,14 +37,5 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AutoscaleRelatedCommands");
         }
-
-        [Fact]
-        public void TestResourcesId()
-        {
-            ResourceIdentifier resourceIdentifier = new ResourceIdentifier("/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/group-ps-test9607/providers/Microsoft.HDInsight/clusters/hdi-ps-test4048");
-            string v = resourceIdentifier.ToString();
-            string resourceGroupName = resourceIdentifier.ResourceGroupName;
-            AzureLocation? location = resourceIdentifier.Location;
-        }
     }
 }

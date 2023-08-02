@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         protected const string ResourceGroupName = "hdi-rg1";
         protected const string Location = "westus";
 
-        protected string ClusterType = "Hadoop";
-        protected string HdiVersion = "3.1";
+        protected string ClusterType = "Spark";
+        protected string HdiVersion = "4.0";
 
         protected Mock<AzureHdInsightManagementClient> hdinsightManagementMock;
         protected Mock<AzureHdInsightJobManagementClient> hdinsightJobManagementMock;

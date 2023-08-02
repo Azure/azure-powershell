@@ -25,7 +25,6 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        //[Fact(Skip = "Test requires setting env variable, TODO remove that constraint")]
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationPipelining()
