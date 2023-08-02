@@ -5568,7 +5568,7 @@ function Install-AzStackHCIRemoteSupport{
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
 
     if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
-        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5598,7 +5598,7 @@ function Remove-AzStackHCIRemoteSupport{
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
 
     if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
-        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
