@@ -12,7 +12,7 @@ Creates a local dimension selection object that can be used to construct a metri
 
 ## SYNTAX
 
-### IncludeParameterSet
+### IncludeParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToInclude <String[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create Dimension object
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2DimensionSelection"), OutputType(typeof(PSMetricDimension))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2DimensionSelection", DefaultParameterSetName = "IncludeParameterSet"), OutputType(typeof(PSMetricDimension))]
     public class NewAzureRmMetricAlertRuleV2DimensionSelectionCommand : MonitorCmdletBase
     {
         /// <summary>
