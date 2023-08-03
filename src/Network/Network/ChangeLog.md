@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Removed support for perimeter-based network security perimeter access rule creation/updation.
+  - `Update-AzNetworkSecurityPerimeterAccessRule [-NetworkSecurityPerimeters <ArrayList>]`
+  - `Create-AzNetworkSecurityPerimeterAccessRule [-NetworkSecurityPerimeters <ArrayList>]`
 * Added support for new Application Gateway SKU type, Basic SKU
 
 ## Version 6.1.1
