@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
         private Task PullResponse()
         {
-            return Task.Factory.StartNew(async () =>
+            return Task.Run(async () =>
             {
                 string result = string.Empty;
                 var allBytes = new List<byte>();
@@ -76,8 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
         private Task PushCommand()
         {
-            return Task.Factory.StartNew(async () =>
+            return Task.Run(async () =>
             {
+                if (Console.IsInputRedirected) return;
+                
                 StringBuilder input = new StringBuilder();
                 // Loop until input is entered.
                 while (socket.State == WebSocketState.Open && !this._cancellationTokenSource.Token.IsCancellationRequested)
