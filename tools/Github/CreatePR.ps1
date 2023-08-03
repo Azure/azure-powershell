@@ -33,6 +33,9 @@ param(
     [Parameter(Mandatory = $false)]
     [string]$Description,
 
+    [Parameter(Mandatory = $false)]
+    [boolean]$Draft = $false,
+
     [switch]$FailOnPRExisted = $false
 )
 
@@ -66,7 +69,7 @@ $Description
 * **SHOULD NOT** adjust version of module manually in pull request
 "@
 
-$RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
+$RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch; "draft" = $Draft}
 $Uri = "https://api.github.com/repos/Azure/azure-powershell/pulls"
 
 $PrUri = "https://api.github.com/repos/Azure/azure-powershell/pulls?head=Azure:$HeadBranch&base=$BaseBranch"

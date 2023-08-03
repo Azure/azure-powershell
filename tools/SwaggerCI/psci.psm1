@@ -115,7 +115,7 @@ function Build-Module {
             packageName = "Az.$moduleName"
             path = @("swaggerci/$moduleName")
             readmeMd = @($rd)
-            result = "failed"
+            result = "warning"
         }
         return $package
     }

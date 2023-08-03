@@ -62,6 +62,9 @@ Param(
     [Switch]
     $StaticAnalysisCmdletDiff,
 
+    [Switch]
+    $StaticAnalysisGeneratedSdk,
+
     [String]
     $RepoArtifacts='artifacts',
 
@@ -83,6 +86,12 @@ Param(
 
 $CIPlanPath = "$RepoArtifacts/PipelineResult/CIPlan.json"
 $PipelineResultPath = "$RepoArtifacts/PipelineResult/PipelineResult.json"
+
+$testResults = @{
+    Succeeded = 1
+    Warning = 10
+    Failed = 100
+}
 
 Function Get-PlatformInfo
 {
@@ -134,8 +143,10 @@ Function Set-ModuleTestStatusInPipelineResult
         {
             If ($ModuleInfo.Module -Eq $ModuleName)
             {
-                $ModuleInfo.Status = $Status
-                $ModuleInfo.Content = $Content
+                if ([string]::IsNullOrWhiteSpace($ModuleInfo.Status) -or $testResults[$ModuleInfo.Status] -lt $testResults[$Status]) {
+                    $ModuleInfo.Status = $Status
+                    $ModuleInfo.Content = $Content
+                }
             }
         }
         ConvertTo-Json -Depth 10 -InputObject $PipelineResult | Out-File -FilePath $PipelineResultPath
@@ -290,12 +301,17 @@ If ($TestAutorest)
         Return
     }
     $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
+    If ($ModuleName.EndsWith(".Autorest"))
+    {
+        $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    }
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
+            Write-Debug "Skip test for $ModuleName because it is not in the test plan."
             Return
         }
         . $AutorestDirectory/test-module.ps1
@@ -315,7 +331,7 @@ If ($TestAutorest)
 If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey("TargetModule"))))
 {
     dotnet test $RepoArtifacts/Azure.PowerShell.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $Configuration --framework $TestFramework --logger trx --results-directory $TestOutputDirectory
-    
+
     $TestResultFiles = Get-ChildItem "$RepoArtifacts/TestResults/" -Filter *.trx
     $FailedTestCases = @{}
     Foreach ($TestResultFile in $TestResultFiles)
@@ -356,7 +372,7 @@ If ($Test -And (($CIPlan.test.Length -Ne 0) -Or ($PSBoundParameters.ContainsKey(
             Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleInfo.Module -Status $Status
         }
     }
-    
+
     If ($FailedTestCases.Length -ne 0)
     {
         Return -1
@@ -384,6 +400,7 @@ If ($StaticAnalysis)
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisGeneratedSdk @Parameters
     Return
 }
 
@@ -491,6 +508,25 @@ If ($StaticAnalysisCmdletDiff)
     {
         Write-Host "Running static analysis for cmdlet diff..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
+    }
+    Return
+}
+
+If ($StaticAnalysisGeneratedSdk)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $GeneratedSdkModuleList = $TargetModule
+    }
+    Else
+    {
+        $GeneratedSdkModuleList = Join-String -Separator ';' -InputObject $CIPlan.'generated-sdk'
+    }
+    If ("" -Ne $GeneratedSdkModuleList)
+    {
+        Write-Host "Running static analysis to verify generated sdk..."
+        $result = .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1")
+        Write-Host "Static analysis to verify generated sdk result: $result"
     }
     Return
 }

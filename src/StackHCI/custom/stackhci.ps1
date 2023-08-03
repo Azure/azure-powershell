@@ -5563,8 +5563,12 @@ function Install-AzStackHCIRemoteSupport{
     param()
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-    if(Assert-IsObservabilityStackPresent){
-        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
+
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5590,8 +5594,11 @@ function Remove-AzStackHCIRemoteSupport{
     param()
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-    if(Assert-IsObservabilityStackPresent){
-        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5659,7 +5666,10 @@ function Enable-AzStackHCIRemoteSupport{
         }
     }
 
-    if(Assert-IsObservabilityStackPresent){
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
         Import-Module DiagnosticsInitializer -Force
         Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
     }
@@ -5687,7 +5697,10 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    if(Assert-IsObservabilityStackPresent){
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
         Import-Module DiagnosticsInitializer -Force
         Disable-RemoteSupport
     }
@@ -5729,7 +5742,10 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    if(Assert-IsObservabilityStackPresent){
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
         Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
@@ -5820,7 +5836,10 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    if(Assert-IsObservabilityStackPresent){
+    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
+    $observabilityStackPresent = Assert-IsObservabilityStackPresent
+
+    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
         Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
     }

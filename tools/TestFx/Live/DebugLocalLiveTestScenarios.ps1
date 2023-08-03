@@ -5,7 +5,10 @@ param (
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string] $RunPlatform = "Windows"
+    [string] $RunPlatform = "Windows",
+
+    [Parameter()]
+    [switch] $NoModuleImport
 )
 
 function ImportLocalAzModules {
@@ -29,7 +32,7 @@ function InvokeLocalLiveTestScenarios {
     param (
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string[]] $TargetModules,
+        [string[]] $TargetModule,
 
         [Parameter()]
         [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
@@ -40,7 +43,7 @@ function InvokeLocalLiveTestScenarios {
     $liveScenarios = Get-ChildItem -Path $srcDir -Recurse -Directory -Filter "LiveTests" | Get-ChildItem -Filter "TestLiveScenarios.ps1" -File | Select-Object -ExpandProperty FullName
     $liveScenarios | ForEach-Object {
         $moduleName = [regex]::match($_, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
-        if (!$PSBoundParameters.ContainsKey("TargetModules") -or $moduleName -in $TargetModules) {
+        if (!$PSBoundParameters.ContainsKey("TargetModule") -or $moduleName -in $TargetModule) {
             Write-Host "Executing live test scenarios for module $moduleName" -ForegroundColor Cyan
             Import-Module "./tools/TestFx/Assert.ps1" -Force
             Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $Output -Force
@@ -65,4 +68,6 @@ function InvokeLocalLiveTestScenarios {
     $cleanupJobs | Remove-Job
 }
 
-ImportLocalAzModules
+if (!$NoModuleImport.IsPresent) {
+    ImportLocalAzModules
+}
