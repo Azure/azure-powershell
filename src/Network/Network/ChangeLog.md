@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 * Added support for new Application Gateway SKU type, Basic SKU
+* Remove support for perimeter-based network security perimeter access rule creation/updation.
+  -`Update-AzNetworkSecurityPerimeterAccessRule [-NetworkSecurityPerimeters <ArrayList>]`
+  -`Create-AzNetworkSecurityPerimeterAccessRule [-NetworkSecurityPerimeters <ArrayList>]`
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
