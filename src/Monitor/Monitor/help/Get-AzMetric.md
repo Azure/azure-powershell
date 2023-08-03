@@ -16,7 +16,7 @@ Gets the metric values of a resource.
 ### GetWithDefaultParameters (Default)
 ```
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Dimension <String[]>] [[-MetricName] <String[]>] [-DetailedOutput]
+ [-MetricFilter <String>] [-Dimension <String[]>] [[-MetricName] <String[]>] [-DetailedOutput]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -291,7 +291,7 @@ Specifies the metric dimension filter to query metrics for.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
