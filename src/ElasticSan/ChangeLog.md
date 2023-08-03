@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Added support for private endpoint for ElasticSan
+
 ## Version 0.1.0
 * First preview release for module Az.ElasticSan
 

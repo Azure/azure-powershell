@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     public partial class ConnectedRegistry :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistry,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistryInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IProxyResource"
@@ -23,12 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         /// <summary>The activation status of the connected registry.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActivationStatus? ActivationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistryPropertiesInternal)Property).ActivationStatus; }
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>Indicates the location of the certificates.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PropertyOrigin.Inlined)]
@@ -261,15 +254,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
 
         }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IConnectedRegistryInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
@@ -295,14 +279,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActivationStatus) })]
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActivationStatus? ActivationStatus { get;  }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>Indicates the location of the certificates.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(
         Required = false,
@@ -499,8 +475,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IActivationProperties Activation { get; set; }
         /// <summary>The activation status of the connected registry.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ActivationStatus? ActivationStatus { get; set; }
-
-        string AzureAsyncOperation { get; set; }
         /// <summary>Indicates the location of the certificates.</summary>
         string CertificateLocation { get; set; }
         /// <summary>The type of certificate location.</summary>

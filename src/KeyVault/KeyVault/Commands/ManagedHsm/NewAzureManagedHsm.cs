@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     // false is not accepted
                     EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
                     // use default network rule set
-                    MhsmNetworkAcls = new MHSMNetworkRuleSet(),
+                    MhsmNetworkAcls = new MhsmNetworkRuleSet(),
                     PublicNetworkAccess = this.PublicNetworkAccess
                 };
 

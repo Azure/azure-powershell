@@ -22,6 +22,40 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ManagedInstancesOperationsExtensions
     {
             /// <summary>
+            /// Gets a list of all managed instances in the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='expand'>
+            /// The child resources to include in the response.
+            /// </param>
+            public static IPage<ManagedInstance> List(this IManagedInstancesOperations operations, string expand = default(string))
+            {
+                return operations.ListAsync(expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of all managed instances in the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='expand'>
+            /// The child resources to include in the response.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ManagedInstance>> ListAsync(this IManagedInstancesOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a list of all managed instances in an instance pool.
             /// </summary>
             /// <param name='operations'>
@@ -64,40 +98,6 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<IPage<ManagedInstance>> ListByInstancePoolAsync(this IManagedInstancesOperations operations, string resourceGroupName, string instancePoolName, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByInstancePoolWithHttpMessagesAsync(resourceGroupName, instancePoolName, expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Gets a list of all managed instances in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='expand'>
-            /// The child resources to include in the response.
-            /// </param>
-            public static IPage<ManagedInstance> List(this IManagedInstancesOperations operations, string expand = default(string))
-            {
-                return operations.ListAsync(expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all managed instances in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='expand'>
-            /// The child resources to include in the response.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<ManagedInstance>> ListAsync(this IManagedInstancesOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -329,6 +329,175 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
+            /// Failovers a managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance to failover.
+            /// </param>
+            /// <param name='replicaType'>
+            /// The type of replica to be failed over. Possible values include: 'Primary',
+            /// 'ReadableSecondary'
+            /// </param>
+            public static void Failover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
+            {
+                operations.FailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Failovers a managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance to failover.
+            /// </param>
+            /// <param name='replicaType'>
+            /// The type of replica to be failed over. Possible values include: 'Primary',
+            /// 'ReadableSecondary'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task FailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Gets the collection of outbound network dependencies for the given managed
+            /// instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static IPage<OutboundEnvironmentEndpoint> ListOutboundNetworkDependenciesByManagedInstance(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                return operations.ListOutboundNetworkDependenciesByManagedInstanceAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the collection of outbound network dependencies for the given managed
+            /// instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<OutboundEnvironmentEndpoint>> ListOutboundNetworkDependenciesByManagedInstanceAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOutboundNetworkDependenciesByManagedInstanceWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Starts the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static void Start(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                operations.StartAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Starts the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StartAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StartWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Stops the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static void Stop(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                operations.StopAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Stops the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task StopAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.StopWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Get top resource consuming queries of a managed instance.
             /// </summary>
             /// <param name='operations'>
@@ -418,53 +587,6 @@ namespace Microsoft.Azure.Management.Sql
                 {
                     return _result.Body;
                 }
-            }
-
-            /// <summary>
-            /// Failovers a managed instance.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance to failover.
-            /// </param>
-            /// <param name='replicaType'>
-            /// The type of replica to be failed over. Possible values include: 'Primary',
-            /// 'ReadableSecondary'
-            /// </param>
-            public static void Failover(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string))
-            {
-                operations.FailoverAsync(resourceGroupName, managedInstanceName, replicaType).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Failovers a managed instance.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='managedInstanceName'>
-            /// The name of the managed instance to failover.
-            /// </param>
-            /// <param name='replicaType'>
-            /// The type of replica to be failed over. Possible values include: 'Primary',
-            /// 'ReadableSecondary'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task FailoverAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, string replicaType = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.FailoverWithHttpMessagesAsync(resourceGroupName, managedInstanceName, replicaType, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -650,37 +772,81 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of all managed instances in an instance pool.
+            /// Starts the managed instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
-            public static IPage<ManagedInstance> ListByInstancePoolNext(this IManagedInstancesOperations operations, string nextPageLink)
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static void BeginStart(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
             {
-                return operations.ListByInstancePoolNextAsync(nextPageLink).GetAwaiter().GetResult();
+                operations.BeginStartAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of all managed instances in an instance pool.
+            /// Starts the managed instance.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ManagedInstance>> ListByInstancePoolNextAsync(this IManagedInstancesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginStartAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByInstancePoolNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Stops the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            public static void BeginStop(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName)
+            {
+                operations.BeginStopAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Stops the managed instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='managedInstanceName'>
+            /// The name of the managed instance.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginStopAsync(this IManagedInstancesOperations operations, string resourceGroupName, string managedInstanceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -718,6 +884,40 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
+            /// Gets a list of all managed instances in an instance pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<ManagedInstance> ListByInstancePoolNext(this IManagedInstancesOperations operations, string nextPageLink)
+            {
+                return operations.ListByInstancePoolNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of all managed instances in an instance pool.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<ManagedInstance>> ListByInstancePoolNextAsync(this IManagedInstancesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByInstancePoolNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a list of managed instances in a resource group.
             /// </summary>
             /// <param name='operations'>
@@ -746,6 +946,42 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<IPage<ManagedInstance>> ListByResourceGroupNextAsync(this IManagedInstancesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the collection of outbound network dependencies for the given managed
+            /// instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<OutboundEnvironmentEndpoint> ListOutboundNetworkDependenciesByManagedInstanceNext(this IManagedInstancesOperations operations, string nextPageLink)
+            {
+                return operations.ListOutboundNetworkDependenciesByManagedInstanceNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the collection of outbound network dependencies for the given managed
+            /// instance.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<OutboundEnvironmentEndpoint>> ListOutboundNetworkDependenciesByManagedInstanceNextAsync(this IManagedInstancesOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListOutboundNetworkDependenciesByManagedInstanceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

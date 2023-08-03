@@ -42,7 +42,7 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LoadFromStorageTest()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             string actual = null;
             List<byte> storageChecker = new List<byte>();
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
@@ -62,7 +62,7 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveToStorageTest()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             List<byte> storageChecker = new List<byte>(), keystoreChecker = new List<byte>();
             keystoreChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
 

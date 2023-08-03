@@ -197,7 +197,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Update-AzNetAppFilesBackupPolicy](./Update-AzNetAppFilesBackupPolicy.md)
 [Remove-AzNetAppFilesBackupPolicy](./Remove-AzNetAppFilesBackupPolicy.md)
 [Set-AzNetAppFilesBackupPolicy](./Set-AzNetAppFilesBackupPolicy.md)
-[Get-AzNetAppFilesVault](./Get-AzNetAppFilesVault.md)
 [Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
 [New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
 [Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)

@@ -459,48 +459,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
-        /// <summary>
-        /// Builds a CloudPoolStatisticsResponse object. Note: Using avgCPUPercentage and startTime for validating if the pipeline return the correct values
-        /// </summary>
-        public static AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders> CreatePoolStatisticsResponse(
-            double avgCPUPercentage,
-            DateTime startTime)
-        {
-            var stats = new ProxyModels.PoolStatistics()
-            {
-                ResourceStats = new ProxyModels.ResourceStatistics() { AvgCPUPercentage = avgCPUPercentage },
-                UsageStats = new ProxyModels.UsageStatistics() { StartTime =  startTime }
-            };
-
-            var response = new AzureOperationResponse
-                <ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders>()
-            {
-                Body = stats,
-                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
-            };
-
-            return response;
-        }
-
-        /// <summary>
-        /// Builds a CloudJobStatisticsResponse object.Note: Using startTime for validating if the pipeline return the correct values
-        /// </summary>
-        public static AzureOperationResponse<ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders> CreateJobStatisticsResponse(DateTime startTime)
-        {
-            var stats = new ProxyModels.JobStatistics()
-            {
-                StartTime = startTime
-            };
-
-            var response = new AzureOperationResponse
-                <ProxyModels.JobStatistics, ProxyModels.JobGetAllLifetimeStatisticsHeaders>()
-            {
-                Body = stats,
-                Response = new HttpResponseMessage(HttpStatusCode.Accepted)
-            };
-
-            return response;
-        }
 
         /// <summary>
         /// Builds a GetRemoteLoginSettingsResponse object

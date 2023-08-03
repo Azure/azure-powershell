@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Deleting CosmosDB MongoDB User Definition"))
             {
-                CosmosDBManagementClient.MongoDBResources.DeleteMongoUserDefinitionWithHttpMessagesAsync(MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult();
+                CosmosDBManagementClient.MongoDbResources.DeleteMongoUserDefinitionWithHttpMessagesAsync(MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult();
 
                 if (PassThru.IsPresent)
                 {

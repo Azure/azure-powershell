@@ -29,7 +29,7 @@ Get-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,6 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -46,7 +47,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 #>
 function Get-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

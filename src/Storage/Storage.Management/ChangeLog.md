@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 5.9.0
+* Supported OAuth authentication on File service cmdlets
+    - `New-AzStorageContext`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+    - `Get-AzStorageFileHandle`
+    - `Close-AzStorageFileHandle`
+* Supported get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
+    - `Get-AzStorageShare`
+* Updated Azure.Core to 1.33.0.
+
 ## Version 5.8.1
 * Supported traling dot in Azure file and directory name by default
     - `Close-AzStorageFileHandle`

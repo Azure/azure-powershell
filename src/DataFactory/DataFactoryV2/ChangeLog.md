@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.17.0
+* Added DisablePublish to Set_AzDataFactoryV2 Command
+
 ## Version 1.16.13
 * Updated ADF .Net SDK version to 9.2.0
 * Added AzureBlobFS sasUri and sasToken properties in ADF

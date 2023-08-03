@@ -23,11 +23,11 @@ Create ElasticSan.
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,31 +36,32 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 
 PARAMETER <IElasticSan>: Response for ElasticSan request.
+  Location <String>: The geo-location where the resource lives
   BaseSizeTiB <Int64>: Base size of the Elastic San appliance in TiB.
   ExtendedCapacitySizeTiB <Int64>: Extended size of the Elastic San appliance in TiB.
   SkuName <SkuName>: The sku name.
-  [Location <String>]: The geo-location where the resource lives.
-  [Tag <IResourceTags>]: Azure resource tags.
+  [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
-  [AvailabilityZone <String[]>]: Logical zone for Elastic San resource; example: ["1"].
-  [SkuTier <SkuTier?>]: The sku tier.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [AvailabilityZone <String[]>]: Logical zone for Elastic San resource; example: ["1"].
+  [SkuTier <SkuTier?>]: The sku tier.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsan
 #>
 function New-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -98,7 +99,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan]
     # Response for ElasticSan request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -119,6 +120,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuName])]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuName]
@@ -135,13 +143,6 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuTier]
@@ -151,9 +152,9 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Azure resource tags.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]

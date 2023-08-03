@@ -121,5 +121,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.containerRegistries = value;
             }
         }
+        
+        public string Type
+        {
+            get
+            {
+                return this.omObject.Type;
+            }
+            set
+            {
+                this.omObject.Type = value;
+            }
+        }
     }
 }

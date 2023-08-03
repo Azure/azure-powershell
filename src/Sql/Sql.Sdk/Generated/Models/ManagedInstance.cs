@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="identity">The Azure Active Directory identity of the
         /// managed instance.</param>
         /// <param name="sku">Managed instance SKU. Allowed values for
-        /// sku.name: GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5</param>
+        /// sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM,
+        /// BC_G8IH</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Creating', 'Deleting', 'Updating', 'Unknown', 'Succeeded',
         /// 'Failed', 'Accepted', 'Created', 'Deleted', 'Unrecognized',
@@ -75,7 +76,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="vCores">The number of vCores. Allowed values: 8, 16,
         /// 24, 32, 40, 64, 80.</param>
         /// <param name="storageSizeInGB">Storage size in GB. Minimum value:
-        /// 32. Maximum value: 8192. Increments of 32 GB allowed only.</param>
+        /// 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum
+        /// value depends on the selected hardware family and number of
+        /// vCores.</param>
         /// <param name="collation">Collation of the managed instance.</param>
         /// <param name="dnsZone">The Dns Zone that the managed instance is
         /// in.</param>
@@ -130,7 +133,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="keyId">A CMK URI of the key to use for
         /// encryption.</param>
         /// <param name="administrators">The Azure Active Directory
-        /// administrator of the server.</param>
+        /// administrator of the instance. This can only be used at instance
+        /// create time. If used for instance update, it will be ignored or it
+        /// will result in an error. For updates individual APIs will need to
+        /// be used.</param>
         /// <param name="servicePrincipal">The managed instance's service
         /// principal.</param>
         public ManagedInstance(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), Sku sku = default(Sku), string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), int? vCores = default(int?), int? storageSizeInGB = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), IList<ManagedInstancePecProperty> privateEndpointConnections = default(IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), ServicePrincipal servicePrincipal = default(ServicePrincipal))
@@ -184,7 +190,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets managed instance SKU. Allowed values for sku.name:
-        /// GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5
+        /// GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public Sku Sku { get; set; }
@@ -262,7 +268,8 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets storage size in GB. Minimum value: 32. Maximum value:
-        /// 8192. Increments of 32 GB allowed only.
+        /// 16384. Increments of 32 GB allowed only. Maximum value depends on
+        /// the selected hardware family and number of vCores.
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageSizeInGB")]
         public int? StorageSizeInGB { get; set; }
@@ -398,7 +405,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets the Azure Active Directory administrator of the
-        /// server.
+        /// instance. This can only be used at instance create time. If used
+        /// for instance update, it will be ignored or it will result in an
+        /// error. For updates individual APIs will need to be used.
         /// </summary>
         [JsonProperty(PropertyName = "properties.administrators")]
         public ManagedInstanceExternalAdministrator Administrators { get; set; }
