@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for new Application Gateway SKU type, Basic SKU
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
