@@ -1,13 +1,13 @@
 {
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove?api-version=2023-03-01+1": {
+  "Remove-AzStackHciCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
+        "x-ms-client-request-id": [ "aedcddcd-e0ca-489d-9e60-cceb78e9c65a" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,17 +22,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d058524-0000-0100-0000-64be41a70000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "ETag": [ "\"1400b776-0000-0100-0000-64c0ac570000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "7cf1da1d-d802-4ccd-b63c-d3f383780e9b" ],
-        "x-ms-correlation-request-id": [ "e40b33d0-4469-4272-93af-7e670f455606" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091727Z:e40b33d0-4469-4272-93af-7e670f455606" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "a96bb772-8097-426f-86cb-eb26004b43d9" ],
+        "x-ms-correlation-request-id": [ "c99aec16-90fb-49be-bc7c-09d8ccdd78d7" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051711Z:c99aec16-90fb-49be-bc7c-09d8ccdd78d7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:17:27 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:17:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -43,16 +43,16 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01+2": {
+  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
+        "x-ms-client-request-id": [ "aedcddcd-e0ca-489d-9e60-cceb78e9c65a" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,36 +66,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8f0dece2-0000-0100-0000-64be41a70000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11991" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "f2c20a7a-5bca-490b-8a9b-faccc0fd4eac" ],
-        "x-ms-correlation-request-id": [ "a0d7e9a0-cd9c-4c90-8e6b-9389dfc240f4" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091758Z:a0d7e9a0-cd9c-4c90-8e6b-9389dfc240f4" ],
+        "ETag": [ "\"1700ceff-0000-0100-0000-64c0ac570000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "a9c04bc5-a1b8-4593-b302-a5ff64c340be" ],
+        "x-ms-correlation-request-id": [ "d63472e5-abcd-4c6b-ac6f-766294c26cb8" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051741Z:d63472e5-abcd-4c6b-ac6f-766294c26cb8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:17:57 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:17:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "528" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"name\":\"7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove\",\"status\":\"Deleting\",\"startTime\":\"2023-07-24T09:17:27.5475316Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"name\":\"a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove\",\"status\":\"Deleting\",\"startTime\":\"2023-07-26T05:17:11.0172001Z\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01+3": {
+  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
+        "x-ms-client-request-id": [ "aedcddcd-e0ca-489d-9e60-cceb78e9c65a" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -109,36 +109,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8f0dece2-0000-0100-0000-64be41a70000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11990" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "fedf66ef-9f3b-4368-be66-f4f1eabb210e" ],
-        "x-ms-correlation-request-id": [ "66ee08b6-7a97-43ab-b05d-eb1c205a260c" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091829Z:66ee08b6-7a97-43ab-b05d-eb1c205a260c" ],
+        "ETag": [ "\"1700ceff-0000-0100-0000-64c0ac570000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051812Z:55f8ab7a-d16f-46dd-b0ea-3cecf24328f5" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "6ed5231b-f1c6-4579-be9f-8c49937c6d01" ],
+        "x-ms-correlation-request-id": [ "55f8ab7a-d16f-46dd-b0ea-3cecf24328f5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:18:29 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:18:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "528" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"name\":\"7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove\",\"status\":\"Deleting\",\"startTime\":\"2023-07-24T09:17:27.5475316Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"name\":\"a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove\",\"status\":\"Deleting\",\"startTime\":\"2023-07-26T05:17:11.0172001Z\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01+4": {
+  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
+        "x-ms-client-request-id": [ "aedcddcd-e0ca-489d-9e60-cceb78e9c65a" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -148,40 +148,38 @@
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"8f0dece2-0000-0100-0000-64be41a70000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11989" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091859Z:3294f847-9225-4ee6-8432-2f9a88438748" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "0ac10fa8-d781-4078-a438-88a84212f699" ],
-        "x-ms-correlation-request-id": [ "3294f847-9225-4ee6-8432-2f9a88438748" ],
+        "ETag": [ "\"15004d7c-0000-0300-0000-64c0ac990000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "e7bf5481-85de-476d-898e-c6f539b0d391" ],
+        "x-ms-correlation-request-id": [ "b660589e-6fa3-4d89-ba7b-ce6cf3b546b7" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051843Z:b660589e-6fa3-4d89-ba7b-ce6cf3b546b7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:18:59 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:18:42 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "528" ],
+        "Content-Length": [ "547" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"name\":\"7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove\",\"status\":\"Deleting\",\"startTime\":\"2023-07-24T09:17:27.5475316Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"name\":\"a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-26T05:17:11.0172001Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01+5": {
+  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
+        "x-ms-client-request-id": [ "aedcddcd-e0ca-489d-9e60-cceb78e9c65a" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -195,74 +193,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0a00d5ff-0000-0800-0000-64be42040000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11988" ],
-        "x-ms-request-id": [ "54b50329-1f4f-4fd6-abc6-f4e265cd6b7f" ],
-        "x-ms-correlation-request-id": [ "65dc66c7-1529-4ed8-99f7-da7d0c032aab" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091931Z:65dc66c7-1529-4ed8-99f7-da7d0c032aab" ],
+        "ETag": [ "\"15004d7c-0000-0300-0000-64c0ac990000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+        "x-ms-request-id": [ "a30963b1-7476-45c9-a0f7-ba08ad252157" ],
+        "x-ms-correlation-request-id": [ "6ef939f9-be92-4e8d-a77a-9b50645fb5a5" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051843Z:6ef939f9-be92-4e8d-a77a-9b50645fb5a5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:19:30 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:18:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "547" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"name\":\"7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-24T09:17:27.5475316Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"name\":\"a96bb772-8097-426f-86cb-eb26004b43d9*63E9B273B51E2B4835ACB62689B1B49BA647499C377F68D982587D6AFB6B109B\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-26T05:17:11.0172001Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01+6": {
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "e011ac57-ee22-410f-aaf1-dcd716b6a272" ],
-        "CommandName": [ "Remove-AzStackHciCluster" ],
-        "FullCommandName": [ "Remove-AzStackHciCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0a00d5ff-0000-0800-0000-64be42040000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11987" ],
-        "x-ms-request-id": [ "5d75e182-cc03-458f-b28b-96cda8ff4b89" ],
-        "x-ms-correlation-request-id": [ "7f1de434-22c5-4065-98dd-b1d5e616238f" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091931Z:7f1de434-22c5-4065-98dd-b1d5e616238f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:19:30 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "547" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"name\":\"7cf1da1d-d802-4ccd-b63c-d3f383780e9b*777D6B5BD4EAE2B96EA069DF39D0614DE629C02A09B73CF7FA411C7695D6C70F\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-24T09:17:27.5475316Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2?api-version=2023-03-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2?api-version=2023-03-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "787052a1-34b2-463d-afc9-fba534419c21" ],
+        "x-ms-client-request-id": [ "62edaf80-5475-4967-a536-5b41ddce8b5a" ],
         "CommandName": [ "Get-AzStackHciCluster" ],
         "FullCommandName": [ "Get-AzStackHciCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -277,35 +234,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d05b223-0000-0100-0000-64be40ff0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "ETag": [ "\"14009264-0000-0100-0000-64c0abb40000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "feb72adf-6fd0-4f18-93a9-9d70e392ad75" ],
-        "x-ms-request-id": [ "f6c9dd83-044e-43ee-8f36-161547bcc1d7" ],
-        "x-ms-correlation-request-id": [ "20d9b042-ee8c-4ff3-8923-e25a0561d9de" ],
+        "mise-correlation-id": [ "7ecae95d-85bc-474c-a4de-953ceee91f7a" ],
+        "x-ms-request-id": [ "510ae937-2852-4425-b4a8-e86e2ab91c41" ],
+        "x-ms-correlation-request-id": [ "13dcd977-114a-452f-8e21-b40b5537a529" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091932Z:20d9b042-ee8c-4ff3-8923-e25a0561d9de" ],
-        "Date": [ "Mon, 24 Jul 2023 09:19:32 GMT" ]
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051844Z:13dcd977-114a-452f-8e21-b40b5537a529" ],
+        "Date": [ "Wed, 26 Jul 2023 05:18:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "751" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2\",\"name\":\"pwsh-Cluster0h9u-remove2\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":\"NotYetRegistered\",\"cloudId\":\"0e9820b8-0e7e-4734-9c0e-26ab94d9027f\",\"softwareAssuranceProperties\":{\"softwareAssuranceStatus\":\"Disabled\",\"softwareAssuranceIntent\":\"Disable\"},\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Basic\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\",\"serviceEndpoint\":\"https://dp.stackhci.azure.com/eastus/\",\"resourceProviderObjectId\":\"591802c0-3aa7-4a85-9c19-3f703f117987\"}}",
+      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2\",\"name\":\"pwsh-Clusteryjod-remove2\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":\"NotYetRegistered\",\"cloudId\":\"745de2a5-795c-4955-aad0-f8aef87a9fbe\",\"softwareAssuranceProperties\":{\"softwareAssuranceStatus\":\"Disabled\",\"softwareAssuranceIntent\":\"Disable\"},\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Basic\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\",\"serviceEndpoint\":\"https://dp.stackhci.azure.com/eastus/\",\"resourceProviderObjectId\":\"591802c0-3aa7-4a85-9c19-3f703f117987\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2?api-version=2023-03-01+2": {
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2?api-version=2023-03-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "6bdb522d-6b3a-4cd9-9144-d23e329ceeb2" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "a86aac88-bea1-42e0-9c59-f2bc8c385ffb" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -320,17 +277,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0d051d25-0000-0100-0000-64be42250000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
+        "ETag": [ "\"1400d483-0000-0100-0000-64c0acb50000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "1856e52e-0def-452a-a60c-21b596ef2460" ],
-        "x-ms-correlation-request-id": [ "bc84f09b-13db-49f1-b243-2e17a9eacfb9" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T091934Z:bc84f09b-13db-49f1-b243-2e17a9eacfb9" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "ca618c7b-6929-445d-855a-1b8ba2404edf" ],
+        "x-ms-correlation-request-id": [ "d254d26b-80ac-4ecf-ab25-00f14b94b0b9" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051845Z:d254d26b-80ac-4ecf-ab25-00f14b94b0b9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:19:33 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:18:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4" ],
@@ -341,16 +298,16 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01+3": {
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "6bdb522d-6b3a-4cd9-9144-d23e329ceeb2" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "a86aac88-bea1-42e0-9c59-f2bc8c385ffb" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -364,36 +321,79 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"900dc519-0000-0100-0000-64be42250000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11986" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01" ],
-        "x-ms-request-id": [ "d869dc23-2ed0-4fb5-95f0-8d2cdb00bfb0" ],
-        "x-ms-correlation-request-id": [ "6c054346-c8cc-4ae1-af91-db56bff923fd" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T092004Z:6c054346-c8cc-4ae1-af91-db56bff923fd" ],
+        "ETag": [ "\"1700e0ff-0000-0100-0000-64c0acb50000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "1828867c-10f5-469e-9e72-3a08f88e00f9" ],
+        "x-ms-correlation-request-id": [ "00cc8c8a-ccc6-41ac-a8c9-52b3bca4ec04" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051915Z:00cc8c8a-ccc6-41ac-a8c9-52b3bca4ec04" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:20:04 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:19:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "529" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"name\":\"1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2\",\"status\":\"Deleting\",\"startTime\":\"2023-07-24T09:19:33.6877957Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"name\":\"ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2\",\"status\":\"Deleting\",\"startTime\":\"2023-07-26T05:18:45.1133122Z\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01+4": {
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "a86aac88-bea1-42e0-9c59-f2bc8c385ffb" ],
+        "CommandName": [ "Remove-AzStackHciCluster" ],
+        "FullCommandName": [ "Remove-AzStackHciCluster_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1700e0ff-0000-0100-0000-64c0acb50000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11994" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01" ],
+        "x-ms-request-id": [ "7e117aa6-d74d-444f-85fa-52f9c6ac97da" ],
+        "x-ms-correlation-request-id": [ "4df9e409-049f-4974-9d75-c21015f195e5" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051946Z:4df9e409-049f-4974-9d75-c21015f195e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 26 Jul 2023 05:19:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "529" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"name\":\"ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2\",\"status\":\"Deleting\",\"startTime\":\"2023-07-26T05:18:45.1133122Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "6bdb522d-6b3a-4cd9-9144-d23e329ceeb2" ],
+        "x-ms-client-request-id": [ "a86aac88-bea1-42e0-9c59-f2bc8c385ffb" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -407,34 +407,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0100f30f-0000-0300-0000-64be425e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11985" ],
-        "x-ms-request-id": [ "ae35b11e-7db7-4cef-b641-3f26922db2cc" ],
-        "x-ms-correlation-request-id": [ "3a6ef37e-c8b6-4405-ba70-115a52ecf228" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T092034Z:3a6ef37e-c8b6-4405-ba70-115a52ecf228" ],
+        "ETag": [ "\"18001200-0000-0100-0000-64c0acf80000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11993" ],
+        "x-ms-request-id": [ "ab8dfcc8-efb2-4726-aecf-0ff599ea0518" ],
+        "x-ms-correlation-request-id": [ "9d71ac17-54f7-4452-b424-1861ecd6795c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T052016Z:9d71ac17-54f7-4452-b424-1861ecd6795c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:20:34 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:20:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "548" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"name\":\"1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-24T09:19:33.6877957Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/eastus/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"name\":\"ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-26T05:18:45.1133122Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01+5": {
+  "Remove-AzStackHciCluster+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "30" ],
-        "x-ms-client-request-id": [ "6bdb522d-6b3a-4cd9-9144-d23e329ceeb2" ],
+        "x-ms-client-request-id": [ "a86aac88-bea1-42e0-9c59-f2bc8c385ffb" ],
         "CommandName": [ "Remove-AzStackHciCluster" ],
         "FullCommandName": [ "Remove-AzStackHciCluster_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -448,21 +448,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0100f30f-0000-0300-0000-64be425e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11984" ],
-        "x-ms-request-id": [ "9190cbda-8e95-43bb-8017-90802447c204" ],
-        "x-ms-correlation-request-id": [ "b3d36f72-9b65-4843-8692-47bc96551483" ],
-        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230724T092035Z:b3d36f72-9b65-4843-8692-47bc96551483" ],
+        "ETag": [ "\"18001200-0000-0100-0000-64c0acf80000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11992" ],
+        "x-ms-request-id": [ "fa6fffb5-3f40-4d90-a9ae-9c3821ba28e5" ],
+        "x-ms-correlation-request-id": [ "73335de8-2547-4f46-be13-d704393693f5" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T052016Z:73335de8-2547-4f46-be13-d704393693f5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 Jul 2023 09:20:34 GMT" ]
+        "Date": [ "Wed, 26 Jul 2023 05:20:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "548" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"name\":\"1856e52e-0def-452a-a60c-21b596ef2460*61FB5A5C8DC3957B106C1E7F0A2867D499CB91F75E486E4CC330990899D80488\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-8x/providers/Microsoft.AzureStackHCI/clusters/pwsh-Cluster0h9u-remove2\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-24T09:19:33.6877957Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.AzureStackHCI/locations/EASTUS/operationStatuses/ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"name\":\"ca618c7b-6929-445d-855a-1b8ba2404edf*BCE87419EE2E770BD384259FB2FC0A10A23B7870253B3DB4AEFDF20EAE5666C9\",\"resourceId\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod-remove2\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-26T05:18:45.1133122Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

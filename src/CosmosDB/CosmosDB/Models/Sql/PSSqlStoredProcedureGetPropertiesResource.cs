@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
              Id = sqlStoredProcedureGetPropertiesResource.Id;
              Body = sqlStoredProcedureGetPropertiesResource.Body;
-            _rid = sqlStoredProcedureGetPropertiesResource._rid;
-            _ts = sqlStoredProcedureGetPropertiesResource._ts;
-            _etag = sqlStoredProcedureGetPropertiesResource._etag;
+            _rid = sqlStoredProcedureGetPropertiesResource.Rid;
+            _ts = sqlStoredProcedureGetPropertiesResource.Ts;
+            _etag = sqlStoredProcedureGetPropertiesResource.Etag;
         }
 
         //

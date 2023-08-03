@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Updated to api-version 2023-03-01.
 * Cmdlets added:
     - Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit : Enable Software Assurance for a cluster
