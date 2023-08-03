@@ -22,6 +22,8 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
@@ -108,6 +110,12 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         public string MetricFilter { get; set; }
 
         /// <summary>
+        /// Gets or sets the dimension parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimensions to query metrics for")]
+        public string[] Dimension { get; set; }
+
+        /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
@@ -132,6 +140,15 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             bool fullDetails = this.DetailedOutput.IsPresent;
+
+            if (this.IsParameterBound(c => c.Dimension))
+            {
+                if (this.IsParameterBound(c => c.MetricFilter) && !string.IsNullOrEmpty(this.MetricFilter))
+                {
+                    throw new AzPSArgumentException("usage: -Dimension and -MetricFilter parameters are mutually exclusive.", "MetricFilter");
+                }
+                this.MetricFilter = string.Join(" and ", this.Dimension.Select(d => string.Format("{0} eq '*'", d)));
+            }
 
             // EndTime defaults to Now
             if (this.EndTime == default(DateTime))
