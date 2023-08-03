@@ -25,14 +25,14 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterRelatedCommands()
         {
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestClusterEnableSecureChannelCommands()
         {
@@ -67,14 +67,14 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithLoadBasedAutoscale");
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithScheduleBasedAutoscale()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithScheduleBasedAutoscale");
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithKafkaRestProxy()
         {

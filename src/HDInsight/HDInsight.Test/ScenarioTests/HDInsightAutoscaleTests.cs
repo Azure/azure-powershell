@@ -31,7 +31,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAutoscaleRelatedCommands()
         {
