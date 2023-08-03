@@ -8,23 +8,41 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnv
 
 ## SYNOPSIS
-Creates or updates a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>] [-DaprAiConnectionString <String>]
- [-DaprAiInstrumentationKey <String>] [-LogAnalyticConfigurationCustomerId <String>]
- [-LogAnalyticConfigurationSharedKey <String>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>]
+ [-CustomDomainConfigurationCertificatePassword <String>]
+ [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
+ [-DaprAiConnectionString <String>] [-DaprAiInstrumentationKey <String>]
+ [-InfrastructureResourceGroup <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
+ [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
  [-VnetConfigurationDockerBridgeCidr <String>] [-VnetConfigurationInfrastructureSubnetId <String>]
  [-VnetConfigurationInternal] [-VnetConfigurationPlatformReservedCidr <String>]
- [-VnetConfigurationPlatformReservedDnsIP <String>] [-VnetConfigurationRuntimeSubnetId <String>]
- [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VnetConfigurationPlatformReservedDnsIP <String>] [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
@@ -48,11 +66,11 @@ Creates or updates a Managed Environment used to host container apps.
 ## PARAMETERS
 
 ### -AppLogConfigurationDestination
-Logs destination
+Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -77,12 +95,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CustomDomainConfigurationCertificatePassword
+Certificate password
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainConfigurationCertificateValueInputFile
+Input File for CustomDomainConfigurationCertificateValue (PFX or PEM blob)
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainConfigurationDnsSuffix
+Dns suffix for the environment domain
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DaprAiConnectionString
 Application Insights connection string used by Dapr to export Service to Service communication telemetry
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -97,7 +160,7 @@ Azure Monitor instrumentation key used by Dapr to export Service to Service comm
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -108,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -137,12 +201,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InfrastructureResourceGroup
+Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources.
+If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Kind of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -157,7 +282,7 @@ Log analytics customer id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -172,7 +297,22 @@ Log analytics customer key
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MtlEnabled
+Boolean indicating whether the mutual TLS authentication is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -233,7 +373,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -249,7 +389,7 @@ Must not overlap with any other provided IP ranges.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -261,12 +401,11 @@ Accept wildcard characters: False
 
 ### -VnetConfigurationInfrastructureSubnetId
 Resource ID of a subnet for infrastructure components.
-This subnet must be in the same VNET as the subnet defined in runtimeSubnetId.
 Must not overlap with any other provided IP ranges.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -278,11 +417,12 @@ Accept wildcard characters: False
 
 ### -VnetConfigurationInternal
 Boolean indicating the environment only has an internal load balancer.
-These environments do not have a public static IP resource, must provide ControlPlaneSubnetResourceId and AppSubnetResourceId if enabling this property
+These environments do not have a public static IP resource.
+They must provide infrastructureSubnetId if enabling this property
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -298,7 +438,7 @@ Must not overlap with any other provided IP ranges.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -313,7 +453,7 @@ An IP address from the IP range defined by platformReservedCidr that will be res
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -323,14 +463,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VnetConfigurationRuntimeSubnetId
-Resource ID of a subnet that Container App containers are injected into.
-This subnet must be in the same VNET as the subnet defined in infrastructureSubnetId.
-Must not overlap with any other provided IP ranges.
+### -WorkloadProfile
+Workload profiles configured for the Managed Environment.
+To construct, see NOTES section for WORKLOADPROFILE properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IWorkloadProfile[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -345,7 +484,7 @@ Whether or not this Managed Environment is zone-redundant.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -393,11 +532,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironment
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

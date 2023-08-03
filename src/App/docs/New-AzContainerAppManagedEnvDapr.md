@@ -8,19 +8,49 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnvDapr
 
 ## SYNOPSIS
-Creates or updates a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>]
- [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>] [-Version <String>]
+ [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityManagedEnvironment
+```
+New-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+ -DaprComponentEnvelope <IDaprComponent> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityManagedEnvironmentExpanded
+```
+New-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+ [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
+ [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ## EXAMPLES
 
@@ -48,13 +78,29 @@ Component type
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DaprComponentEnvelope
+Dapr Component.
+To construct, see NOTES section for DAPRCOMPONENTENVELOPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
+Parameter Sets: CreateViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -74,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -93,7 +140,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -108,7 +155,7 @@ Boolean describing if the component errors are ignores
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -123,7 +170,7 @@ Initialization timeout
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -133,13 +180,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedEnvironmentInputObject
+Identity Parameter
+To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: CreateViaIdentityManagedEnvironment, CreateViaIdentityManagedEnvironmentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 Component metadata
 To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprMetadata[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -155,7 +248,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -170,7 +263,7 @@ Names of container apps that can use this Dapr component
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -185,8 +278,23 @@ Collection of secrets used by a Dapr component
 To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretStoreComponent
+Name of a Dapr component to retrieve component secrets from
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -201,7 +309,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -216,7 +324,7 @@ Component version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -262,27 +370,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`METADATA <IDaprMetadata[]>`: Component metadata
-  - `[Name <String>]`: Metadata property name.
-  - `[SecretRef <String>]`: Name of the Dapr Component secret from which to pull the metadata property value.
-  - `[Value <String>]`: Metadata property value.
-
-`SECRET <ISecret[]>`: Collection of secrets used by a Dapr component
-  - `[Name <String>]`: Secret Name.
-  - `[Value <String>]`: Secret Value.
 
 ## RELATED LINKS
 

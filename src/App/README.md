@@ -35,52 +35,38 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0
+branch: 68332bd340f87049bddfa3bd5c4c700568a7a08c
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/AuthConfigs.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ContainerApps.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ContainerAppsRevisions.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/DaprComponents.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/Global.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ManagedEnvironments.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/ManagedEnvironmentsStorages.json
-  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/SourceControls.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/AuthConfigs.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/AvailableWorkloadProfiles.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/BillingMeters.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/CommonDefinitions.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ConnectedEnvironments.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ConnectedEnvironmentsCertificates.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ConnectedEnvironmentsDaprComponents.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ConnectedEnvironmentsStorages.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ContainerApps.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ContainerAppsRevisions.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/Diagnostics.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/Global.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/Jobs.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ManagedEnvironments.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ManagedEnvironmentsDaprComponents.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/ManagedEnvironmentsStorages.json
+  - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/SourceControls.json
 
 title: App
-module-version: 0.1.0
+module-version: 0.2.0
 subject-prefix: ''
 
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+auto-switch-view: false
 
 directive:
-  - from: swagger-document 
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"].patch.responses
-    transform: >-
-      return {
-          "200": {
-            "description": "Container App updated successfully.",
-            "schema": {
-              "$ref": "#/definitions/ContainerApp"
-            }
-          },
-          "202": {
-            "description": "Patch operation is in progress.",
-            "schema": {
-              "$ref": "#/definitions/ContainerApp"
-            }
-          },
-          "default": {
-            "description": "Common error response.",
-            "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
-            }
-          }
-      }
   - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
     transform: >-
@@ -97,52 +83,63 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
-      verb: Set|Test
+      verb: Set
     remove: true
-  - where:
-      verb: Get
-      subject: ContainerAppAuthConfig
-    remove: true
-  - where:
-      verb: Get
-      subject: ContainerAppSourceControl
-    remove: true
+
   - where:
       subject: ContainerAppCustomHostnameAnalysis
     set:
       subject: ContainerAppCustomHostName
+
   - where:
       verb: Initialize
-      subject: ContainerAppRevision
+      subject: ContainerAppsRevision
     set:
       verb: Enable
       subject: ContainerAppRevision
   - where:
       verb: Invoke
-      subject: DeactivateContainerAppRevision
+      subject: DeactivateContainerAppsRevision
     set:
       verb: Disable
       subject: ContainerAppRevision
   - where:
-      verb: Get
+      subject: ContainerAppsRevision
+    set:
+      subject: ContainerAppRevision
+
+  - where:
       subject: ContainerAppsAuthConfig
     set:
       subject: ContainerAppAuthConfig
+
   - where:
-      verb: Remove
-      subject: ContainerAppsAuthConfig
+      subject: ContainerAppsDiagnosticDetector
     set:
-      subject: ContainerAppAuthConfig
+      subject: ContainerAppDiagnosticDetector
   - where:
-      verb: Get
+      subject: ContainerAppsDiagnosticRevision
+    set:
+      subject: ContainerAppDiagnosticRevision
+  - where:
+      subject: ContainerAppsDiagnosticRoot
+    set:
+      subject: ContainerAppDiagnosticRoot
+
+  - where:
+      subject: ContainerAppsRevision
+    set:
+      subject: ContainerAppRevision
+  - where:
+      subject: ContainerAppsRevisionReplica
+    set:
+      subject: ContainerAppRevisionReplica
+
+  - where:
       subject: ContainerAppsSourceControl
     set:
       subject: ContainerAppSourceControl
-  - where:
-      verb: Remove
-      subject: ContainerAppsSourceControl
-    set:
-      subject: ContainerAppSourceControl
+
   - where:
       subject: DaprComponent
     set:
@@ -163,14 +160,11 @@ directive:
       subject: ManagedEnvironmentsStorage
     set:
       subject: ContainerAppManagedEnvStorage
-  - where:
-      subject: ManagedEnvironmentStorage
-    set:
-      subject: ContainerAppManagedEnvStorage
-  - where:
-      subject: Volume
-    set:
-      subject: ContainerAppVolumeObject
+
+  # - where:
+  #     subject: Volume
+  #   set:
+  #     subject: ContainerAppVolumeObject
   # The following are commented out and their generated cmdlets may be renamed and custom logic
   # - model-cmdlet:
   #     - EnvironmentVar
@@ -187,6 +181,7 @@ directive:
   #     - Volume
   #     - IdentityProviders
   #     - ContainerAppProbeHttpGetHttpHeadersItem
+
   - where:
       parameter-name: ComponentName
     set:
@@ -262,17 +257,18 @@ directive:
           - Name
           - PlatformEnabled
           - ResourceGroupName
-  - where:
-      subject: ContainerAppSourceControl
-    remove: true
-  - where:
-      verb: Update
-      subject: ContainerAppManagedEnv
-    remove: true
-  - where:
-      subject: ContainerAppRevisionReplica
-    remove: true
-  - where:
-      subject: ContainerAppCustomHostName
-    remove: true
+
+  # - where:
+  #     subject: ContainerAppSourceControl
+  #   remove: true
+  # - where:
+  #     verb: Update
+  #     subject: ContainerAppManagedEnv
+  #   remove: true
+  # - where:
+  #     subject: ContainerAppRevisionReplica
+  #   remove: true
+  # - where:
+  #     subject: ContainerAppCustomHostName
+  #   remove: true
 ```
