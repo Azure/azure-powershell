@@ -197,7 +197,7 @@
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
     <!-- Delete .deps.json files -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse -Include '*Az.*.deps.json' | Remove-Item -Recurse -Force&quot; "/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse | Where-Object { $_.Name -Like '*Az.*.deps.json' -or $_.Name -Like 'Microsoft.Azure.*.deps.json' } | Remove-Item -Recurse -Force&quot; "/>
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
