@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<AzureHDInsightConfig>(
                             c =>
-                                c.ClusterType == ClusterType &&
+                                c.ClusterType == "Hadoop" &&
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&

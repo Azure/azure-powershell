@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ResourceGroupName = ResourceGroupName;
 
             var cluster1 = ArmHDInsightModelFactory.HDInsightClusterData(id: new ResourceIdentifier("id"), name: ClusterName + "1", location: Location);
+            cluster1.Properties = new HDInsightClusterProperties(new HDInsightClusterDefinition());
 
             cluster1.Properties.ClusterVersion = "3.6";
             cluster1.Properties.ClusterState = "Running";
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cluster1.Properties.OSType = "Linux";
 
             var cluster2 = ArmHDInsightModelFactory.HDInsightClusterData(id: new ResourceIdentifier("id"), name: ClusterName + "2", location: Location);
+            cluster2.Properties = new HDInsightClusterProperties(new HDInsightClusterDefinition());
 
             cluster2.Properties.ClusterVersion = "3.6";
             cluster2.Properties.ClusterState = "Running";
