@@ -101,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.Cluster
+### Azure.ResourceManager.HDInsight.Models.Cluster
 
 ## NOTES
 

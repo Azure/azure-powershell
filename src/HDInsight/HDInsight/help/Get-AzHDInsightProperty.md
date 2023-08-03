@@ -69,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.AzureHDInsightCapabilities
+### Azure.ResourceManager.HDInsight.Models.AzureHDInsightCapabilities
 ## NOTES
 
 ## RELATED LINKS
