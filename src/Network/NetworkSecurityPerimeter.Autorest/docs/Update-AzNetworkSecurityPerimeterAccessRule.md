@@ -17,17 +17,17 @@ Updates an access rule.
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
  [-EmailAddress <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
- [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <ArrayList>] [-Direction <String>] [-EmailAddress <ArrayList>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-PhoneNumber <ArrayList>]
+ [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -224,22 +224,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Perimeter
-Inbound rule specified by the perimeter id
-To construct, see NOTES section for PERIMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PhoneNumber
 Phone Numbers
 
@@ -409,9 +393,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`PERIMETER <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id
-  - `[Id <String>]`: NSP id in the ARM id format.
 
 `SUBSCRIPTION <ISubscriptionId[]>`: Subscription ids
   - `[Id <String>]`: Subscription id in the ARM id format.

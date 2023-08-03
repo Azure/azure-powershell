@@ -1,17 +1,17 @@
 {
-  "Remove-AzNetworkSecurityPerimeter+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD1?api-version=2021-02-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeter+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD1?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD1?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD1?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "67" ],
-        "x-ms-client-request-id": [ "f4864312-09d5-48f5-9bb6-b5d249cad09d" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "8048e837-0dbb-4114-af67-af0d8592beaa" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeter_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.NetworkSecurityPerimeter/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -25,11 +25,11 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "a2476d94-0ffd-4358-9411-b0e467ad5299" ],
-        "x-ms-correlation-request-id": [ "a2476d94-0ffd-4358-9411-b0e467ad5299" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230315T091218Z:a2476d94-0ffd-4358-9411-b0e467ad5299" ],
+        "x-ms-request-id": [ "82794769-448c-46cb-ab1d-25afc4371636" ],
+        "x-ms-correlation-request-id": [ "82794769-448c-46cb-ab1d-25afc4371636" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230727T103936Z:82794769-448c-46cb-ab1d-25afc4371636" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 09:12:18 GMT" ]
+        "Date": [ "Thu, 27 Jul 2023 10:39:35 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -39,19 +39,19 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeter+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD2?api-version=2021-02-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeter+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD2?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD2?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD2?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "68" ],
-        "x-ms-client-request-id": [ "106d02af-f02a-4580-9319-a2a295d6fa63" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "428d2300-29b4-489c-b942-dbe99fec3ceb" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeter_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.NetworkSecurityPerimeter/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -62,37 +62,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "3850f351-e744-46b1-a6f7-fd6506caac0c" ],
-        "x-ms-correlation-request-id": [ "3850f351-e744-46b1-a6f7-fd6506caac0c" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230315T091219Z:3850f351-e744-46b1-a6f7-fd6506caac0c" ],
+        "x-ms-request-id": [ "0152a813-ed42-43d1-8140-2d18f4b63052" ],
+        "x-ms-correlation-request-id": [ "0152a813-ed42-43d1-8140-2d18f4b63052" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230727T103937Z:0152a813-ed42-43d1-8140-2d18f4b63052" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 09:12:19 GMT" ]
+        "Date": [ "Thu, 27 Jul 2023 10:39:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "375" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"t6nbjt-nspD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"d4e1a97d-ec55-48a9-8404-79aa49d8136f\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"name\":\"tytigt-nspD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD2\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"bca07f39-c4ca-4c0f-b92b-4bb47a1367cb\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeter+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD2?api-version=2021-02-01-preview+2": {
+  "Remove-AzNetworkSecurityPerimeter+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD2?api-version=2021-02-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_t6nbj/providers/Microsoft.Network/networkSecurityPerimeters/t6nbjt-nspD2?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tytig/providers/Microsoft.Network/networkSecurityPerimeters/tytigt-nspD2?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "69" ],
-        "x-ms-client-request-id": [ "2bfa58d8-c310-4c9c-8f26-37131f5b2cf0" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "53900dc4-73ca-4e5e-a33c-100907be072c" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeter" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeter_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.NetworkSecurityPerimeter/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -106,11 +106,11 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "c693cdd0-d8c6-4307-94e6-b69898c0284b" ],
-        "x-ms-correlation-request-id": [ "c693cdd0-d8c6-4307-94e6-b69898c0284b" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20230315T091221Z:c693cdd0-d8c6-4307-94e6-b69898c0284b" ],
+        "x-ms-request-id": [ "a95468e8-83ae-42ae-b097-daecd4ed7be4" ],
+        "x-ms-correlation-request-id": [ "a95468e8-83ae-42ae-b097-daecd4ed7be4" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230727T103939Z:a95468e8-83ae-42ae-b097-daecd4ed7be4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 09:12:21 GMT" ]
+        "Date": [ "Thu, 27 Jul 2023 10:39:38 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

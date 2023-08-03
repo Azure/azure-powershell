@@ -172,12 +172,6 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # Phone Numbers
         ${PhoneNumber},
 
-        [Parameter(HelpMessage = "Inbound rule specified by the perimeter id")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]]
-        # Inbound rule specified by the perimeter id
-        ${Perimeter},
-
         [Parameter(HelpMessage = "Direction")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
@@ -202,7 +196,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Perimeter', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber',  'AsJob'
 
             $bodyParamsMap = @{}
 
