@@ -509,6 +509,28 @@ Gets an existing network profile top level resource
 ### [Get-AzNetworkSecurityGroup](Get-AzNetworkSecurityGroup.md)
 Gets a network security group.
 
+### [Get-AzNetworkSecurityPerimeter](Get-AzNetworkSecurityPerimeter.md)
+Gets the specified network security perimeter by the name.
+
+### [Get-AzNetworkSecurityPerimeterAccessRule](Get-AzNetworkSecurityPerimeterAccessRule.md)
+Gets the specified NSP access rule by name.
+
+### [Get-AzNetworkSecurityPerimeterAssociableResourceType](Get-AzNetworkSecurityPerimeterAssociableResourceType.md)
+Gets the list of resources that are onboarded with NSP.
+These resources can be associated with a network security perimeter
+
+### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
+Gets the specified NSP association by name.
+
+### [Get-AzNetworkSecurityPerimeterLink](Get-AzNetworkSecurityPerimeterLink.md)
+Gets the specified NSP link resource.
+
+### [Get-AzNetworkSecurityPerimeterLinkReference](Get-AzNetworkSecurityPerimeterLinkReference.md)
+Gets the specified NSP linkReference resource.
+
+### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
+Gets the specified NSP profile.
+
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
@@ -520,6 +542,9 @@ Lists network usages for a subscription
 
 ### [Get-AzNetworkVirtualAppliance](Get-AzNetworkVirtualAppliance.md)
 Get or List Network Virtual Appliances.
+
+### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
+Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
 
 ### [Get-AzNetworkVirtualApplianceSku](Get-AzNetworkVirtualApplianceSku.md)
 Get or List available Network Virtual Appliance Skus in the inventory.
@@ -1193,6 +1218,21 @@ Creates a new network profile.
 ### [New-AzNetworkSecurityGroup](New-AzNetworkSecurityGroup.md)
 Creates a network security group.
 
+### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
+Creates or updates a Network Security Perimeter.
+
+### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
+Creates or updates a network access rule.
+
+### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
+Creates or updates a NSP resource association.
+
+### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
+Creates or updates NSP link resource.
+
+### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
+Creates or updates a network profile.
+
 ### [New-AzNetworkSecurityRuleConfig](New-AzNetworkSecurityRuleConfig.md)
 Creates a network security rule configuration.
 
@@ -1677,6 +1717,24 @@ Removes a network profile.
 
 ### [Remove-AzNetworkSecurityGroup](Remove-AzNetworkSecurityGroup.md)
 Removes a network security group.
+
+### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
+Deletes a network security perimeter.
+
+### [Remove-AzNetworkSecurityPerimeterAccessRule](Remove-AzNetworkSecurityPerimeterAccessRule.md)
+Deletes an NSP access rule.
+
+### [Remove-AzNetworkSecurityPerimeterAssociation](Remove-AzNetworkSecurityPerimeterAssociation.md)
+Deletes an NSP association resource.
+
+### [Remove-AzNetworkSecurityPerimeterLink](Remove-AzNetworkSecurityPerimeterLink.md)
+Deletes an NSP Link resource.
+
+### [Remove-AzNetworkSecurityPerimeterLinkReference](Remove-AzNetworkSecurityPerimeterLinkReference.md)
+Deletes an NSP LinkReference resource.
+
+### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
+Deletes an NSP profile.
 
 ### [Remove-AzNetworkSecurityRuleConfig](Remove-AzNetworkSecurityRuleConfig.md)
 Removes a network security rule from a network security group.
@@ -2217,6 +2275,15 @@ The **Test-AzPrivateLinkServiceVisibility** checks whether a private link servic
 
 ### [Update-AzCustomIpPrefix](Update-AzCustomIpPrefix.md)
 Updates a CustomIpPrefix
+
+### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
+Updates an access rule.
+
+### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
+Updates an association
+
+### [Update-AzNetworkSecurityPerimeterLink](Update-AzNetworkSecurityPerimeterLink.md)
+Updates a NSP Link
 
 ### [Update-AzNetworkVirtualAppliance](Update-AzNetworkVirtualAppliance.md)
 Update or Change a Network Virtual Appliance resource.
