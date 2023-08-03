@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 6.9.1
 * Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
 
 ## Version 6.9.0
