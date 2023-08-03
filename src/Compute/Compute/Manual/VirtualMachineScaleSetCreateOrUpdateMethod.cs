@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(

@@ -429,8 +429,8 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -584,11 +584,19 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    if (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM")
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
+                    else if (_cmdlet.SecurityType == "Standard")
+                    {
+                        _cmdlet.SecurityType = "";//This will change in the future once Standard is added as an actual SecurityType in the backend.
+                    }
+                    
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -760,11 +768,19 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             // Check Guest Attestation
-            if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
+            if (this.IsParameterBound(c => c.SecurityType))
             {
-                this.SecurityType = this.SecurityType;
-                this.EnableVtpm = this.EnableVtpm ?? true;
-                this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                if (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM")
+                {
+                    this.SecurityType = this.SecurityType;
+                    this.EnableVtpm = this.EnableVtpm ?? true;
+                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                }
+                else if (this.SecurityType == "Standard")
+                {
+                    this.SecurityType = "";
+                }
+                
             }
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
@@ -955,8 +971,6 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            
-            
             if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)

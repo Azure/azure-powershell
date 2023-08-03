@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+        [PSArgumentCompleter("Standard", "TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
             "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
 
