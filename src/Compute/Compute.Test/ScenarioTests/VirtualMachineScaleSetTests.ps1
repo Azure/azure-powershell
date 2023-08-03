@@ -2860,11 +2860,8 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
         Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
 
-        Assert-ThrowsContains
-        {
-            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
-        } `
-        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
+        Assert-ThrowsContains { $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; } ` 
+            "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
     }
     finally
     {
