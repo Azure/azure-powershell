@@ -29,27 +29,19 @@ Lists all environment types configured for a project.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List environment types by endpoint and project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentType -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists environment types under the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List environment types by dev center and project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentType -DevCenter Contoso -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists environment types under the project "DevProject".
 
 ## PARAMETERS
 

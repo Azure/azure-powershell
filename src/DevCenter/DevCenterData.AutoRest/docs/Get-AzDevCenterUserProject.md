@@ -51,27 +51,49 @@ Gets a project.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List projects by endpoint
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the projects under the endpoint.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List projects by dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
+This command lists the projects under the dev center.
+
+### Example 3: Get project by endpoint
+```powershell
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject 
 ```
 
-{{ Add description here }}
+This command gets the project "DevProject".
+
+### Example 4: Get project by dev center
+```powershell
+Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject 
+```
+
+This command gets the project "DevProject".
+
+### Example 5: Get project by endpoint and InputObject
+```powershell
+$devBoxInput = @{"ProjectName" = "DevProject";}
+Get-AzDevCenterUserProject -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+```
+
+This command gets the project "DevProject".
+
+### Example 6: Get project by dev center and InputObject
+```powershell
+$devBoxInput = @{"ProjectName" = "DevProject";}
+Get-AzDevCenterUserProject -DevCenter Contoso -InputObject $devBoxInput
+```
+
+This command gets the project "DevProject".
 
 ## PARAMETERS
 

@@ -41,27 +41,35 @@ Deletes an environment and all its associated resources
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an environment by endpoint
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId "me"  -Name myEnv
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the environment "myEnv" under the project "DevProject" assigned to the currently signed-in user.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete an environment by dev center
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
 ```
 
-```output
-{{ Add output here }}
+This command deletes the environment "myEnv" under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
+
+### Example 3: Delete an environment by endpoint and InputObject
+```powershell
+$envInput = @{"UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
+Remove-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput
 ```
 
-{{ Add description here }}
+This command deletes the environment "myEnv" under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
+
+### Example 4: Delete an environment by dev center and InputObject
+```powershell
+$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
+Remove-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput
+```
+
+This command deletes the environment "myEnv" under the project "DevProject" assigned to the currently signed-in user.
 
 ## PARAMETERS
 
