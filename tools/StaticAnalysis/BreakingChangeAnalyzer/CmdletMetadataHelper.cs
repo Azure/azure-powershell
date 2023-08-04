@@ -249,11 +249,11 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 }
                 else
                 {
-                    string oldOutputTypeName = RemoveTheApiVersionInTypeName(oldOutput.Type.Name);
+                    string oldOutputTypeName = RemoveApiVersionInTypeName(oldOutput.Type.Name);
                     bool foundTypeNameWithoutApiVersion = false;
                     foreach (var newOutput in outputDictionary.Values)
                     {
-                        string newOutputTypeName = RemoveTheApiVersionInTypeName(newOutput.Name);
+                        string newOutputTypeName = RemoveApiVersionInTypeName(newOutput.Name);
                         System.Console.WriteLine(newOutputTypeName);
                         if (oldOutputTypeName.Equals(newOutputTypeName, StringComparison.OrdinalIgnoreCase))
                         {
@@ -283,7 +283,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
         }
 
-        private string RemoveTheApiVersionInTypeName(string typeName)
+        private string RemoveApiVersionInTypeName(string typeName)
         {
             return Regex.Replace(typeName, @"\.Api\d+(Preview)?", "");
         }
