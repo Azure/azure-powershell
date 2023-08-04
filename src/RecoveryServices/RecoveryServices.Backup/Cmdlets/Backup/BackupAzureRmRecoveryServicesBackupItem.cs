@@ -71,11 +71,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                if(ExpiryDateTimeUTC == null)
-                {
-                    ExpiryDateTimeUTC = DateTime.UtcNow.AddDays(30);
-                }
-
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
                     {
