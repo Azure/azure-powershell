@@ -170,6 +170,7 @@ function Restart-AzDevCenterUserDevBox {
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
+
     Az.DevCenterdata.internal\Restart-AzDevCenterUserDevBox @PSBoundParameters
   }
 }

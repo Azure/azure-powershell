@@ -169,6 +169,8 @@ function Skip-AzDevCenterUserDevBoxAction {
       $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
+
+    
     Az.DevCenterdata.internal\Skip-AzDevCenterUserDevBoxAction @PSBoundParameters
   }
 }

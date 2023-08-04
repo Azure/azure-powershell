@@ -31,27 +31,21 @@ Partially updates a devcenter.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a dev center
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg -IdentityType "SystemAssigned"
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a dev center named "Contoso" in the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a dev center using InputObject
 ```powershell
-{{ Add code here }}
+$devCenterInput = Get-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg
+
+Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "SystemAssigned"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a dev center named "Contoso" in the resource group "testRg".
 
 ## PARAMETERS
 

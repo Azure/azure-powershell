@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a dev center
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg -IdentityType "SystemAssigned"
 ```
+This command updates a dev center named "Contoso" in the resource group "testRg". 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a dev center using InputObject
 ```powershell
-{{ Add code here }}
-```
+$devCenterInput = Get-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName testRg
 
-```output
-{{ Add output here }}
+Update-AzDevCenterAdminDevCenter -InputObject $devCenterInput -IdentityType "SystemAssigned"
 ```
-
-{{ Add description here }}
+This command updates a dev center named "Contoso" in the resource group "testRg". 
 

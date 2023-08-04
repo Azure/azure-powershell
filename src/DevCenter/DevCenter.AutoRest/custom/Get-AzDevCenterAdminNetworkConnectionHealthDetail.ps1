@@ -16,18 +16,19 @@
 
 <#
 .Synopsis
-Gets a schedule resource.
+Gets health check status details.
 .Description
-Gets a schedule resource.
+Gets health check status details.
 .Example
-{{ Add code here }}
+Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName eastusNetwork -ResourceGroupName testRg
 .Example
-{{ Add code here }}
+$networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminNetworkConnectionHealthDetail -InputObject $networkConnection
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IHealthCheckStatusDetails
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,39 +53,33 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The version of the image.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminschedule
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminnetworkconnectionhealthdetail
 #>
-function Get-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
-  [CmdletBinding(DefaultParameterSetName = 'GetWithDefault', PositionalBinding = $false)]
-  param(
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+function Get-AzDevCenterAdminNetworkConnectionHealthDetail {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IHealthCheckStatusDetails])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # Name of the pool.
-    ${PoolName},
+    # Name of the Network Connection that can be applied to a Pool.
+    ${NetworkConnectionName},
 
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of the project.
-    ${ProjectName},
-
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName = 'GetWithDefault')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
@@ -138,15 +133,9 @@ function Get-AzDevCenterAdminSchedule {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
+process {
+    Az.DevCenter.internal\Get-AzDevCenterAdminNetworkConnectionHealthDetail @PSBoundParameters
+}
 
-  #Customization to remove "List"
-  process {
-
-    if ($PSBoundParameters.ContainsKey('InputObject')) {
-      $PSBoundParameters["InputObject"].ScheduleName = "Default"
-    }
-
-    Az.DevCenter.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
-  }
 }

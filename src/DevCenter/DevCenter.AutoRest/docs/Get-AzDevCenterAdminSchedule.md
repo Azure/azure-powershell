@@ -29,27 +29,20 @@ Gets a schedule resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a schedule in a pool
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command gets a schedule in a pool "DevPool" under the project "DevProject.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a schedule in a pool using InputObject
 ```powershell
-{{ Add code here }}
+$schedule = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminSchedule -InputObject $schedule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets a schedule in a pool "DevPool" under the project "DevProject.
 
 ## PARAMETERS
 

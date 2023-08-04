@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/lt6s?api-version=2023-04-01",
-      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"stopOnDisconnect\": {\r\n      \"status\": \"Enabled\",\r\n      \"gracePeriodMinutes\": 60\r\n    },\r\n    \"devBoxDefinitionName\": \"h3dpk9\",\r\n    \"networkConnectionName\": \"6naz5c\",\r\n    \"licenseType\": \"Windows_Client\",\r\n    \"localAdministrator\": \"Enabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"devBoxDefinitionName\": \"h3dpk9\",\r\n    \"networkConnectionName\": \"6naz5c\",\r\n    \"licenseType\": \"Windows_Client\",\r\n    \"localAdministrator\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },

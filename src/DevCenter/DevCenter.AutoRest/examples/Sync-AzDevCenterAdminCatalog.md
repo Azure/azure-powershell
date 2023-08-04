@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Sync a catalog
 ```powershell
-{{ Add code here }}
+Sync-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
 ```
+This command syncs the catalog named "CentralCatalog".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Sync a catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Sync-AzDevCenterAdminCatalog -InputObject $catalog
 ```
+This command syncs the catalog named "CentralCatalog".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

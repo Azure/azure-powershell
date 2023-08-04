@@ -151,8 +151,7 @@ function Get-AzDevCenterUserSchedule {
         $Default = "default"
 
         if ($PSBoundParameters.ContainsKey('InputObject')) {
-            $InputObject.ScheduleName = $Default
-            $PSBoundParameters["InputObject"] = $InputObject
+            $PSBoundParameters["InputObject"].ScheduleName = $Default
         } else {
             $null = $PSBoundParameters.Add("ScheduleName", $Default)
         }

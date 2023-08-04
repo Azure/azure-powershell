@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an environment type
 ```powershell
-{{ Add code here }}
+$tags = @{"dev" ="test"}
+New-AzDevCenterAdminEnvironmentType -DevCenterName Contoso -Name DevTest -ResourceGroupName testRg -Tag $tags
 ```
+This command creates an environment type named "DevTest" in the dev center "Contoso". 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create an environment type using InputObject
 ```powershell
-{{ Add code here }}
+$tags = @{"dev" ="test"}
+$envType = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "EnvironmentTypeName" = "DevTest"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminEnvironmentType -InputObject $envType -Tag $tags
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates an environment type named "DevTest" in the dev center "Contoso". 
 

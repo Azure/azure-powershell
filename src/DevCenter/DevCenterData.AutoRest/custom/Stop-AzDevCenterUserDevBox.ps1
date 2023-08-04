@@ -175,6 +175,7 @@ function Stop-AzDevCenterUserDevBox {
       $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
+
     Az.DevCenterdata.internal\Stop-AzDevCenterUserDevBox @PSBoundParameters
   }
 }

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a catalog
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
 ```
+This command updates a catalog named "CentralCatalog" in the dev center "Contoso".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalogInput = Get-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
+
+Update-AzDevCenterAdminCatalog -InputObject $catalogInput -GitHubPath "testpath" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat"
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates a catalog named "CentralCatalog" in the dev center "Contoso".

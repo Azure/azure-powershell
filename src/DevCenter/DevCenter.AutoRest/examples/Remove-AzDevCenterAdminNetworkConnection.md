@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a network connection
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminNetworkConnection -Name networkEastUs -ResourceGroupName testRg
 ```
+This command deletes a network connection named "networkEastUs" in the resource group "testRg".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a network connection using InputObject
 ```powershell
-{{ Add code here }}
+$networkConnection = Get-AzDevCenterAdminNetworkConnection -ResourceGroupName testRg -Name networkEastUs
+Remove-AzDevCenterAdminNetworkConnection -InputObject $networkConnection
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command deletes a network connection named "networkEastUs" in the resource group "testRg".

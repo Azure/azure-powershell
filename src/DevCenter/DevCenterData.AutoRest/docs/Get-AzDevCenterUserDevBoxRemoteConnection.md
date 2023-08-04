@@ -41,27 +41,35 @@ Gets RDP Connection info
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the remote connection on the dev box by endpoint
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This commands gets the remote connection for the dev box "myDevBox".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get the remote connection on the dev box by dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
+This commands gets the remote connection for the dev box "myDevBox".
+
+### Example 3: Get the remote connection on the dev box by endpoint and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
+Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-{{ Add description here }}
+This commands gets the remote connection for the dev box "myDevBox".
+
+### Example 4: Get the remote connection on the dev box by dev center and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -InputObject $devBoxInput
+```
+
+This commands gets the remote connection for the dev box "myDevBox".
 
 ## PARAMETERS
 

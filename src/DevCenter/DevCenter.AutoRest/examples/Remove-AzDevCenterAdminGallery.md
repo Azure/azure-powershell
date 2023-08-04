@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a gallery
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminGallery -ResourceGroupName testRg -DevCenterName Contoso -Name StandardGallery
 ```
+This command deletes a gallery named "StandardGallery" from the dev center "Contoso".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a gallery using InputObject
 ```powershell
-{{ Add code here }}
+$gallery = Get-AzDevCenterAdminGallery -ResourceGroupName testRg -DevCenterName Contoso -Name StandardGallery
+Remove-AzDevCenterAdminGallery -InputObject $gallery
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command deletes a gallery named "StandardGallery" from the dev center "Contoso".

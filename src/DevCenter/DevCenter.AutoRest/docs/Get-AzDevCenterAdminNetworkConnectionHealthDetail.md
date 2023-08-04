@@ -12,7 +12,7 @@ Gets health check status details.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -24,38 +24,25 @@ Get-AzDevCenterAdminNetworkConnectionHealthDetail -InputObject <IDevCenterIdenti
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets health check status details.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the health check details of a network connection
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName eastusNetwork -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the health check details of the network connection "eastusNetwork" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List the health check details of a network connection using InputObject
 ```powershell
-{{ Add code here }}
+$networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminNetworkConnectionHealthDetail -InputObject $networkConnection
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the health check details of the network connection "eastusNetwork" under the resource group "testRg".
 
 ## PARAMETERS
 
@@ -96,7 +83,7 @@ Name of the Network Connection that can be applied to a Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -112,7 +99,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -127,7 +114,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: False

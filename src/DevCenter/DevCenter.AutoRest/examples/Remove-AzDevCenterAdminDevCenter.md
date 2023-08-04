@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a dev center
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName DevProject
 ```
+This command deletes the dev center "Contoso" in the resource group "testRg".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a dev center using InputObject
 ```powershell
-{{ Add code here }}
-```
+$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName DevProject -Name Contoso
 
-```output
-{{ Add output here }}
+Remove-AzDevCenterAdminDevCenter -InputObject $devCenter
 ```
-
-{{ Add description here }}
+This command deletes the dev center "Contoso" in the resource group "testRg".
 

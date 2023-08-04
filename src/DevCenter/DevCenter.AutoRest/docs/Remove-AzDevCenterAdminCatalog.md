@@ -30,27 +30,20 @@ Deletes a catalog resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a catalog
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the catalog named "CentralCatalog" in the dev center "Contoso".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a catalog using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = Get-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
+Remove-AzDevCenterAdminCatalog -InputObject $catalog
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the catalog named "CentralCatalog" in the dev center "Contoso".
 
 ## PARAMETERS
 

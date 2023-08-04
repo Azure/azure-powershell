@@ -35,27 +35,33 @@ Gets an environment type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List environment types in a dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminEnvironmentType -ResourceGroupName testRg -DevCenterName Contoso
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the environment types in the dev center "Contoso" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a dev center environment type 
 ```powershell
-{{ Add code here }}
+
 ```
 
-```output
-{{ Add output here }}
+```powershell
+ Get-AzDevCenterAdminEnvironmentType -ResourceGroupName testRg -DevCenterName Contoso -Name DevTest
+ ```
+This command gets the environment type named "DevTest" in the dev center "Contoso" under the resource group "testRg".
+
+### Example 3: Get a dev center environment type using InputObject
+```powershell
+
 ```
 
-{{ Add description here }}
+```powershell
+$envType = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "EnvironmentTypeName" = "DevTest"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminEnvironmentType -InputObject $envType
+ ```
+This command gets the environment type named "DevTest" in the dev center "Contoso" under the resource group "testRg".
 
 ## PARAMETERS
 

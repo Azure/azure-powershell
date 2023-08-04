@@ -139,21 +139,22 @@ function New-AzDevCenterAdminPool {
         [System.String]
         # Name of a Network Connection in parent Project of this Pool
         ${NetworkConnectionName},
+
+        # Feature in preview, uncomment when available
+        # [Parameter(ParameterSetName = 'CreateExpanded')]
+        # [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        # [System.Int32]
+        # # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
+        # ${StopOnDisconnectGracePeriodMinute},
     
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [System.Int32]
-        # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-        ${StopOnDisconnectGracePeriodMinute},
-    
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
-        # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-        ${StopOnDisconnectStatus},
+        # [Parameter(ParameterSetName = 'CreateExpanded')]
+        # [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
+        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
+        # # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+        # ${StopOnDisconnectStatus},
     
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]

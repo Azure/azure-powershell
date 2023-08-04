@@ -1,22 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1: List usage
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminUsage -Location "westus3"
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command lists usages in the location "westus3" for the current subscription. 

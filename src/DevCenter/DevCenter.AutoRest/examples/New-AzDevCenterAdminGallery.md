@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a gallery
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminGallery -DevCenterName Contoso -Name StandardGallery -ResourceGroupName testRg -GalleryResourceId "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.Compute/galleries/StandardGallery"
 ```
+This command create a gallery named "StandardGallery" in the dev center "Contoso". 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a gallery using InputObject
 ```powershell
-{{ Add code here }}
+$gallery = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "GalleryName" = "StandardGallery"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminGallery -InputObject $gallery -GalleryResourceId "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.Compute/galleries/StandardGallery"
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command create a gallery named "StandardGallery" in the dev center "Contoso". 
 

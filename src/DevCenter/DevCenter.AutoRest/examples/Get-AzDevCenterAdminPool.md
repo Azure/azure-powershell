@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: List pools in a project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminPool -ResourceGroupName testRg -ProjectName DevProject
 ```
+This command lists the pools in the project "DevProject" under the resource group "testRg".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a pool
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminPool -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
 ```
+This command gets the pool named "DevPool" in the project "DevProject" under the resource group "testRg". 
 
-```output
-{{ Add output here }}
+### Example 3: Get a pool using InputObject
+```powershell
+$pool = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminPool -InputObject $pool
 ```
-
-{{ Add description here }}
-
+This command gets the pool named "DevPool" in the project "DevProject" under the resource group "testRg". 

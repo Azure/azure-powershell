@@ -33,27 +33,21 @@ Partially updates a Scheduled.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a schedule
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg -State "Disabled" -Time "17:30" -TimeZone "America/New_York"
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a schedule in the pool "DevPool".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a schedule using InputObject
 ```powershell
-{{ Add code here }}
+$scheduleInput = Get-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg
+
+New-AzDevCenterAdminSchedule -InputObject $scheduleInput -State "Disabled" -Time "17:30" -TimeZone "America/New_York"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a schedule in the pool "DevPool".
 
 ## PARAMETERS
 

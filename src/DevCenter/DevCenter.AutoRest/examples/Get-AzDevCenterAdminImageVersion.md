@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: List image versions for an image
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminImageVersion -ResourceGroupName testRg -DevCenterName Contoso -ImageName ContosoBaseImage -GalleryName StandardGallery
 ```
+This command lists the image verions for the image "ContosoBaseImage" under the gallery "StandardGallery". 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get an image version
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminImageVersion -ResourceGroupName testRg -DevCenterName Contoso -ImageName ContosoBaseImage -VersionName 1.0.0 -GalleryName StandardGallery
 ```
+This command gets the image version "1.0.0" for the image "ContosoBaseImage" in the gallery "StandardGallery".
 
-```output
-{{ Add output here }}
+### Example 3: Get an image version using InputObject
+```powershell
+$imageVersion =  @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "GalleryName" = "StandardGallery"; "ImageName" = "ContosoBaseImage"; "VersionName" = "1.0.0"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminImageVersion -InputObject $imageVersion
 ```
-
-{{ Add description here }}
+This command gets the image version "1.0.0" for the image "ContosoBaseImage" in the gallery "StandardGallery".
 

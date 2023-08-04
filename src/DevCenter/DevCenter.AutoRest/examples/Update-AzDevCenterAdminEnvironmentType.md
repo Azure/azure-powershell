@@ -1,22 +1,18 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+$tags = @{"dev" = "test" }
 
-```output
-{{ Add output here }}
+Update-AzDevCenterAdminEnvironmentType -DevCenterName Contoso -Name DevTest -ResourceGroupName testRg -Tag $tags
 ```
+This command updates an environment type named "DevTest" in the dev center "Contoso". 
 
-{{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+$envType = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "EnvironmentTypeName" = "DevTest"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$tags = @{"dev" = "test" }
 
-```output
-{{ Add output here }}
+Update-AzDevCenterAdminEnvironmentType -InputObject $envType -Tag $tags
 ```
-
-{{ Add description here }}
+This command updates an environment type named "DevTest" in the dev center "Contoso". 
 

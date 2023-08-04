@@ -35,27 +35,27 @@ Gets an allowed environment type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List project allowed environment types
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectAllowedEnvironmentType -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the allowed environment types in the project "DevProject" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a project allowed environment type
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectAllowedEnvironmentType -ProjectName DevProject -ResourceGroupName testRg -EnvironmentTypeName DevTest
 ```
 
-```output
-{{ Add output here }}
+This command gets the allowed environment type named "DevTest" in the project "DevProject" under the resource group "testRg".
+
+### Example 3: Get a project allowed environment type using InputObject
+```powershell
+$envType = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "EnvironmentTypeName" = "DevTest"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminProjectAllowedEnvironmentType -InputObject $envType
 ```
 
-{{ Add description here }}
+This command gets the allowed environment type named "DevTest" in the project "DevProject" under the resource group "testRg".
 
 ## PARAMETERS
 

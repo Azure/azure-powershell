@@ -16,17 +16,15 @@ Creates or updates a machine pool
 ```
 New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -DevBoxDefinitionName <String> -LocalAdministrator <LocalAdminStatus> -Location <String>
- -NetworkConnectionName <String> [-SubscriptionId <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
- [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ -NetworkConnectionName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -DevBoxDefinitionName <String>
- -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String>
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,27 +32,20 @@ Creates or updates a machine pool
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a pool
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminPool -Name DevPool -ProjectName DevProject -ResourceGroupName testRg -Location westus2 -DevBoxDefinitionName WebDevBox -LocalAdministrator "Enabled" -NetworkConnectionName Network1westus2
 ```
 
-```output
-{{ Add output here }}
-```
+This command creates a pool named "DevPool" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a pool using InputObject
 ```powershell
-{{ Add code here }}
+$pool = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminPool -InputObject $pool -Location westus2 -DevBoxDefinitionName WebDevBox -LocalAdministrator "Enabled" -NetworkConnectionName Network1westus2 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a pool named "DevPool" in the project "DevProject".
 
 ## PARAMETERS
 
@@ -226,36 +217,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StopOnDisconnectGracePeriodMinute
-The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StopOnDisconnectStatus
-Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -272,6 +233,13 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+[Parameter(ParameterSetName = 'CreateExpanded')]
+[Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
+[Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+[Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
+# Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
+${StopOnDisconnectStatus},
 Resource tags.
 
 ```yaml

@@ -1,22 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the outbound network dependency endpoints of a network connection
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -ResourceGroupName testRg -NetworkConnectionName eastusNetwork
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command lists the outbound network dependency endpoints of the network connection "eastusNetwork" under the resource group "testRg".

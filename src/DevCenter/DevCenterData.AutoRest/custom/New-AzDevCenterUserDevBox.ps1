@@ -202,6 +202,7 @@ function New-AzDevCenterUserDevBox {
       $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
+
     Az.DevCenterdata.internal\New-AzDevCenterUserDevBox @PSBoundParameters
   }
 }

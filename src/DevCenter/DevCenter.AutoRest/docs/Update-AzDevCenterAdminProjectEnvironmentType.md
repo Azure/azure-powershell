@@ -35,27 +35,41 @@ Partially updates a project environment type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a project environment type
 ```powershell
-{{ Add code here }}
+$deploymentTargetId = '/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff'
+$creatorRoleAssignmentRole = @{"b24988ac-6180-42a0-ab88-20f7382dd24c" = @{} }
+$userRoleAssignment = @{
+    $env.identityPrincipalId = @{
+        "roles" = @{
+            "b24988ac-6180-42a0-ab88-20f7382dd24c" = @{}
+        }
+    }
+}
+
+Update-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName DevTest -ProjectName DevProject -ResourceGroupName testRg -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -IdentityType "SystemAssigned" -Status "Disabled" -UserRoleAssignment $userRoleAssignment
 ```
 
-```output
-{{ Add output here }}
-```
+This command updates a project environment type named "DevTest" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 1: Update a project environment type
 ```powershell
-{{ Add code here }}
+$projEnvTypeInput =Get-AzDevCenterAdminProjectEnvironmentType -ProjectName DevProject -ResourceGroupName testRg -EnvironmentTypeName DevTest
+
+$deploymentTargetId = '/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff'
+$creatorRoleAssignmentRole = @{"b24988ac-6180-42a0-ab88-20f7382dd24c" = @{} }
+$userRoleAssignment = @{
+    $env.identityPrincipalId = @{
+        "roles" = @{
+            "b24988ac-6180-42a0-ab88-20f7382dd24c" = @{}
+        }
+    }
+}
+
+Update-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvTypeInput -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -IdentityType "SystemAssigned" -Status "Disabled" -UserRoleAssignment $userRoleAssignment
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a project environment type named "DevTest" in the project "DevProject".
 
 ## PARAMETERS
 
