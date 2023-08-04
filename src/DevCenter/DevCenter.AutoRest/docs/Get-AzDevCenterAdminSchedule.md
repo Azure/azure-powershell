@@ -38,7 +38,7 @@ Get-AzDevCenterAdminSchedule -PoolName $env.poolName -ProjectName $env.projectNa
 
 ### Example 2: {{ Add title here }}
 ```powershell
-$schedule = @{"ResourceGroupName" = "pwshRgkr45vc"; "ProjectName" = "pwshProjvpru19"; "PoolName" = "fzmci12"; "SubscriptionId" = "f141e9f2-4778-45a4-9aa0-8b31e6469454"}
+$schedule = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
 Get-AzDevCenterAdminSchedule -InputObject $schedule
 ```
 
