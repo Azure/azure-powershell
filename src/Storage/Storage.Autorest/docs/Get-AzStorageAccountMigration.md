@@ -39,9 +39,9 @@ DetailMigrationFailedDetailedReason :
 DetailMigrationFailedReason         :
 DetailMigrationStatus               : SubmittedForConversion
 DetailTargetSkuName                 : Standard_LRS
-Id                                  : /subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/yifanz1/providers/Microsoft.Storage/storageAccounts/yifantestmigration11/accountMigrations/default
+Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresroucegroup/providers/Microsoft.Storage/storageAccounts/myaccount/accountMigrations/default
 Name                                : default
-ResourceGroupName                   : yifanz1
+ResourceGroupName                   : myresroucegroup
 Type                                : Microsoft.Storage/storageAccounts/accountMigrations
 ```
 
