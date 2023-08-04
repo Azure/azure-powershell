@@ -15,26 +15,22 @@ if (($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterAdminPool'
 
 Describe 'Update-AzDevCenterAdminPool' {
     It 'UpdateExpanded' {
-        $pool = Update-AzDevCenterAdminPool -Name $env.poolUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 80 -StopOnDisconnectStatus "Disabled"
+        $pool = Update-AzDevCenterAdminPool -Name $env.poolUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName
         $pool.Name | Should -Be $env.poolUpdate
         $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionSet
         $pool.LocalAdministrator | Should -Be "Disabled"
         $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
-        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 80
-        $pool.StopOnDisconnectStatus | Should -Be "Disabled"
         $pool.LicenseType | Should -Be "Windows_Client"
     }
 
     It 'UpdateViaIdentityExpanded' {
         $poolInput = Get-AzDevCenterAdminPool -ResourceGroupName $env.resourceGroup -Name $env.poolUpdate -ProjectName $env.projectName
 
-        $pool = Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 80 -StopOnDisconnectStatus "Disabled"
+        $pool = Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName $env.devBoxDefinitionSet -LocalAdministrator "Disabled" -NetworkConnectionName $env.attachedNetworkName
         $pool.Name | Should -Be $env.poolUpdate
         $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionSet
         $pool.LocalAdministrator | Should -Be "Disabled"
         $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
-        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 80
-        $pool.StopOnDisconnectStatus | Should -Be "Disabled"
         $pool.LicenseType | Should -Be "Windows_Client" }
 
 }

@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a pool
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminPool Name DevPool -ProjectName DevProject -ResourceGroupName testRg -DevBoxDefinitionName WebDevBox -LocalAdministrator "Disabled" -NetworkConnectionName Network1westus2
 ```
+This command updates a pool named "DevPool" in the project "DevProject".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a pool using InputObject
 ```powershell
-{{ Add code here }}
-```
+$poolInput = Get-AzDevCenterAdminPool -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
+Update-AzDevCenterAdminPool -InputObject $poolInput -DevBoxDefinitionName WebDevBox -LocalAdministrator "Disabled" -NetworkConnectionName Network1westus2
 
-```output
-{{ Add output here }}
 ```
-
-{{ Add description here }}
+This command updates a pool named "DevPool" in the project "DevProject".
 

@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PATCH",
       "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/projects/pwshProj3stxlh/pools/b5ri3z?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"stopOnDisconnect\": {\r\n      \"status\": \"Disabled\",\r\n      \"gracePeriodMinutes\": 80\r\n    },\r\n    \"devBoxDefinitionName\": \"l4a9fe\",\r\n    \"networkConnectionName\": \"6naz5c\",\r\n    \"licenseType\": \"Windows_Client\",\r\n    \"localAdministrator\": \"Disabled\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"devBoxDefinitionName\": \"l4a9fe\",\r\n    \"networkConnectionName\": \"6naz5c\",\r\n    \"licenseType\": \"Windows_Client\",\r\n    \"localAdministrator\": \"Disabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },

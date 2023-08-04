@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a schedule
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg -State "Enabled" -Time "18:30" -TimeZone "America/Los_Angeles"
 ```
+This command creates a schedule in the pool "DevPool".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a schedule using InputObject
 ```powershell
-{{ Add code here }}
+$schedule = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminSchedule -InputObject $schedule
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a schedule in the pool "DevPool".
 

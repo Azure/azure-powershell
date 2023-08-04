@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes an environment type
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminEnvironmentType -ResourceGroupName testRg -DevCenterName Contoso -Name DevTest 
 ```
+This command deletes the environment type "WebDevBox" in the dev center "Contoso". 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes an environment type using InputObject
 ```powershell
-{{ Add code here }}
+$envType = Get-AzDevCenterAdminEnvironmentType -ResourceGroupName testRg -DevCenterName Contoso -Name DevTest
+Remove-AzDevCenterAdminEnvironmentType -InputObject $envType
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command deletes the environment type "WebDevBox" in the dev center "Contoso". 

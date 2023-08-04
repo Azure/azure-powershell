@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a project
 ```powershell
-{{ Add code here }}
+Update-AzDevCenterAdminProject -Name DevProject -ResourceGroupNametestRg -MaxDevBoxesPerUser 5
 ```
+This command updates a project name "DevProject" in the resource group "testRg".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a project using InputObject
 ```powershell
-{{ Add code here }}
+$projectInput = Get-AzDevCenterAdminProject -ResourceGroupName testRg -Name DevProject
+
+Update-AzDevCenterAdminProject -InputObject $projectInput -MaxDevBoxesPerUser 5
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates a project name "DevProject" in the resource group "testRg".

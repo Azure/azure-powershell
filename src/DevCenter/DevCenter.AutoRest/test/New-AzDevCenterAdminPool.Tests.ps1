@@ -13,15 +13,14 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminPool')) 
     . ($mockingPath | Select-Object -First 1).FullName
 }
 
+#TODO: add idle parameters when feature is available
 Describe 'New-AzDevCenterAdminPool' {
     It 'CreateExpanded' {
-        $pool = New-AzDevCenterAdminPool -Name $env.poolNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Location $env.location -DevBoxDefinitionName $env.devBoxDefinitionName -LocalAdministrator "Enabled" -NetworkConnectionName $env.attachedNetworkName -StopOnDisconnectGracePeriodMinute 60 -StopOnDisconnectStatus "Enabled"
+        $pool = New-AzDevCenterAdminPool -Name $env.poolNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -Location $env.location -DevBoxDefinitionName $env.devBoxDefinitionName -LocalAdministrator "Enabled" -NetworkConnectionName $env.attachedNetworkName
         $pool.Name | Should -Be $env.poolNew
         $pool.DevBoxDefinitionName | Should -Be $env.devBoxDefinitionName
         $pool.LocalAdministrator | Should -Be "Enabled"
         $pool.NetworkConnectionName | Should -Be $env.attachedNetworkName
-        $pool.StopOnDisconnectGracePeriodMinute | Should -Be 60
-        $pool.StopOnDisconnectStatus | Should -Be "Enabled"
         $pool.LicenseType | Should -Be "Windows_Client"
     }
 
