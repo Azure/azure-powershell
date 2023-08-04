@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 7.0.0
+* Added parameter `-EnableSecureChannel` to support selecting use secure channel during creation. 
+  - The parameter would force to true if the cluster created based on a stroage account that secure transfer enabled, no matter it use 'blob' or 'dfs' type.
+* Fixed bug cannot get storage account info(gen2). 
+  
+* Breaking Change:
+  - The cmdlet `Add-AzHDInsightScriptAction` no longer supports the type 'Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType' for parameter 'NodeType'.
+  - Changed the type of parameter "DiskEncryption" from `Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties` to `Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties` in cmdlets `New-AzHDInsightCluster` `Get-AzHDInsightCluster`  `Get-AzHDInsightHost` `Enable-AzHDInsightAzureMonitor` `Get-AzHDInsightClusterAutoscaleConfiguration` `Remove-AzHDInsightClusterAutoscaleConfiguration` `Set-AzHDInsightClusterAutoscaleConfiguration` `Set-AzHDInsightClusterDiskEncryptionKey` `Set-AzHDInsightClusterSize` and `Set-AzHDInsightGatewayCredential`.
+  - Changed the type `Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType` to `Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType` in cmdlets `Add-AzHDInsightClusterIdentity` `Add-AzHDInsightComponentVersion` `Add-AzHDInsightConfigValue` `Add-AzHDInsightMetastore` `Add-AzHDInsightScriptAction` `Add-AzHDInsightScriptAction` `Add-AzHDInsightSecurityProfile` `Add-AzHDInsightStorage` `New-AzHDInsightCluster` `Set-AzHDInsightDefaultStorage` and `New-AzHDInsightClusterConfig`.
+  - Changed the type of parameter "WorkerNodeDataDisksGroups" from `List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>` to `List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>` in cmdlets `Disable-AzHDInsightAzureMonitor` `Enable-AzHDInsightAzureMonitor` `Get-AzHDInsightAzureMonitor` `Get-AzHDInsightCluster` `Get-AzHDInsightClusterAutoscaleConfiguration` `Get-AzHDInsightHost` `Get-AzHDInsightProperty` `New-AzHDInsightCluster` `Remove-AzHDInsightClusterAutoscaleConfiguration` `Set-AzHDInsightClusterAutoscaleConfiguration` `Set-AzHDInsightClusterSize` `Set-AzHDInsightGatewayCredential` and `New-AzHDInsightClusterConfig`.
+
 ## Version 6.0.0
 * Breaking Change:
   - Removed the parameter `-RdpAccessExpiry` which has been marked as deprecated for a long time from cmdlet `New-AzHDInsightCluster`

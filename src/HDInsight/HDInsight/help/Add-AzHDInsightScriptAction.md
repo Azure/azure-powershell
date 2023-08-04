@@ -135,10 +135,10 @@ The acceptable values for this parameter are:
 - ZookeeperNode
 
 ```yaml
-Type: Microsoft.Azure.Commands.HDInsight.Models.Management.ClusterNodeType
+Type: Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType
 Parameter Sets: (All)
 Aliases:
-Accepted values: HeadNode, WorkerNode, ZookeeperNode, EdgeNode
+Accepted values: HeadNode, WorkerNode, ZookeeperNode
 
 Required: True
 Position: 1

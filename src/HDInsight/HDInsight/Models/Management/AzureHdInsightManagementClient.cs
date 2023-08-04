@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             }
             catch (Exception e)
             {
+                // HDInsightClusterData came from another service and was added to the list<HDInsightClusterData>. An error occurred and is not within the scope of this project's processing.
                 string message = e.Message;
             }
 
