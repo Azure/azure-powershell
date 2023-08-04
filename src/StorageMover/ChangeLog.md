@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added support for SMB endpoints and SMB file share endpoints
 
 ## Version 1.0.1
