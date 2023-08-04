@@ -383,7 +383,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
-            DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
+            // setting the default expiry time of 30 days for AzureVM workload, this doesn't apply to MSSQL workload as the default value for SQL is 45 days.
+            DateTime? expiryDateTime = (ProviderData[ItemParams.ExpiryDateTimeUTC] != null) ? (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC] : DateTime.UtcNow.AddDays(30);
             AzureVmItem iaasVmItem = item as AzureVmItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
