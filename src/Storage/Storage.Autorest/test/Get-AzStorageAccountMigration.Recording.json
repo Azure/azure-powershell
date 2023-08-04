@@ -1,0 +1,43 @@
+{
+  "Get-AzStorageAccountMigration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/testaccountmigration111/accountMigrations/default?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/testaccountmigration111/accountMigrations/default?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3eeace74-e6a3-44cc-91f3-f1d22f2b38a9" ],
+        "CommandName": [ "Get-AzStorageAccountMigration" ],
+        "FullCommandName": [ "Get-AzStorageAccountMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.Storage/5.9.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "31d9dd10-a0aa-4746-ad40-9ba6cb26bc0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "1c2d5373-b8df-444e-85d9-1bde45b9f15b" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230804T084318Z:1c2d5373-b8df-444e-85d9-1bde45b9f15b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 04 Aug 2023 08:43:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "359" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/testaccountmigration111/accountMigrations/default\",\"name\":\"default\",\"type\":\"Microsoft.Storage/storageAccounts/accountMigrations\",\"properties\":{\"targetSkuName\":\"Standard_ZRS\",\"migrationStatus\":\"SubmittedForConversion\"}}",
+      "isContentBase64": false
+    }
+  }
+}
