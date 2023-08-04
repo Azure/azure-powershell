@@ -2,7 +2,7 @@ variables:
   AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: netcoreapp3.1
+  TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
