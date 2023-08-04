@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
 
 ## Version 6.9.0
 * Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.
