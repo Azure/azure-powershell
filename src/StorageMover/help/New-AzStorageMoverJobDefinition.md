@@ -134,7 +134,7 @@ The Job Definition resource.
 To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition
 Parameter Sets: Create
 Aliases:
 
@@ -317,11 +317,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition
 
 ## NOTES
 
@@ -336,15 +336,15 @@ To create the parameters described below, construct a hash table containing the 
   - `CopyMode <CopyMode>`: Strategy to use for copy.
   - `SourceName <String>`: The name of the source Endpoint.
   - `TargetName <String>`: The name of the target Endpoint.
-  - `[AgentName <String>]`: Name of the Agent to assign for new Job Runs of this Job Definition.
-  - `[Description <String>]`: A description for the Job Definition.
-  - `[SourceSubpath <String>]`: The subpath to use when reading from the source Endpoint.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[AgentName <String>]`: Name of the Agent to assign for new Job Runs of this Job Definition.
+  - `[Description <String>]`: A description for the Job Definition.
+  - `[SourceSubpath <String>]`: The subpath to use when reading from the source Endpoint.
   - `[TargetSubpath <String>]`: The subpath to use when writing to the target Endpoint.
 
 ## RELATED LINKS

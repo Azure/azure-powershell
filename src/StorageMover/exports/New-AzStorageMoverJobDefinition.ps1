@@ -23,9 +23,9 @@ Creates or updates a Job Definition resource, which contains configuration for a
 New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,21 +35,21 @@ JOBDEFINITION <IJobDefinition>: The Job Definition resource.
   CopyMode <CopyMode>: Strategy to use for copy.
   SourceName <String>: The name of the source Endpoint.
   TargetName <String>: The name of the target Endpoint.
-  [AgentName <String>]: Name of the Agent to assign for new Job Runs of this Job Definition.
-  [Description <String>]: A description for the Job Definition.
-  [SourceSubpath <String>]: The subpath to use when reading from the source Endpoint.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
   [SystemDataCreatedBy <String>]: The identity that created the resource.
   [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
   [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [AgentName <String>]: Name of the Agent to assign for new Job Runs of this Job Definition.
+  [Description <String>]: A description for the Job Definition.
+  [SourceSubpath <String>]: The subpath to use when reading from the source Endpoint.
   [TargetSubpath <String>]: The subpath to use when writing to the target Endpoint.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 #>
 function New-AzStorageMoverJobDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -87,7 +87,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobDefinition]
     # The Job Definition resource.
     # To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
     ${JobDefinition},

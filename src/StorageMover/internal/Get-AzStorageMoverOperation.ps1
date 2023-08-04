@@ -25,12 +25,12 @@ Lists all the supported operations for the Azure Storage Mover REST API.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
 #>
 function Get-AzStorageMoverOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

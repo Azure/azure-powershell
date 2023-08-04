@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for SMB endpoints and SMB file share endpoints
 
 ## Version 1.0.1
 * Fixed the issue of $Host conflicting with system parameter $Host
