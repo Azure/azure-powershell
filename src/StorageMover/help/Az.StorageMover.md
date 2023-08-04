@@ -44,6 +44,12 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
 Creates or updates a Project resource, which is a logical grouping of related jobs.
 
+### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
+Creates an SMB endpoint resource, which represents a data transfer source or destination.
+
+### [New-AzStorageMoverSmbFileShareEndpoint](New-AzStorageMoverSmbFileShareEndpoint.md)
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
 
@@ -86,5 +92,13 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
 Updates properties for a Project resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)
+Updates properties for a SMB endpoint resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverSmbFileShareEndpoint](Update-AzStorageMoverSmbFileShareEndpoint.md)
+Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 
