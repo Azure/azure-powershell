@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             cluster.PromoteScriptExecutionHistoryAsync(scriptExecutionId.ToString()).GetAwaiter().GetResult();
         }
 
-        public virtual void DeleteClusterAsync(string resourceGroupName, string clusterName)
+        public virtual void DeleteCluster(string resourceGroupName, string clusterName)
         {
             ResourceGroupResource resourceGroup = HdInsightManagementClient.GetDefaultSubscription().GetResourceGroups().GetAsync(resourceGroupName).GetAwaiter().GetResult();
             HDInsightClusterResource cluster = resourceGroup.GetHDInsightClusters().GetAsync(clusterName).GetAwaiter().GetResult().Value;
