@@ -29,27 +29,20 @@ Deletes a project resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a project
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminProject -ResourceGroupName testRg -Name DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the project named "DevProject" in the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a project using InputObject
 ```powershell
-{{ Add code here }}
+$project = Get-AzDevCenterAdminProject -ResourceGroupName testRg -Name DevProject
+Remove-AzDevCenterAdminProject -InputObject $project
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the project named "DevProject" in the resource group "testRg".
 
 ## PARAMETERS
 

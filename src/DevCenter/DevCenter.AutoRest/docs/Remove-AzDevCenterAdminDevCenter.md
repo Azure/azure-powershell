@@ -29,27 +29,21 @@ Deletes a devcenter
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a dev center
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminDevCenter -Name Contoso -ResourceGroupName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the dev center "Contoso" in the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a dev center using InputObject
 ```powershell
-{{ Add code here }}
+$devCenter = Get-AzDevCenterAdminDevCenter -ResourceGroupName DevProject -Name Contoso
+
+Remove-AzDevCenterAdminDevCenter -InputObject $devCenter
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the dev center "Contoso" in the resource group "testRg".
 
 ## PARAMETERS
 

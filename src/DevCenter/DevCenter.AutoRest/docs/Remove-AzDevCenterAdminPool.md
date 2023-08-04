@@ -30,27 +30,20 @@ Deletes a machine pool
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a pool
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminPool -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes a pool named "DevPool" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a pool using InputObject
 ```powershell
-{{ Add code here }}
+$pool = Get-AzDevCenterAdminPool -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
+Remove-AzDevCenterAdminPool -InputObject $pool
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes a pool named "DevPool" in the project "DevProject".
 
 ## PARAMETERS
 

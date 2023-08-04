@@ -30,27 +30,20 @@ Deletes a Scheduled.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a schedule
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes the schedule for the pool "DevPool" in the project "DevProject.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a schedule using InputObject
 ```powershell
-{{ Add code here }}
+$schedule = Get-AzDevCenterAdminSchedule -PoolName DevPool -ProjectName DevProject -ResourceGroupName testRg
+Remove-AzDevCenterAdminSchedule -InputObject $schedule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes the schedule for the pool "DevPool" in the project "DevProject.
 
 ## PARAMETERS
 

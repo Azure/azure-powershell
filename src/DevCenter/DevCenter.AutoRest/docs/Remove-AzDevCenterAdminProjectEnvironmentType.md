@@ -30,27 +30,20 @@ Deletes a project environment type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a project environment type
 ```powershell
-{{ Add code here }}
+Remove-AzDevCenterAdminProjectEnvironmentType -ProjectName DevProject -ResourceGroupName testRg -EnvironmentTypeName DevTest
 ```
 
-```output
-{{ Add output here }}
-```
+This command deletes a project environment type named "DevTest" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a project environment type using InputObject
 ```powershell
-{{ Add code here }}
+$projEnvType = Get-AzDevCenterAdminProjectEnvironmentType -ProjectName DevProject -ResourceGroupName testRg -EnvironmentTypeName DevTest
+Remove-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvType
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes a project environment type named "DevTest" in the project "DevProject".
 
 ## PARAMETERS
 

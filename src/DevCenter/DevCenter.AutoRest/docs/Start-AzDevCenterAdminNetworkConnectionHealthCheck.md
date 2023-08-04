@@ -32,27 +32,20 @@ The execution and health check result can be tracked via the network Connection 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start health checks for a network connection
 ```powershell
-{{ Add code here }}
+Start-AzDevCenterAdminNetworkConnectionHealthCheck -NetworkConnectionName eastusNetwork -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command starts the health checks for the network connection "eastusNetwork".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Start health checks for a network connection using InputObject
 ```powershell
-{{ Add code here }}
+$networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Start-AzDevCenterAdminNetworkConnectionHealthCheck -InputObject $networkConnection
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command starts the health checks for the network connection "eastusNetwork".
 
 ## PARAMETERS
 
