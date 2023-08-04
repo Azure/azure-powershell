@@ -52,7 +52,7 @@ This command enables delete retention policy for the Blob service, and set delet
 ## PARAMETERS
 
 ### -AllowPermanentDelete
-Allow deletion of the soft deleted blob versions and snapshots. Permanent delete for soft deleted items does not work for hierarchical namespace enabled (HNS/ADLS Gen2) accounts currently.
+Allow deletion of the soft deleted blob versions and snapshots. Please refer to all the conditions that work for [Permanent Delete] (https://learn.microsoft.com/en-us/rest/api/storageservices/set-blob-service-properties?tabs=azure-ad#:~:text=RetentionPolicy/AllowPermanentDelete)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
