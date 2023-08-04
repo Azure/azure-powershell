@@ -62,7 +62,11 @@ function Test-AzureFSGetJob
 			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -JobId $job.JobId
 
 			Assert-AreEqual $jobDetails.JobId $job.JobId
+			# validation for StorageAccountName filed in job response
+			Assert-AreEqual $jobDetails.StorageAccountName $saName 
+
 			Assert-AreEqual $jobDetails2.JobId $job.JobId
+			Assert-AreEqual $jobDetails2.StorageAccountName $saName
 		}
 
 		$container = Get-AzRecoveryServicesBackupContainer `

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// <remarks>
     /// [OpenAPI] ConsentAndInstallDefaultExtensions=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/consentAndInstallDefaultExtensions"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzStackHciConsentAndInstallDefaultExtensions_And", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzStackHciConsentAndInstallDefaultExtension_AndViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Add consent time for default extensions and initiate extensions installation")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
-    public partial class InvokeAzStackHciConsentAndInstallDefaultExtensions_And : global::System.Management.Automation.PSCmdlet,
+    public partial class InvokeAzStackHciConsentAndInstallDefaultExtension_AndViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -33,25 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Backing field for <see cref="ArcSettingName" /> property.</summary>
-        private string _arcSettingName;
-
-        /// <summary>The name of the proxy resource holding details of HCI ArcSetting information.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the proxy resource holding details of HCI ArcSetting information.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the proxy resource holding details of HCI ArcSetting information.",
-        SerializedName = @"arcSettingName",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(
-        Name = @"",
-        Description =@"",
-        Script = @"""default""")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExport]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
-        public string ArcSettingName { get => this._arcSettingName; set => this._arcSettingName = value; }
-
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Runtime)]
@@ -59,20 +40,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.StackHci Client => Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Module.Instance.ClientAPI;
-
-        /// <summary>Backing field for <see cref="ClusterName" /> property.</summary>
-        private string _clusterName;
-
-        /// <summary>The name of the cluster.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the cluster.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the cluster.",
-        SerializedName = @"clusterName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
-        public string ClusterName { get => this._clusterName; set => this._clusterName = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -95,6 +62,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity _inputObject;
+
+        /// <summary>Identity Parameter</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Identity Parameter", ValueFromPipeline = true)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -127,38 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
-
-        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
-        private string _resourceGroupName;
-
-        /// <summary>The name of the resource group. The name is case insensitive.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the resource group. The name is case insensitive.",
-        SerializedName = @"resourceGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
-        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
-
-        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
-        private string _subscriptionId;
-
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The ID of the target subscription.",
-        SerializedName = @"subscriptionId",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(
-        Name = @"",
-        Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
-        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -209,9 +152,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="InvokeAzStackHciConsentAndInstallDefaultExtensions_And" /> cmdlet class.
+        /// Intializes a new instance of the <see cref="InvokeAzStackHciConsentAndInstallDefaultExtension_AndViaIdentity" /> cmdlet
+        /// class.
         /// </summary>
-        public InvokeAzStackHciConsentAndInstallDefaultExtensions_And()
+        public InvokeAzStackHciConsentAndInstallDefaultExtension_AndViaIdentity()
         {
 
         }
@@ -330,12 +274,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ArcSettingsConsentAndInstallDefaultExtensions(SubscriptionId, ResourceGroupName, ClusterName, ArcSettingName, onOk, onDefault, this, Pipeline);
+                    if (InputObject?.Id != null)
+                    {
+                        await this.Client.ArcSettingsConsentAndInstallDefaultExtensionsViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
+                    }
+                    else
+                    {
+                        // try to call with PATH parameters from Input Object
+                        if (null == InputObject.SubscriptionId)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.ResourceGroupName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceGroupName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.ClusterName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ClusterName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        if (null == InputObject.ArcSettingName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ArcSettingName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.ArcSettingsConsentAndInstallDefaultExtensions(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, InputObject.ArcSettingName ?? null, onOk, onDefault, this, Pipeline);
+                    }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,ArcSettingName=ArcSettingName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -381,14 +349,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, ArcSettingName=ArcSettingName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, ArcSettingName=ArcSettingName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

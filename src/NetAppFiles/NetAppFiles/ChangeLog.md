@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.13.0
 * Updated to api-version 2022-11-01        
 * Added `Identity` to NetAppAccountPatch
 * Added `ActualThroughputMibps` and `OriginatingResourceId`

@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Updated the reference of Azure PowerShell Common to 1.3.82-preview.
+
+## Version 2.12.5
 * Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
 * Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
 * Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
