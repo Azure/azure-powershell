@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an Azure Dev Ops catalog
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg -AdoGitBranch main -AdoGitPath "/templates" -AdoGitSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -AdoGitUri "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
 ```
+Create an Azure Dev Ops catalog named "CentralCatalog" in the dev center "Contoso".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a GitHub catalog
 ```powershell
-{{ Add code here }}
+New-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg -GitHubBranch main -GitHubPath "/templates" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -GitHubUri "https://github.com/Contoso/centralrepo-fake.git"
 ```
+Create a GitHub catalog named "CentralCatalog" in the dev center "Contoso".
 
-```output
-{{ Add output here }}
+### Example 3: Create an Azure Dev Ops catalog using InputObject
+```powershell
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminCatalog -InputObject $catalog -AdoGitBranch main -AdoGitPath "/templates" -AdoGitSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -AdoGitUri "https://contoso@dev.azure.com/contoso/contosoOrg/_git/centralrepo-fakecontoso"
 ```
+Create an Azure Dev Ops catalog named "CentralCatalog" in the dev center "Contoso".
 
-{{ Add description here }}
-
+### Example 4: Create a Github catalog using InputObject
+```powershell
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+New-AzDevCenterAdminCatalog -InputObject $catalog -GitHubBranch main -GitHubPath "/templates" -GitHubSecretIdentifier "https://contosokv.vault.azure.net/secrets/CentralRepoPat" -GitHubUri "https://github.com/Contoso/centralrepo-fake.git"
+```
+Create a GitHub catalog named "CentralCatalog" in the dev center "Contoso".

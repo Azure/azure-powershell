@@ -12,7 +12,7 @@ Gets health check status details.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -22,12 +22,6 @@ Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName <String
 ```
 Get-AzDevCenterAdminNetworkConnectionHealthDetail -InputObject <IDevCenterIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +83,7 @@ Name of the Network Connection that can be applied to a Pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -105,7 +99,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -120,7 +114,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: False

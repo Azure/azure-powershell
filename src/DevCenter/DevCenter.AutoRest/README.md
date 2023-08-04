@@ -96,6 +96,10 @@ directive:
       verb: Start
       subject: PoolHealthCheck
     hide: true
+  - where:
+      verb: Get
+      subject: NetworkConnectionHealthDetail
+    hide: true
 # Hide invoke name availability
   - where:
       verb: Invoke 
