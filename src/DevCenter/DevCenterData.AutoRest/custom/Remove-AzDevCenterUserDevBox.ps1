@@ -176,12 +176,6 @@ function Remove-AzDevCenterUserDevBox {
       $PSBoundParameters["Endpoint"] = $Endpoint
     }
 
-    if ($PSBoundParameters.ContainsKey('InputObject')) {
-      if ($null -eq $PSBoundParameters["InputObject"].UserId) {
-        $PSBoundParameters["InputObject"].UserId = "me"
-      }
-    }
-
     Az.DevCenterdata.internal\Remove-AzDevCenterUserDevBox @PSBoundParameters
   }
 }

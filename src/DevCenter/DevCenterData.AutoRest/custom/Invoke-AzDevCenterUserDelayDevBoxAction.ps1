@@ -164,7 +164,8 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
 
     if ($PSBoundParameters.ContainsKey('InputObject')) {
       if ($null -eq $PSBoundParameters["InputObject"].UserId) {
-        $PSBoundParameters["InputObject"].UserId = "me"
+        $noUserId = "UserId is missing from InputObject." 
+        Write-Error $noUserId -ErrorAction Stop
       }
       $User = $PSBoundParameters["InputObject"].UserId
     }
