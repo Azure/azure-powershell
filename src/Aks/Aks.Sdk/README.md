@@ -11,7 +11,9 @@ autorest.cmd README.md --version=v2
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+# csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 openapi-type: arm
 azure-arm: true
@@ -57,6 +59,16 @@ directive:
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
     transform: $["description"] = $["description"].replace(/>/g, ")");
+  - where:
+      model-name: AgentPool
+      property-name: PropertiesType
+    set:
+      property-name: AgentPoolType
+  # - where:
+  #     model-name: AgentPool
+  #     property-name: PowerState
+  #   set:
+  #     property-name: xiaogang
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService
