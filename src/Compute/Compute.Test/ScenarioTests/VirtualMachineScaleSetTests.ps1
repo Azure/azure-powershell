@@ -222,31 +222,31 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         $vmssList = Get-AzVmss -VMScaleSetName $wildcardNameQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         $vmssList = Get-AzVmss -VMScaleSetName $vmssName;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery -VMScaleSetName $vmssName;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         $vmssList = Get-AzVmss -ResourceGroupName $wildcardRgQuery -VMScaleSetName $wildcardNameQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
         $output = $vmssList | Out-String;
@@ -260,7 +260,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-False { $output.Contains("VirtualMachineProfile") };
-        
+
         Write-Verbose ('Running Command : ' + 'Get-AzVmss List');
         $vmssList = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $wildcardNameQuery;
         Assert-True { ($vmssList | select -ExpandProperty Name) -contains $vmssName };
@@ -384,14 +384,14 @@ function Test-VirtualMachineScaleSetInEdgeZone
     {
         $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
         Assert-AreEqual $config.ExtendedLocation.Name $EdgeZone
-         
+
         New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location $Location;
-        
+
         $VMLocalAdminUser = "LocalAdminUser";
         $VMLocalAdminSecurePassword = ConvertTo-SecureString $PLACEHOLDER -AsPlainText -Force;
 
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
-        
+
         New-AzVmss `
           -ResourceGroupName $ResourceGroupName `
           -Location $Location `
@@ -700,7 +700,7 @@ function Test-VirtualMachineScaleSetReimageTempDisk
         $imgRef = Get-DefaultCRPImage -loc $loc;
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-                    
+
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Manual' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
@@ -731,7 +731,7 @@ function Test-VirtualMachineScaleSetReimageTempDisk
         Assert-AreEqual $imgRef.Offer $result.VirtualMachineProfile.StorageProfile.ImageReference.Offer;
         Assert-AreEqual $imgRef.Skus $result.VirtualMachineProfile.StorageProfile.ImageReference.Sku;
         Assert-AreEqual $imgRef.Version $result.VirtualMachineProfile.StorageProfile.ImageReference.Version;
-        Assert-AreEqual $imgRef.PublisherName $result.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;  
+        Assert-AreEqual $imgRef.PublisherName $result.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
 
         $vmssVMs = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
         $id = $vmssVMs[0].InstanceId
@@ -1246,9 +1246,9 @@ function Test-VirtualMachineScaleSetUserIdentity
     #
     # New-AzResourceGroup -Name $rgname -Location 'Central US'
     # New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityname
-    # 
+    #
     # Now get the identity :
-    # 
+    #
     # $newUserIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityname
     # $newUserId = $newUserIdentity.Id
     $newUserId = "/subscriptions/${subid}/resourcegroups/${rgname}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${identityname}";
@@ -1293,7 +1293,7 @@ function Test-VirtualMachineScaleSetUserIdentity
 
         New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
         $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
-        
+
         Assert-AreEqual $vmssName $vmss.Name;
         Assert-AreEqual "UserAssigned" $vmss.Identity.Type;
         Assert-NotNull $vmss.Identity.UserAssignedIdentities;
@@ -1907,7 +1907,7 @@ function Test-VirtualMachineScaleSetRedeploy
         Assert-AreEqual "Succeeded" $vmssVMs[1].ProvisioningState;
 
         # PerformMaintenance operation
-        # Note that PerformMaintenace operation can only be performed when VMSS requires a maintenance  
+        # Note that PerformMaintenace operation can only be performed when VMSS requires a maintenance
         # and after the given subscription gets a permission for the operation due to the required maintenance.
         Assert-ThrowsContains { Set-AzVmss -PerformMaintenance -ResourceGroupName $rgname -VMScaleSetName $vmssName; } `
             "since the Subscription of this VM is not eligible";
@@ -2059,7 +2059,7 @@ function Test-VirtualMachineScaleSetVMUpdate
 
         $datadisk1 = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 2 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk1.Id;
         $datadisk2 = New-AzVMDataDisk -Caching 'ReadOnly' -Lun 3 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk2.Id;
-        $result = Update-AzVmssVM -ResourceGroupName  $rgname -VMScaleSetName $vmssName -InstanceId $instance_id -DataDisk $datadisk1,$datadisk2 
+        $result = Update-AzVmssVM -ResourceGroupName  $rgname -VMScaleSetName $vmssName -InstanceId $instance_id -DataDisk $datadisk1,$datadisk2
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $vmssVMs = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
@@ -2421,19 +2421,19 @@ function Test-VirtualMachineScaleSetImageVersion
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
- 
+
     try
     {
         # Common
         $loc = "westus" ;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
- 
+
         # SRP
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
- 
+
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
@@ -2441,7 +2441,7 @@ function Test-VirtualMachineScaleSetImageVersion
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
- 
+
         # Create LoadBalancer
         $frontendName = Get-ResourceName
         $backendAddressPoolName = Get-ResourceName
@@ -2449,7 +2449,7 @@ function Test-VirtualMachineScaleSetImageVersion
         $inboundNatPoolName = Get-ResourceName
         $lbruleName = Get-ResourceName
         $lbName = Get-ResourceName
- 
+
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
@@ -2463,25 +2463,25 @@ function Test-VirtualMachineScaleSetImageVersion
             -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool `
             -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool;
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
- 
+
         # New VMSS Parameters
         $vmssName = 'vmss' + $rgname;
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
- 
+
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
- 
+
         $ExtName = "CSETest";
         $Publisher = "Microsoft.Compute";
         $ExtType = "BGInfo";
         $ExtVer = "2.1";
- 
+
         $ipCfg = New-AzVmssIPConfig -Name 'test' `
             -LoadBalancerInboundNatPoolsId $expectedLb.InboundNatPools[0].Id `
             -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
             -SubnetId $subnetId;
- 
+
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Automatic' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $IPCfg `
@@ -2490,16 +2490,16 @@ function Test-VirtualMachineScaleSetImageVersion
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.version `
             -ImageReferencePublisher $imgRef.PublisherName -VhdContainer $vhdContainer `
             | Add-AzVmssExtension -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
- 
+
         Start-Transcript -Path "transcript.txt"
         #create the vmss 
         New-AzVmss -ResourceGroup $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
         Stop-Transcript
- 
+
         $wordToFind="You are deploying VMSS pinned to a specific image version from Azure Marketplace.";
         $file = (Get-Content -path "transcript.txt") -join ' ';
         Assert-True { $file -match $wordToFind } ;
- 
+
     }
     finally
     {
@@ -2512,14 +2512,14 @@ function Test-VirtualMachineScaleSetImageVersion
 .SYNOPSIS
     testing encryptionAtHost cmdlet for
     new-azvmss - create vmss using simple parameter set and hostencryption tag.
-    update-azvmss test boolean parameter 
+    update-azvmss test boolean parameter
     new-azvmssconfig
 #>
 function Test-VirtualMachineScaleSetEncryptionAtHost
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
- 
+
     try
     {
         # Common
@@ -2546,7 +2546,7 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
-        
+
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
@@ -2556,7 +2556,7 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion 'latest' `
             -ImageReferencePublisher $imgRef.PublisherName ;
-       
+
         #creating vmss using new-azvmss default parameter set which uses New-VmssConfig with -EncryptionAtHost parameter
         $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
         #creating vmss using New-azvmss simple parameter set
@@ -2564,10 +2564,10 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
 
         Assert-AreEqual $vmssResult1.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
         Assert-AreEqual $vmssResult2.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
-        
+
         #using Update-azvmss to turn off encryptionAtHost
         $updatedVM = Update-azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssResult1 -EncryptionAtHost $false
-        
+
         Assert-False { $updatedVM.VirtualMachineProfile.SecurityProfile.EncryptionAtHost };
     }
     finally
@@ -2596,7 +2596,7 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $vmssName = 'vmssOrchestrationMode' + $rgname;
         $vmName = 'vm' + $rgname;
         $domainName = 'domain' + $rgname;
-        
+
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
@@ -2627,7 +2627,7 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         Set-AzVmssOsProfile $vmssConfig `
           -AdminUsername $cred.UserName `
           -AdminPassword $cred.Password `
-          -ComputerNamePrefix $vmname 
+          -ComputerNamePrefix $vmname
 
         Add-AzVmssNetworkInterfaceConfiguration `
           -VirtualMachineScaleSet $vmssConfig `
@@ -2655,19 +2655,19 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $domainNameLabel = $rgname + "domainlabel";
         $VmSku = "Standard_D2s_v3";
 
- 
+
         $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig;
         Assert-NotNull $vmssConfigFaultDomain;
         Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
 
-        # PlatformFaultDomainCount in New-AzVmss DefaultParameterSet 
+        # PlatformFaultDomainCount in New-AzVmss DefaultParameterSet
         $vmssDefault = New-AzVmss -Name $vmssNameDefault -ResourceGroup $rgname -VirtualMachineScaleSet $vmssConfigFaultDomain;
         Assert-NotNull $vmssDefault;
         Assert-AreEqual $vmssDefault.PlatformFaultDomainCount $platformFaultDomainCountConfig;
 
-        # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet 
+        # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet
         $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
-        Assert-NotNull $vmssSimple; 
+        Assert-NotNull $vmssSimple;
         Assert-AreEqual $vmssSimple.PlatformFaultDomainCount $platformFaultDomainCount;
 
 
@@ -2678,20 +2678,20 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-} 
+}
 
 <#
 .SYNOPSIS
     testing encryptionAtHost cmdlet for
     new-azvmss - create vmss using simple parameter set and hostencryption tag.
-    update-azvmss test boolean parameter 
+    update-azvmss test boolean parameter
     new-azvmssconfig
 #>
 function Test-VirtualMachineScaleSetAssignedHost
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
- 
+
     try
     {
         # Common
@@ -2717,7 +2717,7 @@ function Test-VirtualMachineScaleSetAssignedHost
         $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
 
         $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
-        
+
         Assert-AreEqual $host_.Id $vmssResult[0].InstanceView.AssignedHost;
     }
     finally
@@ -2730,23 +2730,23 @@ function Test-VirtualMachineScaleSetAssignedHost
 <#
 .SYNOPSIS
 Test the VMSS Extension rolling upgrade cmdlet.
-This is a LiveOnly test and requires some manual setup.  
+This is a LiveOnly test and requires some manual setup.
 #>
 function Test-VirtualMachineScaleSetExtRollingUpgrade
 {
-    # create a VM scale set manually in Azure Portal, use its default values. 
-    # Provide the Location, ResourceGroupName, and VM scale set name below. 
+    # create a VM scale set manually in Azure Portal, use its default values.
+    # Provide the Location, ResourceGroupName, and VM scale set name below.
 
     try
     {
-        
+
         # Common
         [string]$loc = "eastus";
 
         $rgname = "adamvmssupdate";
         $vmssname = "windowsvmss";
         $vmss = Get-Azvmss -ResourceGroupName $rgname -VMScaleSetName $vmssname;
-        
+
         Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "testExtension" -Publisher Microsoft.CPlat.Core -Type "NullWindows" -TypeHandlerVersion "3.0" -AutoUpgradeMinorVersion $True -Setting "";
 
         $job = Start-AzVmssRollingExtensionUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssname -AsJob;
@@ -2756,13 +2756,13 @@ function Test-VirtualMachineScaleSetExtRollingUpgrade
     }
     finally
     {
-        
+
     }
 }
 
 <#
 .SYNOPSIS
-Test the VMSS spot restore policy 
+Test the VMSS spot restore policy
 #>
 function Test-VirtualMachineScaleSetSpotRestorePolicy
 {
@@ -2824,7 +2824,7 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
 
 <#
 .SYNOPSIS
-Test the VMSS Flexible orchestration mode defaulting. 
+Test the VMSS Flexible orchestration mode defaulting.
 #>
 function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
 {
@@ -2842,7 +2842,7 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
 
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # Setup variables
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "dnl" + $rgname;
@@ -2860,11 +2860,8 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         Assert-AreEqual $vmss.PlatformFaultDomainCount $flexiblePFDC;
         Assert-AreEqual $vmss.VirtualMachineProfile.NetworkProfile.NetworkAPIVersion $networkAPIVersionFlexible;
 
-        Assert-ThrowsContains 
-        {
-            $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; `
-        } ` 
-        "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
+        Assert-ThrowsContains { $vmssError = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -SinglePlacementGroup; } ` 
+            "The value provided for SinglePlacementGroup cannot be used for a VMSS with OrchestrationMode set to Flexible. Please use SinglePlacementGroup 'false' instead.";
     }
     finally
     {
@@ -2891,7 +2888,7 @@ function Test-VirtualMachineScaleSetOrchestrationModeNullChecks
         $VMSSName = "sap-flex";
         $omode = "Flexible";
 
-        # Create Vmss 
+        # Create Vmss
         $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount 3 -OrchestrationMode $omode;
         $vmss = New-AzVmss -ResourceGroupName $rgname -Name $VMSSName -VirtualMachineScaleSet $vmssConfig;
         Assert-AreEqual $omode $vmss.OrchestrationMode;
@@ -2906,7 +2903,7 @@ function Test-VirtualMachineScaleSetOrchestrationModeNullChecks
 
 <#
 .SYNOPSIS
-Test Add and remove Vmss Run Command. 
+Test Add and remove Vmss Run Command.
 #>
 function Test-AddAndRemoveAzVmssRunCommand
 {
@@ -2921,7 +2918,7 @@ function Test-AddAndRemoveAzVmssRunCommand
 
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # Setup variables
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "dnl" + $rgname;
@@ -2933,13 +2930,13 @@ function Test-AddAndRemoveAzVmssRunCommand
         # Create VMSS with minimal inputs to allow defaulting
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
         #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
-        
-        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01" 
+
+        $runcmds = Add-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Location eastus -Name myruncommand -Script "Write-Host Hello World" -TimeOutInSeconds 3600 -RunAsUser "admin01"
         Assert-AreEqual $runcmds.RunAsUser "admin01";
         Assert-AreEqual $runcmds.TimeOutInSeconds "3600";
         Remove-AzVmssRunCommand -ResourceGroupName $rgname -VMScaleSetName $vmssname -Name myruncommand
 
-    } 
+    }
     finally
     {
         # Cleanup
@@ -2971,7 +2968,7 @@ function Test-VirtualMachineScaleSetUserdata
         $encodedText = [Convert]::ToBase64String($bytes);
         $userData = $encodedText;
 
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -2995,11 +2992,11 @@ function Test-VirtualMachineScaleSetUserdata
         $bytes3 = [System.Text.Encoding]::Unicode.GetBytes($text3);
         $encodedText3 = [Convert]::ToBase64String($bytes3);
         $userData3 = $encodedText3;
-        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData; 
+        $vmssvm = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -UserData;
         Assert-AreNotEqual $vmssvm.UserData $userData3;
         $vmssvmUp = Update-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData $userData3;
-        
-        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData; 
+
+        $vmssvm2 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -UserData;
         Assert-AreEqual $vmssvm2.UserData $userData3;
 
     }
@@ -3012,7 +3009,7 @@ function Test-VirtualMachineScaleSetUserdata
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set DiffDiskPlacement feature. 
+Test Virtual Machine Scale Set DiffDiskPlacement feature.
 #>
 function Test-VirtualMachineScaleSetDiffDiskPlacement
 {
@@ -3044,7 +3041,7 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
 
         $imgRef = Create-ComputeVMImageObject -loc "eastus" -publisherName "MicrosoftWindowsServerHPCPack" -offer "WindowsServerHPCPack" -skus "2012R2" -version "4.5.5198";
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-                    
+
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
@@ -3066,7 +3063,7 @@ function Test-VirtualMachineScaleSetDiffDiskPlacement
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set EnableHotPatching feature. 
+Test Virtual Machine Scale Set EnableHotPatching feature.
 #>
 function Test-VirtualMachineScaleSetEnableHotPatching
 {
@@ -3083,7 +3080,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword);
 
         $vnetname = "myVnet";
@@ -3093,7 +3090,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
 
         # set up networking
         # VMSS Flex requires explicit outbound access
-        # Create a virtual network 
+        # Create a virtual network
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
         $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
@@ -3186,7 +3183,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
             -ImageReferencePublisher "MicrosoftWindowsServer" `
             -ImageReferenceOffer "WindowsServer" `
             -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
-            -ImageReferenceVersion "latest";    
+            -ImageReferenceVersion "latest";
 
         # Set up information for authenticating with the virtual machine
         Set-AzVmssOsProfile $vmssConfig `
@@ -3230,8 +3227,8 @@ function Test-VirtualMachineScaleSetEnableHotPatching
         New-AzVmss `
             -ResourceGroupName $rgname `
             -Name $vmssName `
-            -VirtualMachineScaleSet $vmssConfig;   
-            
+            -VirtualMachineScaleSet $vmssConfig;
+
         $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
         Assert-AreEqual $true $vmss.VirtualMachineProfile.OsProfile.WindowsConfiguration.PatchSettings.EnableHotPatching;
     }
@@ -3244,7 +3241,7 @@ function Test-VirtualMachineScaleSetEnableHotPatching
 
 <#
 .SYNOPSIS
-Force Deletion of VMSS. 
+Force Deletion of VMSS.
 #>
 function Test-RemoveVmssForceDeletion
 {
@@ -3259,7 +3256,7 @@ function Test-RemoveVmssForceDeletion
 
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # Setup variables
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "dnl" + $rgname;
@@ -3271,10 +3268,10 @@ function Test-RemoveVmssForceDeletion
         # Create VMSS with minimal inputs to allow defaulting
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname  -ImageName 'Win2016Datacenter' -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel
         #$vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
-        
+
         Remove-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -ForceDeletion $true -Force
 
-    } 
+    }
     finally
     {
         # Cleanup
@@ -3364,14 +3361,14 @@ function Test-VirtualMachineScaleSetRepairsAction
         Assert-AreEqual $repairAction1 $vmssNew.AutomaticRepairsPolicy.RepairAction;
 
         # Update Vmss test
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $false -AutomaticRepairAction $repairAction2; 
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $false -AutomaticRepairAction $repairAction2;
 
         $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $repairAction2 $vmssUp.AutomaticRepairsPolicy.RepairAction;
         Assert-AreEqual $false $vmssUp.AutomaticRepairsPolicy.Enabled;
 
         # Update back to True
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $true -AutomaticRepairAction $repairAction1; 
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss -EnableAutomaticRepair $true -AutomaticRepairAction $repairAction1;
 
         $vmssUp = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $repairAction1 $vmssUp.AutomaticRepairsPolicy.RepairAction;
@@ -3387,8 +3384,8 @@ function Test-VirtualMachineScaleSetRepairsAction
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set Guest Attestation and Identity SystemAssigned 
-for the certain Trusted Launch feature setup. 
+Test Virtual Machine Scale Set Guest Attestation and Identity SystemAssigned
+for the certain Trusted Launch feature setup.
 #>
 function Test-VirtualMachineScaleSetGuestAttestation
 {
@@ -3440,7 +3437,7 @@ function Test-VirtualMachineScaleSetGuestAttestation
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName ;
 
-        # Requirements for the Guest Attestation defaulting behavior.  
+        # Requirements for the Guest Attestation defaulting behavior.
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -3460,13 +3457,13 @@ function Test-VirtualMachineScaleSetGuestAttestation
         $username = Get-ComputeTestResourceName;
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
-        
+
         $vmssname2 = "vmss2" + $rgname;
         $domainNameLabel2 = "dnl" + $rgname;
         $vmss2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname2  -ImageName 'Win2019DatacenterGen2' `
           -Credential $credential -InstanceCount 1 -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" `
           -EnableSecureBoot $true -EnableVtpm $true;
-        
+
         $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
         $output2 = $vmssGet2 | Out-String;
         Assert-True { $output2.Contains($vmGADefaultIDentity) };
@@ -3491,13 +3488,13 @@ A helper function to validate the PriorityMix split between Spot and Regular pri
 function ValidatePriorityMixSplit($vmssVMList, $expectedRegularPriorityCount, $expectedSpotPriorityCount)
 {
     $regularCountActual = 0;
-    $spotCountActual = 0; 
+    $spotCountActual = 0;
 
     # we need to do an individual call on each vm since the Get-AzVmssVM cmdlet returns a limited list of VM properties
     Foreach($vm in $vmssVMList)
     {
         $vmName = $vm.Name;
-        $vmResponse = Get-AzVM -ResourceGroupName $rgname -Name $vmName; 
+        $vmResponse = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 
         Assert-NotNull $vmResponse;
 
@@ -3513,7 +3510,7 @@ function ValidatePriorityMixSplit($vmssVMList, $expectedRegularPriorityCount, $e
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set PriorityMixPolicy for VMSS with Flexible OrchestrationMode  
+Test Virtual Machine Scale Set PriorityMixPolicy for VMSS with Flexible OrchestrationMode
 #>
 function Test-VirtualMachineScaleSetPriorityMixPolicy
 {
@@ -3530,7 +3527,7 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword);
 
         $vnetname = "myVnet";
@@ -3639,7 +3636,7 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
             -ImageReferencePublisher "MicrosoftWindowsServer" `
             -ImageReferenceOffer "WindowsServer" `
             -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
-            -ImageReferenceVersion "latest";    
+            -ImageReferenceVersion "latest";
 
         # Set up information for authenticating with the virtual machine
         Set-AzVmssOsProfile $vmssConfig `
@@ -3677,29 +3674,29 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
         New-AzVmss `
             -ResourceGroupName $rgname `
             -Name $vmssName `
-            -VirtualMachineScaleSet $vmssConfig;   
-            
+            -VirtualMachineScaleSet $vmssConfig;
+
         $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
-      
+
         Assert-AreEqual $baseRegularPriorityVMCount $vmss.PriorityMixPolicy.BaseRegularPriorityCount;
         Assert-AreEqual $regularPriorityVMPercentage $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
 
-        # validate priority mix split after create 
-        $vmssVMsAfterCreate = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName 
-        $expectedRegularCount = 1; 
-        $expectedSpotCount = 1; 
+        # validate priority mix split after create
+        $vmssVMsAfterCreate = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName
+        $expectedRegularCount = 1;
+        $expectedSpotCount = 1;
 
         ValidatePriorityMixSplit $vmssVMsAfterCreate $expectedRegularCount $expectedSpotCount;
 
-        # perform a scale out with updated priority mix policy 
-        $scaleOutCapacity = $vmssInstanceCount + 4; 
+        # perform a scale out with updated priority mix policy
+        $scaleOutCapacity = $vmssInstanceCount + 4;
         $updatedRegularPriorityCount = 2;
         $updatedRegularPriorityPercentage = 33;
 
         $vmss.sku.Capacity = $scaleOutCapacity;
         $vmss.PriorityMixPolicy.BaseRegularPriorityCount = $updatedRegularPriorityCount;
         $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase = $updatedRegularPriorityPercentage;
-    
+
         Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
         $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
 
@@ -3708,12 +3705,12 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
         Assert-AreEqual $updatedRegularPriorityPercentage $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
 
         $vmssVMsAfterScaleOut = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $expectedRegularCount = 3; 
-        $expectedSpotCount = 3; 
+        $expectedRegularCount = 3;
+        $expectedSpotCount = 3;
 
         ValidatePriorityMixSplit $vmssVMsAfterScaleOut $expectedRegularCount $expectedSpotCount;
 
-        # perform a scale in while keeping priority mix policy the same 
+        # perform a scale in while keeping priority mix policy the same
         $scaleInCapacity = $scaleOutCapacity - 4
         $vmss.sku.capacity = $scaleInCapacity;
 
@@ -3723,7 +3720,7 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
         # validate the VMSS after scale in
         $vmssVMsAfterScaleIn = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $expectedRegularCount = 2;
-        $expectedSpotCount = 0;  
+        $expectedSpotCount = 0;
 
         ValidatePriorityMixSplit $vmssVMsAfterScaleIn $expectedRegularCount $expectedSpotCount;
     }
@@ -3736,8 +3733,8 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
 
 <#
 .SYNOPSIS
-Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly. 
-Testing Set-AzVmssSecurityType. 
+Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly.
+Testing Set-AzVmssSecurityType.
 #>
 function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 {
@@ -3750,7 +3747,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $vmssSize = "Standard_DC2as_v5"; 
+        $vmssSize = "Standard_DC2as_v5";
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = '2022-datacenter-smalldisk-g2';
@@ -3789,7 +3786,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName;
 
-        # Confidential Vmss required parameters 
+        # Confidential Vmss required parameters
         $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
         $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -3815,7 +3812,7 @@ function Test-VirtualMachineScaleSetConfidentialVMSSSecurityType
 <#
 .SYNOPSIS
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState
-and Confidential VM reference image OS Disk security set to EncryptedWithPmk. 
+and Confidential VM reference image OS Disk security set to EncryptedWithPmk.
 #>
 function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 {
@@ -3836,7 +3833,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         $vmssSize = "Standard_DC2as_v5";
 
         $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $username = Get-ComputeTestResourceName;
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
@@ -3915,7 +3912,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
         $cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption};
         $region = @{Name = $loc; ReplicaCount = $replicaCount; StorageAccountType = $storageAccountType; Encryption = $cvmEncryption};
         $targetRegions = @($region);
-        Start-Sleep -Seconds 360;
+        Start-TestSleep -Seconds 360;
         New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $definitionName `
             -Name $versionName -Location $loc -SourceImageId $sourceImageId -ReplicaCount $replicaCount `
             -StorageAccountType $storageAccountType -TargetRegion $targetRegions;
@@ -3924,7 +3921,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 
         $securityEncryptionType = "DiskWithVMGuestState";
 
- 
+
         # NRP vmss
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix $SubnetAddressPrefix;
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix $VnetAddressPrefix -Subnet $subnet;
@@ -3965,7 +3962,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK
 <#
 .SYNOPSIS
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType VMGuestStateOnly
-and Confidential VM image reference OS Disk security set to VMGuestStateOnly. 
+and Confidential VM image reference OS Disk security set to VMGuestStateOnly.
 #>
 function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 {
@@ -3986,7 +3983,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
         $vmssSize = "Standard_DC2as_v5";
 
         $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $username = Get-ComputeTestResourceName;
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
@@ -3997,7 +3994,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
         $osDiskSecurityType = $osDiskSecurityEncryptionType;
         $vmSecurityType = "ConfidentialVM";
         $storageType = "StandardSSD_LRS";
-        
+
 
         # Network variables
         $NetworkName = [system.string]::concat($vmName, '-vnet');
@@ -4124,7 +4121,7 @@ function Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK
 <#
 .SYNOPSIS
 Confidential vmss testing securityType set to ConfidentialVM and securityEncryptionType DiskWithVMGuestState
-and Confidential VM image reference OS Disk security type set to EncryptedWithCmk. 
+and Confidential VM image reference OS Disk security type set to EncryptedWithCmk.
 #>
 function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
 {
@@ -4135,11 +4132,11 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
     try
     {
         # CMK Key Vault Setup (Manual)
-        # This needs to be manually run for the test to be recorded. 
+        # This needs to be manually run for the test to be recorded.
         <#
         $rgname = "adsandcfvmss4";
         $loc = "northeurope";
-        
+
         # Setup resource group
         New-AzResourceGroup -ResourceGroupName $rgName -Location $loc -Force;
 
@@ -4152,14 +4149,14 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         Start-BitsTransfer -Source https://cvmprivatepreviewsa.blob.core.windows.net/cvmpublicpreviewcontainer/skr-policy.json -Destination ".\skr-policy.json";
         $desKey = Add-AzKeyVaultKey -Name $keyName -VaultName $keyVaultName -KeyOps "wrapKey","unwrapKey" -KeyType "RSA-HSM" -Size 3072 `
                         -Exportable -ReleasePolicyPath ".\skr-policy.json" -Destination "HSM";
-        
+
         $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $desKey.Id -SourceVaultId $kv.ResourceId -IdentityType "SystemAssigned" `
             -EncryptionType "ConfidentialVmEncryptedWithCustomerKey";
         $des = New-AzDiskEncryptionSet -DiskEncryptionSet $desConfig -DiskEncryptionSetName $desName -ResourceGroupName $rgName;
         $desIdentity = Get-AzADServicePrincipal -ObjectId $des.Identity.PrincipalId -ErrorAction 'SilentlyContinue';
         Set-AzKeyVaultAccessPolicy -ObjectId $des.Identity.PrincipalId -ResourceGroupName $rgName -VaultName $keyVaultName -PermissionsToKeys "wrapKey","unwrapKey","get";
         #>
-        # End CMK Key Vault Setup (Manual). 
+        # End CMK Key Vault Setup (Manual).
 
         # Common variables
         $secureBoot = $true;
@@ -4171,7 +4168,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         $vmSize = "Standard_DC2as_v5";
         $vmssSize = "Standard_DC2as_v5";
         $password = Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $username = Get-ComputeTestResourceName;
         $vmCred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
         $imagePublisher = "MicrosoftWindowsServer";
@@ -4193,7 +4190,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         # CMK Key Vault Setup
         $keyName = "k" + $rgName;
         $desName = "des" + $rgname;
-        # The Disk Encryption Set was created in the manual steps and is queried for here. 
+        # The Disk Encryption Set was created in the manual steps and is queried for here.
         $des = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
 
         # Setup Network
@@ -4260,7 +4257,7 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         $cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption};
         $region = @{Name = $loc; ReplicaCount = $replicaCount; StorageAccountType = $storageAccountType; Encryption = $cvmEncryption};
         $targetRegions = @($region);
-        Start-Sleep -Seconds 360;
+        Start-TestSleep -Seconds 360;
         New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $definitionName `
             -Name $versionName -Location $loc -SourceImageId $sourceImageId -ReplicaCount $replicaCount `
             -StorageAccountType $storageAccountType -TargetRegion $targetRegions;
@@ -4321,7 +4318,7 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # Setup variables
         $publisher = "MicrosoftWindowsServer";
         $offer = "WindowsServer";
@@ -4382,7 +4379,7 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
         Assert-True {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
         Assert-AreEqual 'PT15M' $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
-    } 
+    }
     finally
     {
         # Cleanup
@@ -4392,8 +4389,8 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
 
 <#
 .SYNOPSIS
-Test the Get-AzVmss ResourceId parameter set. 
-This uses an ARM Resource Id to get an existing Vmss. 
+Test the Get-AzVmss ResourceId parameter set.
+This uses an ARM Resource Id to get an existing Vmss.
 #>
 function Test-VirtualMachineScaleSetGetById
 {
@@ -4405,7 +4402,7 @@ function Test-VirtualMachineScaleSetGetById
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         $vmssSize = 'Standard_D4s_v3';
         $vmssName1 = 'vmss1' + $rgname;
         $imageName = "Win2019Datacenter";
@@ -4419,9 +4416,9 @@ function Test-VirtualMachineScaleSetGetById
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
         $vmssId = $vmss.Id;
         $vmssGet = Get-AzVmss -ResourceId $vmssId;
-        
+
         Assert-AreEqual $vmss.Id $vmssGet.Id;
-    } 
+    }
     finally
     {
         # Cleanup
@@ -4431,8 +4428,8 @@ function Test-VirtualMachineScaleSetGetById
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
-for the certain Trusted Launch feature setup. 
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled
+for the certain Trusted Launch feature setup.
 #>
 function Test-VirtualMachineScaleSetSecurityType
 {
@@ -4500,12 +4497,12 @@ function Test-VirtualMachineScaleSetSecurityType
         $vmss2 = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $disable -EnableSecureBoot $enable;
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss2;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
-        
+
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-        # Vmss Identity is now in fact only UserAssigned as expected. 
-        
+        # Vmss Identity is now in fact only UserAssigned as expected.
+
         # Guest Attestation extension defaulting test
         # Validate
         $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
@@ -4533,8 +4530,8 @@ function Test-VirtualMachineScaleSetSecurityType
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
-for the Trusted Launch feature setup. 
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled
+for the Trusted Launch feature setup.
 Tests that GuestAttestation extension is also installed.
 #>
 function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
@@ -4575,7 +4572,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
         $result = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -DomainNameLabel $domainNameLabel2 -SecurityType $securityType -EnableVtpm $disable;
-                
+
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;

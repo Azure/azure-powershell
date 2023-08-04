@@ -72,7 +72,7 @@ Param(
     $Configuration='Debug',
 
     [String]
-    $TestFramework='netcoreapp3.1',
+    $TestFramework='net6.0',
 
     [String]
     $TestOutputDirectory='artifacts/TestResults',
