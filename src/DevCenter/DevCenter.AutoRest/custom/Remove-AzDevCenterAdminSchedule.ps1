@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Gets a schedule resource.
+Deletes a Scheduled.
 .Description
-Gets a schedule resource.
+Deletes a Scheduled.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Gets a schedule resource.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,39 +52,39 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VersionName <String>]: The version of the image.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminschedule
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminschedule
 #>
-function Get-AzDevCenterAdminSchedule {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ISchedule])]
-  [CmdletBinding(DefaultParameterSetName = 'GetWithDefault', PositionalBinding = $false)]
-  param(
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+function Remove-AzDevCenterAdminSchedule {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # Name of the pool.
     ${PoolName},
 
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the project.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'GetWithDefault', Mandatory)]
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName = 'GetWithDefault')]
+    [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
@@ -99,6 +99,12 @@ function Get-AzDevCenterAdminSchedule {
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -120,6 +126,18 @@ function Get-AzDevCenterAdminSchedule {
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
@@ -138,15 +156,12 @@ function Get-AzDevCenterAdminSchedule {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-  #Customization to remove "List"
-  process {
-
+process {
     if ($PSBoundParameters.ContainsKey('InputObject')) {
-      $PSBoundParameters["InputObject"].ScheduleName = "Default"
-    }
-
-    Az.DevCenter.internal\Get-AzDevCenterAdminSchedule @PSBoundParameters
-  }
+        $PSBoundParameters["InputObject"].ScheduleName = "Default"
+      }
+      Az.DevCenter.internal\Remove-AzDevCenterAdminSchedule @PSBoundParameters
+}
 }

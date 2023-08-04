@@ -1,22 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: List dev box definitions in a dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName testRg -DevCenterName Contoso
 ```
+This command lists the dev box definitions in the dev center "Contoso" under the resource group "testRg".
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List dev box definitions in a project
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName testRg -ProjectName DevProject
 ```
+This command lists the dev box definitions in the project "DevProject" under the resource group "testRg".
 
-```output
-{{ Add output here }}
+### Example 3: Get a dev center dev box definition
+```powershell
+Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName testRg -DevCenterName Contoso -Name WebDevBoxDef
 ```
+This command gets the dev box definition "WebDevBoxDef" in the dev center "Contoso" under the resource group "testRg".
 
-{{ Add description here }}
-
+### Example 4: Get a project dev box definition
+```powershell
+Get-AzDevCenterAdminDevBoxDefinition -ResourceGroupName testRg -ProjectName DevProject -Name WebDevBoxDef
+```
+This command gets the dev box definition "WebDevBoxDef" in the project "DevProject" under the resource group "testRg".

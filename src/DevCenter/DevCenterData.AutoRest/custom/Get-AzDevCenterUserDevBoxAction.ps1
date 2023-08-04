@@ -172,6 +172,12 @@ function Get-AzDevCenterUserDevBoxAction {
             $PSBoundParameters["Endpoint"] = $Endpoint
         }
 
+        if ($PSBoundParameters.ContainsKey('InputObject')) {
+            if ($null -eq $PSBoundParameters["InputObject"].UserId) {
+              $PSBoundParameters["InputObject"].UserId = "me"
+            }
+          }
+
         Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction @PSBoundParameters
     }
 }

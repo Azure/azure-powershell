@@ -35,27 +35,27 @@ Gets a catalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List catalogs in a dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminCatalog -DevCenterName Contoso -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the catalogs in the dev center "Contoso" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminCatalog -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
+This command gets the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
+
+### Example 3: Get a catalog using InputObject
+```powershell
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalog = Get-AzDevCenterAdminCatalog -InputObject $catalog
 ```
 
-{{ Add description here }}
+This command gets the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
 
 ## PARAMETERS
 

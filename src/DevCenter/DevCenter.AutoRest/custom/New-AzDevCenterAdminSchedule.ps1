@@ -191,6 +191,9 @@ param(
 )
 
 process {
+  if ($PSBoundParameters.ContainsKey('InputObject')) {
+    $PSBoundParameters["InputObject"].ScheduleName = "Default"
+  }
     Az.DevCenter.internal\New-AzDevCenterAdminSchedule @PSBoundParameters
 }
 

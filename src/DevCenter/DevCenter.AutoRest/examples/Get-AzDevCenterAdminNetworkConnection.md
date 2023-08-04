@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List network connections in a subscription
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminNetworkConnection
 ```
+This command lists network connections in the current subscription. 
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List network connections in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminNetworkConnection -ResourceGroupName testRg
 ```
+This command lists the network connections under the resource group "testRg".
 
-```output
-{{ Add output here }}
+### Example 3: Get a network connection
+```powershell
+Get-AzDevCenterAdminNetworkConnection -ResourceGroupName testRg -Name eastusNetwork
 ```
+This command gets the network connection named "eastusNetwork" under the resource group "testRg". 
 
-{{ Add description here }}
+### Example 4: Get a network connection using InputObject
+```powershell
+$networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminNetworkConnection -InputObject $networkConnection
+```
+This command gets the network connection named "eastusNetwork" under the resource group "testRg". 
 

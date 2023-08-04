@@ -69,9 +69,7 @@ directive:
     set:
       default:
         script: '"default"'
-# Matches any verb that is not Remove for Schedule
   - where:
-      verb: ^(?!Remove$)
       subject: Schedule
     hide: true
   - where:

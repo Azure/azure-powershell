@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: List iamges in a dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminImage -ResourceGroupName testRg -DevCenterName Contoso
 ```
 
 ```output
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+This command lists the images in the dev center "Contoso" under the resource group "testRg".
 
-### Example 2: {{ Add title here }}
+### Example 2: List images in a gallery under a dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminImage -ResourceGroupName testRg -DevCenterName Contoso -GalleryName StandardGallery
 ```
+This command lists the images in the gallery "StandardGallery" under the dev center "Contoso". 
 
-```output
-{{ Add output here }}
+### Example 3: Get an image
+```powershell
+Get-AzDevCenterAdminImage -ResourceGroupName testRg -DevCenterName Contoso -GalleryName StandardGallery -Name ContosoBaseImage
 ```
+This command gets the image named "ContosoBaseImage" in the gallery "StandardGallery" under the dev center "Contoso".
 
-{{ Add description here }}
-
+### Example 4: Get an image using InputObject
+```powershell
+$image = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "GalleryName" = "StandardGallery"; "ImageName" = "ContosoBaseImage"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminImage -InputObject $image
+```
+This command gets the image named "ContosoBaseImage" in the gallery "StandardGallery" under the dev center "Contoso".

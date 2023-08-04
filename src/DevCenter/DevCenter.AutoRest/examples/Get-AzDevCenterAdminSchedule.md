@@ -1,22 +1,12 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminSchedule -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$schedule = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminSchedule -InputObject $schedule
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

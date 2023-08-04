@@ -31,25 +31,18 @@ Gets a schedule resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminSchedule -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$schedule = @{"ResourceGroupName" = "pwshRgkr45vc"; "ProjectName" = "pwshProjvpru19"; "PoolName" = "fzmci12"; "SubscriptionId" = "f141e9f2-4778-45a4-9aa0-8b31e6469454"}
+Get-AzDevCenterAdminSchedule -InputObject $schedule
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 

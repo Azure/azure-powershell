@@ -37,25 +37,25 @@ Gets a project environment type.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectEnvironmentType -ProjectName DevProject -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the environment types in the project "DevProject" under the resource group "testRg".
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminProjectEnvironmentType -ProjectName DevProject -ResourceGroupName testRg -EnvironmentTypeName DevTest
 ```
 
-```output
-{{ Add output here }}
+This command gets the environment type named "DevTest" in the project "DevProject" under the resource group "testRg".
+
+### Example 2: {{ Add title here }}
+```powershell
+$envType = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "EnvironmentTypeName" = "DevTest"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$envType = Get-AzDevCenterAdminProjectEnvironmentType -InputObject $envType
 ```
 
-{{ Add description here }}
+This command gets the environment type named "DevTest" in the project "DevProject" under the resource group "testRg".
 
 ## PARAMETERS
 

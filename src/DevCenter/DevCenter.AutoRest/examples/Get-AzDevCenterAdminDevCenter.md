@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: List dev centers in a subscription
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminDevCenter
 ```
+This command lists the dev centers in the current subscription.
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List dev centers in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminDevCenter -ResourceGroupName testRg
 ```
+This command lists the dev centers under the resource group "testRg".
 
-```output
-{{ Add output here }}
+### Example 3: Get a dev center
+```powershell
+Get-AzDevCenterAdminDevCenter -ResourceGroupName testRg -Name Contoso
 ```
+This command gets the dev center named "Contoso" under the resource group "testRg". 
 
-{{ Add description here }}
-
+### Example 4: Get a dev center using InputObject
+```powershell
+$devCenter = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzDevCenterAdminDevCenter -InputObject $devCenter
+```
+This command gets the dev center named "Contoso" under the resource group "testRg".

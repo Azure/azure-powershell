@@ -211,6 +211,10 @@ function Update-AzDevCenterAdminSchedule {
   )
 
   process {
+    if ($PSBoundParameters.ContainsKey('InputObject')) {
+      $PSBoundParameters["InputObject"].ScheduleName = "Default"
+    }
+    
     Az.DevCenter.internal\Update-AzDevCenterAdminSchedule @PSBoundParameters
   }
 
