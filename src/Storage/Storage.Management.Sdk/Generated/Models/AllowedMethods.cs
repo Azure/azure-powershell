@@ -24,5 +24,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         public const string OPTIONS = "OPTIONS";
         public const string PUT = "PUT";
         public const string PATCH = "PATCH";
+        public const string CONNECT = "CONNECT";
+        public const string TRACE = "TRACE";
     }
 }

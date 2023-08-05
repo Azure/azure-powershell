@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Storage account planned failover new properties 
+    - `Get-AzStorageAccount`
 
 ## Version 5.9.0
 * Supported OAuth authentication on File service cmdlets

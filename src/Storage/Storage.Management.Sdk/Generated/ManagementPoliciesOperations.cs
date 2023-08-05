@@ -118,6 +118,10 @@ namespace Microsoft.Azure.Management.Storage
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
                 }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -306,7 +310,7 @@ namespace Microsoft.Azure.Management.Storage
         /// </param>
         /// <param name='policy'>
         /// The Storage Account ManagementPolicy, in JSON format. See more details in:
-        /// https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -363,6 +367,10 @@ namespace Microsoft.Azure.Management.Storage
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
                 }
             }
             if (Client.ApiVersion == null)
@@ -622,6 +630,10 @@ namespace Microsoft.Azure.Management.Storage
                 if (accountName.Length < 3)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "accountName", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-z0-9]+$"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "accountName", "^[a-z0-9]+$");
                 }
             }
             if (Client.ApiVersion == null)

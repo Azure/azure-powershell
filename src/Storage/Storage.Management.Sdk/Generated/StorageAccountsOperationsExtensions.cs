@@ -754,6 +754,114 @@ namespace Microsoft.Azure.Management.Storage
             }
 
             /// <summary>
+            /// Account Migration request can be triggered for a storage account to change
+            /// its redundancy level. The migration updates the non-zonal redundant storage
+            /// account to a zonal redundant account or vice-versa in order to have better
+            /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+            /// storage account synchronously across three Azure availability zones in the
+            /// primary region.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The request parameters required to perform storage account migration.
+            /// </param>
+            public static StorageAccountsCustomerInitiatedMigrationHeaders CustomerInitiatedMigration(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountMigration parameters)
+            {
+                return operations.CustomerInitiatedMigrationAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Account Migration request can be triggered for a storage account to change
+            /// its redundancy level. The migration updates the non-zonal redundant storage
+            /// account to a zonal redundant account or vice-versa in order to have better
+            /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+            /// storage account synchronously across three Azure availability zones in the
+            /// primary region.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The request parameters required to perform storage account migration.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageAccountsCustomerInitiatedMigrationHeaders> CustomerInitiatedMigrationAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountMigration parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CustomerInitiatedMigrationWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Gets the status of the ongoing migration for the specified storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            public static StorageAccountMigration GetCustomerInitiatedMigration(this IStorageAccountsOperations operations, string resourceGroupName, string accountName)
+            {
+                return operations.GetCustomerInitiatedMigrationAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets the status of the ongoing migration for the specified storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageAccountMigration> GetCustomerInitiatedMigrationAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetCustomerInitiatedMigrationWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Restore blobs in the specified blob ranges
             /// </summary>
             /// <param name='operations'>
@@ -1087,6 +1195,68 @@ namespace Microsoft.Azure.Management.Storage
             public static async Task BeginAbortHierarchicalNamespaceMigrationAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.BeginAbortHierarchicalNamespaceMigrationWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Account Migration request can be triggered for a storage account to change
+            /// its redundancy level. The migration updates the non-zonal redundant storage
+            /// account to a zonal redundant account or vice-versa in order to have better
+            /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+            /// storage account synchronously across three Azure availability zones in the
+            /// primary region.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The request parameters required to perform storage account migration.
+            /// </param>
+            public static StorageAccountsCustomerInitiatedMigrationHeaders BeginCustomerInitiatedMigration(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountMigration parameters)
+            {
+                return operations.BeginCustomerInitiatedMigrationAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Account Migration request can be triggered for a storage account to change
+            /// its redundancy level. The migration updates the non-zonal redundant storage
+            /// account to a zonal redundant account or vice-versa in order to have better
+            /// reliability and availability. Zone-redundant storage (ZRS) replicates your
+            /// storage account synchronously across three Azure availability zones in the
+            /// primary region.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The request parameters required to perform storage account migration.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<StorageAccountsCustomerInitiatedMigrationHeaders> BeginCustomerInitiatedMigrationAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, StorageAccountMigration parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCustomerInitiatedMigrationWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
