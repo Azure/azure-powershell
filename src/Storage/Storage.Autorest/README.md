@@ -60,6 +60,9 @@ directive:
       verb: Start
       subject: AccountMigration
   - where:
+      variant: ^Customer$|^CustomerViaIdentity$
+    remove: true
+  - where:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
       parameter-name: TargetSku

@@ -21,19 +21,6 @@ Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Customer
-```
-Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String>
- -Parameter <IStorageAccountMigration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CustomerViaIdentity
-```
-Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -Parameter <IStorageAccountMigration>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CustomerViaIdentityExpanded
 ```
 Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -TargetSku <String> [-Name <String>]
@@ -84,7 +71,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Customer, CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -131,7 +118,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: CustomerViaIdentity, CustomerViaIdentityExpanded
+Parameter Sets: CustomerViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -201,22 +188,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current SKU or region.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration
-Parameter Sets: Customer, CustomerViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -238,7 +209,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Customer, CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -253,7 +224,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Customer, CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: False
@@ -328,8 +299,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
