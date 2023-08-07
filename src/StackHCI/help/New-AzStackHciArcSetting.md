@@ -30,9 +30,9 @@ New-AzStackHciArcSetting -ResourceGroupName "test-rg" -ClusterName "myCluster"
 ```
 
 ```output
-Name    ResourceGroupName
-----    -----------------
-default test-rg
+Resource Group AggregateState
+-------------- --------------
+test-rg        Connected
 ```
 
 This command creates arcSetting for a HCI cluster.
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
 
 ## NOTES
 

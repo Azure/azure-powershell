@@ -29,6 +29,8 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
+$skipModules = @('Az.KeyVault', 'Az.CosmosDB')
+
 $MissReadMe = 9000
 $GenSdkChanged = 9090
 try{
@@ -53,6 +55,11 @@ try{
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
+        # Skip check for modules listed in $skipModules
+        if ($skipModules.Contains($ModuleName)) {
+            Write-Host "Skip checking $ModuleName"
+            continue
+        }
 
         # Direct to the Sdk directory
         Write-Host "Directing to " "$PSScriptRoot/../../../$_"

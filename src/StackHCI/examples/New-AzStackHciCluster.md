@@ -17,9 +17,9 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 ```
 
 ```output
-Location   Name       ResourceGroupName
---------   ----       -----------------
-westeurope myCluster2 test-rg
+Location    Name      Resource Group
+--------    ----      -----------------
+westeurope  myCluster test-rg
 ```
 
 This command creates a Stack HCI cluster with DiagnosticLevel = "Off" and WindowsServerSubscription = "Enabled". By default, these values are set to "Basic" and "Disabled" respectively.

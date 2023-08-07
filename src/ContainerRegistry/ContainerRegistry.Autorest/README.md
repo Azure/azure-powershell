@@ -47,13 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 891dd18a70057c2fee388573117683e6d0081bda
+branch: 66174681c09b101de03fd35399080cfbccc93e8f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-# lock the commit
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/66174681c09b101de03fd35399080cfbccc93e8f/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2023-01-01-preview/containerregistry.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/66174681c09b101de03fd35399080cfbccc93e8f/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/containerregistry_build.json
+  - $(repo)/specification/containerregistry/resource-manager/readme.md
+try-require:
+  - $(repo)/specification/containerregistry/resource-manager/readme.powershell.md
 module-version: 0.1.0
 title: ContainerRegistry
 subject-prefix: $(service-name)
@@ -69,7 +68,7 @@ directive:
   hide: true
 # Remove the unexpanded parameter set
 - where:
-    variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaIdentity$|^ImportViaIdentity$|^ImportViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^PingViaIdentity$|^Check$|^RegenerateViaIdentity$
+    variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaIdentity$|^ImportViaIdentity$|^ImportViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$|^PingViaIdentity$|^Check$|^RegenerateViaIdentity$|^Generate$|^GenerateViaIdentity$
   remove: true
 - where:
     subject: PrivateEndpointConnection

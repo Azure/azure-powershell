@@ -86,6 +86,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Accepted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Accepted'", "Accepted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Accepted");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Provisioning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Provisioning'", "Provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Provisioning");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DisableInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DisableInProgress'", "DisableInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DisableInProgress");
+            }
         }
     }
 }
