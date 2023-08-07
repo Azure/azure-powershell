@@ -37,6 +37,11 @@ namespace Tools.Common.Loaders
                     {
                         try
                         {
+                            if (ShouldSkipLoading(file, out var reason))
+                            {
+                                Console.WriteLine($"PreloadSharedAssemblies: skipping {file}, reason: {reason}.");
+                                continue;
+                            }
                             Console.WriteLine($"PreloadSharedAssemblies: Starting to load assembly {file}.");
                             Assembly.LoadFrom(file);
                         }
@@ -51,6 +56,17 @@ namespace Tools.Common.Loaders
                     Console.WriteLine($"PreloadSharedAssemblies: Could not find directory {libFolder}.");
                 }
             }
+        }
+
+        private static bool ShouldSkipLoading(string path, out string reason)
+        {
+            reason = "";
+            if (Path.GetFileNameWithoutExtension(path).StartsWith("msalruntime", StringComparison.InvariantCultureIgnoreCase))
+            {
+                reason = $"skip native library";
+                return true;
+            }
+            return false;
         }
     }
 }

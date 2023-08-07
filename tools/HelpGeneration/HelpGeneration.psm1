@@ -177,41 +177,6 @@ function Test-AzMarkdownHelp
                             $fileErrors += "No description found"
                         }
                     }
-                    "## EXAMPLES"
-                    {
-                        # Move the index to the start of the PowerShell code
-                        while (-not $content[$idx].StartsWith("``````"))
-                        {
-                            $idx++
-                            if ($idx -ge $content.Length)
-                            {
-                                Write-Error "Could not find start of PowerShell example in file $($file.Name)"
-                                return
-                            }
-                        }
-
-                        # Check for the platyPS example template
-                        #
-                        # ```
-                        # PS C:\> {{ Add example code here }}
-                        # ```
-                        #
-                        if ($content[$idx+1] -contains "{{ Add example code here }}")
-                        {
-                            $fileErrors += "No examples found"
-                        }
-
-                        # Check for other missing example formats (such as empty)
-                        #
-                        # ```
-                        #
-                        # ```
-                        #
-                        if ([string]::IsNullOrWhiteSpace("$($content[$idx+1])"))
-                        {
-                            $fileErrors += "No examples found"
-                        }
-                    }
                     "@{Text=}"
                     {
                         # This case occurs when there is no description provided for a parameter

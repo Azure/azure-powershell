@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule
 
 ## NOTES
 

@@ -819,5 +819,29 @@
   {
     "module": "Qumulo",
     "alias": "Qumulo"
+  },
+  {
+    "module": "StorageCache",
+    "alias": "StorageCache"
+  },
+  {
+    "module": "NewRelic",
+    "alias": "NewRelic"
+  },
+  {
+    "module": "Quantum",
+    "alias": "Quantum"
+  },
+  {
+    "module": "GraphServices",
+    "alias": "GraphServices"
+  },
+  {
+    "module": "Alb",
+    "alias": "Alb"
+  },
+  {
+    "module": "PaloAltoNetworks",
+    "alias": "PaloAltoNetworks"
   }
 ]
