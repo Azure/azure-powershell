@@ -194,13 +194,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSaveAndRemoveManagementGroupDeploymentStackWithPipeOperator()
-        {
-            TestRunner.RunTestScript("Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator");
-        }
-
-        [Fact()]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagementGroupDeploymentStack()
         {
             TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStack");
@@ -274,6 +267,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewAndSetManagementGroupDeploymentStackWithTags()
         {
             TestRunner.RunTestScript("Test-NewAndSetManagementGroupDeploymentStackWithTags");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSaveAndRemoveManagementGroupDeploymentStackWithPipeOperator()
+        {
+            TestRunner.RunTestScript("Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator");
         }
     }
 }

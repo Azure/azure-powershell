@@ -621,10 +621,10 @@ function Test-SaveAndRemoveResourceGroupDeploymentStackWithPipeOperator
 	}
 
 	finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
 }
 
 #### Subscription Scoped Stacks #####
@@ -1221,9 +1221,9 @@ function Test-SaveAndRemoveSubscriptionDeploymentStackWithPipeOperator
 	}
 
 	finally
-    {
+	{
 		# No need to cleanup as we already deleted stack.
-    }
+	}
 }
 
 <#
@@ -1733,7 +1733,7 @@ function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
 	}
 
 	finally
-    {
+	{
 		# No cleanup needed, as the stack was deleted.
-    }
+	}
 }
