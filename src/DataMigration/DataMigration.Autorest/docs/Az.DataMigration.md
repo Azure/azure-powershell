@@ -63,7 +63,7 @@ Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
-Create a new database migration to a given SQL Db.
+Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables to the target database tables. If the target database have no table existing, please use New-AzDataMigrationSqlServerSchema command to migrate schema objects from source database to target databse. The link of New-AzDataMigrationSqlServerSchema is https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.
