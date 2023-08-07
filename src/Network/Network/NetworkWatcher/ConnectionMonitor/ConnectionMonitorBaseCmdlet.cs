@@ -641,39 +641,11 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
             }
 
-            foreach (string subnetMask in includedSubnetMasks)
-            {
-                try
-                {
-                    // IPValidator.ValidateAddressPrefix(subnetMask, null);
-                }
-                catch
-                {
-                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
-                }
-            }
-
             if (endpoint.Scope.Exclude?.Any() == true)
             {
                 foreach (var item in endpoint.Scope.Exclude)
                 {
                     if (!IPAddress.TryParse(item.Address, out IPAddress ipAddress))
-                    {
-                        throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
-                    }
-
-                    bool isInSubnet = false;
-                    foreach (string subnetMask in includedSubnetMasks)
-                    {
-                        if (true)
-                        // if (IPValidator.SubnetContainsIpAddress(subnetMask, item.Address))
-                        {
-                            isInSubnet = true;
-                            break;
-                        }
-                    }
-
-                    if (!isInSubnet)
                     {
                         throw new PSArgumentException(string.Format(Properties.Resources.InvalidScopeinAzureArcNetworkEndpoint, endpoint.Name));
                     }
@@ -1031,7 +1003,7 @@ namespace Microsoft.Azure.Commands.Network
                     Address = sourceEndpoint.Address,
                     CoverageLevel = sourceEndpoint.CoverageLevel,
                     LocationDetails = sourceEndpoint.Type == EndpointType.AzureArcNetwork ?
-                    new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = sourceEndpoint?.LocationDetails?.Region } : null,
+                    new MNM.ConnectionMonitorEndPointLocationDetails { Region = sourceEndpoint?.LocationDetails?.Region } : null,
                     SubscriptionId = sourceEndpoint.SubscriptionId,
                 };
 
@@ -1112,7 +1084,7 @@ namespace Microsoft.Azure.Commands.Network
                     Address = destinationEndpoint.Address,
                     CoverageLevel = destinationEndpoint.CoverageLevel,
                     LocationDetails = destinationEndpoint.Type == EndpointType.AzureArcNetwork ?
-                    new Management.Network.Generated.Models.ConnectionMonitorEndPointLocationDetails { Region = destinationEndpoint?.LocationDetails?.Region } : null,
+                    new ConnectionMonitorEndPointLocationDetails { Region = destinationEndpoint?.LocationDetails?.Region } : null,
                     SubscriptionId = destinationEndpoint.SubscriptionId
                 };
 
