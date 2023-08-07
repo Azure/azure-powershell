@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -330,7 +331,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Condition = Condition,
                 ConditionVersion = ConditionVersion,
             };
-
+            AuthorizationClient.ValidateScope(parameters.Scope, true);
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }
     }

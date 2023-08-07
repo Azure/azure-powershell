@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 Condition = parameters.Condition,
                 ConditionVersion = parameters.ConditionVersion
             };
-
+            
             return AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId.ToString(), createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
         }
 
@@ -709,14 +709,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             // Now check the case that scope begins with '/subscriptions'
 
-            if (count >= 4 && string.Compare(parts[2], "resourceGroups", true) != 0)
+            if (count >= 4 && string.Compare(parts[2], "resourceGroups", true) != 0 && !(string.Compare(parts[2], "providers", true) == 0 && string.Compare(parts[3], "Microsoft.DocumentDB", true) == 0))
             {
                 throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroups, scope));
             }
 
             if (count >= 6)
             {
-                if (string.Compare(parts[4], "providers", true) != 0)
+                if (string.Compare(parts[4], "providers", true) != 0 && !(string.Compare(parts[2], "providers", true) == 0 && string.Compare(parts[3], "Microsoft.DocumentDB", true) == 0))
                 {
                     throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders, scope));
                 }
