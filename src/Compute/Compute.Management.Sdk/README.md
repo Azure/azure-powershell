@@ -4,6 +4,8 @@ This directory contains the service clients of Az.Compute module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
+autorest --reset
+autorest --use:@microsoft.azure/autorest.csharp@2.3.90
 autorest.cmd README.md --version=v2
 ```
 
