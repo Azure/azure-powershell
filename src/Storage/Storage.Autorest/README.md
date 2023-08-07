@@ -31,7 +31,7 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-brach: 3e6b4ddca225530c27273d0f816466a905c0151b
+branch: 3e6b4ddca225530c27273d0f816466a905c0151b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
