@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug Fix: Removed depulicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]
 
 ## Version 4.10.1
 * Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]
