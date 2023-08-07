@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.34.0.
+* Bug Fix: Removed depulicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]
 
 ## Version 4.10.1
 * Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]
