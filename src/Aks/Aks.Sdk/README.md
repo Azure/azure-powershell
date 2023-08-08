@@ -5,13 +5,12 @@ This directory contains management plane service clients of Az.Aks module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-# csharp: true
 isSdkGenerator: true
 powershell: true
 clear-output-folder: true
@@ -64,11 +63,6 @@ directive:
       property-name: PropertiesType
     set:
       property-name: AgentPoolType
-  # - where:
-  #     model-name: AgentPool
-  #     property-name: PowerState
-  #   set:
-  #     property-name: xiaogang
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService
