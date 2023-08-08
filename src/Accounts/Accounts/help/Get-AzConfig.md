@@ -14,8 +14,9 @@ Gets the configs of Azure PowerShell.
 
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-DefaultSubscriptionForLogin] [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
+ [-EnableTestCoverage] [-TestCoverageLocation] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,8 +112,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableErrorRecordsPersistence
+When disabled, error records will not be written to ~/.Azure/ErrorRecords
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayRegionIdentified
+When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -175,6 +206,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Determines the scope of config changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 By default it is CurrentUser.
@@ -184,6 +230,21 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

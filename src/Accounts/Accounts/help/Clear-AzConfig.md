@@ -22,8 +22,9 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
- [<CommonParameters>]
+ [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified]
+ [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam] [-EnableTestCoverage]
+ [-TestCoverageLocation] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,8 +101,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableErrorRecordsPersistence
+When disabled, error records will not be written to ~/.Azure/ErrorRecords
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayRegionIdentified
+When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,6 +195,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation when clearing all configs.
 
@@ -203,6 +249,21 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
 
 Required: False
 Position: Named

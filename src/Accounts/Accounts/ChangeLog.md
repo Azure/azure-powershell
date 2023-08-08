@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Updated the reference of Azure PowerShell Common to 1.3.82-preview.
+* Added config `DisableErrorRecordsPersistence` to disable writing error records to file system [#21732]
 
 ## Version 2.12.5
 * Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`

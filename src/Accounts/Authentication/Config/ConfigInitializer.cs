@@ -196,6 +196,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 null,
                 new[] { AppliesTo.Az }));
+            //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.DisableErrorRecordsPersistence,
+                Resources.HelpMessageOfDisableErrorRecordsPersistence,
+                false,
+                ConfigKeys.DisableErrorRecordsPersistence,
+                new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,
