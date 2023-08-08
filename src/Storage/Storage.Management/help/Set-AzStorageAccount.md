@@ -421,6 +421,8 @@ To run the command succssfully, the Storage account should already enable Hierar
 
 ### Example 21: Update a Storage account by set AllowedCopyScope as PrivateLink
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowedCopyScope PrivateLink
 
@@ -432,6 +434,8 @@ The command updates a Storage account by set AllowedCopyScope as PrivateLink.
 
 ### Example 22: Update a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `

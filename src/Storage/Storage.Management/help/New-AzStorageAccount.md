@@ -384,7 +384,7 @@ This command creates a storage account with Keyvault from another tenant (access
 
 ### Example 18: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
-New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone 
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
 
 The command creates a storage account with DnsEndpointType as AzureDnsZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
