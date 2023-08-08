@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             //validtion block
             if (!triggerRestoreRequest.Properties.GetType().IsSubclassOf(typeof(AzureWorkloadRestoreRequest)))
             {
-                if (storageAccountLocation != vaultLocation)
+                if (storageAccountLocation != vaultLocation && rp.BackupManagementType != Models.BackupManagementType.AzureStorage)
                 {
                     throw new Exception(Resources.TriggerRestoreIncorrectRegion);
                 }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             //validation block
             if (!triggerCRRRestoreRequest.RestoreRequest.GetType().IsSubclassOf(typeof(CrrModel.AzureWorkloadRestoreRequest)))
             {
-                if (storageAccountLocation != secondaryRegion)
+                if (storageAccountLocation != secondaryRegion && rp.BackupManagementType != Models.BackupManagementType.AzureStorage)
                 {
                     throw new Exception(Resources.TriggerRestoreIncorrectRegion);
                 }

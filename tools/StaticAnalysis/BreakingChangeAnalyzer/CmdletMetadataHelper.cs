@@ -247,24 +247,45 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                     _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }
-                // If the output cannot be found by name, check if the old output can be mapped
-                // to any of the new output types
                 else
                 {
-                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
-                    if (!foundOutput)
+                    string oldOutputTypeName = RemoveApiVersionInTypeName(oldOutput.Type.Name);
+                    bool foundTypeNameWithoutApiVersion = false;
+                    foreach (var newOutput in outputDictionary.Values)
                     {
-                        issueLogger?.LogBreakingChangeIssue(
-                            cmdlet: oldCmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                            description: string.Format(Resources.ChangedOutputTypeDescription,
-                                oldCmdlet.Name, oldOutput.Type.Name),
-                            remediation: string.Format(Resources.ChangedOutputTypeRemediation,
-                                oldCmdlet.Name, oldOutput.Type.Name));
+                        string newOutputTypeName = RemoveApiVersionInTypeName(newOutput.Name);
+                        System.Console.WriteLine(newOutputTypeName);
+                        if (oldOutputTypeName.Equals(newOutputTypeName, StringComparison.OrdinalIgnoreCase))
+                        {
+                            _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutput, issueLogger);
+                            foundTypeNameWithoutApiVersion = true;
+                            break;
+                        }
+                    }
+                    if (!foundTypeNameWithoutApiVersion)
+                    {
+                    // If the output cannot be found by name, check if the old output can be mapped
+                    // to any of the new output types
+                        var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
+                        if (!foundOutput)
+                        {
+                            issueLogger?.LogBreakingChangeIssue(
+                                cmdlet: oldCmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                                description: string.Format(Resources.ChangedOutputTypeDescription,
+                                    oldCmdlet.Name, oldOutput.Type.Name),
+                                remediation: string.Format(Resources.ChangedOutputTypeRemediation,
+                                    oldCmdlet.Name, oldOutput.Type.Name));
+                        }
                     }
                 }
             }
+        }
+
+        private string RemoveApiVersionInTypeName(string typeName)
+        {
+            return Regex.Replace(typeName, @"\.Api\d+(Preview)?", "");
         }
 
         /// <summary>

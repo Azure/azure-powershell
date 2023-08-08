@@ -82,7 +82,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
     # 1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM.
     $securepfxpwd = ConvertTo-SecureString –String "Amu6y/RzJcc7JBzdAdRVv6mk=" –AsPlainText –Force;
     $aps_akv = New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTesting" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose; 
+    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose;
 
     # 2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
     $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
@@ -97,7 +97,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
 
     # 5) Update extension values
     $aps_akv = New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTest" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-82af-4ab3-9d46-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
-    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose; 
+    Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose;
 
     # 6) Verify changes
     $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
@@ -189,7 +189,7 @@ function Test-SetAzureRmVMSqlServerExtension
     Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose -Name $extensionName;
 
     # 2) Calls Get-AzVMSqlServerExtension cmdlet to check the status of the extension installation.
-    Start-Sleep -Seconds 60.0
+    Start-TestSleep -Seconds 60
     $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
 
     # 3) Verifies settings are correct given input
@@ -220,7 +220,7 @@ function Test-SetAzureRmVMSqlServerExtension
     Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "2.*"
 }
 
-# Test setting up VM with Sql Server 2017 image. (Includes testing for AutoBackup V2) 
+# Test setting up VM with Sql Server 2017 image. (Includes testing for AutoBackup V2)
 function Test-SetAzureRmVMSqlServerExtensionWith2017Image
 {
     Set-StrictMode -Version latest; $ErrorActionPreference = 'Stop'
@@ -228,7 +228,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2017Image
     # Setup
     $rgname = Get-ComputeTestResourceName
     $loc = Get-ComputeVMLocation
-   
+
    # Common
     New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -325,7 +325,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2017Image
     $abs = New-AzVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl `
             -StorageKey $storageKeyAsSecureString -BackupScheduleType Automated -BackupSystemDbs
     Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose -Name $extensionName;
-    Start-Sleep -Seconds 30.0
+    Start-TestSleep -Seconds 30
 
     # 6) Verify changes
     $extension = Get-AzVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;

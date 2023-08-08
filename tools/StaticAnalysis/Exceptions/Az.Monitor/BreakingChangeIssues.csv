@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Monitor","Microsoft.Azure.Commands.Insights.Alerts.NewAzureRmMetricAlertRuleV2DimensionSelectionCommand","New-AzMetricAlertRuleV2DimensionSelection","0","1050","The parameter set '__AllParameterSets' for cmdlet 'New-AzMetricAlertRuleV2DimensionSelection' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'New-AzMetricAlertRuleV2DimensionSelection'."
