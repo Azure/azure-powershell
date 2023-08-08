@@ -23,3 +23,12 @@ $properties = '{
 ```
 
 This command starts a Storage account migration by inputting the TargetSkuName property with a Json string.
+
+### Example 4: Start a Storage account migration with a Json file path input
+```powershell
+# Before executing the cmdlet, make sure you have a json file that contains {"properties": {"targetSkuName": <TargetSKU>}} 
+$propertiesFilePath = {file path to the json file}
+Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName myaccount -JsonFilePath $propertiesFilePath -AsJob
+```
+
+This command starts a Storage account migration by inputting the TargetSkuName property with a Json file path.
