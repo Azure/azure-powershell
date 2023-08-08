@@ -22,8 +22,4 @@ Describe 'Get-AzStorageAccountMigration' {
         $migration.DetailMigrationStatus | Should -Be "SubmittedForConversion"
         $migration.DetailTargetSkuName | Should -Be "Standard_ZRS"
     }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

@@ -63,6 +63,18 @@ Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name myaccount | Start-
 
 The first command gets a Storage account Id, and then the second command starts a migration to Standard_LRS for Storage account myaccount under resource group myresourcegroup.
 
+### Example 3: Start a Storage account migration with Json string input
+```powershell
+$properties = '{
+   "properties": {
+     "targetSkuName": "Standard_ZRS"
+   }
+}'
+ Start-AzStorageAccountMigration -ResourceGroupName myresourcegroup -AccountName myaccount -JsonString $properties -AsJob
+```
+
+This command starts a Storage account migration by inputting the TargetSkuName property with a Json string.
+
 ## PARAMETERS
 
 ### -AccountName

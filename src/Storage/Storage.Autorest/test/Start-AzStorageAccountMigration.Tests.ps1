@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzStorageAccountMigrati
 }
 
 Describe 'Start-AzStorageAccountMigration' {
+    # Start-AzStorageAccountMigration takes 5 days to 2 months to run, so will cover the tests locally and skip the tests here
     It 'CustomerExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
@@ -27,15 +28,7 @@ Describe 'Start-AzStorageAccountMigration' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Customer' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CustomerViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CustomerViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
