@@ -26,10 +26,10 @@ steps:
     pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET SDK 6 for tests'
   inputs:
     packageType: sdk
-    version: 3.1.x
+    version: 6.0.x
 
 - task: PowerShell@2
   displayName: Remove pre-installed Az modules

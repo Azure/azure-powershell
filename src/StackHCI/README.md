@@ -71,7 +71,7 @@ directive:
       verb: Invoke
       subject: AndArcSetting
     set:
-      subject: ConsentAndInstallDefaultExtensions
+      subject: ConsentAndInstallDefaultExtension
   # Remove the unexpanded parameter set
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -117,7 +117,7 @@ directive:
         script: '"default"'
   - where:
       verb: Invoke
-      subject: ConsentAndInstallDefaultExtensions
+      subject: ConsentAndInstallDefaultExtension
       parameter-name: ArcSettingName
     hide: true
     set:
