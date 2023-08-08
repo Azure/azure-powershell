@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -192,6 +194,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             // Allow listing storage contents through piping
             return null;
+        }
+
+        /// <summary>
+        /// Function used by piping PSStorageAccount to autorest based cmdlets
+        /// </summary>
+        /// <returns></returns>
+        public string ToJsonString()
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+            PSStorageAccount result = MemberwiseClone() as PSStorageAccount;
+            result.Context = null;
+
+            return JsonConvert.SerializeObject(result, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented,
+            });
         }
     }
 
