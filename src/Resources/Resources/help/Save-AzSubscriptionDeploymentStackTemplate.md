@@ -24,6 +24,12 @@ Save-AzSubscriptionDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SaveByStackObject
+```
+Save-AzSubscriptionDeploymentStackTemplate [-StackObjet] <PSDeploymentStack> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Saves a template (or template link) for a subscription scoped deployment stack.
 
@@ -95,6 +101,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StackObjet
+The stack PS object
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Parameter Sets: SaveByStackObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

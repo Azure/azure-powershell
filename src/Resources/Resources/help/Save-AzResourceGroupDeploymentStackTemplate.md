@@ -24,6 +24,12 @@ Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SaveByStackObject
+```
+Save-AzResourceGroupDeploymentStackTemplate [-StackObjet] <PSDeploymentStack> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Saves a template (or template link) for a resource group scoped deployment stack.
 
@@ -110,6 +116,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StackObjet
+The stack PS object
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Parameter Sets: SaveByStackObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
