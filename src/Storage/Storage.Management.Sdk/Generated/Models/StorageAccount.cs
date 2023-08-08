@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="blobRestoreStatus">Blob restore status</param>
         /// <param name="allowBlobPublicAccess">Allow or disallow public access
         /// to all blobs or containers in the storage account. The default
-        /// interpretation is true for this property.</param>
+        /// interpretation is false for this property.</param>
         /// <param name="minimumTlsVersion">Set the minimum TLS version to be
         /// permitted on requests to storage. The default interpretation is TLS
         /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
@@ -136,8 +136,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="enableNfsV3">NFS 3.0 protocol support enabled if set
         /// to true.</param>
         /// <param name="allowCrossTenantReplication">Allow or disallow cross
-        /// AAD tenant object replication. The default interpretation is true
-        /// for this property.</param>
+        /// AAD tenant object replication. Set this property to true for new or
+        /// existing accounts only if object replication policies will involve
+        /// storage accounts in different AAD tenants. The default
+        /// interpretation is false for new accounts to follow best security
+        /// practices by default.</param>
         /// <param name="defaultToOAuthAuthentication">A boolean flag which
         /// indicates whether the default authentication is OAuth or not. The
         /// default interpretation is false for this property.</param>
@@ -161,7 +164,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Azure DNS Zone and the endpoint URL will have an alphanumeric DNS
         /// Zone identifier. Possible values include: 'Standard',
         /// 'AzureDnsZone'</param>
-        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), RoutingPreference routingPreference = default(RoutingPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string))
+        /// <param name="isSkuConversionBlocked">This property will be set to
+        /// true or false on an event of ongoing migration. Default value is
+        /// null.</param>
+        /// <param name="accountMigrationInProgress">If customer initiated
+        /// account migration is in progress, the value will be true else it
+        /// will be null.</param>
+        public StorageAccount(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), Identity identity = default(Identity), ExtendedLocation extendedLocation = default(ExtendedLocation), ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), IList<PrivateEndpointConnection> privateEndpointConnections = default(IList<PrivateEndpointConnection>), RoutingPreference routingPreference = default(RoutingPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -206,6 +215,8 @@ namespace Microsoft.Azure.Management.Storage.Models
             AllowedCopyScope = allowedCopyScope;
             StorageAccountSkuConversionStatus = storageAccountSkuConversionStatus;
             DnsEndpointType = dnsEndpointType;
+            IsSkuConversionBlocked = isSkuConversionBlocked;
+            AccountMigrationInProgress = accountMigrationInProgress;
             CustomInit();
         }
 
@@ -434,7 +445,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or
         /// containers in the storage account. The default interpretation is
-        /// true for this property.
+        /// false for this property.
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowBlobPublicAccess")]
         public bool? AllowBlobPublicAccess { get; set; }
@@ -465,7 +476,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets allow or disallow cross AAD tenant object replication.
-        /// The default interpretation is true for this property.
+        /// Set this property to true for new or existing accounts only if
+        /// object replication policies will involve storage accounts in
+        /// different AAD tenants. The default interpretation is false for new
+        /// accounts to follow best security practices by default.
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowCrossTenantReplication")]
         public bool? AllowCrossTenantReplication { get; set; }
@@ -519,6 +533,20 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dnsEndpointType")]
         public string DnsEndpointType { get; set; }
+
+        /// <summary>
+        /// Gets this property will be set to true or false on an event of
+        /// ongoing migration. Default value is null.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isSkuConversionBlocked")]
+        public bool? IsSkuConversionBlocked { get; private set; }
+
+        /// <summary>
+        /// Gets if customer initiated account migration is in progress, the
+        /// value will be true else it will be null.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.accountMigrationInProgress")]
+        public bool? AccountMigrationInProgress { get; private set; }
 
         /// <summary>
         /// Validate the object.

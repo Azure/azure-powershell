@@ -58,7 +58,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// DeletedTime and RemainingRetentionDays' and for Hns disabled
         /// accounts the definition.schemaFields must include 'Deleted and
         /// RemainingRetentionDays', else it must be excluded.</param>
-        public BlobInventoryPolicyFilter(IList<string> prefixMatch = default(IList<string>), IList<string> excludePrefix = default(IList<string>), IList<string> blobTypes = default(IList<string>), bool? includeBlobVersions = default(bool?), bool? includeSnapshots = default(bool?), bool? includeDeleted = default(bool?))
+        /// <param name="creationTime">This property is used to filter objects
+        /// based on the object creation time</param>
+        public BlobInventoryPolicyFilter(IList<string> prefixMatch = default(IList<string>), IList<string> excludePrefix = default(IList<string>), IList<string> blobTypes = default(IList<string>), bool? includeBlobVersions = default(bool?), bool? includeSnapshots = default(bool?), bool? includeDeleted = default(bool?), BlobInventoryCreationTime creationTime = default(BlobInventoryCreationTime))
         {
             PrefixMatch = prefixMatch;
             ExcludePrefix = excludePrefix;
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             IncludeBlobVersions = includeBlobVersions;
             IncludeSnapshots = includeSnapshots;
             IncludeDeleted = includeDeleted;
+            CreationTime = creationTime;
             CustomInit();
         }
 
@@ -127,5 +130,25 @@ namespace Microsoft.Azure.Management.Storage.Models
         [JsonProperty(PropertyName = "includeDeleted")]
         public bool? IncludeDeleted { get; set; }
 
+        /// <summary>
+        /// Gets or sets this property is used to filter objects based on the
+        /// object creation time
+        /// </summary>
+        [JsonProperty(PropertyName = "creationTime")]
+        public BlobInventoryCreationTime CreationTime { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (CreationTime != null)
+            {
+                CreationTime.Validate();
+            }
+        }
     }
 }

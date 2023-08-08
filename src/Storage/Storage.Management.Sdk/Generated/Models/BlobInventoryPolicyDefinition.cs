@@ -174,6 +174,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "SchemaFields");
             }
+            if (Filters != null)
+            {
+                Filters.Validate();
+            }
         }
     }
 }

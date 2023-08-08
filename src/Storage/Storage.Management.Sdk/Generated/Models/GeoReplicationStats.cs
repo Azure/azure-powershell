@@ -47,11 +47,24 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// offline or we are in bootstrap.</param>
         /// <param name="canFailover">A boolean flag which indicates whether or
         /// not account failover is supported for the account.</param>
-        public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?))
+        /// <param name="canPlannedFailover">A boolean flag which indicates
+        /// whether or not planned account failover is supported for the
+        /// account.</param>
+        /// <param name="postFailoverRedundancy">The redundancy type of the
+        /// account after an account failover is performed. Possible values
+        /// include: 'Standard_LRS', 'Standard_ZRS'</param>
+        /// <param name="postPlannedFailoverRedundancy">The redundancy type of
+        /// the account after a planned account failover is performed. Possible
+        /// values include: 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS',
+        /// 'Standard_RAGZRS'</param>
+        public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?), bool? canPlannedFailover = default(bool?), string postFailoverRedundancy = default(string), string postPlannedFailoverRedundancy = default(string))
         {
             Status = status;
             LastSyncTime = lastSyncTime;
             CanFailover = canFailover;
+            CanPlannedFailover = canPlannedFailover;
+            PostFailoverRedundancy = postFailoverRedundancy;
+            PostPlannedFailoverRedundancy = postPlannedFailoverRedundancy;
             CustomInit();
         }
 
@@ -89,6 +102,29 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [JsonProperty(PropertyName = "canFailover")]
         public bool? CanFailover { get; private set; }
+
+        /// <summary>
+        /// Gets a boolean flag which indicates whether or not planned account
+        /// failover is supported for the account.
+        /// </summary>
+        [JsonProperty(PropertyName = "canPlannedFailover")]
+        public bool? CanPlannedFailover { get; private set; }
+
+        /// <summary>
+        /// Gets the redundancy type of the account after an account failover
+        /// is performed. Possible values include: 'Standard_LRS',
+        /// 'Standard_ZRS'
+        /// </summary>
+        [JsonProperty(PropertyName = "postFailoverRedundancy")]
+        public string PostFailoverRedundancy { get; private set; }
+
+        /// <summary>
+        /// Gets the redundancy type of the account after a planned account
+        /// failover is performed. Possible values include: 'Standard_GRS',
+        /// 'Standard_GZRS', 'Standard_RAGRS', 'Standard_RAGZRS'
+        /// </summary>
+        [JsonProperty(PropertyName = "postPlannedFailoverRedundancy")]
+        public string PostPlannedFailoverRedundancy { get; private set; }
 
     }
 }

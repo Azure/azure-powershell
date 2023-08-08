@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// network routing choice opted by the user for data transfer</param>
         /// <param name="allowBlobPublicAccess">Allow or disallow public access
         /// to all blobs or containers in the storage account. The default
-        /// interpretation is true for this property.</param>
+        /// interpretation is false for this property.</param>
         /// <param name="minimumTlsVersion">Set the minimum TLS version to be
         /// permitted on requests to storage. The default interpretation is TLS
         /// 1.0 for this property. Possible values include: 'TLS1_0', 'TLS1_1',
@@ -94,8 +94,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// (Azure AD). The default value is null, which is equivalent to
         /// true.</param>
         /// <param name="allowCrossTenantReplication">Allow or disallow cross
-        /// AAD tenant object replication. The default interpretation is true
-        /// for this property.</param>
+        /// AAD tenant object replication. Set this property to true for new or
+        /// existing accounts only if object replication policies will involve
+        /// storage accounts in different AAD tenants. The default
+        /// interpretation is false for new accounts to follow best security
+        /// practices by default.</param>
         /// <param name="defaultToOAuthAuthentication">A boolean flag which
         /// indicates whether the default authentication is OAuth or not. The
         /// default interpretation is false for this property.</param>
@@ -268,7 +271,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or
         /// containers in the storage account. The default interpretation is
-        /// true for this property.
+        /// false for this property.
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowBlobPublicAccess")]
         public bool? AllowBlobPublicAccess { get; set; }
@@ -293,7 +296,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets allow or disallow cross AAD tenant object replication.
-        /// The default interpretation is true for this property.
+        /// Set this property to true for new or existing accounts only if
+        /// object replication policies will involve storage accounts in
+        /// different AAD tenants. The default interpretation is false for new
+        /// accounts to follow best security practices by default.
         /// </summary>
         [JsonProperty(PropertyName = "properties.allowCrossTenantReplication")]
         public bool? AllowCrossTenantReplication { get; set; }
