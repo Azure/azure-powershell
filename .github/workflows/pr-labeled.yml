@@ -10,6 +10,9 @@ on:
 jobs:
   process_labels:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
     steps:
     - uses: actions/checkout@v3
       with:
