@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSetting")]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSetting", DefaultParameterSetName = UpdateSettingViaFlattenValuesParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSetting))]
     public class UpdateAzKeyVaultSetting : KeyVaultCmdletBase
     {
@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
             Position = 0,
             ParameterSetName = UpdateSettingViaFlattenValuesParameterSet,
             HelpMessage = "Name of the HSM.")]
+        [Parameter(Mandatory = false, Position = 0, ParameterSetName = UpdateSettingViaInputObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.KeyVault/managedHSMs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
@@ -77,20 +78,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
         public string Value { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 0,
+            Position = 1,
             ParameterSetName = UpdateSettingViaInputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The location of the deleted vault.")]
         [ValidateNotNullOrEmpty()]
         public PSKeyVaultSetting InputObject { get; set; }
-        
+
+        [Parameter(Mandatory = false, HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
             NormalizeParameterSets();
-            WriteObject(Track2DataClient.UpdateManagedHsmSetting(InputObject));
+            if (ShouldProcess(InputObject.Name, Properties.Resources.UpdateKeyVaultSetting))            {
+                var setting = Track2DataClient.UpdateManagedHsmSetting(InputObject);
+                if(PassThru.IsPresent) WriteObject(setting);
+            }
         }
+
         private void NormalizeParameterSets()
         {
             switch (ParameterSetName)
@@ -101,6 +109,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
                     break;
                 case UpdateSettingViaHsmObjectParameterSet:
                     HsmName = HsmObject.VaultName; 
+                    break;
+                case UpdateSettingViaInputObjectParameterSet:
+                    InputObject.HsmName = HsmName;
                     break;
             }
             if (!ParameterSetName.Equals(UpdateSettingViaInputObjectParameterSet))

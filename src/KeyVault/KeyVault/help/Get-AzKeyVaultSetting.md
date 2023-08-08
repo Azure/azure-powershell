@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzKeyVaultSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves a specified key vault account setting or all available key vault account settings that can be configured. 
 
 ## SYNTAX
 
@@ -31,16 +31,83 @@ Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmId] <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzKeyVaultSetting** cmdlet gets key vault account settings.
+This cmdlet gets a specific key vault account setting or all key vault account settings.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all account settings in a Managed HSM
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzKeyVaultSetting -HsmName testmhsm
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
 ```
 
-{{ Add example description here }}
+This cmdlet gets all account settings in a Managed HSM named `testmhsm`.
+
+### Example 2: Get a specific key vault account setting in a Managed HSM
+```powershell
+Get-AzKeyVaultSetting -HsmName testmhsm -Name AllowKeyManagementOperationsThroughARM
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
+```
+
+This cmdlet gets a specific key vault account setting named `AllowKeyManagementOperationsThroughARM` in a Managed HSM named `testmhsm`.
+
+### Example 3: Get a specific key vault account setting in a Managed HSM via HsmObject
+```powershell
+$hsmObject = Get-AzKeyVaultManagedHsm -Name testmhsm
+Get-AzKeyVaultSetting -HsmObject $hsmObject -Name AllowKeyManagementOperationsThroughARM
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
+```
+
+This cmdlet gets a specific key vault account setting named `AllowKeyManagementOperationsThroughARM` in a Managed HSM named `testmhsm` via HsmObject.
+
+### Example 4: Get a specific key vault account setting in a Managed HSM by piping HsmObject
+```powershell
+Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultSetting -Name AllowKeyManagementOperationsThroughARM
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
+```
+
+This cmdlet gets a specific key vault account setting named `AllowKeyManagementOperationsThroughARM` in a Managed HSM named `testmhsm` via HsmObject.
+
+### Example 4: Get a specific key vault account setting in a Managed HSM by piping HsmObject
+```powershell
+Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultSetting -Name AllowKeyManagementOperationsThroughARM
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
+```
+
+This cmdlet gets a specific key vault account setting named `AllowKeyManagementOperationsThroughARM` in a Managed HSM named `testmhsm` by piping HsmObject.
+
+### Example 5: Get a specific key vault account setting in a Managed HSM via HsmId
+```powershell
+Get-AzKeyVaultSetting -HsmId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.KeyVault/managedHSMs/testmhsm -Name AllowKeyManagementOperationsThroughARM
+```
+```output
+Name                                   Value Type    HSM Name
+----                                   ----- ----    --------
+AllowKeyManagementOperationsThroughARM false boolean testmhsm
+```
+
+This cmdlet gets a specific key vault account setting named `AllowKeyManagementOperationsThroughARM` in a Managed HSM named `testmhsm` via HsmId.
 
 ## PARAMETERS
 
@@ -133,3 +200,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Update-AzKeyVaultSetting](./Update-AzKeyVaultSetting.md)

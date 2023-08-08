@@ -726,14 +726,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var client = CreateKeyVaultSettingsClient(psSettingParams.HsmName);
             try
             {
-                if (psSettingParams.SettingType.Equals("boolean"))
+                if (bool.TryParse(psSettingParams.Value, out var result))
                 {
-                    bool.TryParse(psSettingParams.Value, out var result);
                     return new PSKeyVaultSetting(client.UpdateSetting(new KeyVaultSetting(psSettingParams.Name, result)), psSettingParams.HsmName);
                 }
                 else
                 {
-                    throw new AzPSArgumentException("Can't update KeyVaultSetting.Value as string", "KeyVaultSettingValue");
+                    throw new AzPSArgumentException("Only supports updating KeyVaultSetting.Value as boolean", "KeyVaultSettingValue");
                 }
 
             }

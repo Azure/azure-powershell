@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <summary>
         /// Gets the type specifier of the value.
         /// </summary>
-        public string SettingType;
+        public string Type;
 
         /// <summary>
         /// Gets the value of the account setting.
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (null != keyVaultSetting)
             {
                 Name = keyVaultSetting.Name;
-                SettingType = keyVaultSetting.SettingType?.ToString();
+                Type = keyVaultSetting.SettingType?.ToString();
                 Value = keyVaultSetting.Value.ToString();
             }
             HsmName = hsmName;
         }
 
-        public override string ToString() => $"{Name}={Value} ({SettingType ?? string.Empty})";
+        public override string ToString() => $"{Name}={Value} ({Type ?? string.Empty})";
 
     }
 }
