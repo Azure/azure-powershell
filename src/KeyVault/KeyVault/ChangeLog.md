@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.34.0.
+
+## Version 4.10.2
 * Bug Fix: Removed depulicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]
 
 ## Version 4.10.1
