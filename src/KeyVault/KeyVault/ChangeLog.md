@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Supported Setting for Managed HSM: Added `Get-AzKeyVaultSetting` and `Update-AzKeyVaultSetting`.
+* Updated Azure.Core to 1.34.0.
 
 ## Version 4.10.2
 * Bug Fix: Removed duplicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]

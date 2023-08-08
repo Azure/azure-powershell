@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
 * Updated the reference of Azure PowerShell Common to 1.3.82-preview.
 
 ## Version 2.12.5
