@@ -62,8 +62,9 @@ namespace Microsoft.Azure.Commands.Profile
                         Resources.FileOverwriteCaption))
                     {
                         var profile = Profile;
-                        if (WithCredential.IsPresent && (Force.IsPresent || ShouldContinue(string.Format(Resources.ProfileWriteWarning, Path), string.Empty)))
+                        if (WithCredential.IsPresent)
                         {
+                            WriteWarning(string.Format(Resources.ProfileCredentialsWriteWarning, Path));
                             profile = profile.RefillCredentialsFromKeyStore();
                         }
                         profile.Save(Path);
@@ -86,8 +87,9 @@ namespace Microsoft.Azure.Commands.Profile
                         Resources.FileOverwriteCaption))
                     {
                         var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                        if (WithCredential.IsPresent && (Force.IsPresent || ShouldContinue(string.Format(Resources.ProfileWriteWarning, Path), string.Empty)))
+                        if (WithCredential.IsPresent)
                         {
+                            WriteWarning(string.Format(Resources.ProfileCredentialsWriteWarning, Path));
                             profile = profile.RefillCredentialsFromKeyStore();
                         }
                         profile.Save(Path);
