@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
         private Task PullResponse()
         {
-            return Task.Run(async () =>
+            return Task.Factory.StartNew(async () =>
             {
                 string result = string.Empty;
                 var allBytes = new List<byte>();
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
                 if (!string.IsNullOrEmpty(result) && PassThru.ToBool()) { WriteObject(result.TrimEnd()); }
 
-            }, this._cancellationTokenSource.Token);
+            }, this._cancellationTokenSource.Token).Unwrap();
         }
 
         private Task PushCommand()
         {
-            return Task.Run(async () =>
+            return Task.Factory.StartNew(async () =>
             {
                 if (Console.IsInputRedirected) return;
                 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                     System.Threading.Thread.Sleep(250); 
                 }
 
-            }, this._cancellationTokenSource.Token);
+            }, this._cancellationTokenSource.Token).Unwrap();
 
         }
     }
