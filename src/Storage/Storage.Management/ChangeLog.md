@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for customer initiated account migration 
+    - `Start-AzStorageAccountMigration`
+    - `Get-AzStorageAccountMigration`
 * Supported Storage account planned failover new properties 
     - `Get-AzStorageAccount`
 
