@@ -64,6 +64,8 @@ This command creates a Storage blob container with Storage account object and co
 
 ### Example 3: Create a storage container with EncryptionScope setting
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
 
@@ -87,6 +89,8 @@ Then show the related container properties.
 
 ### Example 4: Create an Azure storage container with RootSquash
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $container = New-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
 
@@ -105,9 +109,9 @@ $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName 
 
 $c
 ```
-```output
 
-   ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
 
 Name          PublicAccess LastModified         HasLegalHold HasImmutabilityPolicy Deleted VersionId ImmutableStorageWithVersioning
 ----          ------------ ------------         ------------ --------------------- ------- --------- ------------------------------
