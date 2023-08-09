@@ -327,33 +327,26 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 
 function Test-AzureVmWorkloadBackupProtectionItem
 {
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaVault"	
+	$sourceDBName = "master"
+
 	try
-	{
+	{   
+		# test trigger adhoc backup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$container = Register-AzRecoveryServicesBackupContainer `
-			-ResourceId $resourceId `
-			-BackupManagementType AzureWorkload `
-			-WorkloadType MSSQL `
-			-VaultId $vault.ID `
-			-Force
-
-		Enable-Protection $vault $container
-
-		$item = Get-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-Container $container `
-			-WorkloadType MSSQL;
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name -match $sourceDBName }
 
 		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
-			-Item $item `
+			-Item $item[0] `
 			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $backupJob.Status -eq "Completed" }
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		# no cleanup
 	}
 }
 

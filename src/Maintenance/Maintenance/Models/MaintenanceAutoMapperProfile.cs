@@ -86,6 +86,8 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(dest => dest.WindowParameterKbNumberToExclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToExclude))
                     .ForMember(dest => dest.WindowParameterKbNumberToInclude, opt => opt.MapFrom(src => src.InstallPatches.WindowsParameters.KbNumbersToInclude))
                     .ForMember(dest => dest.InstallPatchRebootSetting, opt => opt.MapFrom(src => src.InstallPatches.RebootSetting))
+                    .ForMember(dest => dest.PreTask, opt => opt.Ignore())
+                    .ForMember(dest => dest.PostTask, opt => opt.Ignore())
                     .ForSourceMember(src => src.SystemData, s => s.Ignore());
                 cfg.CreateMap<TO.PSMaintenanceConfiguration, FROM.MaintenanceConfiguration>()
                     .ForPath(dest => dest.InstallPatches.LinuxParameters.ClassificationsToInclude, src => src.MapFrom(o => o.LinuxParameterClassificationToInclude))

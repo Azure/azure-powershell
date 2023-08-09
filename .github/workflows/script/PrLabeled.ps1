@@ -60,6 +60,11 @@ if ($CommentDict.ContainsKey($LabelName)) {
         Write-Host "Comment is already added"
     }
     else {
-        gh pr comment $PrUrl --body $comment
+        try {
+            gh pr comment $PrUrl --body $comment
+        }
+        catch {
+            Write-Host "Failed to add comment: $_"
+        }
     }
 }

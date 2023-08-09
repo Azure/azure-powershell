@@ -1,5 +1,5 @@
 variables:
-  WindowsName: windows 
+  WindowsName: windows
   WindowsAgentPoolName: pool-windows-2019
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
@@ -8,7 +8,7 @@ variables:
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'
   MacOSAgentPoolVMImage: macOS-11
-  TestFramework: netcoreapp3.1
+  TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
