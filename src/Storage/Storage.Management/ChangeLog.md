@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.9.1
 * Supported Storage account planned failover new properties 
     - `Get-AzStorageAccount`
 
