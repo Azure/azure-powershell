@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Allow deletion of the soft deleted blob versions and snapshots.")]
+        [Parameter(Mandatory = false, HelpMessage = "Allow deletion of the soft deleted blob versions and snapshots. Please review the conditions applicable for [Permanent Delete](https://learn.microsoft.com/en-us/rest/api/storageservices/set-blob-service-properties?tabs=azure-ad#:~:text=RetentionPolicy/AllowPermanentDelete).")]
         public SwitchParameter AllowPermanentDelete { get; set; }        
 
         public override void ExecuteCmdlet()
