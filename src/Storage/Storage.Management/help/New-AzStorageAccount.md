@@ -349,16 +349,22 @@ New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccoun
 This command creates a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.
 
 ### Example 18: Create account with AllowedCopyScope as AAD
-```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -AllowedCopyScope AAD 
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -AllowedCopyScope AAD 
 
-PS C:\> $account.AllowedCopyScope
+$account.AllowedCopyScope
+```
+
+```output
 AAD
 ```
 
 The command creates account with AllowedCopyScope as AAD.
 
 ### Example 19: Create a Storage account with Keyvault from another tenant (access Keyvault with FederatedClientId)
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
 PS C:\> $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
@@ -382,7 +388,7 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 
 This command creates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
-### Example 18: Create account with DnsEndpointType as AzureDnsZone
+### Example 20: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
