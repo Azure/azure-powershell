@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
     {
         #region Parameter Set Names
 
-        private const string UpdateSettingViaFlattenValuesParameterSet = " UpdateSettingViaFlattenValues";
+        private const string UpdateSettingViaFlattenValuesParameterSet = "UpdateSettingViaFlattenValues";
         private const string UpdateSettingViaHsmObjectParameterSet = "UpdateSettingViaHsmObject";
         private const string UpdateSettingViaHsmIdParameterSet = "UpdateSettingViaHsmId";
         private const string UpdateSettingViaInputObjectParameterSet = "UpdateSettingViaInputObject";

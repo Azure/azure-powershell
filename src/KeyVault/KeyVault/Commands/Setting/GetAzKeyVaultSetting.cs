@@ -14,9 +14,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
     public class GetAzKeyVaultSetting: KeyVaultCmdletBase
     {
         #region Parameter Set Names
-        private const string GetSettingViaFlattenParameters = " GetSettingViaFlattenParameters";
-        private const string GetSettingViaHsmObject = " GetSettingViaHsmObject";
-        private const string GetSettingViaHsmId = " GetSettingViaHsmId";
+        private const string GetSettingViaFlattenParameters = "GetSettingViaFlattenParameters";
+        private const string GetSettingViaHsmObject = "GetSettingViaHsmObject";
+        private const string GetSettingViaHsmId = "GetSettingViaHsmId";
         #endregion
 
         #region Input Parameter Definitions
