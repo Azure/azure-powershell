@@ -38,6 +38,7 @@ User Session clause variable.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted Values: ClientAddr, GeoLocation, None
 
 Required: True
 Position: Named
