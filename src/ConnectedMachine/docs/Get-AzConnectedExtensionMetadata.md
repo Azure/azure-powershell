@@ -29,28 +29,23 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 
 ## EXAMPLES
 
-### Example 1: {{ Get metadata of all machines }}
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.Compute'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
----- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---
-```
-Get metadata of all machines.
+{{ Add description here }}
 
-### Example 2: {{ Get metadata of a specific machine }}
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.Compute' -Version 1.10.10
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
----- ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---
-```
-Get metadata of a specific machine.
-
+{{ Add description here }}
 
 ## PARAMETERS
 

@@ -29,17 +29,23 @@ The operation to assess patches on a hybrid machine identity in Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Invoke assess patches }}
+### Example 1: {{ Add title here }}
 ```powershell
-Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk-test
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-AssessmentActivityId                 LastModifiedDateTime OSType  PatchServiceUsed RebootPending StartDateTime       StartedBy  Status
---------------------                 -------------------- ------  ---------------- ------------- -------------       ---------  ------
-3e456d9e-9789-4427-b631-84c587afeade 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
-Invoke machine patches.
+
+{{ Add description here }}
 
 ## PARAMETERS
 

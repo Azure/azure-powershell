@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Az.ConnectedMachine</id>
-    <version>1.0.0</version>
+    <version>0.5.0</version>
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>

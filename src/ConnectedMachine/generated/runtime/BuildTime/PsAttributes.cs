@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class DoNotExportAttribute : Attribute
     {
     }

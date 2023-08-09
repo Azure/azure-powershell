@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ConnectedMachine service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,7 +47,7 @@ input-file:
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/HybridCompute.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/privateLinkScopes.json
 
-module-version: 1.0.0
+module-version: 0.5.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 

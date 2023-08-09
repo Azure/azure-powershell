@@ -55,22 +55,23 @@ The operation to install patches on a hybrid machine identity in Azure.
 
 ## EXAMPLES
 
-### Example 1: {{ Install assess patches }}
+### Example 1: {{ Add title here }}
 ```powershell
-Install-AzConnectedMachinePatch -ResourceGroupName az-sdk-test -Name testMachine -MaximumDuration 'PT4H' -RebootSetting 'IfRequired' -WindowParameterClassificationsToInclude 'Critical'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-ExcludedPatchCount FailedPatchCount InstallationActivityId               InstalledPatchCount LastModifiedDateTime Maint
-                                                                                                                  enanc
-                                                                                                                  eWind
-                                                                                                                  owExc
-                                                                                                                  eeded
------------------- ---------------- ----------------------               ------------------- -------------------- -----
-0                  0                cd3c2d11-2852-4558-8497-f6c805aa4361 0                   7/28/2023 7:55:08 AM  False
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Install machine patches.
+{{ Add description here }}
 
 ## PARAMETERS
 

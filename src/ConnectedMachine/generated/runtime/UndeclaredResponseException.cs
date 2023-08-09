@@ -63,10 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime
             catch
             {
                 // couldn't get the code/message from the body response. 
-                // In this case, we will assume the response is the expected error message
-                if(!string.IsNullOrEmpty(ResponseBody)) {
-                    message = ResponseBody;
-                }
+                // we'll create one below.
             }
 #endif
             if (string.IsNullOrEmpty(message))
