@@ -19,13 +19,9 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 .Description
 Gets an Extension Metadata based on location, publisher, extensionType and version
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute'
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute' --Version 1.10.10
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionValue
@@ -773,13 +769,7 @@ The operation to install patches on a hybrid machine identity in Azure.
 .Description
 The operation to install patches on a hybrid machine identity in Azure.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Install-AzConnectedMachinePatch -ResourceGroupName az-sdk-test -Name testMachine -MaximumDuration 'PT4H' -RebootSetting 'IfRequired' -WindowParameterClassificationsToInclude 'Critical'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineInstallPatchesParameters
@@ -1063,13 +1053,7 @@ The operation to assess patches on a hybrid machine identity in Azure.
 .Description
 The operation to assess patches on a hybrid machine identity in Azure.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -4055,13 +4039,10 @@ API to register a new machine and thereby create a tracked resource in ARM
 .Description
 API to register a new machine and thereby create a tracked resource in ARM
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Connect-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name linux_eastus1_1 -Location eastus
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+$session = Connect-PSSession -ComputerName WINBOX
+Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
 
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/connect-azconnectedmachine

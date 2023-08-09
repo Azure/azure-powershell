@@ -1,18 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of machine extension metadata
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifi
+                                                                                              edBy
+---- ------------------- ------------------- ----------------------- ------------------------ --------------------
 ```
 
-{{ Add description here }}
+Get a list of machine extension metadata
 
+### Example 2: Get a specific machine extension metadata
+```powershell
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute' --Version 1.10.10
+```
+
+```output
+Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifi
+                                                                                              edBy
+---- ------------------- ------------------- ----------------------- ------------------------ --------------------
+
+```
+
+Get a specific machine extension metadata

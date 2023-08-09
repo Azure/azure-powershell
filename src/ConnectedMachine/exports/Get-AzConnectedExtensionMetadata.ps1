@@ -19,13 +19,9 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 .Description
 Gets an Extension Metadata based on location, publisher, extensionType and version
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute'
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute' --Version 1.10.10
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionValue

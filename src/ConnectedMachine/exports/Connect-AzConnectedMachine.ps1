@@ -19,13 +19,10 @@ API to register a new machine and thereby create a tracked resource in ARM
 .Description
 API to register a new machine and thereby create a tracked resource in ARM
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Connect-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name linux_eastus1_1 -Location eastus
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+$session = Connect-PSSession -ComputerName WINBOX
+Connect-AzConnectedMachine -ResourceGroupName contoso-rg -Name win_eastus1_1 -Location eastus -PSSession $session
 
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/connect-azconnectedmachine
