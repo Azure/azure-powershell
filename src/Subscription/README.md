@@ -121,6 +121,12 @@ directive:
     set:
       subject: SubscriptionPolicy
   - where:
+      verb: Get
+      subject: SubscriptionPolicy
+      variant: ^Get$
+    remove: true
+
+  - where:
       subject: AcceptSubscriptionOwnership
     set:
       subject: AcceptOwnership
@@ -166,6 +172,26 @@ directive:
       property-name: Name
     set:
       property-name: AliasName
+
+  - where:
+      subject: AcceptOwnershipStatus
+    hide: true
+  - where:
+      subject: AcceptOwnership
+    hide: true
+
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
 
   - where:
       model-name: SubscriptionAliasResponse
