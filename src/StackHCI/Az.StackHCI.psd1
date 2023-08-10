@@ -12,7 +12,7 @@
 RootModule = './Az.StackHCI.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.1.0'
+ModuleVersion = '2.1.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -121,7 +121,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Used the correct version of cloud management service in ''Register-AzStackHCI'' cmdlet.
+* Fixed the bugs in ''Register-AzStackHCI'' and ''Enable-AzStackHCIAttestation'' cmdlets.'
 
         # Prerelease string of this module
         # Prerelease = ''
