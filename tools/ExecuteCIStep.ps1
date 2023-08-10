@@ -396,6 +396,29 @@ If ($StaticAnalysis)
     }
     $FailedTasks = @()
     $ErrorLogPath = "$StaticAnalysisOutputDirectory/error.log"
+    if(Test-Path $ErrorLogPath){
+        Write-Host "-----------${ErrorLogPath} exist"
+    }else{
+        Write-Host "-----------${ErrorLogPath} not exist"
+    }
+	
+    if(Test-Path $StaticAnalysisOutputDirectory){
+        Write-Host "-----------${StaticAnalysisOutputDirectory} exist"
+    }else{
+        Write-Host "-----------${StaticAnalysisOutputDirectory} not exist"
+    }
+	
+    try{
+		.("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
+    }catch {
+        Write-Host "-------------------- in catch block -------------------- "
+        Write-Host "Error Type: " $_.GetType()
+        Write-Host "ErrorMessage: " $ErrorMessage
+        $errorOutput = $_ | ConvertTo-Json -Depth 3
+        Write-Host "errorOutput: " $errorOutput
+        Write-Host "-------------------- out catch block -------------------- "
+    }
+	
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters 2>$ErrorLogPath
     If ($LASTEXITCODE -ne 0)
     {
@@ -430,6 +453,18 @@ If ($StaticAnalysis)
     If ($LASTEXITCODE -ne 0)
     {
         $FailedTasks += "GenertedSdk"
+    }
+	
+    if(Test-Path $ErrorLogPath){
+        Write-Host "-----------${ErrorLogPath} exist 2"
+    }else{
+        Write-Host "-----------${ErrorLogPath} not exist 2"
+    }
+	
+    if(Test-Path $StaticAnalysisOutputDirectory){
+        Write-Host "-----------${StaticAnalysisOutputDirectory} exist 2"
+    }else{
+        Write-Host "-----------${StaticAnalysisOutputDirectory} not exist 2"
     }
     If ($FailedTasks.Length -ne 0)
     {
