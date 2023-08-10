@@ -21,7 +21,7 @@ function Test-MonitoringRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "Japan East"
+		$location = "South Central US"
 		$params= Prepare-ClusterCreateParameter -location $location -clusterType Spark
 		# create cluster that will be used throughout test
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.ResourceGroupName `

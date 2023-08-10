@@ -135,7 +135,7 @@ function Test-CreateClusterWithEncryptionInTransit{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -Location "Japan East"
+		$params= Prepare-ClusterCreateParameter -Location "South Central US"
 		$encryptionInTransit=$true
 
 		# create cluster
@@ -167,7 +167,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_DS14_v2"
 		$headNodeSize="Standard_DS14_v2"
@@ -203,7 +203,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
 
 		# create autoscale cofiguration
 		$autoscaleConfiguration=New-AzHDInsightClusterAutoscaleConfiguration -MinWorkerNodeCount 4 -MaxWorkerNodeCount 5
@@ -280,7 +280,7 @@ function Test-CreateClusterWithKafkaRestProxy{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East" -clusterType Kafka
+		$params= Prepare-ClusterCreateParameter -location "South Central US" -clusterType Kafka
 		$kafkaClientGroupName="FakeClientGroup"
 		$kafkaClientGroupId="00000000-0000-0000-0000-000000000000"
 		$disksPerWorkerNode=2
@@ -439,8 +439,8 @@ function Test-CreateClusterWithAvailabilityZones{
 		$params= Prepare-ClusterCreateParameter -location "East US"
 
 		# prepare custom ambari database
-		$databaseUserName="lyc-admin"
-		$databasePassword="Password1."
+		$databaseUserName="yourusername"
+		$databasePassword="******"
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
 	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
@@ -495,7 +495,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter -location "South Central US"
 		$httpUser="admin"
 		$textPassword= "YourPw!00953"
 		$httpPassword=ConvertTo-SecureString $textPassword -AsPlainText -Force
