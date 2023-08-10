@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
 
         /// <param name="name">SKU of the managed HSM Pool
-        /// Possible values include: 'Standard_B1', 'Custom_B32'</param>
+        /// Possible values include: 'Standard_B1', 'Custom_B32', 'Custom_B6'</param>
         public ManagedHsmSku(ManagedHsmSkuName name)
 
         {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
 
         /// <summary>
-        /// Gets or sets sKU of the managed HSM Pool Possible values include: &#39;Standard_B1&#39;, &#39;Custom_B32&#39;
+        /// Gets or sets sKU of the managed HSM Pool Possible values include: &#39;Standard_B1&#39;, &#39;Custom_B32&#39;, &#39;Custom_B6&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public ManagedHsmSkuName Name {get; set; }
