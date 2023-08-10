@@ -49,13 +49,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SoftDeleteRetentionInDays = managedHsm.Properties.SoftDeleteRetentionInDays;
             StatusMessage = managedHsm.Properties.StatusMessage;
             ProvisioningState = managedHsm.Properties.ProvisioningState;
+            SecurityDomain = new PSManagedHSMSecurityDomain(managedHsm?.Properties?.SecurityDomainProperties);
             OriginalManagedHsm = managedHsm;
         }
 
-        public string Name 
-        { 
-            get { return VaultName; } 
-            internal set { VaultName = value; } 
+        public string Name
+        {
+            get { return VaultName; }
+            internal set { VaultName = value; }
         }
 
         public string PublicNetworkAccess { get; private set; }
@@ -70,6 +71,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; internal set; }
         public string StatusMessage { get; private set; }
         public string ProvisioningState { get; private set; }
+
+        public PSManagedHSMSecurityDomain SecurityDomain { get; private set; }
+
         public ManagedHsm OriginalManagedHsm { get; private set; }
 
     }
