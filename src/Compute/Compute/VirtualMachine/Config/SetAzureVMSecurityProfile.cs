@@ -59,7 +59,15 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.SecurityProfile = new SecurityProfile();
                 }
-                this.VM.SecurityProfile.SecurityType = SecurityType;
+                
+                if (SecurityType == "Standard")
+                {
+                    this.VM.SecurityProfile.SecurityType = "";
+                }
+                else
+                {
+                    this.VM.SecurityProfile.SecurityType = SecurityType;
+                }
             }
 
             WriteObject(this.VM);

@@ -70,7 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+
+                if (this.SecurityType == "Standard")
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = "";
+                }
+                else
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+                }
             }
             WriteObject(this.VirtualMachineScaleSet);
         }

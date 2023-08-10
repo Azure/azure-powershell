@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Compute
         public PSDisk Disk { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           //Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+           HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
         [PSArgumentCompleter("Standard", "TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
             "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
+           HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
         public string SecureVMDiskEncryptionSet { get; set; }
 
         protected override void ProcessRecord()
@@ -68,8 +68,9 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.Disk.SecurityProfile = new DiskSecurityProfile();
             }
-
+            // At this time, it is impossible to set SecurityType to Standard ("") as it is a mandatory property on the backend.
             this.Disk.SecurityProfile.SecurityType = SecurityType;
+            
 
             if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {
