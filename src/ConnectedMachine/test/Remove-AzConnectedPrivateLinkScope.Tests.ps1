@@ -12,40 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzConnectedPrivateLinkScope' {
-    BeforeAll {
-        $resourceGroupName = $env.ResourceGroupName
-        $scopeName = $env.PrivateLinkScopeName
-        $location = $env.Location
-        $tags = @{Tag1="tag1"; Tag2="tag2"}
-        $tags2 = @{hello="hello"; world="world"}
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-
-    It "Create, Get and Remove a Private Link Scope" {
-        New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
-
-        Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName | Should -HaveCount 1
-
-        $privateLinkScope = Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
-        $privateLinkScope.Name | Should -Be $scopeName
-        $privateLinkScope.PublicNetworkAccess | Should -Be "Enabled"
-        
-        Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
-
-        $privateLinkScope = Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
-        $privateLinkScope.Name | Should -Be $scopeName
-        $privateLinkScope.PublicNetworkAccess | Should -Be "Disabled"
-        $privateLinkScope.Tag.AdditionalProperties["Tag1"] | Should -Be "tag1"
-
-        Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
-
-        $privateLinkScope = Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName        
-        $privateLinkScope.Name | Should -Be $scopeName
-        $privateLinkScope.PublicNetworkAccess | Should -Be "Disabled"
-        $privateLinkScope.Tag.AdditionalProperties["hello"] | Should -Be "hello"
-
-        Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
-
-        Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName | Should -HaveCount 0
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -1,49 +1,62 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachine
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedassessmachinepatch
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachine
+# Invoke-AzConnectedAssessMachinePatch
 
 ## SYNOPSIS
-The operation to delete a hybrid machine.
+The operation to assess patches on a hybrid machine identity in Azure.
 
 ## SYNTAX
 
-### Delete (Default)
+### Assess (Default)
 ```
-Remove-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedAssessMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### AssessViaIdentity
 ```
-Remove-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedAssessMachinePatch -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a hybrid machine.
+The operation to assess patches on a hybrid machine identity in Azure.
 
 ## EXAMPLES
 
-### Example 1: Remove a connected machine
+### Example 1: Invoke assess patches
 ```powershell
-Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
+Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk-test
 ```
 
-Deletes the connected machine.
-
-### Example 2: Remove connected machines via the pipeline
-```powershell
-Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
+```output
+AssessmentActivityId                 LastModifiedDateTime OSType  PatchServiceUsed RebootPending StartDateTime       StartedBy  Status
+--------------------                 -------------------- ------  ---------------- ------------- -------------       ---------  ------
+3e456d9e-9789-4427-b631-84c587afeade 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
 ```
-
-Removes all machines in the `contoso-connected-machines` resource group.
+Invoke machine patches.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -66,7 +79,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: AssessViaIdentity
 Aliases:
 
 Required: True
@@ -81,8 +94,8 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MachineName
+Parameter Sets: Assess
+Aliases:
 
 Required: True
 Position: Named
@@ -91,8 +104,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -108,11 +121,10 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
-The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Assess
 Aliases:
 
 Required: True
@@ -127,7 +139,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Assess
 Aliases:
 
 Required: False
@@ -177,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineAssessPatchesResult
 
 ## NOTES
 

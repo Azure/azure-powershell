@@ -46,7 +46,6 @@ name1             eastus2euap Enabled             Succeeded
 name2             eastus2euap Disabled            Succeeded
 name3             eastus2euap Enabled             Succeeded
 ```
-
 Lists all private link scopes in a specified resource group
 
 ### Example 2: Get a private link scope in a resource group by name
@@ -59,7 +58,6 @@ Name         Location    PublicNetworkAccess ProvisioningState
 ----         --------    ------------------- -----------------
 name1        eastus2euap Enabled             Succeeded
 ```
-
 Gets a private link scope in a specified resource group by name
 
 ## PARAMETERS
@@ -132,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IHybridComputePrivateLinkScope
 
 ## NOTES
 

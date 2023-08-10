@@ -11,8 +11,20 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Import-Module "$PSScriptRoot/helper.psm1" -Force
-
 Describe 'New-AzConnectedMachineExtension' {
-   #Tested in Remove-AzConnectedMachineExtension
+    It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'Create' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }
