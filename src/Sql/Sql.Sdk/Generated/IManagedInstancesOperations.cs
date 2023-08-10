@@ -24,6 +24,28 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface IManagedInstancesOperations
     {
         /// <summary>
+        /// Gets a list of all managed instances in the subscription.
+        /// </summary>
+        /// <param name='expand'>
+        /// The child resources to include in the response.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ManagedInstance>>> ListWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets a list of all managed instances in an instance pool.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -53,28 +75,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ManagedInstance>>> ListByInstancePoolWithHttpMessagesAsync(string resourceGroupName, string instancePoolName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Gets a list of all managed instances in the subscription.
-        /// </summary>
-        /// <param name='expand'>
-        /// The child resources to include in the response.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse<IPage<ManagedInstance>>> ListWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of managed instances in a resource group.
         /// </summary>
@@ -217,6 +217,110 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<ManagedInstance>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Failovers a managed instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance to failover.
+        /// </param>
+        /// <param name='replicaType'>
+        /// The type of replica to be failed over. Possible values include:
+        /// 'Primary', 'ReadableSecondary'
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string replicaType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the collection of outbound network dependencies for the given
+        /// managed instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<OutboundEnvironmentEndpoint>>> ListOutboundNetworkDependenciesByManagedInstanceWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Starts the managed instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Stops the managed instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> StopWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Get top resource consuming queries of a managed instance.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -268,34 +372,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<TopQueries>>> ListByManagedInstanceWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, int? numberOfQueries = default(int?), string databases = default(string), string startTime = default(string), string endTime = default(string), string interval = default(string), string aggregationFunction = default(string), string observationMetric = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <summary>
-        /// Failovers a managed instance.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can
-        /// obtain this value from the Azure Resource Manager API or the
-        /// portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance to failover.
-        /// </param>
-        /// <param name='replicaType'>
-        /// The type of replica to be failed over. Possible values include:
-        /// 'Primary', 'ReadableSecondary'
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown when a required parameter is null
-        /// </exception>
-        Task<AzureOperationResponse> FailoverWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string replicaType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a managed instance.
         /// </summary>
@@ -409,10 +485,15 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string replicaType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a list of all managed instances in an instance pool.
+        /// Starts the managed instance.
         /// </summary>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -423,13 +504,34 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginStartWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Stops the managed instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can
+        /// obtain this value from the Azure Resource Manager API or the
+        /// portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ManagedInstance>>> ListByInstancePoolNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginStopWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a list of all managed instances in the subscription.
         /// </summary>
@@ -453,6 +555,28 @@ namespace Microsoft.Azure.Management.Sql
         /// </exception>
         Task<AzureOperationResponse<IPage<ManagedInstance>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Gets a list of all managed instances in an instance pool.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<ManagedInstance>>> ListByInstancePoolNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets a list of managed instances in a resource group.
         /// </summary>
         /// <param name='nextPageLink'>
@@ -474,6 +598,29 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<IPage<ManagedInstance>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Gets the collection of outbound network dependencies for the given
+        /// managed instance.
+        /// </summary>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<IPage<OutboundEnvironmentEndpoint>>> ListOutboundNetworkDependenciesByManagedInstanceNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get top resource consuming queries of a managed instance.
         /// </summary>

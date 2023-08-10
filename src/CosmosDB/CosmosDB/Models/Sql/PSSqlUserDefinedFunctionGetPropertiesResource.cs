@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             Id = sqlUserDefinedFunctionGetPropertiesResource.Id;
             Body = sqlUserDefinedFunctionGetPropertiesResource.Body;
-            _rid = sqlUserDefinedFunctionGetPropertiesResource._rid;
-            _ts = sqlUserDefinedFunctionGetPropertiesResource._ts;
-            _etag = sqlUserDefinedFunctionGetPropertiesResource._etag;
+            _rid = sqlUserDefinedFunctionGetPropertiesResource.Rid;
+            _ts = sqlUserDefinedFunctionGetPropertiesResource.Ts;
+            _etag = sqlUserDefinedFunctionGetPropertiesResource.Etag;
         }
 
         //

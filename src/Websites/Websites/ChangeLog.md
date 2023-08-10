@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.0
+* Added AppServicePlan management support for P0V3 and P*mv3 tiers
+
 ## Version 3.0.1
 * Increased timeout for Publish-AzWebApp command
 * Fixed Set-AzWebApp issue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]

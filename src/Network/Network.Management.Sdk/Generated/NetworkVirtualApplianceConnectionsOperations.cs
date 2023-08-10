@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "connectionName");
             }
-            string apiVersion = "2023-02-01";
+            string apiVersion = "2023-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new ValidationException(ValidationRules.Pattern, "networkVirtualApplianceName", "^[A-Za-z0-9_]+");
                 }
             }
-            string apiVersion = "2023-02-01";
+            string apiVersion = "2023-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 networkVirtualApplianceConnectionParameters.Validate();
             }
-            string apiVersion = "2023-02-01";
+            string apiVersion = "2023-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "connectionName");
             }
-            string apiVersion = "2023-02-01";
+            string apiVersion = "2023-04-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

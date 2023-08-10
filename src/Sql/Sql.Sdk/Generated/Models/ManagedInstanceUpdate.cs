@@ -68,7 +68,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="vCores">The number of vCores. Allowed values: 8, 16,
         /// 24, 32, 40, 64, 80.</param>
         /// <param name="storageSizeInGB">Storage size in GB. Minimum value:
-        /// 32. Maximum value: 8192. Increments of 32 GB allowed only.</param>
+        /// 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum
+        /// value depends on the selected hardware family and number of
+        /// vCores.</param>
         /// <param name="collation">Collation of the managed instance.</param>
         /// <param name="dnsZone">The Dns Zone that the managed instance is
         /// in.</param>
@@ -123,7 +125,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="keyId">A CMK URI of the key to use for
         /// encryption.</param>
         /// <param name="administrators">The Azure Active Directory
-        /// administrator of the server.</param>
+        /// administrator of the instance. This can only be used at instance
+        /// create time. If used for instance update, it will be ignored or it
+        /// will result in an error. For updates individual APIs will need to
+        /// be used.</param>
         /// <param name="servicePrincipal">The managed instance's service
         /// principal.</param>
         /// <param name="tags">Resource tags.</param>
@@ -254,7 +259,8 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets storage size in GB. Minimum value: 32. Maximum value:
-        /// 8192. Increments of 32 GB allowed only.
+        /// 16384. Increments of 32 GB allowed only. Maximum value depends on
+        /// the selected hardware family and number of vCores.
         /// </summary>
         [JsonProperty(PropertyName = "properties.storageSizeInGB")]
         public int? StorageSizeInGB { get; set; }
@@ -390,7 +396,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets the Azure Active Directory administrator of the
-        /// server.
+        /// instance. This can only be used at instance create time. If used
+        /// for instance update, it will be ignored or it will result in an
+        /// error. For updates individual APIs will need to be used.
         /// </summary>
         [JsonProperty(PropertyName = "properties.administrators")]
         public ManagedInstanceExternalAdministrator Administrators { get; set; }

@@ -35,6 +35,15 @@ Lists entities from groups or get entity from groups by key
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
 
+### [Get-AzADGroupOwner](Get-AzADGroupOwner.md)
+The owners of the group.
+Limited to 100 owners.
+Nullable.
+If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.
+Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+Supports $expand including nested $select.
+For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+
 ### [Get-AzADOrganization](Get-AzADOrganization.md)
 Retrieve a list of organization objects.
 
@@ -58,6 +67,9 @@ Adds new entity to applications
 
 ### [New-AzADGroup](New-AzADGroup.md)
 Adds new entity to groups
+
+### [New-AzADGroupOwner](New-AzADGroupOwner.md)
+Create new navigation property ref to owners for groups
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Adds new entity to servicePrincipals
@@ -89,6 +101,9 @@ Users, contacts, and groups that are members of this group.
 HTTP Methods: GET (supported for all groups), POST (supported for security groups and mail-enabled security groups), DELETE (supported only for security groups) Read-only.
 Nullable.
 Supports $expand.
+
+### [Remove-AzADGroupOwner](Remove-AzADGroupOwner.md)
+Delete ref of navigation property owners for groups
 
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes entity from service principal.

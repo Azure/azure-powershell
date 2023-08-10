@@ -430,7 +430,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             response.Duration = GetJobDuration(fileShareJob.Duration);
             response.Status = fileShareJob.Status;
             response.WorkloadName = fileShareJob.EntityFriendlyName;
-            response.ActivityId = fileShareJob.ActivityId;
+            response.ActivityId = fileShareJob.ActivityId;            
+            response.StorageAccountName = fileShareJob.StorageAccountName;
+
             response.BackupManagementType =
                 CmdletModel.ConversionUtils.GetPsBackupManagementType(fileShareJob.BackupManagementType);
             response.Operation = fileShareJob.Operation;

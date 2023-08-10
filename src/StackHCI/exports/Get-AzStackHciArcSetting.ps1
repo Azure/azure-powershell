@@ -25,7 +25,7 @@ Get-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciarcsetting
 #>
 function Get-AzStackHciArcSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IArcSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IArcSetting])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -17,11 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSanVolume'))
 Describe 'New-AzElasticSanVolume' {
     It 'CreateExpanded' {
         $volGroupName = "testvol" + $env.RandomString
-        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $volGroupName -SizeGib 100  -CreationDataSourceUri 'https://abc.com' -Tag @{tag1="value1";tag2="value2"} -CreationDataCreateSource 'None'
+        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $volGroupName -SizeGib 100 -CreationDataCreateSource 'None'
         $volume.Name | Should -Be $volGroupName 
         $volume.SizeGiB | Should -Be 100
-        $volume.CreationDataSourceUri | Should -Be 'https://abc.com'
-        $volume.Tag.Count  | Should -BeGreaterOrEqual 1 
         $volume.CreationDataCreateSource | Should -Be 'None'
     }
 }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStackHciExtension_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Create Extension for HCI cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
     public partial class NewAzStackHciExtension_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Details of a particular extension in HCI Cluster.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension _extensionBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.Extension();
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension _extensionBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.Extension();
 
         /// <summary>Backing field for <see cref="ArcSettingName" /> property.</summary>
         private string _arcSettingName;
@@ -102,6 +102,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         public global::System.Management.Automation.SwitchParameter ExtensionParameterAutoUpgradeMinorVersion { get => _extensionBody.ParameterAutoUpgradeMinorVersion ?? default(global::System.Management.Automation.SwitchParameter); set => _extensionBody.ParameterAutoUpgradeMinorVersion = value; }
 
         /// <summary>
+        /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.",
+        SerializedName = @"enableAutomaticUpgrade",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ExtensionParameterEnableAutomaticUpgrade { get => _extensionBody.ParameterEnableAutomaticUpgrade ?? default(global::System.Management.Automation.SwitchParameter); set => _extensionBody.ParameterEnableAutomaticUpgrade = value; }
+
+        /// <summary>
         /// How the extension handler should be forced to update even if the extension configuration has not changed.
         /// </summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "How the extension handler should be forced to update even if the extension configuration has not changed.")]
@@ -123,8 +136,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Protected settings (may contain secrets).",
         SerializedName = @"protectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersProtectedSettings ExtensionParameterProtectedSetting { get => _extensionBody.ParameterProtectedSetting ?? null /* object */; set => _extensionBody.ParameterProtectedSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersProtectedSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersProtectedSettings ExtensionParameterProtectedSetting { get => _extensionBody.ParameterProtectedSetting ?? null /* object */; set => _extensionBody.ParameterProtectedSetting = value; }
 
         /// <summary>The name of the extension handler publisher.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the extension handler publisher.")]
@@ -146,8 +159,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Json formatted public settings for the extension.",
         SerializedName = @"settings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtensionParametersSettings ExtensionParameterSetting { get => _extensionBody.ParameterSetting ?? null /* object */; set => _extensionBody.ParameterSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtensionParametersSettings ExtensionParameterSetting { get => _extensionBody.ParameterSetting ?? null /* object */; set => _extensionBody.ParameterSetting = value; }
 
         /// <summary>Specifies the type of the extension; an example is "CustomScriptExtension".</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the type of the extension; an example is \"CustomScriptExtension\".")]
@@ -160,13 +173,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string ExtensionParameterType { get => _extensionBody.ParameterType ?? null; set => _extensionBody.ParameterType = value; }
 
-        /// <summary>Specifies the version of the script handler.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the version of the script handler.")]
+        /// <summary>
+        /// Specifies the version of the script handler. Latest version would be used if not specified.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the version of the script handler. Latest version would be used if not specified.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Specifies the version of the script handler.",
+        Description = @"Specifies the version of the script handler. Latest version would be used if not specified.",
         SerializedName = @"typeHandlerVersion",
         PossibleTypes = new [] { typeof(string) })]
         public string ExtensionParameterTypeHandlerVersion { get => _extensionBody.ParameterTypeHandlerVersion ?? null; set => _extensionBody.ParameterTypeHandlerVersion = value; }
@@ -275,24 +290,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -524,12 +539,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -546,7 +561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, ArcSettingName=ArcSettingName, Name=Name, body=_extensionBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -564,12 +579,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension> response)
         {
             using( NoSynchronizationContext )
             {
@@ -581,7 +596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension
                 WriteObject((await response));
             }
         }

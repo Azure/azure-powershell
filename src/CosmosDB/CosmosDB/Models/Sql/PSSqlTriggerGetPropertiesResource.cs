@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Body = sqlTriggerGetPropertiesResource.Body;
             TriggerType = sqlTriggerGetPropertiesResource.TriggerType;
             TriggerOperation = sqlTriggerGetPropertiesResource.TriggerOperation;
-            _rid = sqlTriggerGetPropertiesResource._rid;
-            _ts = sqlTriggerGetPropertiesResource._ts;
-            _etag = sqlTriggerGetPropertiesResource._etag;
+            _rid = sqlTriggerGetPropertiesResource.Rid;
+            _ts = sqlTriggerGetPropertiesResource.Ts;
+            _etag = sqlTriggerGetPropertiesResource.Etag;
         }
 
 

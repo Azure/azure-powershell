@@ -203,9 +203,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             Func<MetricAlertResource, bool> verify = metricAlert =>
             {
-                Assert.Contains(_cmdlet.TargetResourceId, metricAlert.Scopes);
-                Assert.Contains(webtestCriteria.ComponentId, metricAlert.Scopes);
-
                 Assert.Contains($"hidden-link:{webtestCriteria.WebTestId}", metricAlert.Tags.Keys);
                 Assert.Contains($"hidden-link:{webtestCriteria.ComponentId}", metricAlert.Tags.Keys);
 

@@ -19,9 +19,18 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
+* Updated the reference of Azure PowerShell Common to 1.3.82-preview.
+
+## Version 2.12.5
+* Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
+* Updated Azure.Core to 1.33.0
 
 ## Version 2.12.4
 * Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].
+* Enabled customers to login with an valid domain using Service Principal [#20728]
 
 ## Version 2.12.3
 * Updated System.Security.Permissions to 4.7.0.

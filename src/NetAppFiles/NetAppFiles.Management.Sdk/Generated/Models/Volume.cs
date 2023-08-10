@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="isRestoring">Restoring</param>
         /// <param name="snapshotDirectoryVisible">If enabled (true) the volume
         /// will contain a read-only snapshot directory which provides access
-        /// to each of the volume's snapshots (default to true).</param>
+        /// to each of the volume's snapshots (defaults to true).</param>
         /// <param name="kerberosEnabled">Describe if a volume is
         /// KerberosEnabled. To be use with swagger version 2020-05-01 or
         /// later</param>
@@ -94,6 +94,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="throughputMibps">Maximum throughput in MiB/s that can
         /// be achieved by this volume and this will be accepted as input only
         /// for manual qosType volume</param>
+        /// <param name="actualThroughputMibps">Actual throughput in MiB/s for
+        /// auto qosType volumes calculated based on size and
+        /// serviceLevel</param>
         /// <param name="encryptionKeySource">Source of key used to encrypt
         /// data in volume. Applicable if NetApp account has
         /// encryption.keySource = 'Microsoft.KeyVault'. Possible values
@@ -159,7 +162,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="provisionedAvailabilityZone">Provisioned Availability
         /// Zone</param>
         /// <param name="isLargeVolume">Is Large Volume</param>
-        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), IList<string> zones = default(IList<string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), IList<string> dataStoreResourceId = default(IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), IList<PlacementKeyValuePairs> placementRules = default(IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?))
+        /// <param name="originatingResourceId">Originating Resource Id</param>
+        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), IList<string> zones = default(IList<string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), IList<string> dataStoreResourceId = default(IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), IList<PlacementKeyValuePairs> placementRules = default(IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string))
             : base(location, id, name, type, systemData, tags)
         {
             Etag = etag;
@@ -191,6 +195,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             SmbNonBrowsable = smbNonBrowsable;
             SmbContinuouslyAvailable = smbContinuouslyAvailable;
             ThroughputMibps = throughputMibps;
+            ActualThroughputMibps = actualThroughputMibps;
             EncryptionKeySource = encryptionKeySource;
             KeyVaultPrivateEndpointResourceId = keyVaultPrivateEndpointResourceId;
             LdapEnabled = ldapEnabled;
@@ -215,6 +220,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             EnableSubvolumes = enableSubvolumes;
             ProvisionedAvailabilityZone = provisionedAvailabilityZone;
             IsLargeVolume = isLargeVolume;
+            OriginatingResourceId = originatingResourceId;
             CustomInit();
         }
 
@@ -366,7 +372,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         /// <remarks>
         /// Provides storage to network proximity information for the volume.
-        /// Possible values include: 'Default', 'T1', 'T2'
+        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.storageToNetworkProximity")]
         public string StorageToNetworkProximity { get; private set; }
@@ -406,7 +412,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Gets or sets if enabled (true) the volume will contain a read-only
         /// snapshot directory which provides access to each of the volume's
-        /// snapshots (default to true).
+        /// snapshots (defaults to true).
         /// </summary>
         [JsonProperty(PropertyName = "properties.snapshotDirectoryVisible")]
         public bool? SnapshotDirectoryVisible { get; set; }
@@ -470,6 +476,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.throughputMibps")]
         public double? ThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Gets actual throughput in MiB/s for auto qosType volumes calculated
+        /// based on size and serviceLevel
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.actualThroughputMibps")]
+        public double? ActualThroughputMibps { get; private set; }
 
         /// <summary>
         /// Gets or sets source of key used to encrypt data in volume.
@@ -663,6 +676,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.isLargeVolume")]
         public bool? IsLargeVolume { get; set; }
+
+        /// <summary>
+        /// Gets originating Resource Id
+        /// </summary>
+        /// <remarks>
+        /// Id of the snapshot or backup that the volume is restored from.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.originatingResourceId")]
+        public string OriginatingResourceId { get; private set; }
 
         /// <summary>
         /// Validate the object.

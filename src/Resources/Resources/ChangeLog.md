@@ -20,6 +20,17 @@
 
 ## Upcoming Release
 
+## Version 6.9.1
+* Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
+
+## Version 6.9.0
+* Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.
+* Added cmdlets for group owner
+    - `Get-AzADGroupOwner`
+    - `New-AzADGroupOwner`
+    - `Remove-AzADGroupOwner`
+* Updated Tags functionality in deployment stacks New and Set cmdlets
+
 ## Version 6.8.0
 * Fixed the incorrect behavior of pagination for `Get-AzTag`
 * Updated API version to 2022-09-01

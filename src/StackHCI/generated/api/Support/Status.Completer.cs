@@ -46,6 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Error'", "Error", global::System.Management.Automation.CompletionResultType.ParameterValue, "Error");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+            }
         }
     }
 }

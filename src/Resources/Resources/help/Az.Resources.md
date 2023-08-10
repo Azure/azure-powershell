@@ -41,6 +41,15 @@ Lists entities from groups or get entity from groups by key
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
 
+### [Get-AzADGroupOwner](Get-AzADGroupOwner.md)
+The owners of the group.
+Limited to 100 owners.
+Nullable.
+If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.
+Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+Supports $expand including nested $select.
+For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+
 ### [Get-AzADOrganization](Get-AzADOrganization.md)
 Retrieve a list of organization objects.
 
@@ -95,6 +104,9 @@ Get deployment at a management group
 
 ### [Get-AzManagementGroupDeploymentOperation](Get-AzManagementGroupDeploymentOperation.md)
 Get deployment operation for management group deployment
+
+### [Get-AzManagementGroupDeploymentStack](Get-AzManagementGroupDeploymentStack.md)
+Gets Management Group scoped Deployment Stacks.
 
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at management group scope. 
@@ -151,6 +163,9 @@ Gets the deployments in a resource group.
 
 ### [Get-AzResourceGroupDeploymentOperation](Get-AzResourceGroupDeploymentOperation.md)
 Gets the resource group deployment operation
+
+### [Get-AzResourceGroupDeploymentStack](Get-AzResourceGroupDeploymentStack.md)
+Gets Resource Group scoped Deployment Stacks.
 
 ### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
 Gets a template What-If result for a deployment at resource group scope. 
@@ -209,6 +224,9 @@ Get the specified role management policy for a resource scope
 ### [Get-AzRoleManagementPolicyAssignment](Get-AzRoleManagementPolicyAssignment.md)
 Get the specified role management policy assignment for a resource scope
 
+### [Get-AzSubscriptionDeploymentStack](Get-AzSubscriptionDeploymentStack.md)
+Gets Subscription scoped Deployment Stacks.
+
 ### [Get-AzTag](Get-AzTag.md)
 Gets predefined Azure tags | Gets the entire set of tags on a resource or subscription.
 
@@ -245,6 +263,9 @@ Adds new entity to applications
 ### [New-AzADGroup](New-AzADGroup.md)
 Adds new entity to groups
 
+### [New-AzADGroupOwner](New-AzADGroupOwner.md)
+Create new navigation property ref to owners for groups
+
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Adds new entity to servicePrincipals
 
@@ -268,6 +289,9 @@ Creates a Management Group
 
 ### [New-AzManagementGroupDeployment](New-AzManagementGroupDeployment.md)
 Create a deployment at a management group
+
+### [New-AzManagementGroupDeploymentStack](New-AzManagementGroupDeploymentStack.md)
+Creates a new Management Group scoped Deployment Stack.
 
 ### [New-AzManagementGroupHierarchySetting](New-AzManagementGroupHierarchySetting.md)
 Creates Hierarchy Settings under the current tenant
@@ -298,6 +322,9 @@ Creates an Azure resource group.
 
 ### [New-AzResourceGroupDeployment](New-AzResourceGroupDeployment.md)
 Adds an Azure deployment to a resource group.
+
+### [New-AzResourceGroupDeploymentStack](New-AzResourceGroupDeploymentStack.md)
+Creates a new Resource Group scoped Deployment Stack.
 
 ### [New-AzResourceLock](New-AzResourceLock.md)
 Creates a resource lock.
@@ -332,6 +359,9 @@ Creates a role eligibility schedule request.
 
 ### [New-AzRoleManagementPolicyAssignment](New-AzRoleManagementPolicyAssignment.md)
 Create a role management policy assignment
+
+### [New-AzSubscriptionDeploymentStack](New-AzSubscriptionDeploymentStack.md)
+Creates a new Subscription scoped Deployment Stack.
 
 ### [New-AzTag](New-AzTag.md)
 Creates a predefined Azure tag or adds values to an existing tag | Creates or updates the entire set of tags on a resource or subscription.
@@ -376,6 +406,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 
+### [Remove-AzADGroupOwner](Remove-AzADGroupOwner.md)
+Delete ref of navigation property owners for groups
+
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes entity from service principal.
 
@@ -402,6 +435,9 @@ Removes a Management Group
 
 ### [Remove-AzManagementGroupDeployment](Remove-AzManagementGroupDeployment.md)
 Removes a deployment at a management group and any associated operations
+
+### [Remove-AzManagementGroupDeploymentStack](Remove-AzManagementGroupDeploymentStack.md)
+Removes a Management Group scoped Deployment Stack.
 
 ### [Remove-AzManagementGroupHierarchySetting](Remove-AzManagementGroupHierarchySetting.md)
 Deletes all Hierarchy Settings under the current tenant
@@ -433,6 +469,9 @@ Removes a resource group.
 ### [Remove-AzResourceGroupDeployment](Remove-AzResourceGroupDeployment.md)
 Removes a resource group deployment and any associated operations.
 
+### [Remove-AzResourceGroupDeploymentStack](Remove-AzResourceGroupDeploymentStack.md)
+Removes a Resource Group scoped Deployment Stack.
+
 ### [Remove-AzResourceLock](Remove-AzResourceLock.md)
 Removes a resource lock.
 
@@ -463,6 +502,9 @@ Delete a role management policy
 ### [Remove-AzRoleManagementPolicyAssignment](Remove-AzRoleManagementPolicyAssignment.md)
 Delete a role management policy assignment
 
+### [Remove-AzSubscriptionDeploymentStack](Remove-AzSubscriptionDeploymentStack.md)
+Removes a Subscription scoped Deployment Stack.
+
 ### [Remove-AzTag](Remove-AzTag.md)
 Deletes predefined Azure tags or values | Deletes the entire set of tags on a resource or subscription.
 
@@ -478,11 +520,20 @@ Saves the log of a deployment script execution to disk.
 ### [Save-AzDeploymentTemplate](Save-AzDeploymentTemplate.md)
 Saves a deployment template to a file.
 
+### [Save-AzManagementGroupDeploymentStackTemplate](Save-AzManagementGroupDeploymentStackTemplate.md)
+Saves a Management Group scoped Deployment Stack Template.
+
 ### [Save-AzManagementGroupDeploymentTemplate](Save-AzManagementGroupDeploymentTemplate.md)
 Saves a deployment template to a file.
 
+### [Save-AzResourceGroupDeploymentStackTemplate](Save-AzResourceGroupDeploymentStackTemplate.md)
+Saves a Resource Group scoped Deployment Stack Template.
+
 ### [Save-AzResourceGroupDeploymentTemplate](Save-AzResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
+
+### [Save-AzSubscriptionDeploymentStackTemplate](Save-AzSubscriptionDeploymentStackTemplate.md)
+Saves a Subscription scoped Deployment Stack Template.
 
 ### [Save-AzTenantDeploymentTemplate](Save-AzTenantDeploymentTemplate.md)
 Saves a deployment template to a file.
@@ -492,6 +543,9 @@ Updates managed application
 
 ### [Set-AzManagedApplicationDefinition](Set-AzManagedApplicationDefinition.md)
 Updates managed application definition
+
+### [Set-AzManagementGroupDeploymentStack](Set-AzManagementGroupDeploymentStack.md)
+Sets a new Management Group scoped Deployment Stack.
 
 ### [Set-AzPolicyAssignment](Set-AzPolicyAssignment.md)
 Modifies a policy assignment.
@@ -510,6 +564,9 @@ Modifies a resource.
 
 ### [Set-AzResourceGroup](Set-AzResourceGroup.md)
 Modifies a resource group.
+
+### [Set-AzResourceGroupDeploymentStack](Set-AzResourceGroupDeploymentStack.md)
+Sets a new Resource Group scoped Deployment Stack.
 
 ### [Set-AzResourceLock](Set-AzResourceLock.md)
 Modifies a resource lock.
@@ -533,6 +590,9 @@ Provide the modified role definition either as a JSON file or as a PSRoleDefinit
 First, use the Get-AzRoleDefinition command to retrieve the custom role that you wish to modify.
 Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
+
+### [Set-AzSubscriptionDeploymentStack](Set-AzSubscriptionDeploymentStack.md)
+Sets a new Subscription scoped Deployment Stack.
 
 ### [Set-AzTemplateSpec](Set-AzTemplateSpec.md)
 Modifies a Template Spec.

@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
     public partial struct ArcSettingAggregateState :
         System.IEquatable<ArcSettingAggregateState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Accepted = @"Accepted";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Canceled = @"Canceled";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Connected = @"Connected";
@@ -19,6 +21,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Deleted = @"Deleted";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Deleting = @"Deleting";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState DisableInProgress = @"DisableInProgress";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Disconnected = @"Disconnected";
 
@@ -35,6 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState PartiallyConnected = @"PartiallyConnected";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState PartiallySucceeded = @"PartiallySucceeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Provisioning = @"Provisioning";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ArcSettingAggregateState Succeeded = @"Succeeded";
 
