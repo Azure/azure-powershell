@@ -45,9 +45,9 @@ Get-AzKeyVaultManagedHsm
 ```
 
 ```output
-Name  Resource Group Name Location    SKU
-----  ------------------- --------    ---
-myhsm myrg1               eastus2euap StandardB1
+Name    Resource Group Name Location SKU        ProvisioningState Security Domain ActivationStatus
+----    ------------------- -------- ---        ----------------- --------------------------------
+myhsm   test-rg              eastus   StandardB1 Succeeded         Active
 ```
 
 This command gets all managed HSMs in your current subscription.
@@ -58,9 +58,9 @@ Get-AzKeyVaultManagedHsm -Name 'myhsm'
 ```
 
 ```output
-Name  Resource Group Name Location    SKU
-----  ------------------- --------    ---
-myhsm myrg1               eastus2euap StandardB1
+Name    Resource Group Name Location SKU        ProvisioningState Security Domain ActivationStatus
+----    ------------------- -------- ---        ----------------- --------------------------------
+myhsm   test-rg              eastus   StandardB1 Succeeded         Active
 ```
 
 This command gets the managed HSM named myhsm in your current subscription.
@@ -71,9 +71,9 @@ Get-AzKeyVaultManagedHsm -ResourceGroupName 'myrg1'
 ```
 
 ```output
-Name  Resource Group Name Location    SKU
-----  ------------------- --------    ---
-myhsm myrg1               eastus2euap StandardB1
+Name  Resource Group Name Location    SKU        ProvisioningState Security Domain ActivationStatus
+----  ------------------- --------    ---        ----------------- --------------------------------
+myhsm myrg1               eastus2euap StandardB1 Succeeded         Active
 ```
 
 This command gets all managed HSMs in the resource group named myrg1.
@@ -84,9 +84,9 @@ Get-AzKeyVaultManagedHsm -Name 'myhsm*'
 ```
 
 ```output
-Name  Resource Group Name Location    SKU
-----  ------------------- --------    ---
-myhsm myrg1               eastus2euap StandardB1
+Name  Resource Group Name Location    SKU        ProvisioningState Security Domain ActivationStatus
+----  ------------------- --------    ---        ----------------- --------------------------------
+myhsm myrg1               eastus2euap StandardB1 Succeeded         Active
 ```
 
 This command gets all managed HSMs in the subscription that start with "myhsm".
