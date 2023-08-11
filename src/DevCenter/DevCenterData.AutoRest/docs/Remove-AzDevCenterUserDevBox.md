@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenterdevdevbox
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserdevbox
 schema: 2.0.0
 ---
 

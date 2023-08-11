@@ -27,7 +27,7 @@ Lists all environment types configured for a project.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevenvironmenttype
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType])]
