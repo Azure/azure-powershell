@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Fixed a bug in Invoke-AzContainerInstanceCommand when no result was returned under some conditions
+* Fixed a bug in `Invoke-AzContainerInstanceCommand` when no result was returned under some conditions [#22453]
 
 ## Version 3.2.0
 * Added `priority` property to Container Group properties
