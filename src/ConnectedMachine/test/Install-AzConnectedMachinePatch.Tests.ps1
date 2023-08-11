@@ -16,8 +16,9 @@ Describe 'Install-AzConnectedMachinePatch' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Install' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Install' {
+        $all = @(Install-AzConnectedMachinePatch -ResourceGroupName $env.ResourceGroupName -Name 'testmachine' -MaximumDuration 'PT4H' -RebootSetting 'IfRequired' -WindowParameterClassificationsToInclude 'Critical')
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'InstallViaIdentityExpanded' -skip {

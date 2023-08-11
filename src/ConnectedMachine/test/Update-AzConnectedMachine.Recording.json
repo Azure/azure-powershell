@@ -1,0 +1,104 @@
+{
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PUT+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/scope-test?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/scope-test?api-version=2022-12-27",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "96" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9c36dbcf-170c-4ebd-9fe4-b41d615a2a89" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "635d5b55-cbb8-43ed-a04c-e2988a9b8352" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T053406Z:635d5b55-cbb8-43ed-a04c-e2988a9b8352" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 05:34:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "417" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/scope-test\",\"name\":\"scope-test\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"e68a5dfc-7ffa-426a-8f6a-37e9bd8f87dd\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}"
+    }
+  },
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"osProfile\": {\r\n      \"windowsConfiguration\": {\r\n        \"patchSettings\": {\r\n          \"assessmentMode\": \"AutomaticByOS\"\r\n        }\r\n      }\r\n    },\r\n    \"privateLinkScopeResourceId\": \"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/scope-test\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "361" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c2420405-816a-4787-97a1-fc7e91976484" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "f2780a96-645d-4a43-a5e9-fa1ee8d4f0d3" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T053409Z:f2780a96-645d-4a43-a5e9-fa1ee8d4f0d3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 05:34:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1207" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine\",\"name\":\"testmachine\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"dcd00e9f-2209-437e-963b-b274cb8e1c08\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Updating\",\"osName\":\"windows\",\"osProfile\":{\"windowsConfiguration\":{\"patchSettings\":{\"assessmentMode\":\"AutomaticByOS\"}}},\"vmId\":\"9e33811f-4329-492e-854b-01773aa95186\",\"clientPublicKey\":\"MIIBCgKCAQEAvegMh/ndrM11ltWmXjHGGbzhEEv6JR4/tJ+FOmBYnjeZpBHzYUXbK9G4a8I+yXw55BZ5XkGTIt2Yzx+8G7o52rKDWSMj5jHKPvboq+6I8VeymInxeoxMb5IHvJ+cXuTc8TQKfN/8KYsCCq5pEftO7lk52pdXZJDtVeVu+LUQnzszvSMQnGNXzmdbeLl82y08LSGvhx5N+OOpjkzua/5olsvRrJ/MkIl61rmdsBvrbtjiecD+ykyXzd/te/H6eThtyDQFcLcLMD8y8adNzYb28v73/G3BRonuR/xK/jPmLT2bGnWVMtVmEujejdVZUl+HjmAvwnqFzvSLMdvpHQOnvwIDAQAB\",\"privateLinkScopeResourceId\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/privateLinkScopes/scope-test\",\"agentConfiguration\":{},\"agentUpgrade\":{\"enableAutomaticUpgrade\":false}}}"
+    }
+  },
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkScopeResourceId\": \"\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "318" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "31f79990-1aef-4d1b-85ba-d106ca2e0b2b" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "daf91de9-c4f7-439d-b209-5817dd7388bb" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T053410Z:daf91de9-c4f7-439d-b209-5817dd7388bb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 05:34:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2459" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine\",\"name\":\"testmachine\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"dcd00e9f-2209-437e-963b-b274cb8e1c08\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Updating\",\"agentVersion\":\"1.32.02371.1114\",\"status\":\"Connected\",\"lastStatusChange\":\"2023-08-02T05:34:04.6423868Z\",\"errorDetails\":[],\"displayName\":\"LAPTOP-S0HSJ7FB\",\"machineFqdn\":\"LAPTOP-S0HSJ7FB\",\"osName\":\"windows\",\"osVersion\":\"10.0.19045.3208\",\"osType\":\"windows\",\"osProfile\":{\"computerName\":\"LAPTOP-S0HSJ7FB\",\"windowsConfiguration\":{\"patchSettings\":{\"assessmentMode\":\"AutomaticByOS\"}}},\"vmId\":\"9e33811f-4329-492e-854b-01773aa95186\",\"vmUuid\":\"1A9E1B42-3894-11EC-80F0-84A9388B55FE\",\"clientPublicKey\":\"MIIBCgKCAQEAvegMh/ndrM11ltWmXjHGGbzhEEv6JR4/tJ+FOmBYnjeZpBHzYUXbK9G4a8I+yXw55BZ5XkGTIt2Yzx+8G7o52rKDWSMj5jHKPvboq+6I8VeymInxeoxMb5IHvJ+cXuTc8TQKfN/8KYsCCq5pEftO7lk52pdXZJDtVeVu+LUQnzszvSMQnGNXzmdbeLl82y08LSGvhx5N+OOpjkzua/5olsvRrJ/MkIl61rmdsBvrbtjiecD+ykyXzd/te/H6eThtyDQFcLcLMD8y8adNzYb28v73/G3BRonuR/xK/jPmLT2bGnWVMtVmEujejdVZUl+HjmAvwnqFzvSLMdvpHQOnvwIDAQAB\",\"osSku\":\"Windows 10 Enterprise\",\"domainName\":\"WORKGROUP\",\"adFqdn\":\"LAPTOP-S0HSJ7FB\",\"dnsFqdn\":\"LAPTOP-S0HSJ7FB\",\"mssqlDiscovered\":\"false\",\"cloudMetadata\":{\"provider\":\"N/A\"},\"detectedProperties\":{\"cloudprovider\":\"N/A\",\"logicalCoreCount\":\"8\",\"manufacturer\":\"LENOVO\",\"model\":\"20Y0S2PE00\",\"mssqldiscovered\":\"false\"},\"privateLinkScopeResourceId\":\"\",\"agentConfiguration\":{\"proxyUrl\":\"\",\"incomingConnectionsPorts\":[],\"extensionsAllowList\":[],\"extensionsBlockList\":[],\"proxyBypass\":[],\"extensionsEnabled\":\"true\",\"guestConfigurationEnabled\":\"true\",\"configMode\":\"full\"},\"serviceStatuses\":{\"extensionService\":{\"status\":\"running\",\"startupType\":\"automatic\"},\"guestConfigurationService\":{\"status\":\"running\",\"startupType\":\"automatic\"}},\"agentUpgrade\":{\"enableAutomaticUpgrade\":false},\"networkProfile\":{\"networkInterfaces\":[{\"ipAddresses\":[{\"address\":\"172.31.32.1\",\"ipAddressVersion\":\"IPv4\",\"subnet\":{\"addressPrefix\":\"172.31.32.0/20\"}}]},{\"ipAddresses\":[{\"address\":\"10.144.1.251\",\"ipAddressVersion\":\"IPv4\",\"subnet\":{\"addressPrefix\":\"10.144.1.0/24\"}}]},{\"ipAddresses\":[{\"address\":\"2001:0:2877:7aa:c9f:27a6:f354:db3e\",\"ipAddressVersion\":\"IPv6\",\"subnet\":{\"addressPrefix\":\"2001:0:2877:7aa::/64\"}}]}]}}}"
+    }
+  }
+}

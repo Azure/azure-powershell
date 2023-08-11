@@ -12,8 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzConnectedAssessMachinePatch' {
-    It 'Assess' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Assess' {
+        $all = @(Invoke-AzConnectedAssessMachinePatch -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'AssessViaIdentity' -skip {
