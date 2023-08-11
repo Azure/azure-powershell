@@ -1,61 +1,80 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Expand-AzWvdMsixImage
+# Get-AzWvdPrivateEndpointConnection
 
 ## SYNOPSIS
-Expands and Lists MSIX packages in an Image, given the Image Path.
+Get a private endpoint connection.
 
 ## SYNTAX
 
-### ExpandExpanded (Default)
+### List (Default)
 ```
-Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Uri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Expand
-```
-Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> -MsixImageUri <IMsixImageUri>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ExpandViaIdentity
+### Get
 ```
-Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> -MsixImageUri <IMsixImageUri>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ExpandViaIdentityExpanded
+### Get1
 ```
-Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> [-Uri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Expands and Lists MSIX packages in an Image, given the Image Path.
+Get a private endpoint connection.
 
 ## EXAMPLES
 
-### Example 1: Expands specified Image Path and retrieves Package metadata found in AppxManifest.xml
+### Example 1: {{ Add title here }}
 ```powershell
-Expand-AzWvdMsixImage -HostPoolName HostPoolName `
-          -ResourceGroupName resourceGroupName `
-          -SubscriptionId SubscriptionId `
-          -Uri ImagePathURI
+{{ Add code here }}
 ```
 
 ```output
-Name                          Type
-----                          ----
-HostPoolName/extractmsiximage Microsoft.DesktopVirtualization/hostpools/extractmsiximage
+{{ Add output here }}
 ```
 
-This command returns Metadata of MSIX Package found in the given Image Path.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -80,10 +99,25 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand, ExpandExpanded
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InitialSkip
+Initial number of items to skip.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List1
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +130,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: ExpandViaIdentity, ExpandViaIdentityExpanded
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -106,19 +140,48 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MsixImageUri
-Represents URI referring to MSIX Image
-To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
+### -IsDescending
+Indicates whether the collection is descending.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri
-Parameter Sets: Expand, ExpandViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List1
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the private endpoint connection associated with the Azure resource
+
+```yaml
+Type: System.String
+Parameter Sets: Get, Get1
+Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PageSize
+Number of items per page.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +191,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand, ExpandExpanded
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -142,8 +205,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Expand, ExpandExpanded
+Type: System.String[]
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: False
@@ -153,46 +216,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Uri
-URI to Image
+### -WorkspaceName
+The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: ExpandExpanded, ExpandViaIdentityExpanded
+Parameter Sets: Get, List
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,13 +236,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IExpandMsixImage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IPrivateEndpointConnectionWithSystemData
 
 ## NOTES
 
@@ -236,9 +266,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[UserSessionId <String>]`: The name of the user session within the specified session host
   - `[WorkspaceName <String>]`: The name of the workspace
-
-`MSIXIMAGEURI <IMsixImageUri>`: Represents URI referring to MSIX Image
-  - `[Uri <String>]`: URI to Image
 
 ## RELATED LINKS
 

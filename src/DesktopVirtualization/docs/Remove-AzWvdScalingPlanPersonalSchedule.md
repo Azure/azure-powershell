@@ -1,61 +1,56 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdscalingplanpersonalschedule
 schema: 2.0.0
 ---
 
-# Expand-AzWvdMsixImage
+# Remove-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-Expands and Lists MSIX packages in an Image, given the Image Path.
+Remove a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
-### ExpandExpanded (Default)
+### Delete (Default)
 ```
-Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Uri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Expand
-```
-Expand-AzWvdMsixImage -HostPoolName <String> -ResourceGroupName <String> -MsixImageUri <IMsixImageUri>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ExpandViaIdentity
+### DeleteViaIdentity
 ```
-Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> -MsixImageUri <IMsixImageUri>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ExpandViaIdentityExpanded
-```
-Expand-AzWvdMsixImage -InputObject <IDesktopVirtualizationIdentity> [-Uri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Expands and Lists MSIX packages in an Image, given the Image Path.
+Remove a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
-### Example 1: Expands specified Image Path and retrieves Package metadata found in AppxManifest.xml
+### Example 1: {{ Add title here }}
 ```powershell
-Expand-AzWvdMsixImage -HostPoolName HostPoolName `
-          -ResourceGroupName resourceGroupName `
-          -SubscriptionId SubscriptionId `
-          -Uri ImagePathURI
+{{ Add code here }}
 ```
 
 ```output
-Name                          Type
-----                          ----
-HostPoolName/extractmsiximage Microsoft.DesktopVirtualization/hostpools/extractmsiximage
+{{ Add output here }}
 ```
 
-This command returns Metadata of MSIX Package found in the given Image Path.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,28 +70,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolName
-The name of the host pool within the specified resource group
-
-```yaml
-Type: System.String
-Parameter Sets: Expand, ExpandExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: ExpandViaIdentity, ExpandViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -106,19 +86,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MsixImageUri
-Represents URI referring to MSIX Image
-To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri
-Parameter Sets: Expand, ExpandViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +107,37 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand, ExpandExpanded
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPlanName
+The name of the scaling plan.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPlanScheduleName
+The name of the ScalingPlanSchedule
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -143,27 +152,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand, ExpandExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Uri
-URI to Image
-
-```yaml
-Type: System.String
-Parameter Sets: ExpandExpanded, ExpandViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -204,13 +198,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IExpandMsixImage
+### System.Boolean
 
 ## NOTES
 
@@ -236,9 +228,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[UserSessionId <String>]`: The name of the user session within the specified session host
   - `[WorkspaceName <String>]`: The name of the workspace
-
-`MSIXIMAGEURI <IMsixImageUri>`: Represents URI referring to MSIX Image
-  - `[Uri <String>]`: URI to Image
 
 ## RELATED LINKS
 

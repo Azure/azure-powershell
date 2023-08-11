@@ -35,11 +35,20 @@ Registration token of the host pool.
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
 
+### [Get-AzWvdPrivateEndpointConnection](Get-AzWvdPrivateEndpointConnection.md)
+Get a private endpoint connection.
+
+### [Get-AzWvdPrivateLinkResource](Get-AzWvdPrivateLinkResource.md)
+List the private link resources available for this workspace.
+
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
 Get the Windows virtual desktop registration info.
 
 ### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
 Get a scaling plan.
+
+### [Get-AzWvdScalingPlanPersonalSchedule](Get-AzWvdScalingPlanPersonalSchedule.md)
+Get a ScalingPlanPersonalSchedule.
 
 ### [Get-AzWvdScalingPlanPooledSchedule](Get-AzWvdScalingPlanPooledSchedule.md)
 Get a ScalingPlanPooledSchedule.
@@ -74,6 +83,9 @@ Create Windows virtual desktop registration info.
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
 Create or update a scaling plan.
 
+### [New-AzWvdScalingPlanPersonalSchedule](New-AzWvdScalingPlanPersonalSchedule.md)
+Create or update a ScalingPlanPersonalSchedule.
+
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
 Create or update a ScalingPlanPooledSchedule.
 
@@ -95,11 +107,17 @@ Remove a host pool.
 ### [Remove-AzWvdMsixPackage](Remove-AzWvdMsixPackage.md)
 Remove an MSIX Package.
 
+### [Remove-AzWvdPrivateEndpointConnection](Remove-AzWvdPrivateEndpointConnection.md)
+Remove a connection.
+
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
 Remove the Windows virtual desktop registration info.
 
 ### [Remove-AzWvdScalingPlan](Remove-AzWvdScalingPlan.md)
 Remove a scaling plan.
+
+### [Remove-AzWvdScalingPlanPersonalSchedule](Remove-AzWvdScalingPlanPersonalSchedule.md)
+Remove a ScalingPlanPersonalSchedule.
 
 ### [Remove-AzWvdScalingPlanPooledSchedule](Remove-AzWvdScalingPlanPooledSchedule.md)
 Remove a ScalingPlanPooledSchedule.
@@ -136,6 +154,9 @@ Update an  MSIX Package.
 
 ### [Update-AzWvdScalingPlan](Update-AzWvdScalingPlan.md)
 Update a scaling plan.
+
+### [Update-AzWvdScalingPlanPersonalSchedule](Update-AzWvdScalingPlanPersonalSchedule.md)
+Update a ScalingPlanPersonalSchedule.
 
 ### [Update-AzWvdScalingPlanPooledSchedule](Update-AzWvdScalingPlanPooledSchedule.md)
 Update a ScalingPlanPooledSchedule.
