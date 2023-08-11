@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
 
-        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
+        public bool AllowBranchToBranchTraffic { get; set; }
 
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }

@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Network
             IgnoreCase = true)]
         public string HubRoutingPreference { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to allow branch to branch traffic for route server.")]
+        public bool AllowBranchToBranchTraffic { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -137,6 +142,15 @@ namespace Microsoft.Azure.Commands.Network
                     else
                     {
                         virtualHub.HubRoutingPreference = this.HubRoutingPreference;
+                    }
+
+                    if(this.AllowBranchToBranchTraffic) 
+                    {
+                        virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+                    }
+                    else
+                    {
+                        virtualHub.AllowBranchToBranchTraffic = false;
                     }
 
                     var publicIpAddressModel = NetworkResourceManagerProfile.Mapper.Map<PublicIPAddress>(this.PublicIpAddress);
