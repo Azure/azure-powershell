@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
             HelpMessage = "Flag to allow branch to branch traffic for route server.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
+        public bool AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
             ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerName,
+            HelpMessage = "Virtual Hub Routing Preference to route traffic")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
             HelpMessage = "Virtual Hub Routing Preference to route traffic")]
         [ValidateSet(
             MNM.HubRoutingPreference.ExpressRoute,
@@ -90,7 +95,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
-            virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
+            if (virtualHub.AllowBranchToBranchTraffic != this.AllowBranchToBranchTraffic)
+            {
+                virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+            }
 
             if (!string.IsNullOrWhiteSpace(this.HubRoutingPreference))
             {
