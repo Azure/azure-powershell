@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "User Session clause variable.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("ClientAddr", "GeoLocation", "None", IgnoreCase = true)]
+        [ValidateSet("ClientAddr", "Geo", "GeoLocation", "None", IgnoreCase = true)]
         public string VariableName { get; set; }
 
         public override void ExecuteCmdlet()
