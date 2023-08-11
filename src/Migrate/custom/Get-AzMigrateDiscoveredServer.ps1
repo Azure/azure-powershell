@@ -112,31 +112,29 @@ function Get-AzMigrateDiscoveredServer {
                 if ($kvp.Key -eq $ApplianceName) {
                     $siteArmId = $kvp.Value
                     if ($siteArmId -match $vmwareSiteRegex) {
-                        if ($siteArmId -match $r) {
-                            $siteNameTmp = $Matches[0]
-                            $siteFound = 1
-                            if ($parameterSet -eq 'GetInSite') {
-                                return Az.Migrate.Internal\Get-AzMigrateMachine `
-                                    -Name $Name `
-                                    -ResourceGroupName $ResourceGroupName `
-                                    -SiteName $siteNameTmp `
-                                    -SubscriptionId $SubscriptionId
+                        $siteNameTmp = $Matches[0]
+                        $siteFound = 1
+                        if ($parameterSet -eq 'GetInSite') {
+                            return Az.Migrate.Internal\Get-AzMigrateMachine `
+                                -Name $Name `
+                                -ResourceGroupName $ResourceGroupName `
+                                -SiteName $siteNameTmp `
+                                -SubscriptionId $SubscriptionId
+                        }
+                        elseif ($parameterSet -eq 'ListInSite') {
+                            $siteMachines = Az.Migrate.Internal\Get-AzMigrateMachine `
+                                -ResourceGroupName $ResourceGroupName `
+                                -SiteName $siteNameTmp `
+                                -SubscriptionId $SubscriptionId
+
+                            if ($DisplayName) {
+                                $filteredMachines = $siteMachines | Where-Object { $_.DisplayName -match $DisplayName }
+                                return $filteredMachines
                             }
-                            elseif ($parameterSet -eq 'ListInSite') {
-                                $siteMachines = Az.Migrate.Internal\Get-AzMigrateMachine `
-                                    -ResourceGroupName $ResourceGroupName `
-                                    -SiteName $siteNameTmp `
-                                    -SubscriptionId $SubscriptionId
-    
-                                if ($DisplayName) {
-                                    $filteredMachines = $siteMachines | Where-Object { $_.DisplayName -match $DisplayName }
-                                    return $filteredMachines
-                                }
-                                else {
-                                    return $siteMachines
-                                }
-                            }        
-                        }    
+                            else {
+                                return $siteMachines
+                            }
+                        } 
                     }
                     elseif ($siteArmId -match $hyperVSiteRegex) {
                         $siteNameTmp = $Matches[0]
