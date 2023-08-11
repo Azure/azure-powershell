@@ -8919,9 +8919,13 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-		  <TableColumnHeader>
+		      <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>HubRoutingPreference</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowBranchToBranchTraffic</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -8951,9 +8955,13 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-			  <TableColumnItem>
+			        <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>HubRoutingPreference</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowBranchToBranchTraffic</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
