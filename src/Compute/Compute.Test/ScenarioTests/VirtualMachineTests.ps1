@@ -6828,5 +6828,70 @@ function Test-VirtualMachineSecurityTypeStandard
          # Cleanup
          Clean-ResourceGroup $rgname;
     }
+}
 
+<#
+.SYNOPSIS
+Test Virtual Machines SecurityType parameter with the Standard value.
+This should prevent the TrustedLaunch value from being defaulted in.
+#>
+function Test-VirtualMachineSecurityTypeStandardWithConfig
+{
+    # Setup
+        $rgname = Get-ComputeTestResourceName;
+        $loc = Get-ComputeVMLocation;
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+        $domainNameLabel = "d1" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = $rgname + 'Vm';
+        $securityTypeStnd = "Standard";
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $disable = $false;
+        $enable = $true;
+        
+        # Creating a VM using Simple parameterset
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
+        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityTypeStnd;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-Null $vm.SecurityProfile.SecurityType;
+    }
+    finally
+    {
+         # Cleanup
+         Clean-ResourceGroup $rgname;
+    }
 }
