@@ -76,5 +76,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the current backup storage redundancy for the database
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting whether the LTR backup is immutable
+        /// </summary>
+        public bool? IsBackupImmutable { get; set; }
     }
 }

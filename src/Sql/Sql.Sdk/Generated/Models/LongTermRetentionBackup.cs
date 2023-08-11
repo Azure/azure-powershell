@@ -52,7 +52,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="requestedBackupStorageRedundancy">The storage
         /// redundancy type of the backup. Possible values include: 'Geo',
         /// 'Local', 'Zone', 'GeoZone'</param>
-        public LongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string))
+        /// <param name="isBackupImmutable">The setting whether the LTR backup
+        /// is immutable</param>
+        public LongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? isBackupImmutable = default(bool?))
             : base(id, name, type)
         {
             ServerName = serverName;
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             BackupExpirationTime = backupExpirationTime;
             BackupStorageRedundancy = backupStorageRedundancy;
             RequestedBackupStorageRedundancy = requestedBackupStorageRedundancy;
+            IsBackupImmutable = isBackupImmutable;
             CustomInit();
         }
 
@@ -120,6 +123,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.requestedBackupStorageRedundancy")]
         public string RequestedBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting whether the LTR backup is immutable
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isBackupImmutable")]
+        public bool? IsBackupImmutable { get; set; }
 
     }
 }

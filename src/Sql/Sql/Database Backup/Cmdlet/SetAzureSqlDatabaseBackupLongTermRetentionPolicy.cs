@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         private const string YearlyRetentionRequiredSet = "YearlyRetentionRequired";
 
         /// <summary>
-        /// Parameter set name for MakeBackupsImmutable.
-        /// </summary>
-        private const string MakeBackupsImmutableSet = "MakeBackupsImmutable";
-
-        /// <summary>
         /// Parameter set for clearing the long term retention V2 policy.
         /// </summary>
         private const string RemovePolicySet = "RemovePolicy";
@@ -122,7 +117,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the setting whether to make LTR backups immutable.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = MakeBackupsImmutableSet,
             HelpMessage = "Whether to make LTR backups immutable.")]
         public SwitchParameter MakeBackupsImmutable { get; set; }
 
@@ -185,7 +179,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
                     WeekOfYear = WeekOfYear,
-                    MakeBackupsImmutable = RemovePolicy.IsPresent ? null : (this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null)
+                    MakeBackupsImmutable = this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null
                 }
             };
         }

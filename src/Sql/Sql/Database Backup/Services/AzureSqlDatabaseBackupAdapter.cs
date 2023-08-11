@@ -541,7 +541,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
-                BackupStorageRedundancy = backup.BackupStorageRedundancy
+                BackupStorageRedundancy = backup.BackupStorageRedundancy,
+                IsBackupImmutable = backup.IsBackupImmutable
             };
         }
 

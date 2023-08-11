@@ -22,6 +22,269 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class LongTermRetentionBackupsOperationsExtensions
     {
             /// <summary>
+            /// Lists the long term retention backups for a given location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByLocation(this ILongTermRetentionBackupsOperations operations, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByLocationAsync(locationName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByLocationAsync(this ILongTermRetentionBackupsOperations operations, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByServer(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByServerAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByServerAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByServerWithHttpMessagesAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByDatabase(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByDatabaseAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByDatabaseAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a long term retention backup.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database.
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='backupName'>
+            /// The backup name.
+            /// </param>
+            public static LongTermRetentionBackup Get(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            {
+                return operations.GetAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a long term retention backup.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database.
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='backupName'>
+            /// The backup name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<LongTermRetentionBackup> GetAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.GetWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes a long term retention backup.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='backupName'>
+            /// The backup name.
+            /// </param>
+            public static void Delete(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            {
+                operations.DeleteAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes a long term retention backup.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='backupName'>
+            /// The backup name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
             /// Copy an existing long term retention backup.
             /// </summary>
             /// <param name='operations'>
@@ -138,10 +401,200 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
+            /// Lists the long term retention backups for a given location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByResourceGroupLocation(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByResourceGroupLocationAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupLocationAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupLocationWithHttpMessagesAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByResourceGroupServer(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByResourceGroupServerAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the long term retention backups for a given server.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupServerAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupServerWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByResourceGroupDatabase(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
+            {
+                return operations.ListByResourceGroupDatabaseAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The location of the database
+            /// </param>
+            /// <param name='longTermRetentionServerName'>
+            /// The name of the server
+            /// </param>
+            /// <param name='longTermRetentionDatabaseName'>
+            /// The name of the database
+            /// </param>
+            /// <param name='onlyLatestPerDatabase'>
+            /// Whether or not to only get the latest backup for each database.
+            /// </param>
+            /// <param name='databaseState'>
+            /// Whether to query against just live databases, just deleted databases, or
+            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupDatabaseAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupDatabaseWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a long term retention backup.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='locationName'>
             /// The location of the database.
@@ -155,9 +608,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='backupName'>
             /// The backup name.
             /// </param>
-            public static LongTermRetentionBackup Get(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            public static LongTermRetentionBackup GetByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
             {
-                return operations.GetAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
+                return operations.GetByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -165,6 +618,10 @@ namespace Microsoft.Azure.Management.Sql
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='locationName'>
             /// The location of the database.
@@ -181,9 +638,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LongTermRetentionBackup> GetAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LongTermRetentionBackup> GetByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -194,6 +651,10 @@ namespace Microsoft.Azure.Management.Sql
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='locationName'>
             /// The location of the database
@@ -207,9 +668,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='backupName'>
             /// The backup name.
             /// </param>
-            public static void Delete(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            public static void DeleteByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
             {
-                operations.DeleteAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
+                operations.DeleteByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -217,6 +678,10 @@ namespace Microsoft.Azure.Management.Sql
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='locationName'>
             /// The location of the database
@@ -233,171 +698,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByDatabase(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByDatabaseAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByDatabaseAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByLocation(this ILongTermRetentionBackupsOperations operations, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByLocationAsync(locationName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByLocationAsync(this ILongTermRetentionBackupsOperations operations, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(locationName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByServer(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByServerAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByServerAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByServerWithHttpMessagesAsync(locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -533,17 +836,13 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a long term retention backup.
+            /// Deletes a long term retention backup.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
             /// <param name='locationName'>
-            /// The location of the database.
+            /// The location of the database
             /// </param>
             /// <param name='longTermRetentionServerName'>
             /// The name of the server
@@ -554,42 +853,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='backupName'>
             /// The backup name.
             /// </param>
-            public static LongTermRetentionBackup GetByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            public static void BeginDelete(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
             {
-                return operations.GetByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a long term retention backup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database.
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='backupName'>
-            /// The backup name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<LongTermRetentionBackup> GetByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.GetByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                operations.BeginDeleteAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -598,37 +864,6 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='backupName'>
-            /// The backup name.
-            /// </param>
-            public static void DeleteByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
-            {
-                operations.DeleteByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a long term retention backup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
             /// <param name='locationName'>
             /// The location of the database
             /// </param>
@@ -644,195 +879,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByResourceGroupDatabase(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByResourceGroupDatabaseAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupDatabaseAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupDatabaseWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByResourceGroupLocation(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByResourceGroupLocationAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupLocationAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupLocationWithHttpMessagesAsync(resourceGroupName, locationName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByResourceGroupServer(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
-            {
-                return operations.ListByResourceGroupServerAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the long term retention backups for a given server.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='onlyLatestPerDatabase'>
-            /// Whether or not to only get the latest backup for each database.
-            /// </param>
-            /// <param name='databaseState'>
-            /// Whether to query against just live databases, just deleted databases, or
-            /// all databases. Possible values include: 'All', 'Live', 'Deleted'
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupServerAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByResourceGroupServerWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, onlyLatestPerDatabase, databaseState, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.BeginDeleteWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -957,6 +1006,10 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
             /// <param name='locationName'>
             /// The location of the database
             /// </param>
@@ -969,9 +1022,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='backupName'>
             /// The backup name.
             /// </param>
-            public static void BeginDelete(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
+            public static void BeginDeleteByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
             {
-                operations.BeginDeleteAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
+                operations.BeginDeleteByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -979,6 +1032,10 @@ namespace Microsoft.Azure.Management.Sql
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
             /// <param name='locationName'>
             /// The location of the database
@@ -995,9 +1052,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1133,97 +1190,6 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Deletes a long term retention backup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='backupName'>
-            /// The backup name.
-            /// </param>
-            public static void BeginDeleteByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
-            {
-                operations.BeginDeleteByResourceGroupAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Deletes a long term retention backup.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The location of the database
-            /// </param>
-            /// <param name='longTermRetentionServerName'>
-            /// The name of the server
-            /// </param>
-            /// <param name='longTermRetentionDatabaseName'>
-            /// The name of the database
-            /// </param>
-            /// <param name='backupName'>
-            /// The backup name.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginDeleteByResourceGroupAsync(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginDeleteByResourceGroupWithHttpMessagesAsync(resourceGroupName, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            public static IPage<LongTermRetentionBackup> ListByDatabaseNext(this ILongTermRetentionBackupsOperations operations, string nextPageLink)
-            {
-                return operations.ListByDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists all long term retention backups for a database.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByDatabaseNextAsync(this ILongTermRetentionBackupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Lists the long term retention backups for a given location.
             /// </summary>
             /// <param name='operations'>
@@ -1300,9 +1266,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<LongTermRetentionBackup> ListByResourceGroupDatabaseNext(this ILongTermRetentionBackupsOperations operations, string nextPageLink)
+            public static IPage<LongTermRetentionBackup> ListByDatabaseNext(this ILongTermRetentionBackupsOperations operations, string nextPageLink)
             {
-                return operations.ListByResourceGroupDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.ListByDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1317,9 +1283,9 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupDatabaseNextAsync(this ILongTermRetentionBackupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<LongTermRetentionBackup>> ListByDatabaseNextAsync(this ILongTermRetentionBackupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1388,6 +1354,40 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupServerNextAsync(this ILongTermRetentionBackupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupServerNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<LongTermRetentionBackup> ListByResourceGroupDatabaseNext(this ILongTermRetentionBackupsOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists all long term retention backups for a database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<LongTermRetentionBackup>> ListByResourceGroupDatabaseNextAsync(this ILongTermRetentionBackupsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
