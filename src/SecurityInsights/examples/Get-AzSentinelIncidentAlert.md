@@ -1,6 +1,6 @@
 ### Example 1: List all Alerts for a given Incident
 ```powershell
- Get-AzSentinelIncidentAlert -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+Get-AzSentinelIncidentAlert -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -IncidentId "9f5c6069-39bc-4814-bd1b-728012a3c95d"
 ```
 ```output
 AlertDisplayName : (Preview) TI map IP entity to SigninLogs

@@ -8,32 +8,65 @@ schema: 2.0.0
 # New-AzSentinelIncidentComment
 
 ## SYNOPSIS
-Creates or updates the incident comment.
+Create a comment for a given incident.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Create
-```
-New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -IncidentComment <IIncidentComment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Id <String>] [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Message <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityIncidentExpanded
+```
+New-AzSentinelIncidentComment -IncidentInputObject <ISecurityInsightsIdentity> [-Id <String>]
+ [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzSentinelIncidentComment -IncidentId <String> -WorkspaceInputObject <ISecurityInsightsIdentity>
+ [-Id <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates the incident comment.
+Create a comment for a given incident.
 
 ## EXAMPLES
 
 ### Example 1: Create an Incident Comment
 ```powershell
- New-AzSentinelIncidentComment -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
+New-AzSentinelIncidentComment -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -IncidentId "9f5c6069-39bc-4814-bd1b-728012a3c95d" -Message "IncidentCommentGoesHere"
+```
+
+```output
+AuthorEmail                  : v-jiaji@microsoft.com
+AuthorName                   : Joyer Jin (Wicresoft North America Ltd)
+AuthorObjectId               : 6205f759-1234-453c-9712-34d7671bceff
+AuthorUserPrincipalName      : v-jiaji@microsoft.com
+CreatedTimeUtc               : 8/2/2023 9:50:38 AM
+Etag                         : "3503c21a-0000-0100-0000-64ca26ee0000"
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/prov 
+                               iders/Microsoft.SecurityInsights/Incidents/9f5c6069-39bc-4814-bd1b-728012a3c95d/Comments/418b3920-c025-4631-92b3-3e9cc489317f
+LastModifiedTimeUtc          : 8/2/2023 9:50:38 AM
+Message                      : IncidentCommentGoesHere
+Name                         : 418b3920-c025-4631-92b3-3e9cc489317f
+ResourceGroupName            : si-jj-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.SecurityInsights/Incidents/Comments
 ```
 
 This command creates an Incident Comment.
@@ -41,7 +74,8 @@ This command creates an Incident Comment.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -55,19 +89,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncidentComment
-Represents an incident comment
-To construct, see NOTES section for INCIDENTCOMMENT properties and create a hash table.
+### -Id
+Incident comment ID
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
-Parameter Sets: Create
-Aliases:
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityIncidentExpanded, CreateViaIdentityWorkspaceExpanded
+Aliases: IncidentCommentId
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Default value: (New-Guid).Guid
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,7 +109,7 @@ Incident ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
 Aliases:
 
 Required: True
@@ -86,12 +119,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncidentInputObject
+Identity Parameter
+To construct, see NOTES section for INCIDENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityIncidentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Message
 The comment message
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -107,7 +172,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -122,7 +187,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -132,12 +197,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -183,34 +264,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AuthorEmail <String>]`: The email of the client.
-  - `[AuthorName <String>]`: The name of the client.
-  - `[AuthorObjectId <String>]`: The object id of the client.
-  - `[AuthorUserPrincipalName <String>]`: The user principal name of the client.
-  - `[Message <String>]`: The comment message
 
 ## RELATED LINKS
 

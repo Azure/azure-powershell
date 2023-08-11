@@ -8,50 +8,99 @@ schema: 2.0.0
 # New-AzSentinelAutomationRule
 
 ## SYNOPSIS
-Creates or updates the automation rule.
+Create the automation rule.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
- [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
- [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelAutomationRule -InputObject <ISecurityInsightsIdentity> -Action <IAutomationRuleAction[]>
+ -DisplayName <String> -Order <Int32> -TriggeringLogicIsEnabled -TriggeringLogicTriggersOn <String>
+ -TriggeringLogicTriggersWhen <String> [-TriggeringLogicCondition <IAutomationRuleCondition[]>]
+ [-TriggeringLogicExpirationTimeUtc <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Create
+### CreateExpanded
 ```
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
- -AutomationRule <IAutomationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Action <IAutomationRuleAction[]> -DisplayName <String> -Order <Int32> -TriggeringLogicIsEnabled
+ -TriggeringLogicTriggersOn <String> -TriggeringLogicTriggersWhen <String> [-Id <String>]
+ [-SubscriptionId <String>] [-TriggeringLogicCondition <IAutomationRuleCondition[]>]
+ [-TriggeringLogicExpirationTimeUtc <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzSentinelAutomationRule -WorkspaceInputObject <ISecurityInsightsIdentity>
+ -Action <IAutomationRuleAction[]> -DisplayName <String> -Order <Int32> -TriggeringLogicIsEnabled
+ -TriggeringLogicTriggersOn <String> -TriggeringLogicTriggersWhen <String> [-Id <String>]
+ [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the automation rule.
+Create the automation rule.
 
 ## EXAMPLES
 
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
- $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
- $automationRuleAction.Order = 1
- $automationRuleAction.ActionType = "RunPlaybook"
- $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
- $automationRuleAction.ActionConfigurationTenantId = (Get-AzContext).Tenant.Id
- New-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Run Playbook to reset AAD password" -Order 2 -TriggeringLogicIsEnabled
+$LogicAppResource = Get-AzLogicApp -ResourceGroupName "si-jj-test" -Name "AlertLogicApp"
+$automationRuleAction = New-AzSentinelAutomationRuleActionObject -ActionType RunPlaybook -Order 1 -LogicAppResourceId $LogicAppResource.Id -TenantId (Get-AzContext).Tenant.Id
+New-AzSentinelAutomationRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws3" -Action $automationRuleAction -DisplayName "Run Playbook to create alerts" -Order 2 -TriggeringLogicIsEnabled -TriggeringLogicTriggersOn Alerts -TriggeringLogicTriggersWhen Created
+```
+
+```output
+Action                           : {{
+                                     "order": 1,
+                                     "actionType": "RunPlaybook",
+                                     "actionConfiguration": {
+                                       "logicAppResourceId":
+                                   "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.Logic/workflows/myLogicApp",
+                                       "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+                                     }
+                                   }}
+CreatedByEmail                   : v-jiaji@microsoft.com
+CreatedByName                    : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId                : 6205f759-1234-453c-9712-34d7671bceff
+CreatedByUserPrincipalName       : v-jiaji@microsoft.com
+CreatedTimeUtc                   : 8/4/2023 10:57:22 AM
+DisplayName                      : Run Playbook to reset AAD password
+Etag                             : "0b0032b0-0000-0100-0000-64ccd9920000"
+Id                               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/ 
+                                   providers/Microsoft.SecurityInsights/AutomationRules/ed8c40f0-af1c-4774-82c3-e86e79f33ff8
+LastModifiedByEmail              : v-jiaji@microsoft.com
+LastModifiedByName               : Joyer Jin (Wicresoft North America Ltd)
+LastModifiedByObjectId           : 6205f759-1234-453c-9712-34d7671bceff
+LastModifiedByUserPrincipalName  : v-jiaji@microsoft.com
+LastModifiedTimeUtc              : 8/4/2023 10:57:22 AM
+Name                             : ed8c40f0-af1c-4774-82c3-e86e79f33ff8
+Order                            : 2
+ResourceGroupName                : si-jj-test
+SystemDataCreatedAt              : 
+SystemDataCreatedBy              : 
+SystemDataCreatedByType          : 
+SystemDataLastModifiedAt         : 
+SystemDataLastModifiedBy         : 
+SystemDataLastModifiedByType     : 
+TriggeringLogicCondition         : {}
+TriggeringLogicExpirationTimeUtc : 
+TriggeringLogicIsEnabled         : True
+TriggeringLogicTriggersOn        : Alerts
+TriggeringLogicTriggersWhen      : Created
+Type                             : Microsoft.SecurityInsights/AutomationRules
 ```
 
 This command creates an Automation Rule that has an Action of Run Playbook.
 
 ### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
- $automationRuleAction.Order = 1
- $automationRuleAction.ActionType = "ModifyProperties"
- $automationRuleAction.ActionConfigurationSeverity = "Low"
- New-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Change severity to Low" -Order 3 -TriggeringLogicIsEnabled
+$automationRuleAction2 = New-AzSentinelAutomationRuleActionObject -ActionType ModifyProperties -Order 1 -Severity High
+# Condition document link https://learn.microsoft.com/en-us/azure/sentinel/create-manage-use-automation-rules#define-conditions
+$triggeringLogicCondition = New-AzSentinelAutomationRuleActionCondition -Type PropertyChanged -ChangedPropertyName IncidentOwner
+New-AzSentinelAutomationRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws3" -Action $automationRuleAction2 -DisplayName "Change severity to High" -Order 3 -TriggeringLogicIsEnabled -TriggeringLogicTriggersOn Incidents -TriggeringLogicTriggersWhen Updated -TriggeringLogicCondition $triggeringLogicCondition
 ```
 
 This command creates an Automation Rule that has an Action of changing the severity.
@@ -59,39 +108,24 @@ This command creates an Automation Rule that has an Action of changing the sever
 ## PARAMETERS
 
 ### -Action
-The actions to execute when the automation rule is triggered
+The actions to execute when the automation rule is triggered.
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleAction[]
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomationRule
-Represents an automation rule.
-To construct, see NOTES section for AUTOMATIONRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -106,29 +140,60 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the automation rule
+The display name of the automation rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+Automation rule ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
+Aliases: AutomationRuleId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Order
-The order of execution of the automation rule
+The order of execution of the automation rule.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -141,7 +206,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -156,7 +221,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -167,11 +232,12 @@ Accept wildcard characters: False
 ```
 
 ### -TriggeringLogicCondition
-The conditions to evaluate to determine if the automation rule should be triggered on a given object
+The conditions to evaluate to determine if the automation rule should be triggered on a given object.
+To construct, see NOTES section for TRIGGERINGLOGICCONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleCondition[]
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleCondition[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,7 +252,7 @@ Determines when the automation rule should automatically expire and be disabled.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,13 +267,59 @@ Determines whether the automation rule is enabled or disabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TriggeringLogicTriggersOn
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TriggeringLogicTriggersWhen
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -216,7 +328,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -262,49 +374,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
-  - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
-  - `Order <Int32>`: The order of execution of the automation rule action
-
-AUTOMATIONRULE <IAutomationRule>: Represents an automation rule.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Action <IAutomationRuleAction[]>]`: The actions to execute when the automation rule is triggered
-    - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
-    - `Order <Int32>`: The order of execution of the automation rule action
-  - `[CreatedByEmail <String>]`: The email of the client.
-  - `[CreatedByName <String>]`: The name of the client.
-  - `[CreatedByObjectId <String>]`: The object id of the client.
-  - `[CreatedByUserPrincipalName <String>]`: The user principal name of the client.
-  - `[DisplayName <String>]`: The display name of the automation  rule
-  - `[LastModifiedByEmail <String>]`: The email of the client.
-  - `[LastModifiedByName <String>]`: The name of the client.
-  - `[LastModifiedByObjectId <String>]`: The object id of the client.
-  - `[LastModifiedByUserPrincipalName <String>]`: The user principal name of the client.
-  - `[Order <Int32?>]`: The order of execution of the automation rule
-  - `[TriggeringLogicCondition <IAutomationRuleCondition[]>]`: The conditions to evaluate to determine if the automation rule should be triggered on a given object
-  - `[TriggeringLogicExpirationTimeUtc <DateTime?>]`: Determines when the automation rule should automatically expire and be disabled.
-  - `[TriggeringLogicIsEnabled <Boolean?>]`: Determines whether the automation rule is enabled or disabled.
 
 ## RELATED LINKS
 

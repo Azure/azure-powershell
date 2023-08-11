@@ -8,67 +8,93 @@ schema: 2.0.0
 # New-AzSentinelBookmark
 
 ## SYNOPSIS
-Creates or updates the bookmark.
+Create the bookmark.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
- [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
+New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
+ [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
- [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-QueryStartTime <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -Bookmark <IBookmark>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> [-DisplayName <String>]
+ [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
+ [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
+ [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
+ [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityWorkspaceExpanded
+```
+New-AzSentinelBookmark -WorkspaceInputObject <ISecurityInsightsIdentity> [-Id <String>]
+ [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
+ [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>]
+ [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
+ [-QueryStartTime <DateTime>] [-UpdatedByObjectId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the bookmark.
+Create the bookmark.
 
 ## EXAMPLES
 
 ### Example 1: Create a Bookmark
 ```powershell
- $queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- New-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
+$queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+$queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+New-AzSentinelBookmark -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 ```
 
 ```output
-DisplayName    : Incident Evidence
-CreatedByName  : John Contoso
-CreatedByEmail : john@contoso.com
-Name           : 6a8d6ea6-04d5-49d7-8169-ffca8b0ced59
-Note           : my notes
+Created                      : 8/2/2023 9:34:31 AM
+CreatedByEmail               : v-jiaji@microsoft.com
+CreatedByName                : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
+DisplayName                  : Incident Evidence
+Etag                         : "5a0a5305-0000-0100-0000-64ca23270000"
+EventTime                    : 8/2/2023 9:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/prov 
+                               iders/Microsoft.SecurityInsights/Bookmarks/70aaef57-7165-444b-959d-67e6668d57d0
+IncidentInfoIncidentId       : 
+IncidentInfoRelationName     : 
+IncidentInfoSeverity         : 
+IncidentInfoTitle            : 
+Label                        : {}
+Name                         : 70aaef57-7165-444b-959d-67e6668d57d0
+Note                         : 
+Query                        : SecurityEvent | take 1
+QueryEndTime                 : 8/2/2023 9:00:00 AM
+QueryResult                  : 
+QueryStartTime               : 8/1/2023 9:00:00 AM
+ResourceGroupName            : si-jj-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.SecurityInsights/Bookmarks
+Updated                      : 8/2/2023 9:34:31 AM
+UpdatedByEmail               : v-jiaji@microsoft.com
+UpdatedByName                : Joyer Jin (Wicresoft North America Ltd)
+UpdatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
 ```
 
 This command creates a Bookmark.
 
 ## PARAMETERS
 
-### -Bookmark
-Represents a bookmark in Azure Security Insights.
-To construct, see NOTES section for BOOKMARK properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -87,7 +113,7 @@ The display name of the bookmark
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +128,7 @@ The bookmark event time
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -112,12 +138,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+Bookmark ID
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityWorkspaceExpanded
+Aliases: BookmarkId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncidentInfoIncidentId
 Incident Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +173,7 @@ Relation Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,8 +187,8 @@ Accept wildcard characters: False
 The severity of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,7 +203,7 @@ The title of the incident
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -172,12 +213,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Label
 List of labels relevant to this bookmark
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,7 +249,7 @@ The notes of the bookmark
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,7 +264,7 @@ The query of the bookmark.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,7 +279,7 @@ The end time for the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -237,7 +294,7 @@ The query result of the bookmark.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -252,7 +309,7 @@ The start time for the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -268,7 +325,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -283,7 +340,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -293,12 +350,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UpdatedByObjectId
+The object id of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: CreateViaIdentityWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -344,45 +432,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Created <DateTime?>]`: The time the bookmark was created
-  - `[CreatedByObjectId <String>]`: The object id of the user.
-  - `[DisplayName <String>]`: The display name of the bookmark
-  - `[EventTime <DateTime?>]`: The bookmark event time
-  - `[IncidentInfoIncidentId <String>]`: Incident Id
-  - `[IncidentInfoRelationName <String>]`: Relation Name
-  - `[IncidentInfoSeverity <IncidentSeverity?>]`: The severity of the incident
-  - `[IncidentInfoTitle <String>]`: The title of the incident
-  - `[Label <String[]>]`: List of labels relevant to this bookmark
-  - `[Note <String>]`: The notes of the bookmark
-  - `[Query <String>]`: The query of the bookmark.
-  - `[QueryEndTime <DateTime?>]`: The end time for the query
-  - `[QueryResult <String>]`: The query result of the bookmark.
-  - `[QueryStartTime <DateTime?>]`: The start time for the query
-  - `[Updated <DateTime?>]`: The last time the bookmark was updated
-  - `[UpdatedByObjectId <String>]`: The object id of the user.
 
 ## RELATED LINKS
 

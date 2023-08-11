@@ -50,55 +50,50 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
+branch: 5bf60a6746bc03fbff78cc68595eb11f2f212d19
+tag: package-2023-02
 
 input-file:
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AutomationRules.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Bookmarks.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Enrichment.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Entities.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueries.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/EntityQueryTemplates.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Incidents.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Metadata.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OfficeConsents.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/OnboardingStates.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Settings.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/SourceControls.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/ThreatIntelligence.json
-  #- $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/Watchlists.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/dataConnectors.json
-  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/operations.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/AlertRules.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/AutomationRules.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/Bookmarks.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/DataConnectors.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/Incidents.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/Metadata.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/OnboardingStates.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/SecurityMLAnalyticsSettings.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/ThreatIntelligence.json
+  # - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/Watchlists.json
+  - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2023-02-01/operations.json
 
 module-version: 1.2.0
 title: SecurityInsights
 subject-prefix: Sentinel
-  
+
 inlining-threshold: 50
 
+use-extension:
+  "@autorest/powershell": "4.x"
+disable-getput: true
+support-json-input: false
+
 directive:
-  # Fixes/overrides to swaggers
-  # Fix to x-ms-enum when integer (https://github.com/Azure/autorest.powershell/issues/856)
-  - from: dataConnectors.json
-    where: $.definitions.Availability.properties.status
+  # Customize
+  - no-inline:
+    - SecurityMlAnalyticsSetting
+  - model-cmdlet:
+    - model-name: AnomalySecurityMlAnalyticsSettings
+  - from: SecurityMLAnalyticsSettings.json
+    where: $.definitions.AnomalySecurityMLAnalyticsSettingsProperties.properties.customizableObservations
     transform: >-
       return {
-          "description": "The connector Availability Status",
-          "format": "int32",
-          "type": "integer",
-          "enum": [
-            1
-          ]
-        }
-  # Customize
+          "description": "The customizable observations of the AnomalySecurityMLAnalyticsSettings.",
+          "additionalProperties": true,
+          "type": "object"
+      }
   # Hide Operation API
   - where:
       subject: Operation
-    hide: true
-   # Hide OfficeConsent API
-  - where:
-      subject: OfficeConsent
     hide: true
   # Fix Action to be AlertRuleAction
   - where: 
@@ -110,40 +105,10 @@ directive:
       verb: Set
     set:
       verb: Update
-  # fix subject name to encrichment
-  - where:
-      subject: DomainWhois
-    set:
-      subject: Enrichment
-  - where:
-      subject: IPGeodata
-    set:
-      subject: Enrichment
-  # Shorten to just Setting
-  - where:
-      subject: ProductSetting
-    set:
-      subject: Setting
-  # Fix subject Names
-  - where:
-      subject: EntitiesGetTimeline
-    set:
-      subject: EntityTimeline
-  - where:
-      subject: EntitiesRelation
-    set:
-      subject: EntityRelation
   - where:
       subject: QueryThreatIntelligenceIndicator
     set:
       subject: ThreatIntelligenceIndicatorQuery
-  # Change invoke as this is more a Get operation
-  - where:
-      verb: Invoke
-      subject: QueryEntity
-    set:
-      verb: Get
-      subject: EntityActivity
   # Fix Update ThreatIntelligenceIndicator
   - select: command
     where:
@@ -173,16 +138,71 @@ directive:
       subject: ThreatIntelligenceIndicatorQuery
       variant: QueryViaIdentityExpanded
     remove: true
-  # Fix Entity Insights
   - where:
-      subject: EntityInsight
-      variant: ^Get$|^GetViaIdentity$
-    remove: true
-  # Fix Entity TimeLime
+      subject: ^AlertRule$|^DataConnector$
+      variant: ^(Create|Update)(ViaIdentity)?(Workspace)?(Expanded)?$
+    hide: true
+  # Remove the unexpanded parameter set
   - where:
-      subject: EntityTimeline
-      variant: List
+      variant: ^Query$|^QueryViaIdentity$
     remove: true
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded)
+      subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|^IncidentRelation$|^OnboardingState$
+    remove: true
+  # Remove the expanded parameter set for SecurityMlAnalyticsSetting
+  - where:
+      subject: SecurityMlAnalyticsSetting
+      variant: ^(Create|Update)(.*Expanded)$
+    hide: true
+  # Hide Etag as it isnt used
+  - where:
+      parameter-name: Etag
+    hide: true
+  # TI API not useful until API changes
+  - where:
+      verb: ^Add$|^New$|^Update$|^Remove$
+      subject: ThreatIntelligenceIndicator
+    hide: true
+  - where:
+      verb: ^Add$|^New$|^Update$|^Remove$
+      subject: ThreatIntelligenceIndicatorTag
+    hide: true
+  # cmdlet review feedback
+  - where:
+      subject: Bookmark
+      parameter-name: Created|^Updated$
+    hide: true
+  - where:
+      verb: New
+      subject: AlertRuleAction
+      variant: Create
+    hide: true
+  - where:
+      verb: New
+      subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|
+      parameter-name: Id
+    set:
+      default:
+        script: '(New-Guid).Guid'
+  - where:
+      verb: New
+      subject: ^IncidentRelation$
+      parameter-name: RelationName
+    set:
+      default:
+        script: '(New-Guid).Guid'
+  - where:
+      verb: New
+      subject: ^AlertRule$
+      parameter-name: RuleId
+    set:
+      default:
+        script: '(New-Guid).Guid'
+  - where:
+      verb: ^New$|^Update$|^Remove$
+      subject: Metadata
+    hide: true
   # Rename Id for user expierence
   - where:
       subject: AlertRuleAction
@@ -210,11 +230,6 @@ directive:
     set:
       alias: DataConnectorId
   - where:
-      subject: Entity
-      parameter-name: Id
-    set:
-      alias: EntityId
-  - where:
       subject: Incident
       parameter-name: Id
     set:
@@ -224,118 +239,6 @@ directive:
       parameter-name: Id
     set:
       alias: IncidentCommentId
-  #Remove Enrichment
-  - where:
-      subject: ^Enrichment$
-      variant: ^GetViaIdenity$|^GetViaIdenity1$
-    remove: true
-  # Remove source control (requires OAUTH tokens)
-  - where:
-      subject: SourceControl
-    remove: true
-  #Custom Built Commands
-  - where:
-      verb: Invoke
-      subject: DataConnectorsCheckRequirement
-    hide: true
-  - where:
-      subject: ^AlertRule$|^DataConnector$|^EntityQuery$
-      variant: ^Create$|^CreateExpanded$|^Update$|^UpdateExpanded$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
-    hide: true
-  - where:
-      verb: ^Update$|^Remove$
-      subject: Setting
-    hide: true
-  # Hide Etag as it isnt used
-  - where:
-      parameter-name: Etag
-    hide: true
-  # TI API not useful until API changes
-  - where:
-      verb: ^Add$|^New$|^Update$|^Remove$
-      subject: ThreatIntelligenceIndicator
-    hide: true
-  - where:
-      verb: ^Add$|^New$|^Update$|^Remove$
-      subject: ThreatIntelligenceIndicatorTag
-    hide: true
-  # CCP
-  - where:
-      verb: ^Connect$|^Disconnect$
-      subject: DataConnector
-    hide: true
-  # cmdlet review feedback
-  - where:
-      subject: Bookmark
-      parameter-name: Created|^CreatedByObjectId&|^Updated$|^UpdatedByObjectId$
-    hide: true
-  - where:
-      subject: DataConnector
-      parameter-name: SQSURLs
-    set:
-      parameter-name: SQSURL
-  - where:
-      subject: DataConnector
-      parameter-name: CommonDataServiceActivities
-    set:
-      parameter-name: CommonDataServiceActivity
-  - where:
-      verb: Invoke
-      subject: DataConnectorsCheckRequirement
-    set:
-      verb: Test
-  - where:
-      verb: Invoke
-      subject: DataConnectorsCheckRequirement
-    set:
-      subject: DataConnectorCheckRequirement
-  - where:
-      verb: Invoke
-      subject: DataConnectorsCheckRequirement
-      parameter-name: DataConnectorsCheckRequirement
-    set:
-      parameter-name: DataConnectorCheckRequirement
-  - where:
-      verb: New
-      subject: AlertRuleAction
-      variant: Create
-    hide: true
-  - where:
-      verb: New
-      subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|
-      parameter-name: Id
-    set:
-      default:
-        script: '(New-Guid).Guid'
-  - where:
-      verb: New
-      subject: ^BookmarkRelation$|^IncidentRelation$
-      parameter-name: RelationName
-    set:
-      default:
-        script: '(New-Guid).Guid'
-  # Hide Expand
-  - where:
-      verb: Expand
-      subject: ^Bookmark$|^Entity$
-    hide: true
-  - where:
-      verb: ^New$|^Update$|^Remove$
-      subject: Metadata
-    hide: true
-  # Hide Source Control
-  - where:
-      verb: Get
-      subject: SourceControlRepository
-    hide: true
-  # Hide UpdateViaId and Update
-  - where:
-      variant: ^Update$|^UpdateViaIdentity$
-    hide: true
-  # Remove the unexpanded parameter set
-  - where:
-      variant: ^Append$|^AppendViaIdentity$|^Connect$|^ConnectViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Expand$|^ExpandViaIdentity$|^ExpandViaIdentityExpanded$|^GetViaIdentityExpanded$|^PostViaIdentity$|^Query$|^QueryViaIdentity$|^QueriesViaIdentity$|^Replace$|^ReplaceViaIdentity$
-    remove: true
   # fix Equals that conflicts with inhertied property
   - where:
       enum-name: AutomationRulePropertyConditionSupportedOperator
