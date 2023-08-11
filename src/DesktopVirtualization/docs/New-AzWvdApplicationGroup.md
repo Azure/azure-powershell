@@ -17,9 +17,9 @@ New-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String>
  -ApplicationGroupType <ApplicationGroupType> -HostPoolArmPath <String> [-SubscriptionId <String>]
  [-Description <String>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
  [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ShowInFeed]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -318,21 +318,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ShowInFeed
-Boolean representing whether the applicationGroup is show in the feed.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkuCapacity
 If the SKU supports scale out/in then the capacity integer should be included.
 If scale out/in is not possible for the resource this may be omitted.
@@ -480,7 +465,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IApplicationGroup
 
 ## NOTES
 
