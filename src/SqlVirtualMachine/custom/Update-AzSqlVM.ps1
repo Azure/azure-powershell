@@ -448,7 +448,7 @@ process {
             $sqlvm.SqlManagement = $SqlManagementType
         }
         if ($hasTag) {
-			$sqlvm.Tag = $Tag
+            $sqlvm.Tag = $Tag
         }
         if ($hasAutoBackupSettingBackupScheduleType) {
             $sqlvm.AutoBackupSettingBackupScheduleType=$AutoBackupSettingBackupScheduleType
