@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to allow branch to branch traffic for route server.")]
         [PSDefaultValue(Value=false)]
-        public bool AllowBranchToBranchTraffic { get; set; }
+        public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         public override void Execute()
         {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
                         virtualHub.HubRoutingPreference = this.HubRoutingPreference;
                     }
 
-                    virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+                    virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
                     
                     var publicIpAddressModel = NetworkResourceManagerProfile.Mapper.Map<PublicIPAddress>(this.PublicIpAddress);
                     virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();

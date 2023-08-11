@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Network
 
             var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
 
-            if (this.AllowBranchToBranchTraffic != null && virtualHub.AllowBranchToBranchTraffic != this.AllowBranchToBranchTraffic)
+            if (this.AllowBranchToBranchTraffic.HasValue)
             {
-                virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+                virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.Value;
             }
 
             if (!string.IsNullOrWhiteSpace(this.HubRoutingPreference))
