@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
             HelpMessage = "Flag to allow branch to branch traffic for route server.")]
-        [ValidateNotNullOrEmpty]
-        public bool AllowBranchToBranchTraffic { get; set; }
+        [PSDefaultValue(Value=null)]
+        public bool? AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
             ParameterSetName = RouteServerParameterSetNames.ByRouteServerResourceId,
@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
-            if (virtualHub.AllowBranchToBranchTraffic != this.AllowBranchToBranchTraffic)
+
+            if (this.AllowBranchToBranchTraffic != null && virtualHub.AllowBranchToBranchTraffic != this.AllowBranchToBranchTraffic)
             {
                 virtualHub.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
             }
