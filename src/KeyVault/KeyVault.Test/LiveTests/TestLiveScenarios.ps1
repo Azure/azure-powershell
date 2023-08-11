@@ -206,3 +206,6 @@ Invoke-LiveTestScenario -Name "Backup and restore key vault secret" -Description
     Assert-AreEqual $vaultName2 $actual.VaultName
     Assert-AreEqual $secretName $actual.Name
 }
+
+& "$PSScriptRoot\KeyVaultDataPlaneLiveTests\TestNetworkRuleSet.ps1"
+# & "$PSScriptRoot\ManagedHsmDataPlaneLiveTests\TestSetting.ps1"
