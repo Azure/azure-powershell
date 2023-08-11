@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords.
+        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in around November 2023.
         /// </summary>
         public static string HelpMessageOfDisableErrorRecordsPersistence {
             get {

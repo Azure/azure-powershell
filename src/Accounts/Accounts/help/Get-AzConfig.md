@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords
+When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in around November 2023
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
