@@ -47,7 +47,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenterdevdevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenteruserdevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult])]

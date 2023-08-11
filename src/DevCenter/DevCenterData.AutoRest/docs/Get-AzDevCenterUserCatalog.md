@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevcatalog
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusercatalog
 schema: 2.0.0
 ---
 

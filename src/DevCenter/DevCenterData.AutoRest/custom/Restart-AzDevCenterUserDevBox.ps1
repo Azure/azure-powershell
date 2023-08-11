@@ -45,7 +45,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenterdevdevbox
+https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenteruserdevbox
 #>
 function Restart-AzDevCenterUserDevBox {
   [OutputType([System.Boolean])]

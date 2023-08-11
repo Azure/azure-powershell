@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenterdevdevboxaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenteruserdevboxaction
 schema: 2.0.0
 ---
 

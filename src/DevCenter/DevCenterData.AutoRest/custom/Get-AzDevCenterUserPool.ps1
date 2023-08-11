@@ -44,7 +44,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevpool
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserpool
 #>
 function Get-AzDevCenterUserPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPool])]
