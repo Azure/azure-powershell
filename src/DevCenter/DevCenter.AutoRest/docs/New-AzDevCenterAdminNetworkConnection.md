@@ -52,7 +52,7 @@ This command creates a hybid Azure AD joined network connection named "eastusNet
 ### Example 3: Create an Azure AD joined network connection using InputObject
 ```powershell
 $networkConnection = @{"ResourceGroupName" = "testRg"; "NetworkConnectionName" = "eastusNetwork"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
-Get-AzDevCenterAdminNetworkConnection -InputObject $networkConnection -Location westus3 -DomainJoinType AzureADJoin -NetworkingResourceGroupName NetworkInterfaces -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
+New-AzDevCenterAdminNetworkConnection -InputObject $networkConnection -Location westus3 -DomainJoinType AzureADJoin -NetworkingResourceGroupName NetworkInterfaces -SubnetId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"
 ```
 
 This command creates an Azure AD joined network connection named "eastusNetwork" in the resource group "testRg".

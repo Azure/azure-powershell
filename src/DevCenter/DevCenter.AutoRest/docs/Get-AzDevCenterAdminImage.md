@@ -45,10 +45,6 @@ Gets a gallery image.
 Get-AzDevCenterAdminImage -ResourceGroupName testRg -DevCenterName Contoso
 ```
 
-```output
-{{ Add output here }}
-```
-
 This command lists the images in the dev center "Contoso" under the resource group "testRg".
 
 ### Example 2: List images in a gallery under a dev center

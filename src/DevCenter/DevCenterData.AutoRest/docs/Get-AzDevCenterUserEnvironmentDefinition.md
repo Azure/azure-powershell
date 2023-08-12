@@ -84,28 +84,28 @@ This command lists environment definitions under the project "DevProject".
 
 ### Example 3: List environment definitions by endpoint, catalog, and project
 ```powershell
-Get-AzDevCenterUserEnvironmentDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -Catalog CentralCatalog 
+Get-AzDevCenterUserEnvironmentDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -CatalogName CentralCatalog 
 ```
 
 This command lists environment definitions under the project "DevProject" and the catalog "CentralCatalog".
 
 ### Example 4: List environment definitions by dev center, catalog, and project
 ```powershell
-Get-AzDevCenterUserEnvironmentDefinition -DevCenter Contoso -ProjectName DevProject -Catalog CentralCatalog
+Get-AzDevCenterUserEnvironmentDefinition -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog
 ```
 
 This command lists environment definitions under the project "DevProject" and the catalog "CentralCatalog".
 
 ### Example 5: Get an environment definition by endpoint
 ```powershell
-Get-AzDevCenterUserEnvironmentDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -Catalog CentralCatalog  -DefinitionName Sandbox
+Get-AzDevCenterUserEnvironmentDefinition -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -CatalogName CentralCatalog  -DefinitionName Sandbox
 ```
 
 This command gets the environment definition "Sandbox" under the project "DevProject" and the catalog "CentralCatalog".
 
 ### Example 6: Get an environment definition by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentDefinition -DevCenter Contoso -ProjectName DevProject -Catalog CentralCatalog -DefinitionName Sandbox
+Get-AzDevCenterUserEnvironmentDefinition -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog -DefinitionName Sandbox
 ```
 
 This command gets the environment definition "Sandbox" under the project "DevProject" and the catalog "CentralCatalog".
