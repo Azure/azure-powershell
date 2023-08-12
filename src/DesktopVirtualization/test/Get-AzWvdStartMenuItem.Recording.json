@@ -1,17 +1,17 @@
 {
-  "Get-AzWvdStartMenuItem+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/alecbUserSessionHP-DAG/startMenuItems?api-version=2022-10-14-preview+1": {
+  "Get-AzWvdStartMenuItem+[NoContext]+List+$GET+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/alecbUserSessionHP-DAG/startMenuItems?api-version=2023-07-07-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/alecbUserSessionHP-DAG/startMenuItems?api-version=2022-10-14-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/applicationGroups/alecbUserSessionHP-DAG/startMenuItems?api-version=2023-07-07-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "129" ],
-        "x-ms-client-request-id": [ "8e7962f5-a7cb-47a6-8197-aa0f731c9803" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "3d0f1c79-1e4b-4eb1-aeae-4a34b2042070" ],
         "CommandName": [ "Get-AzWvdStartMenuItem" ],
         "FullCommandName": [ "Get-AzWvdStartMenuItem_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.2.11", "Az.DesktopVirtualization/2.1.0" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.2.13", "Az.DesktopVirtualization/2.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,22 +23,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9hcHBsaWNhdGlvbkdyb3Vwcy9hbGVjYlVzZXJTZXNzaW9uSFAtREFH" ],
-        "x-ms-lamport-ts": [ "106275413" ],
-        "x-ms-correlation-id": [ "0db5fabe-1a47-4dd5-babc-f70c5645be5b" ],
-        "x-ms-request-id": [ "8e7962f5-a7cb-47a6-8197-aa0f731c9803" ],
+        "x-ms-lamport-ts": [ "114555014" ],
+        "x-ms-correlation-id": [ "2824c2f2-865c-489e-9c7a-73b6bc6e810b" ],
+        "x-ms-request-id": [ "3d0f1c79-1e4b-4eb1-aeae-4a34b2042070" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Set-Cookie": [ "ARRAffinity=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "de8f9124-9273-47c8-8a88-2c473fa2e9a4" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230628T005131Z:de8f9124-9273-47c8-8a88-2c473fa2e9a4" ],
+        "x-ms-correlation-request-id": [ "55ec4cf4-9df4-4c5c-88f6-9509b64d861f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230812T012852Z:55ec4cf4-9df4-4c5c-88f6-9509b64d861f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 28 Jun 2023 00:51:30 GMT" ]
+        "Date": [ "Sat, 12 Aug 2023 01:28:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "14953" ],
