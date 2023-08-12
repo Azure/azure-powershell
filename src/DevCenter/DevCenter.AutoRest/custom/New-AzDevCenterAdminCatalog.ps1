@@ -129,15 +129,15 @@ param(
     # The folder where the catalog items can be found inside the repository.
     ${AdoGitPath},
 
-    [Parameter(ParameterSetName='CreateExpandedAdo')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
     ${AdoGitSecretIdentifier},
 
-    [Parameter(ParameterSetName='CreateExpandedAdo')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo')]
+    [Parameter(ParameterSetName='CreateExpandedAdo', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedAdo', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git URI.
@@ -157,15 +157,15 @@ param(
     # The folder where the catalog items can be found inside the repository.
     ${GitHubPath},
 
-    [Parameter(ParameterSetName='CreateExpandedGitHub')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
     ${GitHubSecretIdentifier},
 
-    [Parameter(ParameterSetName='CreateExpandedGitHub')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub')]
+    [Parameter(ParameterSetName='CreateExpandedGitHub', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedGitHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Git URI.

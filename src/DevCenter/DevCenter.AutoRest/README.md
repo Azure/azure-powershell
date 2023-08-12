@@ -117,6 +117,10 @@ directive:
       verb: ^(New|Update|Set)$
     hide: true
   - where:
+      subject: OperationStatuses
+    set:
+      subject: OperationStatus
+  - where:
       subject: ^(.*)
     set:
       subject-prefix: DevCenterAdmin
