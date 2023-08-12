@@ -67,56 +67,58 @@ function setupEnv() {
     #variables used for internal setup
 
     #PrivateLink Workspace resources
-    $workspace = New-AzWvdWorkspace -ResourceGroupName $env.ResourceGroup `
-    -Location $env.Location `
-    -Name $env.PvtLinkWS `
-    -FriendlyName 'fri' `
-    -ApplicationGroupReference $null `
-    -Description 'des'
+    Write-Host -ForegroundColor Green 'Creating Private Link resources required for testing...'
+    try {
+        $workspace = New-AzWvdWorkspace -ResourceGroupName $env.ResourceGroup `
+        -Location $env.Location `
+        -Name $env.PvtLinkWS `
+        -FriendlyName 'fri' `
+        -ApplicationGroupReference $null `
+        -Description 'des'
 
-    $privateLinkServiceConnectionWS = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS `
-                                        -PrivateLinkServiceId $workspace.ID `
-                                        -GroupId $env.PECGroupIdWorkspace
-
-    $privateLinkServiceConnectionWS1 = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS1 `
+        $privateLinkServiceConnectionWS = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS `
                                             -PrivateLinkServiceId $workspace.ID `
                                             -GroupId $env.PECGroupIdWorkspace
 
-    $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
-    -Name $env.VnetName
+        $privateLinkServiceConnectionWS1 = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameWS1 `
+                                                -PrivateLinkServiceId $workspace.ID `
+                                                -GroupId $env.PECGroupIdWorkspace
 
-    New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-    -Name $env.PrivateEndpointNameWS `
-    -Location $env.Location `
-    -Subnet $vnet.Subnets[0] `
-    -PrivateLinkServiceConnection $privateLinkServiceConnectionWS `
-    -Force
+        $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
+        -Name $env.VnetName
 
-    New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
-    -Name $env.PrivateEndpointNameWS1 `
-    -Location $env.Location `
-    -Subnet $vnet.Subnets[0] `
-    -PrivateLinkServiceConnection $privateLinkServiceConnectionWS1 `
-    -Force
-
-    #Private Link HostPool Resources
-    $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-        -ResourceGroupName $env.ResourceGroup `
-        -Name $env.PvtLinkHP `
+        New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+        -Name $env.PrivateEndpointNameWS `
         -Location $env.Location `
-        -HostPoolType 'Pooled' `
-        -LoadBalancerType 'DepthFirst' `
-        -RegistrationTokenOperation 'Update' `
-        -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-        -Description 'des' `
-        -FriendlyName 'fri' `
-        -MaxSessionLimit 5 `
-        -VMTemplate '{option1}' `
-        -CustomRdpProperty $null `
-        -Ring $null `
-        -ValidationEnvironment:$false `
-        -PreferredAppGroupType 'Desktop' `
-        -StartVMOnConnect:$false
+        -Subnet $vnet.Subnets[0] `
+        -PrivateLinkServiceConnection $privateLinkServiceConnectionWS `
+        -Force
+
+        New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
+        -Name $env.PrivateEndpointNameWS1 `
+        -Location $env.Location `
+        -Subnet $vnet.Subnets[0] `
+        -PrivateLinkServiceConnection $privateLinkServiceConnectionWS1 `
+        -Force
+
+        #Private Link HostPool Resources
+        $hostpool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroup `
+            -Name $env.PvtLinkHP `
+            -Location $env.Location `
+            -HostPoolType 'Pooled' `
+            -LoadBalancerType 'DepthFirst' `
+            -RegistrationTokenOperation 'Update' `
+            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+            -Description 'des' `
+            -FriendlyName 'fri' `
+            -MaxSessionLimit 5 `
+            -VMTemplate '{option1}' `
+            -CustomRdpProperty $null `
+            -Ring $null `
+            -ValidationEnvironment:$false `
+            -PreferredAppGroupType 'Desktop' `
+            -StartVMOnConnect:$false
 
         $privateLinkServiceConnectionHP = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP `
                                             -PrivateLinkServiceId $hostpool.ID `
@@ -127,7 +129,7 @@ function setupEnv() {
                                             -GroupId $env.PECGroupIdHostPool
 
         $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.ResourceGroup `
-                                     -Name $env.VnetName
+                                    -Name $env.VnetName
 
         New-AzPrivateEndpoint -ResourceGroupName $env.ResourceGroup `
                                 -Name $env.PrivateEndpointNameHP `
@@ -142,6 +144,11 @@ function setupEnv() {
                                 -Subnet $vnet.Subnets[0] `
                                 -PrivateLinkServiceConnection $privateLinkServiceConnectionHP1 `
                                 -Force
+    }
+    catch {
+        Write-Host -ForegroundColor Red 'Failed to create Private Link Workspace resources required for testing...'
+        Write-Host -ForegroundColor Red $_.Exception.Message
+    }
 
     #Wrap up and create JSON file for tests to use
     if ($TestMode -eq 'live') {
