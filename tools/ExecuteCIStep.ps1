@@ -72,7 +72,7 @@ Param(
     $Configuration='Debug',
 
     [String]
-    $TestFramework='netcoreapp3.1',
+    $TestFramework='net6.0',
 
     [String]
     $TestOutputDirectory='artifacts/TestResults',
@@ -397,37 +397,37 @@ If ($StaticAnalysis)
     $FailedTasks = @()
     $ErrorLogPath = "$StaticAnalysisOutputDirectory/error.log"
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters 2>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "BreakingChange"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "Dependency"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "Signature"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "Help"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "UXMetadata"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "CmdletDiff"
     }
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisGeneratedSdk @Parameters 2>>$ErrorLogPath
-    If ($LASTEXITCODE -ne 0)
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
         $FailedTasks += "GenertedSdk"
     }
@@ -437,7 +437,7 @@ If ($StaticAnalysis)
         $ErrorLog = Get-Content -Path $ErrorLogPath | Join-String -Separator "`n"
         Write-Error $ErrorLog
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisBreakingChange)
@@ -459,7 +459,7 @@ If ($StaticAnalysisBreakingChange)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }
 If ($StaticAnalysisDependency)
 {
@@ -481,7 +481,7 @@ If ($StaticAnalysisDependency)
         }
         .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisSignature)
@@ -503,7 +503,7 @@ If ($StaticAnalysisSignature)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisHelp)
@@ -525,7 +525,7 @@ If ($StaticAnalysisHelp)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisUX)
@@ -547,7 +547,7 @@ If ($StaticAnalysisUX)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisCmdletDiff)
@@ -569,7 +569,7 @@ If ($StaticAnalysisCmdletDiff)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisGeneratedSdk)
@@ -592,5 +592,5 @@ If ($StaticAnalysisGeneratedSdk)
             Return $LASTEXITCODE
         }
     }
-    Return
+    Return 0
 }

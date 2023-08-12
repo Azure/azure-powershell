@@ -25,7 +25,7 @@ Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <
 ### CreateAlertByScopes
 ```
 Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <TimeSpan> -Frequency <TimeSpan>
- -TargetResourceScope <String[]> -TargetResourceType <String> -TargetResourceRegion <String>
+ -TargetResourceScope <String[]> [-TargetResourceType <String>] [-TargetResourceRegion <String>]
  -Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria]>
  [-AutoMitigate <Boolean>] [-ActionGroup <ActivityLogAlertActionGroup[]>] [-ActionGroupId <String[]>]
  [-DisableRule] [-Description <String>] -Severity <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -346,7 +346,7 @@ Type: System.String
 Parameter Sets: CreateAlertByScopes
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -376,7 +376,7 @@ Type: System.String
 Parameter Sets: CreateAlertByScopes
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
