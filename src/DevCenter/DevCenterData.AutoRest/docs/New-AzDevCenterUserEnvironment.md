@@ -56,7 +56,7 @@ This command creates an environment named envtest" to the project "DevProject".
 
 ### Example 2: Create an environment by dev center
 ```powershell
-New-AzDevCenterUserEnvironment -DevCenter Contoso-Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+New-AzDevCenterUserEnvironment -DevCenter Contoso- Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -77,7 +77,7 @@ This command creates an environment named envtest" to the project "DevProject".
 $functionAppParameters = @{"name" = "testfuncApp" }
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso-InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+New-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
