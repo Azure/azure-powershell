@@ -57,7 +57,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// group.</param>
         /// <param name="dnsSettings">The dns settings to be applied on the
         /// network interfaces.</param>
-        public VirtualMachineNetworkInterfaceConfiguration(string name, IList<VirtualMachineNetworkInterfaceIPConfiguration> ipConfigurations, bool? primary = default(bool?), string deleteOption = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), bool? enableIPForwarding = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineNetworkInterfaceDnsSettingsConfiguration dnsSettings = default(VirtualMachineNetworkInterfaceDnsSettingsConfiguration), SubResource dscpConfiguration = default(SubResource))
+        /// <param name="auxiliaryMode">Specifies whether the Auxiliary mode is
+        /// enabled for the Network Interface resource. Possible values
+        /// include: 'None', 'AcceleratedConnections', 'Floating'</param>
+        /// <param name="auxiliarySku">Specifies whether the Auxiliary sku is
+        /// enabled for the Network Interface resource. Possible values
+        /// include: 'None', 'A1', 'A2', 'A4', 'A8'</param>
+        public VirtualMachineNetworkInterfaceConfiguration(string name, IList<VirtualMachineNetworkInterfaceIPConfiguration> ipConfigurations, bool? primary = default(bool?), string deleteOption = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), bool? enableIPForwarding = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineNetworkInterfaceDnsSettingsConfiguration dnsSettings = default(VirtualMachineNetworkInterfaceDnsSettingsConfiguration), SubResource dscpConfiguration = default(SubResource), string auxiliaryMode = default(string), string auxiliarySku = default(string))
         {
             Name = name;
             Primary = primary;
@@ -70,6 +76,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             DnsSettings = dnsSettings;
             IpConfigurations = ipConfigurations;
             DscpConfiguration = dscpConfiguration;
+            AuxiliaryMode = auxiliaryMode;
+            AuxiliarySku = auxiliarySku;
             CustomInit();
         }
 
@@ -149,6 +157,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.dscpConfiguration")]
         public SubResource DscpConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the Auxiliary mode is enabled for
+        /// the Network Interface resource. Possible values include: 'None',
+        /// 'AcceleratedConnections', 'Floating'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.auxiliaryMode")]
+        public string AuxiliaryMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the Auxiliary sku is enabled for the
+        /// Network Interface resource. Possible values include: 'None', 'A1',
+        /// 'A2', 'A4', 'A8'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.auxiliarySku")]
+        public string AuxiliarySku { get; set; }
 
         /// <summary>
         /// Validate the object.

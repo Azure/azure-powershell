@@ -67,5 +67,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk and VM guest state
         /// </summary>
         public const string UploadPreparedSecure = "UploadPreparedSecure";
+        /// <summary>
+        /// Create a new disk by exporting from elastic san volume snapshot
+        /// </summary>
+        public const string CopyFromSanSnapshot = "CopyFromSanSnapshot";
     }
 }

@@ -36,9 +36,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// PublicIPAddress resources that will be created. The generated name
         /// label is the concatenation of the domain name label and vm network
         /// profile unique ID.</param>
-        public VirtualMachinePublicIPAddressDnsSettingsConfiguration(string domainNameLabel)
+        /// <param name="domainNameLabelScope">The Domain name label scope of
+        /// the PublicIPAddress resources that will be created. The generated
+        /// name label is the concatenation of the hashed domain name label
+        /// with policy according to the domain name label scope and vm network
+        /// profile unique ID. Possible values include: 'TenantReuse',
+        /// 'SubscriptionReuse', 'ResourceGroupReuse', 'NoReuse'</param>
+        public VirtualMachinePublicIPAddressDnsSettingsConfiguration(string domainNameLabel, string domainNameLabelScope = default(string))
         {
             DomainNameLabel = domainNameLabel;
+            DomainNameLabelScope = domainNameLabelScope;
             CustomInit();
         }
 
@@ -55,6 +62,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "domainNameLabel")]
         public string DomainNameLabel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Domain name label scope of the PublicIPAddress
+        /// resources that will be created. The generated name label is the
+        /// concatenation of the hashed domain name label with policy according
+        /// to the domain name label scope and vm network profile unique ID.
+        /// Possible values include: 'TenantReuse', 'SubscriptionReuse',
+        /// 'ResourceGroupReuse', 'NoReuse'
+        /// </summary>
+        [JsonProperty(PropertyName = "domainNameLabelScope")]
+        public string DomainNameLabelScope { get; set; }
 
         /// <summary>
         /// Validate the object.

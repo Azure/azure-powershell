@@ -58,7 +58,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="deleteOption">Specify what happens to the network
         /// interface when the VM is deleted. Possible values include:
         /// 'Delete', 'Detach'</param>
-        public VirtualMachineScaleSetUpdateNetworkConfiguration(string name = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), IList<VirtualMachineScaleSetUpdateIPConfiguration> ipConfigurations = default(IList<VirtualMachineScaleSetUpdateIPConfiguration>), bool? enableIPForwarding = default(bool?), string deleteOption = default(string))
+        /// <param name="auxiliaryMode">Specifies whether the Auxiliary mode is
+        /// enabled for the Network Interface resource. Possible values
+        /// include: 'None', 'AcceleratedConnections', 'Floating'</param>
+        /// <param name="auxiliarySku">Specifies whether the Auxiliary sku is
+        /// enabled for the Network Interface resource. Possible values
+        /// include: 'None', 'A1', 'A2', 'A4', 'A8'</param>
+        public VirtualMachineScaleSetUpdateNetworkConfiguration(string name = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? disableTcpStateTracking = default(bool?), bool? enableFpga = default(bool?), SubResource networkSecurityGroup = default(SubResource), VirtualMachineScaleSetNetworkConfigurationDnsSettings dnsSettings = default(VirtualMachineScaleSetNetworkConfigurationDnsSettings), IList<VirtualMachineScaleSetUpdateIPConfiguration> ipConfigurations = default(IList<VirtualMachineScaleSetUpdateIPConfiguration>), bool? enableIPForwarding = default(bool?), string deleteOption = default(string), string auxiliaryMode = default(string), string auxiliarySku = default(string))
         {
             Name = name;
             Primary = primary;
@@ -70,6 +76,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             IpConfigurations = ipConfigurations;
             EnableIPForwarding = enableIPForwarding;
             DeleteOption = deleteOption;
+            AuxiliaryMode = auxiliaryMode;
+            AuxiliarySku = auxiliarySku;
             CustomInit();
         }
 
@@ -142,6 +150,22 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.deleteOption")]
         public string DeleteOption { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the Auxiliary mode is enabled for
+        /// the Network Interface resource. Possible values include: 'None',
+        /// 'AcceleratedConnections', 'Floating'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.auxiliaryMode")]
+        public string AuxiliaryMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the Auxiliary sku is enabled for the
+        /// Network Interface resource. Possible values include: 'None', 'A1',
+        /// 'A2', 'A4', 'A8'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.auxiliarySku")]
+        public string AuxiliarySku { get; set; }
 
     }
 }

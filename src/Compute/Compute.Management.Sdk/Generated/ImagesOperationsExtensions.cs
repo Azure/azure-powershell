@@ -197,7 +197,9 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets the list of images under a resource group.
+            /// Gets the list of images under a resource group. Use nextLink property in
+            /// the response to get the next page of Images. Do this till nextLink is null
+            /// to fetch all the Images.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -211,7 +213,9 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets the list of images under a resource group.
+            /// Gets the list of images under a resource group. Use nextLink property in
+            /// the response to get the next page of Images. Do this till nextLink is null
+            /// to fetch all the Images.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -392,7 +396,9 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets the list of images under a resource group.
+            /// Gets the list of images under a resource group. Use nextLink property in
+            /// the response to get the next page of Images. Do this till nextLink is null
+            /// to fetch all the Images.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -406,7 +412,9 @@ namespace Microsoft.Azure.Management.Compute
             }
 
             /// <summary>
-            /// Gets the list of images under a resource group.
+            /// Gets the list of images under a resource group. Use nextLink property in
+            /// the response to get the next page of Images. Do this till nextLink is null
+            /// to fetch all the Images.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

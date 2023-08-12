@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -325,7 +325,9 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// Gets the list of images under a resource group.
+        /// Gets the list of images under a resource group. Use nextLink property in
+        /// the response to get the next page of Images. Do this till nextLink is null
+        /// to fetch all the Images.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -361,7 +363,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -541,7 +543,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -742,7 +744,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -968,7 +970,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1184,7 +1186,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-03-01";
+            string apiVersion = "2023-07-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1317,7 +1319,9 @@ namespace Microsoft.Azure.Management.Compute
         }
 
         /// <summary>
-        /// Gets the list of images under a resource group.
+        /// Gets the list of images under a resource group. Use nextLink property in
+        /// the response to get the next page of Images. Do this till nextLink is null
+        /// to fetch all the Images.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

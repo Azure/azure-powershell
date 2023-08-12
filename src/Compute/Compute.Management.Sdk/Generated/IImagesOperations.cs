@@ -130,7 +130,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse<Image>> GetWithHttpMessagesAsync(string resourceGroupName, string imageName, string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the list of images under a resource group.
+        /// Gets the list of images under a resource group. Use nextLink
+        /// property in the response to get the next page of Images. Do this
+        /// till nextLink is null to fetch all the Images.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -251,7 +253,9 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string imageName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets the list of images under a resource group.
+        /// Gets the list of images under a resource group. Use nextLink
+        /// property in the response to get the next page of Images. Do this
+        /// till nextLink is null to fetch all the Images.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="createOption">This enumerates the possible sources of
         /// a disk's creation. Possible values include: 'Empty', 'Attach',
         /// 'FromImage', 'Import', 'Copy', 'Restore', 'Upload', 'CopyStart',
-        /// 'ImportSecure', 'UploadPreparedSecure'</param>
+        /// 'ImportSecure', 'UploadPreparedSecure',
+        /// 'CopyFromSanSnapshot'</param>
         /// <param name="storageAccountId">Required if createOption is Import.
         /// The Azure Resource Manager identifier of the storage account
         /// containing the blob to import as a disk.</param>
@@ -63,7 +64,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// on the performance target of the disk deployed, see here on the
         /// respective performance target. This flag can only be set on disk
         /// creation time and cannot be disabled after enabled.</param>
-        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), bool? performancePlus = default(bool?))
+        /// <param name="elasticSanResourceId">Required if createOption is
+        /// CopyFromSanSnapshot. This is the ARM id of the source elastic san
+        /// volume snapshot.</param>
+        public CreationData(string createOption, string storageAccountId = default(string), ImageDiskReference imageReference = default(ImageDiskReference), ImageDiskReference galleryImageReference = default(ImageDiskReference), string sourceUri = default(string), string sourceResourceId = default(string), string sourceUniqueId = default(string), long? uploadSizeBytes = default(long?), int? logicalSectorSize = default(int?), string securityDataUri = default(string), bool? performancePlus = default(bool?), string elasticSanResourceId = default(string))
         {
             CreateOption = createOption;
             StorageAccountId = storageAccountId;
@@ -76,6 +80,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             LogicalSectorSize = logicalSectorSize;
             SecurityDataUri = securityDataUri;
             PerformancePlus = performancePlus;
+            ElasticSanResourceId = elasticSanResourceId;
             CustomInit();
         }
 
@@ -88,7 +93,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets this enumerates the possible sources of a disk's
         /// creation. Possible values include: 'Empty', 'Attach', 'FromImage',
         /// 'Import', 'Copy', 'Restore', 'Upload', 'CopyStart', 'ImportSecure',
-        /// 'UploadPreparedSecure'
+        /// 'UploadPreparedSecure', 'CopyFromSanSnapshot'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }
@@ -168,6 +173,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "performancePlus")]
         public bool? PerformancePlus { get; set; }
+
+        /// <summary>
+        /// Gets or sets required if createOption is CopyFromSanSnapshot. This
+        /// is the ARM id of the source elastic san volume snapshot.
+        /// </summary>
+        [JsonProperty(PropertyName = "elasticSanResourceId")]
+        public string ElasticSanResourceId { get; set; }
 
         /// <summary>
         /// Validate the object.
