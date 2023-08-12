@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Compute.Sdk</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Compute.Management.Sdk</AssemblyName>
     <RootNamespace>Microsoft.Azure.Management.Compute</RootNamespace>
     <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
   </PropertyGroup>

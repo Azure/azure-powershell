@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteObject(deploymentStack);
                 };
 
-                if (!Force.IsPresent && currentStack == null)
+                if (!Force.IsPresent && currentStack != null)
                 {
 
                     string confirmationMessage = $"The DeploymentStack '{Name}' you're trying to create already exists in the current subscription. " +

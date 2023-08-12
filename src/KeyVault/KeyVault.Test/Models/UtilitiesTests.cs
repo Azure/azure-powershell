@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
             var webKey = converters.ConvertKeyFromFile(new FileInfo(tempPath), null);
 
             Assert.True(webKey.T.SequenceEqual(byokBlob));
-            Assert.Equal(webKey.Kty, JsonWebKeyType.RsaHsm);
+            Assert.Equal(JsonWebKeyType.RsaHsm, webKey.Kty);
         }
     }
 }

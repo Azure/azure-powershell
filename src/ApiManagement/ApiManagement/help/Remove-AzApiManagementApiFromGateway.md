@@ -30,6 +30,14 @@ Remove-AzApiManagementApiFromGateway -Context $ApiMgmtContext -GatewayId "012345
 
 This command removes the specified API from a gateway.
 
+### Example 2: Remove an API from a managed gateway
+```powershell
+$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+Remove-AzApiManagementApiFromGateway -Context $ApiMgmtContext -GatewayId "managed" -ApiId "0001" -PassThru
+```
+
+This command removes the specified API from the managed gateway.
+
 ## PARAMETERS
 
 ### -ApiId

@@ -78,7 +78,7 @@ pac76,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac77,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ImportExport.0.2.0.nupkg;sourceType=sa]Az.ImportExport,0.2.0
 pac78,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.IotCentral.0.10.0.nupkg;sourceType=sa]Az.IotCentral,0.10.0
 pac79,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.IotHub.2.7.5.nupkg;sourceType=sa]Az.IotHub,2.7.5
-pac80,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KeyVault.4.10.1.nupkg;sourceType=sa]Az.KeyVault,4.10.1
+pac80,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KeyVault.4.10.2.nupkg;sourceType=sa]Az.KeyVault,4.10.2
 pac81,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesConfiguration.0.7.0.nupkg;sourceType=sa]Az.KubernetesConfiguration,0.7.0
 pac82,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Kusto.2.2.0.nupkg;sourceType=sa]Az.Kusto,2.2.0
 pac83,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LabServices.0.1.0.nupkg;sourceType=sa]Az.LabServices,0.1.0
@@ -129,7 +129,7 @@ pac127,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac128,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.12.0.nupkg;sourceType=sa]Az.Reservations,0.12.0
 pac129,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.0.13.0.nupkg;sourceType=sa]Az.ResourceGraph,0.13.0
 pac130,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.1.0.nupkg;sourceType=sa]Az.ResourceMover,1.1.0
-pac131,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.6.9.0.nupkg;sourceType=sa]Az.Resources,6.9.0
+pac131,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.6.9.1.nupkg;sourceType=sa]Az.Resources,6.9.1
 pac132,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.9.0.nupkg;sourceType=sa]Az.Search,0.9.0
 pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.4.0.nupkg;sourceType=sa]Az.Security,1.4.0
 pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.0.1.nupkg;sourceType=sa]Az.SecurityInsights,3.0.1

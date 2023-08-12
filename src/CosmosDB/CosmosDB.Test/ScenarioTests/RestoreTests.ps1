@@ -91,7 +91,7 @@ function Test-SqlRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  Start-Sleep -s 100
+  Start-TestSleep -Seconds 100
 
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -328,7 +328,7 @@ function Test-GremlinRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewGraph1 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewGraph2 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  Start-Sleep -s 100
+  Start-TestSleep -Seconds 100
 
   $datatabaseToRestore = New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName $databaseName -GraphName $graphName1, $graphName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -423,7 +423,7 @@ function Test-TableRestoreAccountCmdlets {
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
   $NewTable1 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName1 -Throughput 600
   $NewTable2 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName2 -Throughput 600
-  Start-Sleep -s 100
+  Start-TestSleep -Seconds 100
 
   $tablesToRestore = New-AzCosmosDBTableToRestore -TableName $tableName1, $tableName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -666,14 +666,14 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
   }
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous
-  Start-Sleep -s (60)
+  Start-TestSleep -Seconds (60)
 
   # Verify account after migration
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous30Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous7Days
-  Start-Sleep -s (60 * 2)
+  Start-TestSleep -Seconds (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
@@ -706,7 +706,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
 
   # If we don't provide the continuoustier, it should not trigger the update to continuous30days
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  Start-Sleep -s (60 * 2)
+  Start-TestSleep -Seconds (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous7Days" $updatedCosmosDBAccount.BackupPolicy.Tier
