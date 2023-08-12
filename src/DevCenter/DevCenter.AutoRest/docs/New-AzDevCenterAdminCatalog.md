@@ -15,31 +15,31 @@ Creates or updates a catalog.
 ### CreateExpandedAdo (Default)
 ```
 New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AdoGitBranch <String>] [-AdoGitPath <String>] [-AdoGitSecretIdentifier <String>]
- [-AdoGitUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -AdoGitSecretIdentifier <String> -AdoGitUri <String> [-SubscriptionId <String>] [-AdoGitBranch <String>]
+ [-AdoGitPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpandedGitHub
 ```
 New-AzDevCenterAdminCatalog -DevCenterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-GitHubBranch <String>] [-GitHubPath <String>] [-GitHubSecretIdentifier <String>]
- [-GitHubUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -GitHubSecretIdentifier <String> -GitHubUri <String> [-SubscriptionId <String>] [-GitHubBranch <String>]
+ [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedAdo
 ```
-New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> [-AdoGitBranch <String>] [-AdoGitPath <String>]
- [-AdoGitSecretIdentifier <String>] [-AdoGitUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> -AdoGitSecretIdentifier <String>
+ -AdoGitUri <String> [-AdoGitBranch <String>] [-AdoGitPath <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedGitHub
 ```
-New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> [-GitHubBranch <String>] [-GitHubPath <String>]
- [-GitHubSecretIdentifier <String>] [-GitHubUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterAdminCatalog -InputObject <IDevCenterIdentity> -GitHubSecretIdentifier <String>
+ -GitHubUri <String> [-GitHubBranch <String>] [-GitHubPath <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +117,7 @@ Type: System.String
 Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: CreateExpandedAdo, CreateViaIdentityExpandedAdo
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,7 +223,7 @@ Type: System.String
 Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,7 +238,7 @@ Type: System.String
 Parameter Sets: CreateExpandedGitHub, CreateViaIdentityExpandedGitHub
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

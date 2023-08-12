@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminoperationstatuses
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminoperationstatus
 schema: 2.0.0
 ---
 
-# Get-AzDevCenterAdminOperationStatuses
+# Get-AzDevCenterAdminOperationStatus
 
 ## SYNOPSIS
 Gets the current status of an async operation.
@@ -14,13 +14,13 @@ Gets the current status of an async operation.
 
 ### Get (Default)
 ```
-Get-AzDevCenterAdminOperationStatuses -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
+Get-AzDevCenterAdminOperationStatus -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevCenterAdminOperationStatuses -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+Get-AzDevCenterAdminOperationStatus -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Gets the current status of an async operation.
 
 ### Example 1: Get an operation
 ```powershell
-Get-AzDevCenterAdminOperationStatuses -Location "eastus"  -OperationId "7e9e1394-dad0-4414-8160-21c592e880ef*4699EE32265F9FA5BF00FA169E7D9CF51755378796E32F2D1A198E080CC84614"
+Get-AzDevCenterAdminOperationStatus -Location "eastus"  -OperationId "7e9e1394-dad0-4414-8160-21c592e880ef*4699EE32265F9FA5BF00FA169E7D9CF51755378796E32F2D1A198E080CC84614"
 ```
 
 This command gets the operation.
@@ -39,7 +39,7 @@ This command gets the operation.
 ### Example 2: Get an operatio using InputObject
 ```powershell
 $operation = @{"Location" = "eastus"; "OperationId" = "7e9e1394-dad0-4414-8160-21c592e880ef*4699EE32265F9FA5BF00FA169E7D9CF51755378796E32F2D1A198E080CC84614"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
-Get-AzDevCenterAdminOperationStatuses -InputObject $operation
+Get-AzDevCenterAdminOperationStatus -InputObject $operation
 ```
 
 This command gets the operation.

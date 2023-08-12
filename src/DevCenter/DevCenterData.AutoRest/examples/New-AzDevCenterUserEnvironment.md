@@ -8,7 +8,7 @@ This command creates an environment named envtest" to the project "DevProject".
 
 ### Example 2: Create an environment by dev center
 ```powershell
-New-AzDevCenterUserEnvironment -DevCenter Contoso- Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+New-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
 ```
 This command creates an environment named envtest" to the project "DevProject".
 

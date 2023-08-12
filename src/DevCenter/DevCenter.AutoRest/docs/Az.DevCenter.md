@@ -45,7 +45,7 @@ Gets health check status details.
 Lists the endpoints that agents may call as part of Dev Box service administration.
 These FQDNs should be allowed for outbound access in order for the Dev Box service to function.
 
-### [Get-AzDevCenterAdminOperationStatuses](Get-AzDevCenterAdminOperationStatuses.md)
+### [Get-AzDevCenterAdminOperationStatus](Get-AzDevCenterAdminOperationStatus.md)
 Gets the current status of an async operation.
 
 ### [Get-AzDevCenterAdminPool](Get-AzDevCenterAdminPool.md)
