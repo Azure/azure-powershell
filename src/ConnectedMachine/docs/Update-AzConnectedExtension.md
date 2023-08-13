@@ -51,8 +51,9 @@ Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineNa
 ```
 
 ```output
-\<None\>
+<None>
 ```
+
 Update an extension in a machine to a specific version
 
 ## PARAMETERS
@@ -73,7 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -263,11 +265,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EXTENSIONUPGRADEPARAMETER <IMachineExtensionUpgrade>: Describes the Machine Extension Upgrade Properties.
+`EXTENSIONUPGRADEPARAMETER <IMachineExtensionUpgrade>`: Describes the Machine Extension Upgrade Properties.
   - `[ExtensionTarget <IExtensionTarget>]`: Describes the Extension Target Properties.
     - `[(Any) <IExtensionTargetProperties>]`: This indicates any property can be added to this object.
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[ExtensionType <String>]`: The extensionType of the Extension being received.
   - `[GroupName <String>]`: The name of the private link resource.

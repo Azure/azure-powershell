@@ -64,7 +64,8 @@ PublicNetworkAccess should be either "Enabled" or "Disabled"
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -254,7 +255,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[ExtensionType <String>]`: The extensionType of the Extension being received.
   - `[GroupName <String>]`: The name of the private link resource.
@@ -270,7 +271,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[Version <String>]`: The version of the Extension being received.
 
-PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope definition.
+`PARAMETER <IHybridComputePrivateLinkScope>`: An Azure Arc PrivateLinkScope definition.
   - `Location <String>`: Resource location
   - `[Tag <IPrivateLinkScopesResourceTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
