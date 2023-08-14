@@ -35,7 +35,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 68332bd340f87049bddfa3bd5c4c700568a7a08c
+branch: 5b51ccefb0ba7799bbeac5e5460d9eec84ce55fa
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -59,7 +59,7 @@ input-file:
 
 title: App
 module-version: 0.2.0
-subject-prefix: ''
+subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -79,9 +79,9 @@ directive:
         "format": "password",
         "x-ms-secret": true
       }
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-    remove: true
+  # - where:
+  #     variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+  #   remove: true
   - where:
       verb: Set
     remove: true
@@ -190,6 +190,7 @@ directive:
       parameter-name: EnvironmentName
     set:
       parameter-name: EnvName
+
   - where:
       model-name: ManagedEnvironment
     set:
