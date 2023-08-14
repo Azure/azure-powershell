@@ -21,7 +21,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 
 ###
 ``` yaml
-commit: fead0dec636e7554fb8401370418085136d4f052
+commit: 33f06ff82a4c751bcbc842b7ed4da2e81b0717b6
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/common.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/keyvault.json
