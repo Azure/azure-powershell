@@ -578,6 +578,10 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Security Domain ActivationStatus</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -601,6 +605,15 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>
+                  if ($_.SecurityDomain -ne $null)
+                  {
+                  $_.SecurityDomain.ActivationStatus;
+                  }
+                </ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -720,6 +733,24 @@
               <ListItem>
                 <Label>Status Message</Label>
                 <PropertyName>StatusMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Security Domain ActivationStatus</Label>
+                <ScriptBlock>
+                  if ($_.SecurityDomain -ne $null)
+                  {
+                  $_.SecurityDomain.ActivationStatus;
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Security Domain ActivationStatusMessage</Label>
+                <ScriptBlock>
+                  if ($_.SecurityDomain -ne $null)
+                  {
+                  $_.SecurityDomain.ActivationStatusMessage;
+                  }
+                </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Tags</Label>
