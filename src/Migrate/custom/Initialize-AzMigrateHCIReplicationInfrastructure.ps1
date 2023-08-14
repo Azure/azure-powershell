@@ -84,6 +84,12 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
@@ -619,6 +625,9 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
         Write-Host "*Selected Replication Extension: '$($replicationExtension.Name)'."
 
-        return $true
+        if ($PassThru)
+        {
+            return $true
+        }
     }
 }
