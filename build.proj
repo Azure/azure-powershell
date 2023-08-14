@@ -193,12 +193,11 @@
       <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll,System.CodeDom.dll,System.Management.dll,System.Text.Json.dll,System.Threading.Tasks.Extensions.dll,System.IO.Hashing.dll</RuntimeDllsExcludeList>
     </PropertyGroup>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Where-Object {$_.FullName -notlike '*Accounts*lib*' -and $_.FullName -notlike '*ModuleAlcAssemblies*'} | Remove-Item -Force&quot;"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" Condition="'$(CodeSign)' == 'true'" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
-
     <!-- Delete .deps.json files -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse -Include '*.deps.json' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse | Where-Object { $_.Name -Like '*Az.*.deps.json' -or $_.Name -Like 'Microsoft.Azure.*.deps.json' } | Remove-Item -Recurse -Force&quot; "/>
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
