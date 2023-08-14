@@ -12,7 +12,7 @@ Get managed HSMs.
 
 ## SYNTAX
 
-### GetManagedHsm
+### GetManagedHsm (Default)
 ```
 Get-AzKeyVaultManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
@@ -95,6 +95,7 @@ This command gets all managed HSMs in the subscription that start with "myhsm".
 ```powershell
 Get-AzKeyVaultManagedHsm -InRemovedState
 ```
+
 ```output
 Name                     Location      DeletionDate           ScheduledPurgeDate    Purge Protection Enabled?
 ----                     --------      ------------           ------------------    -------------------------

@@ -142,7 +142,7 @@ pac140,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac141,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.4.9.0.nupkg;sourceType=sa]Az.Sql,4.9.0
 pac142,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.0.0.nupkg;sourceType=sa]Az.SqlVirtualMachine,2.0.0
 pac143,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.0.nupkg;sourceType=sa]Az.Ssh,0.2.0
-pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.1.0.nupkg;sourceType=sa]Az.StackHCI,2.1.0
+pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.1.1.nupkg;sourceType=sa]Az.StackHCI,2.1.1
 pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.5.9.0.nupkg;sourceType=sa]Az.Storage,5.9.0
 pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.0.nupkg;sourceType=sa]Az.StorageCache,0.1.0
 pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.0.1.nupkg;sourceType=sa]Az.StorageMover,1.0.1
