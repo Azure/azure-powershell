@@ -48,26 +48,25 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if(this.VM.SecurityProfile == null)
-            {
-                this.VM.SecurityProfile = new SecurityProfile();
-            }
-
-            if (this.IsParameterBound(c => c.SecurityType))
+            if (SecurityType.ToLower() != "standard")
             {
                 if (this.VM.SecurityProfile == null)
                 {
                     this.VM.SecurityProfile = new SecurityProfile();
                 }
-                
-                if (SecurityType == "Standard")
+
+                if (this.IsParameterBound(c => c.SecurityType))
                 {
-                    this.VM.SecurityProfile.SecurityType = "";
-                }
-                else
-                {
+                    if (this.VM.SecurityProfile == null)
+                    {
+                        this.VM.SecurityProfile = new SecurityProfile();
+                    }
                     this.VM.SecurityProfile.SecurityType = SecurityType;
                 }
+            }
+            else
+            {
+                WriteInformation("You have set the SecurityType to Standard. This value makes this cmdlet perform no actions at this time.", new string[] { "PSHOST" });
             }
 
             WriteObject(this.VM);

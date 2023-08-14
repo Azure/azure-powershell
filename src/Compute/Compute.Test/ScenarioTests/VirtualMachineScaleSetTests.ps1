@@ -4643,7 +4643,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
 
-        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile.SecurityType;
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile;
 
         # Guest Attestation extension defaulting test
         # Validate
@@ -4726,7 +4726,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
-        Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType;
+        Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
         # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
         # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;

@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
+                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != "standard")) 
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
+                        SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != "standard")) 
                         ? new SecurityProfile
                         {
                             EncryptionAtHost = encryptionAtHost,

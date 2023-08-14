@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
         public bool ConfigAsyncVisited = false;
+        public const string TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -586,16 +587,16 @@ namespace Microsoft.Azure.Commands.Compute
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    if (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM")
+                    if (_cmdlet.SecurityType?.ToLower() == TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConfidentialVMSecurityType)
                     {
                         _cmdlet.SecurityType = _cmdlet.SecurityType;
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    else if (_cmdlet.SecurityType == "Standard")
-                    {
-                        _cmdlet.SecurityType = "";//This will change in the future once Standard is added as an actual SecurityType in the backend.
-                    }
+                    //else if (_cmdlet.SecurityType.ToLower() == "standard")
+                    //{
+                    //    _cmdlet.SecurityType = "";//This will change in the future once Standard is added as an actual SecurityType in the backend.
+                    //}
                     
                 }
 
@@ -770,16 +771,16 @@ namespace Microsoft.Azure.Commands.Compute
             // Check Guest Attestation
             if (this.IsParameterBound(c => c.SecurityType))
             {
-                if (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM")
+                if (this.SecurityType?.ToLower() == TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConfidentialVMSecurityType)
                 {
                     this.SecurityType = this.SecurityType;
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
-                else if (this.SecurityType == "Standard")
-                {
-                    this.SecurityType = "";
-                }
+                //else if (this.SecurityType.ToLower() == "standard")
+                //{
+                //    this.SecurityType = "";
+                //}
                 
             }
             if (shouldGuestAttestationExtBeInstalled()
@@ -971,7 +972,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
+            if (this.VM?.SecurityProfile?.SecurityType.ToLower() == TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType.ToLower() == ConfidentialVMSecurityType)
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
@@ -1156,7 +1157,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.ParameterSetName == DefaultParameterSet &&
                     this.VM != null &&
                     this.VM.SecurityProfile != null &&
-                    this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    this.VM.SecurityProfile.SecurityType?.ToLower() == TrustedLaunchSecurityType &&
                     this.VM.SecurityProfile.UefiSettings != null &&
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
@@ -1165,7 +1166,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.DisableIntegrityMonitoring != true &&
                      this.ParameterSetName == SimpleParameterSet &&
-                     this.SecurityType == "TrustedLaunch" &&
+                     this.SecurityType?.ToLower() == TrustedLaunchSecurityType &&
                      this.EnableSecureBoot == true &&
                      this.EnableVtpm == true)
             {

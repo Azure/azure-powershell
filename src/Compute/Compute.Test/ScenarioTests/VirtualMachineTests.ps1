@@ -6784,8 +6784,8 @@ function Test-VirtualMachineSecurityTypeStandard
 
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;#"Testing1234567";
+        $user = Get-ComputeTestResourceName;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = Get-ComputeTestResourceName;#"usertest";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
@@ -6793,7 +6793,7 @@ function Test-VirtualMachineSecurityTypeStandard
         New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 
-        Assert-Null $vm1.SecurityProfile.SecurityType;
+        Assert-Null $vm1.SecurityProfile;
         #Assert-AreEqual $vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
         #Assert-AreEqual $vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
@@ -6887,7 +6887,7 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 
-        Assert-Null $vm.SecurityProfile.SecurityType;
+        Assert-Null $vm.SecurityProfile;
     }
     finally
     {

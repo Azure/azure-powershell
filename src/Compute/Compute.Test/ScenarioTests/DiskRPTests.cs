@@ -163,5 +163,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DiskAcceleratedNetworkAndPublicNetworkAccess");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSecurityProfileStandard()
+        {
+            TestRunner.RunTestScript("Test-SecurityProfileStandard");
+        }
     }
 }

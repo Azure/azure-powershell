@@ -392,7 +392,11 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vm.SecurityProfile.SecurityType = this.SecurityType;
-                if (vm.SecurityProfile.SecurityType == "TrustedLaunch" || vm.SecurityProfile.SecurityType == "ConfidentialVM")
+                if (vm.SecurityProfile.SecurityType.ToLower() == "standard")
+                {
+                    vm.SecurityProfile.SecurityType = "";
+                }
+                else if (vm.SecurityProfile.SecurityType == "TrustedLaunch" || vm.SecurityProfile.SecurityType == "ConfidentialVM")
                 {
                     vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;

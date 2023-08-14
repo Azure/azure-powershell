@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.IsParameterBound(c => c.SecurityType))
+            // If is Standard, then no securityProfile should be made for now. 
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType.ToLower() != "standard")
             {
                 // Security Profile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -70,15 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-
-                if (this.SecurityType == "Standard")
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = "";
-                }
-                else
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
             }
             WriteObject(this.VirtualMachineScaleSet);
         }

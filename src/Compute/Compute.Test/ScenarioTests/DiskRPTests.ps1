@@ -1520,6 +1520,34 @@ function Test-SecurityProfile
 
 <#
 .SYNOPSIS
+Test Set-AzDiskSecurityProfileStandard
+#>
+function Test-SecurityProfileStandard
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Standard SecurityType
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "diskstnd" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-Null $disk.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test SupportsHibernation Parameter
 #>
 function Test-SupportsHibernation

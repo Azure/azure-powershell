@@ -417,10 +417,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    else if (_cmdlet.SecurityType == "Standard")
-                    {
-                        _cmdlet.SecurityType = "";
-                    }   
+                    //else if (_cmdlet.SecurityType.ToLower() == "standard")
+                    //{
+                    //    _cmdlet.SecurityType = "";
+                    //}   
                 }
 
                 Dictionary<string, List<string>> auxAuthHeader = null;
@@ -580,10 +580,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    else if (_cmdlet.SecurityType == "Standard")
-                    {
-                        _cmdlet.SecurityType = "";
-                    }
+                    //else if (_cmdlet.SecurityType.ToLower() == "standard")
+                    //{
+                    //    _cmdlet.SecurityType = "";
+                    //}
                     
                 }
 
@@ -678,10 +678,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
-                else if (this.SecurityType == "Standard")
-                {
-                    this.SecurityType = "";
-                }
+                //else if (this.SecurityType.ToLower() == "standard")
+                //{
+                //    this.SecurityType = "";
+                //}
                 
             }
             if (shouldGuestAttestationExtBeInstalledSimple()
