@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Azure.ResourceManager.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Roles = roles;
         }
 
-        public AzureHDInsightComputeProfile(IList<HDInsightClusterRole> roles)
+        public AzureHDInsightComputeProfile(ComputeProfile computeProfile)
         {
-            Roles = roles?.Select(role => new AzureHDInsightRole(role)).ToList();
+            Roles = computeProfile.Roles?.Select(role => new AzureHDInsightRole(role)).ToList();
         }
 
         public IList<AzureHDInsightRole> Roles { get; set; }

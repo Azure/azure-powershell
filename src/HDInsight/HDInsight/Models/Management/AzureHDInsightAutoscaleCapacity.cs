@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightAutoscaleCapacity
     {
-        public AzureHDInsightAutoscaleCapacity(HDInsightAutoScaleCapacity capacity)
+        public AzureHDInsightAutoscaleCapacity(AutoscaleCapacity capacity)
         {
 
             MinInstanceCount = capacity?.MinInstanceCount;

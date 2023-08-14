@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets config actions for the cluster.
         /// </summary>
-        public Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
+        public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
         /// <summary>
         /// Gets or sets the security profile.

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             PrivateLink = privateLink;
         }
 
-        public AzureHDInsightNetworkProperties(HDInsightClusterNetworkProperties networkProperties)
+        public AzureHDInsightNetworkProperties(NetworkProperties networkProperties = null)
         {
-            ResourceProviderConnection = networkProperties.ResourceProviderConnection.ToString();
-            PrivateLink = networkProperties.PrivateLink.ToString();
+            ResourceProviderConnection = networkProperties?.ResourceProviderConnection;
+            PrivateLink = networkProperties?.PrivateLink;
         }
 
         /// <summary>

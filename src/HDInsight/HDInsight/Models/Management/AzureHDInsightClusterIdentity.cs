@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using Azure.ResourceManager.Models;
+﻿using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,17 +20,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             UserAssignedIdentities = userAssignedIdentities;
         }
 
-        public AzureHDInsightClusterIdentity(ManagedServiceIdentity clusterIdentity)
+        public AzureHDInsightClusterIdentity(ClusterIdentity clusterIdentity)
         {
-            PrincipalId = clusterIdentity?.PrincipalId.ToString();
-            TenantId = clusterIdentity?.TenantId.ToString();
-            Type = clusterIdentity.ManagedServiceIdentityType.ToString();
+            PrincipalId = clusterIdentity?.PrincipalId;
+            TenantId = clusterIdentity?.TenantId;
+            Type = clusterIdentity?.Type;
             UserAssignedIdentities =clusterIdentity?.UserAssignedIdentities != null ? new Dictionary<string, AzureHDInsightUserAssignedIdentity>() : null;
             if (UserAssignedIdentities != null)
             {
                 foreach( var entry in clusterIdentity.UserAssignedIdentities)
                 {
-                    UserAssignedIdentities.Add(entry.Key.ToString(), new AzureHDInsightUserAssignedIdentity(entry.Value));
+                    UserAssignedIdentities.Add(entry.Key, new AzureHDInsightUserAssignedIdentity(entry.Value));
                 }
             }
         }

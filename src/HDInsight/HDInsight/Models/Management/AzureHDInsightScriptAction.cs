@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
         public AzureHDInsightScriptAction(ScriptAction action)
         {
             ActionName = action.Name;
-            Uri = new Uri(action.Uri.ToString());
+            Uri = new Uri(action.Uri);
             Parameters = action.Parameters;
         }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             {
                 param = Parameters;
             }
-            return new ScriptAction(ActionName, Uri.IsAbsoluteUri ? new Uri(Uri.AbsoluteUri) : Uri, param);
+            return new ScriptAction(ActionName, Uri.IsAbsoluteUri ? Uri.AbsoluteUri : Uri.ToString(), param);
         }
 
         public string ActionName { get; set; }

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             DiskSizeGB = diskSizeGB;
         }
 
-        public AzureHDInsightDataDisksGroups(HDInsightClusterDataDiskGroup dataDisksGroups)
+        public AzureHDInsightDataDisksGroups(DataDisksGroups dataDisksGroups)
         {
             DisksPerNode = dataDisksGroups.DisksPerNode;
             StorageAccountType = dataDisksGroups.StorageAccountType;
-            DiskSizeGB = dataDisksGroups.DiskSizeInGB;
+            DiskSizeGB = dataDisksGroups.DiskSizeGB;
         }
 
         /// <summary>

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,19 +26,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHDInsightPrivateLinkConfiguration() { }
 
-        public AzureHDInsightPrivateLinkConfiguration(HDInsightPrivateLinkConfiguration privateLinkConfiguration)
+        public AzureHDInsightPrivateLinkConfiguration(PrivateLinkConfiguration privateLinkConfiguration)
         {
             Id = privateLinkConfiguration.Id;
             Name = privateLinkConfiguration.Name;
-            Type = privateLinkConfiguration.ResourceType;
+            Type = privateLinkConfiguration.Type;
             GroupId = privateLinkConfiguration.GroupId;
-            ProvisioningState = privateLinkConfiguration.ProvisioningState.ToString();
-            IpConfigurations = privateLinkConfiguration.IPConfigurations?.Select(item => new AzureHDInsightIPConfiguration(item)).ToList();
+            ProvisioningState = privateLinkConfiguration.ProvisioningState;
+            IpConfigurations = privateLinkConfiguration.IpConfigurations?.Select(item => new AzureHDInsightIPConfiguration(item)).ToList();
         }
 
-        public HDInsightPrivateLinkConfiguration ToPrivateLinkConfiguration()
+        public PrivateLinkConfiguration ToPrivateLinkConfiguration()
         {
-            return new HDInsightPrivateLinkConfiguration(this.Name, this.GroupId, this.IpConfigurations.Select(item => item.ToIPConfiguration()).ToList());
+            return new PrivateLinkConfiguration()
+            {
+                Name = this.Name,
+                GroupId = this.GroupId,
+                IpConfigurations = this.IpConfigurations.Select(item=> item.ToIPConfiguration()).ToList()
+            };
         }
 
         /// <summary>

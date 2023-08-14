@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightAutoscaleCondition
     {
-        public AzureHDInsightAutoscaleCondition(HDInsightAutoScaleSchedule autoscaleSchedule)
+        public AzureHDInsightAutoscaleCondition(AutoscaleSchedule autoscaleSchedule)
         {
             Time = autoscaleSchedule?.TimeAndCapacity?.Time;
             WorkerNodeCount = autoscaleSchedule?.TimeAndCapacity?.MinInstanceCount;
@@ -33,22 +33,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Days = new List<AzureHDInsightDaysOfWeek>();
         }
 
-        public HDInsightAutoScaleSchedule ToAutoscaleSchedule()
+        public AutoscaleSchedule ToAutoscaleSchedule()
         {
-            HDInsightAutoScaleSchedule autoScaleSchedule = new HDInsightAutoScaleSchedule()
+            return new AutoscaleSchedule()
             {
-                TimeAndCapacity = new HDInsightAutoScaleTimeAndCapacity()
+                TimeAndCapacity = new AutoscaleTimeAndCapacity()
                 {
                     Time = Time,
                     MinInstanceCount = WorkerNodeCount,
                     MaxInstanceCount = WorkerNodeCount
-                }
+                },
+                Days = Days.Select(day => day.ToString()).ToList()
             };
-            foreach (var day in Days)
-            {
-                autoScaleSchedule.Days.Add(new HDInsightDayOfWeek(day.ToString()));
-            }
-            return autoScaleSchedule;
         }
 
         /// <summary>

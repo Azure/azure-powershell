@@ -12,33 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Azure.ResourceManager.HDInsight;
-using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightCluster
     {
-        public AzureHDInsightCluster(HDInsightClusterData cluster)
+        public AzureHDInsightCluster(Cluster cluster)
         {
             Id = cluster.Id;
             Name = cluster.Name;
             Location = cluster.Location;
             ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
-            OperatingSystemType = cluster.Properties.OSType.ToString();
-            ClusterTier = cluster.Properties.Tier.ToString();
+            OperatingSystemType = cluster.Properties.OsType;
+            ClusterTier = cluster.Properties.Tier;
             ClusterState = cluster.Properties.ClusterState;
             ClusterType = cluster.Properties.ClusterDefinition.Kind;
-            CoresUsed = cluster.Properties.QuotaInfoCoresUsed ?? 0;
+            CoresUsed = cluster.Properties.QuotaInfo.CoresUsed ?? 0;
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints?.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
-            HttpEndpoint = httpEndpoint != null ? httpEndpoint.EndpointLocation : null;
+            HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
             ConnectivityEndpoints = cluster?.Properties?.ConnectivityEndpoints?.Select(endpoint => new AzureHDInsightConnectivityEndpoint(endpoint)).ToList();
             Error = cluster.Properties.Errors?.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
@@ -50,10 +49,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                     ComponentVersion.Add(componentVersion.ToString());
                 }
             }
-            WorkerNodeDataDisksGroups = new List<HDInsightClusterDataDiskGroup>();
-            if (cluster.Properties.ComputeRoles != null && cluster.Properties.ComputeRoles.Any())
+            WorkerNodeDataDisksGroups = new List<DataDisksGroups>();
+            if (cluster.Properties.ComputeProfile != null && cluster.Properties.ComputeProfile.Roles.Any())
             {
-                var rolesWithDataDisksGroups = cluster.Properties.ComputeRoles.Where(x => x.DataDisksGroups != null);
+                var rolesWithDataDisksGroups = cluster.Properties.ComputeProfile.Roles.Where(x => x.DataDisksGroups != null);
                 foreach (var role in rolesWithDataDisksGroups)
                 {
                     WorkerNodeDataDisksGroups.AddRange(role.DataDisksGroups);
@@ -66,19 +65,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
                 OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
-                LdapsUrls = clusterSecurityProfile.LdapUris != null ? clusterSecurityProfile.LdapUris.Select(uri => uri.ToString()).ToArray() : null,
+                LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
                 ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;
 
             MinSupportedTlsVersion = cluster.Properties.MinSupportedTlsVersion;
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
-            EncryptionInTransit = cluster.Properties?.IsEncryptionInTransitEnabled;
-            PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.EndpointLocation;
-            var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeRoles)?.VirtualNetworkProfile;
+            EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
+            PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
+            var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
             SubnetName = Utils.GetResourceNameFromResourceId(vnet?.Subnet);
-            ComputeProfile = cluster.Properties.ComputeRoles != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeRoles) : null;
+            ComputeProfile = cluster.Properties?.ComputeProfile != null ? new AzureHDInsightComputeProfile(cluster.Properties.ComputeProfile) : null;
             KafkaRestProperties = cluster?.Properties?.KafkaRestProperties != null ? new AzureHDInsightKafkaRestProperties(cluster.Properties.KafkaRestProperties) : null;
             NetworkProperties = cluster?.Properties?.NetworkProperties != null ? new AzureHDInsightNetworkProperties(cluster.Properties.NetworkProperties) : null;
             ComputeIsolationProperties = cluster?.Properties?.ComputeIsolationProperties != null ? new AzureHDInsightComputeIsolationProperties(cluster.Properties.ComputeIsolationProperties) : null;
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             PrivateEndpointConnections = cluster?.Properties?.PrivateEndpointConnections?.Select(connection => new AzureHDInsightPrivateEndpointConnection(connection)).ToList();
         }
 
-        public AzureHDInsightCluster(HDInsightClusterData cluster, IReadOnlyDictionary<string, string> clusterConfiguration, IReadOnlyDictionary<string, string> clusterIdentity)
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
             : this(cluster)
         {
             if (clusterConfiguration != null)
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Data Disks Group Properties for the Worker Role.
         /// </summary>
-        public List<HDInsightClusterDataDiskGroup> WorkerNodeDataDisksGroups { get; set; }
+        public List<DataDisksGroups> WorkerNodeDataDisksGroups { get; set; }
 
         /// <summary>
         /// Gets or sets the security profile.
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the disk encryption properties.
         /// </summary>
-        public HDInsightDiskEncryptionProperties DiskEncryption { get; set; }
+        public DiskEncryptionProperties DiskEncryption { get; set; }
 
         /// <summary>
         /// Gets or sets the assigned identity.

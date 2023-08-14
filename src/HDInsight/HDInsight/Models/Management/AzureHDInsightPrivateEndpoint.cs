@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Azure.Core;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightPrivateEndpoint
     {
-        public AzureHDInsightPrivateEndpoint(ResourceIdentifier privateEndpointId)
+        public AzureHDInsightPrivateEndpoint(PrivateEndpoint privateEndpoint)
         {
-            Id = privateEndpointId;
+            Id = privateEndpoint.Id;
         }
 
         /// <summary>

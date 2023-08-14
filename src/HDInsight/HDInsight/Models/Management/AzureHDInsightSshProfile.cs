@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Azure.ResourceManager.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
 {
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             PublicKeys = publicKeys;
         }
 
-        public AzureHDInsightSshProfile(IList<HDInsightSshPublicKey> sshPublicKeys)
+        public AzureHDInsightSshProfile(SshProfile sshProfile)
         {
-            PublicKeys = sshPublicKeys?.Select(key => new AzureHDInsightSshPublicKey(key)).ToList();
+            PublicKeys = sshProfile?.PublicKeys?.Select(key => new AzureHDInsightSshPublicKey(key)).ToList();
         }
 
         /// <summary>

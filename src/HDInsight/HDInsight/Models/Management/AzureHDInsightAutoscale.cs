@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHDInsightAutoscale
     {
-        public AzureHDInsightAutoscale(HDInsightAutoScaleConfiguration autoscale)
+        public AzureHDInsightAutoscale(Autoscale autoscale)
         {
             Capacity = autoscale?.Capacity != null ? new AzureHDInsightAutoscaleCapacity(autoscale.Capacity) : null;
             Recurrence = autoscale?.Recurrence != null ? new AzureHDInsightAutoscaleRecurrence(autoscale.Recurrence) : null;
@@ -37,29 +37,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Convert AzureHDInsightAutoscaleConfiguration to Autoscale
         /// </summary>
         /// <returns></returns>
-        public HDInsightAutoScaleConfiguration ToAutoscale()
+        public Autoscale ToAutoscale()
         {
-            HDInsightAutoScaleConfiguration autoscale = new HDInsightAutoScaleConfiguration();
+            Autoscale autoscale = new Autoscale();
             if (Capacity != null)
             {
-                autoscale.Capacity = new HDInsightAutoScaleCapacity()
-                {
-                    MaxInstanceCount = Capacity.MaxInstanceCount,
-                    MinInstanceCount = Capacity.MinInstanceCount,
-                };
+                autoscale.Capacity = new AutoscaleCapacity(Capacity.MinInstanceCount, Capacity.MaxInstanceCount);
             }
 
             if (Recurrence != null)
             {
-                //Recurrence.TimeZone, Recurrence.Condition?.Select(condition => condition.ToAutoscaleSchedule()).ToList()
-                autoscale.Recurrence = new HDInsightAutoScaleRecurrence();
-                autoscale.Recurrence.TimeZone =  Recurrence.TimeZone;
-
-                foreach (var item in Recurrence.Condition)
-                {
-                    autoscale.Recurrence.Schedule.Add(item.ToAutoscaleSchedule());
-                }
-                
+                autoscale.Recurrence = new AutoscaleRecurrence(Recurrence.TimeZone, Recurrence.Condition?.Select(condition => condition.ToAutoscaleSchedule()).ToList());
             }
             return autoscale;
         }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Azure.ResourceManager.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             LinuxOperatingSystemProfile = linuxOperatingSystemProfile;
         }
-        public AzureHDInsightOsProfile(HDInsightLinuxOSProfile linuxOperatingSystemProfile)
+        public AzureHDInsightOsProfile(OsProfile osProfile)
         {
-            LinuxOperatingSystemProfile = linuxOperatingSystemProfile != null ? new AzureHDInsightLinuxOperatingSystemProfile(linuxOperatingSystemProfile) : null;
+            LinuxOperatingSystemProfile = osProfile?.LinuxOperatingSystemProfile != null ? new AzureHDInsightLinuxOperatingSystemProfile(osProfile.LinuxOperatingSystemProfile) : null;
         }
 
         /// <summary>
