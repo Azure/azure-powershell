@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for XenonMV3 webapps
 
 ## Version 3.0.1
 * Increased timeout for Publish-AzWebApp command
