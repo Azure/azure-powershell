@@ -35,6 +35,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightCluster), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
+        DeprecatedOutputProperties = new string[] {"Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties DiskEncryption"}, 
+        NewOutputProperties = new string[] {"Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties DiskEncryption"})]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
@@ -234,6 +237,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
+        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 

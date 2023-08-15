@@ -24,7 +24,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.33.0" />
+    <PackageReference Update="Azure.Core" Version="1.34.0" />
   </ItemGroup>
 	
   <ItemGroup>

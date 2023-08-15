@@ -15,11 +15,13 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
