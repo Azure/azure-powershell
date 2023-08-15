@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.34.0.
+* Removed the breaking change warning message for creating a storage account
+    - `New-AzStorageAccount`
 
 ## Version 5.9.0
 * Supported OAuth authentication on File service cmdlets
