@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network plugin used for building Kubernetes network.</summary>
+    /// <summary>Network plugin used for building the Kubernetes network.</summary>
     public partial class NetworkPluginTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

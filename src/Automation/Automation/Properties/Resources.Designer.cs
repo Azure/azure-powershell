@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insufficient user permissions. Please refer https://docs.microsoft.com/azure/role-based-access-control/built-in-roles for more details..
+        ///   Looks up a localized string similar to Insufficient user permissions. Please refer https://learn.microsoft.com/azure/role-based-access-control/built-in-roles for more details..
         /// </summary>
         internal static string InsufficientUserPermissions {
             get {

@@ -168,18 +168,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         public override string ToString() => $"{Indent}${{{ParameterName}}}{(IsLast ? String.Empty : $",{Environment.NewLine}")}{Environment.NewLine}";
     }
 
-    internal class BeginOutput
+    internal class BaseOutput
     {
         public VariantGroup VariantGroup { get; }
 
-        public BeginOutput(VariantGroup variantGroup)
+        protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+        public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
+        }
+        public string ClearTelemetryContext()
+        {
+            return (!VariantGroup.IsInternal && IsAzure) ? $@"{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()" : "";
+        }
+    }
+
+    internal class BeginOutput : BaseOutput
+    {
+        public BeginOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
         }
 
         public string GetProcessCustomAttributesAtRuntime()
         {
             return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+        }
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+{Indent}{Indent}}}         
+{Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}$internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}{Indent}if ($internalCalledCmdlets -eq '') {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}}
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+{Indent}{Indent}}}
+";
+            }
+            return "";
         }
         public override string ToString() => $@"begin {{
 {Indent}try {{
@@ -188,6 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
 {Indent}{Indent}{Indent}$PSBoundParameters['OutBuffer'] = 1
 {Indent}{Indent}}}
 {Indent}{Indent}$parameterSet = $PSCmdlet.ParameterSetName
+{GetTelemetry()}
 {GetParameterSetToCmdletMapping()}{GetDefaultValuesStatements()}
 {GetProcessCustomAttributesAtRuntime()}
 {Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -195,6 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
 {Indent}{Indent}$steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
 {Indent}{Indent}$steppablePipeline.Begin($PSCmdlet)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
 }}
@@ -231,28 +270,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         }
     }
 
-    internal class ProcessOutput
+    internal class ProcessOutput : BaseOutput
     {
+        public ProcessOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetFinally()
+        {
+            if (IsAzure && !VariantGroup.IsInternal)
+            {
+                return $@"
+{Indent}finally {{
+{Indent}{Indent}$backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}$backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}}}
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"process {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.Process($_)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
+{GetFinally()}
 }}
-
 ";
     }
 
-    internal class EndOutput
+    internal class EndOutput : BaseOutput
     {
+        public EndOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.CloudService.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}{Indent}}}
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"end {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.End()
+{GetTelemetry()}
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
-}}
+}} 
 ";
     }
 
@@ -493,9 +573,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
 
         public static BeginOutput ToBeginOutput(this VariantGroup variantGroup) => new BeginOutput(variantGroup);
 
-        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput();
+        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput(variantGroup);
 
-        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput();
+        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput(variantGroup);
 
         public static HelpCommentOutput ToHelpCommentOutput(this VariantGroup variantGroup) => new HelpCommentOutput(variantGroup);
 
@@ -524,7 +604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

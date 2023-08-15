@@ -39,7 +39,7 @@ New-AzCostManagementDetailReport -Scope "/subscriptions/9e223dbe-3399-4e19-88eb-
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
+https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
 #>
 function New-AzCostManagementDetailReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20220501.ICostDetailsOperationResults])]

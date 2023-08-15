@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6E2F0D5E-E683-46F3-B48B-55C4864F3308
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -305,7 +305,7 @@ specified in the template.
 exist in the resource group but are not specified in the template.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
+Type: Microsoft.Azure.Management.Resources.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete
@@ -582,7 +582,7 @@ Accept wildcard characters: False
 The What-If result format.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
+Type: Microsoft.Azure.Management.Resources.Models.WhatIfResultFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResourceIdOnly, FullResourcePayloads

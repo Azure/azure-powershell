@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Database Migration Service Name.")]
+            HelpMessage = "Azure Database Migration Service (classic) Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 

@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime.PowerShell
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
 
-        private const string HelpLinkPrefix = @"https://docs.microsoft.com/en-us/powershell/module/";
+        private const string HelpLinkPrefix = @"https://learn.microsoft.com/en-us/powershell/module/";
 
         public CommentInfo(VariantGroup variantGroup)
         {

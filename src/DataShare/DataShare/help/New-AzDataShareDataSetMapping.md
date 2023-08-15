@@ -60,7 +60,7 @@ This command creates a data set mapping AdsDataSetMapping to storage account Ads
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountResourceId
-Azure Storage Account ResourceId
+Azure Storage Account ResourceId that is the source of the data being shared.
 
 ```yaml
 Type: System.String

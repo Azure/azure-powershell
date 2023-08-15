@@ -46,7 +46,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [Name <LanguageExtensionName?>]: The language extension name.
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/add-azsynapsekustopoollanguageextension
+https://learn.microsoft.com/powershell/module/az.synapse/add-azsynapsekustopoollanguageextension
 #>
 function Add-AzSynapseKustoPoolLanguageExtension {
 [OutputType([System.Boolean])]

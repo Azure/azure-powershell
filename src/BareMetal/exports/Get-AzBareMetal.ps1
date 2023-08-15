@@ -45,7 +45,7 @@ westus2  rhel79ora02 MWH03A-T210
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance
 .Link
-https://docs.microsoft.com/powershell/module/az.baremetal/get-azbaremetal
+https://learn.microsoft.com/powershell/module/az.baremetal/get-azbaremetal
 #>
 function Get-AzBareMetal {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance])]

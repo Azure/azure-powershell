@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Id = volumeGroupDetails.Id,
                 Name = volumeGroupDetails.Name,
                 Type = volumeGroupDetails.Type,
-                ProvisioningState = volumeGroupDetails.ProvisioningState,
-                Tags = volumeGroupDetails.Tags,
+                ProvisioningState = volumeGroupDetails.ProvisioningState,                
                 GroupMetaData = volumeGroupDetails.GroupMetaData.ConvertToPs(),
                 Volumes = volumeGroupDetails.Volumes.ConvertToPs()
             };
@@ -45,8 +44,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Id = volumeGroupListProperties.Id,
                 Name = volumeGroupListProperties.Name,
                 Location = volumeGroupListProperties.Location,
-                ProvisioningState = volumeGroupListProperties.ProvisioningState,
-                Tags = volumeGroupListProperties.Tags,
+                ProvisioningState = volumeGroupListProperties.ProvisioningState,                
                 Type = volumeGroupListProperties?.Type,
                 GroupMetaData = volumeGroupListProperties.GroupMetaData.ConvertToPs(),
 
@@ -77,9 +75,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             };
             return psVolumeGroupMetaData;
         }
-        public static PSNetAppFilesVolumeGroupVolumeProperties ConvertToPs(this Management.NetApp.Models.VolumeGroupVolumeProperties volumeGroupVolumeProperties)
+        public static PSNetAppFilesVolume ConvertToPs(this Management.NetApp.Models.VolumeGroupVolumeProperties volumeGroupVolumeProperties)
         {
-            var psNetAppFilesVolumeGroupVolumeProperties = new PSNetAppFilesVolumeGroupVolumeProperties()
+            var psNetAppFilesVolumeGroupVolumeProperties = new PSNetAppFilesVolume()
             {
                 Id = volumeGroupVolumeProperties.Id,
                 Name = volumeGroupVolumeProperties.Name,
@@ -113,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapEnabled = volumeGroupVolumeProperties.LdapEnabled,
                 CoolAccess = volumeGroupVolumeProperties.CoolAccess,
                 CoolnessPeriod = volumeGroupVolumeProperties.CoolnessPeriod,
-                UnixPermissions = volumeGroupVolumeProperties.UnixPermissions,
+                UnixPermission = volumeGroupVolumeProperties.UnixPermissions,
                 CloneProgress = volumeGroupVolumeProperties.CloneProgress,               
                 AvsDataStore = volumeGroupVolumeProperties.AvsDataStore,
                 IsDefaultQuotaEnabled = volumeGroupVolumeProperties.IsDefaultQuotaEnabled,
@@ -125,13 +123,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ProximityPlacementGroup = volumeGroupVolumeProperties.ProximityPlacementGroup,
                 T2Network = volumeGroupVolumeProperties.T2Network,
                 VolumeSpecName = volumeGroupVolumeProperties.VolumeSpecName,
-                PlacementRules = volumeGroupVolumeProperties.PlacementRules,
-                EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes
+                PlacementRules = volumeGroupVolumeProperties.PlacementRules.ToPPSKeyValuePairs(),
+                EnableSubvolumes = volumeGroupVolumeProperties.EnableSubvolumes,
+                Encrypted = volumeGroupVolumeProperties.Encrypted,                
+                KeyVaultPrivateEndpointResourceId = volumeGroupVolumeProperties.KeyVaultPrivateEndpointResourceId
             };
             return psNetAppFilesVolumeGroupVolumeProperties;
         }
 
-        public static List<PSNetAppFilesVolumeGroupVolumeProperties> ConvertToPs(this IList<VolumeGroupVolumeProperties> volumeGroupVolumeProperties)
+        public static List<PSNetAppFilesVolume> ConvertToPs(this IList<VolumeGroupVolumeProperties> volumeGroupVolumeProperties)
         {
             return volumeGroupVolumeProperties.Select(e => e.ConvertToPs()).ToList();
         }

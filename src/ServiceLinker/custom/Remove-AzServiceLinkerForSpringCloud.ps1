@@ -32,9 +32,9 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
   [LinkerName <String>]: The name Linker resource.
   [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerforspringcloud
+https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerforspringcloud
 #>
-function Remove-AzServiceLinkerForSpringcloud {
+function Remove-AzServiceLinkerForSpringCloud {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(

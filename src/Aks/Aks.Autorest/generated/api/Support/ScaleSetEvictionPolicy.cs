@@ -7,13 +7,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
     /// <summary>
-    /// ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+    /// The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about
+    /// eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)
     /// </summary>
     public partial struct ScaleSetEvictionPolicy :
         System.IEquatable<ScaleSetEvictionPolicy>
     {
+        /// <summary>
+        /// Nodes in the underlying Scale Set of the node pool are set to the stopped-deallocated state upon eviction. Nodes in the
+        /// stopped-deallocated state count against your compute quota and can cause issues with cluster scaling or upgrading.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetEvictionPolicy Deallocate = @"Deallocate";
 
+        /// <summary>
+        /// Nodes in the underlying Scale Set of the node pool are deleted when they're evicted.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetEvictionPolicy Delete = @"Delete";
 
         /// <summary>the value for an instance of the <see cref="ScaleSetEvictionPolicy" /> Enum.</summary>

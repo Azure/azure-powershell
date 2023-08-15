@@ -12,6 +12,12 @@ Updates Backup schedule of an existing backup policy.
 
 ## SYNTAX
 
+### RemoveBackupSchedule (Default)
+```
+Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -RemoveSchedule [<CommonParameters>]
+```
+
+### ModifyBackupSchedule
 ```
 Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -Schedule <String[]>
  [<CommonParameters>]
@@ -43,8 +49,23 @@ Backup Policy object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoveSchedule
+Specifies whether to remove the backup Schedule.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RemoveBackupSchedule
 Aliases:
 
 Required: True
@@ -59,7 +80,7 @@ Schedule to be associated to backup policy.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ModifyBackupSchedule
 Aliases:
 
 Required: True
@@ -76,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy
 
 ## NOTES
 

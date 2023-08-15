@@ -26,6 +26,7 @@ using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -776,7 +777,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
                 queryFilter.Filter = queryFilterString;
-
+                                
                 List<RecoveryPointResource> rpListResponse;
                 rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                 containerUri,
@@ -913,6 +914,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
 
@@ -920,14 +922,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
+            if (secondaryRegion)
+            {
+                var rpResponse = ServiceClientAdapter.GetRecoveryPointDetailsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 recoveryPointId,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
 
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+                return RecoveryPointConversions.GetPSAzureRecoveryPointsFromSecondaryRegion(rpResponse, item);
+            }
+            else
+            {
+                var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
+                containerUri,
+                protectedItemName,
+                recoveryPointId,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+
+                return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+            }
         }
 
         public static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()

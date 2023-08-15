@@ -1200,6 +1200,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             string soapApiType = GetApiTypeForImport(specificationFormat, apiType);
 
+            apiPath = apiPath ?? string.Empty;
+            
             var createOrUpdateContract = new ApiCreateOrUpdateParameter()
             {
                 Format = contentFormat,

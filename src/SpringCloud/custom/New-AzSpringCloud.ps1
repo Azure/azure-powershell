@@ -25,7 +25,7 @@ New-AzSpringCloud -ResourceGroupName spring-cloud-rp -name spring-cloud-service 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloud
 #>
 function New-AzSpringCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource])]

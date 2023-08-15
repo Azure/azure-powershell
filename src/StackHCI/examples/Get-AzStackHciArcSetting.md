@@ -4,9 +4,9 @@ Get-AzStackHciArcSetting -ResourceGroupName test-rg -ClusterName myCluster
 ```
 
 ```output
-Name    ResourceGroupName
-----    -----------------
-default test-rg
+Resource Group AggregateState
+-------------- --------------
+test-rg        Connected
 ```
 
 Gets arcSettings in a cluster. To see the details use : "Write-Host( $arcSettings | Format-List | Out-String)"

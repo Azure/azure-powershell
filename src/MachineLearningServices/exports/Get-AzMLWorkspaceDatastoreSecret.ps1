@@ -25,7 +25,7 @@ Get-AzMLWorkspaceDatastoreSecret  -ResourceGroupName ml-rg-test -WorkspaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SecretsType
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastoresecret
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacedatastoresecret
 #>
 function Get-AzMLWorkspaceDatastoreSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SecretsType])]

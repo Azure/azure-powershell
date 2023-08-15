@@ -80,7 +80,7 @@ CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert ba
   [Cert <String>]: Public key of the user cert (.pem or .cer)
   [LedgerRoleName <LedgerRoleName?>]: LedgerRole associated with the Security Principal of Ledger
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
 #>
 function New-AzConfidentialLedger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]

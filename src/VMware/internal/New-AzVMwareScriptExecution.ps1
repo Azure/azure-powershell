@@ -39,7 +39,7 @@ PARAMETER <IScriptExecutionParameter[]>: Parameters the script will accept
   Name <String>: The parameter name
   Type <ScriptExecutionParameterType>: The type of execution parameter
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
 #>
 function New-AzVMwareScriptExecution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]

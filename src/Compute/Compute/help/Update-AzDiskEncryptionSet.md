@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azdiskencryptionset.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azdiskencryptionset.md
 schema: 2.0.0
 ---
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -RotationToLatestKeyVersionEnabled
-{{ Fill RotationToLatestKeyVersionEnabled Description }}
+Set this flag to true to enable auto-updating of this disk encryption set to the latest key version
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

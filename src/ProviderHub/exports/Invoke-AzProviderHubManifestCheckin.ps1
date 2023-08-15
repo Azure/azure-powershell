@@ -34,7 +34,7 @@ CommitId IsCheckedIn PullRequest StatusMessage
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
+https://learn.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
 #>
 function Invoke-AzProviderHubManifestCheckin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo])]

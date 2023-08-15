@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Purviewdata
 Module Guid: e9265d40-242b-4cd5-a331-7fa976226575
-Download Help Link: https://docs.microsoft.com/powershell/module/az.purviewdata
+Download Help Link: https://learn.microsoft.com/powershell/module/az.purviewdata
 Help Version: 1.0.0.0
 Locale: en-US
 ---

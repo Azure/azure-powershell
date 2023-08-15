@@ -24,12 +24,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+
 using MNM = Microsoft.Azure.Management.Network.Models;
+
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new Load Balancer. Please note that it will become the default behavior for Load Balancer creation in the future.")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class NewAzureRmLoadBalancer : NetworkBaseCmdlet
     {
@@ -187,25 +188,44 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             // Sku
-            PSLoadBalancerSku vSku = null;
+            PSLoadBalancerSku vSku = new PSLoadBalancerSku();
+            vSku.Name = "Standard";
 
             if (this.Sku != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Name = this.Sku;
             }
 
             // Tier
             if (this.Tier != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Tier = this.Tier;
+            }
+
+            if ((vSku.Tier ?? string.Empty) == "Global")
+            {
+                if ((this.InboundNatRule?.Count() ?? 0) > 0 || (this.OutboundRule?.Count() ?? 0) > 0)
+                {
+                    throw new ArgumentException("Only load balancing rules are supported on global load balancers.");
+                }
+
+                if ((this.Probe?.Count() ?? 0) > 0)
+                {
+                    throw new ArgumentException("User defined probes are not supported on global load balancers.");
+                }
+
+                foreach (PSLoadBalancingRule lbRule in this.LoadBalancingRule?.ToList() ?? new List<PSLoadBalancingRule>())
+                {
+                    if (lbRule.EnableTcpReset == true)
+                    {
+                        throw new ArgumentException("TCP reset is not supported on global load balancers.");
+                    }
+
+                    if (lbRule.IdleTimeoutInMinutes != Constants.LoadBalancingIdleTimeoutDefault)
+                    {
+                        throw new ArgumentException("Idle timeout is not supported on global load balancers.");
+                    }
+                }
             }
 
             var vLoadBalancer = new PSLoadBalancer
@@ -266,7 +286,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -282,7 +301,6 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(psLoadBalancer, true);
             },
             () => present);
-
         }
     }
 }

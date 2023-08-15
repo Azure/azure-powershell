@@ -72,7 +72,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
 #>
 function Update-AzVMwarePrivateCloud {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]

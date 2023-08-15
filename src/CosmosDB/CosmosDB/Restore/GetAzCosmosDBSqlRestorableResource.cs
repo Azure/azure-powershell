@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
-            foreach (DatabaseRestoreResource restorableSqlResource in restorableSqlResources)
+            foreach (RestorableSqlResourcesGetResult restorableSqlResource in restorableSqlResources)
             {
-                WriteObject(new PSDatabaseToRestore(restorableSqlResource));
+                WriteObject(new PSDatabaseToRestore(new DatabaseRestoreResource(restorableSqlResource.DatabaseName, restorableSqlResource.CollectionNames)));
             }
         }
     }

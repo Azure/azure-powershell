@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareglobalreachconnection
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareglobalreachconnection
 schema: 2.0.0
 ---
 

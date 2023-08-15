@@ -25,7 +25,7 @@ New-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -Mach
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehcrpassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehcrpassignment
 #>
 function New-AzAutomanageConfigProfileHcrpAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]

@@ -21,12 +21,12 @@ Create an in-memory object for ConfluentBootstrapServer.
 Create an in-memory object for ConfluentBootstrapServer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentBootstrapServer
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer
 .Link
-https://docs.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
+https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentbootstrapserverobject
 #>
 function New-AzServiceLinkerConfluentBootstrapServerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentBootstrapServer')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,7 +41,7 @@ function New-AzServiceLinkerConfluentBootstrapServerObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ConfluentBootstrapServer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentBootstrapServer]::New()
 
         if ($PSBoundParameters.ContainsKey('Endpoint')) {
             if($Endpoint -notmatch ".*confluent.cloud:[0-9]*") {

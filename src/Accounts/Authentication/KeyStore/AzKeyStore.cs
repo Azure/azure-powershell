@@ -11,12 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Newtonsoft.Json;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -24,215 +20,99 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         public const string Name = "AzKeyStore";
 
-        internal class KeyStoreElement
+        public string FileName { get; set; }
+        public string Directory { get; set; }
+
+        private IKeyCache _inMemoryKeyCache = null;
+        public IKeyCache InMemoryKeyCache
         {
-            public string keyType;
-            public string keyStoreKey;
-            public string valueType;
-            public string keyStoreValue;
+            get => _inMemoryKeyCache;
+            set => _inMemoryKeyCache = value;
         }
 
-        private static IDictionary<Type, string> _typeNameMap = new ConcurrentDictionary<Type, string>();
-
-        private static IDictionary<string, JsonConverter> _elementConverterMap = new ConcurrentDictionary<string, JsonConverter>();
-
-        public static void RegisterJsonConverter(Type type, string typeName, JsonConverter converter = null)
-        {
-            if (string.IsNullOrEmpty(typeName))
-            {
-                throw new ArgumentNullException($"typeName cannot be empty.");
-            }
-            if (_typeNameMap.ContainsKey(type))
-            {
-                if (string.Compare(_typeNameMap[type], typeName) != 0)
-                {
-                    throw new ArgumentException($"{typeName} has conflict with {_typeNameMap[type]} with reference to {type}.");
-                }
-            }
-            else
-            {
-                _typeNameMap[type] = typeName;
-            }
-            if (converter != null)
-            {
-                _elementConverterMap[_typeNameMap[type]] = converter;
-            }
-        }
-
-        private IDictionary<IKeyStoreKey, Object> _credentials = new ConcurrentDictionary<IKeyStoreKey, Object>();
-        private IStorage _storage = null;
-
-        private bool autoSave = true;
-        private Exception lastError = null;
-
-        public IStorage Storage
-        {
-            get => _storage;
-            set => _storage = value;
-        }
+        private IStorage inputStorage = null;
 
         public bool IsProtected
         {
-            get => Storage.IsProtected;
+            get;
+            private set;
         }
 
-        public AzKeyStore()
+        public AzKeyStore(string directory, string fileName, bool enableContextAutoSaving = true, IStorage storage = null)
         {
+            InMemoryKeyCache = new InMemoryKeyCache();
 
-        }
-
-        public AzKeyStore(string directory, string fileName, bool loadStorage = true, bool autoSaveEnabled = true, IStorage inputStorage = null)
-        {
-            autoSave = autoSaveEnabled;
-            Storage = inputStorage ?? new StorageWrapper()
+            if (enableContextAutoSaving)
             {
-                FileName = fileName,
-                Directory = directory
-            };
-            Storage.Create();
-
-            if (loadStorage&&!LoadStorage())
-            {
-                throw new InvalidOperationException("Failed to load keystore from storage.");
+                InMemoryKeyCache.SetBeforeAccess(LoadStorage);
+                InMemoryKeyCache.SetOnUpdate(UpdateStorage);
             }
+
+            FileName = fileName;
+            Directory = directory;
+
+            inputStorage = storage;
+
+            Common.InMemoryKeyCache.RegisterJsonConverter(typeof(ServicePrincipalKey), typeof(ServicePrincipalKey).Name);
+            Common.InMemoryKeyCache.RegisterJsonConverter(typeof(SecureString), typeof(SecureString).Name, new SecureStringConverter());
         }
 
-        private object Deserialize(string typeName, string value)
-        {
-            Type t = null;
-            t = _typeNameMap.FirstOrDefault(item => item.Value == typeName).Key;
 
-            if (t != null)
-            {
-                if (_elementConverterMap.ContainsKey(typeName))
-                {
-                    return JsonConvert.DeserializeObject(value, t, _elementConverterMap[typeName]);
-                }
-                else
-                {
-                    return JsonConvert.DeserializeObject(value, t);
-                }
-            }
-            return null;
+        private void LoadStorage(KeyStoreNotificationArgs args)
+        {
+            var asyncHelper = StorageHelper.GetStorageHelperAsync(true, FileName, Directory, args.KeyCache, inputStorage);
+            var helper = asyncHelper.GetAwaiter().GetResult();
+            IsProtected = helper.IsProtected;
         }
 
-        public bool LoadStorage()
+        private void UpdateStorage(KeyStoreNotificationArgs args)
         {
-            try
-            {
-                var data = Storage.ReadData();
-                if (data != null && data.Length > 0)
-                {
-                    var rawJsonString = Encoding.UTF8.GetString(data);
-                    var serializableKeyStore = JsonConvert.DeserializeObject(rawJsonString, typeof(List<KeyStoreElement>)) as List<KeyStoreElement>;
-                    if (serializableKeyStore != null)
-                    {
-                        foreach (var item in serializableKeyStore)
-                        {
-                            IKeyStoreKey keyStoreKey = Deserialize(item.keyType, item.keyStoreKey) as IKeyStoreKey;
-                            if (keyStoreKey == null)
-                            {
-                                throw new ArgumentException($"Cannot parse the keystore {item.keyStoreKey} with the type {item.keyType}.");
-                            }
-                            var keyStoreValue = Deserialize(item.valueType, item.keyStoreValue);
-                            if (keyStoreValue == null)
-                            {
-                                throw new ArgumentException($"Cannot parse the keystore {item.keyStoreValue} with the type {item.valueType}.");
-                            }
-                            _credentials[keyStoreKey] = keyStoreValue;
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                lastError = e;
-                return false;
-            }
-            return true;
-        }
-
-        public void ClearCache()
-        {
-            _credentials.Clear();
+            var asyncHelper = StorageHelper.GetStorageHelperAsync(false, FileName, Directory, args.KeyCache, inputStorage);
+            var helper = asyncHelper.GetAwaiter().GetResult();
+            helper.WriteToCachedStorage(args.KeyCache);
         }
 
         public void Clear()
         {
-            ClearCache();
-            Storage.Clear();
-        }
-
-        public void Flush()
-        {
-            IList<KeyStoreElement> serializableKeyStore = new List<KeyStoreElement>();
-            foreach (var item in _credentials)
-            {
-                var keyType = _typeNameMap[item.Key.GetType()];
-                var key = _elementConverterMap.ContainsKey(keyType) ?
-                      JsonConvert.SerializeObject(item.Key, _elementConverterMap[keyType]) : JsonConvert.SerializeObject(item.Key);
-                if (!string.IsNullOrEmpty(key))
-                {
-                    var valueType = _typeNameMap[item.Value.GetType()];
-                    serializableKeyStore.Add(new KeyStoreElement()
-                    {
-                        keyType = keyType,
-                        keyStoreKey = key,
-                        valueType = valueType,
-                        keyStoreValue = _elementConverterMap.ContainsKey(valueType) ?
-                                        JsonConvert.SerializeObject(item.Value, _elementConverterMap[valueType]) : JsonConvert.SerializeObject(item.Value),
-                    }) ;
-                }
-            }
-            var JsonString = JsonConvert.SerializeObject(serializableKeyStore);
-            Storage.WriteData(Encoding.UTF8.GetBytes(JsonString));
+            InMemoryKeyCache.Clear();
         }
 
         public void Dispose()
         {
-            if (autoSave)
-            {
-                Flush();
-            }
-            ClearCache();
+            StorageHelper.TryClearLockedStorageHelper();
         }
 
-        public void SaveKey<T>(IKeyStoreKey key, T value)
+        public void SaveSecureString(IKeyStoreKey key, SecureString value)
         {
-            if (!_typeNameMap.ContainsKey(key.GetType()) || !_typeNameMap.ContainsKey(value.GetType()))
-            {
-                throw new InvalidOperationException("Please register key & values type before save it.");
-            }
-            _credentials[key] = value;
+            InMemoryKeyCache.SaveKey(key, value);
         }
 
-        public T GetKey<T>(IKeyStoreKey key)
+        public SecureString GetSecureString(IKeyStoreKey key)
         {
-            if (!_credentials.ContainsKey(key))
-            {
-                throw new ArgumentException($"{key.ToString()} is not stored in AzKeyStore yet.");
-            }
-            return (T)_credentials[key];
+            return InMemoryKeyCache.GetKey<SecureString>(key);
         }
 
-        public bool DeleteKey(IKeyStoreKey key)
+        public bool RemoveSecureString(IKeyStoreKey key)
         {
-            return _credentials.Remove(key);
+            return InMemoryKeyCache.DeleteKey(key);
         }
 
-        public void EnableAutoSaving()
+        /* Case1: enable --> disable; The methold just unbind the StorageHelper, no influence to InMemoryKeyCache.
+         * Case2: disable (not enabled before) --> enable; The methold will have the storage data loaded before any access to InMemoryKeyCache;
+         *        InMemoryKeyCache data during the time of disabling will be discarded, which is consistant with the behaviour before AzKeyStore.
+         * Case3: disable (enabled before) --> enable; The data from storage is already loaded and won't be loaded again.
+         *        Both storage data and InMemoryKeyCache data can be preserved.
+         */
+        public void EnableSyncToStorage()
         {
-            autoSave = true;
+            InMemoryKeyCache.SetBeforeAccess(LoadStorage);
+            InMemoryKeyCache.SetOnUpdate(UpdateStorage);
         }
 
-        public void DisableAutoSaving()
+        public void DisableSyncToStorage()
         {
-            autoSave = false;
-        }
-
-        public Exception GetLastError()
-        {
-            return lastError;
+            InMemoryKeyCache.SetBeforeAccess(null);
+            InMemoryKeyCache.SetOnUpdate(null);
         }
     }
 }

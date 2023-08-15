@@ -16,14 +16,11 @@ This command gets all cloud services in resource group named ContosOrg
 ### Example 2: Get cloud service
 
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 $cloudService | Format-List
+```
+
+```output
 ResourceGroupName : ContosOrg
 Configuration     : xxxxxxxx
 ConfigurationUrl  :
@@ -43,7 +40,6 @@ Tag               : {
 Type              : Microsoft.Compute/cloudServices
 UniqueId          : xxxxxxxx
 UpgradeMode       : Auto
-
 ```
 
 This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.

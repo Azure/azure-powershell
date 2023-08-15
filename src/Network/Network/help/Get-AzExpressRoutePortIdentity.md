@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azexpressrouteportidentity
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azexpressrouteportidentity
 schema: 2.0.0
 ---
 
@@ -74,6 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Set-AzExpressRoutePortIdentity](./Set-AzExpressRoutePortIdentity.md)
 
 [New-AzExpressRoutePortIdentity](./New-AzExpressRoutePortIdentity.md)

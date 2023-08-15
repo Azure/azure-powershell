@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BCCBB05B-A5D7-4796-BE55-6BE5E18E07FC
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccountsastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageaccountsastoken
 schema: 2.0.0
 ---
 
@@ -28,22 +28,22 @@ An account SAS is secured using the storage account key. To create an account SA
 ## EXAMPLES
 
 ### Example 1: Create an account-level SAS token with full permission
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
+```powershell
+New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup"
 ```
 
 This command creates an account-level SAS token with full permission.
 
 ### Example 2: Create an account-level SAS token for a range of IP addresses and EncryptionScope
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70 -EncryptionScope scopename
+```powershell
+New-AzStorageAccountSASToken -Service Blob,File,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -IPAddressOrRange 168.1.5.60-168.1.5.70 -EncryptionScope scopename
 ```
 
 This command creates an account-level SAS token for HTTPS-only requests from the specified range of IP addresses, with a specific EncryptionScope.
 
 ### Example 3: Create an account-level SAS token valid for 24 hours
-```
-PS C:\> New-AzStorageAccountSASToken -Service Blob -ResourceType Service,Container,Object -Permission "rl" -ExpiryTime (Get-Date).AddDays(1)
+```powershell
+New-AzStorageAccountSASToken -Service Blob -ResourceType Service,Container,Object -Permission "rl" -ExpiryTime (Get-Date).AddDays(1)
 ```
 
 This command creates an read-only account-level SAS token that is valid for 24 hours. 

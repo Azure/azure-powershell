@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azipallocation
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azipallocation
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Creates an Azure IpAllocation.
 ## SYNTAX
 
 ```
-New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String>
- -IpAllocationType <String> [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>]
- [-IpamAllocationId <String>] [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String> -IpAllocationType <String>
+ [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>] [-IpamAllocationId <String>]
+ [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

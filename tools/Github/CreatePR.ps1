@@ -31,10 +31,15 @@ param(
     [string]$BaseBranch,
 
     [Parameter(Mandatory = $false)]
-    [string]$Description
+    [string]$Description,
+
+    [Parameter(Mandatory = $false)]
+    [boolean]$Draft = $false,
+
+    [switch]$FailOnPRExisted = $false
 )
 
-$Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $BotAccessToken"}
+$Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $BotAccessToken" }
 $PrBody = @"
 <!-- DO NOT DELETE THIS TEMPLATE -->
 
@@ -63,5 +68,23 @@ $Description
 * **SHOULD NOT** introduce [breaking changes](../blob/main/documentation/breaking-changes/breaking-changes-definition.md) in Az minor release except preview version.
 * **SHOULD NOT** adjust version of module manually in pull request
 "@
-$RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch }
-Invoke-WebRequest -Uri https://api.github.com/repos/Azure/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+
+$RequestBody = @{"title" = $Title; "body" = $PrBody; "head" = $HeadBranch; "base" = $BaseBranch; "draft" = $Draft}
+$Uri = "https://api.github.com/repos/Azure/azure-powershell/pulls"
+
+$PrUri = "https://api.github.com/repos/Azure/azure-powershell/pulls?head=Azure:$HeadBranch&base=$BaseBranch"
+$PullRequests = Invoke-RestMethod -Uri $PrUri -Method GET -Headers $Headers 
+if ($PullRequests.Length -eq 0) {
+    Invoke-WebRequest -Uri $Uri -Method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+    exit 0
+}
+
+if ($FailOnPRExisted) {
+    Write-Error "The PR named $Title already exists."
+    exit 1
+}
+else {
+    Write-Host "The PR named $Title already exists. Skipping creation because FailOnPRExisted is set to $FailOnPRExisted."
+    exit 0
+}
+

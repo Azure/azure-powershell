@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappcustomdomain
+online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappcustomdomain
 schema: 2.0.0
 ---
 

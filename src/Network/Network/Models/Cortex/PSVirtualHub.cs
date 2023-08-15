@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVirtualHub : PSTopLevelResource
     {
@@ -43,9 +44,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSBgpConnection> BgpConnections { get; set; }
 
+        public List<PSRouteMap> RouteMaps { get; set; }
+
         public uint VirtualRouterAsn { get; set; }
 
         public List<string> VirtualRouterIps { get; set; }
+
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
 
         public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 

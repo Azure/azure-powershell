@@ -31,7 +31,7 @@ Name              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
 #>
 function New-AzPurviewFilterObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter])]

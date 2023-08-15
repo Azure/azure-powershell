@@ -56,7 +56,7 @@ Type                         : Microsoft.EdgeOrder/addresses
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderaddress
 #>
 function Get-AzEdgeOrderAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource])]

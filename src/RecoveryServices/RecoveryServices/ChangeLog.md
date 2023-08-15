@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added StorageAccountName property to AzureFileShare job.
+* Added support for AFS restore to alternate storage account in different region and resource group than source storage account.
+
+## Version 6.5.0
+* Added CRR support for new regions malaysiasouth, chinanorth3, chinaeast3, jioindiacentral, jioindiawest.
+* Regenerated CRR SDK. Fixed issues with SQL CRR.
+* Fixed bug with rp expiry time, making 30 days expiry time for adhoc backup as default from client side.
+* Added example to fetch pruned recovery points after modify policy.
+* Fixed the documentation for suspend backups with immutability.
+
+## Version 6.4.0
+* Added support for updating CrossSubscriptionRestoreState of the vault
+* Added Cross subscription restore support for workload type MSSQL
+
+## Version 6.3.0
+* Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery
+
+## Version 6.2.0
+* Added support for enable/disable Public Network Access and PrivateEndpoints
+* Added support for Immutable Vaults
+* Added support for RetainRecoveryPointsAsPerPolicy in Disable-AzRecoveryServicesBackupProtection cmdlet. Now user can suspend backups and retain RPs as per policy
+* Added List Recovery Point expiry time
+* Added RecoveryServices, RecoveryServices.Backup, RecoveryServices.Backup.CrossRegionRestore management SDK
+* Added support for non-UTC time zones with standard policy for workloadType IaasVM, MSSql, AzureFiles
 
 ## Version 6.1.2
 * Added support for passing DiskEncryptionSetId for Cross region restore

@@ -137,5 +137,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedundant");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDatabaseCopyWithPerDBCMK()
+        {
+            TestRunner.RunTestScript("Test-CreateDatabaseCopyWithPerDBCMK");
+        }
     }
 }

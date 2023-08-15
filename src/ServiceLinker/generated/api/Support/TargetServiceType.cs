@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType ConfluentSchemaRegistry = @"ConfluentSchemaRegistry";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType SelfHostedServer = @"SelfHostedServer";
+
         /// <summary>the value for an instance of the <see cref="TargetServiceType" /> Enum.</summary>
         private string _value { get; set; }
 

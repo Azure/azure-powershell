@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
+online version: https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
 schema: 2.0.0
 ---
 

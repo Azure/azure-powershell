@@ -27,7 +27,7 @@ Lists available operations for the Microsoft.VirtualMachineImages provider
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderoperation
+https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderoperation
 #>
 function Get-AzImageBuilderOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IOperation])]

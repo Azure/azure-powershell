@@ -1,46 +1,39 @@
-### Example 1: List (Default)
+### Example 1: List DigitalTwinsInstances resource.
 ```powershell
-PS C:\> Get-AzDigitalTwinsInstance
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
-eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
+Get-AzDigitalTwinsInstance
 ```
 
-Get all the DigitalTwinsInstance by default
-
-### Example 2: Get
-```powershell
-PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
-
-Location Name             Type
--------- ----             ----
-eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                      Location ResourceGroupName
+----                      -------- -----------------
+azps-dt                   eastus   azps_test_group
+azps-digitaltwin-instance eastus   azps_test_group
 ```
 
-Get the specified AzDigitalTwinsInstance by ResourceName
+List DigitalTwinsInstances resource.
 
-### Example 3: GetViaIdentity
+### Example 2: Get DigitalTwinsInstances resource by ResourceGroup.
 ```powershell
-PS C:\> $NewAzDigital = New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin -Location eastus
-Get-AzDigitalTwinsInstance -inputObject $NewAzDigital
-
-Location Name             Type
--------- ----             ----
-eastus   youriDigitalTwin Microsoft.DigitalTwins/digitalTwinsInstances
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group
 ```
 
-Get the specified AzDigitalTwinsInstance by Object
-
-### Example 4: List1
-```powershell
-PS C:\> Get-AzDigitalTwinsInstance -ResourceGroupName youritemp
-
-Location Name                    Type
--------- ----                    ----
-eastus   youriDigitalTwinsTest   Microsoft.DigitalTwins/digitalTwinsInstances
-eastus   youriDigitalTwin        Microsoft.DigitalTwins/digitalTwinsInstances
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Get all the DigitalTwinsInstance by ResourceGroupName
+Get DigitalTwinsInstances resource by ResourceGroup.
+
+### Example 3: Get DigitalTwinsInstances resource by Instance Name.
+```powershell
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance
+```
+
+```output
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
+```
+
+Get DigitalTwinsInstances resource by Instance Name.

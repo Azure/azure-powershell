@@ -29,7 +29,7 @@ confluent   Microsoft.Confluent/offertypes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentmarketplaceagreement
 #>
 function Get-AzConfluentMarketplaceAgreement {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IConfluentAgreementResource])]

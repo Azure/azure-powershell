@@ -10,14 +10,13 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Error details.
+    /// The error detail.
     /// </summary>
     public partial class ErrorDetail
     {
@@ -32,17 +31,18 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// <summary>
         /// Initializes a new instance of the ErrorDetail class.
         /// </summary>
-        /// <param name="code">The error's code.</param>
-        /// <param name="message">A human readable error message.</param>
-        /// <param name="target">Indicates which property in the request is
-        /// responsible for the error.</param>
-        /// <param name="details">Additional error details.</param>
-        public ErrorDetail(string code, string message, string target = default(string), IList<ErrorDetail> details = default(IList<ErrorDetail>))
+        /// <param name="code">The error code.</param>
+        /// <param name="message">The error message.</param>
+        /// <param name="target">The error target.</param>
+        /// <param name="details">The error details.</param>
+        /// <param name="additionalInfo">The error additional info.</param>
+        public ErrorDetail(string code = default(string), string message = default(string), string target = default(string), IList<ErrorDetail> details = default(IList<ErrorDetail>), IList<ErrorAdditionalInfo> additionalInfo = default(IList<ErrorAdditionalInfo>))
         {
             Code = code;
             Message = message;
             Target = target;
             Details = details;
+            AdditionalInfo = additionalInfo;
             CustomInit();
         }
 
@@ -52,56 +52,34 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error's code.
+        /// Gets the error code.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
+        public string Code { get; private set; }
 
         /// <summary>
-        /// Gets or sets a human readable error message.
+        /// Gets the error message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
-        public string Message { get; set; }
+        public string Message { get; private set; }
 
         /// <summary>
-        /// Gets or sets indicates which property in the request is responsible
-        /// for the error.
+        /// Gets the error target.
         /// </summary>
         [JsonProperty(PropertyName = "target")]
-        public string Target { get; set; }
+        public string Target { get; private set; }
 
         /// <summary>
-        /// Gets or sets additional error details.
+        /// Gets the error details.
         /// </summary>
         [JsonProperty(PropertyName = "details")]
-        public IList<ErrorDetail> Details { get; set; }
+        public IList<ErrorDetail> Details { get; private set; }
 
         /// <summary>
-        /// Validate the object.
+        /// Gets the error additional info.
         /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (Code == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Code");
-            }
-            if (Message == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Message");
-            }
-            if (Details != null)
-            {
-                foreach (var element in Details)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-        }
+        [JsonProperty(PropertyName = "additionalInfo")]
+        public IList<ErrorAdditionalInfo> AdditionalInfo { get; private set; }
+
     }
 }

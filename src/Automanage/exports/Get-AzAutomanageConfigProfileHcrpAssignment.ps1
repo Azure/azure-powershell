@@ -48,7 +48,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehcrpassignment
+https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehcrpassignment
 #>
 function Get-AzAutomanageConfigProfileHcrpAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]

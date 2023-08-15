@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmsecret
 schema: 2.0.0
 ---
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -CertificateUrl
 This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-For adding a secret to the Key Vault, see \[Add a key or secret to the key vault\](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+For adding a secret to the Key Vault, see \[Add a key or secret to the key vault\](https://learn.microsoft.com/azure/key-vault/key-vault-get-started/#add).
 In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: \<br\>\<br\> {\<br\>  "data":"\<Base64-encoded-certificate\>",\<br\>  "dataType":"pfx",\<br\>  "password":"\<pfx-file-password\>"\<br\>}/
 
 ```yaml

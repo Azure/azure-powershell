@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 schema: 2.0.0
 ---
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-Name of the image that will be used for the environment.\<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /\>
+Name of the image that will be used for the environment.\<seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" /\>
 
 ```yaml
 Type: System.String

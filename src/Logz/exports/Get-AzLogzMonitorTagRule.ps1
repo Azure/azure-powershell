@@ -50,7 +50,7 @@ INPUTOBJECT <ILogzIdentity>: Identity Parameter
   [SubAccountName <String>]: Sub Account resource name
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitortagrule
 #>
 function Get-AzLogzMonitorTagRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoringTagRules])]

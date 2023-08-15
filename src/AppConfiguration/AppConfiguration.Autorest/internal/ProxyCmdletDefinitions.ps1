@@ -27,7 +27,7 @@ Lists the operations available from this provider.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IOperationDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationoperation
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationoperation
 #>
 function Get-AzAppConfigurationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IOperationDefinition])]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -156,7 +157,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
 REGENERATEKEYPARAMETER <IRegenerateKeyParameters>: The parameters used to regenerate an API key.
   Id <String>: The id of the key to regenerate.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
+https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 #>
 function New-AzAppConfigurationStoreKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey])]
@@ -200,7 +201,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -308,7 +310,7 @@ New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupNa
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationstore
 #>
 function New-AzAppConfigurationStore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
@@ -418,7 +420,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -552,7 +555,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationoperation
+https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationoperation
 #>
 function Test-AzAppConfigurationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
@@ -599,7 +602,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -721,7 +725,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
+https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationstorenameavailability
 #>
 function Test-AzAppConfigurationStoreNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
@@ -753,7 +757,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -871,7 +876,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
+https://learn.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
 #>
 function Update-AzAppConfigurationStore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore])]
@@ -969,7 +974,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

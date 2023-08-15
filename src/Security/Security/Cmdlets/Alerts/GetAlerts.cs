@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 {
-    [CmdletOutputBreakingChange(typeof(PSSecurityAlert), ReplacementCmdletOutputTypeName = "PSSecurityAlertV3")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlert))]
     public class GetAlerts : SecurityCenterCmdletBase
     {
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     break;
                 case ParameterSetNames.ResourceGroupLevelResource:
                     SecurityCenterClient.AscLocation = Location;
-                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
+                    alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
@@ -107,7 +106,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     }
                     else
                     {
-                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId), rg).GetAwaiter().GetResult().Body;
+                        alert = SecurityCenterClient.Alerts.GetResourceGroupLevelWithHttpMessagesAsync(rg, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
                     }
 
                     WriteObject(alert.ConvertToPSType(), enumerateCollection: false);

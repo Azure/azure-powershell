@@ -35,6 +35,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             var context = new MockConditionalAssemblyContext()
             {
                 OS = OSPlatform.Windows,
+                PSEdition = Constants.PSEditionDesktop,
                 PSVersion = Version.Parse("5.1.22621.608"),
                 OSArchitecture = Architecture.X64
             };
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             var context = new MockConditionalAssemblyContext()
             {
                 OS = OSPlatform.Windows,
+                PSEdition = Constants.PSEditionCore,
                 PSVersion = Version.Parse("7.3.0"),
                 OSArchitecture = Architecture.X64
             };

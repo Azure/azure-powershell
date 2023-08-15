@@ -2,29 +2,29 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 39AADD19-2EDD-4C1F-BC9E-22186DD9A085
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem
 schema: 2.0.0
 ---
 
 # Set-AzVMOperatingSystem
 
 ## SYNOPSIS
-Sets operating system properties during the creation of a new virtual machine.
+Sets operating system properties during the creation of a new virtual machine or updating a virtual machine.
 
 ## SYNTAX
 
 ### Windows (Default)
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsWinRmHttps
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -32,16 +32,16 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 
 ### WindowsDisableVMAgent
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgentWinRmHttps
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -49,9 +49,9 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 
 ### Linux
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <String> [-Credential] <PSCredential>
- [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication] [-AssessmentMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
+ [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +167,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,7 +184,7 @@ Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomData
-Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/custom-data).
+Specifies a string to be passed to the virtual machine. For more information see [Custom Data on Azure VMs](https://learn.microsoft.com/azure/virtual-machines/custom-data).
 **Note: It is not recommended to store sensitive information in custom data.**
 
 
@@ -291,7 +291,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Linux
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -335,7 +335,7 @@ Accept wildcard characters: False
 
 ### -TimeZone
 Specifies the time zone of the virtual machine. e.g. \"Pacific Standard Time\". <br>
-Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+Possible values can be [TimeZoneInfo.Id](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://learn.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 
 ```yaml
 Type: System.String
@@ -374,7 +374,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

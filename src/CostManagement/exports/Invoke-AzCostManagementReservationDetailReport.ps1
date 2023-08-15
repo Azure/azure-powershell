@@ -18,18 +18,18 @@
 .Synopsis
 Generates the reservations details report for provided date range asynchronously based on enrollment id.
 The Reservation usage details can be viewed only by certain enterprise roles.
-For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
 .Description
 Generates the reservations details report for provided date range asynchronously based on enrollment id.
 The Reservation usage details can be viewed only by certain enterprise roles.
-For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
 .Example
 Invoke-AzCostManagementReservationDetailReport -BillingAccountId "00000000-0000-0000-0000-0000000000" -StartDate "2022-10-01" -EndDate "2022-10-20"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
+https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementreservationdetailreport
 #>
 function Invoke-AzCostManagementReservationDetailReport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus])]

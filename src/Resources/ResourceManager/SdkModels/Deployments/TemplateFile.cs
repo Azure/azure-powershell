@@ -21,8 +21,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         [JsonProperty("parameters")]
         public IDictionary<string, TemplateFileParameterV1> Parameters { get; set; }
-
-        [JsonProperty("resources")]
-        public List<TemplateFileResource> Resources { get; set; }
     }
 }

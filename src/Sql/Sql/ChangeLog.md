@@ -18,8 +18,81 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed cmdlets to use 2018-06-01-preview api version
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation',
 
-Added `isManagedIdentityInUse` parameter for `Get-AzSqlServerMSSupportAudit`
+## Version 4.9.0
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
+
+## Version 4.8.0
+* Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
+* Added new cmdlets for managed database move and copy operations
+    - 'Copy-AzSqlInstanceDatabase'
+    - 'Move-AzSqlInstanceDatabase'
+    - 'Complete-AzSqlInstanceDatabaseCopy'
+    - 'Stop-AzSqlInstanceDatabaseCopy'
+    - 'Complete-AzSqlInstanceDatabaseMove'
+    - 'Stop-AzSqlInstanceDatabaseMove'
+    - 'Get-AzSqlInstanceDatabaseMoveOperation'
+    - 'Get-AzSqlInstanceDatabaseCopyOperation'
+
+
+## Version 4.7.0
+* Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`
+* Added `EnableLedger` parameter to `New-AzSqlInstanceDatabase`
+* Added `PreferredEnclaveType` parameter to `NewAzureSqlElasticPool` and `SetAzureSqlElasticPool` cmdlet
+* Added "None" as an option for -MinimalTlsVersion for the cmdlet 'Set-AzSqlServer'
+
+## Version 4.6.0
+* Added new cmdlets for managing server configuration options
+    - 'Set-AzSqlServerConfigurationOption'
+    - 'Get-AzSqlServerConfigurationOption'
+
+## Version 4.5.0
+* Added a new cmdlet to refresh external governance status
+    - 'Invoke-AzSqlServerExternalGovernanceStatusRefresh'
+
+## Version 4.4.0
+* Fixed identity assignment in `Set-AzSqlDatabase` cmdlet
+* Added new parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` cmdlets
+   - AssignIdentity
+   - EncryptionProtector
+   - UserAssignedIdentityId
+   - KeyList
+   - KeysToRemove
+   - FederatedClientId
+* Added 'ExpandKeyList' and 'KeysFilter' parameters to `Get-AzSqlDatabaseGeoBackup` and `Get-SqlDeletedDatabaseBackup`
+* Added new cmdlets for Per DB CMK
+   - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
+
+## Version 4.3.0
+* Added an optional parameter `HAReplicaCount` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managed instance DTC
+    `Get-AzSqlInstanceDtc`
+    `Set-AzSqlInstanceDtc`
+* Added `TargetSubscriptionId` to `Restore-AzSqlInstanceDatabase` in order to enable cross subscription restore
+* Enabled support for UserAssignedManagedIdentity in Auditing
+* Fixed WorkspaceResourceId parameter value in `Set-AzSqlServerAudit`
+
+## Version 4.2.0
+* Added a parameter named `UseIdentity` for `Set-AzSqlServerAudit`, `Set-AzSqlDatabaseAudit`, `Set-AzSqlServerMSSupportAudit`
+* Added `IsManagedIdentityInUse` property to the output of `Get-AzSqlServerMSSupportAudit`
+* Added `PreferredEnclaveType` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase` and `Set-AzSqlDatabase` cmdlet
 
 ## Version 4.1.0
 * Added new cmdlets for CRUD operations on SQL server IPv6 Firewall rules

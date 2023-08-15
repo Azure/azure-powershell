@@ -25,7 +25,7 @@ New-AzMLWorkspaceBatchEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchendpoint
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchendpoint
 #>
 function New-AzMLWorkspaceBatchEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchEndpoint])]

@@ -27,7 +27,7 @@ Lists all of the available SQL Migration REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationsDefinition
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationoperation
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationoperation
 #>
 function Get-AzDataMigrationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationsDefinition])]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

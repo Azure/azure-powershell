@@ -27,7 +27,7 @@ Gets a list of hybrid compute operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IOperationValue
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedoperation
+https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedoperation
 #>
 function Get-AzConnectedOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IOperationValue])]

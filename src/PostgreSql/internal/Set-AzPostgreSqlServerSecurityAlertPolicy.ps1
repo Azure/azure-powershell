@@ -46,7 +46,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/set-azpostgresqlserversecurityalertpolicy
+https://learn.microsoft.com/powershell/module/az.postgresql/set-azpostgresqlserversecurityalertpolicy
 #>
 function Set-AzPostgreSqlServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy])]

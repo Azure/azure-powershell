@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 1.4.0
+* Updated Alerts cmdlets:
+    `Get-AzSecurityAlert`
+    `Set-AzSecurityAlert`
+* Moving Security Contacts to be based on the latest API version '2020-01-01-preview' with backward compatibility support
 ## Version 1.3.0
 * Added new cmdlet: `Get-AzSecuritySolution`
 * Added Alerts Suppression Rules to cmdlets:

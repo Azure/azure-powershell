@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 3AC3F8DE-E25D-41AE-9083-5C459A4C8CD0
-online version: https://docs.microsoft.com/powershell/module/az.storage/stop-azstoragefilecopy
+online version: https://learn.microsoft.com/powershell/module/az.storage/stop-azstoragefilecopy
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ Stop-AzStorageFileCopy [-ShareName] <String> [-FilePath] <String> [-CopyId <Stri
 
 ### File
 ```
-Stop-AzStorageFileCopy [-File] <CloudFile> [-CopyId <String>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Stop-AzStorageFileCopy [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CopyId <String>] [-Force]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -35,8 +35,8 @@ The **Stop-AzStorageFileCopy** cmdlet stops copying a file to a destination file
 ## EXAMPLES
 
 ### Example 1: Stop a copy operation
-```
-PS C:\>Stop-AzStorageFileCopy -ShareName "ContosoShare" -FilePath "FilePath" -CopyId "CopyId"
+```powershell
+Stop-AzStorageFileCopy -ShareName "ContosoShare" -FilePath "FilePath" -CopyId "CopyId"
 ```
 
 This command stops copying a file that has the specified name.
@@ -183,6 +183,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShareFileClient
+ShareFileClient object indicated the file to Stop Copy.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: File
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://docs.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
 schema: 2.0.0
 ---
 

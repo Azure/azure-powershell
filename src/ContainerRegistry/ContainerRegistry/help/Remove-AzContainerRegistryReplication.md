@@ -1,56 +1,51 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryreplication
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/remove-azcontainerregistryreplication
 schema: 2.0.0
 ---
 
 # Remove-AzContainerRegistryReplication
 
 ## SYNOPSIS
-Removes a container registry replication.
+Deletes a replication from a container registry.
 
 ## SYNTAX
 
-### NameResourceGroupParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ReplicationObjectParameterSet
-```
-Remove-AzContainerRegistryReplication -Replication <PSContainerRegistryReplication> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzContainerRegistryReplication -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzContainerRegistryReplication -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzContainerRegistryReplication -InputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzContainerRegistryReplication cmdlet removes a container registry replication.
+Deletes a replication from a container registry.
 
 ## EXAMPLES
 
-### Example 1: Removes a container registry replication.
+### Example 1: Deletes a replication from a container registry.
 ```powershell
-Remove-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "replication001"
+Remove-AzContainerRegistryReplication -Name "NewReplication" -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
 ```
 
-Removes a container registry replication.
+Deletes a replication from a container registry.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -59,24 +54,70 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Container Registry Replication Name.
-Default to the location name.
+The name of the replication.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Delete
 Aliases: ReplicationName, ResourceName
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns true if the removal was successful.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -91,62 +132,49 @@ Accept wildcard characters: False
 ```
 
 ### -RegistryName
-Container Registry Name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Delete
 Aliases: ContainerRegistryName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Replication
-Container Registry Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
-Parameter Sets: ReplicationObjectParameterSet
-Aliases: Replicatoin
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry replication resource id
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
+Parameter Sets: Delete
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,9 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
@@ -196,9 +222,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IContainerRegistryIdentity>`: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the agent pool.
+  - `[CacheRuleName <String>]`: The name of the cache rule.
+  - `[ConnectedRegistryName <String>]`: The name of the connected registry.
+  - `[CredentialSetName <String>]`: The name of the credential set.
+  - `[ExportPipelineName <String>]`: The name of the export pipeline.
+  - `[GroupName <String>]`: The name of the private link resource.
+  - `[Id <String>]`: Resource identity path
+  - `[ImportPipelineName <String>]`: The name of the import pipeline.
+  - `[PipelineRunName <String>]`: The name of the pipeline run.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[RegistryName <String>]`: The name of the container registry.
+  - `[ReplicationName <String>]`: The name of the replication.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RunId <String>]`: The run ID.
+  - `[ScopeMapName <String>]`: The name of the scope map.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[TaskName <String>]`: The name of the container registry task.
+  - `[TaskRunName <String>]`: The name of the task run.
+  - `[TokenName <String>]`: The name of the token.
+  - `[WebhookName <String>]`: The name of the webhook.
+
 ## RELATED LINKS
-
-[New-AzContainerRegistryReplication](New-AzContainerRegistryReplication.md)
-
-[Get-AzContainerRegistryReplication](Remove-AzContainerRegistryReplication.md)
-

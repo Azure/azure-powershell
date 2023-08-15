@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsesparkpool
 schema: 2.0.0
 ---
 
@@ -15,9 +15,9 @@ Creates a Synapse Analytics Spark pool.
 ### CreateByNameAndEnableAutoScaleParameterSet (Default)
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
- -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
- [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-EnableIsolatedCompute] -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32>
+ [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation]
+ [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] -SparkVersion <String>
  [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,18 +25,18 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
 ### CreateByNameAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Tag <Hashtable>]
- -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
+ [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndEnableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
- -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32> [-EnableAutoPause]
- [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
- [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfigFilePath <String>]
+ [-EnableIsolatedCompute] -NodeSize <String> -AutoScaleMinNodeCount <Int32> -AutoScaleMaxNodeCount <Int32>
+ [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation]
+ [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] -SparkVersion <String>
  [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -44,9 +44,9 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
 ### CreateByParentObjectAndDisableAutoScaleParameterSet
 ```
 New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
- -NodeCount <Int32> -NodeSize <String> [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>]
- [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>]
- -SparkVersion <String> [-SparkConfigFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
+ -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
+ [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
+ [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,6 +99,14 @@ $ws | New-AzSynapseSparkPool -Name ContosoSparkPool -AutoScaleMinNodeCount 3 -Au
 ```
 
 This command creates an Azure Synapse Analytics Spark pool with auto-scale enabled through pipeline.
+
+### Example 7
+```powershell
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseSparkPool -Name ContosoSparkPool -EnableIsolatedCompute -NodeSize XXXLarge -NodeCount 3 -SparkVersion 2.4
+```
+
+This command creates an Azure Synapse Analytics Spark pool with isolated compute enabled through pipeline.
 
 ## PARAMETERS
 
@@ -209,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableIsolatedCompute
+The Isolate Compute option is only available with the XXXLarge (80 vCPU / 504 GB) node size. Enabling this option offers isolation for Apache Spark compute for untrusted services. Isolated compute costs the same as the non-isolated VM of the same size. If you expect to enable Isolated Compute for spark pool, ensure that your Synapse workspace is created in an isolated compute supported region, please refer to this document for more details: https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-pool-configurations#isolated-compute.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxExecutorCount
 Maximum number of executors to be allocated in the specified Spark pool. This parameter can be specified when DynamicExecutorAllocation is enabled. The value should lie between 1 (inclusive) and maximumNodeCount (exclusive). If it is not specified manually, the default value will be 2.
 
@@ -277,7 +300,7 @@ This parameter must be specified when Auto-scale is disabled
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Small, Medium, Large
+Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: True
 Position: Named
@@ -292,21 +315,6 @@ Resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: CreateByNameAndEnableAutoScaleParameterSet, CreateByNameAndDisableAutoScaleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SparkConfigFilePath
-[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use "-SparkConfiguration" instead.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
 Aliases:
 
 Required: False

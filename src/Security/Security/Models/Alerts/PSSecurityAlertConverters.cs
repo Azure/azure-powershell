@@ -49,7 +49,11 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
                 Status = value.Status,
                 SystemAlertId = value.SystemAlertId,
                 TimeGeneratedUtc = value.TimeGeneratedUtc,
-                VendorName = value.VendorName
+                VendorName = value.VendorName,
+                Version = value.Version,
+                Techniques = value.Techniques?.ToList() ?? new List<string>(),
+                SubTechniques = value.SubTechniques?.ToList() ?? new List<string>(),
+                SupportingEvidence = value.SupportingEvidence?.ConvertToPSType()
             };
         }
 
@@ -69,6 +73,14 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
         public static List<PSSecurityAlertEntity> ConvertToPSType(this IEnumerable<AlertEntity> value)
         {
             return value.Select(aps => aps.ConvertToPSType()).ToList();
+        }
+
+        public static PSAlertPropertiesSupportingEvidence ConvertToPSType(this AlertPropertiesSupportingEvidence value)
+        {
+            return new PSAlertPropertiesSupportingEvidence
+            {
+                Type = value.Type
+            };
         }
     }
 }

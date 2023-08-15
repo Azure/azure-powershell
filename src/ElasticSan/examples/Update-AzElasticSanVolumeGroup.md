@@ -19,7 +19,6 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -27,7 +26,7 @@ This example updates the protocol type and virtual network rules of a volume gor
 
 ### Example 2: Update a volume group virtual network rule with JSON input 
 ```powershell
-Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} `
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi'`
             -NetworkAclsVirtualNetworkRule (
                 @{VirtualNetworkResourceId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1";
                     Action="Allow"},
@@ -48,7 +47,6 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 

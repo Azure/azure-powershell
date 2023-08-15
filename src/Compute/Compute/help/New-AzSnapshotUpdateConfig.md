@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
 schema: 2.0.0
 ---
 
@@ -18,7 +18,8 @@ New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemType
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-EdgeZone <String>]
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
  [-PublicNetworkAccess <String>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -204,6 +205,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -NetworkAccessPolicy
+Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -OsType
 Specifies the OS type.
 
@@ -251,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the snapshot supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

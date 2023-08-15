@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
+online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 schema: 2.0.0
 ---
 

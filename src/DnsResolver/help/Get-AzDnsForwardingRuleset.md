@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
 schema: 2.0.0
 ---
 
@@ -78,7 +78,7 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 
 This command gets single DNS forwarding ruleset by name.
 
-### Example 3: List all DNS forwarding ruleset under the resouce group
+### Example 3: List all DNS forwarding ruleset under the resource group
 ```powershell
 Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
 ```
@@ -91,7 +91,7 @@ westus2  pw-dnsForwardingRuleset  Microsoft.Network/dnsForwardingRulesets "08009
 westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
 ```
 
-This command gets all DNS forwarding ruleset under the resouce group.
+This command gets all DNS forwarding ruleset under the resource group.
 
 ### Example 4: List all DNS forwarding ruleset under the virtual network
 ```powershell

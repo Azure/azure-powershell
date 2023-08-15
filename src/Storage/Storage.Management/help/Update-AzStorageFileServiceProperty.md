@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstoragefileserviceproperty
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azstoragefileserviceproperty
 schema: 2.0.0
 ---
 
@@ -17,8 +17,8 @@ Modifies the service properties for the Azure Storage File service.
 Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
@@ -26,8 +26,8 @@ Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccou
 Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileServicePropertiesResourceId
@@ -35,8 +35,8 @@ Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
 Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
  [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-SmbProtocolVersion <String[]>]
  [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,10 +45,11 @@ The **Update-AzStorageFileServiceProperty** cmdlet modifies the service properti
 ## EXAMPLES
 
 ### Example 1: Enable File share softdelete
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5
+```
 
+```output
 StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True
@@ -63,10 +64,11 @@ ProtocolSettings.Smb.ChannelEncryption        :
 This command enables File share softdelete delete with retention days as 5
 
 ### Example 2: Enable Smb Multichannel
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
+```
 
+```output
 StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True
@@ -81,14 +83,15 @@ ProtocolSettings.Smb.ChannelEncryption        :
 This command enables Smb Multichannel, only supported on Premium FileStorage account.
 
 ### Example 3: Updates secure smb settings
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1  `
 			-SMBAuthenticationMethod Kerberos,NTLMv2 `
 			-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
-			-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM 
+			-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM
+```
 
+```output
 StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True
@@ -103,14 +106,15 @@ ProtocolSettings.Smb.ChannelEncryption        : {AES-128-CCM, AES-128-GCM, AES-2
 This command updates secure smb settings.
 
 ### Example 4: Clear secure smb settings
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
+Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 			-SMBProtocolVersion @() `
 			-SMBAuthenticationMethod @() `
 			-SMBKerberosTicketEncryption @() `
-			-SMBChannelEncryption @() 
+			-SMBChannelEncryption @()
+```
 
+```output
 StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True
@@ -124,7 +128,63 @@ ProtocolSettings.Smb.ChannelEncryption        :
 
 This command clears secure smb settings.
 
+### Example 5: Update CORS rules
+```powershell
+$CorsRules = (@{
+    AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition");
+    ExposedHeaders=@(); 
+    AllowedOrigins=@("*");
+    AllowedMethods=@("TRACE","CONNECT")},
+    @{
+    AllowedOrigins=@("http://www.fabrikam.com","http://www.contoso.com"); 
+    ExposedHeaders=@("x-ms-meta-data*","x-ms-meta-customheader"); 
+    AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
+    MaxAgeInSeconds=30;
+    AllowedMethods=@("PUT")})
+
+$property = Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule $CorsRules
+$property.Cors.CorsRulesProperty
+```
+
+```output
+AllowedOrigins  : {*}
+AllowedMethods  : {TRACE, CONNECT}
+MaxAgeInSeconds : 0
+ExposedHeaders  : {}
+AllowedHeaders  : {x-ms-blob-content-type, x-ms-blob-content-disposition}
+
+AllowedOrigins  : {http://www.fabrikam.com, http://www.contoso.com}
+AllowedMethods  : {PUT}
+MaxAgeInSeconds : 30
+ExposedHeaders  : {x-ms-meta-customheader, x-ms-meta-data*}
+AllowedHeaders  : {x-ms-meta-customheader, x-ms-meta-target*}
+```
+
+The first command assigns an array of rules to the $CorsRules variable. This command uses standard extends over several lines in this code block.
+The second command sets the rules in $CorsRules to the File service of a Storage account.
+
+### Example 6: Clean up CORS rules 
+```powershell
+Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule @()
+```
+This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule. 
+
 ## PARAMETERS
+
+### -CorsRule
+Specifies CORS rules for the File service.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSCorsRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

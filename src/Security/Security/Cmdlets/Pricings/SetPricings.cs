@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
         [ValidateNotNullOrEmpty]
         public string PricingTier { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.SubPlan)]
+        public string SubPlan { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityPricing InputObject { get; set; }
@@ -42,6 +45,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
         {
             var name = Name;
             var tier = PricingTier;
+            var subPlan = SubPlan;
 
             switch (ParameterSetName)
             {
@@ -50,6 +54,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
                 case ParameterSetNames.InputObject:
                     name = InputObject.Name;
                     tier = InputObject.PricingTier;
+                    subPlan = string.IsNullOrEmpty(InputObject.SubPlan) ? null : InputObject.SubPlan;
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -57,7 +62,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, tier).GetAwaiter().GetResult().Body;
+                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, tier, subPlan).GetAwaiter().GetResult().Body;
 
                 WriteObject(pricing.ConvertToPSType(), enumerateCollection: false); 
             }

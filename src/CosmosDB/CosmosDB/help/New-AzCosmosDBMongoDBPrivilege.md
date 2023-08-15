@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbprivilege
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbprivilege
 schema: 2.0.0
 ---
 
@@ -100,5 +100,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzCosmosDBMongoDBRoleDefinition](./New-AzCosmosDBMongoDBRoleDefinition.md)
 
 [Update-AzCosmosDBMongoDBRoleDefinition](./Update-AzCosmosDBMongoDBRoleDefinition.md)
-
-[Update-AzCosmosDBMongoDBPrivilegeResource](./Update-AzCosmosDBMongoDBPrivilegeResource.md)

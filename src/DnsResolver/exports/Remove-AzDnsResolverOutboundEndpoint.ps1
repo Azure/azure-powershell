@@ -48,7 +48,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolveroutboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolveroutboundendpoint
 #>
 function Remove-AzDnsResolverOutboundEndpoint {
 [OutputType([System.Boolean])]

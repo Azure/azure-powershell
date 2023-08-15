@@ -210,28 +210,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
-        [PSArgumentCompleter("Hot", "Cool", "Archive")]
-        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+                return accesstier?.ToString();
             }
 
             set
             {
                 if (value != null)
                 {
-                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    accesstier = new Track2Models.AccessTier(value);
+                    isBlockBlobAccessTier = true;
+                    if(accesstier.Value == Track2Models.AccessTier.Hot || accesstier.Value == Track2Models.AccessTier.Cool || accesstier.Value == Track2Models.AccessTier.Archive)
+                    {
+                        standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                    }
                 }
                 else
                 {
-                    standardBlobTier = null;
+                    accesstier = null;
                 }
             }
         }
+        private bool? isBlockBlobAccessTier = null;
+        private Track2Models.AccessTier? accesstier = null;
         private StandardBlobTier? standardBlobTier = null;
 
         [Parameter(HelpMessage = "Block Blob RehydratePriority. Indicates the priority with which to rehydrate an archived blob. Valid values are High/Standard.", Mandatory = false)]
@@ -488,7 +495,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
-            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -505,7 +512,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 destCloudBlob = Util.GetTrack2BlobClientWithType(destCloudBlob, destChannel.StorageContext, srcBlobType);
             }
-            ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(srcBlobType), pageBlobTier, standardBlobTier, rehydratePriority);
+            ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(srcBlobType), pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -670,6 +677,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel!=null && destChannel != null && 
                     Channel.StorageContext!= null && destChannel.StorageContext != null 
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null 
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous
@@ -705,6 +714,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (Channel != null && destChannel != null &&
                     Channel.StorageContext != null && destChannel.StorageContext != null
                     && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount != null
+                    && Channel.StorageContext.StorageAccount.Credentials != null
                     && Channel.StorageContext.StorageAccount.Credentials.IsToken)
                 {
                     // if inside same account, source blob can be anonumous
@@ -759,13 +770,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
                 }
 
-                ValidateBlobTier(destBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+                ValidateBlobTier(destBlob.BlobType, pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
 
                 if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
                 {
                     string copyId;
 
-                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
+                    //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://learn.microsoft.com/en-us/rest/api/storageservices/copy-blob
                     destBlob.Metadata.Clear();
 
                     // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
@@ -805,7 +816,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             if (destBlobType != null)
             {
-                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), pageBlobTier, standardBlobTier, rehydratePriority);
+                ValidateBlobTier(Util.convertBlobType_Track2ToTrack1(destBlobType), pageBlobTier, this.isBlockBlobAccessTier, rehydratePriority);
             }
 
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
@@ -817,9 +828,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(pageBlobTier);
                 }
-                else if (standardBlobTier != null || rehydratePriority != null)
+                else if (accesstier != null || rehydratePriority != null)
                 {
-                    options.AccessTier = Util.ConvertAccessTier_Track1ToTrack2(standardBlobTier);
+                    options.AccessTier = accesstier;
                     options.RehydratePriority = Util.ConvertRehydratePriority_Track1ToTrack2(rehydratePriority);
                 }
                 if (this.BlobTag != null)

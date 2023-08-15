@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azvpngateway
 schema: 2.0.0
 ---
 
@@ -116,6 +116,7 @@ $gw.BgpSettings.BgpPeeringAddresses[1].CustomBgpIpAddresses=$null
 $gw.BgpSettings.BgpPeeringAddresses
 Update-AzVpnGateway -InputObject $gw
 ```
+
 The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
 
 ### Example 4

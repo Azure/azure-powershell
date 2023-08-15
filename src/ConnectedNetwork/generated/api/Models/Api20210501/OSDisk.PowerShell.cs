@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501
 
     /// <summary>
     /// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about
-    /// disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    /// disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(OSDiskTypeConverter))]
     public partial class OSDisk
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501
         }
     }
     /// Specifies information about the operating system disk used by the virtual machine. <br><br> For more information about
-    /// disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    /// disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
     [System.ComponentModel.TypeConverter(typeof(OSDiskTypeConverter))]
     public partial interface IOSDisk
 

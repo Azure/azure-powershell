@@ -23,8 +23,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// Backup policy validation helpers.
     /// </summary>
     public partial class PolicyHelpers
-    {
-        
+    {        
+        /// <summary>
+        /// validates LTRP with tiering policy
+        /// </summary>
+        /// <param name="ltrPolicy"></param>
+        /// <param name="tieringPolicy"></param>
+        /// <param name="isPreviousTieringPolicy"> is an existing tiering policy</param>
+        /// <exception cref="ArgumentException"></exception>
         public static void ValidateLongTermRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false) 
         {
             // To enable Archive(either TierRecommended or TierAfter), Monthly or Yearly retention needs to be set
@@ -83,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
-        public static void ValidateFullBackupRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false) // check resx messages 
+        public static void ValidateFullBackupRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false)
         {
             if (tieringPolicy != null && tieringPolicy.TieringMode != TieringMode.DoNotTier)
             {

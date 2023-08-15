@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbaccount
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/remove-azcosmosdbaccount
 schema: 2.0.0
 ---
 
 # Remove-AzCosmosDBAccount
 
 ## SYNOPSIS
-Remove a CosmosDB Account.
+Remove a Cosmos DB Account.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-AsJob] [-P
 ```
 
 ## DESCRIPTION
-Remove a CosmosDB Account with a given Name in the given ResourceGroup.
+Remove a Cosmos DB Account with a given Name in the given ResourceGroup.
 
 ## EXAMPLES
 
@@ -190,11 +190,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccount
+### Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
 
 ## OUTPUTS
 
 ### System.Void
+
+### System.Boolean
 
 ## NOTES
 

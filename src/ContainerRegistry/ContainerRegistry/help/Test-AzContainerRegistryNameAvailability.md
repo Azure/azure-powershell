@@ -1,24 +1,26 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability
 schema: 2.0.0
 ---
 
 # Test-AzContainerRegistryNameAvailability
 
 ## SYNOPSIS
-Checks the availability of a container registry name.
+Checks whether the container registry name is available for use.
+The name must contain only alphanumeric characters, be globally unique, and between 5 and 50 characters in length.
 
 ## SYNTAX
 
 ```
-Test-AzContainerRegistryNameAvailability [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzContainerRegistryNameAvailability [-SubscriptionId <String>] -Name <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Test-AzContainerRegistryNameAvailability cmdlet checks whether a container registry name is valid and available to use.
+Checks whether the container registry name is available for use.
+The name must contain only alphanumeric characters, be globally unique, and between 5 and 50 characters in length.
 
 ## EXAMPLES
 
@@ -33,17 +35,18 @@ NameAvailable Reason Message
          True
 ```
 
-This command checks the availability of the container registry name \`SomeRegistryName\`.
+Checks the availability of a container registry name
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,17 +56,64 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Container Registry Name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ContainerRegistryName, RegistryName, ResourceName
+Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -72,15 +122,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryNameStatus
 
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
-
-[New-AzContainerRegistry]()
-

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/get-azsearchprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.search/get-azsearchprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -39,6 +39,7 @@ The **Get-AzSearchPrivateEndpointConnection** cmdlet gets the private endpoint c
 ```powershell
 Get-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap
 ```
+
 ```output
 Name                                                          Id
 ----                                                          --
@@ -51,6 +52,7 @@ The example gets all the private endpoint connections to the Azure Cognitive Sea
 ```powershell
 Get-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266  | ConvertTo-Json
 ```
+
 ```output
 {
   "Name": "arjagann-test-cuseuap-pe.4c74dd7c-7016-42ac-827a-8d5d1378f266",

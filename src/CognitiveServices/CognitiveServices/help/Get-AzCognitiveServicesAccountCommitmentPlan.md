@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountcommitmentplan
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountcommitmentplan
 schema: 2.0.0
 ---
 
@@ -32,6 +32,19 @@ Get CommitmentPlan of a Cognitive Services account
 ### Example 1
 ```powershell
 Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+```
+
+```output
+SystemData : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Etag       : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Kind       : 
+Sku        : 
+Tags       : 
+Location   : 
+Properties : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlanProperties
+Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.CognitiveServices/accounts/resource-name/commitmentplans/plan-name
+Name       : plan-name
+Type       : Microsoft.CognitiveServices/accounts/commitmentplans
 ```
 
 Get CommitmentPlan of a Cognitive Services account

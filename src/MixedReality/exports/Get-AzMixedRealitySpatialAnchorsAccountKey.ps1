@@ -25,7 +25,7 @@ Get-AzMixedRealitySpatialAnchorsAccountKey -AccountName azpstestanchorsaccount -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccountkey
+https://learn.microsoft.com/powershell/module/az.mixedreality/get-azmixedrealityspatialanchorsaccountkey
 #>
 function Get-AzMixedRealitySpatialAnchorsAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IAccountKeys])]

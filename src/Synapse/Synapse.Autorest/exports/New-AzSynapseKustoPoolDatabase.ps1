@@ -29,7 +29,7 @@ ReadWrite East US 2 testws/testkustopool/mykustodatabase
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 #>
 function New-AzSynapseKustoPoolDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]

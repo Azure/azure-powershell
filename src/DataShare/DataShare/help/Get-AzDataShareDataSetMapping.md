@@ -52,7 +52,7 @@ Type                 : Microsoft.DataShare/DataSetMappings
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name.
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String

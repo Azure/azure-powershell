@@ -20,7 +20,7 @@ Get the Windows virtual desktop registration info.
 Get the Windows virtual desktop registration info.	
 #>	
 function Get-AzWvdRegistrationInfo {	
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.RegistrationInfo')]	
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.RegistrationInfo')]	
     [CmdletBinding(PositionalBinding=$false)]	
     param(	
         [Parameter()]	

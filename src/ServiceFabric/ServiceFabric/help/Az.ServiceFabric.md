@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ServiceFabric
 Module Guid: 60f3ba88-443f-46ff-88a3-318cfd11c1da
-Download Help Link: https://docs.microsoft.com/powershell/module/az.servicefabric
+Download Help Link: https://learn.microsoft.com/powershell/module/az.servicefabric
 Help Version: 0.3.4.0
 Locale: en-US
 ---
@@ -16,6 +16,9 @@ Add common name or thumbprint to the cluster for client authentication purposes.
 
 ### [Add-AzServiceFabricManagedClusterClientCertificate](Add-AzServiceFabricManagedClusterClientCertificate.md)
 Add certificate common name or thumbprint to the cluster. This will register the certificate agains the cluster for client authentication purposes.
+
+### [Add-AzServiceFabricManagedClusterNetworkSecurityRule](Add-AzServiceFabricManagedClusterNetworkSecurityRule.md)
+Add network security rule to cluster resource.
 
 ### [Add-AzServiceFabricManagedNodeTypeVMExtension](Add-AzServiceFabricManagedNodeTypeVMExtension.md)
 Add vm extension to the node type.

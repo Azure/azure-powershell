@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: BD32B909-296B-4E46-A24F-6E2BD4B9764B
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjob
+online version: https://learn.microsoft.com/powershell/module/az.automation/get-azautomationjob
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ The **Get-AzAutomationJob** cmdlet gets runbook jobs in Azure Automation.
 
 ### Example 1: Get a specific runbook job
 ```powershell
-Get-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
+Get-AzAutomationJob -AutomationAccountName "Contoso17" -ResourceGroupName "ResourceGroup01" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b647
 ```
 
 This command gets the job that has the specified GUID.

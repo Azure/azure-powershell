@@ -281,6 +281,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the HA Replica Count option.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The HA Replica Count used to store backups for the SQL Database.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int HAReplicaCount { get; set; }
+
+        /// <summary>
         /// Gets or sets the database backup storage redundancy.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -301,6 +309,26 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public string[] KeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
@@ -382,6 +410,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
+                HighAvailabilityReplicaCount = HAReplicaCount,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
+                EncryptionProtector = this.EncryptionProtector,
+                FederatedClientId = this.FederatedClientId,
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

@@ -22,7 +22,7 @@ Create a in-memory object for QueryFilter
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter
 .Link
-https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
+https://learn.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryFilterObject
 #>
 function New-AzCostManagementQueryFilterObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.QueryFilter')]

@@ -50,7 +50,7 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/get-azconfidentialledger
 #>
 function Get-AzConfidentialLedger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]
@@ -291,7 +291,7 @@ CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert ba
   [Cert <String>]: Public key of the user cert (.pem or .cer)
   [LedgerRoleName <LedgerRoleName?>]: LedgerRole associated with the Security Principal of Ledger
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
 #>
 function New-AzConfidentialLedger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]
@@ -519,7 +519,7 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/remove-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/remove-azconfidentialledger
 #>
 function Remove-AzConfidentialLedger {
 [OutputType([System.Boolean])]
@@ -729,7 +729,7 @@ Reason        : AlreadyExists
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
+https://learn.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
 #>
 function Test-AzConfidentialLedgerNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse])]
@@ -899,7 +899,7 @@ Administrator  34621747-6fc8-4771-a2eb-72f31c461f2e bce123b9-2b7b-4975-8360-5ca0
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AadBasedSecurityPrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+https://learn.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
 #>
 function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal])]
@@ -1016,7 +1016,7 @@ Cert
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.CertBasedSecurityPrincipal
 .Link
-https://docs.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerCertBasedSecurityPrincipalObject
+https://learn.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerCertBasedSecurityPrincipalObject
 #>
 function New-AzConfidentialLedgerCertBasedSecurityPrincipalObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.CertBasedSecurityPrincipal])]
@@ -1166,7 +1166,7 @@ INPUTOBJECT <IConfidentialLedgerIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
+https://learn.microsoft.com/powershell/module/az.confidentialledger/update-azconfidentialledger
 #>
 function Update-AzConfidentialLedger {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger])]

@@ -144,7 +144,7 @@ RESOURCESETTING <IResourceSettings>: Gets or sets the resource settings.
   ResourceType <String>: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   TargetResourceName <String>: Gets or sets the target Resource name.
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
+https://learn.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
 #>
 function Add-AzResourceMoverMoveResource {
 [Alias('Update-AzResourceMoverMoveResource')]
@@ -342,7 +342,7 @@ Etag                                   Location      Name                       
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
 #>
 function Get-AzResourceMoverMoveCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection])]
@@ -706,7 +706,7 @@ Type                              :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource
 #>
 function Get-AzResourceMoverMoveResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource])]
@@ -851,7 +851,7 @@ PS C:\> Get-AzResourceMoverRequiredForResources -MoveCollectionName "PS-centralu
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverrequiredforresources
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverrequiredforresources
 #>
 function Get-AzResourceMoverRequiredForResources {
 [OutputType([System.String])]
@@ -988,7 +988,7 @@ Count Id
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
+https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
 #>
 function Get-AzResourceMoverUnresolvedDependency {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency])]
@@ -1179,7 +1179,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
 #>
 function Invoke-AzResourceMoverBulkRemove {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -1385,7 +1385,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemovercommit
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemovercommit
 #>
 function Invoke-AzResourceMoverCommit {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -1590,7 +1590,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverdiscard
 #>
 function Invoke-AzResourceMoverDiscard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -1796,7 +1796,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverinitiatemove
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverinitiatemove
 #>
 function Invoke-AzResourceMoverInitiateMove {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -2013,7 +2013,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
+https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
 #>
 function Invoke-AzResourceMoverPrepare {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -2174,7 +2174,7 @@ Etag                                   Location      Name                       
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
+https://learn.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 #>
 function New-AzResourceMoverMoveCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection])]
@@ -2356,7 +2356,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermovecollection
+https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermovecollection
 #>
 function Remove-AzResourceMoverMoveCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -2513,7 +2513,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
+https://learn.microsoft.com/powershell/module/az.resourcemover/remove-azresourcemovermoveresource
 #>
 function Remove-AzResourceMoverMoveResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
@@ -2678,7 +2678,7 @@ Status         : Succeeded
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 .Link
-https://docs.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
+https://learn.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
 #>
 function Resolve-AzResourceMoverMoveCollectionDependency {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]

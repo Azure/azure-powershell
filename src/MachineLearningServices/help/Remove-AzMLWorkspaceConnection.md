@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceconnection
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/remove-azmlworkspaceconnection
 schema: 2.0.0
 ---
 
 # Remove-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Deletes a machine learning workspace connection.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzMLWorkspaceConnection -InputObject <IMachineLearningServicesIdentity> [
 ```
 
 ## DESCRIPTION
-
+Deletes a machine learning workspace connection.
 
 ## EXAMPLES
 

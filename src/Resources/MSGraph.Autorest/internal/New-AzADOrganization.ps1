@@ -41,7 +41,7 @@ ASSIGNEDPLAN <IMicrosoftGraphAssignedPlan[]>: The collection of service plans as
 
 BODY <IMicrosoftGraphOrganization>: organization
   [(Any) <Object>]: This indicates any property can be added to this object.
-  [DeletedDateTime <DateTime?>]: Date and time when this object was deleted. Always null when the object hasn't been deleted.
+  [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
   [AssignedPlan <IMicrosoftGraphAssignedPlan[]>]: The collection of service plans associated with the tenant. Not nullable.
     [AssignedDateTime <DateTime?>]: The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -255,8 +255,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
-    # Date and time when this object was deleted.
-    # Always null when the object hasn't been deleted.
+    # .
     ${DeletedDateTime},
 
     [Parameter(ParameterSetName='CreateExpanded')]

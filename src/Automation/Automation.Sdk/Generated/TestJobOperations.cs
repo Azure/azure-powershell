@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (runbookName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
             if (parameters == null)
@@ -354,9 +354,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (runbookName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
             string apiVersion = "2022-08-08";
@@ -572,9 +572,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (runbookName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
             string apiVersion = "2022-08-08";
@@ -772,9 +772,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (runbookName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
             string apiVersion = "2022-08-08";
@@ -972,9 +972,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (runbookName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z]*-*[a-zA-Z0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(runbookName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
                 {
-                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z]*-*[a-zA-Z0-9]*$");
+                    throw new ValidationException(ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
             string apiVersion = "2022-08-08";

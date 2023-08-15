@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapptemplateobject
 schema: 2.0.0
 ---
 

@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             DailyRetentionSchedule psDaily = new DailyRetentionSchedule();
 
             psDaily.DurationCountInDays = GetRetentionDurationInDays(serviceClientDaily.RetentionDuration);
-            psDaily.RetentionTimes = ParseDateTimesToUTC(serviceClientDaily.RetentionTimes, timeZone);
+            psDaily.RetentionTimes = ParseDateTimesToLocal(serviceClientDaily.RetentionTimes, timeZone);
 
             return psDaily;
         }
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             WeeklyRetentionSchedule psWeekly = new WeeklyRetentionSchedule();
 
             psWeekly.DurationCountInWeeks = GetRetentionDurationInWeeks(serviceClientWeekly.RetentionDuration);
-            psWeekly.RetentionTimes = ParseDateTimesToUTC(serviceClientWeekly.RetentionTimes, timeZone);
+            psWeekly.RetentionTimes = ParseDateTimesToLocal(serviceClientWeekly.RetentionTimes, timeZone);
             psWeekly.DaysOfTheWeek =
                 HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(
                     serviceClientWeekly.DaysOfTheWeek);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             MonthlyRetentionSchedule psMonthly = new MonthlyRetentionSchedule();
 
             psMonthly.DurationCountInMonths = GetRetentionDurationInMonths(serviceClientMonthly.RetentionDuration);
-            psMonthly.RetentionTimes = ParseDateTimesToUTC(serviceClientMonthly.RetentionTimes, timeZone);
+            psMonthly.RetentionTimes = ParseDateTimesToLocal(serviceClientMonthly.RetentionTimes, timeZone);
             psMonthly.RetentionScheduleFormatType =
                 serviceClientMonthly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psMonthly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientMonthly.RetentionScheduleDaily);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             YearlyRetentionSchedule psYearly = new YearlyRetentionSchedule();
 
             psYearly.DurationCountInYears = GetRetentionDurationInYears(serviceClientYearly.RetentionDuration);
-            psYearly.RetentionTimes = ParseDateTimesToUTC(serviceClientYearly.RetentionTimes, timeZone);
+            psYearly.RetentionTimes = ParseDateTimesToLocal(serviceClientYearly.RetentionTimes, timeZone);
             psYearly.RetentionScheduleFormatType =
                 serviceClientYearly.RetentionScheduleFormatType.ToEnum<RetentionScheduleFormat>();
             psYearly.RetentionScheduleDaily = GetPSLTRDailyRetentionFormat(serviceClientYearly.RetentionScheduleDaily);

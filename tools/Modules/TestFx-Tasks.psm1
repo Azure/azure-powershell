@@ -1,360 +1,290 @@
-﻿Function New-TestCredential
-{
-    [CmdletBinding(
-        SupportsShouldProcess=$true
-        )]
+﻿$script:TestFxEnvDirectory = Join-Path -Path $env:USERPROFILE -ChildPath ".Azure"
+$script:TestFxEnvFileName = "testcredentials.json"
+$script:TestFxEnvConnectionStringKey = "TEST_CSM_ORGID_AUTHENTICATION"
+$script:TestFxEnvTestModeKey = "AZURE_TEST_MODE"
+$script:TestFxEnvExtraPropKeys = @(
+    "AADAuthUri",
+    "AADTokenAudienceUri",
+    "DataLakeAnalyticsJobAndCatalogServiceUri",
+    "DataLakeStoreServiceUri",
+    "GalleryUri",
+    "GraphTokenAudienceUri",
+    "GraphUri",
+    "IbizaPortalUri",
+    "RdfePortalUri",
+    "ResourceManagementUri",
+    "ServiceManagementUri"
+)
+
+function Set-TestFxEnvironment {
+    [CmdletBinding(DefaultParameterSetName = "NewServicePrincipal")]
     param(
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipalDisplayName,
+        [guid] $SubscriptionId,
 
-        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string]$SubscriptionId,
+        [guid] $TenantId,
 
-        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
+        [Parameter(Mandatory, ParameterSetName = "NewServicePrincipal")]
         [ValidateNotNullOrEmpty()]
-        [string]$TenantId,
+        [string] $ServicePrincipalDisplayName,
 
-        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [ValidateSet("Playback", "Record", "None")]
-        [string]$RecordMode,
-
-        [Parameter(Mandatory=$false, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use (required for existing Service Principal)')]
+        [Parameter(Mandatory, ParameterSetName = "ExistingServicePrincipal")]
         [ValidateNotNullOrEmpty()]
-        [securestring]$ServicePrincipalSecret,
+        [guid] $ServicePrincipalId,
 
-        [Parameter(Mandatory=$false, HelpMessage="Environment you would like to run in")]
+        [Parameter(Mandatory, ParameterSetName = "ExistingServicePrincipal")]
+        [ValidateNotNullOrEmpty()]
+        [string] $ServicePrincipalSecret,
+
+        [Parameter(Mandatory)]
+        [ValidateSet("Playback", "Record")]
+        [string] $RecorderMode,
+
+        [Parameter()]
         [ValidateSet("Prod", "Dogfood", "Current", "Next", "Custom")]
-        [string]$TargetEnvironment='Prod',
-        
-        [Parameter(Mandatory=$false)]
-        [string]$ResourceManagementUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$GraphUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$AADAuthUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$AADTokenAudienceUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$GraphTokenAudienceUri,
+        [string] $TargetEnvironment = "Prod",
 
-        [Parameter(Mandatory=$false)]		
-        [string]$IbizaPortalUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$ServiceManagementUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$RdfePortalUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$GalleryUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$DataLakeStoreServiceUri,
-        
-        [Parameter(Mandatory=$false)]
-        [string]$DataLakeAnalyticsJobAndCatalogServiceUri,
-        
-        [Parameter(Mandatory=$false)]
-        [switch]$Force
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $AADAuthUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $AADTokenAudienceUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $DataLakeAnalyticsJobAndCatalogServiceUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $DataLakeStoreServiceUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $GalleryUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $GraphTokenAudienceUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $GraphUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $IbizaPortalUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $RdfePortalUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $ResourceManagementUri,
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string] $ServiceManagementUri,
+
+        [Parameter()]
+        [switch] $Force
     )
 
-    [hashtable]$credentials = @{}
-    $credentials.SubscriptionId = $SubscriptionId
-    $credentials.HttpRecorderMode = $RecordMode
-    $credentials.Environment = $TargetEnvironment
+    $azContext = Get-AzContext
+    $currentSubscriptionId = $azContext.Subscription.Id
+    $currentTenantId = $azContext.Tenant.Id
 
-    if ([string]::IsNullOrEmpty($ServicePrincipalDisplayName) -eq $false) {
-        $existingServicePrincipal = Get-AzADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
-        if ($existingServicePrincipal -eq $null -and ($Force -or $PSCmdlet.ShouldContinue("ServicePrincipal `"" + $ServicePrincipalDisplayName + "`" does not exist, would you like to create a new ServicePrincipal with this name?", "Create ServicePrincipal?")))
-        {
-            if (![string]::IsNullOrEmpty($ServicePrincipalSecret))
-            {
-                Write-Warning "Service Principal secrets are randomly generated, so provided secret value will not be used during creation."
-            }
-
-            if ($TargetEnvironment -ne 'Prod')
-            {
-                throw "To create a new Service Principal you must be in Prod. Please run again with `$TargetEnvironment set to 'Prod'"
-            }
-            $Scope = "/subscriptions/" + $SubscriptionId
-            $NewServicePrincipal = New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName
-            Write-Host "New ServicePrincipal created: " $NewServicePrincipal.ApplicationId
-    
-            $NewRole = Get-AzRoleAssignment -ObjectId $NewServicePrincipal.Id -RoleDefinitionName Contributor -ErrorAction SilentlyContinue
-            $Retries = 0;
-            While (($NewRole.RoleDefinitionName -ne 'Contributor') -and ($Retries -le 6))
-            {
-                # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
-                Start-Sleep 5
-                New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $NewServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-                $NewRole = Get-AzRoleAssignment -ObjectId $NewServicePrincipal.Id -ErrorAction SilentlyContinue
-                $Retries++;
-            }
-            
-            $credentials.ServicePrincipal = $NewServicePrincipal.ApplicationId
-            $ServicePrincipalSecret = $NewServicePrincipal.Secret
-            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
-            $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
-            $credentials.ServicePrincipalSecret = $UnsecurePassword
+    if (!$Force.IsPresent) {
+        if ($SubscriptionId -ne $currentSubscriptionId) {
+            Write-Warning "The passed in argument SubscriptionId does not match with the current Azure context."
         }
-        
-        else
-        {
-            if ([string]::IsNullOrEmpty($ServicePrincipalSecret))
-            {
-                throw "Service Principal secret required for existing Service Principal."
-            }
-            $credentials.ServicePrincipal = $existingServicePrincipal.ApplicationId
-            $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ServicePrincipalSecret)
-            $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
-            $credentials.ServicePrincipalSecret = $UnsecurePassword
+        if ($TenantId -ne $currentTenantId) {
+            Write-Warning "The passed in argument TenantId does not match with the current Azure context."
         }
     }
 
-    if ([string]::IsNullOrEmpty($TenantId) -eq $false) {
-        $credentials.TenantId = $TenantId
+    switch ($PSCmdlet.ParameterSetName) {
+        "NewServicePrincipal" {
+            $sp = New-TestFxServicePrincipal -SubscriptionId $SubscriptionId -ServicePrincipalDisplayName $ServicePrincipalDisplayName -Force:$Force
+            $spAppId = $sp.AppId
+            $spSecret = $sp.PasswordCredentials.SecretText
+        }
+        "ExistingServicePrincipal" {
+            $sp = Get-AzADServicePrincipal -ApplicationId $ServicePrincipalId
+            if ($null -eq $sp) {
+                throw "The service principal `"$ServicePrincipalId`" does not exist. Please verify or create a new one."
+            }
+
+            $spAppId = $ServicePrincipalId
+            $spSecret = $ServicePrincipalSecret
+        }
     }
 
-    if ([string]::IsNullOrEmpty($ResourceManagementUri) -eq $false) {
-        $credentials.ResourceManagementUri = $ResourceManagementUri
+    $testFxEnvProps = [PSCustomObject]@{
+        Environment            = $TargetEnvironment
+        SubscriptionId         = $SubscriptionId
+        TenantId               = $TenantId
+        ServicePrincipal       = $spAppId
+        ServicePrincipalSecret = $spSecret
+        HttpRecorderMode       = $RecorderMode
     }
 
-    if ([string]::IsNullOrEmpty($GraphUri) -eq $false) {
-        $credentials.GraphUri = $GraphUri
+    $script:testFxEnvExtraPropKeys | ForEach-Object {
+        if ($PSBoundParameters.ContainsKey($_)) {
+            $testFxEnvProps | Add-Member -NotePropertyName $_ -NotePropertyValue $PSBoundParameters[$_]
+        }
     }
 
-    if ([string]::IsNullOrEmpty($AADAuthUri) -eq $false) {
-        $credentials.AADAuthUri = $AADAuthUri
+    if (!(Test-Path -LiteralPath $script:TestFxEnvDirectory -PathType Container)) {
+        New-Item -Path $script:TestFxEnvDirectory -ItemType Directory -Force
     }
 
-    if ([string]::IsNullOrEmpty($AADTokenAudienceUri) -eq $false) {
-        $credentials.AADTokenAudienceUri = $AADTokenAudienceUri
-    }
-
-    if ([string]::IsNullOrEmpty($GraphTokenAudienceUri) -eq $false) {
-        $credentials.GraphTokenAudienceUri = $GraphTokenAudienceUri
-    }
-
-    if ([string]::IsNullOrEmpty($IbizaPortalUri) -eq $false) {
-        $credentials.IbizaPortalUri = $IbizaPortalUri
-    }
-
-    if ([string]::IsNullOrEmpty($ServiceManagementUri) -eq $false) {
-        $credentials.ServiceManagementUri = $ServiceManagementUri
-    }
-
-    if ([string]::IsNullOrEmpty($RdfePortalUri) -eq $false) {
-        $credentials.RdfePortalUri = $RdfePortalUri
-    }
-
-    if ([string]::IsNullOrEmpty($GalleryUri) -eq $false) {
-        $credentials.GalleryUri = $GalleryUri
-    }
-
-    if ([string]::IsNullOrEmpty($DataLakeStoreServiceUri) -eq $false) {
-        $credentials.DataLakeStoreServiceUri = $DataLakeStoreServiceUri
-    }
-
-    if ([string]::IsNullOrEmpty($DataLakeAnalyticsJobAndCatalogServiceUri) -eq $false) {
-        $credentials.DataLakeAnalyticsJobAndCatalogServiceUri = $DataLakeAnalyticsJobAndCatalogServiceUri
-    }
-
-    $credentialsJson = $credentials | ConvertTo-Json
-    $directoryPath = $Env:USERPROFILE + "\.azure"
-    if (!(Test-Path $directoryPath) -and ($Force -or $PSCmdlet.ShouldContinue("Do you want to create directory: " + $directoryPath + " which will contain your credentials file?", "Create directory?"))) {
-        New-Item -ItemType Directory -Path $directoryPath
-    }
-    $filePath = $Env:USERPROFILE + "\.azure\testcredentials.json"
-    $credentialsJson | Out-File $filePath
-
-    Write-Host ""
-    Write-Host "Created credential file:" $filePath
-    
+    $testFxEnvProps
+    $testFxEnvFile = Join-Path -Path $script:TestFxEnvDirectory -ChildPath $script:TestFxEnvFileName
+    $testFxEnvProps | ConvertTo-Json | Out-File -LiteralPath $testFxEnvFile -Force
 }
-Function Set-TestEnvironment
-{
-<#
-.SYNOPSIS
-This cmdlet helps you to setup Test Environment for running tests
-In order to successfully run a test, you will need SubscriptionId, TenantId
-This cmdlet will only prompt you for Subscription and Tenant information, rest all other parameters are optional
 
-#>
-    [CmdletBinding()]
+function New-TestFxServicePrincipal {
+    [CmdletBinding(SupportsShouldProcess)]
     param(
-        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal/ClientId you would like to use')]   
         [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipalId,
+        [string] $ServicePrincipalDisplayName,
 
-        [Parameter(Mandatory=$true, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
+        [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string]$ServicePrincipalSecret,
+        [guid] $SubscriptionId,
 
-        [Parameter(Mandatory=$true, HelpMessage = "SubscriptionId you would like to use")]
-        [ValidateNotNullOrEmpty()]
-        [string]$SubscriptionId,
-
-        [Parameter(Mandatory=$true, HelpMessage='AADTenant/TenantId you would like to use')]
-        [ValidateNotNullOrEmpty()]
-        [string]$TenantId,
-
-	    [Parameter(Mandatory=$true, HelpMessage = "Would you like to record or playback your tests?")]
-        [ValidateSet("Playback", "Record", "None")]
-        [string]$RecordMode='Playback',
-
-        [ValidateSet("Prod", "Dogfood", "Current", "Next")]
-        [string]$TargetEnvironment='Prod',
-
-		[string]$ResourceManagementUri,
-		[string]$GraphUri,
-		[string]$AADAuthUri,
-		[string]$AADTokenAudienceUri,
-		[string]$GraphTokenAudienceUri,		
-		[string]$IbizaPortalUri,
-		[string]$ServiceManagementUri,
-		[string]$RdfePortalUri,
-		[string]$GalleryUri,
-		[string]$DataLakeStoreServiceUri,
-		[string]$DataLakeAnalyticsJobAndCatalogServiceUri
+        [Parameter()]
+        [switch] $Force
     )
 
-    $formattedConnStr = [string]::Format("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", $SubscriptionId, $RecordMode, $TargetEnvironment)
+    $sp = Get-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName
 
-    if([string]::IsNullOrEmpty($TenantId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";TenantId={0}"), $TenantId)
-    }
-
-    if([string]::IsNullOrEmpty($ServicePrincipalId) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipalId)
+    if (($null -ne $sp) -and !$Force.IsPresent) {
+        $continue = $PSCmdlet.ShouldContinue("The service principal `"$ServicePrincipalDisplayName`" already exists. Would you like to create a new service principal with the same name?", "Create Service Principal?")
+        if (!$continue) {
+            throw "The service principal `"$ServicePrincipalDisplayName`" already exists. Pass in the Client Id and Client Secret to re-use it."
+        }
     }
 
-    if([string]::IsNullOrEmpty($ServicePrincipalSecret) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipalSecret={0}"), $ServicePrincipalSecret)
-    }
+    $sp = Invoke-TestFxCommand -Command "New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName"
+    Start-Sleep -Seconds 10
+    Set-TestFxServicePrincipalPermission -SubscriptionId $SubscriptionId -ServicePrincipalObjectId $sp.Id
 
-	#Uris
-	if([string]::IsNullOrEmpty($ResourceManagementUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ResourceManagementUri={0}"), $ResourceManagementUri)
-    }
-	
-	if([string]::IsNullOrEmpty($GraphUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GraphUri={0}"), $GraphUri)
-    }
-	
-	if([string]::IsNullOrEmpty($AADAuthUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADAuthUri={0}"), $AADAuthUri)
-    }
-	
-	if([string]::IsNullOrEmpty($AADTokenAudienceUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";AADTokenAudienceUri={0}"), $AADTokenAudienceUri)
-    }
-	
-	if([string]::IsNullOrEmpty($GraphTokenAudienceUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GraphTokenAudienceUri={0}"), $GraphTokenAudienceUri)
-    }
-	
-	if([string]::IsNullOrEmpty($IbizaPortalUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";IbizaPortalUri={0}"), $IbizaPortalUri)
-    }
-	
-	if([string]::IsNullOrEmpty($ServiceManagementUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServiceManagementUri={0}"), $ServiceManagementUri)
-    }
-	
-	if([string]::IsNullOrEmpty($RdfePortalUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";RdfePortalUri={0}"), $RdfePortalUri)
-    }
-	
-	if([string]::IsNullOrEmpty($GalleryUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";GalleryUri={0}"), $GalleryUri)
-    }
-	
-	if([string]::IsNullOrEmpty($DataLakeStoreServiceUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";DataLakeStoreServiceUri={0}"), $DataLakeStoreServiceUri)
-    }
-	
-	if([string]::IsNullOrEmpty($DataLakeAnalyticsJobAndCatalogServiceUri) -eq $false)
-    {
-        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";DataLakeAnalyticsJobAndCatalogServiceUri={0}"), $DataLakeAnalyticsJobAndCatalogServiceUri)
-    }
-
-    Write-Host "Below connection string is ready to be set"
-    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment
-
-    #Set connection string to Environment variable
-    $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
-    $env:AZURE_TEST_MODE=$RecordMode
-    Write-Host ""
-
-    # Retrieve the environment variable
-    Write-Host ""
-    Write-Host "Below connection string was set. Please open your service's solution in Visual Studio and run your tests from the Test Explorer." -ForegroundColor Green
-    [Environment]::GetEnvironmentVariable($envVariableName)
-    Write-Host ""
-    
-    Write-Host "If your needs demand you to set connection string differently, for all the supported Key/Value pairs in connection string"
-    Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/master/documentation/testing-docs/using-azure-test-framework.md" -ForegroundColor Yellow
+    return $sp
 }
 
-Function Print-ConnectionString([string]$uid, [string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment)
-{
-    if([string]::IsNullOrEmpty($subId) -eq $false)
-    {
-        Write-Host "SubscriptionId=" -ForegroundColor Green -NoNewline
-        Write-Host $subId";" -NoNewline 
-    }
+function Set-TestFxServicePrincipalPermission {
+    param(
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [guid] $SubscriptionId,
 
-    if([string]::IsNullOrEmpty($aadTenant) -eq $false)
-    {
-        Write-Host "TenantId=" -ForegroundColor Green -NoNewline
-        Write-Host $aadTenant";" -NoNewline
-    }
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [guid] $ServicePrincipalObjectId
+    )
 
-    if([string]::IsNullOrEmpty($spn) -eq $false)
-    {
-        Write-Host "ServicePrincipal=" -ForegroundColor Green -NoNewline
-        Write-Host $spn";" -NoNewline
+    $scope = "/subscriptions/$SubscriptionId"
+    $roleName = "Contributor"
+    try {
+        $spRoleAssg = Get-AzRoleAssignment -ObjectId $ServicePrincipalObjectId -Scope $scope -RoleDefinitionName $roleName -ErrorAction Stop
+        if ($null -eq $spRoleAssg) {
+            Invoke-TestFxCommand -Command "New-AzRoleAssignment -ObjectId $ServicePrincipalObjectId -RoleDefinitionName $roleName -Scope $scope | Out-Null"
+        }
     }
-
-    if([string]::IsNullOrEmpty($spnSecret) -eq $false)
-    {
-        Write-Host "ServicePrincipalSecret=" -ForegroundColor Green -NoNewline
-        Write-Host $spnSecret";" -NoNewline
+    catch {
+        throw "Exception occurred when retrieving the role assignment for service principal with error message $($_.Exception.Message)."
     }
-
-    if([string]::IsNullOrEmpty($recordMode) -eq $false)
-    {
-        Write-Host "HttpRecorderMode=" -ForegroundColor Green -NoNewline
-        Write-Host $recordMode";" -NoNewline
-    }
-
-    if([string]::IsNullOrEmpty($targetEnvironment) -eq $false)
-    {
-        Write-Host "Environment=" -ForegroundColor Green -NoNewline
-        Write-Host $targetEnvironment";" -NoNewline
-    }
-
-    Write-Host ""
 }
 
-export-modulemember -Function Set-TestEnvironment
-export-modulemember -Function New-TestCredential
+function Get-TestFxEnvironment {
+    [CmdletBinding()]
+    param ()
+
+    $testFxEnvFile = Join-Path -Path $script:TestFxEnvDirectory -ChildPath $script:TestFxEnvFileName
+    if (Test-Path -LiteralPath $testFxEnvFile -PathType Leaf) {
+        Write-Verbose "Config file was found for TestFx environment."
+        try {
+            $testFxEnvProps = Get-Content -LiteralPath $testFxEnvFile | Out-String | ConvertFrom-Json
+        }
+        catch {
+            Write-Error "Exception occurred when trying to parse the JSON file with error message `"$($_.Exception.Message)`"."
+        }
+
+        $testFxEnvProps
+        return
+    }
+
+    $testFxEnvConnStr = [Environment]::GetEnvironmentVariable($script:TestFxEnvConnectionStringKey)
+    if ($null -ne $testFxEnvConnStr) {
+        Write-Verbose "Environment variable was found for TestFx environment."
+        $testFxEnvProps = [PSCustomObject]@{}
+        $testFxEnvVars = $testFxEnvConnStr -split ";"
+        $testFxEnvVars | ForEach-Object {
+            if (![string]::IsNullOrWhiteSpace($_)) {
+                $testFxEnvProp = $_ -split "="
+                $testFxEnvPropKey = $testFxEnvProp[0]
+                $testFxEnvPropValue = $testFxEnvProp[1]
+                $testFxEnvProps | Add-Member -NotePropertyName $testFxEnvPropKey -NotePropertyValue $testFxEnvPropValue
+            }
+        }
+
+        $testFxEnvTestMode = [Environment]::GetEnvironmentVariable($script:TestFxEnvTestModeKey)
+        if ($null -ne $testFxEnvTestMode) {
+            if ($null -eq $testFxEnvProps.HttpRecorderMode) {
+                $testFxEnvProps | Add-Member -NotePropertyName HttpRecorderMode -NotePropertyValue $testFxEnvTestMode
+            }
+            else {
+                $testFxEnvProps.HttpRecorderMode = $testFxEnvTestMode
+            }
+        }
+
+        $testFxEnvProps
+        return
+    }
+
+    Write-Warning "TestFx environment has not been setup. Please run command Set-TestFxEnvironment."
+}
+
+function Invoke-TestFxCommand {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [ValidateNotNullOrEmpty()]
+        [string] $Command
+    )
+
+    $cmdRetryCount = 0
+
+    do {
+        try {
+            Write-Verbose "Start to execute the command `"$Command`"."
+            $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
+            Write-Verbose "Successfully executed the command `"$Command`"."
+            $cmdResult
+            break
+        }
+        catch {
+            $cmdErrorMessage = $_.Exception.Message
+            if ($cmdRetryCount -le 3) {
+                Write-Warning "Error occurred when executing the command `"$Command`" with error message `"$cmdErrorMessage`"."
+                Write-Warning "Will retry automatically in 5 seconds."
+                Write-Host
+
+                Start-Sleep -Seconds 5
+                $cmdRetryCount++
+                Write-Warning "Retrying #$cmdRetryCount to execute the command `"$Command`"."
+            }
+            else {
+                throw "Failed to execute the command `"$Command`" after retrying for 3 times with error message `"$cmdErrorMessage`"."
+            }
+        }
+    }
+    while ($true)
+}

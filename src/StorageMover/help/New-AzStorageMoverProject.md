@@ -56,7 +56,8 @@ This command creates a project for a Storage mover.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,7 +106,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -198,11 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 
 ## NOTES
 

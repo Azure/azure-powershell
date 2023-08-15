@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 952967EB-AEAD-4597-B837-6669CE73739E
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseexpanded
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqldatabaseexpanded
 schema: 2.0.0
 ---
 
@@ -146,4 +146,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

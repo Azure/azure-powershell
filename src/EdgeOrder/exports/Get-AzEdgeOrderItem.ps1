@@ -42,7 +42,7 @@ Type                           : Microsoft.EdgeOrder/orderItems
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderitem
 #>
 function Get-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]

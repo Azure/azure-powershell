@@ -1,53 +1,46 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrywebhook
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/update-azcontainerregistrywebhook
 schema: 2.0.0
 ---
 
 # Update-AzContainerRegistryWebhook
 
 ## SYNOPSIS
-Updates a container registry webhook.
+Updates a webhook with the specified parameters.
 
 ## SYNTAX
 
-### ResourceIdParameterSet (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>] [-Tag <Hashtable>]
- [-Status <String>] [-Scope <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### NameResourceGroupParameterSet
-```
-Update-AzContainerRegistryWebhook [-Name] <String> [-ResourceGroupName] <String> [-RegistryName] <String>
- [-Uri <Uri>] [-Action <String[]>] [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>]
- [-Scope <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzContainerRegistryWebhook -Name <String> -RegistryName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Action <WebhookAction[]>] [-CustomHeader <Hashtable>] [-Scope <String>]
+ [-ServiceUri <String>] [-Status <WebhookStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WebhookObjectParameterSet
+### UpdateViaIdentityExpanded
 ```
-Update-AzContainerRegistryWebhook [-Uri <Uri>] [-Action <String[]>] -Webhook <PSContainerRegistryWebhook>
- [-Header <Hashtable>] [-Tag <Hashtable>] [-Status <String>] [-Scope <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzContainerRegistryWebhook -InputObject <IContainerRegistryIdentity> [-Action <WebhookAction[]>]
+ [-CustomHeader <Hashtable>] [-Scope <String>] [-ServiceUri <String>] [-Status <WebhookStatus>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzContainerRegistryWebhook cmdlet updates a container registry webhook.
+Updates a webhook with the specified parameters.
 
 ## EXAMPLES
 
 ### Example 1: Update an existing container registry webhook.
 ```powershell
-Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "MyRegistry" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
+Update-AzContainerRegistryWebhook -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name "webhook001" -Uri http://www.bing.com -Action Delete,Push -Header @{SpecialHeader='headerVal'} -Tag @{Key='val'} -Status Enabled -Scope 'foo:*'
 ```
 
 ```output
-Name            Location   Status     Scope           Actions         Provisioni ServiceUri
-                                                                      ngState
-----            --------   ------     -----           -------         ---------- ----------
-webhook001      westus     enabled    foo:*           {push, delete}  Succeeded
+Name       Location Status  Scope ProvisioningState
+----       -------- ------  ----- -----------------
+webhook001 eastus2  enabled foo:* Succeeded
 ```
 
 Update an existing container registry webhook.
@@ -55,13 +48,42 @@ Update an existing container registry webhook.
 ## PARAMETERS
 
 ### -Action
-Space separated list of actions that trigger the webhook to post notifications.
+The list of actions that trigger the webhook to post notifications.
 
 ```yaml
-Type: System.String[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookAction[]
 Parameter Sets: (All)
-Aliases: WebhookActions
-Accepted values: delete, push
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomHeader
+Custom headers that will be added to the webhook notifications.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: Header
 
 Required: False
 Position: Named
@@ -71,12 +93,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -85,88 +108,109 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Header
-Space separated custom headers in 'key\[=value\]' format that will be added to the webhook notifications.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: WebhookHeaders
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Webhook Name.
+The name of the webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: UpdateExpanded
 Aliases: WebhookName, ResourceName
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -RegistryName
-Container Registry Name.
+The name of the container registry.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: UpdateExpanded
 Aliases: ContainerRegistryName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameResourceGroupParameterSet
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The container registry Webhook resource id
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Scope
-Webhook scope.
+The scope of repositories where the event can be triggered.
+For example, 'foo:*' means events for all tags under repository 'foo'.
+'foo:bar' means events for 'foo:bar' only.
+'foo' is equivalent to 'foo:latest'.
+Empty means all events.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: WebhookScope
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceUri
+The service URI for the webhook to post notifications.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Uri
 
 Required: False
 Position: Named
@@ -176,13 +220,12 @@ Accept wildcard characters: False
 ```
 
 ### -Status
-Webhook status
+The status of the webhook at the time the operation was called.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.WebhookStatus
 Parameter Sets: (All)
-Aliases: WebhookStatus
-Accepted values: enabled, disabled
+Aliases:
 
 Required: False
 Position: Named
@@ -191,8 +234,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-Space separated tags in 'key\[=value\]' format.
+The tags for the webhook.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -203,36 +262,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Uri
-The service URI for the webhook to post notifications.
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases: WebhookUri
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Webhook
-Container Registry Webhook Object.
-
-```yaml
-Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-Parameter Sets: WebhookObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -252,7 +281,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -271,22 +301,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IWebhook
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IContainerRegistryIdentity>`: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the agent pool.
+  - `[CacheRuleName <String>]`: The name of the cache rule.
+  - `[ConnectedRegistryName <String>]`: The name of the connected registry.
+  - `[CredentialSetName <String>]`: The name of the credential set.
+  - `[ExportPipelineName <String>]`: The name of the export pipeline.
+  - `[GroupName <String>]`: The name of the private link resource.
+  - `[Id <String>]`: Resource identity path
+  - `[ImportPipelineName <String>]`: The name of the import pipeline.
+  - `[PipelineRunName <String>]`: The name of the pipeline run.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[RegistryName <String>]`: The name of the container registry.
+  - `[ReplicationName <String>]`: The name of the replication.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RunId <String>]`: The run ID.
+  - `[ScopeMapName <String>]`: The name of the scope map.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[TaskName <String>]`: The name of the container registry task.
+  - `[TaskRunName <String>]`: The name of the task run.
+  - `[TokenName <String>]`: The name of the token.
+  - `[WebhookName <String>]`: The name of the webhook.
+
 ## RELATED LINKS
-
-[New-AzContainerRegistryWebhook](New-AzContainerRegistryWebhook.md)
-
-[Get-AzContainerRegistryWebhook](Get-AzContainerRegistryWebhook.md)
-
-[Test-AzContainerRegistryWebhook](Test-AzContainerRegistryWebhook.md)
-
-[Remove-AzContainerRegistryWebhook](Remove-AzContainerRegistryWebhook.md)

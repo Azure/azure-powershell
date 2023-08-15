@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azdatalakegen2sastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azdatalakegen2sastoken
 schema: 2.0.0
 ---
 
@@ -34,14 +34,14 @@ The **New-AzDataLakeGen2SasToken** cmdlet generates a Shared Access Signature (S
 ## EXAMPLES
 
 ### Example 1: Generate a SAS token with full permission
-```
+```powershell
 New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/dir2" -Permission racwdlmeop
 ```
 
 This example generates a DatalakeGen2 SAS token with full permission.
 
 ### Example 2: Generate a SAS token with specific StartTime, ExpireTime, Protocal, IPAddressOrRange, Encryption Scope, by pipeline a datalakegen2 item
-```
+```powershell
 Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen2SasToken -Permission rw -Protocol Https -IPAddressOrRange 10.0.0.0-12.10.0.0 -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6) -EncryptionScope scopename
 ```
 

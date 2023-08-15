@@ -17,8 +17,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     internal static class AuthenticationHelpers
     {
-        internal const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2", 
-            EnableEbdMagicCookie = "site_id=501358&display=popup",
+        internal const string EnableEbdMagicCookie = "site_id=501358&display=popup",
             UserImpersonationScope = "{0}/user_impersonation",
             DefaultScope = "{0}/.default",
             AdfsScope = "{0}/openid";
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="showDialog"></param>
         /// <returns></returns>

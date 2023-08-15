@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnernamespace
 schema: 2.0.0
 ---
 
@@ -41,6 +41,7 @@ The Get-AzEventGridPartnerNamespace cmdlet gets either the details of a specifie
 If the partner namespace name is provided, the details of a single Event Grid partner namespace is returned.
 If the partner namespace name is not provided but the resource group name is provided, a list of partner namespaces at the resource group scope is returned.
 If neither the partner namespace name or the resource group name are provided, a list of partner namespaces at the current Azure subscription scope is returned.
+
 ## EXAMPLES
 
 ### Example 1
@@ -56,7 +57,7 @@ Gets the details of Event Grid partner namespace \`PartnerNamespace1\` in resour
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 Event Grid partner namespace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceNameParameterSet
 Aliases: PartnerNamespaceName
 
@@ -87,7 +88,7 @@ The link for the next page of resources to be obtained.
 This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NextLinkParameterSet
 Aliases:
 
@@ -103,7 +104,7 @@ The OData query used for filtering the list results.
 Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PartnerNamespaceListBySubscriptionParameterSet, ResourceGroupNameParameterSet
 Aliases:
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet, PartnerNamespaceNameParameterSet
 Aliases: ResourceGroup
 
@@ -136,7 +137,7 @@ If top value is specified and more results are still available, the result will 
 If the Top value is not specified, the full list of resources will be returned at once.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: PartnerNamespaceListBySubscriptionParameterSet, ResourceGroupNameParameterSet
 Aliases:
 

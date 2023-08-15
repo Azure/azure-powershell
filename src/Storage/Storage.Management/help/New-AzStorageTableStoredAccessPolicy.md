@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: CF3B6E3B-3FC1-4871-AFE0-366B17A9E4F8
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragetablestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragetablestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **New-AzStorageTableStoredAccessPolicy** cmdlet creates a stored access poli
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a table
-```
-PS C:\>New-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy02"
+```powershell
+New-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy02"
 ```
 
 This command creates an access policy named Policy02 in the storage table named MyTable.

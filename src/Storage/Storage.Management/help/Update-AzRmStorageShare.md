@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/update-azrmstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/update-azrmstorageshare
 schema: 2.0.0
 ---
 
@@ -69,18 +69,19 @@ tag1 value1
 This command modifies a Storage file share's metadata and share quota with Storage account name and share name, and show the modify result with the returned file share object.
 
 ### Example 2: Modifies metadata on a Storage file share with Storage account object and share name
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
-PS C:\>$share = Update-AzRmStorageShare -StorageAccount $accountObject -Name "myshare" -Metadata @{tag0="value0";tag1="value1"}
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount"
+$share = Update-AzRmStorageShare -StorageAccount $accountObject -Name "myshare" -Metadata @{tag0="value0";tag1="value1"}
 ```
 
 This command modifies metadata on a Storage file share with Storage account object and share name.
 
 ### Example 3: Modifies share quota for all Storage file shares in a Storage account with pipeline
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Update-AzRmStorageShare -QuotaGiB 5000
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" | Update-AzRmStorageShare -QuotaGiB 5000
 
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
@@ -92,10 +93,11 @@ share2   5000
 This command modifies share quota as 5000 GiB for all Storage file shares in a Storage account with pipeline.
 
 ### Example 4: Modify a Storage file share with accesstier as Cool
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Cool
 ```
-PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Cool
 
+```output
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes

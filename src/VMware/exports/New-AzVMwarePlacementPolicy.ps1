@@ -38,7 +38,7 @@ PROPERTY <IPlacementPolicyProperties>: placement policy properties
   [DisplayName <String>]: Display name of the placement policy
   [State <PlacementPolicyState?>]: Whether the placement policy is enabled or disabled
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareplacementpolicy
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareplacementpolicy
 #>
 function New-AzVMwarePlacementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy])]

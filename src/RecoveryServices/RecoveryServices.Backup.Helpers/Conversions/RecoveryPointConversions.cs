@@ -26,7 +26,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// Recovery Point conversion helper.
     /// </summary>
     public class RecoveryPointConversions
-    {
+    {   
+        /// <summary>
+        /// Tries parsing string to DateTime
+        /// </summary>
+        /// <param name="inputTime">time in string format to be converted to DateTime</param>        
+        /// <returns></returns>
+        public static DateTime? ParseStringToDateTime(string inputTime)
+        {
+            try
+            {
+                DateTime convertedTime = DateTime.Parse(inputTime);
+                return convertedTime;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteDebug(e.Message);
+                return ((DateTime?)null);
+            }
+        }
 
         /// <summary>
         /// filter RPs based on tier
@@ -365,7 +383,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         {
                             isRehydrated = true;
 
-                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? ParseStringToDateTime(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
                         }
                     }
 
@@ -426,6 +444,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
             }
 
+            if(recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? ParseStringToDateTime(recoveryPoint.RecoveryPointProperties.ExpiryTime): (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;             
+            }
+
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {
                 rpBase.KeyAndSecretDetails = new KeyAndSecretDetails()
@@ -476,6 +500,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 WorkloadType = item.WorkloadType,
                 FileShareSnapshotUri = recoveryPoint.FileShareSnapshotUri,
             };
+
+            if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? ParseStringToDateTime(recoveryPoint.RecoveryPointProperties.ExpiryTime) : (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
+            }
+
             return rpBase;
         }
 
@@ -543,7 +574,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.ArchivedRP)
                         {
                             isRehydrated = true;
-                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? ParseStringToDateTime(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;                            
                         }
                     }
 
@@ -602,6 +633,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                     rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureWorkloadMoveInfo);
                 }
+            }
+
+            if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? ParseStringToDateTime(recoveryPoint.RecoveryPointProperties.ExpiryTime) : (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
             }
 
             return rpBase;
@@ -714,7 +751,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         {
                             isRehydrated = true;
 
-                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? ParseStringToDateTime(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
                         }
                     }
 
@@ -774,6 +811,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     rpBase.RecoveryPointMoveReadinessInfo.Add(moveInfo.Key, AzureVmMoveInfo);
                 }
             }
+
+            // to uncomment while adding expiry time for CRR RPs
+            /*if (recoveryPoint.RecoveryPointProperties != null)
+            {
+                rpBase.RecoveryPointExpiryTime = (recoveryPoint.RecoveryPointProperties.ExpiryTime != null) ? ParseStringToDateTime(recoveryPoint.RecoveryPointProperties.ExpiryTime): (DateTime?)null;
+                rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
+            }*/
 
             if (rpBase.EncryptionEnabled && recoveryPoint.KeyAndSecret != null)
             {
@@ -902,7 +946,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         if (tierInfo.Type == CrrModel.RecoveryPointTierType.ArchivedRP)
                         {
                             isRehydrated = true;
-                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? DateTime.Parse(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
+                            rpBase.RehydrationExpiryTime = (tierInfo.ExtendedInfo.ContainsKey("RehydratedRPExpiryTime")) ? ParseStringToDateTime(tierInfo.ExtendedInfo["RehydratedRPExpiryTime"]) : (DateTime?)null;
                         }
                     }
 

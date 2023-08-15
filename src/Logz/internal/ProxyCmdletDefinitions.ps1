@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitormonitoredresource
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitormonitoredresource
 #>
 function Get-AzLogzMonitorMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource])]
@@ -162,7 +162,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzoperation
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzoperation
 #>
 function Get-AzLogzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IOperationResult])]
@@ -270,7 +270,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
 .Link
-https://docs.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountmonitoredresource
+https://learn.microsoft.com/powershell/module/az.logz/get-azlogzsubaccountmonitoredresource
 #>
 function Get-AzLogzSubAccountMonitoredResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource])]

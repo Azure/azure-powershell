@@ -38,7 +38,7 @@ INPUTOBJECT <IMixedRealityIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityspatialanchorsaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/remove-azmixedrealityspatialanchorsaccount
 #>
 function Remove-AzMixedRealitySpatialAnchorsAccount {
 [OutputType([System.Boolean])]

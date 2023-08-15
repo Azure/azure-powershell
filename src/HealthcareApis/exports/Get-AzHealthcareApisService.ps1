@@ -62,7 +62,7 @@ INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription identifier.
   [WorkspaceName <String>]: The name of workspace resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisservice
 #>
 function Get-AzHealthcareApisService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]

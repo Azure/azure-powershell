@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
+online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
 schema: 2.0.0
 ---
 
@@ -41,7 +41,8 @@ This command lists all store keys of an app configuration store.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

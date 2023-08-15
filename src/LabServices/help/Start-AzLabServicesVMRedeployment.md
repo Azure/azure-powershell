@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
+online version: https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Identify a policy exemption to get by name and scope or by ID.
 Get-AzPolicyExemption
 ```
 
-This command gets all the policy exemptions.
+This command gets all the policy exemptions in the current subscription. If you need to list all the exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes you need to pass the `-IncludeDescendent` parameter.
 
 ### Example 2: Get a specific policy exemption
 ```powershell
@@ -112,6 +112,7 @@ Accept wildcard characters: False
 
 ### -IncludeDescendent
 Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.
+This parameter doesn't work when the requested scope is a management group scope.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

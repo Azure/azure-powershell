@@ -23,17 +23,21 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
-using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Profile.Context;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Moq;
+using System;
+using System.IO;
+using System.Linq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -56,6 +60,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
             tokenCacheProviderMock = new MockPowerShellTokenCacheProvider();
             AzureSession.Instance.RegisterComponent<PowerShellTokenCacheProvider>(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenCacheProviderMock);
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "True");
+
+            Mock<IStorage> storageMocker = new Mock<IStorage>();
+            AzKeyStore azKeyStore = null;
+            string profilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName);
+            azKeyStore = new AzKeyStore(profilePath, AzureSession.Instance.KeyStoreFile, true, storageMocker.Object);
+            AzureSession.Instance.RegisterComponent(AzKeyStore.Name, () => azKeyStore, true);
         }
 
         [Fact]

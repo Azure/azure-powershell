@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaylistener
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaylistener
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ Set-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Nam
  [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
  [-SslProfileId <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 The **Set-AzApplicationGatewayListener** cmdlet modifies a TCP\TLS listener for an Azure application gateway.
 

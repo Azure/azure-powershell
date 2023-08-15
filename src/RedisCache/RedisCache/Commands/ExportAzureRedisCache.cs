@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Format for import operation.")]
         public string Format { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS.")]
+        [PSArgumentCompleter("SAS", "ManagedIdentity")]
+        public string PreferredDataArchiveAuthMethod { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Subscription id of the storage container for data to be exported using ManagedIdentity.")]
+        public string StorageSubscriptionId { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -56,7 +63,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               Name,
               () =>
               {
-                  CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format);
+                  CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format,PreferredDataArchiveAuthMethod, StorageSubscriptionId);
                   if (PassThru)
                   {
                       WriteObject(true);

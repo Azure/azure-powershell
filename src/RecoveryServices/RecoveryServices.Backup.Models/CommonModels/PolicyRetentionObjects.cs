@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override string ToString()
         {
             return string.Format("IsDailyScheduleEnabled:{0}, IsWeeklyScheduleEnabled:{1}, " +
-                                 "IsMonthlyScheduleEnabled:{2}, IsYearlyScheduleEnabled:{3}" +
+                                 "IsMonthlyScheduleEnabled:{2}, IsYearlyScheduleEnabled:{3} " +
                                  "DailySchedule: {4}, WeeklySchedule: {5}, MonthlySchedule:{6}, YearlySchedule:{7}",
                                   IsDailyScheduleEnabled, IsWeeklyScheduleEnabled,
                                   IsMonthlyScheduleEnabled, IsYearlyScheduleEnabled,

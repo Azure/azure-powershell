@@ -29,7 +29,7 @@ endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-sec
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
+https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationservicekey
 #>
 function Get-AzCommunicationServiceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]

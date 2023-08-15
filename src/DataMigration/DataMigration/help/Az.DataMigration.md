@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataMigration
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
-Download Help Link: https://docs.microsoft.com/powershell/module/az.datamigration
+Download Help Link: https://learn.microsoft.com/powershell/module/az.datamigration
 Help Version: 0.1.0.0
 Locale: en-US
 ---
@@ -18,10 +18,10 @@ Start assessment on SQL Server instance(s)
 Collect performance data for given SQL Server instance(s)
 
 ### [Get-AzDataMigrationProject](Get-AzDataMigrationProject.md)
-Retrieves the properties of an Azure Database Migration project.
+Retrieves the properties of an Azure Database Migration Service (classic) project.
 
 ### [Get-AzDataMigrationService](Get-AzDataMigrationService.md)
-Retrieves the properties associated with an instance of the Azure Database Migration Service. 
+Retrieves the properties associated with an instance of the Azure Database Migration Service (classic). 
 
 ### [Get-AzDataMigrationSkuRecommendation](Get-AzDataMigrationSkuRecommendation.md)
 Gives SKU recommendations for Azure SQL offerings
@@ -39,7 +39,7 @@ Retrieve the registered Integration Runtime nodes and their monitoring data for 
 Retrieve the List of database migrations attached to the service.
 
 ### [Get-AzDataMigrationTask](Get-AzDataMigrationTask.md)
-Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
+Retrieves the PSProjectTask object associated with an Azure Database Migration Service (classic) migration task.
 
 ### [Get-AzDataMigrationToSqlDb](Get-AzDataMigrationToSqlDb.md)
 Retrieve the specified database migration for a given SQL Db.
@@ -51,7 +51,7 @@ Retrieve the specified database migration for a given SQL Managed Instance.
 Retrieve the specified database migration for a given SQL VM.
 
 ### [Invoke-AzDataMigrationCommand](Invoke-AzDataMigrationCommand.md)
-Creates a new command to be executed on an existing DMS task.
+Creates a new command to be executed on an existing DMS (classic) task.
 
 ### [Invoke-AzDataMigrationCutoverToSqlManagedInstance](Invoke-AzDataMigrationCutoverToSqlManagedInstance.md)
 Initiate cutover for in-progress online database migration to SQL Managed Instance.
@@ -69,7 +69,7 @@ Creates a new Connection Info object specifying the server type and name for con
 Creates the DatabaseInfo object for the Azure Database Migration Service, which specifies the database source for migration.
 
 ### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
-Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
+Creates the FileShare object for the Azure Database Migration Service (classic), which specifies the local network share to take the source database backups to.
 
 ### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
 Migrate logins from the source Sql Servers to the target Azure Sql Servers.
@@ -81,13 +81,16 @@ Creates collection setting for migration according for the mongoDb migration
 Creates database setting for migration for the mongoDb migration
 
 ### [New-AzDataMigrationProject](New-AzDataMigrationProject.md)
-Creates a new Azure Database Migration Service project.
+Creates a new Azure Database Migration Service (classic) project.
 
 ### [New-AzDataMigrationSelectedDBObject](New-AzDataMigrationSelectedDBObject.md)
 Creates a database input object that contains information about source and target databases for migration.
 
 ### [New-AzDataMigrationService](New-AzDataMigrationService.md)
-Creates a new instance of the Azure Database Migration Service.
+Creates a new instance of the Azure Database Migration Service (classic).
+
+### [New-AzDataMigrationSqlServerSchema](New-AzDataMigrationSqlServerSchema.md)
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
@@ -99,7 +102,10 @@ Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 Creates a database info object specific to the sync scenario to be used for a migration task.
 
 ### [New-AzDataMigrationTask](New-AzDataMigrationTask.md)
-Creates and starts a data migration task in the Azure Database Migration Service.
+Creates and starts a data migration task in the Azure Database Migration Service (classic).
+
+### [New-AzDataMigrationTdeCertificateMigration](New-AzDataMigrationTdeCertificateMigration.md)
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
@@ -114,10 +120,10 @@ Create a new database migration to a given SQL VM.
 Registers Sql Migration Service on Integration Runtime
 
 ### [Remove-AzDataMigrationProject](Remove-AzDataMigrationProject.md)
-Removes an Azure Database Migration Service project from Azure.
+Removes an Azure Database Migration Service (classic) project from Azure.
 
 ### [Remove-AzDataMigrationService](Remove-AzDataMigrationService.md)
-Removes an instance of the Azure Database Migration Service from Azure.
+Removes an instance of the Azure Database Migration Service (classic) from Azure.
 
 ### [Remove-AzDataMigrationSqlService](Remove-AzDataMigrationSqlService.md)
 Delete Database Migration Service.
@@ -126,19 +132,19 @@ Delete Database Migration Service.
 Delete the integration runtime node.
 
 ### [Remove-AzDataMigrationTask](Remove-AzDataMigrationTask.md)
-Removes an Azure Database Migration Service task from Azure.
+Removes an Azure Database Migration Service (classic) task from Azure.
 
 ### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
 Remove the specified database migration for a given SQL Db.
 
 ### [Start-AzDataMigrationService](Start-AzDataMigrationService.md)
-Starts an instance of the Azure Database Migration Service in a stopped state. 
+Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
 
 ### [Stop-AzDataMigrationService](Stop-AzDataMigrationService.md)
-Stops an instance of the Azure Database Migration Service that is in a running state.
+Stops an instance of the Azure Database Migration Service (classic) that is in a running state.
 
 ### [Stop-AzDataMigrationTask](Stop-AzDataMigrationTask.md)
-Stops an  Azure Database Migration Service task that is in a running state.
+Stops an  Azure Database Migration Service (classic) task that is in a running state.
 
 ### [Stop-AzDataMigrationToSqlDb](Stop-AzDataMigrationToSqlDb.md)
 Stop in-progress database migration to SQL Db.

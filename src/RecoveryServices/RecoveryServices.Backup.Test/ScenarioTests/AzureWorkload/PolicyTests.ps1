@@ -21,6 +21,60 @@ $location = "centraluseuap"
 $resourceGroupName = "iaasvm-pstest-rg"
 $vaultName = "iaasvm-pstest-vault"
 
+function Test-AzureVmWorkloadNonUTCPolicy
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiaga-zrs-vault"		
+	$newSQLPolnonUTC = "sql-pstest-local-policy"	
+
+	try
+	{	
+		# get vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$date= Get-Date -Hour 9 -Minute 0 -Second 0 -Year 2022 -Day 26 -Month 12 -Millisecond 0
+		$date = [DateTime]::SpecifyKind($date,[DateTimeKind]::Utc)		
+
+		## non-UTC policy timezone
+		$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Tokyo" } 		
+		
+		# create SQL policies 
+		$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload -PolicySubType Standard
+		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
+		$schPol.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimes[0] = $date
+		$retPol.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
+		$retPol.FullBackupRetentionPolicy.IsMonthlyScheduleEnabled = $false
+		$retPol.FullBackupRetentionPolicy.WeeklySchedule.DurationCountInWeeks = 35
+		$retPol.FullBackupRetentionPolicy.YearlySchedule.DurationCountInYears = 2
+		$schPol.IsDifferentialBackupEnabled = $true
+		$schPol.DifferentialBackupSchedulePolicy.ScheduleRunDays[0] = "Wednesday"
+		$schPol.DifferentialBackupSchedulePolicy.ScheduleRunTimes[0] = $date.AddHours(1)
+		$retPol.DifferentialBackupRetentionPolicy.RetentionCount = 15
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimeZone = $timeZone[0].Id
+		
+		$polLocal = New-AzRecoveryServicesBackupProtectionPolicy -Name $newSQLPolnonUTC -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID
+		
+		# assert
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimeZone -eq "Tokyo Standard Time" }
+		
+		$schPol.FullBackupSchedulePolicy.ScheduleRunTimeZone = "UTC"
+		Set-AzRecoveryServicesBackupProtectionPolicy -Policy $polLocal[0] -SchedulePolicy $schPol -VaultId $vault.ID
+		$polLocal = Get-AzRecoveryServicesBackupProtectionPolicy -Name $newSQLPolnonUTC -VaultId $vault.ID
+
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Hour -eq 9 }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimes[0].Kind -eq "Utc" }
+		Assert-True { $polLocal.FullBackupSchedulePolicy.ScheduleRunTimeZone -eq "UTC" }		
+	}
+	finally
+	{
+		# delete policies
+		Remove-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newSQLPolnonUTC -Force
+	}
+}
+
 function Test-AzureVmWorkloadSmartTieringPolicy
 {
 	$location = "centraluseuap"

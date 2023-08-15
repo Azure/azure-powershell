@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy
 schema: 2.0.0
 ---
 
@@ -23,8 +23,8 @@ The **Enable-AzStorageDeleteRetentionPolicy** cmdlet enables delete retention po
 ## EXAMPLES
 
 ### Example 1: Enable delete retention policy for the Blob service
-```
-C:\PS>Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
+```powershell
+Enable-AzStorageDeleteRetentionPolicy -RetentionDays 3
 ```
 
 This command enables delete retention policy for the Blob service, and set deleted blob retention days to 3.

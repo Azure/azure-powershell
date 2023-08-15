@@ -28,7 +28,7 @@ DiskCapacity MemoryCapacity Status  Version
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IDeploymentInfoResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdeploymentinfo
 #>
 function Get-AzElasticDeploymentInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IDeploymentInfoResponse])]

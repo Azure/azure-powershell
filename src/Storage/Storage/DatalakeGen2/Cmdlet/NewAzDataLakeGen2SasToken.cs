@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Sas;
     using System;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     /// <summary>
     /// list azure blobs in specified azure FileSystem
     /// </summary>
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2SasToken", DefaultParameterSetName = ManualParameterSet), OutputType(typeof(String))]
     public class NewDataLakeGen2SasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -117,7 +119,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && 
+                Channel.StorageContext.StorageAccount.Credentials != null &&  Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(this.Path, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {

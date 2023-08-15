@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationoperation
+https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationoperation
 #>
 function Get-AzConfluentOrganizationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOperationResult])]
@@ -154,7 +154,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
 function Remove-AzConfluentOrganization {
 [OutputType([System.Boolean])]

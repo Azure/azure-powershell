@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Containers.ContainerRegistry;
+using Azure;
 using Microsoft.Azure.ContainerRegistry.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Models
 {
@@ -24,6 +28,20 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
         {
         }
 
+        public  PSTagList(Pageable<ArtifactManifestProperties> properties)
+        {
+            this.Tags = new List<PSTagAttributeBase>();
+            foreach (ArtifactManifestProperties property in properties)
+            {
+                foreach (string tag in property.Tags)
+                {
+                    PSTagAttributeBase newTag = new PSTagAttributeBase(tag, property.Digest, property.CreatedOn.ToString(), property.LastUpdatedOn.ToString(),null ,new ChangeableAttributes(property.CanDelete, property.CanWrite, property.CanList, property.CanRead));
+                    Tags.Add(newTag);
+                }
+                this.ImageName = property.RepositoryName;
+                this.Registry = property.RegistryLoginServer;
+            }
+        }
         public PSTagList(string registry = default(string), string imageName = default(string), IList<PSTagAttributeBase> tags = default(IList<PSTagAttributeBase>))
         {
             Registry = registry;

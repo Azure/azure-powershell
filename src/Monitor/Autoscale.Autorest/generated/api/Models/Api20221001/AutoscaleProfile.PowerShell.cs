@@ -118,11 +118,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
             }
             if (content.Contains("FixedDateStart"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart = (global::System.DateTime) content.GetValueForProperty("FixedDateStart",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart = (global::System.DateTime?) content.GetValueForProperty("FixedDateStart",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("FixedDateEnd"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd = (global::System.DateTime) content.GetValueForProperty("FixedDateEnd",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd = (global::System.DateTime?) content.GetValueForProperty("FixedDateEnd",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RecurrenceSchedule"))
             {
@@ -203,11 +203,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
             }
             if (content.Contains("FixedDateStart"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart = (global::System.DateTime) content.GetValueForProperty("FixedDateStart",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart = (global::System.DateTime?) content.GetValueForProperty("FixedDateStart",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateStart, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("FixedDateEnd"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd = (global::System.DateTime) content.GetValueForProperty("FixedDateEnd",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd = (global::System.DateTime?) content.GetValueForProperty("FixedDateEnd",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfileInternal)this).FixedDateEnd, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("RecurrenceSchedule"))
             {

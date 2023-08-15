@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultsecret
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -78,7 +78,7 @@ Tags                 :
 This command removes the secret named FinanceSecret from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
-### Example 3: Remove a secret in azure key vault by command Remove-Secret in module Microsoft.PowerShell.SecretManagement
+### Example 3: Remove a secret in Azure Key Vault by command Remove-Secret in module Microsoft.PowerShell.SecretManagement
 ```powershell
 # Install module Microsoft.PowerShell.SecretManagement
 Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
@@ -87,22 +87,21 @@ Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @
 # Set secret for vault AzKeyVault
 $secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
-Remove-Secret -Vault AzKeyVault	-Name secureSecret
+Remove-Secret -Vault AzKeyVault -Name secureSecret
 ```
 
 ```output
 None
 ```
 
-This example removes a secret named `secureSecret` in azure key vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
+This example removes a secret named `secureSecret` in Azure Key Vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
-
-### Example 3: Purge deleted secret from the key vault permanently
+### Example 4: Purge deleted secret from the key vault permanently
 ```powershell
 Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
-This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.
+This command removes the secret named FinanceSecret from the key vault named Contoso permanently.
 Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user for this key vault.
 
 ## PARAMETERS

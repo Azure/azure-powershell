@@ -26,7 +26,7 @@ PS C:\> Save-AzLabServicesLabPlanImage -ResourceGroupName "Group Name" -LabName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
+https://learn.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
 #>
 function Save-AzLabServicesLabPlanImage {
 [OutputType([System.Boolean])]

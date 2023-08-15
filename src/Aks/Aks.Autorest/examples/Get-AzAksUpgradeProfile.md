@@ -10,3 +10,5 @@ default Microsoft.ContainerService/managedClusters/upgradeprofiles
 ```
 
 Get Aks upgrade profile with resource group name and cluster name.
+
+

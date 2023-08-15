@@ -45,7 +45,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetforwardingrule
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetforwardingrule
 #>
 function Get-AzDnsForwardingRulesetForwardingRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule])]
@@ -253,7 +253,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Get-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]
@@ -467,7 +467,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingruleset
 #>
 function Get-AzDnsForwardingRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkDnsForwardingRuleset])]
@@ -681,7 +681,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
 #>
 function Get-AzDnsResolverInboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint])]
@@ -889,7 +889,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolveroutboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolveroutboundendpoint
 #>
 function Get-AzDnsResolverOutboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint])]
@@ -1103,7 +1103,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolver
+https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolver
 #>
 function Get-AzDnsResolver {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver], [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ISubResource])]
@@ -1309,7 +1309,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   IPAddress <String>: DNS server IP address.
   [Port <Int32?>]: DNS server port.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
 #>
 function New-AzDnsForwardingRulesetForwardingRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule])]
@@ -1523,7 +1523,7 @@ New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwar
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetvirtualnetworklink
 #>
 function New-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]
@@ -1743,7 +1743,7 @@ To create the parameters described below, construct a hash table containing the 
 DNSRESOLVEROUTBOUNDENDPOINT <ISubResource[]>: The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
   Id <String>: Resource ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingruleset
 #>
 function New-AzDnsForwardingRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset])]
@@ -1967,7 +1967,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IP configurations for the inbound endpoint
   [PrivateIPAddress <String>]: Private IP address of the IP configuration.
   [PrivateIPAllocationMethod <IPAllocationMethod?>]: Private IP address allocation method.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
 #>
 function New-AzDnsResolverInboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint])]
@@ -2186,7 +2186,7 @@ New-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOu
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveroutboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveroutboundendpoint
 #>
 function New-AzDnsResolverOutboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint])]
@@ -2403,7 +2403,7 @@ New-AzDnsResolver -Name sampleResolver -ResourceGroupName powershell-test-rg -Vi
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolver
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolver
 #>
 function New-AzDnsResolver {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver])]
@@ -2636,7 +2636,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetforwardingrule
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetforwardingrule
 #>
 function Remove-AzDnsForwardingRulesetForwardingRule {
 [OutputType([System.Boolean])]
@@ -2850,7 +2850,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Remove-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([System.Boolean])]
@@ -3078,7 +3078,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingruleset
 #>
 function Remove-AzDnsForwardingRuleset {
 [OutputType([System.Boolean])]
@@ -3299,7 +3299,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint
 #>
 function Remove-AzDnsResolverInboundEndpoint {
 [OutputType([System.Boolean])]
@@ -3525,7 +3525,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolveroutboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolveroutboundendpoint
 #>
 function Remove-AzDnsResolverOutboundEndpoint {
 [OutputType([System.Boolean])]
@@ -3751,7 +3751,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolver
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolver
 #>
 function Remove-AzDnsResolver {
 [OutputType([System.Boolean])]
@@ -3973,7 +3973,7 @@ TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
   IPAddress <String>: DNS server IP address.
   [Port <Int32?>]: DNS server port.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetforwardingrule
 #>
 function Update-AzDnsForwardingRulesetForwardingRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule])]
@@ -4201,7 +4201,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetvirtualnetworklink
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingrulesetvirtualnetworklink
 #>
 function Update-AzDnsForwardingRulesetVirtualNetworkLink {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink])]
@@ -4429,7 +4429,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsforwardingruleset
 #>
 function Update-AzDnsForwardingRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset])]
@@ -4656,7 +4656,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverinboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverinboundendpoint
 #>
 function Update-AzDnsResolverInboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint])]
@@ -4881,7 +4881,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolveroutboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolveroutboundendpoint
 #>
 function Update-AzDnsResolverOutboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint])]
@@ -5106,7 +5106,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
 #>
 function Update-AzDnsResolver {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver])]
@@ -5304,7 +5304,7 @@ New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 1.1.2.12 -PrivateIPAllo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IPConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IPConfiguration])]
@@ -5414,7 +5414,7 @@ New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.TargetDnsServer
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.TargetDnsServer])]

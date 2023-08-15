@@ -25,7 +25,7 @@ Get-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
 #>
 function Get-AzFluidRelayServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys])]

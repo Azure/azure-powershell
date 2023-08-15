@@ -95,7 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private static string GetFileSASToken(CloudFile file)
         {
             if (null == file.ServiceClient.Credentials
-                || file.ServiceClient.Credentials.IsAnonymous)
+                || file.ServiceClient.Credentials.IsAnonymous
+                || file.ServiceClient.Credentials.IsToken)
             {
                 return string.Empty;
             }
@@ -197,7 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 throw new ArgumentNullException("blob");
             }
-            else if (context.StorageAccount.Credentials.IsSAS)
+            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
             {
                 return blob.Uri;
             }

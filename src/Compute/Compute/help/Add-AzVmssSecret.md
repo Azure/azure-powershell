@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 656BE930-E778-40B0-8A75-BFE52DE386CE
-online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsssecret
+online version: https://learn.microsoft.com/powershell/module/az.compute/add-azvmsssecret
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Add-AzVmssSecret [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SourceV
 ## DESCRIPTION
 The **Add-AzVmssSecret** cmdlet adds a secret to the Virtual Machine Scale Set (VMSS).
 The secret must be stored in an Azure Key Vault.
-For more information relating to Key Vault, see [What is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/general/basic-concepts) (https://docs.microsoft.com/azure/key-vault/general/basic-concepts).
+For more information relating to Key Vault, see [What is Azure Key Vault?](https://learn.microsoft.com/azure/key-vault/general/basic-concepts) (https://learn.microsoft.com/azure/key-vault/general/basic-concepts).
 For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershell/module/az.keyvault) or the [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ## EXAMPLES
@@ -49,7 +49,7 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $ex
 Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss
 ```
 
-To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). 
+To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). 
 
 ### Example 2: Add a secret to the VMSS using Add-AzVmssSecret
 ```powershell

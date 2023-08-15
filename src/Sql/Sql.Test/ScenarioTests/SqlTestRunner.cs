@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     resourceProviders: new Dictionary<string, string>
                     {
                         {"Microsoft.Resources", null},
+                        {"Microsoft.Sql", null},
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
                         {"Microsoft.Network", null},

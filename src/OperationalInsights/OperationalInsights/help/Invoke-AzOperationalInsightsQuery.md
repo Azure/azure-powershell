@@ -31,7 +31,7 @@ You can access the status of the search in the Metadata property of the returned
 If the status is Pending, then the search has not completed, and the results will be from the archive.
 You can retrieve the results of the search from the Value property of the returned object.
 Please check detail of general query limits here: 
-https://docs.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-language.
+https://learn.microsoft.com/azure/azure-monitor/service-limits#log-queries-and-language.
 
 ## EXAMPLES
 
@@ -72,8 +72,6 @@ $queryResults.Render
 
 $queryResults.Statistics
 ```
-
-See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions) for details on the render and statistics info.
 
 ## PARAMETERS
 
@@ -169,7 +167,6 @@ Accept wildcard characters: False
 
 ### -Wait
 Puts an upper bound on the amount of time the server will spend processing the query.
-See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

@@ -60,7 +60,7 @@ INPUTOBJECT <IServer>: Identity Parameter
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbconnectionstring
 #>
 function Get-AzMariaDbConnectionString {
 [OutputType([System.String])]

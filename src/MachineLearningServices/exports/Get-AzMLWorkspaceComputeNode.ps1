@@ -25,7 +25,7 @@ Get-AzMLWorkspaceComputeNode -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlComputeNodeInformation
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputenode
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacecomputenode
 #>
 function Get-AzMLWorkspaceComputeNode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAmlComputeNodeInformation])]

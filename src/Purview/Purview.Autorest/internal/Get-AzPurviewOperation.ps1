@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewoperation
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewoperation
 #>
 function Get-AzPurviewOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IOperation])]

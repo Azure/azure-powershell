@@ -29,7 +29,7 @@ Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestC
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
+https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]

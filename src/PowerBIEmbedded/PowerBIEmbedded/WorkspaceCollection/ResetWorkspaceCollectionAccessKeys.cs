@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [GenericBreakingChange("Reset-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [CmdletDeprecationWithVersion("11.0.0", "2.0.0")]
     [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKey", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     [Alias("Reset-AzPowerBIWorkspaceCollectionAccessKeys")]
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet

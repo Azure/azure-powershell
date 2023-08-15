@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2A74E72B-BD6B-45D7-9C19-B2575C60C43F
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverdisasterrecoveryconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlserverdisasterrecoveryconfiguration
 schema: 2.0.0
 ---
 
@@ -153,4 +153,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServerDisasterRecoveryConfiguration](./Set-AzSqlServerDisasterRecoveryConfiguration.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

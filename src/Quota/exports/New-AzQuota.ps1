@@ -40,7 +40,7 @@ PublicIPAddresses Public IP Addresses - Basic Count
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/new-azquota
+https://learn.microsoft.com/powershell/module/az.quota/new-azquota
 #>
 function New-AzQuota {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase])]

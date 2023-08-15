@@ -38,6 +38,13 @@ namespace Commands.Aks.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewAzAksAddons");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureKubernetesAddonsEnableAndDisable()
+        {
+            TestRunner.RunTestScript("Test-EnableAndDisableAzAksAddons");
+        }
+
         [Fact(Skip = "Please make sure you have graph directory.read permission which is required for grant acrpull permission.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzAksWithAcr()
@@ -155,6 +162,69 @@ namespace Commands.Aks.Test.ScenarioTests
         public void TestAutoScalerProfile()
         {
             TestRunner.RunTestScript("Test-AutoScalerProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGpuInstanceProfile()
+        {
+            TestRunner.RunTestScript("Test-GpuInstanceProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableUptimeSLA()
+        {
+            TestRunner.RunTestScript("Test-EnableUptimeSLA");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-EdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAadProfile()
+        {
+            TestRunner.RunTestScript("Test-AadProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestHostGroupID()
+        {
+            TestRunner.RunTestScript("Test-HostGroupID");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPodSubnetID()
+        {
+            TestRunner.RunTestScript("Test-PodSubnetID");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableOidcIssuer()
+        {
+            TestRunner.RunTestScript("Test-EnableOidcIssuer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOutboundType()
+        {
+            TestRunner.RunTestScript("Test-OutboundType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableAHUB()
+        {
+            TestRunner.RunTestScript("Test-EnableAHUB");
         }
     }
 }

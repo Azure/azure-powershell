@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 77CDEE77-FD5D-4C2D-B027-FF1F6FF6618E
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgateway
 schema: 2.0.0
 ---
 
@@ -55,6 +55,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -115,6 +116,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -175,6 +177,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []
@@ -235,6 +238,7 @@ Zones                               : {}
 OperationalState                    : Running
 ProvisioningState                   : Succeeded
 Identity                            :
+DefaultPredefinedSslPolicy          : AppGwSslPolicy20150501
 GatewayIpConfigurationsText         : []
 AuthenticationCertificatesText      : []
 SslCertificatesText                 : []

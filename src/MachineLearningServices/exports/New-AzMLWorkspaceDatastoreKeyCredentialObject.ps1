@@ -25,7 +25,7 @@ New-AzMLWorkspaceDatastoreKeyCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/New-AzMLWorkspaceDatastoreKeyCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/New-AzMLWorkspaceDatastoreKeyCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreKeyCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials])]

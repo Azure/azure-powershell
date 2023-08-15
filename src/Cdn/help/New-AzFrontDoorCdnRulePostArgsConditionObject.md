@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRulePostArgsConditionObject
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Name
 PostArgs
 ```
 
-
+Create an in-memory object for DeliveryRulePostArgsCondition
 
 ## PARAMETERS
 
@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRulePostArgsCondition
 
 ## NOTES
 

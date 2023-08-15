@@ -31,6 +31,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public DateTime RecoveryPointTime { get; set; }
 
+        /// <summary>
+        /// Recovery point expiry time
+        /// </summary>
+        public DateTime? RecoveryPointExpiryTime;
+
+        /// <summary>
+        /// Rule Name
+        /// </summary>
+        public String RuleName;
+
         public AzureRecoveryPoint()
         {
 

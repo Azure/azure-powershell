@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state. " +
                 "Run 'Remove-ServiceFabricNodeState' on those nodes to fix them. Read this document for details: " +
-                "https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
+                "https://learn.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
 
             var cluster = GetCurrentCluster();
             var vmssExists = VmssExists();

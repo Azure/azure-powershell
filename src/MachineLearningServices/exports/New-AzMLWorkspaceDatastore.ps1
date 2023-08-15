@@ -54,7 +54,7 @@ DATASTORE <IDatastoreProperties>: [Required] Additional attributes of the entity
   [Tag <IResourceBaseTags>]: Tag dictionary. Tags can be added, removed, and updated.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
 #>
 function New-AzMLWorkspaceDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastore])]

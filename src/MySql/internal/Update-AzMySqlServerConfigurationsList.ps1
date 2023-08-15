@@ -53,7 +53,7 @@ VALUE <IConfigurationListResult>: A list of server configurations.
     [Source <String>]: Source of the configuration.
     [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 #>
 function Update-AzMySqlServerConfigurationsList {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
@@ -98,7 +98,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

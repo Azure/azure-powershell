@@ -25,7 +25,7 @@ Test-AzSpringCloudNameAvailability -Location EastUS -Name springcloud-service -T
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.INameAvailability
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/test-azspringcloudnameavailability
+https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudnameavailability
 #>
 function Test-AzSpringCloudNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.INameAvailability])]

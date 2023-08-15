@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 schema: 2.0.0
 ---
 
@@ -22,16 +22,18 @@ Create an in-memory object for UrlSigningKeyParameters.
 
 ## EXAMPLES
 
-### Example 1: Add title here
+### Example 1: Create an in-memory object for UrlSigningKeyParameters
 ```powershell
-Add code here
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
 ```
 
 ```output
-Add output here
+KeyId   SecretVersion
+-----   -------------
+keyId01 v1.0
 ```
 
-
+Create an in-memory object for UrlSigningKeyParameters.
 
 ## PARAMETERS
 
@@ -103,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningKeyParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningKeyParameters
 
 ## NOTES
 

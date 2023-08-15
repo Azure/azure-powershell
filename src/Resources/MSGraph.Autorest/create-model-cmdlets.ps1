@@ -23,10 +23,13 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'AD'
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
-
+    if ('Az.Resources'.length -gt 0) {
+        $ModuleName = 'Az.Resources'
+    } else {
+        $ModuleName = 'Az.MSGraph'
+    }
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''
     $null = $CsFiles | ForEach-Object -Process { if ($_.Name.Split('.').count -eq 2 )
@@ -64,10 +67,10 @@ function CreateModelCmdlet {
         $ObjectType = $Model
         $ObjectTypeWithNamespace = "${Namespace}.${ObjectType}"
         # remove duplicated module name
-        if ($ObjectType.StartsWith($ModuleName)) {
+        if ($ObjectType.StartsWith('AD')) {
             $ModulePrefix = ''
         } else {
-            $ModulePrefix = $ModuleName
+            $ModulePrefix = 'AD'
         }
         $OutputPath = Join-Path -ChildPath "New-Az${ModulePrefix}${ObjectType}Object.ps1" -Path $OutputDir
 
@@ -81,6 +84,7 @@ function CreateModelCmdlet {
                 $Required = $false
                 $Description = ""
                 $Readonly = $False
+                $mutability = @{Read = $true; Create = $true; Update = $true}
                 foreach ($Argument in $Arguments)
                 {
                     if ($Argument.NameEquals.Name.Identifier.Value -eq "Required")
@@ -95,6 +99,18 @@ function CreateModelCmdlet {
                     {
                         $Readonly = $Argument.Expression.Token.Value
                     }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Read")
+                    {
+                        $mutability.Read = $Argument.Expression.Token.Value
+                    }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Create")
+                    {
+                        $mutability.Create = $Argument.Expression.Token.Value
+                    }
+                    if ($Argument.NameEquals.Name.Identifier.Value -eq "Update")
+                    {
+                        $mutability.Update = $Argument.Expression.Token.Value
+                    }
                 }
                 if ($Readonly)
                 {
@@ -103,7 +119,7 @@ function CreateModelCmdlet {
                 $Identifier = $Member.Identifier.Value
                 $Type = $Member.Type.ToString().replace('?', '').Split("::")[-1]
                 $ParameterDefinePropertyList = New-Object System.Collections.Generic.List[string]
-                if ($Required)
+                if ($Required -and $mutability.Create -and $mutability.Update)
                 {
                     $ParameterDefinePropertyList.Add("Mandatory")
                 }
@@ -158,7 +174,7 @@ Create an in-memory object for ${ObjectType}.
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]

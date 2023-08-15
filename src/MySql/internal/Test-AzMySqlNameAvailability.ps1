@@ -52,7 +52,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
   Name <String>: Resource name to verify.
   [Type <String>]: Resource type used for verification.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
+https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
 #>
 function Test-AzMySqlNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability])]
@@ -101,7 +101,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

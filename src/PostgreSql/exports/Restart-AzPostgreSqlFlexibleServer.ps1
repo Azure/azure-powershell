@@ -56,7 +56,7 @@ PARAMETER <IRestartParameter>: Represents server restart parameters.
   [FailoverMode <String>]: Failover mode.
   [RestartWithFailover <Boolean?>]: Indicates whether to restart the server with failover.
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
 #>
 function Restart-AzPostgreSqlFlexibleServer {
 [OutputType([System.Boolean])]

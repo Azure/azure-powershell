@@ -34,7 +34,7 @@ Remove-AzDataBoxEdgeDevice -InputObject <PSDataBoxEdgeDevice> [-AsJob]
 The **Remove-AzDataBoxEdgeDevice** cmdlet removes the configuration for a Data Box Edge device.
 Note that the device can only be deleted after you have placed the order and before the device is prepared by Microsoft for shipment.
 
-Refer the documentation on Deleting the resource before using this [cmdlet](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device#delete-the-resource)
+Refer the documentation on Deleting the resource before using this [cmdlet](https://learn.microsoft.com/azure/databox-online/data-box-edge-return-device#delete-the-resource)
 
 ## EXAMPLES
 

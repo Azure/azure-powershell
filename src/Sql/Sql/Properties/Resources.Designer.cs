@@ -683,8 +683,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
-        /// subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
-        /// subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseN [rest of string was truncated]&quot;;.
+        /// /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+        /// /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databas [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InvalidLongTermRetentionBackupResourceIdFormat {
             get {
@@ -1548,6 +1548,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating DTC on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        /// </summary>
+        internal static string SetAzureSqlInstanceDtcDescription {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDtcDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update DTC on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
+        /// </summary>
+        internal static string SetAzureSqlInstanceDtcWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlInstanceDtcWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
         /// </summary>
         internal static string SetAzureSqlInstanceLinkDescription {
@@ -1634,6 +1652,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetSecondaryNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetSecondaryNoOptionProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting value &apos;{0}&apos; for the server configuration option named &apos;{1}&apos; on managed instance &apos;{2}&apos; located in resource group &apos;{3}&apos;..
+        /// </summary>
+        internal static string SetServerConfigurationOptionDescription {
+            get {
+                return ResourceManager.GetString("SetServerConfigurationOptionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to set the value &apos;{0}&apos; for the server configuration option named &apos;{1}&apos; on managed instance &apos;{2}&apos; located in resource group &apos;{3}&apos;?.
+        /// </summary>
+        internal static string SetServerConfigurationOptionWarning {
+            get {
+                return ResourceManager.GetString("SetServerConfigurationOptionWarning", resourceCulture);
             }
         }
         

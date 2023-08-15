@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
-online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmetric
 schema: 2.0.0
 ---
 
@@ -16,15 +16,16 @@ Gets the metric values of a resource.
 ### GetWithDefaultParameters (Default)
 ```
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MetricFilter <String>] [-Dimension <String[]>] [[-MetricName] <String[]>] [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
 ```
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
- [-ResultType <ResultType>] [-MetricFilter <String>] [-MetricName] <String[]> [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResultType <ResultType>] [-MetricFilter <String>] [-Dimension <String[]>] [-MetricName] <String[]>
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -254,6 +255,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Dimension
+The metric dimensions to query metrics for
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EndTime
 Specifies the end time of the query in local time.
 The default is the current time.
@@ -275,7 +291,7 @@ Specifies the metric dimension filter to query metrics for.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -447,7 +463,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 More information about the supported metrics may be found at:
-https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported
+https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 ## RELATED LINKS
 

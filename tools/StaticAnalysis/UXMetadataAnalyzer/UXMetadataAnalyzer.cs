@@ -35,6 +35,14 @@ using ParameterSetMetadata = Tools.Common.Models.ParameterSetMetadata;
 
 namespace StaticAnalysis.UXMetadataAnalyzer
 {
+    public class IssueLoggerContext
+    {
+        public string ModuleName { get; set; }
+        public string ResourceType { get; set; }
+        public string SubResourceType { get; set; }
+        public string CommandName { get; set; }
+    }
+
     public class UXMetadataAnalyzer : IStaticAnalyzer
     {
         public AnalysisLogger Logger { get; set; }
@@ -47,7 +55,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
         {
             Name = "UX Metadata Analyzer";
             UXMetadataIssueReportLoggerName = "UXMetadataIssues.csv";
-            var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var schemaPath = Path.Combine(executingPath, "UXMetadataAnalyzer", "PortalInputSchema.json");
             var schemaContent = File.ReadAllText(schemaPath);
             schema = JsonSchema.FromJsonAsync(schemaContent).Result;
@@ -89,7 +97,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                                                                         !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
                 SharedAssemblyLoader.Load(baseDirectory);
-                var probingDirectories = new List<string> {baseDirectory};
+                var probingDirectories = new List<string> { baseDirectory };
 
                 // Add current directory for probing
                 probingDirectories.AddRange(Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)));
@@ -103,75 +111,72 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                         continue;
                     }
                     string moduleName = Path.GetFileName(directory);
-
+                    string moduleFolder = Path.Combine(savedDirectory, "src", moduleName.Replace("Az.", ""));
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
 
-                    string UXFolder = Path.Combine(directory, "UX");
-                    if (!Directory.Exists(UXFolder))
+                    string[] UXFolders = Directory.GetDirectories(moduleFolder, "UX", SearchOption.AllDirectories);
+                    foreach (var UXFolder in UXFolders)
                     {
-                        continue;
-                    }
-
-                    var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
-                    foreach (var UXMetadataPath in UXMetadataPathList)
-                    {
-                        ValidateUXMetadata(moduleName, UXMetadataPath, moduleMetadata, issueLogger);
+                        var UXMetadataPathList = Directory.EnumerateFiles(UXFolder, "*.json", SearchOption.AllDirectories);
+                        foreach (var UXMetadataPath in UXMetadataPathList)
+                        {
+                            ValidateUXMetadata(moduleName, UXMetadataPath, moduleMetadata, issueLogger);
+                        }
                     }
                     Directory.SetCurrentDirectory(savedDirectory);
                 }
             }
         }
 
-        private void ValidateSchema(string moduleName, string resourceType, string subResourceType, string UXMetadataContent, ReportLogger<UXMetadataIssue> issueLogger)
+        private void ValidateSchema(IssueLoggerContext context, string UXMetadataContent, ReportLogger<UXMetadataIssue> issueLogger)
         {
             var result = schemaValidator.Validate(UXMetadataContent, schema);
             if (result != null && result.Count != 0)
             {
                 foreach (ValidationError error in result)
                 {
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, null, 1, error.ToString().Replace("\n", "\\n"));
+                    issueLogger.LogUXMetadataIssue(context, 1, error.ToString().Replace("\n", "\\n"));
                 }
             }
         }
 
-        private void ValidateMetadata(string moduleName, string resourceType, string subResourceType, string UXMetadataContent, ModuleMetadata moduleMetadata, ReportLogger<UXMetadataIssue> issueLogger)
+        private void ValidateMetadata(IssueLoggerContext context, string UXMetadataContent, ModuleMetadata moduleMetadata, ReportLogger<UXMetadataIssue> issueLogger)
         {
             UXMetadata UXMetadata = JsonConvert.DeserializeObject<UXMetadata>(UXMetadataContent);
-            
+
             foreach (UXMetadataCommand command in UXMetadata.Commands)
             {
-                string expectLearnUrl = string.Format("https://learn.microsoft.com/powershell/module/{0}/{1}", moduleName, command.Name).ToLower();
-                
+                context.CommandName = command.Name;
+                string expectLearnUrl = string.Format("https://learn.microsoft.com/powershell/module/{0}/{1}", context.ModuleName, command.Name).ToLower();
+
                 if (!expectLearnUrl.Equals(command.Help.LearnMore.Url, StringComparison.OrdinalIgnoreCase))
                 {
                     string description = string.Format("Doc url is expect: {0} but get: {1}", expectLearnUrl, command.Help.LearnMore.Url);
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, command.Name, 1, description);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
                 }
-                if (command.Path.IndexOf(resourceType, StringComparison.CurrentCultureIgnoreCase) == -1)
+                if (command.Path.IndexOf(context.ResourceType, StringComparison.CurrentCultureIgnoreCase) == -1)
                 {
-                    string description = string.Format("The path {0} doesn't contains the right resource tpye: {1}", command.Path, resourceType);
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, command.Name, 2, description);
+                    string description = string.Format("The path {0} doesn't contains the right resource tpye: {1}", command.Path, context.ResourceType);
+                    issueLogger.LogUXMetadataIssue(context, 2, description);
                 }
 
                 CmdletMetadata cmdletMetadata = moduleMetadata.Cmdlets.Find(x => x.Name == command.Name);
                 if (cmdletMetadata == null)
                 {
-                    string description = string.Format("Cmdlet {0} is not contained in {1}.", command.Name, moduleName);
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, command.Name, 1, description);
+                    string description = string.Format("Cmdlet {0} is not contained in {1}.", command.Name, context.ModuleName);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                    continue;
                 }
-                else
+                foreach (UXMetadataCommandExample example in command.Examples)
                 {
-                    foreach (UXMetadataCommandExample example in command.Examples)
-                    {
-                        ValidateExample(moduleName, resourceType, subResourceType, command.Name, cmdletMetadata, example, issueLogger);
-                    }
+                    ValidateExample(context, command, cmdletMetadata, example, issueLogger);
                 }
             }
         }
 
-        private void ValidateExample(string moduleName, string resourceType, string subResourceType, string commandName, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
+        private void ValidateExample(IssueLoggerContext context, UXMetadataCommand command, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
             List<string> parameterListConvertedFromAlias = example.Parameters.Select(x =>
             {
@@ -187,13 +192,13 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                         if (alias.Equals(parameterNameInExample, StringComparison.CurrentCultureIgnoreCase))
                         {
                             string issueDescription = string.Format("Please use parameter {0} instead of alias {1}", parameterMetadata.Name, alias);
-                            issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 2, issueDescription);
+                            issueLogger.LogUXMetadataIssue(context, 2, issueDescription);
                             return parameterMetadata.Name;
                         }
                     }
                 }
                 string description = string.Format("Cannot find the defination of parameter {0} in example", parameterNameInExample);
-                issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                issueLogger.LogUXMetadataIssue(context, 1, description);
                 return null;
             }).ToList();
 
@@ -203,7 +208,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 if (parameterListConvertedFromAlias.Count(x => parameter.Equals(x)) != 1)
                 {
                     string description = string.Format("Multiply reference of parameter {0} in example", parameter);
-                    issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
                 }
             }
             if (parameterListConvertedFromAlias.Contains(null))
@@ -222,8 +227,58 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
             if (!findMatchedParameterSet)
             {
-                string description = string.Format("Cannot find a matched parameter set for example of {0}", commandName);
-                issueLogger.LogUXMetadataIssue(moduleName, resourceType, subResourceType, commandName, 1, description);
+                string description = string.Format("Cannot find a matched parameter set for example of {0}", context.CommandName);
+                issueLogger.LogUXMetadataIssue(context, 1, description);
+            }
+
+            #region valiate the parameters in path
+            var httpPathParameterRegex = new Regex(@"\{\w+\}");
+            HashSet<string> parametersFromHttpPath = new HashSet<string>(httpPathParameterRegex.Matches(command.Path).Select(x => x.Value.TrimStart('{').TrimEnd('}')), StringComparer.OrdinalIgnoreCase);
+            ValidateParametersDefinedInPathContainsInExample(context, parametersFromHttpPath, example, issueLogger);
+            ValidateParametersInExampleDefinedInPath(context, parametersFromHttpPath, example, issueLogger);
+            #endregion
+        }
+
+        private void ValidateParametersDefinedInPathContainsInExample(IssueLoggerContext context, HashSet<string> parametersFromHttpPath, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
+        {
+            foreach (string parameterFromHttpPath in parametersFromHttpPath)
+            {
+                if (parameterFromHttpPath.Equals("subscriptionId", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    continue;
+                }
+                bool isParameterContainsInExample = example.Parameters.Any(x => x.Value.Equals(string.Format("[path.{0}]", parameterFromHttpPath), StringComparison.CurrentCultureIgnoreCase));
+                if (!isParameterContainsInExample)
+                {
+                    string description = string.Format("{0} is defined in path but cannot find in example", parameterFromHttpPath);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                }
+            }
+        }
+
+        private void ValidateParametersInExampleDefinedInPath(IssueLoggerContext context, HashSet<string> parametersFromHttpPath, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
+        {
+            var exampleParameterPathRegex = new Regex(@"path\.([\w]+)");
+            foreach (var parameter in example.Parameters)
+            {
+                string parameterInExample = parameter.Value;
+                if (parameterInExample == null)
+                {
+                    string description = string.Format("The value of {0} is not defined.", parameter.Name);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                    continue;
+                }
+                var match = exampleParameterPathRegex.Match(parameterInExample);
+                if (!match.Success)
+                {
+                    continue;
+                }
+                var parameterName = match.Groups[1].Value;
+                if (!parametersFromHttpPath.Contains(parameterName))
+                {
+                    string description = string.Format("{0} is defined in example but cannot find in http path", parameterName);
+                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                }
             }
         }
 
@@ -267,8 +322,14 @@ namespace StaticAnalysis.UXMetadataAnalyzer
             string UXMetadataContent = File.ReadAllText(UXMetadataPath);
             string resourceType = Path.GetFileName(Path.GetDirectoryName(UXMetadataPath));
             string subResourceType = Path.GetFileName(UXMetadataPath).Replace(".json", "");
-            ValidateSchema(moduleName, resourceType, subResourceType, UXMetadataContent, issueLogger);
-            ValidateMetadata(moduleName, resourceType, subResourceType, UXMetadataContent, moduleMetadata, issueLogger);
+            IssueLoggerContext context = new IssueLoggerContext
+            {
+                ModuleName = moduleName,
+                ResourceType = resourceType,
+                SubResourceType = subResourceType
+            };
+            ValidateSchema(context, UXMetadataContent, issueLogger);
+            ValidateMetadata(context, UXMetadataContent, moduleMetadata, issueLogger);
         }
 
 
@@ -290,15 +351,15 @@ namespace StaticAnalysis.UXMetadataAnalyzer
     public static class LogExtensions
     {
         public static void LogUXMetadataIssue(
-            this ReportLogger<UXMetadataIssue> issueLogger, string module, string resourceType, string subResourceType, string command,
+            this ReportLogger<UXMetadataIssue> issueLogger, IssueLoggerContext context,
             int severity, string description)
         {
             issueLogger.LogRecord(new UXMetadataIssue
             {
-                Module = module,
-                ResourceType = resourceType,
-                SubResourceType = subResourceType,
-                Command = command,
+                Module = context.ModuleName,
+                ResourceType = context.ResourceType,
+                SubResourceType = context.SubResourceType,
+                Command = context.CommandName,
                 Description = description,
                 Severity = severity,
             });

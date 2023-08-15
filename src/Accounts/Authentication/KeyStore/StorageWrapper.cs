@@ -11,33 +11,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.Extensions.Msal;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    class StorageWrapper : IStorage
-    { 
-        private const string KeyChainServiceName = "Microsoft.Azure.PowerShell";
+    internal class StorageWrapper : IStorage
+    {
+        public StorageCreationProperties StorageCreationProperties { get; set; }
 
-        public string FileName { get; set; }
-        public string Directory { get; set; }
-
-        private Exception _lastError;
+        public TraceSource LoggerSource { get; set; }
 
         private Storage _storage = null;
-
-        private bool _protected;
-        public bool IsProtected
-        {
-            get => _protected;
-            private set => _protected = value;
-        }
-
-        static ReaderWriterLockSlim storageLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
 
         public StorageWrapper()
         {
@@ -46,104 +31,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public IStorage Create()
         {
-            StorageCreationPropertiesBuilder storageProperties = null;
-            if (!storageLock.TryEnterWriteLock(TimeSpan.Zero))
-            {
-                throw new InvalidOperationException(Resources.StorageLockConflicts);
-            }
-            try
-            {
-                storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory)
-                    .WithMacKeyChain(KeyChainServiceName + ".other_secrets", FileName)
-                    .WithLinuxKeyring(FileName, "default", "AzKeyStoreCache",
-                    new KeyValuePair<string, string>("AzureClientID", "Microsoft.Developer.Azure.PowerShell"),
-                    new KeyValuePair<string, string>("Microsoft.Developer.Azure.PowerShell", "1.0.0.0"));
-                _storage = Storage.Create(storageProperties.Build());
-                VerifyPersistence();
-                _protected = true;
-            }
-            catch (Exception e)
-            {
-                _lastError = e;
-                storageProperties = new StorageCreationPropertiesBuilder(FileName, Directory).WithUnprotectedFile();
-                _storage = Storage.Create(storageProperties.Build());
-                _protected = false;
-            }
-            finally
-            {
-                storageLock.ExitWriteLock();
-            }
+            _storage = Storage.Create(StorageCreationProperties, LoggerSource);
             return this;
         }
 
         public void Clear()
         {
-            if (!storageLock.TryEnterWriteLock(TimeSpan.Zero))
-            {
-                throw new InvalidOperationException(Resources.StorageLockConflicts);
-            }
-            try
-            {
-                _storage.Clear();
-            }
-            finally
-            {
-                storageLock.ExitWriteLock();
-            }
+            _storage.Clear(ignoreExceptions: true);
         }
 
         public byte[] ReadData()
         {
-            if (!storageLock.TryEnterReadLock(TimeSpan.Zero))
-            {
-                throw new InvalidOperationException(Resources.StorageLockConflicts);
-            }
-            try
-            {
-                return _storage.ReadData();
-            }
-            finally
-            {
-                storageLock.ExitReadLock();
-            }
+            return _storage.ReadData();
         }
 
         public void VerifyPersistence()
         {
-            if (!storageLock.TryEnterWriteLock(TimeSpan.Zero))
-            {
-                throw new InvalidOperationException(Resources.StorageLockConflicts);
-            }
-            try
-            {
-                _storage.VerifyPersistence();
-            }
-            finally
-            {
-                storageLock.ExitWriteLock();
-            }
+            _storage.VerifyPersistence();
         }
 
         public void WriteData(byte[] data)
         {
-            if (!storageLock.TryEnterWriteLock(TimeSpan.Zero))
-            {
-                throw new InvalidOperationException(Resources.StorageLockConflicts);
-            }
-
-            try
-            {
-                _storage.WriteData(data);
-            }
-            finally
-            {
-                storageLock.ExitWriteLock();
-            }
-        }
-
-        public Exception GetLastError()
-        {
-            return _lastError;
+            _storage.WriteData(data);
         }
     }
 }

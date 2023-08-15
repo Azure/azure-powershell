@@ -164,11 +164,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certBytes, Dictionary<string, string> tags);
 
-        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null);
 
-        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertString, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertString, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null);
 
-        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null);
 
         PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName);
 
@@ -260,6 +260,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         PSKeyVaultRoleAssignment CreateHsmRoleAssignment(string hsmName, string scope, string roleDefinitionId, string principalId);
         void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
         void RemoveHsmRoleDefinition(string hsmName, string scope, string name);
+        #endregion
+
+        #region
+        IEnumerable<PSKeyVaultSetting> GetManagedHsmSettings(string managedHsm);
+
+        PSKeyVaultSetting GetManagedHsmSetting(string managedHsm, string settingName);
+
+        PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams);
+
         #endregion
     }
 }

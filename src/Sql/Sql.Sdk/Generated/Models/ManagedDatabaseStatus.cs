@@ -23,5 +23,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public const string Inaccessible = "Inaccessible";
         public const string Restoring = "Restoring";
         public const string Updating = "Updating";
+        public const string Stopping = "Stopping";
+        public const string Stopped = "Stopped";
+        public const string Starting = "Starting";
+        public const string DbMoving = "DbMoving";
+        public const string DbCopying = "DbCopying";
     }
 }

@@ -40,7 +40,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
 #>
 function Get-AzFluidRelayContainer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayContainer])]
@@ -220,7 +220,7 @@ Get-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
 #>
 function Get-AzFluidRelayServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys])]
@@ -398,7 +398,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserver
 #>
 function Get-AzFluidRelayServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]
@@ -586,7 +586,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserverkey
+https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserverkey
 #>
 function New-AzFluidRelayServerKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServerKeys])]
@@ -762,7 +762,7 @@ New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Locatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
 #>
 function New-AzFluidRelayServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]
@@ -1003,7 +1003,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/remove-azfluidrelaycontainer
+https://learn.microsoft.com/powershell/module/az.fluidrelay/remove-azfluidrelaycontainer
 #>
 function Remove-AzFluidRelayContainer {
 [OutputType([System.Boolean])]
@@ -1198,7 +1198,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/remove-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/remove-azfluidrelayserver
 #>
 function Remove-AzFluidRelayServer {
 [OutputType([System.Boolean])]
@@ -1387,7 +1387,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/update-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/update-azfluidrelayserver
 #>
 function Update-AzFluidRelayServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]

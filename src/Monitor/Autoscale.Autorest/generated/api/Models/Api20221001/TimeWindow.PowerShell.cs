@@ -115,11 +115,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
             }
             if (content.Contains("Start"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start = (global::System.DateTime) content.GetValueForProperty("Start",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start = (global::System.DateTime?) content.GetValueForProperty("Start",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("End"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End = (global::System.DateTime) content.GetValueForProperty("End",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End = (global::System.DateTime?) content.GetValueForProperty("End",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializeDictionary(content);
         }
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api2022100
             }
             if (content.Contains("Start"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start = (global::System.DateTime) content.GetValueForProperty("Start",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start = (global::System.DateTime?) content.GetValueForProperty("Start",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).Start, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("End"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End = (global::System.DateTime) content.GetValueForProperty("End",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End = (global::System.DateTime?) content.GetValueForProperty("End",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ITimeWindowInternal)this).End, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializePSObject(content);
         }

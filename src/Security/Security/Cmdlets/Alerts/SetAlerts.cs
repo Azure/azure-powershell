@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSecurityAlert), NewParameterTypeName = "PSSecurityAlertV3")]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }
@@ -110,6 +109,9 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     case "resolved":
                         actionType = "Resolve";
                         break;
+                    case "inprogress":
+                        actionType = "InProgress";
+                        break;
                     default:
                         break;
                 }
@@ -133,6 +135,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                     {
                         SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToResolveWithHttpMessagesAsync(name).GetAwaiter().GetResult();
                     }
+                    else if (actionType == "InProgress")
+                    {
+                        SecurityCenterClient.Alerts.UpdateSubscriptionLevelStateToInProgressWithHttpMessagesAsync(name).GetAwaiter().GetResult();
+                    }
                 }
             }
             else
@@ -141,15 +147,19 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
                 {
                     if (actionType == "Dismiss")
                     {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToDismissWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToDismissWithHttpMessagesAsync(rg, name).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Activate")
                     {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToActivateWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToActivateWithHttpMessagesAsync(rg, name).GetAwaiter().GetResult();
                     }
                     else if (actionType == "Resolve")
                     {
-                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToResolveWithHttpMessagesAsync(name, rg).GetAwaiter().GetResult();
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToResolveWithHttpMessagesAsync(rg, name).GetAwaiter().GetResult();
+                    }
+                    else if (actionType == "InProgress")
+                    {
+                        SecurityCenterClient.Alerts.UpdateResourceGroupLevelStateToInProgressWithHttpMessagesAsync(rg, name).GetAwaiter().GetResult();
                     }
                 }
             }

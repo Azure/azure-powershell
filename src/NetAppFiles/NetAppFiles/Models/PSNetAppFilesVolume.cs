@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NetApp.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
@@ -60,6 +62,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string Etag { get; set; }
 
         /// <summary>
+        /// Gets or sets availability Zone
+        /// </summary>
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
@@ -95,7 +102,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Maximum storage quota allowed for a file system in bytes. This is a
         /// soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB.
+        /// limit is 100TiB, 500Tib for LargeVolumes. Specified in bytes
         /// </remarks>
         public long? UsageThreshold { get; set; }
 
@@ -188,10 +195,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets ThroughputMibps
         /// </summary>
         /// <remarks>
-        ///  Maximum throughput in Mibps that can be achieved by this volume
+        ///  Maximum throughput in MiB/s that can be achieved by this volume and this will be accepted as input only for manual qosType volume
         /// </remarks>
         public double? ThroughputMibps { get; set; }
-
 
         /// <summary>
         /// Gets or sets KerberosEnabled
@@ -216,6 +222,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         ///  Enables continuously available share property for SMB volume. Only applicable for SMB volume
         /// </remarks>
         public bool? SmbContinuouslyAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or sets encryption Key Source. Possible values are:
+        /// 'Microsoft.NetApp'
+        /// </summary>
+        public string EncryptionKeySource { get; set; }
 
         /// <summary>
         /// Gets or sets LdapEnabled
@@ -352,11 +364,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string T2Network { get; set; }
 
         /// <summary>
-        /// Gets or sets PlacementRules
+        /// Gets or sets volume spec name is the application specific
+        /// designation or identifier for the particular volume in a volume
+        /// group for e.g. data, log
         /// </summary>
-        /// <value>
-        /// Application specific placement rules for the particular volume.
-        /// </value>
+        public string VolumeSpecName { get; set; }
+
+        /// <summary>
+        /// Gets or sets volume placement rules
+        /// </summary>
+        /// <remarks>
+        /// Application specific placement rules for the particular volume
+        /// </remarks>
         public IList<PSKeyValuePairs> PlacementRules { get; set; }
 
         /// <summary>
@@ -383,5 +402,97 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// 'Disabled'
         /// </value>
         public string EnableSubvolumes { get; set; }
+
+        /// <summary>
+        /// Gets or sets Encrypted
+        /// </summary>
+        /// <value>
+        /// Gets specifies if the volume is encrypted or not. Only available on
+        /// volumes created or updated after 2022-01-01.
+        /// </value>
+        public bool? Encrypted { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of private endpoint for KeyVault. It
+        /// must reside in the same VNET as the volume. Only applicable if
+        /// encryptionKeySource = 'Microsoft.KeyVault'.
+        /// </summary>
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets if enabled (true) the snapshot the volume was created
+        /// from will be automatically deleted after the volume create
+        /// operation has finished.  Defaults to false
+        /// </summary>        
+        public bool? DeleteBaseSnapshot { get; set; }
+
+        /// <summary>
+        /// Gets or sets smbAccessBasedEnumeration
+        /// </summary>
+        /// <remarks>
+        /// Enables access based enumeration share property for SMB Shares.
+        /// Only applicable for SMB/DualProtocol volume. Possible values
+        /// include: 'Disabled', 'Enabled'
+        /// </remarks>        
+        public string SmbAccessBasedEnumeration { get; set; }
+
+        /// <summary>
+        /// Gets or sets smbNonBrowsable
+        /// </summary>
+        /// <remarks>
+        /// Enables non browsable property for SMB Shares. Only applicable for
+        /// SMB/DualProtocol volume. Possible values include: 'Disabled',
+        /// 'Enabled'
+        /// </remarks>        
+        public string SmbNonBrowsable { get; set; }
+
+        /// <summary>
+        /// Gets flag indicating whether file access logs are enabled for the
+        /// volume, based on active diagnostic settings present on the volume.
+        /// Possible values include: 'Enabled', 'Disabled'
+        /// </summary>        
+        public string FileAccessLogs { get; set; }
+
+        /// <summary>
+        /// Gets dataStoreResourceId
+        /// </summary>
+        /// <remarks>
+        /// Data store resource unique identifier
+        /// </remarks>        
+        public IList<string> DataStoreResourceId { get; set; }
+
+        /// <summary>
+        /// Gets provisioned Availability Zone
+        /// </summary>
+        /// <remarks>
+        /// The availability zone where the volume is provisioned. This refers
+        /// to the logical availability zone where the volume resides.
+        /// </remarks>        
+        public string ProvisionedAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets IsLargeVolume 
+        /// </summary>
+        /// <remarks>
+        /// If enabled (true) Specifies whether volume is a Large Volume or Regular Volume. Defaults to false
+        /// </remarks>
+        public bool? IsLargeVolume { get; set; }
+
+        /// <summary>
+        /// Gets or sets ActualThroughputMibps
+        /// </summary>        
+        /// <remarks>
+        /// Actual throughput in MiB/s for auto qosType volumes calculated
+        /// based on size and serviceLevel
+        /// </remarks>
+        public double? ActualThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Gets originating Resource Id
+        /// </summary>
+        /// <remarks>
+        /// Id of the snapshot or backup that the volume is restored from.
+        /// </remarks>
+        public string OriginatingResourceId { get; set; }
     }
 }

@@ -29,7 +29,7 @@ eastus2  azpshcws/azpsdicom azps_test_group
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
 #>
 function New-AzHealthcareDicomService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IDicomService])]

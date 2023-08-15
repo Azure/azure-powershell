@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesobject
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesobject
 schema: 2.0.0
 ---
 
@@ -53,7 +53,7 @@ Cognitive Services Object Type.
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.CognitiveServicesObjectType
 Parameter Sets: (All)
 Aliases:
-Accepted values: DeploymentProperties, CommitmentPlanProperties
+Accepted values: DeploymentProperties, CommitmentPlanProperties, MultiRegionSettings, RegionSetting, Sku
 
 Required: True
 Position: 0

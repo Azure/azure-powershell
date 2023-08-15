@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FD3A0013-4365-4E65-891C-5C50A9D5658C
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageshare
 schema: 2.0.0
 ---
 
@@ -15,15 +15,15 @@ Gets a list of file shares.
 
 ### MatchingPrefix (Default)
 ```
-Get-AzStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+Get-AzStorageShare [[-Prefix] <String>] [-IncludeDeleted] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AzStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Get-AzStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-SkipGetProperty]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
@@ -33,34 +33,43 @@ The **Get-AzStorageShare** cmdlet gets a list of file shares for a storage accou
 ## EXAMPLES
 
 ### Example 1: Get a file share
-```
-PS C:\>Get-AzStorageShare -Name "ContosoShare06"
+```powershell
+Get-AzStorageShare -Name "ContosoShare06"
 ```
 
 This command gets the file share named ContosoShare06.
 
 ### Example 2: Get all file shares that begin with a string
-```
-PS C:\>Get-AzStorageShare -Prefix "Contoso"
+```powershell
+Get-AzStorageShare -Prefix "Contoso"
 ```
 
 This command gets all file shares that have names that begin with Contoso.
 
 ### Example 3: Get all file shares in a specified context
-```
-PS C:\>$Context = New-AzStorageContext -Local
-PS C:\> Get-AzStorageShare -Context $Context
+```powershell
+$Context = New-AzStorageContext -Local
+Get-AzStorageShare -Context $Context
 ```
 
 The first command uses the **New-AzStorageContext** cmdlet to create a context by using the *Local* parameter, and then stores that context object in the $Context variable.
 The second command gets the file shares for the context object stored in $Context.
 
 ### Example 4: Get a file share snapshot with specific share name and SnapshotTime
-```
-PS C:\>Get-AzStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+```powershell
+Get-AzStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
 ```
 
 This command gets a file share snapshot with specific share name and SnapshotTime.
+
+### Example 5: Get a file share object without fetch share properties with OAuth authentication.
+```powershell
+New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount -EnableFileBackupRequestIntent
+$share = Get-AzStorageShare -Name "ContosoShare06" -SkipGetProperty -Context $ctx
+```
+
+This command gets a file share snapshot without get share properties with OAuth authentication. 
+Get share properties with OAuth authentication will fail since the API not support OAuth. So to get share object with OAuth authentication must skip fetch share properties.
 
 ## PARAMETERS
 
@@ -131,6 +140,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludeDeleted
+Include deleted shares, by default get share won't include deleted shares
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: MatchingPrefix
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the file share.
 This cmdlet gets the file share that this parameter specifies, or nothing if you specify the name of a file share that does not exist.
@@ -170,6 +194,21 @@ Specifies the length of the time-out period for the server part of a request.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ServerTimeoutPerRequestInSeconds
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipGetProperty
+Specify this parameter to only generate a local share object, without get share properties from server.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Specific
+Aliases:
 
 Required: False
 Position: Named

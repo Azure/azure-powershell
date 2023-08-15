@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 0143CE35-3B1D-4829-B880-A5CA25B83883
-online version: https://docs.microsoft.com/powershell/module/az.resources/test-azresourcegroupdeployment
+online version: https://learn.microsoft.com/powershell/module/az.resources/test-azresourcegroupdeployment
 schema: 2.0.0
 ---
 
@@ -184,7 +184,7 @@ The acceptable values for this parameter are:
 - Complete
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
+Type: Microsoft.Azure.Management.Resources.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete

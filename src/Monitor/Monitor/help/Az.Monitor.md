@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Monitor
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
-Download Help Link: https://docs.microsoft.com/powershell/module/az.monitor
+Download Help Link: https://learn.microsoft.com/powershell/module/az.monitor
 Help Version: 4.0.4.0
 Locale: en-US
 ---
@@ -82,6 +82,9 @@ Gets V2 (non-classic) metric alert rules
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
+### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
+Returns the specific Azure Monitor workspace
+
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Retrieve an scheduled query rule definition.
 
@@ -160,6 +163,9 @@ Creates a local dimension selection object that can be used to construct a metri
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
+### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
+Create or update a workspace
+
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
 Creates or updates a scheduled query rule.
 
@@ -205,6 +211,9 @@ Removes a log profile.
 ### [Remove-AzMetricAlertRuleV2](Remove-AzMetricAlertRuleV2.md)
 Removes a V2 (non-classic) metric alert rule.
 
+### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
+Delete a workspace
+
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Deletes a scheduled query rule.
 
@@ -216,6 +225,9 @@ Creates a new or updates an existing action group.
 
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
+
+### [Test-AzActionGroup](Test-AzActionGroup.md)
+Sends test notifications
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -231,6 +243,9 @@ Updates a data collection rule tags property.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope
+
+### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
+Updates part of a workspace
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.

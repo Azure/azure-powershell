@@ -18,6 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.5.1
+* Fixed the issue of handling `nextLink` in `Set-AzAksCluster`. [#21846]
+* Fixed the issue of parameter `AcrNameToDetach` in `Set-AzAksCluster` due to role assignment name is a guid.
+* Added breaking change message for parameter `DockerBridgeCidr` in `New-AzAksCluster`.
+* Supported the value `AzureLinux` for parameter `-NodeOsSKU` in `New-AzAksCluster` and parameter `-OsSKU` in `New-AzAksNodePool`.
+* Fixed the issue of `-DisableLocalAccount` for `Set-AzAksCluster`. [#21835]
+
+## Version 5.5.0
+* Fixed the issue of `Enable-AzAksAddon` when there are no addons. [#21665]
+* Added parameter `-EnableAHUB` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-WindowsProfileAdminUserPassword` for `Set-AzAksCluster`
+
+## Version 5.4.0
+* Added cmdlet `New-AzAksMaintenanceConfiguration`, `Get-AzAksMaintenanceConfiguration`, `Remove-AzAksMaintenanceConfiguration`, `New-AzAksSnapshot`, `Get-AzAksSnapshot`, `Remove-AzAksSnapshot`, `Get-AzAksManagedClusterCommandResult`, `Get-AzAksManagedClusterOSOption`, `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`, `Invoke-AzAksAbortAgentPoolLatestOperation`, `Invoke-AzAksAbortManagedClusterLatestOperation`, `Invoke-AzAksRotateManagedClusterServiceAccountSigningKey`, `Start-AzAksManagedClusterCommand`, `New-AzAksTimeInWeekObject`, `New-AzAksTimeSpanObject`.
+* Added parameter `-OutboundType` for `New-AzAksCluster`
+* Added parameter `-EnableOidcIssuer` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
+
+## Version 5.3.2
+* Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
+* Decoupled AutoMapper dependency, replaced with AdapterHelper.
+
+## Version 5.3.1
+* Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
+
+## Version 5.3.0
+* Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-NodeHostGroupID` for `New-AzAksCluster` and parameter `-HostGroupID` for `New-AzAksNodePool`
+
+## Version 5.2.0
 * Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-EnableUltraSSD` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-NodeKubeletConfig` for `New-AzAksCluster`, `-KubeletConfig` for `New-AzAksNodePool`
@@ -27,6 +58,9 @@
 * Added parameter `-SpotMaxPrice` for `New-AzAksNodePool`
 * Added parameter `-EnableFIPS` for `New-AzAksCluster` and `New-AzAksNodePool`
 * Added parameter `-AutoScalerProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-GpuInstanceProfile` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-EnableUptimeSLA` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-EdgeZone` for `New-AzAksCluster`
 
 ## Version 5.1.0
 * Bumped API version to 2022-09-01

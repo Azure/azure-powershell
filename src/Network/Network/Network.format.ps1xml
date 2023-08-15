@@ -748,6 +748,10 @@
                 <Label>EgressNatRules</Label>
                 <PropertyName>EgressNatRulesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>GatewayCustomBgpIpAddresses</Label>
+                <PropertyName>GatewayCustomBgpIpAddressesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -995,6 +999,10 @@
               <ListItem>
                 <Label>EnableBgpRouteTranslationForNat</Label>
                 <PropertyName>EnableBgpRouteTranslationForNat</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AdminState</Label>
+                <PropertyName>AdminState</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1901,6 +1909,10 @@
                 <PropertyName>AuxiliaryMode</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>AuxiliarySku</Label>
+                <PropertyName>AuxiliarySku</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
@@ -2111,6 +2123,10 @@
               <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>TagsTable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FlushConnection</Label>
+                <PropertyName>FlushConnectionText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>SecurityRules</Label>
@@ -3428,6 +3444,10 @@
                 <Label>Circuits</Label>
                 <PropertyName>CircuitsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>BillingType</Label>
+                <PropertyName>BillingType</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3621,6 +3641,10 @@
               <ListItem>
                 <Label>AuthorizationKey</Label>
                 <PropertyName>AuthorizationKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AuthorizationStatus</Label>
+                <PropertyName>AuthorizationStatus</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4191,6 +4215,10 @@
                 <Label>IPv6CircuitConnectionConfig</Label>
                 <PropertyName>IPv6CircuitConnectionConfigText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>RouteServerId</Label>
+				<PropertyName>RouteServerId</PropertyName>
+			  </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4610,7 +4638,7 @@
         </ListEntries>
       </ListControl>
     </View>
-    <View>
+	  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable</TypeName>
@@ -5220,6 +5248,55 @@
         </ListEntries>
       </ListControl>
     </View>
+
+	  <View>
+		  <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceConnection</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualApplianceConnection</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>Name</Label>
+							  <PropertyName>Name</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>ProvisioningState</Label>
+							  <PropertyName>ProvisioningState</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>PropagateStaticRoutes</Label>
+							  <PropertyName>PropagateStaticRoutes</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>EnableInternetSecurity</Label>
+							  <PropertyName>EnableInternetSecurity</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>BgpPeerAddress</Label>
+							  <PropertyName>BgpPeerAddress</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>Asn</Label>
+							  <PropertyName>Asn</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>TunnelIdentifier</Label>
+							  <PropertyName>TunnelIdentifier</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>RoutingConfiguration</Label>
+							  <PropertyName>RoutingConfigurationText</PropertyName>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
+	  
+	  
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGatewayAutoscaleConfiguration</Name>
       <ViewSelectedBy>
@@ -5876,6 +5953,29 @@
       </ListControl>
     </View>
     <View>
+		  <Name>Microsoft.Azure.Commands.Network.Models.PSRoutingConfigurationNfv</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.Network.Models.PSRoutingConfigurationNfv</TypeName>
+		  </ViewSelectedBy>
+		  <ListControl>
+			  <ListEntries>
+				  <ListEntry>
+					  <ListItems>
+						  <ListItem>
+							  <Label>AssociatedRouteTable</Label>
+							  <PropertyName>AssociatedRouteTable</PropertyName>
+						  </ListItem>
+						  <ListItem>
+							  <Label>PropagatedRouteTables</Label>
+							  <PropertyName>PropagatedRouteTablesText</PropertyName>
+						  </ListItem>
+					  </ListItems>
+				  </ListEntry>
+			  </ListEntries>
+		  </ListControl>
+	  </View>
+  
+	  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</TypeName>
@@ -6991,6 +7091,44 @@
               <ListItem>
                 <Label>RoutingPolicies</Label>
                 <PropertyName>RoutingPoliciesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSRouteMap</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSRouteMap</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RouteMapRules</Label>
+                <PropertyName>RouteMapRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AssociatedInboundConnections</Label>
+                <PropertyName>AssociatedInboundConnectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AssociatedOutboundConnections</Label>
+                <PropertyName>AssociatedOutboundConnectionsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

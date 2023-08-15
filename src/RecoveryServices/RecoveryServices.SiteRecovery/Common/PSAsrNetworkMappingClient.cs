@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     primaryFabricName,
                     primaryNetworkName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

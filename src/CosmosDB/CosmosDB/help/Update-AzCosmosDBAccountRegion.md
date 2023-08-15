@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion
 schema: 2.0.0
 ---
 
 # Update-AzCosmosDBAccountRegion
 
 ## SYNOPSIS
-Update Regions of a CosmosDB Account.
+Update Regions of a Cosmos DB Account.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzCosmosDBAccountRegion [-Location <String[]>] [-LocationObject <PSLocati
 ```
 
 ## DESCRIPTION
-Update Regions of a CosmosDB Account. Location can be provided either as an object of type PSLocation or as strings of Location Name ordered by failover priority.
+Update Regions of a Cosmos DB Account. Location can be provided either as an object of type PSLocation or as strings of Location Name ordered by failover priority.
 LocationObject parameter expects the list of current locations (failover priorities included) appended by the new LocationObjects corresponding to new locations to be added.
 Location parameter expects the list of current location(ordered by failover priority) and the new locations. 
 Please note, we only support Addition of Regions. Please provide either Location or LocationObject.

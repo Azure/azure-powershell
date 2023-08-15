@@ -41,7 +41,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [RuleSetName <String>]: Tag Rule Set resource name
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
+https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
 #>
 function Update-AzElasticVMCollection {
 [OutputType([System.Boolean])]

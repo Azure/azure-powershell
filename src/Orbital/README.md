@@ -30,11 +30,11 @@ For information on how to develop for `Az.Orbital`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: eb606ec7a7abadc78ded1423ddbea9e8f49e72c3
+branch: 8725e0700974d2c8cba436b5696728ebc5a80f1b
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
-  - $(repo)/specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/orbital.json
+  - $(repo)/specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/orbital.json
 
 module-version: 0.1.0
 title: Orbital
@@ -83,58 +83,6 @@ directive:
           }
         ],
         "description": "The current state of the resource's creation, deletion, or modification."
-      }
-  - from: swagger-document 
-    where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}"].get
-    transform: >-
-      return {
-        "tags": [
-          "OperationResults"
-        ],
-        "description": "Returns operation results.",
-        "operationId": "OperationsResults_Get",
-        "x-ms-examples": {
-          "KustoOperationResultsGet": {
-            "$ref": "./examples/OperationResultsGet.json"
-          }
-        },
-        "parameters": [
-          {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb606ec7a7abadc78ded1423ddbea9e8f49e72c3/specification/common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "#/parameters/apiVersionParameter"
-          },
-          {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb606ec7a7abadc78ded1423ddbea9e8f49e72c3/specification/common-types/resource-management/v3/types.json#/parameters/LocationParameter"
-          },
-          {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb606ec7a7abadc78ded1423ddbea9e8f49e72c3/specification/common-types/resource-management/v3/types.json#/parameters/OperationIdParameter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully retrieved the operation result.",
-            "schema": {
-              "$ref": "#/definitions/OperationResult"
-            }
-          },
-          "202": {
-            "description": "The operation is still in progress.",
-            "headers": {
-              "Location": {
-                "type": "string",
-                "description": "URL for determining when an operation has completed."
-              }
-            }
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        }
       }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$

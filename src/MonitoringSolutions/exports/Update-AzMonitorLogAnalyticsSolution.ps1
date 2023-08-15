@@ -52,7 +52,7 @@ INPUTOBJECT <IMonitoringSolutionsIdentity>: Identity Parameter
   [SolutionName <String>]: User Solution Name.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
+https://learn.microsoft.com/en-us/powershell/module/az.monitoringsolutions/update-azmonitorloganalyticssolution
 #>
 function Update-AzMonitorLogAnalyticsSolution {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution])]

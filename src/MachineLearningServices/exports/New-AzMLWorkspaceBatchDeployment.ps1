@@ -29,7 +29,7 @@ New-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 #>
 function New-AzMLWorkspaceBatchDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment])]

@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not find specified Acr &apos;{0}&apos; to attach..
+        ///   Looks up a localized string similar to Could not find specified Acr &apos;{0}&apos; to attach or detach..
         /// </summary>
         internal static string CouldNotFindSpecifiedAcr {
             get {

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/test-azactiongroup
+online version: https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
 ---
 
@@ -12,7 +12,6 @@ Sends test notifications
 
 ## SYNTAX
 
-### ByPropertyName (Default)
 ```
 Test-AzActionGroup -AlertType <String> -ResourceGroupName <String> -ActionGroupName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
@@ -41,7 +40,23 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## PARAMETERS
+
+### -ActionGroupName
+The required action group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AlertType
 The required alert type name. The supported values are:
@@ -91,21 +106,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The required resource group name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActionGroupName
-The required action group name
 
 ```yaml
 Type: System.String

@@ -25,7 +25,7 @@ New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Locatio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
 #>
 function New-AzFluidRelayServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]

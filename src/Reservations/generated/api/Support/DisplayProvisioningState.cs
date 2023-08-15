@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Represent the current display state of the Reservation.</summary>
+    /// <summary>Represent the current display state of the reservation.</summary>
     public partial struct DisplayProvisioningState :
         System.IEquatable<DisplayProvisioningState>
     {
@@ -18,11 +18,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState Failed = @"Failed";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState NoBenefit = @"NoBenefit";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState Pending = @"Pending";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState Processing = @"Processing";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState Succeeded = @"Succeeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.DisplayProvisioningState Warning = @"Warning";
 
         /// <summary>the value for an instance of the <see cref="DisplayProvisioningState" /> Enum.</summary>
         private string _value { get; set; }

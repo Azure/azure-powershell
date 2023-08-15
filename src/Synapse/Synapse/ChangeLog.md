@@ -19,6 +19,26 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.18
+
+## Version 3.0.2
+* Updated Azure.Core to 1.33.0.
+
+## Version 3.0.1
+* Fixed the issue for "Start-AzSynapseTrigger/Stop-AzSynapseTrigger" to not throw exception when Request Status is 202
+
+## Version 3.0.0
+* Removed the unnecessary breaking change of parameter `-SparkConfigFilePath` for `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` cmdlets
+
+## Version 2.3.1
+* Updated Azure.Core to 1.31.0.
+* Added PackageAction `Set` for `Update-AzSynapseSparkPool` to support removing and adding packages in one action
+
+## Version 2.3.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool isolated compute by `-EnableIsolatedCompute`
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool node size to 'XLarge', 'XXLarge', 'XXXLarge'
 
 ## Version 2.2.0
 * Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.

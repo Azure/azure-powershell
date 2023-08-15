@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
+* Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
+* Deprecated cmdlets: `Get-AzBatchCertificate` and `New-AzBatchCertificate`
+  - The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools, [learn more](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide)
+
+## Version 3.4.0
+* Added new property `Encryption` of type `EncryptionProperties` to `AccountCreateParameters`.
+  - Configures how customer data is encrypted inside the Batch account.
+
+## Version 3.3.0
 * Added new properties `CurrentNodeCommunicationMode` (read only) and `TargetCommunicationMode` of type `NodeCommunicationMode` to `PSCloudPool`.
   - Valid values for `NodeCommunicationMode`: Default, Classic, Simplified
   - When the `PSCloudPool` is updated with a new `TargetCommunicationMode` value, the Batch service will attempt to update the pool to the new value the next time the pool is resized down to zero compute nodes and back up.

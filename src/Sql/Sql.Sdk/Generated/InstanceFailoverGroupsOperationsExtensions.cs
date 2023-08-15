@@ -22,6 +22,48 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class InstanceFailoverGroupsOperationsExtensions
     {
             /// <summary>
+            /// Lists the failover groups in a location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The name of the region where the resource is located.
+            /// </param>
+            public static IPage<InstanceFailoverGroup> ListByLocation(this IInstanceFailoverGroupsOperations operations, string resourceGroupName, string locationName)
+            {
+                return operations.ListByLocationAsync(resourceGroupName, locationName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Lists the failover groups in a location.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='locationName'>
+            /// The name of the region where the resource is located.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<InstanceFailoverGroup>> ListByLocationAsync(this IInstanceFailoverGroupsOperations operations, string resourceGroupName, string locationName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a failover group.
             /// </summary>
             /// <param name='operations'>
@@ -166,48 +208,6 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task DeleteAsync(this IInstanceFailoverGroupsOperations operations, string resourceGroupName, string locationName, string failoverGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, locationName, failoverGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Lists the failover groups in a location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The name of the region where the resource is located.
-            /// </param>
-            public static IPage<InstanceFailoverGroup> ListByLocation(this IInstanceFailoverGroupsOperations operations, string resourceGroupName, string locationName)
-            {
-                return operations.ListByLocationAsync(resourceGroupName, locationName).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Lists the failover groups in a location.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group that contains the resource. You can obtain
-            /// this value from the Azure Resource Manager API or the portal.
-            /// </param>
-            /// <param name='locationName'>
-            /// The name of the region where the resource is located.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<InstanceFailoverGroup>> ListByLocationAsync(this IInstanceFailoverGroupsOperations operations, string resourceGroupName, string locationName, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
             }
 
             /// <summary>

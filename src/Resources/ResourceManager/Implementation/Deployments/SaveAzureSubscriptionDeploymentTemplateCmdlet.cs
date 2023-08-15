@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (ShouldProcess(deploymentName, VerbsData.Save))
             {
-                var template = ResourceManagerSdkClient.GetDeploymentTemplateAtSubscrpitionScope(deploymentName);
+                var template = NewResourceManagerSdkClient.GetDeploymentTemplateAtSubscrpitionScope(deploymentName);
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: deploymentName,

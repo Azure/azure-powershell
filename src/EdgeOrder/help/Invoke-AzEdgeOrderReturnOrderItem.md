@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
+online version: https://learn.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
 schema: 2.0.0
 ---
 

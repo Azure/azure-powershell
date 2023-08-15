@@ -319,7 +319,7 @@ Remove-AzRmStorageShare -ResourceGroupName $resourceGroupName -StorageAccountNam
 ## Az.ServiceFabric
 
 ### `Add-AzServiceFabricClusterCertificate`
-this cmdlet has been removed completly. please follow instructions here to add cluster certificates: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security-update-certs-azure#add-a-secondary-certificate-using-azure-resource-manager
+this cmdlet has been removed completly. please follow instructions here to add cluster certificates: https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security-update-certs-azure#add-a-secondary-certificate-using-azure-resource-manager
 
 ### `Get-AzServiceFabricManagedClusterService`
 Change PSManagedService model to avoid using the properties parameter directly from sdk. Now all the properties are in the first level of the object.
@@ -357,7 +357,7 @@ $statelessService.ProvisioningState
 
 
 ### `Remove-AzServiceFabricClusterCertificate`
-this cmdlet has been removed completly. please follow instructions here to add cluster certificates: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security-update-certs-azure#remove-a-cluster-certificate-using-the-portal
+this cmdlet has been removed completly. please follow instructions here to add cluster certificates: https://learn.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security-update-certs-azure#remove-a-cluster-certificate-using-the-portal
 
 ### `Remove-AzServiceFabricManagedClusterService`
 Change PSManagedService model to avoid using the properties parameter directly from sdk. Now all the properties are in the first level of the object.

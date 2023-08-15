@@ -24,6 +24,11 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
     public interface IConditionalAssemblyContext
     {
         /// <summary>
+        /// Edition of PowerShell, "Desktop" or "Core".
+        /// </summary>
+        string PSEdition { get; }
+
+        /// <summary>
         /// Version of PowerShell. For example "5.1.22621.608".
         /// </summary>
         Version PSVersion { get; }

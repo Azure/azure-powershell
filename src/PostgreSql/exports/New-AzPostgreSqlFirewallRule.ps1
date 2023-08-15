@@ -29,7 +29,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule
 .Link
-https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlfirewallrule
 #>
 function New-AzPostgreSqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]

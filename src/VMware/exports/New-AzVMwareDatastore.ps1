@@ -25,7 +25,7 @@ New-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwaredatastore
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwaredatastore
 #>
 function New-AzVMwareDatastore {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore])]

@@ -16,7 +16,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Insights.Utils;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
 
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .ListByPrivateLinkScopeWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName)
                                        .Result;
-                WriteObject(response.Body.Select(scope => PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(scope)).ToList(), true);
+                WriteObject(response.Body.Select(scope => PSMonitorPrivateLinkScopedResource.ToPSMonitorPrivateLinkScopedResource(scope)).ToList(), true);
             }
             else if (this.IsParameterBound(c => c.Name))
             {
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                        .PrivateLinkScopedResources
                                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.ScopeName, this.Name)
                                        .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScopedResource>(response.Body));
+                WriteObject(PSMonitorPrivateLinkScopedResource.ToPSMonitorPrivateLinkScopedResource(response.Body));
             }
         }
     }

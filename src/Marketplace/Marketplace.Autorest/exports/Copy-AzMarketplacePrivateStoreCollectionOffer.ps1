@@ -51,7 +51,7 @@ PAYLOAD <ITransferOffersProperties>: Transfer offers properties
   [Operation <String>]: Operation to perform (For example: Copy or Move)
   [TargetCollection <String[]>]: Target collections ids
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
 #>
 function Copy-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse])]

@@ -30,7 +30,7 @@ function Test-AzureIotDpsAccessPolicyLifeCycle
 
 	# Constant variable
 	$AccessPolicyDefaultKeyName = "provisioningserviceowner"
-	$AccessPolicyDefaultRights = "ServiceConfig, DeviceConnect, EnrollmentWrite"
+	$AccessPolicyDefaultRights = "ServiceConfig, EnrollmentWrite, DeviceConnect"
 	$NewAccessPolicyKeyName = "Access1"
 	$NewAccessPolicyRights = "ServiceConfig"
 

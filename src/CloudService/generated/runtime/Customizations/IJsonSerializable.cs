@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
         /// <summary>
         /// Serialize an object by using a variety of methods.
         /// </summary>
-        /// <param name="oValue">the object to be serialized.</param>
+        /// <param name="value">the object to be serialized.</param>
         /// <returns>the serialized JsonNode (if successful), otherwise, <c>null</c></returns>
         internal static JsonNode ToJsonValue(object value)
         {

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F9703508-DD4D-4D25-A7CA-7E3432B5DCA9
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary
 schema: 2.0.0
 ---
 
@@ -220,4 +220,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlDatabaseSecondary](./Remove-AzSqlDatabaseSecondary.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

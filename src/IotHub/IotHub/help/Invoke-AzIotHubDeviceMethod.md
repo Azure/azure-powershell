@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/invoke-aziothubdevicemethod
+online version: https://learn.microsoft.com/powershell/module/az.iothub/invoke-aziothubdevicemethod
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Invoke-AzIotHubDeviceMethod [-ResourceId] <String> [-DeviceId] <String> -Name <S
 ```
 
 ## DESCRIPTION
-Invoke a direct method on a device. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
+Invoke a direct method on a device. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
 
 ## EXAMPLES
 

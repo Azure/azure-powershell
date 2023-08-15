@@ -48,7 +48,7 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationoperation
+https://learn.microsoft.com/powershell/module/az.appconfiguration/test-azappconfigurationoperation
 #>
 function Test-AzAppConfigurationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.INameAvailabilityStatus])]
@@ -95,7 +95,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

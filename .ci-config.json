@@ -2,8 +2,22 @@
   "rules": [
     {
       "patterns": [
+        "src/{ModuleName}/{ModuleName}.Management.Sdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.LegacySdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.Sdk/Generated/*"
+      ],
+      "phases": [
+        "generated-sdk:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/readme.md",
-        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+        "src/{ModuleName}/README.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
+        "src/{ModuleName}/*/README.md",
+        "src/{ModuleName}/*/readme.md"
       ],
       "phases": [
         "build:related-module",
@@ -89,7 +103,7 @@
       "phases": [
         "build:module",
         "help:module",
-        "example:module"
+        "help-example:module"
       ]
     },
     {
@@ -114,7 +128,8 @@
         "signature:module",
         "test:dependence-module",
         "file-change:module",
-        "ux:module"
+        "ux:module",
+        "cmdlet-diff:module"
       ]
     },
     {
@@ -264,10 +279,7 @@
         "tools/Gen2Master/*",
         "tools/InstallationTests/*",
         "tools/Installer/*",
-        "tools/NetCoreCsProjSync/*",
-        "tools/NetCorePsd1Sync/*",
         "tools/ProjectTemplates/*",
-        "tools/RepoTasks/*",
         "tools/SecurityTools/*",
         "tools/Test/*",
         "tools/Tools.Common.Test/*",

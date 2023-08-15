@@ -88,7 +88,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Possible values are: Empty, Attach, FromImage, Import, Copy, Restore, Upload, CopyStart")]
-        //todo: verify help message with API team
         public string CreateOption { get; set; }
 
         [Parameter(
@@ -99,13 +98,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sets the Purchase Plan for the Snapshot.")]
+            HelpMessage = "Sets the purchase plan for the snapshot. Used for establishing the purchase context of any 3rd Party artifact through Marketplace.")]
         public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+            HelpMessage = "Indicates if the OS on the snapshot supports hibernation with $true or $false")]
         public bool? SupportsHibernation { get; set; }
 
         [Parameter(

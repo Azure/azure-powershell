@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 6250EC11-79CF-428B-A72F-9BD72C1751F0
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvm
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvm
 schema: 2.0.0
 ---
 
@@ -28,12 +28,6 @@ Get-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Status] [-DisplayHint 
 ### ListLocationVirtualMachinesParamSet
 ```
 Get-AzVM -Location <String> [-Status] [-UserData] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ListNextLinkVirtualMachinesParamSet
-```
-Get-AzVM [-Status] [-NextLink] <Uri> [-UserData] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -344,21 +338,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -NextLink
-Specifies the next link.
-
-```yaml
-Type: System.Uri
-Parameter Sets: ListNextLinkVirtualMachinesParamSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
@@ -421,7 +400,7 @@ UserData for the VM, which will be base-64 encoded. Customer should not pass any
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParamSet, GetVirtualMachineInResourceGroupParamSet, ListLocationVirtualMachinesParamSet, ListNextLinkVirtualMachinesParamSet
+Parameter Sets: DefaultParamSet, GetVirtualMachineInResourceGroupParamSet, ListLocationVirtualMachinesParamSet
 Aliases:
 
 Required: False

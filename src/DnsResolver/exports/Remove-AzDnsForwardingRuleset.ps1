@@ -50,7 +50,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingruleset
+https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingruleset
 #>
 function Remove-AzDnsForwardingRuleset {
 [OutputType([System.Boolean])]

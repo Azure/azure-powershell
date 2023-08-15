@@ -787,5 +787,61 @@
   {
     "alias": "Automanage",
     "module": "Automanage"
+  },
+  {
+    "alias": "VoiceServices",
+    "module": "VoiceServices"
+  },
+  {
+    "module": "BillingBenefits",
+    "alias": "BillingBenefits"
+  },
+  {
+    "module": "LoadTesting",
+    "alias": "LoadTesting"
+  },
+  {
+    "alias": "MobileNetwork",
+    "module": "MobileNetwork"
+  },
+  {
+    "module": "ArcResourceBridge",
+    "alias": "ArcResourceBridge"
+  },
+  {
+    "module": "Workloads",
+    "alias": "Workloads"
+  },
+  {
+    "alias": "SelfHelp",
+    "module": "SelfHelp"
+  },
+  {
+    "module": "Qumulo",
+    "alias": "Qumulo"
+  },
+  {
+    "module": "StorageCache",
+    "alias": "StorageCache"
+  },
+  {
+    "module": "NewRelic",
+    "alias": "NewRelic"
+  },
+  {
+    "module": "Quantum",
+    "alias": "Quantum"
+  },
+  {
+    "module": "GraphServices",
+    "alias": "GraphServices"
+  },
+  {
+    "module": "Alb",
+    "alias": "Alb"
+  },
+  {
+    "module": "PaloAltoNetworks",
+    "alias": "PaloAltoNetworks"
   }
 ]

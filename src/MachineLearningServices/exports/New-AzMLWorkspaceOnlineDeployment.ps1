@@ -29,7 +29,7 @@ New-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceName m
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
 #>
 function New-AzMLWorkspaceOnlineDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment])]

@@ -62,7 +62,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareglobalreachconnection
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareglobalreachconnection
 #>
 function Remove-AzVMwareGlobalReachConnection {
 [OutputType([System.Boolean])]

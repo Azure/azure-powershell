@@ -27,7 +27,13 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
         /// </summary>
         public static IConditionalAssembly WithWindowsPowerShell(this IConditionalAssembly assembly)
         {
-            return assembly.WithPowerShellVersion(new Version("5.0.0"), new Version("6.0.0"));
+            // In PowerShell 4 and below, this variable does not exist.
+            // $PSEdition being null should be treated as the same as having the value Desktop.
+            // https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_editions?view=powershell-7.3
+            var psEdition = assembly.Context.PSEdition ?? Constants.PSEditionDesktop;
+            bool shouldLoad = psEdition.Equals(Constants.PSEditionDesktop, StringComparison.OrdinalIgnoreCase);
+            assembly.UpdateShouldLoad(shouldLoad);
+            return assembly;
         }
 
         /// <summary>
@@ -35,7 +41,10 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
         /// </summary>
         public static IConditionalAssembly WithPowerShellCore(this IConditionalAssembly assembly)
         {
-            return assembly.WithPowerShellVersion(new Version("6.0.0"));
+            var psEdition = assembly.Context.PSEdition ?? Constants.PSEditionDesktop;
+            bool shouldLoad = psEdition.Equals(Constants.PSEditionCore, StringComparison.OrdinalIgnoreCase);
+            assembly.UpdateShouldLoad(shouldLoad);
+            return assembly;
         }
 
         /// <summary>
@@ -47,10 +56,19 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
         /// <param name="upper">Upper limit of PowerShell version, exclusive.</param>
         public static IConditionalAssembly WithPowerShellVersion(this IConditionalAssembly assembly, Version lower, Version upper = null)
         {
-            bool shouldLoad = lower <= assembly.Context.PSVersion;
-            if (upper != null)
+            bool shouldLoad;
+            var psVersion = assembly.Context.PSVersion;
+            if (psVersion == null)
             {
-                shouldLoad = shouldLoad && assembly.Context.PSVersion < upper;
+                shouldLoad = false;
+            }
+            else
+            {
+                shouldLoad = lower <= assembly.Context.PSVersion;
+                if (upper != null)
+                {
+                    shouldLoad = shouldLoad && assembly.Context.PSVersion < upper;
+                }
             }
             assembly.UpdateShouldLoad(shouldLoad);
             return assembly;

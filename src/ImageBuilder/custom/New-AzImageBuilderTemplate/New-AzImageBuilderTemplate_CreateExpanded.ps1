@@ -139,7 +139,7 @@ VALIDATOR <IImageTemplateInVMValidator[]>: List of validations to be performed.
   Type <String>: The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   [Name <String>]: Friendly Name to provide context on what this validation step does
 .Link
-https://docs.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
+https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 #>
 function New-AzImageBuilderTemplate_CreateExpanded {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate])]

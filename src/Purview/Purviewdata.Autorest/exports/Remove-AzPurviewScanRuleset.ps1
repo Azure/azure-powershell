@@ -39,7 +39,7 @@ Version                              : 2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
+https://learn.microsoft.com/powershell/module/az.purview/remove-azpurviewscanruleset
 #>
 function Remove-AzPurviewScanRuleset {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IScanRuleset])]

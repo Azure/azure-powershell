@@ -6,9 +6,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>
-    /// The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
-    /// </summary>
     public partial struct SkuName :
         System.IEquatable<SkuName>
     {

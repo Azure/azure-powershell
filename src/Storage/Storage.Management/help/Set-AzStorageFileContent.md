@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FA98E64B-D589-4653-9ACC-86573FAF4550
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragefilecontent
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragefilecontent
 schema: 2.0.0
 ---
 
@@ -23,16 +23,18 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 
 ### Share
 ```
-Set-AzStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
- [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Set-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Source] <String>
+ [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
- [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
+ [-Source] <String> [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [-PreserveSMBAttribute] [<CommonParameters>]
 ```
@@ -43,17 +45,17 @@ The **Set-AzStorageFileContent** cmdlet uploads the contents of a file to a file
 ## EXAMPLES
 
 ### Example 1: Upload a file in the current folder
-```
-PS C:\>Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
+```powershell
+Set-AzStorageFileContent -ShareName "ContosoShare06" -Source "DataFile37" -Path "ContosoWorkingFolder/CurrentDataFile"
 ```
 
 This command uploads a file that is named DataFile37 in the current folder as a file that is named CurrentDataFile in the folder named ContosoWorkingFolder.
 
 ### Example 2: Upload all the files in the current folder
-```
-PS C:\>$CurrentFolder = (Get-Item .).FullName
-PS C:\> $Container = Get-AzStorageShare -Name "ContosoShare06"
-PS C:\> Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
+```powershell
+$CurrentFolder = (Get-Item .).FullName
+$Container = Get-AzStorageShare -Name "ContosoShare06"
+Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"} | ForEach-Object {
     $path=$_.FullName.Substring($Currentfolder.Length+1).Replace("\","/")
     Set-AzStorageFileContent -Share $Container -Source $_.FullName -Path $path -Force
 }
@@ -69,8 +71,8 @@ The result has the same name and same relative position with regard to the other
 For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
 ### Example 3: Upload a local file to an Azure file, and perserve the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
-```
-PS C:\>Set-AzStorageFileContent -Source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
+```powershell
+Set-AzStorageFileContent -Source $localFilePath -ShareName sample -Path "dir1/file1" -PreserveSMBAttribute
 ```
 
 This example uploads a local file to an Azure file, and perserves the local File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the Azure file.
@@ -134,7 +136,7 @@ To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageConte
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: ShareName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -277,6 +279,36 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -ShareClient
+ShareClient object indicated the share where the file would be uploaded to.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareDirectoryClient
+CloudFileDirectory object indicated the cloud directory where the file would be uploaded.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareDirectoryClient
+Parameter Sets: Directory
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -ShareName
 Specifies the name of the file share.
 This cmdlet uploads to a file in the file share this parameter specifies.
@@ -341,7 +373,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

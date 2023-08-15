@@ -43,7 +43,7 @@ DASHBOARD <IDashboard>: The shared dashboard resource definition.
   [Tag <IDashboardTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/new-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/new-azportaldashboard
 #>
 function New-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]

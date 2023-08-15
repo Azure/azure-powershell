@@ -1,30 +1,43 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryusage
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistryusage
 schema: 2.0.0
 ---
 
 # Get-AzContainerRegistryUsage
 
 ## SYNOPSIS
-Get Usage of an azure container registry.
+Gets the quota usages for the specified container registry.
 
 ## SYNTAX
 
 ```
-Get-AzContainerRegistryUsage -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistryUsage -RegistryName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Usage of an azure container registry.
+Gets the quota usages for the specified container registry.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get Usage of an azure container registry.
 ```powershell
-Get-AzContainerRegistryUsage -ResourceGroupName $resourceGroupName -RegistryName $RegistryName
+Get-AzContainerRegistryUsage -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample"
+```
+
+```output
+CurrentValue Limit        Name                       Unit
+------------ -----        ----                       ----
+0            536870912000 Size                       Bytes
+0            500          Webhooks                   Count
+2            -1           Geo-replications           Count
+0            100          IPRules                    Count
+0            100          VNetRules                  Count
+0            200          PrivateEndpointConnections Count
+0            50000        ScopeMaps                  Count
+0            50000        Tokens                     Count
 ```
 
 Get Usage of an azure container registry.
@@ -32,12 +45,13 @@ Get Usage of an azure container registry.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -46,23 +60,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Target registry name.
+### -RegistryName
+The name of the container registry.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: RegistryName
+Aliases: Name
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -72,7 +87,23 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,12 +112,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUsage
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

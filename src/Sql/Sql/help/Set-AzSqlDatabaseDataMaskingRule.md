@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 48CF206C-AF63-4013-834E-8EC3646D180B
-online version: https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasedatamaskingrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/set-azsqldatabasedatamaskingrule
 schema: 2.0.0
 ---
 
@@ -341,6 +341,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzSqlDatabaseDataMaskingRule](./Remove-AzSqlDatabaseDataMaskingRule.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

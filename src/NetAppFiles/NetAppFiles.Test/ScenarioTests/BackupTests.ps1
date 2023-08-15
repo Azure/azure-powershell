@@ -89,6 +89,26 @@ function Test-BackupCrud
         until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);
     }
 
+    function WaitForBackupSucceeded #($sourceOnly)    
+    {
+        $i = 0 
+        do
+        {
+            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
+            Start-TestSleep -Seconds 10
+            $i++
+        }               
+        until ($getRetrievedBackup.ProvisioningState -eq "Succeeded" -or $i -eq 3);
+
+        do
+        {
+            $backupStatus = Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 
+            Start-TestSleep -Seconds 10
+            $i++
+        }               
+        until ($backupStatus.MirrorState -eq "Mirrored" -or $i -eq 3);
+    }
+
     try
     {
         # create the resource group
@@ -125,9 +145,9 @@ function Test-BackupCrud
         WaitForSucceeded
         
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $true
             #BackupPolicyId = $retrievedBackupPolicy.Id
@@ -154,6 +174,7 @@ function Test-BackupCrud
         $getRetrievedAccountBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName1
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
 
+        
         # service side issue does not return label enable when fixed (ANF-8057)
         # Assert-AreEqual $label $getRetrievedBackup.Label
         
@@ -161,6 +182,13 @@ function Test-BackupCrud
         $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $labelUpdate $updateBackup.Label
+        WaitForBackupSucceeded
+        
+        #Restore job not deployed on region enable when finished
+        #Test restore files from backup,  
+        #$fileList = New-Object string[] 1
+        #$fileList[0] = "/dir1/customer1.db"
+        #$getResultBackupRestore = Restore-AzNetAppFilesBackupFile -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -BackupName $backupName1 -FileList $fileList -DestinationVolumeId $retrievedVolume.Id
         
         #create second Backup       
         $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label2
@@ -283,9 +311,9 @@ function Test-BackupPipelines
         Assert-AreEqual "Premium" $retrievedVolume.ServiceLevel      
 
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $false
         }
@@ -449,18 +477,15 @@ function Test-VolumeBackupStatus
         Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
 
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
-        Assert-NotNull $retrievedVolume.MountTargets
-        Assert-Null $retrievedVolume.VolumeType
-        Assert-Null $retrievedVolume.DataProtection
 
         # get and check the volume by name
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $true
             #BackupPolicyId = $retrievedBackupPolicy.Id

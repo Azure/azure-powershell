@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3D88F561-7FE4-4017-BAC4-8F085AD037A9
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysku
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
@@ -92,7 +92,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2, Basic
 
 Required: True
 Position: Named
@@ -111,7 +111,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, WAF, Standard_v2, WAF_v2
+Accepted values: Standard, WAF, Standard_v2, WAF_v2, Basic
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

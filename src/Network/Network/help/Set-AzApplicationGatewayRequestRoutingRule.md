@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 75A4826A-7A5F-4742-9DC4-DC728CED63D0
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrequestroutingrule
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayrequestroutingrule
 schema: 2.0.0
 ---
 
@@ -190,7 +190,6 @@ The priority of the rule
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-Accepted Values: 1-20000
 
 Required: False
 Position: Named

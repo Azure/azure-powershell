@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlroleassignment
 schema: 2.0.0
 ---
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-CosmosDB Account object
+Cosmos DB Account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults

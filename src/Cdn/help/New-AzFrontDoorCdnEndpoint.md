@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
+online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnendpoint
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Location Name   ResourceGroupName
 Global   end001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor endpoint under the AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -71,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -244,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint
 
 ## NOTES
 

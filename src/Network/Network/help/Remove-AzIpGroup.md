@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azipgroup
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azipgroup
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Deletes an Azure IpGroup.
 
 ## SYNTAX
 
-### IpGroupNameParameterSet
+### IpGroupNameParameterSet (Default)
 ```
 Remove-AzIpGroup -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -58,7 +58,7 @@ Remove-AzIpGroup -IpGroup $ipGroup
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The ipGroup input object.
 
 ```yaml
-Type: PSIpGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSIpGroup
 Parameter Sets: IpGroupInputObjectParameterSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The name of the ipgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupNameParameterSet
 Aliases: ResourceName
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The resource group name of the ipgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupNameParameterSet
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 The ipgroup resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupResourceIdParameterSet
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -194,7 +194,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

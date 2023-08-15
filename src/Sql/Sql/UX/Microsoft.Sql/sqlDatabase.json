@@ -8,7 +8,7 @@
        {
           "name":"Get-AzSqlDatabase",
           "description":"Gets one or more databases.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{databaseName}",
           "confirmation":false,
           "help":{
              "learnMore":{
@@ -41,6 +41,10 @@
                    {
                       "name":"-ServerName",
                       "value":"[path.ServerName]"
+                   },
+                   {
+                     "name":"-DatabaseName",
+                     "value":"[path.DatabaseName]"
                    }
                 ]
              }
@@ -49,7 +53,7 @@
        {
           "name":"Remove-AzSqlDatabase",
           "description":"Removes an Azure SQL database.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{databaseName}",
           "confirmation":false,
           "help":{
              "learnMore":{
@@ -88,7 +92,7 @@
        {
           "name":"Suspend-AzSqlDatabase",
           "description":"Suspends a SQL Data Warehouse database.",
-          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases",
+          "path":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{databaseName}",
           "confirmation":false,
           "help":{
              "learnMore":{

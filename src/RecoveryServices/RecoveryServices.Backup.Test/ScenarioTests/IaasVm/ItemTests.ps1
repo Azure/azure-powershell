@@ -12,6 +12,121 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVaultPublicNetworkAccess
+{	
+	$resourceGroupName = "hiagaCZR-rg"
+	$vaultName = "hiagaPNAVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+	
+	try
+	{			
+		# new vault
+		# Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+		
+		Assert-True {  $vault.Properties.PublicNetworkAccess -eq "Enabled"}
+		
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -PublicNetworkAccess "Disabled"
+		Assert-True {  $vault.Properties.PublicNetworkAccess -eq "Disabled"}
+	}
+	finally
+	{
+		# remove vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName		
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
+function Test-AzureVaultImmutability
+{	
+	$resourceGroupName = "hiagaCZR-rg"
+	$vaultName = "hiagaImmutableVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+
+	$suspendVaultName = "hiaga-adhoc-vault"
+	$suspendResourceGroupName = "hiagarg"
+
+	try
+	{			
+		# new vault		
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag -ImmutabilityState "Disabled"
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+		
+		Assert-True { $vault.Properties.ImmutabilitySettings.ImmutabilityState -eq "Disabled"}
+
+		Assert-ThrowsContains { $vault = Update-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -ImmutabilityState Locked } `
+		"Immutability can only be locked when it is Unlocked(Enabled)";
+
+		$vault = Update-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -ImmutabilityState "Unlocked"
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+
+		Assert-True { $vault.Properties.ImmutabilitySettings.ImmutabilityState -eq "Unlocked"}
+
+		# get suspend vault
+		$suspendVault = Update-AzRecoveryServicesVault -Name $suspendVaultName -ResourceGroupName $suspendResourceGroupName -ImmutabilityState "Unlocked"
+		$suspendVault = Get-AzRecoveryServicesVault -Name $suspendVaultName -ResourceGroupName $suspendResourceGroupName
+		
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $suspendVault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		Assert-True { $item[0].ProtectionState -eq  "Protected" }
+
+		# suspend backup 
+		Disable-AzRecoveryServicesBackupProtection -Item $item[0] -RetainRecoveryPointsAsPerPolicy -VaultId $suspendVault.ID -Force
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $suspendVault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		Assert-True { $item[0].ProtectionState -eq "BackupsSuspended" }
+
+		# resume backup 
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $suspendVault.ID -Name "DefaultPolicy"
+		Enable-AzRecoveryServicesBackupProtection -Item $item[0] -Policy $pol -VaultId $suspendVault.ID
+
+		$item = Get-AzRecoveryServicesBackupItem -VaultId $suspendVault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
+		Assert-True { $item[0].ProtectionState -eq  "Protected" }
+	}
+	finally
+	{
+		# revert immutability
+		$suspendVault = Update-AzRecoveryServicesVault -Name $suspendVaultName -ResourceGroupName $suspendResourceGroupName -ImmutabilityState "Disabled"
+
+		# remove new vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
+function Test-AzureVMCRRWithDES
+{
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaCRRDES-testvault"
+	$saName = "hiagawestussa"
+	$desId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/diskEncryptionSets/hiagaDES-wus"
+	$restoredDiskName = "hiagacrrdesvm"
+	$recoveryPointId = "923327220026724684" # latest vaultStandard recovery point
+
+	try
+	{	
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName  
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID   
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+
+		$crrDESJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $resourceGroupName -TargetResourceGroupName $resourceGroupName -RestoreToSecondaryRegion -DiskEncryptionSetId $desId
+
+		$crrDESJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		# get job
+		$crrDESJob = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID  | where { $_.Operation -eq "CrossRegionRestore"  }
+		Assert-True { $crrDESJob[0].Status -eq "Completed" }
+	}
+	finally
+	{
+		# remove disk
+		Delete-AllDisks $resourceGroupName $restoredDiskName
+	}
+}
+
 function Test-AzureCrossZonalRestore
 {
 	$location = "eastus"
@@ -23,7 +138,7 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "175071499837856" # latest vaultStandard recovery point
+	$recoveryPointId = "174747612387318" # latest vaultStandard recovery point
 
 	try
 	{	

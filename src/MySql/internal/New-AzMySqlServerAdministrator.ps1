@@ -55,7 +55,7 @@ PROPERTY <IServerAdministratorResource>: Represents a and external administrator
   [Sid <String>]: The server administrator Sid (Secure ID).
   [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserveradministrator
 #>
 function New-AzMySqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]
@@ -126,7 +126,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

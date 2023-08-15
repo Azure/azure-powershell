@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapseroleassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapseroleassignment
 schema: 2.0.0
 ---
 
@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a Synapse Analytics role assignment.
+ 
 
 ## SYNTAX
 
@@ -76,6 +77,10 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 * GET /users/{id}
 * GET /servicePrincipals/{id}
 
+>[!Note]
+> To create a role assignment for a service principal, pass the object ID of the principal in the ObjectId parameter.
+> When you are a user with permission to manage Azure RBAC role assignment on the workspace but not a Synapse Administrator, please create Synapse Administrator role by **-RoleDefinitionId** and **-ObjectId** directly but not by **-RoleDefinitionName**, for Synapse Administrator, RoleDefinitionId is "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78", please take below Example 5 as reference. The reason for this is , when you try to add a "Synapse Administrator" role, the cmdlet needs to get the role ID from the role name which requires workspace read permission, which the current user does not have.
+
 ## EXAMPLES
 
 ### Example 1
@@ -106,6 +111,14 @@ $ws | New-AzSynapseRoleAssignment -RoleDefinitionName ContosoRole -SignInName Co
 ```
 
 This command assigns ContosoRole to the user whose principal name is ContosoName through pipeline.
+
+### Example 5
+```powershell
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | New-AzSynapseRoleAssignment -RoleDefinitionId "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78" -ObjectId ContosoObjectId
+```
+
+This command assigns Synapse Administrator role to the user whose object Id is ContosoObjectId through pipeline.
 
 ## PARAMETERS
 

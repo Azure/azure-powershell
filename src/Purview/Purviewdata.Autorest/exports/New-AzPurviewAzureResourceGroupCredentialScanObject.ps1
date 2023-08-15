@@ -231,7 +231,7 @@ RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>:
   [TeradataScanRulesetName <String>]: 
   [TeradataScanRulesetType <ScanRulesetType?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupCredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupCredentialScanObject
 #>
 function New-AzPurviewAzureResourceGroupCredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupCredentialScan])]

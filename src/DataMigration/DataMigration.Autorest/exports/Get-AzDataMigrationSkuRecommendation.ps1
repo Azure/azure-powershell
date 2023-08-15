@@ -27,7 +27,7 @@ Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\con
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
+https://learn.microsoft.com/powershell/module/az.datamigration/get-azdatamigrationskurecommendation
 #>
 function Get-AzDataMigrationSkuRecommendation {
 [OutputType([System.Boolean])]
@@ -153,7 +153,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

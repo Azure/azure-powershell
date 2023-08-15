@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: FC6BC096-DBC4-48DA-A366-B87EB18A0496
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmss
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azvmss
 schema: 2.0.0
 ---
 
@@ -29,6 +29,11 @@ Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-Instan
 ```
 Get-AzVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-OSUpgradeHistory]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzVmss [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,6 +245,28 @@ VirtualMachineProfile                       :
 
 The UserData value must be Base64 encoded. This command assumes you have created a Vmss with a UserData value. 
 
+### Example 6: Get a Virtual Machine Scale Set via its ResourceId.
+```powershell
+$rgname = "ResourceGroupName";
+$loc = "eastus";
+New-AzResourceGroup -Name $rgname -Location $loc;
+
+$vmssSize = 'Standard_D4s_v3';
+$vmssName1 = 'vmss1' + $rgname;
+$imageName = "Win2019Datacenter";
+$adminUsername = <Username>;
+$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
+$cred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
+
+$result = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -ImageName $imageName;
+
+$vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+$vmssId = $vmss.Id;
+$vmssGet = Get-AzVmss -ResourceId $vmssId;
+```
+
+Make a Vmss then get that same Vmss via its ARM resource Id. 
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -292,7 +319,7 @@ Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter, FriendMethod, OSUpgradeHistoryMethodParameter
 Aliases:
 
 Required: False
@@ -300,6 +327,21 @@ Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+The ARM resource id specifying the specific virtual machine scale set object you want returned.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
 ```
 
 ### -UserData
@@ -322,7 +364,7 @@ Species the name of the VMSS.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameter, FriendMethod, OSUpgradeHistoryMethodParameter
 Aliases: Name
 
 Required: False

@@ -15,6 +15,8 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Models;
+using cmdletModel = Microsoft.Azure.Commands.RecoveryServices;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
@@ -87,11 +89,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Enables or disables monitor alerts for RS vault.
         /// </summary>
         [Parameter(Mandatory = false)]        
-        public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }       
+        public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }
+
+        /// <summary>
+        /// Enables or disables public network access for RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.")]
+        public PublicNetworkAccess? PublicNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Enables or disables Immutability for RS vault. Allowed values are Disabled, Unlocked, Locked.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Immutability State of the vault. Allowed values are \"Disabled\", \"Unlocked\", \"Locked\". \r\nUnlocked means Enabled and can be changed, Locked means Enabled and can't be changed.")]
+        [ValidateSet("Disabled", "Unlocked", "Locked")]
+        public ImmutabilityState? ImmutabilityState { get; set; }
+
+        /// <summary>
+        /// Enables or disables cross subscription restore state for RS vault. Allowed values are Enabled, Disabled, PermanentlyDisabled.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cross subscription restore state of the vault. Allowed values are \"Enabled\", \"Disabled\", \"PermanentlyDisabled\".")]
+        [ValidateSet("Enabled", "Disabled", "PermanentlyDisabled")]
+        public CrossSubscriptionRestoreState? CrossSubscriptionRestoreState { get; set; }
 
         #endregion
 
-    public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Resources.VaultTarget, "set"))
             {
@@ -216,7 +238,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 }                                
                             }
                         }
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null)
+                        
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -224,7 +247,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     PatchVault patchVault = new PatchVault();
 
-                    if(MSI != null && MSI.Type != null && (MSI.Type.ToLower().Contains("none") || MSI.Type.ToLower().Contains("assigned")))
+                    #region patch vault                    
+
+                    if (MSI != null && MSI.Type != null && (MSI.Type.ToLower().Contains("none") || MSI.Type.ToLower().Contains("assigned")))
                     {
                         patchVault.Identity = MSI;
                     }
@@ -246,9 +271,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";
                         }
 
-                        patchVault.Properties = new VaultProperties();
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
                         patchVault.Properties.MonitoringSettings = alerts;  
                     }
+
+                    // update Public Network Access
+                    if(PublicNetworkAccess != null)
+                    {
+                        if(patchVault.Properties == null) { patchVault.Properties = new VaultProperties();}
+
+                        patchVault.Properties.PublicNetworkAccess = (PublicNetworkAccess == cmdletModel.PublicNetworkAccess.Disabled) ? "Disabled": "Enabled" ; 
+                    }
+
+                    if (ImmutabilityState != null)
+                    {
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.SecuritySettings == null) { patchVault.Properties.SecuritySettings = new SecuritySettings(); }
+                        if (patchVault.Properties.SecuritySettings.ImmutabilitySettings == null) { patchVault.Properties.SecuritySettings.ImmutabilitySettings = new ServiceClientModel.ImmutabilitySettings(); }
+
+                        if (vault.Properties != null && vault.Properties.SecuritySettings != null && vault.Properties.SecuritySettings.ImmutabilitySettings != null )
+                        {
+                            if (vault.Properties.SecuritySettings.ImmutabilitySettings.State == "Locked")
+                            {
+                                if (ImmutabilityState != cmdletModel.ImmutabilityState.Locked)
+                                {
+                                    throw new ArgumentException(Resources.ImmutabilityNotUnlocked);
+                                }
+                                else
+                                {
+                                    patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = "Locked";
+                                }
+                            }
+                            
+                            else if (ImmutabilityState == cmdletModel.ImmutabilityState.Locked) 
+                            {
+                                if (vault.Properties.SecuritySettings.ImmutabilitySettings.State == "Disabled")
+                                    throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
+                                else
+                                    patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = "Locked";
+                            }
+
+                            else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
+                        }
+                        else if (ImmutabilityState == cmdletModel.ImmutabilityState.Locked)
+                        {
+                            throw new ArgumentException(Resources.ImmutabilityCantBeLocked);
+                        }
+                        else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();                                               
+                    }
+
+                    // update cross subscription restore state of the vault
+                    if (CrossSubscriptionRestoreState != null)
+                    {
+                        RestoreSettings csrSetting = (vault.Properties != null && vault.Properties.RestoreSettings != null) ? vault.Properties.RestoreSettings : new RestoreSettings();
+                        if (csrSetting.CrossSubscriptionRestoreSettings == null) { csrSetting.CrossSubscriptionRestoreSettings = new CrossSubscriptionRestoreSettings();  }
+                        csrSetting.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState = CrossSubscriptionRestoreState.ToString();
+
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        patchVault.Properties.RestoreSettings = csrSetting;
+                    }
+
+                    #endregion
 
                     vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault);                                                         
                     WriteObject(new ARSVault(vault));

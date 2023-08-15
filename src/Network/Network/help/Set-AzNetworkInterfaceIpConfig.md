@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
-online version: https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
  [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
- [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-GatewayLoadBalancerId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -29,15 +29,6 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
 Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
  [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
- [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
- [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SetByResourceGatewayLoadBalancer
-```
-Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
- [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
- [-PublicIpAddressId <String>] [-GatewayLoadBalancerId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
  [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
  [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -85,6 +76,17 @@ In this example, the variable $asg contains a reference to an application securi
     configuration ipconfig1 to 10.0.0.11 and creates an association with the retrieved application security group.
     Finally, the last command updates the network interface ensuring the changes
     have been made successfully.
+
+### 3: Disassociating an IP configuration with an application gateway backend address pool
+```powershell
+$nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
+
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -ApplicationGatewayBackendAddressPool $null
+
+$nic | Set-AzNetworkInterface
+```
+
+The Set-AzNetworkInterfaceIpConfig sets the application gateway backend address pool of the IP configuration ipconfig1 to null and disassociate with the network interface. Finally, the last command updates the network interface ensuring the changes have been made successfully.
 
 ## PARAMETERS
 
@@ -168,7 +170,7 @@ Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceGatewayLoadBalancer
+Parameter Sets: SetByResource
 Aliases:
 
 Required: False
@@ -379,7 +381,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

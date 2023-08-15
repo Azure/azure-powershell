@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version: https://docs.microsoft.com/powershell/module/az.maintenance/remove-azconfigurationassignment
+online version: https://learn.microsoft.com/powershell/module/az.maintenance/remove-azconfigurationassignment
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Unregister configuration for resource.
 ## SYNTAX
 
 ```
-Remove-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
- [-ResourceParentType <String>] [-ResourceParentName <String>] [-ResourceType] <String>
- [-ResourceName] <String> -ConfigurationAssignmentName <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzConfigurationAssignment [[-ResourceGroupName] <String>] [[-ProviderName] <String>]
+ [-ResourceParentType <String>] [-ResourceParentName <String>] [[-ResourceType] <String>]
+ [[-ResourceName] <String>] -ConfigurationAssignmentName <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -122,7 +122,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -137,7 +137,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -152,7 +152,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -197,7 +197,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)

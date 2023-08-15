@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DataMigrationService Resource Id.")]
+            HelpMessage = "Azure Database Migration Service (classic) Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

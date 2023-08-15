@@ -25,7 +25,7 @@ Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
 #>
 function Get-AzMySqlFlexibleServerLocationBasedCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties])]
@@ -49,7 +49,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

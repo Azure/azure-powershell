@@ -27,10 +27,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public int Priority { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public string RateLimitDuration { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int RateLimitThreshold { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RuleType { get; set; }
         public List<PSApplicationGatewayFirewallCondition> MatchConditions { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSApplicationGatewayFirewallCustomRuleGroupByUserSession> GroupByUserSession { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Action { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string State { get; set; }
 
         [JsonIgnore]
         public string MatchConditionsText

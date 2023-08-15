@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: C324F28A-7215-4F10-A012-92B4F6544BC0
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **New-AzStorageContainerStoredAccessPolicy** cmdlet creates a stored access 
 ## EXAMPLES
 
 ### Example 1: Create a stored access policy in a storage container
-```
-PS C:\>New-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy01"
+```powershell
+New-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy01"
 ```
 
 This command creates an access policy named Policy01 in the storage container named MyContainer.

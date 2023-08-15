@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Represent the term of Reservation.</summary>
+    /// <summary>Represent the term of reservation.</summary>
     public partial class ReservationTermTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

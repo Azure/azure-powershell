@@ -33,7 +33,7 @@ Set-AzIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-Etag] <St
 
 ## DESCRIPTION
 Verify a certificate by uploading a verification certificate containing the verification code obtained by calling generate-verification-code. This is the last step in the proof of possession process.
-For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/azure/iot-dps/how-to-verify-certificates
+For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://learn.microsoft.com/azure/iot-dps/how-to-verify-certificates
 
 ## EXAMPLES
 

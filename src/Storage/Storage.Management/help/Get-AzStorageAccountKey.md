@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ The **Get-AzStorageAccountKey** cmdlet gets the access keys for an Azure Storage
 ## EXAMPLES
 
 ### Example 1: Get the access keys for a Storage account
-```
-PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount"
+```powershell
+Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command gets the keys for the specified Azure Storage account.
@@ -47,8 +47,8 @@ PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccoun
 ```
 
 ### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
-```
-PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount" -ListKerbKey
+```powershell
+Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount" -ListKerbKey
 ```
 
 This command gets the keys for the specified Azure Storage account.

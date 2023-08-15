@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
+
+## Version 4.1.0
+* Updated Azure.Core to 1.33.0.
+* Added new cmdlet `New-AzContainerRegistryCredentials`
+
+## Version 4.0.0
+* Updated module to autorest based
+## Version 3.0.4
+* Updated Azure.Core to 1.31.0.
+
+## Version 3.0.3
+* Added breaking change attributes for cmdlets
+
+## Version 3.0.2
+* Updated Azure.Core to 1.28.0.
+
+## Version 3.0.1
+* Fixed bug in `Get-AzContainerRegistryTag` to show correct tags [#20528]
 
 ## Version 3.0.0
 * Updated parameter types from bool to bool? for `Update-AzContainerRegistryRepository` [#17857]

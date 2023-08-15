@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://docs.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagednodetype
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/new-azservicefabricmanagednodetype
 schema: 2.0.0
 ---
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskType
-Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS
+Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSDiskType
@@ -414,7 +414,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserAssignedIdentity
-The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
+The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
 
 ```yaml
 Type: System.String[]

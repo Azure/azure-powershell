@@ -15,134 +15,166 @@
 
 Param(
     [String]
-    $StaticAnalysisOutputDirectory='artifacts/StaticAnalysisResults'
+    $StaticAnalysisOutputDirectory = 'artifacts/StaticAnalysisResults'
 )
 
 $ArtifactPipelineInfoFolder = (Get-Content "$PSScriptRoot/../../.ci-config.json" | ConvertFrom-Json).artifactPipelineInfoFolder
 $ArtifactPipelineInfoFolder = "$PSScriptRoot/../../$ArtifactPipelineInfoFolder"
 
-If ($IsWindows)
-{
+If ($IsWindows) {
     $OS = "Windows"
 }
-ElseIf ($IsLinux)
-{
+ElseIf ($IsLinux) {
     $OS = "Linux"
 }
-ElseIf ($IsMacOS)
-{
+ElseIf ($IsMacOS) {
     $OS = "MacOS"
 }
-Else
-{
+Else {
     $OS = "Others"
 }
 $Platform = "$($Env:PowerShellPlatform) - $OS"
 $Template = Get-Content "$ArtifactPipelineInfoFolder/PipelineResult.json" | ConvertFrom-Json
 
-$DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" -And $_ -Ne "test" }
-ForEach ($Step In $DependencyStepList)
-{
-    If ($Template.$Step.Details.Length -Ne 0)
-    {
+$DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" -And $_ -Ne "test" -And $_ -Ne "pull_request_number" }
+ForEach ($Step In $DependencyStepList) {
+    If ($Template.$Step.Details.Length -Ne 0) {
         $Template.$Step.Details[0] | Add-Member -NotePropertyName Platform -NotePropertyValue $Platform -Force
     }
 }
 
 $Steps = @(
     @{
-        StepName = "breaking-change"
+        PhaseName = "breaking-change"
         IssuePath = "$StaticAnalysisOutputDirectory/BreakingChangeIssues.csv"
     },
     @{
-        StepName = "help"
+        PhaseName = "help"
         IssuePath = "$StaticAnalysisOutputDirectory/HelpIssues.csv"
     },
     @{
-        StepName = "help-example"
+        PhaseName = "help-example"
         IssuePath = "$StaticAnalysisOutputDirectory/ExampleIssues.csv"
     },
     @{
-        StepName = "signature"
+        PhaseName = "signature"
         IssuePath = "$StaticAnalysisOutputDirectory/SignatureIssues.csv"
     },
     @{
-        StepName = "file-change"
+        PhaseName = "file-change"
         IssuePath = "$StaticAnalysisOutputDirectory/FileChangeIssue.csv"
+    },
+    @{
+        PhaseName = "cmdlet-diff"
+        IssuePath = "$StaticAnalysisOutputDirectory/CmdletChangeResult.md"
+    },
+    @{
+        PhaseName = "ux"
+        IssuePath = "$StaticAnalysisOutputDirectory/UXMetadataIssues.csv"
+    },
+    @{
+        PhaseName = "generated-sdk"
+        IssuePath = "$StaticAnalysisOutputDirectory/GeneratedSdkIssues.csv"
     }
 )
 
-ForEach ($Step In $Steps)
-{
-    $StepName = $Step.StepName
+ForEach ($Step In $Steps) {
+    $PhaseName = $Step.PhaseName
     $IssuePath = $Step.IssuePath
-    $Details = $Template.$StepName.Details
-    If ($Details.Length -Ne 0)
-    {
+    $Details = $Template.$PhaseName.Details
+    If ($Details.Length -Ne 0) {
         $Details = $Details[0]
-        If (Test-Path -Path $IssuePath)
-        {
+        If ($PhaseName -eq "cmdlet-diff") {
+            If (-not (Test-Path $IssuePath))
+            {
+                continue
+            }
+            $content = Get-Content -Path $IssuePath
+            $markdownContent = @{}
+            foreach ($line in $content) {
+                # Check if the line starts with an asterisk followed by a space
+                if ($line -match '^\*\s') {
+                    $title = $line -replace '^\*\s'
+                    $contentArray = @()
+                    for ($i = $content.IndexOf($line) + 1; $i -lt $content.Count; $i++) {
+                        if ($content[$i] -match '^\*\s') {
+                            break
+                        }
+                        else {
+                            $contentArray += $content[$i]
+                        }
+                    }
+                    $markdownContent.Add($title, $contentArray)
+                }
+            }
+            foreach ($moduleInfo in $Details.Modules) {
+                $moduleInfo.Status = "Succeeded"
+                if ($markdownContent.ContainsKey($moduleInfo.Module)) {
+                    $moduleInfo.Content = $markdownContent[$moduleInfo.Module] -join "<br>"
+                }
+            }
+            continue;
+        }
+        If (Test-Path -Path $IssuePath) {
             $Issues = Get-Content -Path $IssuePath | ConvertFrom-Csv
         }
-        Else
-        {
+        Else {
             $Issues = @()
         }
-        ForEach ($ModuleInfo In $Details.Modules)
-        {
+        ForEach ($ModuleInfo In $Details.Modules) {
             $ModuleName = $ModuleInfo.Module
 
             $ErrorIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName -And $_.Severity -Lt 2 }
             $WaringIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName -And $_.Severity -Ge 2 }
-            If ($ErrorIssues.Length -Eq 0)
-            {
-                If ($WaringIssues.Length -Eq 0)
-                {
+            If ($ErrorIssues.Length -Eq 0) {
+                If ($WaringIssues.Length -Eq 0) {
                     $ModuleInfo.Status = "Succeeded"
                 }
-                Else
-                {
+                Else {
                     $ModuleInfo.Status = "Warning"
                 }
             }
-            Else
-            {
+            Else {
                 $ModuleInfo.Status = "Failed"
             }
 
             $MatchedIssues = $Issues | Where-Object { $_.Module -Eq $ModuleName }
-            If ($MatchedIssues.Length -Ne 0)
-            {
+            If ($MatchedIssues.Length -Ne 0) {
                 #Region generate table head of each step
                 $NormalSteps = [System.Collections.Generic.HashSet[String]]@("breaking-change", "help", "signature", "file-change")
-                If ($NormalSteps.Contains($StepName))
-                {
+                If ($NormalSteps.Contains($PhaseName)) {
                     $Content = "|Type|Cmdlet|Description|Remediation|`n|---|---|---|---|`n"
                 }
-                ElseIf ($StepName -Eq "help-example")
-                {
+                ElseIf ($PhaseName -Eq "help-example") {
                     $Content = "|Type|Cmdlet|Example|Line|RuleName|Description|Extent|Remediation|`n|---|---|---|---|---|---|---|---|`n"
+                }
+                ElseIf ($PhaseName -Eq "ux") {
+                    $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|`n|---|---|---|---|---|---|`n"
+                }
+                ElseIf ($PhaseName -Eq "generated-sdk") {
+                    $Content = "|Type|Module|Sdk|Description|Remediation|`n|---|---|---|---|---|`n"
                 }
                 #EndRegion
 
-                ForEach ($Issue In $MatchedIssues)
-                {
-                    If ($Issue.Severity -Lt 2)
-                    {
+                ForEach ($Issue In $MatchedIssues) {
+                    If ($Issue.Severity -Lt 2) {
                         $ErrorTypeEmoji = "❌"
                     }
-                    Else
-                    {
+                    Else {
                         $ErrorTypeEmoji = "⚠️"
                     }
                     #Region generate table content of each step
-                    If ($NormalSteps.Contains($StepName))
-                    {
+                    If ($NormalSteps.Contains($PhaseName)) {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
-                    ElseIf ($StepName -Eq "help-example")
-                    {
+                    ElseIf ($PhaseName -Eq "help-example") {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
+                    }
+                    ElseIf ($PhaseName -Eq "ux") {
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|`n"
+                    }
+                    ElseIf ($PhaseName -Eq "generated-sdk") {
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.Sdk)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
                     #EndRegion
                 }

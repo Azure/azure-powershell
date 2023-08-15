@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerExecResponse"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerExecResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerExecResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
         {
             var containerExecResponse = response.ConfigureAwait(false).GetAwaiter().GetResult();
             socket = new System.Net.WebSockets.ClientWebSocket();
@@ -71,13 +71,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
                 if (!string.IsNullOrEmpty(result) && PassThru.ToBool()) { WriteObject(result.TrimEnd()); }
 
-            }, this._cancellationTokenSource.Token);
+            }, this._cancellationTokenSource.Token).Unwrap();
         }
 
         private Task PushCommand()
         {
             return Task.Factory.StartNew(async () =>
             {
+                if (Console.IsInputRedirected) return;
+                
                 StringBuilder input = new StringBuilder();
                 // Loop until input is entered.
                 while (socket.State == WebSocketState.Open && !this._cancellationTokenSource.Token.IsCancellationRequested)
@@ -95,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                     System.Threading.Thread.Sleep(250); 
                 }
 
-            }, this._cancellationTokenSource.Token);
+            }, this._cancellationTokenSource.Token).Unwrap();
 
         }
     }

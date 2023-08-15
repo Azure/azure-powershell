@@ -25,7 +25,7 @@ Get-AzMLWorkspaceNotebookKey  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListNotebookKeysResult
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacenotebookkey
 #>
 function Get-AzMLWorkspaceNotebookKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IListNotebookKeysResult])]

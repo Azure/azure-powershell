@@ -52,7 +52,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
 #>
 function New-AzProviderHubManifest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManifest])]

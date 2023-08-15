@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOperationListResult
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceoperation
+https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceoperation
 #>
 function Get-AzMarketplaceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOperationListResult])]
@@ -169,7 +169,7 @@ PAYLOAD <IOffer>: The privateStore offer data structure.
   [SpecificPlanIdsLimitation <String[]>]: Plan ids limitation for this offer
   [UpdateSuppressedDueIdempotence <Boolean?>]: Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
@@ -318,7 +318,7 @@ PAYLOAD <ICollection>: The Collection data structure.
   [Enabled <Boolean?>]: Indicating whether the collection is enabled or disabled.
   [SubscriptionsList <String[]>]: Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollection
 #>
 function New-AzMarketplacePrivateStoreCollection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection])]
@@ -470,7 +470,7 @@ PAYLOAD <IPrivateStore>: The PrivateStore data structure.
   [PrivateStoreName <String>]: Private Store Name
   [TenantId <String>]: Tenant id
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
 #>
 function New-AzMarketplacePrivateStore {
 [OutputType([System.Boolean])]

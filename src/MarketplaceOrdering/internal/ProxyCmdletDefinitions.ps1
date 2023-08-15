@@ -27,7 +27,7 @@ Lists all of the available Microsoft.MarketplaceOrdering REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceoperation
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceoperation
 #>
 function Get-AzMarketplaceOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IOperation])]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -136,7 +137,7 @@ Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-scienc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 #>
 function Get-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
@@ -172,7 +173,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -301,7 +303,7 @@ PARAMETER <IAgreementTerms>: Terms properties for provided Publisher/Offer/Plan 
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 #>
 function Set-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
@@ -344,7 +346,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

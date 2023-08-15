@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Commands.Profile
                                     var secret = account.GetProperty(AzureAccount.Property.ServicePrincipalSecret);
                                     if (!string.IsNullOrEmpty(secret))
                                     {
-                                        keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, Context.Tenant?.Id)
+                                        keyStore.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, Context.Tenant?.Id)
                                             , secret.ConvertToSecureString());
                                     }
                                     var password = account.GetProperty(AzureAccount.Property.CertificatePassword);
                                     if (!string.IsNullOrEmpty(password))
                                     {
-                                        keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, Context.Tenant?.Id)
+                                        keyStore.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, Context.Tenant?.Id)
                                             , password.ConvertToSecureString());
                                     }
                                 }

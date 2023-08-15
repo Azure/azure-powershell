@@ -46,7 +46,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
 #>
 function Get-AzProviderHubCustomRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout])]
@@ -225,7 +225,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
 #>
 function Get-AzProviderHubDefaultRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout])]
@@ -404,7 +404,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubnotificationregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubnotificationregistration
 #>
 function Get-AzProviderHubNotificationRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration])]
@@ -577,7 +577,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration
 #>
 function Get-AzProviderHubProviderRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration])]
@@ -730,7 +730,7 @@ CommitId IsCheckedIn PullRequest StatusMessage
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
+https://learn.microsoft.com/powershell/module/az.providerhub/invoke-azproviderhubmanifestcheckin
 #>
 function Invoke-AzProviderHubManifestCheckin {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo])]
@@ -1000,7 +1000,7 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
       [Interval <TimeSpan?>]: 
     [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubcustomrollout
 #>
 function New-AzProviderHubCustomRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout])]
@@ -1307,7 +1307,7 @@ SPECIFICATIONRESOURCETYPEREGISTRATION <IResourceTypeRegistration[]>: .
       [Interval <TimeSpan?>]: 
     [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
 #>
 function New-AzProviderHubDefaultRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout])]
@@ -1621,7 +1621,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubmanifest
 #>
 function New-AzProviderHubManifest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManifest])]
@@ -1780,7 +1780,7 @@ NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
   [Location <String[]>]: 
   [NotificationDestination <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
 #>
 function New-AzProviderHubNotificationRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration])]
@@ -1997,7 +1997,7 @@ THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION <ILightHouseAuthorization[]>: .
   PrincipalId <String>: 
   RoleDefinitionId <String>: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
 #>
 function New-AzProviderHubProviderRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration])]
@@ -2349,7 +2349,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubdefaultrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubdefaultrollout
 #>
 function Remove-AzProviderHubDefaultRollout {
 [OutputType([System.Boolean])]
@@ -2522,7 +2522,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubnotificationregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubnotificationregistration
 #>
 function Remove-AzProviderHubNotificationRegistration {
 [OutputType([System.Boolean])]
@@ -2696,7 +2696,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubproviderregistration
 #>
 function Remove-AzProviderHubProviderRegistration {
 [OutputType([System.Boolean])]
@@ -2863,7 +2863,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout
 #>
 function Stop-AzProviderHubDefaultRollout {
 [OutputType([System.Boolean])]
@@ -3051,7 +3051,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubresourcetyperegistration
 #>
 function Get-AzProviderHubResourceTypeRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
@@ -3229,7 +3229,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
 #>
 function Get-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -3491,7 +3491,7 @@ THROTTLINGRULE <IThrottlingRule[]>: .
     [Interval <TimeSpan?>]: 
   [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 #>
 function New-AzProviderHubResourceTypeRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]
@@ -3920,7 +3920,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
 #>
 function New-AzProviderHubSku {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]
@@ -4099,7 +4099,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubresourcetyperegistration
 #>
 function Remove-AzProviderHubResourceTypeRegistration {
 [OutputType([System.Boolean])]
@@ -4272,7 +4272,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
+https://learn.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
 #>
 function Remove-AzProviderHubSku {
 [OutputType([System.Boolean])]

@@ -66,8 +66,10 @@ namespace Microsoft.Azure.Commands.Network.Models
             set
             {
                 if (value != null)
+                {
                     ValidatePrivateRange(value);
-                privateRange = value;
+                    privateRange = value;
+                }
             }
         }
 

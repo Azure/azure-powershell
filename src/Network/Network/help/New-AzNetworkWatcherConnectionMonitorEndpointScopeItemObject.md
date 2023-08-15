@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointscopeitemobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointscopeitemobject
 schema: 2.0.0
 ---
 
@@ -26,7 +26,6 @@ The New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject cmdlet creates 
 ```powershell
 New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject -Address "10.0.1.0/24"
 ```
-
 
 ## PARAMETERS
 

@@ -283,5 +283,61 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetPriorityMixPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSSSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMSSSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDiskWithVMGuestStatePMK()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStatePMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeVMGuestStateOnlyPMK()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMVMGuestStateOnlyPMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDiskWithVMGuestStateCMK()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetOSImageScheduledEvents()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetOSImageScheduledEvents");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetGetById()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetGetById");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfig");
+        }
     }
 }

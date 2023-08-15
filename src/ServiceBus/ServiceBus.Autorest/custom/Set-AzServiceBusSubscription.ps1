@@ -20,7 +20,7 @@ Updates a ServiceBus Subscription
 #>
 
 function Set-AzServiceBusSubscription{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Subscription.")]
@@ -269,22 +269,6 @@ function Set-AzServiceBusSubscription{
 
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
-            }
-
-            if ($subscription.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($subscription.LockDuration -gt (New-TimeSpan -Days 10675197)) {
-                $subscription.LockDuration = (New-TimeSpan -Days 10675197)
             }
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Subscription $($subscription.Name)", "Create or update")) {

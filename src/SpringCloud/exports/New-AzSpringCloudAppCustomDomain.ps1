@@ -25,7 +25,7 @@ New-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -Servic
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainResource
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudappcustomdomain
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudappcustomdomain
 #>
 function New-AzSpringCloudAppCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainResource])]

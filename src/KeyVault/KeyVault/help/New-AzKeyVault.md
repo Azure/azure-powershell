@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 4C40DAC9-5C0B-4AFD-9BDB-D407E0B9F701
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/new-azkeyvault
 schema: 2.0.0
 ---
 
@@ -164,6 +164,7 @@ Network Rule Set                 :
                                  
 Tags                             :
 ```
+
 Creating a key vault and specifies network rules to allow access to the specified IP address from the virtual network identified by $myNetworkResId. See `New-AzKeyVaultNetworkRuleSetObject` for more information.
 
 ## PARAMETERS

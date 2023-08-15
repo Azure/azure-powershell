@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -20,8 +20,9 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
  [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
- [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -32,8 +33,9 @@ New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
  -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
- [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllowedFqdnList <String[]>] [-MultiRegionSetting <MultiRegionSettings>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -287,6 +289,21 @@ Required: True
 Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MultiRegionSetting
+Multi-region settings for multi-region account.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.MultiRegionSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

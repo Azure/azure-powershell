@@ -44,7 +44,7 @@ USER <User>:
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
 #>
 function Send-AzLabServicesUserInvite {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

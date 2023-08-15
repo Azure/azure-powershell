@@ -55,7 +55,7 @@ PARAMETER <IVirtualNetworkRule>: A virtual network rule.
   VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
 #>
 function Update-AzMySqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule])]
@@ -107,7 +107,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

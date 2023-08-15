@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstorageencryptionscope
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageencryptionscope
 schema: 2.0.0
 ---
 
@@ -32,10 +32,10 @@ The **Get-AzStorageEncryptionScope** cmdlet gets or lists encryption scopes from
 ## EXAMPLES
 
 ### Example 1: Get a single encryption scope
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
-
+```output
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -92,7 +92,7 @@ testscope1    Disabled   Microsoft.Keyvault https://keyvalutname.vault.azure.net
 testscope2    Disabled   Microsoft.Storage
 ```
 This command lists all disabled encryption scopes with names starting with "test" of a Storage account. 
-The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of “startswith(name, {prefixValue})”.
+The parameter "Filter" specifies the prefix of the encryption scopes listed, and it should be in format of "startswith(name, {prefixValue})".
 
 ## PARAMETERS
 

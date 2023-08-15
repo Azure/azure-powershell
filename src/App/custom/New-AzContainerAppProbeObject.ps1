@@ -22,8 +22,6 @@ Create an in-memory object for ContainerAppProbe.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe
-.Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe')]

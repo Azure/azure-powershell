@@ -18,6 +18,39 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
+* Used the correct version of cloud management service in `Register-AzStackHCI` cmdlet.
+* Fixed the bugs in `Register-AzStackHCI` and `Enable-AzStackHCIAttestation` cmdlets.
+
+## Version 2.1.0
+* Updated to api-version 2023-03-01.
+* Cmdlets added:
+    - Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit : Enable Software Assurance for a cluster
+    - Invoke-AzStackHciConsentAndInstallDefaultExtensions : Consent to installing default extensions on the cluster
+## Version 2.0.0
+* Made Region parameter mandatory in `Register-AzStackHCI` cmdlet.
+* Removed EnableAzureArcServer parameter from `Register-AzStackHCI` cmdlet.
+* Removed `Test-AzStackHCIConnection` cmdlet. Customers can use `Invoke-AzStackHciConnectivityValidation` from AzStackHCI.EnvironmentChecker module for enhanced connectivity verification tests.
+* Added support for Managed Service identity (MSI) in Azure China Cloud.
+* Added support for Mandatory extensions, for OS versions starting 23H2.
+* Added parameter validations for `Register-AzStackHCI` cmdlet.
+* Improved Error logging in Registration and Unregistration.
+
+## Version 1.4.3
+* Removed manual installation for Az.Accounts from Az.StackHCI.
+* Removed verbose while importing modules.
+
+## Version 1.4.2
+* Added Remote Support terms and conditions for HCI device types.
+* Unified Resource Group support for both Azure Stack HCI and Arc for server resources.
+* Enhanced error feedback and logging in the Register-AzStackHCI cmdlet.
+* Bug fixes and improvements in Azure Arc for servers enablement in Register-AzStackHCI cmdlet.
+* Improved parameter validations in the Register-AzStackHCI cmdlet.
+* Enabled Managed System Identity (MSI) for Registration in Fairfax Cloud.
+* Minor bug fixes and improvements.
+
+## Version 1.4.1
 * Added support for arc extensions which depend on HCI cluster's IMDS endpoints.
 
 ## Version 1.4.0

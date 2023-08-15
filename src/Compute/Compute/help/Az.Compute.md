@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
-Download Help Link: https://docs.microsoft.com/powershell/module/az.compute
+Download Help Link: https://learn.microsoft.com/powershell/module/az.compute
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -618,7 +618,7 @@ Configures the DSC extension on a virtual machine.
 Updates extension properties or adds an extension to a virtual machine.
 
 ### [Set-AzVMOperatingSystem](Set-AzVMOperatingSystem.md)
-Sets operating system properties during the creation of a new virtual machine.
+Sets operating system properties during the creation of a new virtual machine or updating a virtual machine.
 
 ### [Set-AzVMOSDisk](Set-AzVMOSDisk.md)
 Sets the operating system disk properties on a virtual machine.

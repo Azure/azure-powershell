@@ -25,7 +25,7 @@ New-AzMLWorkspaceConnection -ResourceGroupName ml-rg-test -WorkspaceName mlworks
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 #>
 function New-AzMLWorkspaceConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceConnectionPropertiesV2BasicResource])]

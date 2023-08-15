@@ -31,7 +31,7 @@ PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
   [ProvisioningState <ProvisioningState?>]: Provisioning state of the migrate project.
   [RegisteredTool <String[]>]: Gets or sets the list of tools registered with the migrate project.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateproject
 #>
 function New-AzMigrateProject {
 [CmdletBinding(DefaultParameterSetName='PutExpandedCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -84,7 +84,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

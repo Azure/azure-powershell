@@ -62,9 +62,9 @@ $reservationsToPurchase = @($reservationToPurchase1, $reservationToPurchase2)
 Invoke-AzReservationCalculateExchange -ReservationsToExchange $reservationsToReturn -ReservationsToPurchase $reservationsToPurchase
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeOperationResultResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -73,48 +73,91 @@ To create the parameters described below, construct a hash table containing the 
 BODY <ICalculateExchangeRequest>: Calculate exchange request
   [ReservationsToExchange <IReservationToReturn[]>]: List of reservations that are being returned in this exchange.
     [Quantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-    [ReservationId <String>]: Fully qualified identifier of the Reservation being returned
+    [ReservationId <String>]: Fully qualified identifier of the reservation being returned
   [ReservationsToPurchase <IPurchaseRequest[]>]: List of reservations that are being purchased in this exchange.
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
     [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-    [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-    [DisplayName <String>]: Friendly name of the Reservation
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+    [DisplayName <String>]: Friendly name of the reservation
     [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-    [Location <String>]: The Azure Region where the reserved resource lives.
-    [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+    [Location <String>]: The Azure region where the reserved resource lives.
+    [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
     [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
     [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+    [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
     [Sku <String>]: 
-    [Term <ReservationTerm?>]: Represent the term of Reservation.
+    [Term <ReservationTerm?>]: Represent the term of reservation.
+  [SavingsPlansToPurchase <ISavingsPlanPurchaseRequest[]>]: List of savings plans that are being purchased in this exchange.
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
+    [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+    [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+    [CommitmentAmount <Double?>]: 
+    [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+    [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+    [DisplayName <String>]: Friendly name of the savings plan
+    [SkuName <String>]: 
+    [Term <SavingsPlanTerm?>]: Represent savings plan term in ISO 8601 format.
 
 RESERVATIONSTOEXCHANGE <IReservationToReturn[]>: List of reservations that are being returned in this exchange.
   [Quantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [ReservationId <String>]: Fully qualified identifier of the reservation being returned
 
 RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being purchased in this exchange.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-  [DisplayName <String>]: Friendly name of the Reservation
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [DisplayName <String>]: Friendly name of the reservation
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure Region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+  [Location <String>]: The Azure region where the reserved resource lives.
+  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of Reservation.
+  [Term <ReservationTerm?>]: Represent the term of reservation.
+
+SAVINGSPLANSTOPURCHASE <ISavingsPlanPurchaseRequest[]>: List of savings plans that are being purchased in this exchange.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
+  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+  [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [CommitmentAmount <Double?>]: 
+  [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+  [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+  [DisplayName <String>]: Friendly name of the savings plan
+  [SkuName <String>]: 
+  [Term <SavingsPlanTerm?>]: Represent savings plan term in ISO 8601 format.
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
 #>
 function Invoke-AzReservationCalculateExchange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeOperationResultResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest]
     # Calculate exchange request
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -122,7 +165,7 @@ param(
     [Parameter(ParameterSetName='PostExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationToReturn[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationToReturn[]]
     # List of reservations that are being returned in this exchange.
     # To construct, see NOTES section for RESERVATIONSTOEXCHANGE properties and create a hash table.
     ${ReservationsToExchange},
@@ -130,17 +173,26 @@ param(
     [Parameter(ParameterSetName='PostExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest[]]
     # List of reservations that are being purchased in this exchange.
     # To construct, see NOTES section for RESERVATIONSTOPURCHASE properties and create a hash table.
     ${ReservationsToPurchase},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISavingsPlanPurchaseRequest[]]
+    # List of savings plans that are being purchased in this exchange.
+    # To construct, see NOTES section for SAVINGSPLANSTOPURCHASE properties and create a hash table.
+    ${SavingsPlansToPurchase},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -204,7 +256,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

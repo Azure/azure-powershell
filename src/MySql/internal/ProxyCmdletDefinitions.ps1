@@ -46,7 +46,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlbackup
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlbackup
 #>
 function Get-AzMySqlBackup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerBackup])]
@@ -94,7 +94,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -216,7 +217,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqldatabase
 #>
 function Get-AzMySqlDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]
@@ -264,7 +265,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -365,7 +367,7 @@ Get-AzMySqlFlexibleServerLocationBasedCapability -Location westus2
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverlocationbasedcapability
 #>
 function Get-AzMySqlFlexibleServerLocationBasedCapability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties])]
@@ -389,7 +391,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -514,7 +517,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
 PARAMETER <IVirtualNetworkSubnetUsageParameter>: Virtual network subnet usage parameter
   [VirtualNetworkResourceId <String>]: Virtual network resource id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleservervirtualnetworksubnetusage
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleservervirtualnetworksubnetusage
 #>
 function Get-AzMySqlFlexibleServerVirtualNetworkSubnetUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDelegatedSubnetUsage])]
@@ -563,7 +566,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -667,7 +671,7 @@ List all the performance tiers at specified location in a given subscription.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
 #>
 function Get-AzMySqlLocationBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties])]
@@ -691,7 +695,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -792,7 +797,7 @@ List all the log files in a given server.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFile
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqllogfile
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqllogfile
 #>
 function Get-AzMySqlLogFile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFile])]
@@ -823,7 +828,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -926,7 +932,7 @@ Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IOperation
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IOperationAutoGenerated
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqloperation
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqloperation
 #>
 function Get-AzMySqlOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IOperationAutoGenerated])]
@@ -937,7 +943,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1055,7 +1062,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlrecoverableserver
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlrecoverableserver
 #>
 function Get-AzMySqlRecoverableServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IRecoverableServerResource])]
@@ -1093,7 +1100,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1214,7 +1222,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlserveradministrator
 #>
 function Get-AzMySqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]
@@ -1255,7 +1263,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1358,7 +1367,7 @@ List all the performance tiers for a MySQL server.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlserverbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlserverbasedperformancetier
 #>
 function Get-AzMySqlServerBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties])]
@@ -1389,7 +1398,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1509,7 +1519,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlserversecurityalertpolicy
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlserversecurityalertpolicy
 #>
 function Get-AzMySqlServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy])]
@@ -1550,7 +1560,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1691,7 +1702,7 @@ VALUE <IConfigurationForBatchUpdate[]>: The list of server configurations.
   [Source <String>]: Source of the configuration.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/invoke-azmysqlbatchflexibleserverconfigurationupdate
+https://learn.microsoft.com/powershell/module/az.mysql/invoke-azmysqlbatchflexibleserverconfigurationupdate
 #>
 function Invoke-AzMySqlBatchFlexibleServerConfigurationUpdate {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationListResultAutoGenerated])]
@@ -1750,7 +1761,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1866,7 +1878,7 @@ Get private DNS zone suffix in the cloud.
 .Outputs
 System.String
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/invoke-azmysqlexecutegetprivatednszonesuffix
+https://learn.microsoft.com/powershell/module/az.mysql/invoke-azmysqlexecutegetprivatednszonesuffix
 #>
 function Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix {
 [OutputType([System.String])]
@@ -1877,7 +1889,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2000,7 +2013,7 @@ PARAMETER <IConfiguration>: Represents a Configuration.
   [Source <String>]: Source of the configuration.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlconfiguration
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlconfiguration
 #>
 function New-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
@@ -2072,7 +2085,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2213,7 +2227,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqldatabase
 #>
 function New-AzMySqlDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]
@@ -2285,7 +2299,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2428,7 +2443,7 @@ PARAMETER <IFirewallRule>: Represents a server firewall rule.
   EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
   StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlfirewallrule
 #>
 function New-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
@@ -2502,7 +2517,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2647,7 +2663,7 @@ PARAMETER <IDatabaseAutoGenerated>: Represents a Database.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverdatabase
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverdatabase
 #>
 function New-AzMySqlFlexibleServerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDatabaseAutoGenerated])]
@@ -2699,7 +2715,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2846,7 +2863,7 @@ PARAMETER <IFirewallRuleAutoGenerated>: Represents a server firewall rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverfirewallrule
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserverfirewallrule
 #>
 function New-AzMySqlFlexibleServerFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IFirewallRuleAutoGenerated])]
@@ -2920,7 +2937,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3113,7 +3131,7 @@ PARAMETER <IServerAutoGenerated>: Represents a server.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserver
 #>
 function New-AzMySqlFlexibleServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerAutoGenerated])]
@@ -3350,7 +3368,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3494,7 +3513,7 @@ PROPERTY <IServerAdministratorResource>: Represents a and external administrator
   [Sid <String>]: The server administrator Sid (Secure ID).
   [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserveradministrator
 #>
 function New-AzMySqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]
@@ -3565,7 +3584,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3711,7 +3731,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserversecurityalertpolicy
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserversecurityalertpolicy
 #>
 function New-AzMySqlServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy])]
@@ -3816,7 +3836,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3980,7 +4001,7 @@ PARAMETER <IServerForCreate>: Represents a server to be created.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
@@ -4173,7 +4194,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4313,7 +4335,7 @@ PARAMETER <IVirtualNetworkRule>: A virtual network rule.
   VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlvirtualnetworkrule
 #>
 function New-AzMySqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule])]
@@ -4379,7 +4401,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4519,7 +4542,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/remove-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqldatabase
 #>
 function Remove-AzMySqlDatabase {
 [OutputType([System.Boolean])]
@@ -4564,7 +4587,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4703,7 +4727,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/remove-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlserveradministrator
 #>
 function Remove-AzMySqlServerAdministrator {
 [OutputType([System.Boolean])]
@@ -4741,7 +4765,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4871,7 +4896,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/set-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/set-azmysqldatabase
 #>
 function Set-AzMySqlDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]
@@ -4928,7 +4953,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5055,7 +5081,7 @@ PROPERTY <IServerAdministratorResource>: Represents a and external administrator
   [Sid <String>]: The server administrator Sid (Secure ID).
   [TenantId <String>]: The server Active Directory Administrator tenant id.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/set-azmysqlserveradministrator
+https://learn.microsoft.com/powershell/module/az.mysql/set-azmysqlserveradministrator
 #>
 function Set-AzMySqlServerAdministrator {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerAdministratorResource])]
@@ -5111,7 +5137,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5240,7 +5267,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/set-azmysqlserversecurityalertpolicy
+https://learn.microsoft.com/powershell/module/az.mysql/set-azmysqlserversecurityalertpolicy
 #>
 function Set-AzMySqlServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy])]
@@ -5326,7 +5353,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5471,7 +5499,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
   Name <String>: Resource name to verify.
   [Type <String>]: Resource type used for verification.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleservernameavailability
+https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleservernameavailability
 #>
 function Test-AzMySqlFlexibleServerNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability])]
@@ -5527,7 +5555,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -5656,7 +5685,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
   Name <String>: Resource name to verify.
   [Type <String>]: Resource type used for verification.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
+https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlnameavailability
 #>
 function Test-AzMySqlNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.INameAvailability])]
@@ -5705,7 +5734,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -5835,7 +5865,7 @@ PARAMETER <IConfiguration>: Represents a Configuration.
   [Source <String>]: Source of the configuration.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
@@ -5907,7 +5937,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6052,7 +6083,7 @@ PARAMETER <IFirewallRule>: Represents a server firewall rule.
   EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
   StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlfirewallrule
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlfirewallrule
 #>
 function Update-AzMySqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
@@ -6126,7 +6157,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6274,7 +6306,7 @@ PARAMETER <IConfigurationAutoGenerated>: Represents a Configuration.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverconfiguration
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverconfiguration
 #>
 function Update-AzMySqlFlexibleServerConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IConfigurationAutoGenerated])]
@@ -6347,7 +6379,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6494,7 +6527,7 @@ PARAMETER <IDatabaseAutoGenerated>: Represents a Database.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverdatabase
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverdatabase
 #>
 function Update-AzMySqlFlexibleServerDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IDatabaseAutoGenerated])]
@@ -6566,7 +6599,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6714,7 +6748,7 @@ PARAMETER <IFirewallRuleAutoGenerated>: Represents a server firewall rule.
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverfirewallrule
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserverfirewallrule
 #>
 function Update-AzMySqlFlexibleServerFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IFirewallRuleAutoGenerated])]
@@ -6788,7 +6822,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6946,7 +6981,7 @@ PARAMETER <IServerForUpdate>: Parameters allowed to update for a server.
   [Tag <IServerForUpdateTags>]: Application-specific metadata in the form of key-value pairs.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserver
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlflexibleserver
 #>
 function Update-AzMySqlFlexibleServer {
 [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerAutoGenerated])]
@@ -7121,7 +7156,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7272,7 +7308,7 @@ VALUE <IConfigurationListResult>: A list of server configurations.
     [Source <String>]: Source of the configuration.
     [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 #>
 function Update-AzMySqlServerConfigurationsList {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
@@ -7317,7 +7353,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7474,7 +7511,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlserver
 #>
 function Update-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
@@ -7658,7 +7695,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7802,7 +7840,7 @@ PARAMETER <IVirtualNetworkRule>: A virtual network rule.
   VirtualNetworkSubnetId <String>: The ARM resource id of the virtual network subnet.
   [IgnoreMissingVnetServiceEndpoint <Boolean?>]: Create firewall rule before the virtual network has vnet service endpoint enabled.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
+https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlvirtualnetworkrule
 #>
 function Update-AzMySqlVirtualNetworkRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule])]
@@ -7854,7 +7892,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

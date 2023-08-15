@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 0.14.1
+* Added client type to New-AzDataMigrationTdeCertificateMigration
+## Version 0.14.0
+* Added new cmdlet `New-AzDataMigrationSqlServerSchema` to migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers
+
+## Version 0.13.0
+* Added the custom cmdlet for TDE Migration: `New-AzDataMigrationTdeCertificateMigration`
+
+## Version 0.12.1
+* Updated the link of storage account for users to download LoginsMigration.zip file.
+
 ## Version 0.12.0
 * Added custom cmdlets for LoginsMigration:
   - New-AzDataMigrationLoginsMigration

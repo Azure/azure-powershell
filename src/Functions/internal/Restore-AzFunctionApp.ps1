@@ -117,7 +117,7 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [SiteName <String>]: Name of an app.
   [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
+https://learn.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
 function Restore-AzFunctionApp {
 [OutputType([System.Boolean])]

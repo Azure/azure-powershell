@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
     /// [OpenAPI] GetCatalog=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/catalogs"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservationCatalog_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"Get the regions and skus that are available for RI purchase for the specified Azure subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Generated]
     public partial class GetAzReservationCatalog_Get : global::System.Management.Automation.PSCmdlet,
@@ -35,6 +35,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A flag to tell whether it is the first onOK call.</summary>
+        private bool _isFirst = true;
+
+        /// <summary>Link to retrieve next page.</summary>
+        private string _nextLink;
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Runtime)]
@@ -44,13 +50,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Reservations Client => Microsoft.Azure.PowerShell.Cmdlets.Reservations.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Backing field for <see cref="Filter" /> property.</summary>
+        private string _filter;
+
+        /// <summary>
+        /// May be used to filter by Catalog properties. The filter supports 'eq', 'or', and 'and'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "May be used to filter by Catalog properties. The filter supports 'eq', 'or', and 'and'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"May be used to filter by Catalog properties. The filter supports 'eq', 'or', and 'and'.",
+        SerializedName = @"$filter",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
+        public string Filter { get => this._filter; set => this._filter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -71,13 +94,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         private string _location;
 
         /// <summary>
-        /// Filters the skus based on the location specified in this parameter. This can be an azure region or global
+        /// Filters the skus based on the location specified in this parameter. This can be an Azure region or global
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Filters the skus based on the location specified in this parameter. This can be an azure region or global")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Filters the skus based on the location specified in this parameter. This can be an Azure region or global")]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Filters the skus based on the location specified in this parameter. This can be an azure region or global",
+        Description = @"Filters the skus based on the location specified in this parameter. This can be an Azure region or global",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
@@ -168,6 +191,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public string ReservedResourceType { get => this._reservedResourceType; set => this._reservedResourceType = value; }
 
+        /// <summary>Backing field for <see cref="Skip" /> property.</summary>
+        private float _skip;
+
+        /// <summary>The number of reservations to skip from the list before returning results</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of reservations to skip from the list before returning results")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The number of reservations to skip from the list before returning results",
+        SerializedName = @"$skip",
+        PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
+        public float Skip { get => this._skip; set => this._skip = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
@@ -186,29 +223,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="Take" /> property.</summary>
+        private float _take;
+
+        /// <summary>To number of reservations to return</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "To number of reservations to return")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"To number of reservations to return",
+        SerializedName = @"$take",
+        PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
+        public float Take { get => this._take; set => this._take = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog[]</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog[]> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -355,13 +406,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.GetCatalog(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.GetCatalog(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : default(float?), this.InvocationInformation.BoundParameters.ContainsKey("Take") ? Take : default(float?), onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null,Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null,PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null,OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null,PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null,Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null,PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null,OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null,PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : default(float?),Take=this.InvocationInformation.BoundParameters.ContainsKey("Take") ? Take : default(float?)})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -384,12 +435,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -406,15 +457,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : default(float?), Take=this.InvocationInformation.BoundParameters.ContainsKey("Take") ? Take : default(float?) })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ReservedResourceType=this.InvocationInformation.BoundParameters.ContainsKey("ReservedResourceType") ? ReservedResourceType : null, Location=this.InvocationInformation.BoundParameters.ContainsKey("Location") ? Location : null, PublisherId=this.InvocationInformation.BoundParameters.ContainsKey("PublisherId") ? PublisherId : null, OfferId=this.InvocationInformation.BoundParameters.ContainsKey("OfferId") ? OfferId : null, PlanId=this.InvocationInformation.BoundParameters.ContainsKey("PlanId") ? PlanId : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : default(float?), Take=this.InvocationInformation.BoundParameters.ContainsKey("Take") ? Take : default(float?) })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -424,12 +475,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog[]</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog[]> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalogsResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -442,8 +493,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 }
                 // onOk - response for 200 / application/json
                 // response should be returning an array of some kind. +Pageable
-                // array / <none> / <none>
-                WriteObject(await response, true);
+                // pageable / value / nextLink
+                var result = await response;
+                WriteObject(result.Value,true);
+                _nextLink = result.NextLink;
+                if (_isFirst)
+                {
+                    _isFirst = false;
+                    while (_nextLink != null)
+                    {
+                        if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
+                        {
+                            requestMessage = requestMessage.Clone(new global::System.Uri( _nextLink ),Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Method.Get );
+                            await ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.FollowingNextLink); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                            await this.Client.GetCatalog_Call(requestMessage, onOk, onDefault, this, Pipeline);
+                        }
+                    }
+                }
             }
         }
     }

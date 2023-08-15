@@ -41,7 +41,7 @@ ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Conta
   [ImageName <String>]: The artifact name.
   [LoginServer <String>]: The Azure Container Registry login server.
 .Link
-https://docs.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
+https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcarefhirservice
 #>
 function New-AzHealthcareFhirService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService])]

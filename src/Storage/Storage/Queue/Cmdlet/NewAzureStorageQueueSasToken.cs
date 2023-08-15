@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,18 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
+    using global::Azure.Storage.Sas;
+    using Microsoft.Azure.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Queue;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageQueueSasTokenCommand : StorageQueueBaseCmdlet
     {
@@ -37,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
         [Alias("N", "Queue")]
         [Parameter(Position = 0, Mandatory = true,
-            HelpMessage = "Table Name",
+            HelpMessage = "Queue Name",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -54,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"raup\".",
+            HelpMessage = "Permissions for a queue. Permissions can be any not-empty subset of \"raup\".",
             ParameterSetName = SasPermissionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
@@ -107,36 +111,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Name)) return;
-            CloudQueue queue = Channel.GetQueueReference(Name);
-            SharedAccessQueuePolicy policy = new SharedAccessQueuePolicy();
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateQueueAccessPolicy(Channel, queue.Name, policy, accessPolicyIdentifier);
-            SetupAccessPolicy(policy, shouldSetExpiryTime);
-            string sasToken = queue.GetSharedAccessSignature(policy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+
+            QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, this.ClientOptions);
+            QueueSignedIdentifier identifier = null;
+            if (!string.IsNullOrEmpty(this.Policy))
+            {
+                identifier = SasTokenHelper.GetQueueSignedIdentifier(queueClient, this.Policy, CmdletCancellationToken);
+            }
+
+            QueueSasBuilder sasBuilder = SasTokenHelper.SetQueueSasbuilder(queueClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+            string sasToken = SasTokenHelper.GetQueueSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
+
+            if (sasToken[0] != '?')
+            {
+                sasToken = "?" + sasToken;
+            }
 
             if (FullUri)
             {
-                string fullUri = queue.Uri.ToString() + sasToken;
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(queueClient.Uri.AbsoluteUri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else
             {
                 WriteObject(sasToken);
             }
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessQueuePolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime, out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

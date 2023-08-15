@@ -20,7 +20,6 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.IO;
@@ -78,10 +77,14 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateRange(3, 200)]
         public int NodeCount { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
+            HelpMessage = HelpMessages.IsolatedCompute)]
+        public SwitchParameter EnableIsolatedCompute { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true,
             HelpMessage = HelpMessages.NodeSize)]
-        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, IgnoreCase = true)]
-        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large)]
+        [ValidateSet(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge, IgnoreCase = true)]
+        [PSArgumentCompleter(Management.Synapse.Models.NodeSize.Small, Management.Synapse.Models.NodeSize.Medium, Management.Synapse.Models.NodeSize.Large, Management.Synapse.Models.NodeSize.XLarge, Management.Synapse.Models.NodeSize.XXLarge, Management.Synapse.Models.NodeSize.XXXLarge)]
         public string NodeSize { get; set; }
 
         private SwitchParameter enableAutoScale;
@@ -125,12 +128,6 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.SparkVersion)]
         [ValidateNotNullOrEmpty]
         public string SparkVersion { get; set; }
-
-        [CmdletParameterBreakingChange("SparkConfigFilePath", ReplaceMentCmdletParameterName = "SparkConfiguration")]
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
-            HelpMessage = HelpMessages.SparkConfigPropertiesFilePath)]
-        [ValidateNotNullOrEmpty]
-        public string SparkConfigFilePath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false,
           HelpMessage = HelpMessages.SparkConfigurationResource)]
@@ -191,16 +188,6 @@ namespace Microsoft.Azure.Commands.Synapse
             }
 
             SparkConfigProperties sparkConfigProperties = null;
-            if (this.IsParameterBound(c => c.SparkConfigFilePath))
-            {
-                string path = this.TryResolvePath(SparkConfigFilePath);
-                string filename = Path.GetFileNameWithoutExtension(path);
-                sparkConfigProperties = new SparkConfigProperties()
-                {
-                    Content = this.ReadFileAsText(this.SparkConfigFilePath),
-                    Filename = filename
-                };
-            }
 
             if (this.IsParameterBound(c => c.SparkConfiguration))
             {
@@ -219,6 +206,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Location = existingWorkspace.Location,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
+                IsComputeIsolationEnabled = EnableIsolatedCompute.IsPresent,
                 NodeCount = this.enableAutoScale ? (int?)null : this.NodeCount,
                 NodeSizeFamily = NodeSizeFamily.MemoryOptimized,
                 NodeSize = NodeSize,

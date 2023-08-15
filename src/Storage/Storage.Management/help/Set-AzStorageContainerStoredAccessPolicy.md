@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 730ECC60-72DE-46DA-A177-D5749F540710
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragecontainerstoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ The **Set-AzStorageContainerStoredAccessPolicy** cmdlet sets a stored access pol
 ## EXAMPLES
 
 ### Example 1: Set a stored access policy in a storage container with full permission
-```
-PS C:\>Set-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
+```powershell
+Set-AzStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
 ```
 
 This command sets an access policy named Policy06 for storage container named MyContainer.

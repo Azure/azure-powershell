@@ -42,7 +42,7 @@ BODY <IFilter>: .
   [ExcludeUriPrefix <String[]>]: 
   [IncludeUriPrefix <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewfilter
+https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewfilter
 #>
 function New-AzPurviewFilter {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter])]

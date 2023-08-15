@@ -53,7 +53,7 @@ VALIDATION <ICustomRpValidations[]>: A list of validations to run on the custom 
   Specification <String>: A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
   [ValidationType <ValidationType?>]: The type of validation to run against a matching request.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomprovider
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/new-azcustomprovider
 #>
 function New-AzCustomProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest])]

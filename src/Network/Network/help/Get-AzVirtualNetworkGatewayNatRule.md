@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaynatrule
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewaynatrule
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ Id                : /subscriptions/7afd8f92-c220-4f53-886e-1df53a69afd4/resource
 Etag              : W/"5150d788-e165-42ba-99c4-8138a545fce9"
 ```
 
-### Example 2: 
+### Example 2:
 ```powershell
 Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "rg1" -ParentResourceName "gw1"
 ```
@@ -103,14 +103,13 @@ Id                : /subscriptions/7afd8f92-c220-4f53-886e-1df53a69afd4/resource
 Etag              : W/"5150d788-e165-42ba-99c4-8138a545fce9"
 ```
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualNetworkGatewayNatRuleName
 
@@ -133,14 +132,14 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ParentObject
 The parent VirtualNetworkGateway for this VirtualNetworkGatewayNatRule.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: ByVirtualNetworkGatewayObject
 Aliases: ParentVirtualNetworkGateway, VirtualNetworkGateway
 
@@ -155,7 +154,7 @@ Accept wildcard characters: False
 The resource id of the parent VirtualNetworkGateway for this VirtualNetworkGatewayNatRule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayResourceId
 Aliases: ParentVirtualNetworkGatewayId, VirtualNetworkGatewayId
 
@@ -170,7 +169,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayName
 Aliases: ParentVirtualNetworkGatewayName, VirtualNetworkGatewayName
 
@@ -185,7 +184,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualNetworkGatewayName
 Aliases:
 

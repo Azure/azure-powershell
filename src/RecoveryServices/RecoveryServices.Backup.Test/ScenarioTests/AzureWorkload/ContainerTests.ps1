@@ -19,14 +19,12 @@ $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroup
 
 function Get-AzureVmWorkloadContainer
 {
-   $resourceGroupName = "pstestwlRG1bca8"
-   $vaultName = "pstestwlRSV1bca8"
+   $resourceGroupName = "sqlcontainer-pstest-rg" #"pstestwlRG1bca8"
+   $vaultName = "sqlcontainer-pstest-vault" # "pstestwlRSV1bca8"
    $containerName = "sql-pstest-vm"
-   $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm"
-   # $containerName = "pstestvm8895"
-   # $containerName = "PSTestVM235870"
-   # $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG235879ba/providers/Microsoft.Compute/virtualMachines/PSTestVM235870"
-    
+   $resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm"
+   #$resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm"
+
    try
    {
       $vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName

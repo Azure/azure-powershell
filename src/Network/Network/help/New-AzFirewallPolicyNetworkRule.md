@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallpolicynetworkrule
 schema: 2.0.0
 ---
 
@@ -12,11 +12,20 @@ Create a new Azure Firewall Policy Network Rule
 
 ## SYNTAX
 
+### SourceAddress
 ```
 New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- [-SourceIpGroup <String[]>] -DestinationAddress <String[]> [-DestinationIpGroup <String[]>]
- -DestinationPort <String[]> [-DestinationFqdn <String[]>] -Protocols <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>] -DestinationPort <String[]>
+ [-DestinationFqdn <String[]>] -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SourceIpGroup
+```
+New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceIpGroup <String[]>
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>] -DestinationPort <String[]>
+ [-DestinationFqdn <String[]>] -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +46,7 @@ This example creates an network rule with the source address, protocol , destina
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +61,7 @@ Accept wildcard characters: False
 The description of the rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +76,7 @@ Accept wildcard characters: False
 The destination addresses of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +91,7 @@ Accept wildcard characters: False
 The destination FQDN of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +106,7 @@ Accept wildcard characters: False
 The destination ipgroups of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +121,7 @@ Accept wildcard characters: False
 The destination ports of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +136,7 @@ Accept wildcard characters: False
 The name of the Network Rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +151,7 @@ Accept wildcard characters: False
 The protocols of the rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Any, TCP, UDP, ICMP
@@ -158,11 +167,11 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: SourceAddress
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,42 +182,11 @@ Accept wildcard characters: False
 The source ipgroups of the rule
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: SourceIpGroup
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

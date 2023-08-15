@@ -19,9 +19,50 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
+* Updated the reference of Azure PowerShell Common to 1.3.82-preview.
+
+## Version 2.12.5
+* Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
+* Updated Azure.Core to 1.33.0
+
+## Version 2.12.4
+* Changed `gallery` property to be optional in ARM metadata of `Set-AzEnvironment` and `Add-AzEnvironment`[#22037].
+* Enabled customers to login with an valid domain using Service Principal [#20728]
+
+## Version 2.12.3
+* Updated System.Security.Permissions to 4.7.0.
+
+## Version 2.12.2
+* Fixed `AzureSynapseAnalyticsEndpointResourceId` of `USGovernment` environment.
+* Updated Azure.Core to 1.31.0.
+* Updated the reference of Azure PowerShell Common to 1.3.75-preview.
+
+## Version 2.12.1
+* Fixed an issue that broke some cmdlets in Az.Synapse module.
+
+## Version 2.12.0
+* Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
+* Updated Azure.Core library to 1.28.0.
+* Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
+* Added a hint message for some resource creation cmdlets when there is another region which may reduce the costs.
+* Supported environment initialization and auto-discovery with ArmMetadata of API version 2022-09-01.
+
+## Version 2.11.2
+* Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where `Connect-AzAccount` failed with error "Unable to load DLL 'msalruntime_arm64'". [#20700]
+* Enabled credential to be found only by applicationId while tenant was not matched when acquire token. [#20484]
+* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation environment. [#20455]
+
+## Version 2.11.1
+* Fixed an issue where Az.Accounts cannot be imported correctly. [#20615]
+
+## Version 2.11.0
+* Supported Web Account Manager (WAM) as an opt-in interactive login experience. Enable it by `Update-AzConfig -EnableLoginByWam $true`.
 * Optimized the mechanism for assembly loading.
 * Enabled AzKeyStore with keyring in Linux.
-* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name from GetzureRmContextAutosaveSetting to GetAzureRmContextAutosaveSetting
+* Fixed a typo in GetAzureRmContextAutosaveSetting.cs changing the cmdlet class name to GetAzureRmContextAutosaveSetting
 * Removed survey on error message in `Resolve-AzError`. [#20398]
 
 ## Version 2.10.4

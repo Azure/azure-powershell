@@ -60,7 +60,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
 #>
 function Update-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]

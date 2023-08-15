@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support
     public partial struct ContainerGroupSku :
         System.IEquatable<ContainerGroupSku>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku Confidential = @"Confidential";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku Dedicated = @"Dedicated";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku Standard = @"Standard";

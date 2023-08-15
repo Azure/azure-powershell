@@ -21,6 +21,32 @@ Describe 'New-AzDataProtectionBackupVault' {
         Remove-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
     }
 
+    It 'ImmutabilityCSRSoftDelete' {
+        $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -Type LocallyRedundant -DataStoreType VaultStore
+        
+        $vault = New-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -Location centraluseuap -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
+        
+        $vault.Location | Should be "centraluseuap"
+        $vault.Name | Should be $env.TestBackupVault.NewVaultName
+        
+        $vault.CrossSubscriptionRestoreState | Should be "Enabled"        
+        $vault.SoftDeleteRetentionDurationInDay |  Should be 100
+        $vault.SoftDeleteState |  Should be "On"
+        $vault.ImmutabilityState | Should be "Unlocked"
+
+        # update immutability, soft delete, CSR flag        
+        $vault = Update-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled -SoftDeleteRetentionDurationInDay 99 -SoftDeleteState Off
+
+        $vault.CrossSubscriptionRestoreState | Should be "Disabled"        
+        $vault.SoftDeleteRetentionDurationInDay |  Should be 99
+        $vault.SoftDeleteState |  Should be "Off"
+        $vault.ImmutabilityState | Should be "Disabled"
+        
+        Remove-AzDataProtectionBackupVault -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.NewVaultName
+    }
+
     It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -1,0 +1,80 @@
+{
+  "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Compute_Savings_Plan\"\r\n      },\r\n      \"properties\": {\r\n        \"commitment\": {\r\n          \"currencyCode\": \"USD\",\r\n          \"amount\": 0.01,\r\n          \"grain\": \"Hourly\"\r\n        },\r\n        \"displayName\": \"MockName\",\r\n        \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n        \"term\": \"P1Y\",\r\n        \"appliedScopeType\": \"Shared\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "445" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-test": [ "{\"contact\":\"yunga\",\"scenarios\":\"time-scale:17520,days-until-time-stop:365,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"3/1/2023 12:50:26 AM\"}" ],
+        "x-ms-request-id": [ "westcentralus:d60d52de-d806-4f50-81e1-ae6b1cffa4d1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "05ac5611-3bb5-446d-8556-4887e0d1bb6c" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T005027Z:05ac5611-3bb5-446d-8556-4887e0d1bb6c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 01 Dec 2022 00:50:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzBillingBenefitsSavingsPlanPurchaseValidation+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Compute_Savings_Plan\"\r\n      },\r\n      \"properties\": {\r\n        \"commitment\": {\r\n          \"currencyCode\": \"USD\",\r\n          \"amount\": 0.01,\r\n          \"grain\": \"Hourly\"\r\n        },\r\n        \"displayName\": \"MockName\",\r\n        \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n        \"term\": \"P1Y\",\r\n        \"appliedScopeType\": \"Shared\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "445" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-test": [ "{\"contact\":\"yunga\",\"scenarios\":\"time-scale:17520,days-until-time-stop:365,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"3/1/2023 12:50:27 AM\"}" ],
+        "x-ms-request-id": [ "westcentralus:082660a4-a50d-43f8-b5ff-85ec89894716" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "eff31aa1-b5f7-4e5f-9bc9-9516e4530681" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T005028Z:eff31aa1-b5f7-4e5f-9bc9-9516e4530681" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 01 Dec 2022 00:50:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,37 +1,43 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
+external help file: Az.ContainerRegistry-help.xml
 Module Name: Az.ContainerRegistry
-online version: https://docs.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistry
+online version: https://learn.microsoft.com/powershell/module/az.containerregistry/get-azcontainerregistry
 schema: 2.0.0
 ---
 
 # Get-AzContainerRegistry
 
 ## SYNOPSIS
-Gets a container registry.
+Gets the properties of the specified container registry.
 
 ## SYNTAX
 
-### ListRegistriesParameterSet (Default)
+### List2 (Default)
 ```
-Get-AzContainerRegistry [[-ResourceGroupName] <String>] [-IncludeDetail]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### RegistryNameParameterSet
-```
-Get-AzContainerRegistry [-ResourceGroupName] <String> [-Name] <String> [-IncludeDetail]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### List1
 ```
-Get-AzContainerRegistry [-IncludeDetail] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] -Name <String>
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzContainerRegistry [-IncludeDetail] -InputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzContainerRegistry cmdlet gets a specified container registry or all the container registries in a resource group or the subscription.
+Gets the properties of the specified container registry.
 
 ## EXAMPLES
 
@@ -41,12 +47,9 @@ Get-AzContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
 ```
 
 ```output
-   Container registry location: westus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
+Name  SkuName LoginServer      CreationDate          ProvisioningState AdminUserEnabled
+----  ------- -----------      ------------          ----------------- ----------------
+testc Premium testc.azurecr.io 16/01/2023 8:45:50 pm Succeeded         True
 ```
 
 This command gets the specified container registry.
@@ -57,20 +60,10 @@ Get-AzContainerRegistry -ResourceGroupName "MyResourceGroup"
 ```
 
 ```output
-   Container registry location: westus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
-
-
-   Container registry location: eastus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry1       Premium    myregistry1.azurecr.io    10/31/2017 6:29:31 PM      Succeeded  True
+Name   SkuName LoginServer       CreationDate          ProvisioningState AdminUserEnabled
+----   ------- -----------       ------------          ----------------- ----------------
+testc2 Premium testc2.azurecr.io 17/01/2023 3:47:50 pm Succeeded         True
+testc  Premium testc.azurecr.io  16/01/2023 8:45:50 pm Succeeded         True
 ```
 
 This command gets all the container registries in a resource group.
@@ -81,20 +74,10 @@ Get-AzContainerRegistry
 ```
 
 ```output
-  Container registry location: westus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry        Premium    myregistry.azurecr.io     10/31/2017 6:49:31 PM      Succeeded  True
-
-
-   Container registry location: eastus
-
-Registry Name     Sku        LoginServer               CreationDate               Provisioni AdminUserE StorageAccountN
-                                                                                  ngState    nabled     ame
--------------     ---        -----------               ------------               ---------- ---------- ---------------
-myregistry1       Premium    myregistry1.azurecr.io    10/31/2017 6:29:31 PM      Succeeded  True
+Name   SkuName LoginServer       CreationDate          ProvisioningState AdminUserEnabled
+----   ------- -----------       ------------          ----------------- ----------------
+testc2 Premium testc2.azurecr.io 17/01/2023 3:47:50 pm Succeeded         True
+testc  Premium testc.azurecr.io  16/01/2023 8:45:50 pm Succeeded         True
 ```
 
 This command gets all the container registries in the subscription.
@@ -102,12 +85,12 @@ This command gets all the container registries in the subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -117,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeDetail
-Show more details about the container registry.
+Usage of an azure container registry.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -131,60 +114,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Container Registry Name.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: RegistryNameParameterSet
-Aliases: ContainerRegistryName, RegistryName, ResourceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
-
-```yaml
-Type: System.String
-Parameter Sets: ListRegistriesParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: RegistryNameParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The container registry resource id
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the container registry.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: RegistryName, ResourceName, ContainerRegistryName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List1, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List2, List1, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,19 +182,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IContainerRegistryIdentity>`: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the agent pool.
+  - `[CacheRuleName <String>]`: The name of the cache rule.
+  - `[ConnectedRegistryName <String>]`: The name of the connected registry.
+  - `[CredentialSetName <String>]`: The name of the credential set.
+  - `[ExportPipelineName <String>]`: The name of the export pipeline.
+  - `[GroupName <String>]`: The name of the private link resource.
+  - `[Id <String>]`: Resource identity path
+  - `[ImportPipelineName <String>]`: The name of the import pipeline.
+  - `[PipelineRunName <String>]`: The name of the pipeline run.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[RegistryName <String>]`: The name of the container registry.
+  - `[ReplicationName <String>]`: The name of the replication.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RunId <String>]`: The run ID.
+  - `[ScopeMapName <String>]`: The name of the scope map.
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
+  - `[TaskName <String>]`: The name of the container registry task.
+  - `[TaskRunName <String>]`: The name of the task run.
+  - `[TokenName <String>]`: The name of the token.
+  - `[WebhookName <String>]`: The name of the webhook.
+
 ## RELATED LINKS
-
-[New-AzContainerRegistry](New-AzContainerRegistry.md)
-
-[Update-AzContainerRegistry](Update-AzContainerRegistry.md)
-
-[Remove-AzContainerRegistry](Remove-AzContainerRegistry.md)
-

@@ -27,7 +27,7 @@ New-AzDataMigrationLoginsMigration -ConfigFilePath "C:\Users\user\document\confi
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationloginsmigration
 #>
 function New-AzDataMigrationLoginsMigration {
 [OutputType([System.Boolean])]
@@ -99,7 +99,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

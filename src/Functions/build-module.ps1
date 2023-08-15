@@ -133,7 +133,7 @@ if($NoDocs) {
   Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs -ExamplesFolder $examplesFolder
 } else {
   Write-Host -ForegroundColor Green 'Creating exports and docs...'
-  $moduleDescription = 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/'
+  $moduleDescription = 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://learn.microsoft.com/azure/azure-functions/'
   $docsFolder = Join-Path $PSScriptRoot 'docs'
   if(Test-Path $docsFolder) {
     $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue

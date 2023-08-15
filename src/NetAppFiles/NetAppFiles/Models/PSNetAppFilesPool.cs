@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets TotalThroughputMibps
         /// </summary>
         /// <value>
-        /// total throughput of pool in Mibps        
+        /// Total throughput of pool in MiB/s
         /// </value>
         public double? TotalThroughputMibps { get; set; }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets UtilizedThroughputMibps
         /// </summary>
         /// <value>
-        /// Utilized throughput of pool in Mibps        
+        /// Utilized throughput of pool in MiB/s        
         /// </value>
         public double? UtilizedThroughputMibps { get; set; }
 

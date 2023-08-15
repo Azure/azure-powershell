@@ -42,7 +42,7 @@ GITREPOSITORY <IConfigurationServiceGitRepository[]>: Repositories of Applicatio
   [StrictHostKeyChecking <Boolean?>]: Strict host key checking or not.
   [Username <String>]: Username of git repository basic auth.
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudconfigurationservice
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudconfigurationservice
 #>
 function New-AzSpringCloudConfigurationService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceResource])]

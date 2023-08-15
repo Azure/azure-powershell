@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceenvironment
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azappserviceenvironment
 schema: 2.0.0
 ---
 

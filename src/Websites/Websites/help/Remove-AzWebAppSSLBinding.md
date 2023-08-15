@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappsslbinding
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappsslbinding
 schema: 2.0.0
 ---
 

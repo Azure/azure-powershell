@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
 {
     public class AdalTokenMigrator
     {
-        protected const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private const string TenantsString = "Tenants";
 
         private byte[] AdalToken { get; set; }
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
         public void MigrateFromAdalToMsal()
         {
             MsalCacheHelper cacheHelper = null;
-            var builder = PublicClientApplicationBuilder.Create(PowerShellClientId);
+            var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
             var clientApplication = builder.Build();
             clientApplication.UserTokenCache.SetBeforeAccess((TokenCacheNotificationArgs args) =>
             {
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                     }
                     catch (Exception)
                     {
-                        //TODO: 
+                        //TODO:
                     }
                     finally
                     {

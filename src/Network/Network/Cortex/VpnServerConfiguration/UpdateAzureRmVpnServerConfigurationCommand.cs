@@ -458,6 +458,25 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = this.AadIssuer;
                     }
+
+                    if (vpnServerConfigurationToUpdate.VpnProtocols != null &&
+                        vpnServerConfigurationToUpdate.VpnProtocols.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                        vpnServerConfigurationToUpdate.VpnProtocols.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                        vpnServerConfigurationToUpdate.VpnProtocols.Count() == 2)
+                    {
+                        // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                        if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Count() == 1)
+                        {
+                            throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                        } 
+                        else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Count() > 1)
+                        {
+                            if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))
+                            {
+                                return;
+                            }
+                        }
+                    }
                 }
                 else
                 {

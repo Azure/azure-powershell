@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azo365policyproperty
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azo365policyproperty
 schema: 2.0.0
 ---
 
@@ -19,6 +19,7 @@ New-AzO365PolicyProperty [-Allow] [-Optimize] [-Default] [-DefaultProfile <IAzur
 
 ## DESCRIPTION
 Create an office 365 breakout policy to be used with New-AzVpnSite and Update-AzVpnSite cmdlets.
+
 ## EXAMPLES
 
 ### Example 1

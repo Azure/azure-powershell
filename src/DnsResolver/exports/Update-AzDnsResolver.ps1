@@ -46,7 +46,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   [VirtualNetworkLinkName <String>]: The name of the virtual network link.
   [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
 #>
 function Update-AzDnsResolver {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver])]

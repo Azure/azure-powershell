@@ -60,5 +60,14 @@ namespace Commands.Automation.Test
             string runbookPath = Path.Combine("ScenarioTests", "Resources", "RB-PowerShellScriptTutorial.ps1");
             TestRunner.RunTestScript(string.Format("Test-CreateJobAndGetOutputPowerShellScript -Name TestRunbook-PSScript-JobAndOutput -RunbookPath {0}", runbookPath));
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRunBookNamePattern()
+        {
+            string runbookPath = Path.Combine("ScenarioTests", "Resources", "RB-PowerShellScriptTutorial.ps1");
+            TestRunner.RunTestScript(string.Format("Test-RunBookNamePattern -RunbookPath {0}", runbookPath));
+        }
     }
 }

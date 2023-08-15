@@ -88,6 +88,8 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string NodeCount = "Number of nodes to be allocated in the specified Spark pool.";
 
+        public const string IsolatedCompute = "The Isolate Compute option is only available with the XXXLarge (80 vCPU / 504 GB) node size. Enabling this option offers isolation for Apache Spark compute for untrusted services. Isolated compute costs the same as the non-isolated VM of the same size. If you expect to enable Isolated Compute for spark pool, ensure that your Synapse workspace is created in an isolated compute supported region, please refer to this document for more details: https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/apache-spark-pool-configurations#isolated-compute";
+
         public const string NodeSize = "Number of core and memory to be used for nodes allocated in the specified Spark pool. This parameter must be specified when Auto-scale is disabled";
 
         public const string EnableAutoScale = "Indicates whether Auto-scale should be enabled";
@@ -113,8 +115,6 @@ Add means to add user assigned managed identities for workspace, Remove means to
         public const string SparkVersion = "Apache Spark version. Allowed values: 2.3,2.4,3.1,3.2";
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
-
-        public const string SparkConfigPropertiesFilePath = "[Deprecated] Spark pool properties configuration file. This parameter is deprecated, please use \"-SparkConfiguration\" instead.";
 
         public const string SparkConfigurationResource = "Apache Spark configuration. When a job is submitted to the pool, the properties specified in the selected configuration will be referenced.";
 
@@ -270,7 +270,7 @@ Add means to add user assigned managed identities for workspace, Remove means to
 “SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP“,  
 “FAILED_DATABASE_AUTHENTICATION_GROUP“  
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.";
+For more information, see https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.";
 
         public const string AuditAction =
 @"The set of audit actions.  
@@ -289,7 +289,7 @@ For example:
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.";
+For more information, see https://learn.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.";
 
         public const string PredicateExpression = "The T-SQL predicate (WHERE clause) used to filter audit logs.";
 

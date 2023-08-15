@@ -25,7 +25,7 @@ New-AzSpringCloudKeyVaultCertificateObject -VaultUri "keyvaluturi" -Name 'keycer
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudKeyVaultCertificateObject
+https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudKeyVaultCertificateObject
 #>
 function New-AzSpringCloudKeyVaultCertificateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties])]

@@ -23,7 +23,7 @@ Create an in-memory object for HDInsight.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.HDInsight
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceHDInsightObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceHDInsightObject
 #>
 function New-AzMLWorkspaceHDInsightObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.HDInsight')]

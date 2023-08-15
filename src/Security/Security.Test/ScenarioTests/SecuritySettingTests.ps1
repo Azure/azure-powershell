@@ -54,7 +54,7 @@ function Validate-Settings
 {
 	param($settings)
 
-    Assert-True { $settings.Count -eq 4 }
+    Assert-True { $settings.Count -eq 5 }
 
 	Foreach($setting in $settings)
 	{

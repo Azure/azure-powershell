@@ -23,8 +23,8 @@ function Test-NetworkManagerCRUD
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
-    $managementGroupId = "/providers/Microsoft.Management/managementGroups/PowerShellTest"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $managementGroupId = "/providers/Microsoft.Management/managementGroups/SwaggerStackTestMG"
 
     try{
         #Create the resource group
@@ -78,7 +78,7 @@ function Test-NetworkManagerGroupCRUD
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
 
     try{
         #Create the resource group
@@ -139,8 +139,8 @@ function Test-NetworkManagerStaticMemberCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
-    $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
 
     try{
         #Create the resource group
@@ -199,18 +199,18 @@ Tests creating new simple public networkmanager Connectivity Configuration
 function Test-NetworkManagerConnectivityConfigurationCRUD
 {
     # Setup
-    # Please pre create vnet and hub vnet before running test in live mode, also please update subscriptionId and uncomment 10 mins sleep code
+    # Please update subscriptionId and uncomment 1 mins sleep code
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
-    $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
-    $hubId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub" 
-    $vnet = "powerShellTestVnet"
-    $vnetRG = "jaredgorthy-PowerShellTestResources"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $vnetName = "SwaggerStackVnet"
+    $vnetRGName = "SwaggerStackRG"
     
     try{
         #Create the resource group
@@ -290,7 +290,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "False"   $activeConnectivityConfig.Value[0].IsGlobal;
         Assert-AreEqual "True"   $activeConnectivityConfig.Value[0].DeleteExistingPeering;
 
-        $effectiveConnectivityConfig = Get-AzNetworkManagerEffectiveConnectivityConfiguration -VirtualNetworkName $vnet -VirtualNetworkResourceGroupName $vnetRG
+        $effectiveConnectivityConfig = Get-AzNetworkManagerEffectiveConnectivityConfiguration -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRGName
         Assert-NotNull $effectiveConnectivityConfig;
         Assert-AreEqual  $newConnConfig.Id $effectiveConnectivityConfig.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveConnectivityConfig.Value[0].ConfigurationGroups[0].Id;
@@ -346,10 +346,10 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
-    $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
-    $vnetName = "powerShellTestVnet"
-    $vnetRG = "jaredgorthy-PowerShellTestResources"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $vnetName = "SwaggerStackVnet"
+    $vnetRGName = "SwaggerStackRG"
 
     try{
         #Create the resource group
@@ -460,41 +460,26 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "10.0.0.1" $activeSecurityAdminRule.Value[0].Destinations[0].AddressPrefix
         Assert-AreEqual "Internet" $activeSecurityAdminRule.Value[0].Sources[0].AddressPrefix
 
-        $effectiveSecurityAdminRuleList = Get-AzNetworkManagerEffectiveSecurityAdminRule  -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRG
+        $effectiveSecurityAdminRuleList = Get-AzNetworkManagerEffectiveSecurityAdminRule  -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRGName
         Assert-NotNull $effectiveSecurityAdminRuleList;
 
-        <#
-        # Network manager at AVNM testing MG will apply rules on this vnet; extract the rule this test has applied
-        [Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityBaseAdminRule]$effectiveSecurityAdminRule = $null
-        foreach ($rule in $effectiveSecurityAdminRuleList)
-        {
-            Write-Host rule.Id
-            if ($rule.Id -eq $newAdminRule.Id)
-            {
-                $effectiveSecurityAdminRule = $rule;
-                break;
-            }
-        }
-        Assert-NotNull $effectiveSecurityAdminRule;
-        #>
-
-        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[3].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleGroups[0].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleCollectionAppliesToGroups[0].NetworkGroupId;
+        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[0].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleGroups[0].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
        
 
-        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[3].ConfigurationDescription;
-        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[3].RuleCollectionDescription;
+        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[0].ConfigurationDescription;
+        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[0].RuleCollectionDescription;
 
-        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[3].Protocol 
-        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[3].Direction 
-        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[3].Access 
-        Assert-AreEqual 100 $effectiveSecurityAdminRuleList.Value[3].Priority
+        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[0].Protocol 
+        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[0].Direction 
+        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[0].Access 
+        Assert-AreEqual 0 $effectiveSecurityAdminRuleList.Value[0].Priority
 
-        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[3].SourcePortRanges[0] 
-        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[3].DestinationPortRanges[0]
-        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[3].Destinations[0].AddressPrefix
-        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[3].Sources[0].AddressPrefix
+        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[0].SourcePortRanges[0] 
+        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[0].DestinationPortRanges[0]
+        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[0].Destinations[0].AddressPrefix
+        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[0].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
 
@@ -543,7 +528,7 @@ function Test-NetworkManagerScopeConnectionCRUD
     $networkManagerName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
 
     try{
         #Create the resource group
@@ -594,7 +579,7 @@ function Test-NetworkManagerSubscriptionConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE"
+    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
 
     try{
         New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
@@ -624,8 +609,8 @@ function Test-NetworkManagerManagementGroupConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE"
-    $managementGroupId = "PowerShellTestNMConection"
+    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $managementGroupId = "SwaggerStackTestMG"
 
     try{
         New-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
@@ -664,8 +649,8 @@ function Test-NetworkManagerResourceMinimumParameterCreate
     $RuleName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
-    $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
 
     try{
         #Create the resource group

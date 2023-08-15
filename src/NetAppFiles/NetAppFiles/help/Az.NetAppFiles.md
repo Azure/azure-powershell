@@ -1,7 +1,7 @@
 ---
 Module Name: Az.NetAppFiles
 Module Guid: e20e99dc-6df9-479b-8504-2960f0088f00
-Download Help Link: https://docs.microsoft.com/powershell/module/az.netappfiles
+Download Help Link: https://learn.microsoft.com/powershell/module/az.netappfiles
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -47,9 +47,6 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 ### [Get-AzNetAppFilesSubvolumeMetadata](Get-AzNetAppFilesSubvolumeMetadata.md)
 Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
-### [Get-AzNetAppFilesVault](Get-AzNetAppFilesVault.md)
-Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
-
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
 
@@ -59,17 +56,17 @@ Get volume's backup status
 ### [Get-AzNetAppFilesVolumeGroup](Get-AzNetAppFilesVolumeGroup.md)
 Gets details of an Azure NetApp Files (ANF) VolumeGroup.
 
+### [Get-AzNetAppFilesVolumeQuotaRule](Get-AzNetAppFilesVolumeQuotaRule.md)
+Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
+
+### [Get-AzNetAppFilesVolumeReplication](Get-AzNetAppFilesVolumeReplication.md)
+Get volume's replication
+
 ### [Get-AzNetAppFilesVolumeRestoreStatus](Get-AzNetAppFilesVolumeRestoreStatus.md)
 Get volume's restore status
 
 ### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
 Re-Initializes the replication connection on the destination volume
-
-### [New-AzExportPolicyObject](New-AzExportPolicyObject.md)
-Creates export policy object.
-
-### [New-AzExportPolicyRuleObject](New-AzExportPolicyRuleObject.md)
-Creates export policy rule object.
 
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.
@@ -82,6 +79,12 @@ Creates a new Azure NetApp Files (ANF) backup.
 
 ### [New-AzNetAppFilesBackupPolicy](New-AzNetAppFilesBackupPolicy.md)
 Creates a new Azure NetApp Files (ANF) backup policy for an ANF account.
+
+### [New-AzNetAppFilesExportPolicyObject](New-AzNetAppFilesExportPolicyObject.md)
+Creates export policy object.
+
+### [New-AzNetAppFilesExportPolicyRuleObject](New-AzNetAppFilesExportPolicyRuleObject.md)
+Creates export policy rule object.
 
 ### [New-AzNetAppFilesPool](New-AzNetAppFilesPool.md)
 Creates a new Azure NetApp Files (ANF) pool.
@@ -101,6 +104,9 @@ Creates a new Azure NetApp Files (ANF) volume.
 ### [New-AzNetAppFilesVolumeGroup](New-AzNetAppFilesVolumeGroup.md)
 Creates a new Azure NetApp Files (ANF) VolumeGroup along with requisite volumes.
 Creating volume group will create all the volumes specified in request body implicitly. Once volumes are created using volume group, those will be treated as regular volumes thereafter.
+
+### [New-AzNetAppFilesVolumeQuotaRule](New-AzNetAppFilesVolumeQuotaRule.md)
+Creates a new Azure NetApp Files (ANF) Volume Quota Rule.
 
 ### [Remove-AzNetAppFilesAccount](Remove-AzNetAppFilesAccount.md)
 Deletes an Azure NetApp Files (ANF) account.
@@ -135,6 +141,21 @@ Deletes an Azure NetApp Files (ANF) volume.
 ### [Remove-AzNetAppFilesVolumeGroup](Remove-AzNetAppFilesVolumeGroup.md)
 Deletes an Azure NetApp Files (ANF) VolumeGroup. This delete the specified volume group only does not delete the volumes.
 
+### [Remove-AzNetAppFilesVolumeQuotaRule](Remove-AzNetAppFilesVolumeQuotaRule.md)
+Deletes an Azure NetApp Files (ANF) Volume Quota Rule. 
+
+### [Reset-AzNetAppFilesVolumeCifsPassword](Reset-AzNetAppFilesVolumeCifsPassword.md)
+Reset the Cifs password for the volume
+
+### [Restore-AzNetAppFilesBackupFile](Restore-AzNetAppFilesBackupFile.md)
+Create a new Backup Restore Files request
+
+### [Restore-AzNetAppFilesReplication](Restore-AzNetAppFilesReplication.md)
+Restore (Re-establish) the specified replication for the volume
+
+### [Restore-AzNetAppFilesSnapshotFile](Restore-AzNetAppFilesSnapshotFile.md)
+Restore the specified files from the specified snapshot to the active filesystem 
+
 ### [Restore-AzNetAppFilesVolume](Restore-AzNetAppFilesVolume.md)
 Restore/Revert a volume to one of its snapshots
 
@@ -159,8 +180,14 @@ Change pool for an Azure NetApp Files (ANF) volume.
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
 Suspend/break the replication connection on the destination volume
 
+### [Unlock-AzNetAppFilesVolumeFileLock](Unlock-AzNetAppFilesVolumeFileLock.md)
+Break file locks
+
 ### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.
+
+### [Update-AzNetAppFilesAccountCredential](Update-AzNetAppFilesAccountCredential.md)
+Renew identity credentials
 
 ### [Update-AzNetAppFilesActiveDirectory](Update-AzNetAppFilesActiveDirectory.md)
 Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
@@ -182,4 +209,7 @@ Updates an Azure NetApp Files (ANF) subvolume according to the optional modifier
 
 ### [Update-AzNetAppFilesVolume](Update-AzNetAppFilesVolume.md)
 Updates an Azure NetApp Files (ANF) volume according to the optional modifiers provided.
+
+### [Update-AzNetAppFilesVolumeQuotaRule](Update-AzNetAppFilesVolumeQuotaRule.md)
+Updates an Azure NetApp Files (ANF) volume quota rule according to the optional modifiers provided.
 

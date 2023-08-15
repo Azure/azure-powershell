@@ -25,7 +25,7 @@ New-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedataversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedataversion
 #>
 function New-AzMLWorkspaceDataVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDataVersionBase])]

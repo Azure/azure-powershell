@@ -75,6 +75,11 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         public virtual IEndpointsOperations Endpoints { get; private set; }
 
         /// <summary>
+        /// Gets the IServiceConfigurationsOperations.
+        /// </summary>
+        public virtual IServiceConfigurationsOperations ServiceConfigurations { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the HybridConnectivityManagementAPIClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -316,8 +321,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         private void Initialize()
         {
             Endpoints = new EndpointsOperations(this);
+            ServiceConfigurations = new ServiceConfigurationsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2021-10-06-preview";
+            ApiVersion = "2023-03-15";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

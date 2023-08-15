@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Attestation
-online version: https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
+online version: https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
 schema: 2.0.0
 ---
 

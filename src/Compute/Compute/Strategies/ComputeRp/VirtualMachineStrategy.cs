@@ -73,7 +73,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string imageReferenceId = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
-            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
+            string sharedGalleryImageId = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -84,8 +88,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         OsProfile = new OSProfile
                         {
                             ComputerName = name,
-                            WindowsConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Windows) ? null : imageAndOsType.CreateWindowsConfiguration(),
-                            LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux) ? null : new LinuxConfiguration
+                            WindowsConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Windows || imageReferenceId != null) ? null : imageAndOsType.CreateWindowsConfiguration(),
+                            LinuxConfiguration = (imageAndOsType?.OsType != OperatingSystemTypes.Linux || imageReferenceId != null ) ? null : new LinuxConfiguration
                             {
                                 Ssh = new SshConfiguration(sshPublicKeys)
                             },
@@ -114,10 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
                             ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                             {
-                                CommunityGalleryImageId = imageReferenceId
+                                CommunityGalleryImageId = imageReferenceId,
+                                SharedGalleryImageId = sharedGalleryImageId
                             }: new ImageReference
                             {
-                                Id = imageReferenceId
+                                Id = imageReferenceId,
+                                SharedGalleryImageId = sharedGalleryImageId
                             }),
                             OsDisk = new OSDisk(
                                 createOption: DiskCreateOptionTypes.FromImage,
@@ -136,7 +142,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
@@ -181,7 +193,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
-            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -227,7 +242,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) 
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
-online version: https://docs.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
+online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
 schema: 2.0.0
 ---
 
@@ -61,7 +61,7 @@ Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <Strin
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceGroupscopePolicyAssignmentScope
+### ResourceGroupLevelPolicyAssignmentScope
 ```
 Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
  [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]

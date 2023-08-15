@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()

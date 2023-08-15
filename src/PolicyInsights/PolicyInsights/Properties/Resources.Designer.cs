@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new attestation at scope &apos;{0}&apos; with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string CreatingAttestation {
+            get {
+                return ResourceManager.GetString("CreatingAttestation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a new remediation at scope &apos;{0}&apos; with name &apos;{1}&apos;..
         /// </summary>
         internal static string CreatingRemediation {
@@ -79,11 +88,47 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting attestation &apos;{0}&apos; from scope &apos;{1}&apos;.
+        /// </summary>
+        internal static string DeletingAttestation {
+            get {
+                return ResourceManager.GetString("DeletingAttestation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deleting remediation &apos;{0}&apos; from scope &apos;{1}&apos;..
         /// </summary>
         internal static string DeletingRemediation {
             get {
                 return ResourceManager.GetString("DeletingRemediation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; already exists. Please use Set-AzAttestation to update an existing Attestation.&quot;.
+        /// </summary>
+        internal static string Error_AttestationAlreadyExists {
+            get {
+                return ResourceManager.GetString("Error_AttestationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;An attestion with name &apos;{0}&apos; in scope &apos;{1}&apos; does not exist. Please use New-AzAttestation to create a new Attestation with these properties.&quot;.
+        /// </summary>
+        internal static string Error_AttestationDoesNotExists {
+            get {
+                return ResourceManager.GetString("Error_AttestationDoesNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given metadata &apos;{0}&apos; is invalid.
+        /// </summary>
+        internal static string Error_InvalidMetadata {
+            get {
+                return ResourceManager.GetString("Error_InvalidMetadata", resourceCulture);
             }
         }
         
@@ -115,11 +160,65 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
+        /// </summary>
+        internal static string InvalidFilePath {
+            get {
+                return ResourceManager.GetString("InvalidFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The uri {0} is inaccessible, or the content is invalid..
+        /// </summary>
+        internal static string InvalidUriContent {
+            get {
+                return ResourceManager.GetString("InvalidUriContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure the uri starts with http:// or https://..
+        /// </summary>
+        internal static string InvalidUriScheme {
+            get {
+                return ResourceManager.GetString("InvalidUriScheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified uri string {0} is invalid..
+        /// </summary>
+        internal static string InvalidUriString {
+            get {
+                return ResourceManager.GetString("InvalidUriString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON object.
+        /// </summary>
+        internal static string JsonObjectExpected {
+            get {
+                return ResourceManager.GetString("JsonObjectExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triggering a policy compliance scan at scope &apos;{0}&apos;..
         /// </summary>
         internal static string StartComplianceScan {
             get {
                 return ResourceManager.GetString("StartComplianceScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating an attestation with name &apos;{0}&apos; in scope &apos;{1}&apos;..
+        /// </summary>
+        internal static string UpdatingAttestation {
+            get {
+                return ResourceManager.GetString("UpdatingAttestation", resourceCulture);
             }
         }
         

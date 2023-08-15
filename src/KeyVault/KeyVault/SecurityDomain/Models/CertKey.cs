@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 
             // On Windows PowerShell (.net framework), RSA.Create() returns a RSACryptoServiceProvider instance,
             // which does not support decrypting with "OAEP - SHA-2 (SHA256)" padding mode that security domain data is encrypted with.
-            // see https://docs.microsoft.com/en-us/dotnet/standard/security/cross-platform-cryptography#rsa
+            // see https://learn.microsoft.com/en-us/dotnet/standard/security/cross-platform-cryptography#rsa
 
             // solution is to use RSACng instead
             // see https://stackoverflow.com/questions/57815949/override-default-algorithm-in-rsa-object-to-support-oaepsha256-padding

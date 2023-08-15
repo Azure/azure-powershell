@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 288B7B56-B934-45AF-BF56-4EB0DD827522
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragecorsrule
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azstoragecorsrule
 schema: 2.0.0
 ---
 
@@ -28,8 +28,8 @@ To see the current rules, use the Get-AzStorageCORSRule cmdlet.
 ## EXAMPLES
 
 ### Example 1: Assign CORS rules to the blob service
-```
-PS C:\>$CorsRules = (@{
+```powershell
+$CorsRules = (@{
     AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition");
     AllowedOrigins=@("*");
     MaxAgeInSeconds=30;
@@ -40,7 +40,8 @@ PS C:\>$CorsRules = (@{
     AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
     MaxAgeInSeconds=30;
     AllowedMethods=@("Put")})
-PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+
+Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 ```
 
 The first command assigns an array of rules to the $CorsRules variable.
@@ -48,11 +49,11 @@ This command uses standard extends over several lines in this code block.
 The second command assigns the rules in $CorsRules to the Blob service type.
 
 ### Example 2: Change properties of a CORS rule for blob service
-```
-PS C:\>$CorsRules = Get-AzStorageCORSRule -ServiceType Blob
-PS C:\> $CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
-PS C:\> $CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
-PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+```powershell
+$CorsRules = Get-AzStorageCORSRule -ServiceType Blob
+$CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
+$CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
+Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 ```
 
 The first command gets the current CORS rules for the Blob type by using the **Get-AzStorageCORSRule** cmdlet.

@@ -25,7 +25,7 @@ New-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName a
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofileassignment
+https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofileassignment
 #>
 function New-AzAutomanageConfigProfileAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]

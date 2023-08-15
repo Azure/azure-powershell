@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
-Download Help Link: https://docs.microsoft.com/powershell/module/az.websites
+Download Help Link: https://learn.microsoft.com/powershell/module/az.websites
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -18,10 +18,7 @@ Adds an Access Restiction rule to an Azure Web App.
 Add a routing Rule to the Slot.
 
 ### [Edit-AzWebAppBackupConfiguration](Edit-AzWebAppBackupConfiguration.md)
-
-
-### [Enter-AzWebAppContainerPSSession](Enter-AzWebAppContainerPSSession.md)
-Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
+Edits the current configuration backup for an Azure Web App
 
 ### [Get-AzAppServiceEnvironment](Get-AzAppServiceEnvironment.md)
 Gets App Service Environment. If only Resource Group is specified, it will return a list of ASE in the Resource Group.
@@ -75,7 +72,7 @@ Description for Gets the details of the user provided function app registered wi
 Gets Azure Web Apps in the specified resource group.
 
 ### [Get-AzWebAppAccessRestrictionConfig](Get-AzWebAppAccessRestrictionConfig.md)
-Gets Access Restiction configuration for an Azure Web App.
+Gets Access Restriction configuration for an Azure Web App.
 
 ### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 
@@ -177,16 +174,13 @@ Creates an Azure Web App.
 Creates an object that represents an Azure Storage path to be mounted in a Web App. It is meant to be used as a parameter (-AzureStoragePath) to Set-AzWebApp and Set-AzWebAppSlot
 
 ### [New-AzWebAppBackup](New-AzWebAppBackup.md)
-
+Creates an Azure Web App Backup.
 
 ### [New-AzWebAppCertificate](New-AzWebAppCertificate.md)
 Creates an App service managed certificate for an Azure Web App. 
 
-### [New-AzWebAppContainerPSSession](New-AzWebAppContainerPSSession.md)
-New-AzWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
-
 ### [New-AzWebAppDatabaseBackupSetting](New-AzWebAppDatabaseBackupSetting.md)
-
+Creates a new Azure Web App Backup setting.
 
 ### [New-AzWebAppSlot](New-AzWebAppSlot.md)
 Creates an Azure Web App slot.
@@ -258,7 +252,7 @@ Delete a triggered web job for an app.
 Description for Resets the api key for an existing static site.
 
 ### [Reset-AzWebAppPublishingProfile](Reset-AzWebAppPublishingProfile.md)
-
+Resets the publishing profile for the specified Web App.
 
 ### [Reset-AzWebAppSlotPublishingProfile](Reset-AzWebAppSlotPublishingProfile.md)
 
@@ -267,13 +261,13 @@ Description for Resets the api key for an existing static site.
 Restarts an Azure Web App.
 
 ### [Restart-AzWebAppSlot](Restart-AzWebAppSlot.md)
-
+Restarts an Azure Web App Slot.
 
 ### [Restore-AzDeletedWebApp](Restore-AzDeletedWebApp.md)
 Restores a deleted web app to a new or existing web app.
 
 ### [Restore-AzWebAppBackup](Restore-AzWebAppBackup.md)
-
+Restores an Azure Web App Backup.
 
 ### [Restore-AzWebAppSnapshot](Restore-AzWebAppSnapshot.md)
 Restores a web app snapshot.

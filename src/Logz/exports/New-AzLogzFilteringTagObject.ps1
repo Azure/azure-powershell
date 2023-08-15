@@ -30,7 +30,7 @@ default Succeeded         logz-rg-test
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag
 .Link
-https://docs.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
+https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
 #>
 function New-AzLogzFilteringTagObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag])]

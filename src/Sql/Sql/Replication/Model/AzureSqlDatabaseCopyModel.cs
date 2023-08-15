@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
 {

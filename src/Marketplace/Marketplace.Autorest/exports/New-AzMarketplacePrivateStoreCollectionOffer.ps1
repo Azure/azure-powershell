@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 PLAN <IPlan[]>: Offer plans
   [Accessibility <Accessibility?>]: Plan accessibility
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
+https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]

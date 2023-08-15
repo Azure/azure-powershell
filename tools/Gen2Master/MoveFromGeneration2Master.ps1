@@ -36,7 +36,7 @@ Function Move-Generation2Master {
         If (-not (Test-Path $DestPath)) {
             New-Item -ItemType Directory -Path $DestPath -Force
         }
-        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
+        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'UX')
         Foreach ($Dir in $Dir2Copy) {
             $SourceItem = Join-Path -Path $SourcePath -ChildPath $Dir
             $DestItem = Join-Path -Path $DestPath -ChildPath $Dir
@@ -105,6 +105,9 @@ Function Move-Generation2Master {
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object { $_ -ne "*" })
         }
+        If ($Psd1Metadata.AliasesToExport.Length -ne 1) {
+            $Psd1Metadata.AliasesToExport = @($Psd1Metadata.AliasesToExport | Where-Object { $_ -ne "*" })
+        }
         Update-ModuleManifest -Path $SourcePsd1Path @Psd1Metadata
         Copy-Item -Path $SourcePsd1Path -Destination $DestPsd1Path
         #EndRegion
@@ -121,9 +124,14 @@ Function Move-Generation2Master {
 
         #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
         $generateInfo = [ordered]@{}
-        $repo = "https://github.com/Azure/azure-rest-api-specs"
-        $commit = git ls-remote $repo HEAD
-        $generateInfo.Add("swagger_commit", $commit.Substring(0, 40))
+        $content = Get-Content README.md
+        $commitId = [System.Text.RegularExpressions.Regex]::New("(?i)\bbranch\b:[ \t]*([0-9a-zA-Z]+)").Matches($content) | % {$_.groups[1].Value}
+        if ($commitId -eq $null -or $commitId -eq "main")
+        {
+            $repo = "https://github.com/Azure/azure-rest-api-specs"
+            $commitId = git ls-remote $repo HEAD
+        }
+        $generateInfo.Add("swagger_commit", $commitId.Substring(0, 40))
         $generateInfo.Add("node", (node --version))
         $autorest_info = (npm ls -g @autorest/autorest).Split('@')
         $generateInfo.Add("autorest", ($autorest_info[$autorest_info.count - 2]).trim())
@@ -167,7 +175,7 @@ Function Move-Generation2Master {
         else {
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj" -ModuleName $ModuleName
         }
-        Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md -ModuleName $ModuleName
+        Copy-Template -SourceName ChangeLog.md -DestPath $DestPath -DestName ChangeLog.md -ModuleName $ModuleName
         #Region create a solution file for module and add the related csproj files to this solution.
         dotnet new sln -n $ModuleName -o $DestPath --force
         $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
@@ -220,7 +228,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path -path $SolutionPath)) {
                 # It means there is no handcraft module for this module, so we need to create the solution file and other related files
                 Copy-Template -SourceName ModuleName.sln -DestPath $DestPath -DestName "$ModuleName.sln" -ModuleName $ModuleName
-                Copy-Template -SourceName Changelog.md -DestPath $DestPath\$ModuleName -DestName Changelog.md -ModuleName $ModuleName
+                Copy-Template -SourceName ChangeLog.md -DestPath $DestPath\$ModuleName -DestName ChangeLog.md -ModuleName $ModuleName
                 Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
                 Copy-Template -SourceName HandcraftedModule.csproj -DestPath $DestPath\$ModuleName -DestName "$ModuleName.csproj" -ModuleName $ModuleName
                 Copy-Template -SourceName ModulePage.md -DestPath $DestPath\$ModuleName\help -DestName "Az.$ModuleName.md" -ModuleName $ModuleName
@@ -247,7 +255,7 @@ Function Move-Generation2MasterHybrid {
                 Remove-Item -Path $LocalModulesPath -Recurse -Force
             }
             #EndRegion
-            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
             Foreach ($File in $File2Copy) {
                 $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $File
                 $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $File
@@ -259,7 +267,12 @@ Function Move-Generation2MasterHybrid {
             }
 
             #copy generated docs to help folder
-            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName\help" -Filter *-*
+            #Assume psd1 and help are in the same folder.
+            $Psd1FolderPostfix = '';
+            if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
+                $Psd1FolderPostfix = '.Management'
+            }
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-* -Force
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}
@@ -299,8 +312,8 @@ Function Move-Generation2MasterHybrid {
             dotnet sln $SolutionPath add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
 
             # Update psd1
-            $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"
-            $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName) -FileName "Az.$ModuleName.psd1"
+            $DestPsd1Path = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -ChildPath "Az.$ModuleName.psd1"
+            $Psd1Metadata = Import-LocalizedData -BaseDirectory (Join-Path -Path $DestPath -ChildPath $ModuleName$Psd1FolderPostfix) -FileName "Az.$ModuleName.psd1"
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
             if (!@($Psd1Metadata.RequiredAssemblies).Contains(("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name))) {
                 $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
@@ -339,11 +352,20 @@ Function Move-Generation2MasterHybrid {
         $job = start-job {
             param(
                 [string] $ModuleName,
-                [string] $DestPath
+                [string] $DestPath,
+                [string] $Psd1FolderPostfix
             )
-            Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
-        } -ArgumentList $ModuleName, $DestPath
+            $psd1Path = "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            $assemblyToRemove = "YamlDotNet.dll"
+            $psd1Data = Import-PowerShellDataFile -Path $psd1Path
+            if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+                $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+                Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
+            }
+            Import-Module $psd1Path
+            Import-Module platyPS
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+        } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
         # Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"

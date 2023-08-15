@@ -44,7 +44,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
+https://learn.microsoft.com/powershell/module/az.synapse/invoke-azsynapsedetachkustopoolfollowerdatabase
 #>
 function Invoke-AzSynapseDetachKustoPoolFollowerDatabase {
 [OutputType([System.Boolean])]

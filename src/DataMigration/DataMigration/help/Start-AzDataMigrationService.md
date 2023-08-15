@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Start-AzDataMigrationService
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Start-AzDataMigrationService
 schema: 2.0.0
 ---
 
 # Start-AzDataMigrationService
 
 ## SYNOPSIS
-Starts an instance of the Azure Database Migration Service in a stopped state. 
+Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Start-AzDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The Start-AzDataMigrationService cmdlet starts an instance of the Azure Database Migration Service in a stopped state. 
+The Start-AzDataMigrationService cmdlet starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
 
 ## EXAMPLES
 
@@ -40,14 +40,14 @@ The Start-AzDataMigrationService cmdlet starts an instance of the Azure Database
 Start-AzDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
-The above example starts an Azure Database Migration Service instance named Test Service in a stopped state based on service name passed in as input
+The above example starts an Azure Database Migration Service (classic) instance named Test Service in a stopped state based on service name passed in as input
 
 ### Example 2
 ```powershell
 Start-AzDataMigrationService -InputObject $TestService
 ```
 
-The above example starts an Azure Database Migration Service instance based on PSDataMigrationService passed in as input parameter
+The above example starts an Azure Database Migration Service (classic) instance based on PSDataMigrationService passed in as input parameter
 
 ## PARAMETERS
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Database Migration Service Name.
+Azure Database Migration Service (classic) Name.
 
 ```yaml
 Type: System.String

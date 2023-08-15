@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [CmdletOutputBreakingChange(
-        deprecatedCmdletOutputTypeName: typeof(AzureSqlDatabaseModel),
-        deprecateByVersion: "3.0.0",
-        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
-        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModel))]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
@@ -43,6 +39,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [SupportsWildcards]
         public string DatabaseName { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Flag to be used to view all the AKV keys in a database.")]
+        public SwitchParameter ExpandKeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Timestamp filter to Get AKV keys")]
+        public string KeysFilter { get; set; }
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -51,10 +56,29 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
+            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
+
+            if (ExpandKeyList.IsPresent && !String.IsNullOrEmpty(KeysFilter))
+            {
+                oDataQuery.Expand = String.Format("keys($filter=pointInTime('{0}'))", KeysFilter);
+            }
+            else if (ExpandKeyList.IsPresent)
+            {
+                oDataQuery.Expand = "keys";
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseModel>();
-                results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+
+                if (ExpandKeyList.IsPresent)
+                {
+                    results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery));
+                }
+                else
+                {
+                    results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+                }
             }
             else
             {

@@ -34,13 +34,14 @@ branch: main
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
+  - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/ManagedIdentity.json
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
 
 subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
-module-version: 0.2.0
+module-version: 0.3.0
 
 directive:
   - where:
@@ -65,7 +66,7 @@ directive:
     set:
       parameter-name: Name
 
-  # Associated Resources
+  # Associated Resources use 2022-01-31-preview API version
 
   - where:
       subject: UserAssignedIdentityAssociatedResource
@@ -77,6 +78,8 @@ directive:
       subject: UserAssignedIdentityAssociatedResource
     set:
       preview-message: This is a preview version of the Associated Resources feature.
+
+  # END     
 
   # Federated identity credentials
 
@@ -132,8 +135,26 @@ directive:
           - Subject
           - Audience
 
+  # END          
+
+  # Below instructions remove duplicate API methods which use 2022-01-31-preview. MUST be removed when 2022-01-31-preview is removed.
+
   - where:
       subject: FederatedIdentityCredentials
-    set:
-      preview-message: This is a preview version of the Federated Identity Credentials feature.
+      variant: ^Get1$|^List1$|^GetViaIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+    remove: true
+
+  - where:
+      verb: Get
+      subject: SystemAssignedIdentity
+      variant: ^Get1$|^GetViaIdentity1$
+    remove: true
+
+  - where:
+      subject: UserAssignedIdentity
+      variant: ^Get1$|^GetViaIdentity1$|^List2$|^List3$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
+    remove: true
+
+  # END 
+
 ```

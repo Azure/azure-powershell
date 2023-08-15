@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                                                 HttpUtility.UrlEncode(resourceUri),
                                                 HttpUtility.UrlEncode(signature),
                                                 expiry,
-                                                KeyType);
+                                                identifier.ResourceName);
 
                 PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
 

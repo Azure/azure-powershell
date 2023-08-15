@@ -507,12 +507,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public LinkConnectionResource GetLinkConnection(string linkConnectionName)
         {
-            return _linkConnectionClient.GetLinkConnection(linkConnectionName).Value;
+            return _linkConnectionClient.Get(linkConnectionName).Value;
         }
 
         public Pageable<LinkConnectionResource> GetLinkConnectionByWorkspace()
         {
-            return _linkConnectionClient.ListLinkConnectionsByWorkspace();
+            return _linkConnectionClient.ListByWorkspace();
         }
 
         public void StartLinkConnection(string linkConnectionName)
@@ -527,13 +527,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteLinkConnection(string linkConnectionName)
         {
-            _linkConnectionClient.DeleteLinkConnection(linkConnectionName);
+            _linkConnectionClient.Delete(linkConnectionName);
         }
 
         public LinkConnectionResource CreateOrUpdateLinkConnection(string linkConnectionName, string rawJsonContent)
         {
             LinkConnectionResource linkConnection = JsonConvert.DeserializeObject<LinkConnectionResource>(rawJsonContent);
-            var response = _linkConnectionClient.CreateOrUpdateLinkConnection(linkConnectionName, linkConnection);
+            var response = _linkConnectionClient.CreateOrUpdate(linkConnectionName, linkConnection);
             return response.Value;
         }
 

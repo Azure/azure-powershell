@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
 schema: 2.0.0
 ---
 

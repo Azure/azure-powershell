@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwarecloudlink
+online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarecloudlink
 schema: 2.0.0
 ---
 

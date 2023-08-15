@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbroledefinition
 schema: 2.0.0
 ---
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-Role Definition Unique Id(Format is <databaseName>.<roleName>).
+Role Definition Unique Id(Format is `<databaseName>.<roleName>`).
 
 ```yaml
 Type: System.String

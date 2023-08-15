@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
 schema: 2.0.0
 ---
 
@@ -46,7 +46,8 @@ This command removes the specified Intergration Runtime Node for the given Sql M
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

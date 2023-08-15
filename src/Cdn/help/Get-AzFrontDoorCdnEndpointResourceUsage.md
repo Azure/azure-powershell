@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
+online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
 schema: 2.0.0
 ---
 
 # Get-AzFrontDoorCdnEndpointResourceUsage
 
 ## SYNOPSIS
-Checks the quota and actual usage of the given AzureFrontDoor endpoint under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzFrontDoorCdnEndpointResourceUsage -EndpointName <String> -ProfileName <Str
 ```
 
 ## DESCRIPTION
-Checks the quota and actual usage of the given AzureFrontDoor endpoint under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ## EXAMPLES
 
@@ -39,7 +39,8 @@ List resource useages of an AzureFrontDoor endpoint under the profile
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -151,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 
 ## NOTES
 

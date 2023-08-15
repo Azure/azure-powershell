@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.BareMetal
-online version: https://docs.microsoft.com/powershell/module/az.baremetal/get-azbaremetal
+online version: https://learn.microsoft.com/powershell/module/az.baremetal/get-azbaremetal
 schema: 2.0.0
 ---
 

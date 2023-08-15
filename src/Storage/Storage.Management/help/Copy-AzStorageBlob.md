@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/copy-azstorageblob
+online version: https://learn.microsoft.com/powershell/module/az.storage/copy-azstorageblob
 schema: 2.0.0
 ---
 
@@ -42,39 +42,39 @@ The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only su
 ## EXAMPLES
 
 ### Example 1: Copy a named blob to another
-```
-C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
+```powershell
+$destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source container to the destination container with a new blob name. 
 
 ### Example 2: Copy blob from a blob object
-```
-C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
-C:\PS> $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
+```powershell
+$srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
+$destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source blob object to the destination container with a new blob name.
 
 ### Example 3: Copy blob from a blob Uri
-```
-C:\PS> $srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
-C:\PS> $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
+```powershell
+$srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
+$destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 The first command creates a blob Uri of the source blob, with sas token of permission "rt". The second command copies from source blob Uri to the destination blob.
 
 ### Example 4: Update a block blob encryption scope
-```
-C:\PS> $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -DestContainer $containername -EncryptionScope $newScopeName -Force
+```powershell
+$blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobname -DestContainer $containername -EncryptionScope $newScopeName -Force
 ```
 
 This command update a block blob encryption scope by copy it to itself with a new encryption scope.
 
-### Example 5: Copy a blob to a new append blob 
-```
-C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
-C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
+### Example 5: Copy a blob to a new append blob
+```powershell
+$srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
+$destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
 ```
 
 ## PARAMETERS
@@ -318,14 +318,13 @@ Accept wildcard characters: False
 ```
 
 ### -StandardBlobTier
-Block Blob Tier, valid values are Hot/Cool/Archive.
-See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
+Block Blob Tier, valid values are Hot/Cool/Archive/Cold.
+See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named
@@ -335,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -TagCondition
-Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+Optional Tag expression statement to check match condition. The blob request will fail when the blob tags does not match the given expression.See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String

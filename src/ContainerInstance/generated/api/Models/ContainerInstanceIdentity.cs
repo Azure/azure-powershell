@@ -47,6 +47,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="SubnetName" /> property.</summary>
+        private string _subnetName;
+
+        /// <summary>The name of the subnet.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
+        public string SubnetName { get => this._subnetName; set => this._subnetName = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -56,6 +63,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="VirtualNetworkName" /> property.</summary>
+        private string _virtualNetworkName;
+
+        /// <summary>The name of the virtual network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
+        public string VirtualNetworkName { get => this._virtualNetworkName; set => this._virtualNetworkName = value; }
 
         /// <summary>Creates an new <see cref="ContainerInstanceIdentity" /> instance.</summary>
         public ContainerInstanceIdentity()
@@ -106,6 +120,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the subnet.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the subnet.",
+        SerializedName = @"subnetName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubnetName { get; set; }
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
         /// for every service call.
@@ -117,6 +139,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of the virtual network.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the virtual network.",
+        SerializedName = @"virtualNetworkName",
+        PossibleTypes = new [] { typeof(string) })]
+        string VirtualNetworkName { get; set; }
 
     }
     internal partial interface IContainerInstanceIdentityInternal
@@ -132,11 +162,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         string Location { get; set; }
         /// <summary>The name of the resource group.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the subnet.</summary>
+        string SubnetName { get; set; }
         /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
         /// for every service call.
         /// </summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of the virtual network.</summary>
+        string VirtualNetworkName { get; set; }
 
     }
 }

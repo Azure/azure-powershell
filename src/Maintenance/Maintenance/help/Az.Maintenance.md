@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Maintenance
 Module Guid: 9b895a4cb333f6bf9176b1eeb9260782R21
-Download Help Link: https://docs.microsoft.com/powershell/module/az.maintenance
+Download Help Link: https://learn.microsoft.com/powershell/module/az.maintenance
 Help Version: 0.2.5.0
 Locale: en-us
 ---
@@ -19,6 +19,9 @@ List configurationAssignments for resource.
 
 ### [Get-AzMaintenanceConfiguration](Get-AzMaintenanceConfiguration.md)
 Get Maintenance configuration record
+
+### [Get-AzMaintenancePublicConfiguration](Get-AzMaintenancePublicConfiguration.md)
+Get Public Maintenance Configuration record
 
 ### [Get-AzMaintenanceUpdate](Get-AzMaintenanceUpdate.md)
 Get pending maintenance updates to resource.
@@ -40,7 +43,4 @@ Delete Configuration record
 
 ### [Update-AzMaintenanceConfiguration](Update-AzMaintenanceConfiguration.md)
 Patch configuration record
-
-### [Get-AzMaintenancePublicConfiguration](Get-AzMaintenancePublicConfiguration.md)
-Get Public Maintenance configuration record
 

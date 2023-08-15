@@ -27,40 +27,25 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 <!-- endregion -->
 
 ---
-## Generation Requirements
-Use of the beta version of `autorest.powershell` generator requires the following:
-- [NodeJS LTS](https://nodejs.org) (10.15.x LTS preferred)
-  - **Note**: It *will not work* with Node < 10.x. Using 11.x builds may cause issues as they may introduce instability or breaking changes.
-> If you want an easy way to install and update Node, [NVS - Node Version Switcher](../nodejs/installing-via-nvs.md) or [NVM - Node Version Manager](../nodejs/installing-via-nvm.md) is recommended.
-- [AutoRest](https://aka.ms/autorest) v3 beta <br>`npm install -g autorest@autorest`<br>&nbsp;
-- PowerShell 6.0 or greater
-  - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g pwsh`<br>&nbsp;
-- .NET Core SDK 2.0 or greater
-  - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g dotnet-sdk-2.2`<br>&nbsp;
-
-## Run Generation
-In this directory, run AutoRest:
-> `autorest-beta`
-
----
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987
+branch: a078cebc3964c8968d141906c613794ca0453861
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-# lock the commit
-input-file:
-  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/databricks.json
-  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/vnetpeering.json
-  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/accessconnector.json
-module-version: 1.1.0
+  - $(repo)/specification/databricks/resource-manager/readme.md
+try-require:
+  - $(repo)/specification/databricks/resource-manager/readme.powershell.md
+
+module-version: 1.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
 inlining-threshold: 100
+
 resourcegroup-append: true
+identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
@@ -76,6 +61,7 @@ directive:
   - where:
       variant: ^CreateViaIdentity$
     hide: true
+
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
       parameter-name: SkuName
@@ -177,68 +163,6 @@ directive:
     set:
       parameter-name: VnetAddressPrefix
 
-  # Rename parameters of Set VNetPeering cmdlet
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: DatabrickAddressSpaceAddressPrefix
-    set:
-      parameter-name: DatabricksAddressSpacePrefix
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: RemoteAddressSpaceAddressPrefix
-    set:
-      parameter-name: RemoteAddressSpacePrefix
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: DatabrickVirtualNetworkId 
-    set:
-      parameter-name: DatabricksVirtualNetworkId
-  - where:
-      subject: AccessConnector
-      parameter-name: ConnectorName 
-    set:
-      parameter-name: Name  
-  # Remove the set Workspace cmdlet
-  - where:
-      verb: Set
-      subject: Workspace
-    remove: true
-
-  # Remove the set AccessConnector cmdlet
-  - where:
-      verb: Set
-      subject: AccessConnector
-    remove: true
-
-  # Hide the New Workspace cmdlet for customization
-  - where:
-      verb: New
-      subject: Workspace
-    hide: true
-  # Hide the Update Workspace cmdlet for customization
-  - where:
-      verb: Update
-      subject: Workspace
-    hide: true
-  # Hide the Set VNetPeering cmdlet for customization
-  - where:
-      verb: Set
-      subject: VNetPeering
-    hide: true
-  - where:
-      model-name: Workspace
-    set:
-      format-table:
-        properties:
-          - Name
-          - ResourceGroupName
-          - Location
-          - ManagedResourceGroupId
-        labels:
-          ManagedResourceGroupId: Managed Resource Group ID
   # Update property names related to CMK
   - where:
       model-name: Workspace
@@ -275,4 +199,67 @@ directive:
       property-name: EnableNoPublicIPValue
     set:
       property-name: EnableNoPublicIP
+
+  # Rename parameters of VNetPeering cmdlet
+  - where:
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      parameter-name: DatabrickVirtualNetworkId
+    set:
+      parameter-name: DatabricksVirtualNetworkId
+
+  - where:
+      subject: AccessConnector
+      parameter-name: ConnectorName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New
+      subject: AccessConnector
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: Workspace
+    remove: true
+
+  # Remove the set AccessConnector cmdlet
+  - where:
+      verb: Set
+      subject: AccessConnector
+    remove: true
+
+  # Hide the New/Update Workspace cmdlet for customization
+  - where:
+      verb: New|Update
+      subject: Workspace
+    hide: true
+  # Hide the Set VNetPeering cmdlet for customization
+  - where:
+      verb: Set
+      subject: VNetPeering
+    hide: true
+    set: 
+      verb: Update
+
+  - where:
+      model-name: Workspace
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - ManagedResourceGroupId
+        labels:
+          ManagedResourceGroupId: Managed Resource Group ID
 ```

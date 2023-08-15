@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Aks.Utils;
@@ -30,6 +29,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string NodePoolMode { get; set; } = "System";
 
         [Parameter(Mandatory = false, HelpMessage = "The default OS sku for the node pools.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string NodeOsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.")]
@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The administrator username to use for Windows VMs.")]
         public string WindowsProfileAdminUserName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The administrator password to use for Windows VMs. Password requirement:"
-          + "At least one lower case, one upper case, one special character !@#$%^&*(), the minimum lenth is 12.")]
-        [ValidateSecureString(RegularExpression = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\\^&\\*\\(\\)])[a-zA-Z\\d!@#$%\\^&\\*\\(\\)]{12,123}$", ParameterName = nameof(WindowsProfileAdminUserPassword))]
-        public SecureString WindowsProfileAdminUserPassword { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Network plugin used for building Kubernetes network.")]
         [PSArgumentCompleter("azure", "kubenet")]
         public string NetworkPlugin { get; set; } = "azure";
@@ -108,8 +103,13 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "DNS service IP used for building Kubernetes network.")]
         public string DnsServiceIP { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DockerBridgeCidr", "11.0.0", "6.0.0", ChangeDescription = "DockerBridgeCidr parameter will be deprecated in Az 11.0.0 without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
+        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        public string OutboundType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
@@ -161,6 +161,27 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The parameters to be applied to the cluster-autoscaler.")]
         public ManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The GpuInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.")]
+        [PSArgumentCompleter("MIG1g", "MIG2g", "MIG3g", "MIG4g", "MIG7g")]
+        public string GpuInstanceProfile { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
+        public SwitchParameter EnableUptimeSLA { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
+        public string NodeHostGroupID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
+        public string NodePodSubnetID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -177,7 +198,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
 
                     var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+                    var psObj = AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
                     {
@@ -335,8 +356,6 @@ namespace Microsoft.Azure.Commands.Aks
                 acsServicePrincipal.SpId,
                 acsServicePrincipal.ClientSecret);
 
-            var aadProfile = GetAadProfile();
-
             var defaultAgentPoolProfile = GetAgentPoolProfile();
 
             var windowsProfile = GetWindowsProfile();
@@ -364,7 +383,7 @@ namespace Microsoft.Azure.Commands.Aks
                 linuxProfile: linuxProfile,
                 windowsProfile: windowsProfile,
                 servicePrincipalProfile: spProfile,
-                aadProfile: aadProfile,
+                aadProfile: AadProfile,
                 addonProfiles: addonProfiles,
                 networkProfile: networkProfile,
                 apiServerAccessProfile: apiServerAccessProfile,
@@ -375,7 +394,7 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (EnableRbac.IsPresent)
             {
-                managedCluster.EnableRBAC = EnableRbac;
+                managedCluster.EnableRbac = EnableRbac;
             }
             if (this.IsParameterBound(c => c.FqdnSubdomain))
             {
@@ -383,7 +402,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.DiskEncryptionSetID))
             {
-                managedCluster.DiskEncryptionSetID = DiskEncryptionSetID;
+                managedCluster.DiskEncryptionSetId = DiskEncryptionSetID;
             }
             if (DisableLocalAccount.IsPresent)
             {
@@ -396,6 +415,26 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.AutoScalerProfile))
             {
                 managedCluster.AutoScalerProfile = AutoScalerProfile;
+            }
+            if (this.IsParameterBound(c => c.EnableUptimeSLA))
+            {
+                if (EnableUptimeSLA.ToBool())
+                {
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
+                }
+                else
+                {
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
+                }
+            }
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
+            }
+
+            if (EnableOidcIssuer.IsPresent)
+            {
+                managedCluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: true);
             }
 
             return managedCluster;
@@ -424,9 +463,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 networkProfile.DnsServiceIP = DnsServiceIP;
             }
-            if (this.IsParameterBound(c => c.DockerBridgeCidr))
+            if (this.IsParameterBound(c => c.OutboundType))
             {
-                networkProfile.DockerBridgeCidr = DockerBridgeCidr;
+                networkProfile.OutboundType = OutboundType;
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 
@@ -442,6 +481,10 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 windowsProfile = new ManagedClusterWindowsProfile(WindowsProfileAdminUserName,
                     WindowsProfileAdminUserPassword?.ConvertToString());
+                if (this.IsParameterBound(c => c.EnableAHUB) && EnableAHUB.ToBool())
+                {
+                    windowsProfile.LicenseType = "Windows_Server";
+                }
             }
             return windowsProfile;
         }
@@ -452,13 +495,16 @@ namespace Microsoft.Azure.Commands.Aks
                 name: NodeName ?? "default",
                 count: NodeCount,
                 vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize,
+                osDiskSizeGb: NodeOsDiskSize,
                 type: NodeVmSetType ?? "VirtualMachineScaleSets",
-                vnetSubnetID: NodeVnetSubnetID);
-            defaultAgentPoolProfile.OsType = "Linux";
+                vnetSubnetId: NodeVnetSubnetID);
+            defaultAgentPoolProfile.OSType = "Linux";
             if (this.IsParameterBound(c => c.NodeOsSKU))
             {
-                defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+                defaultAgentPoolProfile.OSSku = NodeOsSKU;
+                if (NodeOsSKU.ToLower().Equals("cblmariner") || NodeOsSKU.ToLower().Equals("mariner")) {
+                    WriteWarning("The NodeOsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The NodeOsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.NodeMaxPodCount))
             {
@@ -482,7 +528,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
             {
-                defaultAgentPoolProfile.NodePublicIPPrefixID = NodePublicIPPrefixID;
+                defaultAgentPoolProfile.NodePublicIPPrefixId = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.NodeScaleSetEvictionPolicy))
             {
@@ -508,6 +554,9 @@ namespace Microsoft.Azure.Commands.Aks
                     defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
             }
+            if (this.IsParameterBound(c => c.NodePodSubnetID)) {
+                defaultAgentPoolProfile.PodSubnetId = NodePodSubnetID;
+            }
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
                 defaultAgentPoolProfile.AvailabilityZones = AvailabilityZone;
@@ -518,7 +567,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableUltraSSD.IsPresent)
             {
-                defaultAgentPoolProfile.EnableUltraSSD = EnableUltraSSD.ToBool();
+                defaultAgentPoolProfile.EnableUltraSsd = EnableUltraSSD.ToBool();
             }
             if (this.IsParameterBound(c => c.NodeLinuxOSConfig))
             {
@@ -534,28 +583,23 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.PPG))
             {
-                defaultAgentPoolProfile.ProximityPlacementGroupID = PPG;
+                defaultAgentPoolProfile.ProximityPlacementGroupId = PPG;
             }
             if (EnableFIPS.IsPresent)
             {
-                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
+                defaultAgentPoolProfile.EnableFips = EnableFIPS.ToBool();
+            }
+            if (this.IsParameterBound(c => c.GpuInstanceProfile))
+            {
+                defaultAgentPoolProfile.GpuInstanceProfile = GpuInstanceProfile;
+            }
+            if (this.IsParameterBound(c => c.NodeHostGroupID)) {
+                defaultAgentPoolProfile.HostGroupId = NodeHostGroupID;
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
 
             return defaultAgentPoolProfile;
-        }
-
-        private ManagedClusterAADProfile GetAadProfile()
-        {
-            ManagedClusterAADProfile aadProfile = null;
-            //if (!string.IsNullOrEmpty(AadProfileClientAppId) || !string.IsNullOrEmpty(AadProfileServerAppId) ||
-            //    !string.IsNullOrEmpty(AadProfileServerAppSecret) || !string.IsNullOrEmpty(AadProfileTenantId))
-            //{
-            //    aadProfile = new ManagedClusterAADProfile(clientAppID: AadProfileClientAppId, serverAppID: AadProfileServerAppId,
-            //        serverAppSecret: AadProfileServerAppSecret, tenantID: AadProfileTenantId); 
-            //}
-            return aadProfile;
         }
 
         private IDictionary<string, ManagedClusterAddonProfile> CreateAddonsProfiles()

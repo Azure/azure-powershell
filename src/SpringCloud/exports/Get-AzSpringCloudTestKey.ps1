@@ -25,7 +25,7 @@ Get-AzSpringCloudTestKey -ResourceGroupName SpringCloud-gp-junxi -Name springclo
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ITestKeys
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudtestkey
+https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudtestkey
 #>
 function Get-AzSpringCloudTestKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ITestKeys])]

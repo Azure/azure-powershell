@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ConfidentialLedger
 Module Guid: c7eaa9c1-72c4-4251-9e7d-bf9b8e8fa71e
-Download Help Link: https://docs.microsoft.com/powershell/module/az.confidentialledger
+Download Help Link: https://learn.microsoft.com/powershell/module/az.confidentialledger
 Help Version: 1.0.0.0
 Locale: en-US
 ---

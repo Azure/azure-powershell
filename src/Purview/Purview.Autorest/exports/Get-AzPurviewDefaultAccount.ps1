@@ -25,7 +25,7 @@ Get-AzPurviewDefaultAccount -ScopeTenantId xxxxxxxx-38d6-4fb2-bad9-b7b93a3e9c5a 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload
 .Link
-https://docs.microsoft.com/powershell/module/az.purview/get-azpurviewdefaultaccount
+https://learn.microsoft.com/powershell/module/az.purview/get-azpurviewdefaultaccount
 #>
 function Get-AzPurviewDefaultAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IDefaultAccountPayload])]

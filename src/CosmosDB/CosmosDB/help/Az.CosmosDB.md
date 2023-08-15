@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CosmosDB
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
-Download Help Link: {{ https://docs.microsoft.com/powershell/module/az.cosmosdb }}
+Download Help Link: {{ https://learn.microsoft.com/powershell/module/az.cosmosdb }}
 Help Version: {{ 1.0.0.1 }}
 Locale: en-US
 ---
@@ -12,10 +12,10 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
-Get CosmosDB Account.
+Get Cosmos DB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given Cosmos DB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
 Gets a CosmosDB Cassandra Keyspace.
@@ -41,8 +41,20 @@ Gets the throughput of a CosmosDB Gremlin Database.
 ### [Get-AzCosmosDBGremlinGraph](Get-AzCosmosDBGremlinGraph.md)
 Gets the CosmosDB Gremlin Graph.
 
+### [Get-AzCosmosDBGremlinGraphBackupInformation](Get-AzCosmosDBGremlinGraphBackupInformation.md)
+Retrieves the latest restorable timestamp for a gremlin graph.
+
 ### [Get-AzCosmosDBGremlinGraphThroughput](Get-AzCosmosDBGremlinGraphThroughput.md)
 Gets the throughput of a CosmosDB Gremlin Graph.
+
+### [Get-AzCosmosDBGremlinRestorableDatabase](Get-AzCosmosDBGremlinRestorableDatabase.md)
+Gets the list of all the restorable Azure Cosmos DB Gremlin databases available under the restorable account.
+
+### [Get-AzCosmosDBGremlinRestorableGraph](Get-AzCosmosDBGremlinRestorableGraph.md)
+Lists all the restorable Azure Cosmos DB Gremlin graphs available for a specific database.
+
+### [Get-AzCosmosDBGremlinRestorableResource](Get-AzCosmosDBGremlinRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Gremlin resources available for a specific database account at a given time and location.
 
 ### [Get-AzCosmosDBLocation](Get-AzCosmosDBLocation.md)
 List Azure Cosmos DB locations and their properties.
@@ -123,6 +135,15 @@ Gets the CosmosDB Sql User Defined Function.
 ### [Get-AzCosmosDBTable](Get-AzCosmosDBTable.md)
 Gets a CosmosDB Table.
 
+### [Get-AzCosmosDBTableBackupInformation](Get-AzCosmosDBTableBackupInformation.md)
+Retrieves the latest restorable timestamp for a table.
+
+### [Get-AzCosmosDBTableRestorableResource](Get-AzCosmosDBTableRestorableResource.md)
+Lists all the restorable Azure Cosmos DB Table resources available for a specific database account at a given time and location.
+
+### [Get-AzCosmosDBTableRestorableTable](Get-AzCosmosDBTableRestorableTable.md)
+Lists all the restorable Azure Cosmos DB Tables available for a specific database.
+
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
 
@@ -163,10 +184,10 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [New-AzCosmosDBAccount](New-AzCosmosDBAccount.md)
-Create a new CosmosDB Account.
+Create a new Cosmos DB Account.
 
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
-Regenerate a given CosmosDB Account Key.
+Regenerate a given Cosmos DB Account Key.
 
 ### [New-AzCosmosDBCassandraClusterKey](New-AzCosmosDBCassandraClusterKey.md)
 Creates a new CosmosDB Cassandra Cluster Key.
@@ -197,6 +218,9 @@ Creates a new object of type PSConflictResolutionPolicy. It can be passed as a p
 
 ### [New-AzCosmosDBGremlinDatabase](New-AzCosmosDBGremlinDatabase.md)
 Creates a new CosmosDB Gremlin Database.
+
+### [New-AzCosmosDBGremlinDatabaseToRestore](New-AzCosmosDBGremlinDatabaseToRestore.md)
+Creates a new CosmosDB Gremlin Database to Restore object(PSGremlinDatabaseToRestore)
 
 ### [New-AzCosmosDBGremlinGraph](New-AzCosmosDBGremlinGraph.md)
 Creates a new CosmosDB Gremlin Graph.
@@ -297,6 +321,9 @@ Creates a new CosmosDB Sql UserDefinedFunction.
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
 
+### [New-AzCosmosDBTableToRestore](New-AzCosmosDBTableToRestore.md)
+Creates a new CosmosDB Table to Restore object(PSTableToRestore)
+
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
 Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
@@ -310,7 +337,7 @@ Create a new Azure Managed Instances for Apache Cassandra data center.
 Creates a new Cosmos DB Service
 
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
-Remove a CosmosDB Account.
+Remove a Cosmos DB Account.
 
 ### [Remove-AzCosmosDBCassandraKeyspace](Remove-AzCosmosDBCassandraKeyspace.md)
 Deletes a CosmosDB Cassandra Keyspace.
@@ -376,10 +403,10 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-Update Failover Region Priority of a CosmosDB Account.
+Update Failover Region Priority of a Cosmos DB Account.
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
-Update Regions of a CosmosDB Account.
+Update Regions of a Cosmos DB Account.
 
 ### [Update-AzCosmosDBCassandraKeyspace](Update-AzCosmosDBCassandraKeyspace.md)
 Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.

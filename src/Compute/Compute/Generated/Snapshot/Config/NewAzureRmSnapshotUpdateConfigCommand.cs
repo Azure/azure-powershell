@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
+            HelpMessage = "Indicates if the OS on the snapshot supports hibernation with $true or $false")]
         public bool? SupportsHibernation { get; set; }
 
 
@@ -120,6 +120,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "CPU architecture supported by an OS disk. Possible values are \"X64\" and \"Arm64\".")]
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
+        [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
+        public string NetworkAccessPolicy { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -243,7 +250,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
                 DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
-                SupportedCapabilities = vSupportedCapabilities
+                SupportedCapabilities = vSupportedCapabilities,
+                NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null
             };
 
             WriteObject(vSnapshotUpdate);

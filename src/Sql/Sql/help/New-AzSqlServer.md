@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
-online version: https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver
+online version: https://learn.microsoft.com/powershell/module/az.sql/new-azsqlserver
 schema: 2.0.0
 ---
 
@@ -259,7 +259,7 @@ The minimal TLS version to enforce for Sql Server
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: 1.0, 1.1, 1.2
+Accepted values: None, 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
@@ -462,4 +462,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlServerFirewallRule](./New-AzSqlServerFirewallRule.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

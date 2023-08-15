@@ -27,7 +27,7 @@ List all the performance tiers at specified location in a given subscription.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
+https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedperformancetier
 #>
 function Get-AzMySqlLocationBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IPerformanceTierProperties])]
@@ -51,7 +51,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

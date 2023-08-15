@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 case InputObjectParameterSet:
                     {
                         WriteVerbose(Resources.UsingClusterFromPipeline);
-                        cluster = PSMapper.Instance.Map<ManagedCluster>(ClusterObject);
+                        cluster = AdapterHelper<PSKubernetesCluster, ManagedCluster>.Adapt(ClusterObject);
                         var resource = new ResourceIdentifier(cluster.Id);
                         ResourceGroupName = resource.ResourceGroupName;
                         ClusterName = resource.ResourceName;
@@ -86,12 +86,16 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 {
                     cluster = GetManagedClusterWithResourceGroupNameAndName();
                 }
+                if (cluster.AddonProfiles == null)
+                {
+                    cluster.AddonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();
+                }
                 cluster.AddonProfiles = UpdateAddonsProfile(cluster.AddonProfiles);
                 cluster.ServicePrincipalProfile = null;
                 cluster.AadProfile = null;
                 cluster.AgentPoolProfiles = null;
                 var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, ClusterName, cluster);
-                WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
             }
         }
 

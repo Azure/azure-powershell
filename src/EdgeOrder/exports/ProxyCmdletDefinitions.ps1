@@ -56,7 +56,7 @@ Type                         : Microsoft.EdgeOrder/addresses
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderaddress
 #>
 function Get-AzEdgeOrderAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource])]
@@ -244,7 +244,7 @@ CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription
     [Name <String>]: Name of subscription registered feature
     [State <String>]: State of subscription registered feature
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderconfiguration
 #>
 function Get-AzEdgeOrderConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration])]
@@ -382,7 +382,7 @@ Type                           : Microsoft.EdgeOrder/orderItems
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderitem
 #>
 function Get-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]
@@ -534,7 +534,7 @@ ConfigurationName ProductFamilyName ProductLineName ProductName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamiliesMetadataDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
 #>
 function Get-AzEdgeOrderProductFamilyMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamiliesMetadataDetails])]
@@ -665,7 +665,7 @@ CUSTOMERSUBSCRIPTIONDETAIL <ICustomerSubscriptionDetails>: Customer subscription
     [Name <String>]: Name of subscription registered feature
     [State <String>]: State of subscription registered feature
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamily
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamily
 #>
 function Get-AzEdgeOrderProductFamily {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamily])]
@@ -803,7 +803,7 @@ Type                         : Microsoft.EdgeOrder/orders
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderResource
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorder
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorder
 #>
 function Get-AzEdgeOrder {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderResource])]
@@ -954,7 +954,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderitemcancellation
+https://learn.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderitemcancellation
 #>
 function Invoke-AzEdgeOrderItemCancellation {
 [OutputType([System.Boolean])]
@@ -1135,7 +1135,7 @@ RETURNADDRESSSHIPPINGADDRESS <IShippingAddress>: Shipping details for the addres
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/invoke-azedgeorderreturnorderitem
 #>
 function Invoke-AzEdgeOrderReturnOrderItem {
 [OutputType([System.Boolean])]
@@ -1369,7 +1369,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderaddress
 #>
 function New-AzEdgeOrderAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource])]
@@ -1629,7 +1629,7 @@ ORDERITEMDETAIL <IOrderItemDetails>: Represents order item details.
     [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
       PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderitem
 #>
 function New-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]
@@ -1823,7 +1823,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderaddress
 #>
 function Remove-AzEdgeOrderAddress {
 [OutputType([System.Boolean])]
@@ -1992,7 +1992,7 @@ INPUTOBJECT <IEdgeOrderIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/remove-azedgeorderitem
 #>
 function Remove-AzEdgeOrderItem {
 [OutputType([System.Boolean])]
@@ -2194,7 +2194,7 @@ SHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   [StreetAddress3 <String>]: Street Address line 3.
   [ZipExtendedCode <String>]: Extended Zip Code.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderaddress
+https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderaddress
 #>
 function Update-AzEdgeOrderAddress {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource])]
@@ -2430,7 +2430,7 @@ PREFERENCE <IPreferences>: Customer preference.
   [TransportPreference <ITransportPreferences>]: Preferences related to the shipment logistics of the order.
     PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderitem
+https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderitem
 #>
 function Update-AzEdgeOrderItem {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource])]
@@ -2619,7 +2619,7 @@ PhoneExtension :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
 #>
 function New-AzEdgeOrderContactDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails])]
@@ -2709,7 +2709,7 @@ Type           : ShipToCountries
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 #>
 function New-AzEdgeOrderFilterablePropertyObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty])]
@@ -2784,7 +2784,7 @@ ProductName       : azurestackedgegpu
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
 #>
 function New-AzEdgeOrderHierarchyInformationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation])]
@@ -2887,7 +2887,7 @@ PRODUCTDETAIL <IProductDetails>: Unique identifier for configuration.
     [ProductLineName <String>]: Represents product line name that uniquely identifies product line
     [ProductName <String>]: Represents product name that uniquely identifies product
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
 #>
 function New-AzEdgeOrderOrderItemDetailsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails])]
@@ -2987,7 +2987,7 @@ NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preferences.
 TRANSPORTPREFERENCE <ITransportPreferences>: Preferences related to the shipment logistics of the order.
   PreferredShipmentType <TransportShipmentTypes>: Indicates Shipment Logistics type that the customer preferred.
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 #>
 function New-AzEdgeOrderPreferencesObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences])]
@@ -3084,7 +3084,7 @@ ZipExtendedCode :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
 .Link
-https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
+https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 #>
 function New-AzEdgeOrderShippingAddressObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress])]

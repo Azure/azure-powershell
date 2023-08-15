@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: BC8C0D59-662F-47D2-8619-9F69D78B171D
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlelasticpooladvisor
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlelasticpooladvisor
 schema: 2.0.0
 ---
 
@@ -328,4 +328,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlElasticPoolAdvisorAutoExecuteStatus](./Set-AzSqlElasticPoolAdvisorAutoExecuteStatus.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

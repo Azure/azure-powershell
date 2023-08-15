@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.FluidRelay
-online version: https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
+online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
 schema: 2.0.0
 ---
 

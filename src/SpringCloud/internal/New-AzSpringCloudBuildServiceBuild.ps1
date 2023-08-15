@@ -27,7 +27,7 @@ Create or update a KPack build.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuild
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuild
 #>
 function New-AzSpringCloudBuildServiceBuild {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild])]

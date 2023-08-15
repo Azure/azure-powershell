@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkvirtualappliance
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
@@ -18,7 +18,8 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
  [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -27,25 +28,55 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance resource in Azure.
+The **New-AzNetworkVirtualAppliance** command creates a Network Virtual Appliance(NVA) resource in Azure.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
-$hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
-$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
 
+$hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
+
+$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg.
 
+### Example 2
+```powershell
+$sku=New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
+
+$hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
+
+$additionalNic=New-AzVirtualApplianceAdditionalNicProperty -NicName "sdwan" -HasPublicIp $true
+
+$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AdditionalNic $additionalNic
+```
+
+Creates a new Network Virtual Appliance resource in resource group: testrg with additional nic "sdwan" and a public IP attached to "sdwan" nic.
+
 ## PARAMETERS
+
+### -AdditionalNic
+The AdditionalNic Properties of the Virtual Appliance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background

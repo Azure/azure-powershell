@@ -25,7 +25,7 @@ New-AzMixedRealityRemoteRenderingAccount -Name azpstestrenderingaccount -Resourc
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount
 .Link
-https://docs.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccount
+https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityremoterenderingaccount
 #>
 function New-AzMixedRealityRemoteRenderingAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IRemoteRenderingAccount])]

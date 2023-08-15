@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         /// <remarks>
         /// The default is System. For more details see [configure private DNS
-        /// zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// zone](https://learn.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </remarks>
         public string PrivateDNSZone { get; set; }

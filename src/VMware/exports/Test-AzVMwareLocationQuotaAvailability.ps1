@@ -25,7 +25,7 @@ Test-AzVMwareLocationQuotaAvailability -Location centralus
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
+https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
 #>
 function Test-AzVMwareLocationQuotaAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota])]

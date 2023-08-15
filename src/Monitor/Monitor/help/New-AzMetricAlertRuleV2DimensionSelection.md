@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2dimensionselection
 schema: 2.0.0
 ---
 
@@ -12,13 +12,20 @@ Creates a local dimension selection object that can be used to construct a metri
 
 ## SYNTAX
 
+### IncludeParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToInclude <String[]>
- [-ValuesToExclude <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ExcludeParameterSet
+```
+New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToExclude <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzMetricAlertRuleV2DimensionSelection** cmdlet creates a local dimension selection object to help with the construction of metric alert criteria using [New-AzMetricAlertRuleV2Criteria](https://docs.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet.
+The **New-AzMetricAlertRuleV2DimensionSelection** cmdlet creates a local dimension selection object to help with the construction of metric alert criteria using [New-AzMetricAlertRuleV2Criteria](https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricalertrulev2criteria) cmdlet.
 
 ## EXAMPLES
 
@@ -73,10 +80,10 @@ The ExcludeValues
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ExcludeParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -88,7 +95,7 @@ The IncludeValues
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: IncludeParameterSet
 Aliases:
 
 Required: True

@@ -27,7 +27,7 @@ Create dhcp by id in a private cloud workload network.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdhcp
+https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdhcp
 #>
 function New-AzVMwareWorkloadNetworkDhcp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]

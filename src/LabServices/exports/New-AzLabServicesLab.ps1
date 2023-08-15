@@ -53,7 +53,7 @@ westus2  NewLab
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
 #>
 function New-AzLabServicesLab {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

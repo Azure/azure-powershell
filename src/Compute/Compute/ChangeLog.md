@@ -20,12 +20,81 @@
 
 -->
 ## Upcoming Release
+* Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
+* For `Get-AzVmRunCommand`, a bug is fixed to work when returning a list of RunCommands [#22403]
+* Updated Azure.Core to 1.34.0.
+
+## Version 6.2.0
+* Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.
+* Updated help doc for `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss` to include parameters that were previously added for Trusted Launch features.
+* Updated Azure.Core to 1.33.0.
+
+## Version 6.1.0
+* Added useful examples to the `New-AzVMConfig` help doc.
+* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet.
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured parameter flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch and ConfidentialVM values for the `-SecurityType` parameter in `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
+  The non-versioned image aliases were updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
+* Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
+* Changes to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
+* Changed the region for example 3 to eastus2 in the `New-AzVM` doc to resolve SKU not available errors.
+
+## Version 6.0.0
+* Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
+* Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
+* Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
+
+## Version 5.7.1
+* Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
+* Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
+* Updated the `Get-AzVMRunCommand` to include the `ProvisioningState` value. Fix [#21473]
+* Updated Azure.Core to 1.31.0.
+
+## Version 5.7.0
+* Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
+* Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+  Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists.
+* Added a breaking change warning to `New-AzVM` and `New-AzVmss` for future planned image alias removals due to the images reaching their End of Support date. 
+* Added new descriptive and versioned alias names for the Linux image aliases, including a new alias for  the `Kinvolk` publisher.
+* Added 'ImageDeprecationStatus' to the output of Get-AzVmImage.
+
+## Version 5.6.0
+* Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
+* Added condition in Automapper configurations to check for null Tag values for `PSDiskUpdate` and `PSSnapshotUpdate` to fix bug in Update-AzDisk and Update-AzSnapshot.
+
+## Version 5.5.0
+* Added breaking change message for `New-AzVmss`.
+* Added `-PerformancePlus` parameter to `New-AzDiskConfig`
+* Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
+* Added `CompletionPercent` property to PSDisk object. 
+
+## Version 5.4.0
+* Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
+* Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
+* Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.
+* Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
+* Updated Compute PS to use the new .Net SDK version 59.0.0. This includes an approved breaking change for a non-functional feature. 
+  - The type of the property `Source` of type `Microsoft.Azure.Management.Compute.Models.GalleryDataDiskImage`, `Microsoft.Azure.Management.Compute.Models.GalleryOSDiskImage`, and `Microsoft.Azure.Management.Compute.Models.GalleryImageVersionStorageProfile` has changed from `Microsoft.Azure.Management.Compute.Models.GalleryArtifactVersionSource` to `Microsoft.Azure.Management.Compute.Models.GalleryDiskImageSource`.
+* Updated the broken `UbuntuLTS` image alias to use its original sku version of `16.04-LTS` instead of the nonexistent image `20.04-LTS`. This fixes an issue introduced in the version 5.3.0 release. 
+* Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
+* Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
+* Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
+
+## Version 5.3.0
 * Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+* Fixed a bug for creating Linux VM's from SIG/Community Gallery Images
+* Added `ImageReferenceId` string parameter to the `New-AzVmssConfig` cmdlet. This allows gallery image references to be added for the Confidential VM feature.
+* Added `SecurityEncryptionType` and `SecureVMDiskEncryptionSet` string parameters to the `Set-AzVmssStorageProfile` cmdlet for the Confidential VM feature.
 
 ## Version 5.2.0
 * Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
 * Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
-* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null.
+* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null. 
 
 ## Version 5.1.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]

@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="id">Resource ID.</param>
         /// <param name="name">Resource name.</param>
         /// <param name="type">Resource type.</param>
+        /// <param name="secondaryType">Type of the geo-secondary instance. Set
+        /// 'Standby' if the instance is used as a DR option only. Possible
+        /// values include: 'Geo', 'Standby'</param>
         /// <param name="readOnlyEndpoint">Read-only endpoint of the failover
         /// group instance.</param>
         /// <param name="replicationRole">Local replication role of the
@@ -50,9 +53,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// 'Secondary'</param>
         /// <param name="replicationState">Replication state of the failover
         /// group instance.</param>
-        public InstanceFailoverGroup(InstanceFailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerRegionInfo> partnerRegions, IList<ManagedInstancePairInfo> managedInstancePairs, string id = default(string), string name = default(string), string type = default(string), InstanceFailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(InstanceFailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string))
+        public InstanceFailoverGroup(InstanceFailoverGroupReadWriteEndpoint readWriteEndpoint, IList<PartnerRegionInfo> partnerRegions, IList<ManagedInstancePairInfo> managedInstancePairs, string id = default(string), string name = default(string), string type = default(string), string secondaryType = default(string), InstanceFailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(InstanceFailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string))
             : base(id, name, type)
         {
+            SecondaryType = secondaryType;
             ReadWriteEndpoint = readWriteEndpoint;
             ReadOnlyEndpoint = readOnlyEndpoint;
             ReplicationRole = replicationRole;
@@ -66,6 +70,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets type of the geo-secondary instance. Set 'Standby' if
+        /// the instance is used as a DR option only. Possible values include:
+        /// 'Geo', 'Standby'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.secondaryType")]
+        public string SecondaryType { get; set; }
 
         /// <summary>
         /// Gets or sets read-write endpoint of the failover group instance.

@@ -56,7 +56,7 @@ COMPUTE <ICompute>: Compute properties
   [DisableLocalAuth <Boolean?>]: Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   [ResourceId <String>]: ARM resource id of the underlying compute
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecompute
 #>
 function New-AzMLWorkspaceCompute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource])]

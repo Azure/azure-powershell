@@ -25,7 +25,7 @@ New-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBindingResource
 .Link
-https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudappbinding
+https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudappbinding
 #>
 function New-AzSpringCloudAppBinding {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBindingResource])]

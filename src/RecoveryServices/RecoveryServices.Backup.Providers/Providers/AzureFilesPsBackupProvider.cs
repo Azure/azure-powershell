@@ -124,6 +124,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 item.Id);
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> SuspendBackup()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+
+            // do validations
+            ValidateAzureFileShareDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+
+            properties.ProtectionState = ProtectionState.BackupsSuspended;
+            properties.SourceResourceId = itemBase.SourceResourceId;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);            
+        }
+
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
             throw new Exception(Resources.SoftdeleteNotImplementedException);
@@ -415,9 +447,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                 (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
 
-                // timeZone in case of Hourly should be customizable                
+                // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
-                if (ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly && timeZone != null)
+                if (timeZone != null)
                 {
                     azureFileShareProtectionPolicy.TimeZone = timeZone;
                 }
@@ -462,9 +494,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureFileShareProtectionPolicy.SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
 
-                // timeZone in case of Hourly should be customizable                
+                // timeZone should be customizable                
                 string timeZone = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
-                if (ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly && timeZone != null)
+                if (timeZone != null)
                 {
                     azureFileShareProtectionPolicy.TimeZone = timeZone;
                 }

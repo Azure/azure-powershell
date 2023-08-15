@@ -96,7 +96,7 @@ THROTTLINGRULE <IThrottlingRule[]>: .
     [Interval <TimeSpan?>]: 
   [RequiredFeature <String[]>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 #>
 function New-AzProviderHubResourceTypeRegistration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration])]

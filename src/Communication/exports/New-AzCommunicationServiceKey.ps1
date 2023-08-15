@@ -54,7 +54,7 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
   [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 .Link
-https://docs.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
+https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]

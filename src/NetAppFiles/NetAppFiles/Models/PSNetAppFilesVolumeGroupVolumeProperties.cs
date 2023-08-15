@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Maximum storage quota allowed for a file system in bytes. This is a
         /// soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB. Specified in bytes.
+        /// limit is 100TiB, 500Tib for LargeVolumes. Specified in bytes.
         /// </remarks>
         public long UsageThreshold { get; set; }
 
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? SmbContinuouslyAvailable { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum throughput in Mibps that can be achieved by
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by
         /// this volume and this will be accepted as input only for manual
         /// qosType volume
         /// </summary>
@@ -344,5 +344,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         public string EnableSubvolumes { get; set; }
 
+        /// <summary>
+        /// Gets or sets the resource ID of private endpoint for KeyVault. It
+        /// must reside in the same VNET as the volume. Only applicable if
+        /// encryptionKeySource = 'Microsoft.KeyVault'.
+        /// </summary>
+        public string KeyVaultPrivateEndpointResourceId { get; set; }
     }
 }

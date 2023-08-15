@@ -36,7 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 BUILDPACK <IBuildpackProperties[]>: Buildpacks in the buildpack group.
   [Id <String>]: Id of the buildpack
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
+https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
 #>
 function New-AzSpringCloudBuildpacksGroupObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpacksGroupProperties])]

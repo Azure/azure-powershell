@@ -27,7 +27,7 @@ Lists all of the available operations
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
 #>
 function Get-AzVMwareOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation])]

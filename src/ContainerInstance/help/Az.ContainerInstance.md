@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ContainerInstance
 Module Guid: ddf74844-4a25-4263-8a5c-f27979292e4e
-Download Help Link: https://docs.microsoft.com/powershell/module/az.containerinstance
+Download Help Link: https://learn.microsoft.com/powershell/module/az.containerinstance
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -70,6 +70,10 @@ Create a in-memory object for VolumeMount
 ### [Remove-AzContainerGroup](Remove-AzContainerGroup.md)
 Delete the specified container group in the specified subscription and resource group.
 The operation does not delete other resources provided by the user, such as volumes.
+
+### [Remove-AzContainerInstanceSubnetServiceAssociationLink](Remove-AzContainerInstanceSubnetServiceAssociationLink.md)
+Delete container group virtual network association links.
+The operation does not delete other resources provided by the user.
 
 ### [Restart-AzContainerGroup](Restart-AzContainerGroup.md)
 Restarts all containers in a container group in place.

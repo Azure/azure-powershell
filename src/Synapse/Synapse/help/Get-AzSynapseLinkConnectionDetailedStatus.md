@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnectiondetailedstatus
+online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapselinkconnectiondetailedstatus
 schema: 2.0.0
 ---
 

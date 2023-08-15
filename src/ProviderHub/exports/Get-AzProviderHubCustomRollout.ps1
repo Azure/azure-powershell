@@ -46,7 +46,7 @@ INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
   [Sku <String>]: The SKU.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
+https://learn.microsoft.com/powershell/module/az.providerhub/get-azproviderhubcustomrollout
 #>
 function Get-AzProviderHubCustomRollout {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICustomRollout])]

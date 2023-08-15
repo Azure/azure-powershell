@@ -63,7 +63,7 @@ SKUSETTING <ISkuSetting[]>: .
   [Size <String>]: 
   [Tier <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypesecond
+https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubskunestedresourcetypesecond
 #>
 function New-AzProviderHubSkuNestedResourceTypeSecond {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource])]

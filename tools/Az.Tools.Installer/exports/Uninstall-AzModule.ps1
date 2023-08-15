@@ -125,7 +125,7 @@ function Uninstall-AzModule {
                                 "$_"
                             }
                         }
-                        foreach($versionString in $versionStrings) {
+                        foreach ($versionString in $versionStrings) {
                             PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
                         }
                     }

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 using Microsoft.Azure.Management.Search.Models;
 using System;
 using System.Management.Automation;
@@ -126,24 +127,20 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                             ServiceName,
                             Name).Result.Body;
 
-                    var update = new PrivateEndpointConnection(
-                        id: privateEndpointConnection.Id,
-                        name: Name,
-                        type: privateEndpointConnection.Type,
-                        properties: new PrivateEndpointConnectionProperties
+                    var update = new PrivateEndpointConnectionProperties
+                    {
+                        PrivateEndpoint = privateEndpointConnection.Properties.PrivateEndpoint,
+                        PrivateLinkServiceConnectionState = new PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState
                         {
-                            PrivateEndpoint = privateEndpointConnection.Properties.PrivateEndpoint,
-                            PrivateLinkServiceConnectionState = new PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState
-                            {
-                                ActionsRequired = privateEndpointConnection.Properties.PrivateLinkServiceConnectionState.ActionsRequired,
-                                
-                                // Update if not null
-                                Description = Description ?? privateEndpointConnection.Properties.PrivateLinkServiceConnectionState.Description,
+                            ActionsRequired = privateEndpointConnection.Properties.PrivateLinkServiceConnectionState.ActionsRequired,
 
-                                // Update
-                                Status = (PrivateLinkServiceConnectionStatus)Status
-                            }
-                        });
+                            // Update if not null
+                            Description = Description ?? privateEndpointConnection.Properties.PrivateLinkServiceConnectionState.Description,
+
+                            // Update
+                            Status = (PrivateLinkServiceConnectionStatus)Status
+                        }
+                    };
 
                     var connection = SearchClient.PrivateEndpointConnections.UpdateWithHttpMessagesAsync(
                         ResourceGroupName,

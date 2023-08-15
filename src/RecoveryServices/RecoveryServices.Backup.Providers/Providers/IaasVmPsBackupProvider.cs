@@ -263,6 +263,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Triggers the disable protection operation for the given item
         /// </summary>
         /// <returns>The job response returned from the service</returns>
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> SuspendBackup()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+                        
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+                       
+            // do validations
+            ValidateAzureVMDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+
+            AzureIaaSVMProtectedItem properties = new AzureIaaSVMProtectedItem();
+
+            properties.ProtectionState = ProtectionState.BackupsSuspended;
+            properties.SourceResourceId = itemBase.SourceResourceId;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+        }
+
+        /// <summary>
+        /// Triggers the disable protection operation for the given item
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection()
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
@@ -347,7 +383,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
-            DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
+            // setting the default expiry time of 30 days for AzureVM workload, this doesn't apply to MSSQL workload as the default value for SQL is 45 days.
+            DateTime? expiryDateTime = (ProviderData[ItemParams.ExpiryDateTimeUTC] != null) ? (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC] : DateTime.UtcNow.AddDays(30);
             AzureVmItem iaasVmItem = item as AzureVmItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
@@ -856,7 +893,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 snapshotRetentionInDays = 7;
             }
 
-            // timeZone in case of Enhanced Policy should be customizable 
+            // timeZone should be customizable 
             string timeZone = DateTimeKind.Utc.ToString().ToUpper(); 
             if (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
@@ -866,6 +903,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     timeZone = timeZoneInput;
                 }                
+            }
+            else if(schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
+            {
+                string timeZoneInput = ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunTimeZone;
+
+                if (timeZoneInput != null)
+                {
+                    timeZone = timeZoneInput;
+                }
             }
             
             // construct Service Client policy request            
@@ -966,7 +1012,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Validate instant RP retention days
             ValidateInstantRPRetentionDays(((AzureVmPolicy)policy));
 
-            // timeZone in case of Enhanced Policy should be customizable                
+            // timeZone should be customizable
             string timeZone = DateTimeKind.Utc.ToString().ToUpper();
             if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
@@ -977,7 +1023,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-                        
+            else if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
+            {
+                string timeZoneInput = ((CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy).ScheduleRunTimeZone;
+
+                if (timeZoneInput != null)
+                {
+                    timeZone = timeZoneInput;
+                }
+            }
+            
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {

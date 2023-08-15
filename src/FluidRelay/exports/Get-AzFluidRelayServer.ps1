@@ -42,7 +42,7 @@ INPUTOBJECT <IFluidRelayIdentity>: Identity Parameter
   [ResourceGroup <String>]: The resource group containing the resource.
   [SubscriptionId <String>]: The subscription id (GUID) for this resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserver
+https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserver
 #>
 function Get-AzFluidRelayServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FluidRelay.Models.Api20220601.IFluidRelayServer])]

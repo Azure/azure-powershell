@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: AF0DDDD0-B664-4AD8-A569-1363FB2EDB40
-online version: https://docs.microsoft.com/powershell/module/az.compute/stop-azvmss
+online version: https://learn.microsoft.com/powershell/module/az.compute/stop-azvmss
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Stops the VMSS or a set of virtual machines within the VMSS.
 ### DefaultParameter (Default)
 ```
 Stop-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-Hibernate] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
@@ -84,6 +84,21 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Hibernate
+Hibernate a virtual machine from the VM scale set. This feature is available for VMSS with Flexible OrchestrationMode only.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameter
 Aliases:
 
 Required: False

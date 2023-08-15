@@ -38,7 +38,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IP configurations for the inbound endpoint
   [PrivateIPAddress <String>]: Private IP address of the IP configuration.
   [PrivateIPAllocationMethod <IPAllocationMethod?>]: Private IP address allocation method.
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
 #>
 function New-AzDnsResolverInboundEndpoint {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint])]
