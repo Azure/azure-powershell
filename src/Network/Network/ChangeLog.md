@@ -22,6 +22,11 @@
 * Added support for new Application Gateway SKU type, Basic SKU
 * Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
 * Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
+* Adding AllowBranchToBranchTraffic property to New-AzRouteServer
+* Adding AllowBranchToBranchTraffic property to Get-AzRouteServer
+* Changing Update-AzRouteServer functionality to fix bugs
+    - AllowBranchToBranchTraffic is now a bool
+    - Updating HubRoutingPreference property will not effect AllowBranchToBranchTraffic
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
