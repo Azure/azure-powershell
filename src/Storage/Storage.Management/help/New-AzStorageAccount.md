@@ -524,7 +524,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowBlobPublicAccess
-Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
+Allow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
 
 ```yaml
 Type: System.Boolean
@@ -539,7 +539,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCrossTenantReplication
-Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is false for this property.
 
 ```yaml
 Type: System.Boolean

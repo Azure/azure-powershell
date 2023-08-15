@@ -19,7 +19,8 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.34.0.
-* Removed the breaking change warning message for creating a storage account. The default interpretation of AllowBlobPublicAccess and AllowCrossTenantReplication has been changed to false
+* Removed the breaking change warning message for creating a storage account. The default interpretation of AllowBlobPublicAccess and AllowCrossTenantReplication has been changed to false. 
+  See https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-updating-some-default-security-settings-on-new/ba-p/3819554
     - `New-AzStorageAccount`
 
 ## Version 5.9.0
