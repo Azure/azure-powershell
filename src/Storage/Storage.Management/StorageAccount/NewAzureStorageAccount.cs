@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.")]
+            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is false for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
         {
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is false for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowCrossTenantReplication
         {
