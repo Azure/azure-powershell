@@ -87,11 +87,6 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
-  - where:
-      verb: Update
-      subject: Project
-      parameter-name: DevCenterId
-    hide: true
 # Remove Set per design review
   - where:
       verb: Set
