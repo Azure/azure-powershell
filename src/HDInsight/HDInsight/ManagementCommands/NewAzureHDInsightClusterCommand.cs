@@ -35,9 +35,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightCluster), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
-        DeprecatedOutputProperties = new string[] {"Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties DiskEncryption"}, 
-        NewOutputProperties = new string[] {"Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties DiskEncryption"})]
+    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
