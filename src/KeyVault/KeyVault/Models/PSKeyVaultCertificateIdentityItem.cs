@@ -77,5 +77,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Updated { get; protected set; }
 
         public Hashtable Tags { get; set; }
+        public string TagsTable
+        {
+            get { return (Tags == null) ? null : Tags.ConvertToTagsTable(); }
+        }
+
     }
 }
