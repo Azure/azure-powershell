@@ -8,32 +8,28 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Daily recurrence object.
+    /// Alert processing rule properties supported by patch.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("Daily")]
-    public partial class DailyRecurrence : Recurrence
+    public partial class PatchProperties
     {
         /// <summary>
-        /// Initializes a new instance of the DailyRecurrence class.
+        /// Initializes a new instance of the PatchProperties class.
         /// </summary>
-        public DailyRecurrence()
+        public PatchProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DailyRecurrence class.
+        /// Initializes a new instance of the PatchProperties class.
         /// </summary>
 
-        /// <param name="startTime">Start time for recurrence.
+        /// <param name="enabled">Indicates if the given alert processing rule is enabled or disabled.
         /// </param>
+        public PatchProperties(bool? enabled = default(bool?))
 
-        /// <param name="endTime">End time for recurrence.
-        /// </param>
-        public DailyRecurrence(string startTime = default(string), string endTime = default(string))
-
-        : base(startTime, endTime)
         {
+            this.Enabled = enabled;
             CustomInit();
         }
 
@@ -42,5 +38,12 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets indicates if the given alert processing rule is enabled or
+        /// disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
+        public bool? Enabled {get; set; }
     }
 }

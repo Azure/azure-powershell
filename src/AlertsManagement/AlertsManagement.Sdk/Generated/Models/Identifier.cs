@@ -7,14 +7,12 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
 {
 
     /// <summary>
-    /// Defines values for AlertState.
+    /// Defines values for Identifier.
     /// </summary>
 
 
-    public static class AlertState
+    public static class Identifier
     {
-        public const string New = "New";
-        public const string Acknowledged = "Acknowledged";
-        public const string Closed = "Closed";
+        public const string MonitorServiceList = "MonitorServiceList";
     }
 }

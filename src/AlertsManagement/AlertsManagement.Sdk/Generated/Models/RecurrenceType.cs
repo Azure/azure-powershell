@@ -7,14 +7,14 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
 {
 
     /// <summary>
-    /// Defines values for AlertState.
+    /// Defines values for RecurrenceType.
     /// </summary>
 
 
-    public static class AlertState
+    public static class RecurrenceType
     {
-        public const string New = "New";
-        public const string Acknowledged = "Acknowledged";
-        public const string Closed = "Closed";
+        public const string Daily = "Daily";
+        public const string Weekly = "Weekly";
+        public const string Monthly = "Monthly";
     }
 }
