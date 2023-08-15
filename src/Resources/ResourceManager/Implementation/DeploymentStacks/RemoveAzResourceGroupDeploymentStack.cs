@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = RemoveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object.")]
         [ValidateNotNullOrEmpty]
-        public PSDeploymentStack StackObjet { get; set; }
+        public PSDeploymentStack InputObjet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Signal to delete both unmanaged Resources and ResourceGroups after updating stack.")]
         public SwitchParameter DeleteAll { get; set; }
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
                 var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
 
-                if (StackObjet != null)
+                if (InputObjet != null)
                 {
-                    ResourceId = StackObjet.id;
+                    ResourceId = InputObjet.id;
                 }
 
                 // resolve Name and ResourceGroupName if ResourceId was provided

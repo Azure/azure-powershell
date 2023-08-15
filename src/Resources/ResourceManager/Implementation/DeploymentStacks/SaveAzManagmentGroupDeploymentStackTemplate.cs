@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = SaveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object")]
         [ValidateNotNullOrEmpty]
-        public PSDeploymentStack StackObjet { get; set; }
+        public PSDeploymentStack InputObjet { get; set; }
 
         #endregion
 
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 switch (ParameterSetName)
                 {
                     case SaveByResourceIdParameterSetName: case SaveByStackObjectParameterSetName:
-                        if (StackObjet != null)
+                        if (InputObjet != null)
                         {
-                            ResourceId = StackObjet.id;
+                            ResourceId = InputObjet.id;
                         }
                         ManagementGroupId = ResourceIdUtility.GetManagementGroupId(ResourceId);
                         StackName = ResourceIdUtility.GetDeploymentName(ResourceId);

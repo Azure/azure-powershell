@@ -28,7 +28,7 @@ Remove-AzManagementGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-Dele
 
 ### RemoveByStackObject
 ```
-Remove-AzManagementGroupDeploymentStack [-StackObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
+Remove-AzManagementGroupDeploymentStack [-InputObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
  [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -122,6 +122,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObjet
+The stack PS object
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Parameter Sets: RemoveByStackObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupId
 The id of the ManagementGroup where the DeploymentStack is being deleted
 
@@ -194,21 +209,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StackObjet
-The stack PS object
-
-```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
-Parameter Sets: RemoveByStackObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
