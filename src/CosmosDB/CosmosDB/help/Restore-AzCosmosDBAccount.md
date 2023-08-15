@@ -15,7 +15,7 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 ```
 Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
- [-DatabasesToRestore <PSDatabaseToRestore[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-DatabasesToRestore <PSDatabaseToRestore[]>] [-PublicNetworkAccess <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -123,6 +123,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

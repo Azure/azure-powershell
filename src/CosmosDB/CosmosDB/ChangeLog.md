@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.9.0
 * Added support for Cosmos DB Service related cmdlets.
