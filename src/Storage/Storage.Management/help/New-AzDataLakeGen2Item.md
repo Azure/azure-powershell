@@ -15,9 +15,9 @@ Create a file or directory in a filesystem.
 ### File (Default)
 ```
 New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> [-Umask <String>]
- [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permission <String>] [-EncryptionContext <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force]
+ [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
@@ -137,6 +137,21 @@ Parameter Sets: Directory
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionContext
+Encryption context of the file. Encryption context is metadata that is not encrypted when stored on the file. The primary application of this field is to store non-encrypted data that can be used to derive the customer-provided key for a file. Not applicable for directories.
+
+```yaml
+Type: System.String
+Parameter Sets: File
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
