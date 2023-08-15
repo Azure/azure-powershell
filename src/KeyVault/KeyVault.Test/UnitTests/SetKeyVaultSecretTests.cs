@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Commands.Secret;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;

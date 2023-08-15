@@ -15,10 +15,8 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 
