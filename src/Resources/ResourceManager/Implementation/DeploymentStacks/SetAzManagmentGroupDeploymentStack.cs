@@ -183,8 +183,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
                 var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
 
-                // construct deploymentScope if ResourceGroup was provided
-                var deploymentScope = "/subscriptions/" + DeploymentSubscriptionId;
+                string deploymentScope = null;
+                if (DeploymentSubscriptionId != null)
+                {
+                    deploymentScope = "/subscriptions/" + DeploymentSubscriptionId;
+                }
 
                 var currentStack = DeploymentStacksSdkClient.GetManagementGroupDeploymentStack(ManagementGroupId, Name, throwIfNotExists: false);
                 if (currentStack != null && Tag == null)
