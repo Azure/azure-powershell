@@ -15,17 +15,16 @@ Partially updates a Scheduled.
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminSchedule -PoolName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Location <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>]
- [-Time <String>] [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-State <ScheduleEnableStatus>] [-Tag <Hashtable>] [-Time <String>]
+ [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-Location <String>]
- [-State <ScheduleEnableStatus>] [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>]
- [-Type <ScheduledType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDevCenterAdminSchedule -InputObject <IDevCenterIdentity> [-State <ScheduleEnableStatus>]
+ [-Tag <Hashtable>] [-Time <String>] [-TimeZone <String>] [-Type <ScheduledType>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,21 +94,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

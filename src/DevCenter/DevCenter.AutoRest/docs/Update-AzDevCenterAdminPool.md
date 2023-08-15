@@ -16,7 +16,7 @@ Partially updates a machine pool
 ```
 Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-LocalAdministrator <LocalAdminStatus>]
- [-Location <String>] [-NetworkConnectionName <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
+ [-NetworkConnectionName <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
  [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupN
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> [-DevBoxDefinitionName <String>]
- [-LocalAdministrator <LocalAdminStatus>] [-Location <String>] [-NetworkConnectionName <String>]
+ [-LocalAdministrator <LocalAdminStatus>] [-NetworkConnectionName <String>]
  [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -119,21 +119,6 @@ Indicates whether owners of Dev Boxes in this pool are added as local administra
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
