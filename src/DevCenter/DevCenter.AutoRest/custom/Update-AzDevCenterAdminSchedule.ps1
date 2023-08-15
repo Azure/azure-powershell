@@ -105,13 +105,6 @@ function Update-AzDevCenterAdminSchedule {
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName = 'UpdateExpanded')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus])]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ScheduleEnableStatus]
