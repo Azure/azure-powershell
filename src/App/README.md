@@ -221,43 +221,32 @@ directive:
       subject: NamespaceNameAvailability
     set:
       subject: NamespaceAvailability
-  - where:
-      subject: ManagedEnvironmentsDiagnosticRoot
-    set:
-      subject: ManagedEnvDiagnosticRoot
-  - where:
-      subject: ManagedEnvironmentsDiagnosticRoot
-    set:
-      subject: ManagedEnvDiagnosticRoot
-  - where:
-      subject: ManagedEnvironmentsDiagnosticRoot
-    set:
-      subject: ManagedEnvDiagnosticRoot
-  - where:
-      subject: ManagedEnvironmentsDiagnosticRoot
-    set:
-      subject: ManagedEnvDiagnosticRoot
 
-  # - where:
-  #     subject: Volume
-  #   set:
-  #     subject: ContainerAppVolumeObject
-  # The following are commented out and their generated cmdlets may be renamed and custom logic
+  # Modifications were made to the command
   # - model-cmdlet:
-  #     - EnvironmentVar
-  #     - ContainerAppProbe
-  #     - VolumeMount
-  #     - ScaleRuleAuth
-  #     - RegistryCredentials
-  #     - DaprMetadata
-  #     - Secret
-  #     - CustomDomain
-  #     - TrafficWeight
-  #     - ScaleRule
-  #     - Container
-  #     - Volume
-  #     - IdentityProviders
-  #     - ContainerAppProbeHttpGetHttpHeadersItem
+  #   - model-name: RegistryCredentials
+  #   - model-name: Secret
+  #   - model-name: JobScaleRule
+  #   - model-name: Container
+  #   - model-name: InitContainer
+  #   - model-name: Volume
+  #   - model-name: DaprMetadata
+  #   - model-name: WorkloadProfile
+  #   - model-name: IdentityProviders
+  #   - model-name: Configuration
+  #   - model-name: ScaleRule
+  #   - model-name: ServiceBind
+  #   - model-name: DaprMetadata
+  #   - model-name: JobExecutionContainer
+  #   - model-name: CustomDomain
+  #   - model-name: IPSecurityRestrictionRule
+  #   - model-name: TrafficWeight
+  #   - model-name: ContainerAppProbe
+  #   - model-name: EnvironmentVar
+  #   - model-name: VolumeMount
+  #   - model-name: ScaleRuleAuth
+  #   - model-name: SecretVolumeItem
+  #   - model-name: ContainerAppProbeHttpGetHttpHeadersItem
 
   - where:
       parameter-name: ComponentName

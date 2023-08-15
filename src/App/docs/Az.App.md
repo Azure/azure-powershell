@@ -113,6 +113,9 @@ Get all workload Profile States for a Managed Environment.
 ### [Invoke-AzAppJobExecution](Invoke-AzAppJobExecution.md)
 Get details of a single job execution
 
+### [New-AzAppConfigurationObject](New-AzAppConfigurationObject.md)
+Create an in-memory object for Configuration.
+
 ### [New-AzAppConnectedEnv](New-AzAppConnectedEnv.md)
 Create an connectedEnvironment.
 
@@ -143,14 +146,77 @@ Create a Dapr Component in a Managed Environment.
 ### [New-AzAppContainerAppManagedEnvStorage](New-AzAppContainerAppManagedEnvStorage.md)
 Create storage for a managedEnvironment.
 
+### [New-AzAppContainerAppProbeHttpGetHttpHeadersItemObject](New-AzAppContainerAppProbeHttpGetHttpHeadersItemObject.md)
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
+
+### [New-AzAppContainerAppProbeObject](New-AzAppContainerAppProbeObject.md)
+Create an in-memory object for ContainerAppProbe.
+
 ### [New-AzAppContainerAppSourceControl](New-AzAppContainerAppSourceControl.md)
 Create the SourceControl for a Container App.
+
+### [New-AzAppContainerObject](New-AzAppContainerObject.md)
+Create an in-memory object for Container.
+
+### [New-AzAppCustomDomainObject](New-AzAppCustomDomainObject.md)
+Create an in-memory object for CustomDomain.
+
+### [New-AzAppDaprMetadataObject](New-AzAppDaprMetadataObject.md)
+Create an in-memory object for DaprMetadata.
+
+### [New-AzAppEnvironmentVarObject](New-AzAppEnvironmentVarObject.md)
+Create an in-memory object for EnvironmentVar.
+
+### [New-AzAppIdentityProvidersObject](New-AzAppIdentityProvidersObject.md)
+Create an in-memory object for IdentityProviders.
+
+### [New-AzAppInitContainerObject](New-AzAppInitContainerObject.md)
+Create an in-memory object for InitContainer.
+
+### [New-AzAppIPSecurityRestrictionRuleObject](New-AzAppIPSecurityRestrictionRuleObject.md)
+Create an in-memory object for IPSecurityRestrictionRule.
 
 ### [New-AzAppJob](New-AzAppJob.md)
 Create a Container Apps Job.
 
+### [New-AzAppJobExecutionContainerObject](New-AzAppJobExecutionContainerObject.md)
+Create an in-memory object for JobExecutionContainer.
+
+### [New-AzAppJobScaleRuleObject](New-AzAppJobScaleRuleObject.md)
+Create an in-memory object for JobScaleRule.
+
 ### [New-AzAppManagedCert](New-AzAppManagedCert.md)
 Create a Managed Certificate.
+
+### [New-AzAppRegistryCredentialsObject](New-AzAppRegistryCredentialsObject.md)
+Create an in-memory object for RegistryCredentials.
+
+### [New-AzAppScaleRuleAuthObject](New-AzAppScaleRuleAuthObject.md)
+Create an in-memory object for ScaleRuleAuth.
+
+### [New-AzAppScaleRuleObject](New-AzAppScaleRuleObject.md)
+Create an in-memory object for ScaleRule.
+
+### [New-AzAppSecretObject](New-AzAppSecretObject.md)
+Create an in-memory object for Secret.
+
+### [New-AzAppSecretVolumeItemObject](New-AzAppSecretVolumeItemObject.md)
+Create an in-memory object for SecretVolumeItem.
+
+### [New-AzAppServiceBindObject](New-AzAppServiceBindObject.md)
+Create an in-memory object for ServiceBind.
+
+### [New-AzAppTrafficWeightObject](New-AzAppTrafficWeightObject.md)
+Create an in-memory object for TrafficWeight.
+
+### [New-AzAppVolumeMountObject](New-AzAppVolumeMountObject.md)
+Create an in-memory object for VolumeMount.
+
+### [New-AzAppVolumeObject](New-AzAppVolumeObject.md)
+Create an in-memory object for Volume.
+
+### [New-AzAppWorkloadProfileObject](New-AzAppWorkloadProfileObject.md)
+Create an in-memory object for WorkloadProfile.
 
 ### [Remove-AzAppConnectedEnv](Remove-AzAppConnectedEnv.md)
 Delete an connectedEnvironment.
