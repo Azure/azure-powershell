@@ -26,25 +26,6 @@ New-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <Stri
  [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
- -ResourceGroupName <String> -AuthConfigEnvelope <IAuthConfig> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAppContainerAppAuthConfig -InputObject <IAppIdentity> -AuthConfigEnvelope <IAuthConfig>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityContainerApp
-```
-New-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
- -AuthConfigEnvelope <IAuthConfig> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityContainerAppExpanded
 ```
 New-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
@@ -115,28 +96,12 @@ Create the AuthConfig for a Container App.
 
 ## PARAMETERS
 
-### -AuthConfigEnvelope
-Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
-To construct, see NOTES section for AUTHCONFIGENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityContainerApp
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AuthConfigName
 Name of the Container App AuthConfig.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityContainerApp, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -152,7 +117,7 @@ To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentityContainerApp, CreateViaIdentityContainerAppExpanded
+Parameter Sets: CreateViaIdentityContainerAppExpanded
 Aliases:
 
 Required: True
@@ -167,7 +132,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -350,7 +315,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -487,7 +452,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -532,7 +497,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -579,8 +544,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
 
 ## OUTPUTS
 

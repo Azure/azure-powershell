@@ -20,31 +20,11 @@ Update-AzAppContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -Res
  [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzAppContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
- -DaprComponentEnvelope <IDaprComponent> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAppContainerAppManagedEnvDapr -InputObject <IAppIdentity> -DaprComponentEnvelope <IDaprComponent>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
  [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityManagedEnvironment
-```
-Update-AzAppContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
- -DaprComponentEnvelope <IDaprComponent> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -90,7 +70,7 @@ Component type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -100,28 +80,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DaprComponentEnvelope
-Dapr Component.
-To construct, see NOTES section for DAPRCOMPONENTENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DaprName
 Name of the Dapr Component.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -152,7 +116,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -167,7 +131,7 @@ Boolean describing if the component errors are ignores
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -182,7 +146,7 @@ Initialization timeout
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,7 +162,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -214,7 +178,7 @@ To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -230,7 +194,7 @@ To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -261,7 +225,7 @@ Names of container apps that can use this Dapr component
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -277,7 +241,7 @@ To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -292,7 +256,7 @@ Name of a Dapr component to retrieve component secrets from
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -307,7 +271,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +286,7 @@ Component version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -369,8 +333,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
 
 ## OUTPUTS
 

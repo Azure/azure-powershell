@@ -20,30 +20,10 @@ Update-AzAppContainerAppManagedEnvCert -EnvName <String> -Name <String> -Resourc
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzAppContainerAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- -CertificateEnvelope <ICertificatePatch> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAppContainerAppManagedEnvCert -InputObject <IAppIdentity> -CertificateEnvelope <ICertificatePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppContainerAppManagedEnvCert -InputObject <IAppIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityManagedEnvironment
-```
-Update-AzAppContainerAppManagedEnvCert -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
- -CertificateEnvelope <ICertificatePatch> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
@@ -96,22 +76,6 @@ Currently only patching of tags is supported
 
 ## PARAMETERS
 
-### -CertificateEnvelope
-A certificate to update
-To construct, see NOTES section for CERTIFICATEENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificatePatch
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -133,7 +97,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -149,7 +113,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -195,7 +159,7 @@ To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -210,7 +174,7 @@ Name of the Certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: CertificateName
 
 Required: True
@@ -226,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -241,7 +205,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -303,8 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificatePatch
 
 ## OUTPUTS
 

@@ -79,9 +79,21 @@ directive:
         "format": "password",
         "x-ms-secret": true
       }
-  # - where:
-  #     variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
-  #   remove: true
+  - where:
+      verb: Update
+      subject: ConnectedEnvironment
+      variant: Update
+    set:
+      variant: UpdateExpanded
+  - where:
+      verb: Update
+      subject: ConnectedEnvironment
+      variant: UpdateViaIdentity
+    set:
+      variant: UpdateViaIdentityExpanded
+  - where:
+      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+    remove: true
   - where:
       verb: Set
     remove: true
@@ -160,6 +172,71 @@ directive:
       subject: ManagedEnvironmentsStorage
     set:
       subject: ContainerAppManagedEnvStorage
+
+  - where:
+      subject: ConnectedEnvironment
+    set:
+      subject: ConnectedEnv
+  - where:
+      subject: ConnectedEnvironmentsCertificate
+    set:
+      subject: ConnectedEnvCert
+  - where:
+      subject: ConnectedEnvironmentsDaprComponent
+    set:
+      subject: ConnectedEnvDapr
+  - where:
+      subject: ConnectedEnvironmentsDaprComponentSecret
+    set:
+      subject: ConnectedEnvDaprSecret
+  - where:
+      subject: ConnectedEnvironmentsStorage
+    set:
+      subject: ConnectedEnvStorage
+  - where:
+      subject: ManagedCertificate
+    set:
+      subject: ManagedCert
+  - where:
+      subject: ManagedEnvironmentAuthToken
+    set:
+      subject: ManagedEnvAuthToken
+  - where:
+      subject: ManagedEnvironmentDiagnosticDetector
+    set:
+      subject: ManagedEnvDiagnosticDetector
+  - where:
+      subject: ManagedEnvironmentsDiagnosticRoot
+    set:
+      subject: ManagedEnvDiagnosticRoot
+  - where:
+      subject: ManagedEnvironmentWorkloadProfileState
+    set:
+      subject: ManagedEnvWorkloadProfileState
+  - where:
+      subject: ConnectedEnvironmentNameAvailability
+    set:
+      subject: ConnectedEnvNameAvailability
+  - where:
+      subject: NamespaceNameAvailability
+    set:
+      subject: NamespaceAvailability
+  - where:
+      subject: ManagedEnvironmentsDiagnosticRoot
+    set:
+      subject: ManagedEnvDiagnosticRoot
+  - where:
+      subject: ManagedEnvironmentsDiagnosticRoot
+    set:
+      subject: ManagedEnvDiagnosticRoot
+  - where:
+      subject: ManagedEnvironmentsDiagnosticRoot
+    set:
+      subject: ManagedEnvDiagnosticRoot
+  - where:
+      subject: ManagedEnvironmentsDiagnosticRoot
+    set:
+      subject: ManagedEnvDiagnosticRoot
 
   # - where:
   #     subject: Volume

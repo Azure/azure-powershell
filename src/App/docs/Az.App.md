@@ -23,19 +23,19 @@ Get all available workload profiles for a location.
 ### [Get-AzAppBillingMeter](Get-AzAppBillingMeter.md)
 Get all billingMeters for a location.
 
-### [Get-AzAppConnectedEnvironment](Get-AzAppConnectedEnvironment.md)
+### [Get-AzAppConnectedEnv](Get-AzAppConnectedEnv.md)
 Get the properties of an connectedEnvironment.
 
-### [Get-AzAppConnectedEnvironmentsCertificate](Get-AzAppConnectedEnvironmentsCertificate.md)
+### [Get-AzAppConnectedEnvCert](Get-AzAppConnectedEnvCert.md)
 Get the specified Certificate.
 
-### [Get-AzAppConnectedEnvironmentsDaprComponent](Get-AzAppConnectedEnvironmentsDaprComponent.md)
+### [Get-AzAppConnectedEnvDapr](Get-AzAppConnectedEnvDapr.md)
 Get a dapr component.
 
-### [Get-AzAppConnectedEnvironmentsDaprComponentSecret](Get-AzAppConnectedEnvironmentsDaprComponentSecret.md)
+### [Get-AzAppConnectedEnvDaprSecret](Get-AzAppConnectedEnvDaprSecret.md)
 List secrets for a dapr component
 
-### [Get-AzAppConnectedEnvironmentsStorage](Get-AzAppConnectedEnvironmentsStorage.md)
+### [Get-AzAppConnectedEnvStorage](Get-AzAppConnectedEnvStorage.md)
 Get storage for a connectedEnvironment.
 
 ### [Get-AzAppContainerApp](Get-AzAppContainerApp.md)
@@ -95,34 +95,34 @@ List secrets for a container apps job
 ### [Get-AzAppJobsExecution](Get-AzAppJobsExecution.md)
 Get a Container Apps Job's executions
 
-### [Get-AzAppManagedCertificate](Get-AzAppManagedCertificate.md)
+### [Get-AzAppManagedCert](Get-AzAppManagedCert.md)
 Get the specified Managed Certificate.
 
-### [Get-AzAppManagedEnvironmentAuthToken](Get-AzAppManagedEnvironmentAuthToken.md)
+### [Get-AzAppManagedEnvAuthToken](Get-AzAppManagedEnvAuthToken.md)
 Checks if resource name is available.
 
-### [Get-AzAppManagedEnvironmentDiagnosticDetector](Get-AzAppManagedEnvironmentDiagnosticDetector.md)
+### [Get-AzAppManagedEnvDiagnosticDetector](Get-AzAppManagedEnvDiagnosticDetector.md)
 Get the diagnostics data for a Managed Environment used to host container apps.
 
-### [Get-AzAppManagedEnvironmentsDiagnosticRoot](Get-AzAppManagedEnvironmentsDiagnosticRoot.md)
+### [Get-AzAppManagedEnvDiagnosticRoot](Get-AzAppManagedEnvDiagnosticRoot.md)
 Get the properties of a Managed Environment used to host container apps.
 
-### [Get-AzAppManagedEnvironmentWorkloadProfileState](Get-AzAppManagedEnvironmentWorkloadProfileState.md)
+### [Get-AzAppManagedEnvWorkloadProfileState](Get-AzAppManagedEnvWorkloadProfileState.md)
 Get all workload Profile States for a Managed Environment.
 
 ### [Invoke-AzAppJobExecution](Invoke-AzAppJobExecution.md)
 Get details of a single job execution
 
-### [New-AzAppConnectedEnvironment](New-AzAppConnectedEnvironment.md)
+### [New-AzAppConnectedEnv](New-AzAppConnectedEnv.md)
 Create an connectedEnvironment.
 
-### [New-AzAppConnectedEnvironmentsCertificate](New-AzAppConnectedEnvironmentsCertificate.md)
+### [New-AzAppConnectedEnvCert](New-AzAppConnectedEnvCert.md)
 Create a Certificate.
 
-### [New-AzAppConnectedEnvironmentsDaprComponent](New-AzAppConnectedEnvironmentsDaprComponent.md)
+### [New-AzAppConnectedEnvDapr](New-AzAppConnectedEnvDapr.md)
 Create a Dapr Component in a connected environment.
 
-### [New-AzAppConnectedEnvironmentsStorage](New-AzAppConnectedEnvironmentsStorage.md)
+### [New-AzAppConnectedEnvStorage](New-AzAppConnectedEnvStorage.md)
 Create storage for a connectedEnvironment.
 
 ### [New-AzAppContainerApp](New-AzAppContainerApp.md)
@@ -149,19 +149,19 @@ Create the SourceControl for a Container App.
 ### [New-AzAppJob](New-AzAppJob.md)
 Create a Container Apps Job.
 
-### [New-AzAppManagedCertificate](New-AzAppManagedCertificate.md)
+### [New-AzAppManagedCert](New-AzAppManagedCert.md)
 Create a Managed Certificate.
 
-### [Remove-AzAppConnectedEnvironment](Remove-AzAppConnectedEnvironment.md)
+### [Remove-AzAppConnectedEnv](Remove-AzAppConnectedEnv.md)
 Delete an connectedEnvironment.
 
-### [Remove-AzAppConnectedEnvironmentsCertificate](Remove-AzAppConnectedEnvironmentsCertificate.md)
+### [Remove-AzAppConnectedEnvCert](Remove-AzAppConnectedEnvCert.md)
 Deletes the specified Certificate.
 
-### [Remove-AzAppConnectedEnvironmentsDaprComponent](Remove-AzAppConnectedEnvironmentsDaprComponent.md)
+### [Remove-AzAppConnectedEnvDapr](Remove-AzAppConnectedEnvDapr.md)
 Delete a Dapr Component from a connected environment.
 
-### [Remove-AzAppConnectedEnvironmentsStorage](Remove-AzAppConnectedEnvironmentsStorage.md)
+### [Remove-AzAppConnectedEnvStorage](Remove-AzAppConnectedEnvStorage.md)
 Delete storage for a connectedEnvironment.
 
 ### [Remove-AzAppContainerApp](Remove-AzAppContainerApp.md)
@@ -188,7 +188,7 @@ Delete a Container App SourceControl.
 ### [Remove-AzAppJob](Remove-AzAppJob.md)
 Delete a Container Apps Job.
 
-### [Remove-AzAppManagedCertificate](Remove-AzAppManagedCertificate.md)
+### [Remove-AzAppManagedCert](Remove-AzAppManagedCert.md)
 Deletes the specified Managed Certificate.
 
 ### [Restart-AzAppContainerAppRevision](Restart-AzAppContainerAppRevision.md)
@@ -209,24 +209,24 @@ Terminates execution of a running container apps job
 ### [Stop-AzAppJobMultipleExecution](Stop-AzAppJobMultipleExecution.md)
 Terminates execution of a running container apps job
 
-### [Test-AzAppConnectedEnvironmentNameAvailability](Test-AzAppConnectedEnvironmentNameAvailability.md)
+### [Test-AzAppConnectedEnvNameAvailability](Test-AzAppConnectedEnvNameAvailability.md)
 Checks if resource connectedEnvironmentName is available.
 
-### [Test-AzAppNamespaceNameAvailability](Test-AzAppNamespaceNameAvailability.md)
+### [Test-AzAppNamespaceAvailability](Test-AzAppNamespaceAvailability.md)
 Checks if resource name is available.
 
-### [Update-AzAppConnectedEnvironment](Update-AzAppConnectedEnvironment.md)
+### [Update-AzAppConnectedEnv](Update-AzAppConnectedEnv.md)
 Patches a Managed Environment.
 Only patching of tags is supported currently
 
-### [Update-AzAppConnectedEnvironmentsCertificate](Update-AzAppConnectedEnvironmentsCertificate.md)
+### [Update-AzAppConnectedEnvCert](Update-AzAppConnectedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
 
-### [Update-AzAppConnectedEnvironmentsDaprComponent](Update-AzAppConnectedEnvironmentsDaprComponent.md)
+### [Update-AzAppConnectedEnvDapr](Update-AzAppConnectedEnvDapr.md)
 Create a Dapr Component in a connected environment.
 
-### [Update-AzAppConnectedEnvironmentsStorage](Update-AzAppConnectedEnvironmentsStorage.md)
+### [Update-AzAppConnectedEnvStorage](Update-AzAppConnectedEnvStorage.md)
 Create storage for a connectedEnvironment.
 
 ### [Update-AzAppContainerApp](Update-AzAppContainerApp.md)
@@ -254,7 +254,7 @@ Create the SourceControl for a Container App.
 ### [Update-AzAppJob](Update-AzAppJob.md)
 Patches a Container Apps Job using JSON Merge Patch
 
-### [Update-AzAppManagedCertificate](Update-AzAppManagedCertificate.md)
+### [Update-AzAppManagedCert](Update-AzAppManagedCert.md)
 Patches a managed certificate.
 Oly patching of tags is supported
 

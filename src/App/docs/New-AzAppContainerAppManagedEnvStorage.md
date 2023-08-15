@@ -20,32 +20,11 @@ New-AzAppContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <Str
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzAppContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
- -StorageEnvelope <IManagedEnvironmentStorage> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAppContainerAppManagedEnvStorage -InputObject <IAppIdentity>
- -StorageEnvelope <IManagedEnvironmentStorage> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzAppContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
  [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityManagedEnvironment
-```
-New-AzAppContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
- -StorageEnvelope <IManagedEnvironmentStorage> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### CreateViaIdentityManagedEnvironmentExpanded
@@ -179,7 +158,7 @@ Name of the Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -195,7 +174,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -241,7 +220,7 @@ To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentityManagedEnvironment, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -257,7 +236,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -267,28 +246,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageEnvelope
-Storage resource for managedEnvironment.
-To construct, see NOTES section for STORAGEENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironmentStorage
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -StorageName
 Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityManagedEnvironment, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -303,7 +266,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -350,8 +313,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironmentStorage
 
 ## OUTPUTS
 

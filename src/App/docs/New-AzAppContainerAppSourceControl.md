@@ -27,26 +27,6 @@ New-AzAppContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzAppContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> -SourceControlEnvelope <ISourceControl> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAppContainerAppSourceControl -InputObject <IAppIdentity> -SourceControlEnvelope <ISourceControl>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityContainerApp
-```
-New-AzAppContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
- -SourceControlEnvelope <ISourceControl> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateViaIdentityContainerAppExpanded
 ```
 New-AzAppContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
@@ -229,7 +209,7 @@ To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentityContainerApp, CreateViaIdentityContainerAppExpanded
+Parameter Sets: CreateViaIdentityContainerAppExpanded
 Aliases:
 
 Required: True
@@ -244,7 +224,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -381,7 +361,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -502,7 +482,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -512,28 +492,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceControlEnvelope
-Container App SourceControl.
-To construct, see NOTES section for SOURCECONTROLENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISourceControl
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityContainerApp
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SourceControlName
 Name of the Container App SourceControl.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityContainerApp, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -548,7 +512,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -595,8 +559,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISourceControl
 
 ## OUTPUTS
 

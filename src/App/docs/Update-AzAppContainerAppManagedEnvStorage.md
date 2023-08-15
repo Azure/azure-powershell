@@ -20,32 +20,11 @@ Update-AzAppContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzAppContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
- -StorageEnvelope <IManagedEnvironmentStorage> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAppContainerAppManagedEnvStorage -InputObject <IAppIdentity>
- -StorageEnvelope <IManagedEnvironmentStorage> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAccessMode <String>]
  [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityManagedEnvironment
-```
-Update-AzAppContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
- -StorageEnvelope <IManagedEnvironmentStorage> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
@@ -89,7 +68,7 @@ Access mode for storage
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -104,7 +83,7 @@ Storage account key for azure file.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -119,7 +98,7 @@ Storage account name for azure file.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,7 +113,7 @@ Azure file share name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +144,7 @@ Name of the Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -181,7 +160,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -197,7 +176,7 @@ To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -213,7 +192,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -223,28 +202,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageEnvelope
-Storage resource for managedEnvironment.
-To construct, see NOTES section for STORAGEENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironmentStorage
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -StorageName
 Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityManagedEnvironment, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -259,7 +222,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -306,8 +269,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironmentStorage
 
 ## OUTPUTS
 

@@ -26,25 +26,6 @@ Update-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <S
  [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
- -ResourceGroupName <String> -AuthConfigEnvelope <IAuthConfig> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAppContainerAppAuthConfig -InputObject <IAppIdentity> -AuthConfigEnvelope <IAuthConfig>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityContainerApp
-```
-Update-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
- -AuthConfigEnvelope <IAuthConfig> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityContainerAppExpanded
 ```
 Update-AzAppContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
@@ -101,28 +82,12 @@ Create the AuthConfig for a Container App.
 
 ## PARAMETERS
 
-### -AuthConfigEnvelope
-Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
-To construct, see NOTES section for AUTHCONFIGENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityContainerApp
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AuthConfigName
 Name of the Container App AuthConfig.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityContainerApp, UpdateViaIdentityContainerAppExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
 Aliases:
 
 Required: True
@@ -138,7 +103,7 @@ To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentityContainerApp, UpdateViaIdentityContainerAppExpanded
+Parameter Sets: UpdateViaIdentityContainerAppExpanded
 Aliases:
 
 Required: True
@@ -153,7 +118,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +133,7 @@ The convention used when determining the session cookie's expiration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +148,7 @@ The time after the request is made when the session cookie should expire.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -214,7 +179,7 @@ The convention used to determine the url of the request made.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,7 +194,7 @@ The name of the header containing the host of the request.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,7 +209,7 @@ The name of the header containing the scheme of the request.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -259,7 +224,7 @@ The paths for which unauthenticated flow would not be redirected to the login pa
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -274,7 +239,7 @@ The default authentication provider to use when multiple providers are configure
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -289,7 +254,7 @@ The action to take when an unauthenticated client attempts to access the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -304,7 +269,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -320,7 +285,7 @@ To construct, see NOTES section for IDENTITYPROVIDER properties and create a has
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,7 +301,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -352,7 +317,7 @@ Note that the query string part of the URL is ignored.This is an advanced settin
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -367,7 +332,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -382,7 +347,7 @@ The time after the request is made when the nonce should expire.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -397,7 +362,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -412,7 +377,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -427,7 +392,7 @@ The RuntimeVersion of the Authentication / Authorization feature in use for the 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -443,7 +408,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -458,7 +423,7 @@ The prefix that should precede all the authentication/authorization paths.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -473,7 +438,7 @@ The endpoint at which a logout request should be made.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -488,7 +453,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -535,8 +500,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
 
 ## OUTPUTS
 
