@@ -1,22 +1,35 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a ScalingPlanPooledSchedule
 ```powershell
-{{ Add code here }}
+Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
+                                        -ScalingPlanName spName `
+                                        -ScalingPlanScheduleName scheduleName `
+                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -rampUpStartTimeHour 6 `
+                                        -rampUpStartTimeMinute 30 `
+                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
+                                        -rampUpMinimumHostsPct 20 `
+                                        -rampUpCapacityThresholdPct 20 `
+                                        -peakStartTimeHour 8 `
+                                        -peakStartTimeMinute 30 `
+                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -RampDownStartTimeHour 16 `
+                                        -RampDownStartTimeMinute 0 `
+                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
+                                        -rampDownMinimumHostsPct 20 `
+                                        -rampDownCapacityThresholdPct 20 `
+                                        -rampDownForceLogoffUser:$true `
+                                        -rampDownWaitTimeMinute 30 `
+                                        -rampDownNotificationMessage "Log out now, please." `
+                                        -rampDownStopHostsWhen ZeroSessions `
+                                        -offPeakStartTimeHour 22 `
+                                        -offPeakStartTimeMinute 45 `
+                                        -offPeakLoadBalancingAlgorithm DepthFirst
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+spName/scheduleName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates an existing PersonalSchedule in a Scaling Plan.
