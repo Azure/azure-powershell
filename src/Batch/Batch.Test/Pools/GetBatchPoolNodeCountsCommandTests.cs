@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(requestFilter, $"(poolId eq '{poolId}')");
+            Assert.Equal($"(poolId eq '{poolId}')", requestFilter);
         }
 
         [Fact]

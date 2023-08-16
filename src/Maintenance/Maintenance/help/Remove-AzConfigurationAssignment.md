@@ -13,9 +13,9 @@ Unregister configuration for resource.
 ## SYNTAX
 
 ```
-Remove-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
- [-ResourceParentType <String>] [-ResourceParentName <String>] [-ResourceType] <String>
- [-ResourceName] <String> -ConfigurationAssignmentName <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzConfigurationAssignment [[-ResourceGroupName] <String>] [[-ProviderName] <String>]
+ [-ResourceParentType <String>] [-ResourceParentName <String>] [[-ResourceType] <String>]
+ [[-ResourceName] <String>] -ConfigurationAssignmentName <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -122,7 +122,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -137,7 +137,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -152,7 +152,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -197,7 +197,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -59,6 +59,9 @@ Creates a container registry with the specified parameters.
 ### [New-AzContainerRegistryAgentPool](New-AzContainerRegistryAgentPool.md)
 Creates an agent pool for a container registry with the specified parameters.
 
+### [New-AzContainerRegistryCredentials](New-AzContainerRegistryCredentials.md)
+Generate keys for a token of a specified container registry.
+
 ### [New-AzContainerRegistryExportPipeline](New-AzContainerRegistryExportPipeline.md)
 Creates an export pipeline for a container registry with the specified parameters.
 

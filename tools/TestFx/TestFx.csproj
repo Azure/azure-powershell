@@ -34,8 +34,9 @@
   <ItemGroup>
 	<PackageReference Include="Moq" Version="4.7.145" />
 	<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-	<PackageReference Include="System.DirectoryServices.Protocols" Version="5.0.1" />
-	<PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
+	<PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
+	<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
+	<PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.4" />
   </ItemGroup>
 
 </Project>

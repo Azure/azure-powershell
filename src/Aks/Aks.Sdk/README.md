@@ -5,13 +5,14 @@ This directory contains management plane service clients of Az.Aks module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 openapi-type: arm
 azure-arm: true
@@ -57,6 +58,11 @@ directive:
   - from: swagger-document
     where: $.definitions.ManagedClusterProperties.properties.currentKubernetesVersion
     transform: $["description"] = $["description"].replace(/>/g, ")");
+  - where:
+      model-name: AgentPool
+      property-name: PropertiesType
+    set:
+      property-name: AgentPoolType
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.ContainerService
