@@ -261,5 +261,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         void RemoveHsmRoleAssignment(string hsmName, string scope, string roleAssignmentName);
         void RemoveHsmRoleDefinition(string hsmName, string scope, string name);
         #endregion
+
+        #region
+        IEnumerable<PSKeyVaultSetting> GetManagedHsmSettings(string managedHsm);
+
+        PSKeyVaultSetting GetManagedHsmSetting(string managedHsm, string settingName);
+
+        PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams);
+
+        #endregion
     }
 }

@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             else
             {
                 //Web-Test
+                if (metricAlertResource.Criteria is WebtestLocationAvailabilityCriteria)
+                {
+                    Criteria.Add(new PSWebtestLocationAvailabilityCriteria(metricAlertResource.Criteria as WebtestLocationAvailabilityCriteria));
+                }
             }
             Actions = new Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup[metricAlertResource.Actions.Count];
             for(int i = 0; i < metricAlertResource.Actions.Count;i++)
