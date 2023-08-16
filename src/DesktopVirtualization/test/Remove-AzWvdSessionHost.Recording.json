@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "169" ],
-        "x-ms-client-request-id": [ "68828ae7-c461-4991-8e40-c629cc6a7767" ],
+        "x-ms-unique-id": [ "290" ],
+        "x-ms-client-request-id": [ "1759fcf3-87e2-4a5f-b8c3-f2918d77fcf4" ],
         "CommandName": [ "Get-AzWvdSessionHost" ],
         "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,27 +24,27 @@
         "Pragma": [ "no-cache" ],
         "X-Rate-Limit-Limit": [ "5m" ],
         "X-Rate-Limit-Remaining": [ "4" ],
-        "X-Rate-Limit-Reset": [ "2023-08-12T01:32:35.0691543Z" ],
+        "X-Rate-Limit-Reset": [ "2023-08-16T07:33:53.2924921Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NocmVtb3ZlLTA=" ],
-        "x-ms-lamport-ts": [ "114555402" ],
-        "x-ms-correlation-id": [ "35b0b223-b2bc-4fd2-af96-9c26e83a3806" ],
-        "x-ms-request-id": [ "68828ae7-c461-4991-8e40-c629cc6a7767" ],
+        "x-ms-lamport-ts": [ "115390056" ],
+        "x-ms-correlation-id": [ "8d783fa7-f9e2-4879-b3f4-019e5a03e106" ],
+        "x-ms-request-id": [ "1759fcf3-87e2-4a5f-b8c3-f2918d77fcf4" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Set-Cookie": [ "ARRAffinity=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=47e899d5dc0547d5646e3c2c0081ae2cb7fddd55609bf4af48732c4283928a51;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
-        "x-ms-correlation-request-id": [ "4955f34e-3d19-4a44-8e39-6b3a373b87f5" ],
-        "x-ms-routing-request-id": [ "EASTUS:20230812T013100Z:4955f34e-3d19-4a44-8e39-6b3a373b87f5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11932" ],
+        "x-ms-correlation-request-id": [ "fcddd5db-f36d-41e9-988b-7331948225e3" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230816T073345Z:fcddd5db-f36d-41e9-988b-7331948225e3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sat, 12 Aug 2023 01:31:00 GMT" ]
+        "Date": [ "Wed, 16 Aug 2023 07:33:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 35b0b223-b2bc-4fd2-af96-9c26e83a3806 Error: SessionHost does not exist\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 8d783fa7-f9e2-4879-b3f4-019e5a03e106 Error: SessionHost does not exist\"}}",
       "isContentBase64": false
     }
   }

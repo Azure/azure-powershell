@@ -38,22 +38,35 @@ Describe 'Update-AzWvdScalingPlanPersonalSchedule' {
                 -ResourceGroupName $env.ResourceGroup `
                 -ScalingPlanName $scalingPlanName `
                 -ScalingPlanScheduleName 'PersonalSchedule1' `
-                -DaysOfWeek 'Monday','Tuesday','Wednesday' `
-                -RampUpStartTimeHour '6' `
-                -RampUpStartTimeMinute '0' `
-                -RampUpMinimumHostsPct 1 `
-                -RampUpLoadBalancingAlgorithm 'BreadthFirst' `
-                -RampUpCapacityThreshold 10 `
-                -PeakStartTimeHour '8' `
-                -PeakStartTimeMinute '15' `
-                -PeakLoadBalancingAlgorithm 'BreadthFirst' `
-                -RampDownStartTimeHour '16' `
-                -RampDownStartTimeMinute '30' `
-                -RampDownLoadBalancingAlgorithm 'BreadthFirst' `
-                -RampDownCapacityThreshold 10 `
-                -OffPeakStartTimeHour '18' `
-                -OffPeakStartTimeMinute '45' `
-                -OffPeakLoadBalancingAlgorithm 'BreadthFirst'
+                -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -rampUpStartTimeHour 6 `
+                                        -rampUpStartTimeMinute 30 `
+                                        -rampUpAutoStartHosts All `
+                                        -rampUpStartVMOnConnect Enable `
+                                        -rampUpActionOnDisconnect None `
+                                        -rampUpMinutesToWaitOnDisconnect 10 `
+                                        -rampUpActionOnLogoff None `
+                                        -rampUpMinutesToWaitOnLogoff 10 `
+                                        -peakStartTimeHour 8 `
+                                        -peakStartTimeMinute 30 `
+                                        -peakStartVMOnConnect Enable `
+                                        -peakActionOnDisconnect None `
+                                        -peakMinutesToWaitOnDisconnect 10 `
+                                        -peakMinutesToWaitOnLogoff 10 `
+                                        -RampDownStartTimeHour 16 `
+                                        -RampDownStartTimeMinute 0 `
+                                        -rampDownStartVMOnConnect Enable `
+                                        -rampDownActionOnDisconnect None `
+                                        -rampDownMinutesToWaitOnDisconnect 10 `
+                                        -rampDownMinutesToWaitOnLogoff 10 `
+                                        -rampDownActionOnLogoff None `
+                                        -offPeakStartTimeHour 22 `
+                                        -offPeakStartTimeMinute 45 `
+                                        -offPeakStartVMOnConnect Enable `
+                                        -offPeakActionOnDisconnect None `
+                                        -offPeakMinutesToWaitOnDisconnect 10 `
+                                        -offPeakActionOnLogoff Deallocate `
+                                        -offPeakMinutesToWaitOnLogoff 10
 
             $scalingPlanPersonalSchedule.Name | Should -Be "$($scalingPlanName)/PersonalSchedule1"
 

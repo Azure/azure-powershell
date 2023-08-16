@@ -6,7 +6,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts All `
+                                        -rampUpAutoStartHosts "All" `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -17,7 +17,6 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -peakStartVMOnConnect Enable `
                                         -peakActionOnDisconnect None `
                                         -peakMinutesToWaitOnDisconnect 10 `
-                                        -peakActionOnDisconnect Deallocate `
                                         -peakMinutesToWaitOnLogoff 10 `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
