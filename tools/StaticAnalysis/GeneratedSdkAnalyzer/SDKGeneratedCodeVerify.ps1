@@ -29,7 +29,7 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
-$skipModules = @('Az.KeyVault', 'Az.CosmosDB')
+$skipModules = @('Az.KeyVault', 'Az.CosmosDB', 'Az.AlertsManagement')
 
 $MissReadMe = 9000
 $GenSdkChanged = 9090

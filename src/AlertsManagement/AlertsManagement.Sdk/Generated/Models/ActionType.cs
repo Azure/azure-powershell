@@ -7,14 +7,13 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
 {
 
     /// <summary>
-    /// Defines values for AlertState.
+    /// Defines values for ActionType.
     /// </summary>
 
 
-    public static class AlertState
+    public static class ActionType
     {
-        public const string New = "New";
-        public const string Acknowledged = "Acknowledged";
-        public const string Closed = "Closed";
+        public const string AddActionGroups = "AddActionGroups";
+        public const string RemoveAllActionGroups = "RemoveAllActionGroups";
     }
 }

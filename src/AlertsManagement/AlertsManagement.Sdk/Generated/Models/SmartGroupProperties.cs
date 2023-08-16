@@ -8,41 +8,31 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
     using System.Linq;
 
     /// <summary>
-    /// Set of related alerts grouped together smartly by AMS.
+    /// Properties of smart group.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SmartGroup : Resource
+    public partial class SmartGroupProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SmartGroup class.
+        /// Initializes a new instance of the SmartGroupProperties class.
         /// </summary>
-        public SmartGroup()
+        public SmartGroupProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SmartGroup class.
+        /// Initializes a new instance of the SmartGroupProperties class.
         /// </summary>
-
-        /// <param name="id">Azure resource Id
-        /// </param>
-
-        /// <param name="type">Azure resource type
-        /// </param>
-
-        /// <param name="name">Azure resource name
-        /// </param>
-
-        /// <param name="severity">Severity of smart group is the highest(Sev0 &gt;... &gt; Sev4) severity of all
-        /// the alerts in the group.
-        /// Possible values include: 'Sev0', 'Sev1', 'Sev2', 'Sev3', 'Sev4'</param>
 
         /// <param name="alertsCount">Total number of alerts in smart group
         /// </param>
 
         /// <param name="smartGroupState">Smart group state
         /// Possible values include: 'New', 'Acknowledged', 'Closed'</param>
+
+        /// <param name="severity">Severity of smart group is the highest(Sev0 &gt;... &gt; Sev4) severity of all
+        /// the alerts in the group.
+        /// Possible values include: 'Sev0', 'Sev1', 'Sev2', 'Sev3', 'Sev4'</param>
 
         /// <param name="startDateTime">Creation time of smart group. Date-Time in ISO-8601 format.
         /// </param>
@@ -77,13 +67,12 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
         /// <param name="nextLink">The URI to fetch the next page of alerts. Call ListNext() with this URI to
         /// fetch the next page alerts.
         /// </param>
-        public SmartGroup(string id = default(string), string type = default(string), string name = default(string), string severity = default(string), long? alertsCount = default(long?), string smartGroupState = default(string), System.DateTime? startDateTime = default(System.DateTime?), System.DateTime? lastModifiedDateTime = default(System.DateTime?), string lastModifiedUserName = default(string), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resources = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resourceTypes = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resourceGroups = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> monitorServices = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> monitorConditions = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> alertStates = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> alertSeverities = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), string nextLink = default(string))
+        public SmartGroupProperties(long? alertsCount = default(long?), string smartGroupState = default(string), string severity = default(string), System.DateTime? startDateTime = default(System.DateTime?), System.DateTime? lastModifiedDateTime = default(System.DateTime?), string lastModifiedUserName = default(string), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resources = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resourceTypes = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> resourceGroups = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> monitorServices = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> monitorConditions = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> alertStates = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), System.Collections.Generic.IList<SmartGroupAggregatedProperty> alertSeverities = default(System.Collections.Generic.IList<SmartGroupAggregatedProperty>), string nextLink = default(string))
 
-        : base(id, type, name)
         {
-            this.Severity = severity;
             this.AlertsCount = alertsCount;
             this.SmartGroupState = smartGroupState;
+            this.Severity = severity;
             this.StartDateTime = startDateTime;
             this.LastModifiedDateTime = lastModifiedDateTime;
             this.LastModifiedUserName = lastModifiedUserName;
@@ -105,89 +94,89 @@ namespace Microsoft.Azure.Management.AlertsManagement.Models
 
 
         /// <summary>
-        /// Gets severity of smart group is the highest(Sev0 &gt;... &gt; Sev4) severity of
-        /// all the alerts in the group. Possible values include: &#39;Sev0&#39;, &#39;Sev1&#39;, &#39;Sev2&#39;, &#39;Sev3&#39;, &#39;Sev4&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.severity")]
-        public string Severity {get; private set; }
-
-        /// <summary>
         /// Gets or sets total number of alerts in smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.alertsCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alertsCount")]
         public long? AlertsCount {get; set; }
 
         /// <summary>
         /// Gets smart group state Possible values include: &#39;New&#39;, &#39;Acknowledged&#39;, &#39;Closed&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smartGroupState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "smartGroupState")]
         public string SmartGroupState {get; private set; }
+
+        /// <summary>
+        /// Gets severity of smart group is the highest(Sev0 &gt;... &gt; Sev4) severity of
+        /// all the alerts in the group. Possible values include: &#39;Sev0&#39;, &#39;Sev1&#39;, &#39;Sev2&#39;, &#39;Sev3&#39;, &#39;Sev4&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "severity")]
+        public string Severity {get; private set; }
 
         /// <summary>
         /// Gets creation time of smart group. Date-Time in ISO-8601 format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startDateTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "startDateTime")]
         public System.DateTime? StartDateTime {get; private set; }
 
         /// <summary>
         /// Gets last updated time of smart group. Date-Time in ISO-8601 format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedDateTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedDateTime")]
         public System.DateTime? LastModifiedDateTime {get; private set; }
 
         /// <summary>
         /// Gets last modified by user name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedUserName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lastModifiedUserName")]
         public string LastModifiedUserName {get; private set; }
 
         /// <summary>
         /// Gets or sets summary of target resources in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resources")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resources")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> Resources {get; set; }
 
         /// <summary>
         /// Gets or sets summary of target resource types in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceTypes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceTypes")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> ResourceTypes {get; set; }
 
         /// <summary>
         /// Gets or sets summary of target resource groups in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGroups")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGroups")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> ResourceGroups {get; set; }
 
         /// <summary>
         /// Gets or sets summary of monitorServices in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.monitorServices")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "monitorServices")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> MonitorServices {get; set; }
 
         /// <summary>
         /// Gets or sets summary of monitorConditions in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.monitorConditions")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "monitorConditions")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> MonitorConditions {get; set; }
 
         /// <summary>
         /// Gets or sets summary of alertStates in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.alertStates")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alertStates")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> AlertStates {get; set; }
 
         /// <summary>
         /// Gets or sets summary of alertSeverities in the smart group
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.alertSeverities")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alertSeverities")]
         public System.Collections.Generic.IList<SmartGroupAggregatedProperty> AlertSeverities {get; set; }
 
         /// <summary>
         /// Gets or sets the URI to fetch the next page of alerts. Call ListNext() with
         /// this URI to fetch the next page alerts.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextLink")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nextLink")]
         public string NextLink {get; set; }
     }
 }
