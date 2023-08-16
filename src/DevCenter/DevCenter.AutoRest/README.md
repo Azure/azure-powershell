@@ -40,6 +40,33 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
 directive:
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. Successfully initiated sync."
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/Gallery"}
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/AttachedNetworkConnection"}
+      }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/Catalog"}
+      }
   - where:
       subject: ^(.*)
       parameter-name: Top
