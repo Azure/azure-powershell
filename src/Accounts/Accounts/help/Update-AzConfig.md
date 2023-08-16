@@ -17,7 +17,7 @@ Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <I
  [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin <String>] [-DisableErrorRecordsPersistence <Boolean>]
  [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
  [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>]
- [-EnableTestCoverage <Boolean>] [-TestCoverageLocation <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in around November 2023
+When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
 
 ```yaml
 Type: System.Boolean
@@ -218,21 +218,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableTestCoverage
-When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Scope
 Determines the scope of config changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 By default it is CurrentUser.
@@ -247,21 +232,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestCoverageLocation
-Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
