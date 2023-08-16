@@ -43,6 +43,54 @@ title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
 directive:
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:start"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:stop"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:restart"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/environments/{environmentName}"].put.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "#/definitions/Environment"}
+      }
+  - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/environments/{environmentName}"].delete.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
+    where: $.paths["/devboxes"].get.operationId
+    transform: return "DevBoxes_ListAllDevBoxes"
+  - from: swagger-document
+    where: $.paths["/users/{userId}/devboxes"].get.operationId
+    transform: return "DevBoxes_ListAllDevBoxesByUser"
   - where:
       subject: ^(.*)(DevBoxPool)(.*)$
     set:
