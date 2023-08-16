@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 ConfigKeys.DisableErrorRecordsPersistence,
                 Resources.HelpMessageOfDisableErrorRecordsPersistence,
                 false,
-                ConfigKeys.DisableErrorRecordsPersistence,
+                string.Format("AzPS{0}", ConfigKeys.DisableErrorRecordsPersistence),
                 new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
