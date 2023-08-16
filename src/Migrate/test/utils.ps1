@@ -74,6 +74,22 @@ function setupEnv() {
     $env.migVMwareMachineName = "idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_501501f9-0009-48ca-3030-a16262ba8e5d"
     $env.migRunAsAccountName = "f53e4f58-d091-536f-948e-51bc0745552e"
     $env.migApplianceName = "signoff2105app"
+
+    $env.asrv2SubscriptionId = "40b6d51e-c6c9-47c8-9203-52fdeaec6d1e"
+    $env.asrv2ResourceGroupName = "samlee3-rg4"
+    $env.asrv2ResourceGroupId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4"
+    $env.asrv2ProjectName = "samlee3proj4"
+    $env.asrv2ProjectId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.Migrate/MigrateProjects/samlee3proj4"
+    $env.asrv2SourceApplianceName = "samlee3src4"
+    $env.asrv2TargetApplianceName = "samlee3t"
+    $env.asrv2CacheStorageAccountName = "samlee3proj4migratesa"
+    $env.asrv2SourceReplicationFabricName = "samlee3src48adfreplicationfabric"
+    $env.asrv2TargetReplicationFabricName = "samlee3te2acreplicationfabric"
+    $env.asrv2ReplicationVaultName = "samlee3proj46422replicationvault"
+    $env.asrv2ReplicationPolicyName = "samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy"
+    $env.asrv2JobName = "f8941ed0-5563-400b-b93c-24dcba833dbb"
+    $env.asrv2JobId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/jobs/f8941ed0-5563-400b-b93c-24dcba833dbb"
+    $env.asrv2ProtectedItemId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
     
     $envFile = 'localEnv.json'
     if ($TestMode -eq 'live') {
