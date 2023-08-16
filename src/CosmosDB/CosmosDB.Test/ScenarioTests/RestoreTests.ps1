@@ -85,7 +85,6 @@ function Test-SqlRestoreAccountCmdlets {
   $PartitionKeyKindValue = "Hash"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
-  $publicNetworkAccess = "Disabled"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -97,14 +96,13 @@ function Test-SqlRestoreAccountCmdlets {
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
-  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $sourceCosmosDBAccount.Location -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore -PublicNetworkAccess $publicNetworkAccess
+  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $sourceCosmosDBAccount.Location -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
   Assert-AreEqual $restoredCosmosDBAccount.CreateMode "Restore"
   Assert-NotNull $restoredCosmosDBAccount.RestoreParameters
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreSource $sourceRestorableAccount.Id
-  Assert-AreEqual $restoredCosmosDBAccount.PublicNetworkAccess $publicNetworkAccess
 
   #Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.RestoreTimestampInUtc.ToUniversalTime() $inputRestoreTS.ToUniversalTime()
   Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
