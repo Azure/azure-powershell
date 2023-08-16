@@ -24,6 +24,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
                           -FriendlyName 'Friendly Name' `
                           -Description 'Description'
+                          -ShowInFeed $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity

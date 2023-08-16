@@ -2203,9 +2203,7 @@ Get a ScalingPlanPersonalSchedule.
 .Description
 Get a ScalingPlanPersonalSchedule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName scalingPlan1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -3758,7 +3756,8 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
-                            -ApplicationGroupType 'RemoteApp'
+                            -ApplicationGroupType 'RemoteApp' `
+                            -ShowInFeed $true
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -3767,6 +3766,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
                             -ApplicationGroupType 'Desktop'
+                            -ShowInFeed $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup
@@ -5095,9 +5095,39 @@ Create or update a ScalingPlanPersonalSchedule.
 .Description
 Create or update a ScalingPlanPersonalSchedule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
+                                        -ScalingPlanName spName `
+                                        -ScalingPlanScheduleName scheduleName `
+                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -rampUpStartTimeHour 6 `
+                                        -rampUpStartTimeMinute 30 `
+                                        -rampUpAutoStartHosts All `
+                                        -rampUpStartVMOnConnect Enable `
+                                        -rampUpActionOnDisconnect None `
+                                        -rampUpMinutesToWaitOnDisconnect 10 `
+                                        -rampUpActionOnLogoff None `
+                                        -rampUpMinutesToWaitOnLogoff 10 `
+                                        -peakStartTimeHour 8 `
+                                        -peakStartTimeMinute 30 `
+                                        -peakStartVMOnConnect Enable `
+                                        -peakActionOnDisconnect None `
+                                        -peakMinutesToWaitOnDisconnect 10 `
+                                        -peakActionOnDisconnect Deallocate `
+                                        -peakMinutesToWaitOnLogoff 10 `
+                                        -RampDownStartTimeHour 16 `
+                                        -RampDownStartTimeMinute 0 `
+                                        -rampDownStartVMOnConnect Enable `
+                                        -rampDownActionOnDisconnect None `
+                                        -rampDownMinutesToWaitOnDisconnect 10 `
+                                        -rampDownMinutesToWaitOnLogoff 10 `
+                                        -rampDownActionOnLogoff None `
+                                        -offPeakStartTimeHour 22 `
+                                        -offPeakStartTimeMinute 45 `
+                                        -offPeakStartVMOnConnect Enable `
+                                        -offPeakActionOnDisconnect None `
+                                        -offPeakMinutesToWaitOnDisconnect 10 `
+                                        -offPeakActionOnLogoff Deallocate `
+                                        -offPeakMinutesToWaitOnLogoff 10
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPersonalSchedule
@@ -7518,9 +7548,7 @@ Remove a ScalingPlanPersonalSchedule.
 .Description
 Remove a ScalingPlanPersonalSchedule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName -ScalingPlanName spName -ScalingPlanScheduleName scheduleName
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -8992,6 +9020,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
                           -FriendlyName 'Friendly Name' `
                           -Description 'Description'
+                          -ShowInFeed $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
@@ -10298,9 +10327,30 @@ Update a ScalingPlanPersonalSchedule.
 .Description
 Update a ScalingPlanPersonalSchedule.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
+                                        -ScalingPlanName spName `
+                                        -ScalingPlanScheduleName scheduleName `
+                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -rampUpStartTimeHour 6 `
+                                        -rampUpStartTimeMinute 30 `
+                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
+                                        -rampUpMinimumHostsPct 20 `
+                                        -rampUpCapacityThresholdPct 20 `
+                                        -peakStartTimeHour 8 `
+                                        -peakStartTimeMinute 30 `
+                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -RampDownStartTimeHour 16 `
+                                        -RampDownStartTimeMinute 0 `
+                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
+                                        -rampDownMinimumHostsPct 20 `
+                                        -rampDownCapacityThresholdPct 20 `
+                                        -rampDownForceLogoffUser:$true `
+                                        -rampDownWaitTimeMinute 30 `
+                                        -rampDownNotificationMessage "Log out now, please." `
+                                        -rampDownStopHostsWhen ZeroSessions `
+                                        -offPeakStartTimeHour 22 `
+                                        -offPeakStartTimeMinute 45 `
+                                        -offPeakLoadBalancingAlgorithm DepthFirst
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity

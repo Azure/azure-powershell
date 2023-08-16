@@ -30,27 +30,12 @@ Remove a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Personal Schedule 
 ```powershell
-{{ Add code here }}
+Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName -ScalingPlanName spName -ScalingPlanScheduleName scheduleName
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove a Personal Schedule from a Scaling Plan
 
 ## PARAMETERS
 

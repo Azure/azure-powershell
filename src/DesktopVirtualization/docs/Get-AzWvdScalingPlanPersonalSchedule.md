@@ -37,27 +37,19 @@ Get a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Scaling Plan Personal Schedule
 ```powershell
-{{ Add code here }}
+Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName scalingPlan1
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+scalingPlan1/weekdays_schedule
+scalingPlan1/PersonalSchedule1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets an existing Scaling Plan Personal Schedule.
 
 ## PARAMETERS
 

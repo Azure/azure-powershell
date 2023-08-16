@@ -26,7 +26,8 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
-                            -ApplicationGroupType 'RemoteApp'
+                            -ApplicationGroupType 'RemoteApp' `
+                            -ShowInFeed $true
 .Example
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Name ApplicationGroupName `
@@ -35,6 +36,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
                             -ApplicationGroupType 'Desktop'
+                            -ShowInFeed $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup
