@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            if (this.VM?.SecurityProfile?.SecurityType.ToLower() == TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType.ToLower() == ConfidentialVMSecurityType)
+            if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConfidentialVMSecurityType)
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
