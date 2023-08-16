@@ -5325,7 +5325,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
-    ${RampUpAutoStartHost},
+    ${RampUpAutoStartHosts},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -10577,7 +10577,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
-    ${RampUpAutoStartHost},
+    ${RampUpAutoStartHosts},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]

@@ -25,7 +25,7 @@ Describe 'Remove-AzWvdScalingPlanPersonalSchedule' {
                 -Location $env.location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
-                -HostPoolType 'Pooled' `
+                -HostPoolType 'Personal' `
                 -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()

@@ -25,7 +25,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
  [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
  [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
  [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHost <StartupBehavior>]
+ [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHosts <StartupBehavior>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
  [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -459,7 +459,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RampUpAutoStartHost
+### -RampUpAutoStartHosts
 The desired startup behavior during the ramp up period for personal vms in the hostpool.
 
 ```yaml

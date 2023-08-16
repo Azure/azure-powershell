@@ -25,7 +25,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                 -Location $env.location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
-                -HostPoolType 'Pooled' `
+                -HostPoolType 'Personal' `
                 -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
@@ -52,7 +52,6 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                                         -peakStartVMOnConnect Enable `
                                         -peakActionOnDisconnect None `
                                         -peakMinutesToWaitOnDisconnect 10 `
-                                        -peakActionOnDisconnect Deallocate `
                                         -peakMinutesToWaitOnLogoff 10 `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
@@ -96,7 +95,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                 -Location $env.location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
-                -HostPoolType 'Pooled' `
+                -HostPoolType 'Personal' `
                 -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
@@ -109,7 +108,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                 -ResourceGroupName $env.ResourceGroup `
                 -ScalingPlanName $scalingPlanName `
                 -ScalingPlanScheduleName 'PersonalSchedule1' `
-                -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                -daysOfWeek @('Monday', 'Tuesday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
                                         -rampUpAutoStartHosts All `
@@ -146,7 +145,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
             -ResourceGroupName $env.ResourceGroup `
             -ScalingPlanName $scalingPlanName `
             -ScalingPlanScheduleName 'PersonalSchedule2' `
-            -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+            -daysOfWeek @('Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
                                         -rampUpAutoStartHosts All `

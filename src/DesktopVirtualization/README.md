@@ -99,4 +99,14 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      model-name: ScalingPlanPersonalSchedule
+      property-name: RampUpAutoStartHost
+    set:
+      property-name: RampUpAutoStartHosts
+  - where:
+      subject: ScalingPlanPersonalSchedule
+      parameter-name: RampUpAutoStartHost
+    set:
+      parameter-name: RampUpAutoStartHosts
 ```
