@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
-Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'
+Flag to allow/block public endpoint access the restored account. Possible values include: 'Enabled', 'Disabled'
 
 ```yaml
 Type: System.String
