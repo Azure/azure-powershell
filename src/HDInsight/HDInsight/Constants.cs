@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public const string deprecateByAzVersion = "11.0.0";
         public const string deprecateByVersion = "7.0.0";
         public const string diskEncryptionChangeInfo = "The type of property 'DiskEncryption' of type 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster' will change from 'Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties' to 'Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties'.";
-        public const string workerNodeDataDisksGroupsChangeInfo = "The type of property 'WorkerNodeDataDisksGroups' will change from 'System.Collections.Generic.List`1[Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups]' to 'System.Collections.Generic.List`1[Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup]'.";
+        public const string workerNodeDataDisksGroupsChangeInfo = "The type of property 'WorkerNodeDataDisksGroups' will change from 'List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>' to 'List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>'.";
 
         public static class CommandNames
         {

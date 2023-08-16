@@ -22,11 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HDInsight\HDInsight.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.34.0" />
-  </ItemGroup>
-	
+
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
   </ItemGroup>
