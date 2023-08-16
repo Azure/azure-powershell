@@ -39,7 +39,7 @@ stages:
           $pattern = '(?s)## Version (\d+\.\d+\.\d)+[\s\S]*?\n(.*?)(?=\n## Version \d+\.\d+\.\d+|$)'
           $matches = [regex]::Match($mdcontent, $pattern)
           $NeedBumpUp = $true
-          $BaseBranch = $(BranchPrefix)/${{ parameters.ServiceName }}
+          $BaseBranch = "$(BranchPrefix)/${{ parameters.ServiceName }}"
           if ($matches.Success) {
               $versionNumber = $matches.Groups[1].Value
               $versionChanges = $matches.Groups[2].Value.Trim()
