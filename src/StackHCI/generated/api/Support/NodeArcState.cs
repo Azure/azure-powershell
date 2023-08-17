@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
     public partial struct NodeArcState :
         System.IEquatable<NodeArcState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Accepted = @"Accepted";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Canceled = @"Canceled";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Connected = @"Connected";
@@ -20,15 +22,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Deleting = @"Deleting";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState DisableInProgress = @"DisableInProgress";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Disconnected = @"Disconnected";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Error = @"Error";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Failed = @"Failed";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState InProgress = @"InProgress";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Moving = @"Moving";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState NotSpecified = @"NotSpecified";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState PartiallyConnected = @"PartiallyConnected";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState PartiallySucceeded = @"PartiallySucceeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Provisioning = @"Provisioning";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.NodeArcState Succeeded = @"Succeeded";
 

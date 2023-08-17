@@ -261,13 +261,13 @@ namespace Microsoft.Azure.Commands.Maintenance
             HelpMessage = "Install Patch Reboot Option. Allowed values Never, IfRequired, Always")]
         public string InstallPatchRebootSetting { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersionAttribute("PreTask", "10.2.0", "1.2.2", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChangeWithVersionAttribute("PreTask", "11.0.0", "2.0.0", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of tasks executed before schedule. e.g. [{'source' :'runbook', 'taskScope': 'Global', 'parameters': { 'arg1': 'value1'}}]. This parameter is used to specify a command or script that should be run before the maintenance tasks are performed. This can be used to perform any necessary preparations or cleanup actions before the maintenance tasks are run. This parameter accepts a string value that specifies the command or script to be run. The command or script can be specified as a simple string or as an array of strings. If an array of strings is specified, each element in the array will be treated as a separate command or script.")]
         public string PreTask { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersionAttribute("PostTask", "10.2.0", "1.2.2", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChangeWithVersionAttribute("PostTask", "11.0.0", "2.0.0", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of tasks executed after schedule. [{'source' :'runbook', 'taskScope': 'Resource', 'parameters': { 'arg1': 'value1'}}]. This parameter is used to specify a command or script that should be run after the maintenance tasks are performed. This can be used to perform any necessary follow-up actions after the maintenance tasks are completed. This parameter accepts a string value that specifies the command or script to be run. The command or script can be specified as a simple string or as an array of strings. If an array of strings is specified, each element in the array will be treated as a separate command or script.")]

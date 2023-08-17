@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        bool? hibernate = this.Hibernate.IsPresent ? (bool?)true : null;
+                        result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, hibernate, instanceIds).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -129,5 +130,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "DefaultParameter",
+            HelpMessage = "Hibernate a virtual machine from the VM scale set. This feature is available for VMSS with Flexible OrchestrationMode only.")]
+        public SwitchParameter Hibernate { get; set; }
     }
 }

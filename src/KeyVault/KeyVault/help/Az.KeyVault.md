@@ -65,6 +65,9 @@ Gets the policy for a certificate in a key vault.
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
 Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
+### [Get-AzKeyVaultKeyRotationPolicy](Get-AzKeyVaultKeyRotationPolicy.md)
+Gets the key rotation policy for the specified key in Key Vault.
+
 ### [Get-AzKeyVaultManagedHsm](Get-AzKeyVaultManagedHsm.md)
 Get managed HSMs.
 
@@ -73,6 +76,9 @@ Gets Key Vault managed Azure Storage Accounts.
 
 ### [Get-AzKeyVaultManagedStorageSasDefinition](Get-AzKeyVaultManagedStorageSasDefinition.md)
 Gets Key Vault managed Storage SAS Definitions.
+
+### [Get-AzKeyVaultRandomNumber](Get-AzKeyVaultRandomNumber.md)
+Get the requested number of bytes containing random values from a managed HSM.
 
 ### [Get-AzKeyVaultRoleAssignment](Get-AzKeyVaultRoleAssignment.md)
 Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
@@ -91,6 +97,9 @@ Imports previously exported security domain data to a managed HSM.
 
 ### [Invoke-AzKeyVaultKeyOperation](Invoke-AzKeyVaultKeyOperation.md)
 Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
+
+### [Invoke-AzKeyVaultKeyRotation](Invoke-AzKeyVaultKeyRotation.md)
+Creates a new key version in Key Vault, stores it, then returns the new key.
 
 ### [New-AzKeyVault](New-AzKeyVault.md)
 Creates a key vault.
@@ -138,7 +147,7 @@ Deletes a certificate operation from a key vault.
 Deletes a key in a key vault.
 
 ### [Remove-AzKeyVaultManagedHsm](Remove-AzKeyVaultManagedHsm.md)
-Deletes a managed HSM.
+Deletes/Purges a managed HSM.
 
 ### [Remove-AzKeyVaultManagedStorageAccount](Remove-AzKeyVaultManagedStorageAccount.md)
 Removes a Key Vault managed Azure Storage Account and all associated SAS definitions.
@@ -182,6 +191,9 @@ Sets a certificate issuer in a key vault.
 ### [Set-AzKeyVaultCertificatePolicy](Set-AzKeyVaultCertificatePolicy.md)
 Creates or updates the policy for a certificate in a key vault.
 
+### [Set-AzKeyVaultKeyRotationPolicy](Set-AzKeyVaultKeyRotationPolicy.md)
+Sets the key rotation policy for the specified key in Key Vault.
+
 ### [Set-AzKeyVaultManagedStorageSasDefinition](Set-AzKeyVaultManagedStorageSasDefinition.md)
 Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
 
@@ -197,6 +209,9 @@ Recovers a deleted certificate in a key vault into an active state.
 ### [Undo-AzKeyVaultKeyRemoval](Undo-AzKeyVaultKeyRemoval.md)
 Recovers a deleted key in a key vault into an active state.
 
+### [Undo-AzKeyVaultManagedHsmRemoval](Undo-AzKeyVaultManagedHsmRemoval.md)
+Recover a managed HSM.
+
 ### [Undo-AzKeyVaultManagedStorageAccountRemoval](Undo-AzKeyVaultManagedStorageAccountRemoval.md)
 Recovers a previously deleted KeyVault-managed storage account.
 
@@ -205,9 +220,6 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 
 ### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
-
-### [Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)
-Recovers a deleted HSM into an active state.
 
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.

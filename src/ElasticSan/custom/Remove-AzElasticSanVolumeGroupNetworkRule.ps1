@@ -25,7 +25,7 @@ Remove a list of virtual network rules from a VolumeGroup
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 .Notes
 COMPLEX PARAMETER PROPERTIES
 

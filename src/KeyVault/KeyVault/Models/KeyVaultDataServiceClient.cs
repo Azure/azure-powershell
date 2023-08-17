@@ -2238,5 +2238,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         #endregion
 
         #endregion
+
+        #region Setting
+        public IEnumerable<PSKeyVaultSetting> GetManagedHsmSettings(string managedHsm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSetting GetManagedHsmSetting(string managedHsm, string settingName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

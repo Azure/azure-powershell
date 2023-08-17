@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.HDInsight
     internal static class Constants
     {
         public const string Hadoop = "Hadoop";
+        public const string deprecateByAzVersion = "11.0.0";
+        public const string deprecateByVersion = "7.0.0";
+        public const string diskEncryptionChangeInfo = "The type of property 'DiskEncryption' of type 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster' will change from 'Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties' to 'Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties'.";
+        public const string workerNodeDataDisksGroupsChangeInfo = "The type of property 'WorkerNodeDataDisksGroups' will change from 'List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>' to 'List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>'.";
 
         public static class CommandNames
         {
