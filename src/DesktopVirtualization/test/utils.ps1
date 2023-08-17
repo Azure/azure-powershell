@@ -51,7 +51,7 @@ function setupEnv() {
     $null = $env.Add("HostPoolPersistent2", "alecbRemoteAppHP")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "userSess-sh-0")
-    $null = $env.Add("SessionHostNameRemove", "pwshremove-0")
+    $null = $env.Add("SessionHostNameRemove", "pwshDelete-1")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")
