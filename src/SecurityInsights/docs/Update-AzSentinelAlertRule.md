@@ -18,11 +18,11 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
  [-CreateIncident] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
- [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <Object>]
- [-GroupByAlertDetail <Object>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <Object>]
+ [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <String>]
+ [-GroupByAlertDetail <String>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <String>]
  [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>]
- [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <Object>]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <Object>] [-TriggerOperator <Object>]
+ [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <String>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-TriggerOperator <String>]
  [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -39,7 +39,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  -MicrosoftSecurityIncidentCreation [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
  [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>]
- [-Enabled] [-ProductFilter <Object>] [-SeveritiesFilter <Object>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Enabled] [-ProductFilter <String>] [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -FusionMLorT
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -MicrosoftSecurityIncidentCreation
  [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>]
- [-DisplayNamesFilter <String>] [-Enabled] [-ProductFilter <Object>] [-SeveritiesFilter <Object>]
+ [-DisplayNamesFilter <String>] [-Enabled] [-ProductFilter <String>] [-SeveritiesFilter <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -64,11 +64,11 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -Scheduled
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
  [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <Object>] [-GroupByAlertDetail <Object>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <Object>] [-GroupingConfigurationEnabled]
+ [-EventGroupingSettingAggregationKind <String>] [-GroupByAlertDetail <String>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <Object>] [-SuppressionDuration <TimeSpan>]
- [-SuppressionEnabled] [-Tactic <Object>] [-TriggerOperator <Object>] [-TriggerThreshold <Int32>]
+ [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <String>] [-SuppressionDuration <TimeSpan>]
+ [-SuppressionEnabled] [-Tactic <String>] [-TriggerOperator <String>] [-TriggerThreshold <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -364,7 +364,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -394,7 +394,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -424,7 +424,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -530,7 +530,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -651,7 +651,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String[]
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -666,7 +666,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -726,7 +726,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -741,7 +741,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: UpdateScheduled, UpdateViaIdentityUpdateScheduled
 Aliases:
 

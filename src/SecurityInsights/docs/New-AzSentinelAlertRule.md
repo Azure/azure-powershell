@@ -24,8 +24,8 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Ale
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
  -Kind <String> -ProductFilter <String> [-RuleId <String>] [-SubscriptionId <String>]
  [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
- [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Scheduled
@@ -618,7 +618,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 

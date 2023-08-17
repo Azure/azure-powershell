@@ -179,12 +179,14 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${ProductFilter},
 
     [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
+    [System.String[]]
     ${SeveritiesFilter},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -216,12 +218,14 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${Severity},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Reconnaissance", "ResourceDevelopment", "InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack", "ImpairProcessControl", "InhibitResponseFunction")]
+    [System.String]
     ${Tactic},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -261,6 +265,7 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${GroupByAlertDetail},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -273,6 +278,7 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${GroupByEntity},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -321,6 +327,7 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${TriggerOperator},
 
     [Parameter(ParameterSetName = 'UpdateScheduled')]
@@ -333,6 +340,7 @@ param(
     [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
     ${EventGroupingSettingAggregationKind},
 
     [Parameter()]

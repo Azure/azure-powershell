@@ -105,6 +105,12 @@ param(
     [System.String]
     ${Description},
 
+    [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation', Mandatory)]
+    [Parameter(ParameterSetName = 'Scheduled', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    ${DisplayName},
+
     [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
@@ -124,7 +130,7 @@ param(
     [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
+    [System.String[]]
     ${SeveritiesFilter},
 
     [Parameter(ParameterSetName = 'Scheduled')]
@@ -151,12 +157,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [Switch]
     ${CreateIncident},
-
-    [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation', Mandatory)]
-    [Parameter(ParameterSetName = 'Scheduled', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${DisplayName},
 
     [Parameter(ParameterSetName = 'Scheduled')]
     #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
@@ -355,17 +355,17 @@ process {
                 }
 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
 
                 If($PSBoundParameters['DisplayNamesFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesFilter']
+                    $AlertRule.DisplayNamesFilter = $PSBoundParameters['DisplayNamesFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesFilter')
                 }
 
                 If($PSBoundParameters['DisplayNamesExcludeFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesExcludeFilter']
+                    $AlertRule.DisplayNamesExcludeFilter = $PSBoundParameters['DisplayNamesExcludeFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesExcludeFilter')
                 }
 
@@ -376,7 +376,7 @@ process {
                 $null = $PSBoundParameters.Remove('DisplayName')
                 
                 If($PSBoundParameters['SeveritiesFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['SeveritiesFilter']
+                    $AlertRule.SeveritiesFilter = $PSBoundParameters['SeveritiesFilter']
                     $null = $PSBoundParameters.Remove('SeveritiesFilter')
                 }
             }

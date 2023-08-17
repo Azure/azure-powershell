@@ -61,7 +61,7 @@ Technique                    :
 Type                         : 
 ```
 
-This command creates a Anomaly SecurityMlAnalyticsSettings Object
+This command creates an Anomaly SecurityMlAnalyticsSettings Object
 
 ## PARAMETERS
 
