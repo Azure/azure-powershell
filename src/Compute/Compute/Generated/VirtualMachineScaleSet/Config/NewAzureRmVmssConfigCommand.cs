@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
                              DefaultParameterSetName = "DefaultParameterSet";
+        //public const string StandardSecurityType = "standard", TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
+
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -602,7 +604,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                if (vVirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || vVirtualMachineProfile.SecurityProfile.SecurityType == "ConfidentialVM")
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.TrustedLaunchSecurityType || vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;

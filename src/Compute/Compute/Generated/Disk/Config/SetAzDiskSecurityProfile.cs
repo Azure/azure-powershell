@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSDisk))]
     public class SetAzDiskSecurityProfile : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        //public const string StandardSecurityType = "standard", TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
+        
         [Alias("DiskSecurityProfile")]
         [Parameter(
             Mandatory = true,
@@ -64,14 +66,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         private void Run()
         {
-
-            if (SecurityType != "Standard")
+            // At this time, it is impossible to set SecurityType to Standard ("") as it is a mandatory property on the backend.
+            // If Standard is used, then there should be no securityProfile at all for now.
+            if (SecurityType.ToLower() != ConstantValues.StandardSecurityType)
             {
                 if(this.Disk.SecurityProfile == null)
                 {
                     this.Disk.SecurityProfile = new DiskSecurityProfile();
                 }
-                // At this time, it is impossible to set SecurityType to Standard ("") as it is a mandatory property on the backend.
                 this.Disk.SecurityProfile.SecurityType = SecurityType;
             }
 

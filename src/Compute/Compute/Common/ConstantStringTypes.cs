@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string Reimage = "Reimage";
     }
 
+    public static class ConstantValues
+    {
+        public const string StandardSecurityType = "standard";
+        public const string TrustedLaunchSecurityType = "trustedlaunch";
+        public const string ConfidentialVMSecurityType = "confidentialvm";
+    }
+
     public static class ProfileNouns
     {
         public const string VirtualMachineProfile = "AzureRmVMProfile";

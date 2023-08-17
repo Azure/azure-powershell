@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
                             
-                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType == "TrustedLaunch" || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType =="ConfidentialVM")
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                             {
                                 if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
                                 {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vmssParameters != null &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)

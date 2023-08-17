@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 	    
-	    if (this.IsParameterBound(c => c.SecurityType))
+	    if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
             {
                 if (vm.SecurityProfile == null)
                 {
@@ -392,11 +392,8 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vm.SecurityProfile.SecurityType = this.SecurityType;
-                if (vm.SecurityProfile.SecurityType.ToLower() == "standard")
-                {
-                    vm.SecurityProfile.SecurityType = "";
-                }
-                else if (vm.SecurityProfile.SecurityType == "TrustedLaunch" || vm.SecurityProfile.SecurityType == "ConfidentialVM")
+
+                if (vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
                     vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;

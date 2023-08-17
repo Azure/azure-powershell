@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
         public bool ConfigAsyncVisited = false;
-        public const string TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
-
+        
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = true,
@@ -587,17 +586,12 @@ namespace Microsoft.Azure.Commands.Compute
                 
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    if (_cmdlet.SecurityType?.ToLower() == TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConfidentialVMSecurityType)
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
                         _cmdlet.SecurityType = _cmdlet.SecurityType;
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    //else if (_cmdlet.SecurityType.ToLower() == "standard")
-                    //{
-                    //    _cmdlet.SecurityType = "";//This will change in the future once Standard is added as an actual SecurityType in the backend.
-                    //}
-                    
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -771,22 +765,18 @@ namespace Microsoft.Azure.Commands.Compute
             // Check Guest Attestation
             if (this.IsParameterBound(c => c.SecurityType))
             {
-                if (this.SecurityType?.ToLower() == TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConfidentialVMSecurityType)
+                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
                     this.SecurityType = this.SecurityType;
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
-                //else if (this.SecurityType.ToLower() == "standard")
-                //{
-                //    this.SecurityType = "";
-                //}
                 
             }
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
-                    )
+               )
             {
                 this.SystemAssignedIdentity = true;
             }
@@ -972,19 +962,17 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConfidentialVMSecurityType)
+            if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
-
                 }
                 else
                 {
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                 }
-
             }
             // Check if Identity can be defaulted in. 
             if (shouldGuestAttestationExtBeInstalled() &&
