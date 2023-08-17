@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DedicatedHsm
-online version: https://docs.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
+online version: https://learn.microsoft.com/powershell/module/az.dedicatedhsm/update-azdedicatedhsm
 schema: 2.0.0
 ---
 
@@ -44,8 +44,8 @@ This command updates the parameter tag of the Dedicated HSM by name
 
 ### Example 2: Update the parameter tag of the Dedicated HSM by object
 ```powershell
-$hsm = Get-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz 
-Update-AzDedicatedHsm -InputObject -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
+$hsm = Get-AzDedicatedHsm -Name hsm-n7wfxi -ResourceGroupName dedicatedhsm-rg-n359cz
+Update-AzDedicatedHsm -InputObject $hsm -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
 ```
 
 ```output
@@ -220,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlconnectionstring
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlconnectionstring
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Get the connection string according to client connection provider.
 
 ### Example 1: Get PostgreSql server connection string by resource group and server name
 ```powershell
- Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
+Get-AzPostgreSqlConnectionString -Client ADO.NET -Name PostgreSqlTestServer -ResourceGroupName PostgreSqlTestRG
 ```
 
 ```output
@@ -42,7 +42,7 @@ This cmdlet gets PostgreSql server connection string by resource group and serve
 
 ### Example 2: Get PostgreSql server connection string by identity
 ```powershell
- Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
+Get-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlConnectionString -Client PHP
 ```
 
 ```output

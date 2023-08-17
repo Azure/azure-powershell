@@ -1,0 +1,74 @@
+{
+  "New-AzSentinelIncidentComment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/8633863a-bc7c-40b0-9ad1-59f72db97042?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/8633863a-bc7c-40b0-9ad1-59f72db97042?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"severity\": \"Informational\",\n    \"status\": \"New\",\n    \"title\": \"NewincidentCommentIncident0xng1h\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "127" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "f1608e98-bb8f-4335-b80c-81ec8028f4c5" ],
+        "x-ms-correlation-request-id": [ "f1608e98-bb8f-4335-b80c-81ec8028f4c5" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160806Z:f1608e98-bb8f-4335-b80c-81ec8028f4c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1228" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/8633863a-bc7c-40b0-9ad1-59f72db97042\",\"name\":\"8633863a-bc7c-40b0-9ad1-59f72db97042\",\"etag\":\"\\\"4a00a852-0000-0100-0000-62fbc0e60000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents\",\"properties\":{\"title\":\"NewincidentCommentIncident0xng1h\",\"severity\":\"Informational\",\"status\":\"New\",\"owner\":{\"objectId\":null,\"email\":null,\"assignedTo\":null,\"userPrincipalName\":null,\"ownerType\":null},\"labels\":[],\"lastModifiedTimeUtc\":\"2022-08-16T16:08:06.1404374Z\",\"createdTimeUtc\":\"2022-08-16T16:08:06.1404374Z\",\"incidentNumber\":24,\"additionalData\":{\"alertsCount\":0,\"bookmarksCount\":0,\"commentsCount\":0,\"alertProductNames\":[],\"tactics\":[]},\"relatedAnalyticRuleIds\":[],\"incidentUrl\":\"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/8633863a-bc7c-40b0-9ad1-59f72db97042\",\"providerName\":\"Azure Sentinel\",\"providerIncidentId\":\"24\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSentinelIncidentComment+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/8633863a-bc7c-40b0-9ad1-59f72db97042/comments/e0d62b0f-55ba-423c-bd1c-13d72489e2c6?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/8633863a-bc7c-40b0-9ad1-59f72db97042/comments/e0d62b0f-55ba-423c-bd1c-13d72489e2c6?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"message\": \"NewincidentCommentyo7r3v\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "72cfcaf2-f191-4260-9e31-e0871f2ad84f" ],
+        "x-ms-correlation-request-id": [ "72cfcaf2-f191-4260-9e31-e0871f2ad84f" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160806Z:72cfcaf2-f191-4260-9e31-e0871f2ad84f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Incidents/8633863a-bc7c-40b0-9ad1-59f72db97042/Comments/e0d62b0f-55ba-423c-bd1c-13d72489e2c6\",\"name\":\"e0d62b0f-55ba-423c-bd1c-13d72489e2c6\",\"etag\":\"\\\"4a00a952-0000-0100-0000-62fbc0e60000\\\"\",\"type\":\"Microsoft.SecurityInsights/Incidents/Comments\",\"properties\":{\"message\":\"NewincidentCommentyo7r3v\",\"createdTimeUtc\":\"2022-08-16T16:08:06.4231604Z\",\"lastModifiedTimeUtc\":\"2022-08-16T16:08:06.4231604Z\",\"author\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\",\"userPrincipalName\":\"nicholas@zeronetworks.com\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

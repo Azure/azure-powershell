@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuildfunction
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Description for Gets the functions of a particular static site build.
 ```powershell
 Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 ```
+
 ```output
 Kind Name            Type
 ---- ----            ----

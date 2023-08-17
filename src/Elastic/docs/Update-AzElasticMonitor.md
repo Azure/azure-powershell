@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://docs.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
+online version: https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
 schema: 2.0.0
 ---
 

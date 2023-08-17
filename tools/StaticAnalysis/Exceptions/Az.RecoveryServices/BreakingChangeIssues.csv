@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation" 
-"Az.RecoveryServices","Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.RestoreAzureRmRecoveryServicesBackupItem","Restore-AzRecoveryServicesBackupItem","0","1060","The parameter set 'AzureVMManagedDiskParameterSet' for cmdlet 'Restore-AzRecoveryServicesBackupItem' is no longer the default parameter set.","Change the default parameter for cmdlet 'Restore-AzRecoveryServicesBackupItem' back to 'AzureVMManagedDiskParameterSet'."

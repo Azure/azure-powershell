@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/get-azaksversion
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksversion
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The operation returns properties of each orchestrator including version, availab
 
 ## EXAMPLES
 
-### Example 1: List available version for creating managed Kubernetes cluster.
+### Example 1: List available version for creating managed Kubernetes cluster
 ```powershell
 Get-AzAksVersion -location eastus
 ```

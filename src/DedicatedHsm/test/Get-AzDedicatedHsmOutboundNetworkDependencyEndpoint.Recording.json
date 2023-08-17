@@ -1,0 +1,46 @@
+{
+  "Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw/outboundNetworkDependenciesEndpoints?api-version=2021-11-30+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dedicatedhsm-rg-0br71l/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm-vf2jtw/outboundNetworkDependenciesEndpoints?api-version=2021-11-30",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "35135638-fbaf-453a-8f0b-76cc83ccbcea" ],
+        "CommandName": [ "Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint" ],
+        "FullCommandName": [ "Get-AzDedicatedHsmOutboundNetworkDependencyEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.DedicatedHsm/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-client-request-id": [ "35135638-fbaf-453a-8f0b-76cc83ccbcea" ],
+        "x-ms-keyvault-service-version": [ "1.5.339.0" ],
+        "x-ms-request-id": [ "f3445e35-6999-4285-aaef-3b0b1feb419d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "830f4a3f-4388-4af7-9cf4-a271db4887c2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220418T073040Z:830f4a3f-4388-4af7-9cf4-a271db4887c2" ],
+        "Date": [ "Mon, 18 Apr 2022 07:30:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,6 +1,6 @@
 ### Example 1: Increase student usage quota.
 ```powershell
-Add-AzLabUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-Timespan -Hours 4)
+Add-AzLabServicesUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-Timespan -Hours 4)
 ```
 
 ```output
@@ -13,8 +13,8 @@ This command increase the students quota by 4 hours.
 
 ### Example 2: Increase student usage quota with User object.
 ```powershell
-$user = Get-AzLabUser -ResourceGroupName "group name" -LabName "lab name" -UserName 'ContosoUser12345'
-$user | Add-AzLabUserQuota -UsageQuotaToAddToExisting $(New-Timespan -Hours 5)
+$user = Get-AzLabServicesUser -ResourceGroupName "group name" -LabName "lab name" -UserName 'ContosoUser12345'
+$user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-Timespan -Hours 5)
 ```
 
 ```output

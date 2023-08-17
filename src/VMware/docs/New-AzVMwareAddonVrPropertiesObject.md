@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonVrPropertiesObject
 schema: 2.0.0
 ---
 
@@ -25,6 +25,7 @@ Create a in-memory object for AddonVrProperties
 ```powershell
 New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 ```
+
 ```output
 AddonType ProvisioningState VrsCount
 --------- ----------------- --------

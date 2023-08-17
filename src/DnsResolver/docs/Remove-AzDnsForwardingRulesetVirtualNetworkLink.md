@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetvirtualnetworklink
 schema: 2.0.0
 ---
 
@@ -41,8 +41,8 @@ This command removes an virtual network link by name.
 
 ### Example 2: Remove an virtual network link by identity
 ```powershell
-$inputObject = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsResolverName pstestdnsresolvername -Name samplevnetLink1 -ResourceGroupName powershell-test-rg
-Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject $inputObject 
+$inputObject = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName pstestdnsresolvername -Name samplevnetLink1 -ResourceGroupName powershell-test-rg
+Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject $inputObject
 ```
 
 This command removes an virtual network link by identity.

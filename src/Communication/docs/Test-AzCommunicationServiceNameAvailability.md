@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
+online version: https://learn.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 schema: 2.0.0
 ---
 

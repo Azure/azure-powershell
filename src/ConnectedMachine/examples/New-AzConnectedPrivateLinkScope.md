@@ -4,11 +4,10 @@ New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName
 ```
 
 ```output
-Name        Location    PublicNetworkAccess ProvisioningState Tag
-----        --------    ------------------- ----------------- ---
-name1      eastus2euap Enabled             Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesReso…
+Name        Location    PublicNetworkAccess ProvisioningState 
+----        --------    ------------------- ----------------- 
+name1      eastus2euap Enabled             Succeeded         
 
 ```
 
 PublicNetworkAccess should be either "Enabled" or "Disabled"
-

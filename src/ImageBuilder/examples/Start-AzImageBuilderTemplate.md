@@ -1,6 +1,6 @@
 ### Example 1: Start an image template
 ```powershell
-Start-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
+Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
 ```
 
 ```output
@@ -13,8 +13,7 @@ This command starts an image template.
 
 ### Example 2: Start an image template
 ```powershell
-$template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
-Start-AzImageBuilderTemplate -InputObject $template
+Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
 ```
 
 This command starts an image template.

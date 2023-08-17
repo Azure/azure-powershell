@@ -4,7 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
-help-link-prefix: https://docs.microsoft.com/powershell/module/
+help-link-prefix: https://learn.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
 pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
 branch: main
@@ -49,6 +49,24 @@ exclude-tableview-properties:
 > Directives
 ``` yaml
 directive:
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Location"]
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Retry-After"]
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Azure-AsyncOperation"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Location"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Retry-After"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Azure-AsyncOperation"]
   - where:
       subject: Operation
     hide: true

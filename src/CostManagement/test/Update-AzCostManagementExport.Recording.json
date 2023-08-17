@@ -1,8 +1,8 @@
 {
-  "Update-AzCostManagementExport+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01+1": {
+  "Update-AzCostManagementExport+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
@@ -41,10 +41,10 @@
       "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39\",\"name\":\"export-qyte39\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6eefc4a6d610c\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Daily\",\"recurrencePeriod\":{\"from\":\"2021-01-20T15:17:17Z\",\"to\":\"2021-02-09T15:17:17Z\"}},\"nextRunTimeEstimate\":\"2021-01-20T19:26:28.0422031Z\",\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
     }
   },
-  "Update-AzCostManagementExport+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01+2": {
+  "Update-AzCostManagementExport+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01",
       "Content": "{\r\n  \"eTag\": \"\\\"1d6eefc4a6d610c\\\"\",\r\n  \"properties\": {\r\n    \"deliveryInfo\": {\r\n      \"destination\": {\r\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\r\n        \"container\": \"exports\",\r\n        \"rootFolderPath\": \"ad-hoc\"\r\n      }\r\n    },\r\n    \"definition\": {\r\n      \"dataSet\": {\r\n        \"granularity\": \"Daily\"\r\n      },\r\n      \"type\": \"Usage\",\r\n      \"timeframe\": \"MonthToDate\"\r\n    },\r\n    \"format\": \"Csv\",\r\n    \"schedule\": {\r\n      \"recurrencePeriod\": {\r\n        \"from\": \"2021-01-20T15:17:17.0000000Z\",\r\n        \"to\": \"2021-02-09T15:17:17.0000000Z\"\r\n      },\r\n      \"status\": \"Active\",\r\n      \"recurrence\": \"Weekly\"\r\n    }\r\n  }\r\n}",
       "Headers": {
       },
@@ -78,10 +78,10 @@
       "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39\",\"name\":\"export-qyte39\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6eefd91bd86c1\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Weekly\",\"recurrencePeriod\":{\"from\":\"2021-01-20T15:17:17Z\",\"to\":\"2021-02-09T15:17:17Z\"}},\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
     }
   },
-  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01+1": {
+  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
@@ -120,10 +120,10 @@
       "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39\",\"name\":\"export-qyte39\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6eefd91bd86c1\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Weekly\",\"recurrencePeriod\":{\"from\":\"2021-01-20T15:17:17Z\",\"to\":\"2021-02-09T15:17:17Z\"}},\"nextRunTimeEstimate\":\"2021-01-20T19:26:33.0527677Z\",\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
     }
   },
-  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01+2": {
+  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
@@ -162,10 +162,10 @@
       "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39\",\"name\":\"export-qyte39\",\"type\":\"Microsoft.CostManagement/exports\",\"eTag\":\"\\\"1d6eefd91bd86c1\\\"\",\"properties\":{\"schedule\":{\"status\":\"Active\",\"recurrence\":\"Weekly\",\"recurrencePeriod\":{\"from\":\"2021-01-20T15:17:17Z\",\"to\":\"2021-02-09T15:17:17Z\"}},\"nextRunTimeEstimate\":\"2021-01-20T19:26:34.4659043Z\",\"format\":\"Csv\",\"deliveryInfo\":{\"destination\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\"container\":\"exports\",\"rootFolderPath\":\"ad-hoc\"}},\"definition\":{\"type\":\"Usage\",\"timeframe\":\"MonthToDate\",\"dataSet\":{\"granularity\":\"Daily\"}}}}"
     }
   },
-  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01+3": {
+  "Update-AzCostManagementExport+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2020-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.CostManagement/exports/export-qyte39?api-version=2021-10-01",
       "Content": "{\r\n  \"eTag\": \"\\\"1d6eefd91bd86c1\\\"\",\r\n  \"properties\": {\r\n    \"deliveryInfo\": {\r\n      \"destination\": {\r\n        \"resourceId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/costmanagement-rg-py0wdu/providers/Microsoft.Storage/storageAccounts/staaccountjshubiu\",\r\n        \"container\": \"exports\",\r\n        \"rootFolderPath\": \"ad-hoc\"\r\n      }\r\n    },\r\n    \"definition\": {\r\n      \"dataSet\": {\r\n        \"granularity\": \"Daily\"\r\n      },\r\n      \"type\": \"Usage\",\r\n      \"timeframe\": \"MonthToDate\"\r\n    },\r\n    \"format\": \"Csv\",\r\n    \"schedule\": {\r\n      \"recurrencePeriod\": {\r\n        \"from\": \"2021-01-20T15:17:17.0000000Z\",\r\n        \"to\": \"2021-02-09T15:17:17.0000000Z\"\r\n      },\r\n      \"status\": \"Active\",\r\n      \"recurrence\": \"Weekly\"\r\n    }\r\n  }\r\n}",
       "Headers": {
       },

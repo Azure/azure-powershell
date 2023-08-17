@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
+online version: https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 schema: 2.0.0
 ---
 
@@ -22,14 +22,14 @@ New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <ICon
  [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>] [-IPAddressPort <IPort[]>]
  [-IPAddressType <ContainerGroupIPAddressType>] [-LogAnalyticLogType <LogAnalyticsLogType>]
  [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
- [-LogAnalyticWorkspaceResourceId <String>] [-OSType <OperatingSystemTypes>]
+ [-LogAnalyticWorkspaceResourceId <String>] [-OSType <OperatingSystemTypes>] [-Priority <String>]
  [-RestartPolicy <ContainerGroupRestartPolicy>] [-Sku <ContainerGroupSku>]
  [-SubnetId <IContainerGroupSubnetId[]>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update container groups with specified configurations. For property Volume, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
+Create or update container groups with specified configurations.
 
 ## EXAMPLES
 
@@ -112,7 +112,8 @@ This commands creates a container group with a container instance, whose image i
 ### Example 6: Create a container group that mounts Azure File volume
 ```powershell
 $volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
-$container = New-AzContainerInstanceObject -Name test-container -Image alpine
+$mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
+$container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
 ```
 
@@ -127,7 +128,7 @@ This commands creates a container group with a container instance, whose image i
 ### Example 7: Create a container group with system assigned and user assigned identity
 ```powershell
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine
-$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UserIdentityName>
+$containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity @{"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}" = @{}}
 ```
 
 ```output
@@ -160,7 +161,7 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +315,7 @@ The image registry credentials by which the container group is created from.
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -330,7 +331,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +377,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -537,6 +538,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Priority
+The priority of the Container Group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -588,7 +604,7 @@ The subnet resource IDs for a container group.
 To construct, see NOTES section for SUBNETID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroupSubnetId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -635,7 +651,7 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -699,7 +715,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
 
 ## NOTES
 
@@ -710,7 +726,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTAINER <IContainer[]>: The containers within the container group.
+`CONTAINER <IContainer[]>`: The containers within the container group.
   - `Image <String>`: The name of the image used to create the container instance.
   - `Name <String>`: The user-provided name of the container instance.
   - `RequestCpu <Double>`: The CPU request of this container instance.
@@ -756,14 +772,14 @@ CONTAINER <IContainer[]>: The containers within the container group.
     - `Name <String>`: The name of the volume mount.
     - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
 
-IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>: The image registry credentials by which the container group is created from.
+`IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>`: The image registry credentials by which the container group is created from.
   - `Server <String>`: The Docker image registry server without a protocol such as "http" and "https".
-  - `Username <String>`: The username for the private registry.
   - `[Identity <String>]`: The identity for the private registry.
   - `[IdentityUrl <String>]`: The identity URL for the private registry.
   - `[Password <String>]`: The password for the private registry.
+  - `[Username <String>]`: The username for the private registry.
 
-INITCONTAINER <IInitContainerDefinition[]>: The init containers for a container group.
+`INITCONTAINER <IInitContainerDefinition[]>`: The init containers for a container group.
   - `Name <String>`: The name for the init container.
   - `[Command <String[]>]`: The command to execute within the init container in exec form.
   - `[EnvironmentVariable <IEnvironmentVariable[]>]`: The environment variables to set in the init container.
@@ -776,21 +792,22 @@ INITCONTAINER <IInitContainerDefinition[]>: The init containers for a container 
     - `Name <String>`: The name of the volume mount.
     - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
 
-IPADDRESSPORT <IPort[]>: The list of ports exposed on the container group.
+`IPADDRESSPORT <IPort[]>`: The list of ports exposed on the container group.
   - `Port1 <Int32>`: The port number.
   - `[Protocol <ContainerGroupNetworkProtocol?>]`: The protocol associated with the port.
 
-SUBNETID <IContainerGroupSubnetId[]>: The subnet resource IDs for a container group.
+`SUBNETID <IContainerGroupSubnetId[]>`: The subnet resource IDs for a container group.
   - `Id <String>`: Resource ID of virtual network and subnet.
   - `[Name <String>]`: Friendly name for the subnet.
 
-VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in this container group.
+`VOLUME <IVolume[]>`: The list of volumes that can be mounted by containers in this container group.
   - `Name <String>`: The name of the volume.
   - `[AzureFileReadOnly <Boolean?>]`: The flag indicating whether the Azure File shared mounted as a volume is read-only.
   - `[AzureFileShareName <String>]`: The name of the Azure File share to be mounted as a volume.
   - `[AzureFileStorageAccountKey <String>]`: The storage account access key used to access the Azure File share.
   - `[AzureFileStorageAccountName <String>]`: The name of the storage account that contains the Azure File share.
-  - `[EmptyDir <IAny>]`: The empty directory volume.
+  - `[EmptyDir <IVolumeEmptyDir>]`: The empty directory volume.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[GitRepoDirectory <String>]`: Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
   - `[GitRepoRepository <String>]`: Repository URL
   - `[GitRepoRevision <String>]`: Commit hash for the specified revision.

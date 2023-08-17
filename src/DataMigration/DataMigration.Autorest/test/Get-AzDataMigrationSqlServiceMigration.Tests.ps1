@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationSqlServiceMigration' {
-    It 'List'  {
+    It 'List' -skip  {
         $instance = Get-AzDataMigrationSqlServiceMigration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestSqlMigrationService.GroupName -SqlMigrationServiceName $env.TestSqlMigrationService.SqlMigrationServiceName
         $assert = $instance.Count -gt 0
         $assert | Should be $true

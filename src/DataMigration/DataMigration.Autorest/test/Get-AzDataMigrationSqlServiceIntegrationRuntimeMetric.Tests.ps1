@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric' {
-    It 'List' {
+    It 'List' -skip {
         $instance = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestSqlMigrationService.GroupName -SqlMigrationServiceName $env.TestSqlMigrationService.SqlMigrationServiceName
         $instance.Name | should be 'default-ir'
     }

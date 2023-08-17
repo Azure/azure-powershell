@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotwebjob
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ List webjobs for a deployment slot.
 
 ### Example 1: List webjobs for a deployment slot
 ```powershell
-PS C:\> Get-AzWebAppSlotWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+Get-AzWebAppSlotWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+```
 
+```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
 appService-test01/slot01/slottriggeredjob-03                  webjob-rg-test

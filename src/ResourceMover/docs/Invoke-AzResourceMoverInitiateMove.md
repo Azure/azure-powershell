@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverinitiatemove
+online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverinitiatemove
 schema: 2.0.0
 ---
 

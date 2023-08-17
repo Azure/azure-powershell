@@ -19,6 +19,11 @@ function setupEnv() {
     $env.containerGroupName3 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName4 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName5 = "test-cg" + (RandomString -allChars $false -len 5)
+    $env.regularContainerGroupName = "test-cg" + (RandomString -allChars $false -len 5)
+    $env.spotContainerGroupName = "test-cg" + (RandomString -allChars $false -len 5)
+    $env.regularPriorityContainerGroupName = "test-regular-priority-cg" + (RandomString -allChars $false -len 5)
+    $env.spotPriorityContainerGroupName = "test-spot-priority-cg" + (RandomString -allChars $false -len 5)
+    $env.confidentialContainerGroupName = "test-confidential-containergroup"
 
     $env.containerInstanceName = "bez-test-ci"
     $env.image = "nginx"
@@ -26,6 +31,9 @@ function setupEnv() {
     $env.restartPolicy = "Never"
     $env.port1 = 8000
     $env.port2 = 8001
+    $env.regularPriority = "Regular"
+    $env.spotPriority = "Spot"
+    $env.confidentialSku = "confidential"
 
     # Create some resource for test.
     Write-Debug "Create resource group for test"
@@ -38,7 +46,16 @@ function setupEnv() {
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName -Location $env.location -Container $container
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.containerGroupName)-remove1" -Location $env.location -Container $container1
     New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.containerGroupName)-remove2" -Location $env.location -Container $container2
-
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.regularContainerGroupName -Location $env.location -Container $container1 -Priority $env.regularPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.spotContainerGroupName -Location $env.location -Container $container1 -Priority $env.spotPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.regularContainerGroupName)-remove1" -Location $env.location -Container $container1 -Priority $env.regularPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.regularContainerGroupName)-remove2" -Location $env.location -Container $container1 -Priority $env.regularPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.spotContainerGroupName)-remove1" -Location $env.location -Container $container1 -Priority $env.spotPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.spotContainerGroupName)-remove2" -Location $env.location -Container $container1 -Priority $env.spotPriority
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.confidentialContainerGroupName -Location $env.location -Container $container1 -Sku $env.confidentialSku
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.confidentialContainerGroupName)-remove1" -Location $env.location -Container $container1 -Sku $env.confidentialSku
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.confidentialContainerGroupName)-remove2" -Location $env.location -Container $container1 -Sku $env.confidentialSku
+    
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

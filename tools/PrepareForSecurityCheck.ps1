@@ -17,7 +17,7 @@
 
 param(
 )
-$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\FilesChanged.txt"
+$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $SecurityTmpFolder = "$PSScriptRoot\..\SecurityTmp"
 New-Item -ItemType Directory -Force -Path $SecurityTmpFolder

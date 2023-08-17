@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Restarts a server.
 
 ### Example 1: Restart the server by resource name
 ```powershell
- Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+Restart-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
 Restart the server by name
 
 ### Example 2: Restart the server by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
- Restart-AzPostgreSqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/restart"
+Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
 Restart the server by identity

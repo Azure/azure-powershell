@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/17d2a303b798b1675705efccb577b8f77da8389f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2021-03-01/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/aef78a6d0f0bc49b42327621fc670200d7545816/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2023-03-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -89,6 +89,12 @@ directive:
     set:
       alias: Import-AzRedisEnterpriseCacheDatabase
   - where:
+      verb: Clear
+      subject: Database
+    set:
+      verb: Invoke
+      subject: DatabaseFlush
+  - where:
       verb: Export
       subject: ^$
     set:
@@ -101,6 +107,23 @@ directive:
       parameter-name: ClusterName
     set:
       alias: Name
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationLinkedDatabase
+    set:
+      parameter-name: LinkedDatabase
+  - where:
+      verb: New
+      subject: Database
+    set:
+      hide: true
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationGroupNickname
+    set:
+      parameter-name: GroupNickname
   - where:
       parameter-name: SkuCapacity
     set:
@@ -178,6 +201,29 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
+  - where:
+      verb: Get
+      subject: Sku
+    hide: true
+
+  # DatabaseName parameter to have value 'default'
+  - where:
+      subject: ForceDatabaseUnlink
+      parameter-name: DatabaseName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+
+  # DatabaseName parameter to have value 'default'
+  - where:
+      verb: Invoke
+      subject: DatabaseFlush
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
 
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp

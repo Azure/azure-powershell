@@ -19,10 +19,10 @@ Creates an object to update NIC properties of a replicating server.
 .Description
 The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -55,11 +55,23 @@ function New-AzMigrateNicMapping {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the IP within the destination subnet to be used for the NIC.
-        ${TargetNicIP}
+        ${TargetNicIP},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+        ${TestNicSubnet},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the IP within the destination test subnet to be used for the NIC.
+        ${TestNicIP}
     )
     
     process {
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtNicInput]::new()
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtNicInput]::new()
         $NicObject.NicId = $NicID
         if ($PSBoundParameters.ContainsKey('TargetNicSelectionType')) {
             if ($TargetNicSelectionType -eq 'primary') {
@@ -96,6 +108,19 @@ function New-AzMigrateNicMapping {
                 throw "The NIC name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
             }
             $NicObject.TargetNicName = $TargetNicName
+        }
+
+        
+        if ($PSBoundParameters.ContainsKey('TestNicSubnet')) {
+            $NicObject.TestSubnetName = $TestNicSubnet
+        }
+       
+        if ($PSBoundParameters.ContainsKey('TestNicIP')) {
+            $isValidIpAddress = [ipaddress]::TryParse($TestNicIP,[ref][ipaddress]::Loopback)
+            if(!$isValidIpAddress) {
+                throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($TestNicIP)' is invalid."
+            }
+            $NicObject.TestStaticIPAddress = $TestNicIP
         }
 
         return $NicObject

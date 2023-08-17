@@ -1,0 +1,159 @@
+{
+  "Remove-AzAutomanageConfigProfileAssignment+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04",
+      "Content": "{\r\n  \"properties\": {\r\n    \"configurationProfile\": \"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "134" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "4c8b109c-3659-4196-a3d8-5d5f4afded75" ],
+        "x-ms-correlation-request-id": [ "4c8b109c-3659-4196-a3d8-5d5f4afded75" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085106Z:4c8b109c-3659-4196-a3d8-5d5f4afded75" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:51:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "816" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default\",\"name\":\"default\",\"type\":\"Microsoft.Automanage/configurationProfileAssignments\",\"properties\":{\"targetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm\",\"configurationProfile\":\"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\",\"status\":\"Conformant\"},\"systemData\":{\"createdAt\":\"2022-10-08T08:51:04.4265785+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-10-08T08:51:04.4265785+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfileAssignment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "1bb16e42-a2a2-4db1-97d7-a690725b6e59" ],
+        "CommandName": [ "Remove-AzAutomanageConfigProfileAssignment" ],
+        "FullCommandName": [ "Remove-AzAutomanageConfigProfileAssignment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "e4f51286-4855-4d00-ba9e-faf9c40df6d6" ],
+        "x-ms-correlation-request-id": [ "e4f51286-4855-4d00-ba9e-faf9c40df6d6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085107Z:e4f51286-4855-4d00-ba9e-faf9c40df6d6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:51:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfileAssignment+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04",
+      "Content": "{\r\n  \"properties\": {\r\n    \"configurationProfile\": \"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "134" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "9049a8f7-6d4a-4502-b81c-a31fd59af7dc" ],
+        "x-ms-correlation-request-id": [ "9049a8f7-6d4a-4502-b81c-a31fd59af7dc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085109Z:9049a8f7-6d4a-4502-b81c-a31fd59af7dc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:51:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "809" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default\",\"name\":\"default\",\"type\":\"Microsoft.Automanage/configurationProfileAssignments\",\"properties\":{\"targetId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm\",\"configurationProfile\":\"/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction\",\"status\":\"New\"},\"systemData\":{\"createdAt\":\"2022-10-08T08:51:08.5359534+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-10-08T08:51:08.5359534+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzAutomanageConfigProfileAssignment+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Automanage/configurationProfileAssignments/default?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "379ebd53-70dd-449f-b54d-c3ede8c507fe" ],
+        "CommandName": [ "Remove-AzAutomanageConfigProfileAssignment" ],
+        "FullCommandName": [ "Remove-AzAutomanageConfigProfileAssignment_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "1cb67277-6ecd-4d9f-9850-3cd5670769f0" ],
+        "x-ms-correlation-request-id": [ "1cb67277-6ecd-4d9f-9850-3cd5670769f0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T085110Z:1cb67277-6ecd-4d9f-9850-3cd5670769f0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:51:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

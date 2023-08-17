@@ -16,10 +16,10 @@ namespace Tools.Common.Utilities
             }
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
-            var whiteListFile = Path.Combine(versionControllerDirectory, "AllowList.csv");
-            if (File.Exists(whiteListFile))
+            var allowListFile = Path.Combine(versionControllerDirectory, "AzureStackExceptions.csv");
+            if (File.Exists(allowListFile))
             {
-                var lines = File.ReadAllLines(whiteListFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                var lines = File.ReadAllLines(allowListFile).Skip(1).Where(c => !string.IsNullOrEmpty(c));
                 foreach (var line in lines)
                 {
                     var cols = line.Split(',').Select(c => c.StartsWith("\"") ? c.Substring(1) : c)

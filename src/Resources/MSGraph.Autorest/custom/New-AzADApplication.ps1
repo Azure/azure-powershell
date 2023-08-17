@@ -18,19 +18,6 @@
 Adds new entity to applications
 .Description
 Adds new entity to applications
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -290,7 +277,7 @@ WEB <IMicrosoftGraphWebApplication>: webApplication
   [LogoutUrl <String>]: Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
   [RedirectUri <String[]>]: Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication
+https://learn.microsoft.com/powershell/module/az.resources/new-azadapplication
 #>
 function New-AzADApplication {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
@@ -657,10 +644,19 @@ function New-AzADApplication {
         $PSBoundParameters['Web'].RedirectUri = $PSBoundParameters['ReplyUrls']
         $null = $PSBoundParameters.Remove('ReplyUrls')
       }
+      if ($PSBoundParameters['SPARedirectUri']) {
+        $null = $PSBoundParameters.Remove('SPARedirectUri')
+      }
+      if ($PSBoundParameters['PublicClientRedirectUri']) {
+        $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
+      }
     }
     elseif ($PSBoundParameters['SPARedirectUri']) {
       $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
       $null = $PSBoundParameters.Remove('SPARedirectUri')
+      if ($PSBoundParameters['PublicClientRedirectUri']) {
+        $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
+      }
     }
     elseif ($PSBoundParameters['PublicClientRedirectUri']) {
       $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }

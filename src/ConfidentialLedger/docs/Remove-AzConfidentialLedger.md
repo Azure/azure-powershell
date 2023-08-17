@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConfidentialLedger
-online version: https://docs.microsoft.com/powershell/module/az.confidentialledger/remove-azconfidentialledger
+online version: https://learn.microsoft.com/powershell/module/az.confidentialledger/remove-azconfidentialledger
 schema: 2.0.0
 ---
 
@@ -31,11 +31,9 @@ Deletes an existing Confidential Ledger.
 
 ### Example 1: Delete a Confidential Ledger
 ```powershell
-PS C:\> Remove-AzConfidentialLedger `
+Remove-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000
-
-# No output
 ```
 
 Deletes the specified Confidential Ledger.

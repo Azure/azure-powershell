@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ConnectedMachine
 Module Guid: 259a0542-8329-4b9e-8f72-dab0efc583e9
-Download Help Link: https://docs.microsoft.com/powershell/module/az.connectedmachine
+Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedmachine
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -48,6 +48,9 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
+
+### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
+The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to create or update the extension.

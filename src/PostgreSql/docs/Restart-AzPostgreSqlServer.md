@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlserver
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/restart-azpostgresqlserver
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Restarts a server.
 
 ### Example 1: Restart PostgreSql server by resource group and server name
 ```powershell
- Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
+Restart-AzPostgreSqlServer -ResourceGroupName PostgreSqlTestRG -Name PostgreSqlTestServer
 
 ```
 
@@ -39,9 +39,8 @@ This cmdlet restarts PostgreSql server by resource group and server name.
 
 ### Example 2: Restart PostgreSql server by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
- Restart-AzPostgreSqlServer -InputObject $ID
- 
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/restart"
+Restart-AzPostgreSqlServer -InputObject $ID
 ```
 
 These cmdlets restart PostgreSql server by identity.

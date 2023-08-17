@@ -17,7 +17,6 @@ function Install-AzModule_Default {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 0)]
-        #[ValidateNotNullOrEmpty()]
         [string[]]
         ${Name},
 
@@ -81,11 +80,15 @@ function Install-AzModule_Default {
 
         $modules = @()
         $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
+        if ($modules) {
+            $Repository = $modules.Repository | Select-Object -First 1
+        }
 
         if($Name) {
             $moduleExcluded = $Name | Where-Object {!$modules -or $modules.Name -NotContains $_}
             if ($moduleExcluded) {
                 $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
+                $Repository = if ($Repository) {$Repository} else {'the registered repositories'}
                 Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
             }
         }

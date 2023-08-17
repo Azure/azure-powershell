@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverlocationbasedcapability
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
- Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
 ```
 
 ```output

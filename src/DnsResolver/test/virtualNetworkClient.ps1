@@ -50,8 +50,7 @@ function CreateSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [Stri
 
 function CreateNrpMockSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName) {
     $contentType3 = "application/json"
-    $subnetName = "snet-sim2"
-    $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName/subnets/$SubnetName"
+    $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName/subnets/$SUBNET_NAME"
     $completeVirtualNetworkRequestUri = $NRP_SIMULATOR_URI + $relativeRequestUri
     $data = [ordered]@{
         properties = @{

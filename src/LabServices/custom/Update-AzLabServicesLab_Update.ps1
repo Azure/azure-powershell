@@ -23,7 +23,7 @@ Operation to update a lab resource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
 #>
 function Update-AzLabServicesLab_Update {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]

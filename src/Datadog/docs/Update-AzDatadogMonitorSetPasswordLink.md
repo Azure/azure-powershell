@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Datadog
-online version: https://docs.microsoft.com/powershell/module/datadog/update-azdatadogmonitorsetpasswordlink
+online version: https://learn.microsoft.com/powershell/module/datadog/update-azdatadogmonitorsetpasswordlink
 schema: 2.0.0
 ---
 

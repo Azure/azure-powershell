@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DigitalTwins service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,92 +30,109 @@ For information on how to develop for `Az.DigitalTwins`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 9a312bb730561b8e8e3c0ea7c224de38a9d05238
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2020-10-31/digitaltwins.json
+  - $(repo)/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2022-05-31/digitaltwins.json
 
-module-version: 0.2.0
+module-version: 0.3.0
 title: DigitalTwins
 subject-prefix: $(service-name)
+
 identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
+
 directive:
-  - select: command
-    where:
-      verb: Get
-      parameter-name: VirtualMachine
-    set:
-      alias: Get-VM
-  - select: command
-    where:
-      verb: New
+  - where:
       subject: DigitalTwin
     set:
       subject: Instance
-  - select: command
-    where:
-      verb: Remove
-      subject: DigitalTwin
-    set:
-      subject: Instance
-  - select: command
-    where:
-      verb: Update
-      subject: DigitalTwin
-    set:
-      subject: Instance
-  - select: command      
-    where:
-      verb: Get
-      subject: DigitalTwin
-    set:
-      subject: Instance
-  - select: command
-    where:
-      verb: New
+  - where:
       subject: DigitalTwinEndpoint
     set:
       subject: Endpoint
-  - select: command
-    where:
-      verb: Test
+  - where:
       subject: DigitalTwinNameAvailability
     set:
       subject: InstanceNameAvailability
   - where:
       verb: Set
-      subject: DigitalTwin
     hide: true
+
   - where:
-      verb: Set
-      subject: DigitalTwinEndpoint
-    hide: true
-  - where:
-      verb: New
       subject: Instance
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    hide: true
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
+
+  - where:
+      subject: PrivateEndpointConnection
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
+
+  - where:
+      variant: ^Update$|^UpdateViaIdentity$|^Check$|^CheckViaIdentity$
+    remove: true
+
   - where:
       verb: New
       subject: Endpoint
-      variant: ^CreateExpanded$|^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    hide: true
-  - where:
-      verb: Test
-      subject: InstanceNameAvailability
     hide: true
   - where:
       verb: New
-      subject: CheckNameRequestObject
+      subject: TimeSeriesDatabaseConnection
     hide: true
+
   - where:
-      verb: New
-      subject: DigitalTwinsIdentityObject
-    hide: true
-  
-  # Correct some generated code
+      model-name: DigitalTwinsEndpointResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - EndpointType
+          - AuthenticationType
+          - ResourceGroupName
+  - where:
+      model-name: DigitalTwinsDescription
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ResourceGroupName
+  - where:
+      model-name: PrivateEndpointConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - GroupId
+          - PrivateLinkServiceConnectionStateStatus
+          - ResourceGroupName
+  - where:
+      model-name: GroupIdInformation
+    set:
+      format-table:
+        properties:
+          - GroupId
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: TimeSeriesDatabaseConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - ConnectionType
+          - ProvisioningState
+          - ResourceGroupName
+
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20201031.IDigitalTwinsEndpointResourceProperties Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResourceProperties Property');
 
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnectionProperties Property');
 ```

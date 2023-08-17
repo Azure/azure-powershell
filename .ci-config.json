@@ -2,8 +2,22 @@
   "rules": [
     {
       "patterns": [
+        "src/{ModuleName}/{ModuleName}.Management.Sdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.LegacySdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.Sdk/Generated/*"
+      ],
+      "phases": [
+        "generated-sdk:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/readme.md",
-        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+        "src/{ModuleName}/README.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
+        "src/{ModuleName}/*/README.md",
+        "src/{ModuleName}/*/readme.md"
       ],
       "phases": [
         "build:related-module",
@@ -22,7 +36,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all",
@@ -35,7 +49,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all",
+        "dependency:all",
         "test:all"
       ]
     },
@@ -45,7 +59,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all"
+        "dependency:all"
       ]
     },
     {
@@ -60,9 +74,15 @@
         "CONTRIBUTION.md",
         "LICENSE.txt",
         "README.md",
-        "**/ChangeLog.md",
-        "**/readme.md",
-        "src/**/document/*"
+        "ChangeLog.md",
+        "*/ChangeLog.md",
+        "*/readme.md",
+        "src/*/document/*",
+        ".ci-config.json",
+        "tools/PrepareAutorestModule.ps1",
+        "tools/SyncFromMainBranch.ps1",
+        "tools/CheckAssemblies.ps1",
+        "tools/GeneratedModuleList.txt"
       ],
       "phases": []
     },
@@ -78,21 +98,23 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.md$"
+        "src/{ModuleName}/*/*.md$"
       ],
       "phases": [
         "build:module",
-        "help:module"
+        "help:module",
+        "help-example:module"
       ]
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.csproj$"
+        "src/{ModuleName}/*/*.csproj$"
       ],
       "phases": [
         "build:related-module",
-        "dependence:dependence-module",
-        "test:dependence-module"
+        "dependency:dependence-module",
+        "test:dependence-module",
+        "file-change:module"
       ]
     },
     {
@@ -104,7 +126,10 @@
         "breaking-change:module",
         "help:module",
         "signature:module",
-        "test:dependence-module"
+        "test:dependence-module",
+        "file-change:module",
+        "ux:module",
+        "cmdlet-diff:module"
       ]
     },
     {
@@ -116,7 +141,7 @@
       ],
       "phases": [
         "build:module",
-        "dependence:module"
+        "dependency:module"
       ]
     },
     {
@@ -154,7 +179,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all"
       ]
@@ -184,7 +209,7 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all"
@@ -206,7 +231,7 @@
       ],
       "phases": [
         "build:all",
-        "dependence:all"
+        "dependency:all"
       ]
     },
     {
@@ -254,10 +279,7 @@
         "tools/Gen2Master/*",
         "tools/InstallationTests/*",
         "tools/Installer/*",
-        "tools/NetCoreCsProjSync/*",
-        "tools/NetCorePsd1Sync/*",
         "tools/ProjectTemplates/*",
-        "tools/RepoTasks/*",
         "tools/SecurityTools/*",
         "tools/Test/*",
         "tools/Tools.Common.Test/*",
@@ -272,11 +294,27 @@
       "phases": [
         "build:all",
         "breaking-change:all",
-        "dependence:all",
+        "dependency:all",
         "help:all",
         "signature:all",
         "test:all"
       ]
     }
-  ]
+  ],
+  "selectModuleList": [
+    "Accounts",
+    "Aks",
+    "ApplicationInsights",
+    "Compute",
+    "Functions",
+    "KeyVault",
+    "KubernetersConfiguration",
+    "Network",
+    "PostgreSql",
+    "Purview",
+    "Resources",
+    "Storage",
+    "Websites"
+  ],
+  "artifactPipelineInfoFolder": "artifacts/PipelineResult"
 }

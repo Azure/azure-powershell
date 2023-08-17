@@ -25,6 +25,9 @@ using StaticAnalysis.HelpAnalyzer;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.SignatureVerifier;
+using StaticAnalysis.ExampleAnalyzer;
+using StaticAnalysis.UXMetadataAnalyzer;
+using StaticAnalysis.GeneratedSdkAnalyzer;
 
 namespace StaticAnalysis.IssueChecker
 {
@@ -39,6 +42,9 @@ namespace StaticAnalysis.IssueChecker
             ("MissingAssemblies.csv", typeof(MissingAssembly).FullName),
             ("ExtraAssemblies.csv", typeof(ExtraAssembly).FullName),
             ("SignatureIssues.csv", typeof(SignatureIssue).FullName),
+            ("ExampleIssues.csv", typeof(ExampleIssue).FullName),
+            ("UXMetadataIssues.csv", typeof(UXMetadataIssue).FullName),
+            ("GeneratedSdkIssues.csv", typeof(GeneratedSdkIssue).FullName)
         };
         public AnalysisLogger Logger { get; set; }
 
@@ -77,7 +83,8 @@ namespace StaticAnalysis.IssueChecker
                 {
                     continue;
                 }
-                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName))
+                bool outputWarning = recordTypeName.Equals(typeof(ExampleIssue).FullName);
+                if (IsSingleExceptionFileHasCriticalIssue(exceptionFilePath, recordTypeName, outputWarning))
                 {
                     hasCriticalIssue = true;
                 }
@@ -90,7 +97,7 @@ namespace StaticAnalysis.IssueChecker
             }
         }
 
-        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName) 
+        private bool IsSingleExceptionFileHasCriticalIssue(string exceptionFilePath, string reportRecordTypeName, bool outputWarning) 
         {
             bool hasError = false;
             using (var reader = new StreamReader(exceptionFilePath))
@@ -105,6 +112,7 @@ namespace StaticAnalysis.IssueChecker
                 }
                 var errorText = new StringBuilder();
                 errorText.AppendLine(recordList.First().PrintHeaders());
+                var warningText = new StringBuilder();
                 foreach (IReportRecord record in recordList)
                 {
                     if (record.Severity < 2)
@@ -112,11 +120,19 @@ namespace StaticAnalysis.IssueChecker
                         hasError = true;
                         errorText.AppendLine(record.FormatRecord());
                     }
+                    else if (record.Severity == 2 && outputWarning)
+                    {
+                        warningText.AppendLine(record.FormatRecord());
+                    }
                 }
                 if (hasError)
                 {
                     Console.WriteLine("{0} Errors", exceptionFilePath);
                     Console.WriteLine(errorText.ToString());
+                    if(outputWarning && !String.IsNullOrEmpty(warningText.ToString())){
+                        Console.WriteLine("Following are warning issues. It is recommended to correct them as well.");
+                        Console.WriteLine(warningText.ToString());
+                    }
                 }
             }
             return hasError;

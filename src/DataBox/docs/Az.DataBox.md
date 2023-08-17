@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DataBox
 Module Guid: 9602a6b3-8b77-4f08-a6ed-edefff13e149
-Download Help Link: https://docs.microsoft.com/powershell/module/az.databox
+Download Help Link: https://learn.microsoft.com/powershell/module/az.databox
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -19,6 +19,9 @@ This method gets the unencrypted secrets related to the job.
 
 ### [New-AzDataBoxContactDetailsObject](New-AzDataBoxContactDetailsObject.md)
 Create an in-memory object for ContactDetails.
+
+### [New-AzDataBoxCustomerDiskJobDetailsObject](New-AzDataBoxCustomerDiskJobDetailsObject.md)
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
 
 ### [New-AzDataBoxDiskJobDetailsObject](New-AzDataBoxDiskJobDetailsObject.md)
 Create an in-memory object for DataBoxDiskJobDetails.

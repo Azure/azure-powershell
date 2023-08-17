@@ -1,12 +1,11 @@
 ### Example 1: Name is available
 ```powershell
-PS C:\> Test-AzConfidentialLedgerNameAvailability `
-  -NameAvailabilityRequest `
-      @{
-          Name="available-name";
-          Type="Microsoft.ConfidentialLedger/ledgers"
-      }
+Test-AzConfidentialLedgerNameAvailability `
+  -Name "available-name" `
+  -Type "Microsoft.ConfidentialLedger/ledgers"
+```
 
+```output
 Message       :
 NameAvailable : True
 Reason        :
@@ -16,13 +15,12 @@ Checks to see if the specified Confidential Ledger name is available. In this ca
 
 ### Example 2: Name is not available
 ```powershell
-PS C:\> Test-AzConfidentialLedgerNameAvailability `
-  -NameAvailabilityRequest `
-      @{
-          Name="not-available-name";
-          Type="Microsoft.ConfidentialLedger/ledgers"
-      }
+Test-AzConfidentialLedgerNameAvailability `
+  -Name "not-available-name" `
+  -Type "Microsoft.ConfidentialLedger/ledgers"
+```
 
+```output
 Message       : Resource name already exists
 NameAvailable : False
 Reason        : AlreadyExists

@@ -32,3 +32,18 @@ Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 ```
 
 Get service principal by pipeline input
+
+### Example 6: Get service principal with filter
+```powershell
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get service principal with filter
+
+### Example 7: Assign OdataCount to a variable
+```powershell
+Get-AzADServicePrincipal -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable

@@ -24,8 +24,7 @@ Describe 'DiskBackupScenario' {
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $defaultPolicy = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDisk
         $policyId = "/subscriptions/" + $sub + "/resourceGroups/" + $rgName + "/providers/Microsoft.DataProtection/backupVaults/" + $vaultName + "/backupPolicies/" + $policyName
-        $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policyId -DatasourceId $diskId 
-        $backupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = $snapshotRg
+        $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation centraluseuap -PolicyId $policyId -DatasourceId $diskId -SnapshotResourceGroupId $snapshotRg
         
         $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
         $instance = $instances | where-Object {$_.Property.DataSourceInfo.ResourceId -eq $diskId}
@@ -36,8 +35,11 @@ Describe 'DiskBackupScenario' {
         while($protectionStatus -ne "ProtectionConfigured")
         {
             Start-Sleep -Seconds 5
+
             $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -Name $backupInstanceName
             $protectionStatus = $instance.Property.ProtectionStatus.Status
+
+            # configure backup if not configured
         }
 
         $backupPolicyId = $instance.Property.PolicyInfo.PolicyId 
@@ -67,5 +69,4 @@ Describe 'DiskBackupScenario' {
             $jobstatus = $currentjob.Status
         }
      }
-
 }

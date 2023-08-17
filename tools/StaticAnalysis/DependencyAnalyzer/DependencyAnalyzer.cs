@@ -119,6 +119,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Resources.ResourceManager",
             "System.Resources.Writer",
             "System.Runtime",
+            "System.Runtime.CompilerServices.Unsafe",
             "System.Runtime.CompilerServices.VisualC",
             "System.Runtime.Extensions",
             "System.Runtime.Handles",
@@ -419,6 +420,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private void ProcessDirectory(string directoryPath)
         {
+            directoryPath = System.IO.Path.GetFullPath(directoryPath);
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
             var moduleAlcAssemblySet = LoadModuleAclAssembly(directoryPath);

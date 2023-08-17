@@ -30,8 +30,32 @@
         ${Location},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IStorageSetting[]]
         ${StorageSetting},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState]
+        [ValidateSet('Enabled','Disabled')]
+        ${AzureMonitorAlertsForAllJobFailure},
+
+        [Parameter(Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
+        [ValidateSet('Disabled','Unlocked', 'Locked')]
+        ${ImmutabilityState},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
+        [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
+        ${CrossSubscriptionRestoreState},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Soft delete retention duration in days')]
+        [System.Double]
+        ${SoftDeleteRetentionDurationInDay},
+
+        [Parameter(Mandatory=$false, HelpMessage='Soft delete state of the vault. Allowed values are Off, On, AlwaysOn')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+        [ValidateSet('Off','On', 'AlwaysOn')]  
+        ${SoftDeleteState},
 
         [Parameter(HelpMessage='Resource tags.')]
         [System.Collections.Hashtable]
@@ -43,7 +67,7 @@
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
+            
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job

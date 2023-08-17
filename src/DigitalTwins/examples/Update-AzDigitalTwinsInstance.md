@@ -1,26 +1,25 @@
-### Example 1: UpdateExpanded (Default)
+### Example 1: Update metadata of DigitalTwinsInstance.
 ```powershell
-Update-AzDigitalTwinsInstance -ResourcegroupName youritemp -ResourceName youriDigitalTwinsTest -Tag @{“dtt”="001"}
+Update-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance -Tag @{"abc"="123"}
 ```
 
 ```output
-Location Name                  Type
--------- ----                  ----
-eastus   youriDigitalTwinsTest Microsoft.DigitalTwins/digitalTwinsInstances
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Update the specified DigitalTwinsInstance by ResourceGroupName
+Update metadata of DigitalTwinsInstance.
 
-### Example 2: Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance
+### Example 2: Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.
 ```powershell
-$updateDigitalTwinInstance1 = Update-AzDigitalTwinsInstance -ResourcegroupName youritemp -ResourceName youriDigitalTwin1 -Tag @{"dtt"="002"}
-Update-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest -DigitalTwinsPatchDescription $updateDigitalTwinInstance1
+Get-AzDigitalTwinsInstance -ResourceGroupName azps_test_group -ResourceName azps-digitaltwins-instance | Update-AzDigitalTwinsInstance -Tag @{"1234"="abcd"}
 ```
 
 ```output
-Location Name                  Type
--------- ----                  ----
-eastus   youriDigitalTwinsTest Microsoft.DigitalTwins/digitalTwinsInstances
+Name                       Location ResourceGroupName
+----                       -------- -----------------
+azps-digitaltwins-instance eastus   azps_test_group
 ```
 
-Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance
+Update the AzDigitalTwinsInstance by another AzDigitalTwinsInstance.

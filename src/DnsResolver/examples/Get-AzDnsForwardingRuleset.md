@@ -28,7 +28,7 @@ westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-
 
 This command gets single DNS forwarding ruleset by name.
 
-### Example 3: List all DNS forwarding ruleset under the resouce group
+### Example 3: List all DNS forwarding ruleset under the resource group
 ```powershell
 Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
 ```
@@ -41,7 +41,7 @@ westus2  pw-dnsForwardingRuleset  Microsoft.Network/dnsForwardingRulesets "08009
 westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
 ```
 
-This command gets all DNS forwarding ruleset under the resouce group.
+This command gets all DNS forwarding ruleset under the resource group.
 
 ### Example 4: List all DNS forwarding ruleset under the virtual network
 ```powershell
@@ -56,15 +56,3 @@ westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005
 
 This command gets all DNS forwarding ruleset under the virtual network.
 
-### Example 5: List all DNS forwarding ruleset under the Outbound Endpoint
-```powershell
-Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -DnsResolverName sampleDnsResolver -OutboundEndpointName sampleOutboundEndpoint
-```
-
-```output
-Location Name                     Type                                    Etag
--------- ----                     ----                                    ----
-westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
-```
-
-This command gets all DNS forwarding ruleset under the outbound endpoint.

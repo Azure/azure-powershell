@@ -1,0 +1,38 @@
+{
+  "New-AzSentinelEntityQuery+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/0e70df5c-6ced-4480-b336-bc8491f9cd33?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/0e70df5c-6ced-4480-b336-bc8491f9cd33?api-version=2021-09-01-preview",
+      "Content": "{\n  \"kind\": \"Activity\",\n  \"properties\": {\n    \"queryDefinitions\": {\n      \"query\": \"let UserConsentToApplication = (Account_Name:string, Account_UPNSuffix:string, Account_AadUserId:string){\\r\\n            let account_upn = iff(Account_Name != \\\"\\\" and Account_UPNSuffix != \\\"\\\", strcat(Account_Name,\\\"@\\\",Account_UPNSuffix),\\\"\\\" );\\r\\n            AuditLogs\\r\\n            | where OperationName == \\\"Consent to application\\\"\\r\\n            | extend Source_Account_UPNSuffix = tostring(todynamic(InitiatedBy) [\\\"user\\\"][\\\"userPrincipalName\\\"]), Source_Account_AadUserId = tostring(todynamic(InitiatedBy) [\\\"user\\\"][\\\"id\\\"])\\r\\n            | where (account_upn != \\\"\\\" and account_upn =~ Source_Account_UPNSuffix) \\r\\n            or (Account_AadUserId != \\\"\\\" and Account_AadUserId =~ Source_Account_AadUserId)\\r\\n            | extend Target_CloudApplication_Name = tostring(todynamic(TargetResources)[0][\\\"displayName\\\"]), Target_CloudApplication_AppId = tostring(todynamic(TargetResources)[0][\\\"id\\\"])\\r\\n            };\\r\\n            UserConsentToApplication(\\u0027{{Account_Name}}\\u0027, \\u0027{{Account_UPNSuffix}}\\u0027, \\u0027{{Account_AadUserId}}\\u0027)  \\r\\n            | project Target_CloudApplication_AppId, Target_CloudApplication_Name, TimeGenerated\"\n    },\n    \"title\": \"The user consented to OAuth application\",\n    \"content\": \"The user consented to the OAuth application named {{Target_CloudApplication_Name}} {{Count}} time(s)\",\n    \"description\": \"This activity lists user\\u0027s consents to an OAuth applications.\",\n    \"inputEntityType\": \"Account\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1571" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "4edc69b0-fe10-48dd-a514-dcaa8d620bc0" ],
+        "x-ms-correlation-request-id": [ "4edc69b0-fe10-48dd-a514-dcaa8d620bc0" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160804Z:4edc69b0-fe10-48dd-a514-dcaa8d620bc0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2034" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/0e70df5c-6ced-4480-b336-bc8491f9cd33\",\"name\":\"0e70df5c-6ced-4480-b336-bc8491f9cd33\",\"etag\":\"\\\"0c007c13-0000-0100-0000-62fbc0e40000\\\"\",\"type\":\"Microsoft.SecurityInsights/entityQueries\",\"kind\":\"Activity\",\"properties\":{\"title\":\"The user consented to OAuth application\",\"content\":\"The user consented to the OAuth application named {{Target_CloudApplication_Name}} {{Count}} time(s)\",\"description\":\"This activity lists user\u0027s consents to an OAuth applications.\",\"queryDefinitions\":{\"query\":\"let UserConsentToApplication = (Account_Name:string, Account_UPNSuffix:string, Account_AadUserId:string){\\r\\n            let account_upn = iff(Account_Name != \\\"\\\" and Account_UPNSuffix != \\\"\\\", strcat(Account_Name,\\\"@\\\",Account_UPNSuffix),\\\"\\\" );\\r\\n            AuditLogs\\r\\n            | where OperationName == \\\"Consent to application\\\"\\r\\n            | extend Source_Account_UPNSuffix = tostring(todynamic(InitiatedBy) [\\\"user\\\"][\\\"userPrincipalName\\\"]), Source_Account_AadUserId = tostring(todynamic(InitiatedBy) [\\\"user\\\"][\\\"id\\\"])\\r\\n            | where (account_upn != \\\"\\\" and account_upn =~ Source_Account_UPNSuffix) \\r\\n            or (Account_AadUserId != \\\"\\\" and Account_AadUserId =~ Source_Account_AadUserId)\\r\\n            | extend Target_CloudApplication_Name = tostring(todynamic(TargetResources)[0][\\\"displayName\\\"]), Target_CloudApplication_AppId = tostring(todynamic(TargetResources)[0][\\\"id\\\"])\\r\\n            };\\r\\n            UserConsentToApplication(\u0027{{Account_Name}}\u0027, \u0027{{Account_UPNSuffix}}\u0027, \u0027{{Account_AadUserId}}\u0027)  \\r\\n            | project Target_CloudApplication_AppId, Target_CloudApplication_Name, TimeGenerated\"},\"requiredInputFieldsSets\":[],\"entitiesFilter\":{},\"enabled\":true,\"createdTimeUtc\":\"2022-08-16T16:08:04.5255986Z\",\"lastModifiedTimeUtc\":\"2022-08-16T16:08:04.5255986Z\",\"inputEntityType\":\"Account\"}}",
+      "isContentBase64": false
+    }
+  }
+}

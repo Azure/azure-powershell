@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MSGraph
 Module Guid: 9c1e9bcf-5175-4d03-99c7-a7f2f7040f46
-Download Help Link: https://docs.microsoft.com/powershell/module/az.msgraph
+Download Help Link: https://learn.microsoft.com/powershell/module/az.msgraph
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -20,6 +20,9 @@ Adds member to group.
 ### [Get-AzADAppCredential](Get-AzADAppCredential.md)
 Lists key credentials and password credentials for an application.
 
+### [Get-AzADAppFederatedCredential](Get-AzADAppFederatedCredential.md)
+Get federatedIdentityCredentials by Id from applications.
+
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Lists entities from applications or get entity from applications by key
 
@@ -31,6 +34,18 @@ Lists entities from groups or get entity from groups by key
 
 ### [Get-AzADGroupMember](Get-AzADGroupMember.md)
 Lists members from group.
+
+### [Get-AzADGroupOwner](Get-AzADGroupOwner.md)
+The owners of the group.
+Limited to 100 owners.
+Nullable.
+If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.
+Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+Supports $expand including nested $select.
+For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+
+### [Get-AzADOrganization](Get-AzADOrganization.md)
+Retrieve a list of organization objects.
 
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
@@ -44,11 +59,17 @@ Lists entities from users or get entity from users by key
 ### [New-AzADAppCredential](New-AzADAppCredential.md)
 Creates key credentials or password credentials for an application.
 
+### [New-AzADAppFederatedCredential](New-AzADAppFederatedCredential.md)
+Create federatedIdentityCredential for applications.
+
 ### [New-AzADApplication](New-AzADApplication.md)
 Adds new entity to applications
 
 ### [New-AzADGroup](New-AzADGroup.md)
 Adds new entity to groups
+
+### [New-AzADGroupOwner](New-AzADGroupOwner.md)
+Create new navigation property ref to owners for groups
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Adds new entity to servicePrincipals
@@ -61,6 +82,9 @@ Adds new entity to users
 
 ### [Remove-AzADAppCredential](Remove-AzADAppCredential.md)
 Removes key credentials or password credentials for an application.
+
+### [Remove-AzADAppFederatedCredential](Remove-AzADAppFederatedCredential.md)
+Delete navigation property federatedIdentityCredentials for applications
 
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Deletes entity from applications
@@ -78,6 +102,9 @@ HTTP Methods: GET (supported for all groups), POST (supported for security group
 Nullable.
 Supports $expand.
 
+### [Remove-AzADGroupOwner](Remove-AzADGroupOwner.md)
+Delete ref of navigation property owners for groups
+
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes entity from service principal.
 
@@ -87,8 +114,14 @@ Removes key credentials or password credentials for an service principal.
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
 
+### [Update-AzADAppFederatedCredential](Update-AzADAppFederatedCredential.md)
+Update the navigation property federatedIdentityCredentials in applications
+
 ### [Update-AzADApplication](Update-AzADApplication.md)
 Updates entity in applications
+
+### [Update-AzADGroup](Update-AzADGroup.md)
+Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/update-azpurviewaccount
+online version: https://learn.microsoft.com/powershell/module/az.purview/update-azpurviewaccount
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Updates an account
 
 ### Example 1: Update a purview account
 ```powershell
-Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | fl 
+Update-AzPurviewAccount -Name test-pa -ResourceGroupName test-rg -Tag @{"k"="v"} | Format-List 
 ```
 
 ```output

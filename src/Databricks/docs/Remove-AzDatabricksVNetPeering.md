@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
 schema: 2.0.0
 ---
 
@@ -30,19 +30,19 @@ Deletes the workspace vNetPeering.
 
 ## EXAMPLES
 
-### Example 1: Remove a vnet peering of databricks by name
+### Example 1: Remove a vnet peering of databricks by name.
 ```powershell
-Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
+Remove-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db 
 ```
 
-This command removes a vnet peering of databricks by name
+This command removes a vnet peering of databricks by name.
 
-### Example 2: Remove a vnet peering of databricks by object
+### Example 2: Remove a vnet peering of databricks by object.
 ```powershell
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db  | Remove-AzDatabricksVNetPeering
 ```
 
-This command removes a vnet peering of databricks by object
+This command removes a vnet peering of databricks by object.
 
 ## PARAMETERS
 
@@ -62,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -234,7 +235,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.

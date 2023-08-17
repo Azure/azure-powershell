@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.KubernetesConfiguration
-online version: https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 schema: 2.0.0
 ---
 
@@ -13,11 +13,12 @@ Create a new Kubernetes Source Control Configuration.
 ## SYNTAX
 
 ```
-New-AzKubernetesConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
- -RepositoryUrl <String> [-ClusterType <String>] [-SubscriptionId <String>] [-ClusterScoped]
+New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
  [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
  [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParameter <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
+ [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,31 +27,33 @@ Create a new Kubernetes Source Control Configuration.
 
 ## EXAMPLES
 
-### Example 1: Create a configuration for kubernetes cluster
+### Example 1: Create a configuration for Kubernetes Cluster
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s01 -RepositoryUrl http://github.com/xxxx
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s -RepositoryUrl http://github.com/xxxx -ClusterType ConnectedClusters
 ```
 
 ```output
-Name          Type
-----          ----
-azpstestk8s01 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name        RepositoryUrl          ResourceGroupName
+----        -------------          -----------------
+azpstestk8s http://github.com/xxxx azps_test_group
 ```
 
-This command creates a configuration for kubernetes cluster.
+This command creates a configuration for Kubernetes Cluster.
 
-### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
+### Example 2: Create a configuration for Kubernetes Cluster with specify paramter OperatorNamespace
 ```powershell
-New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name azpstestk8s02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
+New-AzConnectedKubernetes -ClusterName azpstest_cluster_arc -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01
+New-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name azpstestk8s-operator -RepositoryUrl http://github.com/xxxx -OperatorScope 'cluster' -ClusterType ConnectedClusters
 ```
 
 ```output
-Name          Type
-----          ----
-azpstestk8s02 Microsoft.KubernetesConfiguration/sourceControlConfigurations
+Name                 RepositoryUrl          ResourceGroupName
+----                 -------------          -----------------
+azpstestk8s-operator http://github.com/xxxx azps_test_group
 ```
 
-This command creates a configuration in the new operator namespace for kubernetes cluster.
+This command creates a configuration in the new operator namespace for Kubernetes Cluster.
 Note, Unable to create a configuration in an existing operator namespace.
 
 ## PARAMETERS
@@ -86,14 +89,15 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterType
-The Kubernetes cluster resource name - either managedClusters (for AKS clusters) or connectedClusters (for OnPrem K8S clusters).
+The Kubernetes cluster resource name - i.e.
+managedClusters, connectedClusters, provisionedClusters.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -221,11 +226,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorParameter
+### -OperatorParam
 Any Parameters for the Operator instance in string format.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperatorScope
+Scope at which the operator will be installed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperatorType
+Type of the operator
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +279,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,6 +288,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -267,7 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -SshKnownHost
-If passed set the scope of the Configuration to Cluster (default is nameSpace).
+Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
 
 ```yaml
 Type: System.String
@@ -282,7 +318,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -334,7 +370,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 
 ## NOTES
 

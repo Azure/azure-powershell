@@ -99,7 +99,7 @@ namespace Tools.Common.Models
 
         public static ModuleMetadata DeserializeCmdlets(string fileName)
         {
-            return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
+            return File.Exists(fileName) ? JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName)) : null;
         }
 
         public override int GetHashCode()

@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.ConnectedKubernetes","Get-AzConnectedKubernetes","Get-AzConnectedKubernetes","1","8400","Get-AzConnectedKubernetes uses the noun 'AzConnectedKubernetes', which does not follow the enforced naming convention of using a singular noun for a cmdlet name.","Consider using a singular noun for the cmdlet name."
 "Az.ConnectedKubernetes","Get-AzConnectedKubernetes","Get-AzConnectedKubernetes","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzConnectedKubernetes does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.ConnectedKubernetes","New-AzConnectedKubernetes","New-AzConnectedKubernetes","1","8100","New-AzConnectedKubernetes Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

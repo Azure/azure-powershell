@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.Migrate","Get-AzMigrateJob","Get-AzMigrateJob","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMigrateJob does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.Migrate","Get-AzMigrateProject","Get-AzMigrateProject","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMigrateProject does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.Migrate","Get-AzMigrateReplicationFabric","Get-AzMigrateReplicationFabric","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMigrateReplicationFabric does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

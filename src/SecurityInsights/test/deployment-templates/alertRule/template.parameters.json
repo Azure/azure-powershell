@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "alertRuleName": {
+      "value": "UpdateViaIdAlertRules7my5u"
+    },
+    "alertRuleId": {
+      "value": "819c1dad-0658-4633-b80c-74cae574c0f7"
+    },
+    "workspaceName": {
+      "value": "asptest1qlb2s"
+    }
+  }
+}

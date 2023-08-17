@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertRuleName": {
+            "defaultValue": "alertRuleName",
+            "type": "String"
+        },
+         "alertRuleId": {
+            "defaultValue": "alertRuleId",
+            "type": "String"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('alertRuleId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "apiVersion": "2021-03-01-preview",
+            "kind": "Scheduled",
+            "properties": {
+                "description": "[concat(parameters('alertRuleName'), ' ', parameters('alertRuleId'))]",
+                "displayName": "[parameters('alertRuleName')]",
+                "enabled": true,
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "groupByEntities": [],
+                        "lookbackDuration": "PT5H",
+                        "MatchingMethod": "AllEntities",
+                        "reopenClosedIncident": false
+                    }
+                },
+                "query": "SecurityEvent\n| take 1",
+                "queryFrequency": "P1D",
+                "queryPeriod": "P1D",
+                "severity": "Informational",
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [ "Execution" ],
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0
+            }
+        }
+    ]
+}

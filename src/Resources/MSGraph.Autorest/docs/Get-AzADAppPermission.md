@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadapppermission
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadapppermission
 schema: 2.0.0
 ---
 
@@ -31,6 +31,7 @@ Lists API permissions the application has requested.
 ```powershell
 Get-AzADAppPermission -ObjectId 18797549-86a9-4906-b2a9-54f08cd3c427
 ```
+
 ```output
 ApiId                                Id                                   Type
 -----                                --                                   ----

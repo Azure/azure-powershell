@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Confluent
-online version: https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+online version: https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 schema: 2.0.0
 ---
 

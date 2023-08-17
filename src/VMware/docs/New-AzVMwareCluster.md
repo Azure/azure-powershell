@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
+online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarecluster
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ Create or update a cluster in a private cloud
 ```powershell
 New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -ClusterSize 3 -SkuName av36
 ```
+
 ```output
 Name              Type                                 ResourceGroupName
 ----              ----                                 -----------------

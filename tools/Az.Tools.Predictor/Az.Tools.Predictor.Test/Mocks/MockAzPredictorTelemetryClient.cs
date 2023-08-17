@@ -29,6 +29,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public SuggestionDisplayedTelemetryData SuggestionDisplayedData { get; internal set; }
         public SuggestionAcceptedTelemetryData SuggestionAcceptedData { get; internal set; }
         public ParameterMapTelemetryData ParameterMapData { get; internal set; }
+        public GeneralExceptionTelemetryData ExceptionData { get; internal set; }
         public IList<TelemetryRecord> RecordedTelemetry { get; internal set; } = new List<TelemetryRecord>();
         public IList<ITelemetryData> DispatchedTelemetry { get; internal set; } = new List<ITelemetryData>();
         public AggregatedTelemetryData RecordedAggregatedData { get; private set; }
@@ -99,6 +100,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         {
             base.OnLoadParameterMap(telemetryData);
             ParameterMapData = telemetryData;
+        }
+
+        /// <inheritdoc/>
+        public override void OnGeneralException(GeneralExceptionTelemetryData telemetryData)
+        {
+            base.OnGeneralException(telemetryData);
+            ExceptionData = telemetryData;
         }
 
         public void FlushTelemetry() => SendAggregatedTelemetryData();

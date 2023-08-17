@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/update-azdatamigrationsqlservice
 schema: 2.0.0
 ---
 
@@ -236,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
 
 ## NOTES
 
@@ -251,6 +251,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagedInstanceName <String>]`: 
   - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[SqlDbInstanceName <String>]`: 
   - `[SqlMigrationServiceName <String>]`: Name of the SQL Migration Service.
   - `[SqlVirtualMachineName <String>]`: 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.

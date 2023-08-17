@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
+online version: https://learn.microsoft.com/powershell/module/az.purview/stop-azpurviewscanresultscan
 schema: 2.0.0
 ---
 

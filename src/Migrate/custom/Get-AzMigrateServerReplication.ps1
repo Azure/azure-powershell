@@ -19,10 +19,10 @@ Retrieves the details of the replicating server.
 .Description
 The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateserverreplication
 #>
 function Get-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetBySRSID', Mandatory)]
@@ -53,7 +53,7 @@ function Get-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'GetByInputObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
         # Specifies the machine object of the replicating server.
         ${InputObject},
 

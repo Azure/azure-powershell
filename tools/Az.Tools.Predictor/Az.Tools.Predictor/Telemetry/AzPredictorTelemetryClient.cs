@@ -19,8 +19,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem.Prediction;
 using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
@@ -32,11 +30,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     /// </summary>
     internal class AzPredictorTelemetryClient : ITelemetryClient, IDisposable
     {
-        // The maximum size we can have in the telemetry property
-        // Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
-        // Substract (arbitrary but hopefully enough) 100 as the buffer of other properties in the event.
         internal const int MaxAppInsightPropertyValueSize = 8192;
+
+        /// <summary>
+        /// The maximum size we can have in the telemetry property
+        /// </summary>
+        /// <remarks>
+        /// Application Insight has a limit of 8192 (https://github.com/MicrosoftDocs/azure-docs/blob/master/includes/application-insights-limits.md).
+        /// Substract (arbitrary but hopefully enough) 100 as the buffer of other values in the property.
+        /// </remarks>
         internal const int MaxPropertyValueSizeWithBuffer = MaxAppInsightPropertyValueSize - 100;
+
+        /// <summary>
+        /// The value used to concatenate the string together.
+        /// </summary>
+        internal const char _StringValueConcatenator = '\n';
 
         /// <inheritdoc/>
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
@@ -74,6 +82,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </remarks>
         protected AggregatedTelemetryData CachedAggregatedTelemetryData { get; private set; } = new();
 
+        /// <summary>
+        /// A set of user inputs that will be sent in the telemetry.
+        /// </summary>
+        /// <remarks>
+        /// This is the same value (after de-deuplication) of the user input field in the prediction property.
+        /// It's added as the property so that we can tell that if any issue is from the user inputs or the found examples
+        /// from the service. Though the user input is also in the prediction property, there is still too much data to go
+        /// through. We still need the user input in prediction to help with query.
+        ///
+        /// It's a class level field so that we don't always need to create a new instance for sending each telemetry.
+        /// </remarks>
+        private HashSet<string> _uniqueUserInput = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         private bool _isDisposed;
 
         /// <summary>
@@ -139,6 +159,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             System.Diagnostics.Trace.WriteLine("Recording GetSuggestion");
 #endif
         }
+
         /// <inheritdoc/>
         public virtual void OnSuggestionDisplayed(SuggestionDisplayedTelemetryData telemetryData)
         {
@@ -170,12 +191,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <inheritdoc/>
-        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData)
+        public virtual void OnGeneralException(GeneralExceptionTelemetryData telemetryData)
         {
             PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
-            System.Diagnostics.Trace.WriteLine("Recording CommandLineParsing");
+            System.Diagnostics.Trace.WriteLine("Recording GeneralException");
 #endif
         }
 
@@ -213,8 +234,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 case ParameterMapTelemetryData parameterMap:
                     ProcessTelemetryData(parameterMap);
                     break;
-                case CommandLineParsingTelemetryData commandLineParsing:
-                    ProcessTelemetryData(commandLineParsing);
+                case GeneralExceptionTelemetryData exception:
+                    ProcessTelemetryData(exception);
                     break;
             }
         }
@@ -235,7 +256,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 properties.Add(RequestPredictionTelemetryData.PropertyNameHttpRequestSent, aggregatedData.HasSentHttpRequest.Value.ToString(CultureInfo.InvariantCulture));
             }
 
+            if (aggregatedData.PredictorSummary != null)
+            {
+                properties.Add(RequestPredictionTelemetryData.PropertyNameReceivedCommandCount, aggregatedData.PredictorSummary.ReceivedCommandCount.ToString(CultureInfo.InvariantCulture));
+                properties.Add(RequestPredictionTelemetryData.PropertyNameValidCommandCount, aggregatedData.PredictorSummary.ValidCommandCount.ToString(CultureInfo.InvariantCulture));
+                if (aggregatedData.PredictorSummary.Errors?.Any() == true)
+                {
+                    properties.Add(RequestPredictionTelemetryData.PropertyNameCommandLineParsingError, string.Join(_StringValueConcatenator, aggregatedData.PredictorSummary.Errors));
+                }
+            }
+
             var suggestions = new List<Dictionary<string, object>>();
+            _uniqueUserInput.Clear();
+
             for (var i = 0; i < aggregatedData.SuggestionSessions.Count; ++i)
             {
                 var suggestionSession = aggregatedData.SuggestionSessions[i];
@@ -259,6 +292,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 if (suggestionSession.UserInput != null)
                 {
                     toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameUserInput, suggestionSession.UserInput);
+                    _uniqueUserInput.Add(suggestionSession.UserInput);
                 }
 
                 // Add the display suggestion data
@@ -289,14 +323,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             if (suggestions.Count > 0)
             {
-                properties.Add("Suggestion", JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
+                properties.Add(GetSuggestionTelemetryData.PropertyNamePrediction, JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
+                properties.Add(GetSuggestionTelemetryData.PropertyNameUserInput, string.Join(_StringValueConcatenator, _uniqueUserInput));
             }
 
             if (aggregatedData.CommandLine != null)
             {
                 // Add the command history data.
                 properties.Add(HistoryTelemetryData.PropertyNameSuccess, aggregatedData.IsCommandSuccess.ToString(CultureInfo.InvariantCulture));
-                properties.Add(HistoryTelemetryData.PropertyNameHistory, aggregatedData.CommandLine);
+                properties.Add(HistoryTelemetryData.PropertyNameCommand, aggregatedData.CommandLine);
             }
 
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/Aggregation", properties);
@@ -374,11 +409,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData = new AggregatedTelemetryData();
             }
 
-            if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
-            {
-                var newSuggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, CachedAggregatedTelemetryData.SuggestionSessions.LastOrDefault().SuggestionSessionId);
-                newSuggestionSession.IsSuggestionComplete = false; // This can correlate to the suggestions in the previous events.
-            }
+            // We check the size of the property and send the telemetry when we process GetSuggestionTelemetryData,
+            // SuggestionDisplayedTelemetryData, and SuggestionAcceptedTelemetryData. So we don't need to check again here.
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
             CachedAggregatedTelemetryData.CommandLine = telemetryData.Command;
@@ -405,6 +437,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
             CachedAggregatedTelemetryData.UpdateFromTelemetryData(telemetryData);
             CachedAggregatedTelemetryData.HasSentHttpRequest = telemetryData.HasSentHttpRequest;
+            CachedAggregatedTelemetryData.PredictorSummary = telemetryData.PredictorSummary;
 
             if (telemetryData.Exception != null)
             {
@@ -428,7 +461,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 }
             }
 
-            var maskedUserInput = CommandLineUtilities.MaskCommandLine(telemetryData.UserInput.FindAll((ast) => ast is CommandAst, true).LastOrDefault() as CommandAst);
+            var maskedUserInput = telemetryData.IsSupported ?
+                CommandLineUtilities.MaskCommandLine(telemetryData.UserInput) :
+                AzPredictorConstants.CommandPlaceholder;
 
             var suggestionSession = new SuggestionSession()
             {
@@ -482,13 +517,23 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
             }
 
+            // Set the values first before getting EstimatedSuggestionSessionSize so that we can know whether we can include
+            // these fields in the same batch
+            suggestionSession.DisplayMode = telemetryData.DisplayMode;
+            suggestionSession.DisplayedSuggestionCountOrIndex = telemetryData.SuggestionCountOrIndex;
+
             // Usually GetSuggestion occurs before SuggestionDisplayTelemetryData. In case the property size becomes too large after GetSuggestion, we send it now.
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
+                // In case we cannot include the fields in the same batch, we set them to null so we won't send them now.
+                suggestionSession.DisplayMode = null;
+                suggestionSession.DisplayedSuggestionCountOrIndex = null;
+
                 suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
-                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
+                suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestion session. So mark it as incomplete.
             }
 
+            // Let's make sure we always set the values no matter what.
             suggestionSession.DisplayMode = telemetryData.DisplayMode;
             suggestionSession.DisplayedSuggestionCountOrIndex = telemetryData.SuggestionCountOrIndex;
         }
@@ -517,12 +562,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 CachedAggregatedTelemetryData.SuggestionSessions.Add(suggestionSession);
             }
 
+            // Set AcceptedSuggestion before getting EstimateSuggestionSessionSize so that we can know if we can have the
+            // accepted suggestion in the same batch.
+            suggestionSession.AcceptedSuggestion = suggestion;
+
             if (CachedAggregatedTelemetryData.EstimateSuggestionSessionSize >= AzPredictorTelemetryClient.MaxPropertyValueSizeWithBuffer)
             {
+                // In the case that we cannot have accepted suggestion in the same batch, we set the field to null.
+                suggestionSession.AcceptedSuggestion = null;
+
                 suggestionSession = SendAggregateTelemetryDataDuringSuggestionCycle(telemetryData, telemetryData.SuggestionSessionId);
                 suggestionSession.IsSuggestionComplete = false; // This continue from the previous suggestionsession. So mark it as incomplete.
             }
 
+            // Make sure that AcceptedSuggestion is always set.
             suggestionSession.AcceptedSuggestion = suggestion;
         }
 
@@ -538,18 +591,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         }
 
         /// <summary>
-        /// Processes the telemetry with the command line parsing information.
+        /// Processes the telemetry with the exception.
         /// </summary>
-        private void ProcessTelemetryData(CommandLineParsingTelemetryData telemetryData)
+        private void ProcessTelemetryData(GeneralExceptionTelemetryData telemetryData)
         {
             if (telemetryData.Exception != null)
             {
-                var properties = new Dictionary<string,string>()
-                {
-                    { "Command", telemetryData.Command },
-                };
-
-                SendException("An error occurred when parsing command line.", telemetryData, telemetryData.Exception, properties);
+                SendException("An error occurred that wasn't caught in any scenarios.", telemetryData, telemetryData.Exception);
             }
         }
 

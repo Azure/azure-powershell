@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedNetwork
-online version: https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
+online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 schema: 2.0.0
 ---
 
@@ -24,8 +24,10 @@ Create a in-memory object for NetworkInterface
 
 ### Example 1: Create a in-memory object for NetworkInterface
 ```powershell
-PS C:\> New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
+New-AzConnectedNetworkInterfaceObject -IPConfiguration $ipconf1 -Name "mrmmanagementnic1" -VMSwitchType "Management"
+```
 
+```output
 MacAddress Name              VMSwitchType
 ---------- ----              ------------
            mrmmanagementnic1 Management

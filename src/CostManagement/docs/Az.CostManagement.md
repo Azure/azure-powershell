@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CostManagement
 Module Guid: 4cd9af10-559e-4fb9-8dcd-d3e8eb9e03b7
-Download Help Link: https://docs.microsoft.com/powershell/module/az.costmanagement
+Download Help Link: https://learn.microsoft.com/powershell/module/az.costmanagement
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -22,6 +22,21 @@ The operation to execute an export.
 
 ### [Invoke-AzCostManagementQuery](Invoke-AzCostManagementQuery.md)
 Query the usage data for scope defined.
+
+### [Invoke-AzCostManagementReservationDetailReport](Invoke-AzCostManagementReservationDetailReport.md)
+Generates the reservations details report for provided date range asynchronously based on enrollment id.
+The Reservation usage details can be viewed only by certain enterprise roles.
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+
+### [New-AzCostManagementDetailReport](New-AzCostManagementDetailReport.md)
+This API is the replacement for all previously release Usage Details APIs.
+Request to generate a cost details report for the provided date range, billing period (Only enterprise customers) or Invoice Id asynchronously at a certain scope.
+The initial call to request a report will return a 202 with a 'Location' and 'Retry-After' header.
+The 'Location' header will provide the endpoint to poll to get the result of the report generation.
+The 'Retry-After' provides the duration to wait before polling for the generated report.
+A call to poll the report operation will provide a 202 response with a 'Location' header if the operation is still in progress.
+Once the report generation operation completes, the polling endpoint will provide a 200 response along with details on the report blob(s) that are available for download.
+The details on the file(s) available for download will be available in the polling response body.
 
 ### [New-AzCostManagementExport](New-AzCostManagementExport.md)
 The operation to create or update a export.

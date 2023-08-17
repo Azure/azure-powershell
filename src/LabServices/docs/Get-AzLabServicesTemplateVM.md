@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+online version: https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ API to get the template vm for the lab.
 
 ### Example 1: Get the template for the lab.
 ```powershell
-Get-AzLabTemplateVM  -ResourceGroupName "group name" -LabName "lab name"
+Get-AzLabServicesTemplateVM -ResourceGroupName "group name" -LabName "lab name"
 ```
 
 ```output

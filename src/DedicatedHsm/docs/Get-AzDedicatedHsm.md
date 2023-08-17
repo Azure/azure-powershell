@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DedicatedHsm
-online version: https://docs.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
+online version: https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
 schema: 2.0.0
 ---
 
@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
 
 ## NOTES
 

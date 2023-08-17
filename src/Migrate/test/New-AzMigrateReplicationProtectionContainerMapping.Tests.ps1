@@ -13,13 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
     It 'CreateExpanded' {
-    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtContainerMappingInput]::new()
+    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtContainerMappingInput]::new()
     $providerSpecificInput.InstanceType = "VMwareCbt"
-        $providerSpecificInput.KeyVaultId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.KeyVault/vaults/migratekv868271840"
-        $providerSpecificInput.KeyVaultUri = "https://migratekv868271840.vault.azure.net"
+        $providerSpecificInput.KeyVaultId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.KeyVault/vaults/migratekv942102443"
+        $providerSpecificInput.KeyVaultUri = "https://migratekv942102443.vault.azure.net/"
         $providerSpecificInput.ServiceBusConnectionStringSecretName = "ServiceBusConnectionString"
-        $providerSpecificInput.StorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migrategwsa868271840"
-        $providerSpecificInput.StorageAccountSasSecretName = "migrategwsa868271840-gwySas"
+        $providerSpecificInput.StorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Storage/storageAccounts/migrategwsa1612849844"
+        $providerSpecificInput.StorageAccountSasSecretName = "migrategwsa1612849844-gwySas"
         $providerSpecificInput.TargetLocation = "centraluseuap"
 
         $output = New-AzMigrateReplicationProtectionContainerMapping -FabricName $env.srsFabricName -MappingName $env.srsMappingName -ProtectionContainerName $env.srsProtectionContainerName -ResourceGroupName $env.migResourceGroup -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -PolicyId $env.srsPolicyId -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId $env.srsTargetPCId

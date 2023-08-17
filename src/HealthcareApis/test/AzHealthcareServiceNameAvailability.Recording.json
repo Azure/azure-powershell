@@ -1,0 +1,39 @@
+{
+  "AzHealthcareServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/checkNameAvailability?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.HealthcareApis/checkNameAvailability?api-version=2021-11-01",
+      "Content": "{\r\n  \"name\": \"sqhim6\",\r\n  \"type\": \"Microsoft.HealthcareApis/services\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "72" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1cfcdebf-d9c5-4730-ab65-dccc47427d7d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Request-ID": [ "18e31b5ab012654eae9f2e81c23b7c3d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11833" ],
+        "x-ms-correlation-request-id": [ "67a7a41a-56b9-4eb9-8bd2-26b982302770" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220429T073815Z:67a7a41a-56b9-4eb9-8bd2-26b982302770" ],
+        "Date": [ "Fri, 29 Apr 2022 07:38:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

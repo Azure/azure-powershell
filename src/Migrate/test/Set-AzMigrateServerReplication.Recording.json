@@ -1,13 +1,52 @@
 {
-  "Set-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10+1": {
+  "Set-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00?api-version=2023-01-01",
       "Content": null,
-      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "0c1e2be3-b0ce-41b0-bd21-bf12d2d61563" ],
+        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
+        "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0c1e2be3-b0ce-41b0-bd21-bf12d2d61563 9/26/2022 12:05:57 PM" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0c1e2be3-b0ce-41b0-bd21-bf12d2d61563" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "680d1248-f17e-45ff-9efe-da390f966d2e" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220926T120558Z:680d1248-f17e-45ff-9efe-da390f966d2e" ],
+        "Date": [ "Mon, 26 Sep 2022 12:05:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "7525" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00\",\"name\":\"idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"Win2k16\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoffccyapp3352sitepolicy\",\"policyFriendlyName\":\"migratesignoffccyapp3352sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationRecoveryServicesProviders/25e13d18-d9a2-538b-9ff8-a494ac0efd2d\",\"replicationStatus\":\"Delta sync\",\"migrationState\":\"Replicating\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationStatus\":null,\"lastMigrationTime\":\"2022-09-23T17:47:01.5486966Z\",\"lastMigrationStatus\":\"Succeeded\",\"testMigrateState\":\"None\",\"testMigrateStateDescription\":\"None\",\"health\":\"Normal\",\"healthErrors\":[],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"Migrate\",\"PauseReplication\"],\"currentJob\":{\"jobName\":\"None\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationJobs/None\",\"startTime\":\"1753-01-01T01:01:01Z\"},\"criticalJobHistory\":[],\"eventCorrelationId\":\"847d99b2-057d-4f3b-8389-358a5a5a34e4\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/machines/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"sqlServerLicenseType\":\"PAYG\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/525f32f1-97ab-5073-8c0b-b6634ae24347\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/525f32f1-97ab-5073-8c0b-b6634ae24347\",\"storageAccountId\":null,\"targetVmName\":\"Win2k16\",\"targetVmSize\":\"Standard_A4_v2\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ashishRg\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetProximityPlacementGroupId\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Storage/storageAccounts/migratelsa1612849844\",\"targetVmTags\":{},\"protectedDisks\":[{\"diskId\":\"6000C294-1217-dec3-bc18-81f117220424\",\"diskName\":\"Win2k16\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[T55_10TB] Win2k16/Win2k16.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":32212254720,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Storage/storageAccounts/migratelsa1612849844\",\"logStorageAccountSasSecretName\":\"migratelsa1612849844-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ashishRg/providers/Microsoft.Compute/disks/asrseeddisk-Win2k16-Win2k16-d685e563-f5b4-4ff3-9e9a-4aa5416c96f4\",\"seedBlobUri\":null,\"targetManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ashishRg/providers/Microsoft.Compute/disks/Win2k16-OSdisk-00\",\"targetBlobUri\":null,\"targetDiskName\":\"Win2k16-OSdisk-00\"}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/--fancy(migrate)-----__/providers/Microsoft.Network/virtualNetworks/cbtsignoff2105targetnetwork\",\"testNetworkId\":\"\",\"vmNics\":[{\"nicId\":\"04a40eba-f0c4-4181-b53d-b91946aadc1f\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"testNetworkId\":null,\"testSubnetName\":\"\",\"testIPAddress\":\"\",\"testIPAddressType\":\"Dynamic\",\"targetNicName\":\"nic-Win2k16-00\",\"isSelectedForMigration\":\"true\"},{\"nicId\":\"6775c68f-1330-4c3d-9e04-94adf413bee0\",\"isPrimaryNic\":\"false\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"testNetworkId\":null,\"testSubnetName\":\"\",\"testIPAddress\":\"\",\"testIPAddressType\":\"Dynamic\",\"targetNicName\":\"nic-Win2k16-01\",\"isSelectedForMigration\":\"true\"},{\"nicId\":\"ba36099f-9c7d-4cfa-89cf-6da63319a2fe\",\"isPrimaryNic\":\"false\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"testNetworkId\":null,\"testSubnetName\":\"\",\"testIPAddress\":\"\",\"testIPAddressType\":\"Dynamic\",\"targetNicName\":\"nic-Win2k16-02\",\"isSelectedForMigration\":\"true\"},{\"nicId\":\"cd6cf44a-510f-44a8-b06a-99942d017632\",\"isPrimaryNic\":\"false\",\"sourceIPAddress\":null,\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"testNetworkId\":null,\"testSubnetName\":\"\",\"testIPAddress\":\"\",\"testIPAddressType\":\"Dynamic\",\"targetNicName\":\"nic-Win2k16-03\",\"isSelectedForMigration\":\"true\"}],\"targetNicTags\":{},\"migrationRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00/migrationRecoveryPoints/83563c3a-e189-4703-a965-0f96fc91fa52\",\"lastRecoveryPointReceived\":\"2022-09-26T16:23:04.268Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric/replicationProtectionContainers/signoffccyappae52replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-0f144e99-ba36-4649-b92b-8b06854aa539_5015f6d8-fc84-afdf-de47-1eab79330f00/migrationRecoveryPoints/573ba598-0c75-4a86-8cd2-94020e76422b\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":null,\"resyncProgressPercentage\":null,\"resumeProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resumeRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\",\"seedDiskTags\":null,\"targetDiskTags\":{}}}}"
+    }
+  },
+  "Set-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2023-01-01",
+      "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "77024063-5e10-476f-85a6-aec3321e996f" ],
+        "x-ms-client-request-id": [ "22d3a5ce-dbfd-4ff1-8c5a-d11cf27e9a6a" ],
         "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
         "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,271 +57,24 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "b1ffc012-afcd-4bf9-a09a-a24d78d5af15" ],
+        "x-ms-correlation-request-id": [ "b1ffc012-afcd-4bf9-a09a-a24d78d5af15" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220926T120558Z:b1ffc012-afcd-4bf9-a09a-a24d78d5af15" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "77024063-5e10-476f-85a6-aec3321e996f 7/20/2021 4:51:59 PM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "77024063-5e10-476f-85a6-aec3321e996f" ],
-        "x-ms-correlation-request-id": [ "d32ed1f1-b04b-4f6b-a718-c0881e1addb6" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165159Z:d32ed1f1-b04b-4f6b-a718-c0881e1addb6" ],
-        "Date": [ "Tue, 20 Jul 2021 16:51:59 GMT" ]
+        "Date": [ "Mon, 26 Sep 2022 12:05:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "9281" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"name\":\"idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"cbtsignoffsanappliance\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy\",\"policyFriendlyName\":\"migratesignoff2105app1452sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationRecoveryServicesProviders/49376853-f60f-5ade-94c0-c0dcc8dd96f6\",\"migrationState\":\"MigrationFailed\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationTime\":\"2021-07-20T09:06:32.0662894Z\",\"lastTestMigrationStatus\":\"Failed\",\"testMigrateState\":\"TestMigrationFailed\",\"testMigrateStateDescription\":\"Test migration pending\",\"health\":\"Warning\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8001\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161002\",\"summaryMessage\":\"\",\"errorMessage\":\"Resource group \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\u0027 was not found.\",\"possibleCauses\":\"The resource group configured for the virtual machine is deleted.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a resource group.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8001\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8003\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161004\",\"summaryMessage\":\"\",\"errorMessage\":\"Virtual network \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\u0027 was not found.\",\"possibleCauses\":\"The network was deleted or moved to a different resource group.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a network.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8003\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Error\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"110084\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test migration has been done on the virtual machine \u0027cbtsignoffsanappliance\u0027.\",\"possibleCauses\":\"No successful test migration has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test migration on the virtual machine.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitProviderErrorOnPrimary\",\"errorType\":\"8013\",\"errorLevel\":\"Warning\",\"errorCategory\":\"Replication\",\"errorCode\":\"180001\",\"summaryMessage\":\"\",\"errorMessage\":\"The last replication cycle for the virtual machine \u0027cbtsignoffsanappliance\u0027 failed. Disk not found : /subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed.\",\"possibleCauses\":\"To understand the cause of the replication cycle failure look at the list of events. To see the list of events from the Azure portal, navigate to the solution overview page of the server migration solution and select Events from the menu on the left of the page.Disk was deleted.\",\"recommendedAction\":\"If the failure is due a transient event, it should resolve automatically in the next replication cycle. If you see continuous replication cycle failures for the virtual machine in the list of events, then resolve the errors indicated in the events. The next replication cycle should succeed after all errors are resolved. Retry the operation. If the issue persists, contact support.\",\"creationTimeUtc\":\"2021-07-20T16:51:19.8284957Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"2:8013\",\"customerResolvability\":\"NotAllowed\"}],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"TestMigrateCleanup\"],\"currentJob\":{\"jobName\":\"TestFailover\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/0d727251-969f-46cd-a6a0-3635328fba8c\",\"startTime\":\"2021-07-20T09:06:32.0662894Z\"},\"eventCorrelationId\":\"ac6b82af-ba3f-41ad-b81b-7cc463004e8a\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/machines/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"sqlServerLicenseType\":\"NotSpecified\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"storageAccountId\":null,\"targetVmName\":\"singhabh-TestVM\",\"targetVmSize\":\"Standard_E4-2s_v3\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetProximityPlacementGroupId\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"targetVmTags\":{},\"protectedDisks\":[{\"diskId\":\"6000C297-57e1-8a9e-3ac6-55599433d170\",\"diskName\":\"cbtsignoffsanappliance\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[iSCSI_5TB] cbtsignoffsanappliance/cbtsignoffsanappliance.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":85899345920,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"logStorageAccountSasSecretName\":\"migratelsa868271840-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed\",\"seedBlobUri\":null,\"targetManagedDiskId\":null,\"targetBlobUri\":null,\"targetDiskName\":\"singhabh-TestVM-OSdisk-00\"}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\",\"vmNics\":[{\"nicId\":\"b280d4df-a4fc-4ddf-8137-6760f8b9dc33\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":\"10.150.249.172\",\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"targetNicName\":\"nic-singhabh-TestVM-00\",\"isSelectedForMigration\":\"true\"}],\"targetNicTags\":{},\"migrationRecoveryPointId\":null,\"lastRecoveryPointReceived\":\"1998-09-28T21:01:35.186Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea/migrationRecoveryPoints/93d79214-ac45-42ab-9b21-62c9d475b4ad\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":0,\"resyncProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\",\"seedDiskTags\":null,\"targetDiskTags\":null}}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$PATCH+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10+2": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10",
-      "Content": "{\n  \"properties\": {\n    \"providerSpecificDetails\": {\n      \"instanceType\": \"VMwareCbt\",\n      \"targetVmName\": \"singhabh-TestVM\",\n      \"targetVmSize\": \"Standard_E4-2s_v3\",\n      \"targetResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\",\n      \"targetAvailabilitySetId\": \"\",\n      \"targetAvailabilityZone\": \"\",\n      \"targetBootDiagnosticsStorageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\n      \"targetNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\",\n      \"vmNics\": [\n        {\n          \"nicId\": \"b280d4df-a4fc-4ddf-8137-6760f8b9dc33\",\n          \"isPrimaryNic\": \"true\",\n          \"targetSubnetName\": \"default\",\n          \"targetStaticIPAddress\": \"\",\n          \"isSelectedForMigration\": \"true\"\n        }\n      ],\n      \"licenseType\": \"NoLicenseType\",\n      \"sqlServerLicenseType\": \"NotSpecified\",\n      \"performAutoResync\": \"true\"\n    }\n  }\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1136" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea/operationresults/3e07518a-6790-4c22-8737-05fb58edef44?api-version=2021-02-10" ],
-        "Retry-After": [ "30" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationOperationStatus/3e07518a-6790-4c22-8737-05fb58edef44?api-version=2021-02-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "6f331b5e-3c0a-4354-aced-a4598274e63c" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "85556de1-a3f2-4425-935a-ed8199145deb" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165209Z:85556de1-a3f2-4425-935a-ed8199145deb" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:09 GMT" ]
-      },
-      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "111" ]
       },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByIDVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44?api-version=2021-02-10+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44?api-version=2021-02-10",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "4909bc84-f9f9-4a5d-bc21-12d74252b011" ],
-        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "4909bc84-f9f9-4a5d-bc21-12d74252b011" ],
-        "x-ms-correlation-request-id": [ "0edc8511-f52f-44ee-9717-cc667d2fab17" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165210Z:0edc8511-f52f-44ee-9717-cc667d2fab17" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:09 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "735" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/3e07518a-6790-4c22-8737-05fb58edef44\",\"name\":\"3e07518a-6790-4c22-8737-05fb58edef44\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"6f331b5e-3c0a-4354-aced-a4598274e63c ActivityId: 85556de1-a3f2-4425-935a-ed8199145deb\",\"scenarioName\":null,\"friendlyName\":null,\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"tasks\":[],\"errors\":[],\"allowedActions\":[],\"targetObjectId\":null,\"targetObjectName\":null,\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{}}}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "79ddaa04-7662-46d0-93f0-cac906036fa9" ],
-        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "79ddaa04-7662-46d0-93f0-cac906036fa9 7/20/2021 4:52:10 PM" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "79ddaa04-7662-46d0-93f0-cac906036fa9" ],
-        "x-ms-correlation-request-id": [ "81e63841-c07b-440f-b63b-d2c011ef2418" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165210Z:81e63841-c07b-440f-b63b-d2c011ef2418" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:10 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "9281" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"name\":\"idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"cbtsignoffsanappliance\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy\",\"policyFriendlyName\":\"migratesignoff2105app1452sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationRecoveryServicesProviders/49376853-f60f-5ade-94c0-c0dcc8dd96f6\",\"migrationState\":\"MigrationFailed\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationTime\":\"2021-07-20T09:06:32.0662894Z\",\"lastTestMigrationStatus\":\"Failed\",\"testMigrateState\":\"TestMigrationFailed\",\"testMigrateStateDescription\":\"Test migration pending\",\"health\":\"Warning\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8001\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161002\",\"summaryMessage\":\"\",\"errorMessage\":\"Resource group \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\u0027 was not found.\",\"possibleCauses\":\"The resource group configured for the virtual machine is deleted.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a resource group.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8001\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8003\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161004\",\"summaryMessage\":\"\",\"errorMessage\":\"Virtual network \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\u0027 was not found.\",\"possibleCauses\":\"The network was deleted or moved to a different resource group.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a network.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8003\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Error\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"110084\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test migration has been done on the virtual machine \u0027cbtsignoffsanappliance\u0027.\",\"possibleCauses\":\"No successful test migration has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test migration on the virtual machine.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitProviderErrorOnPrimary\",\"errorType\":\"8013\",\"errorLevel\":\"Warning\",\"errorCategory\":\"Replication\",\"errorCode\":\"180001\",\"summaryMessage\":\"\",\"errorMessage\":\"The last replication cycle for the virtual machine \u0027cbtsignoffsanappliance\u0027 failed. Disk not found : /subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed.\",\"possibleCauses\":\"To understand the cause of the replication cycle failure look at the list of events. To see the list of events from the Azure portal, navigate to the solution overview page of the server migration solution and select Events from the menu on the left of the page.Disk was deleted.\",\"recommendedAction\":\"If the failure is due a transient event, it should resolve automatically in the next replication cycle. If you see continuous replication cycle failures for the virtual machine in the list of events, then resolve the errors indicated in the events. The next replication cycle should succeed after all errors are resolved. Retry the operation. If the issue persists, contact support.\",\"creationTimeUtc\":\"2021-07-20T16:51:19.8284957Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"2:8013\",\"customerResolvability\":\"NotAllowed\"}],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"TestMigrateCleanup\"],\"currentJob\":{\"jobName\":\"TestFailover\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/0d727251-969f-46cd-a6a0-3635328fba8c\",\"startTime\":\"2021-07-20T09:06:32.0662894Z\"},\"eventCorrelationId\":\"ac6b82af-ba3f-41ad-b81b-7cc463004e8a\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/machines/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"sqlServerLicenseType\":\"NotSpecified\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"storageAccountId\":null,\"targetVmName\":\"singhabh-TestVM\",\"targetVmSize\":\"Standard_E4-2s_v3\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetProximityPlacementGroupId\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"targetVmTags\":{},\"protectedDisks\":[{\"diskId\":\"6000C297-57e1-8a9e-3ac6-55599433d170\",\"diskName\":\"cbtsignoffsanappliance\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[iSCSI_5TB] cbtsignoffsanappliance/cbtsignoffsanappliance.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":85899345920,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"logStorageAccountSasSecretName\":\"migratelsa868271840-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed\",\"seedBlobUri\":null,\"targetManagedDiskId\":null,\"targetBlobUri\":null,\"targetDiskName\":\"singhabh-TestVM-OSdisk-00\"}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\",\"vmNics\":[{\"nicId\":\"b280d4df-a4fc-4ddf-8137-6760f8b9dc33\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":\"10.150.249.172\",\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"targetNicName\":\"nic-singhabh-TestVM-00\",\"isSelectedForMigration\":\"true\"}],\"targetNicTags\":{},\"migrationRecoveryPointId\":null,\"lastRecoveryPointReceived\":\"1998-09-28T21:01:35.186Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea/migrationRecoveryPoints/93d79214-ac45-42ab-9b21-62c9d475b4ad\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":0,\"resyncProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\",\"seedDiskTags\":null,\"targetDiskTags\":null}}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "52ae62ce-2a3d-47a3-817f-b80d139181a7" ],
-        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationMigrationItem" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationMigrationItem_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "52ae62ce-2a3d-47a3-817f-b80d139181a7 7/20/2021 4:52:11 PM" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "52ae62ce-2a3d-47a3-817f-b80d139181a7" ],
-        "x-ms-correlation-request-id": [ "bee8561b-18bc-4176-954b-80b72e108df5" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165211Z:bee8561b-18bc-4176-954b-80b72e108df5" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:10 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "9281" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"name\":\"idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems\",\"properties\":{\"machineName\":\"cbtsignoffsanappliance\",\"policyId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy\",\"policyFriendlyName\":\"migratesignoff2105app1452sitepolicy\",\"recoveryServicesProviderId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationRecoveryServicesProviders/49376853-f60f-5ade-94c0-c0dcc8dd96f6\",\"migrationState\":\"MigrationFailed\",\"migrationStateDescription\":\"Ready to migrate\",\"lastTestMigrationTime\":\"2021-07-20T09:06:32.0662894Z\",\"lastTestMigrationStatus\":\"Failed\",\"testMigrateState\":\"TestMigrationFailed\",\"testMigrateStateDescription\":\"Test migration pending\",\"health\":\"Warning\",\"healthErrors\":[{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8001\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161002\",\"summaryMessage\":\"\",\"errorMessage\":\"Resource group \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\u0027 was not found.\",\"possibleCauses\":\"The resource group configured for the virtual machine is deleted.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a resource group.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8001\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8003\",\"errorLevel\":\"Error\",\"errorCategory\":\"Configuration\",\"errorCode\":\"161004\",\"summaryMessage\":\"\",\"errorMessage\":\"Virtual network \u0027/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\u0027 was not found.\",\"possibleCauses\":\"The network was deleted or moved to a different resource group.\",\"recommendedAction\":\"Go to Compute and Network settings of the virtual machine and configure a network.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8003\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitFailoverValidatorError\",\"errorType\":\"8010\",\"errorLevel\":\"Error\",\"errorCategory\":\"TestFailover\",\"errorCode\":\"110084\",\"summaryMessage\":\"\",\"errorMessage\":\"No successful test migration has been done on the virtual machine \u0027cbtsignoffsanappliance\u0027.\",\"possibleCauses\":\"No successful test migration has been done on the virtual machine after it was replicated.\",\"recommendedAction\":\"Do a test migration on the virtual machine.\",\"creationTimeUtc\":\"2021-07-20T10:22:11.4325103Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"6:8010\",\"customerResolvability\":\"NotAllowed\"},{\"innerHealthErrors\":[],\"errorSource\":\"ReplicationUnitProviderErrorOnPrimary\",\"errorType\":\"8013\",\"errorLevel\":\"Warning\",\"errorCategory\":\"Replication\",\"errorCode\":\"180001\",\"summaryMessage\":\"\",\"errorMessage\":\"The last replication cycle for the virtual machine \u0027cbtsignoffsanappliance\u0027 failed. Disk not found : /subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed.\",\"possibleCauses\":\"To understand the cause of the replication cycle failure look at the list of events. To see the list of events from the Azure portal, navigate to the solution overview page of the server migration solution and select Events from the menu on the left of the page.Disk was deleted.\",\"recommendedAction\":\"If the failure is due a transient event, it should resolve automatically in the next replication cycle. If you see continuous replication cycle failures for the virtual machine in the list of events, then resolve the errors indicated in the events. The next replication cycle should succeed after all errors are resolved. Retry the operation. If the issue persists, contact support.\",\"creationTimeUtc\":\"2021-07-20T16:51:19.8284957Z\",\"recoveryProviderErrorMessage\":null,\"entityId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"errorId\":\"2:8013\",\"customerResolvability\":\"NotAllowed\"}],\"allowedOperations\":[\"DisableMigration\",\"TestMigrate\",\"TestMigrateCleanup\"],\"currentJob\":{\"jobName\":\"TestFailover\",\"jobId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/0d727251-969f-46cd-a6a0-3635328fba8c\",\"startTime\":\"2021-07-20T09:06:32.0662894Z\"},\"eventCorrelationId\":\"ac6b82af-ba3f-41ad-b81b-7cc463004e8a\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"vmwareMachineId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/machines/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea\",\"osType\":\"Windows\",\"firmwareType\":\"BIOS\",\"targetGeneration\":\"V1\",\"licenseType\":\"NoLicenseType\",\"sqlServerLicenseType\":\"NotSpecified\",\"dataMoverRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"snapshotRunAsAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.OffAzure/VMwareSites/signoff2105app1452site/runasaccounts/f53e4f58-d091-536f-948e-51bc0745552e\",\"storageAccountId\":null,\"targetVmName\":\"singhabh-TestVM\",\"targetVmSize\":\"Standard_E4-2s_v3\",\"targetLocation\":\"centraluseuap\",\"targetResourceGroupId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\",\"targetAvailabilitySetId\":\"\",\"targetAvailabilityZone\":\"\",\"targetProximityPlacementGroupId\":\"\",\"targetBootDiagnosticsStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"targetVmTags\":{},\"protectedDisks\":[{\"diskId\":\"6000C297-57e1-8a9e-3ac6-55599433d170\",\"diskName\":\"cbtsignoffsanappliance\",\"diskType\":\"Standard_LRS\",\"diskPath\":\"[iSCSI_5TB] cbtsignoffsanappliance/cbtsignoffsanappliance.vmdk\",\"isOSDisk\":\"true\",\"capacityInBytes\":85899345920,\"logStorageAccountId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\"logStorageAccountSasSecretName\":\"migratelsa868271840-cacheSas\",\"diskEncryptionSetId\":null,\"seedManagedDiskId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Compute/disks/asrseeddisk-singhabh-cbtsigno-fafccefb-2610-41b5-99dc-6beee90bb8ed\",\"seedBlobUri\":null,\"targetManagedDiskId\":null,\"targetBlobUri\":null,\"targetDiskName\":\"singhabh-TestVM-OSdisk-00\"}],\"targetNetworkId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\",\"vmNics\":[{\"nicId\":\"b280d4df-a4fc-4ddf-8137-6760f8b9dc33\",\"isPrimaryNic\":\"true\",\"sourceIPAddress\":\"10.150.249.172\",\"sourceIPAddressType\":\"Static\",\"sourceNetworkId\":\"VM Network\",\"targetIPAddress\":\"\",\"targetIPAddressType\":\"Dynamic\",\"targetSubnetName\":\"default\",\"targetNicName\":\"nic-singhabh-TestVM-00\",\"isSelectedForMigration\":\"true\"}],\"targetNicTags\":{},\"migrationRecoveryPointId\":null,\"lastRecoveryPointReceived\":\"1998-09-28T21:01:35.186Z\",\"lastRecoveryPointId\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea/migrationRecoveryPoints/93d79214-ac45-42ab-9b21-62c9d475b4ad\",\"initialSeedingProgressPercentage\":null,\"migrationProgressPercentage\":0,\"resyncProgressPercentage\":null,\"initialSeedingRetryCount\":0,\"resyncRetryCount\":0,\"resyncRequired\":\"false\",\"resyncState\":\"None\",\"performAutoResync\":\"true\",\"seedDiskTags\":null,\"targetDiskTags\":null}}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$PATCH+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10+3": {
-    "Request": {
-      "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea?api-version=2021-02-10",
-      "Content": "{\n  \"properties\": {\n    \"providerSpecificDetails\": {\n      \"instanceType\": \"VMwareCbt\",\n      \"targetVmName\": \"singhabh-TestVM\",\n      \"targetVmSize\": \"Standard_E4-2s_v3\",\n      \"targetResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)\",\n      \"targetAvailabilitySetId\": \"\",\n      \"targetAvailabilityZone\": \"\",\n      \"targetBootDiagnosticsStorageAccountId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.Storage/storageAccounts/migratelsa868271840\",\n      \"targetNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/fancy(migrate)/providers/Microsoft.Network/virtualNetworks/Cbtsignoff2105targetnetwork\",\n      \"vmNics\": [\n        {\n          \"nicId\": \"b280d4df-a4fc-4ddf-8137-6760f8b9dc33\",\n          \"isPrimaryNic\": \"true\",\n          \"targetSubnetName\": \"default\",\n          \"targetStaticIPAddress\": \"\",\n          \"isSelectedForMigration\": \"true\"\n        }\n      ],\n      \"licenseType\": \"NoLicenseType\",\n      \"sqlServerLicenseType\": \"NotSpecified\",\n      \"performAutoResync\": \"true\"\n    }\n  }\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1136" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015a79d-1383-b5f6-b434-029793d367ea/operationresults/caf857ef-d248-4304-bcfb-7a8de452088c?api-version=2021-02-10" ],
-        "Retry-After": [ "30" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c", "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationOperationStatus/caf857ef-d248-4304-bcfb-7a8de452088c?api-version=2021-02-10" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "d342bbe2-b731-41c4-ba7e-266114d2d99f" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "5f2f2367-5d31-4ac4-bef5-821a62e8757a" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165215Z:5f2f2367-5d31-4ac4-bef5-821a62e8757a" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:14 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMigrateServerReplication+[NoContext]+ByInputObjectVMwareCbt+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c?api-version=2021-02-10+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c?api-version=2021-02-10",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "02d43674-ffe9-49b3-aa97-a95582b6c1ea" ],
-        "CommandName": [ "Az.Migrate.internal\\Get-AzMigrateReplicationJob" ],
-        "FullCommandName": [ "Get-AzMigrateReplicationJob_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "02d43674-ffe9-49b3-aa97-a95582b6c1ea" ],
-        "x-ms-correlation-request-id": [ "7178891a-b6c2-408d-9323-0f2b2c7d6b26" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T165215Z:7178891a-b6c2-408d-9323-0f2b2c7d6b26" ],
-        "Date": [ "Tue, 20 Jul 2021 16:52:15 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1964" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJobs/caf857ef-d248-4304-bcfb-7a8de452088c\",\"name\":\"caf857ef-d248-4304-bcfb-7a8de452088c\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationJobs\",\"properties\":{\"activityId\":\"d342bbe2-b731-41c4-ba7e-266114d2d99f ActivityId: 5f2f2367-5d31-4ac4-bef5-821a62e8757a\",\"scenarioName\":\"UpdateVmProperties\",\"friendlyName\":\"Update the virtual machine\",\"state\":\"InProgress\",\"stateDescription\":\"InProgress\",\"tasks\":[{\"taskId\":\"7ff92166-0ec6-4811-9d57-6675be36c708\",\"name\":\"UpdateVmPropertiesTask\",\"startTime\":\"0001-01-01T00:00:00\",\"endTime\":\"0001-01-01T00:00:00\",\"allowedActions\":[],\"friendlyName\":\"Update the virtual machine properties\",\"state\":\"NotStarted\",\"stateDescription\":\"NotStarted\",\"taskType\":\"TaskDetails\",\"customDetails\":{\"instanceType\":\"TaskDetails\"},\"groupTaskCustomDetails\":null,\"errors\":[]}],\"errors\":[],\"startTime\":\"2021-07-20T16:52:15.1893143Z\",\"allowedActions\":[],\"targetObjectId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"targetObjectName\":\"cbtsignoffsanappliance\",\"targetInstanceType\":\"ProtectionEntity\",\"customDetails\":{\"instanceType\":\"AsrJobDetails\",\"affectedObjectDetails\":{\"primaryVmId\":\"61bef913-ec62-5b52-837e-bd2ed99958a1\",\"primaryVmName\":\"cbtsignoffsanappliance\",\"recoveryVmId\":\"\",\"recoveryVmName\":\"cbtsignoffsanappliance\",\"protectionProfileId\":\"96aa9163-7097-5fce-a7f7-d6d057901a58\",\"primaryCloudId\":\"cloud_4007e349-5d4c-52f3-ad14-3d31e38cd173\",\"primaryCloudName\":\"signoff2105app1c36replicationcontainer\",\"recoveryCloudId\":\"d38048d4-b460-4791-8ece-108395ee8478\",\"recoveryCloudName\":\"Microsoft Azure\",\"primaryVmmId\":\"4007e349-5d4c-52f3-ad14-3d31e38cd173\",\"primaryVmmName\":\"signoff2105app1c36replicationfabric\",\"recoveryVmmId\":\"21a9403c-6ec1-44f2-b744-b4e50b792387\",\"recoveryVmmName\":\"Microsoft Azure\",\"primaryFabricProviderId\":\"VMwareV2\",\"recoveryFabricProviderId\":\"Azure\"}}}}",
-      "isContentBase64": false
+      "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027cbtsignoff2105srcrg\u0027 could not be found.\"}}"
     }
   }
 }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azwebapptriggeredwebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azwebapptriggeredwebjob
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Delete a triggered web job for an app.
 
 ### Example 1: Delete a triggered web job for an app
 ```powershell
-PS C:\> Remove-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
+Remove-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 
 ```
 
@@ -39,7 +39,7 @@ This command deletes a triggered web job for an app.
 
 ### Example 2: Delete a triggered web job for an app by pipeline
 ```powershell
-PS C:\> Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-02 | Remove-AzWebAppTriggeredWebJob
+Get-AzWebAppTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-02 | Remove-AzWebAppTriggeredWebJob
 
 ```
 

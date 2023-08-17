@@ -174,7 +174,7 @@ Az and AzureRM cannot be imported side-by-side into the same PowerShell session.
 - Install Az and AzureRM side-by-side in Windows PowerShell and ensure scripts do not mix the modules
 
 #### Install Az in PowerShell Core
-You can follow the instructions in [Installing PowerShell Core on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
+You can follow the instructions in [Installing PowerShell Core on Windows](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
 ) to install PowerShell Core, then use ```Install-Module Az``` in PowerShell Core to acquire the Az module.  Since Windows PowerShell and PowerShell Core can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
 
 #### Install Az and AzureRM Side-by-Side

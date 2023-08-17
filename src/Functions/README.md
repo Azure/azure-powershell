@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Functions service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -65,7 +65,7 @@ directive:
 ```
 
 ``` yaml
-branch: powershell-function
+branch: main
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -93,7 +93,7 @@ subject-prefix: ''
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
-  description: 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/'
+  description: 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://learn.microsoft.com/azure/azure-functions/'
   copyright: Microsoft Corporation. All rights reserved.
   tags: Azure ResourceManager ARM PSModule Functions
   companyName: Microsoft Corporation
@@ -211,7 +211,38 @@ directive:
   - where:
       subject: (.*)WebAppConfiguration(.*)
     hide: true
+  - where:
+      subject: SystemAssignedIdentity(.*)
+    hide: true
+  - where:
+      subject: WebAppBasicPublishingCredentialsPolicy
+    hide: true
+  - where:
+      subject: WebAppFunctionKey(.*)
+    hide: true
+  - where:
+      subject: WebAppScmAllowed
+    hide: true
+  - where:
+      subject: WebAppSettingKeyVaultReference
+    hide: true
+  - where:
+      subject: WebAppSyncStatus(.*)
+    hide: true
+  - where:
+      verb: Sync
+      subject: WebAppFunctionSlot(.*)
+    hide: true
+  - where:
+      verb: Move
+    hide: true
+  - where:
+      verb: Test
+    hide: true
 # Cmdlets to remove
+  - where:
+      subject: WebAppFtpAllowed
+    remove: true
   - where:
       subject: WebAppPremierAddOn(.*)
     remove: true

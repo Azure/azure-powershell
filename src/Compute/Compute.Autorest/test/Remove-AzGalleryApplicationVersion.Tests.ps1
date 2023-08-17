@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzGalleryApplicationVe
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzGalleryApplicationVersion' {
+Describe 'Remove-AzGalleryApplicationVersion' -Tag 'LiveOnly'{
     BeforeAll {
         $env.RandomString = $env.RandomString + "2"
         $galleryName = "testgallery" + $env.RandomString

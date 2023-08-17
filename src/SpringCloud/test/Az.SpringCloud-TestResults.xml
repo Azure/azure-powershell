@@ -1,168 +1,224 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="31" errors="0" failures="0" not-run="0" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2020-10-12" time="10:54:10">
-  <environment clr-version="Unknown" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition2" cwd="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud" machine-name="AWP-LUCAS-01" nunit-version="2.5.8.0" os-version="10.0.19042" user-domain="FAREAST" user="v-diya" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2022-07-29" time="21:55:13">
+  <environment user="v-diya" nunit-version="2.5.8.0" user-domain="FAREAST" cwd="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud" machine-name="AWP-LUCAS" clr-version="Unknown" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" os-version="10.0.22000" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="7.0631" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="34.6925" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Deploy-AzSpringCloudApp.Tests.ps1" executed="True" result="Ignored" success="True" time="0.6061" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Deploy-AzSpringCloudApp.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Deploy-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.2701" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Deploy-AzSpringCloudApp.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Disable-AzSpringCloudTestEndpoint.Tests.ps1" executed="True" result="Success" success="True" time="0.0054" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Disable-AzSpringCloudTestEndpoint.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Enable-AzSpringCloudTestEndpoint.Tests.ps1" executed="True" result="Success" success="True" time="0.0044" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Enable-AzSpringCloudTestEndpoint.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0047" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.0034" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudApp.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.003" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.004" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0036" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeploymentLogFileUrl.Tests.ps1" executed="True" result="Success" success="True" time="0.0049" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeploymentLogFileUrl.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.004" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildService.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildService.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceAgentPool.Tests.ps1" executed="True" result="Success" success="True" time="0.0031" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceAgentPool.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Success" success="True" time="0.0032" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceSupportedBuildpack.Tests.ps1" executed="True" result="Success" success="True" time="0.0046" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceSupportedBuildpack.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceSupportedStack.Tests.ps1" executed="True" result="Success" success="True" time="0.0054" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudBuildServiceSupportedStack.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Success" success="True" time="0.0035" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudCertificate.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Success" success="True" time="0.0041" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudConfigServer.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Success" success="True" time="0.0037" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudConfigurationService.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudMonitoringSetting.Tests.ps1" executed="True" result="Success" success="True" time="0.0044" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudMonitoringSetting.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudRegistry.Tests.ps1" executed="True" result="Success" success="True" time="0.0056" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudRegistry.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudRuntimeVersion.Tests.ps1" executed="True" result="Success" success="True" time="0.0071" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudRuntimeVersion.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudSku.Tests.ps1" executed="True" result="Success" success="True" time="0.0033" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudSku.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudTestKey.Tests.ps1" executed="True" result="Success" success="True" time="0.0046" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudTestKey.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0043" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.0046" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudApp.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.0039" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentBuildResultObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0033" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentBuildResultObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentJarUploadedObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0031" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentJarUploadedObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0034" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentSourceUploadedObject.Tests.ps1" executed="True" result="Success" success="True" time="0.007" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeploymentSourceUploadedObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppLoadedCertificateObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0085" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppLoadedCertificateObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.0161" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpackObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0297" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpackObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpacksGroupObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0046" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildpacksGroupObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildServiceAgentPool.Tests.ps1" executed="True" result="Success" success="True" time="0.0039" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildServiceAgentPool.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Success" success="True" time="0.0035" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Success" success="True" time="0.0032" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudCertificate.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Success" success="True" time="0.0031" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudConfigurationService.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudConfigurationServiceGitRepositoryObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0041" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudConfigurationServiceGitRepositoryObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudContentCertificateObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0139" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudContentCertificateObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudGitPatternRepositoryObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0045" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudGitPatternRepositoryObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudKeyVaultCertificateObject.Tests.ps1" executed="True" result="Success" success="True" time="0.0033" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudKeyVaultCertificateObject.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudTestKey.Tests.ps1" executed="True" result="Success" success="True" time="0.0037" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudTestKey.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0043" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloud.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.0032" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudApp.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0036" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0038" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudBuildpackBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.0036" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudBuildpackBinding.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudBuildServiceBuilder.Tests.ps1" executed="True" result="Success" success="True" time="0.005" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudBuildServiceBuilder.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudCertificate.Tests.ps1" executed="True" result="Success" success="True" time="0.0033" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudCertificate.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Success" success="True" time="0.003" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudConfigurationService.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Restart-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0075" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Restart-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0036" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeploymentJfr.Tests.ps1" executed="True" result="Success" success="True" time="34.1009" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeploymentJfr.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Deploy-AzSpringCloudApp" executed="True" result="Ignored" success="True" time="0.3237" asserts="0" description="Deploy-AzSpringCloudApp">
+          <test-suite type="TestFixture" name="Start-AzSpringCloudAppDeploymentJfr" executed="True" result="Success" success="True" time="33.88" asserts="0" description="Start-AzSpringCloudAppDeploymentJfr">
             <results>
-              <test-case description="CreateExpanded" name="Deploy-AzSpringCloudApp.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Start" name="Start-AzSpringCloudAppDeploymentJfr.Start" time="33.7085" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.602" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloud.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzSpringCloud" executed="True" result="Success" success="True" time="0.4594" asserts="0" description="Get-AzSpringCloud">
-            <results>
-              <test-case description="List" name="Get-AzSpringCloud.List" time="0.1984" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="List1" name="Get-AzSpringCloud.List1" time="0.0268" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzSpringCloud.Get" time="0.056" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzSpringCloud.GetViaIdentity" time="0.0486" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Stop-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0045" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Stop-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.3799" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudApp.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.2008" asserts="0" description="Get-AzSpringCloudApp">
-            <results>
-              <test-case description="List" name="Get-AzSpringCloudApp.List" time="0.0413" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzSpringCloudApp.Get" time="0.0271" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzSpringCloudApp.GetViaIdentity" time="0.0418" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3227" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Get-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1827" asserts="0" description="Get-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="List" name="Get-AzSpringCloudAppDeployment.List" time="0.0446" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="Get" name="Get-AzSpringCloudAppDeployment.Get" time="0.0264" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzSpringCloudAppDeployment.GetViaIdentity" time="0.0317" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Success" success="True" time="0.0029" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudConfigServer.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.3049" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloud.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzSpringCloud" executed="True" result="Success" success="True" time="0.1575" asserts="0" description="New-AzSpringCloud">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzSpringCloud.CreateExpanded" time="0.0799" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudConfigurationService.Tests.ps1" executed="True" result="Success" success="True" time="0.0028" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudConfigurationService.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.3267" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudApp.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1657" asserts="0" description="New-AzSpringCloudApp">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzSpringCloudApp.CreateExpanded" time="0.0837" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudNameAvailability.Tests.ps1" executed="True" result="Success" success="True" time="0.0101" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Test-AzSpringCloudNameAvailability.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3877" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\New-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.2437" asserts="0" description="New-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzSpringCloudAppDeployment.CreateExpanded" time="0.1727" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.0031" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloud.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="1.7652" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloud.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzSpringCloud" executed="True" result="Success" success="True" time="1.6095" asserts="0" description="Remove-AzSpringCloud">
-            <results>
-              <test-case description="Delete" name="Remove-AzSpringCloud.Delete" time="0.8442" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloud.DeleteViaIdentity" time="0.6873" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.0027" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudApp.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.2902" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudApp.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1633" asserts="0" description="Remove-AzSpringCloudApp">
-            <results>
-              <test-case description="Delete" name="Remove-AzSpringCloudApp.Delete" time="0.0456" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudApp.DeleteViaIdentity" time="0.0407" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppActiveDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0026" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppActiveDeployment.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3183" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Remove-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1745" asserts="0" description="Remove-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="Delete" name="Remove-AzSpringCloudAppDeployment.Delete" time="0.0568" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzSpringCloudAppDeployment.DeleteViaIdentity" time="0.0324" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppBinding.Tests.ps1" executed="True" result="Success" success="True" time="0.0027" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppBinding.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Restart-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3105" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Restart-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Restart-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1656" asserts="0" description="Restart-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="Restart" name="Restart-AzSpringCloudAppDeployment.Restart" time="0.0496" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="RestartViaIdentity" name="Restart-AzSpringCloudAppDeployment.RestartViaIdentity" time="0.0448" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppCustomDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0028" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppCustomDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2841" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Start-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Start-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1602" asserts="0" description="Start-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="Start" name="Start-AzSpringCloudAppDeployment.Start" time="0.0498" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="StartViaIdentity" name="Start-AzSpringCloudAppDeployment.StartViaIdentity" time="0.0379" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.0038" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppDeployment.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Stop-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.3047" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Stop-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Stop-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1632" asserts="0" description="Stop-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="Stop" name="Stop-AzSpringCloudAppDeployment.Stop" time="0.0545" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="StopViaIdentity" name="Stop-AzSpringCloudAppDeployment.StopViaIdentity" time="0.0338" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudConfigServer.Tests.ps1" executed="True" result="Success" success="True" time="0.0032" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudConfigServer.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloud.Tests.ps1" executed="True" result="Success" success="True" time="0.2795" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloud.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzSpringCloud" executed="True" result="Success" success="True" time="0.1461" asserts="0" description="Update-AzSpringCloud">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzSpringCloud.UpdateExpanded" time="0.0457" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloud.UpdateViaIdentityExpanded" time="0.0338" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudApp.Tests.ps1" executed="True" result="Success" success="True" time="0.2882" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudApp.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzSpringCloudApp" executed="True" result="Success" success="True" time="0.1614" asserts="0" description="Update-AzSpringCloudApp">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzSpringCloudApp.UpdateExpanded" time="0.0534" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudApp.UpdateViaIdentityExpanded" time="0.0321" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
-      </test-suite>
-      <test-suite type="TestFixture" name="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppDeployment.Tests.ps1" executed="True" result="Success" success="True" time="0.2922" asserts="0" description="D:\azure-service\SpringCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudAppDeployment.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzSpringCloudAppDeployment" executed="True" result="Success" success="True" time="0.1678" asserts="0" description="Update-AzSpringCloudAppDeployment">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzSpringCloudAppDeployment.UpdateExpanded" time="0.0457" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzSpringCloudAppDeployment.UpdateViaIdentityExpanded" time="0.0335" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudMonitoringSetting.Tests.ps1" executed="True" result="Success" success="True" time="0.0033" asserts="0" description="C:\Users\v-diya\Repo\azure-powershell\SpingCloud\azure-powershell\src\SpringCloud\test\Update-AzSpringCloudMonitoringSetting.Tests.ps1">
+        <results />
       </test-suite>
     </results>
   </test-suite>

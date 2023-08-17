@@ -19,10 +19,10 @@ Updates disk mapping
 .Description
 The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
+https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
 #>
 function Set-AzMigrateDiskMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -31,26 +31,35 @@ function Set-AzMigrateDiskMapping {
         # Specifies the disk ID of the disk attached to the discovered server to be migrated.
         ${DiskID},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the name of the managed disk to be created.
-        ${DiskName}
+        ${DiskName},
+
+        [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether the disk contains the Operating System for the source server to be migrated.
+        ${IsOSDisk}
     )
     
     process {
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtUpdateDiskInput]::new()
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtUpdateDiskInput]::new()
         $DiskObject.DiskId = $DiskID
 
-        if ($DiskName.length -gt 80 -or $DiskName.length -eq 0) {
+        if ($DiskName -and (($DiskName.length -gt 80) -or ($DiskName.length -eq 0))) {
             throw "The disk name must be between 1 and 80 characters long."
         }
 
-        if ($DiskName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
+        if ($DiskName -and $DiskName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
             throw "The disk name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
         }
 
         $DiskObject.TargetDiskName = $DiskName
+        $DiskObject.IsOSDisk = $IsOSDisk
 
         return $DiskObject 
     }

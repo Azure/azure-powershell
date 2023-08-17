@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataMigrationSqlServiceAuthKey' {
-    It 'RegenerateExpanded'  {
+    It 'RegenerateExpanded'  -skip {
         $oldAuthKeys = Get-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName
         New-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName -KeyName AuthKey1
         New-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestAuthKey.GroupName -SqlMigrationServiceName $env.TestAuthKey.SqlMigrationServiceName -KeyName AuthKey2

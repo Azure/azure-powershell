@@ -1,0 +1,110 @@
+{
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PUT+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/privateLinkScopes/scope-n67v8x?api-version=2022-03-10+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/privateLinkScopes/scope-n67v8x?api-version=2022-03-10",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "96" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a0bd79e2-cd01-4155-a3fe-92d5e1fe2215" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "70e2c76a-0483-42d1-a4e7-9665ad32d942" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220607T174101Z:70e2c76a-0483-42d1-a4e7-9665ad32d942" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Jun 2022 17:41:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "442" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/privateLinkScopes/scope-n67v8x\",\"name\":\"scope-n67v8x\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus2euap\",\"properties\":{\"privateLinkScopeId\":\"ee34e89c-3c0c-462e-9be5-99d9d1f75b10\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc?api-version=2022-03-10+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc?api-version=2022-03-10",
+      "Content": "{\r\n  \"properties\": {\r\n    \"osProfile\": {\r\n      \"windowsConfiguration\": {\r\n        \"patchSettings\": {\r\n          \"assessmentMode\": \"AutomaticByOS\"\r\n        }\r\n      }\r\n    },\r\n    \"privateLinkScopeResourceId\": \"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/privateLinkScopes/scope-n67v8x\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "384" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "732225f1-59c3-4bec-a569-4564d8efcfe3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "9bc04014-c9a5-456a-b13b-72e967fbde4d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220607T174103Z:9bc04014-c9a5-456a-b13b-72e967fbde4d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Jun 2022 17:41:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2149" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc\",\"name\":\"xem4sc\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"85ed3ac3-32bc-46b0-8a66-47fd21b7058c\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Updating\",\"agentVersion\":\"1.18.01965.249\",\"status\":\"Connected\",\"lastStatusChange\":\"2022-06-07T17:40:45.0517061Z\",\"errorDetails\":[],\"displayName\":\"DorothysSurface\",\"machineFqdn\":\"DorothysSurface\",\"osName\":\"windows\",\"osVersion\":\"10.0.19044.1706\",\"osType\":\"windows\",\"osProfile\":{\"computerName\":\"DorothysSurface\",\"windowsConfiguration\":{\"patchSettings\":{\"assessmentMode\":\"AutomaticByOS\"}}},\"vmId\":\"9cfafd03-ff40-41a4-a405-176904f6a7ff\",\"vmUuid\":\"2883CCA3-7EE6-60E9-A204-97718B655D1D\",\"clientPublicKey\":\"MIIBCgKCAQEA8OvoWwbb2UPJz4/3ve4Hh9RrRJkFhaJ2T2Aish3QrpNRsrb+vO+z4SIVB1hRbfli3YMpnlVfU9N+kBg1nGpffsV5XNsFTvbZomkk8qNVSvt+CtmY444OMogQbJmaPEdasbdJU+NasfRmErfSWjPYUqxKNz6YQD+mNV+Z2cZYnUdNAyr/+gTPKBmJryVlBDUcGwsnj7rLorAozeqEKt/0DAECoHqVMWyDZ4ZokPlZxZBmq4hvb03PI8GdkEeK2TTCw14zjXOxTa3dJiVoGMFUUGfH3DpUfSxsbWBqJiXxOfp0jtQu2kDxFDtdsVHoS/gr1BqhUobZLemwqp6P35f1TQIDAQAB\",\"osSku\":\"Windows 10 Enterprise\",\"domainName\":\"WORKGROUP\",\"adFqdn\":\"DorothysSurface\",\"dnsFqdn\":\"DorothysSurface\",\"mssqlDiscovered\":\"false\",\"cloudMetadata\":{\"provider\":\"N/A\"},\"detectedProperties\":{\"cloudprovider\":\"N/A\",\"manufacturer\":\"Microsoft Corporation\",\"model\":\"Surface Book 2\",\"mssqldiscovered\":\"false\"},\"privateLinkScopeResourceId\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/privateLinkScopes/scope-n67v8x\",\"agentConfiguration\":{\"proxyUrl\":\"\",\"incomingConnectionsPorts\":[],\"extensionsAllowList\":[],\"extensionsBlockList\":[],\"proxyBypass\":[],\"extensionsEnabled\":\"true\",\"guestConfigurationEnabled\":\"true\"},\"serviceStatuses\":{\"extensionService\":{\"status\":\"running\",\"startupType\":\"automatic\"},\"guestConfigurationService\":{\"status\":\"running\",\"startupType\":\"automatic\"}}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzConnectedMachine+[NoContext]+Update a machine with new private link scope and assessment mode+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc?api-version=2022-03-10+3": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc?api-version=2022-03-10",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkScopeResourceId\": \"\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "318" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "31294c11-444e-4a01-8ba9-2ff252fe73f0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "020a36ee-42c6-4865-ad1a-4859a9a5bb61" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20220607T174104Z:020a36ee-42c6-4865-ad1a-4859a9a5bb61" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Jun 2022 17:41:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1985" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test-powershell-rg-an4wce/providers/Microsoft.HybridCompute/machines/xem4sc\",\"name\":\"xem4sc\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"85ed3ac3-32bc-46b0-8a66-47fd21b7058c\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Updating\",\"agentVersion\":\"1.18.01965.249\",\"status\":\"Connected\",\"lastStatusChange\":\"2022-06-07T17:40:45.0517061Z\",\"errorDetails\":[],\"displayName\":\"DorothysSurface\",\"machineFqdn\":\"DorothysSurface\",\"osName\":\"windows\",\"osVersion\":\"10.0.19044.1706\",\"osType\":\"windows\",\"osProfile\":{\"computerName\":\"DorothysSurface\",\"windowsConfiguration\":{\"patchSettings\":{\"assessmentMode\":\"AutomaticByOS\"}}},\"vmId\":\"9cfafd03-ff40-41a4-a405-176904f6a7ff\",\"vmUuid\":\"2883CCA3-7EE6-60E9-A204-97718B655D1D\",\"clientPublicKey\":\"MIIBCgKCAQEA8OvoWwbb2UPJz4/3ve4Hh9RrRJkFhaJ2T2Aish3QrpNRsrb+vO+z4SIVB1hRbfli3YMpnlVfU9N+kBg1nGpffsV5XNsFTvbZomkk8qNVSvt+CtmY444OMogQbJmaPEdasbdJU+NasfRmErfSWjPYUqxKNz6YQD+mNV+Z2cZYnUdNAyr/+gTPKBmJryVlBDUcGwsnj7rLorAozeqEKt/0DAECoHqVMWyDZ4ZokPlZxZBmq4hvb03PI8GdkEeK2TTCw14zjXOxTa3dJiVoGMFUUGfH3DpUfSxsbWBqJiXxOfp0jtQu2kDxFDtdsVHoS/gr1BqhUobZLemwqp6P35f1TQIDAQAB\",\"osSku\":\"Windows 10 Enterprise\",\"domainName\":\"WORKGROUP\",\"adFqdn\":\"DorothysSurface\",\"dnsFqdn\":\"DorothysSurface\",\"mssqlDiscovered\":\"false\",\"cloudMetadata\":{\"provider\":\"N/A\"},\"detectedProperties\":{\"cloudprovider\":\"N/A\",\"manufacturer\":\"Microsoft Corporation\",\"model\":\"Surface Book 2\",\"mssqldiscovered\":\"false\"},\"privateLinkScopeResourceId\":\"\",\"agentConfiguration\":{\"proxyUrl\":\"\",\"incomingConnectionsPorts\":[],\"extensionsAllowList\":[],\"extensionsBlockList\":[],\"proxyBypass\":[],\"extensionsEnabled\":\"true\",\"guestConfigurationEnabled\":\"true\"},\"serviceStatuses\":{\"extensionService\":{\"status\":\"running\",\"startupType\":\"automatic\"},\"guestConfigurationService\":{\"status\":\"running\",\"startupType\":\"automatic\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}

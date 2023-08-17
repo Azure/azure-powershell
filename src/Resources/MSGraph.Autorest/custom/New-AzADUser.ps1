@@ -18,27 +18,14 @@
 Adds new entity to users
 .Description
 Adds new entity to users
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Notes
 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='WithPassword', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -286,7 +273,7 @@ param(
     # The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.Supports $filter (ne, NOT).
     ${PasswordPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName="WithPasswordProfile", Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
     # passwordProfile
@@ -404,12 +391,12 @@ param(
     # Supports $filter (eq, ne, NOT, in,).
     ${UserType},
   
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName="WithPassword", Mandatory)]
     [SecureString]
     # Password for the user. It must meet the tenant's password complexity requirements. It is recommended to set a strong password.
     ${Password},
 
-    [Parameter()]
+    [Parameter(ParameterSetName="WithPassword")]
     [System.Management.Automation.SwitchParameter]
     # It must be specified if the user must change the password on the next successful login (true). Default behavior is (false) to not change the password on the next successful login.
     ${ForceChangePasswordNextLogin},

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
 schema: 2.0.0
 ---
 
@@ -31,9 +31,11 @@ Delete a role management policy
 
 ### Example 1: Delete a role management policy
 ```powershell
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
+```
 
+```output
 The requested resource does not support http method 'DELETE'.
 ```
 

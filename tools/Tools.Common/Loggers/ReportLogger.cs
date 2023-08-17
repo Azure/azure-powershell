@@ -82,8 +82,13 @@ namespace Tools.Common.Loggers
                 var records = File.ReadAllLines(exceptionsFileName);
                 for (int i = 1; i < records.Length; ++i)
                 {
+                    string recordContent = records[i].Trim();
+                    if (recordContent == "")
+                    {
+                        continue;
+                    }
                     var record = new T();
-                    _exceptionRecords.Add(record.Parse(records[i]) as T);
+                    _exceptionRecords.Add(record.Parse(recordContent) as T);
                 }
             }
         }

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
+online version: https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
 schema: 2.0.0
 ---
 
@@ -44,6 +44,7 @@ Description for Creates a new static site in an existing resource group, or upda
 ```powershell
 Update-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00'
 ```
+
 ```output
 Kind Location   Name             Type
 ---- --------   ----             ----
@@ -56,6 +57,7 @@ This command updates a static site.
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' | Update-AzStaticWebApp
 ```
+
 ```output
 Kind Location   Name             Type
 ---- --------   ----             ----

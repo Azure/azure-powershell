@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksoutboundnetworkdependenciesendpoint
+online version: https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksoutboundnetworkdependenciesendpoint
 schema: 2.0.0
 ---
 
@@ -10,7 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## SYNTAX
 
@@ -22,71 +22,35 @@ Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName <String> 
 ## DESCRIPTION
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## EXAMPLES
 
-### Example 1: Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane
+### Example 1: Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 ```powershell
-Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName "databricks-rg-zbpoy7" -WorkspaceName databricks-portal
+Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName azps_test_gp_db -WorkspaceName azps-databricks-workspace-t2
 ```
 
 ```output
-Category : Webapp
-Endpoint : {{
-             "endpointDetails": [
-               {
-                 "ipAddress": "40.70.58.221/32",
-                 "port": 443
-               },
-               {
-                 "ipAddress": "20.42.4.209/32",
-                 "port": 443
-               },
-               {
-                 "ipAddress": "20.42.4.211",
-                 "port": 443
-               }
-             ]
-           }}
-
-Category : Control Plane NAT
-Endpoint : {{
-             "endpointDetails": [
-               {
-                 "ipAddress": "23.101.152.95/32",
-                 "port": 443
-               },
-               {
-                 "ipAddress": "20.42.4.208/32",
-                 "port": 443
-               },
-               {
-                 "ipAddress": "20.42.4.210",
-                 "port": 443
-               }
-             ]
-           }}
-
-Category : Extended infrastructure
-Endpoint : {{
-             "endpointDetails": [
-               {
-                 "ipAddress": "20.57.106.0/28",
-                 "port": 443
-               }
-             ]
-           }}
+Category
+--------
+Webapp
+Control Plane NAT
+Extended infrastructure
+Azure Storage
+Azure My SQL
+Azure Servicebus
 ```
 
 This command gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -153,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint
 
 ## NOTES
 

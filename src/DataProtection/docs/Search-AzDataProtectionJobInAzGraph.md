@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 schema: 2.0.0
 ---
 

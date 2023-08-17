@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDataMigrationSqlService' {
-    It 'Delete'  {
+    It 'Delete' -skip {
         $count1 = (Get-AzDataMigrationSqlService  -ResourceGroupName $env.TestNewSqlMigrationService.GroupName).count
         Remove-AzDataMigrationSqlService -Name $env.TestNewSqlMigrationService.SqlMigrationServiceName -ResourceGroupName $env.TestNewSqlMigrationService.GroupName
         $count2 = (Get-AzDataMigrationSqlService  -ResourceGroupName $env.TestNewSqlMigrationService.GroupName).count

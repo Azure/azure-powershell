@@ -1,0 +1,42 @@
+{
+  "New-AzMLWorkspaceComponentVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/componentpwsh01/versions/2?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/componentpwsh01/versions/2?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"componentSpec\": {\r\n      \"version\": \"1\",\r\n      \"type\": \"command\",\r\n      \"name\": \"train_data_component\",\r\n      \"environment\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/AzureML-sklearn-0.24-ubuntu18.04-py37-cpu/versions/1\",\r\n      \"command\": \"python train.py\",\r\n      \"is_deterministic\": \"True\",\r\n      \"display_name\": \"train_data\",\r\n      \"code\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/e08a4be4-66c4-477b-acd7-9579fdd0a3f1/versions/1\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "736" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/componentpwsh01/versions/2?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.916" ],
+        "x-ms-request-id": [ "09cd1794-bb73-45dc-b52a-847d25b16ae5" ],
+        "x-ms-correlation-request-id": [ "09cd1794-bb73-45dc-b52a-847d25b16ae5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T141023Z:09cd1794-bb73-45dc-b52a-847d25b16ae5" ],
+        "Date": [ "Sun, 05 Jun 2022 14:10:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1578" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/components/componentpwsh01/versions/2\",\n  \"name\": \"2\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/components/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"componentSpec\": {\n      \"name\": \"componentpwsh01\",\n      \"version\": \"2\",\n      \"display_name\": \"train_data\",\n      \"is_deterministic\": \"True\",\n      \"type\": \"command\",\n      \"code\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/e08a4be4-66c4-477b-acd7-9579fdd0a3f1/versions/1\",\n      \"environment\": \"azureml:/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/AzureML-sklearn-0.24-ubuntu18.04-py37-cpu/versions/1\",\n      \"resources\": {\n        \"instance_count\": \"1\"\n      },\n      \"command\": \"python train.py\",\n      \"$schema\": \"https://componentsdk.azureedge.net/jsonschema/CommandComponent.json\"\n    }\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T14:10:23.0823007Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-05T14:10:23.2974734Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

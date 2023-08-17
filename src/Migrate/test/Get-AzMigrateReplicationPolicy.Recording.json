@@ -1,13 +1,12 @@
 {
-  "Get-AzMigrateReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies?api-version=2021-02-10+1": {
+  "Get-AzMigrateReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies?api-version=2021-02-10",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies?api-version=2023-01-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "b5410c97-a464-46c1-aa90-4ac089b15cab" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "7b8d363a-d50c-476e-b9df-699537a233bf" ],
         "CommandName": [ "Get-AzMigrateReplicationPolicy" ],
         "FullCommandName": [ "Get-AzMigrateReplicationPolicy_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,34 +21,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "b5410c97-a464-46c1-aa90-4ac089b15cab 7/20/2021 12:25:08 PM" ],
+        "x-ms-request-id": [ "7b8d363a-d50c-476e-b9df-699537a233bf 9/26/2022 11:21:05 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "b5410c97-a464-46c1-aa90-4ac089b15cab" ],
-        "x-ms-correlation-request-id": [ "8ebe6fff-54ec-48b7-85f4-9769f6aa282e" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T122508Z:8ebe6fff-54ec-48b7-85f4-9769f6aa282e" ],
-        "Date": [ "Tue, 20 Jul 2021 12:25:07 GMT" ]
+        "x-ms-client-request-id": [ "7b8d363a-d50c-476e-b9df-699537a233bf" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "48c19105-d9de-48bd-9d7a-f1f25cf5d50e" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112105Z:48c19105-d9de-48bd-9d7a-f1f25cf5d50e" ],
+        "Date": [ "Mon, 26 Sep 2022 11:21:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "592" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "585" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy\",\"name\":\"migratesignoff2105app1452sitepolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"migratesignoff2105app1452sitepolicy\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"recoveryPointHistoryInMinutes\":4320,\"appConsistentFrequencyInMinutes\":240,\"crashConsistentFrequencyInMinutes\":60}}}],\"nextLink\":null}",
-      "isContentBase64": false
+      "Content": "{\"value\":[{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoffccyapp3352sitepolicy\",\"name\":\"migratesignoffccyapp3352sitepolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"migratesignoffccyapp3352sitepolicy\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"recoveryPointHistoryInMinutes\":4320,\"appConsistentFrequencyInMinutes\":240,\"crashConsistentFrequencyInMinutes\":60}}}],\"nextLink\":null}"
     }
   },
-  "Get-AzMigrateReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2021-02-10+1": {
+  "Get-AzMigrateReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoffccyapp3352sitepolicy?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy?api-version=2021-02-10",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoffccyapp3352sitepolicy?api-version=2023-01-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "152b81f3-ba99-424a-aa84-4fa5116ec84c" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "692adbbb-05e7-4d6a-8364-312527f13160" ],
         "CommandName": [ "Get-AzMigrateReplicationPolicy" ],
         "FullCommandName": [ "Get-AzMigrateReplicationPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -64,23 +61,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "Server": [ "Microsoft-IIS/10.0", "Kestrel" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "152b81f3-ba99-424a-aa84-4fa5116ec84c 7/20/2021 12:25:09 PM" ],
+        "x-ms-request-id": [ "692adbbb-05e7-4d6a-8364-312527f13160 9/26/2022 11:21:05 AM" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-client-request-id": [ "152b81f3-ba99-424a-aa84-4fa5116ec84c" ],
-        "x-ms-correlation-request-id": [ "5549eb07-bd1b-4a75-b40b-6fe0cd3e733b" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20210720T122509Z:5549eb07-bd1b-4a75-b40b-6fe0cd3e733b" ],
-        "Date": [ "Tue, 20 Jul 2021 12:25:08 GMT" ]
+        "x-ms-client-request-id": [ "692adbbb-05e7-4d6a-8364-312527f13160" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "a24caa66-bf05-48cf-8d6b-356274bc5341" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112105Z:a24caa66-bf05-48cf-8d6b-356274bc5341" ],
+        "Date": [ "Mon, 26 Sep 2022 11:21:05 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "564" ],
-        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "557" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationPolicies/migratesignoff2105app1452sitepolicy\",\"name\":\"migratesignoff2105app1452sitepolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"migratesignoff2105app1452sitepolicy\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"recoveryPointHistoryInMinutes\":4320,\"appConsistentFrequencyInMinutes\":240,\"crashConsistentFrequencyInMinutes\":60}}}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationPolicies/migratesignoffccyapp3352sitepolicy\",\"name\":\"migratesignoffccyapp3352sitepolicy\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationPolicies\",\"properties\":{\"friendlyName\":\"migratesignoffccyapp3352sitepolicy\",\"providerSpecificDetails\":{\"instanceType\":\"VMwareCbt\",\"recoveryPointHistoryInMinutes\":4320,\"appConsistentFrequencyInMinutes\":240,\"crashConsistentFrequencyInMinutes\":60}}}"
     }
   }
 }

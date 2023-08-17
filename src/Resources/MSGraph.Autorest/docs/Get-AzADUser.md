@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azaduser
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Lists entities from users or get entity from users by key
 
 ### List (Default)
 ```
-Get-AzADUser [-AppendSelected] [-ConsistencyLevel <String>] [-DefaultProfile <PSObject>] [-Expand <String[]>]
- [-Filter <String>] [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>]
- [-Skip <UInt64>] [<CommonParameters>]
+Get-AzADUser [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-DefaultProfile <PSObject>]
+ [-Expand <String[]>] [-Filter <String>] [-First <UInt64>] [-Orderby <String[]>] [-Search <String>]
+ [-Select <String[]>] [-Skip <UInt64>] [-CountVariable <String>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -81,6 +81,21 @@ Get-AzADUser -DisplayName $name
 
 Get user by display name
 
+### Example 4: Get user with filter
+```powershell
+Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get user with filter
+
+### Example 5: Assign OdataCount to a variable
+```powershell
+Get-AzADUser -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -101,6 +116,37 @@ Accept wildcard characters: False
 ### -ConsistencyLevel
 Indicates the requested consistency level.
 Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CountVariable
+Specifies a count of the total number of items in a collection.
+By default, this variable will be set in the global scope.
 
 ```yaml
 Type: System.String
@@ -160,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/export-azredisenterprisecache
 schema: 2.0.0
 ---
 
@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-Export-AzRedisEnterpriseCacheDatabase
+### Export-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

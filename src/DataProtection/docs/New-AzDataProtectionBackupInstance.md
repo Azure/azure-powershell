@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Configures Backup for supported azure resources
 
 ```
 New-AzDataProtectionBackupInstance -BackupInstance <IBackupInstanceResource> -ResourceGroupName <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-SubscriptionId <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,13 +58,72 @@ New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName "Reso
 Name                                                                Type                                                  BackupInstanceName
 ----                                                                ----                                                  ------------------
 xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21 Microsoft.DataProtection/backupVaults/backupInstances xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21
-
 ```
 
-The third command initializes the secretURI for secret store authentication. 
+The third command initializes the secretURI for secret store authentication.
+
 The fifth command gets the policy with which database will be protected.
 The sixth command initializes the backup instance request object.
 The last command configures backup of the given $dataSourceId in the backup vault.
+
+### Example 3: Configure protection for AzureKubernetesService cluster in a backup vault
+```powershell
+$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | where {$_.Name -eq "policyName"}
+$sourceClusterId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster"
+$snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "x=y","foo=bar" 
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation "eastus" -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName "aks-cluster-friendlyName" -BackupConfiguration $backupConfig
+Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+$tag= @{"Owner"="BIOwnerName";"Foo"="Bar";"A"="B"}
+$biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag
+$biCreate
+```
+
+```output
+Name                                                                       BackupInstanceName
+----                                                                       ------------------
+aks-cluster-aks-cluster-117bd668-4t5h-4f3a-947c-ea71304cb4d7 aks-cluster-aks-cluster-117bd668-4t5h-4f3a-947c-ea71304cb4d7
+```
+
+The First command gets the AzureKubernetesService policy in a given vault.
+The second, third command initializes the AKS cluster and snapshot resource group Id.
+The fourth command backup configuration object needed for AzureKubernetesService.
+The fifth command initializes the client object for backup instance.
+The sixth command assigns the necessary permissions for configure backup.
+
+The sevnth and eight command initializes custom tags and configure backup finally by creating a backup instance.
+
+### Example 4: Configure protection for AzureBlob with vault policy
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where { $_.Name -match "vaultedPolicyName" }              
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -IncludeAllContainer -StorageAccountResourceGroupName "resourceGroupName" -StorageAccountName "storageAcountName"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId "storageAccId" -BackupConfiguration $backupConfig
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+$operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject.Property -NoWait
+$operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
+While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
+    Start-Sleep -Seconds 10
+}
+$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+```
+
+```output
+Name                                                                 BackupInstanceName
+----                                                                 ------------------
+blobeuspstestsa-blobeuspstestsa-64f7399a-b024-4d61-8f16-c424c5fd2564 blobeuspstestsa-blobeuspstestsa-64f7399a-b024-4d61-8f16-c424c5fd2564
+```
+
+The first command gets the backup vault.
+The second command get the vaultedPolicy.
+The third command defines a BackupConfiguration object so as to include all containers for vaulted backup.
+Check examples for New-AzDataProtectionBackupConfigurationClientObject cmdlet to see how to select specific containers for backup.
+Th fourth command initializes the backup instance.
+The fifth command assigns the necessary permissions for configure backup.
+The sixth command validates if the backup instance object is valid for configure protection (validate backup).
+This command runs in async way using parameter -NoWait.
+Next we fetch the operation in a while loop until it succeeds.
+The last command is used to configure protection for the backup instance.
 
 ## PARAMETERS
 
@@ -88,7 +147,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
 Parameter Sets: (All)
 Aliases:
 
@@ -149,6 +208,21 @@ Subscription Id of the vault
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +295,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which will be used to configure backup
+`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
+  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
     - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -235,6 +311,8 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
       - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
+          - `ObjectType <String>`: Type of the specific object - used for deserializing
         - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
           - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
           - `ObjectType <String>`: Type of the specific object - used for deserializing
@@ -249,6 +327,7 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS
 

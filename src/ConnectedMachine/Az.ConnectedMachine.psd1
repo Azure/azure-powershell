@@ -1,7 +1,7 @@
 @{
   GUID = '259a0542-8329-4b9e-8f72-dab0efc583e9'
   RootModule = './Az.ConnectedMachine.psm1'
-  ModuleVersion = '0.4.0'
+  ModuleVersion = '0.5.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedMachine.private.dll'
   FormatsToProcess = './Az.ConnectedMachine.format.ps1xml'
-  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'Get-AzConnectedPrivateLinkScope', 'New-AzConnectedMachineExtension', 'New-AzConnectedPrivateLinkScope', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Remove-AzConnectedPrivateLinkScope', 'Set-AzConnectedMachineExtension', 'Set-AzConnectedPrivateLinkScope', 'Update-AzConnectedExtension', 'Update-AzConnectedMachineExtension', 'Update-AzConnectedPrivateLinkScopeTag', '*'
+  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'Get-AzConnectedPrivateLinkScope', 'New-AzConnectedMachineExtension', 'New-AzConnectedPrivateLinkScope', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Remove-AzConnectedPrivateLinkScope', 'Set-AzConnectedMachineExtension', 'Set-AzConnectedPrivateLinkScope', 'Update-AzConnectedExtension', 'Update-AzConnectedMachine', 'Update-AzConnectedMachineExtension', 'Update-AzConnectedPrivateLinkScopeTag', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

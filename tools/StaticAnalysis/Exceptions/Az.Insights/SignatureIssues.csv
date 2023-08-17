@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.PowerShell.Cmdlets.Insights.dll","Microsoft.Azure.Commands.Insights.Metrics.GetAzureRmMetricCommand","Get-AzMetric","1","8510","Cmdlet 'Get-AzMetric' has multiple parameter sets, but no defined default parameter set.","Define a default parameter set in the cmdlet attribute."
 "Microsoft.Azure.PowerShell.Cmdlets.Insights.dll","Microsoft.Azure.Commands.Insights.Events.GetAzureRmLogCommand","Get-AzLog","1","8510","Cmdlet 'Get-AzLog' has multiple parameter sets, but no defined default parameter set.","Define a default parameter set in the cmdlet attribute."
 "Microsoft.Azure.PowerShell.Cmdlets.Insights.dll","Microsoft.Azure.Commands.Insights.Diagnostics.SetAzureRmDiagnosticSettingCommand","Set-AzDiagnosticSetting","1","8410","Parameter Categories of cmdlet Set-AzDiagnosticSetting does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

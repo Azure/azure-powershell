@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp
+online version: https://learn.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ This command unregisters the user provided function app from the static site bui
 
 ### Example 2: Unregister the user provided function app from the static site build by pipeline
 ```powershell
-Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -IsForced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
+Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -Forced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
 
 ```
 

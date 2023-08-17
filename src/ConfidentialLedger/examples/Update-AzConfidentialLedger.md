@@ -1,6 +1,6 @@
 ### Example 1: Update tags for a Confidential Ledger
 ```powershell
-PS C:\> Update-AzConfidentialLedger `
+Update-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000 `
   -SubscriptionId 00000000-0000-0000-0000-000000000000 `
@@ -22,7 +22,9 @@ PS C:\> Update-AzConfidentialLedger `
           Location="additional properties 0"
           NewTag="New tag"
       }
+```
 
+```output
 Location Name
 eastus   test-ledger
 ```

@@ -1,18 +1,13 @@
 ### Example 1: Stop image template creation
 ```powershell
-Start-AzImageBuilderTemplate -ImageTemplateName template-name-sn78hg -ResourceGroupName wyunchi-imagebuilder -AsJob 
-
-Stop-AzImageBuilderTemplate -ImageTemplateName template-name-sn78hg -ResourceGroupName wyunchi-imagebuilder
+Stop-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
 ```
 
 This command stops image template creation.
 
 ### Example 2: Stop image template creation
 ```powershell
-Start-AzImageBuilderTemplate -ImageTemplateName template-name-sn78hg -ResourceGroupName wyunchi-imagebuilder -AsJob 
-
-$template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -Name template-name-sn78hg
-Stop-AzImageBuilderTemplate -InputObject $template 
+Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Stop-AzImageBuilderTemplate
 ```
 
 This command stops image template creation.

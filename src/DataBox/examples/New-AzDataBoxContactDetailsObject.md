@@ -1,7 +1,6 @@
 ### Example 1: Create a in-memory object for ContactDetails 
 ```powershell
-$contactDetail = New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
-$contactDetail
+New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 ```
 
 ```output

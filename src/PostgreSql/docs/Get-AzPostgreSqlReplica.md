@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlreplica
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlreplica
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ List all the replicas for a given server.
 
 ### Example 1: Get PostgreSql server replica by resource group and server name
 ```powershell
- Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 ```
 
 ```output

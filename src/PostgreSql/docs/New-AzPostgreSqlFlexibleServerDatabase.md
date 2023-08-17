@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverdatabase
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/new-azpostgresqlflexibleserverdatabase
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Creates a new database or updates an existing database.
 
 ### Example 1: Add a new database to PostgreSQL server.
 ```powershell
- New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
+New-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb -Charset utf8 -Collation en_US.utf8
 ```
 
 ```output

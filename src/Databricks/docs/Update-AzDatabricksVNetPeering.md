@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
+online version: https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
 schema: 2.0.0
 ---
 
@@ -16,14 +16,18 @@ Update vNet Peering for workspace.
 ```
 Update-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-AllowForwardedTraffic <Boolean>] [-AllowGatewayTransit <Boolean>]
- [-AllowVirtualNetworkAccess <Boolean>] [-UseRemoteGateway <Boolean>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-AllowVirtualNetworkAccess <Boolean>] [-DatabricksAddressSpacePrefix <String[]>]
+ [-DatabricksVirtualNetworkId <String>] [-RemoteAddressSpacePrefix <String[]>]
+ [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-AllowForwardedTraffic <Boolean>]
- [-AllowGatewayTransit <Boolean>] [-AllowVirtualNetworkAccess <Boolean>] [-UseRemoteGateway <Boolean>]
+ [-AllowGatewayTransit <Boolean>] [-AllowVirtualNetworkAccess <Boolean>]
+ [-DatabricksAddressSpacePrefix <String[]>] [-DatabricksVirtualNetworkId <String>]
+ [-RemoteAddressSpacePrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,28 +36,28 @@ Update vNet Peering for workspace.
 
 ## EXAMPLES
 
-### Example 1: Update AllowForwardedTraffic of vnet peering
+### Example 1: Update AllowForwardedTraffic of vnet peering.
 ```powershell
-Update-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 -AllowForwardedTraffic $True
+Update-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -AllowForwardedTraffic $True
 ```
 
 ```output
-Name            Type
-----            ----
-vnetpeering-t01
+Name            ResourceGroupName
+----            -----------------
+vnet-peering-t1 azps_test_gp_db
 ```
 
 This command updates AllowForwardedTraffic of vnet peering.
 
-### Example 2: Update AllowForwardedTraffic of vnet peering by object
+### Example 2: Update AllowForwardedTraffic of vnet peering by object.
 ```powershell
-Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
+Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Name vnet-peering-t1 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
 ```
 
 ```output
-Name            Type
-----            ----
-vnetpeering-t01
+Name            ResourceGroupName
+----            -----------------
+vnet-peering-t1 azps_test_gp_db
 ```
 
 This command updates AllowForwardedTraffic of vnet peering by object.
@@ -123,8 +127,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabricksAddressSpacePrefix
+A list of address blocks reserved for this virtual network in CIDR notation.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabricksVirtualNetworkId
+The Id of the databricks virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -174,6 +209,36 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteAddressSpacePrefix
+A list of address blocks reserved for this virtual network in CIDR notation.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteVirtualNetworkId
+The Id of the remote virtual network.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +354,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IVirtualNetworkPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering
 
 ## NOTES
 
@@ -300,7 +365,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
+`INPUTOBJECT <IDatabricksIdentity>`: Identity parameter.
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.

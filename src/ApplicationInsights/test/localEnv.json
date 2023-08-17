@@ -1,0 +1,19 @@
+{
+  "standardWebTest02": "standardwebtest-feilrx-pwsh",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "component1": "componentkl4sqp",
+  "appInsights01": "appInsights-f0swik-pwsh",
+  "location": "westus2",
+  "appInsights01Id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-ezhyxn-test/providers/microsoft.insights/components/appInsights-f0swik-pwsh",
+  "geoLocation02": "us-ca-sjc-azr",
+  "resourceGroup": "appInsights-ezhyxn-test",
+  "appInsights02Id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/appInsights-ezhyxn-test/providers/microsoft.insights/components/appInsights-x2qg9m-pwsh",
+  "SubscriptionId": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+  "geoLocation04": "emea-se-sto-edge",
+  "basicWebTest04": "basicwebtest-pytheb-pwsh",
+  "geoLocation01": "emea-nl-ams-azr",
+  "standardWebTest01": "standardwebtest-6cwj9r-pwsh",
+  "geoLocation03": "emea-ru-msa-edge",
+  "appInsights02": "appInsights-x2qg9m-pwsh",
+  "basicWebTest03": "basicwebtest-nhuw7c-pwsh"
+}

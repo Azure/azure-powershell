@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.LabServices
-online version: https://docs.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
+online version: https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Returns the properties of a lab Schedule.
 
 ### Example 1: Get all schedules for a lab.
 ```powershell
-Get-AzLabSchedule -ResourceGroupName "group name" -LabName "lab name"
+Get-AzLabServicesSchedule -ResourceGroupName "group name" -LabName "lab name"
 ```
 
 ```output

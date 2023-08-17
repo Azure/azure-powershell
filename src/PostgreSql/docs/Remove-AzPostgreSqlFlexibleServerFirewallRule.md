@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlflexibleserverfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlflexibleserverfirewallrule
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Deletes a PostgreSQL server firewall rule.
 
 ### Example 1: Remove PostgreSql Firewall Rule by name
 ```powershell
- Remove-AzPostgreSqlFlexibleServerFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Remove-AzPostgreSqlFlexibleServerFirewallRule -Name firewall-rule-test -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 
 ```
 
@@ -40,9 +40,8 @@ This cmdlet removes PostgreSql Firewall Rule by name.
 
 ### Example 2: Remove PostgreSql Firewall Rule by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
- Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
- 
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/firewallRules/firewall-rule-test"
+Remove-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID
 ```
 
 These cmdlets remove PostgreSql Firewall Rule by identity.

@@ -83,7 +83,7 @@
         foreach($jobresponse in $argJobResponse)
         {
             $jsonStringResponse = $jobresponse | ConvertTo-Json -Depth 100
-            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
+            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
         }
         return $backupJobs
     }

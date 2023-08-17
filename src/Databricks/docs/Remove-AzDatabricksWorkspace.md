@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
 schema: 2.0.0
 ---
 
@@ -29,17 +29,16 @@ Deletes the workspace.
 
 ## EXAMPLES
 
-### Example 1: Remove a Databricks workspace
+### Example 1: Remove a Databricks workspace.
 ```powershell
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -Name azps-databricks-workspace -ResourceGroupName azps_test_gp_db
 ```
 
 This command removes a Databricks workspace from a resource group.
 
-### Example 2: Remove a Databricks workspace by object
+### Example 2: Remove a Databricks workspace by object.
 ```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 | Remove-AzDatabricksWorkspace
 ```
 
 This command removes a Databricks workspace from a resource group.
@@ -62,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -219,7 +219,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.

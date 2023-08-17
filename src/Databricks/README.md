@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Databricks service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -27,38 +27,25 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 <!-- endregion -->
 
 ---
-## Generation Requirements
-Use of the beta version of `autorest.powershell` generator requires the following:
-- [NodeJS LTS](https://nodejs.org) (10.15.x LTS preferred)
-  - **Note**: It *will not work* with Node < 10.x. Using 11.x builds may cause issues as they may introduce instability or breaking changes.
-> If you want an easy way to install and update Node, [NVS - Node Version Switcher](../nodejs/installing-via-nvs.md) or [NVM - Node Version Manager](../nodejs/installing-via-nvm.md) is recommended.
-- [AutoRest](https://aka.ms/autorest) v3 beta <br>`npm install -g autorest@autorest`<br>&nbsp;
-- PowerShell 6.0 or greater
-  - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g pwsh`<br>&nbsp;
-- .NET Core SDK 2.0 or greater
-  - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g dotnet-sdk-2.2`<br>&nbsp;
-
-## Run Generation
-In this directory, run AutoRest:
-> `autorest-beta`
-
----
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: a078cebc3964c8968d141906c613794ca0453861
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-# lock the commit
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/cfe9bfd432231086b92cda77a327756a90758a8f/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/databricks.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/a3c9363637ad7d30407cd6dd26d280cbb166cbf9/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/vnetpeering.json
-module-version: 1.1.0
+  - $(repo)/specification/databricks/resource-manager/readme.md
+try-require:
+  - $(repo)/specification/databricks/resource-manager/readme.powershell.md
+
+module-version: 1.2.0
 title: Databricks
 subject-prefix: $(service-name)
 
 inlining-threshold: 100
+
 resourcegroup-append: true
+identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
@@ -74,6 +61,7 @@ directive:
   - where:
       variant: ^CreateViaIdentity$
     hide: true
+
   # Rename the parameter name to follow Azure PowerShell best practice
   - where:
       parameter-name: SkuName
@@ -175,56 +163,6 @@ directive:
     set:
       parameter-name: VnetAddressPrefix
 
-  # Rename parameters of Set VNetPeering cmdlet
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: DatabrickAddressSpaceAddressPrefix
-    set:
-      parameter-name: DatabricksAddressSpacePrefix
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: RemoteAddressSpaceAddressPrefix
-    set:
-      parameter-name: RemoteAddressSpacePrefix
-  - where:
-      verb: New
-      subject: VNetPeering
-      parameter-name: DatabrickVirtualNetworkId 
-    set:
-      parameter-name: DatabricksVirtualNetworkId 
-  # Remove the set Workspace cmdlet
-  - where:
-      verb: Set
-      subject: Workspace
-    remove: true
-  # Hide the New Workspace cmdlet for customization
-  - where:
-      verb: New
-      subject: Workspace
-    hide: true
-  # Hide the Update Workspace cmdlet for customization
-  - where:
-      verb: Update
-      subject: Workspace
-    hide: true
-  # Hide the Set VNetPeering cmdlet for customization
-  - where:
-      verb: Set
-      subject: VNetPeering
-    hide: true
-  - where:
-      model-name: Workspace
-    set:
-      format-table:
-        properties:
-          - Name
-          - ResourceGroupName
-          - Location
-          - ManagedResourceGroupId
-        labels:
-          ManagedResourceGroupId: Managed Resource Group ID
   # Update property names related to CMK
   - where:
       model-name: Workspace
@@ -261,4 +199,67 @@ directive:
       property-name: EnableNoPublicIPValue
     set:
       property-name: EnableNoPublicIP
+
+  # Rename parameters of VNetPeering cmdlet
+  - where:
+      parameter-name: DatabrickAddressSpaceAddressPrefix
+    set:
+      parameter-name: DatabricksAddressSpacePrefix
+  - where:
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressSpacePrefix
+  - where:
+      parameter-name: DatabrickVirtualNetworkId
+    set:
+      parameter-name: DatabricksVirtualNetworkId
+
+  - where:
+      subject: AccessConnector
+      parameter-name: ConnectorName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New
+      subject: AccessConnector
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+
+  # Remove the set Workspace cmdlet
+  - where:
+      verb: Set
+      subject: Workspace
+    remove: true
+
+  # Remove the set AccessConnector cmdlet
+  - where:
+      verb: Set
+      subject: AccessConnector
+    remove: true
+
+  # Hide the New/Update Workspace cmdlet for customization
+  - where:
+      verb: New|Update
+      subject: Workspace
+    hide: true
+  # Hide the Set VNetPeering cmdlet for customization
+  - where:
+      verb: Set
+      subject: VNetPeering
+    hide: true
+    set: 
+      verb: Update
+
+  - where:
+      model-name: Workspace
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - ManagedResourceGroupId
+        labels:
+          ManagedResourceGroupId: Managed Resource Group ID
 ```

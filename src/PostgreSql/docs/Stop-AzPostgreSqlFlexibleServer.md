@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.PostgreSql
-online version: https://docs.microsoft.com/powershell/module/az.postgresql/stop-azpostgresqlflexibleserver
+online version: https://learn.microsoft.com/powershell/module/az.postgresql/stop-azpostgresqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -31,15 +31,15 @@ Stops a server.
 
 ### Example 1: Stop the server by resource name
 ```powershell
- Stop-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+Stop-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
 Stop the server by name
 
 ### Example 2: Stop the server by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/stop"
- Stop-AzPostgreSqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBForPostgreSql/flexibleServers/postgresql-test/stop"
+Stop-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
 Stop the server by identity

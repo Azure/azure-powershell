@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunctionappsetting
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappfunctionappsetting
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Description for Gets the application settings of a static site.
 ```powershell
 Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----

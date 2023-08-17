@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.2
+* Updated data collection mechanism
+* Improvements in command parsing mechanism
+
+## Version 1.1.1
+* Updated data collection mechanism
+
+## Version 1.1.0
+* Updated data collection mechanism
+
+## Version 1.0.3
+* Updated instrumental key
+
+## Version 1.0.2
+* Updated survey message
+
+## Version 1.0.1
+* Updated dependencies
+
+## Version 1.0.0
+* Added improved verification of dependency when importing the module
+
 ## Version 0.5.0
 * Improvements in command parsing mechanism
 * Fixed end of user input detection when - character is used

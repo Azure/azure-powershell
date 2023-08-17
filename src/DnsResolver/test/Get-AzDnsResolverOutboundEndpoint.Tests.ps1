@@ -27,9 +27,9 @@ function CreateOutboundEndpoint([String]$OutboundEndpointName, [String]$DnsResol
             $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
         }
 
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
     
-    New-AzDnsResolverOutboundEndpoint -DnsResolverName $DnsResolverName -Name $OutboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnet.Id -Location $LOCATION
+    New-AzDnsResolverOutboundEndpoint -DnsResolverName $DnsResolverName -Name $OutboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnetId -Location $LOCATION
 }
 
 Describe 'Get-AzDnsResolverOutboundEndpoint' {
@@ -38,6 +38,8 @@ Describe 'Get-AzDnsResolverOutboundEndpoint' {
         $dnsResolverName = "psdnsresolvername21";
         $outboundEndpointName =  "psoutboundendpointname21";
         $virtualNetworkName = "psvirtualnetworkname21";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
 
         CreateOutboundEndpoint -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
@@ -53,6 +55,8 @@ Describe 'Get-AzDnsResolverOutboundEndpoint' {
         $dnsResolverName = "psdnsresolvername22";
         $outboundEndpointName =  "psoutboundendpointname22";
         $virtualNetworkName = "psvirtualnetworkname22";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
 
         CreateOutboundEndpoint -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
         

@@ -1,0 +1,125 @@
+{
+  "New-AzMLWorkspaceJob+[NoContext]+CommandJob+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"image\": \"library/python:latest\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1?api-version=2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.602" ],
+        "x-ms-request-id": [ "764c5677-572e-4c33-a787-af0609c33b18" ],
+        "x-ms-correlation-request-id": [ "764c5677-572e-4c33-a787-af0609c33b18" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T133141Z:764c5677-572e-4c33-a787-af0609c33b18" ],
+        "Date": [ "Sun, 05 Jun 2022 13:31:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "860" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1\",\n  \"name\": \"1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/environments/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"environmentType\": \"UserCreated\",\n    \"image\": \"library/python:latest\",\n    \"condaFile\": \"\",\n    \"osType\": \"Linux\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T12:53:44.8989047Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-05T12:53:44.8989047Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceJob+[NoContext]+CommandJob+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/jobs/commandJob03?api-version=2022-05-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/jobs/commandJob03?api-version=2022-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"computeId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/computes/cpu-cluster\",\r\n    \"displayName\": \"commandJob03\",\r\n    \"experimentName\": \"commandjobexperiment\",\r\n    \"jobType\": \"Command\",\r\n    \"limits\": {\r\n      \"jobLimitsType\": \"Command\"\r\n    },\r\n    \"command\": \"echo \\\"hello world\\\"\",\r\n    \"environmentId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "645" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "9643f8bf-62ff-4e71-b529-dcfe9b4631e7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.097" ],
+        "x-ms-correlation-request-id": [ "9643f8bf-62ff-4e71-b529-dcfe9b4631e7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T133144Z:9643f8bf-62ff-4e71-b529-dcfe9b4631e7" ],
+        "Date": [ "Sun, 05 Jun 2022 13:31:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2767" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/jobs/commandJob03\",\n  \"name\": \"commandJob03\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/jobs\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {\n      \"_aml_system_ComputeTargetStatus\": \"{\\\"AllocationState\\\":\\\"steady\\\",\\\"PreparingNodeCount\\\":0,\\\"RunningNodeCount\\\":0,\\\"CurrentNodeCount\\\":0}\"\n    },\n    \"properties\": {\n      \"_azureml.ComputeTargetType\": \"amlctrain\",\n      \"ProcessInfoFile\": \"azureml-logs/process_info.json\",\n      \"ProcessStatusFile\": \"azureml-logs/process_status.json\"\n    },\n    \"displayName\": \"commandJob03\",\n    \"status\": \"Canceled\",\n    \"experimentName\": \"commandjobexperiment\",\n    \"services\": {\n      \"Tracking\": {\n        \"jobServiceType\": \"Tracking\",\n        \"port\": null,\n        \"endpoint\": \"azureml://eastus.api.azureml.ms/mlflow/v1.0/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep?\",\n        \"status\": null,\n        \"errorMessage\": null,\n        \"properties\": null\n      },\n      \"Studio\": {\n        \"jobServiceType\": \"Studio\",\n        \"port\": null,\n        \"endpoint\": \"https://ml.azure.com/runs/commandJob03?wsid=/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/workspaces/mlworkspacekeep\",\n        \"status\": null,\n        \"errorMessage\": null,\n        \"properties\": null\n      }\n    },\n    \"computeId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/computes/cpu-cluster\",\n    \"isArchived\": false,\n    \"identity\": null,\n    \"jobType\": \"Command\",\n    \"resources\": {\n      \"instanceCount\": 1,\n      \"instanceType\": null,\n      \"properties\": null\n    },\n    \"codeId\": null,\n    \"command\": \"echo \\\"hello world\\\"\",\n    \"environmentId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv02/versions/1\",\n    \"inputs\": {},\n    \"outputs\": {\n      \"default\": {\n        \"description\": null,\n        \"uri\": \"azureml://datastores/workspaceartifactstore/ExperimentRun/dcid.commandJob03\",\n        \"mode\": \"ReadWriteMount\",\n        \"jobOutputType\": \"uri_folder\"\n      }\n    },\n    \"distribution\": null,\n    \"limits\": {\n      \"timeout\": null,\n      \"jobLimitsType\": \"Command\"\n    },\n    \"environmentVariables\": null,\n    \"parameters\": {}\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T13:27:52.1363852Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzMLWorkspaceJob+[NoContext]+CommandJob+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/jobs/commandJob03/cancel?api-version=2022-05-01+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/jobs/commandJob03/cancel?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "e4a9b2c9-3aa9-43e5-a9c5-6f8970adcef0" ],
+        "CommandName": [ "Stop-AzMLWorkspaceJob" ],
+        "FullCommandName": [ "Stop-AzMLWorkspaceJob_Cancel" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.288" ],
+        "x-ms-request-id": [ "efc6bb4a-4bb2-450c-921a-c379e799e92b" ],
+        "x-ms-correlation-request-id": [ "efc6bb4a-4bb2-450c-921a-c379e799e92b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T133146Z:efc6bb4a-4bb2-450c-921a-c379e799e92b" ],
+        "Date": [ "Sun, 05 Jun 2022 13:31:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

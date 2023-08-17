@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Marketplace
 Module Guid: 4db1f51a-b835-4783-be47-0b8939492ea5
-Download Help Link: https://docs.microsoft.com/powershell/module/az.marketplace
+Download Help Link: https://learn.microsoft.com/powershell/module/az.marketplace
 Help Version: 1.0.0.0
 Locale: en-US
 ---

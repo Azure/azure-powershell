@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachekey
 schema: 2.0.0
 ---
 
@@ -197,15 +197,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IAccessKeys
 
 ## NOTES
 
 ALIASES
 
-New-AzRedisEnterpriseCacheDatabaseKey
+### New-AzRedisEnterpriseCacheDatabaseKey
 
-New-AzRedisEnterpriseCacheAccessKey
+### New-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 

@@ -36,7 +36,7 @@ This directory contains a module to handle *internal only* cmdlets. Cmdlets that
 - Packaged: yes
 
 ## Details
-The `Az.Storage.internal.psm1` file is generated to this folder. This module file handles the hidden cmdlets. These cmdlets will not be exported by `Az.Storage`. Instead, this sub-module is imported by the `..\custom\Az.Storage.custom.psm1` module, allowing you to use hidden cmdlets in your custom, exposed cmdlets. To call these cmdlets in your custom scripts, simply use [module-qualified calls](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_command_precedence?view=powershell-6#qualified-names). For example, `Az.Storage.internal\Get-Example` would call an internal cmdlet named `Get-Example`.
+The `Az.Storage.internal.psm1` file is generated to this folder. This module file handles the hidden cmdlets. These cmdlets will not be exported by `Az.Storage`. Instead, this sub-module is imported by the `..\custom\Az.Storage.custom.psm1` module, allowing you to use hidden cmdlets in your custom, exposed cmdlets. To call these cmdlets in your custom scripts, simply use [module-qualified calls](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_command_precedence?view=powershell-6#qualified-names). For example, `Az.Storage.internal\Get-Example` would call an internal cmdlet named `Get-Example`.
 
 ## Purpose
 This allows you to include REST specifications for services that you *do not wish to expose from your module*, but simply want to call within custom cmdlets. For example, if you want to make a custom cmdlet that uses `Storage` services, you could include a simplified `Storage` REST specification that has only the operations you need. When you run the generator and build this module, note the generated `Storage` cmdlets. Then, in your readme configuration, use [cmdlet hiding](https://github.com/Azure/autorest/blob/master/docs/powershell/options.md#cmdlet-hiding-exportation-suppression) on the `Storage` cmdlets and they will *only be exposed to the custom cmdlets* you want to write, and not be exported as part of `Az.Storage`.
@@ -65,7 +65,7 @@ AutoRest V3 generators require the use of `--tag=all-api-versions` to select api
 This block is updated by an automatic script. Edits may be lost!
 
 ``` yaml
-apprepo: https://github.com/Azure/azure-rest-api-specs/blob/resource-hybrid-profile
+apprepo: https://github.com/Azure/azure-rest-api-specs/blob/e0d9ceb1ca85e76a31b8496201499a7312824c09
 # include the azure profile definitions from the standard location
 appinsights: $(apprepo)/specification/applicationinsights/resource-manager
 

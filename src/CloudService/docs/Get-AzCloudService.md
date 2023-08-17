@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 schema: 2.0.0
 ---
 
@@ -55,14 +55,11 @@ This command gets all cloud services in resource group named ContosOrg
 
 ### Example 2: Get cloud service
 ```powershell
-Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-
-ResourceGroupName Name              Location    ProvisioningState
------------------ ----              --------    -----------------
-ContosOrg         ContosoCS         eastus2euap Succeeded
-
 $cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 $cloudService | Format-List
+```
+
+```output
 ResourceGroupName : ContosOrg
 Configuration     : xxxxxxxx
 ConfigurationUrl  :
@@ -82,7 +79,6 @@ Tag               : {
 Type              : Microsoft.Compute/cloudServices
 UniqueId          : xxxxxxxx
 UpgradeMode       : Auto
-
 ```
 
 This command gets cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -175,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
 
 ## NOTES
 
@@ -186,8 +182,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  - `[CloudServiceName <String>]`: 
+`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
+  - `[CloudServiceName <String>]`: Name of the cloud service.
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
@@ -195,7 +191,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
   - `[PublicIPAddressName <String>]`: The name of the public IP Address.
-  - `[ResourceGroupName <String>]`: 
+  - `[ResourceGroupName <String>]`: Name of the resource group.
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.

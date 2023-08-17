@@ -1,8 +1,8 @@
 {
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1/databases/default/regenerateKey?api-version=2021-03-01+1": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1/databases/default/regenerateKey?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
       "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,29 +17,29 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "7ffdcb8d-0295-4153-9666-06475e4690c8" ],
-        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "x-ms-request-id": [ "de3525f0-eaac-4427-ac1c-f40f088d7476" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "c80c91d6-d757-444e-a4b0-1e39aa6e8146" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210303T222129Z:c80c91d6-d757-444e-a4b0-1e39aa6e8146" ],
-        "Date": [ "Wed, 03 Mar 2021 22:21:28 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083959Z:0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"new-primary-key\",\r\n  \"secondaryKey\": \"secondary-key\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"K8YhQCoRsuekCFRu2lw8T0RevbNxl66q1zFYvwUcoz4=\"\r\n}",
       "isContentBase64": false
     }
   },
-  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1/databases/default/regenerateKey?api-version=2021-03-01+2": {
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1/databases/default/regenerateKey?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
       "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -54,22 +54,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9616b81d-99a3-4be2-bd7f-bcfcbefb049e" ],
-        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
+        "x-ms-request-id": [ "45604f99-b45c-4e59-917a-24658ea2c253" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "fcb9d90c-3414-4682-b922-1ecc5565664a" ],
-        "x-ms-routing-request-id": [ "WESTUS:20210303T222130Z:fcb9d90c-3414-4682-b922-1ecc5565664a" ],
-        "Date": [ "Wed, 03 Mar 2021 22:21:29 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T084000Z:260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "135" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"primaryKey\": \"primary-key\",\r\n  \"secondaryKey\": \"new-secondary-key\"\r\n}",
+      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"vp1WL+n2Fm/W+BNRN7GV+JBiVOncdKG/xY92vPxUqOw=\"\r\n}",
       "isContentBase64": false
     }
   }

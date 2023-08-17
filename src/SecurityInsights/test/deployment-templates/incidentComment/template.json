@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "incidentCommentIncidentId": {
+            "defaultValue": "incidentCommentIncidentId",
+            "type": "string"
+        },
+        "incidentCommentId": {
+            "defaultValue": "incidentCommentId",
+            "type": "string"
+        },
+        "incidentCommentName": {
+            "defaultValue": "incidentCommentName",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/incidents",
+            "apiVersion": "2021-04-01",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('incidentCommentIncidentId'))]",
+            "properties": {
+                "severity": "Informational",
+                "status": "New",
+                "title": "[parameters('incidentCommentName')]"
+            }
+        },
+        {
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('incidentCommentIncidentId'), '/', parameters('incidentCommentId'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/incidents/comments",
+            "apiVersion": "2021-04-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/providers/incidents', parameters('workspaceName'), 'Microsoft.SecurityInsights', parameters('incidentCommentIncidentId'))]"
+            ],
+            "properties": {
+                "message": "[parameters('incidentCommentName')]"
+            }
+        }
+    ]
+}

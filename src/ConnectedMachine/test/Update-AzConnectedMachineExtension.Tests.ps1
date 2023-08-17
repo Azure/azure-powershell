@@ -62,13 +62,13 @@ Describe 'Update-AzConnectedMachineExtension' {
             }
         }
         $result = Update-AzConnectedMachineExtension @splat
-        $result.Setting.commandToExecute | Should -Be $newCommand
+        $result.Setting["commandToExecute"] | Should -Be $newCommand
     }
 
     It 'Update parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
         $newCommand = "powershell.exe echo hi"
-        $currentExtension.Setting.commandToExecute = $newCommand
+        $currentExtension.Setting["commandToExecute"] = $newCommand
 
         $splat = @{
             ResourceGroupName = $env.ResourceGroupName
@@ -76,13 +76,13 @@ Describe 'Update-AzConnectedMachineExtension' {
             Name = "custom1"
         }
         $result = $currentExtension | Update-AzConnectedMachineExtension @splat
-        $result.Setting.commandToExecute | Should -Be $newCommand
+        $result.Setting["commandToExecute"] | Should -Be $newCommand
     }
 
     It 'UpdateViaIdentityExpanded parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
         $newCommand = "powershell.exe pwd"
-        $currentExtension.Setting.commandToExecute = $newCommand
+        $currentExtension.Setting["commandToExecute"] = $newCommand
 
         # Tests include -SubscriptionId automatically but it causes
         # piping to fail. This temporarily removes that default value for
@@ -93,7 +93,7 @@ Describe 'Update-AzConnectedMachineExtension' {
             $result = $currentExtension | Update-AzConnectedMachineExtension -Settings @{
                 commandToExecute = $newCommand
             }
-            $result.Setting.commandToExecute | Should -Be $newCommand
+            $result.Setting["commandToExecute"] | Should -Be $newCommand
         } finally {
             $PSDefaultParameterValues["*:SubscriptionId"] = $before
         }
@@ -102,7 +102,7 @@ Describe 'Update-AzConnectedMachineExtension' {
     It 'UpdateViaIdentity parameter set' {
         $currentExtension = Get-AzConnectedMachineExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -Name custom1
         $newCommand = "powershell.exe man"
-        $currentExtension.Setting.commandToExecute = $newCommand
+        $currentExtension.Setting["commandToExecute"] = $newCommand
 
         # Tests include -SubscriptionId automatically but it causes
         # piping to fail. This temporarily removes that default value for
@@ -111,7 +111,7 @@ Describe 'Update-AzConnectedMachineExtension' {
         $PSDefaultParameterValues.Remove("*:SubscriptionId")
         try {
             $result = $currentExtension | Update-AzConnectedMachineExtension -ExtensionParameter $currentExtension
-            $result.Setting.commandToExecute | Should -Be $newCommand
+            $result.Setting["commandToExecute"] | Should -Be $newCommand
         } finally {
             $PSDefaultParameterValues["*:SubscriptionId"] = $before
         }

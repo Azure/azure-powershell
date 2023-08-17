@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappbuild
 schema: 2.0.0
 ---
 
@@ -38,6 +38,7 @@ Description for Gets the details of a static site build.
 ```powershell
 Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Name    Type
 ---- ----    ----
@@ -51,6 +52,7 @@ Automaticall create a new build in static web app When creating a new pull reque
 ```powershell
 Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 ```
+
 ```output
 Kind Name    Type
 ---- ----    ----
@@ -63,6 +65,7 @@ This command gets the details of a static site build.
 ```powershell
 Get-AzStaticWebAppBuild  -ResourceGroupName azure-rg-test -Name staticweb-portal04 | Get-AzStaticWebAppBuild
 ```
+
 ```output
 Kind Name    Type
 ---- ----    ----

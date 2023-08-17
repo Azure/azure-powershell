@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicepublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservicepublicipaddress
 schema: 2.0.0
 ---
 
@@ -53,7 +53,7 @@ Gets the instance level public IP addresses for a given cloud service name.
 ### Example 2: Get instance level public IP addresses for a given cloud service object.
 ```powershell
 $cs = Get-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
-Get-AzCloudServicePublicIPAddress -CloudService $cs
+Get-AzCloudServicePublicIPAddress -InputObject $cs
 ```
 
 Gets the instance level public IP addresses for a given cloud service object.
@@ -221,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220701.IPublicIPAddress
 
 ## NOTES
 
@@ -232,8 +232,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
-  - `[CloudServiceName <String>]`: 
+`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
+  - `[CloudServiceName <String>]`: Name of the cloud service.
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
@@ -241,7 +241,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
   - `[PublicIPAddressName <String>]`: The name of the public IP Address.
-  - `[ResourceGroupName <String>]`: 
+  - `[ResourceGroupName <String>]`: Name of the resource group.
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
