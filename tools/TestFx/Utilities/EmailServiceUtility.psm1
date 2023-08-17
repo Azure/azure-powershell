@@ -44,7 +44,7 @@ function Send-EmailServiceMail {
         [string] $Subject,
 
         [Parameter(Mandatory)]
-        [string] $Content,
+        $Content, # The type of this parameter is dynamic. Omitting the type here to avoid exception.
 
         [Parameter()]
         [switch] $IsHtml
