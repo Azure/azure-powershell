@@ -42,8 +42,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     
         private const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet",
                              DefaultParameterSetName = "DefaultParameterSet";
-        //public const string StandardSecurityType = "standard", TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
-
         [Parameter(
             Mandatory = false,
             Position = 0,

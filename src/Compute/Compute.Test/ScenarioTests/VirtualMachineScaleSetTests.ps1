@@ -4634,25 +4634,10 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
         $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        # Requirements for the TrustedLaunch default behavior.
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        # Create Vmss
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
 
         Assert-Null $vmss.VirtualMachineProfile.SecurityProfile;
-
-        # Guest Attestation extension defaulting test
-        # Validate
-        #$vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
-        #$extDefaultName = "GuestAttestation";
-        #$vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
-        # Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
-
-        #$vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
-        #Assert-NotNull $vmssvms;
-        #$vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
-        #Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
-        #Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
     }
     finally
     {
@@ -4664,6 +4649,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set with SecurityType of Standard with Config.
+No SecurityPRofile should be made for now in this scenario. 
 #>
 function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
 {
@@ -4715,17 +4701,13 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName ;
 
-        # Requirements for the TrustedLaunch default behavior.
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        # Create Vmss
         $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
+        # Verify security value
         Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
-        # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
-        # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
-        # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
     }
     finally

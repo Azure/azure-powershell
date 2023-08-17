@@ -1520,7 +1520,8 @@ function Test-SecurityProfile
 
 <#
 .SYNOPSIS
-Test Set-AzDiskSecurityProfileStandard
+Test Set-AzDiskSecurityProfile with the Standard securityType.
+There should be no securityProfile made for Standard at this time. 
 #>
 function Test-SecurityProfileStandard
 {

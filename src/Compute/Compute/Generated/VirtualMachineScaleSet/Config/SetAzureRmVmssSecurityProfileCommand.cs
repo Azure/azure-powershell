@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        //[ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // If is Standard, then no securityProfile should be made for now. 
-            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType.ToLower() != ConstantValues.StandardSecurityType)
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
             {
                 // Security Profile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

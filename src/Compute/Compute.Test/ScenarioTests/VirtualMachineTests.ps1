@@ -6760,6 +6760,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 .SYNOPSIS
 Test Virtual Machines SecurityType parameter with the Standard value.
 This should prevent the TrustedLaunch value from being defaulted in.
+No SecurityProfile value should be made at this time. 
 #>
 function Test-VirtualMachineSecurityTypeStandard
 {
@@ -6768,34 +6769,27 @@ function Test-VirtualMachineSecurityTypeStandard
         $loc = Get-ComputeVMLocation;
     try
     {
-        #$loc = "eastus";
-        #$rgname = "adsandstnd1";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;    
 
         $domainNameLabel1 = "d1" + $rgname;
-        $domainNameLabel2 = "d2" + $rgname;
         $vmsize = 'Standard_D4s_v3';
         $vmname1 = $rgname + 'V';
-        $vmname2 = $rgname + 'V2';
         $imageName = "Win2016DataCenterGenSecond";
         $disable = $false;
         $enable = $true;
         $securityTypeStnd = "Standard";
 
         # Creating a VM using Simple parameterset
-        $password = Get-PasswordForVM;#"Testing1234567";
+        $password = Get-PasswordForVM;
         $user = Get-ComputeTestResourceName;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        # Create Vmss
         New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
+        # Verify security value
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
-
         Assert-Null $vm1.SecurityProfile;
-        #Assert-AreEqual $vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
-        #Assert-AreEqual $vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         # validate GA extension is not installed by default.
         $extDefaultName = "GuestAttestation";
@@ -6803,25 +6797,6 @@ function Test-VirtualMachineSecurityTypeStandard
         $vmname = $vmname1;
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
         Assert-ThrowsContains { Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName; } "was not found. For more details please go to"
-        #$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
-        #Assert-Null $vmExt;
-        #Assert-AreEqual $extDefaultName $vmExt.Name;
-        #Assert-True {!$vmExt.EnableAutomaticUpgrade};
-
-        #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        # $vmname2 = "v2" + $rgname;
-        # $res= New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname2 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel2 -SecurityType $securityTypeStnd -EnableVtpm $disable;
-        # $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-
-        # Assert-AreEqual $vm2.SecurityProfile.SecurityType "TrustedLaunch";
-        # Assert-AreEqual $vm2.SecurityProfile.UefiSettings.VTpmEnabled $false;
-        # Assert-AreEqual $vm2.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-
-        # Update AzVm test
-        # Update-AzVm -ResourceGroupName $rgname -VM $res -EnableVtpm:$true;
-        # $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-
-        # Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
     }
     finally
     {
@@ -6832,8 +6807,8 @@ function Test-VirtualMachineSecurityTypeStandard
 
 <#
 .SYNOPSIS
-Test Virtual Machines SecurityType parameter with the Standard value.
-This should prevent the TrustedLaunch value from being defaulted in.
+Test Virtual Machines SecurityType parameter with the Standard value with New-AzVMConfig.
+No SecurityProfile should be made at this time. 
 #>
 function Test-VirtualMachineSecurityTypeStandardWithConfig
 {
@@ -6881,12 +6856,11 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        # Create Vmss
         $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityTypeStnd;
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        # Verify security value
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-
         Assert-Null $vm.SecurityProfile;
     }
     finally

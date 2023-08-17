@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSDisk))]
     public class SetAzDiskSecurityProfile : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        //public const string StandardSecurityType = "standard", TrustedLaunchSecurityType = "trustedlaunch", ConfidentialVMSecurityType = "confidentialvm";
-        
         [Alias("DiskSecurityProfile")]
         [Parameter(
             Mandatory = true,
