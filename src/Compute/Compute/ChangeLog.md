@@ -23,6 +23,7 @@
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
 * For `Get-AzVmRunCommand`, a bug is fixed to work when returning a list of RunCommands [#22403]
 * Updated Azure.Core to 1.34.0.
+* Fix for `Update-AzVMSS` to update ImageReferenceSKU [#22195]
 
 ## Version 6.2.0
 * Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.
