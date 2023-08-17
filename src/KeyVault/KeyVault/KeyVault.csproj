@@ -44,10 +44,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Models\NewFolder\" />
-  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
