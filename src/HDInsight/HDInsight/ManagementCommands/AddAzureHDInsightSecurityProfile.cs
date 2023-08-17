@@ -17,9 +17,13 @@ using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightConfig), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
+        DeprecatedOutputProperties = new string[] {"Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"}, 
+        NewOutputProperties = new string[] {"Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"})]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightSecurityProfile",SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightSecurityProfile))]
     public class AddAzureHDInsightSecurityProfile : HDInsightCmdletBase
     {
