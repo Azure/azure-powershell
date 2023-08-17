@@ -1145,7 +1145,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.ParameterSetName == DefaultParameterSet &&
                     this.VM != null &&
                     this.VM.SecurityProfile != null &&
-                    this.VM.SecurityProfile.SecurityType?.ToLower() == TrustedLaunchSecurityType &&
+                    this.VM.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     this.VM.SecurityProfile.UefiSettings != null &&
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.DisableIntegrityMonitoring != true &&
                      this.ParameterSetName == SimpleParameterSet &&
-                     this.SecurityType?.ToLower() == TrustedLaunchSecurityType &&
+                     this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                      this.EnableSecureBoot == true &&
                      this.EnableVtpm == true)
             {
