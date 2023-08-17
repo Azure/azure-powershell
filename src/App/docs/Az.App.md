@@ -11,316 +11,312 @@ Locale: en-US
 Microsoft Azure PowerShell: App cmdlets
 
 ## Az.App Cmdlets
-### [Disable-AzAppContainerAppRevision](Disable-AzAppContainerAppRevision.md)
+### [Disable-AzContainerAppRevision](Disable-AzContainerAppRevision.md)
 Deactivates a revision for a Container App
 
-### [Enable-AzAppContainerAppRevision](Enable-AzAppContainerAppRevision.md)
+### [Enable-AzContainerAppRevision](Enable-AzContainerAppRevision.md)
 Activates a revision for a Container App
 
-### [Get-AzAppAvailableWorkloadProfile](Get-AzAppAvailableWorkloadProfile.md)
-Get all available workload profiles for a location.
-
-### [Get-AzAppBillingMeter](Get-AzAppBillingMeter.md)
-Get all billingMeters for a location.
-
-### [Get-AzAppConnectedEnv](Get-AzAppConnectedEnv.md)
-Get the properties of an connectedEnvironment.
-
-### [Get-AzAppConnectedEnvCert](Get-AzAppConnectedEnvCert.md)
-Get the specified Certificate.
-
-### [Get-AzAppConnectedEnvDapr](Get-AzAppConnectedEnvDapr.md)
-Get a dapr component.
-
-### [Get-AzAppConnectedEnvDaprSecret](Get-AzAppConnectedEnvDaprSecret.md)
-List secrets for a dapr component
-
-### [Get-AzAppConnectedEnvStorage](Get-AzAppConnectedEnvStorage.md)
-Get storage for a connectedEnvironment.
-
-### [Get-AzAppContainerApp](Get-AzAppContainerApp.md)
+### [Get-AzContainerApp](Get-AzContainerApp.md)
 Get the properties of a Container App.
 
-### [Get-AzAppContainerAppAuthConfig](Get-AzAppContainerAppAuthConfig.md)
+### [Get-AzContainerAppAuthConfig](Get-AzContainerAppAuthConfig.md)
 Get a AuthConfig of a Container App.
 
-### [Get-AzAppContainerAppAuthToken](Get-AzAppContainerAppAuthToken.md)
+### [Get-AzContainerAppAuthToken](Get-AzContainerAppAuthToken.md)
 Get auth token for a container app
 
-### [Get-AzAppContainerAppCustomHostName](Get-AzAppContainerAppCustomHostName.md)
-Analyzes a custom hostname for a Container App
+### [Get-AzContainerAppAvailableWorkloadProfile](Get-AzContainerAppAvailableWorkloadProfile.md)
+Get all available workload profiles for a location.
 
-### [Get-AzAppContainerAppDiagnosticDetector](Get-AzAppContainerAppDiagnosticDetector.md)
-Get a diagnostics result of a Container App.
+### [Get-AzContainerAppBillingMeter](Get-AzContainerAppBillingMeter.md)
+Get all billingMeters for a location.
 
-### [Get-AzAppContainerAppDiagnosticRevision](Get-AzAppContainerAppDiagnosticRevision.md)
-Get a revision of a Container App.
+### [Get-AzContainerAppConnectedEnv](Get-AzContainerAppConnectedEnv.md)
+Get the properties of an connectedEnvironment.
 
-### [Get-AzAppContainerAppDiagnosticRoot](Get-AzAppContainerAppDiagnosticRoot.md)
-Get the properties of a Container App.
-
-### [Get-AzAppContainerAppManagedEnv](Get-AzAppContainerAppManagedEnv.md)
-Get the properties of a Managed Environment used to host container apps.
-
-### [Get-AzAppContainerAppManagedEnvCert](Get-AzAppContainerAppManagedEnvCert.md)
+### [Get-AzContainerAppConnectedEnvCert](Get-AzContainerAppConnectedEnvCert.md)
 Get the specified Certificate.
 
-### [Get-AzAppContainerAppManagedEnvDapr](Get-AzAppContainerAppManagedEnvDapr.md)
+### [Get-AzContainerAppConnectedEnvDapr](Get-AzContainerAppConnectedEnvDapr.md)
 Get a dapr component.
 
-### [Get-AzAppContainerAppManagedEnvDaprSecret](Get-AzAppContainerAppManagedEnvDaprSecret.md)
+### [Get-AzContainerAppConnectedEnvDaprSecret](Get-AzContainerAppConnectedEnvDaprSecret.md)
 List secrets for a dapr component
 
-### [Get-AzAppContainerAppManagedEnvStorage](Get-AzAppContainerAppManagedEnvStorage.md)
-Get storage for a managedEnvironment.
+### [Get-AzContainerAppConnectedEnvStorage](Get-AzContainerAppConnectedEnvStorage.md)
+Get storage for a connectedEnvironment.
 
-### [Get-AzAppContainerAppRevision](Get-AzAppContainerAppRevision.md)
+### [Get-AzContainerAppCustomHostName](Get-AzContainerAppCustomHostName.md)
+Analyzes a custom hostname for a Container App
+
+### [Get-AzContainerAppDiagnosticDetector](Get-AzContainerAppDiagnosticDetector.md)
+Get a diagnostics result of a Container App.
+
+### [Get-AzContainerAppDiagnosticRevision](Get-AzContainerAppDiagnosticRevision.md)
 Get a revision of a Container App.
 
-### [Get-AzAppContainerAppRevisionReplica](Get-AzAppContainerAppRevisionReplica.md)
-Get a replica for a Container App Revision.
+### [Get-AzContainerAppDiagnosticRoot](Get-AzContainerAppDiagnosticRoot.md)
+Get the properties of a Container App.
 
-### [Get-AzAppContainerAppSecret](Get-AzAppContainerAppSecret.md)
-List secrets for a container app
-
-### [Get-AzAppContainerAppSourceControl](Get-AzAppContainerAppSourceControl.md)
-Get a SourceControl of a Container App.
-
-### [Get-AzAppJob](Get-AzAppJob.md)
+### [Get-AzContainerAppJob](Get-AzContainerAppJob.md)
 Get the properties of a Container Apps Job.
 
-### [Get-AzAppJobSecret](Get-AzAppJobSecret.md)
-List secrets for a container apps job
-
-### [Get-AzAppJobsExecution](Get-AzAppJobsExecution.md)
+### [Get-AzContainerAppJobExecution](Get-AzContainerAppJobExecution.md)
 Get a Container Apps Job's executions
 
-### [Get-AzAppManagedCert](Get-AzAppManagedCert.md)
+### [Get-AzContainerAppJobSecret](Get-AzContainerAppJobSecret.md)
+List secrets for a container apps job
+
+### [Get-AzContainerAppManagedCert](Get-AzContainerAppManagedCert.md)
 Get the specified Managed Certificate.
 
-### [Get-AzAppManagedEnvAuthToken](Get-AzAppManagedEnvAuthToken.md)
-Checks if resource name is available.
-
-### [Get-AzAppManagedEnvDiagnosticDetector](Get-AzAppManagedEnvDiagnosticDetector.md)
-Get the diagnostics data for a Managed Environment used to host container apps.
-
-### [Get-AzAppManagedEnvDiagnosticRoot](Get-AzAppManagedEnvDiagnosticRoot.md)
+### [Get-AzContainerAppManagedEnv](Get-AzContainerAppManagedEnv.md)
 Get the properties of a Managed Environment used to host container apps.
 
-### [Get-AzAppManagedEnvWorkloadProfileState](Get-AzAppManagedEnvWorkloadProfileState.md)
-Get all workload Profile States for a Managed Environment.
-
-### [Invoke-AzAppJobExecution](Invoke-AzAppJobExecution.md)
-Get details of a single job execution
-
-### [New-AzAppConfigurationObject](New-AzAppConfigurationObject.md)
-Create an in-memory object for Configuration.
-
-### [New-AzAppConnectedEnv](New-AzAppConnectedEnv.md)
-Create an connectedEnvironment.
-
-### [New-AzAppConnectedEnvCert](New-AzAppConnectedEnvCert.md)
-Create a Certificate.
-
-### [New-AzAppConnectedEnvDapr](New-AzAppConnectedEnvDapr.md)
-Create a Dapr Component in a connected environment.
-
-### [New-AzAppConnectedEnvStorage](New-AzAppConnectedEnvStorage.md)
-Create storage for a connectedEnvironment.
-
-### [New-AzAppContainerApp](New-AzAppContainerApp.md)
-Create a Container App.
-
-### [New-AzAppContainerAppAuthConfig](New-AzAppContainerAppAuthConfig.md)
-Create the AuthConfig for a Container App.
-
-### [New-AzAppContainerAppManagedEnv](New-AzAppContainerAppManagedEnv.md)
-Create a Managed Environment used to host container apps.
-
-### [New-AzAppContainerAppManagedEnvCert](New-AzAppContainerAppManagedEnvCert.md)
-Create a Certificate.
-
-### [New-AzAppContainerAppManagedEnvDapr](New-AzAppContainerAppManagedEnvDapr.md)
-Create a Dapr Component in a Managed Environment.
-
-### [New-AzAppContainerAppManagedEnvStorage](New-AzAppContainerAppManagedEnvStorage.md)
-Create storage for a managedEnvironment.
-
-### [New-AzAppContainerAppProbeHttpGetHttpHeadersItemObject](New-AzAppContainerAppProbeHttpGetHttpHeadersItemObject.md)
-Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
-
-### [New-AzAppContainerAppProbeObject](New-AzAppContainerAppProbeObject.md)
-Create an in-memory object for ContainerAppProbe.
-
-### [New-AzAppContainerAppSourceControl](New-AzAppContainerAppSourceControl.md)
-Create the SourceControl for a Container App.
-
-### [New-AzAppContainerObject](New-AzAppContainerObject.md)
-Create an in-memory object for Container.
-
-### [New-AzAppCustomDomainObject](New-AzAppCustomDomainObject.md)
-Create an in-memory object for CustomDomain.
-
-### [New-AzAppDaprMetadataObject](New-AzAppDaprMetadataObject.md)
-Create an in-memory object for DaprMetadata.
-
-### [New-AzAppEnvironmentVarObject](New-AzAppEnvironmentVarObject.md)
-Create an in-memory object for EnvironmentVar.
-
-### [New-AzAppIdentityProvidersObject](New-AzAppIdentityProvidersObject.md)
-Create an in-memory object for IdentityProviders.
-
-### [New-AzAppInitContainerObject](New-AzAppInitContainerObject.md)
-Create an in-memory object for InitContainer.
-
-### [New-AzAppIPSecurityRestrictionRuleObject](New-AzAppIPSecurityRestrictionRuleObject.md)
-Create an in-memory object for IPSecurityRestrictionRule.
-
-### [New-AzAppJob](New-AzAppJob.md)
-Create a Container Apps Job.
-
-### [New-AzAppJobExecutionContainerObject](New-AzAppJobExecutionContainerObject.md)
-Create an in-memory object for JobExecutionContainer.
-
-### [New-AzAppJobScaleRuleObject](New-AzAppJobScaleRuleObject.md)
-Create an in-memory object for JobScaleRule.
-
-### [New-AzAppManagedCert](New-AzAppManagedCert.md)
-Create a Managed Certificate.
-
-### [New-AzAppRegistryCredentialsObject](New-AzAppRegistryCredentialsObject.md)
-Create an in-memory object for RegistryCredentials.
-
-### [New-AzAppScaleRuleAuthObject](New-AzAppScaleRuleAuthObject.md)
-Create an in-memory object for ScaleRuleAuth.
-
-### [New-AzAppScaleRuleObject](New-AzAppScaleRuleObject.md)
-Create an in-memory object for ScaleRule.
-
-### [New-AzAppSecretObject](New-AzAppSecretObject.md)
-Create an in-memory object for Secret.
-
-### [New-AzAppSecretVolumeItemObject](New-AzAppSecretVolumeItemObject.md)
-Create an in-memory object for SecretVolumeItem.
-
-### [New-AzAppServiceBindObject](New-AzAppServiceBindObject.md)
-Create an in-memory object for ServiceBind.
-
-### [New-AzAppTrafficWeightObject](New-AzAppTrafficWeightObject.md)
-Create an in-memory object for TrafficWeight.
-
-### [New-AzAppVolumeMountObject](New-AzAppVolumeMountObject.md)
-Create an in-memory object for VolumeMount.
-
-### [New-AzAppVolumeObject](New-AzAppVolumeObject.md)
-Create an in-memory object for Volume.
-
-### [New-AzAppWorkloadProfileObject](New-AzAppWorkloadProfileObject.md)
-Create an in-memory object for WorkloadProfile.
-
-### [Remove-AzAppConnectedEnv](Remove-AzAppConnectedEnv.md)
-Delete an connectedEnvironment.
-
-### [Remove-AzAppConnectedEnvCert](Remove-AzAppConnectedEnvCert.md)
-Deletes the specified Certificate.
-
-### [Remove-AzAppConnectedEnvDapr](Remove-AzAppConnectedEnvDapr.md)
-Delete a Dapr Component from a connected environment.
-
-### [Remove-AzAppConnectedEnvStorage](Remove-AzAppConnectedEnvStorage.md)
-Delete storage for a connectedEnvironment.
-
-### [Remove-AzAppContainerApp](Remove-AzAppContainerApp.md)
-Delete a Container App.
-
-### [Remove-AzAppContainerAppAuthConfig](Remove-AzAppContainerAppAuthConfig.md)
-Delete a Container App AuthConfig.
-
-### [Remove-AzAppContainerAppManagedEnv](Remove-AzAppContainerAppManagedEnv.md)
-Delete a Managed Environment if it does not have any container apps.
-
-### [Remove-AzAppContainerAppManagedEnvCert](Remove-AzAppContainerAppManagedEnvCert.md)
-Deletes the specified Certificate.
-
-### [Remove-AzAppContainerAppManagedEnvDapr](Remove-AzAppContainerAppManagedEnvDapr.md)
-Delete a Dapr Component from a Managed Environment.
-
-### [Remove-AzAppContainerAppManagedEnvStorage](Remove-AzAppContainerAppManagedEnvStorage.md)
-Delete storage for a managedEnvironment.
-
-### [Remove-AzAppContainerAppSourceControl](Remove-AzAppContainerAppSourceControl.md)
-Delete a Container App SourceControl.
-
-### [Remove-AzAppJob](Remove-AzAppJob.md)
-Delete a Container Apps Job.
-
-### [Remove-AzAppManagedCert](Remove-AzAppManagedCert.md)
-Deletes the specified Managed Certificate.
-
-### [Restart-AzAppContainerAppRevision](Restart-AzAppContainerAppRevision.md)
-Restarts a revision for a Container App
-
-### [Start-AzAppContainerApp](Start-AzAppContainerApp.md)
-Start a container app
-
-### [Start-AzAppJob](Start-AzAppJob.md)
-Start a Container Apps Job
-
-### [Stop-AzAppContainerApp](Stop-AzAppContainerApp.md)
-Stop a container app
-
-### [Stop-AzAppJobExecution](Stop-AzAppJobExecution.md)
-Terminates execution of a running container apps job
-
-### [Stop-AzAppJobMultipleExecution](Stop-AzAppJobMultipleExecution.md)
-Terminates execution of a running container apps job
-
-### [Test-AzAppConnectedEnvNameAvailability](Test-AzAppConnectedEnvNameAvailability.md)
-Checks if resource connectedEnvironmentName is available.
-
-### [Test-AzAppNamespaceAvailability](Test-AzAppNamespaceAvailability.md)
+### [Get-AzContainerAppManagedEnvAuthToken](Get-AzContainerAppManagedEnvAuthToken.md)
 Checks if resource name is available.
 
-### [Update-AzAppConnectedEnv](Update-AzAppConnectedEnv.md)
-Patches a Managed Environment.
-Only patching of tags is supported currently
+### [Get-AzContainerAppManagedEnvCert](Get-AzContainerAppManagedEnvCert.md)
+Get the specified Certificate.
 
-### [Update-AzAppConnectedEnvCert](Update-AzAppConnectedEnvCert.md)
-Patches a certificate.
-Currently only patching of tags is supported
+### [Get-AzContainerAppManagedEnvDapr](Get-AzContainerAppManagedEnvDapr.md)
+Get a dapr component.
 
-### [Update-AzAppConnectedEnvDapr](Update-AzAppConnectedEnvDapr.md)
-Create a Dapr Component in a connected environment.
+### [Get-AzContainerAppManagedEnvDaprSecret](Get-AzContainerAppManagedEnvDaprSecret.md)
+List secrets for a dapr component
 
-### [Update-AzAppConnectedEnvStorage](Update-AzAppConnectedEnvStorage.md)
-Create storage for a connectedEnvironment.
+### [Get-AzContainerAppManagedEnvDiagnosticDetector](Get-AzContainerAppManagedEnvDiagnosticDetector.md)
+Get the diagnostics data for a Managed Environment used to host container apps.
 
-### [Update-AzAppContainerApp](Update-AzAppContainerApp.md)
-Patches a Container App using JSON Merge Patch
+### [Get-AzContainerAppManagedEnvDiagnosticRoot](Get-AzContainerAppManagedEnvDiagnosticRoot.md)
+Get the properties of a Managed Environment used to host container apps.
 
-### [Update-AzAppContainerAppAuthConfig](Update-AzAppContainerAppAuthConfig.md)
+### [Get-AzContainerAppManagedEnvStorage](Get-AzContainerAppManagedEnvStorage.md)
+Get storage for a managedEnvironment.
+
+### [Get-AzContainerAppManagedEnvWorkloadProfileState](Get-AzContainerAppManagedEnvWorkloadProfileState.md)
+Get all workload Profile States for a Managed Environment.
+
+### [Get-AzContainerAppRevision](Get-AzContainerAppRevision.md)
+Get a revision of a Container App.
+
+### [Get-AzContainerAppRevisionReplica](Get-AzContainerAppRevisionReplica.md)
+Get a replica for a Container App Revision.
+
+### [Get-AzContainerAppSecret](Get-AzContainerAppSecret.md)
+List secrets for a container app
+
+### [Get-AzContainerAppSourceControl](Get-AzContainerAppSourceControl.md)
+Get a SourceControl of a Container App.
+
+### [Invoke-AzContainerAppJobExecution](Invoke-AzContainerAppJobExecution.md)
+Get details of a single job execution
+
+### [New-AzContainerApp](New-AzContainerApp.md)
+Create a Container App.
+
+### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
 Create the AuthConfig for a Container App.
 
-### [Update-AzAppContainerAppManagedEnv](Update-AzAppContainerAppManagedEnv.md)
-Patches a Managed Environment using JSON Merge Patch
+### [New-AzContainerAppConfigurationObject](New-AzContainerAppConfigurationObject.md)
+Create an in-memory object for Configuration.
 
-### [Update-AzAppContainerAppManagedEnvCert](Update-AzAppContainerAppManagedEnvCert.md)
+### [New-AzContainerAppConnectedEnv](New-AzContainerAppConnectedEnv.md)
+Create an connectedEnvironment.
+
+### [New-AzContainerAppConnectedEnvCert](New-AzContainerAppConnectedEnvCert.md)
+Create a Certificate.
+
+### [New-AzContainerAppConnectedEnvDapr](New-AzContainerAppConnectedEnvDapr.md)
+Create a Dapr Component in a connected environment.
+
+### [New-AzContainerAppConnectedEnvStorage](New-AzContainerAppConnectedEnvStorage.md)
+Create storage for a connectedEnvironment.
+
+### [New-AzContainerAppCustomDomainObject](New-AzContainerAppCustomDomainObject.md)
+Create an in-memory object for CustomDomain.
+
+### [New-AzContainerAppDaprMetadataObject](New-AzContainerAppDaprMetadataObject.md)
+Create an in-memory object for DaprMetadata.
+
+### [New-AzContainerAppEnvironmentVarObject](New-AzContainerAppEnvironmentVarObject.md)
+Create an in-memory object for EnvironmentVar.
+
+### [New-AzContainerAppIdentityProvidersObject](New-AzContainerAppIdentityProvidersObject.md)
+Create an in-memory object for IdentityProviders.
+
+### [New-AzContainerAppInitContainerObject](New-AzContainerAppInitContainerObject.md)
+Create an in-memory object for InitContainer.
+
+### [New-AzContainerAppIPSecurityRestrictionRuleObject](New-AzContainerAppIPSecurityRestrictionRuleObject.md)
+Create an in-memory object for IPSecurityRestrictionRule.
+
+### [New-AzContainerAppJob](New-AzContainerAppJob.md)
+Create a Container Apps Job.
+
+### [New-AzContainerAppJobExecutionContainerObject](New-AzContainerAppJobExecutionContainerObject.md)
+Create an in-memory object for JobExecutionContainer.
+
+### [New-AzContainerAppJobScaleRuleObject](New-AzContainerAppJobScaleRuleObject.md)
+Create an in-memory object for JobScaleRule.
+
+### [New-AzContainerAppManagedCert](New-AzContainerAppManagedCert.md)
+Create a Managed Certificate.
+
+### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
+Create a Managed Environment used to host container apps.
+
+### [New-AzContainerAppManagedEnvCert](New-AzContainerAppManagedEnvCert.md)
+Create a Certificate.
+
+### [New-AzContainerAppManagedEnvDapr](New-AzContainerAppManagedEnvDapr.md)
+Create a Dapr Component in a Managed Environment.
+
+### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
+Create storage for a managedEnvironment.
+
+### [New-AzContainerAppObject](New-AzContainerAppObject.md)
+Create an in-memory object for Container.
+
+### [New-AzContainerAppProbeHttpGetHttpHeadersItemObject](New-AzContainerAppProbeHttpGetHttpHeadersItemObject.md)
+Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
+
+### [New-AzContainerAppProbeObject](New-AzContainerAppProbeObject.md)
+Create an in-memory object for ContainerAppProbe.
+
+### [New-AzContainerAppRegistryCredentialsObject](New-AzContainerAppRegistryCredentialsObject.md)
+Create an in-memory object for RegistryCredentials.
+
+### [New-AzContainerAppScaleRuleAuthObject](New-AzContainerAppScaleRuleAuthObject.md)
+Create an in-memory object for ScaleRuleAuth.
+
+### [New-AzContainerAppScaleRuleObject](New-AzContainerAppScaleRuleObject.md)
+Create an in-memory object for ScaleRule.
+
+### [New-AzContainerAppSecretObject](New-AzContainerAppSecretObject.md)
+Create an in-memory object for Secret.
+
+### [New-AzContainerAppSecretVolumeItemObject](New-AzContainerAppSecretVolumeItemObject.md)
+Create an in-memory object for SecretVolumeItem.
+
+### [New-AzContainerAppServiceBindObject](New-AzContainerAppServiceBindObject.md)
+Create an in-memory object for ServiceBind.
+
+### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
+Create the SourceControl for a Container App.
+
+### [New-AzContainerAppTrafficWeightObject](New-AzContainerAppTrafficWeightObject.md)
+Create an in-memory object for TrafficWeight.
+
+### [New-AzContainerAppVolumeMountObject](New-AzContainerAppVolumeMountObject.md)
+Create an in-memory object for VolumeMount.
+
+### [New-AzContainerAppVolumeObject](New-AzContainerAppVolumeObject.md)
+Create an in-memory object for Volume.
+
+### [New-AzContainerAppWorkloadProfileObject](New-AzContainerAppWorkloadProfileObject.md)
+Create an in-memory object for WorkloadProfile.
+
+### [Remove-AzContainerApp](Remove-AzContainerApp.md)
+Delete a Container App.
+
+### [Remove-AzContainerAppAuthConfig](Remove-AzContainerAppAuthConfig.md)
+Delete a Container App AuthConfig.
+
+### [Remove-AzContainerAppConnectedEnv](Remove-AzContainerAppConnectedEnv.md)
+Delete an connectedEnvironment.
+
+### [Remove-AzContainerAppConnectedEnvCert](Remove-AzContainerAppConnectedEnvCert.md)
+Deletes the specified Certificate.
+
+### [Remove-AzContainerAppConnectedEnvDapr](Remove-AzContainerAppConnectedEnvDapr.md)
+Delete a Dapr Component from a connected environment.
+
+### [Remove-AzContainerAppConnectedEnvStorage](Remove-AzContainerAppConnectedEnvStorage.md)
+Delete storage for a connectedEnvironment.
+
+### [Remove-AzContainerAppJob](Remove-AzContainerAppJob.md)
+Delete a Container Apps Job.
+
+### [Remove-AzContainerAppManagedCert](Remove-AzContainerAppManagedCert.md)
+Deletes the specified Managed Certificate.
+
+### [Remove-AzContainerAppManagedEnv](Remove-AzContainerAppManagedEnv.md)
+Delete a Managed Environment if it does not have any container apps.
+
+### [Remove-AzContainerAppManagedEnvCert](Remove-AzContainerAppManagedEnvCert.md)
+Deletes the specified Certificate.
+
+### [Remove-AzContainerAppManagedEnvDapr](Remove-AzContainerAppManagedEnvDapr.md)
+Delete a Dapr Component from a Managed Environment.
+
+### [Remove-AzContainerAppManagedEnvStorage](Remove-AzContainerAppManagedEnvStorage.md)
+Delete storage for a managedEnvironment.
+
+### [Remove-AzContainerAppSourceControl](Remove-AzContainerAppSourceControl.md)
+Delete a Container App SourceControl.
+
+### [Restart-AzContainerAppRevision](Restart-AzContainerAppRevision.md)
+Restarts a revision for a Container App
+
+### [Start-AzContainerApp](Start-AzContainerApp.md)
+Start a container app
+
+### [Start-AzContainerAppJob](Start-AzContainerAppJob.md)
+Start a Container Apps Job
+
+### [Stop-AzContainerApp](Stop-AzContainerApp.md)
+Stop a container app
+
+### [Stop-AzContainerAppJobExecution](Stop-AzContainerAppJobExecution.md)
+Terminates execution of a running container apps job
+
+### [Stop-AzContainerAppJobMultipleExecution](Stop-AzContainerAppJobMultipleExecution.md)
+Terminates execution of a running container apps job
+
+### [Test-AzContainerAppConnectedEnvNameAvailability](Test-AzContainerAppConnectedEnvNameAvailability.md)
+Checks if resource connectedEnvironmentName is available.
+
+### [Test-AzContainerAppNamespaceAvailability](Test-AzContainerAppNamespaceAvailability.md)
+Checks if resource name is available.
+
+### [Update-AzContainerApp](Update-AzContainerApp.md)
+Patches a Container App using JSON Merge Patch
+
+### [Update-AzContainerAppAuthConfig](Update-AzContainerAppAuthConfig.md)
+Create the AuthConfig for a Container App.
+
+### [Update-AzContainerAppConnectedEnvCert](Update-AzContainerAppConnectedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
 
-### [Update-AzAppContainerAppManagedEnvDapr](Update-AzAppContainerAppManagedEnvDapr.md)
-Create a Dapr Component in a Managed Environment.
+### [Update-AzContainerAppConnectedEnvDapr](Update-AzContainerAppConnectedEnvDapr.md)
+Create a Dapr Component in a connected environment.
 
-### [Update-AzAppContainerAppManagedEnvStorage](Update-AzAppContainerAppManagedEnvStorage.md)
-Create storage for a managedEnvironment.
+### [Update-AzContainerAppConnectedEnvStorage](Update-AzContainerAppConnectedEnvStorage.md)
+Create storage for a connectedEnvironment.
 
-### [Update-AzAppContainerAppSourceControl](Update-AzAppContainerAppSourceControl.md)
-Create the SourceControl for a Container App.
-
-### [Update-AzAppJob](Update-AzAppJob.md)
+### [Update-AzContainerAppJob](Update-AzContainerAppJob.md)
 Patches a Container Apps Job using JSON Merge Patch
 
-### [Update-AzAppManagedCert](Update-AzAppManagedCert.md)
+### [Update-AzContainerAppManagedCert](Update-AzContainerAppManagedCert.md)
 Patches a managed certificate.
 Oly patching of tags is supported
+
+### [Update-AzContainerAppManagedEnv](Update-AzContainerAppManagedEnv.md)
+Patches a Managed Environment using JSON Merge Patch
+
+### [Update-AzContainerAppManagedEnvCert](Update-AzContainerAppManagedEnvCert.md)
+Patches a certificate.
+Currently only patching of tags is supported
+
+### [Update-AzContainerAppManagedEnvDapr](Update-AzContainerAppManagedEnvDapr.md)
+Create a Dapr Component in a Managed Environment.
+
+### [Update-AzContainerAppManagedEnvStorage](Update-AzContainerAppManagedEnvStorage.md)
+Create storage for a managedEnvironment.
+
+### [Update-AzContainerAppSourceControl](Update-AzContainerAppSourceControl.md)
+Create the SourceControl for a Container App.
 

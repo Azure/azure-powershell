@@ -59,7 +59,7 @@ input-file:
 
 title: App
 module-version: 0.2.0
-subject-prefix: $(service-name)
+subject-prefix: ''
 
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -79,18 +79,6 @@ directive:
         "format": "password",
         "x-ms-secret": true
       }
-  - where:
-      verb: Update
-      subject: ConnectedEnvironment
-      variant: Update
-    set:
-      variant: UpdateExpanded
-  - where:
-      verb: Update
-      subject: ConnectedEnvironment
-      variant: UpdateViaIdentity
-    set:
-      variant: UpdateViaIdentityExpanded
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
@@ -176,77 +164,127 @@ directive:
   - where:
       subject: ConnectedEnvironment
     set:
-      subject: ConnectedEnv
+      subject: ContainerAppConnectedEnv
   - where:
       subject: ConnectedEnvironmentsCertificate
     set:
-      subject: ConnectedEnvCert
+      subject: ContainerAppConnectedEnvCert
   - where:
       subject: ConnectedEnvironmentsDaprComponent
     set:
-      subject: ConnectedEnvDapr
+      subject: ContainerAppConnectedEnvDapr
   - where:
       subject: ConnectedEnvironmentsDaprComponentSecret
     set:
-      subject: ConnectedEnvDaprSecret
+      subject: ContainerAppConnectedEnvDaprSecret
   - where:
       subject: ConnectedEnvironmentsStorage
     set:
-      subject: ConnectedEnvStorage
+      subject: ContainerAppConnectedEnvStorage
   - where:
       subject: ManagedCertificate
     set:
-      subject: ManagedCert
+      subject: ContainerAppManagedCert
   - where:
       subject: ManagedEnvironmentAuthToken
     set:
-      subject: ManagedEnvAuthToken
+      subject: ContainerAppManagedEnvAuthToken
   - where:
       subject: ManagedEnvironmentDiagnosticDetector
     set:
-      subject: ManagedEnvDiagnosticDetector
+      subject: ContainerAppManagedEnvDiagnosticDetector
   - where:
       subject: ManagedEnvironmentsDiagnosticRoot
     set:
-      subject: ManagedEnvDiagnosticRoot
+      subject: ContainerAppManagedEnvDiagnosticRoot
   - where:
       subject: ManagedEnvironmentWorkloadProfileState
     set:
-      subject: ManagedEnvWorkloadProfileState
+      subject: ContainerAppManagedEnvWorkloadProfileState
   - where:
       subject: ConnectedEnvironmentNameAvailability
     set:
-      subject: ConnectedEnvNameAvailability
+      subject: ContainerAppConnectedEnvNameAvailability
   - where:
       subject: NamespaceNameAvailability
     set:
-      subject: NamespaceAvailability
+      subject: ContainerAppNamespaceAvailability
+
+  - where:
+      subject: AvailableWorkloadProfile
+    set:
+      subject: ContainerAppAvailableWorkloadProfile
+  - where:
+      subject: BillingMeter
+    set:
+      subject: ContainerAppBillingMeter
+  - where:
+      subject: Job
+    set:
+      subject: ContainerAppJob
+  - where:
+      subject: JobSecret
+    set:
+      subject: ContainerAppJobSecret
+  - where:
+      subject: JobsExecution
+    set:
+      subject: ContainerAppJobExecution
+  - where:
+      subject: JobExecution
+    set:
+      subject: ContainerAppJobExecution
+  - where:
+      subject: JobMultipleExecution
+    set:
+      subject: ContainerAppJobMultipleExecution
 
   # Modifications were made to the command
   # - model-cmdlet:
   #   - model-name: RegistryCredentials
+  #     cmdlet-name: New-AzContainerAppRegistryCredentialsObject
   #   - model-name: Secret
+  #     cmdlet-name: New-AzContainerAppSecretObject
   #   - model-name: JobScaleRule
+  #     cmdlet-name: New-AzContainerAppJobScaleRuleObject
   #   - model-name: Container
+  #     cmdlet-name: New-AzContainerAppObject
   #   - model-name: InitContainer
+  #     cmdlet-name: New-AzContainerAppInitContainerObject
   #   - model-name: Volume
+  #     cmdlet-name: New-AzContainerAppVolumeObject
   #   - model-name: DaprMetadata
+  #     cmdlet-name: New-AzContainerAppDaprMetadataObject
   #   - model-name: WorkloadProfile
+  #     cmdlet-name: New-AzContainerAppWorkloadProfileObject
   #   - model-name: IdentityProviders
+  #     cmdlet-name: New-AzContainerAppIdentityProvidersObject
   #   - model-name: Configuration
+  #     cmdlet-name: New-AzContainerAppConfigurationObject
   #   - model-name: ScaleRule
+  #     cmdlet-name: New-AzContainerAppScaleRuleObject
   #   - model-name: ServiceBind
-  #   - model-name: DaprMetadata
+  #     cmdlet-name: New-AzContainerAppServiceBindObject
   #   - model-name: JobExecutionContainer
+  #     cmdlet-name: New-AzContainerAppJobExecutionContainerObject
   #   - model-name: CustomDomain
+  #     cmdlet-name: New-AzContainerAppCustomDomainObject
   #   - model-name: IPSecurityRestrictionRule
+  #     cmdlet-name: New-AzContainerAppIPSecurityRestrictionRuleObject
   #   - model-name: TrafficWeight
+  #     cmdlet-name: New-AzContainerAppTrafficWeightObject
   #   - model-name: ContainerAppProbe
+  #     cmdlet-name: New-AzContainerAppProbeObject
   #   - model-name: EnvironmentVar
+  #     cmdlet-name: New-AzContainerAppEnvironmentVarObject
   #   - model-name: VolumeMount
+  #     cmdlet-name: New-AzContainerAppVolumeMountObject
   #   - model-name: ScaleRuleAuth
+  #     cmdlet-name: New-AzContainerAppScaleRuleAuthObject
   #   - model-name: SecretVolumeItem
+  #     cmdlet-name: New-AzContainerAppSecretVolumeItemObject
   #   - model-name: ContainerAppProbeHttpGetHttpHeadersItem
+  #     cmdlet-name: New-AzContainerAppProbeHttpGetHttpHeadersItemObject
 
   - where:
       parameter-name: ComponentName
