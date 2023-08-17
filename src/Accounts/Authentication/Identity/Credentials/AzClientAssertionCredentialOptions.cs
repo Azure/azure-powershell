@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
     /// <summary>
     /// Options used to configure the <see cref="ClientAssertionCredential"/>.
     /// </summary>
-    public class ClientAssertionCredentialOptions : TokenCredentialOptions, ITokenCacheOptions
+    public class AzClientAssertionCredentialOptions : ClientAssertionCredentialOptions, ITokenCacheOptions
     {
         /// <summary>
         /// Specifies TokenCachePersistenceOptions
@@ -28,9 +28,5 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
         /// not be persisted to disk.
         /// </summary>
         public TokenCachePersistenceOptions TokenCachePersistenceOptions { get; set; }
-
-        internal CredentialPipeline Pipeline { get; set; }
-
-        internal MsalConfidentialClient MsalClient { get; set; }
     }
 }
