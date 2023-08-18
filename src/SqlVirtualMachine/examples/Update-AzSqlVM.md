@@ -14,7 +14,7 @@ Update a SQL virtual machine with AHUB billing and add a tag.
 ### Example 2
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType
+$sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType 'AHUB'
 ```
 
 ```output
