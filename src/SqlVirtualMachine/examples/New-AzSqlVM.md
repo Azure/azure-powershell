@@ -54,7 +54,7 @@ Create a SQL virtual machine with DR billing tag.
 ```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
 -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 ` 
--AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey '<keyvalue>' -AutoBackupSettingStorageAccountUrl ` 
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey '********' -AutoBackupSettingStorageAccountUrl ` 
 'https://storagename1.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 ` 
 -AutoBackupSettingStorageContainerName 'storagecontainer1'
 ```
