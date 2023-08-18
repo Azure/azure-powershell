@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* fixed breaking change information
+* Fixed breaking change information
 ## Version 1.3.0
 * Added support for Resource Group and Subscription configuration assignment.
 
