@@ -25,10 +25,11 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
  [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
  [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
  [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpMinutesToWaitOnDisconnect <Int32>]
- [-RampUpMinutesToWaitOnLogoff <Int32>] [-RampUpStartHost <StartupBehavior>] [-RampUpStartTimeHour <Int32>]
- [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHost <StartupBehavior>]
+ [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
+ [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
+ [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -458,6 +459,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RampUpAutoStartHost
+The desired startup behavior during the ramp up period for personal vms in the hostpool.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RampUpMinutesToWaitOnDisconnect
 The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
 
@@ -478,21 +494,6 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RampUpStartHost
-The desired startup behavior during the ramp up period for personal vms in the hostpool.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior
 Parameter Sets: (All)
 Aliases:
 
@@ -535,7 +536,7 @@ Accept wildcard characters: False
 
 ### -RampUpStartVMOnConnect
 The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-If this is disabled, session hosts must be turned on using RampUpStartHost or by turning them on manually.
+If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
