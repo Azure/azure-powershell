@@ -35,20 +35,20 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </param>
 
         /// <param name="enableSoftDelete">Property to specify whether the &#39;soft delete&#39; functionality is enabled for
-        /// this managed HSM pool. If it&#39;s not set to any value(true or false) when
-        /// creating new managed HSM pool, it will be set to true by default. Once set
-        /// to true, it cannot be reverted to false.
+        /// this managed HSM pool. Soft delete is enabled by default for all managed
+        /// HSMs and is immutable.
         /// </param>
 
-        /// <param name="softDeleteRetentionInDays">softDelete data retention days. It accepts &gt;=7 and &lt;=90.
+        /// <param name="softDeleteRetentionInDays">Soft deleted data retention days. When you delete an HSM or a key, it will
+        /// remain recoverable for the configured retention period or for a default
+        /// period of 90 days. It accepts values between 7 and 90.
         /// </param>
 
         /// <param name="enablePurgeProtection">Property specifying whether protection against purge is enabled for this
         /// managed HSM pool. Setting this property to true activates protection
         /// against purge for this managed HSM pool and its content - only the Managed
-        /// HSM service may initiate a hard, irrecoverable deletion. The setting is
-        /// effective only if soft delete is also enabled. Enabling this functionality
-        /// is irreversible.
+        /// HSM service may initiate a hard, irrecoverable deletion. Enabling this
+        /// functionality is irreversible.
         /// </param>
 
         /// <param name="createMode">The create mode to indicate whether the resource is being created or is
@@ -69,13 +69,15 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="privateEndpointConnections">List of private endpoint connections associated with the managed hsm pool.
         /// </param>
 
-        /// <param name="publicNetworkAccess">Control permission for data plane traffic coming from public networks while
-        /// private endpoint is enabled.
+        /// <param name="publicNetworkAccess">Control permission to the managed HSM from public networks.
         /// Possible values include: 'Enabled', 'Disabled'</param>
 
         /// <param name="scheduledPurgeDate">The scheduled purge date in UTC.
         /// </param>
-        public ManagedHsmProperties(System.Guid? tenantId = default(System.Guid?), System.Collections.Generic.IList<string> initialAdminObjectIds = default(System.Collections.Generic.IList<string>), string hsmUri = default(string), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enablePurgeProtection = default(bool?), CreateMode? createMode = default(CreateMode?), string statusMessage = default(string), string provisioningState = default(string), MhsmNetworkRuleSet networkAcls = default(MhsmNetworkRuleSet), System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem> privateEndpointConnections = default(System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem>), string publicNetworkAccess = default(string), System.DateTime? scheduledPurgeDate = default(System.DateTime?))
+
+        /// <param name="securityDomainProperties">Managed HSM security domain properties.
+        /// </param>
+        public ManagedHsmProperties(System.Guid? tenantId = default(System.Guid?), System.Collections.Generic.IList<string> initialAdminObjectIds = default(System.Collections.Generic.IList<string>), string hsmUri = default(string), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enablePurgeProtection = default(bool?), CreateMode? createMode = default(CreateMode?), string statusMessage = default(string), string provisioningState = default(string), MhsmNetworkRuleSet networkAcls = default(MhsmNetworkRuleSet), System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem> privateEndpointConnections = default(System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem>), string publicNetworkAccess = default(string), System.DateTime? scheduledPurgeDate = default(System.DateTime?), ManagedHSMSecurityDomainProperties securityDomainProperties = default(ManagedHSMSecurityDomainProperties))
 
         {
             this.TenantId = tenantId;
@@ -91,6 +93,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.ScheduledPurgeDate = scheduledPurgeDate;
+            this.SecurityDomainProperties = securityDomainProperties;
             CustomInit();
         }
 
@@ -122,15 +125,16 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <summary>
         /// Gets or sets property to specify whether the &#39;soft delete&#39; functionality is
-        /// enabled for this managed HSM pool. If it&#39;s not set to any value(true or
-        /// false) when creating new managed HSM pool, it will be set to true by
-        /// default. Once set to true, it cannot be reverted to false.
+        /// enabled for this managed HSM pool. Soft delete is enabled by default for
+        /// all managed HSMs and is immutable.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableSoftDelete")]
         public bool? EnableSoftDelete {get; set; }
 
         /// <summary>
-        /// Gets or sets softDelete data retention days. It accepts &gt;=7 and &lt;=90.
+        /// Gets or sets soft deleted data retention days. When you delete an HSM or a
+        /// key, it will remain recoverable for the configured retention period or for
+        /// a default period of 90 days. It accepts values between 7 and 90.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteRetentionInDays")]
         public int? SoftDeleteRetentionInDays {get; set; }
@@ -139,9 +143,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// Gets or sets property specifying whether protection against purge is
         /// enabled for this managed HSM pool. Setting this property to true activates
         /// protection against purge for this managed HSM pool and its content - only
-        /// the Managed HSM service may initiate a hard, irrecoverable deletion. The
-        /// setting is effective only if soft delete is also enabled. Enabling this
-        /// functionality is irreversible.
+        /// the Managed HSM service may initiate a hard, irrecoverable deletion.
+        /// Enabling this functionality is irreversible.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enablePurgeProtection")]
         public bool? EnablePurgeProtection {get; set; }
@@ -180,8 +183,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         public System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
-        /// Gets or sets control permission for data plane traffic coming from public
-        /// networks while private endpoint is enabled. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets control permission to the managed HSM from public networks. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
         public string PublicNetworkAccess {get; set; }
@@ -191,5 +193,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scheduledPurgeDate")]
         public System.DateTime? ScheduledPurgeDate {get; private set; }
+
+        /// <summary>
+        /// Gets managed HSM security domain properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityDomainProperties")]
+        public ManagedHSMSecurityDomainProperties SecurityDomainProperties {get; private set; }
     }
 }
