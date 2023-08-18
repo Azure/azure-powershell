@@ -262,7 +262,7 @@ If ($Build)
         {
             ForEach ($phase In ($CIPlan | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }))
             {
-                $CIPlan[$phase] = $CIPlan[$phase] | Where-Object { $_ -Ne "build" }
+                $CIPlan.$phase = $CIPlan.$phase | Where-Object { $_ -Ne "build" }
             }
             ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
         }
