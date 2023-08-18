@@ -213,6 +213,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             Communicator.Remove(resourceGroupName, managedInstanceName);
         }
 
+
+        public void StartManagedInstance(string resourceGroupName, string name)
+        {
+            Communicator.Start(resourceGroupName, name);
+        }
+
+        public void StopManagedInstance(string resourceGroupName, string name)
+        {
+            Communicator.Stop(resourceGroupName, name);
+        }
+
         /// <summary>
         /// Convert a Management.Sql.LegacySdk.Models.ManagedInstance to AzureSqlDatabaseManagedInstanceModel
         /// </summary>

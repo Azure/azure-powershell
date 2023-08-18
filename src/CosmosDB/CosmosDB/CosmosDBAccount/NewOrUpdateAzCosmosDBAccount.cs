@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string[] NetworkAclBypassResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix, SDKModel.ServerVersion.FourFullStopZero)]
+        [PSArgumentCompleter(SDKModel.ServerVersion.Three2, SDKModel.ServerVersion.Three6, SDKModel.ServerVersion.Four0)]
         public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]

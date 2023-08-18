@@ -29,8 +29,24 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         public const string T2 = "T2";
         /// <summary>
+        /// Standard AcrossT2 network connectivity.
+        /// </summary>
+        public const string AcrossT2 = "AcrossT2";
+        /// <summary>
         /// Standard T1 and T2 network connectivity.
         /// </summary>
         public const string T1AndT2 = "T1AndT2";
+        /// <summary>
+        /// Standard T1 and AcrossT2 network connectivity.
+        /// </summary>
+        public const string T1AndAcrossT2 = "T1AndAcrossT2";
+        /// <summary>
+        /// Standard T2 and AcrossT2 network connectivity.
+        /// </summary>
+        public const string T2AndAcrossT2 = "T2AndAcrossT2";
+        /// <summary>
+        /// Standard T1, T2 and AcrossT2 network connectivity.
+        /// </summary>
+        public const string T1AndT2AndAcrossT2 = "T1AndT2AndAcrossT2";
     }
 }

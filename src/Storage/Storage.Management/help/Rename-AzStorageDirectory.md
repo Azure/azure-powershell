@@ -12,25 +12,25 @@ Renames a directory.
 
 ## SYNTAX
 
-### ShareName
+### ShareName (Default)
 ```
 Rename-AzStorageDirectory [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Rename-AzStorageDirectory [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DirecotryObject
 ```
 Rename-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [[-DestinationPath] <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Rename-AzStorageDirectory -ShareName myshare -SourcePath testdir1 -DestinationPa
 ```
 
 ```output
-   Directory: https://myaccount.file.core.windows.net/myshare
+Directory: https://myaccount.file.core.windows.net/myshare
 
 Type                Length Name
 ----                ------ ----
@@ -59,7 +59,7 @@ Get-AzStorageFile -ShareName myshare -Path testdir1 | Rename-AzStorageDirectory 
 ```
 
 ```output
-   Directory: https://myaccount.file.core.windows.net/myshare
+Directory: https://myaccount.file.core.windows.net/myshare
 
 Type                Length Name
 ----                ------ ----
@@ -234,6 +234,36 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
