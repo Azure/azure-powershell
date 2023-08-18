@@ -1,0 +1,85 @@
+{
+  "Add-AzKeyVaultManagedHsmRegion+[NoContext]+__AllParameterSets+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3876c96b-797d-404b-9389-a91b45bb5e0e" ],
+        "CommandName": [ "Az.KeyVault.internal\\Get-AzKeyVaultManagedHsm" ],
+        "FullCommandName": [ "Get-AzKeyVaultManagedHsm_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.13", "Az.KeyVault/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-client-request-id": [ "3876c96b-797d-404b-9389-a91b45bb5e0e" ],
+        "x-ms-keyvault-service-version": [ "1.5.885.0" ],
+        "x-ms-request-id": [ "64d28843-a116-49f4-8577-a5757d05615f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "9073716b-2ff3-4acc-968b-9b66c2597d81" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T072915Z:9073716b-2ff3-4acc-968b-9b66c2597d81" ],
+        "Date": [ "Fri, 18 Aug 2023 07:29:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1298" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"family\":\"B\",\"name\":\"Standard_B1\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm\",\"name\":\"bezmhsm\",\"type\":\"Microsoft.KeyVault/managedHSMs\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-11T03:48:15.524Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-18T02:12:35.259Z\"},\"properties\":{\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"hsmUri\":\"https://bezmhsm.managedhsm.azure.net/\",\"initialAdminObjectIds\":[\"2f153a9e-5be9-4f43-abd2-04561777c8b0\"],\"enableSoftDelete\":true,\"softDeleteRetentionInDays\":90,\"enablePurgeProtection\":false,\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Managed HSM is provisioned and ready to use.\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Allow\",\"ipRules\":[],\"virtualNetworkRules\":[]},\"publicNetworkAccess\":\"Enabled\",\"regions\":[{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false},{\"name\":\"eastus2\",\"provisioningState\":\"Failed\",\"isPrimary\":false}],\"securityDomainProperties\":{\"activationStatus\":\"Active\",\"activationStatusMessage\":\"Your HSM has been activated and can be used for cryptographic operations.\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Add-AzKeyVaultManagedHsmRegion+[NoContext]+__AllParameterSets+$PATCH+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm?api-version=2023-02-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"family\": \"B\",\r\n    \"name\": \"Standard_B1\"\r\n  },\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"defaultAction\": \"Allow\",\r\n      \"ipRules\": [ ],\r\n      \"virtualNetworkRules\": [ ]\r\n    },\r\n    \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n    \"initialAdminObjectIds\": [ \"2f153a9e-5be9-4f43-abd2-04561777c8b0\" ],\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enablePurgeProtection\": false,\r\n    \"regions\": [\r\n      {\r\n        \"name\": \"westus\",\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"name\": \"eastus2\",\r\n        \"isPrimary\": false\r\n      },\r\n      {\r\n        \"name\": \"eastus2\"\r\n      }\r\n    ],\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"tags\": {\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "761" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-client-request-id": [ "eff13d3b-5250-48a7-8e95-05c9b2d07d80" ],
+        "x-ms-keyvault-service-version": [ "1.5.885.0" ],
+        "x-ms-request-id": [ "82cb9843-acde-49ca-ae70-90c4a6bb9c2b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "a93fe6d0-40dd-48c8-9fc7-f98af8563f6a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T072919Z:a93fe6d0-40dd-48c8-9fc7-f98af8563f6a" ],
+        "Date": [ "Fri, 18 Aug 2023 07:29:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "106" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"409\",\"message\":\"Extension in region: eastus2 already exists in state: PreProvisioning\"}}",
+      "isContentBase64": false
+    }
+  }
+}

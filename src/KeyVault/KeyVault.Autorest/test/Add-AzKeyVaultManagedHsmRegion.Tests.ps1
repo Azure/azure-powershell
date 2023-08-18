@@ -16,7 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzKeyVaultManagedHsmRegio
 
 Describe 'Add-AzKeyVaultManagedHsmRegion' {
     It '__AllParameterSets' {
-        $regions = Add-AzKeyVaultManagedHsmRegion -Name $env.hsmName -ResourceGroupName $env.rg -Region eastus2
-        
+        $regions = Add-AzKeyVaultManagedHsmRegion -Name $env.hsmName -ResourceGroupName $env.rgName -Region eastus2
     }
 }
