@@ -87,7 +87,7 @@ Location	Name		ResourceGroupName
 eastus		sqlvm1		ResourceGroup01	
 ```
 
-Create a SQL virtual machine with specific sku type and license type.
+Create a SQL virtual machine with specific sku and license type.
 
 ### Example 3
 ```powershell
@@ -118,10 +118,10 @@ Create a SQL virtual machine with DR billing tag.
 ### Example 5
 ```powershell
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
--AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 ` 
--AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey '<keyvalue>' -AutoBackupSettingStorageAccountUrl ` 
-'https://storagename1.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 ` 
--AutoBackupSettingStorageContainerName 'storagecontainer1'
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
 ```
 
 ```output
@@ -134,7 +134,7 @@ Create a SQL virtual machine and configure auto backup settings.
 
 ### Example 6
 ```powershell
-New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday ` 
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday `
 -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
 ```
 

@@ -1,6 +1,6 @@
 ### Example 1
 ```powershell
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
 ```
 
 ```output
@@ -14,7 +14,7 @@ Update a SQL virtual machine with AHUB billing and add a tag.
 ### Example 2
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Update-AzSqlVM -SqlManagementType 'Full' -Sku 'Standard' -LicenseType
+$sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType
 ```
 
 ```output
@@ -28,10 +28,10 @@ Update a SQL virtual machine's sku and license type via identity.
 ### Example 3
 ```powershell
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSettingEnable `
--AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 ` 
--AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey '<keyvalue>' -AutoBackupSettingStorageAccountUrl ` 
-'https://storagename1.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 ` 
--AutoBackupSettingStorageContainerName 'storagecontainer1'
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
 ```
 
 ```output
@@ -58,7 +58,7 @@ Update a SQL virtual machine to disable auto backup.
 ### Example 5
 ```powershell
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
--AutoPatchingSettingDayOfWeek Thursday ` 
+-AutoPatchingSettingDayOfWeek Thursday `
 -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
 ```
 
