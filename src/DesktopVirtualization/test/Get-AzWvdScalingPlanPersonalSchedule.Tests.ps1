@@ -41,7 +41,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                 -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts All `
+                                        -RampUpStartHost All `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -111,7 +111,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
                 -daysOfWeek @('Monday', 'Tuesday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts All `
+                                        -RampUpStartHost All `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -148,7 +148,7 @@ Describe 'Get-AzWvdScalingPlanPersonalSchedule' {
             -daysOfWeek @('Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts All `
+                                        -RampUpStartHost All `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `

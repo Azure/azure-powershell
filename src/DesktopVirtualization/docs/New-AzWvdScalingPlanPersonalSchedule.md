@@ -25,7 +25,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
  [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
  [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
  [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpAutoStartHosts <StartupBehavior>]
+ [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpStartHost <StartupBehavior>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
  [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -45,7 +45,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts "All" `
+                                        -RampUpStartHost "All" `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -459,7 +459,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RampUpAutoStartHosts
+### -RampUpStartHost
 The desired startup behavior during the ramp up period for personal vms in the hostpool.
 
 ```yaml
@@ -536,7 +536,7 @@ Accept wildcard characters: False
 
 ### -RampUpStartVMOnConnect
 The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
+If this is disabled, session hosts must be turned on using RampUpStartHost or by turning them on manually.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect

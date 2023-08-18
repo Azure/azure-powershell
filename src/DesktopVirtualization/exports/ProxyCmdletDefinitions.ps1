@@ -5101,7 +5101,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -rampUpAutoStartHosts "All" `
+                                        -RampUpStartHost "All" `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -5325,7 +5325,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
-    ${RampUpAutoStartHosts},
+    ${RampUpStartHost},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -5356,7 +5356,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-    # If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
+    # If this is disabled, session hosts must be turned on using RampUpStartHost or by turning them on manually.
     ${RampUpStartVMOnConnect},
 
     [Parameter()]
@@ -10577,7 +10577,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior]
     # The desired startup behavior during the ramp up period for personal vms in the hostpool.
-    ${RampUpAutoStartHosts},
+    ${RampUpStartHost},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
@@ -10608,7 +10608,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect]
     # The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-    # If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
+    # If this is disabled, session hosts must be turned on using RampUpStartHost or by turning them on manually.
     ${RampUpStartVMOnConnect},
 
     [Parameter()]
