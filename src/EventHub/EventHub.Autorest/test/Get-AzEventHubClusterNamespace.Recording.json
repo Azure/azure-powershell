@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "18c39be9-aa6f-4051-988a-3383878c5f4f" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "b0b07438-7dad-4fbf-8d04-587d55a0030f" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
-        "x-ms-request-id": [ "99996fea-dcd0-485e-b56a-33d0d750a63c" ],
-        "x-ms-correlation-request-id": [ "99996fea-dcd0-485e-b56a-33d0d750a63c" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230703T105433Z:99996fea-dcd0-485e-b56a-33d0d750a63c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-request-id": [ "a2f261d4-68eb-4d62-b038-189f77567e72" ],
+        "x-ms-correlation-request-id": [ "a2f261d4-68eb-4d62-b038-189f77567e72" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T172804Z:a2f261d4-68eb-4d62-b038-189f77567e72" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 03 Jul 2023 10:54:32 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 17:28:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],

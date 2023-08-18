@@ -3,13 +3,13 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.EventHub/checkNameAvailability?api-version=2023-01-01-preview",
-      "Content": "{\n  \"name\": \"namespaceNameqfe8pb\"\n}",
+      "Content": "{\n  \"name\": \"namespaceV1c2xukw\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "35" ]
+        "Content-Length": [ "33" ]
       }
     },
     "Response": {
@@ -17,15 +17,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f6b92ccf-7f80-4713-b0c6-0ba129f0136c_M8SN1_M8SN1" ],
+        "x-ms-request-id": [ "66f16a33-102b-46b9-b386-a365e22ef830_M11SN1_M11SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "a3c6fb40-1a54-425c-a90f-885f07ea4de5" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230703T123120Z:a3c6fb40-1a54-425c-a90f-885f07ea4de5" ],
+        "x-ms-correlation-request-id": [ "331cfa6f-df04-488a-a6b0-6ab5416f9bf1" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T190653Z:331cfa6f-df04-488a-a6b0-6ab5416f9bf1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 03 Jul 2023 12:31:19 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 19:06:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "159" ],
@@ -36,11 +36,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestem0xh6/providers/Microsoft.EventHub/namespaces/namespaceNameqfe8pb/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview+1": {
+  "Test-AzEventHubName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestem0xh6/providers/Microsoft.EventHub/namespaces/namespaceNameqfe8pb/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview",
-      "Content": "{\n  \"name\": \"aliasvartlp\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/disasterRecoveryConfigs/checkNameAvailability?api-version=2023-01-01-preview",
+      "Content": "{\n  \"name\": \"alias0s4m1l\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -54,15 +54,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6be68a22-6e5d-4727-b511-1e33b9dfe857_M8SN1_M8SN1" ],
+        "x-ms-request-id": [ "b35cd4b4-f6ef-401f-b928-35bb85e83d59_M6SN1_M6SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "15050d17-a977-44bc-b9a7-f44608ae2232" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230703T123120Z:15050d17-a977-44bc-b9a7-f44608ae2232" ],
+        "x-ms-correlation-request-id": [ "11bc2f90-6bf4-4f50-8404-5e0e691e8da7" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T190653Z:11bc2f90-6bf4-4f50-8404-5e0e691e8da7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 03 Jul 2023 12:31:19 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 19:06:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "38" ],
