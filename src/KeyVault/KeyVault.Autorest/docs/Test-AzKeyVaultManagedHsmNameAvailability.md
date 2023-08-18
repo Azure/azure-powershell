@@ -1,67 +1,61 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://learn.microsoft.com/powershell/module/az.keyvault/test-azkeyvaultnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/test-azkeyvaultmanagedhsmnameavailability
 schema: 2.0.0
 ---
 
-# Test-AzKeyVaultNameAvailability
+# Test-AzKeyVaultManagedHsmNameAvailability
 
 ## SYNOPSIS
-Checks that the vault name is valid and is not already in use.
+Checks that the managed hsm name is valid and is not already in use.
 
 ## SYNTAX
 
 ### CheckExpanded (Default)
 ```
-Test-AzKeyVaultNameAvailability -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzKeyVaultManagedHsmNameAvailability -Name <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzKeyVaultNameAvailability -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzKeyVaultManagedHsmNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzKeyVaultNameAvailability -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzKeyVaultManagedHsmNameAvailability -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks that the vault name is valid and is not already in use.
+Checks that the managed hsm name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Test the availability of an unused vault name
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzKeyVaultNameAvailability -Name test-kv0818
+{{ Add code here }}
 ```
 
 ```output
-Message NameAvailable Reason
-------- ------------- ------
-                 True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This commands tests the availability of vault name `test-kv0818`.
-The results shows `test-kv0818` is not occupied.
+{{ Add description here }}
 
-### Example 2: Test the availability of an used vault name
+### Example 2: {{ Add title here }}
 ```powershell
-Test-AzKeyVaultNameAvailability -Name testkv
+{{ Add code here }}
 ```
 
 ```output
-Message
--------                                                                                                                                                                      
-The vault name 'testkv' is already in use. Vault names are globally unique so it is possible that the name is already taken. If you are sure that the vault name was not … 
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This commands tests the availability of vault name `testkv`.
-The results shows `testkv` is already in use.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -112,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The vault name.
+The managed hsm name.
 
 ```yaml
 Type: System.String
@@ -180,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckMhsmNameAvailabilityResult
 
 ## NOTES
 

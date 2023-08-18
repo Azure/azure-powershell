@@ -31,14 +31,15 @@ For information on how to develop for `Az.KeyVault`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 63a4b37b66740087b113e00c1b32b2b9c98fd9db
+branch: 8fa9b5051129dd4808c9be1f5b753af226b044db
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/keyvault.json
+  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/keyvault.json
+  - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/managedHsm.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -47,6 +48,8 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: KeyVault
 subject-prefix: $(service-name)
+use-extension:
+  "@autorest/powershell": "4.x"
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -57,21 +60,38 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
-  # Remove all commands except Test-AzKeyVaultNameAvailability
+  # Combine Test-AzKeyVaultNameAvailability and Test-AzKeyVaultManagedHsmNameAvailability  
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^ManagedHsms_CheckMhsmNameAvailability$/g, "ManagedHsms_CheckNameAvailability")
+  - no-inline:
+      - Error
+  # Remove all commands except Test-AzKeyVault*NameAvailability, *-AzKeyVaultManagedHsm, *-AzKeyVaultRegion
   - where:
-      verb: ^((?!Test).)*$
-      subject: ^((?!VaultNameAvailability).)*$
+      subject: ^((?!MhsmRegion|ManagedHsm|NameAvailability).)*$
     remove: true
-  # Remove the Test-* variant
+  # Rename *-AzKeyVaultMhsmRegion to *-AzKeyVaultManagedHsmRegion
   - where:
-      verb: Test
-      subject: VaultNameAvailability
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      subject: ^MhsmRegion$
+    set:
+      subject: ManagedHsmRegion
+  # Remove *-AzKeyVaultManagedHsmDeleted
+  - where:
+      subject: ^ManagedHsmDeleted$
+    remove: true
+  # Hide *-AzKeyVaultManagedHsm
+  - where:
+      subject: ^ManagedHsm$
+    hide: true
+  # Remove New|Remove-AzKeyVaultManagedHsm
+  - where:
+      verb: New|Remove
+      subject: ^ManagedHsm$
     remove: true
 ```

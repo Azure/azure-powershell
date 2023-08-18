@@ -1,69 +1,57 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://learn.microsoft.com/powershell/module/az.keyvault/test-azkeyvaultnameavailability
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultmanagedhsmregion
 schema: 2.0.0
 ---
 
-# Test-AzKeyVaultNameAvailability
+# Remove-AzKeyVaultManagedHsmRegion
 
 ## SYNOPSIS
-Checks that the vault name is valid and is not already in use.
+The List operation gets information about the regions associated with the managed HSM Pool.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
-Test-AzKeyVaultNameAvailability -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaJsonFilePath
-```
-Test-AzKeyVaultNameAvailability -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaJsonString
-```
-Test-AzKeyVaultNameAvailability -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKeyVaultManagedHsmRegion -Name <String> -ResourceGroupName <String> -Region <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks that the vault name is valid and is not already in use.
+The List operation gets information about the regions associated with the managed HSM Pool.
 
 ## EXAMPLES
 
-### Example 1: Test the availability of an unused vault name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-Test-AzKeyVaultNameAvailability -Name test-kv0818
+{{ Add code here }}
 ```
 
-```output
-Message NameAvailable Reason
-------- ------------- ------
-                 True
-```
 
-This commands tests the availability of vault name `test-kv0818`.
-The results shows `test-kv0818` is not occupied.
 
-### Example 2: Test the availability of an used vault name
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-Test-AzKeyVaultNameAvailability -Name testkv
+{{ Add code here }}
 ```
 
-```output
-Message
--------                                                                                                                                                                      
-The vault name 'testkv' is already in use. Vault names are globally unique so it is possible that the name is already taken. If you are sure that the vault name was not … 
-```
 
-This commands tests the availability of vault name `testkv`.
-The results shows `testkv` is already in use.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -81,42 +69,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Check operation
-
-```yaml
-Type: System.String
-Parameter Sets: CheckViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The vault name.
+Name of the managed HSM Pool
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Region
+List of regions to be removed associated with the managed hsm pool.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the resource group that contains the managed HSM pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ICheckNameAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmGeoReplicatedRegion
 
 ## NOTES
 

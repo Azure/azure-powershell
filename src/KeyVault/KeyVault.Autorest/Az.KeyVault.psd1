@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.KeyVault.private.dll'
   FormatsToProcess = './Az.KeyVault.format.ps1xml'
-  FunctionsToExport = 'Test-AzKeyVaultNameAvailability', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Add-AzKeyVaultManagedHsmRegion', 'Get-AzKeyVaultManagedHsmRegion', 'Remove-AzKeyVaultManagedHsmRegion', 'Test-AzKeyVaultManagedHsmNameAvailability', 'Test-AzKeyVaultNameAvailability'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'KeyVault'

@@ -19,6 +19,9 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    ### 1. Create a managed hsm on local first ###
+    $env.hsmName = "bezmhsm"
+    $env.rgName = "bez-rg"
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

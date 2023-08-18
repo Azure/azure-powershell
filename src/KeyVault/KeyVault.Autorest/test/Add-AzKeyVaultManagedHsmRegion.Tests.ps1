@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Test-AzKeyVaultNameAvailability'))
+if(($null -eq $TestName) -or ($TestName -contains 'Add-AzKeyVaultManagedHsmRegion'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzKeyVaultNameAvailability.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Add-AzKeyVaultManagedHsmRegion.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzKeyVaultNameAvailabili
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzKeyVaultNameAvailability' {
-    It 'CheckExpanded' {
-        $result = Test-AzKeyVaultNameAvailability -Name bez-test-kv20230818
-        $result.NameAvailable | Should -Be $True
+Describe 'Add-AzKeyVaultManagedHsmRegion' {
+    It '__AllParameterSets' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
