@@ -104,7 +104,7 @@ Describe 'Update-AzSqlVM' {
     It 'Update-AutobackupEnable' {
         # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'       
         $StorageAccountUrl = "https://veppalastorageacc.blob.core.windows.net/"
-        $storageAccountPrimaryKey = "anaccesskey"
+        $storageAccountPrimaryKey = "********"
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AutoBackupSettingEnable `
         -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey $storageAccountPrimaryKey -AutoBackupSettingStorageAccountUrl $StorageAccountUrl -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60
                 
