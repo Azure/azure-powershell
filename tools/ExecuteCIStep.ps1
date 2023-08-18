@@ -255,6 +255,18 @@ If ($Build)
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
 
+        Write-Warning "==========================================="
+        Write-Warning $Env:IsGenerateBased
+        Write-Warning "==========================================="
+        if ($Env:IsGenerateBased -eq "true")
+        {
+            ForEach ($phase In ($CIPlan | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }))
+            {
+                $CIPlan[$phase] = $CIPlan[$phase] | Where-Object { $_ -Ne "build" }
+            }
+            ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
+        }
+
         ForEach ($DependencyStep In $DependencyStepList)
         {
             $ModuleInfoList = @()
