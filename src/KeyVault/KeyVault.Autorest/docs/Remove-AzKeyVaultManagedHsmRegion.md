@@ -22,19 +22,18 @@ The List operation gets information about the regions associated with the manage
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Remove a region for Managed HSM
 ```powershell
-{{ Add code here }}
+Remove-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg -Regioe eastus2 -PassThru
 ```
 
+IsPrimary Name   ProvisioningState
+--------- ----   -----------------
+True      eastus Succeeded
+False     westus Succeeded
+``````
 
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-
+This command removes `eastus2` from region extension for Managed HSM named `testmhsm`.
 
 ## PARAMETERS
 

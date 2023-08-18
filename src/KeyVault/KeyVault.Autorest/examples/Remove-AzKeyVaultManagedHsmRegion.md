@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a region for Managed HSM
 ```powershell
-{{ Add code here }}
+Remove-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg -Regioe eastus2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+IsPrimary Name   ProvisioningState
+--------- ----   -----------------
+True      eastus Succeeded
+False     westus Succeeded
+``````
 
-{{ Add description here }}
-
+This command removes `eastus2` from region extension for Managed HSM named `testmhsm`.

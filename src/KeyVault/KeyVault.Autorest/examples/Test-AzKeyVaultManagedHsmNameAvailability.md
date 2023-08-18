@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test the availability of an unused HSM name
 ```powershell
-{{ Add code here }}
+Test-AzKeyVaultManagedHsmNameAvailability -Name testmhsm0818
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
+This commands tests the availability of vault name `testmhsm0818`. The results shows `testmhsm0818` is not occupied.
 
-### Example 2: {{ Add title here }}
+### Example 2: Test the availability of an used HSM name
 ```powershell
-{{ Add code here }}
+Test-AzKeyVaultNameAvailability -Name testmhsm
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message                               NameAvailable Reason
+-------                               ------------- ------
+The name 'testmhsm' is already in use.         False AlreadyExists
 ```
 
-{{ Add description here }}
-
+This commands tests the availability of HSM name `testmhsm`. The results shows `testmhsm` is already in use.

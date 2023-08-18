@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add a region for Managed HSM
 ```powershell
-{{ Add code here }}
+Add-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg -Region eastus2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+IsPrimary Name   ProvisioningState
+--------- ----   -----------------
+True      eastus Succeeded
+False     eastus2 Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command adds `eastus` as the region extension for Managed HSM named `testmhsm`.
