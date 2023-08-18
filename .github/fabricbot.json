@@ -1635,16 +1635,7 @@
           {
             "labels": [
               "Service Attention",
-              "Consumption- RIandShowBack"
-            ],
-            "mentionees": [
-              "ccmshowbackdevs"
-            ]
-          },
-          {
-            "labels": [
-              "Service Attention",
-              "Consumption-Billing"
+              "Consumption - Billing"
             ],
             "mentionees": [
               "ccmbpxpcrew"
@@ -1653,7 +1644,7 @@
           {
             "labels": [
               "Service Attention",
-              "Consumption-Budget"
+              "Consumption - Budget"
             ],
             "mentionees": [
               "ccmaxpcrew"
@@ -1662,7 +1653,7 @@
           {
             "labels": [
               "Service Attention",
-              "Consumption-Consumption"
+              "Consumption - Consumption"
             ],
             "mentionees": [
               "ccmaxpcrew"
@@ -1671,7 +1662,7 @@
           {
             "labels": [
               "Service Attention",
-              "Consumption-Query"
+              "Consumption - Query"
             ],
             "mentionees": [
               "ccmixpdevs"
@@ -1680,10 +1671,19 @@
           {
             "labels": [
               "Service Attention",
-              "Consumption-UsageDetailsandExport"
+              "Consumption - UsageDetailsandExport"
             ],
             "mentionees": [
               "TiagoCrewGitHubIssues"
+            ]
+          },
+          {
+            "labels": [
+              "Service Attention",
+              "Consumption- RIandShowBack"
+            ],
+            "mentionees": [
+              "ccmshowbackdevs"
             ]
           },
           {
@@ -1751,7 +1751,7 @@
           {
             "labels": [
               "Service Attention",
-              "Cost Management-Billing"
+              "Cost Management - Billing"
             ],
             "mentionees": [
               "ccmbpxpcrew"
@@ -1760,7 +1760,7 @@
           {
             "labels": [
               "Service Attention",
-              "Cost Management-Budget"
+              "Cost Management - Budget"
             ],
             "mentionees": [
               "ccmaxpcrew"
@@ -1769,7 +1769,7 @@
           {
             "labels": [
               "Service Attention",
-              "Cost Management-Query"
+              "Cost Management - Query"
             ],
             "mentionees": [
               "ccmixpdevs"
@@ -1778,7 +1778,7 @@
           {
             "labels": [
               "Service Attention",
-              "Cost Management-RIandShowBack"
+              "Cost Management - RIandShowBack"
             ],
             "mentionees": [
               "ccmshowbackdevs"
@@ -1787,7 +1787,7 @@
           {
             "labels": [
               "Service Attention",
-              "Cost Management-UsageDetailsAndExport"
+              "Cost Management - UsageDetailsAndExport"
             ],
             "mentionees": [
               "TiagoCrewGitHubIssues"
@@ -2847,7 +2847,7 @@
               "Security"
             ],
             "mentionees": [
-              "chlahav"
+              "zivraf"
             ]
           },
           {

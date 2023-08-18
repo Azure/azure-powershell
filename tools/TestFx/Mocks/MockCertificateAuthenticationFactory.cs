@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public MockCertificateAuthenticationFactory()
         {
-            Certificate = new X509Certificate2();
+            byte[] emptyCertificateData = Array.Empty<byte>();
+            Certificate = new X509Certificate2(emptyCertificateData);
         }
 
         public MockCertificateAuthenticationFactory(string userId, X509Certificate2 certificate)

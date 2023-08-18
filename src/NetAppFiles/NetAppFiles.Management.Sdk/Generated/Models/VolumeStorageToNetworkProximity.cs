@@ -28,5 +28,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Standard T2 storage to network connectivity.
         /// </summary>
         public const string T2 = "T2";
+        /// <summary>
+        /// Standard AcrossT2 storage to network connectivity.
+        /// </summary>
+        public const string AcrossT2 = "AcrossT2";
     }
 }

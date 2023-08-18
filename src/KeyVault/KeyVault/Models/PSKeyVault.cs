@@ -112,9 +112,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             IList<string> allowedIpAddresses = null;
-            if (networkAcls.IpRules != null && networkAcls.IpRules.Count > 0)
+            if (networkAcls.IPRules != null && networkAcls.IPRules.Count > 0)
             {
-                allowedIpAddresses = networkAcls.IpRules.Select(item => item.Value).ToList();
+                allowedIpAddresses = networkAcls.IPRules
+                    .Select(item => item.Value).ToList();
             }
 
             IList<string> allowedVirtualNetworkResourceIds = null;

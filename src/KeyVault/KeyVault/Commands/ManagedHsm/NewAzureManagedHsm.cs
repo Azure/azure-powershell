@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Create a new managed HSM.
     /// </summary>
-    [GenericBreakingChange("The parameter 'SoftDeleteRetentionInDays' is becoming mandatory", "6.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
     public class NewAzureManagedHsm : KeyVaultManagementCmdletBase
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     // false is not accepted
                     EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
                     // use default network rule set
-                    MhsmNetworkAcls = new MHSMNetworkRuleSet(),
+                    MhsmNetworkAcls = new MhsmNetworkRuleSet(),
                     PublicNetworkAccess = this.PublicNetworkAccess
                 };
 

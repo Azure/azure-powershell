@@ -1250,6 +1250,397 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 
 <#
 .SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuCRUD
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# check trusted root
+		$trustedRoot02 = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $getgw -Name $trustedRootCertName
+		Assert-NotNull $trustedRoot02
+		Assert-AreEqual $getgw.BackendHttpSettingsCollection[0].TrustedRootCertificates.Count 1
+
+		# check sku
+		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku01
+		Assert-AreEqual $sku01.Capacity 2
+		Assert-AreEqual $sku01.Name Basic
+		Assert-AreEqual $sku01.Tier Basic
+
+		Set-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 1 -ApplicationGateway $getgw 
+
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 1
+		Assert-AreEqual $sku02.Name Basic
+		Assert-AreEqual $sku02.Tier Basic
+
+		# Set Application Gateway
+		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw
+		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw)
+
+		# Stop Application Gateway
+		$getgw03 = Stop-AzApplicationGateway -ApplicationGateway $getgw02
+
+		Assert-AreEqual "Stopped" $getgw03.OperationalState
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = "powershellBasicSkuTestPort80"
+	$frontendPort02Name = "powershellBasicSkuTestPort81"
+	$frontendPort03Name = "powershellBasicSkuTestPort82"
+	$frontendPort04Name = "powershellBasicSkuTestPort83"
+	$frontendPort05Name = "powershellBasicSkuTestPort84"
+	$frontendPort06Name = "powershellBasicSkuTestPort85"
+
+	$fipconfigName = Get-ResourceName
+	$listener01Name = "powershellBasicSkuTestListener1"
+	$listener02Name = "powershellBasicSkuTestListener2"
+	$listener03Name = "powershellBasicSkuTestListener3"
+	$listener04Name = "powershellBasicSkuTestListener4"
+	$listener05Name = "powershellBasicSkuTestListener5"
+	$listener06Name = "powershellBasicSkuTestListener6"
+
+	$pool01Name = "powershellBasicSkuTestBackendPool1"
+	$pool02Name = "powershellBasicSkuTestBackendPool2"
+	$pool03Name = "powershellBasicSkuTestBackendPool3"
+	$pool04Name = "powershellBasicSkuTestBackendPool4"
+	$pool05Name = "powershellBasicSkuTestBackendPool5"
+	$pool06Name = "powershellBasicSkuTestBackendPool6"
+
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$backendSetting01Name = "powershellBasicSkuTestBackendSettings1"
+	$backendSetting02Name = "powershellBasicSkuTestBackendSettings2"
+	$backendSetting03Name = "powershellBasicSkuTestBackendSettings3"
+	$backendSetting04Name = "powershellBasicSkuTestBackendSettings4"
+	$backendSetting05Name = "powershellBasicSkuTestBackendSettings5"
+	$backendSetting06Name = "powershellBasicSkuTestBackendSettings6"
+
+	$rule01Name = "powershellBasicSkuTestRoutingRule1"
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $pool01Name -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$createdAppGw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $createdAppGw.OperationalState
+
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort02Name -Port 81
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort03Name -Port 82
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort04Name -Port 83
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort05Name -Port 84
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort06Name -Port 85
+
+		$fp02 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort02Name
+		$fp03 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort03Name
+		$fp04 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort04Name
+		$fp05 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort05Name
+		$fp06 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort06Name
+
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener02Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp02
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener03Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp03
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener04Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp04
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener05Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp05
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener06Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp06
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of HttpListeners exceeds the maximum allowed value. The number of HttpListeners is 6 and the maximum allowed is 5."
+		
+		$createdAppGw = Remove-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener06Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendSetting -ApplicationGateway $createdAppGw -Name $backendSetting01Name -Port 88 -Protocol TCP
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*For specified sku-tier Basic, property BackendSettingsCollection or Listeners or RoutingRules is not supported."
+
+		$createdAppGw = Remove-AzApplicationGatewayBackendSetting -ApplicationGateway $createdAppGw -Name $backendSetting01Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayListener -ApplicationGateway $createdAppGw -Name $listener06Name -Protocol "TCP" -FrontendIpConfiguration $fipconfig -FrontendPort $fp06
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*For specified sku-tier Basic, property BackendSettingsCollection or Listeners or RoutingRules is not supported."
+
+		$createdAppGw = Remove-AzApplicationGatewayListener -ApplicationGateway $createdAppGw -Name $listener06Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name -BackendFqdns "contoso1.com", "contoso2.com", "contoso3.com", "contoso4.com", "contoso5.com", "contoso6.com"
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of BackendServersPerPool exceeds the maximum allowed value. The number of BackendServersPerPool is 6 and the maximum allowed is 5."
+
+		$createdAppGw = Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool03Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool04Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool05Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool06Name -BackendFqdns "contoso1.com"
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of BackendAddressPools exceeds the maximum allowed value. The number of BackendAddressPools is 6 and the maximum allowed is 5."
+		$createdAppGw = Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool06Name
+
+		$urlConfiguration = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/abc" -ModifiedQueryString "x=y&a=b"
+		$hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+		$action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
+		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name "rewriteRule" -ActionSet $action
+
+		$createdAppGw = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $createdAppGw -Name "ruleset1" -RewriteRule $rewriteRule
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*does not support URL Rewrite for the selected SKU tier Basic. Supported SKU tiers are Standard_v2,WAF_v2."
+	
+		$createdAppGw = Remove-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $createdAppGw -Name "ruleset1"
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $createdAppGw -MaxCapacity 5 -MinCapacity 4
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*does not support Autoscaling for the selected SKU tier Basic. Supported SKU tiers are Standard_v2,WAF_v2."
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuMigration
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# Check that migration to Standard_v2 was successful
+		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku01
+		Assert-AreEqual $sku01.Capacity 2
+		Assert-AreEqual $sku01.Name Basic
+		Assert-AreEqual $sku01.Tier Basic
+
+		# Migrate to Standard_v2
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
+
+		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		# Check that migration to Standard_v2 was successful
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 2
+		Assert-AreEqual $sku02.Name Standard_v2
+		Assert-AreEqual $sku02.Tier Standard_v2
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Application gateway v2 tests
 #>
 function Test-ApplicationGatewayCRUD3

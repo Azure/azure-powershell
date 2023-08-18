@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    [GenericBreakingChange("Get-AzNotificationHubsNamespaceListKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespaceListKey"), OutputType(typeof(ResourceListKeys))]
     [Alias("Get-AzNotificationHubsNamespaceListKeys")]
     public class GetAzureNotificationHubsNamespaceListKeys : AzureNotificationHubsCmdletBase
