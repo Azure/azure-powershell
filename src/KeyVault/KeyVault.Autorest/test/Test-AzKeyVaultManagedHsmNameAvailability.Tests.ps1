@@ -15,15 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzKeyVaultManagedHsmName
 }
 
 Describe 'Test-AzKeyVaultManagedHsmNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        { Test-AzKeyVaultManagedHsmNameAvailability -Name $env.hsmName } | Should -Not -Throw
     }
-
-    It 'CheckViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CheckViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    
+    It 'CheckViaJsonString' {
+        { Test-AzKeyVaultManagedHsmNameAvailability -JsonString  '{
+            "name": "bezmshtsdfsf"
+          }'} | Should -Not -Throw
     }
 }

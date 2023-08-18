@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKeyVaultManagedHsmRegio
 }
 
 Describe 'Get-AzKeyVaultManagedHsmRegion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        Get-AzKeyVaultManagedHsmRegion -Name $env.hsmName -ResourceGroupName $env.rgName
+        $regions.Name -contains "eastus2" | Should -Be $true
     }
 }
