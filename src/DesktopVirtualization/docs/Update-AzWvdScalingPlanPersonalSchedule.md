@@ -26,11 +26,10 @@ Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlan
  [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
  [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
  [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpStartHost <StartupBehavior>]
- [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
- [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpMinutesToWaitOnDisconnect <Int32>]
+ [-RampUpMinutesToWaitOnLogoff <Int32>] [-RampUpStartHost <StartupBehavior>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -46,11 +45,10 @@ Update-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIden
  [-RampDownActionOnLogoff <SessionHandlingOperation>] [-RampDownMinutesToWaitOnDisconnect <Int32>]
  [-RampDownMinutesToWaitOnLogoff <Int32>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
  [-RampDownStartVMOnConnect <SetStartVMOnConnect>] [-RampUpActionOnDisconnect <SessionHandlingOperation>]
- [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpStartHost <StartupBehavior>]
- [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
- [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RampUpActionOnLogoff <SessionHandlingOperation>] [-RampUpMinutesToWaitOnDisconnect <Int32>]
+ [-RampUpMinutesToWaitOnLogoff <Int32>] [-RampUpStartHost <StartupBehavior>] [-RampUpStartTimeHour <Int32>]
+ [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <SetStartVMOnConnect>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -488,21 +486,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RampUpStartHost
-The desired startup behavior during the ramp up period for personal vms in the hostpool.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RampUpMinutesToWaitOnDisconnect
 The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
 
@@ -523,6 +506,21 @@ The time in minutes to wait before performing the desired session handling actio
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RampUpStartHost
+The desired startup behavior during the ramp up period for personal vms in the hostpool.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.StartupBehavior
 Parameter Sets: (All)
 Aliases:
 
