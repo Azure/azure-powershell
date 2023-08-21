@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported EventHub MSI capture feature in cmdlets `New-AzEventHub` and `Set-AzEventHub`
 
 ## Version 4.0.0
 * Aliased `New-AzEventHubNamespace`, `Remove-AzEventHubNamespace`, `Set-AzEventHubNamespace`, `Get-AzEventHubNamespace` with `New-AzEventHubNamespaceV2`, `Remove-AzEventHubNamespaceV2`, `Set-AzEventHubNamespaceV2`, `Get-AzEventHubNamespaceV2` respectively
