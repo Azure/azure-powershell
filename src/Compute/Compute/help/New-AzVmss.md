@@ -824,7 +824,7 @@ Specifies the SecurityType of the virtual machine. It has to be set to any speci
 Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: Named
