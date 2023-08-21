@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNamespaceV2'))
 }
 
 function assertNamespaceUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace]$namespace)
+    param([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace]$namespace)
 
     $expectedNamespace.SkuName | Should -Be $namespace.SkuName
     $expectedNamespace.SkuCapacity | Should -Be $namespace.SkuCapacity
@@ -31,7 +31,7 @@ function assertNamespaceUpdates{
     $expectedNamespace.PublicNetworkAccess | Should -Be $namespace.PublicNetworkAccess
     $expectedNamespace.AlternateName | Should -Be $namespace.AlternateName
     $expectedNamespace.IdentityType | Should -Be $namespace.IdentityType
-
+    
     if ($expectedNamespace.RequireInfrastructureEncryption -ne $true){
         $namespace.RequireInfrastructureEncryption | Should -Not -Be $true
     }
@@ -55,7 +55,7 @@ function assertNamespaceUpdates{
 }
 
 Describe 'Set-AzEventHubNamespaceV2' {
-    It 'SetExpanded' -Skip {
+    It 'SetExpanded' {
         # Add Encryption Config to NamespaceV5 which was created in New-AzEventHubNamespaceV2
         $ec1 = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaulturi $env.keyVaulturi -UserAssignedIdentity $env.msi1
         $eventhubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV5
@@ -99,7 +99,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $namespace.UserAssignedIdentity.Count | Should -Be 2
         $eventHubNamespace.UserAssignedIdentity = $namespace.UserAssignedIdentity
         assertNamespaceUpdates $eventHubNamespace $namespace
-
+        
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
         $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1
         $eventHubNamespace.UserAssignedIdentity.Count | Should -Be 1
@@ -107,7 +107,7 @@ Describe 'Set-AzEventHubNamespaceV2' {
         $eventhubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentity:$null
         $eventhubNamespace.IdentityType | Should -Be $null
     }
-    It 'SetViaIdentityExpanded' -Skip {
+    It 'SetViaIdentityExpanded' {
         $expectedNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3
         $namespace = Set-AzEventHubNamespaceV2 -InputObject $expectedNamespace -EnableAutoInflate:$false -MaximumThroughputUnit 0
         $expectedNamespace.EnableAutoInflate = $false
