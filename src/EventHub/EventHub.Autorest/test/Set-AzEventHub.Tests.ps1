@@ -40,6 +40,24 @@ Describe 'Set-AzEventHub' {
         $eventhub.IntervalInSeconds | Should -Be 600
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
+
+        # Create EventHub with MSI Capture Enabled
+        $eventhub = New-AzEventHub -Name $env.eventHub5 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1
+        $eventhub = Set-AzEventHub -Name $env.eventHub5 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId -IdentityType UserAssigned -UserAssignedIdentityId $env.msi2
+        $eventhub.Name | Should -Be $env.eventHub5
+        $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
+        $eventhub.PartitionCount | Should -Be 4
+        $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+        $eventhub.BlobContainer | Should -Be $env.blobContainer
+        $eventhub.CaptureEnabled | Should -Be $true
+        $eventhub.SkipEmptyArchive | Should -Be $true
+        $eventhub.DestinationName | Should -Be "EventHubArchive.AzureBlockBlob"
+        $eventhub.Encoding | Should -Be "Avro"
+        $eventhub.IntervalInSeconds | Should -Be 600
+        $eventhub.SizeLimitInBytes | Should -Be 11000000
+        $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
+        $eventhub.IdentityType | Should -Be $eventhub.IdentityType
+        $eventhub.UserAssignedIdentityId | Should -be $eventhub.UserAssignedIdentityId
     }
 
     It 'SetViaIdentityExpanded'  {
