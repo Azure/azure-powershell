@@ -7,7 +7,7 @@ on:
   pull_request_review:  
     types:  
       - submitted  
-      - dismissed
+      - dismissed  
   
 jobs:  
   enforce_required_reviewers:  
@@ -26,10 +26,11 @@ jobs:
           git diff --name-only --diff-filter=d FETCH_HEAD..HEAD | grep '^src/Compute/' > /dev/null && echo "::set-output name=compute_changed::true" || echo "::set-output name=compute_changed::false"  
             
       - name: Enforce required reviewers approval  
+        id: enforce_approval  
         if: steps.check_changes.outputs.compute_changed == 'true'  
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          REQUIRED_REVIEWERS: 'sandido,haagha,grizzlytheodore' # Replace with the GitHub usernames of the required reviewers, separated by commas  
+          REQUIRED_REVIEWERS: 'Sandido,user2,user3' # Replace with the GitHub usernames of the required reviewers, separated by commas  
         run: |  
           PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')  
           APPROVED_REVIEWERS=$(gh pr view $PR_NUMBER --json reviews --jq '.reviews[].author.login')  
@@ -41,7 +42,22 @@ jobs:
               break  
             fi  
           done  
+          echo "::set-output name=approval_found::$APPROVAL_FOUND"  
           if [ "$APPROVAL_FOUND" = false ]; then  
             echo "error: At least one of the required reviewers ($REQUIRED_REVIEWERS) must approve the PR" >&2  
             exit 1  
           fi  
+  
+      - name: Post a comment when approval not found  
+        if: steps.check_changes.outputs.compute_changed == 'true' && steps.enforce_approval.outputs.approval_found == 'false'  
+        uses: actions/github-script@v5  
+        with:  
+          script: |  
+            const issue_number = context.issue.number;  
+            const comment_body = "⚠️ The PR cannot be merged until at least one of the required reviewers (" + process.env.REQUIRED_REVIEWERS + ") approves the PR. Please wait for their approval.";  
+            await github.rest.issues.createComment({  
+              owner: context.repo.owner,  
+              repo: context.repo.repo,  
+              issue_number: issue_number,  
+              body: comment_body  
+            });  
