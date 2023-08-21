@@ -93,8 +93,13 @@ Describe 'Update-AzWvdScalingPlanPersonalSchedule' {
             $scalingPlanPersonalSchedule.RampDownStartTimeMinute | Should -Be 7
         }
         finally {
-            # This will delete the schedule too
-            $scalingPlan = Remove-AzWvdScalingPlan `
+            Remove-AzWvdScalingPlanPersonalSchedule `
+                -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroup `
+                -ScalingPlanName $scalingPlanName `
+                -ScalingPlanScheduleName 'PersonalSchedule1'
+
+            Remove-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
                 -Name $scalingPlanName
