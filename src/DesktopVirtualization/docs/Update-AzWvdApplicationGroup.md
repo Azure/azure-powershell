@@ -33,11 +33,10 @@ Update an applicationGroup.
 
 ### Example 1: Create a Windows Virtual Desktop ApplicationGroup by name
 ```powershell
-New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
+Update-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
                           -FriendlyName 'Friendly Name' `
                           -Description 'Description'
-                          -ShowInFeed $false
 ```
 
 ```output

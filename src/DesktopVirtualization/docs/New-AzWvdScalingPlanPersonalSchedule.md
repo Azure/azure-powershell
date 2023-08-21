@@ -45,7 +45,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -RampUpStartHost "All" `
+                                        -RampUpAutoStartHost "All" `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
@@ -536,7 +536,7 @@ Accept wildcard characters: False
 
 ### -RampUpStartVMOnConnect
 The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
+If this is disabled, session hosts must be turned on using RampUpAutoStartHost or by turning them on manually.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect

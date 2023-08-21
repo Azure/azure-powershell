@@ -36,7 +36,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
                             -ApplicationGroupType 'RemoteApp' `
-                            -ShowInFeed $true
+                            -ShowInFeed
 ```
 
 ```output

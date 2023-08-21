@@ -41,7 +41,7 @@ Describe 'New-AzWvdScalingPlanPersonalSchedule' {
                 -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTimeHour 6 `
                                         -rampUpStartTimeMinute 30 `
-                                        -RampUpStartHost All `
+                                        -RampUpAutoStartHost All `
                                         -rampUpStartVMOnConnect Enable `
                                         -rampUpActionOnDisconnect None `
                                         -rampUpMinutesToWaitOnDisconnect 10 `
