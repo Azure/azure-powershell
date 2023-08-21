@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
                 && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam))
             {
-                builder = builder.WithBrokerPreview();
+                builder = builder.WithBroker();
             }
             if (!string.IsNullOrEmpty(authority))
             {
