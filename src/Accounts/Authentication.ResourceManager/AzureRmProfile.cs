@@ -239,6 +239,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return context;
         }
 
+        private void LoadImpl(string contents)
+        {
+        }
+
         /// <summary>
         /// Refill the credentials from AzKeyStore to profile. Used for profile export.
         /// </summary>
@@ -246,13 +250,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             AzKeyStore keystore = null;
             AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out keystore);
-            AzureRmProfile ret = this.DeepClone();
+            AzureRmProfile ret = this.DeepCopy();
             if (keystore != null)
             {
                 foreach (var context in ret.Contexts)
                 {
                     var account = context.Value.Account;
-                    if (account != null && !account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
+                    if (account?.Type == AzureAccount.AccountType.ServicePrincipal && !account.IsPropertySet(AzureAccount.Property.ServicePrincipalSecret))
                     {
                         try
                         {
@@ -263,7 +267,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         {
                         }
                     }
-                    if (account != null && !account.IsPropertySet(AzureAccount.Property.CertificatePassword))
+                    if (account?.Type == AzureAccount.AccountType.ServicePrincipal && !account.IsPropertySet(AzureAccount.Property.CertificatePassword))
                     {
                         try
                         {
@@ -280,32 +284,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return ret;
         }
 
-        private void LoadImpl(string contents)
-        {
-        }
-
         /// <summary>
-        /// Creates new instance of AzureRMProfile with environment table initialized.
+        /// Creates new instance of AzureRMProfile.
         /// </summary>
-        public AzureRmProfile(bool initializeEnvironmentTable = true):this()
+        public AzureRmProfile()
         {
-            if (initializeEnvironmentTable)
-            {
-                EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
+            EnvironmentTable = new ConcurrentDictionary<string, IAzureEnvironment>(StringComparer.CurrentCultureIgnoreCase);
 
-                // Adding predefined environments
-                foreach (var env in AzureEnvironment.PublicEnvironments)
-                {
-                    EnvironmentTable[env.Key] = env.Value;
-                }
+            // Adding predefined environments
+            foreach (var env in AzureEnvironment.PublicEnvironments)
+            {
+                EnvironmentTable[env.Key] = env.Value;
             }
         }
 
+
         /// <summary>
-        /// Creates new instance of AzureRMProfile. used only in Json conversion.
+        /// Creates new instance of AzureRMProfile with other EnvironmentTable..
         /// </summary>
-        private AzureRmProfile()
+        public AzureRmProfile(IDictionary<string, IAzureEnvironment> otherEnvironmentTable)
         {
+            foreach (var environment in otherEnvironmentTable)
+            {
+                EnvironmentTable.Add(environment.Key, environment.Value.DeepCopy());
+            }
         }
 
         /// <summary>
@@ -313,7 +315,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// </summary>
         /// <param name="path">The location of profile file on disk.</param>
         /// <param name="shouldRefreshContextsFromCache"></param>
-        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this(true)
+        public AzureRmProfile(string path, bool shouldRefreshContextsFromCache = true) : this()
         {
             this.ShouldRefreshContextsFromCache = shouldRefreshContextsFromCache;
             Load(path);
@@ -580,16 +582,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 if (TryFindContext(context, out string oldName))
                 {
-                    try
-                    {
-                        var oldContext = Contexts[oldName].DeepCopy();
-                        oldContext.Update(context);
-                        Contexts[oldName] = oldContext;
-                    }
-                    catch(Exception e)
-                    {
-                        throw e;
-                    }
+                    var oldContext = Contexts[oldName].DeepCopy();
+                    oldContext.Update(context);
+                    context = oldContext;
                 }
                 Contexts[name] = context;
                 result = true;
@@ -748,14 +743,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Deep clone the instance of AzureRMProfile.
         /// </summary>
-        public AzureRmProfile DeepClone()
+        public AzureRmProfile DeepCopy()
         {
-            var profile = new AzureRmProfile(false);
-
-            foreach (var environment in this.EnvironmentTable)
-            {
-                profile.EnvironmentTable.Add(environment.Key, ((AzureEnvironment)environment.Value).DeepClone());
-            }
+            var profile = new AzureRmProfile(this.EnvironmentTable);
 
             foreach (var context in this.Contexts)
             {

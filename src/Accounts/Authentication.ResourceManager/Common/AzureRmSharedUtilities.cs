@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common
         public IAzureContextContainer CopyForContextOverriding(IAzureContextContainer contextContainer)
         {
             var profile = contextContainer as AzureRmProfile;
-            return new AzureRmProfile(false)
+            return new AzureRmProfile()
             {
                 DefaultContextKey = profile.DefaultContextKey,
                 EnvironmentTable = profile.EnvironmentTable,
