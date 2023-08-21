@@ -55,7 +55,7 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -Description 'Description' `
                             -HostPoolArmPath '/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName' `
-                            -ApplicationGroupType 'Desktop'
+                            -ApplicationGroupType 'Desktop' `
                             -ShowInFeed
 ```
 
