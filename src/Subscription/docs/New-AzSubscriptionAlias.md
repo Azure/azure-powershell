@@ -40,7 +40,6 @@ Create Alias Subscription.
 ### Example 2: Create Alias Subscription.
 ```powershell
 New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
-/providers/Microsoft.Billing/billingAccounts//billingProfiles/7OKK-S2KR-BG7-TGB/invoiceSections/EGT6-FMB6-PJA-TGB
 ```
 
 ```output
