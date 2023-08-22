@@ -112,16 +112,6 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                     }
                     string moduleName = Path.GetFileName(directory);
                     string moduleFolder = Path.Combine(savedDirectory, "src", moduleName.Replace("Az.", ""));
-                    var isGenerateBased = Environment.GetEnvironmentVariable("IsGenerateBased");
-                    if (isGenerateBased.Equals("true") && !Directory.Exists(moduleFolder))
-                    {
-                        IssueLoggerContext context = new IssueLoggerContext
-                        {
-                            ModuleName = moduleName,
-                        };
-                        issueLogger.LogUXMetadataIssue(context, 3, "Cannot find UX metadata files under module: " + moduleName);
-                        continue;
-                    }
                     Directory.SetCurrentDirectory(directory);
 
                     var moduleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
