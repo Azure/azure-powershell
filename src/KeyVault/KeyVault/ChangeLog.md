@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 5.0.0
+## Version 4.11.0
 * Arm template leveraged for `New-AzKeyvault`.
 
 ## Version 4.10.0
