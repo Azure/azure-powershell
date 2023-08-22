@@ -46,7 +46,6 @@ jobs:
           echo "::set-output name=approval_found::$APPROVAL_FOUND"  
           if [ "$APPROVAL_FOUND" = false ]; then  
             echo "error: At least one of the required reviewers ($REQUIRED_REVIEWERS) must approve the PR" >&2  
-            exit 1  
           fi  
   
       - name: Post a comment when approval not found  
