@@ -14,7 +14,6 @@
 
 using System.Collections.Generic;
 using System.Globalization;
-using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
@@ -263,6 +262,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public PredictionClient Client { get; set; }
 
         public bool? HasSentHttpRequest { get; set; }
+
+        public CommandLineSummary PredictorSummary { get; set; }
 
         public string CommandLine { get; set; }
 

@@ -21,6 +21,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-EncryptionAtHost] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DiskControllerType <String>] [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>]
+ [-SecurityType <String>] [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,8 +33,8 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
  [-EvictionPolicy <String>] [-Priority <String>] [-Tags <Hashtable>] [-EnableUltraSSD] [-EncryptionAtHost]
  [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>] [-DiskControllerType <String>]
  [-UserData <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
- [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-vCPUCountPerCore <Int32>] [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +96,6 @@ $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName $comput
 # Create the VM
 New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $vmconfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        
 ```
 
 ### Example 2: Create a virtual machine object in a virtual machine scale set with fault domains setup
@@ -149,8 +149,61 @@ Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 
 New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
-        
 ```
+
+### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Secuirty Type, flags Vtpm and Secure Boot are set to True by default.
+```powershell
+$rgname = "rgname";
+$loc = "eastus";
+New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+ 
+# VM Profile & Hardware
+$domainNameLabel = "d1" + $rgname;
+$vmsize = 'Standard_D4s_v3';
+$vmname = $rgname + 'Vm';
+$securityType_TL = "TrustedLaunch";
+$vnetname = "myVnet";
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2016-datacenter-gensecond";
+$disable = $false;
+$enable = $true;
+$extDefaultName = "GuestAttestation";
+$vmGADefaultIDentity = "SystemAssigned";
+# Credential
+$password = <Password>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <Username>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+# Network resources
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+# Configure Values using VMConfig Object
+$vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+  
+# VM Creation using VMConfig for Trusted Launch SecurityType
+$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType_TL;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+# Validate that for -SecurityType "TrustedLaunch", "-Vtpm" and "-SecureBoot" are "Enabled/true"
+#$vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
+#$vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+```
+
+This example creates a VM using a VMConfig object for the TrustedLaunch Security Type and validates flags VtpmEnabled and SecureBootEnabled are true by default.
 
 ## PARAMETERS
 
@@ -221,6 +274,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Enables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM.
 Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine only if this property is enabled.
@@ -228,6 +296,21 @@ Managed disks with storage account type UltraSSD_LRS can be added to a virtual m
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -424,6 +507,22 @@ The resource id of the Proximity Placement Group to use with this virtual machin
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM
 
 Required: False
 Position: Named

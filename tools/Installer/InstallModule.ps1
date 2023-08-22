@@ -22,7 +22,11 @@ param(
   $ModuleName = "Az",
   [string]
   [Parameter(Mandatory = $false, Position = 1, HelpMessage = "Specifies the path for discovering and installing modules from.")]
-  $SourceLocation = $PSScriptRoot
+  $SourceLocation = $PSScriptRoot,
+  [string]
+  [ValidateSet("CurrentUser", "AllUsers")]
+  [Parameter(Mandatory = $false, Position = 2, HelpMessage = "The scope of the installed module")]
+  $Scope = "CurrentUser"
 )
 
 $gallery = [guid]::NewGuid().ToString()
@@ -31,7 +35,7 @@ Register-PSRepository -Name $gallery -SourceLocation $SourceLocation -PackageMan
 
 try {
   Write-Host "Installing $ModuleName..."
-  Install-Module -Name $ModuleName -Repository $gallery -Scope CurrentUser -AllowClobber -Force 
+  Install-Module -Name $ModuleName -Repository $gallery -Scope $Scope -AllowClobber -Force 
 }
 finally {
   Write-Host "Unregistering gallery $gallery..."

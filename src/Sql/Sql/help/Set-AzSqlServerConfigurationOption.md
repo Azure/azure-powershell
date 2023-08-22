@@ -186,4 +186,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-ServerConfigurationOption](./Get-ServerConfigurationOption.md)
+[Get-AzSqlServerConfigurationOption](./Get-AzSqlServerConfigurationOption.md)

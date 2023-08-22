@@ -23,12 +23,12 @@ Gets the details of registered recovery services provider.
 Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationrecoveryservicesprovider
 #>
 function Get-AzMigrateReplicationRecoveryServicesProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IRecoveryServicesProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IRecoveryServicesProvider])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -67,7 +67,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -119,7 +120,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

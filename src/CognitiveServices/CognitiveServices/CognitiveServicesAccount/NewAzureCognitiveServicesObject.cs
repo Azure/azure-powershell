@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     {
                         var obj = new DeploymentProperties();
                         obj.Model = new DeploymentModel();
-                        obj.ScaleSettings = new DeploymentScaleSettings();
                         WriteObject(obj);
                     }
                     break;
@@ -66,6 +65,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         WriteObject(obj);
                     }
                     break;
+                case CognitiveServicesObjectType.Sku:
+                    {
+                        var obj = new Sku();
+                        WriteObject(obj);
+                    }
+                    break;
             }
         }
     }
@@ -75,6 +80,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         DeploymentProperties,
         CommitmentPlanProperties,
         MultiRegionSettings,
-        RegionSetting
+        RegionSetting,
+        Sku
     }
 }

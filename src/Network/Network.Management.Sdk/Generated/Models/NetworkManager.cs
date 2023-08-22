@@ -47,17 +47,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// network manager resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="resourceGuid">Unique identifier for this
+        /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="systemData">The system metadata related to this
         /// resource.</param>
-        public NetworkManager(NetworkManagerPropertiesNetworkManagerScopes networkManagerScopes, IList<string> networkManagerScopeAccesses, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string provisioningState = default(string), string etag = default(string), SystemData systemData = default(SystemData))
+        public NetworkManager(NetworkManagerPropertiesNetworkManagerScopes networkManagerScopes, IList<string> networkManagerScopeAccesses, string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string provisioningState = default(string), string resourceGuid = default(string), string etag = default(string), SystemData systemData = default(SystemData))
             : base(id, name, type, location, tags)
         {
             Description = description;
             NetworkManagerScopes = networkManagerScopes;
             NetworkManagerScopeAccesses = networkManagerScopeAccesses;
             ProvisioningState = provisioningState;
+            ResourceGuid = resourceGuid;
             Etag = etag;
             SystemData = systemData;
             CustomInit();
@@ -93,6 +96,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets unique identifier for this resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource

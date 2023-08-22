@@ -21,8 +21,9 @@ Disable-AzRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPo
 
 ## DESCRIPTION
 The **Disable-AzRecoveryServicesBackupProtection** cmdlet disables protection for an Azure Backup-protected item.
-This cmdlet stops regular scheduled backup of an item.
+This cmdlet stops regular scheduled backup of an item and retain forever.
 This cmdlet can also delete existing recovery points for the backup item if executed with RemoveRecoveryPoints parameter.
+This cmdlet can suspend backup of an item and retain recovery points as per backup policy if used with RetainRecoveryPointsAsPerPolicy parameter. One condition with this scenario is that backups can't be suspended until immutability is enabled on the vault. To enable immutability on a recovery services vault, pls follow Update-AzRecoveryServicesVault cmdlet.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -62,7 +63,7 @@ BackupsSuspended
 ```
 
 The first cmdlet fetches the AzureVM backup items for the recovery services vault.
-The second cmdlet is used to suspend backup for $item[0] of the recovery services vault.
+The second cmdlet is used to suspend backup for $item[0] of the recovery services vault. One condition with this scenario is that backups can't be suspended until immutability is enabled on the vault. To enable immutability on a recovery services vault, pls follow Update-AzRecoveryServicesVault cmdlet.
 The third and fourth command are used to fetch the updated backup item and its protection state.
 To resume protection back, please use Enable-AzRecoveryServicesBackupProtection with parameter -Item.
 

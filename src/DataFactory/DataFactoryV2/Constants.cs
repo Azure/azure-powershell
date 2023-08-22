@@ -300,6 +300,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpRepoConfigurationLastCommitId = "The last commit id for repo configuration.";
 
+        public const string HelpRepoConfigurationDisablePublish = "Disable manual publish operation in ADF studio to favor automated publish.";
+
         public const string Id = "Id";
 
         public const string DataFactoryId = "DataFactoryId";

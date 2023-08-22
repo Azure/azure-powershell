@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         private static readonly Regex AppServiceEnvironmentResourceIdRegex =
           new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/hostingEnvironments\/(?<aseName>[^\/]+)$", RegexOptions.IgnoreCase);
 
-        private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
+        private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "ExtraSmall", 0 }, { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 }, { "ExtraExtraLarge", 5 } };
 
         private const string ProductionSlotName = "Production";
 
@@ -307,9 +307,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 sku = "P" + workerSize + "V2";
                 return sku;
             }
-            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals("PremiumV3", tier, StringComparison.OrdinalIgnoreCase)
+                || string.Equals("Premium0V3", tier, StringComparison.OrdinalIgnoreCase))
             {
                 sku = "P" + workerSize + "V3";
+                return sku;
+            }
+            else if (string.Equals("PremiumMV3", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "P" + workerSize + "MV3";
                 return sku;
             }
             else if (string.Equals("PremiumContainer", tier, StringComparison.OrdinalIgnoreCase))

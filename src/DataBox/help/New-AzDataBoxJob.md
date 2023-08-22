@@ -242,7 +242,7 @@ $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "XXXX XXXX
 $transferConfiguration = New-AzDataBoxTransferConfigurationObject -Type "TransferAll" -TransferAllDetail @{"IncludeDataAccountType"="StorageAccount";"IncludeTransferAllBlob"= "True"; "IncludeTransferAllFile"="False"}
 $customerDiskDetails = New-AzDataBoxCustomerDiskJobDetailsObject -Type "DataBoxCustomerDisk" -DataExportDetail  @(@{ AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"; "TransferConfiguration"=$transferConfiguration }) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -ReturnToCustomerPackageDetailCarrierAccountNumber "00000"
 
-New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportToAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
+New-AzDataBoxJob -Name "testJobName2" -SubscriptionId "YourSubscriptionId" -ResourceGroupName "YourResourceGroup" -TransferType "ExportFromAzure" -Detail $customerDiskDetails -Location "westus" -SkuName "DataBoxCustomerDisk"
 ```
 
 ```output
