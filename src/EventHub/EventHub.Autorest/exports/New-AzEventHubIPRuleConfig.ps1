@@ -23,12 +23,12 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetIPRules
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubipruleconfig
 #>
 function New-AzEventHubIPRuleConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetIPRules])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

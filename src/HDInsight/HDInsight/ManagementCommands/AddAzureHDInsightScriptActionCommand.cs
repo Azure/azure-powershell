@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The node on which to apply the action.")]

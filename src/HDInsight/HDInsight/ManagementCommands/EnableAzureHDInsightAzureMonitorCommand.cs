@@ -20,9 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = EnableByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class EnableAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase

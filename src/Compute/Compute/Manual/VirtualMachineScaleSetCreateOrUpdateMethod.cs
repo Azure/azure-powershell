@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ParameterSetName = SimpleParameterSet,
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -409,11 +409,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
                 }
 
                 Dictionary<string, List<string>> auxAuthHeader = null;
@@ -565,11 +568,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
+                    
                 }
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
@@ -655,11 +662,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             //Guest Attestation Identity stuff
-            if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
+            if (this.IsParameterBound(c => c.SecurityType))
             {
-                this.SecurityType = this.SecurityType;
-                this.EnableVtpm = this.EnableVtpm ?? true;
-                this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    this.SecurityType = this.SecurityType;
+                    this.EnableVtpm = this.EnableVtpm ?? true;
+                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                }          
             }
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
@@ -830,7 +840,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private bool shouldGuestAttestationExtBeInstalledSimple()
         {
             if (this.DisableIntegrityMonitoring != true &&
-                    this.SecurityType == "TrustedLaunch" &&
+                    this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     this.EnableSecureBoot == true &&
                     this.EnableVtpm == true)
             {

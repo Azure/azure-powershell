@@ -23,12 +23,12 @@ Gets lists of resources that supports Privatelinks.
 Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateLinkResourcesListResult
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateLinkResourcesListResult
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
 #>
 function Get-AzEventHubPrivateLink {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateLinkResourcesListResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateLinkResourcesListResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

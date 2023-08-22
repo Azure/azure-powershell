@@ -25,11 +25,11 @@ Creates or updates an AuthorizationRule for a Namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -62,7 +62,7 @@ PARAMETER <IAuthorizationRule>: Single item in a List or Get AuthorizationRule o
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespaceauthorizationrule
 #>
 function New-AzEventHubNamespaceAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -108,7 +108,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

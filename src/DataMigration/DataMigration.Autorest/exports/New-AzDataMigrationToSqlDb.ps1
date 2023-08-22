@@ -17,8 +17,12 @@
 <#
 .Synopsis
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 .Description
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 .Example
 $sourcePassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
 $targetPassword = ConvertTo-SecureString "pass123" -AsPlainText -Force

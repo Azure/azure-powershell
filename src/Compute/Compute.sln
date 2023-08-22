@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "Compute\Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj", "{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ManagedServiceIdentity", "..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj", "{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Helpers", "Compute.Helpers\Compute.Helpers.csproj", "{6F441B7D-C614-42E0-A521-8C9C75E2A64F}"
 EndProject
@@ -33,6 +33,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{D2DD2D59-A449-40AB-BE4C-43F886BEAC2F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "Compute.Autorest\Az.Compute.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Management.Sdk", "Compute.Management.Sdk\Compute.Management.Sdk.csproj", "{99574727-29C1-42ED-A26B-13F396DBCA29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +102,10 @@ Global
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99574727-29C1-42ED-A26B-13F396DBCA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99574727-29C1-42ED-A26B-13F396DBCA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99574727-29C1-42ED-A26B-13F396DBCA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99574727-29C1-42ED-A26B-13F396DBCA29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

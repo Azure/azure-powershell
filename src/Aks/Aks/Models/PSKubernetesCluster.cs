@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// <summary>
         /// Gets or sets the OIDC issuer profile of the Managed Cluster.
         /// </summary>
-        public ManagedClusterOIDCIssuerProfile OidcIssuerProfile { get; set; }
+        public ManagedClusterOidcIssuerProfile OidcIssuerProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group containing agent pool

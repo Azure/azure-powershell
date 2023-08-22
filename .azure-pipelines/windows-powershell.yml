@@ -52,11 +52,11 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      IsGenerateBased: ${{ variables.IsGenerateBased }}
 
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
   pool: ${{ variables.AgentPoolName }}
 

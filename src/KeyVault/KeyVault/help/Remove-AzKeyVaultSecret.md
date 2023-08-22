@@ -96,7 +96,6 @@ None
 
 This example removes a secret named `secureSecret` in Azure Key Vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
-
 ### Example 4: Purge deleted secret from the key vault permanently
 ```powershell
 Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
