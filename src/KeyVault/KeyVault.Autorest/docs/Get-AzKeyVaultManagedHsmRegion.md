@@ -13,7 +13,7 @@ The List operation gets information about the regions associated with the manage
 ## SYNTAX
 
 ```
-Get-AzKeyVaultManagedHsmRegion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The List operation gets information about the regions associated with the manage
 
 ### Example 1: list all regions for a specified Managed HSM
 ```powershell
-Get-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg
+Get-AzKeyVaultManagedHsmRegion -HsmName testmhsm -ResourceGroupName test-rg
 ```
 
 ```output
@@ -54,7 +54,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -HsmName
 Name of the managed HSM Pool
 
 ```yaml

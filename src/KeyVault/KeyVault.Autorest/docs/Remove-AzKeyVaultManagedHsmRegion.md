@@ -24,7 +24,7 @@ The List operation gets information about the regions associated with the manage
 
 ### Example 1: Remove a region for Managed HSM
 ```powershell
-Remove-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg -Regioe eastus2 -PassThru
+Remove-AzKeyVaultManagedHsmRegion -HsmName testmhsm -ResourceGroupName test-rg -Region eastus2 -PassThru
 ```
 
 IsPrimary Name   ProvisioningState

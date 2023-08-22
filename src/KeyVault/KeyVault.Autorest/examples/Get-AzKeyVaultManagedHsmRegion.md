@@ -1,6 +1,6 @@
 ### Example 1: list all regions for a specified Managed HSM
 ```powershell
-Get-AzKeyVaultManagedHsmRegion -Name testmhsm -ResourceGroupName test-rg
+Get-AzKeyVaultManagedHsmRegion -HsmName testmhsm -ResourceGroupName test-rg
 ```
 
 ```output

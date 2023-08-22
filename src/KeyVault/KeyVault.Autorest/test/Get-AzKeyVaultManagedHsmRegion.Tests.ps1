@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKeyVaultManagedHsmRegio
 
 Describe 'Get-AzKeyVaultManagedHsmRegion' {
     It 'List' {
-        $regions = Get-AzKeyVaultManagedHsmRegion -Name $env.hsmName -ResourceGroupName $env.rgName
+        $regions = Get-AzKeyVaultManagedHsmRegion -HsmName $env.hsmName -ResourceGroupName $env.rgName
         $regions.Count | Should -BeGreaterThan 0
     }
 }

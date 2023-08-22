@@ -81,6 +81,11 @@ directive:
       subject: ^MhsmRegion$
     set:
       subject: ManagedHsmRegion
+  - where:
+      subject: ^ManagedHsmRegion$
+      parameter-name: Name
+    set:
+      parameter-name: HsmName
   # Remove *-AzKeyVaultManagedHsmDeleted
   - where:
       subject: ^ManagedHsmDeleted$
