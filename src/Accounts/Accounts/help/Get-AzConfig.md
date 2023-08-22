@@ -14,8 +14,9 @@ Gets the configs of Azure PowerShell.
 
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-DefaultSubscriptionForLogin] [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,8 +112,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableErrorRecordsPersistence
+When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayRegionIdentified
+When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

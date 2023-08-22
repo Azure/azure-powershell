@@ -1,13 +1,13 @@
 {
-  "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-10-01-preview+1": {
+  "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "cde0ab71-a220-4ac0-832d-705b2c95b7ad" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "b0b07438-7dad-4fbf-8d04-587d55a0030f" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-request-id": [ "a0d61f55-b59f-40f0-be0e-883a4971f0c3" ],
-        "x-ms-correlation-request-id": [ "a0d61f55-b59f-40f0-be0e-883a4971f0c3" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230417T054731Z:a0d61f55-b59f-40f0-be0e-883a4971f0c3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-request-id": [ "a2f261d4-68eb-4d62-b038-189f77567e72" ],
+        "x-ms-correlation-request-id": [ "a2f261d4-68eb-4d62-b038-189f77567e72" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T172804Z:a2f261d4-68eb-4d62-b038-189f77567e72" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 17 Apr 2023 05:47:31 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 17:28:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],

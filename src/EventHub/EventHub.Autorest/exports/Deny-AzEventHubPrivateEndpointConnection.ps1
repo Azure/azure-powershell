@@ -28,7 +28,7 @@ Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +52,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 https://learn.microsoft.com/powershell/module/az.eventhub/deny-azeventhubprivateendpointconnection
 #>
 function Deny-AzEventHubPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]

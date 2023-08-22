@@ -39,6 +39,7 @@ stages:
           $pattern = '(?s)## Version (\d+\.\d+\.\d)+[\s\S]*?\n(.*?)(?=\n## Version \d+\.\d+\.\d+|$)'
           $matches = [regex]::Match($mdcontent, $pattern)
           $NeedBumpUp = $true
+          $BaseBranch = "$(BranchPrefix)/${{ parameters.ServiceName }}"
           if ($matches.Success) {
               $versionNumber = $matches.Groups[1].Value
               $versionChanges = $matches.Groups[2].Value.Trim()
@@ -47,12 +48,15 @@ stages:
             $versionNumber += "-preview"
             echo "##vso[task.setvariable variable=NeedBumpUp]false"
             $NeedBumpUp = $false
+            $BaseBranch = "$(Build.SourceBranch)"
+            $BaseBranch = $BaseBranch.Replace("refs/heads/", "")
           }
           $jsonData = @{
             ModuleName = "${{ parameters.ServiceName }}"
             VersionNumber = "$versionNumber"
             VersionChanges = "$versionChanges"
             IsPreview = “${{ parameters.Preview }}“
+            BaseBranch = "$BaseBranch"
           }
           $jsonString = $jsonData | ConvertTo-Json
           $jsonString | Out-File -FilePath "VersionInfo.json"

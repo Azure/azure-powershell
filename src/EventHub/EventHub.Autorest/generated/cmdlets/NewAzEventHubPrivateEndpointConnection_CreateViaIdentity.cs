@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubPrivateEndpointConnection_CreateViaIdentity", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Creates or updates PrivateEndpointConnections of service namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class NewAzEventHubPrivateEndpointConnection_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection _parameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection _parameter;
 
         /// <summary>Properties of the PrivateEndpointConnection.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Properties of the PrivateEndpointConnection.", ValueFromPipeline = true)]
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         ReadOnly = false,
         Description = @"Properties of the PrivateEndpointConnection.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection Parameter { get => this._parameter; set => this._parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection Parameter { get => this._parameter; set => this._parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.HttpPipeline" /> that the remote call will use.
@@ -122,24 +122,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -158,12 +158,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -361,12 +361,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response)
+        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response)
         {
             using( NoSynchronizationContext )
             {
@@ -378,19 +378,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onAccepted - response for 202 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
                 WriteObject((await response));
             }
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response)
         {
             using( NoSynchronizationContext )
             {
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
                 WriteObject((await response));
             }
         }
@@ -451,12 +451,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection> response)
         {
             using( NoSynchronizationContext )
             {
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
                 WriteObject((await response));
             }
         }
