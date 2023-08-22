@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
+        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The node on which to apply the action.")]
