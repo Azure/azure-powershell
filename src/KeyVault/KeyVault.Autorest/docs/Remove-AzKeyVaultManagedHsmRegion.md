@@ -13,7 +13,7 @@ The List operation gets information about the regions associated with the manage
 ## SYNTAX
 
 ```
-Remove-AzKeyVaultManagedHsmRegion -Name <String> -ResourceGroupName <String> -Region <String[]>
+Remove-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> -Region <String[]>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -HsmName
 Name of the managed HSM Pool
 
 ```yaml

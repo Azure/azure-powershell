@@ -37,7 +37,7 @@ function Remove-AzKeyVaultManagedHsmRegion {
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
         [System.String]
         # Name of the managed HSM Pool
-        ${Name},
+        ${HsmName},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
@@ -114,8 +114,9 @@ function Remove-AzKeyVaultManagedHsmRegion {
         ${ProxyUseDefaultCredentials}
     )
     process {
-        try {
-            
+        try {            
+            $null = $PSBoundParameters.Remove('HsmName')
+            $null = $PSBoundParameters.Add('Name', $HsmName)
             $null = $PSBoundParameters.Remove('Region')
             $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @PSBoundParameters
             $remainingRegions = @()
@@ -128,6 +129,8 @@ function Remove-AzKeyVaultManagedHsmRegion {
             $null = $PSBoundParameters.Add('Parameter', $Parameter)            
             $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @PSBoundParameters
             $null = $PSBoundParameters.Remove('Parameter')
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Add('HsmName', $HsmName)
             Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
         } catch {
             throw
