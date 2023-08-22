@@ -8,6 +8,6 @@ IsPrimary Name   ProvisioningState
 --------- ----   -----------------
 True      eastus Succeeded
 False     westus Succeeded
-``````
+```
 
 This command removes `eastus2` from region extension for Managed HSM named `testmhsm`.
