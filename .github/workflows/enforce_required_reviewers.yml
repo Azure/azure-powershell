@@ -3,7 +3,8 @@ name: Enforce Required Reviewers
 on:  
   pull_request:  
     types:  
-      - opened  
+      - opened
+      - synchronize
   pull_request_review:  
     types:  
       - submitted  
