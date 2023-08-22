@@ -27,7 +27,7 @@ Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.ISessionHost
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.ISessionHost
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +52,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhost
 #>
 function Get-AzWvdSessionHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.ISessionHost])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.ISessionHost])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -48,7 +48,7 @@ Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingPlanPooledSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPooledSchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -73,7 +73,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplanpooledschedule
 #>
 function Update-AzWvdScalingPlanPooledSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingPlanPooledSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPooledSchedule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
