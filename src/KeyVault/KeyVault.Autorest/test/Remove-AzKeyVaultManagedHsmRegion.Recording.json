@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "b5780e35-9691-4f29-a165-fe0e357ec405" ],
+        "x-ms-client-request-id": [ "1be22787-e8a1-4e33-af4d-349711e3af79" ],
         "CommandName": [ "Az.KeyVault.internal\\Get-AzKeyVaultManagedHsm" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsm_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,24 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "b5780e35-9691-4f29-a165-fe0e357ec405" ],
+        "x-ms-client-request-id": [ "1be22787-e8a1-4e33-af4d-349711e3af79" ],
         "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "f3a24273-f930-455e-9806-1b07240cc474" ],
+        "x-ms-request-id": [ "91465767-c163-4a43-a9d6-7e5620bcabd5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "6c924a80-c1fb-47cc-afdd-1e2e094f5855" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T090548Z:6c924a80-c1fb-47cc-afdd-1e2e094f5855" ],
-        "Date": [ "Fri, 18 Aug 2023 09:05:47 GMT" ]
+        "x-ms-correlation-request-id": [ "b4dcd814-1768-47ea-a5bd-7752d8ff73c5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230822T063014Z:b4dcd814-1768-47ea-a5bd-7752d8ff73c5" ],
+        "Date": [ "Tue, 22 Aug 2023 06:30:14 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1298" ],
+        "Content-Length": [ "1297" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"family\":\"B\",\"name\":\"Standard_B1\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm\",\"name\":\"bezmhsm\",\"type\":\"Microsoft.KeyVault/managedHSMs\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-11T03:48:15.524Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-18T02:12:35.259Z\"},\"properties\":{\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"hsmUri\":\"https://bezmhsm.managedhsm.azure.net/\",\"initialAdminObjectIds\":[\"2f153a9e-5be9-4f43-abd2-04561777c8b0\"],\"enableSoftDelete\":true,\"softDeleteRetentionInDays\":90,\"enablePurgeProtection\":false,\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Managed HSM is provisioned and ready to use.\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Allow\",\"ipRules\":[],\"virtualNetworkRules\":[]},\"publicNetworkAccess\":\"Enabled\",\"regions\":[{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false},{\"name\":\"uksouth\",\"provisioningState\":\"Failed\",\"isPrimary\":false}],\"securityDomainProperties\":{\"activationStatus\":\"Active\",\"activationStatusMessage\":\"Your HSM has been activated and can be used for cryptographic operations.\"}}}",
+      "Content": "{\"sku\":{\"family\":\"B\",\"name\":\"Standard_B1\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm\",\"name\":\"bezmhsm\",\"type\":\"Microsoft.KeyVault/managedHSMs\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-11T03:48:15.524Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-22T01:31:47.41Z\"},\"properties\":{\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"hsmUri\":\"https://bezmhsm.managedhsm.azure.net/\",\"initialAdminObjectIds\":[\"2f153a9e-5be9-4f43-abd2-04561777c8b0\"],\"enableSoftDelete\":true,\"softDeleteRetentionInDays\":90,\"enablePurgeProtection\":false,\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Managed HSM is provisioned and ready to use.\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Allow\",\"ipRules\":[],\"virtualNetworkRules\":[]},\"publicNetworkAccess\":\"Enabled\",\"regions\":[{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false},{\"name\":\"uksouth\",\"provisioningState\":\"Failed\",\"isPrimary\":false}],\"securityDomainProperties\":{\"activationStatus\":\"Active\",\"activationStatusMessage\":\"Your HSM has been activated and can be used for cryptographic operations.\"}}}",
       "isContentBase64": false
     }
   },
@@ -62,17 +62,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/eastus/managedHsmOperationResults/00000000-0000-0000-0000-000000000000?api-version=2023-02-01" ],
-        "x-ms-client-request-id": [ "cfcafcbb-39f2-4269-8d9e-90db3510ca3f" ],
+        "x-ms-client-request-id": [ "da5c8458-1f94-49c6-a7f9-06862e147875" ],
         "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "0025d7f6-5751-468d-88e6-ed87088be79c" ],
+        "x-ms-request-id": [ "89661268-c543-4b3e-84e5-8cfb7aa85e5b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "73b1d351-5609-47f1-8320-5eb1dfcfaeb6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T090549Z:73b1d351-5609-47f1-8320-5eb1dfcfaeb6" ],
-        "Date": [ "Fri, 18 Aug 2023 09:05:48 GMT" ]
+        "x-ms-correlation-request-id": [ "81c544be-5723-450d-b8cb-7f6012994fee" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230822T063015Z:81c544be-5723-450d-b8cb-7f6012994fee" ],
+        "Date": [ "Tue, 22 Aug 2023 06:30:15 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -91,7 +91,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "cfcafcbb-39f2-4269-8d9e-90db3510ca3f" ],
+        "x-ms-client-request-id": [ "da5c8458-1f94-49c6-a7f9-06862e147875" ],
         "CommandName": [ "Az.KeyVault.internal\\Update-AzKeyVaultManagedHsm" ],
         "FullCommandName": [ "Update-AzKeyVaultManagedHsm_Update" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -105,17 +105,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "cfcafcbb-39f2-4269-8d9e-90db3510ca3f" ],
+        "x-ms-client-request-id": [ "da5c8458-1f94-49c6-a7f9-06862e147875" ],
         "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "ee59dc3c-c15a-4ae5-a2d2-be3e56fdb60a" ],
+        "x-ms-request-id": [ "b8326f75-2625-4f5e-8e49-6c9a4716addd" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "861703ab-c48a-4210-b838-159d17fd232e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T090619Z:861703ab-c48a-4210-b838-159d17fd232e" ],
-        "Date": [ "Fri, 18 Aug 2023 09:06:19 GMT" ]
+        "x-ms-correlation-request-id": [ "f68bf6f3-482b-4738-938e-eab137cc9f13" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230822T063046Z:f68bf6f3-482b-4738-938e-eab137cc9f13" ],
+        "Date": [ "Tue, 22 Aug 2023 06:30:45 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -134,7 +134,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "cfcafcbb-39f2-4269-8d9e-90db3510ca3f" ],
+        "x-ms-client-request-id": [ "da5c8458-1f94-49c6-a7f9-06862e147875" ],
         "CommandName": [ "Az.KeyVault.internal\\Update-AzKeyVaultManagedHsm" ],
         "FullCommandName": [ "Update-AzKeyVaultManagedHsm_Update" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -148,24 +148,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "cfcafcbb-39f2-4269-8d9e-90db3510ca3f" ],
+        "x-ms-client-request-id": [ "da5c8458-1f94-49c6-a7f9-06862e147875" ],
         "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "3fe09e22-218f-41f2-a5fd-22339503a814" ],
+        "x-ms-request-id": [ "364e4695-51f2-4970-89a7-c616caa8def2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "94161f40-13ad-4daa-a7d1-7371e0c19a15" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T090620Z:94161f40-13ad-4daa-a7d1-7371e0c19a15" ],
-        "Date": [ "Fri, 18 Aug 2023 09:06:20 GMT" ]
+        "x-ms-correlation-request-id": [ "a2b344cc-8575-4bfb-bb9c-b2f7abbab3d2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230822T063047Z:a2b344cc-8575-4bfb-bb9c-b2f7abbab3d2" ],
+        "Date": [ "Tue, 22 Aug 2023 06:30:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1232" ],
+        "Content-Length": [ "1231" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"family\":\"B\",\"name\":\"Standard_B1\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm\",\"name\":\"bezmhsm\",\"type\":\"Microsoft.KeyVault/managedHSMs\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-11T03:48:15.524Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-18T09:05:48.683Z\"},\"properties\":{\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"hsmUri\":\"https://bezmhsm.managedhsm.azure.net/\",\"initialAdminObjectIds\":[\"2f153a9e-5be9-4f43-abd2-04561777c8b0\"],\"enableSoftDelete\":true,\"softDeleteRetentionInDays\":90,\"enablePurgeProtection\":false,\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Managed HSM is provisioned and ready to use.\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Allow\",\"ipRules\":[],\"virtualNetworkRules\":[]},\"publicNetworkAccess\":\"Enabled\",\"regions\":[{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false}],\"securityDomainProperties\":{\"activationStatus\":\"Active\",\"activationStatusMessage\":\"Your HSM has been activated and can be used for cryptographic operations.\"}}}",
+      "Content": "{\"sku\":{\"family\":\"B\",\"name\":\"Standard_B1\"},\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm\",\"name\":\"bezmhsm\",\"type\":\"Microsoft.KeyVault/managedHSMs\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"Beisi.Zhou@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-05-11T03:48:15.524Z\",\"lastModifiedBy\":\"Beisi.Zhou@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-22T06:30:15.19Z\"},\"properties\":{\"tenantId\":\"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\"hsmUri\":\"https://bezmhsm.managedhsm.azure.net/\",\"initialAdminObjectIds\":[\"2f153a9e-5be9-4f43-abd2-04561777c8b0\"],\"enableSoftDelete\":true,\"softDeleteRetentionInDays\":90,\"enablePurgeProtection\":false,\"provisioningState\":\"Succeeded\",\"statusMessage\":\"The Managed HSM is provisioned and ready to use.\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Allow\",\"ipRules\":[],\"virtualNetworkRules\":[]},\"publicNetworkAccess\":\"Enabled\",\"regions\":[{\"name\":\"westus\",\"provisioningState\":\"Provisioning\",\"isPrimary\":false}],\"securityDomainProperties\":{\"activationStatus\":\"Active\",\"activationStatusMessage\":\"Your HSM has been activated and can be used for cryptographic operations.\"}}}",
       "isContentBase64": false
     }
   },
@@ -177,7 +177,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "3540ad38-4a59-4d44-a364-adc5f40a7025" ],
+        "x-ms-client-request-id": [ "f2727ac1-72c2-43f8-88b7-4ecc150d68b3" ],
         "CommandName": [ "Az.KeyVault\\Get-AzKeyVaultManagedHsmRegion" ],
         "FullCommandName": [ "Get-AzKeyVaultManagedHsmRegion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -192,17 +192,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-client-request-id": [ "3540ad38-4a59-4d44-a364-adc5f40a7025" ],
+        "x-ms-client-request-id": [ "f2727ac1-72c2-43f8-88b7-4ecc150d68b3" ],
         "x-ms-keyvault-service-version": [ "1.5.885.0" ],
-        "x-ms-request-id": [ "25adf5ad-657c-4c6f-b4d5-e4a6f31dfb97" ],
+        "x-ms-request-id": [ "57ec6893-f06a-4546-b93c-d842d8b67224" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "1c7c8899-d672-4b8e-b73d-5dd7552f124d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230818T090621Z:1c7c8899-d672-4b8e-b73d-5dd7552f124d" ],
-        "Date": [ "Fri, 18 Aug 2023 09:06:20 GMT" ]
+        "x-ms-correlation-request-id": [ "7f328e1c-3c02-4f62-b506-3047bcda297e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230822T063047Z:7f328e1c-3c02-4f62-b506-3047bcda297e" ],
+        "Date": [ "Tue, 22 Aug 2023 06:30:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "149" ],

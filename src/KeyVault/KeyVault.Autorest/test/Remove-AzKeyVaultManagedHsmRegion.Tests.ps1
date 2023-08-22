@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzKeyVaultManagedHsmRe
 
 Describe 'Remove-AzKeyVaultManagedHsmRegion' {
     It '__AllParameterSets' {
-        $regions = Remove-AzKeyVaultManagedHsmRegion -HsmName $env.hsmName -ResourceGroupName $env.rgName -Region uksouth -PassThru
+        $regions = Remove-AzKeyVaultManagedHsmRegion -HsmName $env.hsmName -ResourceGroupName $env.rgName -Region "uksouth" -PassThru
         $regions.Name -notcontains "uksouth" | Should -Be $true
     }
 }

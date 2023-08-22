@@ -120,7 +120,8 @@ function Remove-AzKeyVaultManagedHsmRegion {
         ${ProxyUseDefaultCredentials}
     )
     process {
-        try {            
+        try {
+            $null = $PSBoundParameters.Remove('PassThru')
             $null = $PSBoundParameters.Remove('HsmName')
             $null = $PSBoundParameters.Add('Name', $HsmName)
             $null = $PSBoundParameters.Remove('Region')
