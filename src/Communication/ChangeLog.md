@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* test non compute edit again
+* test non compute edit
 
 ## Version 0.2.0
 * Added a new cmdlet `Test-AzCommunicationServiceNameAvailability`
