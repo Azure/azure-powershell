@@ -12,7 +12,7 @@
 RootModule = './Az.DesktopVirtualization.psm1'
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '4.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.3'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.DesktopVirtualization.private.dll'
@@ -134,10 +134,17 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Added cmdlet:
+    - ''Get-AzWvdScalingPlanPersonalSchedule''
+    - ''New-AzWvdScalingPlanPersonalSchedule''
+    - ''Remove-AzWvdScalingPlanPersonalSchedule''
+    - ''Update-AzWvdScalingPlanPersonalSchedule''
+* Added parameters ''ShowInFeed'' to:
+    - ''New-AzWvdApplicationGroup''
+    - ''Update-AzWvdApplicationGroup'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

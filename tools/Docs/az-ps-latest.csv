@@ -49,7 +49,7 @@ pac47,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.0.1.nupkg;sourceType=sa]Az.DataShare,1.0.1
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.3.0.nupkg;sourceType=sa]Az.DedicatedHsm,0.3.0
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeploymentManager.1.1.0.nupkg;sourceType=sa]Az.DeploymentManager,1.1.0
-pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.0.0.nupkg;sourceType=sa]Az.DesktopVirtualization,4.0.0
+pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.1.0.nupkg;sourceType=sa]Az.DesktopVirtualization,4.1.0
 pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.0.nupkg;sourceType=sa]Az.DeviceProvisioningServices,0.10.0
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.1.0.nupkg;sourceType=sa]Az.DeviceUpdate,0.1.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevSpaces.0.7.3.nupkg;sourceType=sa]Az.DevSpaces,0.7.3
