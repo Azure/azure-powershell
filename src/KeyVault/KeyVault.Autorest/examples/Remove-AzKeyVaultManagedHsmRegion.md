@@ -4,7 +4,6 @@ Remove-AzKeyVaultManagedHsmRegion -HsmName testmhsm -ResourceGroupName test-rg -
 ```
 
 ```output
-```output
 IsPrimary Name   ProvisioningState
 --------- ----   -----------------
 True      eastus Succeeded
