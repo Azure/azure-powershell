@@ -23,9 +23,6 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
-### [Get-AzConnectedNetworkProfile](Get-AzConnectedNetworkProfile.md)
-The operation to get network information of hybrid machine
-
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 

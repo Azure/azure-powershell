@@ -241,7 +241,11 @@ directive:
       verb: Get
       subject: PrivateLinkScopeValidationDetail
     remove: true
-    
+  - where:
+      verb: Get
+      subject: NetworkProfile
+    remove: true
+
   # Completers
   - where:
       parameter-name: Location
