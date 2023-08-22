@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIReplicationPo
 }
 
 Describe 'Get-AzMigrateHCIReplicationPolicy' {
-    It 'List' -skip {
+    It 'List' {
         $output = Get-AzMigrateHCIReplicationPolicy `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -VaultName $env.asrv2ReplicationVaultName `
@@ -23,7 +23,7 @@ Describe 'Get-AzMigrateHCIReplicationPolicy' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $output = Get-AzMigrateHCIReplicationPolicy `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -VaultName $env.asrv2ReplicationVaultName `
@@ -32,7 +32,7 @@ Describe 'Get-AzMigrateHCIReplicationPolicy' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $output = Get-AzMigrateHCIReplicationPolicy `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -VaultName $env.asrv2ReplicationVaultName `

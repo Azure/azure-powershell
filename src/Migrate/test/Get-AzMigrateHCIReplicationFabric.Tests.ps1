@@ -15,12 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIReplicationFa
 }
 
 Describe 'Get-AzMigrateHCIReplicationFabric' {
-    It 'List' -skip {
-        $output = Get-AzMigrateHCIReplicationFabric
+    It 'List' {
+        $output = Get-AzMigrateHCIReplicationFabric `
+            -SubscriptionId $env.asrv2SubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $output = Get-AzMigrateHCIReplicationFabric `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -SubscriptionId $env.asrv2SubscriptionId `
@@ -28,14 +29,14 @@ Describe 'Get-AzMigrateHCIReplicationFabric' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $output = Get-AzMigrateHCIReplicationFabric `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -SubscriptionId $env.asrv2SubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $output = Get-AzMigrateHCIReplicationFabric `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -SubscriptionId $env.asrv2SubscriptionId `

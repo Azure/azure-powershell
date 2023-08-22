@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIJob'))
 }
 
 Describe 'Get-AzMigrateHCIJob' {
-    It 'ListByName' -skip {
+    It 'ListByName' {
         $output = Get-AzMigrateHCIJob `
             -ProjectName $env.asrv2ProjectName `
             -ResourceGroupName $env.asrv2ResourceGroupName `
@@ -23,7 +23,7 @@ Describe 'Get-AzMigrateHCIJob' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetByName' -skip {
+    It 'GetByName' {
         $output = Get-AzMigrateHCIJob `
             -ProjectName $env.asrv2ProjectName `
             -ResourceGroupName $env.asrv2ResourceGroupName `
@@ -32,25 +32,27 @@ Describe 'Get-AzMigrateHCIJob' {
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetById' -skip {
+    It 'GetById' {
         $output = Get-AzMigrateHCIJob `
             -SubscriptionId $env.asrv2SubscriptionId `
             -JobID $env.asrv2JobId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetByInputObject' -skip {
+    It 'GetByInputObject' {
         $output = Get-AzMigrateHCIJob `
             -ProjectName $env.asrv2ProjectName `
             -ResourceGroupName $env.asrv2ResourceGroupName `
             -SubscriptionId $env.asrv2SubscriptionId `
             -JobName $env.asrv2JobName
         
-        $output1 = Get-AzMigrateHCIJob -InputObject $output
+        $output1 = Get-AzMigrateHCIJob `
+            -InputObject $output `
+            -SubscriptionId $env.asrv2SubscriptionId
         $output1.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'ListById' -skip {
+    It 'ListById' {
         $output = Get-AzMigrateHCIJob `
             -ProjectID $env.asrv2ProjectId `
             -ResourceGroupID $env.asrv2ResourceGroupId `

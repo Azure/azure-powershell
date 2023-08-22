@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMigrateHCIServerRepl
 }
 
 Describe 'Remove-AzMigrateHCIServerReplication' {
-    It 'ByID' -skip {
+    It 'ByID' {
         { Remove-AzMigrateHCIServerReplication -TargetObjectID $env.asrv2ProtectedItemId -SubscriptionId $env.asrv2SubscriptionId } | Should -Not -Throw
     }
 

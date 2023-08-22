@@ -310,6 +310,11 @@ directive:
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
+      verb: Set
+      subject: ^HyperV(Cluster|Host)$
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
       verb: New|Remove|Update
       subject: ^HyperV
     remove: true

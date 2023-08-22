@@ -89,7 +89,7 @@ function setupEnv() {
     $env.asrv2ReplicationPolicyName = "samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy"
     $env.asrv2JobName = "f8941ed0-5563-400b-b93c-24dcba833dbb"
     $env.asrv2JobId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/jobs/f8941ed0-5563-400b-b93c-24dcba833dbb"
-    $env.asrv2ProtectedItemId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+    $env.asrv2ProtectedItemId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/c44473d0-a8ce-41bc-8638-14a0bd956ddd"
     
     $envFile = 'localEnv.json'
     if ($TestMode -eq 'live') {

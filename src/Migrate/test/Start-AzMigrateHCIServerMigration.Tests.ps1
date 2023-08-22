@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzMigrateHCIServerMigra
 }
 
 Describe 'Start-AzMigrateHCIServerMigration' {
-    It 'ByID' -skip {
+    It 'ByID' {
         { Start-AzMigrateHCIServerMigration -TargetObjectID $env.asrv2ProtectedItemId -SubscriptionId $env.asrv2SubscriptionId } | Should -Not -Throw
     }
 

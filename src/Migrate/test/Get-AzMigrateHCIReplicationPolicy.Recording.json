@@ -1,0 +1,174 @@
+{
+  "Get-AzMigrateHCIReplicationPolicy+[NoContext]+List+$GET+https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies?api-version=2021-02-16-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies?api-version=2021-02-16-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "d2356533-aac0-42f2-ae8b-35d19991b974" ],
+        "CommandName": [ "Get-AzMigrateHCIReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzMigrateHCIReplicationPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.Migrate/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "ebc10999-ceb4-4578-ac8f-f0572c5d0a5a" ],
+        "x-ms-correlation-request-id": [ "ebc10999-ceb4-4578-ac8f-f0572c5d0a5a" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230822T210732Z:ebc10999-ceb4-4578-ac8f-f0572c5d0a5a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 43F74F7F5CC94E34AE1FFEA79B29E70D Ref B: CO6AA3150220023 Ref C: 2023-08-22T21:07:30Z" ],
+        "Date": [ "Tue, 22 Aug 2023 21:07:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "666" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"provisioningState\":\"Succeeded\",\"customProperties\":{\"recoveryPointHistoryInMinutes\":4320,\"crashConsistentFrequencyInMinutes\":60,\"appConsistentFrequencyInMinutes\":240,\"instanceType\":\"HyperVToAzStackHCI\"}},\"id\":\"/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"name\":\"samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"type\":\"Microsoft.DataReplication/replicationVaults/replicationPolicies\",\"systemData\":null,\"tags\":null}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateHCIReplicationPolicy+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "28c6604e-511e-4d16-82e1-be55dddc3eeb" ],
+        "CommandName": [ "Get-AzMigrateHCIReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzMigrateHCIReplicationPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.Migrate/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "c0921515-8a3c-46e7-b324-f873bf0d1e13" ],
+        "x-ms-correlation-request-id": [ "c0921515-8a3c-46e7-b324-f873bf0d1e13" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230822T210733Z:c0921515-8a3c-46e7-b324-f873bf0d1e13" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 225A41D97A5A4FE48CB826E7905E8041 Ref B: CO6AA3150220023 Ref C: 2023-08-22T21:07:32Z" ],
+        "Date": [ "Tue, 22 Aug 2023 21:07:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"customProperties\":{\"recoveryPointHistoryInMinutes\":4320,\"crashConsistentFrequencyInMinutes\":60,\"appConsistentFrequencyInMinutes\":240,\"instanceType\":\"HyperVToAzStackHCI\"}},\"id\":\"/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"name\":\"samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"type\":\"Microsoft.DataReplication/replicationVaults/replicationPolicies\",\"systemData\":null,\"tags\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateHCIReplicationPolicy+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "fbaa6a46-1cc4-4612-9bc4-ecab7c41613d" ],
+        "CommandName": [ "Get-AzMigrateHCIReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzMigrateHCIReplicationPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.Migrate/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "65e03c23-e616-440b-ac81-d38730a0ed56" ],
+        "x-ms-correlation-request-id": [ "65e03c23-e616-440b-ac81-d38730a0ed56" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230822T210734Z:65e03c23-e616-440b-ac81-d38730a0ed56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FEA16DCAD0A464EB37EE3FCF614075D Ref B: CO6AA3150220023 Ref C: 2023-08-22T21:07:33Z" ],
+        "Date": [ "Tue, 22 Aug 2023 21:07:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"customProperties\":{\"recoveryPointHistoryInMinutes\":4320,\"crashConsistentFrequencyInMinutes\":60,\"appConsistentFrequencyInMinutes\":240,\"instanceType\":\"HyperVToAzStackHCI\"}},\"id\":\"/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"name\":\"samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"type\":\"Microsoft.DataReplication/replicationVaults/replicationPolicies\",\"systemData\":null,\"tags\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMigrateHCIReplicationPolicy+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy?api-version=2021-02-16-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "e09fefba-a855-41a2-bd5d-9e542681bedd" ],
+        "CommandName": [ "Get-AzMigrateHCIReplicationPolicy" ],
+        "FullCommandName": [ "Get-AzMigrateHCIReplicationPolicy_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.Migrate/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "api-supported-versions": [ "2021-02-16-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "fea88d8d-872e-425d-8bd8-07265af0d1a9" ],
+        "x-ms-correlation-request-id": [ "fea88d8d-872e-425d-8bd8-07265af0d1a9" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20230822T210736Z:fea88d8d-872e-425d-8bd8-07265af0d1a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 380B0DE0A1AF48518F2F3B1FBE1055BF Ref B: CO6AA3150220023 Ref C: 2023-08-22T21:07:34Z" ],
+        "Date": [ "Tue, 22 Aug 2023 21:07:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "638" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"customProperties\":{\"recoveryPointHistoryInMinutes\":4320,\"crashConsistentFrequencyInMinutes\":60,\"appConsistentFrequencyInMinutes\":240,\"instanceType\":\"HyperVToAzStackHCI\"}},\"id\":\"/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/replicationPolicies/samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"name\":\"samlee3proj46422replicationvaultHyperVToAzStackHCIpolicy\",\"type\":\"Microsoft.DataReplication/replicationVaults/replicationPolicies\",\"systemData\":null,\"tags\":null}",
+      "isContentBase64": false
+    }
+  }
+}
