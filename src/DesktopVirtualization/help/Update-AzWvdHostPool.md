@@ -78,7 +78,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://learn.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -538,7 +538,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IHostPool
 
 ## NOTES
 

@@ -58,7 +58,7 @@ New-AzWvdScalingPlan `
             )
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -95,7 +95,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingPlanPooledSchedule definitions.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
 #>
 function New-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -146,7 +146,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingHostPoolReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingHostPoolReference[]]
     # List of ScalingHostPoolReference definitions.
     # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
     ${HostPoolReference},
@@ -225,7 +225,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingSchedule[]]
     # List of ScalingPlanPooledSchedule definitions.
     # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},

@@ -26,11 +26,11 @@ Expand-AzWvdMsixImage -HostPoolName HostPoolName `
           -Uri ImagePathURI
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IMsixImageUri
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IExpandMsixImage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IExpandMsixImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ MSIXIMAGEURI <IMsixImageUri>: Represents URI referring to MSIX Image
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/expand-azwvdmsiximage
 #>
 function Expand-AzWvdMsixImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IExpandMsixImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IExpandMsixImage])]
 [CmdletBinding(DefaultParameterSetName='ExpandExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Expand', Mandatory)]
@@ -95,7 +95,7 @@ param(
     [Parameter(ParameterSetName='Expand', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ExpandViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IMsixImageUri]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMsixImageUri]
     # Represents URI referring to MSIX Image
     # To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
     ${MsixImageUri},

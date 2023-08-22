@@ -23,12 +23,13 @@ Update an applicationGroup.
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
                           -FriendlyName 'Friendly Name' `
-                          -Description 'Description'
+                          -Description 'Description' `
+                          -ShowInFeed:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +54,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplicationgroup
 #>
 function Update-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -98,7 +99,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IApplicationGroupPatchTags]))]
+    [System.Management.Automation.SwitchParameter]
+    # Boolean representing whether the applicationGroup is show in the feed.
+    ${ShowInFeed},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroupPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},

@@ -15,14 +15,14 @@ Update an applicationGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdApplicationGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-FriendlyName <String>] [-ShowInFeed] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdApplicationGroup -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
- [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-FriendlyName <String>] [-ShowInFeed] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,8 @@ Update an applicationGroup.
 New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                           -Name ApplicationGroupName `
                           -FriendlyName 'Friendly Name' `
-                          -Description 'Description'
+                          -Description 'Description' `
+                          -ShowInFeed:$false
 ```
 
 ```output
@@ -142,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ShowInFeed
+Boolean representing whether the applicationGroup is show in the feed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -212,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20221014Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IApplicationGroup
 
 ## NOTES
 
