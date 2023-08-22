@@ -342,4 +342,143 @@ directive:
       enum-value-name: Equals
     set:
       enum-value-name: Equal
+  # breaking change message
+  - where:
+      subject: BookmarkRelation
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      subject: EntityQuery
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      subject: Setting
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: Get
+      subject: Enrichment|Entity|EntityActivity|EntityInsight|EntityQueryTemplate|EntityRelation|EntityTimeline
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: IncidentTeam
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: Test
+      subject: DataConnectorCheckRequirement
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      parameter-name: Action
+    set:
+      breaking-change:
+        become-mandatory: true
+        change-description: Action is required.
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      parameter-name: Order
+      subject: AutomationRule
+    set:
+      breaking-change:
+        become-mandatory: true
+        change-description: Order is required.
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      parameter-name: DisplayName
+      subject: AutomationRule
+    set:
+      breaking-change:
+        become-mandatory: true
+        change-description: DisplayName is required.
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: Incident
+      variant: Create
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: AlertRule
+      variant: NRT
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: AutomationRule
+      variant: Create
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: Bookmark
+      variant: Create
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: New
+      subject: DataConnector
+      variant: Dynamics365, MicrosoftThreatIntelligence, MicrosoftThreatProtection, OfficeATP, OfficeIRM, ThreatIntelligenceTaxii
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+
+  - where:
+      verb: Update
+      subject: AlertRule
+      variant: UpdateNRT, UpdateViaIdentityNRT
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
+  - where:
+      verb: Update
+      subject: DataConnector
+      variant: UpdateAmazonWebServicesS3, UpdateDynamics365, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligenceTaxii
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
+        change-effective-date: 2023/11
 ```
