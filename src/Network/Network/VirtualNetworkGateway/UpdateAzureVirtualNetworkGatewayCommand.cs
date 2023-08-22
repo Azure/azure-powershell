@@ -213,6 +213,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
         public bool? BgpRouteTranslationForNat { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")
+        public Int32 MinScaleUnit { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")
+        public Int32 MaxScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -529,6 +534,17 @@ namespace Microsoft.Azure.Commands.Network
             if (AdminState != null)
             {
                 this.VirtualNetworkGateway.AdminState = AdminState;
+            }
+
+            if (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)
+            {
+                if (this.MinScaleUnit > this.MaxScaleUnit)
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
+                }
+
+                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
+                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnit);
             }
 
             // Map to the sdk object

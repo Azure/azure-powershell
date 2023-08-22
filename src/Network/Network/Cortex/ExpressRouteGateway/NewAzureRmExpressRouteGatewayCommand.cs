@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             expressRouteGateway.AutoScaleConfiguration = new PSExpressRouteGatewayAutoscaleConfiguration();
-            expressRouteGateway.AutoScaleConfiguration.Bounds = new PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds();
+            expressRouteGateway.AutoScaleConfiguration.Bounds = new PSExpressRouteGatewayProperties();
             expressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
             expressRouteGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnits > 0) ? Convert.ToInt32(this.MaxScaleUnits) : Convert.ToInt32(this.MinScaleUnits);
 

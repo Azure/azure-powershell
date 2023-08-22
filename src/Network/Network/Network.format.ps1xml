@@ -6131,6 +6131,46 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayAutoscaleConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayAutoscaleConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Bounds</Label>
+                <PropertyName>BoundsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Min</Label>
+                <PropertyName>Min</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Max</Label>
+                <PropertyName>Max</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnectionIkeSaQuickModeSa</TypeName>
