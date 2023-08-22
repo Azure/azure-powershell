@@ -12,19 +12,19 @@ Retrieves a specified key vault account setting or all available key vault accou
 
 ## SYNTAX
 
-###  GetSettingViaFlattenParameters (Default)
+### GetSettingViaFlattenParameters (Default)
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmName] <String> [[-Name] <String>]
  [<CommonParameters>]
 ```
 
-###  GetSettingViaHsmObject
+### GetSettingViaHsmObject
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm> [[-Name] <String>]
  [<CommonParameters>]
 ```
 
-###  GetSettingViaHsmId
+### GetSettingViaHsmId
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [[-Name] <String>]
  [<CommonParameters>]
@@ -40,6 +40,7 @@ This cmdlet gets a specific key vault account setting or all key vault account s
 ```powershell
 Get-AzKeyVaultSetting -HsmName testmhsm
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -52,6 +53,7 @@ This cmdlet gets all account settings in a Managed HSM named `testmhsm`.
 ```powershell
 Get-AzKeyVaultSetting -HsmName testmhsm -Name AllowKeyManagementOperationsThroughARM
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -65,6 +67,7 @@ This cmdlet gets a specific key vault account setting named `AllowKeyManagementO
 $hsmObject = Get-AzKeyVaultManagedHsm -Name testmhsm
 Get-AzKeyVaultSetting -HsmObject $hsmObject -Name AllowKeyManagementOperationsThroughARM
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -77,6 +80,7 @@ This cmdlet gets a specific key vault account setting named `AllowKeyManagementO
 ```powershell
 Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultSetting -Name AllowKeyManagementOperationsThroughARM
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -89,6 +93,7 @@ This cmdlet gets a specific key vault account setting named `AllowKeyManagementO
 ```powershell
 Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultSetting -Name AllowKeyManagementOperationsThroughARM
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -101,6 +106,7 @@ This cmdlet gets a specific key vault account setting named `AllowKeyManagementO
 ```powershell
 Get-AzKeyVaultSetting -HsmId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.KeyVault/managedHSMs/testmhsm -Name AllowKeyManagementOperationsThroughARM
 ```
+
 ```output
 Name                                   Value Type    HSM Name
 ----                                   ----- ----    --------
@@ -131,7 +137,7 @@ Hsm Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets:  GetSettingViaHsmId
+Parameter Sets: GetSettingViaHsmId
 Aliases:
 
 Required: True
@@ -146,7 +152,7 @@ Name of the HSM.
 
 ```yaml
 Type: System.String
-Parameter Sets:  GetSettingViaFlattenParameters
+Parameter Sets: GetSettingViaFlattenParameters
 Aliases:
 
 Required: True
@@ -161,7 +167,7 @@ Hsm Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
-Parameter Sets:  GetSettingViaHsmObject
+Parameter Sets: GetSettingViaHsmObject
 Aliases:
 
 Required: True
@@ -200,4 +206,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Update-AzKeyVaultSetting](./Update-AzKeyVaultSetting.md)
