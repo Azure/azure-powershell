@@ -50,6 +50,12 @@ function Remove-AzKeyVaultManagedHsmRegion {
         [System.String[]]
         # List of regions to be removed associated with the managed hsm pool.
         ${Region},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
             
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Runtime')]
@@ -131,7 +137,9 @@ function Remove-AzKeyVaultManagedHsmRegion {
             $null = $PSBoundParameters.Remove('Parameter')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Add('HsmName', $HsmName)
-            Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
+            if($PassThru.IsPresent){
+                Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
+            }
         } catch {
             throw
         }

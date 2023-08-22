@@ -14,7 +14,8 @@ The List operation gets information about the regions associated with the manage
 
 ```
 Remove-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> -Region <String[]>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,11 +28,12 @@ The List operation gets information about the regions associated with the manage
 Remove-AzKeyVaultManagedHsmRegion -HsmName testmhsm -ResourceGroupName test-rg -Region eastus2 -PassThru
 ```
 
+```output
 IsPrimary Name   ProvisioningState
 --------- ----   -----------------
 True      eastus Succeeded
 False     westus Succeeded
-``````
+```
 
 This command removes `eastus2` from region extension for Managed HSM named `testmhsm`.
 
@@ -77,6 +79,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
