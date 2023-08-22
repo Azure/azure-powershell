@@ -51,7 +51,7 @@ $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "si-jj
 Update-AzSentinelAlertRuleAction -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -RuleId "727fde97-bd0a-4b6d-a730-9d77fbcdb786" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value) -Id ((New-Guid).Guid)
 ```
 
-This command updates an alert rule action
+This command updates an alert rule action.
 
 ## PARAMETERS
 

@@ -11,4 +11,5 @@ ConditionPropertyValue      :
 ConditionType               : PropertyChanged
 ```
 
-This command creates an automation rule condition object for automation rule
+This command creates an automation rule condition object for automation rule.
+

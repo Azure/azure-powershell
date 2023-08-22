@@ -74,7 +74,7 @@ Technique                    : {}
 Type                         : Microsoft.SecurityInsights/securityMLAnalyticsSettings
 ```
 
-This command updates specific SecurityMlAnalyticsSetting with specified resource group and workspace
+This command updates specific SecurityMlAnalyticsSetting with specified resource group and workspace.
 
 ## PARAMETERS
 

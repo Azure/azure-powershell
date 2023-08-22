@@ -77,11 +77,11 @@ Create an in-memory object for AnomalySecurityMlAnalyticsSettings.
 ### [New-AzSentinelAutomationRule](New-AzSentinelAutomationRule.md)
 Create the automation rule.
 
-### [New-AzSentinelAutomationRuleActionCondition](New-AzSentinelAutomationRuleActionCondition.md)
-Create the automation rule action condition.
+### [New-AzSentinelAutomationRuleModifyPropertiesActionObject](New-AzSentinelAutomationRuleModifyPropertiesActionObject.md)
+Create an in-memory object for AutomationRuleModifyPropertiesAction.
 
-### [New-AzSentinelAutomationRuleActionObject](New-AzSentinelAutomationRuleActionObject.md)
-Create the automation rule action object.
+### [New-AzSentinelAutomationRuleRunPlaybookActionObject](New-AzSentinelAutomationRuleRunPlaybookActionObject.md)
+Create an in-memory object for AutomationRuleRunPlaybookAction.
 
 ### [New-AzSentinelBookmark](New-AzSentinelBookmark.md)
 Create the bookmark.
@@ -101,8 +101,20 @@ Create a relation for a given incident.
 ### [New-AzSentinelOnboardingState](New-AzSentinelOnboardingState.md)
 Create Sentinel onboarding state
 
+### [New-AzSentinelPropertyArrayChangedConditionPropertiesObject](New-AzSentinelPropertyArrayChangedConditionPropertiesObject.md)
+Create an in-memory object for PropertyArrayChangedConditionProperties.
+
+### [New-AzSentinelPropertyChangedConditionPropertiesObject](New-AzSentinelPropertyChangedConditionPropertiesObject.md)
+Create an in-memory object for PropertyChangedConditionProperties.
+
+### [New-AzSentinelPropertyConditionPropertiesObject](New-AzSentinelPropertyConditionPropertiesObject.md)
+Create an in-memory object for PropertyConditionProperties.
+
 ### [New-AzSentinelSecurityMlAnalyticsSetting](New-AzSentinelSecurityMlAnalyticsSetting.md)
 Create the Security ML Analytics Settings.
+
+### [New-AzSentinelSecurityMlAnalyticsSettingsDataSourceObject](New-AzSentinelSecurityMlAnalyticsSettingsDataSourceObject.md)
+Create an in-memory object for SecurityMlAnalyticsSettingsDataSource.
 
 ### [Remove-AzSentinelAlertRule](Remove-AzSentinelAlertRule.md)
 Delete the alert rule.

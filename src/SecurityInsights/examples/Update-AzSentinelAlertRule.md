@@ -1,4 +1,4 @@
-### Example 1: Update an scheduled alert rule
+### Example 1: Update a scheduled alert rule
 ```powershell
 Update-AzSentinelAlertRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -ruleId "727fde97-bd0a-4b6d-a730-9d77fbcdb786" -Query "SecurityAlert | take 2" -Scheduled
 ```

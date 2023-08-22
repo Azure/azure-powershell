@@ -44,7 +44,7 @@ Create the action of alert rule.
 
 ## EXAMPLES
 
-### Example 1: Add a Logic App Playbook as an action to an existing analytics rule
+### Example 1: Add a Logic App Playbook as an action to existing analytics rule
 ```powershell
 $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "si-jj-test" -Name "myLogicApp"
 $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "si-jj-test" -Name $LogicAppResourceId.Name -TriggerName "Microsoft_Sentinel_alert"
