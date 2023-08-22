@@ -753,6 +753,10 @@
                 </ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>Regions</Label>
+                <PropertyName>Regions</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
