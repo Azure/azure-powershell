@@ -12,7 +12,7 @@ Update specific setting associated with the managed HSM.
 
 ## SYNTAX
 
-###  UpdateSettingViaFlattenValues (Default)
+### UpdateSettingViaFlattenValues (Default)
 ```
 Update-AzKeyVaultSetting [-HsmName] <String> [-Name] <String> [-Value] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -137,7 +137,7 @@ Name of the HSM.
 
 ```yaml
 Type: System.String
-Parameter Sets:  UpdateSettingViaFlattenValues
+Parameter Sets: UpdateSettingViaFlattenValues
 Aliases:
 
 Required: True
@@ -194,7 +194,7 @@ Name of the setting.
 
 ```yaml
 Type: System.String
-Parameter Sets:  UpdateSettingViaFlattenValues, UpdateSettingViaHsmObject, UpdateSettingViaHsmId
+Parameter Sets: UpdateSettingViaFlattenValues, UpdateSettingViaHsmObject, UpdateSettingViaHsmId
 Aliases:
 
 Required: True
@@ -224,7 +224,7 @@ Value of the setting.
 
 ```yaml
 Type: System.String
-Parameter Sets:  UpdateSettingViaFlattenValues, UpdateSettingViaHsmObject, UpdateSettingViaHsmId
+Parameter Sets: UpdateSettingViaFlattenValues, UpdateSettingViaHsmObject, UpdateSettingViaHsmId
 Aliases:
 
 Required: True
@@ -292,4 +292,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzKeyVaultSetting](./Get-AzKeyVaultSetting.md)
