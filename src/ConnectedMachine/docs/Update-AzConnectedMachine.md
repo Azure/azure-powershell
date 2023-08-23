@@ -15,9 +15,8 @@ The operation to update a hybrid machine.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>]
- [-AgentUpgradeEnableAutomaticUpgrade] [-IdentityType <ResourceIdentityType>]
- [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
+ [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
+ [-IdentityType <ResourceIdentityType>] [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
  [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
@@ -41,8 +40,8 @@ Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <I
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-AgentUpgradeCorrelationId <String>]
- [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomaticUpgrade]
- [-IdentityType <ResourceIdentityType>] [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
+ [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <ResourceIdentityType>]
+ [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
  [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
@@ -114,7 +113,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AgentUpgradeEnableAutomaticUpgrade
+### -AgentUpgradeEnableAutomatic
 Specifies if RSM should try to upgrade this machine
 
 ```yaml

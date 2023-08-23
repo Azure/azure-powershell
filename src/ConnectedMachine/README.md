@@ -195,6 +195,11 @@ directive:
       parameter-name: ForceUpdateTag
     set:
       parameter-name: ForceRerun
+  - where:
+      subject: Machine
+      parameter-name: AgentUpgradeEnableAutomaticUpgrade
+    set:
+      parameter-name: AgentUpgradeEnableAutomatic
 
   # Formatting
   - where:
@@ -244,6 +249,12 @@ directive:
   - where:
       verb: Get
       subject: NetworkProfile
+    remove: true
+
+  # Removing non-expand commands
+  - where:
+      subject: MachinePatch
+      variant: Install
     remove: true
 
   # Completers

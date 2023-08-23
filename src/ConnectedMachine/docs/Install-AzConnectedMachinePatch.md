@@ -24,13 +24,6 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -Maxi
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Install
-```
-Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### InstallViaIdentity
 ```
 Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
@@ -127,7 +120,7 @@ To construct, see NOTES section for INSTALLPATCHESINPUT properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineInstallPatchesParameters
-Parameter Sets: Install, InstallViaIdentity
+Parameter Sets: InstallViaIdentity
 Aliases:
 
 Required: True
@@ -205,7 +198,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: True
@@ -250,7 +243,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: True
@@ -265,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: False
