@@ -24,13 +24,6 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -Maxi
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### InstallViaIdentity
-```
-Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
- -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### InstallViaIdentityExpanded
 ```
 Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <String>
@@ -104,23 +97,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: InstallViaIdentity, InstallViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstallPatchesInput
-Input for InstallPatches as directly received by the API
-To construct, see NOTES section for INSTALLPATCHESINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineInstallPatchesParameters
-Parameter Sets: InstallViaIdentity
+Parameter Sets: InstallViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -135,7 +112,7 @@ The update classifications to select when installing patches for Linux.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchClassificationLinux[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -151,7 +128,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -167,7 +144,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +160,7 @@ It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -228,7 +205,7 @@ Defines when it is acceptable to reboot a VM during a software update operation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchRebootSetting
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -273,7 +250,7 @@ The update classifications to select when installing patches for Windows.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchClassificationWindows[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,7 +265,7 @@ Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -303,7 +280,7 @@ Kbs to exclude in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,7 +295,7 @@ Kbs to include in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,7 +310,7 @@ This is used to install patches that were published on or before this given max 
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -379,8 +356,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineInstallPatchesParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
@@ -411,18 +386,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[Version <String>]`: The version of the Extension being received.
-
-`INSTALLPATCHESINPUT <IMachineInstallPatchesParameters>`: Input for InstallPatches as directly received by the API
-  - `MaximumDuration <String>`: Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
-  - `RebootSetting <VMGuestPatchRebootSetting>`: Defines when it is acceptable to reboot a VM during a software update operation.
-  - `[LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]`: The update classifications to select when installing patches for Linux.
-  - `[LinuxParameterPackageNameMasksToExclude <String[]>]`: packages to exclude in the patch operation. Format: packageName_packageVersion
-  - `[LinuxParameterPackageNameMasksToInclude <String[]>]`: packages to include in the patch operation. Format: packageName_packageVersion
-  - `[WindowParameterClassificationsToInclude <VMGuestPatchClassificationWindows[]>]`: The update classifications to select when installing patches for Windows.
-  - `[WindowParameterExcludeKbsRequiringReboot <Boolean?>]`: Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
-  - `[WindowParameterKbNumbersToExclude <String[]>]`: Kbs to exclude in the patch operation
-  - `[WindowParameterKbNumbersToInclude <String[]>]`: Kbs to include in the patch operation
-  - `[WindowParameterMaxPatchPublishDate <DateTime?>]`: This is used to install patches that were published on or before this given max published date.
 
 ## RELATED LINKS
 

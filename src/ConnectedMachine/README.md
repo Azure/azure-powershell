@@ -254,7 +254,7 @@ directive:
   # Removing non-expand commands
   - where:
       subject: MachinePatch
-      variant: Install
+      variant: ^Install$|^InstallViaIdentity$
     remove: true
 
   # Completers
