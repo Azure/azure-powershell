@@ -1,14 +1,14 @@
-id: 
+id:
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
-owner: 
+owner:
 resource: repository
 disabled: false
-where: 
+where:
 configuration:
   resourceManagementConfiguration:
     scheduledSearches:
-    - description: 
+    - description: Close stale issues
       frequencies:
       - daily:
           time: 1:0
@@ -23,7 +23,7 @@ configuration:
           days: 14
       actions:
       - closeIssue
-    - description: 
+    - description: Add no recent activity label to issues
       frequencies:
       - hourly:
           hour: 6
@@ -41,7 +41,7 @@ configuration:
           label: no-recent-activity
       - addReply:
           reply: Hi, we're sending this friendly reminder because we haven't heard back from you in a while. We need more information about this issue to help address it. Please be sure to give us your input within the next **7 days**. If we don't hear back from you within **14 days** of this comment the issue will be automatically closed. Thank you!
-    - description: 
+    - description: '[Resolve Workflow] Close Addressed Issues'
       frequencies:
       - hourly:
           hour: 6
@@ -54,7 +54,7 @@ configuration:
           days: 7
       actions:
       - addReply:
-          reply: Hi @${issueAuthor}, since you haven’t asked that we “`/unresolve`” the issue, we’ll close this out. If you believe further discussion is needed, please add a comment “`/unresolve`” to reopen the issue.
+          reply: Hi @${issueAuthor}, since you haven't asked that we "`/unresolve`" the issue, we'll close this out. If you believe further discussion is needed, please add a comment "`/unresolve`" to reopen the issue.
       - closeIssue
     eventResponderTasks:
     - if:
@@ -108,7 +108,7 @@ configuration:
       - or:
         - payloadType: Issues
       - isAction:
-          action: Opened
+          action: Labeled
       then:
       - if:
         - hasLabel:
@@ -2603,7 +2603,7 @@ configuration:
           label: customer-reported
       - addReply:
           reply: Thank you for your contribution ${issueAuthor}! We will review the pull request and get back to you soon.
-      description: 'Add customer-reported label to PRs from customers '
+      description: Add customer-reported label to PRs from customers
     - if:
       - payloadType: Issues
       - isAction:
@@ -2752,5 +2752,5 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
-onFailure: 
-onSuccess: 
+onFailure:
+onSuccess:
