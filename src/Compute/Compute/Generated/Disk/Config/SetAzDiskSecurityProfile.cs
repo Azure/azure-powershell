@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
+           HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+        [PSArgumentCompleter("Standard", "TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
             "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
+           HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
         public string SecureVMDiskEncryptionSet { get; set; }
 
         protected override void ProcessRecord()
@@ -64,12 +64,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         private void Run()
         {
-            if(this.Disk.SecurityProfile == null)
+            // At this time, it is impossible to set SecurityType to Standard ("") as it is a mandatory property on the backend.
+            // If Standard is used, then there should be no securityProfile at all for now.
+            if (SecurityType.ToLower() != ConstantValues.StandardSecurityType)
             {
-                this.Disk.SecurityProfile = new DiskSecurityProfile();
+                if(this.Disk.SecurityProfile == null)
+                {
+                    this.Disk.SecurityProfile = new DiskSecurityProfile();
+                }
+                this.Disk.SecurityProfile.SecurityType = SecurityType;
             }
-
-            this.Disk.SecurityProfile.SecurityType = SecurityType;
 
             if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added more parameters on cmdlet `Update-AzSqlVM`.
 
 ## Version 2.0.0
 * Converted Az.SqlVirtualMachine to autorest-based module.
