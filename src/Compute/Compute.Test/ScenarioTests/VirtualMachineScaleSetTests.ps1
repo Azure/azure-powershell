@@ -450,7 +450,7 @@ function Test-VirtualMachineScaleSetUpdate
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
 
         $extname = 'csetest';
