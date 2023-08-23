@@ -27,7 +27,7 @@ Set-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +51,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubauthorizationrule
 #>
 function Set-AzEventHubAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='SetExpandedNamespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpandedNamespace', Mandatory)]

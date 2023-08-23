@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed device type check and only check if service already exists.
 
 ## Version 2.1.1
 * Used the correct version of cloud management service in `Register-AzStackHCI` cmdlet.

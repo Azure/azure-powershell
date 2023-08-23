@@ -111,7 +111,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Setting
                     HsmName = HsmObject.VaultName; 
                     break;
                 case UpdateSettingViaInputObjectParameterSet:
-                    InputObject.HsmName = HsmName;
+                    if (this.IsParameterBound(c => c.HsmName))
+                    {
+                        InputObject.HsmName = HsmName;
+                    }
                     break;
             }
             if (!ParameterSetName.Equals(UpdateSettingViaInputObjectParameterSet))

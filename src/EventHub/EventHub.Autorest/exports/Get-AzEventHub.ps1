@@ -27,7 +27,7 @@ Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +51,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhub
 #>
 function Get-AzEventHub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

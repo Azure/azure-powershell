@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Aks
                 name: NodeName ?? "default",
                 count: NodeCount,
                 vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize);
+                osDiskSizeGb: NodeOsDiskSize);
 
             if (this.IsParameterBound(c => c.NodeMinCount))
             {
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Aks
                             if (this.IsParameterBound(c => c.NodeVmSize))
                             {
                                 WriteVerbose(Resources.UpdatingNodeVmSize);
-                                defaultAgentPoolProfile.VmSize = NodeVmSize;
+                                defaultAgentPoolProfile.VMSize = NodeVmSize;
                             }
 
                             if (this.IsParameterBound(c => c.NodeCount))
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Aks
                             if (this.IsParameterBound(c => c.NodeOsDiskSize))
                             {
                                 WriteVerbose(Resources.UpdatingNodeOsDiskSize);
-                                defaultAgentPoolProfile.OsDiskSizeGB = NodeOsDiskSize;
+                                defaultAgentPoolProfile.OSDiskSizeGb = NodeOsDiskSize;
                             }
 
                             if (this.IsParameterBound(c => c.NodePoolMode))
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     if (EnableOidcIssuer.IsPresent)
                     {
-                        cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
+                        cluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: true);
                     }
                     if (cluster.WindowsProfile != null)
                     {
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     if (this.IsParameterBound(c => c.DiskEncryptionSetID))
                     {
-                        cluster.DiskEncryptionSetID = DiskEncryptionSetID;
+                        cluster.DiskEncryptionSetId = DiskEncryptionSetID;
                     }
                     if (this.IsParameterBound(c => c.DisableLocalAccount))
                     {
