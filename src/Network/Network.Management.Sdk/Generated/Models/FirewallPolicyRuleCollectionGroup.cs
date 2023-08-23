@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// class.
         /// </summary>
         /// <param name="id">Resource ID.</param>
+        /// <param name="size">A read-only string that represents the size of
+        /// the FirewallPolicyRuleCollectionGroupProperties in MB. (ex
+        /// 1.2MB)</param>
         /// <param name="priority">Priority of the Firewall Policy Rule
         /// Collection Group resource.</param>
         /// <param name="ruleCollections">Group of Firewall Policy rule
@@ -50,9 +53,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Rule Group type.</param>
-        public FirewallPolicyRuleCollectionGroup(string id = default(string), int? priority = default(int?), IList<FirewallPolicyRuleCollection> ruleCollections = default(IList<FirewallPolicyRuleCollection>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public FirewallPolicyRuleCollectionGroup(string id = default(string), string size = default(string), int? priority = default(int?), IList<FirewallPolicyRuleCollection> ruleCollections = default(IList<FirewallPolicyRuleCollection>), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
+            Size = size;
             Priority = priority;
             RuleCollections = ruleCollections;
             ProvisioningState = provisioningState;
@@ -66,6 +70,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets a read-only string that represents the size of the
+        /// FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.size")]
+        public string Size { get; private set; }
 
         /// <summary>
         /// Gets or sets priority of the Firewall Policy Rule Collection Group
