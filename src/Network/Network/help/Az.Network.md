@@ -521,6 +521,9 @@ Lists network usages for a subscription
 ### [Get-AzNetworkVirtualAppliance](Get-AzNetworkVirtualAppliance.md)
 Get or List Network Virtual Appliances.
 
+### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
+Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
+
 ### [Get-AzNetworkVirtualApplianceSku](Get-AzNetworkVirtualApplianceSku.md)
 Get or List available Network Virtual Appliance Skus in the inventory.
 
