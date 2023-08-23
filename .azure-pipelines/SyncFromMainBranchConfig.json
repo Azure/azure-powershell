@@ -3,7 +3,6 @@
         ".ci-config.json",
         "tools",
         ".azure-pipelines",
-        ".github",
         "src/lib",
         "src/shared",
         "build.proj",

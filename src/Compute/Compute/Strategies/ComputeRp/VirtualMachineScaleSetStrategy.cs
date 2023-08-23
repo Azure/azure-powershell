@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using CM = Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                        SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
                         ? new SecurityProfile
                         {
                             EncryptionAtHost = encryptionAtHost,

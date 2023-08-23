@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
                 foreach (var targetProp in targetProps)
                 {
 
-                    if (sourceProp.Name.ToLower() == targetProp.Name.ToLower())
+                    if (sourceProp.Name == targetProp.Name)
                     {
                         object result;
                         result = sourceProp.GetValue(source);

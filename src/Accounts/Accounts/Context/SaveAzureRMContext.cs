@@ -25,7 +25,6 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -45,9 +44,6 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory=false, HelpMessage="Overwrite the given file if it exists")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Export the credentials to the file")]
-        public SwitchParameter WithCredential { get; set; }
-
         public override void ExecuteCmdlet()
         {
             Path = this.ResolveUserPath(Path);
@@ -61,13 +57,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
-                        var profile = Profile;
-                        if (WithCredential.IsPresent)
-                        {
-                            WriteWarning(string.Format(Resources.ProfileCredentialsWriteWarning, Path));
-                            profile = profile.RefillCredentialsFromKeyStore();
-                        }
-                        profile.Save(Path);
+                        Profile.Save(Path);
                         WriteVerbose(string.Format(Resources.ProfileArgumentSaved, Path));
                     }
                 }
@@ -86,13 +76,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
                         Resources.FileOverwriteCaption))
                     {
-                        var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                        if (WithCredential.IsPresent)
-                        {
-                            WriteWarning(string.Format(Resources.ProfileCredentialsWriteWarning, Path));
-                            profile = profile.RefillCredentialsFromKeyStore();
-                        }
-                        profile.Save(Path);
+                        AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save(Path);
                         WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
                     }
                 }

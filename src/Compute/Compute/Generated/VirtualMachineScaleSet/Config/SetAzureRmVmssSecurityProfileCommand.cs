@@ -28,7 +28,6 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
         public string SecurityType { get; set; }
 
         protected override void ProcessRecord()
@@ -58,8 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            // If is Standard, then no securityProfile should be made for now. 
-            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
+            if (this.IsParameterBound(c => c.SecurityType))
             {
                 // Security Profile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

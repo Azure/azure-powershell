@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Commands.Aks
                 name: Name,
                 count: Count,
                 vmSize: VmSize,
-                osDiskSizeGb: OsDiskSize,
+                osDiskSizeGB: OsDiskSize,
                 type: VmSetType ?? "AvailabilitySet",
-                vnetSubnetId: VnetSubnetID);
+                vnetSubnetID: VnetSubnetID);
 
             if (this.IsParameterBound(c => c.KubernetesVersion))
             {
@@ -185,11 +185,11 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (this.IsParameterBound(c => c.OsType))
             {
-                agentPool.OSType = OsType;
+                agentPool.OsType = OsType;
             }
             if (this.IsParameterBound(c => c.OsSKU))
             {
-                agentPool.OSSku = OsSKU;
+                agentPool.OsSKU = OsSKU;
                 if (OsSKU.ToLower().Equals("cblmariner") || OsSKU.ToLower().Equals("mariner"))
                 {
                     WriteWarning("The OsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The OsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
             {
-                agentPool.NodePublicIPPrefixId = NodePublicIPPrefixID;
+                agentPool.NodePublicIPPrefixID = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
             {
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableUltraSSD.IsPresent)
             {
-                agentPool.EnableUltraSsd = EnableUltraSSD.ToBool(); 
+                agentPool.EnableUltraSSD = EnableUltraSSD.ToBool(); 
             }
             if (this.IsParameterBound(c => c.LinuxOSConfig))
             {
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.PPG))
             {
-                agentPool.ProximityPlacementGroupId = PPG;
+                agentPool.ProximityPlacementGroupID = PPG;
             }
             if (this.IsParameterBound(c => c.SpotMaxPrice))
             {
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableFIPS.IsPresent)
             {
-                agentPool.EnableFips = EnableFIPS.ToBool();
+                agentPool.EnableFIPS = EnableFIPS.ToBool();
             }
             if (this.IsParameterBound(c => c.GpuInstanceProfile))
             {
@@ -293,10 +293,10 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.HostGroupID))
             {
-                agentPool.HostGroupId = HostGroupID;
+                agentPool.HostGroupID = HostGroupID;
             }
             if (this.IsParameterBound(c => c.PodSubnetID)) {
-                agentPool.PodSubnetId = PodSubnetID;
+                agentPool.PodSubnetID = PodSubnetID;
             }
 
             return agentPool;

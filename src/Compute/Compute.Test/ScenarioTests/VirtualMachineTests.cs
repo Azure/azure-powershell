@@ -591,19 +591,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeWithoutConfig");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSecurityTypeStandard()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandard");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSecurityTypeStandardWithConfig()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandardWithConfig");
-        }
     }
 }

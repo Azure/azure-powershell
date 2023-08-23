@@ -19,10 +19,6 @@
 -->
 
 ## Upcoming Release
-* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
-
-## Version 1.11.3
-* Updated Azure.Core to 1.34.0.
 
 ## Version 1.11.2
 * Updated Azure.Core to 1.33.0.

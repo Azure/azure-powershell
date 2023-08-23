@@ -28,8 +28,6 @@
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
 * Added new changes to support autoscale for Virtual Network gateways
-* Fixed bug in `New-AzVirtualNetworkGateway` to include only non-empty `ExtendedLocation`
-
 ## Version 6.1.0
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.
     -`Get-AzNetworkVirtualApplianceConnection`

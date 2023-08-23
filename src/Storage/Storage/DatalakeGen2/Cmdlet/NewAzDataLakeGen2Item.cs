@@ -89,10 +89,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidatePattern("([r-][w-][x-]){2}([r-][w-][xtT-])")]
         public string Permission { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Encryption context of the file. Encryption context is metadata that is not encrypted when stored on the file. The primary application of this field is to store non-encrypted data that can be used to derive the customer-provided key for a file. Not applicable for directories.",
-            ParameterSetName = FileParameterSet)]
-        public string EncryptionContext { get; set; }
 
         [Parameter(HelpMessage = "Specifies properties for the created directory or file. "+
             "The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType." +
@@ -217,12 +213,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 DataLakeFileClient fileClient = fileSystem.GetFileClient(this.Path);
                 if (ShouldProcess(GetDataLakeItemUriWithoutSas(fileClient), "Create File: "))
                 {
-                    // Use SDK to upload directly when
-                    // 1. use SAS credential, and need set permission, since set permission after upload will fail with SAS, or 
-                    // 2. file encryption context is set by user 
-                    if ((Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null &&
-                        Channel.StorageContext.StorageAccount.Credentials.IsSAS && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask))) || 
-                        this.EncryptionContext != null)
+                    // Use SDK to upload directly when use SAS credential, and need set permission, since set permission after upload will fail with SAS
+                    if (Channel.StorageContext.StorageAccount != null && Channel.StorageContext.StorageAccount.Credentials != null &&
+                        Channel.StorageContext.StorageAccount.Credentials.IsSAS && (!string.IsNullOrEmpty(this.Permission) || !string.IsNullOrEmpty(this.Umask)))
                     {
                         Func<long, Task> taskGenerator = (taskId) => UploadDataLakeFile(taskId, fileClient, ResolvedFileName);
                         RunTask(taskGenerator);
@@ -278,8 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         Permissions = this.Permission,
                         Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null,
                         ProgressHandler = progressHandler,
-                        HttpHeaders = pathHttpHeaders,
-                        EncryptionContext = this.EncryptionContext 
+                        HttpHeaders = pathHttpHeaders
                     },
                     this.CmdletCancellationToken).ConfigureAwait(false);
 

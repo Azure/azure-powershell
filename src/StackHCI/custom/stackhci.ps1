@@ -240,7 +240,6 @@ $ArcSettingsDisableInProgressState = "DisableInProgress"
 
 # Cluster Agent Service Names
 $ClusterAgentServiceName = "HciClusterAgentSvc"
-$CloudManagementInfraServiceName = "AszCloudMgmtSvc"
 $ClusterAgentGroupName = "Cloud Management"
 
 $AzAccountsModuleMinVersion="2.11.2"
@@ -2702,18 +2701,14 @@ param(
         # Check if OS version is 22H2 or newer
         $osVersionDetectoid       = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
         $cloudManagementDetectoid = { $cloudManagementSvc = Get-Item -Path ("{0}\System32\azshci\{1}.exe" -f $env:SystemRoot, $Using:ClusterAgentServiceName) -ErrorAction SilentlyContinue; $cloudManagementSvc -ne $null }
-        $cloudManagementInfraDetectoid = { $cloudManagementInfraSvc = Get-Item -Path ("{0}\System32\azshci\cloudmanagement\{1}.exe" -f $env:SystemRoot, $Using:CloudManagementInfraServiceName) -ErrorAction SilentlyContinue; $cloudManagementInfraSvc -ne $null }
 
-        $osVersionInfo                  = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
-        $cloudManagementCapable         = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
-        $cloudManagementInfraCapable    = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementInfraDetectoid
+        $osVersionInfo            = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+        $cloudManagementCapable   = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
         Write-VerboseLog ("Display Version: {0}, Build Number: {1}, Cloud Management capable: {2}" -f $osVersionInfo.DisplayVersion, $osVersionInfo.BuildNumber, $cloudManagementCapable)
 
         $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
-        $isCloudManagementInfraSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and ($cloudManagementInfraCapable -eq $true)
         $isDefaultExtensionSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber)
         Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
-        Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
         Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
         
         if(($isDefaultExtensionSupported) -and (($null -eq $arcres) -or ($null -eq $arcres.Properties.DefaultExtensions.ConsentTime)))
@@ -3096,40 +3091,27 @@ param(
             }
 
             $isCloudManagementFeatureEnabled = $false
-            $isEitherVersionOfCloudManagementSupported = $isCloudManagementSupported -OR $isCloudManagementInfraSupported
-            if ($isEitherVersionOfCloudManagementSupported -eq $true)
+            if ($isCloudManagementSupported -eq $true)
             {
                 $cloudManagementFeatureDetectoid = { $null -ne (Get-AzureStackHCI).NextSync }
                 $isCloudManagementFeatureEnabled = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementFeatureDetectoid -ErrorAction Ignore
                 Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
-                Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
                 Write-VerboseLog ("Cloud Management enabled:   {0}" -f $isCloudManagementFeatureEnabled)
             }
 
-            if ($isEitherVersionOfCloudManagementSupported -eq $true -AND $isCloudManagementFeatureEnabled -eq $true)
+            if ($isCloudManagementSupported -eq $true -AND $isCloudManagementFeatureEnabled -eq $true)
             {
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 91
                 Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 10
                 Write-VerboseLog ("$ConfiguringCloudManagementMessage")
-
-                # Decide what service to use for cloud management and turn off old service if Infra is supported
-                if($isCloudManagementInfraSupported)
-                {
-                    $cloudManagementServiceName = $CloudManagementInfraServiceName
-                }
-                else
-                {
-                    $cloudManagementServiceName = $ClusterAgentServiceName
-                }
-                Write-VerboseLog ("Using Cloud Management Service Name: $($cloudManagementServiceName)")
-
+    
                 # Start Cluster Agent Servce as Clustered Role
-                $service = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Service -Name $using:cloudManagementServiceName -ErrorAction Ignore }
-
+                $service = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Service -Name $using:ClusterAgentServiceName -ErrorAction Ignore }
+                
                 $serviceError = $null
                 if ($null -eq $service)
                 {
-                    $serviceError = "{0} service doesn't exist." -f $cloudManagementServiceName
+                    $serviceError = "{0} service doesn't exist." -f $ClusterAgentServiceName
                     Write-ErrorLog -Message $serviceError -ErrorAction Continue
                     Write-NodeEventLog -Message $serviceError -EventID 9119 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 }
@@ -3151,12 +3133,6 @@ param(
                     {
                         Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 40
                         Write-VerboseLog ("Cloud Management cluster group: $($group | Format-List | Out-String)")
-
-                        $svcResourcesToRemove = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName | Get-ClusterResource -ErrorAction Ignore | Where-Object {$_.Name -ne $using:displayName} }
-                        if($null -ne $svcResourcesToRemove){
-                            Write-VerboseLog ("Removing unnecessary cluster resources: $($svcResourcesToRemove | Format-List | Out-String)")
-                            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-ClusterResource -Name $using:svcResourcesToRemove.Name -ErrorAction Ignore -Force}
-                        }
                         $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName | Get-ClusterResource -ErrorAction Ignore | Where-Object {$_.Name -eq $using:displayName} }
 
                         if ($null -eq $svcResource)
@@ -3170,13 +3146,13 @@ param(
                         {
                             Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 80
                             Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List | Out-String)")
-                            Write-VerboseLog ("Setting cluster resource parameter ServiceName = $cloudManagementServiceName")
-                            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName | Get-ClusterResource -ErrorAction Ignore | Where-Object {$_.Name -eq $using:displayName} | Set-ClusterParameter -Name ServiceName -Value $using:cloudManagementServiceName -ErrorAction Ignore}
+                            Write-VerboseLog ("Setting cluster resource parameter ServiceName = $ClusterAgentServiceName")
+                            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName | Get-ClusterResource -ErrorAction Ignore | Where-Object {$_.Name -eq $using:displayName} | Set-ClusterParameter -Name ServiceName -Value $using:ClusterAgentServiceName -ErrorAction Ignore}
                             $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
                         }
                         else
                         {
-                            $serviceError = "Failed to create cluster resource {0} in group {1}." -f $cloudManagementServiceName, $ClusterAgentGroupName
+                            $serviceError = "Failed to create cluster resource {0} in group {1}." -f $ClusterAgentServiceName, $ClusterAgentGroupName
                             Write-ErrorLog -Message $serviceError -ErrorAction Continue
                             Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                         }
@@ -4671,7 +4647,7 @@ param(
             {
                 $IsManagementNode = $True
             }
-            
+
             $percentComplete = 1
             Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
             
@@ -4705,16 +4681,11 @@ param(
             $percentComplete = 5
             Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
 
-            $ClusterName, $ClusterNodes, $ClusterNodeStateUp  = Invoke-Command @SessionParams -ScriptBlock {
-                $name           = (Get-Cluster).Name
-                $nodes          = Get-ClusterNode
-                $nodeStateUp    = [Microsoft.FailoverClusters.PowerShell.ClusterNodeState]::Up
-
-                return $name, $nodes, $nodeStateUp
-            }
+            $ClusterName  = Invoke-Command @SessionParams -ScriptBlock { (Get-Cluster).Name }
+            $ClusterNodes = Invoke-Command @SessionParams -ScriptBlock { Get-ClusterNode }
 
             # Validate Cluster nodes are online
-            if (($ClusterNodes | Where {$_.State -ne $ClusterNodeStateUp.Value} | Measure-Object).Count -ne 0)
+            if (($ClusterNodes | Where {$_.State -ne [Microsoft.FailoverClusters.PowerShell.ClusterNodeState]::Up} | Measure-Object).Count -ne 0)
             {
                 throw $AllClusterNodesAreNotOnline
             }
@@ -5592,12 +5563,8 @@ function Install-AzStackHCIRemoteSupport{
     param()
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
-        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Install-AzStackHCIRemoteSupport is not available.")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5623,11 +5590,8 @@ function Remove-AzStackHCIRemoteSupport{
     param()
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
-        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available. Observability Stack Present: <$observabilityStackPresent>. Agent install type: <$agentInstallType>")
+    if(Assert-IsObservabilityStackPresent){
+        Write-InfoLog("Remove-AzStackHCIRemoteSupport is not available.")
     }
     else{
         Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
@@ -5695,10 +5659,7 @@ function Enable-AzStackHCIRemoteSupport{
         }
     }
 
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Force
         Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
     }
@@ -5726,10 +5687,7 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Force
         Disable-RemoteSupport
     }
@@ -5771,10 +5729,7 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
     }
@@ -5805,13 +5760,14 @@ function Assert-IsObservabilityStackPresent{
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     try{
-        $obsService = Get-Service -Name "*RemoteSupportAgent*" -ErrorAction SilentlyContinue
-        if($obsService){
-            Write-InfoLog("RemoteSupportAgent exists, Status: $($obsService.Status).")
+        $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
+        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
+        if($obsService -or $deviceType -eq "AzureEdge"){
+            Write-InfoLog("AzureStack device type is AzureEdge.")
             return $true
         }
         else{
-            Write-InfoLog("RemoteSupportAgent does not exist.")
+            Write-InfoLog("AzureStack device type is not AzureEdge.")
             return $false
         }
     }
@@ -5864,10 +5820,7 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
-    $observabilityStackPresent = Assert-IsObservabilityStackPresent
-
-    if($observabilityStackPresent -or ($agentInstallType -eq "ArcExtension")){
+    if(Assert-IsObservabilityStackPresent){
         Import-Module DiagnosticsInitializer -Force
         Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
     }

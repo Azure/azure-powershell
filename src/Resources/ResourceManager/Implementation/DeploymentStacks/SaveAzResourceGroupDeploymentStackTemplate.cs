@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         internal const string SaveByResourceIdParameterSetName = "SaveByResourceId";
         internal const string SaveByNameAndResourceGroupNameParameterSetName = "SaveByNameAndResourceGroupName";
-        internal const string SaveByStackObjectParameterSetName = "SaveByStackObject";
 
         [Alias("Id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = SaveByResourceIdParameterSetName,
@@ -49,11 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string StackName { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = SaveByStackObjectParameterSetName,
-            HelpMessage = "The stack PS object")]
-        [ValidateNotNullOrEmpty]
-        public PSDeploymentStack InputObjet { get; set; }
-
         #endregion
 
         #region Cmdlet Overrides
@@ -64,11 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 switch (ParameterSetName)
                 {
-                    case SaveByResourceIdParameterSetName: case SaveByStackObjectParameterSetName:
-                        if (InputObjet != null)
-                        {
-                            ResourceId = InputObjet.id;
-                        }
+                    case SaveByResourceIdParameterSetName:
                         ResourceGroupName = ResourceIdUtility.GetResourceGroupName(ResourceId);
                         StackName = ResourceIdUtility.GetDeploymentName(ResourceId);
                         if (ResourceGroupName == null || StackName == null)

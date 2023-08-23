@@ -71,15 +71,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
 
                 if (!string.IsNullOrEmpty(result) && PassThru.ToBool()) { WriteObject(result.TrimEnd()); }
 
-            }, this._cancellationTokenSource.Token).Unwrap();
+            }, this._cancellationTokenSource.Token);
         }
 
         private Task PushCommand()
         {
             return Task.Factory.StartNew(async () =>
             {
-                if (Console.IsInputRedirected) return;
-                
                 StringBuilder input = new StringBuilder();
                 // Loop until input is entered.
                 while (socket.State == WebSocketState.Open && !this._cancellationTokenSource.Token.IsCancellationRequested)
@@ -97,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                     System.Threading.Thread.Sleep(250); 
                 }
 
-            }, this._cancellationTokenSource.Token).Unwrap();
+            }, this._cancellationTokenSource.Token);
 
         }
     }

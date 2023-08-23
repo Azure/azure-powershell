@@ -18,7 +18,6 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-CaptureEnabled] [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>]
  [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-RetentionTimeInHour <Int64>]
  [-TombstoneRetentionTimeInHour <Int32>] [-Status <EntityStatus>] [-DestinationName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +27,6 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 Set-AzEventHub -InputObject <IEventHubIdentity> [-CaptureEnabled] [-Encoding <EncodingCaptureDescription>]
  [-IntervalInSeconds <Int32>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-RetentionTimeInHour <Int64>]
  [-TombstoneRetentionTimeInHour <Int32>] [-Status <EntityStatus>] [-DestinationName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -225,21 +223,6 @@ Note: 'AvroDeflate' will be deprecated in New API Version
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -451,21 +434,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentityId
-Properties for User Assigned Identities
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -506,7 +474,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
 
 ## NOTES
 
