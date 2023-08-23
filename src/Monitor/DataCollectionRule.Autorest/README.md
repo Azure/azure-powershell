@@ -59,6 +59,10 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
   # fix breaking change
   - where:
       subject: DataCollectionRule

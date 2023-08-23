@@ -30,9 +30,9 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> -Location <S
  [-DestinationMonitoringAccount <IMonitoringAccountDestination[]>]
  [-DestinationStorageAccount <IStorageBlobDestination[]>]
  [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
- [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-StreamDeclaration <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-IdentityType <String>] [-Kind <String>]
+ [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -472,23 +472,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -613,6 +596,23 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
