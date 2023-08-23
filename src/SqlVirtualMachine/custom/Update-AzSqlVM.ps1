@@ -110,6 +110,214 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+	
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+    # Backup schedule type.
+    ${AutoBackupSettingBackupScheduleType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Include or exclude system databases from auto backup.
+    ${AutoBackupSettingBackupSystemDb},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+    # Days of the week for the backups when FullBackupFrequency is set to Weekly.
+    ${AutoBackupSettingDaysOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable autobackup on SQL virtual machine.
+    ${AutoBackupSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable encryption for backup on SQL virtual machine.
+    ${AutoBackupSettingEnableEncryption},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+    # Frequency of full backups.
+    # In both cases, full backups begin during the next scheduled time window.
+    ${AutoBackupSettingFullBackupFrequency},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Start time of a given day during which full backups can take place.
+    # 0-23 hours.
+    ${AutoBackupSettingFullBackupStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Duration of the time window of a given day during which full backups can take place.
+    # 1-23 hours.
+    ${AutoBackupSettingFullBackupWindowHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Frequency of log backups.
+    # 5-60 minutes.
+    ${AutoBackupSettingLogBackupFrequency},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Password for encryption on backup.
+    ${AutoBackupSettingPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Retention period of backup: 1-90 days.
+    ${AutoBackupSettingRetentionPeriod},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage account key where backup will be taken to.
+    ${AutoBackupSettingStorageAccessKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage account url where backup will be taken to.
+    ${AutoBackupSettingStorageAccountUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage container name where backup will be taken to.
+    ${AutoBackupSettingStorageContainerName},
+    
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+    # Day of week to apply the patch on.
+    ${AutoPatchingSettingDayOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable autopatching on SQL virtual machine.
+    ${AutoPatchingSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Duration of patching.
+    ${AutoPatchingSettingMaintenanceWindowDuration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Hour of the day when patching is initiated.
+    # Local VM time.
+    ${AutoPatchingSettingMaintenanceWindowStartingHour},
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable SQL best practices Assessment feature on SQL virtual machine.
+    ${AssessmentSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run SQL best practices Assessment immediately on SQL virtual machine.
+    ${AssessmentSettingRunImmediately},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+    # Day of the week to run assessment.
+    ${ScheduleDayOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable assessment schedule on SQL virtual machine.
+    ${ScheduleEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Occurrence of the DayOfWeek day within a month to schedule assessment.
+    # Takes values: 1,2,3,4 and -1.
+    # Use -1 for last DayOfWeek day of the month
+    ${ScheduleMonthlyOccurrence},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Time of the day in HH:mm format.
+    # Eg.
+    # 17:30
+    ${ScheduleStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Number of weeks to schedule between 2 assessment runs.
+    # Takes value from 1-6
+    ${ScheduleWeeklyInterval},
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
+    ${SqlVirtualMachineGroupResourceId},
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # ARM Resource id of underlying virtual machine created from SQL marketplace image.
+    ${VirtualMachineResourceId},    
+    
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Cluster bootstrap account password.
+    ${WsfcDomainCredentialsClusterBootstrapAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Cluster operator account password.
+    ${WsfcDomainCredentialsClusterOperatorAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # SQL service account password.
+    ${WsfcDomainCredentialsSqlServiceAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
+    ${WsfcStaticIP},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable automatic upgrade of Sql IaaS extension Agent.
+    ${EnableAutomaticUpgrade},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -180,7 +388,39 @@ process {
         $hasSku = $PSBoundParameters.Remove('Sku')
         $hasSqlManagementType = $PSBoundParameters.Remove('SqlManagementType')
         $hasTag = $PSBoundParameters.Remove('Tag')
-		
+        $hasAutoBackupSettingBackupScheduleType = $PSBoundParameters.Remove('AutoBackupSettingBackupScheduleType')
+        $hasAutoBackupSettingBackupSystemDb = $PSBoundParameters.Remove('AutoBackupSettingBackupSystemDb')
+        $hasAutoBackupSettingDaysOfWeek = $PSBoundParameters.Remove('AutoBackupSettingDaysOfWeek')
+        $hasAutoBackupSettingEnable = $PSBoundParameters.Remove('AutoBackupSettingEnable')
+        $hasAutoBackupSettingEnableEncryption = $PSBoundParameters.Remove('AutoBackupSettingEnableEncryption')
+        $hasAutoBackupSettingFullBackupFrequency = $PSBoundParameters.Remove('AutoBackupSettingFullBackupFrequency')
+        $hasAutoBackupSettingFullBackupStartTime = $PSBoundParameters.Remove('AutoBackupSettingFullBackupStartTime')
+        $hasAutoBackupSettingFullBackupWindowHour = $PSBoundParameters.Remove('AutoBackupSettingFullBackupWindowHour')
+        $hasAutoBackupSettingLogBackupFrequency = $PSBoundParameters.Remove('AutoBackupSettingLogBackupFrequency')
+        $hasAutoBackupSettingPassword = $PSBoundParameters.Remove('AutoBackupSettingPassword')
+        $hasAutoBackupSettingRetentionPeriod = $PSBoundParameters.Remove('AutoBackupSettingRetentionPeriod')
+        $hasAutoBackupSettingStorageAccessKey = $PSBoundParameters.Remove('AutoBackupSettingStorageAccessKey')
+        $hasAutoBackupSettingStorageAccountUrl = $PSBoundParameters.Remove('AutoBackupSettingStorageAccountUrl')
+        $hasAutoBackupSettingStorageContainerName = $PSBoundParameters.Remove('AutoBackupSettingStorageContainerName')
+        $hasAutoPatchingSettingDayOfWeek = $PSBoundParameters.Remove('AutoPatchingSettingDayOfWeek')
+        $hasAutoPatchingSettingEnable = $PSBoundParameters.Remove('AutoPatchingSettingEnable')
+        $hasAutoPatchingSettingMaintenanceWindowDuration = $PSBoundParameters.Remove('AutoPatchingSettingMaintenanceWindowDuration')
+        $hasAutoPatchingSettingMaintenanceWindowStartingHour = $PSBoundParameters.Remove('AutoPatchingSettingMaintenanceWindowStartingHour')
+        $hasAssessmentSettingEnable = $PSBoundParameters.Remove('AssessmentSettingEnable')
+        $hasAssessmentSettingRunImmediately = $PSBoundParameters.Remove('AssessmentSettingRunImmediately')
+        $hasScheduleDayOfWeek = $PSBoundParameters.Remove('ScheduleDayOfWeek')
+        $hasScheduleEnable = $PSBoundParameters.Remove('ScheduleEnable')
+        $hasScheduleMonthlyOccurrence = $PSBoundParameters.Remove('ScheduleMonthlyOccurrence')
+        $hasScheduleStartTime = $PSBoundParameters.Remove('ScheduleStartTime')
+        $hasScheduleWeeklyInterval = $PSBoundParameters.Remove('ScheduleWeeklyInterval')
+        $hasSqlVirtualMachineGroupResourceId = $PSBoundParameters.Remove('SqlVirtualMachineGroupResourceId')
+        $hasVirtualMachineResourceId = $PSBoundParameters.Remove('VirtualMachineResourceId')
+        $hasWsfcDomainCredentialsClusterBootstrapAccountPassword = $PSBoundParameters.Remove('WsfcDomainCredentialsClusterBootstrapAccountPassword')
+        $hasWsfcDomainCredentialsClusterOperatorAccountPassword = $PSBoundParameters.Remove('WsfcDomainCredentialsClusterOperatorAccountPassword')
+        $hasWsfcDomainCredentialsSqlServiceAccountPassword = $PSBoundParameters.Remove('WsfcDomainCredentialsSqlServiceAccountPassword')
+        $hasWsfcStaticIP = $PSBoundParameters.Remove('WsfcStaticIP')
+        $hasEnableAutomaticUpgrade = $PSBoundParameters.Remove('EnableAutomaticUpgrade')
+        
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
@@ -209,6 +449,102 @@ process {
         }
         if ($hasTag) {
             $sqlvm.Tag = $Tag
+        }
+        if ($hasAutoBackupSettingBackupScheduleType) {
+            $sqlvm.AutoBackupSettingBackupScheduleType=$AutoBackupSettingBackupScheduleType
+        }
+        if ($hasAutoBackupSettingBackupSystemDb) {
+            $sqlvm.AutoBackupSettingBackupSystemDb=$AutoBackupSettingBackupSystemDb
+        }
+        if ($hasAutoBackupSettingDaysOfWeek) {
+            $sqlvm.AutoBackupSettingDaysOfWeek=$AutoBackupSettingDaysOfWeek
+        }
+        if ($hasAutoBackupSettingEnable) {
+            $sqlvm.AutoBackupSettingEnable=$AutoBackupSettingEnable
+        }
+        if ($hasAutoBackupSettingEnableEncryption) {
+            $sqlvm.AutoBackupSettingEnableEncryption=$AutoBackupSettingEnableEncryption
+        }
+        if ($hasAutoBackupSettingFullBackupFrequency) {
+            $sqlvm.AutoBackupSettingFullBackupFrequency=$AutoBackupSettingFullBackupFrequency
+        }
+        if ($hasAutoBackupSettingFullBackupStartTime) {
+            $sqlvm.AutoBackupSettingFullBackupStartTime=$AutoBackupSettingFullBackupStartTime
+        }
+        if ($hasAutoBackupSettingFullBackupWindowHour) {
+            $sqlvm.AutoBackupSettingFullBackupWindowHour=$AutoBackupSettingFullBackupWindowHour
+        }
+        if ($hasAutoBackupSettingLogBackupFrequency) {
+            $sqlvm.AutoBackupSettingLogBackupFrequency=$AutoBackupSettingLogBackupFrequency
+        }
+        if ($hasAutoBackupSettingPassword) {
+            $sqlvm.AutoBackupSettingPassword=$AutoBackupSettingPassword
+        }
+        if ($hasAutoBackupSettingRetentionPeriod) {
+            $sqlvm.AutoBackupSettingRetentionPeriod=$AutoBackupSettingRetentionPeriod
+        }
+        if ($hasAutoBackupSettingStorageAccessKey) {
+            $sqlvm.AutoBackupSettingStorageAccessKey=$AutoBackupSettingStorageAccessKey
+        }
+        if ($hasAutoBackupSettingStorageAccountUrl) {
+            $sqlvm.AutoBackupSettingStorageAccountUrl=$AutoBackupSettingStorageAccountUrl
+        }
+        if ($hasAutoBackupSettingStorageContainerName) {
+            $sqlvm.AutoBackupSettingStorageContainerName=$AutoBackupSettingStorageContainerName
+        }
+        if ($hasAutoPatchingSettingDayOfWeek) {
+            $sqlvm.AutoPatchingSettingDayOfWeek = $AutoPatchingSettingDayOfWeek
+        }
+        if ($hasAutoPatchingSettingEnable) {
+            $sqlvm.AutoPatchingSettingEnable = $AutoPatchingSettingEnable
+        }
+        if ($hasAutoPatchingSettingMaintenanceWindowDuration) {
+            $sqlvm.AutoPatchingSettingMaintenanceWindowDuration = $AutoPatchingSettingMaintenanceWindowDuration
+        }
+        if ($hasAutoPatchingSettingMaintenanceWindowStartingHour) {
+            $sqlvm.AutoPatchingSettingMaintenanceWindowStartingHour = $AutoPatchingSettingMaintenanceWindowStartingHour
+        }
+        if ($hasAssessmentSettingEnable) {
+            $sqlvm.AssessmentSettingEnable=$AssessmentSettingEnable
+        }
+        if ($hasAssessmentSettingRunImmediately) {
+            $sqlvm.AssessmentSettingRunImmediately=$AssessmentSettingRunImmediately
+        }
+        if ($hasScheduleDayOfWeek) {
+            $sqlvm.ScheduleDayOfWeek=$ScheduleDayOfWeek
+        }
+        if ($hasScheduleEnable) {
+            $sqlvm.ScheduleEnable=$ScheduleEnable
+        }
+        if ($hasScheduleMonthlyOccurrence) {
+            $sqlvm.ScheduleMonthlyOccurrence=$ScheduleMonthlyOccurrence
+        }
+        if ($hasScheduleStartTime) {
+            $sqlvm.ScheduleStartTime=$ScheduleStartTime
+        }
+        if ($hasScheduleWeeklyInterval) {
+            $sqlvm.ScheduleWeeklyInterval=$ScheduleWeeklyInterval
+        }
+        if ($hasSqlVirtualMachineGroupResourceId) {
+            $sqlvm.GroupResourceId=$SqlVirtualMachineGroupResourceId
+        }
+        if ($hasVirtualMachineResourceId) {
+            $sqlvm.VirtualMachineResourceId=$VirtualMachineResourceId
+        }
+        if ($hasWsfcDomainCredentialsClusterBootstrapAccountPassword) {
+            $sqlvm.WsfcDomainCredentialsClusterBootstrapAccountPassword=$WsfcDomainCredentialsClusterBootstrapAccountPassword
+        }
+        if ($hasWsfcDomainCredentialsClusterOperatorAccountPassword) {
+            $sqlvm.WsfcDomainCredentialsClusterOperatorAccountPassword=$WsfcDomainCredentialsClusterOperatorAccountPassword
+        }
+        if ($hasWsfcDomainCredentialsSqlServiceAccountPassword) {
+            $sqlvm.WsfcDomainCredentialsSqlServiceAccountPassword=$WsfcDomainCredentialsSqlServiceAccountPassword
+        }
+        if ($hasWsfcStaticIP) {
+            $sqlvm.WsfcStaticIP=$WsfcStaticIP
+        }
+        if ($hasEnableAutomaticUpgrade) {
+            $sqlvm.EnableAutomaticUpgrade=$EnableAutomaticUpgrade
         }
 		
         if ($hasAsJob) {

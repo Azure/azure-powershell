@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Get and update key vault setting in a MSHM" -Description "Get and update a key vault setting in a MSHM" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Get and update key vault setting in a MSHM" -Description "Get and update a key vault setting in a MSHM" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 

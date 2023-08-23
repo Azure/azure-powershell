@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added an alias `Set-AzConfig` to `Update-AzConfig`
+* Refilled credentials from `AzKeyStore` when run `Save-AzContext` [#22355]
 * Added config `DisableErrorRecordsPersistence` to disable writing error records to file system [#21732]
 * Updated Azure.Core to 1.34.0.
 

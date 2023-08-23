@@ -24,7 +24,7 @@
 * For `Get-AzVmRunCommand`, a bug is fixed to work when returning a list of RunCommands [#22403]
 * Updated Azure.Core to 1.34.0.
 * Added new cmdlets `Get-AzHostSize` and `Update-AzHost`.
-
+* Added the `Standard` value to the `SecurityType` parameter to the cmdlets `Set-AzDiskSecurityType`, `New-AzvmssConfig`, `Set-AzVmssSecurityProfile`, `Update-AzVmss`, `New-AzVmss`, `New-AzVMConfig`, `Set-AzVMsecurityProfile`, and `New-AzVM`.
 
 ## Version 6.2.0
 * Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.
