@@ -349,21 +349,21 @@ directive:
       breaking-change:
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       subject: EntityQuery
     set:
       breaking-change:
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       subject: Setting
     set:
       breaking-change:
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       verb: Get
       subject: Enrichment|Entity|EntityActivity|EntityInsight|EntityQueryTemplate|EntityRelation|EntityTimeline
@@ -371,7 +371,7 @@ directive:
       breaking-change:
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       verb: New
       subject: IncidentTeam
@@ -379,15 +379,7 @@ directive:
       breaking-change:
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
-  - where:
-      verb: Test
-      subject: DataConnectorCheckRequirement
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       parameter-name: Action
     set:
@@ -396,7 +388,7 @@ directive:
         change-description: Action is required.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       parameter-name: Order
       subject: AutomationRule
@@ -406,7 +398,7 @@ directive:
         change-description: Order is required.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       parameter-name: DisplayName
       subject: AutomationRule
@@ -416,69 +408,35 @@ directive:
         change-description: DisplayName is required.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       verb: New
       subject: Incident
       variant: Create
     set:
       breaking-change:
+        change-description: ParameterSet Create will be deprecated.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
-  - where:
-      verb: New
-      subject: AlertRule
-      variant: NRT
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       verb: New
       subject: AutomationRule
       variant: Create
     set:
       breaking-change:
+        change-description: ParameterSet Create will be deprecated.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
   - where:
       verb: New
       subject: Bookmark
       variant: Create
     set:
       breaking-change:
+        change-description: ParameterSet Create will be deprecated.
         deprecated-by-version: 4.0.0
         deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
-  - where:
-      verb: New
-      subject: DataConnector
-      variant: Dynamics365, MicrosoftThreatIntelligence, MicrosoftThreatProtection, OfficeATP, OfficeIRM, ThreatIntelligenceTaxii
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
-
-  - where:
-      verb: Update
-      subject: AlertRule
-      variant: UpdateNRT, UpdateViaIdentityNRT
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
-  - where:
-      verb: Update
-      subject: DataConnector
-      variant: UpdateAmazonWebServicesS3, UpdateDynamics365, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligenceTaxii
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11
+        change-effective-date: 2023/11/15
 ```
