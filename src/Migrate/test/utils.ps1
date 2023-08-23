@@ -74,7 +74,25 @@ function setupEnv() {
     $env.migVMwareMachineName = "idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_501501f9-0009-48ca-3030-a16262ba8e5d"
     $env.migRunAsAccountName = "f53e4f58-d091-536f-948e-51bc0745552e"
     $env.migApplianceName = "signoff2105app"
-    
+
+    $env.hciProjectName = "samlee3proj4"
+    $env.hciMigResourceGroup = "samlee3-rg4"
+    $env.hciSubscriptionId = "40b6d51e-c6c9-47c8-9203-52fdeaec6d1e"
+    $env.hciProtectedItemId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+    $env.hciProjectId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.Migrate/MigrateProjects/samlee3proj4"
+    $env.hciMigResourceGroupId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4"
+    $env.hciSDSMachineId1 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.OffAzure/HyperVSites/samlee3src41244site/machines/0ec082d5-6827-457a-bae2-f986e1b94851"
+    $env.hciTgtVMName1 =  "hciVm1"
+    $env.hciDiskId1 = "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L"
+    $env.hciSDSMachineId2 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.OffAzure/HyperVSites/samlee3src41244site/machines/3eb1ac59-5b3c-4f7d-87be-df4d3c9bb20b"
+    $env.hciTgtVMName2 = "hciVm2"
+    $env.hciDiskId2 = "Microsoft:3EB1AC59-5B3C-4F7D-87BE-DF4D3C9BB20B\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\1\L"
+    $env.hciProtectedItem2 = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/samlee3-rg4/providers/Microsoft.DataReplication/replicationVaults/samlee3proj46422replicationvault/protectedItems/3eb1ac59-5b3c-4f7d-87be-df4d3c9bb20b"
+    $env.hciTgtVMNameEdit = "hciVm2Edited"
+    $env.hciTargetRGId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/helenafework-bb-target"
+    $env.hciTgtVirtualSwitchId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/mayadahciclus3-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external" 
+    $env.hciTgtStoragePathId = "/subscriptions/40b6d51e-c6c9-47c8-9203-52fdeaec6d1e/resourceGroups/mayadahciclus3-rg/providers/Microsoft.AzureStackHCI/storagecontainers/migratecontainer2"
+    $env.hciNicId = "Microsoft:3EB1AC59-5B3C-4F7D-87BE-DF4D3C9BB20B\71934757-BEBF-46FF-8510-BBC8DFFC6775"
     $envFile = 'localEnv.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
