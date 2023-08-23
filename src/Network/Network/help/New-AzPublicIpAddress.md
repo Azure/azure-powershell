@@ -16,11 +16,10 @@ Creates a public IP address.
 ```
 New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-EdgeZone <String>]
  [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>]
- [-DomainNameLabel <String>] [-DomainNameLabelScope <PSDomainNameLabelScopeType>] [-IpTag <PSPublicIpTag[]>]
- [-PublicIpPrefix <PSPublicIpPrefix>] [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DomainNameLabel <String>] [-DomainNameLabelScope <String>][-IpTag <PSPublicIpTag[]>] [-PublicIpPrefix <PSPublicIpPrefix>]
+ [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>] [-ReverseFqdn <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +202,7 @@ Accept wildcard characters: False
 Specifies the HashedReusePolicy for DNS name for a public IP address.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.Network.Models.PSDomainNameLabelScopeType]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: TenantReuse, SubscriptionReuse, ResourceGroupReuse, NoReuse

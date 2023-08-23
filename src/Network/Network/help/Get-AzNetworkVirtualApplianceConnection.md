@@ -14,20 +14,17 @@ Get or List Network Virtual Appliances connections connected to a Network Virtua
 
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +68,7 @@ RoutingConfiguration   : {
 ```
 
 The above will gets the connection from "testRG" resource group using Resource group and Parent NVA name
+
 
 ### Example 2
 
@@ -142,21 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VirtualAppliance
 The parent Network Virtual Appliance for this connection.
 
@@ -169,6 +152,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VirtualApplianceResourceId
+The resource id of the parent Network Virtual Appliance for this connection.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases: ParentNvaId, NetworkVirtualApplianceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -187,18 +185,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualApplianceResourceId
-The resource id of the parent Network Virtual Appliance for this connection.
+### -ResourceGroupName
+The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases: ParentNvaId, NetworkVirtualApplianceId
+Parameter Sets: ResourceNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -218,3 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

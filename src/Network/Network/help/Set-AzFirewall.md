@@ -250,6 +250,7 @@ If user wants to start the service again but with Availability Zones, the Zones 
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
+
 ## PARAMETERS
 
 ### -AsJob
