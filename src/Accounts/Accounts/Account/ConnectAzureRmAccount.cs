@@ -45,6 +45,8 @@ using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.Azure.Commands.Profile.Utilities;
+using Hyak.Common;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -505,6 +507,10 @@ namespace Microsoft.Azure.Commands.Profile
 
                     profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
+
+                    var interceptor = new DebugTracingInterceptor((message) => this.Host.UI.WriteLine(message));
+                    DebugTracingInterceptor.AddToContext(interceptor);
+
                     var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
                         _environment,
