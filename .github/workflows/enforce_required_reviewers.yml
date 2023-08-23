@@ -1,66 +1,48 @@
 name: Enforce Required Reviewers  
-  
+
 on:  
   pull_request:  
     types:  
       - opened  
-      - synchronize  
+      - synchronize
   pull_request_review:  
     types:  
       - submitted  
-      - dismissed  
-  
+      - dismissed
+
 jobs:  
-  enforce_and_comment:  
+  enforce_required_reviewers:  
     runs-on: ubuntu-latest  
     steps:  
-      - name: Check if /src/Compute/ files have changed  
-        id: check_changes  
-        uses: tj-actions/changed-files@v11.8  
+      - name: Checkout repository  
+        uses: actions/checkout@v2  
         with:  
-          files: |  
-            /src/Compute/  
-  
+          ref: ${{ github.head_ref }}  
+          fetch-depth: 0  
+
+      - name: Check for changes in /src/Compute/  
+        id: check_changes  
+        run: |  
+          git fetch origin ${{ github.base_ref }}  
+          git diff --name-only --diff-filter=d FETCH_HEAD..HEAD | grep '^src/Compute/' > /dev/null && echo "::set-output name=compute_changed::true" || echo "::set-output name=compute_changed::false"  
+            
       - name: Enforce required reviewers approval  
-        id: enforce_approval  
         if: steps.check_changes.outputs.compute_changed == 'true'  
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           REQUIRED_REVIEWERS: 'sandido,haagha,grizzlytheodore' # Replace with the GitHub usernames of the required reviewers, separated by commas  
         run: |  
+          PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')  
+          APPROVED_REVIEWERS=$(gh pr view $PR_NUMBER --json reviews --jq '.reviews[].author.login')  
+          REQUIRED_REVIEWERS_ARRAY=(${REQUIRED_REVIEWERS//,/ })  
           APPROVAL_FOUND=false  
-          PR_NUMBER=${{ github.event.pull_request.number }}  
-          PR_REVIEWS=$(gh pr review list $PR_NUMBER --json reviews --jq '.reviews')  
-          for reviewer in $(echo $REQUIRED_REVIEWERS | sed "s/,/ /g")  
-          do  
-            REVIEW=$(echo $PR_REVIEWS | jq -r --arg username "$reviewer" '.[] | select(.user.login == $username) | .state')  
-            if [[ $REVIEW == "APPROVED" ]]; then  
+          for reviewer in "${REQUIRED_REVIEWERS_ARRAY[@]}"; do  
+            if [[ $APPROVED_REVIEWERS == *"$reviewer"* ]]; then  
               APPROVAL_FOUND=true  
               break  
             fi  
           done  
-          echo "::set-output name=approval_found::$APPROVAL_FOUND"  
-  
-      - name: Post a comment when approval not found  
-        if: steps.check_changes.outputs.compute_changed == 'true' && steps.enforce_approval.outputs.approval_found == 'false'  
-        uses: actions/github-script@v5  
-        with:  
-          script: |  
-            const issue_number = context.issue.number;  
-            const comment_body = "⚠️ The PR cannot be merged until at least one of the required reviewers (" + process.env.REQUIRED_REVIEWERS + ") approves the PR. Please wait for their approval.";  
-            await github.rest.issues.createComment({  
-              owner: context.repo.owner,  
-              repo: context.repo.repo,  
-              issue_number: issue_number,  
-              body: comment_body  
-            });  
-  
-  fail_if_not_approved:  
-    runs-on: ubuntu-latest  
-    needs: enforce_and_comment  
-    if: always() && needs.enforce_and_comment.outputs.approval_found == 'false'  
-    steps:  
-      - name: Fail if required approval not found  
-        run: |  
-          echo "error: At least one of the required reviewers must approve the PR" >&2  
-          exit 1  
+          if [ "$APPROVAL_FOUND" = false ]; then  
+            echo "error: At least one of the required reviewers ($REQUIRED_REVIEWERS) must approve the PR" >&2  
+            exit 1  
+          fi  
