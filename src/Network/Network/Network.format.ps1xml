@@ -977,6 +977,10 @@
                 <PropertyName>SkuText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>AutoScaleConfiguration</Label>
+                <PropertyName>AutoScaleConfigurationText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>VpnClientConfiguration</Label>
                 <PropertyName>VpnClientConfigurationText</PropertyName>
               </ListItem>

@@ -29,7 +29,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", SupportsShouldProcess = true, DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default), OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
-            MNM.VirtualNetworkGatewaySkuTier.ErGwScale
+            MNM.VirtualNetworkGatewaySkuTier.ErGwScale,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -314,10 +314,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")
+        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
         public Int32 MinScaleUnit { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")
+
+        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
         public Int32 MaxScaleUnit { get; set; }
 
         [Parameter(
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Network
         [PSArgumentCompleter(
             "Enabled",
             "Disabled")]
-        public string AdminState  { get; set; }
+        public string AdminState { get; set; }
 
         public override void Execute()
         {
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.Network
             var isCertConfigured = (this.VpnClientRootCertificates != null && this.VpnClientRootCertificates.Count() > 0) || (this.VpnClientRevokedCertificates != null && this.VpnClientRevokedCertificates.Count() > 0);
             var isRadiusConfigured = !string.IsNullOrEmpty(this.RadiusServerAddress) && this.RadiusServerSecret != null && !string.IsNullOrEmpty(SecureStringExtensions.ConvertToString(this.RadiusServerSecret));
             var isAadConfigured = this.AadTenantUri != null && this.AadAudienceId != null && this.AadIssuerUri != null;
-            
+
             if (!string.IsNullOrEmpty(GatewaySku)
                 && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -426,11 +426,13 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
-            if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
+            
+            if (this.ExtendedLocation != null && (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute"))
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
                 vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
             }
+
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
@@ -509,7 +511,7 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
-                
+
                 if (this.RadiusServerList != null && this.RadiusServerList.Any())
                 {
                     vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
@@ -550,12 +552,12 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Any())
                 {
-                    foreach( var config in this.ClientConnectionConfiguration)
+                    foreach (var config in this.ClientConnectionConfiguration)
                     {
-                        foreach (var policyGroup  in config.VirtualNetworkGatewayPolicyGroups)
+                        foreach (var policyGroup in config.VirtualNetworkGatewayPolicyGroups)
                         {
                             policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, vnetGateway.ResourceGroupName, Name, policyGroup.Id);
-                         }
+                        }
                     }
                     vnetGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfiguration.ToList();
                 }
@@ -587,12 +589,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IpConfigurationBgpPeeringAddresses != null)
             {
-                if(vnetGateway.BgpSettings == null)
+                if (vnetGateway.BgpSettings == null)
                 {
                     vnetGateway.BgpSettings = new PSBgpSettings();
                 }
 
-                if(this.IpConfigurationBgpPeeringAddresses.Any(address => address.CustomBgpIpAddresses == null || !address.CustomBgpIpAddresses.Any()))
+                if (this.IpConfigurationBgpPeeringAddresses.Any(address => address.CustomBgpIpAddresses == null || !address.CustomBgpIpAddresses.Any()))
                 {
                     throw new ArgumentException("if IpConfigurationBgpPeeringAddresses are provided, CustomBgpIpAddresses must be a provided in create gateway");
                 }
@@ -605,7 +607,7 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                 }
             }
-            else if(vnetGateway.BgpSettings != null)
+            else if (vnetGateway.BgpSettings != null)
             {
                 vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
@@ -648,18 +650,21 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // set the min scale units and the max scale units
-            if (this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
+            if (this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
+                {
+                    if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
+                    {
+                        throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
+                    }
+
+                    vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
+                    vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
+                    vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
+                    vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);
+                }
             }
-
-            vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
-            vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayProperties();
-            vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
-            vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);
-
-                
-            // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
+                // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
             // Map to the sdk object

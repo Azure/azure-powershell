@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSVirtualNetworkGatewayAutoscaleConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSVirtualNetworkGatewayProperties Bounds { get; set; }
+        public PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds Bounds { get; set; }
 
         [JsonIgnore]
         public string BoundsText
