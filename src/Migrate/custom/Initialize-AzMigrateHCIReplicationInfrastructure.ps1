@@ -228,18 +228,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         foreach ($fabric in $allFabrics) {
             if (($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
-                    $sourceFabric = $fabric
+                $sourceFabric = $fabric
             }
             elseif (($instanceType -eq $AzStackHCIInstanceTypes.VMwareToAzStackHCI) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.VMwareInstance)) {
-                    $sourceFabric = $fabric
+                $sourceFabric = $fabric
             }
             elseif ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.AzStackHCIInstance) {
                 $targetFabric = $fabric
             }
 
-            if (($null -ne $sourceFabric) -and ($null -ne $targetFabric))
-            {
+            if (($null -ne $sourceFabric) -and ($null -ne $targetFabric)) {
                 break
             }
         }
@@ -427,40 +426,21 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 }
 
                 # Create Cache Storage Account
-                $cacheStorageAccount = New-AzStorageAccount `
-                    -ResourceGroupName $resourceGroup.ResourceGroupName `
-                    -Name $params.name `
-                    -SkuName $params.skuName `
-                    -Location $params.location `
-                    -Kind $params.kind `
-                    -Tags $params.tags `
-                    -AllowBlobPublicAccess $true
-            
-                # Grant Source Dra AAD App access to Cache Storage Account.
-                # As "Contributor"
-                New-AzRoleAssignment `
-                    -ObjectId $params.sourceAppAadId `
-                    -RoleDefinitionId $params.contributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-
-                # As "StorageBlobDataContributor"
-                New-AzRoleAssignment `
-                    -ObjectId $params.sourceAppAadId `
-                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-
-                # Grant Target Dra AAD App access to Cache Storage Account.
-                # As "Contributor"
-                New-AzRoleAssignment `
-                    -ObjectId $params.targetAppAadId `
-                    -RoleDefinitionId $params.contributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-
-                # As "StorageBlobDataContributor"
-                New-AzRoleAssignment `
-                    -ObjectId $params.targetAppAadId `
-                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
+                try {
+                    $cacheStorageAccount = New-AzStorageAccount `
+                        -ResourceGroupName $resourceGroup.ResourceGroupName `
+                        -Name $params.name `
+                        -SkuName $params.skuName `
+                        -Location $params.location `
+                        -Kind $params.kind `
+                        -Tags $params.tags `
+                        -AllowBlobPublicAccess $true
+                }
+                catch {
+                    throw "Failed to create Cache Storage Account '$($cacheStorageAccountName)'.`n" +
+                    "Please re-run this command. If the problem persists, please create a Storage Account manually from Azure portal or " +
+                    "with PowerShell command 'New-AzStorageAccount', and then re-run this command with -CacheStorageAccountId set to its Id."
+                }
 
                 Write-Host "New Cache Storage Account created."
             }
@@ -478,8 +458,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
         Write-Host "Existing Cache Storage Account found."
 
-        # Verify Source Dra AAD App access to Cache Storage Account.
-        # As "Contributor"
+        # Grant Source Dra AAD App access to Cache Storage Account as "Contributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.sourceAppAadId `
             -RoleDefinitionId $params.contributorRoleDefId `
@@ -487,11 +466,20 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            throw "Invalid Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-            "Please re-run without -CacheStorageAccountId to automatically create one."
+            try {
+                New-AzRoleAssignment `
+                    -ObjectId $params.sourceAppAadId `
+                    -RoleDefinitionId $params.contributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id
+            }
+            catch {
+                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
+                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
+                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
+            }
         }
 
-        # As "StorageBlobDataContributor"
+        # Grant Source Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.sourceAppAadId `
             -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
@@ -499,12 +487,20 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            throw "Invalid Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-            "Please re-run without -CacheStorageAccountId to automatically create one."
+            try {
+                New-AzRoleAssignment `
+                    -ObjectId $params.sourceAppAadId `
+                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id
+            }
+            catch {
+                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
+                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
+                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
+            }
         }
 
-        # Verify Target Dra AAD App access to Cache Storage Account.
-        # As "Contributor"
+        # Grant Target Dra AAD App access to Cache Storage Account as "Contributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.targetAppAadId `
             -RoleDefinitionId $params.contributorRoleDefId `
@@ -512,11 +508,20 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            throw "Invalid Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-            "Please re-run without -CacheStorageAccountId to automatically create one."
+            try {
+                New-AzRoleAssignment `
+                    -ObjectId $params.targetAppAadId `
+                    -RoleDefinitionId $params.contributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id
+            }
+            catch {
+                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
+                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
+                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
+            }
         }
 
-        # As "StorageBlobDataContributor"
+        # Grant Target Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
             -ObjectId $params.targetAppAadId `
             -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
@@ -524,8 +529,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            throw "Invalid Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-            "Please re-run without -CacheStorageAccountId to automatically create one."
+            try {
+                New-AzRoleAssignment `
+                    -ObjectId $params.targetAppAadId `
+                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                    -Scope $cacheStorageAccount.Id
+            }
+            catch {
+                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
+                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
+                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
+            }
         }
         Write-Host "*Selected Cache Stroage Account: '$($cacheStorageAccount.StorageAccountName)' in Location '$($cacheStorageAccount.Location)'."
     
@@ -625,8 +639,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
         Write-Host "*Selected Replication Extension: '$($replicationExtension.Name)'."
 
-        if ($PassThru)
-        {
+        if ($PassThru) {
             return $true
         }
     }
