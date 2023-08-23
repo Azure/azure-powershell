@@ -14,31 +14,32 @@ Gets a SQL virtual machine.
 
 ### List1 (Default)
 ```
-Get-AzSqlVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSqlVM [-SubscriptionId <String[]>] [-AuxiliaryAccessToken <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AuxiliaryAccessToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>] [-AuxiliaryAccessToken <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzSqlVM -GroupName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AuxiliaryAccessToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
-Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSqlVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-AuxiliaryAccessToken <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +90,21 @@ eastus		sqlvm2		ResourceGroup01
 
 
 ## PARAMETERS
+
+### -AuxiliaryAccessToken
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

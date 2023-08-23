@@ -50,6 +50,10 @@ directive:
     where: $.definitions..storageAccountPrimaryKey
     transform: $.format = "password"
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines"]["get"]["parameters"]
+    transform: >-
+      return [{"$ref": "#/parameters/SubscriptionIdParameter"},{"$ref": "#/parameters/ApiVersionParameter"},{"name": "x-ms-authorization-auxiliary","in": "header","type": "string"}]
+  - from: swagger-document
     where: $.definitions..clusterBootstrapAccountPassword
     transform: $.format = "password"
   - from: swagger-document
@@ -122,6 +126,10 @@ directive:
   - where:  
       subject: ^SqlVM$
       verb: New|Update
+    hide: true
+  - where:  
+      subject: ^SqlVM$
+      verb: Get
     hide: true
   - where:  
       subject: ^SqlVMGroup$|^AvailabilityGroupListener$
