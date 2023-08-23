@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
     /// <summary>
     /// Create a Data Collection Rule
     /// </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("RuleFile Parameter will be replaced by JsonFilePath. Cmdlet will be available for setting all values using parameters.", "11.0.0", "5.0.0", "2023/11/15")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRule", DefaultParameterSetName = ByFile, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDataCollectionRuleResource))]
     public class NewAzureRmDataCollectionRuleCommand : ManagementCmdletBase
