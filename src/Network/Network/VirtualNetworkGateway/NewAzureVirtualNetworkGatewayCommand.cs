@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // set the min scale units and the max scale units
-            if (this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
+            if (!string.IsNullOrEmpty(GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
             {
                 {
                     if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
