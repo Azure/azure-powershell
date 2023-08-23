@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.AdminState = AdminState;
             }
 
-            if (!string.IsNullOrEmpty(GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0))
+            if (!string.IsNullOrEmpty(this.VirtualNetworkGateway.Sku.Name) && (this.VirtualNetworkGateway.Sku.Name.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)))
             {
                 if (this.MinScaleUnit > this.MaxScaleUnit)
                 {
