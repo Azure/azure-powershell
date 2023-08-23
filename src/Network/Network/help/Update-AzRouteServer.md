@@ -14,16 +14,15 @@ Update an Azure RouteServer.
 
 ### RouteServerNameParameterSet (Default)
 ```
-Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String>
- [-AllowBranchToBranchTraffic <Boolean>] [-HubRoutingPreference <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> [-AllowBranchToBranchTraffic]
+ [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RouteServerResourceIdParameterSet
 ```
-Update-AzRouteServer [-AllowBranchToBranchTraffic <Boolean>] -ResourceId <String>
- [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzRouteServer [-AllowBranchToBranchTraffic] -ResourceId <String> [-HubRoutingPreference <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +57,7 @@ To change routing preference for route server.
 Flag to allow branch to branch traffic for route server.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
