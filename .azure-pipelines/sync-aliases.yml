@@ -39,8 +39,8 @@ jobs:
     displayName: Update resourceManagement.yml file locally
 
   - pwsh: |
-      $gitStatus = git status -s
-      if (-not $gitStatus) {
+      $hasChanges = git diff --name-only .github/policies
+      if ($null -eq $hasChanges) {
           Write-Host "The wiki has no changes."
           Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
       } else {
@@ -54,7 +54,7 @@ jobs:
       git config --global user.name "azure-powershell-bot"
       git checkout -b "internal/sync-resourcemanagement-yml"
 
-      git add .
+      git add .github/policies
       git commit -m "Sync resourceManagement.yml"
 
       git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;

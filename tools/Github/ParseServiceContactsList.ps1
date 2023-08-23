@@ -75,26 +75,26 @@ foreach ($contacts in $contactsList) {
 
         if (![string]::IsNullOrWhiteSpace($colPSNotifyGithubHandler)) {
             $psNotifyGithubHandler = $colPSNotifyGithubHandler.Trim()
-            $mentionees = $psNotifyGithubHandler.Split(",", [StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object {
+            [array]$mentionees = $psNotifyGithubHandler.Split(",", [StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object {
                 $_.Trim()
             }
 
             $serviceContacts.Add($serviceTeamLabel, [PSCustomObject]@{
                 if   = @(
-                    @{
-                        hasLabel = @{
+                    [PSCustomObject]@{
+                        hasLabel = [PSCustomObject]@{
                             label = 'Service Attention'
                         }
                     },
-                    @{
-                        hasLabel = @{
+                    [PSCustomObject]@{
+                        hasLabel = [PSCustomObject]@{
                             label = $serviceTeamLabel
                         }
                     }
                 )
                 then = @(
-                    @{
-                        mentionUsers = @{
+                    [PSCustomObject]@{
+                        mentionUsers = [PSCustomObject]@{
                             mentionees       = $mentionees
                             replyTemplate    = 'Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.'
                             assignMentionees = 'False'
