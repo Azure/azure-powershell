@@ -37,7 +37,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.", "11.0.0", "7.0.0")]
+    [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/TLaD.", "11.0.0", "7.0.0")]
     [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "11.0.0", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
                             
-                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType == "TrustedLaunch" || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType =="ConfidentialVM")
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                             {
                                 if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
                                 {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vmssParameters != null &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)

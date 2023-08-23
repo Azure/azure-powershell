@@ -111,6 +111,30 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuCRUD()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuMigration()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuMigration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDSubItems2()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDSubItems2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));

@@ -23,18 +23,18 @@ Remove-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] [-C
 
 ### Share
 ```
-Remove-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageDirectory [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Path] <String> [-PassThru]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Remove-AzStorageDirectory [-Directory] <CloudFileDirectory> [[-Path] <String>] [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzStorageDirectory [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
+ [[-Path] <String>] [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,6 +211,36 @@ Aliases: CloudFileShare
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareClient
+ShareClient object indicated the share where the directory would be removed.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareDirectoryClient
+ShareDirectoryClient object indicated the base folder where the directory would be removed.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareDirectoryClient
+Parameter Sets: Directory
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

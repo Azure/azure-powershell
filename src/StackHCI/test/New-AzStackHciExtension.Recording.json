@@ -1,15 +1,15 @@
 {
-  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+1": {
+  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"extensionParameters\": {\r\n      \"publisher\": \"Microsoft.EnterpriseCloud.Monitoring\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01",
+      "Content": "{\n  \"properties\": {\n    \"extensionParameters\": {\n      \"publisher\": \"Microsoft.EnterpriseCloud.Monitoring\",\n      \"type\": \"MicrosoftMonitoringAgent\"\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "124" ]
+        "Content-Length": [ "160" ]
       }
     },
     "Response": {
@@ -17,89 +17,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"06000d72-0000-0100-0000-62a9bb540000\"" ],
-        "Vary": [ "Accept-Encoding" ],
+        "ETag": [ "\"1308278e-0000-0100-0000-64c0ac2a0000\"" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "f8e438f6-09cd-4859-bbfb-b8d4505af545" ],
-        "x-ms-request-id": [ "0146a81e-2713-40bb-8d18-4a3bb23d40ea" ],
-        "x-ms-correlation-request-id": [ "0c3630a9-f537-4e81-9e3d-37c38cbdf400" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220615T105828Z:0c3630a9-f537-4e81-9e3d-37c38cbdf400" ],
+        "mise-correlation-id": [ "b7d94762-3c14-4bf2-a23e-d6cce5eeb53d" ],
+        "x-ms-request-id": [ "4d659d8d-cd13-43fa-8b3d-7ef3433ffe5b" ],
+        "x-ms-correlation-request-id": [ "12799689-067f-467d-82d8-2990977a7d87" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 15 Jun 2022 10:58:27 GMT" ]
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051626Z:12799689-067f-467d-82d8-2990977a7d87" ],
+        "Date": [ "Wed, 26 Jul 2023 05:16:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "800" ],
+        "Content-Length": [ "820" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"systemData\":{\"createdBy\":\"lsweeney@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-06-15T10:57:47.9306192Z\",\"lastModifiedBy\":\"lsweeney@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-06-15T10:58:27.7437132Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false}}}",
+      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"systemData\":{\"createdBy\":\"priyjain@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-26T05:14:34.3158947Z\",\"lastModifiedBy\":\"priyjain@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-26T05:16:25.8825002Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true},\"managedBy\":\"User\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+2": {
+  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "af8ae456-1704-4a13-9e57-d340c5d16c25" ],
-        "CommandName": [ "New-AzStackHciExtension" ],
-        "FullCommandName": [ "New-AzStackHciExtension_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.0", "Az.StackHCI/1.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"06000d72-0000-0100-0000-62a9bb540000\"" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "e74d1aa9-603d-4a5f-9e87-da59386b2924" ],
-        "x-ms-request-id": [ "51647042-2a65-4b64-a55f-9daa10a7f9b5" ],
-        "x-ms-correlation-request-id": [ "034fedc0-0200-4e0a-bafb-b0a10247b007" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220615T105858Z:034fedc0-0200-4e0a-bafb-b0a10247b007" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 15 Jun 2022 10:58:57 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "564" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false}}}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "af8ae456-1704-4a13-9e57-d340c5d16c25" ],
+        "x-ms-client-request-id": [ "cd2029e2-bcf6-471c-a123-72a93369ce99" ],
         "CommandName": [ "New-AzStackHciExtension" ],
         "FullCommandName": [ "New-AzStackHciExtension_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.0", "Az.StackHCI/1.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -109,26 +60,66 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"06000d72-0000-0100-0000-62a9bb540000\"" ],
-        "Vary": [ "Accept-Encoding" ],
+        "ETag": [ "\"1308278e-0000-0100-0000-64c0ac2a0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "4c3ef15e-3959-4d27-a39f-d063d184818d" ],
-        "x-ms-request-id": [ "7b887121-c648-4ad0-85c1-2e8fba5c4ee7" ],
-        "x-ms-correlation-request-id": [ "8e02f927-935b-4565-8f4e-7b1feaa789dd" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220615T105858Z:8e02f927-935b-4565-8f4e-7b1feaa789dd" ],
+        "mise-correlation-id": [ "75e1b82c-ceb4-468b-a5a1-596c610114e4" ],
+        "x-ms-request-id": [ "4a8c5dd6-d6f5-4795-ba07-7fbdd982180d" ],
+        "x-ms-correlation-request-id": [ "8322b367-2fee-4d4d-b8d8-b7c3d1d204fc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 15 Jun 2022 10:58:58 GMT" ]
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051657Z:8322b367-2fee-4d4d-b8d8-b7c3d1d204fc" ],
+        "Date": [ "Wed, 26 Jul 2023 05:16:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "564" ],
+        "Content-Length": [ "613" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false}}}",
+      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true},\"managedBy\":\"User\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStackHciExtension+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "cd2029e2-bcf6-471c-a123-72a93369ce99" ],
+        "CommandName": [ "New-AzStackHciExtension" ],
+        "FullCommandName": [ "New-AzStackHciExtension_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1308278e-0000-0100-0000-64c0ac2a0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "mise-correlation-id": [ "44f250c9-c4b0-4878-b7b0-a2a6cddfcd16" ],
+        "x-ms-request-id": [ "adb34ffe-a032-45d9-8b51-c64af0248bcd" ],
+        "x-ms-correlation-request-id": [ "c619c247-e699-45be-b9d1-3b061b80dbf0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051658Z:c619c247-e699-45be-b9d1-3b061b80dbf0" ],
+        "Date": [ "Wed, 26 Jul 2023 05:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "613" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default/extensions/MicrosoftMonitoringAgent\",\"name\":\"MicrosoftMonitoringAgent\",\"type\":\"microsoft.azurestackhci/clusters/arcsettings/extensions\",\"properties\":{\"provisioningState\":\"Succeeded\",\"aggregateState\":\"NotSpecified\",\"perNodeExtensionDetails\":[],\"extensionParameters\":{\"type\":\"MicrosoftMonitoringAgent\",\"publisher\":\"Microsoft.EnterpriseCloud.Monitoring\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true},\"managedBy\":\"User\"}}",
       "isContentBase64": false
     }
   }

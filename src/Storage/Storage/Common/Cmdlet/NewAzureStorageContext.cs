@@ -28,6 +28,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -284,6 +285,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = SasTokenServiceEndpointParameterSet)]
         [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string TableEndpoint { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        public SwitchParameter EnableFileBackupRequestIntent { get; set; }
 
         /// <summary>
         /// Get storage account by account name and account key
@@ -716,6 +722,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
 
             AzureStorageContext context = new AzureStorageContext(account, GetRealAccountName(StorageAccountName), DefaultContext, WriteDebug);
+            if (this.EnableFileBackupRequestIntent.IsPresent)
+            {
+                context.ShareTokenIntent = ShareTokenIntent.Backup;
+            }
 
             WriteObject(context);
         }

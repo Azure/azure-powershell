@@ -495,6 +495,7 @@ Accept wildcard characters: False
 
 ### -GalleryEndpoint
 Specifies the endpoint for the Azure Resource Manager gallery of deployment templates.
+The parameter is to set the value to `GalleryUrl` of `PSAzureEnvironment`. As `GalleryUrl` is removed from ArmMetadata, Azure PowerShell will no longer provide for the value and so it is not recommended to set `GalleryEndpoint` anymore.
 
 ```yaml
 Type: System.String

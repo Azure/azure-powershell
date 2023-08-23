@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource group name.
+The virtual machine resource Id.
 
 ```yaml
 Type: System.String
