@@ -391,7 +391,6 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.Name = this.Name;
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
-
             if (this.GatewaySku != null)
             {
                 vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -425,14 +424,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Virtual Network Gateway Need to be Express Route when the sku is UltraPerformance.");
 
             }
-            vnetGateway.GatewayType = this.GatewayType;
-            
-            if (this.ExtendedLocation != null && (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute"))
+            vnetGateway.GatewayType = this.GatewayType;           
+            if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
                 vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
             }
-
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
@@ -511,7 +508,6 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
-
                 if (this.RadiusServerList != null && this.RadiusServerList.Any())
                 {
                     vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
@@ -660,10 +656,9 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
                 vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
                 vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
-                vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);
-                
+                vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);    
             }
-                // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
+            // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
             // Map to the sdk object
