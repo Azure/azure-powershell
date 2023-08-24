@@ -391,6 +391,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.Name = this.Name;
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
+
             if (this.GatewaySku != null)
             {
                 vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -424,7 +425,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Virtual Network Gateway Need to be Express Route when the sku is UltraPerformance.");
 
             }
-            vnetGateway.GatewayType = this.GatewayType;           
+            vnetGateway.GatewayType = this.GatewayType;
             if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
