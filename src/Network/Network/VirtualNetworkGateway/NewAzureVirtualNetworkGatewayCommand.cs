@@ -509,6 +509,7 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
+
                 if (this.RadiusServerList != null && this.RadiusServerList.Any())
                 {
                     vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
