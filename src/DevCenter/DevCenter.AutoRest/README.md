@@ -68,11 +68,9 @@ directive:
         "schema": {"$ref": "#/definitions/Catalog"}
       }
   - where:
-      subject: ^(.*)
       parameter-name: Top
     hide: true
   - where:
-      subject: ^(.*)
       parameter-name: Filter
     hide: true
   - where:
