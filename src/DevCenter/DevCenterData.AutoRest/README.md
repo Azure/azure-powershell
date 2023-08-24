@@ -130,6 +130,10 @@ directive:
       subject: ^(.*)
       parameter-name: Filter
     hide: true
+  - where:
+      verb: New
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
   - from: swagger-document
     where: $.definitions.EnvironmentUpdateProperties.properties.parameters
     transform: $["additionalProperties"] = true
