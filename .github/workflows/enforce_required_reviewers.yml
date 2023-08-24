@@ -1,15 +1,15 @@
 name: Enforce Required Reviewers  
-
+  
 on:  
   pull_request:  
     types:  
       - opened  
-      - synchronize
+      - synchronize  
   pull_request_review:  
     types:  
       - submitted  
-      - dismissed
-
+      - dismissed  
+  
 jobs:  
   enforce_required_reviewers:  
     runs-on: ubuntu-latest  
@@ -19,20 +19,27 @@ jobs:
         with:  
           ref: ${{ github.head_ref }}  
           fetch-depth: 0  
-
+  
       - name: Check for changes in /src/Compute/  
         id: check_changes  
         run: |  
           git fetch origin ${{ github.base_ref }}  
           git diff --name-only --diff-filter=d FETCH_HEAD..HEAD | grep '^src/Compute/' > /dev/null && echo "::set-output name=compute_changed::true" || echo "::set-output name=compute_changed::false"  
-            
+  
+      - name: Get required reviewers from CODEOWNERS file  
+        id: get_reviewers  
+        run: |  
+          REQUIRED_REVIEWERS=$(grep '/src/Compute/' .github/CODEOWNERS | awk -F' ' '{for (i=3; i<=NF; i++) printf "%s ", substr($i, 2)}')  
+          echo "::set-output name=required_reviewers::$REQUIRED_REVIEWERS"  
+  
+  
       - name: Enforce required reviewers approval  
         if: steps.check_changes.outputs.compute_changed == 'true'  
         env:  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
-          REQUIRED_REVIEWERS: 'sandido,haagha,grizzlytheodore' # Replace with the GitHub usernames of the required reviewers, separated by commas  
         run: |  
           PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')  
+          REQUIRED_REVIEWERS="${{ steps.get_reviewers.outputs.required_reviewers }}"  
           APPROVED_REVIEWERS=$(gh pr view $PR_NUMBER --json reviews --jq '.reviews[].author.login')  
           REQUIRED_REVIEWERS_ARRAY=(${REQUIRED_REVIEWERS//,/ })  
           APPROVAL_FOUND=false  
