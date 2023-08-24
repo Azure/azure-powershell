@@ -174,11 +174,11 @@ function New-AzMigrateHCIServerReplication {
         $ResourceGroupName = $MachineIdArray[4]
         $MachineName = $MachineIdArray[10]
 
-        if (($SiteType -ne $SiteTypes.HyperVSites)-and ($SiteType -ne $SiteTypes.VMwareSites)) {
+        if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
             throw "Site type is not supported. Site type '$SiteType'"
         }
 
-        # Get the discovered site and the discovered machine
+        # Get the source site and the discovered machine
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("SiteName", $SiteName)
         $null = $PSBoundParameters.Add("MachineName", $MachineName)
@@ -202,17 +202,17 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('SiteName')
 
         if ($null -eq $InputObject) {
-           throw "Provided MachineId is not found."
+           throw "No machine '$MachineName' found in resource group '$ResourceGroupName' and site '$SiteName'."
         }
 
         if ($siteObject -and ($siteObject.Count -ge 1)) {
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
         }
         else {
-            throw "Site not found"
+            throw "No site '$SiteName' found in resource group '$ResourceGroupName'"
         }
 
-        # Get the migrate solution to get vault name.
+        # Get the migrate solution.
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
@@ -224,31 +224,11 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove("Name")
         $null = $PSBoundParameters.Remove("MigrateProjectName")
 
-        if ($null -eq $solution) {
-            throw "Migrate solution is not found."
-        }
-
-        if ([string]::IsNullOrEmpty($vaultName)) {
-            throw "Vault is not found."
-        }
-
-        # Validate Policy
-        $policyName = $vaultName + $instanceType + "policy"
-        $policyObj = Az.Migrate.Internal\Get-AzMigratePolicy `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $policyName `
-            -VaultName $vaultName `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($policyObj -and ($policyObj.Count -ge 1)) {
-            $policyId = $policyObj.Id
-        }
-        else {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
+        if (($null -eq $solution) -or [string]::IsNullOrEmpty($vaultName)) {
+            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the initialize-azmigratehcireplicationinfrastructure script before proceeding.'
         }
         
-        # Get Source and Target Fabrics
+        # Get fabrics and appliances in the project
         $allFabrics = Az.Migrate.Internal\Get-AzMigrateFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
@@ -266,8 +246,12 @@ function New-AzMigrateHCIServerReplication {
             }
         }
 
-        if (($null -eq $sourceFabric) -or ($null -eq $targetFabric)) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
+        if ($null -eq $sourceFabric) {
+            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
+        }
+
+        if ($null -eq $targetFabric) {
+            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
         }
 
         # Get Source and Target Dras
@@ -277,14 +261,9 @@ function New-AzMigrateHCIServerReplication {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $sourceDras) {
-            throw "Source Dra not found. Please verify your appliance setup."
+            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
         }
-
         $sourceDra = $sourceDras[0]
-        # IsResponsive is always return null
-        # if (!$sourceDra.IsResponsive) {
-        #     throw "The Azure Migrate unified appliance '$($sourceDra.Name)' is in a disconnected state. Ensure that the appliance is running and has connectivity before proceeding."
-        # }
 
         $targetDras = Az.Migrate.Internal\Get-AzMigrateDra `
             -FabricName $targetFabric.Name `
@@ -292,15 +271,27 @@ function New-AzMigrateHCIServerReplication {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $targetDras) {
-            throw "Target Dra not found. Please verify your appliance setup."
+            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
+        }
+        $targetDra = $targetDras[0]
+
+        # Validate Policy
+        $policyName = $vaultName + $instanceType + "policy"
+        $policyObj = Az.Migrate.Internal\Get-AzMigratePolicy `
+            -ResourceGroupName $ResourceGroupName `
+            -Name $policyName `
+            -VaultName $vaultName `
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($policyObj -and ($policyObj.Count -ge 1)) {
+            $policyId = $policyObj.Id
+        }
+        else {
+            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
         }
 
-        $targetDra = $targetDras[0]
-        # if (!$targetDra.IsResponsive) {
-        #     throw "The Azure Migrate unified appliance '$($targetDra.Name)' is in a disconnected state. Ensure that the appliance is running and has connectivity before proceeding."
-        # }
-
-        # Get Replication Extension
+        # Validate Replication Extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
         $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
             -ResourceGroupName $ResourceGroupName `
@@ -311,32 +302,39 @@ function New-AzMigrateHCIServerReplication {
             -ErrorAction SilentlyContinue
 
         if ($null -eq $replicationExtension) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratereplicationinfrastructure script again."
+            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
         }
-
+        
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
+        $targetClusterIdArray = $targetClusterId.Split("/")
+        $targetSubscription = $targetClusterIdArray[2]
+
         # Get Storage Container
-        $storageContainers = Search-AzGraph -Query ($StorageContainerQuery -f $targetClusterId)
+        $storageContainers = Search-AzGraph `
+            -Query ($StorageContainerQuery -f $targetClusterId) `
+            -Subscription $targetSubscription
         $storageContainer = $storageContainers | Where-Object {$_.Id -eq $TargetStoragePathId}
-        if($null -eq $storageContainer) {
-            throw "Provided target storage path is not found."
+        if ($null -eq $storageContainer) {
+            throw "No storage '$TargetStoragePathId' found in cluster '$targetClusterId'."
         }
 
-        if("Succeeded" -ne $storageContainer.Properties.ProvisioningState) {
-            throw "Provided target storage path is not successfully provisioned. Provisioning State: $($storageContainer.Properties.ProvisioningState)"
+        if ("Succeeded" -ne $storageContainer.Properties.ProvisioningState) {
+            throw "The storage '$TargetStoragePathId' provisioning state is '$($storageContainer.Properties.ProvisioningState).'"
         }
 
         # Get Virtual Switch
         $virtualSwitchIds = if ($parameterSet -match 'DefaultUser') { $TargetVirtualSwitchId } else { $NicToInclude | Select-Object -Property TargetNetworkId }
-        $virtualSwitches = Search-AzGraph -Query ($VirtualSwitchQuery -f $targetClusterId)
+        $virtualSwitches = Search-AzGraph `
+            -Query ($VirtualSwitchQuery -f $targetClusterId) `
+            -Subscription $targetSubscription
         foreach ($virtualSwitchId in $virtualSwitchIds) {
             $virtualSwitch = $virtualSwitches | Where-Object {$_.Id -eq $virtualSwitchId}
             if ($null -eq $virtualSwitch) {
-                throw "Provided virtual switch '$virtualSwitchId' is not found."
+                throw "No virtual switch '$virtualSwitchId' found in cluster '$targetClusterId'."
             }
 
             if ("Succeeded" -ne $virtualSwitch.Properties.ProvisioningState) {
-                throw "Provided virtual switch '$virtualSwitchId' is not successfully provisioned. Provisioning State: $($virtualSwitch.Properties.ProvisioningState)"
+                throw "The virtual switch '$virtualSwitchId' provisioning state is '$($virtualSwitch.Properties.ProvisioningState)'."
             }
         }
             
@@ -357,7 +355,7 @@ function New-AzMigrateHCIServerReplication {
         }
             
         if ($null -eq $runAsAccount) {
-            throw "Source site run as account is not found."
+            throw "No run as account found for site '$SiteName'."
         }
 
         # Validate TargetVMName
@@ -377,12 +375,12 @@ function New-AzMigrateHCIServerReplication {
 
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
-            if (!($TargetVMRam -In $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB)) {
+            if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
                 throw "Specify RAM between $($RAMConfig.MinMemoryInMB) and $($RAMConfig.MaxMemoryInMB)"
             }
 
-            if ($TargetVMRam % $RAMConfig.MinMemoryInMB -ne 0) {
-                throw "Specify target RAM in multiples of $($RAMConfig.MinMemoryInMB) MB"    
+            if (($TargetVMRam % $RAMConfig.MinMemoryInMB) -ne 0) {
+                throw "Specify target RAM in multiples of $($RAMConfig.MinMemoryInMB)MB"    
             }
         }
 
@@ -423,17 +421,18 @@ function New-AzMigrateHCIServerReplication {
         # Disks and Nics
         [PSCustomObject[]]$disks = @()
         [PSCustomObject[]]$nics = @()
-        
         if ($parameterSet -match 'DefaultUser') {
             if ($SiteType -eq $SiteTypes.HyperVSites) {
                 $osDisk = $InputObject.Disk | Where-Object { $_.InstanceId -eq $OSDiskID }
+                if ($null -eq $osDisk) {
+                    throw "No Disk found with InstanceId '$OSDiskID' from discovered machine disks."
+                }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $InputObject.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
-            }
-            
-            if ($null -eq $osDisk) {
-                throw "The OSDiskID provided is not found."
+                if ($null -eq $osDisk) {
+                    throw "No Disk found with Uuid '$OSDiskID' from discovered machine disks."
+                }
             }
 
             foreach ($sourceDisk in $InputObject.Disk) {
@@ -481,13 +480,15 @@ function New-AzMigrateHCIServerReplication {
             {
                 if ($SiteType -eq $SiteTypes.HyperVSites) {
                     $discoveredDisk = $InputObject.Disk | Where-Object { $_.InstanceId -eq $disk.DiskId }
+                    if ($null -eq $discoveredDisk) {
+                        throw "No Disk found with InstanceId '$($disk.DiskId)' from discovered machine disks."
+                    }
                 }
                 elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                     $discoveredDisk = $InputObject.Disk | Where-Object { $_.Uuid -eq $disk.DiskId }
-                }
-
-                if ($null -eq $discoveredDisk){
-                    throw "The disk id '$($disk.DiskId)' is not found."
+                    if ($null -eq $discoveredDisk) {
+                        throw "No Disk found with Uuid '$($disk.DiskId)' from discovered machine disks."
+                    }
                 }
 
                 if (($null -ne $uniqueDisks) -and ($uniqueDisks.Contains($disk.DiskId))) {

@@ -34,7 +34,7 @@ function Set-AzMigrateHCIServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the target VM name.
         ${TargetVMName},
 
         [Parameter()]
@@ -170,6 +170,9 @@ function Set-AzMigrateHCIServerReplication {
         $SiteName = $MachineIdArray[8]
        
         if ($HasTargetVMName) {
+            if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+                throw "The target virtual machine name must be between 1 and 64 characters long."
+            }
             Import-Module Az.Resources
             $vmId = $customProperties.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
             $VMNamePresentInRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -193,12 +196,8 @@ function Set-AzMigrateHCIServerReplication {
         }
 
         # Memory
-        if ($HasIsDynamicMemoryEnabled) {
-            $customProperties.IsDynamicRam = $IsDynamicMemoryEnabled
-        }
-
-        if (!$customProperties.IsDynamicRam -and $HasTargetVMRam) {
-            if (!($TargetVMRam -In $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB)) {
+        if ($HasTargetVMRam) {
+            if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
                 throw "Specify RAM between $($RAMConfig.MinMemoryInMB) and $($RAMConfig.MaxMemoryInMB)"
             }
 
@@ -208,14 +207,17 @@ function Set-AzMigrateHCIServerReplication {
 
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam
         }
+        
+        if ($HasIsDynamicMemoryEnabled) {
+            $customProperties.IsDynamicRam = $IsDynamicMemoryEnabled
+        }
 
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
-    
             if ($customProperties.TargetMemoryInMegaBytes -lt $DynamicMemoryConfig.MinimumMemoryInMegaByte) {
                 throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.MinMemoryInMB) and $($customProperties.TargetMemoryInMegaBytes)"
             }
 
-            if ($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.MinMemoryInMB -ne 0) {
+            if (($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
                 throw "DynamicMemoryConfig - Specify minimum memory in multiples of $($RAMConfig.MinMemoryInMB) MB"    
             }
 
@@ -223,7 +225,7 @@ function Set-AzMigrateHCIServerReplication {
                 throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaBytes) and $($RAMConfig.MaxMemoryInMB)"
             }
 
-            if ($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.MinMemoryInMB -ne 0) {
+            if (($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
                 throw "DynamicMemoryConfig - Specify maximum memory in multiples of $($RAMConfig.MinMemoryInMB) MB"    
             }
 
