@@ -123,25 +123,58 @@ directive:
       verb: Start
       subject: PoolHealthCheck
     hide: true
-  - where:
-      verb: Get
-      subject: NetworkConnectionHealthDetail
-    hide: true
-# Hide invoke name availability
-  - where:
-      verb: Invoke 
-      subject: ExecuteCheckNameAvailability
-    hide: true
-  - where:
-      subject: ^(.*)
-# Hide Get Attached Network and Get DevBoxDefinition
+# Remove extra input object variant 
   - where:
       verb: Get 
-      subject:  ^(AttachedNetwork|DevBoxDefinition)$
-    hide: true
-# Matches any verb that is New, Update, Set
+      subject:  ^(AttachedNetwork|DevBoxDefinition|NetworkConnectionHealthDetail)$
+      variant: GetViaIdentity1
+    remove: true
   - where:
-      verb: ^(New|Update|Set)$
+      verb: Get 
+      subject:  NetworkConnectionHealthDetail
+      variant: Get
+    remove: true
+# Matches any verb that is set
+  - where:
+      verb: Set
+    hide: true
+# Hide schedule commands
+  - where:
+      subject: Schedule
+    hide: true
+# Remove body variant
+  - where:
+      verb: Update
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      verb: New
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
+  - where:
+      verb: Invoke
+      subject: ExecuteCheckNameAvailability
+      variant: ^Execute$|^ExecuteViaIdentity$
+    remove: true
+# Set required parameters    
+  - where:
+      verb: New
+      subject:  AttachedNetwork
+      parameter-name: NetworkConnectionId
+    required: true
+# Remove parameter
+  - where:
+      verb: Update
+      parameter-name: Location
+    hide: true
+  - where:
+      verb: Update
+      subject: Project
+      parameter-name: DevCenterId
+    hide: true
+  - where:
+      verb: New
+      subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$
     hide: true
   - where:
       subject: OperationStatuses
