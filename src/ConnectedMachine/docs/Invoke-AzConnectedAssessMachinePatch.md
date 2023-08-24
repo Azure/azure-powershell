@@ -1,44 +1,46 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedprivatelinkscope
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedassessmachinepatch
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedPrivateLinkScope
+# Invoke-AzConnectedAssessMachinePatch
 
 ## SYNOPSIS
-Deletes a Azure Arc PrivateLinkScope.
+The operation to assess patches on a hybrid machine identity in Azure.
 
 ## SYNTAX
 
-### Delete (Default)
+### Assess (Default)
 ```
-Remove-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedAssessMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### AssessViaIdentity
 ```
-Remove-AzConnectedPrivateLinkScope -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedAssessMachinePatch -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a Azure Arc PrivateLinkScope.
+The operation to assess patches on a hybrid machine identity in Azure.
 
 ## EXAMPLES
 
-### Example 1: Remove a private link scope in a subscription by name
+### Example 1: Invoke assess patches
 ```powershell
-Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
+Invoke-AzConnectedAssessMachinePatch -Name testMachine -ResourceGroupName az-sdk-test
 ```
 
 ```output
-<None>
+AssessmentActivityId                 LastModifiedDateTime OSType  PatchServiceUsed RebootPending StartDateTime       StartedBy  Status
+--------------------                 -------------------- ------  ---------------- ------------- -------------       ---------  ------
+3e456d9e-9789-4427-b631-84c587afeade 8/2/2023 7:59:25 AM  Windows WU               False         7/28/2023 7:56:18 AM User      Succeed
 ```
 
-Remove a private link scope in a subscription by name
+Invoke machine patches.
 
 ## PARAMETERS
 
@@ -79,13 +81,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: AssessViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the hybrid machine.
+
+```yaml
+Type: System.String
+Parameter Sets: Assess
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,43 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
-The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeName
-The name of the Azure Arc PrivateLinkScope resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Assess
 Aliases:
 
 Required: True
@@ -155,7 +141,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Assess
 Aliases:
 
 Required: False
@@ -205,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineAssessPatchesResult
 
 ## NOTES
 
