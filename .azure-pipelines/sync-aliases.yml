@@ -7,26 +7,40 @@ schedules:
     - main
 
 jobs:
-- job: UpdateJson
-  displayName: Update fabricbot.json
+- job: UpdateYaml
+  displayName: Update resourceManagement.yml
+  pool: pool-windows-2019
+
   steps:
+  - task: UseDotNet@2
+    displayName: Install .NET 7 SDK
+    inputs:
+      packageType: sdk
+      version: 7.0.x
+
+  - pwsh: |
+      dotnet --version
+      dotnet new tool-manifest --force
+      dotnet tool install powershell
+    displayName: Install Latest PowerShell (7.3+)
+
   - task: AzurePowerShell@5
     inputs:
       azureSubscription: 'Azure SDK Infrastructure'
       ScriptType: 'InlineScript'
       Inline: |
         $ADOTokenValue = Get-AzKeyVaultSecret -VaultName ${env:KEYVAULTNAME} -Name ${env:ADOTOKENNAME} -AsPlainText
-        Write-Host "##vso[task.setvariable variable=ADOToken;issecret=true]$ADOTokenValue"       
+        Write-Host "##vso[task.setvariable variable=ADOToken;issecret=true]$ADOTokenValue"
       azurePowerShellVersion: 'LatestVersion'
     displayName: Get ADOToken from Key Vault
 
   - pwsh: |
-      ./tools/Github/ParseWiki2Json.ps1 -ADOToken $(ADOToken)
-    displayName: Update fabricbot.json file locally
+      dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File "./tools/Github/ParseServiceContactsList.ps1 -ADOToken $(ADOToken)"
+    displayName: Update resourceManagement.yml file locally
 
   - pwsh: |
-      $gitStatus = git status -s
-      if (-not $gitStatus) {
+      $hasChanges = git diff --name-only .github/policies
+      if ($null -eq $hasChanges) {
           Write-Host "The wiki has no changes."
           Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
       } else {
@@ -38,21 +52,21 @@ jobs:
   - pwsh: |
       git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
       git config --global user.name "azure-powershell-bot"
-      git checkout -b "internal/sync-fabricbot-json"
-        
-      git add .
-      git commit -m "Sync fabricbot.json"
-        
+      git checkout -b "internal/sync-resourcemanagement-yml"
+
+      git add .github/policies
+      git commit -m "Sync resourceManagement.yml"
+
       git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
-      git push origin internal/sync-fabricbot-json --force
+      git push origin internal/sync-resourcemanagement-yml --force
     displayName: Git commit and push
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
-  
+
   - pwsh: |
-      $Title = "Sync fabricbot.json According To ADO Wiki Page"
-      $HeadBranch = "internal/sync-fabricbot-json"
+      $Title = "Sync resourceManagement.yml according To ADO Wiki Page - Service Contact List"
+      $HeadBranch = "internal/sync-resourcemanagement-yml"
       $BaseBranch = "main"
-      $Description = "This PR sync taskType: scheduledAndTrigger part of fabricbot.json from table of Service-Team-Label-and-Contact-List in ADO wiki page"
+      $Description = "This PR synchronizes the task: 'Triage issues to the service team' part of resourceManagement.yml from table of Service Contact List in ADO wiki page"
       ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
     displayName: Create PR to main branch
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
