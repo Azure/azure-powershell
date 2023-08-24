@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Name))
             {
-                MongoDBCollectionGetResults mongoDBCollectionGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
+                MongoDBCollectionGetResults mongoDBCollectionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBCollectionGetResults(mongoDBCollectionGetResults));
             }
             else
             {
-                IEnumerable<MongoDBCollectionGetResults> mongoDBCollections = CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionsWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName).GetAwaiter().GetResult().Body;
+                IEnumerable<MongoDBCollectionGetResults> mongoDBCollections = CosmosDBManagementClient.MongoDbResources.ListMongoDBCollectionsWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName).GetAwaiter().GetResult().Body;
                 
                 foreach(MongoDBCollectionGetResults mongoDBCollection in mongoDBCollections)
                     WriteObject(new PSMongoDBCollectionGetResults(mongoDBCollection));

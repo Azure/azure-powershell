@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.Aks
             return autoUpgradeProfile;
         }
 
-        protected ManagedClusterHTTPProxyConfig CreateOrUpdateHttpProxyConfig(ManagedClusterHTTPProxyConfig httpProxyConfig)
+        protected ManagedClusterHttpProxyConfig CreateOrUpdateHttpProxyConfig(ManagedClusterHttpProxyConfig httpProxyConfig)
         {
             if ((this.IsParameterBound(c => c.HttpProxy) ||
                 this.IsParameterBound(c => c.HttpsProxy) ||
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Commands.Aks
                 this.IsParameterBound(c => c.HttpProxyConfigTrustedCa)) &&
                 httpProxyConfig == null)
             {
-                httpProxyConfig = new ManagedClusterHTTPProxyConfig();
+                httpProxyConfig = new ManagedClusterHttpProxyConfig();
             }
             if (this.IsParameterBound(c => c.HttpProxy))
             {
@@ -654,11 +654,11 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.ApiServerAccessPrivateDnsZone))
             {
-                apiServerAccessProfile.PrivateDNSZone = ApiServerAccessPrivateDnsZone;
+                apiServerAccessProfile.PrivateDnsZone = ApiServerAccessPrivateDnsZone;
             }
             if (this.IsParameterBound(c => c.EnableApiServerAccessPrivateClusterPublicFQDN))
             {
-                apiServerAccessProfile.EnablePrivateClusterPublicFQDN = EnableApiServerAccessPrivateClusterPublicFQDN;
+                apiServerAccessProfile.EnablePrivateClusterPublicFqdn = EnableApiServerAccessPrivateClusterPublicFQDN;
             }
 
             return apiServerAccessProfile;
@@ -687,9 +687,9 @@ namespace Microsoft.Azure.Commands.Aks
                     throw new AzPSArgumentException(Resources.NeedEnableManagedIdentity, nameof(AssignIdentity));
                 }
                 cluster.Identity.Type = ResourceIdentityType.UserAssigned;
-                cluster.Identity.UserAssignedIdentities = new Dictionary<string, ManagedClusterIdentityUserAssignedIdentitiesValue>
+                cluster.Identity.UserAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>
                 {
-                    { AssignIdentity, new ManagedClusterIdentityUserAssignedIdentitiesValue() }
+                    { AssignIdentity, new ManagedServiceIdentityUserAssignedIdentitiesValue() }
                 };
 
             }

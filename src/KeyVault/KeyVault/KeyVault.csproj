@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>KeyVault</PsModuleName>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.0.0" />
+    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.3.0" />
     <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.3.0" />
     <PackageReference Include="Azure.Security.KeyVault.Certificates" Version="4.3.0" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />

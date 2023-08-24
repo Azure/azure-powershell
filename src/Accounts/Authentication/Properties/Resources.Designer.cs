@@ -286,6 +286,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in around November 2023.
+        /// </summary>
+        public static string HelpMessageOfDisableErrorRecordsPersistence {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisableErrorRecordsPersistence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release..
         /// </summary>
         public static string HelpMessageOfDisplayBreakingChangeWarnings {
@@ -309,6 +318,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfEnableDataCollection {
             get {
                 return ResourceManager.GetString("HelpMessageOfEnableDataCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, error records will be written to ~/.Azure/ErrorRecords.
+        /// </summary>
+        public static string HelpMessageOfEnableErrorRecordsPersistence {
+            get {
+                return ResourceManager.GetString("HelpMessageOfEnableErrorRecordsPersistence", resourceCulture);
             }
         }
         

@@ -11,10 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
-    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.14.0" />
-    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.14.0" />
-    <PackageReference Include="Azure.Storage.Queues" Version="12.14.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.17.0" />
+    <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.15.0" />
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.15.0" />
+    <PackageReference Include="Azure.Storage.Queues" Version="12.15.0" />
   </ItemGroup>
 
   <ItemGroup>

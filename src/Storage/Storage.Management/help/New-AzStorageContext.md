@@ -16,7 +16,7 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
@@ -58,7 +58,7 @@ New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environm
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
@@ -92,7 +92,7 @@ New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <Strin
 ### OAuthAccountServiceEndpoint
 ```
 New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +217,14 @@ New-AzStorageContext -UseConnectedAccount -BlobEndpoint  "https://myaccountname.
 
 This command creates a context by using the OAuth authentication with a specified blob endpoint.
 
+### Example 15: Create a context by using the OAuth Authentication on File service
+```powershell
+New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount -EnableFileBackupRequestIntent
+```
+
+This command creates a context to use the OAuth (Azure AD) authentication on File service.
+Parameter '-EnableFileBackupRequestIntent' is required to use OAuth (Azure AD) Authentication for File service. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.
+
 ## PARAMETERS
 
 ### -Anonymous
@@ -270,6 +278,21 @@ Parameter Sets: ConnectionString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFileBackupRequestIntent
+Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OAuthAccount, OAuthAccountEnvironment, OAuthAccountServiceEndpoint
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

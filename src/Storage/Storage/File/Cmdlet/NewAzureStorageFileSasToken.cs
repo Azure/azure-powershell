@@ -183,6 +183,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
+
+            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+            }
+
             // Get share saved policy if any
             ShareSignedIdentifier identifier = null;
             if (!string.IsNullOrEmpty(this.Policy))

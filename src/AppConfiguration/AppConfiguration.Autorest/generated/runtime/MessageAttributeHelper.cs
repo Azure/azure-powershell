@@ -23,6 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime
     using System.Threading.Tasks;
     public class MessageAttributeHelper
     {
+        private static readonly bool IsAzure = Convert.ToBoolean(@"true");
         public const string BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK = "https://aka.ms/azps-changewarnings";
         public const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 
@@ -52,7 +53,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime
                 //Do not process the attributes at runtime... The env variable to override the warning messages is set
                 return;
             }
-
+            if (IsAzure && invocationInfo.BoundParameters.ContainsKey("DefaultProfile"))
+            {
+                psCmdlet.WriteWarning("The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.");
+            }
             List<GenericBreakingChangeAttribute> attributes = new List<GenericBreakingChangeAttribute>(GetAllBreakingChangeAttributesInType(commandInfo, invocationInfo, parameterSet));
             StringBuilder sb = new StringBuilder();
             Action<string> appendBreakingChangeInfo = (string s) => sb.Append(s);

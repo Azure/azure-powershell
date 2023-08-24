@@ -215,7 +215,7 @@ function Test-AddRegionOperation
         }
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-    Start-Sleep -s 60
+    Start-TestSleep -Seconds 60
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }

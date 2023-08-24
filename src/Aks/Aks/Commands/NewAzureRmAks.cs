@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (EnableRbac.IsPresent)
             {
-                managedCluster.EnableRBAC = EnableRbac;
+                managedCluster.EnableRbac = EnableRbac;
             }
             if (this.IsParameterBound(c => c.FqdnSubdomain))
             {
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.DiskEncryptionSetID))
             {
-                managedCluster.DiskEncryptionSetID = DiskEncryptionSetID;
+                managedCluster.DiskEncryptionSetId = DiskEncryptionSetID;
             }
             if (DisableLocalAccount.IsPresent)
             {
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (EnableOidcIssuer.IsPresent)
             {
-                managedCluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
+                managedCluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: true);
             }
 
             return managedCluster;
@@ -495,13 +495,13 @@ namespace Microsoft.Azure.Commands.Aks
                 name: NodeName ?? "default",
                 count: NodeCount,
                 vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize,
+                osDiskSizeGb: NodeOsDiskSize,
                 type: NodeVmSetType ?? "VirtualMachineScaleSets",
-                vnetSubnetID: NodeVnetSubnetID);
-            defaultAgentPoolProfile.OsType = "Linux";
+                vnetSubnetId: NodeVnetSubnetID);
+            defaultAgentPoolProfile.OSType = "Linux";
             if (this.IsParameterBound(c => c.NodeOsSKU))
             {
-                defaultAgentPoolProfile.OsSKU = NodeOsSKU;
+                defaultAgentPoolProfile.OSSku = NodeOsSKU;
                 if (NodeOsSKU.ToLower().Equals("cblmariner") || NodeOsSKU.ToLower().Equals("mariner")) {
                     WriteWarning("The NodeOsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The NodeOsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
                 }
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
             {
-                defaultAgentPoolProfile.NodePublicIPPrefixID = NodePublicIPPrefixID;
+                defaultAgentPoolProfile.NodePublicIPPrefixId = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.NodeScaleSetEvictionPolicy))
             {
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Commands.Aks
                 }
             }
             if (this.IsParameterBound(c => c.NodePodSubnetID)) {
-                defaultAgentPoolProfile.PodSubnetID = NodePodSubnetID;
+                defaultAgentPoolProfile.PodSubnetId = NodePodSubnetID;
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableUltraSSD.IsPresent)
             {
-                defaultAgentPoolProfile.EnableUltraSSD = EnableUltraSSD.ToBool();
+                defaultAgentPoolProfile.EnableUltraSsd = EnableUltraSSD.ToBool();
             }
             if (this.IsParameterBound(c => c.NodeLinuxOSConfig))
             {
@@ -583,18 +583,18 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.PPG))
             {
-                defaultAgentPoolProfile.ProximityPlacementGroupID = PPG;
+                defaultAgentPoolProfile.ProximityPlacementGroupId = PPG;
             }
             if (EnableFIPS.IsPresent)
             {
-                defaultAgentPoolProfile.EnableFIPS = EnableFIPS.ToBool();
+                defaultAgentPoolProfile.EnableFips = EnableFIPS.ToBool();
             }
             if (this.IsParameterBound(c => c.GpuInstanceProfile))
             {
                 defaultAgentPoolProfile.GpuInstanceProfile = GpuInstanceProfile;
             }
             if (this.IsParameterBound(c => c.NodeHostGroupID)) {
-                defaultAgentPoolProfile.HostGroupID = NodeHostGroupID;
+                defaultAgentPoolProfile.HostGroupId = NodeHostGroupID;
             }
 
             defaultAgentPoolProfile.Mode = NodePoolMode;

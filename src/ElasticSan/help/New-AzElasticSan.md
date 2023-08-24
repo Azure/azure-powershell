@@ -15,9 +15,9 @@ Create ElasticSan.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSan -Name <String> -ResourceGroupName <String> -BaseSizeTiB <Int64>
- -ExtendedCapacitySizeTiB <Int64> -SkuName <SkuName> [-SubscriptionId <String>] [-AvailabilityZone <String[]>]
- [-Location <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <SkuName> [-SubscriptionId <String>]
+ [-AvailabilityZone <String[]>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -36,8 +36,8 @@ New-AzElasticSan -InputObject <IElasticSanIdentity> -Parameter <IElasticSan> [-D
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -ExtendedCapacitySizeTiB <Int64>
- -SkuName <SkuName> [-AvailabilityZone <String[]>] [-Location <String>] [-SkuTier <SkuTier>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -SkuName <SkuName> [-AvailabilityZone <String[]>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,14 +172,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,7 +221,7 @@ Response for ElasticSan request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Azure resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -344,13 +344,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 
 ## NOTES
 
@@ -364,26 +364,27 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
   - `[ElasticSanName <String>]`: The name of the ElasticSan.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The name of the Private Endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
   - `[VolumeName <String>]`: The name of the Volume.
 
 `PARAMETER <IElasticSan>`: Response for ElasticSan request.
+  - `Location <String>`: The geo-location where the resource lives
   - `BaseSizeTiB <Int64>`: Base size of the Elastic San appliance in TiB.
   - `ExtendedCapacitySizeTiB <Int64>`: Extended size of the Elastic San appliance in TiB.
   - `SkuName <SkuName>`: The sku name.
-  - `[Location <String>]`: The geo-location where the resource lives.
-  - `[Tag <IResourceTags>]`: Azure resource tags.
+  - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AvailabilityZone <String[]>]`: Logical zone for Elastic San resource; example: ["1"].
-  - `[SkuTier <SkuTier?>]`: The sku tier.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[AvailabilityZone <String[]>]`: Logical zone for Elastic San resource; example: ["1"].
+  - `[SkuTier <SkuTier?>]`: The sku tier.
 
 ## RELATED LINKS
 

@@ -25,12 +25,12 @@ Test-AzEventHubName -NamespaceName myNamespace
 Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
 #>
 function Test-AzEventHubName {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='NamespaceAvailability', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Id = tableGetPropertiesResource.Id;
-            _rid = tableGetPropertiesResource._rid;
-            _ts = tableGetPropertiesResource._ts;
-            _etag = tableGetPropertiesResource._etag;
+            _rid = tableGetPropertiesResource.Rid;
+            _ts = tableGetPropertiesResource.Ts;
+            _etag = tableGetPropertiesResource.Etag;
         }
 
         //
