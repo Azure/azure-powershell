@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Add breaking change for Data Collection Rule
 
 ## Version 4.5.0
 * Added cmdlets for monitor workspace: 
