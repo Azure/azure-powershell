@@ -9,11 +9,6 @@ on:
     types:  
       - submitted  
       - dismissed
-  pull_request_review_comment:  
-    types:  
-      - created  
-      - edited  
-      - deleted
   
 jobs:  
   enforce_required_reviewers:  
