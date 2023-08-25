@@ -23,27 +23,18 @@ Create or update a trigger for the specified virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a trigger for the specified virtual machine image template.
 ```powershell
-{{ Add code here }}
+New-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger -Kind "SourceImage"
 ```
 
 ```output
-{{ Add output here }}
+Kind        Name                ProvisioningState ResourceGroupName
+----        ----                ----------------- -----------------
+SourceImage azps-buildertrigger Succeeded         azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update a trigger for the specified virtual machine image template.
 
 ## PARAMETERS
 

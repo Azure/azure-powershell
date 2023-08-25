@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzImageBuilderTrigger'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzImageBuilderTemplateDistributeVersionerLatestObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzImageBuilderTrigger.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzImageBuilderTemplateDistributeVersionerLatestObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,11 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzImageBuilderTrigger'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzImageBuilderTrigger' {
-    It 'CreateExpanded' {
+Describe 'New-AzImageBuilderTemplateDistributeVersionerLatestObject' {
+    It '__AllParameterSets' {
         {
-            $trigger = New-AzImageBuilderTrigger -ImageTemplateName $env.newTemplateName1 -ResourceGroupName $env.rg -Name $env.newTempTriggerName2 -Kind "SourceImage"
-            $trigger.Name | Should -Be $env.newTempTriggerName2
+            $distribute = New-AzImageBuilderTemplateDistributeVersionerLatestObject -Major 10
+            $distribute.Major | Should -Be 10
         } | Should -Not -Throw
     }
 }

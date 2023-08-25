@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Cancel the long running image build based on the image template.
 ```powershell
-{{ Add code here }}
+Stop-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-```output
-{{ Add output here }}
-```
+Cancel the long running image build based on the image template.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Cancel the long running image build based on the image template.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Stop-AzImageBuilderTemplate
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Cancel the long running image build based on the image template.

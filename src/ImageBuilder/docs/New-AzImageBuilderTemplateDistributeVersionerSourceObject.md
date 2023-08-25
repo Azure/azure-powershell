@@ -21,27 +21,18 @@ Create an in-memory object for DistributeVersionerSource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DistributeVersionerSource.
 ```powershell
-{{ Add code here }}
+New-AzImageBuilderTemplateDistributeVersionerSourceObject
 ```
 
 ```output
-{{ Add output here }}
+Scheme
+------
+Source
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for DistributeVersionerSource.
 
 ## PARAMETERS
 

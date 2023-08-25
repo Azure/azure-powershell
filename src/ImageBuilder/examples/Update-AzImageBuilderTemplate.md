@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the tags for this Virtual Machine Image Template.
 ```powershell
-{{ Add code here }}
+Update-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Tag @{"123"="abc"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   azps-ibt-1 azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
+Update the tags for this Virtual Machine Image Template.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the tags for this Virtual Machine Image Template.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder | Update-AzImageBuilderTemplate -Tag @{"123"="abc"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   azps-ibt-1 azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
-
+Update the tags for this Virtual Machine Image Template.

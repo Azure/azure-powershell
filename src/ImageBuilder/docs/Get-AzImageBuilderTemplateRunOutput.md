@@ -35,27 +35,31 @@ Get the specified run output for the specified image template resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the specified run output for the specified image template resource by ImageTemplateName.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
+List the specified run output for the specified image template resource by ImageTemplateName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the specified run output for the specified image template resource by Name.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name runoutput-01
 ```
 
 ```output
-{{ Add output here }}
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
+Get the specified run output for the specified image template resource by Name.
 
 ## PARAMETERS
 

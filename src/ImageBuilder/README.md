@@ -121,7 +121,33 @@ directive:
     - ImageTemplateSource
     - ImageTemplateInVMValidator
     - DistributeVersioner
-  
+
+  - where:
+      model-name: ImageTemplate
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: Trigger
+    set:
+      format-table:
+        properties:
+          - Kind
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: RunOutput
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+
   # Generate models and combine them as 1 cmdlet
   # - model-cmdlet:
   #   ########### ImageTemplateCustomizer ############

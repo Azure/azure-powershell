@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the specified trigger for the specified image template resource by ImageTemplateName.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
 ```output
-{{ Add output here }}
+Kind        Name                ProvisioningState ResourceGroupName
+----        ----                ----------------- -----------------
+SourceImage azps-buildertrigger Succeeded         azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
+List the specified trigger for the specified image template resource by ImageTemplateName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the specified trigger for the specified image template resource by Name.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger
 ```
 
 ```output
-{{ Add output here }}
+Kind        Name                ProvisioningState ResourceGroupName
+----        ----                ----------------- -----------------
+SourceImage azps-buildertrigger Succeeded         azps_test_group_imagebuilder
 ```
 
-{{ Add description here }}
-
+Get the specified trigger for the specified image template resource by Name.

@@ -30,27 +30,19 @@ Delete a trigger for the specified virtual machine image template
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a trigger for the specified virtual machine image template.
 ```powershell
-{{ Add code here }}
+Remove-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a trigger for the specified virtual machine image template.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a trigger for the specified virtual machine image template.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTrigger -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name azps-buildertrigger | Remove-AzImageBuilderTrigger
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a trigger for the specified virtual machine image template.
 
 ## PARAMETERS
 

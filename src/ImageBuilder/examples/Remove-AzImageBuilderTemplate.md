@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a virtual machine image template.
 ```powershell
-{{ Add code here }}
+Remove-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a virtual machine image template.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a virtual machine image template.
 ```powershell
-{{ Add code here }}
+Get-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder | Remove-AzImageBuilderTemplate
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete a virtual machine image template.
