@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\..\Repo.props" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Build.Tasks</AssemblyName>
     <RootNamespace>Microsoft.Azure.Build.Tasks</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

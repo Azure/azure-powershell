@@ -14,7 +14,7 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptOwnership [-SubscriptionId <String>] [-DisplayName <String>]
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -159,9 +159,9 @@ Type: System.String
 Parameter Sets: AcceptExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
