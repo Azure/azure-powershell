@@ -284,10 +284,8 @@ function New-AzMigrateHCIServerReplication {
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($policyObj -and ($policyObj.Count -ge 1)) {
-            $policyId = $policyObj.Id
-        }
-        else {
+
+        if ($null -eq $policyObj) {
             throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
         }
 
@@ -530,20 +528,22 @@ function New-AzMigrateHCIServerReplication {
             $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCINicInput[]]$nics
         }
         
-        $protectedItemProperties.CustomProperty = $customProperties  
+        $protectedItemProperties.CustomProperty = $customProperties
 
-        $output = Az.Migrate.Internal\New-AzMigrateProtectedItem `
-            -Name $MachineName `
-            -ResourceGroupName $ResourceGroupName `
-            -VaultName $vaultName `
-            -Property $protectedItemProperties `
-            -NoWait
-        $jobName = $output.Target.Split("/")[14].Split("?")[0]
-        
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        $null = $PSBoundParameters.Add('Name', $jobName)
+        $null = $PSBoundParameters.Add('Name', $MachineName)
+        $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
+        $null = $PSBoundParameters.Add('NoWait', $true)
+        
+        $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
+        $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+        
+        $null = $PSBoundParameters.Remove('Name')  
+        $null = $PSBoundParameters.Remove('Property')
+        $null = $PSBoundParameters.Remove('NoWait')
 
+        $null = $PSBoundParameters.Add('Name', $jobName)
         return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
     }
 }

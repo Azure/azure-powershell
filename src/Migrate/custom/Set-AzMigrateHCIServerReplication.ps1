@@ -295,7 +295,6 @@ function Set-AzMigrateHCIServerReplication {
             $disks += $DiskObject
         }
 
-
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIDiskInput[]]$disks
             $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCINicInput[]]$nics
@@ -307,16 +306,20 @@ function Set-AzMigrateHCIServerReplication {
 
         $protectedItemProperties.CustomProperty = $customProperties
 
-        $output = Az.Migrate.Internal\New-AzMigrateProtectedItem `
-            -Name $MachineName `
-            -ResourceGroupName $ResourceGroupName `
-            -VaultName $VaultName `
-            -Property $protectedItemProperties
-                
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $VaultName)
-        $null = $PSBoundParameters.Add('Name', $output.Name)
+        $null = $PSBoundParameters.Add('VaultName', $vaultName)
+        $null = $PSBoundParameters.Add('Name', $MachineName)
+        $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
+        $null = $PSBoundParameters.Add('NoWait', $true)
+        
+        $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
+        $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+        
+        $null = $PSBoundParameters.Remove('Name')  
+        $null = $PSBoundParameters.Remove('Property')
+        $null = $PSBoundParameters.Remove('NoWait')
 
-        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters;
+        $null = $PSBoundParameters.Add('Name', $jobName)
+        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
     }
 }   

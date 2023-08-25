@@ -51,9 +51,9 @@ function Get-AzMigrateHCIServerReplication {
         # Specifies the machine ID of the discovered server.
         ${DiscoveredMachineId},
 
-        [Parameter(ParameterSetName = 'GetByInputObject', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByInputObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
         # Specifies the machine object of the replicating server.
         ${InputObject},
 
