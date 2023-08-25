@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSManagedHSMSecurityDomain
+    public class PSManagedHsmSecurityDomain
     {
         /// <summary>
         /// Gets activation Status Possible values include: &#39;Active&#39;, &#39;NotActivated&#39;, &#39;Unknown&#39;, &#39;Failed&#39;
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         public string ActivationStatusMessage { get; private set; }
          
-        public PSManagedHSMSecurityDomain(ManagedHSMSecurityDomainProperties managedHSMSecurityDomainProperties)
+        public PSManagedHsmSecurityDomain(ManagedHSMSecurityDomainProperties managedHSMSecurityDomainProperties)
         {
             this.ActivationStatus = managedHSMSecurityDomainProperties?.ActivationStatus;
             this.ActivationStatusMessage = managedHSMSecurityDomainProperties?.ActivationStatusMessage;
