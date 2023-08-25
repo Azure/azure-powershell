@@ -203,6 +203,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 false,
                 string.Format("AzPS{0}", ConfigKeys.DisableErrorRecordsPersistence),
                 new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.CheckForUpgrade,
+                "When enabled, a warning message is displayed if local Az version needs to be upgraded. The default value will be changed from false to true in Az version 11.0.0 and Az.Accounts version 3.0.0. ",
+                false,
+                ConfigKeys.EnvCheckForUpgrade,
+                new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,

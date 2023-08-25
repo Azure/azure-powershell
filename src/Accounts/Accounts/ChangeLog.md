@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported in-tool notification for version upgrade.
 * Added an alias `Set-AzConfig` to `Update-AzConfig`
 * Refilled credentials from `AzKeyStore` when run `Save-AzContext` [#22355]
 * Added config `DisableErrorRecordsPersistence` to disable writing error records to file system [#21732]
