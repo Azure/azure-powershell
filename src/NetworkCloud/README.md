@@ -202,7 +202,9 @@ directive:
     set:
       subject: ClusterVersionUpdate
       verb: Invoke
-# rename parameter with duplicate or long names
+  # rename parameter with duplicate or long names to shorted names
+  # For. e.g, in cmdlet "New-AzNetworkCloudKubernetesCluster", the parameter "ControlPlaneNodeConfigurationAdministratorConfigurationAdminUsername" is long and
+  # and contains duplicate word "Configuration".
   - where:
      parameter-name: ControlPlaneNodeConfigurationAdministratorConfigurationAdminUsername
     set:
@@ -232,7 +234,7 @@ directive:
     set:
       parameter-name: BgpIPAddressPool
 
-  #define password parameters as `password` type
+  # define password parameters as `password` type, which generates it as "SecureString"
   - from: swagger-document
     where: $.definitions.AdministrativeCredentials.properties.password
     transform: $.format = "password"
@@ -245,16 +247,18 @@ directive:
 
   # Add model-cmdlet for any properties/sub-properties of complex type
   - model-cmdlet:
-    - IBareMetalMachineConfigurationData
-    - IBgpAdvertisement
-    - IEndpointDependency
-    - IInitialAgentPoolConfiguration
-    - IIPAddressPool
-    - IKeySetUser
-    - IL3NetworkAttachmentConfiguration
-    - INetworkAttachment
-    - IRackDefinition
-    - IServiceLoadBalancerBgpPeer
-    - IStorageApplianceConfigurationData
-    - IVirtualMachinePlacementHint
+    - BareMetalMachineConfigurationData
+    - BgpAdvertisement
+    - BgpServiceLoadBalancerConfiguration
+    - ControlPlaneNodeConfiguration
+    - EgressEndpoint
+    - EndpointDependency
+    - InitialAgentPoolConfiguration
+    - L3NetworkAttachmentConfiguration
+    - KeySetUser
+    - NetworkAttachment
+    - RackDefinition
+    - ServiceLoadBalancerBgpPeer
+    - StorageApplianceConfigurationData
+    - VirtualMachinePlacementHint
 ```
