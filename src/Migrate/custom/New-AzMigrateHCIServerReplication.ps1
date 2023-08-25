@@ -229,7 +229,7 @@ function New-AzMigrateHCIServerReplication {
         }
         
         # Get fabrics and appliances in the project
-        $allFabrics = Az.Migrate.Internal\Get-AzMigrateFabric -ResourceGroupName $ResourceGroupName
+        $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
                 continue;
@@ -277,7 +277,7 @@ function New-AzMigrateHCIServerReplication {
 
         # Validate Policy
         $policyName = $vaultName + $instanceType + "policy"
-        $policyObj = Az.Migrate.Internal\Get-AzMigratePolicy `
+        $policyObj = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
             -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $vaultName `
@@ -536,12 +536,14 @@ function New-AzMigrateHCIServerReplication {
             -Name $MachineName `
             -ResourceGroupName $ResourceGroupName `
             -VaultName $vaultName `
-            -Property $protectedItemProperties
-                    
+            -Property $protectedItemProperties `
+            -NoWait
+        $jobName = $output.Target.Split("/")[14].Split("?")[0]
+        
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        $null = $PSBoundParameters.Add('Name', $output.Name)
+        $null = $PSBoundParameters.Add('Name', $jobName)
 
-        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters;
+        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
     }
 }
