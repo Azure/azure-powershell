@@ -347,38 +347,38 @@ directive:
       subject: BookmarkRelation
     set:
       breaking-change:
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       subject: EntityQuery
     set:
       breaking-change:
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       subject: Setting
     set:
       breaking-change:
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       verb: Get
       subject: Enrichment|Entity|EntityActivity|EntityInsight|EntityQueryTemplate|EntityRelation|EntityTimeline
     set:
       breaking-change:
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       verb: New
       subject: IncidentTeam
     set:
       breaking-change:
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       parameter-name: Action
@@ -386,8 +386,8 @@ directive:
       breaking-change:
         become-mandatory: true
         change-description: Action is required.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       parameter-name: Order
@@ -396,8 +396,8 @@ directive:
       breaking-change:
         become-mandatory: true
         change-description: Order is required.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       parameter-name: DisplayName
@@ -406,8 +406,8 @@ directive:
       breaking-change:
         become-mandatory: true
         change-description: DisplayName is required.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       verb: New
@@ -416,8 +416,8 @@ directive:
     set:
       breaking-change:
         change-description: ParameterSet Create will be deprecated.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       verb: New
@@ -426,8 +426,8 @@ directive:
     set:
       breaking-change:
         change-description: ParameterSet Create will be deprecated.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
   - where:
       verb: New
@@ -436,7 +436,7 @@ directive:
     set:
       breaking-change:
         change-description: ParameterSet Create will be deprecated.
-        deprecated-by-azversion: 11.0.0
         deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 11.0.0
         change-effective-date: 2023/11/15
 ```

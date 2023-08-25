@@ -828,13 +828,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ENTITYMAPPING <EntityMapping>`: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
+ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
   - `[EntityType <EntityMappingType?>]`: The V3 type of the mapped entity
   - `[FieldMapping <IFieldMapping[]>]`: array of field mappings for the given entity mapping
     - `[ColumnName <String>]`: the column name to be mapped to the identifier
     - `[Identifier <String>]`: the V3 identifier of the entity
 
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID
