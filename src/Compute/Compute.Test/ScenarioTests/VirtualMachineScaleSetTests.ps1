@@ -4690,8 +4690,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $imgRef.Offer = $Offer;
         $imgRef.Skus = $SKU;
         $imgRef.Version = "latest";
-
-
+        
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
@@ -4709,11 +4708,22 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         # Verify security value
         Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
 
+        
         # 2nd Scenario, SecurityType passed into only New-AzVmssConfig and not Set-AzVmssSecurityProfile.
         $vmssName2 = 'vmss2' + $rgname;
+        $nameprefix = "test2";
+        # NRP
+        $vnetworkName = 'vnet2' + $rgname;
+        $subnetName = 'subnet2' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipCfg = New-AzVmssIPConfig -Name $nameprefix -SubnetId $subnetId;
+        
         $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -SecurityType $securityTypeStnd `
-			| Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-			| Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+			| Add-AzVmssNetworkInterfaceConfiguration -Name $nameprefix -Primary $true -IPConfiguration $ipCfg `
+			| Set-AzVmssOSProfile -ComputerNamePrefix $nameprefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
 			| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
 			-ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
 			-ImageReferencePublisher $imgRef.PublisherName ;
