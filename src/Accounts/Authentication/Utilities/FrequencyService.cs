@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     // This service is to ensure the business actions will be called after their due dates. It does not work like a scheduler.
     // It relies on its record file AzPSFrequencyService.json. If this file is not readable or failed to be parsed, ignore it. 
-    public class FrequencyService : IFrequencyService
+    internal class FrequencyService : IFrequencyService
     {
         private Dictionary<string, FrequencyInfo> _frequencies;
         private Dictionary<string, bool> _perPSSessionRegistry;
@@ -178,12 +178,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
     }
 
-    public interface IClock
+    internal interface IClock
     {
         bool IsDue(DateTime lastCheckTime, TimeSpan frequency);
     }
 
-    class Clock : IClock
+    internal class Clock : IClock
     {
         public bool IsDue(DateTime lastCheckTime, TimeSpan freq)
         {
