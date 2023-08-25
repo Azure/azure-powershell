@@ -16,5 +16,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         SecurityDomainRestoreData EncryptForRestore(PlaintextList plaintextList, X509Certificate2 cert);
 
         void RestoreSecurityDomain(string hsmName, SecurityDomainRestoreData securityDomainData, CancellationToken cancellationToken);
+
+        void RestoreSecurityDomainBlob(SecurityDomainRestoreData securityDomainData, CancellationToken cancellationToken);
     }
 }

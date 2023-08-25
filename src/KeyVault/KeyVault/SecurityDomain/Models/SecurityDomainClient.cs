@@ -528,5 +528,33 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 throw new Exception(Resources.RestoreSecurityDomainFailure, ex);
             }
         }
+
+        /// <summary>
+        /// Upload security domain data and initiate restoring.
+        /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="securityDomainData">Encrypted by exchange key</param>
+        /// <param name="cancellationToken"></param>
+        public void RestoreSecurityDomainBlob(string hsmName, SecurityDomainRestoreData securityDomainData, CancellationToken cancellationToken)
+        {
+            string securityDomain = JsonConvert.SerializeObject(new SecurityDomainWrapper
+            {
+                value = JsonConvert.SerializeObject(securityDomainData)
+            });
+
+           // securityDomain.value;
+
+            try
+            {
+                var httpRequest = CreateRequest(HttpMethod.Post, hsmName, $"/{_securityDomain}/upload", new StringContent(securityDomain));
+                PollAsyncOperation(httpRequest, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Resources.RestoreSecurityDomainFailure, ex);
+            }
+        }
+
+        public 
     }
 }
