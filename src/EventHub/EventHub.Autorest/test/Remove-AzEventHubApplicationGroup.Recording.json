@@ -1,45 +1,44 @@
 {
-  "Remove-AzEventHubApplicationGroup+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup?api-version=2022-10-01-preview+1": {
+  "Remove-AzEventHubApplicationGroup+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/b?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup?api-version=2022-10-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"NamespaceSASKeyName=b\",\n    \"policies\": [\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/b?api-version=2023-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "253" ]
+        "Content-Length": [ "70" ]
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c08cb1d2-6b8b-4e7a-99eb-4467e1aa0248_M9SN1_M9SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "e6ce63ae-ce4b-45e3-8f4c-ac4cdeca567d" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230417T061310Z:e6ce63ae-ce4b-45e3-8f4c-ac4cdeca567d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1180" ],
+        "x-ms-request-id": [ "66e6a948-90db-4b12-ba01-82b278587539" ],
+        "x-ms-correlation-request-id": [ "66e6a948-90db-4b12-ba01-82b278587539" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181453Z:66e6a948-90db-4b12-ba01-82b278587539" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 17 Apr 2023 06:13:09 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 18:14:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "389" ],
+        "Content-Length": [ "324" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"\u003cError\u003e\u003cCode\u003e400\u003c/Code\u003e\u003cDetail\u003eCannot create or update an Application Group with non-existent SAS Key. TrackingId:02869e52-c2b3-4174-99e4-a7be8561688c_M9SN1_G6, SystemTracker:namespacename9ys3v4.servicebus.windows.net:$applicationgroups/appGroup, Timestamp:2023-04-17T06:13:10\u003c/Detail\u003e\u003c/Error\u003e CorrelationId: e6ce63ae-ce4b-45e3-8f4c-ac4cdeca567d\",\"code\":\"BadRequest\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/b\",\"name\":\"b\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubApplicationGroup+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup?api-version=2022-10-01-preview+1": {
+  "Remove-AzEventHubApplicationGroup+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
       "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"NamespaceSASKeyName=b\",\n    \"policies\": [\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -50,26 +49,265 @@
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a7626b8a-ced1-4eef-9421-561903270f30_M9SN1_M9SN1" ],
+        "x-ms-request-id": [ "36a48359-277c-4e1e-91d4-11ea806a08a6_M11SN1_M11SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
-        "x-ms-correlation-request-id": [ "6c8c4250-c45f-46d7-9209-0f3d371a8cb9" ],
-        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230417T061311Z:6c8c4250-c45f-46d7-9209-0f3d371a8cb9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1179" ],
+        "x-ms-correlation-request-id": [ "72f54644-ebe2-4bac-b471-db48597f0ce9" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181454Z:72f54644-ebe2-4bac-b471-db48597f0ce9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 17 Apr 2023 06:13:10 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 18:14:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "389" ],
+        "Content-Length": [ "429" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"\u003cError\u003e\u003cCode\u003e400\u003c/Code\u003e\u003cDetail\u003eCannot create or update an Application Group with non-existent SAS Key. TrackingId:0f0a9928-a9ac-47e3-bfc7-93a37a834d7b_M9SN1_G6, SystemTracker:namespacename9ys3v4.servicebus.windows.net:$applicationgroups/appGroup, Timestamp:2023-04-17T06:13:11\u003c/Detail\u003e\u003c/Error\u003e CorrelationId: 6c8c4250-c45f-46d7-9209-0f3d371a8cb9\",\"code\":\"BadRequest\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup\",\"name\":\"appGroup\",\"type\":\"\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=b\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "197" ],
+        "x-ms-client-request-id": [ "f7a11827-4b4c-400e-abf9-212a8f69827c" ],
+        "CommandName": [ "Remove-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Remove-AzEventHubApplicationGroup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "76c4bd43-70de-4f70-a115-4d5d08e6e7a4_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "6599536d-c8ee-4b09-b81d-beae6f5e3b1d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181455Z:6599536d-c8ee-4b09-b81d-beae6f5e3b1d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:14:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "198" ],
+        "x-ms-client-request-id": [ "f422812e-c7bc-4ed7-888d-48a4d2e63487" ],
+        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "73fd0d13-81b4-4344-876e-0084d680cb16_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11856" ],
+        "x-ms-correlation-request-id": [ "0880b645-b741-42f2-b0a4-754005a1d184" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181456Z:0880b645-b741-42f2-b0a4-754005a1d184" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:14:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "141" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"message\":\"The requested resource appGroup does not exist. CorrelationId: 0880b645-b741-42f2-b0a4-754005a1d184\",\"code\":\"NotFound\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/c?api-version=2023-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/c?api-version=2023-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "70" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1178" ],
+        "x-ms-request-id": [ "f190b88c-ecf7-485c-aec6-1dc1fb5eff0f" ],
+        "x-ms-correlation-request-id": [ "f190b88c-ecf7-485c-aec6-1dc1fb5eff0f" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181502Z:f190b88c-ecf7-485c-aec6-1dc1fb5eff0f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:15:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/authorizationRules/c\",\"name\":\"c\",\"type\":\"Microsoft.EventHub/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Manage\",\"Send\",\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"NamespaceSASKeyName=c\",\n    \"policies\": [\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "253" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f6e83c5a-ada6-4370-92d1-7d10119d24ab_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1177" ],
+        "x-ms-correlation-request-id": [ "5d232634-3870-4c45-8db3-d51149cb3247" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181503Z:5d232634-3870-4c45-8db3-d51149cb3247" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:15:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "429" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup\",\"name\":\"appGroup\",\"type\":\"\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=c\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "201" ],
+        "x-ms-client-request-id": [ "2e61cefa-0262-4d71-93d2-11cab8fc7526" ],
+        "CommandName": [ "Remove-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Remove-AzEventHubApplicationGroup_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9aae6437-0ea8-4e81-b810-3aa919be60f5_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-correlation-request-id": [ "096a6a4f-ab0f-4891-be56-a321e6e2ffc3" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181506Z:096a6a4f-ab0f-4891-be56-a321e6e2ffc3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:15:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzEventHubApplicationGroup+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/applicationGroups/appGroup?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "202" ],
+        "x-ms-client-request-id": [ "47276671-3b73-4d30-ba7e-ecceb71701d3" ],
+        "CommandName": [ "Get-AzEventHubApplicationGroup" ],
+        "FullCommandName": [ "Get-AzEventHubApplicationGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "84aeed06-b0dc-4e6e-8ee0-c3bbef458988_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11855" ],
+        "x-ms-correlation-request-id": [ "fa0a0c5c-269d-4c72-9e92-287c8fb9bd50" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T181507Z:fa0a0c5c-269d-4c72-9e92-287c8fb9bd50" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 17 Aug 2023 18:15:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "141" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"message\":\"The requested resource appGroup does not exist. CorrelationId: fa0a0c5c-269d-4c72-9e92-287c8fb9bd50\",\"code\":\"NotFound\"}}",
       "isContentBase64": false
     }
   }
