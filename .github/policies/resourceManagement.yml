@@ -1,10 +1,10 @@
-id:
+id: 
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
-owner:
+owner: 
 resource: repository
 disabled: false
-where:
+where: 
 configuration:
   resourceManagementConfiguration:
     scheduledSearches:
@@ -353,7 +353,6 @@ configuration:
         - mentionUsers:
             mentionees:
             - jaspkaur28
-            - ''
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -825,18 +824,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Consumption- RIandShowBack
-        then:
-        - mentionUsers:
-            mentionees:
-            - ccmshowbackdevs
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: Consumption-Billing
+            label: Consumption - Billing
         then:
         - mentionUsers:
             mentionees:
@@ -847,7 +835,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Consumption-Budget
+            label: Consumption - Budget
         then:
         - mentionUsers:
             mentionees:
@@ -858,7 +846,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Consumption-Consumption
+            label: Consumption - Consumption
         then:
         - mentionUsers:
             mentionees:
@@ -869,7 +857,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Consumption-Query
+            label: Consumption - Query
         then:
         - mentionUsers:
             mentionees:
@@ -880,7 +868,18 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Consumption-UsageDetailsandExport
+            label: Consumption - RIandShowBack
+        then:
+        - mentionUsers:
+            mentionees:
+            - ccmshowbackdevs
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Consumption - UsageDetailsandExport
         then:
         - mentionUsers:
             mentionees:
@@ -965,7 +964,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cost Management-Billing
+            label: Cost Management - Billing
         then:
         - mentionUsers:
             mentionees:
@@ -976,7 +975,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cost Management-Budget
+            label: Cost Management - Budget
         then:
         - mentionUsers:
             mentionees:
@@ -987,7 +986,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cost Management-Query
+            label: Cost Management - Query
         then:
         - mentionUsers:
             mentionees:
@@ -998,7 +997,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cost Management-RIandShowBack
+            label: Cost Management - RIandShowBack
         then:
         - mentionUsers:
             mentionees:
@@ -1009,7 +1008,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cost Management-UsageDetailsAndExport
+            label: Cost Management - UsageDetailsAndExport
         then:
         - mentionUsers:
             mentionees:
@@ -1512,6 +1511,17 @@ configuration:
         - mentionUsers:
             mentionees:
             - Lighthouse-Azure
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Management Partner
+        then:
+        - mentionUsers:
+            mentionees:
+            - jeffrey-ACE
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2294,7 +2304,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - chlahav
+            - zivraf
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2752,5 +2762,5 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
-onFailure:
-onSuccess:
+onFailure: 
+onSuccess: 
