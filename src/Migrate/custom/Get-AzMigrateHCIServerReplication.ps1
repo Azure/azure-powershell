@@ -175,7 +175,7 @@ function Get-AzMigrateHCIServerReplication {
                 $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
             }
             else {
-                $siteObject = Az.Migrate\Get-AzMigrateHyperVSite @PSBoundParameters
+                $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
             }
             
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]

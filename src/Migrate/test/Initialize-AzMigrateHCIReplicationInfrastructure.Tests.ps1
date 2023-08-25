@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Initialize-AzMigrateHCIReplic
 Describe 'Initialize-AzMigrateHCIReplicationInfrastructure' {
     It 'Default' -skip {
         $output = Initialize-AzMigrateHCIReplicationInfrastructure `
-            -ProjectName $env.asrv2ProjectName `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -SourceApplianceName $env.asrv2SourceApplianceName `
-            -TargetApplianceName $env.asrv2TargetApplianceName `
+            -ProjectName $env.hciProjectName `
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -SubscriptionId $env.hciSubscriptionId `
+            -SourceApplianceName $env.hciSourceApplianceName `
+            -TargetApplianceName $env.hciTargetApplianceName `
             -PassThru
         $output | Should -Be $true
     }

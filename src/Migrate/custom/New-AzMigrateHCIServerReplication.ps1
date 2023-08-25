@@ -188,7 +188,7 @@ function New-AzMigrateHCIServerReplication {
             $InputObject = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
             
             $null = $PSBoundParameters.Remove('MachineName')
-            $siteObject = Az.Migrate\Get-AzMigrateHyperVSite @PSBoundParameters
+            $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
@@ -340,7 +340,7 @@ function New-AzMigrateHCIServerReplication {
             
         # Get source appliance RunAsAccount
         if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $runAsAccounts = Az.Migrate\Get-AzMigrateHyperVRunAsAccount `
+            $runAsAccounts = Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount `
                 -ResourceGroupName $ResourceGroupName `
                 -SiteName $SiteName `
                 -SubscriptionId $SubscriptionId

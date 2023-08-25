@@ -17,27 +17,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIReplicationPo
 Describe 'Get-AzMigrateHCIReplicationPolicy' {
     It 'List' {
         $output = Get-AzMigrateHCIReplicationPolicy `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -VaultName $env.asrv2ReplicationVaultName `
-            -SubscriptionId $env.asrv2SubscriptionId
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -VaultName $env.hciReplicationVaultName `
+            -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
         $output = Get-AzMigrateHCIReplicationPolicy `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -VaultName $env.asrv2ReplicationVaultName `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -Name $env.asrv2ReplicationPolicyName
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -VaultName $env.hciReplicationVaultName `
+            -SubscriptionId $env.hciSubscriptionId `
+            -Name $env.hciReplicationPolicyName
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetViaIdentity' {
         $output = Get-AzMigrateHCIReplicationPolicy `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -VaultName $env.asrv2ReplicationVaultName `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -Name $env.asrv2ReplicationPolicyName
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -VaultName $env.hciReplicationVaultName `
+            -SubscriptionId $env.hciSubscriptionId `
+            -Name $env.hciReplicationPolicyName
 
         $output1 = Get-AzMigrateHCIReplicationPolicy -InputObject $output
         $output1.Count | Should -BeGreaterOrEqual 1

@@ -21,7 +21,7 @@ Describe 'Get-AzMigrateHCIServerReplication' {
     }
 
     It 'GetBySRSID' {
-        $output = Get-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItemId -SubscriptionId $env.hciSubscriptionId
+        $output = Get-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
@@ -31,7 +31,7 @@ Describe 'Get-AzMigrateHCIServerReplication' {
     }
 
     It 'GetByInputObject' {
-        $output = Get-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItemId -SubscriptionId $env.hciSubscriptionId
+        $output = Get-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId
         $output = Get-AzMigrateHCIServerReplication -InputObject $output -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }

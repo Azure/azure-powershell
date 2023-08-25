@@ -17,46 +17,46 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMigrateHCIJob'))
 Describe 'Get-AzMigrateHCIJob' {
     It 'ListByName' {
         $output = Get-AzMigrateHCIJob `
-            -ProjectName $env.asrv2ProjectName `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -SubscriptionId $env.asrv2SubscriptionId
+            -ProjectName $env.hciProjectName `
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetByName' {
         $output = Get-AzMigrateHCIJob `
-            -ProjectName $env.asrv2ProjectName `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -JobName $env.asrv2JobName
+            -ProjectName $env.hciProjectName `
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -SubscriptionId $env.hciSubscriptionId `
+            -JobName $env.hciJobName
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetById' {
         $output = Get-AzMigrateHCIJob `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -JobID $env.asrv2JobId
+            -SubscriptionId $env.hciSubscriptionId `
+            -JobID $env.hciJobId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetByInputObject' {
         $output = Get-AzMigrateHCIJob `
-            -ProjectName $env.asrv2ProjectName `
-            -ResourceGroupName $env.asrv2ResourceGroupName `
-            -SubscriptionId $env.asrv2SubscriptionId `
-            -JobName $env.asrv2JobName
+            -ProjectName $env.hciProjectName `
+            -ResourceGroupName $env.hciMigResourceGroup `
+            -SubscriptionId $env.hciSubscriptionId `
+            -JobName $env.hciJobName
         
         $output1 = Get-AzMigrateHCIJob `
             -InputObject $output `
-            -SubscriptionId $env.asrv2SubscriptionId
+            -SubscriptionId $env.hciSubscriptionId
         $output1.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'ListById' {
         $output = Get-AzMigrateHCIJob `
-            -ProjectID $env.asrv2ProjectId `
-            -ResourceGroupID $env.asrv2ResourceGroupId `
-            -SubscriptionId $env.asrv2SubscriptionId
+            -ProjectID $env.hciProjectId `
+            -ResourceGroupID $env.hciMigResourceGroupId `
+            -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 }
