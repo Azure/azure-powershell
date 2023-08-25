@@ -173,13 +173,6 @@ directive:
     set:
       property-name: AliasName
 
-  - where:
-      subject: AcceptOwnershipStatus
-    hide: true
-  - where:
-      subject: AcceptOwnership
-    hide: true
-
   - from: NewAzSubscriptionAlias_CreateExpanded.cs
     where: $
     transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
@@ -192,6 +185,42 @@ directive:
   - from: NewAzSubscriptionAlias_CreateExpanded.cs
     where: $
     transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+  - where:
+      verb: Get
+      subject: AcceptOwnershipStatus
+      parameter-name: SubscriptionId
+    required: true
+
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+  - where:
+      verb: Invoke
+      subject: AcceptOwnership
+      parameter-name: SubscriptionId
+    required: true
 
   - where:
       model-name: SubscriptionAliasResponse

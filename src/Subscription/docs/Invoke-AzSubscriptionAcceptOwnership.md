@@ -14,14 +14,14 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> -DisplayName <String>
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AcceptViaIdentityExpanded
 ```
-Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> -DisplayName <String>
+Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -83,7 +83,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
