@@ -1,0 +1,23 @@
+name: pr-labeled
+run-name: Triggered by pr label
+env:
+  GH_TOKEN: ${{ github.token }}
+  PR: ${{ github.event.pull_request.html_url }}
+on:
+  pull_request_target:
+    types:
+      - labeled
+jobs:
+  process_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        sparse-checkout: |
+          .github
+    - name: process label
+      shell: pwsh
+      run: .github/workflows/script/PrLabeled.ps1 -LabelName "${{ github.event.label.name }}" -PrUrl $env:PR

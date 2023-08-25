@@ -1,0 +1,72 @@
+name: 🤔 Az module question or discussion
+description: Raise questions or discussions for the Az module
+labels: [needs-triage, question]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Thanks for reporting.
+
+      - Please search the existing questions to see if there has been a similar issue filed
+      
+      - For questions related to importing a module, please refer to our [troubleshooting guide](https://github.com/Azure/azure-powershell/blob/master/documentation/troubleshoot-module-load.md)
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe the question. 
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Script or Debug output
+    description: >
+      Set `$DebugPreference='Continue'` before running the repro and paste the resulting debug stream in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> $DebugPreference='Continue'
+      PS> {}-Az{} ...
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Environment data
+    description: >
+      Please run `$PSVersionTable` and paste the output in the below textarea.
+      If running the Docker container image, indicate the tag of the image used and the version of Docker engine
+    render: PowerShell
+    placeholder: |
+      PS> $PSVersionTable
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Module versions
+    description: >
+      Please run `Get-Module Az*` after cmdlet execution and paste the output in the below textarea.
+
+      If module cannot be installed or imported, please run `Get-Module -ListAvailable` and paste the output.
+    render: PowerShell
+    placeholder: |
+      PS> Get-Module Az*
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: Error output
+    description: >
+      Please run `Resolve-AzError` and paste the output in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> Resolve-AzError
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.

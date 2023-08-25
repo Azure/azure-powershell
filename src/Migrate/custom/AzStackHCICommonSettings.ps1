@@ -47,8 +47,51 @@ $SiteTypes = @{
     VMwareSites = "VMwareSites";
 }
 
-$DynamicMemoryConfig = @{
-    MaximumMemoryInMegaByte      = 1048576; # 1TB
-    MinimumMemoryInMegaByte      = 1024; # 1GB
-    TargetMemoryBufferPercentage = 20; # 20%
+$RAMConfig = @{
+    MaxMemoryInMB = 1048576;
+    MinMemoryInMB = 1024;
+    TargetMemoryBufferPercentage = 20;
 }
+
+$StorageContainerQuery = "resources
+| where type == 'microsoft.extendedlocation/customlocations'
+| mv-expand ClusterId = properties['clusterExtensionIds']
+| extend ClusterId = toupper(tostring(ClusterId))
+| extend CustomLocation = toupper(tostring(id))
+| project ClusterId, CustomLocation
+| join (
+kubernetesconfigurationresources
+| where type == 'microsoft.kubernetesconfiguration/extensions'
+| where properties['ConfigurationSettings']['HCIClusterID'] =~ '{0}'
+| project ClusterId = id
+| extend ClusterId = toupper(tostring(ClusterId))
+) on ClusterId
+| join (
+resources
+| where type == 'microsoft.azurestackhci/storagecontainers'
+| extend CustomLocation = toupper(tostring(extendedLocation['name']))
+| extend AvailableSizeMB = properties['status']['availableSizeMB']
+| extend  ContainerSizeMB = properties['status']['containerSizeMB']
+) on CustomLocation
+| project-away ClusterId, CustomLocation"
+
+
+$VirtualSwitchQuery = "resources
+| where type == 'microsoft.extendedlocation/customlocations'
+| mv-expand ClusterId = properties['clusterExtensionIds']
+| extend ClusterId = toupper(tostring(ClusterId))
+| extend CustomLocation = toupper(tostring(id))
+| project ClusterId, CustomLocation
+| join (
+kubernetesconfigurationresources
+| where type == 'microsoft.kubernetesconfiguration/extensions'
+| where properties['ConfigurationSettings']['HCIClusterID'] =~ '{0}'
+| project ClusterId = id
+| extend ClusterId = toupper(tostring(ClusterId))
+) on ClusterId
+| join (
+resources
+| where type == 'microsoft.azurestackhci/virtualnetworks'
+| extend CustomLocation = toupper(tostring(extendedLocation['name']))
+) on CustomLocation
+| project-away ClusterId, CustomLocation, ClusterId1, CustomLocation1"

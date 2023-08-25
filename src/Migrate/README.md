@@ -375,6 +375,11 @@ directive:
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
       verb: Get$
+      subject: ToAzureMigrate$
+    hide: true
+  - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
+    where:
+      verb: Get$
       subject: ReplicationMigrationItem$|ReplicationJob$
     hide: true
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
