@@ -23,6 +23,7 @@
     - `New-AzDataLakeGen2Item`
 * Updated warning messages for an upcoming breaking change when creating a storage account 
     - `New-AzStorageAccount`
+* Updated help file of `New-AzStorageQueueSASToken`
 
 
 ## Version 5.9.0
