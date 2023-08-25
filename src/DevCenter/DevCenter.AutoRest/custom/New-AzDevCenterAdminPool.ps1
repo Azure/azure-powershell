@@ -155,6 +155,7 @@ function New-AzDevCenterAdminPool {
         # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
         # # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
         # ${StopOnDisconnectStatus},
+        
     
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
