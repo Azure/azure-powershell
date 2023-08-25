@@ -233,13 +233,6 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-[Parameter(ParameterSetName = 'CreateExpanded')]
-[Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
-[Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-[Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
-# Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-${StopOnDisconnectStatus},
 Resource tags.
 
 ```yaml
