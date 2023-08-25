@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else
             {
-                throw new ArgumentException($"Feature name '{featureName}' not found in FrequencyService");
+                throw new AzPSArgumentException ($"Feature name '{featureName}' not found in FrequencyService", nameof(featureName));
             }
 
         }
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             else
             {
-                throw new ArgumentException($"Feature name '{featureName}' not found in FrequencyService");
+                throw new AzPSArgumentException ($"Feature name '{featureName}' not found in FrequencyService", nameof(featureName));
             }
 
         }
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             if (_frequencies.ContainsKey(featureName) && _frequencies[featureName].Frequency != frequency)
             {
-                throw new ArgumentException($"Feature name '{featureName}' already exists in FrequencyService with a different frequency!");
+                throw new AzPSArgumentException ($"Feature name '{featureName}' already exists in FrequencyService with a different frequency!", nameof(featureName));
             }
         }
 

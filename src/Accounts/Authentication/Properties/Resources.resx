@@ -396,4 +396,7 @@
   <data name="HelpMessageOfEnableErrorRecordsPersistence" xml:space="preserve">
     <value>When enabled, error records will be written to ~/.Azure/ErrorRecords.</value>
   </data>
+  <data name="HelpMessageOfCheckForUpgrade" xml:space="preserve">
+    <value>When enabled, a warning message is displayed if local Az version needs to be upgraded. The default value will be changed from false to true in Az version 11.0.0 and Az.Accounts version 3.0.0.</value>
+  </data>
 </root>

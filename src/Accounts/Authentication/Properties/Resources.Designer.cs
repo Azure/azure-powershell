@@ -277,6 +277,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When enabled, a warning message is displayed if local Az version needs to be upgraded. The default value will be changed from false to true in Az version 11.0.0 and Az.Accounts version 3.0.0..
+        /// </summary>
+        public static string HelpMessageOfCheckForUpgrade {
+            get {
+                return ResourceManager.GetString("HelpMessageOfCheckForUpgrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription..
         /// </summary>
         public static string HelpMessageOfDefaultSubscriptionForLogin {
@@ -286,7 +295,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in around November 2023.
+        ///   Looks up a localized string similar to When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by &quot;EnableErrorRecordsPersistence&quot; as opt-in in the next major release of Az around November 2023..
         /// </summary>
         public static string HelpMessageOfDisableErrorRecordsPersistence {
             get {
@@ -322,7 +331,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, error records will be written to ~/.Azure/ErrorRecords.
+        ///   Looks up a localized string similar to When enabled, error records will be written to ~/.Azure/ErrorRecords..
         /// </summary>
         public static string HelpMessageOfEnableErrorRecordsPersistence {
             get {
