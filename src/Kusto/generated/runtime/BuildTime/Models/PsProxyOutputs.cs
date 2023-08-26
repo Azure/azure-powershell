@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell
             {
                 return $@"
 {Indent}{Indent}if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {{
-{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
 {Indent}{Indent}}}         
 {Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

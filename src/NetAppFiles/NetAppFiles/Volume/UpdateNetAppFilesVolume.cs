@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The maximum storage quota allowed for a file system in bytes")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long? UsageThreshold { get; set; }
         
@@ -159,6 +159,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
         public int? CoolnessPeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
+        public SwitchParameter SnapshotDirectoryVisible { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -249,6 +254,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 UnixPermissions = UnixPermission,
                 CoolAccess = CoolAccess,
                 CoolnessPeriod = CoolnessPeriod,
+                SnapshotDirectoryVisible = SnapshotDirectoryVisible
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

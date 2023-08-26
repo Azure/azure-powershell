@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>CognitiveServices</PsModuleName>
@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.CognitiveServices" Version="8.4.0" />
   </ItemGroup>
 

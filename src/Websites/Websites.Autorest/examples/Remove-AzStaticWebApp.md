@@ -13,4 +13,3 @@ Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb02 | Remove-A
 ```
 
 This command deletes a static site by pipeline.
-

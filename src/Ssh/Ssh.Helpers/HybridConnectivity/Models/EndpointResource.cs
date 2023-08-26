@@ -10,15 +10,12 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// The endpoint for the target resource.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class EndpointResource : ProxyResource
     {
         /// <summary>
@@ -32,42 +29,19 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         /// <summary>
         /// Initializes a new instance of the EndpointResource class.
         /// </summary>
-        /// <param name="endpointResourceType">The type of endpoint. Possible
-        /// values include: 'default', 'custom'</param>
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
-        /// <param name="createdBy">The identity that created the
-        /// resource.</param>
-        /// <param name="createdByType">The type of identity that created the
-        /// resource. Possible values include: 'User', 'Application',
-        /// 'ManagedIdentity', 'Key'</param>
-        /// <param name="createdAt">The timestamp of resource creation
-        /// (UTC).</param>
-        /// <param name="lastModifiedBy">The identity that last modified the
-        /// resource.</param>
-        /// <param name="lastModifiedByType">The type of identity that last
-        /// modified the resource. Possible values include: 'User',
-        /// 'Application', 'ManagedIdentity', 'Key'</param>
-        /// <param name="lastModifiedAt">The timestamp of resource last
-        /// modification (UTC)</param>
-        /// <param name="resourceId">The resource Id of the connectivity
-        /// endpoint (optional).</param>
-        public EndpointResource(string endpointResourceType, string id = default(string), string name = default(string), string type = default(string), string createdBy = default(string), string createdByType = default(string), System.DateTime? createdAt = default(System.DateTime?), string lastModifiedBy = default(string), string lastModifiedByType = default(string), System.DateTime? lastModifiedAt = default(System.DateTime?), string resourceId = default(string), string provisioningState = default(string))
-            : base(id, name, type)
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        /// <param name="properties">The endpoint properties.</param>
+        public EndpointResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), EndpointProperties properties = default(EndpointProperties))
+            : base(id, name, type, systemData)
         {
-            CreatedBy = createdBy;
-            CreatedByType = createdByType;
-            CreatedAt = createdAt;
-            LastModifiedBy = lastModifiedBy;
-            LastModifiedByType = lastModifiedByType;
-            LastModifiedAt = lastModifiedAt;
-            EndpointResourceType = endpointResourceType;
-            ResourceId = resourceId;
-            ProvisioningState = provisioningState;
+            Properties = properties;
             CustomInit();
         }
 
@@ -77,75 +51,22 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the identity that created the resource.
+        /// Gets or sets the endpoint properties.
         /// </summary>
-        [JsonProperty(PropertyName = "systemData.createdBy")]
-        public string CreatedBy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of identity that created the resource.
-        /// Possible values include: 'User', 'Application', 'ManagedIdentity',
-        /// 'Key'
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData.createdByType")]
-        public string CreatedByType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the timestamp of resource creation (UTC).
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData.createdAt")]
-        public System.DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets the identity that last modified the resource.
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData.lastModifiedBy")]
-        public string LastModifiedBy { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of identity that last modified the resource.
-        /// Possible values include: 'User', 'Application', 'ManagedIdentity',
-        /// 'Key'
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData.lastModifiedByType")]
-        public string LastModifiedByType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the timestamp of resource last modification (UTC)
-        /// </summary>
-        [JsonProperty(PropertyName = "systemData.lastModifiedAt")]
-        public System.DateTime? LastModifiedAt { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of endpoint. Possible values include:
-        /// 'default', 'custom'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.type")]
-        public string EndpointResourceType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource Id of the connectivity endpoint
-        /// (optional).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.resourceId")]
-        public string ResourceId { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        [JsonProperty(PropertyName = "properties")]
+        public EndpointProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (EndpointResourceType == null)
+            if (Properties != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "EndpointResourceType");
+                Properties.Validate();
             }
         }
     }

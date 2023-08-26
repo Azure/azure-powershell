@@ -1,0 +1,202 @@
+{
+  "Set-AzRelayNamespaceNetworkRuleSet+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "2a578406-8881-4282-8e96-4906ce9f91d1" ],
+        "CommandName": [ "Get-AzRelayNamespaceNetworkRuleSet" ],
+        "FullCommandName": [ "Get-AzRelayNamespaceNetworkRuleSet_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fe59871a-c7fd-435e-b0a6-b4c61b3617a2_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "b78ee668-4f3c-48a0-8b39-e33ccbafb52f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093849Z:b78ee668-4f3c-48a0-8b39-e33ccbafb52f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:38:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "365" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzRelayNamespaceNetworkRuleSet+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"defaultAction\": \"Deny\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"1.1.1.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"1.1.1.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "349" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "66130a03-68ae-406b-8f8c-019505d19705_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1174" ],
+        "x-ms-correlation-request-id": [ "9e304ce3-8818-4e93-b0a7-25333782b7cf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093856Z:9e304ce3-8818-4e93-b0a7-25333782b7cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:38:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "477" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Deny\",\"virtualNetworkRules\":[],\"ipRules\":[{\"ipMask\":\"1.1.1.1\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.2\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.3\",\"action\":\"Allow\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzRelayNamespaceNetworkRuleSet+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "cda92b26-35ef-4f34-a2f4-af55592962c2" ],
+        "CommandName": [ "Get-AzRelayNamespaceNetworkRuleSet" ],
+        "FullCommandName": [ "Get-AzRelayNamespaceNetworkRuleSet_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "861e0feb-a76e-4c18-aa68-64ed42f0ca06_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "a2ba676b-f079-408a-903d-9c7424030764" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093857Z:a2ba676b-f079-408a-903d-9c7424030764" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:38:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "477" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Deny\",\"virtualNetworkRules\":[],\"ipRules\":[{\"ipMask\":\"1.1.1.1\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.2\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.3\",\"action\":\"Allow\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzRelayNamespaceNetworkRuleSet+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "7071ba27-3cc8-4f80-93f2-7100a29994b9" ],
+        "CommandName": [ "Get-AzRelayNamespaceNetworkRuleSet" ],
+        "FullCommandName": [ "Get-AzRelayNamespaceNetworkRuleSet_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5111e62c-6e73-4a93-aa4a-d6aa7cabcdb7_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "293a9e75-5b10-4e7b-bffb-c4757241c6e0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093858Z:293a9e75-5b10-4e7b-bffb-c4757241c6e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:38:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "477" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Deny\",\"virtualNetworkRules\":[],\"ipRules\":[{\"ipMask\":\"1.1.1.1\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.2\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.3\",\"action\":\"Allow\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzRelayNamespaceNetworkRuleSet+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"defaultAction\": \"Deny\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"ipRules\": [\r\n      {\r\n        \"ipMask\": \"1.1.1.1\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"1.1.1.2\",\r\n        \"action\": \"Allow\"\r\n      },\r\n      {\r\n        \"ipMask\": \"1.1.1.3\",\r\n        \"action\": \"Allow\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "349" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "367fc4f8-ad51-47b8-b359-22f7608e7bee_M9SN1_M9SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1173" ],
+        "x-ms-correlation-request-id": [ "c1f6a134-d6dc-490b-9fb2-d513693a5393" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093906Z:c1f6a134-d6dc-490b-9fb2-d513693a5393" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:39:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "477" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.Relay/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Deny\",\"virtualNetworkRules\":[],\"ipRules\":[{\"ipMask\":\"1.1.1.1\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.2\",\"action\":\"Allow\"},{\"ipMask\":\"1.1.1.3\",\"action\":\"Allow\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="isRestoring">Restoring</param>
         /// <param name="snapshotDirectoryVisible">If enabled (true) the volume
         /// will contain a read-only snapshot directory which provides access
-        /// to each of the volume's snapshots (default to true).</param>
+        /// to each of the volume's snapshots (defaults to true).</param>
         /// <param name="kerberosEnabled">Describe if a volume is
         /// KerberosEnabled. To be use with swagger version 2020-05-01 or
         /// later</param>
@@ -87,6 +87,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="throughputMibps">Maximum throughput in MiB/s that can
         /// be achieved by this volume and this will be accepted as input only
         /// for manual qosType volume</param>
+        /// <param name="actualThroughputMibps">Actual throughput in MiB/s for
+        /// auto qosType volumes calculated based on size and
+        /// serviceLevel</param>
         /// <param name="encryptionKeySource">Source of key used to encrypt
         /// data in volume. Applicable if NetApp account has
         /// encryption.keySource = 'Microsoft.KeyVault'. Possible values
@@ -116,7 +119,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// this cloning process. When this value is empty/null there is no
         /// cloning process currently happening on this volume. This value will
         /// update every 5 minutes during cloning.</param>
+        /// <param name="fileAccessLogs">Flag indicating whether file access
+        /// logs are enabled for the volume, based on active diagnostic
+        /// settings present on the volume. Possible values include: 'Enabled',
+        /// 'Disabled'</param>
         /// <param name="avsDataStore">avsDataStore</param>
+        /// <param name="dataStoreResourceId">dataStoreResourceId</param>
         /// <param name="isDefaultQuotaEnabled">Specifies if default quota is
         /// enabled for the volume.</param>
         /// <param name="defaultUserQuotaInKiBs">Default user quota for volume
@@ -144,7 +152,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="enableSubvolumes">Flag indicating whether subvolume
         /// operations are enabled on the volume. Possible values include:
         /// 'Enabled', 'Disabled'</param>
-        public VolumeGroupVolumeProperties(string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string unixPermissions = default(string), int? cloneProgress = default(int?), string avsDataStore = default(string), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), IList<PlacementKeyValuePairs> placementRules = default(IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string))
+        /// <param name="provisionedAvailabilityZone">Provisioned Availability
+        /// Zone</param>
+        /// <param name="isLargeVolume">Is Large Volume</param>
+        /// <param name="originatingResourceId">Originating Resource Id</param>
+        public VolumeGroupVolumeProperties(string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string fileSystemId = default(string), string serviceLevel = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), IList<string> protocolTypes = default(IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkFeatures = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), IList<MountTargetProperties> mountTargets = default(IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), string securityStyle = default(string), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), IList<string> dataStoreResourceId = default(IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), IList<PlacementKeyValuePairs> placementRules = default(IList<PlacementKeyValuePairs>), string enableSubvolumes = default(string), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string))
         {
             Id = id;
             Name = name;
@@ -177,6 +189,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             SmbNonBrowsable = smbNonBrowsable;
             SmbContinuouslyAvailable = smbContinuouslyAvailable;
             ThroughputMibps = throughputMibps;
+            ActualThroughputMibps = actualThroughputMibps;
             EncryptionKeySource = encryptionKeySource;
             KeyVaultPrivateEndpointResourceId = keyVaultPrivateEndpointResourceId;
             LdapEnabled = ldapEnabled;
@@ -184,7 +197,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
             CoolnessPeriod = coolnessPeriod;
             UnixPermissions = unixPermissions;
             CloneProgress = cloneProgress;
+            FileAccessLogs = fileAccessLogs;
             AvsDataStore = avsDataStore;
+            DataStoreResourceId = dataStoreResourceId;
             IsDefaultQuotaEnabled = isDefaultQuotaEnabled;
             DefaultUserQuotaInKiBs = defaultUserQuotaInKiBs;
             DefaultGroupQuotaInKiBs = defaultGroupQuotaInKiBs;
@@ -197,6 +212,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
             Encrypted = encrypted;
             PlacementRules = placementRules;
             EnableSubvolumes = enableSubvolumes;
+            ProvisionedAvailabilityZone = provisionedAvailabilityZone;
+            IsLargeVolume = isLargeVolume;
+            OriginatingResourceId = originatingResourceId;
             CustomInit();
         }
 
@@ -262,7 +280,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         /// <remarks>
         /// Maximum storage quota allowed for a file system in bytes. This is a
-        /// soft quota used for alerting only. Minimum size is 500 GiB. Upper
+        /// soft quota used for alerting only. Minimum size is 100 GiB. Upper
         /// limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.usageThreshold")]
@@ -359,7 +377,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         /// <remarks>
         /// Provides storage to network proximity information for the volume.
-        /// Possible values include: 'Default', 'T1', 'T2'
+        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2'
         /// </remarks>
         [JsonProperty(PropertyName = "properties.storageToNetworkProximity")]
         public string StorageToNetworkProximity { get; private set; }
@@ -399,7 +417,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Gets or sets if enabled (true) the volume will contain a read-only
         /// snapshot directory which provides access to each of the volume's
-        /// snapshots (default to true).
+        /// snapshots (defaults to true).
         /// </summary>
         [JsonProperty(PropertyName = "properties.snapshotDirectoryVisible")]
         public bool? SnapshotDirectoryVisible { get; set; }
@@ -465,6 +483,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public double? ThroughputMibps { get; set; }
 
         /// <summary>
+        /// Gets actual throughput in MiB/s for auto qosType volumes calculated
+        /// based on size and serviceLevel
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.actualThroughputMibps")]
+        public double? ActualThroughputMibps { get; private set; }
+
+        /// <summary>
         /// Gets or sets source of key used to encrypt data in volume.
         /// Applicable if NetApp account has encryption.keySource =
         /// 'Microsoft.KeyVault'. Possible values (case-insensitive) are:
@@ -526,6 +551,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public int? CloneProgress { get; private set; }
 
         /// <summary>
+        /// Gets flag indicating whether file access logs are enabled for the
+        /// volume, based on active diagnostic settings present on the volume.
+        /// Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.fileAccessLogs")]
+        public string FileAccessLogs { get; private set; }
+
+        /// <summary>
         /// Gets or sets avsDataStore
         /// </summary>
         /// <remarks>
@@ -535,6 +568,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </remarks>
         [JsonProperty(PropertyName = "properties.avsDataStore")]
         public string AvsDataStore { get; set; }
+
+        /// <summary>
+        /// Gets dataStoreResourceId
+        /// </summary>
+        /// <remarks>
+        /// Data store resource unique identifier
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.dataStoreResourceId")]
+        public IList<string> DataStoreResourceId { get; private set; }
 
         /// <summary>
         /// Gets or sets specifies if default quota is enabled for the volume.
@@ -620,6 +662,34 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enableSubvolumes")]
         public string EnableSubvolumes { get; set; }
+
+        /// <summary>
+        /// Gets provisioned Availability Zone
+        /// </summary>
+        /// <remarks>
+        /// The availability zone where the volume is provisioned. This refers
+        /// to the logical availability zone where the volume resides.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.provisionedAvailabilityZone")]
+        public string ProvisionedAvailabilityZone { get; private set; }
+
+        /// <summary>
+        /// Gets or sets is Large Volume
+        /// </summary>
+        /// <remarks>
+        /// Specifies whether volume is a Large Volume or Regular Volume.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.isLargeVolume")]
+        public bool? IsLargeVolume { get; set; }
+
+        /// <summary>
+        /// Gets originating Resource Id
+        /// </summary>
+        /// <remarks>
+        /// Id of the snapshot or backup that the volume is restored from.
+        /// </remarks>
+        [JsonProperty(PropertyName = "properties.originatingResourceId")]
+        public string OriginatingResourceId { get; private set; }
 
         /// <summary>
         /// Validate the object.

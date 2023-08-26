@@ -10,3 +10,5 @@ default Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles
 ```
 
 Get Aks node pool upgrade profile with resource group name and cluster name.
+
+

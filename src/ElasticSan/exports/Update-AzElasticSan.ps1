@@ -23,11 +23,11 @@ Update a Elastic San.
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,6 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -50,7 +51,7 @@ PARAMETER <IElasticSanUpdate>: Response for ElasticSan update request.
 https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsan
 #>
 function Update-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -88,7 +89,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdate]
     # Response for ElasticSan update request.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -110,7 +111,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSanUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSanUpdateTags]))]
     [System.Collections.Hashtable]
     # Update tags
     ${Tag},
@@ -120,7 +121,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -184,7 +186,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

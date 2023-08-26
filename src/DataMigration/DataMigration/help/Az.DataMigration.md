@@ -66,7 +66,7 @@ Create a new instance DataMigration Azure ActiveDirectory Application details.
 Creates a new Connection Info object specifying the server type and name for connection.
 
 ### [New-AzDataMigrationDatabaseInfo](New-AzDataMigrationDatabaseInfo.md)
-Creates the DatabaseInfo object for the Azure Database Migration Service (classic), which specifies the database source for migration.
+Creates the DatabaseInfo object for the Azure Database Migration Service, which specifies the database source for migration.
 
 ### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
 Creates the FileShare object for the Azure Database Migration Service (classic), which specifies the local network share to take the source database backups to.
@@ -89,6 +89,9 @@ Creates a database input object that contains information about source and targe
 ### [New-AzDataMigrationService](New-AzDataMigrationService.md)
 Creates a new instance of the Azure Database Migration Service (classic).
 
+### [New-AzDataMigrationSqlServerSchema](New-AzDataMigrationSqlServerSchema.md)
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
+
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
 
@@ -101,8 +104,13 @@ Creates a database info object specific to the sync scenario to be used for a mi
 ### [New-AzDataMigrationTask](New-AzDataMigrationTask.md)
 Creates and starts a data migration task in the Azure Database Migration Service (classic).
 
+### [New-AzDataMigrationTdeCertificateMigration](New-AzDataMigrationTdeCertificateMigration.md)
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
+
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.
@@ -135,7 +143,7 @@ Remove the specified database migration for a given SQL Db.
 Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
 
 ### [Stop-AzDataMigrationService](Stop-AzDataMigrationService.md)
-Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 
+Stops an instance of the Azure Database Migration Service (classic) that is in a running state.
 
 ### [Stop-AzDataMigrationTask](Stop-AzDataMigrationTask.md)
 Stops an  Azure Database Migration Service (classic) task that is in a running state.

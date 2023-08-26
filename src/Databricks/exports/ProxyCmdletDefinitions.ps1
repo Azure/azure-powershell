@@ -22,16 +22,14 @@ Gets an azure databricks accessConnector.
 .Example
 Get-AzDatabricksAccessConnector
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
-.Example
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus | Get-AzDatabricksAccessConnector
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +48,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
 #>
 function Get-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -88,7 +86,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -140,7 +139,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -215,13 +214,13 @@ end {
 .Synopsis
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 .Description
 Gets the list of endpoints that VNET Injected Workspace calls Azure Databricks Control Plane.
 You must configure outbound access with these endpoints.
-For more information, see https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
+For more information, see https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/udr
 .Example
-Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName "databricks-rg-zbpoy7" -WorkspaceName databricks-portal
+Get-AzDatabricksOutboundNetworkDependenciesEndpoint -ResourceGroupName azps_test_gp_db -WorkspaceName azps-databricks-workspace-t2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOutboundEnvironmentEndpoint
@@ -257,7 +256,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -309,7 +309,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -383,11 +383,9 @@ Gets the workspace vNet Peering.
 .Description
 Gets the workspace vNet Peering.
 .Example
-Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test
+Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db
 .Example
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01
-.Example
-New-AzDatabricksVNetPeering -Name vnetpeering-t02 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxx-xxxx-xxx-xxxxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test02' | Get-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Name vnet-peering-t1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -455,7 +453,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -514,7 +513,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -590,11 +589,11 @@ Gets the workspace.
 .Description
 Gets the workspace.
 .Example
-Get-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName databricks-rg-rqb2yo
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3
 .Example
 Get-AzDatabricksWorkspace
 .Example
-Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -657,7 +656,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -709,7 +709,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -786,15 +786,15 @@ Creates or updates azure databricks accessConnector.
 .Description
 Creates or updates azure databricks accessConnector.
 .Example
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Link
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 #>
 function New-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -851,7 +851,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -915,7 +916,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -989,7 +990,7 @@ Creates vNet Peering for workspace.
 .Description
 Creates vNet Peering for workspace.
 .Example
-New-AzDatabricksVNetPeering -Name vnetpeering-t01 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxxx-xxxx-xxx-xxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test01'
+New-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -RemoteVirtualNetworkId '/subscriptions/{subId}/resourceGroups/azps_test_gp_db/providers/Microsoft.Network/virtualNetworks/azps-VNnet-t1'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeering
@@ -1084,7 +1085,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1148,7 +1150,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1222,9 +1224,9 @@ Deletes the azure databricks accessConnector.
 .Description
 Deletes the azure databricks accessConnector.
 .Example
-Remove-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
+Remove-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Remove-AzDatabricksAccessConnector
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Remove-AzDatabricksAccessConnector
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -1283,7 +1285,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1353,7 +1356,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1428,9 +1431,9 @@ Deletes the workspace vNetPeering.
 .Description
 Deletes the workspace vNetPeering.
 .Example
-Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
+Remove-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db 
 .Example
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db  | Remove-AzDatabricksVNetPeering
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -1495,7 +1498,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1565,7 +1569,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1640,10 +1644,9 @@ Deletes the workspace.
 .Description
 Deletes the workspace.
 .Example
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -Name azps-databricks-workspace -ResourceGroupName azps_test_gp_db
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 | Remove-AzDatabricksWorkspace
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -1703,7 +1706,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1773,7 +1777,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1848,14 +1852,14 @@ Updates an azure databricks accessConnector.
 .Description
 Updates an azure databricks accessConnector.
 .Example
-Update-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Tag @{'key'='value'}
+Update-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Tag @{'key'='value'}
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1874,7 +1878,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
 #>
 function Update-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1922,7 +1926,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -1932,7 +1936,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1996,7 +2001,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2071,20 +2076,32 @@ Creates a new workspace.
 .Description
 Creates a new workspace.
 .Example
-New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -Location eastus -ManagedResourceGroupName databricks-group -Sku standard
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Location eastus -ManagedResourceGroupName azps_test_gp_kv_t1 -Sku Premium
 .Example
 $dlg = New-AzDelegation -Name dbrdl -ServiceName "Microsoft.Databricks/workspaces"
-$rdpRule = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName databricks-rg-rqb2yo -Location eastus -Name nsg-test -SecurityRules $rdpRule
-$privSubnet = New-AzVirtualNetworkSubnetConfig -Name priv-sub -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
-$pubSubnet = New-AzVirtualNetworkSubnetConfig -Name pub-sub  -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
-$testVN = New-AzVirtualNetwork -Name testvn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -AddressPrefix "10.0.0.0/16" -Subnet $privSubnet,$pubSubnet
-New-AzDatabricksWorkspace -Name workspace3miaeb-with-custom-vn -ResourceGroupName databricks-rg-rqb2yo -Location eastus -VirtualNetworkId $testVN.Id -PrivateSubnetName $privSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku standard
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name azps-network-security-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+$networkSecurityGroup = New-AzNetworkSecurityGroup -ResourceGroupName azps_test_gp_db -Location eastus -Name azps-network-security-group -SecurityRules $rdpRule
+$kvSubnet = New-AzVirtualNetworkSubnetConfig -Name azps-vnetwork-sub-kv -AddressPrefix "110.0.1.0/24" -ServiceEndpoint "Microsoft.KeyVault"
+$priSubnet = New-AzVirtualNetworkSubnetConfig -Name azps-vnetwork-sub-pri -AddressPrefix "110.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
+$pubSubnet = New-AzVirtualNetworkSubnetConfig -Name azps-vnetwork-sub-pub -AddressPrefix "110.0.3.0/24" -NetworkSecurityGroup $networkSecurityGroup -Delegation $dlg
+$testVN = New-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_db -Location eastus -AddressPrefix "110.0.0.0/16" -Subnet $kvSubnet,$priSubnet,$pubSubnet
+$vNetResId = (Get-AzVirtualNetwork -Name azps-virtual-network -ResourceGroupName azps_test_gp_db).Subnets[0].Id
+$ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $vNetResId
+New-AzKeyVault -ResourceGroupName azps_test_gp_db -VaultName azps-keyvault -NetworkRuleSet $ruleSet -Location eastus -Sku 'Premium' -EnablePurgeProtection
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t2 -ResourceGroupName azps_test_gp_db -Location eastus -ManagedResourceGroupName azps_test_gp_kv_t2 -VirtualNetworkId $testVN.Id -PrivateSubnetName $priSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku Premium
 .Example
-New-AzDatabricksWorkspace -Name workspace3miaeb -ResourceGroupName databricks-rg-rqb2yo -PrepareEncryption -Location "East US 2 EUAP" -Sku premium
+New-AzDatabricksWorkspace -Name azps-databricks-workspace-t3 -ResourceGroupName azps_test_gp_db -Location eastus -PrepareEncryption -ManagedResourceGroupName azps_test_gp_kv_t3 -Sku premium
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider authorizations.
+  PrincipalId <String>: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
+  RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 .Link
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
@@ -2132,9 +2149,17 @@ param(
     ${AmlWorkspaceId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
+    # The workspace provider authorizations.
+    # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
+    ${Authorization},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Should the Public IP be Disabled?
+    # The value which should be used for this field.
     ${EnableNoPublicIP},
 
     [Parameter()]
@@ -2174,6 +2199,48 @@ param(
     [System.String]
     # The value which should be used for this field.
     ${LoadBalancerId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The URI of KeyVault.
+    ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+    ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Uri of KeyVault.
+    ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyVersion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -2262,6 +2329,12 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
+    # The blob URI where the UI definition file is located.
+    ${UiDefinitionUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
     # The value which should be used for this field.
     ${VirtualNetworkId},
 
@@ -2276,7 +2349,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2340,7 +2414,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2410,13 +2484,120 @@ end {
 
 <#
 .Synopsis
+Create an in-memory object for WorkspaceProviderAuthorization.
+.Description
+Create an in-memory object for WorkspaceProviderAuthorization.
+.Example
+New-AzDatabricksWorkspaceProviderAuthorizationObject -PrincipalId 024d7367-0890-4ad3-8140-e37374722820 -RoleDefinitionId 2124844c-7e23-48cc-bc52-a3af25f7a4ae
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization
+.Link
+https://learn.microsoft.com/powershell/module/Az.Databricks/new-AzDatabricksWorkspaceProviderAuthorizationObject
+#>
+function New-AzDatabricksWorkspaceProviderAuthorizationObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.WorkspaceProviderAuthorization])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The provider's principal identifier.
+    # This is the identity that the provider will use to call ARM to manage the workspace resources.
+    ${PrincipalId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The provider's role definition identifier.
+    # This role will define all the permissions that the provider must have on the workspace's container resource group.
+    # This role definition cannot have permission to delete the resource group.
+    ${RoleDefinitionId}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Databricks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.Databricks.custom\New-AzDatabricksWorkspaceProviderAuthorizationObject';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Databricks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update vNet Peering for workspace.
 .Description
 Update vNet Peering for workspace.
 .Example
-Update-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 -AllowForwardedTraffic $True
+Update-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -AllowForwardedTraffic $True
 .Example
-Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
+Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db -Name vnet-peering-t1 | Update-AzDatabricksVNetPeering -AllowGatewayTransit $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -2499,6 +2680,32 @@ param(
     ${AllowVirtualNetworkAccess},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String[]]
+    # A list of address blocks reserved for this virtual network in CIDR notation.
+    ${DatabricksAddressSpacePrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Id of the databricks virtual network.
+    ${DatabricksVirtualNetworkId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String[]]
+    # A list of address blocks reserved for this virtual network in CIDR notation.
+    ${RemoteAddressSpacePrefix},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Id of the remote virtual network.
+    ${RemoteVirtualNetworkId},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Boolean]
     # [System.Management.Automation.SwitchParameter]
@@ -2513,7 +2720,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2577,7 +2785,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2652,15 +2860,16 @@ Updates a workspace.
 .Description
 Updates a workspace.
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
-Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t1 | Update-AzDatabricksWorkspace -Tag @{"key"="value"}
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -PrepareEncryption
+$updWsp = Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2
+Set-AzKeyVaultAccessPolicy -VaultName azps-keyvault -ObjectId $updWsp.StorageAccountIdentityPrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://azps-keyvault.vault.azure.net/ -EncryptionKeyName azps-k1 -EncryptionKeyVersion a563a8021cba47109d93bd6d690621a7
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 -EncryptionKeySource 'Default'
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -RequiredNsgRule 'AllRules'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -2670,6 +2879,10 @@ Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider authorizations.
+  PrincipalId <String>: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
+  RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity parameter.
   [ConnectorName <String>]: The name of the azure databricks accessConnector.
@@ -2779,6 +2992,62 @@ param(
     ${SkuTier},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
+    # The workspace provider authorizations.
+    # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
+    ${Authorization},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The URI of KeyVault.
+    ${ManagedDiskKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedDiskKeyVaultPropertiesKeyVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+    ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The name of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The Uri of KeyVault.
+    ${ManagedServicesKeyVaultPropertiesKeyVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The version of KeyVault key.
+    ${ManagedServicesKeyVaultPropertiesKeyVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The blob URI where the UI definition file is located.
+    ${UiDefinitionUri},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceUpdateTags]))]
     [System.Collections.Hashtable]
@@ -2793,6 +3062,20 @@ param(
     # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
     # 'NoAzureServiceRules' value is for internal use only.
     ${RequiredNsgRule},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+    # The network access type for accessing workspace.
+    # Set value to disabled to access workspace only via private link.
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The value which should be used for this field.
+    ${EnableNoPublicIP},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2863,7 +3146,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

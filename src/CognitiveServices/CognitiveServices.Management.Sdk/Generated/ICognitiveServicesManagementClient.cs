@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Management.CognitiveServices
         IResourceSkusOperations ResourceSkus { get; }
 
         /// <summary>
+        /// Gets the IUsagesOperations.
+        /// </summary>
+        IUsagesOperations Usages { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }
@@ -97,6 +102,11 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Gets the ICommitmentTiersOperations.
         /// </summary>
         ICommitmentTiersOperations CommitmentTiers { get; }
+
+        /// <summary>
+        /// Gets the IModelsOperations.
+        /// </summary>
+        IModelsOperations Models { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations.

@@ -33,8 +33,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     public class PrivateDnsClient
     {
         public const string DnsResourceLocation = "global";
-        public const int TxtRecordMaxLength = 1024;
-        public const int TxtRecordMinLength = 0;
 
         private readonly Dictionary<RecordType, Type> recordTypeValidationEntries = new Dictionary<RecordType, Type>()
         {

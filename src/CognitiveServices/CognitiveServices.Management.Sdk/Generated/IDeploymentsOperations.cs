@@ -93,6 +93,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the deployment associated with the Cognitive Services
         /// Account
         /// </param>
+        /// <param name='sku'>
+        /// </param>
         /// <param name='properties'>
         /// Properties of Cognitive Services account deployment.
         /// </param>
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Deployment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Deployment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified deployment associated with the Cognitive
         /// Services account.
@@ -153,6 +155,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the deployment associated with the Cognitive Services
         /// Account
         /// </param>
+        /// <param name='sku'>
+        /// </param>
         /// <param name='properties'>
         /// Properties of Cognitive Services account deployment.
         /// </param>
@@ -171,7 +175,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Deployment>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Deployment>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified deployment associated with the Cognitive
         /// Services account.

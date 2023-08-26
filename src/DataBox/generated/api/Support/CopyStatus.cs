@@ -22,6 +22,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Data copy failed. Device metadata was modified by user.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus DeviceMetadataModified = @"DeviceMetadataModified";
 
+        /// <summary>Copy failed due to corrupted drive.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus DriveCorrupted = @"DriveCorrupted";
+
+        /// <summary>Copy failed due to disk detection error.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus DriveNotDetected = @"DriveNotDetected";
+
+        /// <summary>No copy triggered as device was not received.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus DriveNotReceived = @"DriveNotReceived";
+
         /// <summary>Data copy failed. No data was copied.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus Failed = @"Failed";
 
@@ -31,11 +40,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Data copy is in progress.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus InProgress = @"InProgress";
 
+        /// <summary>Copy failed due to modified or removed metadata files.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus MetadataFilesModifiedOrRemoved = @"MetadataFilesModifiedOrRemoved";
+
         /// <summary>No copy triggered as device was not returned.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus NotReturned = @"NotReturned";
 
         /// <summary>Data copy hasn't started yet.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus NotStarted = @"NotStarted";
+
+        /// <summary>Copy failed due to service error.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus OtherServiceError = @"OtherServiceError";
+
+        /// <summary>Copy failed due to user error.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus OtherUserError = @"OtherUserError";
 
         /// <summary>Data copy failed. Storage Account was not accessible during copy.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus StorageAccountNotAccessible = @"StorageAccountNotAccessible";
@@ -43,10 +61,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         /// <summary>Data copy failed. The Device data content is not supported.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus UnsupportedData = @"UnsupportedData";
 
+        /// <summary>No copy triggered as device type is not supported.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus UnsupportedDrive = @"UnsupportedDrive";
+
         /// <summary>the value for an instance of the <see cref="CopyStatus" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="CopyStatus" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="CopyStatus"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private CopyStatus(string underlyingValue)
         {
@@ -107,8 +128,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding != operator for enum CopyStatus</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus e2)
         {
@@ -116,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support
         }
 
         /// <summary>Overriding == operator for enum CopyStatus</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus e1, Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.CopyStatus e2)
         {

@@ -8,14 +8,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Extensions;
     using System;
 
-    /// <summary>Create a new database migration to a given SQL Db.</summary>
+    /// <summary>
+    /// Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables
+    /// to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema)
+    /// command to migrate schema objects from source database to target databse.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataMigrationToSqlDb_CreateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Db.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
     public partial class NewAzDataMigrationToSqlDb_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
@@ -51,9 +55,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DataMigration.DataMigration Client => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.ParameterCategory.Azure)]

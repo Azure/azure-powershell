@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKubernetesConfigurationFlux_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Update-AzK8sConfigurationFlux")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"Update an existing Kubernetes Flux Configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]
     public partial class UpdateAzKubernetesConfigurationFlux_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -36,12 +36,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The Flux Configuration Patch Request object.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatch _fluxConfigurationPatchBody = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.FluxConfigurationPatch();
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatch _fluxConfigurationPatchBody = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.FluxConfigurationPatch();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>The account key (shared key) to access the storage account</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The account key (shared key) to access the storage account")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The account key (shared key) to access the storage account",
+        SerializedName = @"accountKey",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AzureBlobAccountKey { get => _fluxConfigurationPatchBody.AzureBlobAccountKey ?? null; set => _fluxConfigurationPatchBody.AzureBlobAccountKey = value; }
+
+        /// <summary>
+        /// The Azure Blob container name to sync from the url endpoint for the flux configuration.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure Blob container name to sync from the url endpoint for the flux configuration.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Azure Blob container name to sync from the url endpoint for the flux configuration.",
+        SerializedName = @"containerName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AzureBlobContainerName { get => _fluxConfigurationPatchBody.AzureBlobContainerName ?? null; set => _fluxConfigurationPatchBody.AzureBlobContainerName = value; }
+
+        /// <summary>
+        /// Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided
+        /// configuration secrets.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.",
+        SerializedName = @"localAuthRef",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AzureBlobLocalAuthRef { get => _fluxConfigurationPatchBody.AzureBlobLocalAuthRef ?? null; set => _fluxConfigurationPatchBody.AzureBlobLocalAuthRef = value; }
+
+        /// <summary>The Shared Access token to access the storage container</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Shared Access token to access the storage container")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Shared Access token to access the storage container",
+        SerializedName = @"sasToken",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AzureBlobSasToken { get => _fluxConfigurationPatchBody.AzureBlobSasToken ?? null; set => _fluxConfigurationPatchBody.AzureBlobSasToken = value; }
+
+        /// <summary>
+        /// The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The interval at which to re-reconcile the cluster Azure Blob source with the remote.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The interval at which to re-reconcile the cluster Azure Blob source with the remote.",
+        SerializedName = @"syncIntervalInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long AzureBlobSyncIntervalInSecond { get => _fluxConfigurationPatchBody.AzureBlobSyncIntervalInSecond ?? default(long); set => _fluxConfigurationPatchBody.AzureBlobSyncIntervalInSecond = value; }
+
+        /// <summary>
+        /// The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.",
+        SerializedName = @"timeoutInSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long AzureBlobTimeoutInSecond { get => _fluxConfigurationPatchBody.AzureBlobTimeoutInSecond ?? default(long); set => _fluxConfigurationPatchBody.AzureBlobTimeoutInSecond = value; }
+
+        /// <summary>The URL to sync for the flux configuration Azure Blob storage account.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The URL to sync for the flux configuration Azure Blob storage account.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The URL to sync for the flux configuration Azure Blob storage account.",
+        SerializedName = @"url",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AzureBlobUrl { get => _fluxConfigurationPatchBody.AzureBlobUrl ?? null; set => _fluxConfigurationPatchBody.AzureBlobUrl = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -98,27 +184,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         public string BucketName { get => _fluxConfigurationPatchBody.BucketName ?? null; set => _fluxConfigurationPatchBody.BucketName = value; }
 
         /// <summary>
-        /// The interval at which to re-reconcile the cluster git repository source with the remote.
+        /// The interval at which to re-reconcile the cluster bucket source with the remote.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The interval at which to re-reconcile the cluster git repository source with the remote.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The interval at which to re-reconcile the cluster bucket source with the remote.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The interval at which to re-reconcile the cluster git repository source with the remote.",
+        Description = @"The interval at which to re-reconcile the cluster bucket source with the remote.",
         SerializedName = @"syncIntervalInSeconds",
         PossibleTypes = new [] { typeof(long) })]
         public long BucketSyncIntervalInSecond { get => _fluxConfigurationPatchBody.BucketSyncIntervalInSecond ?? default(long); set => _fluxConfigurationPatchBody.BucketSyncIntervalInSecond = value; }
 
         /// <summary>
-        /// The maximum time to attempt to reconcile the cluster git repository source with the remote.
+        /// The maximum time to attempt to reconcile the cluster bucket source with the remote.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum time to attempt to reconcile the cluster git repository source with the remote.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum time to attempt to reconcile the cluster bucket source with the remote.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The maximum time to attempt to reconcile the cluster git repository source with the remote.",
+        Description = @"The maximum time to attempt to reconcile the cluster bucket source with the remote.",
         SerializedName = @"timeoutInSeconds",
         PossibleTypes = new [] { typeof(long) })]
         public long BucketTimeoutInSecond { get => _fluxConfigurationPatchBody.BucketTimeoutInSecond ?? default(long); set => _fluxConfigurationPatchBody.BucketTimeoutInSecond = value; }
@@ -180,6 +266,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.",
         SerializedName = @"clusterResourceName",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.CompleterInfo(
+        Name = @"",
+        Description =@"",
+        Script = @"'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ClusterType { get => this._clusterType; set => this._clusterType = value; }
 
@@ -192,13 +282,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Key-value pairs of protected configuration settings for the configuration",
         SerializedName = @"configurationProtectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings ConfigurationProtectedSetting { get => _fluxConfigurationPatchBody.ConfigurationProtectedSetting ?? null /* object */; set => _fluxConfigurationPatchBody.ConfigurationProtectedSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings ConfigurationProtectedSetting { get => _fluxConfigurationPatchBody.ConfigurationProtectedSetting ?? null /* object */; set => _fluxConfigurationPatchBody.ConfigurationProtectedSetting = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Azure)]
@@ -318,8 +409,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.",
         SerializedName = @"kustomizations",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations Kustomization { get => _fluxConfigurationPatchBody.Kustomization ?? null /* object */; set => _fluxConfigurationPatchBody.Kustomization = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPatchPropertiesKustomizations Kustomization { get => _fluxConfigurationPatchBody.Kustomization ?? null /* object */; set => _fluxConfigurationPatchBody.Kustomization = value; }
+
+        /// <summary>The client Id for authenticating a Managed Identity.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The client Id for authenticating a Managed Identity.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The client Id for authenticating a Managed Identity.",
+        SerializedName = @"clientId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagedIdentityClientId { get => _fluxConfigurationPatchBody.ManagedIdentityClientId ?? null; set => _fluxConfigurationPatchBody.ManagedIdentityClientId = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -435,6 +537,75 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Base64-encoded certificate used to authenticate a Service Principal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Base64-encoded certificate used to authenticate a Service Principal ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Base64-encoded certificate used to authenticate a Service Principal ",
+        SerializedName = @"clientCertificate",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServicePrincipalClientCertificate { get => _fluxConfigurationPatchBody.ServicePrincipalClientCertificate ?? null; set => _fluxConfigurationPatchBody.ServicePrincipalClientCertificate = value; }
+
+        /// <summary>The password for the certificate used to authenticate a Service Principal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The password for the certificate used to authenticate a Service Principal ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The password for the certificate used to authenticate a Service Principal ",
+        SerializedName = @"clientCertificatePassword",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServicePrincipalClientCertificatePassword { get => _fluxConfigurationPatchBody.ServicePrincipalClientCertificatePassword ?? null; set => _fluxConfigurationPatchBody.ServicePrincipalClientCertificatePassword = value; }
+
+        /// <summary>
+        /// Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based
+        /// authentication for the Client Certificate
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate",
+        SerializedName = @"clientCertificateSendChain",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ServicePrincipalClientCertificateSendChain { get => _fluxConfigurationPatchBody.ServicePrincipalClientCertificateSendChain ?? default(global::System.Management.Automation.SwitchParameter); set => _fluxConfigurationPatchBody.ServicePrincipalClientCertificateSendChain = value; }
+
+        /// <summary>The client Id for authenticating a Service Principal.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The client Id for authenticating a Service Principal.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The client Id for authenticating a Service Principal.",
+        SerializedName = @"clientId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServicePrincipalClientId { get => _fluxConfigurationPatchBody.ServicePrincipalClientId ?? null; set => _fluxConfigurationPatchBody.ServicePrincipalClientId = value; }
+
+        /// <summary>The client secret for authenticating a Service Principal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The client secret for authenticating a Service Principal")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The client secret for authenticating a Service Principal",
+        SerializedName = @"clientSecret",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServicePrincipalClientSecret { get => _fluxConfigurationPatchBody.ServicePrincipalClientSecret ?? null; set => _fluxConfigurationPatchBody.ServicePrincipalClientSecret = value; }
+
+        /// <summary>The tenant Id for authenticating a Service Principal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tenant Id for authenticating a Service Principal")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The tenant Id for authenticating a Service Principal",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServicePrincipalTenantId { get => _fluxConfigurationPatchBody.ServicePrincipalTenantId ?? null; set => _fluxConfigurationPatchBody.ServicePrincipalTenantId = value; }
+
         /// <summary>Source Kind to pull the configuration data from.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Source Kind to pull the configuration data from.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
@@ -495,12 +666,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -773,12 +944,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration">Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration> response)
         {
             using( NoSynchronizationContext )
             {
@@ -790,7 +961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
                 WriteObject((await response));
             }
         }

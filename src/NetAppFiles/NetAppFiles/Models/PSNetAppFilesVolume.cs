@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.NetApp.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Maximum storage quota allowed for a file system in bytes. This is a
         /// soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB.
+        /// limit is 100TiB, 500Tib for LargeVolumes. Specified in bytes
         /// </remarks>
         public long? UsageThreshold { get; set; }
 
@@ -444,5 +445,54 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// 'Enabled'
         /// </remarks>        
         public string SmbNonBrowsable { get; set; }
+
+        /// <summary>
+        /// Gets flag indicating whether file access logs are enabled for the
+        /// volume, based on active diagnostic settings present on the volume.
+        /// Possible values include: 'Enabled', 'Disabled'
+        /// </summary>        
+        public string FileAccessLogs { get; set; }
+
+        /// <summary>
+        /// Gets dataStoreResourceId
+        /// </summary>
+        /// <remarks>
+        /// Data store resource unique identifier
+        /// </remarks>        
+        public IList<string> DataStoreResourceId { get; set; }
+
+        /// <summary>
+        /// Gets provisioned Availability Zone
+        /// </summary>
+        /// <remarks>
+        /// The availability zone where the volume is provisioned. This refers
+        /// to the logical availability zone where the volume resides.
+        /// </remarks>        
+        public string ProvisionedAvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets IsLargeVolume 
+        /// </summary>
+        /// <remarks>
+        /// If enabled (true) Specifies whether volume is a Large Volume or Regular Volume. Defaults to false
+        /// </remarks>
+        public bool? IsLargeVolume { get; set; }
+
+        /// <summary>
+        /// Gets or sets ActualThroughputMibps
+        /// </summary>        
+        /// <remarks>
+        /// Actual throughput in MiB/s for auto qosType volumes calculated
+        /// based on size and serviceLevel
+        /// </remarks>
+        public double? ActualThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Gets originating Resource Id
+        /// </summary>
+        /// <remarks>
+        /// Id of the snapshot or backup that the volume is restored from.
+        /// </remarks>
+        public string OriginatingResourceId { get; set; }
     }
 }

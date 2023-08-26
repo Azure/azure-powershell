@@ -174,7 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             AddIf( null != (((object)this._appDescription)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._appDescription.ToString()) : null, "appDescription" ,container.Add );
             AddIf( null != (((object)this._appDisplayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._appDisplayName.ToString()) : null, "appDisplayName" ,container.Add );
             AddIf( null != (((object)this._appId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._appId.ToString()) : null, "appId" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._applicationTemplateId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._applicationTemplateId.ToString()) : null, "applicationTemplateId" ,container.Add );
             }
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 container.Add("servicePrincipalNames",___i);
             }
             AddIf( null != (((object)this._servicePrincipalType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._servicePrincipalType.ToString()) : null, "servicePrincipalType" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._signInAudience)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString(this._signInAudience.ToString()) : null, "signInAudience" ,container.Add );
             }
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 }
                 container.Add("claimsMappingPolicies",____o);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._createdObject)
                 {
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 }
                 container.Add("homeRealmDiscoveryPolicies",_____p);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._memberOf)
                 {
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                     container.Add("memberOf",_____k);
                 }
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._oauth2PermissionGrant)
                 {
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                     container.Add("oauth2PermissionGrants",_____f);
                 }
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._ownedObject)
                 {
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                     container.Add("ownedObjects",_____a);
                 }
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeReadOnly))
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeRead))
             {
                 if (null != this._owner)
                 {

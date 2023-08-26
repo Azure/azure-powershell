@@ -13,7 +13,8 @@ Gets firewall auto learned ip prefixes.
 ## SYNTAX
 
 ```
-Get-AzFirewallLearnedIpPrefix -Name <String>  -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallLearnedIpPrefix [-Name <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,7 @@ IpPrefixes :    [ "10.101.0.0/16", "10.102.0.0/16" ]
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -60,14 +61,14 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
 Specifies the name of the resource group that Firewall belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +76,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

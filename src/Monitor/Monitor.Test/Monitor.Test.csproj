@@ -14,11 +14,14 @@
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.28.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ApplicationInsights" Version="0.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Monitor\Monitor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

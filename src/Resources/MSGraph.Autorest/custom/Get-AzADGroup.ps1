@@ -100,6 +100,13 @@ function Get-AzADGroup {
         [System.Management.Automation.SwitchParameter]
         ${AppendSelected},
 
+        [Parameter(ParameterSetName='EmptyParameterSet')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.String]
+        # Specifies a count of the total number of items in a collection.
+        # By default, this variable will be set in the global scope.
+        ${CountVariable},
+
         [Parameter()]
         [Alias("AzContext", "AzureRmContext", "AzureCredential")]
         [ValidateNotNull()]

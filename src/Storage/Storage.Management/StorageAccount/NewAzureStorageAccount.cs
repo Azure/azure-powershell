@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
-using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChange("Default value of AllowBlobPublicAccess will be changed from True to False in a future release. " +
-        "When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account.", 
-        OldWay = "AllowBlobPublicAccess is set to True by defult.", 
-        NewWay = "AllowBlobPublicAccess is set to False by default.")]
+    [GenericBreakingChangeWithVersion("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication settings on storage account will be changed to False in the future release. \n" +
+        "When AllowBlobPublicAccess is False on a storage account, container ACLs cannot be configured to allow anonymous access to blobs within the storage account. \n" +
+        "When AllowCrossTenantReplication is False on a storage account, cross AAD tenant object replication is not allowed when setting up Object Replication policies.",
+        "11.0.0", "6.0.0",
+        OldWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to True by defult.", 
+        NewWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to False by default.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
@@ -619,6 +621,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, " +
+            "which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
+        [PSArgumentCompleter("Standard", "AzureDnsZone")]
+        [ValidateNotNullOrEmpty]
+        public string DnsEndpointType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -890,9 +900,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.IsLocalUserEnabled = this.enableLocalUser;
             }
-            if(this.AllowedCopyScope != null)
+            if (this.AllowedCopyScope != null)
             {
                 createParameters.AllowedCopyScope = this.AllowedCopyScope;
+            }
+            if (this.DnsEndpointType != null)
+            {
+                createParameters.DnsEndpointType = this.DnsEndpointType;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

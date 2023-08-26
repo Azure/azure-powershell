@@ -33,10 +33,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
     {
         public const string DnsResourceLocation = "global";
 
-        public const int TxtRecordMaxLength = 1024;
-
-        public const int TxtRecordMinLength = 0;
-
         private Dictionary<RecordType, Type> recordTypeValidationEntries = new Dictionary<RecordType, Type>()
         {
             {RecordType.A, typeof (ARecord)},

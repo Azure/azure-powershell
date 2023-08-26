@@ -28,15 +28,14 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <String>] [-ClusterTier <String>]
- [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
- [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificatePassword <String>]
- [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
- [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-StorageAccountManagedIdentity <String>]
- [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
- [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
- [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
- [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
- [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-ObjectId <Guid>] [-ApplicationId <Guid>]
+ [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
+ [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
+ [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
+ [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
+ [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
+ [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -56,15 +55,15 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <String>] [-ClusterTier <String>]
- [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
- [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFilePath <String>]
- [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
- [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
- [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
- [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
- [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-ObjectId <Guid>] [-ApplicationId <Guid>]
+ [-CertificateFilePath <String>] [-CertificatePassword <String>] [-AadTenantId <Guid>]
+ [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
+ [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-StorageAccountManagedIdentity <String>]
+ [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
+ [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
+ [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
+ [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -84,15 +83,15 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaManagementNodeSize <String>] [-ZookeeperNodeSize <String>] [-ClusterType <String>]
  [-ComponentVersion <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-VirtualNetworkId <String>] [-SubnetName <String>] [-OSType <String>] [-ClusterTier <String>]
- [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-RdpCredential <PSCredential>]
- [-RdpAccessExpiry <DateTime>] [-ObjectId <Guid>] [-ApplicationId <Guid>] [-CertificateFileContents <Byte[]>]
- [-CertificatePassword <String>] [-AadTenantId <Guid>] [-SecurityProfile <AzureHDInsightSecurityProfile>]
- [-DisksPerWorkerNode <Int32>] [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>]
- [-StorageAccountManagedIdentity <String>] [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>]
- [-EncryptionKeyVersion <String>] [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>]
- [-EncryptionAtHost <Boolean>] [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker]
- [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
- [-PrivateLink <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-SshCredential <PSCredential>] [-SshPublicKey <String>] [-ObjectId <Guid>] [-ApplicationId <Guid>]
+ [-CertificateFileContents <Byte[]>] [-CertificatePassword <String>] [-AadTenantId <Guid>]
+ [-SecurityProfile <AzureHDInsightSecurityProfile>] [-DisksPerWorkerNode <Int32>]
+ [-MinSupportedTlsVersion <String>] [-AssignedIdentity <String>] [-StorageAccountManagedIdentity <String>]
+ [-EncryptionAlgorithm <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionVaultUri <String>] [-EncryptionInTransit <Boolean>] [-EncryptionAtHost <Boolean>]
+ [-AutoscaleConfiguration <AzureHDInsightAutoscale>] [-EnableIDBroker] [-KafkaClientGroupId <String>]
+ [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
+ [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -1245,37 +1244,6 @@ Gets or sets the private link configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightPrivateLinkConfiguration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RdpAccessExpiry
-Specifies the expiration, as a DateTime object, for Remote Desktop Protocol (RDP) access to a cluster.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RdpCredential
-Specifies the Remote Desktop (RDP) credentials for the cluster.
-This is only for Windows clusters.
-
-```yaml
-Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 

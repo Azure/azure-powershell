@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     VirtualMachineRunCommand vmRc = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupName, this.VMName, this.RunCommandName, this.Expand);
                     PSVirtualMachineRunCommand psObject = new PSVirtualMachineRunCommand();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommand>(vmRc, psObject);
+                    psObject.ProvisioningState = vmRc.ProvisioningState;
                     WriteObject(psObject);
                 }
                 else
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
-                    var psObject = new List<PSVirtualMachineRunCommand>();
+                    var psObject = new List<PSVirtualMachineRunCommandList>();
                     foreach (var r in resultList)
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommandList>(r));

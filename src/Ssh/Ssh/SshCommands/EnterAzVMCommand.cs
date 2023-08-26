@@ -24,6 +24,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Ssh.Properties;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -54,7 +56,31 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region fields
-        private int rdpLocalPort;
+        private EndpointAccessResource relayInfo;
+        #endregion
+
+        #region constants
+        private const int retryDelayInSec = 10;
+        private const int ServiceConfigDelayInSec = 15;
+        #endregion
+
+        #region Properties
+        private int RdpLocalPort
+        {
+            get
+            {
+                if (_rdpLocalPort == 0)
+                {
+                    TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
+                    listener.Start();
+                    _rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
+                    listener.Stop();
+                }
+
+                return _rdpLocalPort;
+            }
+        }
+        private int _rdpLocalPort = 0;
         #endregion
 
         public override void ExecuteCmdlet()
@@ -64,20 +90,28 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
  
-            ProgressRecord record = new ProgressRecord(0, "Prepare for starting SSH connection", "Start Preparing");
-            UpdateProgressBar(record, "Start preparing", 0);
+            record = new ProgressRecord(0, "Preparing for SSH connection", "Initiating connection setup");
+            UpdateProgressBar(record, "Setup SSH connection", 0);
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
             {
                 GetVmIpAddress();
-                UpdateProgressBar(record, "Retrieved the IP address of the target VM", 50);
+                UpdateProgressBar(record, "Retrieved IP address of VM", 50);
             }
             if (IsArc())
             {
-                proxyPath = GetClientSideProxy();
-                UpdateProgressBar(record, $"Dowloaded SSH Proxy, saved to {proxyPath}", 25);
-                GetRelayInformation();
+                CheckIfAgentIsUpToDate();
+                proxyPath = GetProxyPath();
+                UpdateProgressBar(record, $"Retrieved path to Arc Proxy", 30);
+                // This value will be updated by GetRelayInformation
+                createdServiceConfig = false;
+                relayInfo = GetRelayInformation();
                 UpdateProgressBar(record, $"Retrieved Relay Information", 50);
+                if (createdServiceConfig)
+                {
+                    Thread.Sleep(ServiceConfigDelayInSec * 1000);
+                }
+                UpdateProgressBar(record, $"Completed Relay information setup", 60);
             }
             try
             {
@@ -91,16 +125,17 @@ namespace Microsoft.Azure.Commands.Ssh
 
 
                 int sshStatus = 0;
+                Process sshProcess = CreateSSHProcess();
                 if (Rdp.IsPresent)
                 {
-                    sshStatus = StartRDPConnection();
+                    sshStatus = StartRDPConnection(sshProcess);
                 }
                 else
                 {
-                    sshStatus = StartSSHConnection();
+                    sshStatus = StartSSHConnection(sshProcess, false);
                 }
                 
-                if (this.PassThru.IsPresent)
+                if (PassThru.IsPresent)
                 {
                     WriteObject(sshStatus == 0);
                 }
@@ -113,10 +148,10 @@ namespace Microsoft.Azure.Commands.Ssh
 
         #region Private Methods
 
-        private int StartSSHConnection()
+        private int StartSSHConnection(Process sshProcess, bool isRetry)
         {
-            Process sshProcess = CreateSSHProcess();
-
+            bool serviceconfigdelayfailed = false;
+            int sshExitCode;
             // Redirect OpenSSH Logs and use it to determine when authentication succeeds, so that cleanup can be performed.
             // Redirect SSH Proxy logs to provide helpful error messaged when well known errors happen.
             if (!SshLogsPrinted() && !IsDebugMode() &&
@@ -127,35 +162,56 @@ namespace Microsoft.Azure.Commands.Ssh
                     
             sshProcess.Start();
 
-            if (deleteCert && !sshProcess.StartInfo.RedirectStandardError)
-                WaitToDeleteCred(sshProcess);
-            if (sshProcess.StartInfo.RedirectStandardError)
-                ReadSshLogs(sshProcess);
+            bool deletedCredentials = false;
+            if (deleteCert &&
+                !sshProcess.StartInfo.RedirectStandardError)
+                deletedCredentials = DeleteCredentialsAfterSshDefaultConnectTimeout(sshProcess);
+            else if (sshProcess.StartInfo.RedirectStandardError)
+                ReadSshLogsAndDeleteCredentialsAfterSuccessfulConnection(sshProcess, out serviceconfigdelayfailed, out deletedCredentials);
 
             sshProcess.WaitForExit();
+            sshExitCode = sshProcess.ExitCode;
 
-            return sshProcess.ExitCode;
+            if (!isRetry && (serviceconfigdelayfailed ||
+                (!sshProcess.StartInfo.RedirectStandardError && sshProcess.ExitCode == 255)))
+            {
+                if (deleteCert && deletedCredentials) 
+                {
+                    // We don't expect the credentials to ever be deleted in this scenario, but it is technically possible. For now, if this ever happens, we can simply
+                    // not retry the connection to avoid unnexpected failures.
+                    WriteWarning($"SSH connection failed. Possibly caused by new service configuration setup. We are unable to retry the connection at this time. Please try again momentarily.");
+                    return sshExitCode;
+                }
+
+                WriteWarning($"SSH connection failed. Possibly caused by new service configuration setup. Retrying the connection in {retryDelayInSec} seconds.");
+                Thread.Sleep(retryDelayInSec * 1000);
+                sshExitCode = StartSSHConnection(CreateSSHProcess(), true);
+            }
+
+            return sshExitCode;
         }
 
-        private int StartRDPConnection()
+        private int StartRDPConnection(Process sshProcess)
         {
-            Process sshProcess = null;
             int success = 1;
 
             try
             {
-                // Get an open local port to act an a listener
-                TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
-                listener.Start();
-                rdpLocalPort = ((IPEndPoint)listener.LocalEndpoint).Port;
-                listener.Stop();
-
-                // Start SSH Process
-                sshProcess = CreateSSHProcess();
                 sshProcess.StartInfo.RedirectStandardError = true;
                 sshProcess.Start();
 
-                bool sshSuccess = WaitSSHTunnelConnection(sshProcess);
+                bool serviceconfigdelayfailed = false;
+                bool sshSuccess = WaitSSHTunnelConnection(sshProcess, out serviceconfigdelayfailed);
+                
+                if (!sshSuccess && serviceconfigdelayfailed)
+                {
+                    WriteWarning($"SSH connection failed. Possibly caused by new service configuration setup. Retrying the connection in {retryDelayInSec} seconds.");
+                    Thread.Sleep(retryDelayInSec * 1000);
+                    Process sshRetry = CreateSSHProcess();
+                    sshProcess.StartInfo.RedirectStandardError = true;
+                    sshProcess.Start();
+                    sshSuccess = WaitSSHTunnelConnection(sshProcess, out serviceconfigdelayfailed);
+                }
                 DoCleanup();
 
                 if (sshSuccess && !sshProcess.HasExited)
@@ -164,7 +220,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
                     Process rdpProcess = new Process();
                     rdpProcess.StartInfo.FileName = rdpCommand;
-                    rdpProcess.StartInfo.Arguments = $"/v:localhost:{rdpLocalPort}";
+                    rdpProcess.StartInfo.Arguments = $"/v:localhost:{RdpLocalPort}";
                     rdpProcess.Start();
                     rdpProcess.WaitForExit();
                     success = rdpProcess.ExitCode;
@@ -201,15 +257,21 @@ namespace Microsoft.Azure.Commands.Ssh
             WriteDebug($"Running SSH command: {sshClient} {command}");
 
             if (IsArc())
-                sshProcess.StartInfo.EnvironmentVariables["SSHPROXY_RELAY_INFO"] = relayInfo;
+                sshProcess.StartInfo.EnvironmentVariables["SSHPROXY_RELAY_INFO"] = ConvertEndpointAccessToBase64String(relayInfo);
             sshProcess.StartInfo.FileName = sshClient;
             sshProcess.StartInfo.Arguments = command;
             sshProcess.StartInfo.UseShellExecute = false;
             return sshProcess;
         }
 
-        private void ReadSshLogs(Process sshProcess)
+        private void ReadSshLogsAndDeleteCredentialsAfterSuccessfulConnection(
+            Process sshProcess,
+            out bool createdServiceConfigDelayFailed,
+            out bool deletedCredentials)
         {
+            deletedCredentials = false;
+            createdServiceConfigDelayFailed = false;
+            
             var stderr = sshProcess.StandardError;
             string line;
             Stopwatch timer = new Stopwatch();
@@ -223,33 +285,43 @@ namespace Microsoft.Azure.Commands.Ssh
                 {
                     Host.UI.WriteLine(line);
                     CheckForCommonErrors(line);
+                    if (createdServiceConfig && !createdServiceConfigDelayFailed)
+                    {
+                        createdServiceConfigDelayFailed = CheckForServiceConfigDelayError(line);
+                    }
                 }
 
-                if (line.Contains("debug1: Entering interactive session.") || timer.ElapsedMilliseconds >= 120000)
+                if (line.Contains("debug1: Entering interactive session.") ||
+                    (timer.ElapsedMilliseconds >= 120000 && !createdServiceConfigDelayFailed))
                 {
                     DoCleanup();
+                    deletedCredentials = true;
                 }
             }
 
             return;
         }
 
-        private void WaitToDeleteCred(Process sshProcess)
+        private bool DeleteCredentialsAfterSshDefaultConnectTimeout(Process sshProcess)
         {
             Stopwatch timer = new Stopwatch();
             timer.Start();
 
             while (timer.ElapsedMilliseconds < 120000)
             {
-                if (sshProcess.HasExited) { return; }
+                if (sshProcess.HasExited) { return false; }
                 Thread.Sleep(1000);
             }
-            if (!sshProcess.HasExited) { DoCleanup(); }
-            return;
+            if (!sshProcess.HasExited) {
+                DoCleanup();
+                return true;
+            }
+            return false;
         }
 
-        private bool WaitSSHTunnelConnection(Process sshProcess)
+        private bool WaitSSHTunnelConnection(Process sshProcess, out bool createdServiceConfigDelayFailed)
         {
+            createdServiceConfigDelayFailed = false;
             var stderr = sshProcess.StandardError;
             bool sshSuccess = false;
             string line;
@@ -265,6 +337,11 @@ namespace Microsoft.Azure.Commands.Ssh
                     Host.UI.WriteLine(line);
                
                 CheckForCommonErrors(line);
+
+                if (createdServiceConfig && !createdServiceConfigDelayFailed)
+                {
+                    createdServiceConfigDelayFailed = CheckForServiceConfigDelayError(line);
+                }
 
                 if (line.Contains("debug1: Entering interactive session."))
                 {
@@ -334,7 +411,7 @@ namespace Microsoft.Azure.Commands.Ssh
             if (Rdp)
             {
                 argList.Add("-L");
-                argList.Add($"{rdpLocalPort}:localhost:3389");
+                argList.Add($"{RdpLocalPort}:localhost:3389");
                 argList.Add("-N");
             }
 
@@ -387,7 +464,7 @@ namespace Microsoft.Azure.Commands.Ssh
         private void CheckForCommonErrors(string line)
         {
             // For now we are only checking for one error. Will add more common errors on later releases.
-            string pattern = "{\"level\":\"fatal\",\"msg\":\"sshproxy: error copying information from the connection: .*\",\"time\":\".*\"}.*";
+            string pattern = "{\"level\":\"fatal\",\"msg\":\"sshproxy: error copying information from the connection: .*\",\"proxyVersion\":\".*\"}.*";
             Regex regex = new Regex(pattern);
             if (regex.IsMatch(line))
             {
@@ -395,6 +472,16 @@ namespace Microsoft.Azure.Commands.Ssh
             }
         }
 
+        private bool CheckForServiceConfigDelayError(string line)
+        {
+            string pattern = "{\"level\":\"fatal\",\"msg\":\"sshproxy: error connecting to the address: 404 Endpoint does not exist.*";
+            Regex regex = new Regex(pattern);
+            if (regex.IsMatch(line))
+            {
+                return true;
+            }
+            return false;
+        }
         private bool IsDebugMode()
         {
             bool debug;

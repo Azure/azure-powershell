@@ -1,6 +1,6 @@
 ### Example 1: Create a volume
 ```powershell
-New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' 
 ```
 
 ```output
@@ -20,7 +20,6 @@ SystemDataCreatedByType        : Application
 SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
 SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType   : Application
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                           : Microsoft.ElasticSan/ElasticSans
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```

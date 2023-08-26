@@ -26,7 +26,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Remove-AzRouteServer")]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVirtualRouterCommand : NetworkBaseCmdlet
     {

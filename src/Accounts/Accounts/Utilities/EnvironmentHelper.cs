@@ -19,6 +19,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
@@ -50,8 +51,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         /// Retrieves the meta data endpoints.
         /// </summary>
         /// <param name="url">The URL.</param>
+        /// <param name="httpClientFactory">The Http client factory to provide interface to retrieve content from url.</param>
         /// <returns></returns>
-        public virtual async Task<MetadataResponse> RetrieveMetaDataEndpoints(string url)
+        public virtual async Task<MetadataResponse> RetrieveMetaDataEndpoints(string url, IHttpOperationsFactory httpClientFactory)
         {
             if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
             {
@@ -60,23 +62,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
             url = string.Concat(url.TrimEnd('/').ToLower(), "/metadata/endpoints?api-version=1.0");
             MetadataResponse response = null;
-            using (HttpClient client = new HttpClient())
+            try
             {
-                HttpResponseMessage responseJson = await client.GetAsync(url).ConfigureAwait(false);
-                string content = responseJson.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
-
-                try
-                {
-                    response = JsonConvert.DeserializeObject<MetadataResponse>(content);
-                }
-                catch (Exception)
-                {
-                    throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
-                }
+                var content = await httpClientFactory.ReadAsStringAsync(new Uri(url));
+                response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
             }
 
-            if ((null == response) || string.IsNullOrEmpty(response.GalleryEndpoint) || string.IsNullOrEmpty(response.GraphEndpoint)
-                || string.IsNullOrEmpty(response.PortalEndpoint))
+            if ((null == response)  || string.IsNullOrEmpty(response.GraphEndpoint) || string.IsNullOrEmpty(response.PortalEndpoint))
             {
                 throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
             }

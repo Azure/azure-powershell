@@ -9,6 +9,8 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ## SYNTAX
 
@@ -27,6 +29,8 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
 
 ## DESCRIPTION
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ## EXAMPLES
 
@@ -78,7 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

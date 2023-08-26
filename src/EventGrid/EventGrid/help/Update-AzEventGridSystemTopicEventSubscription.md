@@ -21,7 +21,7 @@ Update-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextCo
 ### SystemTopicEventSuscriptionParameterSet
 ```
 Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <String[]>]
+ -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <Hashtable[]>]
  [-Endpoint <String>] [-EndpointType <String>] [-Label <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-AdvancedFilter <Hashtable[]>] [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>]
  [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
@@ -35,7 +35,7 @@ Update the properties of an Event Grid System topic event subscription. This can
 
 ### Example 1
 ```powershell
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1
 ```
 
 Updates the endpoint of the event subscription \`ES1\` for system topic \`Topic1\` in resource group \`MyResourceGroupName\` to \`https://requestb.in/1kxxoui1\`
@@ -43,14 +43,14 @@ Updates the endpoint of the event subscription \`ES1\` for system topic \`Topic1
 ### Example 2
 ```powershell
 $labels = "Finance", "HR"
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Label $labels
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Label $labels
 ```
 
 Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with the new labels $labels.
 
 ### Example 3
 ```powershell
-Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName ES1 -SystemTopicName Topic1 -ResourceGroupName MyResourceGroupName -Endpoint https://requestb.in/1kxxoui1 -SubjectEndsWith "jpg"
 ```
 
 Updates the properties of the event subscription \`ES1\` for system topic \`Topic1\` in \`MyResourceGroupName\` with new endpoint \`https://requestb.in/1kxxoui1\` and the new SubjectEndsWith filter as \`jpg\`
@@ -126,10 +126,15 @@ Accept wildcard characters: False
 ```
 
 ### -DeliveryAttributeMapping
-The delivery attribute mappings for this system topic event subscription
+The delivery attribute mappings for this system topic event subscription.
+Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
+The Type can either be 'Static' or 'Dynamic'.
+If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
+If the type is 'Dynamic' then property 'SourceField' is required.
+An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 

@@ -1,13 +1,13 @@
 {
-  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/networkRuleSets/default?api-version=2022-01-01-preview+1": {
+  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/networkRuleSets/default?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/networkRuleSets/default?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/networkRuleSets/default?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "5fe5c488-00a7-4bcf-96d1-a53bfa1b849c" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "34e77167-d48a-4660-b2bf-36cac2f59d6a" ],
         "CommandName": [ "Get-AzEventHubNetworkRuleSet" ],
         "FullCommandName": [ "Get-AzEventHubNetworkRuleSet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,22 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "61960ce9-8590-4b02-a7d7-efd36e512fa2_M8CH3_M8CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "0558753c-a74a-4132-89c4-6f8fbca893c7" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221125T103012Z:0558753c-a74a-4132-89c4-6f8fbca893c7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
+        "x-ms-request-id": [ "0e44ec0f-c558-4c05-82bd-51f4dc0805c8" ],
+        "x-ms-correlation-request-id": [ "0e44ec0f-c558-4c05-82bd-51f4dc0805c8" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230817T173026Z:0e44ec0f-c558-4c05-82bd-51f4dc0805c8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 25 Nov 2022 10:30:12 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 17:30:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "389" ],
+        "Content-Length": [ "456" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbexylc/providers/Microsoft.EventHub/namespaces/namespaceNameyb2pzf/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestwogfts/providers/Microsoft.EventHub/namespaces/namespaceNamenysd8k/networkrulesets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"eastus\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[],\"trustedServiceAccessEnabled\":false,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

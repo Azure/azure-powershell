@@ -49,6 +49,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public CloudFileShare Share { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "ShareClient object indicated the share where the files/directories would list File Handles")]
+        [ValidateNotNull]
+        public ShareClient ShareClient { get; set; }
+
+        [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -60,6 +69,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public CloudFileDirectory Directory { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.DirectoryParameterSetName,
+            HelpMessage = "ShareDirectoryClient object indicated the base folder where the files/directories would list File Handles")]
+        [ValidateNotNull]
+        public ShareDirectoryClient ShareDirectoryClient { get; set; }
+
+        [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -69,6 +87,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         [Alias("CloudFile")]
         public CloudFile File { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.FileParameterSetName,
+            HelpMessage = "ShareFileClient object indicated the file to list File Handles.")]
+        [ValidateNotNull]
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(
             Position = 1,
@@ -97,12 +124,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
-                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                    if (this.ShareDirectoryClient != null)
                     {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
+                        baseDirClient = this.ShareDirectoryClient;
+                    }
+                    else
+                    {
+                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
                     }
                     break;
 
@@ -113,21 +141,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
-                    baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                    if (this.ShareClient != null)
                     {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                        baseDirClient = this.ShareClient.GetRootDirectoryClient();
+                    }
+                    else
+                    {
+                        baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
                     }
                     break;
-                case Constants.FileParameterSetName:
-                    targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
 
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
+                case Constants.FileParameterSetName:
+                    if (this.ShareFileClient != null)
                     {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
+                        targetFile = this.ShareFileClient;
+                    }
+                    else
+                    {
+
+                        targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
                     }
                     break;
 

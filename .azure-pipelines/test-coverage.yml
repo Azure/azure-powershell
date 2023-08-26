@@ -1,0 +1,155 @@
+parameters:
+- name: dotnet_sdk_6
+  displayName: .NET 6
+  type: string
+  default: 6.0.x
+- name: dotnet_sdk_7
+  displayName: .NET 7
+  type: string
+  default: 7.0.x
+- name: testFramework
+  displayName: Test Framework
+  type: string
+  default: net6.0
+- name: testPoolName
+  displayName: Test Pool Name
+  type: string
+  default: pool-windows-2019
+- name: testPoolVMImage
+  displayName: Test Pool VM Image
+  type: string
+  default: ' '
+
+variables:
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Pipeline.Workspace)/artifacts
+
+pr: none
+trigger: none
+
+jobs:
+- job: Build
+  displayName: Build
+  pool: pool-windows-2019
+
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET 6 SDK'
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.dotnet_sdk_6 }}
+
+  - task: DotNetCoreCLI@2
+    displayName: Build Azure PowerShell Modules
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj -t:"Clean;Build" -p:"Configuration=Debug"'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Build Artifacts
+    inputs:
+      targetPath: artifacts
+      artifact: BuildArtifacts
+
+- job: TestCoverage
+  dependsOn: Build
+  timeoutInMinutes: 600
+  pool:
+    name: ${{ parameters.testPoolName }}
+    vmImage: ${{ parameters.testPoolVMImage }}
+
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET 6.0 SDK'
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.dotnet_sdk_6 }}
+
+  - task: PowerShell@2
+    displayName: Initialize Environment
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
+
+  - task: DownloadPipelineArtifact@2
+    displayName: Download pipeline artifacts
+    inputs:
+      targetPath: artifacts
+      artifactName: BuildArtifacts
+
+  - task: DotNetCoreCLI@2
+    displayName: Test SDK-Based Cmdlets
+    condition: succeeded()
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj -t:"Test" -p:"Configuration=Debug;TestFramework=${{ parameters.testFramework }}"'
+
+  - task: PowerShell@2
+    displayName: Test AutoRest-Based Cmdlets
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+
+        if ($IsWindows) { $delimiter = ";" } else { $delimiter = ":" }
+        $rootDir = (Get-Location).Path
+        $debugDir = Join-Path -Path $rootDir -ChildPath "artifacts" | Join-Path -ChildPath "Debug"
+        $env:PSModulePath += $delimiter + $debugDir
+        Get-ChildItem -Path $debugDir -Filter test-module.ps1 -File -Recurse | Select-Object -ExpandProperty FullName | ForEach-Object {
+          Write-Host "##[section]Testing $_"
+          & $_
+        }
+
+  - task: PowerShell@2
+    displayName: Analyze Test Coverage
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
+      arguments: -CalcBaseline
+
+  - task: PowerShell@2
+    displayName: Save Test Coverage Results
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
+      arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+
+  - task: PowerShell@2
+    displayName: Update Test Coverage Baseline
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        git checkout -b testcoverage-baseline
+        $blDir = "./tools/TestFx/Coverage"
+        $blCsv = Join-Path -Path $blDir -ChildPath "Baseline.csv"
+        Copy-Item -Path "$(Pipeline.Workspace)/artifacts/TestCoverageAnalysis/Results/Baseline.csv" -Destination $blDir -Force
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+        git config user.name "azure-powershell-bot"
+        git add $blCsv
+        git commit -m "Update with the latest test coverage data"
+        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
+        git push origin testcoverage-baseline --force
+
+        $title = "Update test coverage baseline"
+        $headBranch = "testcoverage-baseline"
+        $targetBranch = "main"
+        $description = "Update with the latest test coverage baseline data"
+        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(BotAccessToken) -Description $description
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Test Coverage Result
+    condition: always()
+    inputs:
+      artifact: testcoverage
+      targetPath: $(TestCoverageLocation)

@@ -22,10 +22,10 @@ Creates or updates a spacecraft resource.
 .Example
 $linkObject = New-AzOrbitalSpacecraftLinkObject -BandwidthMHz 15 -CenterFrequencyMHz 8160 -Direction 'Downlink' -Name spacecraftlink -Polarization 'RHCP'
 
-New-AzOrbitalSpacecraft -Name AQUA -ResourceGroupName azpstest-gp -Location westus2 -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   21259.45143715  .00000131  00000-0  39210-4 0  9998" -TleLine2 "2 27424  98.2138 199.4906 0001886  51.3958  60.0011 14.57112434 30322"
+New-AzOrbitalSpacecraft -Name AQUA -ResourceGroupName azpstest-gp -Location westus2 -Link $linkObject -NoradId 27424 -TitleLine "AQUA" -TleLine1 "1 27424U 02022A   23128.13172751  .00001518  00000+0  34030-3 0  9995" -TleLine2 "2 27424  98.2850  72.6931 0000969  56.1431 359.6436 14.58017750117525"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -34,14 +34,14 @@ To create the parameters described below, construct a hash table containing the 
 LINK <ISpacecraftLink[]>: Immutable list of Spacecraft links.
   BandwidthMHz <Single>: Bandwidth in MHz.
   CenterFrequencyMHz <Single>: Center Frequency in MHz.
-  Direction <Direction>: Direction (uplink or downlink).
+  Direction <Direction>: Direction (Uplink or Downlink).
   Name <String>: Link name.
   Polarization <Polarization>: Polarization. e.g. (RHCP, LHCP).
 .Link
 https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 #>
 function New-AzOrbitalSpacecraft {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraft])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -66,18 +66,36 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ISpacecraftLink[]]
+    # Immutable list of Spacecraft links.
+    # To construct, see NOTES section for LINK properties and create a hash table.
+    ${Link},
+
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [AllowEmptyCollection()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftLink[]]
-    # Immutable list of Spacecraft links.
-    # To construct, see NOTES section for LINK properties and create a hash table.
-    ${Link},
+    [System.String]
+    # Title line of the two-line element set (TLE).
+    ${TitleLine},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Line 1 of the two-line element set (TLE).
+    ${TleLine1},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
+    [System.String]
+    # Line 2 of the two-line element set (TLE).
+    ${TleLine2},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
@@ -93,29 +111,12 @@ param(
     ${Tag},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Title line of the two-line element set (TLE).
-    ${TitleLine},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Line 1 of the two-line element set (TLE).
-    ${TleLine1},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Body')]
-    [System.String]
-    # Line 2 of the two-line element set (TLE).
-    ${TleLine2},
-
-    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -179,7 +180,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

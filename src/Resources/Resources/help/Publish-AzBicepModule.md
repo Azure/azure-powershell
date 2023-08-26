@@ -13,7 +13,7 @@ Publishes a Bicep file to a registry.
 ## SYNTAX
 
 ```
-Publish-AzBicepModule -FilePath <String> -Target <String> -DocumentationUri <String> [-PassThru]
+Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,6 +29,13 @@ Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}
 
 Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`.
 
+### Example 2
+```powershell
+Publish-AzBicepModule -FilePath 'main.bicep' -Target 'br:{registry}/{moduleName}:{tag}' -Force
+```
+
+Publishes `main.bicep` to `br:{registry}/{moduleName}:{tag}`, overwriting existing version.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -38,6 +45,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DocumentationUri
+The documentation uri of the Bicep module..
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -58,6 +80,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Allows overwriting of existing module.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,21 +122,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DocumentationUri
-The documentation uri of the Bicep module..
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

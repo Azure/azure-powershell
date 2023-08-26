@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                var learnedIPPrefixes = this.AzureFirewallClient.ListLearnedPrefixes(this.ResourceGroupName, this.Name);
+                var learnedIPPrefixes = this.GetLearnedPrefixes(this.ResourceGroupName, this.Name);
                 var pslearnedIPPrefixes = new PSAzureFirewallIpPrefix();
                 if (learnedIPPrefixes != null)
                 {
@@ -59,6 +59,18 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 throw new ArgumentException($" Name and ResourceGroupName should be provided to get firewall learned IP prefixes.");
+            }
+        }
+
+        private IPPrefixesList GetLearnedPrefixes(string rgName, string fwName)
+        {
+            try
+            {
+                return this.AzureFirewallClient.ListLearnedPrefixes(rgName, fwName);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error occurred while fetching learned IP prefixes. Please make sure learning IP prefix is configured properly.");
             }
         }
     }

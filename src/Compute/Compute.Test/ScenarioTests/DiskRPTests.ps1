@@ -1422,7 +1422,7 @@ function Test-DiskPurchasePlan
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name "planName" -Publisher "planPublisher" -Product "planPorduct" -PromotionCode "planPromotionCode";
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan;
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan -Tag @{test1 = "testval1"; test2 = "testval2" };
         $diskname = "disk" + $rgname;
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         Assert-AreEqual $disk.PurchasePlan.Product "planPorduct";
@@ -1433,6 +1433,8 @@ function Test-DiskPurchasePlan
         $diskPurchasePlanUpdate = New-AzDiskPurchasePlanConfig -Name "planNameupdate" -Publisher "planPublisherupdate" -Product "planPorductupdate" -PromotionCode "planPromotionCodeupdate";
         $updateconfig = New-AzDiskUpdateConfig -PurchasePlan $diskPurchasePlanUpdate;
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual "testval1" $disk.Tags.test1;
+        Assert-AreEqual "testval2" $disk.Tags.test2;
         Assert-AreEqual $disk.PurchasePlan.Product "planPorductupdate";
         Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCodeupdate";
         Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisherupdate";
@@ -1518,6 +1520,35 @@ function Test-SecurityProfile
 
 <#
 .SYNOPSIS
+Test Set-AzDiskSecurityProfile with the Standard securityType.
+There should be no securityProfile made for Standard at this time. 
+#>
+function Test-SecurityProfileStandard
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Standard SecurityType
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "diskstnd" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-Null $disk.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test SupportsHibernation Parameter
 #>
 function Test-SupportsHibernation
@@ -1537,7 +1568,7 @@ function Test-SupportsHibernation
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
         Assert-AreEqual $disk.SupportsHibernation $false;
 
-        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true;
+        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true -Tag @{test1 = "testval1"; test2 = "testval2" };
         $snapshotname = "snapshot" + $rgname;
         New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname  -Snapshot $snapshotConfig;
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
@@ -1545,7 +1576,9 @@ function Test-SupportsHibernation
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -SupportsHibernation $false;
-        Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig;
+        $snapshot = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig;
+        Assert-AreEqual "testval1" $snapshot.Tags.test1;
+        Assert-AreEqual "testval2" $snapshot.Tags.test2;
         $newSnapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual $newSnapshot.SupportsHibernation $false;
     }

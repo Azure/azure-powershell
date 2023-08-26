@@ -12,13 +12,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

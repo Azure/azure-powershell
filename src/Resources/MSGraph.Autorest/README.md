@@ -47,6 +47,10 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+version: "3.9.5"
+use-extension:
+  "@autorest/powershell": "4.0.0-dev.10"
+
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
@@ -66,6 +70,7 @@ identity-correction-for-post: true
 endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
 nested-object-to-string: true
+add-api-version-in-model-namespace: true
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
@@ -207,6 +212,41 @@ directive:
       subject: ^group$
       verb: ^(?!.*Update).*
     hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^Create(?!.*?Expanded)
+    remove: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^CreateExpanded$
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: Id
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: IfMatch
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: DirectoryObjectId
+    set: 
+      parameter-name: OwnerId
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+    set:
+      subject: GroupOwner
 
   - where:
       subject: UserSigned$

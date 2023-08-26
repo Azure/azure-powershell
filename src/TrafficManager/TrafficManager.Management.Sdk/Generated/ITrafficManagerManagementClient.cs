@@ -40,12 +40,14 @@ namespace Microsoft.Azure.Management.TrafficManager
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// Gets subscription credentials which uniquely identify Microsoft
+        /// Azure subscription. The subscription ID forms part of the URI for
+        /// every service call.
         /// </summary>
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// The API version to use for this operation.
+        /// Client Api Version.
         /// </summary>
         string ApiVersion { get; }
 

@@ -41,16 +41,14 @@ namespace Microsoft.Azure.Management.NetApp
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every
-        /// service call.
-        /// </summary>
-        string SubscriptionId { get; set; }
-
-        /// <summary>
         /// The API version to use for this operation.
         /// </summary>
         string ApiVersion { get; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -130,11 +128,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the IVolumeQuotaRulesOperations.
         /// </summary>
         IVolumeQuotaRulesOperations VolumeQuotaRules { get; }
-
-        /// <summary>
-        /// Gets the IVaultsOperations.
-        /// </summary>
-        IVaultsOperations Vaults { get; }
 
         /// <summary>
         /// Gets the IVolumeGroupsOperations.

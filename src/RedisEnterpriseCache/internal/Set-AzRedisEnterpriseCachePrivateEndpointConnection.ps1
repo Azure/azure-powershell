@@ -25,7 +25,7 @@ Updates the state of the specified private endpoint connection associated with t
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IPrivateEndpointConnection
 .Outputs
 System.Boolean
 .Notes
@@ -34,6 +34,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IPrivateEndpointConnection>: The Private Endpoint Connection resource.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [PrivateLinkServiceConnectionStateActionsRequired <String>]: A message indicating if changes on the service provider require any updates on the consumer.
   [PrivateLinkServiceConnectionStateDescription <String>]: The reason for approval/rejection of the connection.
   [PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -73,7 +79,7 @@ param(
 
     [Parameter(ParameterSetName='Put', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IPrivateEndpointConnection]
     # The Private Endpoint Connection resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -102,7 +108,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

@@ -18,4 +18,3 @@ New-AzStaticWebAppUserRoleInvitationLink -InputObject $web -Domain 'Hostname' -P
 ```
 
 This command creates an invitation link for a user with the role by pipeline.
-

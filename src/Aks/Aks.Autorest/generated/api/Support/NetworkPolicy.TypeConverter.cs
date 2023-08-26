@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network policy used for building Kubernetes network.</summary>
+    /// <summary>Network policy used for building the Kubernetes network.</summary>
     public partial class NetworkPolicyTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

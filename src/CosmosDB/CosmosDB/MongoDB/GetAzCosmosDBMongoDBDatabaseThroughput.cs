@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
+            ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoDBDatabaseThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
             WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
             
             return;

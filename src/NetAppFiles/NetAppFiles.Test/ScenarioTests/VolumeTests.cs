@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUnlockVolumeFileLock()
+        {
+            TestRunner.RunTestScript("Test-UnlockVolumeFileLock");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumePipelines()
         {
             TestRunner.RunTestScript("Test-VolumePipelines");
@@ -57,6 +64,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         public void TestVolumeResetCifsOnNfsVolume()
         {
             TestRunner.RunTestScript("Test-ResetCifsOnNfsVolume");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetGroupIdListForLDAPUser()
+        {
+            TestRunner.RunTestScript("Test-GetGroupIdListForLDAPUser");
         }
     }
 }

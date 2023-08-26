@@ -35,6 +35,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
@@ -234,6 +235,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
+        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
@@ -294,14 +296,6 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the public key to be used for SSH.")]
         public string SshPublicKey { get; set; }
-
-        [CmdletParameterBreakingChange("RdpCredential", ChangeDescription = "This parameter is being deprecated.")]
-        [Parameter(HelpMessage = "Gets or sets the credential for RDP access to the cluster.")]
-        public PSCredential RdpCredential { get; set; }
-
-        [CmdletParameterBreakingChange("RdpAccessExpiry", ChangeDescription = "This parameter is being deprecated.")]
-        [Parameter(HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
-        public DateTime RdpAccessExpiry { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId { get; set; }

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProbe'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzCdnProbe' -Tag 'LiveOnly' {
+Describe 'Test-AzCdnProbe'  {
     It 'ValidateExpanded' {
         { 
             $probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
@@ -24,20 +24,6 @@ Describe 'Test-AzCdnProbe' -Tag 'LiveOnly' {
         
             $probeUrl = "https://www.notexist.com/notexist/notexist.txt"
             $validateProbeUrlResult = Test-AzCdnProbe -ProbeUrl $probeUrl    
-
-            $validateProbeUrlResult.IsValid | Should -BeFalse
-        } | Should -Not -Throw
-    }
-
-    It 'Validate' {
-        { 
-            $probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
-            $validateProbeUrlResult = Test-AzCdnProbe -ValidateProbeInput @{ ProbeUrl = $probeUrl }
-        
-            $validateProbeUrlResult.IsValid | Should -BeTrue
-        
-            $probeUrl = "https://www.notexist.com/notexist/notexist.txt"
-            $validateProbeUrlResult = Test-AzCdnProbe -ValidateProbeInput @{ ProbeUrl = $probeUrl }
 
             $validateProbeUrlResult.IsValid | Should -BeFalse
         } | Should -Not -Throw

@@ -18,6 +18,32 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.34.0.
+
+## Version 0.13.0
+* Updated to api-version 2022-11-01        
+* Added `Identity` to NetAppAccountPatch
+* Added `ActualThroughputMibps` and `OriginatingResourceId`
+* Added `SnapshotDirectoryVisible` to Update-AzNetAppFilesVolume
+    - If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+* Updated Azure.Core to 1.33.0.
+
+
+## Version 0.12.0
+* Updated Azure.Core to 1.31.0.
+* Added cmdLet `Restore-AzNetAppFilesBackupFile`                 
+* Added cmdLet `Unlock-AzNetAppFilesVolumeFileLock`
+* Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`
+* Added parameter `IsLargeVolume` to `NewAzNetAppFilesVolume`
+* Added property `PreferredServersForLdapClient` to `PSNetAppFilesActiveDirectory`
+* Added property `TennantId` and `Type` to `PSNetAppFilesActiveDirectory`
+* Added property `FileAccessLogs`, `DataStoreResourceId`, `ProvisionedAvailabilityZone`, `IsLargeVolume` to `PSNetAppFilesVolume`
+* Added property `TenantId`, `Type` to `PSEncryptionIdentity`
+* Added property `Name`, `Tags`, `location` to `PSNetAppFilesVolumeQuotaRule`
+Breaking change:
+* Removed `Get-AzNetAppFilesVault` this cmdLet is no longer needed
+* Removed `vaultId` from `PSNetAppFilesVolumeBackupProperties`
+* `YearlyBackupsToKeep` property is not supported by the service and has been removed from `New-AzNetAppFilesBackupPolicy`, `Set-AzNetAppFilesBackupPolicy` and `Update-AzNetAppFilesBackupPolicy` deprecation warning removed
 
 ## Version 0.11.1
 * Updated Azure.Core to 1.28.0.

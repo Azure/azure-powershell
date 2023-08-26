@@ -18,6 +18,33 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed certificate policy bugs if DnsName is null. [#22642]
+* Supported multi-regions for Managed Hsm: Added `Add/Get/Remove-AzAzKeyVaultManagedHsmRegion`.
+* Added `Test-AzKeyVaultNameAvailability` and `Test-AzKeyVaultManagedHsmNameAvailability`.
+* Formatted the table view of `*-AzKeyVault`, `*-AzKeyVaultKey` and `*-AzKeyVaultSecret`
+* Added `SecurityDomain` and `Regions` properties into the output of `New/Update/Get-AzKeyVaultManagedHsm` (`PSManagedHsm`).
+* Supported Setting for Managed HSM: Added `Get-AzKeyVaultSetting` and `Update-AzKeyVaultSetting`.
+* Updated Azure.Core to 1.34.0.
+
+## Version 4.10.2
+* Bug Fix: Removed duplicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]
+
+## Version 4.10.1
+* Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]
+* Updated Azure.Core to 1.33.0.
+
+## Version 4.10.0
+* Added breaking change announcement for parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm`. The parameter `SoftDeleteRetentionInDays` is becoming mandatory
+    - This change will take effect on version 6.0.0
+* Changed the encoding way from a string into byte array in `Invoke-AzKeyVaultKeyOperation` from ASCII to UTF8. UTF8 is backward-compatible with ASCII. [#21269]
+* Bug fix: Changed the decoding way from byte array into a string from system default encoding to UTF8 to match encoding way. [#21269]
+* Added parameter `PolicyPath` and `PolicyObject` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]
+
+## Version 4.9.3
+* Added breaking change announcement for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8. 
+    - This change will take effect on 5/23/2023
+    - The change is expected to take effect from the version 5.0.0
+* Updated Azure.Core to 1.31.0.
 
 ## Version 4.9.2
 * Updated Azure.Core to 1.28.0.

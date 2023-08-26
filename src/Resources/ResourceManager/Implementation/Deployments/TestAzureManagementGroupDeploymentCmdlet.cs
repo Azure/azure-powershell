@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ParameterUri = this.TemplateParameterUri
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters));
+            WriteObject(NewResourceManagerSdkClient.ValidateDeployment(parameters));
         }
     }
 }

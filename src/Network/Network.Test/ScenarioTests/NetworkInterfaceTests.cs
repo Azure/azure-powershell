@@ -146,5 +146,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceInEdgeZone");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestNetworkInterfaceWithAuxiliarySku()
+        {
+            TestRunner.RunTestScript("Test-NetworkInterfaceWithAuxiliarySku");
+        }
     }
 }

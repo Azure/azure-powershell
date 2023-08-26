@@ -16,6 +16,7 @@ Creates an Azure Cognitive Search service.
 New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
+ [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,8 +29,8 @@ The **New-AzSearchService** cmdlet creates an Azure Cognitive Search service wit
 ```powershell
 New-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default
 ```
-```output
 
+```output
 ResourceGroupName : TestAzureSearchPsGroup
 Name              : pstestazuresearch01
 Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers/Microsoft.Search/searchServices/pstestazuresearch01
@@ -45,6 +46,38 @@ The command creates an Azure Cognitive Search service.
 
 ## PARAMETERS
 
+### -AadAuthFailureMode
+(Optional) What status code to return when failing AAD authentication, if both api key and AAD authenticaiton are allowed for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Http403, Http401WithBearerChallenge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthOption
+(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]
+Parameter Sets: (All)
+Aliases:
+Accepted values: ApiKeyOnly, AadOrApiKey
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -52,6 +85,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+(Optional) Disable API key authentication for the Azure Cognitive Search service (true/false/null)
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -83,6 +131,7 @@ Accept wildcard characters: False
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, SystemAssigned
 
 Required: False
 Position: Named
@@ -158,6 +207,7 @@ Accept wildcard characters: False
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -203,7 +253,7 @@ Azure Cognitive Search Service Sku.
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSkuName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Free, Basic, Standard, Standard2, Standard3
+Accepted values: Free, Basic, Standard, Standard2, Standard3, Storage_Optimized_L1, Storage_Optimized_L2
 
 Required: True
 Position: 2

@@ -18,6 +18,8 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Ssh
 {   
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Ssh
             ValidateParameters();
             SetResourceType();
 
-            ProgressRecord record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
+            record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
             UpdateProgressBar(record, "Preparing to create SSH Config", 0);
 
             if (!IsArc() && !ParameterSetName.Equals(IpAddressParameterSet))
@@ -75,11 +77,12 @@ namespace Microsoft.Azure.Commands.Ssh
             }
             if (IsArc())
             {
-                proxyPath = GetClientSideProxy();
-                UpdateProgressBar(record, $"Downloaded proxy to {proxyPath}", 25);
-                GetRelayInformation();
+                CheckIfAgentIsUpToDate();
+                proxyPath = GetProxyPath();
+                UpdateProgressBar(record, $"Retrieved path to Arc Proxy", 25);
+                EndpointAccessResource relayInfo = GetRelayInformation();
                 UpdateProgressBar(record, "Retrieved relay information", 50);
-                CreateRelayInfoFile();
+                CreateRelayInfoFile(relayInfo);
                 UpdateProgressBar(record, "Created file containing relay information", 65);
             }
             if (LocalUser == null)
@@ -144,7 +147,7 @@ namespace Microsoft.Azure.Commands.Ssh
             return Config;
         }
 
-        private void CreateRelayInfoFile()
+        private void CreateRelayInfoFile(EndpointAccessResource relayInfo)
         {
             string relayInfoDir = GetKeysDestinationFolder();
             Directory.CreateDirectory(relayInfoDir);
@@ -153,14 +156,25 @@ namespace Microsoft.Azure.Commands.Ssh
             RelayInfoPath = Path.Combine(relayInfoDir, relayInfoFilename);
             DeleteFile(RelayInfoPath);
             StreamWriter relaySW = new StreamWriter(RelayInfoPath);
-            relaySW.WriteLine(relayInfo);
+            relaySW.WriteLine(ConvertEndpointAccessToBase64String(relayInfo));
             relaySW.Close();
 
-            string expiration = RelayInformationUtils.GetRelayInfoExpiration(relayInformationResource);
+            string expiration = GetRelayInfoExpiration(relayInfo);
             if (!string.IsNullOrEmpty(expiration))
                 WriteWarning($"Generated relay information file {RelayInfoPath} is valid until {expiration} in local time.");
             else
                 WriteWarning($"Generated relay information file {RelayInfoPath}");
+        }
+
+        public string GetRelayInfoExpiration(EndpointAccessResource cred)
+        {
+            if (cred != null && cred.ExpiresOn != null)
+            {
+                long expiresOn = (long)cred.ExpiresOn;
+                string relayExpiration = DateTimeOffset.FromUnixTimeSeconds(expiresOn).DateTime.ToLocalTime().ToString();
+                return relayExpiration;
+            }
+            return null;
         }
 
         private string GetKeysDestinationFolder()

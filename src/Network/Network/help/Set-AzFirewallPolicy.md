@@ -125,7 +125,7 @@ This example sets the firewall policy with the explicit proxy settings
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The base policy to inherit from
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,26 +151,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -185,7 +170,7 @@ Accept wildcard characters: False
 The DNS Setting
 
 ```yaml
-Type: PSAzureFirewallPolicyDnsSettings
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDnsSettings
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +185,7 @@ Accept wildcard characters: False
 The Explicit Proxy Settings
 
 ```yaml
-Type: PSAzureFirewallPolicyExplicitProxy
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyExplicitProxy
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +200,7 @@ Accept wildcard characters: False
 Firewall Policy Identity to be assigned to Firewall Policy.
 
 ```yaml
-Type: PSManagedServiceIdentity
+Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +215,7 @@ Accept wildcard characters: False
 The AzureFirewall Policy
 
 ```yaml
-Type: PSAzureFirewallPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -245,7 +230,7 @@ Accept wildcard characters: False
 The Intrusion Detection Setting
 
 ```yaml
-Type: PSAzureFirewallPolicyIntrusionDetection
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetection
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +245,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -272,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -284,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -299,7 +284,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases: ResourceName
 
@@ -311,7 +296,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObjectParameterSet
 Aliases: ResourceName
 
@@ -326,7 +311,7 @@ Accept wildcard characters: True
 The Private IP Range
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +326,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -356,7 +341,7 @@ Accept wildcard characters: True
 The resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -371,7 +356,7 @@ Accept wildcard characters: True
 Firewall policy sku tier
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Premium, Basic
@@ -387,7 +372,7 @@ Accept wildcard characters: False
 The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.
 
 ```yaml
-Type: PSAzureFirewallPolicySNAT
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicySNAT
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +387,7 @@ Accept wildcard characters: False
 The SQL related setting
 
 ```yaml
-Type: PSAzureFirewallPolicySqlSetting
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicySqlSetting
 Parameter Sets: (All)
 Aliases:
 
@@ -417,7 +402,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -432,7 +417,7 @@ Accept wildcard characters: False
 The operation mode for Threat Intelligence.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Alert, Deny, Off
@@ -448,7 +433,7 @@ Accept wildcard characters: False
 The whitelist for Threat Intelligence
 
 ```yaml
-Type: PSAzureFirewallPolicyThreatIntelWhitelist
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyThreatIntelWhitelist
 Parameter Sets: (All)
 Aliases:
 
@@ -463,7 +448,7 @@ Accept wildcard characters: False
 Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -478,7 +463,7 @@ Accept wildcard characters: False
 Transport security name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -493,9 +478,24 @@ Accept wildcard characters: False
 ResourceId of the user assigned identity to be assigned to Firewall Policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: UserAssignedIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -509,7 +509,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

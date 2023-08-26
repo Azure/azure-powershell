@@ -189,6 +189,26 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
+	
+	    [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableSecureBoot { get; set; } = null;
 
         public override void ExecuteCmdlet()
         {
@@ -359,6 +379,51 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;
+            }
+	    
+	    if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.SecurityType = this.SecurityType;
+
+                if (vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
 
             WriteObject(vm);

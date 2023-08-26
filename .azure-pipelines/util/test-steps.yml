@@ -9,27 +9,19 @@ steps:
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
-- task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Install Autorest
-  inputs:
-    versionSpec: '14.17.1'
-    command: custom
-    verbose: false
-    customCommand: install autorest@latest
-- task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Setup environment for Autorest
-  inputs:
-    targetType: inline
-    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
-    pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET SDK 6 for tests'
   inputs:
     packageType: sdk
-    version: 3.1.x
+    version: 6.0.x
+
+- task: PowerShell@2
+  displayName: Remove pre-installed Az modules
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
 
 - task: DotNetCoreCLI@2
   displayName: Test
@@ -54,13 +46,12 @@ steps:
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
     Write-Host $_.Directory.FullName
-    cd $rootFolder;
+    cd $rootFolder
     .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
    }
   workingDirectory: 'artifacts/Debug'
@@ -69,6 +60,13 @@ steps:
   continueOnError: true
   env:
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+
+- task: PowerShell@2
+  displayName: Analyze Test Coverage
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Coverage/ValidateTestCoverage.ps1
 
 - pwsh: |
     $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json

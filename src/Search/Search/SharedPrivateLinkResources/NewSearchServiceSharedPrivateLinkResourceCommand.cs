@@ -78,16 +78,13 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         public override void ExecuteCmdlet()
         {
-            SharedPrivateLinkResource resource =
-                new SharedPrivateLinkResource(
-                    name: Name,
-                    properties: new SharedPrivateLinkResourceProperties
-                    {
-                        GroupId = GroupId,
-                        PrivateLinkResourceId = PrivateLinkResourceId,
-                        RequestMessage = RequestMessage,
-                        ResourceRegion = ResourceRegion
-                    });
+            var properties = new SharedPrivateLinkResourceProperties
+            {
+                GroupId = GroupId,
+                PrivateLinkResourceId = PrivateLinkResourceId,
+                RequestMessage = RequestMessage,
+                ResourceRegion = ResourceRegion
+            };
 
             if (ShouldProcess(Name, Resources.CreateSharedPrivateLinkResource))
             {
@@ -98,7 +95,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                             ResourceGroupName, 
                             ServiceName,
                             Name, 
-                            resource).Result;
+                            properties).Result;
 
                     WriteSharedPrivateLinkResource(response.Body);
                 });

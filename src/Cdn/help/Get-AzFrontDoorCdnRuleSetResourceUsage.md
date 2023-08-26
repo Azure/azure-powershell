@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnRuleSetResourceUsage
 
 ## SYNOPSIS
-Checks the quota and actual usage of the given AzureFrontDoor rule set under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ## SYNTAX
 
@@ -18,11 +18,11 @@ Get-AzFrontDoorCdnRuleSetResourceUsage -ProfileName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Checks the quota and actual usage of the given AzureFrontDoor rule set under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ## EXAMPLES
 
-### Example 1: Get resouce usages of an AzureFrontDoor rule set
+### Example 1: Get resource usages of an AzureFrontDoor rule set
 ```powershell
 Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
@@ -33,12 +33,13 @@ CurrentValue Limit Unit
 0            100   count
 ```
 
-Get resouce usages of an AzureFrontDoor rule set
+Get resource usages of an AzureFrontDoor rule set
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -150,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
 
 ## NOTES
 

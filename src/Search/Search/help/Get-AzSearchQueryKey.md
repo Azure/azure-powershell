@@ -39,6 +39,7 @@ The **Get-AzSearchQueryKey** cmdlet gets query key(s) of the Azure Cognitive Sea
 ```powershell
 Get-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
 ```
+
 ```output
 Name Key                             
 ---- ---                             

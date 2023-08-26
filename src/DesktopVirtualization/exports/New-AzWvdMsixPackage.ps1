@@ -26,6 +26,8 @@ New-AzWvdMsixPackage -HostPoolName HostPoolName `
                      -PackageAlias packagealias `
                      -ImagePath ImagePathURI
 .Example
+$apps = "<PackagedApplication>"
+$deps = "<PackageDependencies>"
 New-AzWvdMsixPackage -FullName PackageFullName `
                      -HostPoolName HostPoolName `
                      -ResourceGroupName ResourceGroupName `
@@ -43,7 +45,7 @@ New-AzWvdMsixPackage -FullName PackageFullName `
                      -Version packageversion
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,7 +68,7 @@ PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdmsixpackage
 #>
 function New-AzWvdMsixPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackage])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -135,7 +137,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageApplications[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageApplications[]]
     # List of package applications.
     # 
     # To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
@@ -144,7 +146,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageDependencies[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMsixPackageDependencies[]]
     # List of package dependencies.
     # 
     # To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
@@ -180,7 +182,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -232,7 +235,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

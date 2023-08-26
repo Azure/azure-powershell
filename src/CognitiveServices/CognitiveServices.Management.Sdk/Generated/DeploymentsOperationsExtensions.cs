@@ -125,12 +125,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
             /// <param name='deploymentName'>
             /// The name of the deployment associated with the Cognitive Services Account
             /// </param>
+            /// <param name='sku'>
+            /// </param>
             /// <param name='properties'>
             /// Properties of Cognitive Services account deployment.
             /// </param>
-            public static Deployment CreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties))
+            public static Deployment CreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties))
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, properties).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -149,15 +151,17 @@ namespace Microsoft.Azure.Management.CognitiveServices
             /// <param name='deploymentName'>
             /// The name of the deployment associated with the Cognitive Services Account
             /// </param>
+            /// <param name='sku'>
+            /// </param>
             /// <param name='properties'>
             /// Properties of Cognitive Services account deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Deployment> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Deployment> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, properties, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -224,12 +228,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
             /// <param name='deploymentName'>
             /// The name of the deployment associated with the Cognitive Services Account
             /// </param>
+            /// <param name='sku'>
+            /// </param>
             /// <param name='properties'>
             /// Properties of Cognitive Services account deployment.
             /// </param>
-            public static Deployment BeginCreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties))
+            public static Deployment BeginCreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties))
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, properties).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, sku, properties).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -248,15 +254,17 @@ namespace Microsoft.Azure.Management.CognitiveServices
             /// <param name='deploymentName'>
             /// The name of the deployment associated with the Cognitive Services Account
             /// </param>
+            /// <param name='sku'>
+            /// </param>
             /// <param name='properties'>
             /// Properties of Cognitive Services account deployment.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Deployment> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, DeploymentProperties properties = default(DeploymentProperties), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Deployment> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, properties, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, sku, properties, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

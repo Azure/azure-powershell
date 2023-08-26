@@ -47,5 +47,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CertAndExtension");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddNetworkSecurityRule() 
+        {
+            TestRunner.RunTestScript("Test-AddNetworkSecurityRule");
+        }
     }
 }

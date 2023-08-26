@@ -32,6 +32,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlRestoreAccountPublicNetworkAccessCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlRestoreAccountPublicNetworkAccessCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreFromNewAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRestoreFromNewAccountCmdlets");
@@ -114,11 +121,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-TableBackupInformationCmdLets");
         }
 
-        [Fact(Skip= "Flaky test: Need diagnose that the test is not creating the valid account for backup")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateCosmosDBAccountBackupPolicyCmdLet()
+        public void TestUpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets()
         {
-            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyCmdLet");
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets()
+        {
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets()
+        {
+            TestRunner.RunTestScript("Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets");
         }
     }
 }

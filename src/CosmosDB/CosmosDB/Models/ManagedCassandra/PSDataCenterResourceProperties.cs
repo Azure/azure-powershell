@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             SeedNodes = new List<PSSeedNode>();
             foreach (SeedNode seedNode in dataCenterProperties.SeedNodes)
             {
-                SeedNodes.Add(new PSSeedNode(seedNode?.IpAddress));
+                SeedNodes.Add(new PSSeedNode(seedNode?.IPAddress));
             }
         }
 

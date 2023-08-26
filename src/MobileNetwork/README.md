@@ -30,9 +30,9 @@ For information on how to develop for `Az.MobileNetwork`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 63adf8a58565b729f70895b65aa7d1333b22d15f
+branch: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/attachedDataNetwork.json
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/common.json
@@ -58,7 +58,8 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
-  - from: swagger-document 
+  # Change interopSettings type from <IAny> to <HashTable>
+  - from: swagger-document
     where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
     transform: >-
       return {
@@ -67,13 +68,15 @@ directive:
         "description": "Settings to allow interoperability with third party components e.g. RANs and UEs."
       }
 
-  - from: swagger-document 
+  # Remove parameters from swagger file
+  - from: swagger-document
     where: $.definitions
     transform: delete $.CoreNetworkTypeRm
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions
     transform: delete $.PduSessionTypeRm
 
+  # Replace [`default`] with ['default']
   - from: swagger-document
     where: $
     transform: return $.replace(/\`default\`/g, "'default'")
@@ -92,13 +95,9 @@ directive:
     remove: true
 
   - where:
-      verb: New
-      subject: SimGroup
-    hide: true
-
-  - where:
       verb: Set
     remove: true
+
   - where:
       subject: ^AttachedDataNetworkTag$
     set:
@@ -143,67 +142,68 @@ directive:
       subject: ^Slouse$
     set:
       subject: Slice
+
   - where:
       parameter-name: DefaultSlouseId
     set:
       parameter-name: DefaultSliceId
 
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimDelete$
-  #   set:
-  #     verb: Remove
+  # Due to business requirements, the logic of some commands is customized and they need to be hidden
+  - where:
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+      variant: ^UpdateViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+    hide: true
+  - where:
+      verb: New
+      subject: ^Site$
+    hide: true
+
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
-    remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUpload$
-  #   set:
-  #     verb: Update
+    set:
+      verb: Remove
+
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
-    remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUploadEncrypted$
-  #   set:
-  #     verb: Update
+    set:
+      verb: Update
+
+  - where:
+      verb: Invoke
+      subject: ^BulkSimUploadEncrypted$
+    set:
+      verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-  #   set:
-  #     verb: Update
+
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-    remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^ReinstallPacketCoreControlPlane$
-  #   set:
-  #     verb: Reset
+    set:
+      verb: Trace
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
-    remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^RollbackPacketCoreControlPlane$
-  #   set:
-  #     verb: Revoke
+    set:
+      verb: Deploy
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
-    remove: true
+    set:
+      verb: Deploy
 
+  # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic
+  # Do not delete this code
   # - model-cmdlet:
   #     - SliceConfiguration  # SlouseId -> SliceId
   #     - DataNetworkConfiguration
@@ -328,4 +328,8 @@ directive:
       format-table:
         properties:
           - Name
+
+  - from: RemoveAzMobileNetworkSite_Delete.cs
+    where: $
+    transform: $ = $.replace('Call remote \'SitesDelete\' operation', '{this.Name} and all dependent resources');
 ```

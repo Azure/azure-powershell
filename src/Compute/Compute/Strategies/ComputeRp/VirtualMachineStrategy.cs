@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -74,7 +75,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
             Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
-            string sharedGalleryImageId = null
+            string sharedGalleryImageId = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -139,7 +143,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
@@ -184,7 +194,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             AdditionalCapabilities additionalCapabilities = null,
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
-            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
+            bool? enableVtpm = null,
+            bool? enableSecureBoot = null,
+            string securityType = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -230,7 +243,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true) ? new SecurityProfile(encryptionAtHost: encryptionAtHostPresent) : null,
+                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                    ? new SecurityProfile
+                    {
+                        EncryptionAtHost = encryptionAtHostPresent,
+                        UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
+                        SecurityType = securityType,
+                    } : null,
                     CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                     {
                         CapacityReservationGroup = new SubResource(capacityReservationGroupId)

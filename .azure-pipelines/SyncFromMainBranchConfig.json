@@ -3,6 +3,7 @@
         ".ci-config.json",
         "tools",
         ".azure-pipelines",
+        ".github",
         "src/lib",
         "src/shared",
         "build.proj",
@@ -10,6 +11,9 @@
         "src/Az.Shared.props",
         "src/Az.Test.props",
         "src/Az.autorest.hybrid.props",
+        "src/Az.autorest.hybrid.v2.props",
+        "src/Az.autorest.props",
+        "src/Az.Post.props",
         "src/psm1.props",
         "NuGet.Config"
     ],

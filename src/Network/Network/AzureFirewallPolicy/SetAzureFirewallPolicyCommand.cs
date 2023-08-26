@@ -270,9 +270,13 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxy = this.ExplicitProxy,
-                    Snat = this.Snat
+                    ExplicitProxy = this.ExplicitProxy
                 };
+
+                if (this.Snat != null)
+                {
+                    firewallPolicy.Snat = this.Snat;
+                }
 
                 AddPremiumProperties(firewallPolicy);
 
@@ -302,9 +306,13 @@ namespace Microsoft.Azure.Commands.Network
                     DnsSettings = this.DnsSetting,
                     SqlSetting = this.SqlSetting,
                     PrivateRange = this.PrivateRange,
-                    ExplicitProxy = this.ExplicitProxy,
-                    Snat = this.Snat
+                    ExplicitProxy = this.ExplicitProxy
                 };
+
+                if (this.Snat != null)
+                {
+                    firewallPolicy.Snat = this.Snat;
+                }
 
                 AddPremiumProperties(firewallPolicy);
 

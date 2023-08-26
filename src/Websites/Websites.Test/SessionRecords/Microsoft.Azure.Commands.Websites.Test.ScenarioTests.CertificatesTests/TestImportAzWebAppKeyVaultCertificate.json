@@ -6,13 +6,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"1D8E4CCFB6CC320\""
+          "\"1D9266D729A9E0B\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "48fd0bdc-5746-447c-9605-8633d62cc52e"
+          "97307fc0-33ce-4aa9-b1b9-e68bd13b2817"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -45,22 +45,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "300c513c-ff48-4b17-928e-ad8f5decd05b"
+          "ab211002-e892-47a0-8946-e16daaef652c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074306Z:300c513c-ff48-4b17-928e-ad8f5decd05b"
+          "SOUTHINDIA:20230310T105201Z:ab211002-e892-47a0-8946-e16daaef652c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:06 GMT"
+          "Fri, 10 Mar 2023 10:52:00 GMT"
         ],
         "Content-Length": [
-          "6662"
+          "6667"
         ],
         "Content-Type": [
           "application/json"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/sites/PS-AppServices-UnitTesting\",\r\n  \"name\": \"PS-AppServices-UnitTesting\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"name\": \"PS-AppServices-UnitTesting\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps-appservices-unittesting.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"RG-PS-UnitTesting-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-287.api.azurewebsites.windows.net:454/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/webspaces/RG-PS-UnitTesting-CentralUSwebspace/sites/PS-AppServices-UnitTesting\",\r\n    \"repositorySiteName\": \"PS-AppServices-UnitTesting\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps-appservices-unittesting.azurewebsites.net\",\r\n      \"ps-appservices-unittesting.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps-appservices-unittesting.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps-appservices-unittesting.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/serverfarms/ASP-PS-UnitTesting\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2022-10-20T21:43:25.01\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"dnsConfiguration\": {\r\n      \"dnsLegacySortOrder\": true\r\n    },\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"containerAllocationSubnet\": null,\r\n    \"useContainerLocalhostBindings\": null,\r\n    \"vnetImagePullEnabled\": false,\r\n    \"vnetContentShareEnabled\": false,\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": 1,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": \"\",\r\n      \"windowsFxVersion\": null,\r\n      \"windowsConfiguredStacks\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": true,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"publicNetworkAccess\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"keyVaultReferenceIdentity\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"ipSecurityRestrictionsDefaultAction\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsDefaultAction\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": false,\r\n      \"minTlsVersion\": null,\r\n      \"minTlsCipherSuite\": null,\r\n      \"supportedTlsCipherSuites\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": 0,\r\n      \"elasticWebAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0,\r\n      \"azureStorageAccounts\": null,\r\n      \"http20ProxyFlag\": null,\r\n      \"sitePort\": null,\r\n      \"antivirusScanEnabled\": null,\r\n      \"storageType\": null\r\n    },\r\n    \"deploymentId\": \"PS-AppServices-UnitTesting\",\r\n    \"slotName\": null,\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"171070FA7C9D42A74204DF83EC3E071EC66B87DED2A58ED0299A7250CF94F5ED\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"20.118.56.4\",\r\n    \"possibleInboundIpAddresses\": \"20.118.56.4\",\r\n    \"ftpUsername\": \"PS-AppServices-UnitTesting\\\\$PS-AppServices-UnitTesting\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-287.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"20.98.173.236,20.106.0.193,20.106.1.219,20.106.3.144,20.106.3.159,20.106.3.192,20.118.56.4\",\r\n    \"possibleOutboundIpAddresses\": \"20.98.173.236,20.106.0.193,20.106.1.219,20.106.3.144,20.106.3.159,20.106.3.192,20.106.4.73,20.106.1.198,20.106.1.223,20.98.172.237,20.106.4.81,20.98.171.237,20.106.4.83,20.106.4.95,20.106.4.97,20.98.175.141,20.106.1.60,20.106.4.99,20.106.4.103,20.98.168.175,20.106.1.67,20.106.4.105,20.106.4.141,20.106.4.148,20.106.4.175,20.106.4.186,20.106.1.239,20.106.3.20,20.98.173.218,20.106.1.117,20.118.56.4\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-287\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-PS-UnitTesting\",\r\n    \"defaultHostName\": \"ps-appservices-unittesting.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": true,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": null,\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null,\r\n    \"eligibleLogCategories\": \"AppServiceAppLogs,AppServiceAuditLogs,AppServiceConsoleLogs,AppServiceHTTPLogs,AppServiceIPSecAuditLogs,AppServicePlatformLogs,ScanLogs\",\r\n    \"storageAccountRequired\": false,\r\n    \"virtualNetworkSubnetId\": null,\r\n    \"keyVaultReferenceIdentity\": \"SystemAssigned\",\r\n    \"defaultHostNameScope\": \"Global\",\r\n    \"privateLinkIdentifiers\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/sites/PS-AppServices-UnitTesting\",\r\n  \"name\": \"PS-AppServices-UnitTesting\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"name\": \"PS-AppServices-UnitTesting\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps-appservices-unittesting.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"RG-PS-UnitTesting-CentralUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-dm1-287.api.azurewebsites.windows.net:454/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/webspaces/RG-PS-UnitTesting-CentralUSwebspace/sites/PS-AppServices-UnitTesting\",\r\n    \"repositorySiteName\": \"PS-AppServices-UnitTesting\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps-appservices-unittesting.azurewebsites.net\",\r\n      \"ps-appservices-unittesting.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps-appservices-unittesting.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps-appservices-unittesting.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/serverfarms/ASP-PS-UnitTesting\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"hyperV\": false,\r\n    \"lastModifiedTimeUtc\": \"2023-01-12T10:05:50.0166667\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"dnsConfiguration\": {\r\n      \"dnsLegacySortOrder\": true\r\n    },\r\n    \"vnetRouteAllEnabled\": false,\r\n    \"containerAllocationSubnet\": null,\r\n    \"useContainerLocalhostBindings\": null,\r\n    \"vnetImagePullEnabled\": false,\r\n    \"vnetContentShareEnabled\": false,\r\n    \"siteConfig\": {\r\n      \"numberOfWorkers\": 1,\r\n      \"defaultDocuments\": null,\r\n      \"netFrameworkVersion\": null,\r\n      \"phpVersion\": null,\r\n      \"pythonVersion\": null,\r\n      \"nodeVersion\": null,\r\n      \"powerShellVersion\": null,\r\n      \"linuxFxVersion\": \"\",\r\n      \"windowsFxVersion\": null,\r\n      \"windowsConfiguredStacks\": null,\r\n      \"requestTracingEnabled\": null,\r\n      \"remoteDebuggingEnabled\": null,\r\n      \"remoteDebuggingVersion\": null,\r\n      \"httpLoggingEnabled\": null,\r\n      \"azureMonitorLogCategories\": null,\r\n      \"acrUseManagedIdentityCreds\": false,\r\n      \"acrUserManagedIdentityID\": null,\r\n      \"logsDirectorySizeLimit\": null,\r\n      \"detailedErrorLoggingEnabled\": null,\r\n      \"publishingUsername\": null,\r\n      \"publishingPassword\": null,\r\n      \"appSettings\": null,\r\n      \"metadata\": null,\r\n      \"connectionStrings\": null,\r\n      \"machineKey\": null,\r\n      \"handlerMappings\": null,\r\n      \"documentRoot\": null,\r\n      \"scmType\": null,\r\n      \"use32BitWorkerProcess\": null,\r\n      \"webSocketsEnabled\": null,\r\n      \"alwaysOn\": true,\r\n      \"javaVersion\": null,\r\n      \"javaContainer\": null,\r\n      \"javaContainerVersion\": null,\r\n      \"appCommandLine\": null,\r\n      \"managedPipelineMode\": null,\r\n      \"virtualApplications\": null,\r\n      \"winAuthAdminState\": null,\r\n      \"winAuthTenantState\": null,\r\n      \"customAppPoolIdentityAdminState\": null,\r\n      \"customAppPoolIdentityTenantState\": null,\r\n      \"runtimeADUser\": null,\r\n      \"runtimeADUserPassword\": null,\r\n      \"loadBalancing\": null,\r\n      \"routingRules\": null,\r\n      \"experiments\": null,\r\n      \"limits\": null,\r\n      \"autoHealEnabled\": null,\r\n      \"autoHealRules\": null,\r\n      \"tracingOptions\": null,\r\n      \"vnetName\": null,\r\n      \"vnetRouteAllEnabled\": null,\r\n      \"vnetPrivatePortsCount\": null,\r\n      \"publicNetworkAccess\": null,\r\n      \"cors\": null,\r\n      \"push\": null,\r\n      \"apiDefinition\": null,\r\n      \"apiManagementConfig\": null,\r\n      \"autoSwapSlotName\": null,\r\n      \"localMySqlEnabled\": null,\r\n      \"managedServiceIdentityId\": null,\r\n      \"xManagedServiceIdentityId\": null,\r\n      \"keyVaultReferenceIdentity\": null,\r\n      \"ipSecurityRestrictions\": null,\r\n      \"ipSecurityRestrictionsDefaultAction\": null,\r\n      \"scmIpSecurityRestrictions\": null,\r\n      \"scmIpSecurityRestrictionsDefaultAction\": null,\r\n      \"scmIpSecurityRestrictionsUseMain\": null,\r\n      \"http20Enabled\": false,\r\n      \"minTlsVersion\": null,\r\n      \"minTlsCipherSuite\": null,\r\n      \"supportedTlsCipherSuites\": null,\r\n      \"scmMinTlsVersion\": null,\r\n      \"ftpsState\": null,\r\n      \"preWarmedInstanceCount\": null,\r\n      \"functionAppScaleLimit\": 0,\r\n      \"elasticWebAppScaleLimit\": null,\r\n      \"healthCheckPath\": null,\r\n      \"fileChangeAuditEnabled\": null,\r\n      \"functionsRuntimeScaleMonitoringEnabled\": null,\r\n      \"websiteTimeZone\": null,\r\n      \"minimumElasticInstanceCount\": 0,\r\n      \"azureStorageAccounts\": null,\r\n      \"http20ProxyFlag\": null,\r\n      \"sitePort\": null,\r\n      \"antivirusScanEnabled\": null,\r\n      \"storageType\": null\r\n    },\r\n    \"deploymentId\": \"PS-AppServices-UnitTesting\",\r\n    \"slotName\": null,\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"clientCertMode\": \"Required\",\r\n    \"clientCertExclusionPaths\": null,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"customDomainVerificationId\": \"171070FA7C9D42A74204DF83EC3E071EC66B87DED2A58ED0299A7250CF94F5ED\",\r\n    \"kind\": \"app\",\r\n    \"inboundIpAddress\": \"20.118.56.4\",\r\n    \"possibleInboundIpAddresses\": \"20.118.56.4\",\r\n    \"ftpUsername\": \"PS-AppServices-UnitTesting\\\\$PS-AppServices-UnitTesting\",\r\n    \"ftpsHostName\": \"ftps://waws-prod-dm1-287.ftp.azurewebsites.windows.net/site/wwwroot\",\r\n    \"outboundIpAddresses\": \"20.98.173.236,20.106.0.193,20.106.1.219,20.106.3.144,20.106.3.159,20.106.3.192,20.118.56.4\",\r\n    \"possibleOutboundIpAddresses\": \"20.98.173.236,20.106.0.193,20.106.1.219,20.106.3.144,20.106.3.159,20.106.3.192,20.106.4.73,20.106.1.198,20.106.1.223,20.98.172.237,20.106.4.81,20.98.171.237,20.106.4.83,20.106.4.95,20.106.4.97,20.98.175.141,20.106.1.60,20.106.4.99,20.106.4.103,20.98.168.175,20.106.1.67,20.106.4.105,20.106.4.141,20.106.4.148,20.106.4.175,20.106.4.186,20.106.1.239,20.106.3.20,20.98.173.218,20.106.1.117,20.118.56.4\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-dm1-287\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-PS-UnitTesting\",\r\n    \"defaultHostName\": \"ps-appservices-unittesting.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": true,\r\n    \"redundancyMode\": \"None\",\r\n    \"inProgressOperationId\": null,\r\n    \"geoDistributions\": null,\r\n    \"privateEndpointConnections\": [],\r\n    \"publicNetworkAccess\": null,\r\n    \"buildVersion\": null,\r\n    \"targetBuildVersion\": null,\r\n    \"migrationState\": null,\r\n    \"eligibleLogCategories\": \"AppServiceAppLogs,AppServiceAuditLogs,AppServiceConsoleLogs,AppServiceHTTPLogs,AppServiceIPSecAuditLogs,AppServicePlatformLogs,ScanLogs\",\r\n    \"storageAccountRequired\": false,\r\n    \"virtualNetworkSubnetId\": null,\r\n    \"keyVaultReferenceIdentity\": \"SystemAssigned\",\r\n    \"defaultHostNameScope\": \"Global\",\r\n    \"privateLinkIdentifiers\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -78,13 +78,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -102,7 +102,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0d4b18ff-271a-4453-9261-f1c1fc516886"
+          "5d73037a-baa4-4d0a-9347-4c8963650298"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -114,19 +114,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "c5ae9aa8-34a8-4a69-8022-d9970636133b"
+          "e9826654-72aa-4aef-bd44-d20b0fb1b312"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074307Z:c5ae9aa8-34a8-4a69-8022-d9970636133b"
+          "SOUTHINDIA:20230310T105202Z:e9826654-72aa-4aef-bd44-d20b0fb1b312"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:07 GMT"
+          "Fri, 10 Mar 2023 10:52:01 GMT"
         ],
         "Content-Length": [
           "4015"
@@ -147,13 +147,13 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -171,7 +171,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c597090f-fe08-4d2d-8684-e0684891e898"
+          "a4771eea-a919-466a-9c33-8c78cc104d3d"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -186,16 +186,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "fbaf75c0-e731-41ea-bd17-f4dcb676074f"
+          "756be4f2-9dea-4c1d-999e-19ff9f692bc2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074308Z:fbaf75c0-e731-41ea-bd17-f4dcb676074f"
+          "SOUTHINDIA:20230310T105203Z:756be4f2-9dea-4c1d-999e-19ff9f692bc2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:08 GMT"
+          "Fri, 10 Mar 2023 10:52:02 GMT"
         ],
         "Content-Length": [
           "804"
@@ -216,13 +216,13 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -240,7 +240,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e159ed35-c628-45d1-bf53-86b16e7fabcb"
+          "9acd430a-4f72-4fd3-bf75-540848c5bd39"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -255,16 +255,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "a13c9407-e755-4428-bfdd-b8d8e0d31a86"
+          "50e85288-91ef-4a20-b202-818ff3eb9fa2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074309Z:a13c9407-e755-4428-bfdd-b8d8e0d31a86"
+          "SOUTHINDIA:20230310T105203Z:50e85288-91ef-4a20-b202-818ff3eb9fa2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:08 GMT"
+          "Fri, 10 Mar 2023 10:52:02 GMT"
         ],
         "Content-Length": [
           "278"
@@ -285,13 +285,13 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -309,7 +309,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0b04540b-6f43-4585-983b-1deb03a67180"
+          "64722bf9-2ccc-4fd6-8ef4-965a75b32197"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -324,16 +324,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "e1cb0a75-6652-40a3-a774-cbac8c91e8e3"
+          "38a08b99-ef20-4e30-865f-c4933346761c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074309Z:e1cb0a75-6652-40a3-a774-cbac8c91e8e3"
+          "SOUTHINDIA:20230310T105204Z:38a08b99-ef20-4e30-865f-c4933346761c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:09 GMT"
+          "Fri, 10 Mar 2023 10:52:03 GMT"
         ],
         "Content-Length": [
           "275"
@@ -349,21 +349,90 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2FVaults'&api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5Mjk2OTktYjdhNC00NmNjLTk3Y2YtOGE5NWUwNDMxOGI4L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRlZhdWx0cycmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/sites/PS-AppServices-UnitTesting/virtualNetworkConnections?api-version=2021-01-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5Mjk2OTktYjdhNC00NmNjLTk3Y2YtOGE5NWUwNDMxOGI4L3Jlc291cmNlR3JvdXBzL1JHLVBTLVVuaXRUZXN0aW5nL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL1BTLUFwcFNlcnZpY2VzLVVuaXRUZXN0aW5nL3ZpcnR1YWxOZXR3b3JrQ29ubmVjdGlvbnM/YXBpLXZlcnNpb249MjAyMS0wMS0xNQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.67"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0d3deb52-2214-4445-a557-554b5ed381fb"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "76cba71b-4527-42bd-a0fe-800e0a002f1c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20230310T105205Z:76cba71b-4527-42bd-a0fe-800e0a002f1c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 10 Mar 2023 10:52:04 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "[]",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2FVaults'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5Mjk2OTktYjdhNC00NmNjLTk3Y2YtOGE5NWUwNDMxOGI4L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRlZhdWx0cycmYXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19045",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.72"
         ]
       },
       "RequestBody": "",
@@ -375,16 +444,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11988"
         ],
         "x-ms-request-id": [
-          "fb7daec7-a836-4e83-a8ee-03df3a872673"
+          "b7ac3370-567f-4ee6-b9bb-0127abb87372"
         ],
         "x-ms-correlation-request-id": [
-          "fb7daec7-a836-4e83-a8ee-03df3a872673"
+          "b7ac3370-567f-4ee6-b9bb-0127abb87372"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074310Z:fb7daec7-a836-4e83-a8ee-03df3a872673"
+          "SOUTHINDIA:20230310T105205Z:b7ac3370-567f-4ee6-b9bb-0127abb87372"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -393,7 +462,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:09 GMT"
+          "Fri, 10 Mar 2023 10:52:05 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -402,10 +471,10 @@
           "-1"
         ],
         "Content-Length": [
-          "4690"
+          "5141"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg303/providers/Microsoft.KeyVault/vaults/testkv303\",\r\n      \"name\": \"testkv303\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/Kota/providers/Microsoft.KeyVault/vaults/KotaVault\",\r\n      \"name\": \"KotaVault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg303/providers/Microsoft.KeyVault/vaults/testKV2141\",\r\n      \"name\": \"testKV2141\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/faiz/providers/Microsoft.KeyVault/vaults/faizeuapdm1com\",\r\n      \"name\": \"faizeuapdm1com\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/faiz/providers/Microsoft.KeyVault/vaults/newkvimporttest\",\r\n      \"name\": \"newkvimporttest\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/linlu-testing/providers/Microsoft.KeyVault/vaults/linlu-testing\",\r\n      \"name\": \"linlu-testing\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ASEV3-DNSSUFFIX/providers/Microsoft.KeyVault/vaults/asev3-dnssuffix-kv\",\r\n      \"name\": \"asev3-dnssuffix-kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/gamitratest/providers/Microsoft.KeyVault/vaults/GamitraKeyVaultASC\",\r\n      \"name\": \"GamitraKeyVaultASC\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"westus2\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/garmitraASC/providers/Microsoft.KeyVault/vaults/gamitraASCKV\",\r\n      \"name\": \"gamitraASCKV\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/stgae624/providers/Microsoft.KeyVault/vaults/stgkey2406\",\r\n      \"name\": \"stgkey2406\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n      \"name\": \"PS-UnitTesting-Keyvault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rg1907/providers/Microsoft.KeyVault/vaults/rthgy19\",\r\n      \"name\": \"rthgy19\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/APIRunnerASCRG/providers/Microsoft.KeyVault/vaults/APIRunnerASCKV\",\r\n      \"name\": \"APIRunnerASCKV\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg0805/providers/Microsoft.KeyVault/vaults/kwlt0805\",\r\n      \"name\": \"kwlt0805\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rg2608/providers/Microsoft.KeyVault/vaults/keyvlt2608\",\r\n      \"name\": \"keyvlt2608\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/stagerg3009/providers/Microsoft.KeyVault/vaults/satgekeyvlt3009\",\r\n      \"name\": \"satgekeyvlt3009\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/octrg14/providers/Microsoft.KeyVault/vaults/octkeyvalt\",\r\n      \"name\": \"octkeyvalt\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/srtest/providers/Microsoft.KeyVault/vaults/srtest\",\r\n      \"name\": \"srtest\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/drtghol/providers/Microsoft.KeyVault/vaults/keyvalt1811\",\r\n      \"name\": \"keyvalt1811\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rsg0912/providers/Microsoft.KeyVault/vaults/keyvat0912\",\r\n      \"name\": \"keyvat0912\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/Elle/providers/Microsoft.KeyVault/vaults/ElleKeyvault\",\r\n      \"name\": \"ElleKeyvault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg303/providers/Microsoft.KeyVault/vaults/testkv303\",\r\n      \"name\": \"testkv303\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/Kota/providers/Microsoft.KeyVault/vaults/KotaVault\",\r\n      \"name\": \"KotaVault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg303/providers/Microsoft.KeyVault/vaults/testKV2141\",\r\n      \"name\": \"testKV2141\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/faiz/providers/Microsoft.KeyVault/vaults/faizeuapdm1com\",\r\n      \"name\": \"faizeuapdm1com\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/faiz/providers/Microsoft.KeyVault/vaults/newkvimporttest\",\r\n      \"name\": \"newkvimporttest\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/linlu-testing/providers/Microsoft.KeyVault/vaults/linlu-testing\",\r\n      \"name\": \"linlu-testing\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/ASEV3-DNSSUFFIX/providers/Microsoft.KeyVault/vaults/asev3-dnssuffix-kv\",\r\n      \"name\": \"asev3-dnssuffix-kv\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centraluseuap\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/gamitratest/providers/Microsoft.KeyVault/vaults/GamitraKeyVaultASC\",\r\n      \"name\": \"GamitraKeyVaultASC\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"westus2\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/garmitraASC/providers/Microsoft.KeyVault/vaults/gamitraASCKV\",\r\n      \"name\": \"gamitraASCKV\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/stgae624/providers/Microsoft.KeyVault/vaults/stgkey2406\",\r\n      \"name\": \"stgkey2406\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n      \"name\": \"PS-UnitTesting-Keyvault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"centralus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rg1907/providers/Microsoft.KeyVault/vaults/rthgy19\",\r\n      \"name\": \"rthgy19\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/APIRunnerASCRG/providers/Microsoft.KeyVault/vaults/APIRunnerASCKV\",\r\n      \"name\": \"APIRunnerASCKV\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/testrg0805/providers/Microsoft.KeyVault/vaults/kwlt0805\",\r\n      \"name\": \"kwlt0805\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rg2608/providers/Microsoft.KeyVault/vaults/keyvlt2608\",\r\n      \"name\": \"keyvlt2608\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/stagerg3009/providers/Microsoft.KeyVault/vaults/satgekeyvlt3009\",\r\n      \"name\": \"satgekeyvlt3009\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/octrg14/providers/Microsoft.KeyVault/vaults/octkeyvalt\",\r\n      \"name\": \"octkeyvalt\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/apitest180123/providers/Microsoft.KeyVault/vaults/keyvault180123\",\r\n      \"name\": \"keyvault180123\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/srtest/providers/Microsoft.KeyVault/vaults/srtest\",\r\n      \"name\": \"srtest\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/drtghol/providers/Microsoft.KeyVault/vaults/keyvalt1811\",\r\n      \"name\": \"keyvalt1811\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/rsg0912/providers/Microsoft.KeyVault/vaults/keyvat0912\",\r\n      \"name\": \"keyvat0912\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/canarylinl/providers/Microsoft.KeyVault/vaults/keyvalt1612\",\r\n      \"name\": \"keyvalt1612\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/Elle/providers/Microsoft.KeyVault/vaults/ElleKeyvault\",\r\n      \"name\": \"ElleKeyvault\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -414,16 +483,16 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
-          "Microsoft.Azure.Commands.Common.KeyVault.Version2016.10.1.KeyVaultManagementClient/1.3.67"
+          "Microsoft.Azure.Commands.Common.KeyVault.Version2016.10.1.KeyVaultManagementClient/1.3.72"
         ]
       },
       "RequestBody": "",
@@ -435,13 +504,13 @@
           "no-cache"
         ],
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "x-ms-keyvault-service-version": [
-          "1.5.564.0"
+          "1.5.692.0"
         ],
         "x-ms-request-id": [
-          "6f1f2611-0324-4886-9949-ce9ccef7208f"
+          "86a15a59-2616-4c89-9701-62d4179fde1f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -456,19 +525,19 @@
           "4.0.30319"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11983"
         ],
         "x-ms-correlation-request-id": [
-          "84128e91-6f08-474a-bdd0-821be9001e2d"
+          "dd3b61eb-d008-41d3-bfee-0ac93f386dfe"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074311Z:84128e91-6f08-474a-bdd0-821be9001e2d"
+          "SOUTHINDIA:20230310T105207Z:dd3b61eb-d008-41d3-bfee-0ac93f386dfe"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:10 GMT"
+          "Fri, 10 Mar 2023 10:52:07 GMT"
         ],
         "Content-Length": [
-          "2457"
+          "2667"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -477,22 +546,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n  \"name\": \"PS-UnitTesting-Keyvault\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"1483bc07-add0-4b9e-8f9a-520aa4db8afa\",\r\n        \"applicationId\": \"609cdbbc-0f3d-4fa0-b296-87935eb4cfbc\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"b763d664-4a73-477b-9d90-ecc75356797c\",\r\n        \"applicationId\": \"b60ffcc4-a642-4b15-8b43-cb85f8a11ea9\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"96aab2b1-c4e2-4163-b9c9-3eb33e9e2ae9\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ],\r\n          \"storage\": []\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"f8daea97-62e7-4026-becf-13c2ea98e8b4\",\r\n        \"permissions\": {\r\n          \"secrets\": [\r\n            \"get\"\r\n          ],\r\n          \"certificates\": [\r\n            \"get\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true,\r\n    \"enabledForDiskEncryption\": true,\r\n    \"enabledForTemplateDeployment\": true,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://ps-unittesting-keyvault.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n  \"name\": \"PS-UnitTesting-Keyvault\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"standard\"\r\n    },\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"accessPolicies\": [\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"1483bc07-add0-4b9e-8f9a-520aa4db8afa\",\r\n        \"applicationId\": \"609cdbbc-0f3d-4fa0-b296-87935eb4cfbc\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"b763d664-4a73-477b-9d90-ecc75356797c\",\r\n        \"applicationId\": \"b60ffcc4-a642-4b15-8b43-cb85f8a11ea9\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"96aab2b1-c4e2-4163-b9c9-3eb33e9e2ae9\",\r\n        \"permissions\": {\r\n          \"keys\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"GetRotationPolicy\",\r\n            \"SetRotationPolicy\",\r\n            \"Rotate\"\r\n          ],\r\n          \"secrets\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Set\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\"\r\n          ],\r\n          \"certificates\": [\r\n            \"Get\",\r\n            \"List\",\r\n            \"Update\",\r\n            \"Create\",\r\n            \"Import\",\r\n            \"Delete\",\r\n            \"Recover\",\r\n            \"Backup\",\r\n            \"Restore\",\r\n            \"ManageContacts\",\r\n            \"ManageIssuers\",\r\n            \"GetIssuers\",\r\n            \"ListIssuers\",\r\n            \"SetIssuers\",\r\n            \"DeleteIssuers\"\r\n          ],\r\n          \"storage\": []\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"f8daea97-62e7-4026-becf-13c2ea98e8b4\",\r\n        \"permissions\": {\r\n          \"secrets\": [\r\n            \"get\"\r\n          ],\r\n          \"certificates\": [\r\n            \"get\"\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"objectId\": \"ed47c2a1-bd23-4341-b39c-f4fd69138dd3\",\r\n        \"permissions\": {\r\n          \"secrets\": [\r\n            \"get\",\r\n            \"set\",\r\n            \"delete\"\r\n          ],\r\n          \"certificates\": [\r\n            \"get\",\r\n            \"update\",\r\n            \"create\",\r\n            \"import\",\r\n            \"delete\"\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"enabledForDeployment\": true,\r\n    \"enabledForDiskEncryption\": true,\r\n    \"enabledForTemplateDeployment\": true,\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 90,\r\n    \"enableRbacAuthorization\": false,\r\n    \"vaultUri\": \"https://ps-unittesting-keyvault.vault.azure.net/\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/certificates/PS-UnitTesting-Keyvault-PS-UnitTesting?api-version=2021-01-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5Mjk2OTktYjdhNC00NmNjLTk3Y2YtOGE5NWUwNDMxOGI4L3Jlc291cmNlR3JvdXBzL1JHLVBTLVVuaXRUZXN0aW5nL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcy9QUy1Vbml0VGVzdGluZy1LZXl2YXVsdC1QUy1Vbml0VGVzdGluZz9hcGktdmVyc2lvbj0yMDIxLTAxLTE1",
+      "RequestUri": "/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/certificates/PS-UnitTesting-Keyvault-psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71?api-version=2021-01-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5Mjk2OTktYjdhNC00NmNjLTk3Y2YtOGE5NWUwNDMxOGI4L3Jlc291cmNlR3JvdXBzL1JHLVBTLVVuaXRUZXN0aW5nL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL2NlcnRpZmljYXRlcy9QUy1Vbml0VGVzdGluZy1LZXl2YXVsdC1wc3VuaXR0ZXN0aW5nOWQzZDA2MDMtNWM0YS00NDE0LWE2ZTYtOGVkOTNmNWRkZTcxP2FwaS12ZXJzaW9uPTIwMjEtMDEtMTU=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45de17b6-1b13-493b-aeba-033cd763703e"
+          "0ee5d36c-3ace-45b7-b1df-d4e5547bdf37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19045",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/3.1.2"
@@ -501,10 +570,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "453"
+          "488"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"keyVaultId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n    \"keyVaultSecretName\": \"PS-UnitTesting\",\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/serverfarms/ASP-PS-UnitTesting\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"keyVaultId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.KeyVault/vaults/PS-UnitTesting-Keyvault\",\r\n    \"keyVaultSecretName\": \"psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71\",\r\n    \"serverFarmId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/serverfarms/ASP-PS-UnitTesting\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -516,7 +585,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "31bf3374-9f80-4986-8a6f-95e3abb2e1a1"
+          "054dadc0-29df-4f01-95df-5885a28dd629"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -531,19 +600,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "6ef01367-1854-4082-aac0-c6cf6db11a36"
+          "e10246a4-834c-4f46-8ec0-e0e6553dc022"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20221213T074313Z:6ef01367-1854-4082-aac0-c6cf6db11a36"
+          "SOUTHINDIA:20230310T105215Z:e10246a4-834c-4f46-8ec0-e0e6553dc022"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 13 Dec 2022 07:43:13 GMT"
+          "Fri, 10 Mar 2023 10:52:15 GMT"
         ],
         "Content-Length": [
-          "1029"
+          "1222"
         ],
         "Content-Type": [
           "application/json"
@@ -552,7 +621,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/certificates/PS-UnitTesting-Keyvault-PS-UnitTesting\",\r\n  \"name\": \"PS-UnitTesting-Keyvault-PS-UnitTesting\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"password\": null,\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"psunittesting\",\r\n    \"hostNames\": [\r\n      \"psunittesting\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"psunittesting\",\r\n    \"issueDate\": \"2022-07-28T07:11:04+05:30\",\r\n    \"expirationDate\": \"2023-07-28T07:21:04+05:30\",\r\n    \"thumbprint\": \"E4E04D3CE912AB34F0B94CBC27042E5022C961E1\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourcegroups/rg-ps-unittesting/providers/microsoft.keyvault/vaults/ps-unittesting-keyvault\",\r\n    \"keyVaultSecretName\": \"ps-unittesting\",\r\n    \"webSpace\": \"RG-W-CUS-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-PS-UnitTesting\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourceGroups/RG-PS-UnitTesting/providers/Microsoft.Web/certificates/PS-UnitTesting-Keyvault-psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71\",\r\n  \"name\": \"PS-UnitTesting-Keyvault-psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"password\": null,\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.psunittesting.com,psunittesting.com\",\r\n    \"hostNames\": [\r\n      \"*.psunittesting.com\",\r\n      \"psunittesting.com\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"Go Daddy Secure Certificate Authority - G2\",\r\n    \"issueDate\": \"2023-03-10T15:17:08+05:30\",\r\n    \"expirationDate\": \"2024-03-10T15:17:08+05:30\",\r\n    \"thumbprint\": \"D1E31552350B24D89EEE38265BF1E19EEF698E6D\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"keyVaultId\": \"/subscriptions/3e929699-b7a4-46cc-97cf-8a95e04318b8/resourcegroups/rg-ps-unittesting/providers/microsoft.keyvault/vaults/ps-unittesting-keyvault\",\r\n    \"keyVaultSecretName\": \"psunittesting9d3d0603-5c4a-4414-a6e6-8ed93f5dde71\",\r\n    \"webSpace\": \"RG-PS-UnitTesting-CentralUSwebspace\",\r\n    \"serverFarmId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"RG-PS-UnitTesting\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

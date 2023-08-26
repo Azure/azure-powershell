@@ -660,8 +660,8 @@
   </data>
   <data name="InvalidLongTermRetentionBackupResourceIdFormat" xml:space="preserve">
     <value>Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
-/subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
-/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+ /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+ /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
                     "ResourceId"</value>
   </data>
   <data name="MissingExternalAdmin" xml:space="preserve">
@@ -705,6 +705,12 @@
   </data>
   <data name="CreateAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
     <value>Are you sure you want to create a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+  </data>
+  <data name="SetServerConfigurationOptionDescription" xml:space="preserve">
+    <value>Setting value '{0}' for the server configuration option named '{1}' on managed instance '{2}' located in resource group '{3}'.</value>
+  </data>
+  <data name="SetServerConfigurationOptionWarning" xml:space="preserve">
+    <value>Are you sure you want to set the value '{0}' for the server configuration option named '{1}' on managed instance '{2}' located in resource group '{3}'?</value>
   </data>
   <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
     <value>Invalid parameters, '{0}' and '{1}' can't both be null.</value>

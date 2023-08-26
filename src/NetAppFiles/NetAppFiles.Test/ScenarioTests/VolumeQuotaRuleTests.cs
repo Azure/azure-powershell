@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
+        //[Fact(Skip = "Doesn't work at the moment due to service side issue")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeQuotaRuleCrud()
         {

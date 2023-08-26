@@ -34,9 +34,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// virtual machine size. For Constrained vCPU capable VM sizes, this
         /// number represents the total vCPUs of quota that the VM uses. For
         /// accurate vCPU count, please refer to
-        /// https://learn.microsoft.com/azure/virtual-machines/constrained-vcpu
+        /// https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu
         /// or
-        /// https://learn.microsoft.com/rest/api/compute/resourceskus/list</param>
+        /// https://docs.microsoft.com/rest/api/compute/resourceskus/list</param>
         /// <param name="osDiskSizeInMB">The OS disk size, in MB, allowed by
         /// the virtual machine size.</param>
         /// <param name="resourceDiskSizeInMB">The resource disk size, in MB,
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
         /// size. For Constrained vCPU capable VM sizes, this number represents
         /// the total vCPUs of quota that the VM uses. For accurate vCPU count,
         /// please refer to
-        /// https://learn.microsoft.com/azure/virtual-machines/constrained-vcpu
-        /// or https://learn.microsoft.com/rest/api/compute/resourceskus/list
+        /// https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu
+        /// or https://docs.microsoft.com/rest/api/compute/resourceskus/list
         /// </summary>
         [JsonProperty(PropertyName = "numberOfCores")]
         public int? NumberOfCores { get; set; }
