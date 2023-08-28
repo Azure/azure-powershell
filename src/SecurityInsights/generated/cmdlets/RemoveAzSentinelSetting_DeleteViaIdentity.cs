@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzSentinelSetting_DeleteViaIdentity", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Delete setting of the product.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

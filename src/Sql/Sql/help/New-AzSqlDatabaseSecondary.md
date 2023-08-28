@@ -20,10 +20,9 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveN
  -PartnerServerName <String> [-PartnerDatabaseName <String>] [-AllowConnections <AllowConnections>] [-AsJob]
  [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>]
  [-HighAvailabilityReplicaCount <Int32>] [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -32,11 +31,10 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -Partner
  -PartnerServerName <String> [-PartnerDatabaseName <String>] [-AllowConnections <AllowConnections>] [-AsJob]
  -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-LicenseType <String>]
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-HighAvailabilityReplicaCount <Int32>]
- [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionProtectorAutoRotation
+The AKV Key Auto Rotation status
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -FederatedClientId
 The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
 
@@ -204,7 +217,7 @@ Accept wildcard characters: False
 The list of AKV keys for the SQL Database copy.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -401,7 +414,7 @@ Accept wildcard characters: False
 The list of user assigned identity for the SQL Database copy.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

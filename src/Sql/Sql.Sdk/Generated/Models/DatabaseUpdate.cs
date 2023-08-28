@@ -190,6 +190,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="preferredEnclaveType">Type of enclave requested on the
         /// database i.e. Default or VBS enclaves. Possible values include:
         /// 'Default', 'VBS'</param>
+        /// <param name="useFreeLimit">Whether or not the database uses free
+        /// monthly limits. Allowed on one database in a subscription.</param>
+        /// <param name="freeLimitExhaustionBehavior">Specifies the behavior
+        /// when monthly free limits are exhausted for the free database.
+        ///
+        /// AutoPause: The database will be auto paused upon exhaustion of free
+        /// limits for remainder of the month.
+        ///
+        /// BillForUsage: The database will continue to be online upon
+        /// exhaustion of free limits and any overage will be billed. Possible
+        /// values include: 'AutoPause', 'BillOverUsage'</param>
         /// <param name="manualCutover">Whether or not customer controlled
         /// manual cutover needs to be done during Update Database operation to
         /// Hyperscale tier.
@@ -217,8 +228,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// When performCutover is specified, the scaling operation will
         /// trigger cutover and perform role-change to Hyperscale
         /// database.</param>
+        /// <param name="encryptionProtectorAutoRotation">The flag to enable or
+        /// disable auto rotation of database encryption protector AKV
+        /// key.</param>
         /// <param name="tags">Resource tags.</param>
-        public DatabaseUpdate(Sku sku = default(Sku), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), IDictionary<string, DatabaseKey> keys = default(IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public DatabaseUpdate(Sku sku = default(Sku), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), IDictionary<string, DatabaseKey> keys = default(IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), bool? useFreeLimit = default(bool?), string freeLimitExhaustionBehavior = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), bool? encryptionProtectorAutoRotation = default(bool?), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Sku = sku;
             Identity = identity;
@@ -263,8 +277,11 @@ namespace Microsoft.Azure.Management.Sql.Models
             Keys = keys;
             EncryptionProtector = encryptionProtector;
             PreferredEnclaveType = preferredEnclaveType;
+            UseFreeLimit = useFreeLimit;
+            FreeLimitExhaustionBehavior = freeLimitExhaustionBehavior;
             ManualCutover = manualCutover;
             PerformCutover = performCutover;
+            EncryptionProtectorAutoRotation = encryptionProtectorAutoRotation;
             Tags = tags;
             CustomInit();
         }
@@ -621,6 +638,27 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string PreferredEnclaveType { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the database uses free monthly limits.
+        /// Allowed on one database in a subscription.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.useFreeLimit")]
+        public bool? UseFreeLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the behavior when monthly free limits are
+        /// exhausted for the free database.
+        ///
+        /// AutoPause: The database will be auto paused upon exhaustion of free
+        /// limits for remainder of the month.
+        ///
+        /// BillForUsage: The database will continue to be online upon
+        /// exhaustion of free limits and any overage will be billed. Possible
+        /// values include: 'AutoPause', 'BillOverUsage'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.freeLimitExhaustionBehavior")]
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not customer controlled manual cutover
         /// needs to be done during Update Database operation to Hyperscale
         /// tier.
@@ -654,6 +692,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.performCutover")]
         public bool? PerformCutover { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag to enable or disable auto rotation of
+        /// database encryption protector AKV key.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.encryptionProtectorAutoRotation")]
+        public bool? EncryptionProtectorAutoRotation { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags.

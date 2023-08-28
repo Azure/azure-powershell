@@ -1,6 +1,6 @@
 ### Example 1: Accept subscription ownership status.
 ```powershell
-Get-AzSubscriptionAcceptOwnershipStatus  -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
 ```output
