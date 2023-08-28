@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSentinelIncident_Create", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterSetBreakingChange(new string[] {"Create"}, "11.0.0", "4.0.0", "2023/11/15", ChangeDescription="ParameterSet Create will be deprecated.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Creates or updates the incident.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

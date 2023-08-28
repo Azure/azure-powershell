@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets the list of email receivers.
         /// </summary>
+        [WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("Receiver", "11.0.0", "5.0.0", "2023/11/15", ChangeDescription = "Parameters receiver will be replaced by child parameters.")]
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
         public List<PSActionGroupReceiverBase> Receiver { get; set; }
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets the DisableGroup flag.
         /// </summary>
+        [WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("DisableGroup", "11.0.0", "5.0.0", "2023/11/15", ChangeDescription = "Parameter DisableGroup will be replaced by Enabled", NewWay = "Enabled")]
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether or not the action group should be enabled")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "Whether or not the action group should be enabled")]
@@ -83,6 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets the Tags of the action group resource
         /// </summary>
+        [WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("Tag", "11.0.0", "5.0.0", "2023/11/15",OldParamaterType = typeof(System.Collections.IDictionary), NewParameterTypeName = "Hashtable")]
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the action group resource")]
@@ -101,6 +104,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// <summary>
         /// Gets or sets the resource id parameter.
         /// </summary>
+        [WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("ResourceId", "11.0.0", "5.0.0", "2023/11/15", ChangeDescription = "Parameter set ByResourceId will be deprecated")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

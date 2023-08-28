@@ -4666,7 +4666,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = "2016-datacenter-gensecond";
-        $securityType = "Standard";
+        $securityTypeStnd = "Standard";
         $enable = $true;
         $disable = $false;
 
@@ -4690,8 +4690,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $imgRef.Offer = $Offer;
         $imgRef.Skus = $SKU;
         $imgRef.Version = "latest";
-
-
+        
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
@@ -4702,12 +4701,38 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
             -ImageReferencePublisher $imgRef.PublisherName ;
 
         # Create Vmss
-        $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+        $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityTypeStnd;
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
         # Verify security value
         Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
+
+        
+        # 2nd Scenario, SecurityType passed into only New-AzVmssConfig and not Set-AzVmssSecurityProfile.
+        $vmssName2 = 'vmss2' + $rgname;
+        $nameprefix = "test2";
+        # NRP
+        $vnetworkName = 'vnet2' + $rgname;
+        $subnetName = 'subnet2' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipCfg = New-AzVmssIPConfig -Name $nameprefix -SubnetId $subnetId;
+        
+        $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -SecurityType $securityTypeStnd `
+			| Add-AzVmssNetworkInterfaceConfiguration -Name $nameprefix -Primary $true -IPConfiguration $ipCfg `
+			| Set-AzVmssOSProfile -ComputerNamePrefix $nameprefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
+			| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+			-ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+			-ImageReferencePublisher $imgRef.PublisherName ;
+        # Create Vmss
+        $result2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+
+        # Verify security value
+        Assert-Null $vmssGet2.VirtualMachineProfile.SecurityProfile;
 
     }
     finally
