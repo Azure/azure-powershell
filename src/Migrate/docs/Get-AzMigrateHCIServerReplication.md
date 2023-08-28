@@ -20,7 +20,7 @@ Get-AzMigrateHCIServerReplication -ProjectName <String> -ResourceGroupName <Stri
 
 ### GetByInputObject
 ```
-Get-AzMigrateHCIServerReplication -InputObject <IProtectedItemModel> [-SubscriptionId <String>]
+Get-AzMigrateHCIServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -182,14 +182,14 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 Parameter Sets: GetByInputObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -318,6 +318,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IProtectedItemModel
@@ -331,20 +333,53 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IProtectedItemModel>`: Specifies the machine object of the replicating server.
-  - `Property <IProtectedItemModelProperties>`: Protected item model properties.
-    - `CustomProperty <IProtectedItemModelCustomProperties>`: Protected item model custom properties.
-      - `InstanceType <ReplicationType>`: Gets or sets the instance type.
-    - `PolicyName <String>`: Gets or sets the policy name.
-    - `ReplicationExtensionName <String>`: Gets or sets the replication extension name.
-  - `[SystemDataCreatedAt <DateTime?>]`: Gets or sets the timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: Gets or sets identity that created the resource.
-  - `[SystemDataCreatedByType <String>]`: Gets or sets the type of identity that created the resource: user, application,         managedIdentity.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: Gets or sets the timestamp of resource last modification (UTC).
-  - `[SystemDataLastModifiedBy <String>]`: Gets or sets the identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <String>]`: Gets or sets the type of identity that last modified the resource: user, application,         managedIdentity.
-  - `[Tag <IProtectedItemModelTags>]`: Gets or sets the resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
+`INPUTOBJECT <IMigrateIdentity>`: Specifies the machine object of the replicating server.
+  - `[AccountName <String>]`: Run as account ARM name.
+  - `[AlertSettingName <String>]`: The name of the email notification configuration.
+  - `[ClusterName <String>]`: Cluster ARM name.
+  - `[DatabaseInstanceName <String>]`: Unique name of a database instance in Azure migration hub.
+  - `[DatabaseName <String>]`: Unique name of a database in Azure migration hub.
+  - `[DeploymentId <String>]`: Deployment Id.
+  - `[DraName <String>]`: Dra name.
+  - `[EmailConfigurationName <String>]`: Email configuration name.
+  - `[EventName <String>]`: Unique name of an event within a migrate project.
+  - `[FabricName <String>]`: Fabric name.
+  - `[HostName <String>]`: Host ARM name.
+  - `[Id <String>]`: Resource identity path
+  - `[IntentObjectName <String>]`: Replication protection intent name.
+  - `[JobName <String>]`: Job ARM name.
+  - `[Location <String>]`: The name of the Azure region.
+  - `[LogicalNetworkName <String>]`: Logical network name.
+  - `[MachineName <String>]`: Machine ARM name.
+  - `[MappingName <String>]`: Protection Container mapping name.
+  - `[MigrateProjectName <String>]`: Name of the Azure Migrate project.
+  - `[MigrationItemName <String>]`: Migration item name.
+  - `[MigrationRecoveryPointName <String>]`: The migration recovery point name.
+  - `[NetworkMappingName <String>]`: Network mapping name.
+  - `[NetworkName <String>]`: Primary network name.
+  - `[OperationId <String>]`: The ID of an ongoing async operation.
+  - `[OperationStatusName <String>]`: Operation status ARM name.
+  - `[PolicyName <String>]`: Replication policy name.
+  - `[ProtectableItemName <String>]`: Protectable item name.
+  - `[ProtectedItemName <String>]`: Protected item name.
+  - `[ProtectionContainerName <String>]`: Protection container name.
+  - `[ProviderName <String>]`: Recovery services provider name.
+  - `[RecoveryPlanName <String>]`: Name of the recovery plan.
+  - `[RecoveryPointName <String>]`: The recovery point name.
+  - `[ReplicatedProtectedItemName <String>]`: Replication protected item name.
+  - `[ReplicationExtensionName <String>]`: Replication extension name.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceName <String>]`: The name of the recovery services vault.
+  - `[SiteName <String>]`: Site name.
+  - `[SolutionName <String>]`: Unique name of a migration solution within a migrate project.
+  - `[StorageClassificationMappingName <String>]`: Storage classification mapping name.
+  - `[StorageClassificationName <String>]`: Storage classification name.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VaultName <String>]`: Vault name.
+  - `[VaultSettingName <String>]`: Vault setting name.
+  - `[VcenterName <String>]`: VCenter ARM name.
+  - `[VirtualMachineName <String>]`: Virtual Machine name.
+  - `[WorkflowName <String>]`: Workflow name.
 
 ## RELATED LINKS
 
