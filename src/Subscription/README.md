@@ -121,6 +121,12 @@ directive:
     set:
       subject: SubscriptionPolicy
   - where:
+      verb: Get
+      subject: SubscriptionPolicy
+      variant: ^Get$
+    remove: true
+
+  - where:
       subject: AcceptSubscriptionOwnership
     set:
       subject: AcceptOwnership
@@ -166,6 +172,55 @@ directive:
       property-name: Name
     set:
       property-name: AliasName
+
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: NewAzSubscriptionAlias_CreateExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: GetAzSubscriptionAcceptOwnershipStatus_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+  - where:
+      verb: Get
+      subject: AcceptOwnershipStatus
+      parameter-name: SubscriptionId
+    required: true
+
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('[Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Name = @"",', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Description =@"",', '');
+  - from: InvokeAzSubscriptionAcceptOwnership_AcceptExpanded.cs
+    where: $
+    transform: $ = $.replace('Script = @"(Get-AzContext).Subscription.Id")]', '');
+  - where:
+      verb: Invoke
+      subject: AcceptOwnership
+      parameter-name: SubscriptionId
+    required: true
 
   - where:
       model-name: SubscriptionAliasResponse
