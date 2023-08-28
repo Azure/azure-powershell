@@ -12,30 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-using Azure.Core.Pipeline;
 
-using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
-using Microsoft.Identity.Client;
-
-using System.Net.Http;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
     /// <summary>
-    /// This class is an HttpClient factory which creates an HttpClient which delegates it's transport to an HttpPipeline, to enable MSAL to send requests through an Azure.Core HttpPipeline.
+    /// Details related to a <see cref="UnsafeTokenCacheOptions"/> cache delegate.
     /// </summary>
-    internal class HttpPipelineClientFactory : IMsalHttpClientFactory
+    public struct TokenCacheData
     {
-        private readonly HttpPipeline _pipeline;
-
-        public HttpPipelineClientFactory(HttpPipeline pipeline)
+        /// <summary>
+        /// Constructs a new <see cref="TokenCacheData"/> instance with the specified cache bytes.
+        /// </summary>
+        /// <param name="cacheBytes">The serialized content of the token cache.</param>
+        public TokenCacheData(ReadOnlyMemory<byte> cacheBytes)
         {
-            _pipeline = pipeline;
+            CacheBytes = cacheBytes;
         }
 
-        public HttpClient GetHttpClient()
-        {
-            return new HttpClient(new HttpPipelineMessageHandler(_pipeline));
-        }
+        /// <summary>
+        /// The bytes representing the state of the token cache.
+        /// </summary>
+        public ReadOnlyMemory<byte> CacheBytes { get; }
     }
 }

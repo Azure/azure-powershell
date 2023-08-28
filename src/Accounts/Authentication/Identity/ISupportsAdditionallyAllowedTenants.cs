@@ -12,30 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-using Azure.Core.Pipeline;
 
-using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
-using Microsoft.Identity.Client;
-
-using System.Net.Http;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
-    /// <summary>
-    /// This class is an HttpClient factory which creates an HttpClient which delegates it's transport to an HttpPipeline, to enable MSAL to send requests through an Azure.Core HttpPipeline.
-    /// </summary>
-    internal class HttpPipelineClientFactory : IMsalHttpClientFactory
+    internal interface ISupportsAdditionallyAllowedTenants
     {
-        private readonly HttpPipeline _pipeline;
-
-        public HttpPipelineClientFactory(HttpPipeline pipeline)
-        {
-            _pipeline = pipeline;
-        }
-
-        public HttpClient GetHttpClient()
-        {
-            return new HttpClient(new HttpPipelineMessageHandler(_pipeline));
-        }
+        /// <summary>
+        /// Specifies tenants in addition to the configured tenant for which the credential may acquire tokens.
+        /// Add the wildcard value "*" to allow the credential to acquire tokens for any tenant the logged in account can access.
+        /// If no specific tenant was configured this option will have no effect, and the credential will acquire tokens for any requested tenant.
+        /// </summary>
+        IList<string> AdditionallyAllowedTenants { get; }
     }
 }
