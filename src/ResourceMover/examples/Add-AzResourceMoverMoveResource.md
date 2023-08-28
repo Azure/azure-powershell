@@ -1,4 +1,5 @@
 ### Example 1: Add a resource to the Move Collection.
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $targetResourceSettingsObj
 
@@ -81,6 +82,7 @@ Type                              :
 Add a resource to the Move Collection that has existing target resource.
 
 ### Example 3: Update target resource settings after the Move Resource has been added.
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
 
