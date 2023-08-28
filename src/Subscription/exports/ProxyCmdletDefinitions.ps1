@@ -354,7 +354,7 @@ Accept subscription ownership status.
 .Description
 Accept subscription ownership status.
 .Example
-Get-AzSubscriptionAcceptOwnershipStatus  -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
@@ -377,9 +377,8 @@ function Get-AzSubscriptionAcceptOwnershipStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse])]
 [CmdletBinding(DefaultParameterSetName='AcceptExpanded', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Subscription Id.
     ${SubscriptionId},
@@ -468,9 +467,6 @@ begin {
         $mapping = @{
             AcceptExpanded = 'Az.Subscription.private\Get-AzSubscriptionAcceptOwnershipStatus_AcceptExpanded';
             AcceptViaIdentityExpanded = 'Az.Subscription.private\Get-AzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded';
-        }
-        if (('AcceptExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -705,7 +701,7 @@ https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscription
 #>
 function Get-AzSubscriptionPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IGetTenantPolicyResponse])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -782,7 +778,6 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Subscription.private\Get-AzSubscriptionPolicy_Get';
             List = 'Az.Subscription.private\Get-AzSubscriptionPolicy_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -860,9 +855,8 @@ function Invoke-AzSubscriptionAcceptOwnership {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='AcceptExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Subscription Id.
     ${SubscriptionId},
@@ -989,9 +983,6 @@ begin {
             AcceptExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptExpanded';
             AcceptViaIdentityExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptViaIdentityExpanded';
         }
-        if (('AcceptExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1044,7 +1035,9 @@ Create Alias Subscription.
 .Description
 Create Alias Subscription.
 .Example
-New-AzSubscriptionAlias -AliasName test-subscription
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+.Example
+New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
@@ -1088,7 +1081,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # This parameter can be used to create alias for existing subscription Id
     ${SubscriptionId},
@@ -1208,9 +1200,6 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

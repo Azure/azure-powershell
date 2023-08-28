@@ -152,7 +152,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 Identity = model.Identity,
                 Keys = model.Keys,
                 EncryptionProtector = model.EncryptionProtector,
-                FederatedClientId = model.FederatedClientId
+                FederatedClientId = model.FederatedClientId,
+                EncryptionProtectorAutoRotation = model.EncryptionProtectorAutoRotation
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -220,6 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.Keys = database.Keys;
             model.Identity = database.Identity;
             model.FederatedClientId = database.FederatedClientId;
+            model.EncryptionProtectorAutoRotation = database.EncryptionProtectorAutoRotation;
 
             return model;
         }
@@ -288,6 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 Keys = model.Keys,
                 EncryptionProtector = model.EncryptionProtector,
                 FederatedClientId = model.FederatedClientId,
+                EncryptionProtectorAutoRotation = model.EncryptionProtectorAutoRotation
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);

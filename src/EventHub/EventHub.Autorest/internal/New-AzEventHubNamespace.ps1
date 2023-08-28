@@ -34,15 +34,20 @@ New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -Sk
 New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuCapacity 10 -MaximumThroughputUnit 18 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GEODATAREPLICATIONLOCATION <INamespaceReplicaLocation[]>: A list of regions where replicas of the namespace are maintained.
+  [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
+  [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+  [RoleType <GeoDrRoleType?>]: GeoDR Role Types
 
 INPUTOBJECT <IEventHubIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
@@ -73,6 +78,11 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
   [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Event Hubs namespace.
   [EnableAutoInflate <Boolean?>]: Value that indicates whether AutoInflate is enabled for eventhub namespace.
+  [GeoDataReplicationLocation <INamespaceReplicaLocation[]>]: A list of regions where replicas of the namespace are maintained.
+    [ClusterArmId <String>]: Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster
+    [LocationName <String>]: Azure regions where a replica of the namespace is maintained
+    [RoleType <GeoDrRoleType?>]: GeoDR Role Types
+  [GeoDataReplicationMaxReplicationLagDurationInSecond <Int32?>]: The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
   [KafkaEnabled <Boolean?>]: Value that indicates whether Kafka is enabled for eventhub namespace.
   [KeySource <KeySource?>]: Enumerates the possible value of keySource for Encryption
@@ -124,7 +134,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoi
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnamespace
 #>
 function New-AzEventHubNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -180,6 +190,22 @@ param(
     ${EnableAutoInflate},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INamespaceReplicaLocation[]]
+    # A list of regions where replicas of the namespace are maintained.
+    # To construct, see NOTES section for GEODATAREPLICATIONLOCATION properties and create a hash table.
+    ${GeoDataReplicationLocation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int32]
+    # The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+    # When the lag exceeds the configured amount, operations on the primary replica will be failed.
+    # The allowed values are 0 and 5 minutes to 1 day.
+    ${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
@@ -202,7 +228,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[]]
     # Properties of KeyVault
     # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
@@ -231,7 +257,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection[]]
     # List of private endpoint connections.
     # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
@@ -280,7 +306,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Properties for User Assigned Identities
     ${UserAssignedIdentity},
@@ -293,7 +319,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace]
     # Single Namespace item in List or Get Operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

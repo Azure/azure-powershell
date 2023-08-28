@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Refreshed module to ensure catalog file signed by Microsoft.
 
 ## Version 0.7.3
 * Update references in .psd1 to use relative path

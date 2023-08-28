@@ -82,9 +82,17 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string Weekly = "Weekly";
         public const string TrustedLaunch = "TrustedLaunch";
         public const string ConfidentialVM = "ConfidentialVM";
+        public const string Standard = "Standard";
         public const string Replace = "Replace";
         public const string Restart = "Restart";
         public const string Reimage = "Reimage";
+    }
+
+    public static class ConstantValues
+    {
+        public const string StandardSecurityType = "standard";
+        public const string TrustedLaunchSecurityType = "trustedlaunch";
+        public const string ConfidentialVMSecurityType = "confidentialvm";
     }
 
     public static class ProfileNouns

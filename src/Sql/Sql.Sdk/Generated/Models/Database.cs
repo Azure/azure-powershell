@@ -214,6 +214,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="preferredEnclaveType">Type of enclave requested on the
         /// database i.e. Default or VBS enclaves. Possible values include:
         /// 'Default', 'VBS'</param>
+        /// <param name="useFreeLimit">Whether or not the database uses free
+        /// monthly limits. Allowed on one database in a subscription.</param>
+        /// <param name="freeLimitExhaustionBehavior">Specifies the behavior
+        /// when monthly free limits are exhausted for the free database.
+        ///
+        /// AutoPause: The database will be auto paused upon exhaustion of free
+        /// limits for remainder of the month.
+        ///
+        /// BillForUsage: The database will continue to be online upon
+        /// exhaustion of free limits and any overage will be billed. Possible
+        /// values include: 'AutoPause', 'BillOverUsage'</param>
         /// <param name="sourceResourceId">The resource identifier of the
         /// source associated with the create operation of this database.
         ///
@@ -271,7 +282,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="availabilityZone">Specifies the availability zone the
         /// database is pinned to. Possible values include: 'NoPreference',
         /// '1', '2', '3'</param>
-        public Database(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string managedBy = default(string), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), IDictionary<string, DatabaseKey> keys = default(IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), string sourceResourceId = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), string availabilityZone = default(string))
+        /// <param name="encryptionProtectorAutoRotation">The flag to enable or
+        /// disable auto rotation of database encryption protector AKV
+        /// key.</param>
+        public Database(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string managedBy = default(string), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string sampleName = default(string), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), string secondaryType = default(string), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), IDictionary<string, DatabaseKey> keys = default(IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), bool? useFreeLimit = default(bool?), string freeLimitExhaustionBehavior = default(string), string sourceResourceId = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), string availabilityZone = default(string), bool? encryptionProtectorAutoRotation = default(bool?))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -319,10 +333,13 @@ namespace Microsoft.Azure.Management.Sql.Models
             Keys = keys;
             EncryptionProtector = encryptionProtector;
             PreferredEnclaveType = preferredEnclaveType;
+            UseFreeLimit = useFreeLimit;
+            FreeLimitExhaustionBehavior = freeLimitExhaustionBehavior;
             SourceResourceId = sourceResourceId;
             ManualCutover = manualCutover;
             PerformCutover = performCutover;
             AvailabilityZone = availabilityZone;
+            EncryptionProtectorAutoRotation = encryptionProtectorAutoRotation;
             CustomInit();
         }
 
@@ -706,6 +723,27 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string PreferredEnclaveType { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the database uses free monthly limits.
+        /// Allowed on one database in a subscription.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.useFreeLimit")]
+        public bool? UseFreeLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the behavior when monthly free limits are
+        /// exhausted for the free database.
+        ///
+        /// AutoPause: The database will be auto paused upon exhaustion of free
+        /// limits for remainder of the month.
+        ///
+        /// BillForUsage: The database will continue to be online upon
+        /// exhaustion of free limits and any overage will be billed. Possible
+        /// values include: 'AutoPause', 'BillOverUsage'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.freeLimitExhaustionBehavior")]
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource identifier of the source associated with
         /// the create operation of this database.
         ///
@@ -777,6 +815,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.availabilityZone")]
         public string AvailabilityZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flag to enable or disable auto rotation of
+        /// database encryption protector AKV key.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.encryptionProtectorAutoRotation")]
+        public bool? EncryptionProtectorAutoRotation { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEventHubNamespace_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Creates or updates a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
     public partial class NewAzEventHubNamespace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Single Namespace item in List or Get Operation</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.EhNamespace();
+        private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.EhNamespace();
 
         /// <summary>Alternate name specified when alias and namespace names are same.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Alternate name specified when alias and namespace names are same.")]
@@ -106,6 +106,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter EnableAutoInflate { get => _parametersBody.EnableAutoInflate ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableAutoInflate = value; }
 
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A list of regions where replicas of the namespace are maintained.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A list of regions where replicas of the namespace are maintained.",
+        SerializedName = @"locations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INamespaceReplicaLocation) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INamespaceReplicaLocation[] GeoDataReplicationLocation { get => _parametersBody.GeoDataReplicationLocation ?? null /* arrayOf */; set => _parametersBody.GeoDataReplicationLocation = value; }
+
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.",
+        SerializedName = @"maxReplicationLagDurationInSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        public int GeoDataReplicationMaxReplicationLagDurationInSecond { get => _parametersBody.GeoDataReplicationMaxReplicationLagDurationInSecond ?? default(int); set => _parametersBody.GeoDataReplicationMaxReplicationLagDurationInSecond = value; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -165,8 +192,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         ReadOnly = false,
         Description = @"Properties of KeyVault",
         SerializedName = @"keyVaultProperties",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IKeyVaultProperties[] KeyVaultProperty { get => _parametersBody.KeyVaultProperty ?? null /* arrayOf */; set => _parametersBody.KeyVaultProperty = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IKeyVaultProperties[] KeyVaultProperty { get => _parametersBody.KeyVaultProperty ?? null /* arrayOf */; set => _parametersBody.KeyVaultProperty = value; }
 
         /// <summary>Resource location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
@@ -250,8 +277,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         ReadOnly = false,
         Description = @"List of private endpoint connections.",
         SerializedName = @"privateEndpointConnections",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get => _parametersBody.PrivateEndpointConnection ?? null /* arrayOf */; set => _parametersBody.PrivateEndpointConnection = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection[] PrivateEndpointConnection { get => _parametersBody.PrivateEndpointConnection ?? null /* arrayOf */; set => _parametersBody.PrivateEndpointConnection = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -388,8 +415,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         ReadOnly = false,
         Description = @"Properties for User Assigned Identities",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IIdentityUserAssignedIdentities UserAssignedIdentity { get => _parametersBody.UserAssignedIdentity ?? null /* object */; set => _parametersBody.UserAssignedIdentity = value; }
 
         /// <summary>
         /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
@@ -421,12 +448,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -696,12 +723,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace">Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -713,7 +740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespace
                 WriteObject((await response));
             }
         }

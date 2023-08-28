@@ -16,11 +16,15 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightCluster), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
+        DeprecatedOutputProperties = new string[] {"Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties DiskEncryption", "List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups> WorkerNodeDataDisksGroups"}, 
+        NewOutputProperties = new string[] {"Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties DiskEncryption", "List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup> WorkerNodeDataDisksGroups"})]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterSize"),OutputType(typeof(AzureHDInsightCluster))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
     {

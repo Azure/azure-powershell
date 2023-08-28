@@ -15,9 +15,9 @@ Create a file or directory in a filesystem.
 ### File (Default)
 ```
 New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> [-Umask <String>]
- [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permission <String>] [-EncryptionContext <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force]
+ [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
@@ -65,6 +65,18 @@ dir1/dir2/file1      False        14400000        2020-03-23 09:19:13Z rw-r-----
 ```
 
 This command creates(upload) a data lake file from a local source file, and the cmdlet runs in background.
+
+### Example 3: Create(upload) a data lake file from a local source file and set its encryption context 
+```powershell
+$file = New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -EncryptionContext "encryptioncontext"
+$file.Properties.EncryptionContext
+```
+
+```output
+encryptioncontext
+```
+
+This command creates(upload) a data lake file from a local source file and sets its encryption context value to "encryptioncontext".
 
 ## PARAMETERS
 
@@ -137,6 +149,21 @@ Parameter Sets: Directory
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionContext
+Encryption context of the file. Encryption context is metadata that is not encrypted when stored on the file. The primary application of this field is to store non-encrypted data that can be used to derive the customer-provided key for a file. Not applicable for directories.
+
+```yaml
+Type: System.String
+Parameter Sets: File
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

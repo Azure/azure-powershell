@@ -29,7 +29,7 @@ https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscription
 #>
 function Get-AzSubscriptionPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IGetTenantPolicyResponse])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -106,7 +106,6 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Subscription.private\Get-AzSubscriptionPolicy_Get';
             List = 'Az.Subscription.private\Get-AzSubscriptionPolicy_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
