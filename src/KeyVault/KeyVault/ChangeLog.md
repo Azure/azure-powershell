@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Splitted steps of `Import-AzKeyVaultSecurityDomain` to avoid exposing keys online.
+    - Added `Initialize-AzKeyvaultSecurityDomainRecovery` and `Restore-AzKeyVaultSecurityDomainBlob`.
+    - Added `--ByRestoreBlob` in `Import-AzKeyVaultSecurityDomain`.
 * Added security domain properties into the output of `New/Update/Get-AzKeyVaultManagedHsm` (`PSManagedHsm`).
 * Supported Setting for Managed HSM: Added `Get-AzKeyVaultSetting` and `Update-AzKeyVaultSetting`.
 * Updated Azure.Core to 1.34.0.
