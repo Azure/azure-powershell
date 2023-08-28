@@ -93,7 +93,8 @@ This command gets a Virtual Network named `test-vnet` in a resource group named 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -177,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20231001.IVirtualNetwork
 
 ## NOTES
 
@@ -191,17 +192,14 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.
   - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
   - `[HostName <String>]`: Name of the host.
   - `[Id <String>]`: Resource identity path
   - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceGroupName <String>]`: The Resource Group Name.
   - `[ResourcePoolName <String>]`: Name of the resourcePool.
+  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   - `[SubscriptionId <String>]`: The Subscription ID.
   - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
   - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
   - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
