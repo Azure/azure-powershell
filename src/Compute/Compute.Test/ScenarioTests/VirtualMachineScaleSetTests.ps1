@@ -2134,7 +2134,7 @@ function Test-VirtualMachineScaleSetAutoRollback
 
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
 
         $extname = 'csetest';
         $publisher = 'Microsoft.Compute';
@@ -4713,6 +4713,52 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         # Verify security value
         Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale ImageReferenceSku Update
+using Update-Azvmss
+#>
+function Test-VirtualMachineScaleSetImageReferenceSkuUpdate
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $imageName = "Win2016DataCenter";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $domainNameLabel1 = "d1" + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
+        $disable = $false;
+        $enable = $true;
+        $securityType = "TrustedLaunch";
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 ;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
+        Assert-AreEqual $vmss.VirtualMachineProfile.StorageProfile.ImageReference.SKU "2016-datacenter";
+
+        Update-AzVmss -ResourceGroupName $rgname  -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss -ImageReferenceSku 2019-datacenter
+        Assert-AreEqual $vmss.VirtualMachineProfile.StorageProfile.ImageReference.SKU "2019-datacenter";
     }
     finally
     {
