@@ -17,7 +17,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         [System.Runtime.Serialization.EnumMember(Value = "Standard_B1")]
         StandardB1,
         [System.Runtime.Serialization.EnumMember(Value = "Custom_B32")]
-        CustomB32
+        CustomB32,
+        [System.Runtime.Serialization.EnumMember(Value = "Custom_B6")]
+        CustomB6
     }
     internal static class ManagedHsmSkuNameEnumExtension
     {
@@ -33,6 +35,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return "Standard_B1";
                 case ManagedHsmSkuName.CustomB32:
                     return "Custom_B32";
+                case ManagedHsmSkuName.CustomB6:
+                    return "Custom_B6";
             }
             return null;
         }
@@ -44,6 +48,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
                     return ManagedHsmSkuName.StandardB1;
                 case "Custom_B32":
                     return ManagedHsmSkuName.CustomB32;
+                case "Custom_B6":
+                    return ManagedHsmSkuName.CustomB6;
             }
             return null;
         }

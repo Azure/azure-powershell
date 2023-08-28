@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Ssh.Test.ScenarioTests
                     userAgentsToIgnore: new Dictionary<string, string>(),
                     resourceProviders: new Dictionary<string, string>
                     {
-                        {"Microsoft.Compute", null}
+                        {"Microsoft.Compute", null }
                     }
                 )
                 .Build();

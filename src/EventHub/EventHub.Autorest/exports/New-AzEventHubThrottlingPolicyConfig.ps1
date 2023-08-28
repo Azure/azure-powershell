@@ -23,12 +23,12 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IThrottlingPolicy
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IThrottlingPolicy
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
 #>
 function New-AzEventHubThrottlingPolicyConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IThrottlingPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IThrottlingPolicy])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

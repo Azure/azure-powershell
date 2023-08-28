@@ -23,6 +23,23 @@ Creates or updates a SQL virtual machine.
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus'
 .Example
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -Sku 'Developer' -LicenseType 'PAYG'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'AHUB'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'DR'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday `
+-AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AssessmentSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
