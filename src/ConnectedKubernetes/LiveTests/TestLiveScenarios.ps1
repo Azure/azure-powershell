@@ -3,11 +3,11 @@ Invoke-LiveTestScenario -Name "Test ConnectedKubernetes" -Description "Test AzCo
     param ($rg)
     $rgName = $rg.ResourceGroupName
     $ckName = New-LiveTestResourceName
-    wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz
+    wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz -q
     tar -zxvf helm-v3.6.3-linux-amd64.tar.gz
     sudo cp linux-amd64/helm /usr/local/bin/
     helm version
-    minikube start
+    minikube start --v=0
     $ckLocation = "westus"
     $actual = New-AzConnectedKubernetes -ClusterName $ckName -ResourceGroupName $rgName -Location $ckLocation
     Assert-AreEqual $ckName $actual.Name
