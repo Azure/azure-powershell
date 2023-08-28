@@ -1,5 +1,4 @@
 ### Example 1: Add a resource to the Move Collection.
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
@@ -38,7 +37,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
 ```
 
 Add a resource to the Move Collection.
@@ -78,13 +76,11 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
 ```
 
 Add a resource to the Move Collection that has existing target resource.
 
 ### Example 3: Update target resource settings after the Move Resource has been added.
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
 $TargetResourceSettingObj = $moveResourceObj.ResourceSetting
@@ -124,7 +120,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
 ```
 
 Update target resource settings after the Move Resource has been added.
