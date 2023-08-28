@@ -53,15 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.SecurityProfile = new SecurityProfile();
                 }
-
-                if (this.IsParameterBound(c => c.SecurityType))
-                {
-                    if (this.VM.SecurityProfile == null)
-                    {
-                        this.VM.SecurityProfile = new SecurityProfile();
-                    }
-                    this.VM.SecurityProfile.SecurityType = SecurityType;
-                }
+                this.VM.SecurityProfile.SecurityType = SecurityType;
             }
             else if (SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
