@@ -23,6 +23,7 @@
 * Fixed `Add-AzMetriAlertRuleV2` and `Get-AzMetricAlertRuleV2` to support web tests criteria [#22350]
 * Added parameter `Dimension` for `Get-AzMetric` to easily filter metrics by dimensions [#22320]
 * Added breaking change for Data Collection Rule
+* Added breaking change for Action Group
 
 ## Version 4.5.0
 * Added cmdlets for monitor workspace: 
