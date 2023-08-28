@@ -16,7 +16,7 @@ Starts replication for the specified server.
 ```
 New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
  -TargetStoragePathId <String> -TargetVirtualSwitch <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetVMCPUCores <Int32>]
+ [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
  [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -Target
 New-AzMigrateHCIServerReplication -DiskToInclude <AzStackHCIDiskInput[]> -MachineId <String>
  -NicToInclude <AzStackHCINicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
  -TargetVMName <String> [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>]
- [-TargetVMCPUCores <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,7 +271,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetVMCPUCores
+### -TargetVMCPUCore
 Specifies the number of CPU cores.
 
 ```yaml

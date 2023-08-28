@@ -59,11 +59,11 @@ Retrieves a policy by its name.
 
 ### Example 2: Get by policy input object
 ```powershell
-$policy = Get-AzMigrateHCIReplicationPolicy -ResourceGroupName "test-rg" -VaultName "testproj1234replicationvault" -Name "testproj1234replicationvaultHyperVToAzStackHCIpolicy"
+$InputObject = Get-AzMigrateHCIReplicationPolicy -ResourceGroupName "test-rg" -VaultName "testproj1234replicationvault" -Name "testproj1234replicationvaultHyperVToAzStackHCIpolicy"
 
-Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+Get-AzMigrateHCIReplicationPolicy -InputObject $InputObject
 
-$policy | Get-AzMigrateHCIReplicationPolicy
+$InputObject | Get-AzMigrateHCIReplicationPolicy
 ```
 
 ```output

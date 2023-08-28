@@ -41,7 +41,7 @@ function Set-AzMigrateHCIServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int32]
         # Specifies the number of CPU cores.
-        ${TargetVMCPUCores},
+        ${TargetVMCPUCore},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -132,7 +132,7 @@ function Set-AzMigrateHCIServerReplication {
         Import-Module $PSScriptRoot\AzStackHCICommonSettings.ps1
         
         $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
-        $HasTargetVMCPUCores = $PSBoundParameters.ContainsKey('TargetVMCPUCores')
+        $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasTargetVirtualSwitch = $PSBoundParameters.ContainsKey('TargetVirtualSwitch')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
@@ -140,7 +140,7 @@ function Set-AzMigrateHCIServerReplication {
         $HasNicToInclude = $PSBoundParameters.ContainsKey('NicToInclude')
 
         $null = $PSBoundParameters.Remove('TargetVMName')
-        $null = $PSBoundParameters.Remove('TargetVMCPUCores')
+        $null = $PSBoundParameters.Remove('TargetVMCPUCore')
         $null = $PSBoundParameters.Remove('TargetVirtualSwitch')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
         $null = $PSBoundParameters.Remove('DynamicMemoryConfig')
@@ -187,8 +187,8 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.TargetVMName = $TargetVMName
         }
 
-        if ($HasTargetVMCPUCores) {
-            $customProperties.TargetCpuCore = $TargetVMCPUCores
+        if ($HasTargetVMCPUCore) {
+            $customProperties.TargetCpuCore = $TargetVMCPUCore
         }
 
         if ($HasTargetVirtualSwitch) {

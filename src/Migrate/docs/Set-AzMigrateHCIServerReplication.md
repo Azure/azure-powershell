@@ -16,7 +16,7 @@ Updates the target properties for the replicating server.
 Set-AzMigrateHCIServerReplication -TargetObjectID <String>
  [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <Boolean>]
  [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>] [-TargetVirtualSwitch <String>]
- [-TargetVMCPUCores <Int32>] [-TargetVMName <String>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMName <String>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -172,7 +172,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetVMCPUCores
+### -TargetVMCPUCore
 Specifies the number of CPU cores.
 
 ```yaml

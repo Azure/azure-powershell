@@ -25,7 +25,7 @@ The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infr
 
 ### Example 1: Initialize AzStackHCI replication infrastructure
 ```powershell
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
 ```
 
 ```output
@@ -39,7 +39,7 @@ Cache storage account, replication policy, and replication extension will be cre
 ```powershell
 $cacheStorageAccount = Get-AzStorageAccount -ResourceGroupName "test-rg" -Name "customcachesa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
 ```
 
 ```output

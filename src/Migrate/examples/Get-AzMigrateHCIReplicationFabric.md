@@ -22,11 +22,11 @@ Retrieves a fabric by its name.
 
 ### Example 2: Get by fabric input object
 ```powershell
-$fabric = Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
+$InputObject = Get-AzMigrateHCIReplicationFabric -ResourceGroupName "test-rg" -Name "testsrcappreplicationfabric"
 
-Get-AzMigrateHCIReplicationFabric -InputObject $fabric
+Get-AzMigrateHCIReplicationFabric -InputObject $InputObject
 
-$fabric | Get-AzMigrateHCIReplicationFabric
+$InputObject | Get-AzMigrateHCIReplicationFabric
 ```
 
 ```output

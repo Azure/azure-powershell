@@ -129,11 +129,11 @@ Retrieves a job by its name.
 
 ### Example 3: Get by job input object
 ```powershell
-$Job = Get-AzMigrateHCIJob -JobID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+$InputObject = Get-AzMigrateHCIJob -JobID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 
-Get-AzMigrateHCIJob -InputObject $Job
+Get-AzMigrateHCIJob -InputObject $InputObject
 
-$Job | Get-AzMigrateHCIJob
+$InputObject | Get-AzMigrateHCIJob
 ```
 
 ```output

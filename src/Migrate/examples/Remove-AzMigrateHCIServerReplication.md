@@ -38,11 +38,11 @@ Remove AzStackHCI replication by Id.
 
 ### Example 2: Remove replication by input object
 ```powershell
-$obj = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Remove-AzMigrateHCIServerReplication -InputObject $obj
+Remove-AzMigrateHCIServerReplication -InputObject $InputObject
 
-$obj | Remove-AzMigrateHCIServerReplication
+$InputObject | Remove-AzMigrateHCIServerReplication
 ```
 
 ```output

@@ -42,7 +42,7 @@ function New-AzMigrateHCIServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Int32]
         # Specifies the number of CPU cores.
-        ${TargetVMCPUCores},
+        ${TargetVMCPUCore},
 
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -151,12 +151,12 @@ function New-AzMigrateHCIServerReplication {
         Import-Module $PSScriptRoot\AzStackHCICommonSettings.ps1
         Import-Module Az.ResourceGraph
 
-        $HasTargetVMCPUCores = $PSBoundParameters.ContainsKey('TargetVMCPUCores')
+        $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $parameterSet = $PSCmdlet.ParameterSetName
 
-        $null = $PSBoundParameters.Remove('TargetVMCPUCores')
+        $null = $PSBoundParameters.Remove('TargetVMCPUCore')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
         $null = $PSBoundParameters.Remove('TargetVMRam')
         $null = $PSBoundParameters.Remove('DiskToInclude')
@@ -405,7 +405,7 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.TargetResourceGroupId               = $TargetResourceGroupId
         $customProperties.TargetVMName                        = $TargetVMName
         $customProperties.HyperVGeneration                    = if ($SiteType -eq $SiteTypes.HyperVSites) { $InputObject.Generation } else { "1" }
-        $customProperties.TargetCpuCore                       = if ($HasTargetVMCPUCores) { $TargetVMCPUCores } else { $InputObject.NumberOfProcessorCore }
+        $customProperties.TargetCpuCore                       = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $InputObject.NumberOfProcessorCore }
         $customProperties.TargetMemoryInMegaByte              = if ($HasTargetVMRam) { $TargetVMRam } else { $InputObject.AllocatedMemoryInMB }
         $customProperties.IsDynamicRam                        = if ($HasIsDynamicMemoryEnabled) { $IsDynamicMemoryEnabled } else { $InputObject.IsDynamicMemoryEnabled }
 

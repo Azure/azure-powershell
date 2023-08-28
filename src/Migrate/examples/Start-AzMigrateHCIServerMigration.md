@@ -45,11 +45,11 @@ Start AzStackHCI server migration by Id.
 
 ### Example 2: Start migration by input object
 ```powershell
-$obj = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
+$InputObject = Get-AzMigrateHCIServerReplication -TargetObjectID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/protectedItems/0ec082d5-6827-457a-bae2-f986e1b94851"
 
-Start-AzMigrateHCIServerMigration -InputObject $obj
+Start-AzMigrateHCIServerMigration -InputObject $InputObject
 
-$obj | Start-AzMigrateHCIServerMigration
+$InputObject | Start-AzMigrateHCIServerMigration
 ```
 
 ```output
