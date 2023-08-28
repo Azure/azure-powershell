@@ -86,10 +86,10 @@ $summarySection = @"
 "@
 
 if ($errorsArr.Count -gt 0) {
-    $emailBody = $errorsArr | Sort-Object OSVersion, PSVersion, Module, Name | ConvertTo-Html -Property OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Azure PowerShell Live Test Report" -PreContent "$summarySection<h1>Live Test Error Details</h1>"
+    $emailContent = $errorsArr | Sort-Object OSVersion, PSVersion, Module, Name | ConvertTo-Html -Property OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Azure PowerShell Live Test Report" -PreContent "$summarySection<h1>Live Test Error Details</h1>"
 }
 else {
-    $emailBody = "<html><head>$css</head><body>$summarySection<div>No live test errors reported. Please check the overall status from Azure pipeline.</div></body></html>"
+    $emailContent = "<html><head>$css</head><body>$summarySection<div>No live test errors reported. Please check the overall status from Azure pipeline.</div></body></html>"
 }
 
-Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Body $emailBody
+Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Content $emailContent -IsHtml

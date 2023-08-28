@@ -4527,7 +4527,6 @@ function Test-VirtualMachineScaleSetSecurityType
     }
 }
 
-
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled
@@ -4598,6 +4597,143 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
         Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with SecurityType of Standard.
+#>
+function Test-VirtualMachineScaleSetSecurityTypeStandard
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $imageName = "Win2016DataCenterGenSecond";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $domainNameLabel1 = "d1" + $rgname;
+        $disable = $false;
+        $enable = $true;
+        $securityTypeStnd = "Standard";
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Create Vmss
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
+
+        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with SecurityType of Standard with Config.
+No SecurityPRofile should be made for now in this scenario. 
+#>
+function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $securityTypeStnd = "Standard";
+        $enable = $true;
+        $disable = $false;
+
+        # NRP
+        $vnetworkName = 'vnet' + $rgname;
+        $subnetName = 'subnet' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+
+        $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        $imgRef.PublisherName = $PublisherName;
+        $imgRef.Offer = $Offer;
+        $imgRef.Skus = $SKU;
+        $imgRef.Version = "latest";
+        
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+
+        # Create Vmss
+        $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityTypeStnd;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
+
+        # Verify security value
+        Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
+
+        
+        # 2nd Scenario, SecurityType passed into only New-AzVmssConfig and not Set-AzVmssSecurityProfile.
+        $vmssName2 = 'vmss2' + $rgname;
+        $nameprefix = "test2";
+        # NRP
+        $vnetworkName = 'vnet2' + $rgname;
+        $subnetName = 'subnet2' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipCfg = New-AzVmssIPConfig -Name $nameprefix -SubnetId $subnetId;
+        
+        $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' -SecurityType $securityTypeStnd `
+			| Add-AzVmssNetworkInterfaceConfiguration -Name $nameprefix -Primary $true -IPConfiguration $ipCfg `
+			| Set-AzVmssOSProfile -ComputerNamePrefix $nameprefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
+			| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+			-ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+			-ImageReferencePublisher $imgRef.PublisherName ;
+        # Create Vmss
+        $result2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss2;
+        $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+
+        # Verify security value
+        Assert-Null $vmssGet2.VirtualMachineProfile.SecurityProfile;
+
     }
     finally
     {

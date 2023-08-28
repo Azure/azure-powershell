@@ -5805,14 +5805,13 @@ function Assert-IsObservabilityStackPresent{
 
     Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
     try{
-        $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
-        $deviceType = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AzureStack" -ErrorAction SilentlyContinue).DeviceType
-        if($obsService -or $deviceType -eq "AzureEdge"){
-            Write-InfoLog("AzureStack device type is AzureEdge.")
+        $obsService = Get-Service -Name "*RemoteSupportAgent*" -ErrorAction SilentlyContinue
+        if($obsService){
+            Write-InfoLog("RemoteSupportAgent exists, Status: $($obsService.Status).")
             return $true
         }
         else{
-            Write-InfoLog("AzureStack device type is not AzureEdge.")
+            Write-InfoLog("RemoteSupportAgent does not exist.")
             return $false
         }
     }

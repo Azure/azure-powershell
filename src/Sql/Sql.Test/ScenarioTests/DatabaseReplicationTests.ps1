@@ -865,10 +865,11 @@ function Test-CreateDatabaseCopyWithPerDBCMK($location = "eastus2euap")
 	{
 		# Create a cross server copy
 		$dbCrossServerCopy = New-AzSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -CopyResourceGroupName $copyRg.ResourceGroupName -CopyServerName $copyServer.ServerName -CopyDatabaseName $copyDatabaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+		 -CopyResourceGroupName $copyRg.ResourceGroupName -CopyServerName $copyServer.ServerName -CopyDatabaseName $copyDatabaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 		Assert-AreEqual $dbCrossServerCopy.CopyServerName $copyServer.ServerName
 		Assert-AreEqual $dbCrossServerCopy.CopyDatabaseName $copyDatabaseName
 		Assert-AreEqual $dbCrossServerCopy.EncryptionProtector $encryptionProtector
+		Assert-AreEqual $dbCrossServerCopy.EncryptionProtectorAutoRotation $true
 	}
 	finally
 	{

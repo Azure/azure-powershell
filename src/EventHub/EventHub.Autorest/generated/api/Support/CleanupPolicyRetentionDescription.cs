@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support
     public partial struct CleanupPolicyRetentionDescription :
         System.IEquatable<CleanupPolicyRetentionDescription>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription Compaction = @"Compaction";
+        public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription Compact = @"Compact";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription Delete = @"Delete";
 

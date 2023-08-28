@@ -208,4 +208,4 @@ Invoke-LiveTestScenario -Name "Backup and restore key vault secret" -Description
 }
 
 & "$PSScriptRoot\KeyVaultDataPlaneLiveTests\TestNetworkRuleSet.ps1"
-# & "$PSScriptRoot\ManagedHsmDataPlaneLiveTests\TestSetting.ps1"
+& "$PSScriptRoot\ManagedHsmDataPlaneLiveTests\TestSetting.ps1"

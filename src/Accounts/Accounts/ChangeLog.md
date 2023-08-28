@@ -19,8 +19,11 @@
 -->
 
 ## Upcoming Release
+* Supported in-tool notification for version upgrade.
+* Added an alias `Set-AzConfig` to `Update-AzConfig`
+* Refilled credentials from `AzKeyStore` when run `Save-AzContext` [#22355]
+* Added config `DisableErrorRecordsPersistence` to disable writing error records to file system [#21732]
 * Updated Azure.Core to 1.34.0.
-* Updated the reference of Azure PowerShell Common to 1.3.82-preview.
 
 ## Version 2.12.5
 * Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
