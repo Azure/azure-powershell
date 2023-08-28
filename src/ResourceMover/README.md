@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ResourceMover service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -54,13 +54,13 @@ title: ResourceMover
 service-name: ResourceMover
 prefix: Az
 subject-prefix: $(service-name)
-branch: 7a56078
+branch: main
 repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true
 output-folder: .
-aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01
+aks: $(repo)/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2023-08-01
 input-file:
   - $(aks)/resourcemovercollection.json
 module-version: 1.0.0
@@ -132,7 +132,7 @@ directive:
        suppress-format: true
   - no-inline:
     - ResourceSettings
-  - from: source-file-csharp
+  - from: ResourceMover.cs
     where: $
-    transform: $ = $.replace(/error = true;/g, '//error = true;');
+    transform: $ = $.replace(/throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException\(_response\);/g,"await onDefault\(_response,_response.Content.ReadAsStringAsync\(\).ContinueWith\( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson\(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse\(body.Result\)\) \)\);");
 ```
