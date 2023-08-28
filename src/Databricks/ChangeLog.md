@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Added some parameters in `Update-AzDatabricksWorkspace`:
     - `EnableNoPublicIP`
     - `PublicNetworkAccess`

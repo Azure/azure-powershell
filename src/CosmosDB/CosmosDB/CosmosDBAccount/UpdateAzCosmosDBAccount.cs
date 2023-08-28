@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IpRule != null)
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
-                databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
+                databaseAccountUpdateParameters.IPRules = base.PopulateIpRules(IpRule);
             }
 
             if (ServerVersion != null)

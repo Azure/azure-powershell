@@ -22,7 +22,7 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupSt
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 The AKV Key Auto Rotation status
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -862,6 +862,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personally identifiable information and confidential data may be written to the file located at &apos;{0}&apos;. Please ensure that appropriate access controls are assigned to the saved file..
+        /// </summary>
+        internal static string ProfileCredentialsWriteWarning {
+            get {
+                return ResourceManager.GetString("ProfileCredentialsWriteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The current profile was saved to the file system at &apos;{0}&apos;. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls..
         /// </summary>
         internal static string ProfileCurrentSaved {

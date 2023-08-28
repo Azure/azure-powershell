@@ -21,7 +21,7 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveN
  [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-SecondaryType <String>]
  [-HighAvailabilityReplicaCount <Int32>] [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,9 +32,9 @@ New-AzSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -Partner
  -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-LicenseType <String>]
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-HighAvailabilityReplicaCount <Int32>]
  [-ZoneRedundant] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
- [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The AKV Key Auto Rotation status
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

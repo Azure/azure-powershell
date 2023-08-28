@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed breaking change information
+  
+## Version 1.3.0
 * Added support for Resource Group and Subscription configuration assignment.
 
 ## Version 1.2.1

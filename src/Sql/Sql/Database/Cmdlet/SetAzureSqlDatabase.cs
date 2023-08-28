@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
         ValueFromPipelineByPropertyName = true,
             HelpMessage = "The AKV Key Auto Rotation status")]
-        public bool? EncryptionProtectorAutoRotation { get; set; }
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
-                EncryptionProtectorAutoRotation = this.EncryptionProtectorAutoRotation ?? model.FirstOrDefault().EncryptionProtectorAutoRotation
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

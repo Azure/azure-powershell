@@ -390,4 +390,13 @@
   <data name="HelpMessageOfDisplayRegionIdentified" xml:space="preserve">
     <value>When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.</value>
   </data>
+  <data name="HelpMessageOfDisableErrorRecordsPersistence" xml:space="preserve">
+    <value>When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.</value>
+  </data>
+  <data name="HelpMessageOfEnableErrorRecordsPersistence" xml:space="preserve">
+    <value>When enabled, error records will be written to ~/.Azure/ErrorRecords.</value>
+  </data>
+  <data name="HelpMessageOfCheckForUpgrade" xml:space="preserve">
+    <value>When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0.</value>
+  </data>
 </root>

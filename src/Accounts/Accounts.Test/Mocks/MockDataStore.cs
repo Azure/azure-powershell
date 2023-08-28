@@ -278,7 +278,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                return new X509Certificate2();
+                byte[] emptyCertificateData = Array.Empty<byte>();
+                return new X509Certificate2(emptyCertificateData);
             }
         }
 

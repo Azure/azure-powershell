@@ -19,7 +19,7 @@ New-AzSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>] 
  [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>] -CopyDatabaseName <String>
  [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ New-AzSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourc
  [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 The AKV Key Auto Rotation status
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

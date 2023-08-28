@@ -32,10 +32,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Host", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Host", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameter)]
     [OutputType(typeof(PSHost))]
     public partial class UpdateAzureRmDedicatedHost : ComputeAutomationBaseCmdlet
     {
+        private const string DefaultParameter = "DefaultParameter";
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
         ValueFromPipelineByPropertyName = true,
             HelpMessage = "The AKV Key Auto Rotation status")]
-        public bool? EncryptionProtectorAutoRotation { get; set; }
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId,
-                EncryptionProtectorAutoRotation = this.EncryptionProtectorAutoRotation
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

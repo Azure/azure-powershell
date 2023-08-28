@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EncryptionAlgorithm = clientEncryptionKeyGetPropertiesResource.EncryptionAlgorithm;
             KeyWrapMetaData = new PSKeyWrapMetadata(clientEncryptionKeyGetPropertiesResource.KeyWrapMetadata);
             WrappedDataEncryptionKey = clientEncryptionKeyGetPropertiesResource.WrappedDataEncryptionKey;
-            _rid = clientEncryptionKeyGetPropertiesResource._rid;
-            _ts = clientEncryptionKeyGetPropertiesResource._ts;
-            _etag = clientEncryptionKeyGetPropertiesResource._etag;
+            _rid = clientEncryptionKeyGetPropertiesResource.Rid;
+            _ts = clientEncryptionKeyGetPropertiesResource.Ts;
+            _etag = clientEncryptionKeyGetPropertiesResource.Etag;
 
         }
 

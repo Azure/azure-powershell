@@ -23,7 +23,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -439,7 +439,7 @@ Accept wildcard characters: False
 The AKV Key Auto Rotation status
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

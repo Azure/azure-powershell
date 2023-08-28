@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed certificate policy bugs if DnsName is null. [#22642]
+* Supported multi-regions for Managed Hsm: Added `Add/Get/Remove-AzAzKeyVaultManagedHsmRegion`.
+* Added `Test-AzKeyVaultNameAvailability` and `Test-AzKeyVaultManagedHsmNameAvailability`.
+* Formatted the table view of `*-AzKeyVault`, `*-AzKeyVaultKey` and `*-AzKeyVaultSecret`
+* Added `SecurityDomain` and `Regions` properties into the output of `New/Update/Get-AzKeyVaultManagedHsm` (`PSManagedHsm`).
+* Supported Setting for Managed HSM: Added `Get-AzKeyVaultSetting` and `Update-AzKeyVaultSetting`.
+* Updated Azure.Core to 1.34.0.
+
+## Version 4.10.2
+* Bug Fix: Removed duplicated IpRules from `NetworkRuleSet` and `MhsmNetworkRuleSet`. [#22472]
+
+## Version 4.10.1
 * Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]
 * Updated Azure.Core to 1.33.0.
 

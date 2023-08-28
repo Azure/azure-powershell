@@ -136,7 +136,6 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false,
             HelpMessage = "Configuration assignment name.",
             ValueFromPipelineByPropertyName = true)]
