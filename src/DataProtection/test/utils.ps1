@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2023 -Month 05 -Day 10 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2023 -Month 08 -Day 28 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{
@@ -41,14 +41,14 @@ function setupEnv() {
     }
 
     $newPolicyName = "newdiskpolicy-" + $env.RecordDate
-    $restoreDiskId ="/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg/providers/Microsoft.Compute/disks/sarathdisk2-restored" + $env.RecordDate
+    $restoreDiskId ="/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-restoreddisk-" + $env.RecordDate
     $DiskE2ETestVariables = @{
-        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "sarath-rg"
-        VaultName = "sarath-vault"
-        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk2"
-        SnapshotRG = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-snapshot-rg"
-        RestoreRG = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-restore-disk-rg"
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
+        ResourceGroupName = "pstest-diskrg"
+        VaultName = "pstest-disk-vault"
+        DiskId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk"
+        SnapshotRG = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg"
+        RestoreRG = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg"
         NewPolicyName = $newPolicyName
         RestoreDiskId = $restoreDiskId
     }
@@ -132,6 +132,19 @@ function setupEnv() {
         FriendlyName = "pstest-aks-cluster"        
     }
 
+    $AksRestoreVariables = @{
+        SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f" #"62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "araj-rg" #"aksbackuptestrg-rajat"
+        VaultName = "ecy-vault" #"demobackupvault"
+        NewPolicyName = "" #"pstest-aks-policy"
+        PolicyName = "h4-w1"
+        DataSourceLocation = "eastus2euap"
+        SourceClusterId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-rg/providers/Microsoft.ContainerService/managedClusters/aksCluster3-ecy-araj"
+        SnapshotResourceGroupId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-srg"
+        FriendlyName = "aksCluster3-ecy-araj-BI"
+        ClusterName = "aksCluster3-ecy-araj"
+    }
+
     $BlobHardeningVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         CrossSubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
@@ -176,6 +189,7 @@ function setupEnv() {
         ResourceGuardRGName = "hiaga-rg"
         ResourceGuardSubscription = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         BackupInstanceName = "alrpstestvm-datadisk-000-20220808-115835" # "eacan-pstest-disk"
+        ResourceGuardId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiaga-rg/providers/Microsoft.DataProtection/ResourceGuards/mua-pstest-dpp-ccy-resguard"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -189,6 +203,7 @@ function setupEnv() {
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
     $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
     $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
+    $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null    
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null

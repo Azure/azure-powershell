@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguardmapping
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionresourceguardmapping
 schema: 2.0.0
 ---
 
-# New-AzDataProtectionResourceGuardMapping
+# Set-AzDataProtectionResourceGuardMapping
 
 ## SYNOPSIS
 Creates or Updates a ResourceGuardProxy
@@ -13,7 +13,7 @@ Creates or Updates a ResourceGuardProxy
 ## SYNTAX
 
 ```
-New-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
+Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```

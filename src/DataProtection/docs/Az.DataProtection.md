@@ -89,9 +89,6 @@ Creates new Schedule object
 ### [New-AzDataProtectionResourceGuard](New-AzDataProtectionResourceGuard.md)
 Creates a resource guard under a resource group
 
-### [New-AzDataProtectionResourceGuardMapping](New-AzDataProtectionResourceGuardMapping.md)
-Creates or Updates a ResourceGuardProxy
-
 ### [New-AzDataProtectionRestoreConfigurationClientObject](New-AzDataProtectionRestoreConfigurationClientObject.md)
 Creates new restore configuration object
 
@@ -124,6 +121,9 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 
 ### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
 Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
+
+### [Set-AzDataProtectionResourceGuardMapping](Set-AzDataProtectionResourceGuardMapping.md)
+Creates or Updates a ResourceGuardProxy
 
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance

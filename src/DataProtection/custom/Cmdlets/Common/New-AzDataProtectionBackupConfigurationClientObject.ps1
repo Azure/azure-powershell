@@ -105,12 +105,12 @@ function New-AzDataProtectionBackupConfigurationClientObject{
             }
             elseif($IncludeAllContainer){
                 if($StorageAccountName -eq $null -or $StorageAccountResourceGroupName -eq $null){
-                    $message = "Please input StorageAcountName and StorageAccountResourceGroupName parameters for fetching all vaulted containers."
+                    $message = "Please input StorageAccountName and StorageAccountResourceGroupName parameters for fetching all vaulted containers."
                     throw $message
                 }
 
                 CheckStorageModuleDependency
-                $storageAccount = Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAcountName 
+                $storageAccount = Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName 
                 $containers=Get-AzStorageContainer -Context $storageAccount.Context
                 $dataSourceParam.ContainersList = $containers.Name
             }

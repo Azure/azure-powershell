@@ -34,7 +34,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-branch: 0ab5469dc0d75594f5747493dcfe8774e22d728f
+branch: 0c4762d037f0d00d4e384add4e3d7200a2993b2c
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -45,9 +45,8 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
     transform: $["description"] = "Delete a backupInstances"
   - from: swagger-document
-    where: $.definitions.BaseResourceProperties
-    transform: >
-        delete $.discriminator;
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete"].post
+    transform: $["description"] = "Undeletes a soft deleted backup instance"
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete"]["post"]["parameters"]
     transform: >
@@ -183,7 +182,6 @@ directive:
     set:
       verb: Undo
       subject: BackupInstanceDeletion
-      description: Undeletes a soft deleted backup instance
   - where:
       subject: RecoveryPoint
       variant: List
@@ -274,6 +272,11 @@ directive:
     set:
       verb: Find
       subject: RestorableTimeRange
+  - where:
+      verb: New
+      subject: ResourceGuardMapping$
+    set:
+      verb: Set
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."

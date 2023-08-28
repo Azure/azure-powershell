@@ -477,7 +477,6 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
       - `[Type <String>]`: DatasourceType of the resource.
@@ -496,7 +495,6 @@ To create the parameters described below, construct a hash table containing the 
       - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
       - `[ResourceLocation <String>]`: Location of datasource.
       - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourcePropertyObjectType <String>]`: Type of the specific object - used for deserializing
       - `[ResourceType <String>]`: Resource Type of Datasource.
       - `[ResourceUri <String>]`: Uri of the resource.
     - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
