@@ -1391,7 +1391,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
     try
     {
         # Common
-        [string]$loc = Get-ComputeVMLocation;
+        [string]$loc = "westus2";
         $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -1407,7 +1407,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 
 
@@ -1440,7 +1440,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $storageUri = "https://" + $stoname + ".blob.core.windows.net/"
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
 
@@ -1456,7 +1456,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
             -LoadBalancerBackendAddressPoolsId $expectedLb.BackendAddressPools[0].Id `
             -SubnetId $subnetId;
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Rolling' -HealthProbeId $expectedLb.Probes[0].Id `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_DS1_v2' -UpgradePolicyMode 'Rolling' -HealthProbeId $expectedLb.Probes[0].Id `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1481,10 +1481,14 @@ function Test-VirtualMachineScaleSetRollingUpgrade
         $job = Start-AzVmssRollingOSUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Failed" $result.State;
-        Assert-True { $result.Error[0].ToString().Contains("failed after exceeding the MaxUnhealthyInstancePercent value ")};
+        Write-Debug $result;
+        Write-Debug $result.Error[0].ToString();
+        Assert-True { $result.Error[0].ToString().Contains("failed due to exceeding the MaxUnhealthyInstancePercent value ")};
 
         $job = Stop-AzVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
         $result = $job | Wait-Job;
+        Write-Debug $result;
+        Write-Debug $result.Error[0].ToString();
         Assert-AreEqual "Failed" $result.State;
         Assert-True { $result.Error[0].ToString().Contains("There is no ongoing Rolling Upgrade to cancel.")};
     }
@@ -2547,7 +2551,7 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
 
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_E4-2ds_v4' -UpgradePolicyMode 'Manual' -EncryptionAtHost `
