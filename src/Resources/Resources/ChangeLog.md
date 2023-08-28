@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
-* Add breaking change warnings for Azure Policy cmdlets.
+* Added breaking change warnings for Azure Policy cmdlets.
 
 ## Version 6.9.1
 * Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
