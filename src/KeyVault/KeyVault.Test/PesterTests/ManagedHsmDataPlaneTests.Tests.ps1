@@ -278,6 +278,38 @@ Describe 'Export Import Security domain' {
     #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
 }
 
+Describe 'Export Import Security Domain by Restore Blob' {
+    $sd = New-TemporaryFile
+
+    It 'Can export security domain' {
+        Get-Content $sd | Should -BeNullOrEmpty
+        Export-AzKeyVaultSecurityDomain -HsmName $hsmName -Certificates $certs -OutputPath $sd.FullName -Quorum 3 -Force
+        Get-Content $sd | Should -Not -BeNullOrEmpty
+    }
+
+    # Cannot test initializing because it needs a newly created HSM
+    It 'Can Initialize Security Domain Blob Recovery' {
+        $exchangeKeyPath = "$PSScriptRoot/ExchangeKey.cer"
+        Initialize-AzKeyvaultSecurityDomainRecovery -Name $hsmName -ExchangeKey $exchangeKeyPath
+    }
+    
+    # This command can be executed offline
+    It 'Can Restore Security Domain Blob using ExchangeKey' {
+        $exchangeKeyPath = "$PSScriptRoot/ExchangeKey.cer"
+        $SecurityDomainRestoreBlob = "$PSScriptRoot/HsmRestoreBlob.json"
+        Restore-AzKeyVaultSecurityDomainBlob -Keys $certsKeys -ExchangeKey $exchangeKeyPath -SecurityDomainPath $sd.FullName -SecurityDomainRestoreBlob $SecurityDomainRestoreBlob
+    }
+
+    It 'Can Import Security Domain by Restore Blob' {
+        $SecurityDomainRestoreBlob = "$PSScriptRoot/HsmRestoreBlob.json"
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -SecurityDomainPath $SecurityDomainRestoreBlob -ByRestoreBlob
+    }
+
+
+    # Cannot test importing because it needs another HSM
+    #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
+}
+
 Describe 'Custom Role Definition' {
     $roleName = "my custom role"
     $roleDesc = "description for my role"

@@ -15,11 +15,13 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         protected const string ByName = "ByName";
         protected const string ByInputObject = "ByInputObject";
         protected const string ByResourceId = "ByResourceID";
+        protected const string ByRestoreBlob = "ByRestoreBlob";
 
         private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CancellationToken => CancellationTokenSource.Token;
 
         [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
+        [Parameter(HelpMessage = "Name of the managed HSM.", ParameterSetName = ByRestoreBlob)]
         [Alias("HsmName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

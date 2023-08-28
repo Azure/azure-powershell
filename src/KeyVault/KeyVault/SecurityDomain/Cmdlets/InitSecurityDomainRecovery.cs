@@ -1,6 +1,9 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
+using Newtonsoft.Json;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
@@ -20,18 +23,14 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
         public override void DoExecuteCmdlet()
         {
-            // ValidateParameters();
-
-            // var certificates = Certificates.Select(path => new X509Certificate2(ResolveUserPath(path)));
-
             if (ShouldProcess($"managed HSM {Name}", $"download exported key to '{ExchangeKey}'"))
             {
-                var exchangeKey = Client.DownloadSecurityDomainExchangeKey(Name, CancellationToken);
+                var exchangeKey = Client.DownloadSecurityDomainExchangeKeyAsPem(Name, CancellationToken);
                 ExchangeKey = ResolveUserPath(ExchangeKey);
-                //var securityDomain = Client.DownloadSecurityDomain(Name, certificates, Quorum, CancellationToken);
+
                 if (!AzureSession.Instance.DataStore.FileExists(ExchangeKey) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, ExchangeKey), Resources.FileOverwriteCaption))
                 {
-                    AzureSession.Instance.DataStore.WriteFile(ExchangeKey, exchangeKey.ToString());
+                    AzureSession.Instance.DataStore.WriteFile(ExchangeKey, exchangeKey);
                     WriteDebug($"Security domain data of managed HSM '{Name}' downloaded to '{ExchangeKey}'.");
                     if (PassThru)
                     {

@@ -132,7 +132,9 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
                'Add-AzKeyVaultNetworkRule', 'Update-AzKeyVaultNetworkRuleSet', 
                'Remove-AzKeyVaultNetworkRule', 'Export-AzKeyVaultSecurityDomain', 
                'Import-AzKeyVaultSecurityDomain',
-               'Get-AzKeyVaultSetting', 'Update-AzKeyVaultSetting'
+               'Get-AzKeyVaultSetting', 'Update-AzKeyVaultSetting',
+               'Initialize-AzKeyVaultSecurityDomainRecovery',
+               'Restore-AzKeyVaultSecurityDomainBlob'
 
 # Variables to export from this module
 # VariablesToExport = @()
