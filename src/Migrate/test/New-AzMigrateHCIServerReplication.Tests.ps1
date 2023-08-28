@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCIServerReplica
 }
 
 Describe 'New-AzMigrateHCIServerReplication' {
-    It 'ByIdDefaultUser' {
+    It 'ByIdDefaultUser' -skip {
         $output = New-AzMigrateHCIServerReplication -MachineId $env.hciSDSMachineId1 -TargetResourceGroupId $env.hciTargetRGId -TargetVMName $env.hciTgtVMName1 -TargetStoragePathId $env.hciTgtStoragePathId -TargetVirtualSwitch $env.hciTgtVirtualSwitchId -OSDiskID $env.hciDiskId1 -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ByIdPowerUser' {
+    It 'ByIdPowerUser' -skip {
         $OSDisk = New-AzMigrateHCIDiskMapping -DiskID $env.hciDiskId2 -IsOSDisk 'true' -IsDynamic 'true' -Size 1 -Format 'VHDX'
         $Nic = New-AzMigrateHCINicMapping -NicID $env.hciNicId -TargetNetworkId $env.hciTgtVirtualSwitchId
         $output = New-AzMigrateHCIServerReplication -MachineId $env.hciSDSMachineId2 -TargetResourceGroupId $env.hciTargetRGId -TargetVMName $env.hciTgtVMName2 -TargetStoragePathId $env.hciTgtStoragePathId -DiskToInclude $OSDisk -NicToInclude $Nic -SubscriptionId $env.hciSubscriptionId

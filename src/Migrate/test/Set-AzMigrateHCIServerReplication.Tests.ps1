@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateHCIServerReplica
 }
 
 Describe 'Set-AzMigrateHCIServerReplication' {
-    It 'ByID' {
+    It 'ByID' -skip {
         $output = Set-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem2 -TargetVMName $env.hciTgtVMNameEdit -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }

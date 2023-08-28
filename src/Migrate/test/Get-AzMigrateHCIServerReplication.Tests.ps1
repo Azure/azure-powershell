@@ -20,13 +20,13 @@ Describe 'Get-AzMigrateHCIServerReplication' {
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetBySRSID' {
+    It 'GetByItemID' {
         $output = Get-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
     It 'GetBySDSID' {
-        $output = Get-AzMigrateHCIServerReplication -DiscoveredMachineId $env.hciSDSMachineID -SubscriptionId $env.hciSubscriptionId
+        $output = Get-AzMigrateHCIServerReplication -DiscoveredMachineId $env.hciSDSMachineID1 -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
