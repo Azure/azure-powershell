@@ -12,30 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-using Azure.Core.Pipeline;
 
-using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
-using Microsoft.Identity.Client;
-
-using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
     /// <summary>
-    /// This class is an HttpClient factory which creates an HttpClient which delegates it's transport to an HttpPipeline, to enable MSAL to send requests through an Azure.Core HttpPipeline.
+    /// IX509Certificate2Provider provides a way to control how the X509Certificate2 object is fetched.
     /// </summary>
-    internal class HttpPipelineClientFactory : IMsalHttpClientFactory
+    internal interface IX509Certificate2Provider
     {
-        private readonly HttpPipeline _pipeline;
-
-        public HttpPipelineClientFactory(HttpPipeline pipeline)
-        {
-            _pipeline = pipeline;
-        }
-
-        public HttpClient GetHttpClient()
-        {
-            return new HttpClient(new HttpPipelineMessageHandler(_pipeline));
-        }
+        ValueTask<X509Certificate2> GetCertificateAsync(bool async, CancellationToken cancellationToken);
     }
 }

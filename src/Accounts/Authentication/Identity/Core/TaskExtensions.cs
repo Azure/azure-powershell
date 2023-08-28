@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.Identity
+namespace Microsoft.Azure.PowerShell.Authenticators.Identity.Core
 {
     internal static class TaskExtensions
     {

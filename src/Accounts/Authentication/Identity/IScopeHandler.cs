@@ -12,30 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-using Azure.Core.Pipeline;
-
 using Microsoft.Azure.PowerShell.Authenticators.Identity.Core;
-using Microsoft.Identity.Client;
 
-using System.Net.Http;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
-    /// <summary>
-    /// This class is an HttpClient factory which creates an HttpClient which delegates it's transport to an HttpPipeline, to enable MSAL to send requests through an Azure.Core HttpPipeline.
-    /// </summary>
-    internal class HttpPipelineClientFactory : IMsalHttpClientFactory
+    internal interface IScopeHandler
     {
-        private readonly HttpPipeline _pipeline;
-
-        public HttpPipelineClientFactory(HttpPipeline pipeline)
-        {
-            _pipeline = pipeline;
-        }
-
-        public HttpClient GetHttpClient()
-        {
-            return new HttpClient(new HttpPipelineMessageHandler(_pipeline));
-        }
+        DiagnosticScope CreateScope(ClientDiagnostics diagnostics, string name);
+        void Start(string name, in DiagnosticScope scope);
+        void Dispose(string name, in DiagnosticScope scope);
+        void Fail(string name, in DiagnosticScope scope, Exception exception);
     }
 }

@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
-using Azure;
-using Azure.Core;
 using Azure.Core.Pipeline;
+using Azure;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
+using Azure.Core;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Authenticators.Identity
+namespace Microsoft.Azure.PowerShell.Authenticators.Identity.Core
 {
     /// <summary>
     /// An HttpMessageHandler which delegates SendAsync to a specified HttpPipeline.
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 
             if (request.Content != null)
             {
-                foreach (System.Collections.Generic.KeyValuePair<string, System.Collections.Generic.IEnumerable<string>> header in request.Content.Headers)
+                foreach (KeyValuePair<string, IEnumerable<string>> header in request.Content.Headers)
                 {
                     foreach (var value in header.Value)
                     {
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Identity
                 {
                     if (!responseMessage.Headers.TryAddWithoutValidation(header.Name, values))
                     {
-                        if ((responseMessage.Content == null) || !responseMessage.Content.Headers.TryAddWithoutValidation(header.Name, values))
+                        if (responseMessage.Content == null || !responseMessage.Content.Headers.TryAddWithoutValidation(header.Name, values))
                         {
                             throw new InvalidOperationException("Unable to add header to response or content");
                         }
