@@ -36,9 +36,9 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/connectedvmware.json
-# If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-# - (this-folder)/relative-path-to-your-swagger 
+  # - $(repo)/specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/connectedvmware.json
+# If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally 
+  - $(this-folder)/custom/connectedvmware.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
