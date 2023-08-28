@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     using Newtonsoft.Json.Linq;
     using Policy;
@@ -26,6 +27,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PsPolicySetDefinition), deprecateByAzVersion: "11.0.0", deprecateByVersion: "6.9.2", DeprecatedOutputProperties = new[] { "Properties" },
+        NewOutputProperties = new[] { "Description", "DisplayName", "Metadata", "Parameters", "PolicyDefinitionGroups", "PolicyDefinitions", "PolicyType" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsPolicySetDefinition))]
     public class SetAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {

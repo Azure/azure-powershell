@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a policy assignment.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PsPolicyAssignment), deprecateByAzVersion: "11.0.0", deprecateByVersion: "6.9.2", DeprecatedOutputProperties = new[] { "Properties" },
+        NewOutputProperties = new[] { "Description", "DisplayName", "EnforcementMode", "Metadata", "NonComplianceMessages", "NotScopes", "Parameters", "PolicyDefinitionId", "Scope" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class NewAzurePolicyAssignmentCmdlet : PolicyCmdletBase, IDynamicParameters
     {
