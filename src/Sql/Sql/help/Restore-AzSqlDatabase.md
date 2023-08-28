@@ -20,7 +20,7 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,8 +31,8 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
@@ -42,7 +42,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob]
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
  [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
- [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -74,7 +74,7 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>]
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
- [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,8 +85,8 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
  [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation <Boolean>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackupWithVcore
@@ -95,7 +95,7 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
  -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
  [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
- [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation <Boolean>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 The AKV Key Auto Rotation status
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
