@@ -61,7 +61,6 @@ Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:42:41 PM
 Status         : Succeeded
 
-
 ```
 
 Commit the set of resources in the Move Collection using "SourceARMID" as input.

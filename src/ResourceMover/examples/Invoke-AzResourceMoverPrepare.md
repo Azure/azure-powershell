@@ -2,7 +2,9 @@
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
+```
 
+```output
 AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
@@ -18,11 +20,22 @@ Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/9/2021 9:04:14 AM
 Status         : Failed
 
+```
+
+```powershell
 $resp.Code
+```
+
+```output
 MoveCollectionMissingRequiredDependentResources
 
-$resp.AdditionalInfo[0].InfoMoveResource
+```
 
+```powershell
+$resp.AdditionalInfo[0].InfoMoveResource
+```
+
+```output
 SourceId                                                                                                                                  
 --------                                                                                                                                  
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111     
