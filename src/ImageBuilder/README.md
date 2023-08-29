@@ -74,7 +74,7 @@ directive:
 
   # To remove non-expanded update variants:
   - where:
-      variant: ^Update$|^UpdateViaIdentity$
+      variant: ^Update(?!.*?Expanded)
     remove: true
 
   # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
