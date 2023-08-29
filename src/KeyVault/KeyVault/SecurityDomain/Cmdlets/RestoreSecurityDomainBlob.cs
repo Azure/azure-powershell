@@ -10,9 +10,9 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
-    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomainBlob", SupportsShouldProcess = true, DefaultParameterSetName = ByRestoreBlob)]
+    [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomainBlob", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RestoreSecurityDomainBlob : SecurityDomainCmdlet
+    public class RestoreSecurityDomainBlob : SecurityDomainCmdletClient
     {
         [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         public override void DoExecuteCmdlet()
         {
             ValidateParameters();
-            if (ShouldProcess($"managed HSM {Name}", $"restore security domain data from file \"{SecurityDomainPath}\""))
+            if (ShouldProcess($"Generating file {SecurityDomainRestoreBlob}", $"restore security domain data from file \"{SecurityDomainPath}\""))
             {
                 Keys = Keys.Select(key => new KeyPath() {
                     PublicKey = ResolveUserPath(key.PublicKey),
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                 if (!AzureSession.Instance.DataStore.FileExists(SecurityDomainRestoreBlob) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, SecurityDomainRestoreBlob), Resources.FileOverwriteCaption))
                 {
                     AzureSession.Instance.DataStore.WriteFile(SecurityDomainRestoreBlob, securityDomainBlob);
-                    WriteDebug($"Security domain data of managed HSM '{Name}' restored to '{SecurityDomainRestoreBlob}'.");
+                    WriteDebug($"Security domain data of exported managed HSM '{SecurityDomainPath}' restored to '{SecurityDomainRestoreBlob}'.");
                     if (PassThru)
                     {
                         WriteObject(true);

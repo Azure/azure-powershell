@@ -10,18 +10,13 @@ using System.Threading;
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [SupportsSubscriptionId]
-    public abstract class SecurityDomainCmdlet : AzureRMCmdlet
+    public abstract class SecurityDomainCmdlet : SecurityDomainCmdletClient
     {
         protected const string ByName = "ByName";
         protected const string ByInputObject = "ByInputObject";
         protected const string ByResourceId = "ByResourceID";
-        protected const string ByRestoreBlob = "ByRestoreBlob";
-
-        private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
-        protected CancellationToken CancellationToken => CancellationTokenSource.Token;
 
         [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
-        [Parameter(HelpMessage = "Name of the managed HSM.", ParameterSetName = ByRestoreBlob)]
         [Alias("HsmName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -30,24 +25,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         [ValidateNotNull]
         public PSKeyVaultIdentityItem InputObject { get; set; }
 
-        internal ISecurityDomainClient Client
-        {
-            get
-            {
-                if (_client == null)
-                {
-                    _client = new SecurityDomainClient(AzureSession.Instance.AuthenticationFactory, DefaultContext, s => WriteDebug(s));
-                }
-                return _client;
-            }
-            set => _client = value;
-        }
-
-
-        private ISecurityDomainClient _client;
-
         /// <summary>
-        /// Sub-classes should not override this method, but <see cref="DoExecuteCmdlet"/> instead.
+        /// Sub-classes should not override this method, but <see cref="SecurityDomainCmdletClient.DoExecuteCmdlet"/> instead.
         /// This is call-super pattern. See https://www.martinfowler.com/bliki/CallSuper.html
         /// </summary>
         public override void ExecuteCmdlet()
@@ -55,7 +34,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             PreprocessParameterSets();
             DoExecuteCmdlet();
         }
-
         /// <summary>
         /// Unifies different parameter sets. Sub-classes need only to care about Name.
         /// </summary>
@@ -65,14 +43,6 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             {
                 Name = InputObject.VaultName;
             }
-        }
-
-        public abstract void DoExecuteCmdlet();
-
-        protected override void StopProcessing()
-        {
-            CancellationTokenSource.Cancel();
-            base.StopProcessing();
         }
     }
 }

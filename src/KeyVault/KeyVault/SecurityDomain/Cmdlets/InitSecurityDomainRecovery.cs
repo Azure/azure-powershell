@@ -1,9 +1,10 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
