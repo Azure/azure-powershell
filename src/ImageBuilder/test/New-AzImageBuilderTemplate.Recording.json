@@ -1,9 +1,9 @@
 {
-  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01+1": {
+  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01",
-      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {\r\n      \"type\": \"PlatformImage\",\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"18.04-LTS\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"customize\": [\r\n      {\r\n        \"type\": \"Shell\",\r\n        \"name\": \"CheckSumCompareShellScript\",\r\n        \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\r\n        \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\"\r\n      }\r\n    ],\r\n    \"distribute\": [\r\n      {\r\n        \"type\": \"SharedImage\",\r\n        \"runOutputName\": \"runoutput-01\",\r\n        \"artifactTags\": {\r\n          \"tag\": \"dis-share\"\r\n        },\r\n        \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\r\n        \"replicationRegions\": [ \"eastus2\" ],\r\n        \"excludeFromLatest\": false\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {\r\n      \"type\": \"PlatformImage\",\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"18.04-LTS\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"customize\": [\r\n      {\r\n        \"type\": \"Shell\",\r\n        \"name\": \"CheckSumCompareShellScript\",\r\n        \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\r\n        \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\"\r\n      }\r\n    ],\r\n    \"distribute\": [\r\n      {\r\n        \"type\": \"SharedImage\",\r\n        \"runOutputName\": \"runoutput-01\",\r\n        \"artifactTags\": {\r\n          \"tag\": \"dis-share\"\r\n        },\r\n        \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\r\n        \"replicationRegions\": [ \"eastus2\" ],\r\n        \"excludeFromLatest\": false\r\n      }\r\n    ]\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,36 +17,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c8e263b5-f6a8-4412-993b-40e30adc4fc9?api-version=2022-07-01" ],
-        "x-ms-correlation-request-id": [ "24281701-e380-4307-9e5b-35b6253fe34f" ],
-        "x-ms-request-id": [ "c8e263b5-f6a8-4412-993b-40e30adc4fc9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/6b70cff9-b311-462c-b899-196acdc837a1?api-version=2022-07-01" ],
+        "x-ms-correlation-request-id": [ "abd5a22d-f395-4741-8bba-3da5fef2b227" ],
+        "x-ms-request-id": [ "6b70cff9-b311-462c-b899-196acdc837a1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052842Z:24281701-e380-4307-9e5b-35b6253fe34f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T063924Z:abd5a22d-f395-4741-8bba-3da5fef2b227" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 94A28D25D54741BAA11A4F30F490DA64 Ref B: TYO201100116007 Ref C: 2023-08-29T05:28:40Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:28:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B356B51D48704CA3A9DE8332A7D6255D Ref B: TYO201100115027 Ref C: 2023-08-29T06:39:22Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:39:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1620" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4\",\n \"name\": \"azps-tmp-pizkr4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq\",\n \"name\": \"azps-tmp-g7m6kq\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c8e263b5-f6a8-4412-993b-40e30adc4fc9?api-version=2022-07-01+2": {
+  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/6b70cff9-b311-462c-b899-196acdc837a1?api-version=2022-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/c8e263b5-f6a8-4412-993b-40e30adc4fc9?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/6b70cff9-b311-462c-b899-196acdc837a1?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "a85e3b5e-f7e6-4b0a-bd3c-df469b85b319" ],
+        "x-ms-client-request-id": [ "4aace211-1f2a-4bd9-b929-477cf72fc021" ],
         "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateExpanded" ],
         "FullCommandName": [ "New-AzImageBuilderTemplate_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,35 +60,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "25f4fc8b-954a-4257-b7cc-b3d8f0e7d613" ],
-        "x-ms-request-id": [ "605389d7-c50b-4d42-b832-b0218a434568" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "8b694be8-6899-4e6a-8918-9cc7281da1d6" ],
+        "x-ms-request-id": [ "a2b0c470-7096-427c-8b0d-869a89d30994" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052912Z:25f4fc8b-954a-4257-b7cc-b3d8f0e7d613" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T063955Z:8b694be8-6899-4e6a-8918-9cc7281da1d6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3E32CDA478A746DBACAFABC3AE31FB6E Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:12Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 55FC8D18BB4C4CFBAE0731C44B1174F0 Ref B: TYO201100115027 Ref C: 2023-08-29T06:39:55Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:39:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "165" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"C8E263B5-F6A8-4412-993B-40E30ADC4FC9\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T05:28:41.9828805Z\",\n \"endTime\": \"2023-08-29T05:29:09.7889634Z\"\n}",
+      "Content": "{\n \"name\": \"6B70CFF9-B311-462C-B899-196ACDC837A1\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T06:39:24.5136404Z\",\n \"endTime\": \"2023-08-29T06:39:51.6822188Z\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01+3": {
+  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "a85e3b5e-f7e6-4b0a-bd3c-df469b85b319" ],
+        "x-ms-client-request-id": [ "4aace211-1f2a-4bd9-b929-477cf72fc021" ],
         "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateExpanded" ],
         "FullCommandName": [ "New-AzImageBuilderTemplate_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -102,34 +102,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "31463d5d-5f74-41fb-8e81-e09a7da7252f" ],
-        "x-ms-request-id": [ "b7fdc813-baac-487b-895c-f2b59548f0a0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "64e6d43c-d9fc-45f0-ac7e-be5ddfbcdd0c" ],
+        "x-ms-request-id": [ "587d68f8-4f6d-410b-8cce-34622b12dddf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052913Z:31463d5d-5f74-41fb-8e81-e09a7da7252f" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T063956Z:64e6d43c-d9fc-45f0-ac7e-be5ddfbcdd0c" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E79545208CC2493F80FEF15E55E8C875 Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:12Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 93B36FF64B5A4D3B94722F7BC024B3F3 Ref B: TYO201100115027 Ref C: 2023-08-29T06:39:55Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:39:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1887" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-pizkr4_46508f44-5504-4050-89c1-9a80c82ca4f7\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4\",\n \"name\": \"azps-tmp-pizkr4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-g7m6kq_8c18af93-c48f-4d63-a913-d4f25b923977\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq\",\n \"name\": \"azps-tmp-g7m6kq\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01+4": {
+  "New-AzImageBuilderTemplate+[NoContext]+ExpandedParameterSet+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "ebe7baf6-7375-4c0f-8d9f-2287770c1ce5" ],
+        "x-ms-client-request-id": [ "b184041f-d165-49ab-bc4c-fc3ac1103a5c" ],
         "CommandName": [ "Get-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,194 +144,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "efb700ec-c7a4-41e9-af71-0d9c108adf14" ],
-        "x-ms-request-id": [ "57a9ef62-4a3e-4678-999a-182ff87a0e58" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "80f87471-3767-46a6-b691-488eec34de18" ],
+        "x-ms-request-id": [ "0d9b0da6-5856-4f23-9c9d-eb672594f7d9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052914Z:efb700ec-c7a4-41e9-af71-0d9c108adf14" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T063957Z:80f87471-3767-46a6-b691-488eec34de18" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 96B10BA237AD45889520CC4452E0B3B8 Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:13Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B3FEBE31DA6E47F4B2A8BFC2489D9D33 Ref B: TYO201100115027 Ref C: 2023-08-29T06:39:56Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:39:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1887" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-pizkr4_46508f44-5504-4050-89c1-9a80c82ca4f7\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-pizkr4\",\n \"name\": \"azps-tmp-pizkr4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput-01\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-g7m6kq_8c18af93-c48f-4d63-a913-d4f25b923977\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g7m6kq\",\n \"name\": \"azps-tmp-g7m6kq\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01+1": {
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01",
-      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzIiwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInNvdXJjZSI6IHsNCiAgICAgICJ0eXBlIjogIlBsYXRmb3JtSW1hZ2UiLA0KICAgICAgInB1Ymxpc2hlciI6ICJDYW5vbmljYWwiLA0KICAgICAgIm9mZmVyIjogIlVidW50dVNlcnZlciIsDQogICAgICAic2t1IjogIjE4LjA0LUxUUyIsDQogICAgICAidmVyc2lvbiI6ICJsYXRlc3QiDQogICAgfSwNCiAgICAiY3VzdG9taXplIjogWw0KICAgICAgew0KICAgICAgICAidHlwZSI6ICJTaGVsbCIsDQogICAgICAgICJuYW1lIjogIkNoZWNrU3VtQ29tcGFyZVNoZWxsU2NyaXB0IiwNCiAgICAgICAgInNjcmlwdFVyaSI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGFuaWVsc29sbG9uZG9uL2F6dm1pbWFnZWJ1aWxkZXIvbWFzdGVyL3F1aWNrcXVpY2tzdGFydHMvY3VzdG9taXplU2NyaXB0Mi5zaCIsDQogICAgICAgICJzaGEyNTZDaGVja3N1bSI6ICJhZGU0YzUyMTRjM2M2NzVlOTJjNjZlMmQwNjdhODcwYzViODFiOTg0NGIzZGUzY2M3MmM0OWZmMzY0MjVmYzkzIg0KICAgICAgfQ0KICAgIF0sDQogICAgImRpc3RyaWJ1dGUiOiBbDQogICAgICB7DQogICAgICAgICJ0eXBlIjogIlNoYXJlZEltYWdlIiwNCiAgICAgICAgInJ1bk91dHB1dE5hbWUiOiAicnVub3V0cHV0MSIsDQogICAgICAgICJhcnRpZmFjdFRhZ3MiOiB7DQogICAgICAgICAgInRhZyI6ICJkaXMtc2hhcmUiDQogICAgICAgIH0sDQogICAgICAgICJnYWxsZXJ5SW1hZ2VJZCI6ICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXpwcy10ZXN0LW81cGV3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvZ2FsbGVyaWVzL2F6cHNnYWxsZXJ5dm50Z3g1L2ltYWdlcy9henBzdm1pbWFnZTEiLA0KICAgICAgICAicmVwbGljYXRpb25SZWdpb25zIjogWw0KICAgICAgICAgICJlYXN0dXMyIg0KICAgICAgICBdDQogICAgICB9DQogICAgXQ0KICB9LA0KICAiaWRlbnRpdHkiOiB7DQogICAgInR5cGUiOiAiVXNlckFzc2lnbmVkIiwNCiAgICAidXNlckFzc2lnbmVkSWRlbnRpdGllcyI6IHsNCiAgICAgICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2Vncm91cHMvYXpwcy10ZXN0LW81cGV3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL2F6cHMtbWktNHduZ2VtIjoge30NCiAgICB9DQogIH0NCn0NCg==",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "1285" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 201,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/187041e5-1ccc-486d-8a54-c3e02cdb8cdd?api-version=2022-07-01" ],
-        "x-ms-correlation-request-id": [ "4253101e-2594-4a64-aaf8-ae5fcf096591" ],
-        "x-ms-request-id": [ "187041e5-1ccc-486d-8a54-c3e02cdb8cdd" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052922Z:4253101e-2594-4a64-aaf8-ae5fcf096591" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0E6AB46A866C4B27A75C235372A7717C Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:14Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:21 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1618" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4\",\n \"name\": \"azps-tmp-g8lzs4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/187041e5-1ccc-486d-8a54-c3e02cdb8cdd?api-version=2022-07-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/187041e5-1ccc-486d-8a54-c3e02cdb8cdd?api-version=2022-07-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "3de99110-3d1d-491f-b86d-0bdb3384dcd6" ],
-        "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateViaJsonString" ],
-        "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "e17dca86-642c-416b-b86c-0781d3d61fe3" ],
-        "x-ms-request-id": [ "cfb1dd0c-6a12-40e9-9b1c-08f79499b7e4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052953Z:e17dca86-642c-416b-b86c-0781d3d61fe3" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 88588D7374AF41CFAA0234252B062D3B Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:52Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "165" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"name\": \"187041E5-1CCC-486D-8A54-C3E02CDB8CDD\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T05:29:22.0619758Z\",\n \"endTime\": \"2023-08-29T05:29:48.0667367Z\"\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "3de99110-3d1d-491f-b86d-0bdb3384dcd6" ],
-        "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateViaJsonString" ],
-        "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "9e04fb4c-2ebd-4b4e-aed6-3106df1690d0" ],
-        "x-ms-request-id": [ "0c53c040-5616-43e5-9691-40d457797496" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052954Z:9e04fb4c-2ebd-4b4e-aed6-3106df1690d0" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1A503AF426004EBEB3BF1B80DD772F8B Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:53Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:53 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1885" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-g8lzs4_1f502cbb-ee49-4d0d-80dd-0719b9583723\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4\",\n \"name\": \"azps-tmp-g8lzs4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4?api-version=2022-07-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "eb9ee191-53d4-4c46-b4fa-75577f8aff99" ],
-        "CommandName": [ "Get-AzImageBuilderTemplate" ],
-        "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "0acce16d-4dac-4a88-97ca-50426b24589b" ],
-        "x-ms-request-id": [ "f58bcfbf-b871-41e0-9a9d-c73242911322" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T052955Z:0acce16d-4dac-4a88-97ca-50426b24589b" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E422BEA43D944AF3AEC2CD05EB7FC9E6 Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:54Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:29:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1885" ],
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-g8lzs4_1f502cbb-ee49-4d0d-80dd-0719b9583723\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-g8lzs4\",\n \"name\": \"azps-tmp-g8lzs4\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
-      "isContentBase64": false
-    }
-  },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01",
-      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzIiwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInNvdXJjZSI6IHsNCiAgICAgICJ0eXBlIjogIlBsYXRmb3JtSW1hZ2UiLA0KICAgICAgInB1Ymxpc2hlciI6ICJDYW5vbmljYWwiLA0KICAgICAgIm9mZmVyIjogIlVidW50dVNlcnZlciIsDQogICAgICAic2t1IjogIjE4LjA0LUxUUyIsDQogICAgICAidmVyc2lvbiI6ICJsYXRlc3QiDQogICAgfSwNCiAgICAiY3VzdG9taXplIjogWw0KICAgICAgew0KICAgICAgICAidHlwZSI6ICJTaGVsbCIsDQogICAgICAgICJuYW1lIjogIkNoZWNrU3VtQ29tcGFyZVNoZWxsU2NyaXB0IiwNCiAgICAgICAgInNjcmlwdFVyaSI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGFuaWVsc29sbG9uZG9uL2F6dm1pbWFnZWJ1aWxkZXIvbWFzdGVyL3F1aWNrcXVpY2tzdGFydHMvY3VzdG9taXplU2NyaXB0Mi5zaCIsDQogICAgICAgICJzaGEyNTZDaGVja3N1bSI6ICJhZGU0YzUyMTRjM2M2NzVlOTJjNjZlMmQwNjdhODcwYzViODFiOTg0NGIzZGUzY2M3MmM0OWZmMzY0MjVmYzkzIg0KICAgICAgfQ0KICAgIF0sDQogICAgImRpc3RyaWJ1dGUiOiBbDQogICAgICB7DQogICAgICAgICJ0eXBlIjogIlNoYXJlZEltYWdlIiwNCiAgICAgICAgInJ1bk91dHB1dE5hbWUiOiAicnVub3V0cHV0MSIsDQogICAgICAgICJhcnRpZmFjdFRhZ3MiOiB7DQogICAgICAgICAgInRhZyI6ICJkaXMtc2hhcmUiDQogICAgICAgIH0sDQogICAgICAgICJnYWxsZXJ5SW1hZ2VJZCI6ICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXpwcy10ZXN0LW81cGV3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvZ2FsbGVyaWVzL2F6cHNnYWxsZXJ5dm50Z3g1L2ltYWdlcy9henBzdm1pbWFnZTEiLA0KICAgICAgICAicmVwbGljYXRpb25SZWdpb25zIjogWw0KICAgICAgICAgICJlYXN0dXMyIg0KICAgICAgICBdDQogICAgICB9DQogICAgXQ0KICB9LA0KICAiaWRlbnRpdHkiOiB7DQogICAgInR5cGUiOiAiVXNlckFzc2lnbmVkIiwNCiAgICAidXNlckFzc2lnbmVkSWRlbnRpdGllcyI6IHsNCiAgICAgICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2Vncm91cHMvYXpwcy10ZXN0LW81cGV3MS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL2F6cHMtbWktNHduZ2VtIjoge30NCiAgICB9DQogIH0NCn0NCg==",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01",
+      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzIiwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInNvdXJjZSI6IHsNCiAgICAgICJ0eXBlIjogIlBsYXRmb3JtSW1hZ2UiLA0KICAgICAgInB1Ymxpc2hlciI6ICJDYW5vbmljYWwiLA0KICAgICAgIm9mZmVyIjogIlVidW50dVNlcnZlciIsDQogICAgICAic2t1IjogIjE4LjA0LUxUUyIsDQogICAgICAidmVyc2lvbiI6ICJsYXRlc3QiDQogICAgfSwNCiAgICAiY3VzdG9taXplIjogWw0KICAgICAgew0KICAgICAgICAidHlwZSI6ICJTaGVsbCIsDQogICAgICAgICJuYW1lIjogIkNoZWNrU3VtQ29tcGFyZVNoZWxsU2NyaXB0IiwNCiAgICAgICAgInNjcmlwdFVyaSI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGFuaWVsc29sbG9uZG9uL2F6dm1pbWFnZWJ1aWxkZXIvbWFzdGVyL3F1aWNrcXVpY2tzdGFydHMvY3VzdG9taXplU2NyaXB0Mi5zaCIsDQogICAgICAgICJzaGEyNTZDaGVja3N1bSI6ICJhZGU0YzUyMTRjM2M2NzVlOTJjNjZlMmQwNjdhODcwYzViODFiOTg0NGIzZGUzY2M3MmM0OWZmMzY0MjVmYzkzIg0KICAgICAgfQ0KICAgIF0sDQogICAgImRpc3RyaWJ1dGUiOiBbDQogICAgICB7DQogICAgICAgICJ0eXBlIjogIlNoYXJlZEltYWdlIiwNCiAgICAgICAgInJ1bk91dHB1dE5hbWUiOiAicnVub3V0cHV0MSIsDQogICAgICAgICJhcnRpZmFjdFRhZ3MiOiB7DQogICAgICAgICAgInRhZyI6ICJkaXMtc2hhcmUiDQogICAgICAgIH0sDQogICAgICAgICJnYWxsZXJ5SW1hZ2VJZCI6ICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXpwcy10ZXN0LTkwaWZ1bi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvZ2FsbGVyaWVzL2F6cHNnYWxsZXJ5ZjEycGR2L2ltYWdlcy9henBzdm1pbWFnZTEiLA0KICAgICAgICAicmVwbGljYXRpb25SZWdpb25zIjogWw0KICAgICAgICAgICJlYXN0dXMyIg0KICAgICAgICBdDQogICAgICB9DQogICAgXQ0KICB9LA0KICAiaWRlbnRpdHkiOiB7DQogICAgInR5cGUiOiAiVXNlckFzc2lnbmVkIiwNCiAgICAidXNlckFzc2lnbmVkSWRlbnRpdGllcyI6IHsNCiAgICAgICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2Vncm91cHMvYXpwcy10ZXN0LTkwaWZ1bi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL2F6cHMtbWkteDQ1OWltIjoge30NCiAgICB9DQogIH0NCn0NCg==",
       "isContentBase64": false,
       "Headers": {
       },
@@ -346,36 +182,36 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/60a3bed6-eaac-4401-b512-201736a8d462?api-version=2022-07-01" ],
-        "x-ms-correlation-request-id": [ "f259bc3a-0712-44f9-a3c7-e29b11441aee" ],
-        "x-ms-request-id": [ "60a3bed6-eaac-4401-b512-201736a8d462" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/d57f2514-e86d-40d1-9053-a74cf32f3dde?api-version=2022-07-01" ],
+        "x-ms-correlation-request-id": [ "78bd7cf4-1a26-4bb1-adf6-8e81f1ecb97e" ],
+        "x-ms-request-id": [ "d57f2514-e86d-40d1-9053-a74cf32f3dde" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T053001Z:f259bc3a-0712-44f9-a3c7-e29b11441aee" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064000Z:78bd7cf4-1a26-4bb1-adf6-8e81f1ecb97e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E0C3A288251144FE92FDD42AEC179B29 Ref B: TYO201100116007 Ref C: 2023-08-29T05:29:55Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:30:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 75F582C181A345B78C500F3AF4DB6DA0 Ref B: TYO201100115027 Ref C: 2023-08-29T06:39:57Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:39:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1618" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5\",\n \"name\": \"azps-tmp-kuhox5\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky\",\n \"name\": \"azps-tmp-2mbiky\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/60a3bed6-eaac-4401-b512-201736a8d462?api-version=2022-07-01+2": {
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/d57f2514-e86d-40d1-9053-a74cf32f3dde?api-version=2022-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/60a3bed6-eaac-4401-b512-201736a8d462?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/d57f2514-e86d-40d1-9053-a74cf32f3dde?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "42f46f1d-ad76-42e3-9486-31c3f978f79f" ],
-        "CommandName": [ "New-AzImageBuilderTemplate" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "6b2aa42e-444b-4270-8bc6-3983812cca12" ],
+        "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateViaJsonString" ],
         "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
@@ -388,36 +224,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "b4608760-8317-4b29-9805-06fdef388348" ],
-        "x-ms-request-id": [ "432d31f7-823a-4979-815f-424f27d79611" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "f9149a98-1561-489c-a573-9dce282b2e81" ],
+        "x-ms-request-id": [ "4ad0382a-89e6-42ea-a66e-d2a94a89043c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T053032Z:b4608760-8317-4b29-9805-06fdef388348" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064030Z:f9149a98-1561-489c-a573-9dce282b2e81" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AEF55C150A63412BA875E57ED1239D4C Ref B: TYO201100116007 Ref C: 2023-08-29T05:30:31Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:30:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 69ADEE1723BA4904B63AADF44C2E5D9A Ref B: TYO201100115027 Ref C: 2023-08-29T06:40:30Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:40:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "165" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"name\": \"60A3BED6-EAAC-4401-B512-201736A8D462\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T05:30:01.0161659Z\",\n \"endTime\": \"2023-08-29T05:30:31.1227066Z\"\n}",
+      "Content": "{\n \"name\": \"D57F2514-E86D-40D1-9053-A74CF32F3DDE\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T06:39:59.9994313Z\",\n \"endTime\": \"2023-08-29T06:40:27.7566452Z\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01+3": {
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "42f46f1d-ad76-42e3-9486-31c3f978f79f" ],
-        "CommandName": [ "New-AzImageBuilderTemplate" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "6b2aa42e-444b-4270-8bc6-3983812cca12" ],
+        "CommandName": [ "Az.ImageBuilder.private\\New-AzImageBuilderTemplate_CreateViaJsonString" ],
         "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
@@ -431,33 +267,33 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "ef0cc79a-3dde-4f6f-be89-32f913350bfa" ],
-        "x-ms-request-id": [ "153d6257-b699-49db-8fa2-1b7f6556e48c" ],
+        "x-ms-correlation-request-id": [ "a149e21a-22dd-4399-ad29-435ff0a4048e" ],
+        "x-ms-request-id": [ "65a8f108-31e7-4d2c-b903-0312f9a8a3d7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T053033Z:ef0cc79a-3dde-4f6f-be89-32f913350bfa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064031Z:a149e21a-22dd-4399-ad29-435ff0a4048e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7C4FC3B9439D4ED7991D83998BAA6F0F Ref B: TYO201100116007 Ref C: 2023-08-29T05:30:32Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:30:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 082A9FB0760549068D21A4BC157E03E2 Ref B: TYO201100115027 Ref C: 2023-08-29T06:40:30Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:40:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1885" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-kuhox5_8ffbd22f-020f-4056-bf4a-019cd4974b81\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5\",\n \"name\": \"azps-tmp-kuhox5\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-2mbiky_94b18781-e56a-4242-a793-786595fd20d6\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky\",\n \"name\": \"azps-tmp-2mbiky\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   },
-  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01+4": {
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonFile+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "92222a7d-9761-4508-911d-60324acac319" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "adbe8a33-562f-4d04-b82b-26365e9e44ec" ],
         "CommandName": [ "Get-AzImageBuilderTemplate" ],
         "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -472,22 +308,186 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "643adcb4-11f8-4838-bfaa-9f07e1778417" ],
-        "x-ms-request-id": [ "c8404e83-d1b4-4049-b075-72d87aef5bca" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "555f3238-6f0f-43cb-9ce9-57b9f2ddbe6f" ],
+        "x-ms-request-id": [ "200abf78-ba00-450f-86a0-5623bddd49dd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T053033Z:643adcb4-11f8-4838-bfaa-9f07e1778417" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064032Z:555f3238-6f0f-43cb-9ce9-57b9f2ddbe6f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5E591AAB5239479AAC236836F4103EE9 Ref B: TYO201100116007 Ref C: 2023-08-29T05:30:33Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:30:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 06379F7CE6BE4A75828F1D519A68B3B8 Ref B: TYO201100115027 Ref C: 2023-08-29T06:40:31Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:40:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1885" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.Compute/galleries/azpsgalleryvntgx5/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-o5pew1_azps-tmp-kuhox5_8ffbd22f-020f-4056-bf4a-019cd4974b81\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-4wngem\": {\n    \"principalId\": \"a0372eec-6743-4521-9c16-63ce290f6374\",\n    \"clientId\": \"0b9b523a-2942-4446-99de-2534fec44222\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-kuhox5\",\n \"name\": \"azps-tmp-kuhox5\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-2mbiky_94b18781-e56a-4242-a793-786595fd20d6\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-2mbiky\",\n \"name\": \"azps-tmp-2mbiky\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01",
+      "Content": "ew0KICAibG9jYXRpb24iOiAiZWFzdHVzIiwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInNvdXJjZSI6IHsNCiAgICAgICJ0eXBlIjogIlBsYXRmb3JtSW1hZ2UiLA0KICAgICAgInB1Ymxpc2hlciI6ICJDYW5vbmljYWwiLA0KICAgICAgIm9mZmVyIjogIlVidW50dVNlcnZlciIsDQogICAgICAic2t1IjogIjE4LjA0LUxUUyIsDQogICAgICAidmVyc2lvbiI6ICJsYXRlc3QiDQogICAgfSwNCiAgICAiY3VzdG9taXplIjogWw0KICAgICAgew0KICAgICAgICAidHlwZSI6ICJTaGVsbCIsDQogICAgICAgICJuYW1lIjogIkNoZWNrU3VtQ29tcGFyZVNoZWxsU2NyaXB0IiwNCiAgICAgICAgInNjcmlwdFVyaSI6ICJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGFuaWVsc29sbG9uZG9uL2F6dm1pbWFnZWJ1aWxkZXIvbWFzdGVyL3F1aWNrcXVpY2tzdGFydHMvY3VzdG9taXplU2NyaXB0Mi5zaCIsDQogICAgICAgICJzaGEyNTZDaGVja3N1bSI6ICJhZGU0YzUyMTRjM2M2NzVlOTJjNjZlMmQwNjdhODcwYzViODFiOTg0NGIzZGUzY2M3MmM0OWZmMzY0MjVmYzkzIg0KICAgICAgfQ0KICAgIF0sDQogICAgImRpc3RyaWJ1dGUiOiBbDQogICAgICB7DQogICAgICAgICJ0eXBlIjogIlNoYXJlZEltYWdlIiwNCiAgICAgICAgInJ1bk91dHB1dE5hbWUiOiAicnVub3V0cHV0MSIsDQogICAgICAgICJhcnRpZmFjdFRhZ3MiOiB7DQogICAgICAgICAgInRhZyI6ICJkaXMtc2hhcmUiDQogICAgICAgIH0sDQogICAgICAgICJnYWxsZXJ5SW1hZ2VJZCI6ICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2VHcm91cHMvYXpwcy10ZXN0LTkwaWZ1bi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvZ2FsbGVyaWVzL2F6cHNnYWxsZXJ5ZjEycGR2L2ltYWdlcy9henBzdm1pbWFnZTEiLA0KICAgICAgICAicmVwbGljYXRpb25SZWdpb25zIjogWw0KICAgICAgICAgICJlYXN0dXMyIg0KICAgICAgICBdDQogICAgICB9DQogICAgXQ0KICB9LA0KICAiaWRlbnRpdHkiOiB7DQogICAgInR5cGUiOiAiVXNlckFzc2lnbmVkIiwNCiAgICAidXNlckFzc2lnbmVkSWRlbnRpdGllcyI6IHsNCiAgICAgICIvc3Vic2NyaXB0aW9ucy85ZTIyM2RiZS0zMzk5LTRlMTktODhlYi0wOTc1ZjAyYWM4N2YvcmVzb3VyY2Vncm91cHMvYXpwcy10ZXN0LTkwaWZ1bi9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL2F6cHMtbWkteDQ1OWltIjoge30NCiAgICB9DQogIH0NCn0NCg==",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1285" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/44deffaf-6110-4b9a-80f9-cd51a113259f?api-version=2022-07-01" ],
+        "x-ms-correlation-request-id": [ "082fc310-7613-49a2-b653-cfbc65ee0d0e" ],
+        "x-ms-request-id": [ "44deffaf-6110-4b9a-80f9-cd51a113259f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064034Z:082fc310-7613-49a2-b653-cfbc65ee0d0e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0774DBF565A044BA9A4B89C3B34CC90A Ref B: TYO201100115027 Ref C: 2023-08-29T06:40:32Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:40:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1618" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"latest\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Creating\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {}\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu\",\n \"name\": \"azps-tmp-qtfewu\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/44deffaf-6110-4b9a-80f9-cd51a113259f?api-version=2022-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.VirtualMachineImages/locations/eastus/operations/44deffaf-6110-4b9a-80f9-cd51a113259f?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "2fcdb318-a604-4089-b6e1-c1e7916297ec" ],
+        "CommandName": [ "New-AzImageBuilderTemplate" ],
+        "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "6adfc9da-6406-4e01-a69a-6839924a38b6" ],
+        "x-ms-request-id": [ "fdba6bd0-3cf5-4038-85f0-40be7fc146cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064105Z:6adfc9da-6406-4e01-a69a-6839924a38b6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D1DC8EB987CD44EF9B05A23CBB3F3B2E Ref B: TYO201100115027 Ref C: 2023-08-29T06:41:04Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:41:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "165" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"name\": \"44DEFFAF-6110-4B9A-80F9-CD51A113259F\",\n \"status\": \"Succeeded\",\n \"startTime\": \"2023-08-29T06:40:34.1103255Z\",\n \"endTime\": \"2023-08-29T06:41:01.9427223Z\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "2fcdb318-a604-4089-b6e1-c1e7916297ec" ],
+        "CommandName": [ "New-AzImageBuilderTemplate" ],
+        "FullCommandName": [ "New-AzImageBuilderTemplate_CreateViaJsonString" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "9b0d6845-473a-456c-b4af-3651c14bc3c1" ],
+        "x-ms-request-id": [ "294e6dc9-0273-41e5-8a2c-f2bb98f75bc7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064106Z:9b0d6845-473a-456c-b4af-3651c14bc3c1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 99FEC3D812EB47D29552FD346A8B0A98 Ref B: TYO201100115027 Ref C: 2023-08-29T06:41:05Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:41:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1885" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-qtfewu_4620fac1-7aed-4d92-9e26-4fc569903d2c\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu\",\n \"name\": \"azps-tmp-qtfewu\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzImageBuilderTemplate+[NoContext]+FromJsonString+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu?api-version=2022-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "84d8de92-f121-4a12-b150-89c2a96452a8" ],
+        "CommandName": [ "Get-AzImageBuilderTemplate" ],
+        "FullCommandName": [ "Get-AzImageBuilderTemplate_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ImageBuilder/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "5024832c-1dd8-40d2-8671-aae032b496a4" ],
+        "x-ms-request-id": [ "6a2f84dd-ab7e-4078-a3b8-a4ef7cfb2c88" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064107Z:5024832c-1dd8-40d2-8671-aae032b496a4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C51F0A1361B94CEB8D7AD0B88B3BD815 Ref B: TYO201100115027 Ref C: 2023-08-29T06:41:06Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:41:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1885" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"source\": {\n   \"exactVersion\": \"18.04.202306070\",\n   \"offer\": \"UbuntuServer\",\n   \"publisher\": \"Canonical\",\n   \"sku\": \"18.04-LTS\",\n   \"type\": \"PlatformImage\",\n   \"version\": \"latest\"\n  },\n  \"customize\": [\n   {\n    \"name\": \"CheckSumCompareShellScript\",\n    \"scriptUri\": \"https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh\",\n    \"sha256Checksum\": \"ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93\",\n    \"type\": \"Shell\"\n   }\n  ],\n  \"distribute\": [\n   {\n    \"artifactTags\": {\n     \"tag\": \"dis-share\"\n    },\n    \"excludeFromLatest\": false,\n    \"galleryImageId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.Compute/galleries/azpsgalleryf12pdv/images/azpsvmimage1\",\n    \"replicationRegions\": [\n     \"eastus2\"\n    ],\n    \"runOutputName\": \"runoutput1\",\n    \"type\": \"SharedImage\",\n    \"versioning\": null\n   }\n  ],\n  \"provisioningState\": \"Succeeded\",\n  \"buildTimeoutInMinutes\": 0,\n  \"stagingResourceGroup\": \"\",\n  \"exactStagingResourceGroup\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/IT_azps-test-90ifun_azps-tmp-qtfewu_4620fac1-7aed-4d92-9e26-4fc569903d2c\"\n },\n \"identity\": {\n  \"type\": \"UserAssigned\",\n  \"userAssignedIdentities\": {\n   \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-x459im\": {\n    \"principalId\": \"766d699c-43d8-42e1-9a18-7f45b5df5bae\",\n    \"clientId\": \"1681d379-d50b-4da1-b65c-3eecc020d567\"\n   }\n  }\n },\n \"tags\": {},\n \"location\": \"eastus\",\n \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-qtfewu\",\n \"name\": \"azps-tmp-qtfewu\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates\"\n}",
       "isContentBase64": false
     }
   }

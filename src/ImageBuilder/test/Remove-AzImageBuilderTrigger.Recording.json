@@ -1,13 +1,13 @@
 {
-  "Remove-AzImageBuilderTrigger+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-y16mjl/triggers/azps-trigger-d4vz39?api-version=2022-07-01+1": {
+  "Remove-AzImageBuilderTrigger+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-emf39o/triggers/azps-trigger-hmzoxq?api-version=2022-07-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-o5pew1/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-y16mjl/triggers/azps-trigger-d4vz39?api-version=2022-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-test-90ifun/providers/Microsoft.VirtualMachineImages/imageTemplates/azps-tmp-emf39o/triggers/azps-trigger-hmzoxq?api-version=2022-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "bc0e31f6-83c5-4f03-b3ca-f2984129fba9" ],
+        "x-ms-client-request-id": [ "04f81da4-180b-42e6-8d89-af0fa8b35a66" ],
         "CommandName": [ "Remove-AzImageBuilderTrigger" ],
         "FullCommandName": [ "Remove-AzImageBuilderTrigger_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,14 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "4375c639-8fef-45d0-8e9e-5b12b220fe67" ],
-        "x-ms-request-id": [ "53a89bfd-0e1f-4b3d-81c9-7640b6548264" ],
+        "x-ms-correlation-request-id": [ "3ffb8e5e-4df0-4475-83ce-3fac620af690" ],
+        "x-ms-request-id": [ "b07b2221-9019-43aa-aacd-49c2fc65192a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-routing-request-id": [ "JAPANWEST:20230829T053421Z:4375c639-8fef-45d0-8e9e-5b12b220fe67" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230829T064454Z:3ffb8e5e-4df0-4475-83ce-3fac620af690" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 565AA68B9B3F466D9B06C0AE37EFDEDE Ref B: TYO201100116007 Ref C: 2023-08-29T05:34:21Z" ],
-        "Date": [ "Tue, 29 Aug 2023 05:34:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D98C525D04FA40FD8FBF0936C6D7F744 Ref B: TYO201100115027 Ref C: 2023-08-29T06:44:54Z" ],
+        "Date": [ "Tue, 29 Aug 2023 06:44:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

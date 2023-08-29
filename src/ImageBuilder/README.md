@@ -63,23 +63,19 @@ nested-object-to-string: true
 
 directive:
   # 1. Remove the unexpanded parameter set
-  # 2. For New-*/Update-* cmdlets, *ViaIdentity is not required, *ViaIdentityExpanded is removed as well
+  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
 
+  # To remove non-expanded update variants:
   - where:
-      subject: Trigger
-      variant: CreateExpanded
-    set:
-      variant: CreateTriggerExpanded
-  - where:
-      variant: ^CreateExpanded$
-    hide: true
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
 
   # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
   # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
@@ -96,6 +92,11 @@ directive:
       subject: (.*)Image(.*)
     set:
       subject: $2
+
+  - where:
+      subject: Template
+      variant: ^CreateExpanded$
+    hide: true
 
   # Rename ImageTemplateName -> Name and keep ImageTemplateName as alias in *-AzImageBuildTemplate
   - where:

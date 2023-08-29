@@ -19,8 +19,7 @@ Describe 'Update-AzImageBuilderTemplate' {
         {
             $template = Update-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg -Tag @{"123"="abc"}
             $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg
-            $template.Tag.Keys | Should -be "123"
-            $template.Tag.Values | Should -be "abc"
+            $template.Tag["123"] | Should -be "abc"
         } | Should -Not -Throw
     }
 }

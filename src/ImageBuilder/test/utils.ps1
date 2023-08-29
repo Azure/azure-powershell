@@ -92,9 +92,9 @@ function setupEnv() {
     # 10. Start the image builder above
     # Need to record start image builder separetely.
     # Only below lines are not needed in recording stop test cases
-    Write-Host -ForegroundColor Green "Starting the image builder template..."
-    Start-Sleep -Seconds 25
-    Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
+    # Write-Host -ForegroundColor Green "Starting the image builder template..."
+    # Start-Sleep -Seconds 25
+    # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
     
     # Prepare some variables for test usage
     $newTemplateName1 = $env.AddWithCache("newTemplateName1", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
@@ -116,15 +116,15 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # 0. Restore JsonTemplateFile.json
-    # git restore JsonTemplateFile.json
+    git restore JsonTemplateFile.json
 
     # 1. Grant role definition above to the user assigned identity
-    # Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
+    Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
 
     # 2. Remove role definition
-    # Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
+    Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
 
     # 3. remove resource group
-    # Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
+    Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
 }
 
