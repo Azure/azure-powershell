@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Gets the policy definition.
     /// </summary>
     [CmdletOutputBreakingChangeWithVersion(
-        typeof(PsPolicyDefinition), deprecateByAzVersion: "11.0.0", deprecateByVersion: "6.9.2", DeprecatedOutputProperties = new[] { "Properties" },
+        typeof(PsPolicyDefinition), deprecateByAzVersion: "11.0.0", deprecateByVersion: "7.0.0", DeprecatedOutputProperties = new[] { "Properties" },
         NewOutputProperties = new[] { "Description", "DisplayName", "Metadata", "Mode", "Parameters", "PolicyRule", "PolicyType" })]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyDefinition))]
     public class GetAzurePolicyDefinitionCmdlet : PolicyCmdletBase

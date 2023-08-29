@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates a policy exemption.
     /// </summary>
     [CmdletOutputBreakingChangeWithVersion(
-        typeof(PsPolicyExemption), deprecateByAzVersion: "11.0.0", deprecateByVersion: "6.9.2", DeprecatedOutputProperties = new[] { "Properties" },
+        typeof(PsPolicyExemption), deprecateByAzVersion: "11.0.0", deprecateByVersion: "7.0.0", DeprecatedOutputProperties = new[] { "Properties" },
         NewOutputProperties = new[] { "Description", "DisplayName", "ExemptionCategory", "ExpiresOn", "Metadata", "PolicyAssignmentId", "PolicyDefinitionReferenceIds" })]
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(PsPolicyExemption))]
     public class NewAzurePolicyExemptionCmdlet : PolicyCmdletBase
