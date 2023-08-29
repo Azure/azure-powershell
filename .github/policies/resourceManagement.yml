@@ -231,6 +231,18 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
+            label: ArcResourceBridge
+        then:
+        - mentionUsers:
+            mentionees:
+            - alt-key
+            - saisankargochhayat
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
             label: ARM
         then:
         - mentionUsers:
