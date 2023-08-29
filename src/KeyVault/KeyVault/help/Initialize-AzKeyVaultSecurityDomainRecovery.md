@@ -8,7 +8,7 @@ schema: 2.0.0
 # Initialize-AzKeyVaultSecurityDomainRecovery
 
 ## SYNOPSIS
-Generate a exchange key to initialize Local Security Domain Recovery.
+Generate an exchange key to initialize Local Security Domain Recovery.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Initialize-AzKeyVaultSecurityDomainRecovery -ExchangeKey <String> [-Force] [-Pas
 ```
 
 ## DESCRIPTION
-This command will generate a exchange key to initialize Local Security Domain Recovery.
+This command will generate an exchange key to initialize Local Security Domain Recovery and store the key to the specified path.
 
 ## EXAMPLES
 
