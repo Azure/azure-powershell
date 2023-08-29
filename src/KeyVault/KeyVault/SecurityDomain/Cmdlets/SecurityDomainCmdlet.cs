@@ -1,7 +1,4 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
+﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
@@ -10,7 +7,7 @@ using System.Threading;
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [SupportsSubscriptionId]
-    public abstract class SecurityDomainCmdlet : SecurityDomainCmdletClient
+    public abstract class SecurityDomainCmdlet : SecurityDomainCmdletBase
     {
         protected const string ByName = "ByName";
         protected const string ByInputObject = "ByInputObject";
@@ -26,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         public PSKeyVaultIdentityItem InputObject { get; set; }
 
         /// <summary>
-        /// Sub-classes should not override this method, but <see cref="SecurityDomainCmdletClient.DoExecuteCmdlet"/> instead.
+        /// Sub-classes should not override this method, but <see cref="SecurityDomainCmdletBase.DoExecuteCmdlet"/> instead.
         /// This is call-super pattern. See https://www.martinfowler.com/bliki/CallSuper.html
         /// </summary>
         public override void ExecuteCmdlet()

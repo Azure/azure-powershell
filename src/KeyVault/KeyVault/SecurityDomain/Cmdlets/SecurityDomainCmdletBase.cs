@@ -10,7 +10,7 @@ using System.Threading;
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [SupportsSubscriptionId]
-    public abstract class SecurityDomainCmdletClient : AzureRMCmdlet
+    public abstract class SecurityDomainCmdletBase : AzureRMCmdlet
     {
         private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CancellationToken => CancellationTokenSource.Token;

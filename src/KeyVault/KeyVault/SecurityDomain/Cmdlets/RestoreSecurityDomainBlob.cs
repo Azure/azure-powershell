@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [Cmdlet(VerbsData.Restore, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomainBlob", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RestoreSecurityDomainBlob : SecurityDomainCmdletClient
+    public class RestoreSecurityDomainBlob : SecurityDomainCmdletBase
     {
         [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true)]
         [ValidateNotNullOrEmpty]
