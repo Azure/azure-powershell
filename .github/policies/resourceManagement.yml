@@ -890,17 +890,6 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Container App
-        then:
-        - mentionUsers:
-            mentionees:
-            - calvinsID
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
-      - if:
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
             label: Container Instances
         then:
         - mentionUsers:
@@ -933,6 +922,17 @@ configuration:
             - jwilder
             - thomas1206
             - seanmck
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ContainerApp
+        then:
+        - mentionUsers:
+            mentionees:
+            - calvinsID
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
