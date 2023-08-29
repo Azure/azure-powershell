@@ -50,7 +50,7 @@ Create an in-memory object for ImageTemplateCustomizer.
 
 ### Example 1: Create a windows update customizer.
 ```powershell
-New-AzImageBuilderTemplateCustomizerObject -WindowsUpdateCustomizer -Name 'WindUpdate' -Filter ("BrowseOnly", "IsInstalled") -SearchCriterion "BrowseOnly=0 and IsInstalled=0" -UpdateLimit 1002
+New-AzImageBuilderTemplateCustomizerObject -WindowsUpdateCustomizer -Name 'WindUpdate' -Filter ("BrowseOnly", "IsInstalled") -SearchCriterion "BrowseOnly=0 and IsInstalled=0" -UpdateLimit 100
 ```
 
 ```output
