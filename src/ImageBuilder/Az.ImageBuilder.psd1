@@ -1,7 +1,7 @@
 @{
   GUID = 'bdedc683-d9b6-41ea-b310-d068b8c72305'
   RootModule = './Az.ImageBuilder.psm1'
-  ModuleVersion = '0.2.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

@@ -18,7 +18,9 @@ Describe 'Update-AzImageBuilderTemplate' {
     It 'UpdateExpanded' {
         {
             $template = Update-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg -Tag @{"123"="abc"}
-            $template.Name | Should -Be $env.newTemplateName3
+            $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg
+            $template.Tag.Keys | Should -be "123"
+            $template.Tag.Values | Should -be "abc"
         } | Should -Not -Throw
     }
 }

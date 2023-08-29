@@ -54,7 +54,7 @@ input-file:
   - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-07-01/imagebuilder.json
 
 title: ImageBuilder
-module-version: 0.2.0
+module-version: 0.1.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
@@ -63,7 +63,7 @@ nested-object-to-string: true
 
 directive:
   # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  # 2. For New-*/Update-* cmdlets, *ViaIdentity is not required, *ViaIdentityExpanded is removed as well
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -72,14 +72,19 @@ directive:
       verb: Set
     remove: true
 
+  - where:
+      subject: Trigger
+      variant: CreateExpanded
+    set:
+      variant: CreateTriggerExpanded
+  - where:
+      variant: ^CreateExpanded$
+    hide: true
+
   # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
   # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
   # 3. Wrap UserAssignedIdentity with UserAssignedIdentityId to simplify customer's input 
   # 4. Field 'properties' is required => Source, Customize and Distribute are required
-  - where:
-      variant: ^CreateExpanded$
-    hide: true
-  
   # Rename IdentityUserAssignedIdentity to UserAssignedIdentity
   - where:
       parameter-name: IdentityUserAssignedIdentity
