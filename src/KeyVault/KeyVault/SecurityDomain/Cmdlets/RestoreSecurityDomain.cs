@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     public class RestoreSecurityDomain : SecurityDomainCmdlet
     {
         protected const string ByRestoreBlob = "ByRestoreBlob";
-        [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true)]
+        [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true, ParameterSetName = ByName)]
+        [Parameter(HelpMessage = "Information about the keys that are used to decrypt the security domain data. See examples for how it is constructed.", Mandatory = true, ParameterSetName = ByInputObject)]
         [ValidateNotNullOrEmpty]
         public KeyPath[] Keys { get; set; }
 
