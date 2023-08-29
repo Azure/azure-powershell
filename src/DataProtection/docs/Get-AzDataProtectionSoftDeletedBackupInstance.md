@@ -35,27 +35,18 @@ Gets a deleted backup instance with name in a backup vault
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get soft deleted backup instances for a backup vault
 ```powershell
-{{ Add code here }}
+Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+alrpstestvm-datadisk-000-xxxxxxxx-xxxx-alrpstestvm-datadisk-000-xxxx-xxxx-xxxxxxxx-066c-xxxx-91fc-xxxxxxxxxxxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet is used to fetch the list of backup instances which are in soft deleted state for the backup vault.
 
 ## PARAMETERS
 

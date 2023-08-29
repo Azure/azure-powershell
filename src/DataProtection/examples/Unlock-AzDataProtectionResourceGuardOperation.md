@@ -4,7 +4,7 @@ $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGr
 $operationRequests = $proxy.ResourceGuardOperationDetail.DefaultResourceRequest
 $resourceGuardOperationRequest = $operationRequests | Where-Object { $_ -match "deleteBackupInstanceRequests" }
 
-$token = (Get-AzAccessToken -TenantId "09ab0040-f212-43e7-abe1-91bd98fb4fc7").Token
+$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
 $unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest $resourceGuardOperationRequest -ResourceToBeDeleted $instances[0].Id -Token $token
@@ -30,7 +30,7 @@ Finally, we remove the backup instance for which we want to disable protection.
 
 ### Example 2: Unlock delete backup instance operation with short hand
 ```powershell
-$token = (Get-AzAccessToken -TenantId "09ab0040-f212-43e7-abe1-91bd98fb4fc7").Token
+$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $instances = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
 $unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DeleteBackupInstance -ResourceToBeDeleted $instances[0].Id -Token $token
@@ -45,9 +45,9 @@ Remove-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceG
 
 This example is faster way (short hand) for Example 1. In this example we show that by just passing the DeleteBackupInstance to ResourceGuardOperationRequest we can perform unlock. we pass the instance ARM Id as the resource to be deleted. Pass access token in case of cross tenant resource guard.
 
-### Example 2: Unlock disbale MUA operation with short hand
+### Example 3: Unlock disable MUA operation with short hand
 ```powershell
-$token = (Get-AzAccessToken -TenantId "09ab0040-f212-43e7-abe1-91bd98fb4fc7").Token
+$token = (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token
 $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId
 
 $unlock = Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vault.Name -ResourceGuardOperationRequest DisableMUA -ResourceToBeDeleted $proxy.Id -Token $token

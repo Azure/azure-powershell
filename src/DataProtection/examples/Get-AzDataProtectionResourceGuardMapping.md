@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Fetch resource guard mapping.
 ```powershell
-{{ Add code here }}
+$mapping = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId
+$mapping | fl
 ```
 
 ```output
-{{ Add output here }}
+Description                  : 
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/m
+                               ua-pstest-backupvault/backupResourceGuardProxies/DppResourceGuardProxy
+LastUpdatedTime              : 2023-08-29T07:23:05.1111730Z
+Name                         : DppResourceGuardProxy
+ResourceGuardId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/hiaga-rg/providers/Microsoft.DataProtection/resourceGuard
+                               s/mua-pstest-resguard
+ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ResourceGuardOperationDetail,
+                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ResourceGuardOperationDetail}
+SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.SystemData
+Type                         : Microsoft.DataProtection/vaults/backupResourceGuardProxies
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets the MUA setting (resource guard mapping with backup vault) for the backup vault. The output of this command is used to ensure whether MUA is enabled on the backup vault and to determine the underlying resource guard to protect the critical operations.

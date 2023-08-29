@@ -30,27 +30,14 @@ Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentit
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Undelete the soft deleted backup instance
 ```powershell
-{{ Add code here }}
+$softDeletedBI = Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
+Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The first comamnd is used to fetch the backup instances which are in soft deleted for a give backup vault.
+The second command undeletes the backup instance to enable the protection again, revert the soft deleted state.
 
 ## PARAMETERS
 
