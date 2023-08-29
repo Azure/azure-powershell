@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     {
         protected const string ByName = "ByName";
         protected const string ByInputObject = "ByInputObject";
-        protected const string ByResourceId = "ByResourceID";
+        // protected const string ByResourceId = "ByResourceID";
 
         [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
         [Alias("HsmName")]
