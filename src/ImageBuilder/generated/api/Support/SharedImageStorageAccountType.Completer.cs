@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
     /// <summary>
-    /// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+    /// Specifies the storage account type to be used to store the Azure Compute Gallery image version in.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountTypeTypeConverter))]
     public partial struct SharedImageStorageAccountType :
@@ -35,6 +35,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_ZRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Standard_ZRS'", "Standard_ZRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_ZRS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Premium_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Premium_LRS'", "Premium_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium_LRS");
             }
         }
     }

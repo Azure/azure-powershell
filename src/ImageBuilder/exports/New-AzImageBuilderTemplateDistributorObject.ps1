@@ -20,18 +20,18 @@ Create an in-memory object for ImageTemplateDistributor.
 .Description
 Create an in-memory object for ImageTemplateDistributor.
 .Example
-New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor -ArtifactTag @{tag='lucasManage'} -ImageId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-imageshare -RunOutputName luacas-runout -Location eastus
+New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor -ArtifactTag @{tag='azpstest'} -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image" -RunOutputName "runoutput-01" -Location eastus
 .Example
 New-AzImageBuilderTemplateDistributorObject -ArtifactTag @{tag='vhd'} -VhdDistributor -RunOutputName image-vhd
 .Example
-New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion eastus2 -RunOutputName 'outname' -ExcludeFromLatest $false 
+New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,11 +39,19 @@ To create the parameters described below, construct a hash table containing the 
 
 ARTIFACTTAG <IImageTemplateDistributorArtifactTags>: Tags that will be applied to the artifact once it has been created/updated by the distributor.
   [(Any) <String>]: This indicates any property can be added to this object.
+
+TARGETREGION <ITargetRegion[]>: The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+  Name <String>: The name of the region.
+  [ReplicaCount <Int32?>]: The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
+  [StorageAccountType <SharedImageStorageAccountType?>]: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+
+VERSIONING <IDistributeVersioner>: Describes how to generate new x.y.z version number for distribution.
+  Scheme <String>: Version numbering scheme to be used.
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor], [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor])]
 [CmdletBinding(DefaultParameterSetName='VhdDistributor', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -72,7 +80,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
     # Tags that will be applied to the artifact once it has been created/updated by the distributor.
     # To construct, see NOTES section for ARTIFACTTAG properties and create a hash table.
     ${ArtifactTag},
@@ -80,14 +88,8 @@ param(
     [Parameter(ParameterSetName='SharedImageDistributor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.String]
-    # Resource Id of the Shared Image Gallery image.
+    # Resource Id of the Azure Compute Gallery image.
     ${GalleryImageId},
-
-    [Parameter(ParameterSetName='SharedImageDistributor', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [System.String[]]
-    # A list of regions that the image will be replicated to.
-    ${ReplicationRegion},
 
     [Parameter(ParameterSetName='SharedImageDistributor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -103,18 +105,50 @@ param(
     ${ExcludeFromLatest},
 
     [Parameter(ParameterSetName='SharedImageDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String[]]
+    # [Deprecated] A list of regions that the image will be replicated to.
+    # This list can be specified only if targetRegions is not specified.
+    # This field is deprecated - use targetRegions instead.
+    ${ReplicationRegion},
+
+    [Parameter(ParameterSetName='SharedImageDistributor')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
-    # Storage account type to be used to store the shared image.
+    # [Deprecated] Storage account type to be used to store the shared image.
     # Omit to use the default (Standard_LRS).
+    # This field can be specified only if replicationRegions is specified.
+    # This field is deprecated - use targetRegions instead.
     ${StorageAccountType},
+
+    [Parameter(ParameterSetName='SharedImageDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]]
+    # The target regions where the distributed Image Version is going to be replicated to.
+    # This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+    # To construct, see NOTES section for TARGETREGION properties and create a hash table.
+    ${TargetRegion},
+
+    [Parameter(ParameterSetName='SharedImageDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner]
+    # Describes how to generate new x.y.z version number for distribution.
+    # To construct, see NOTES section for VERSIONING properties and create a hash table.
+    ${Versioning},
 
     [Parameter(ParameterSetName='VhdDistributor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Distribute via VHD in a storage account.
-    ${VhdDistributor}
+    ${VhdDistributor},
+
+    [Parameter(ParameterSetName='VhdDistributor')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.String]
+    # Optional Azure Storage URI for the distributed VHD blob.
+    # Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
+    ${Uri}
 )
 
 begin {
@@ -126,7 +160,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
