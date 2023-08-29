@@ -16,16 +16,20 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkCloudVirtualMac
 Describe 'New-AzNetworkCloudVirtualMachine' {
     It 'Create' {
         {
-            $networkAttachment = @{
-                AttachedNetworkId  = $global:config.AzNetworkCloudVirtualMachine.networkAttachmentId
-                IpAllocationMethod = $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod
-            }
-            $hint = @{
-                HintType            = $global:config.AzNetworkCloudVirtualMachine.placementHint
-                SchedulingExecution = $global:config.AzNetworkCloudVirtualMachine.placementExecution
-                Scope               = $global:config.AzNetworkCloudVirtualMachine.placementScope
-                ResourceId          = $global:config.AzNetworkCloudVirtualMachine.placementResourceId
-            }
+            $networkAttachment = New-AzNetworkCloudNetworkAttachmentObject `
+                -AttachedNetworkId $global:config.AzNetworkCloudVirtualMachine.networkAttachmentId `
+                -IpAllocationMethod $global:config.AzNetworkCloudVirtualMachine.ipAllocationMethod `
+                -DefaultGateway $global:config.AzNetworkCloudVirtualMachine.attachmentDefaultGateway `
+                -Ipv4Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv4Address `
+                -Ipv6Address $global:config.AzNetworkCloudVirtualMachine.attachmentIpv6Address `
+                -Name $global:config.AzNetworkCloudVirtualMachine.attachmentName
+
+            $hint = New-AzNetworkCloudVirtualMachinePlacementHintObject `
+                -HintType global:config.AzNetworkCloudVirtualMachine.placementHint `
+                -SchedulingExecution $global:config.AzNetworkCloudVirtualMachine.placementExecution `
+                -ResourceId $global:config.AzNetworkCloudVirtualMachine.placementResourceId `
+                -Scope $global:config.AzNetworkCloudVirtualMachine.placementScope
+
             $sshPublicKey = @{
                 KeyData = $global:config.AzNetworkCloudVirtualMachine.sshPublicKey
             }

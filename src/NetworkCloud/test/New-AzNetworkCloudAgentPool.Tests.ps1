@@ -17,7 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkCloudAgentPool')
 Describe 'New-AzNetworkCloudAgentPool' {
     It 'Create' {
         {
-            $networkAttachment = @{
+            $l3NetworkAttachment = New-AzNetworkCloudL3NetworkAttachmentConfigurationObject `
+                -NetworkId $global:config.AzNetworkCloudAgentPool.l3NetworkId `
+                -IpamEnabled $global:config.AzNetworkCloudAgentPool.ipamEnabled `
+                -PluginType $global:config.AzNetworkCloudAgentPool.pluginType `
+
+            @{
                 AttachedNetworkId = $global:config.AzNetworkCloudAgentPool.l3NetworkId
             }
             $labels = @{
@@ -32,6 +37,6 @@ Describe 'New-AzNetworkCloudAgentPool' {
                 KeyData = $global:config.AzNetworkCloudAgentPool.sshPublicKeyData
             }
 
-            New-AzNetworkCloudAgentPool -KubernetesClusterName $global:config.AzNetworkCloudAgentPool.clusterName -Name $global:config.AzNetworkCloudAgentPool.agentPoolName -ResourceGroupName $global:config.AzNetworkCloudAgentPool.agentPoolRg -Count $global:config.AzNetworkCloudAgentPool.count -Location $global:config.AzNetworkCloudAgentPool.location -Mode $global:config.AzNetworkCloudAgentPool.mode -VMSkuName $global:config.AzNetworkCloudAgentPool.vmSkuName -SubscriptionId $global:config.AzNetworkCloudAgentPool.subscriptionId -AdministratorConfigurationAdminUsername $global:config.AzNetworkCloudAgentPool.adminUsername -AdministratorConfigurationSshPublicKey $sshPublicKey -AgentOptionHugepagesCount $global:config.AzNetworkCloudAgentPool.hugepagesCount -AgentOptionHugepagesSize $global:config.AzNetworkCloudAgentPool.hugepagesSize -AttachedNetworkConfigurationL3Network $networkAttachment -AvailabilityZone $global:config.AzNetworkCloudAgentPool.availabilityZones -ExtendedLocationName $global:config.AzNetworkCloudAgentPool.clusterExtendedLocation -ExtendedLocationType $global:config.common.customLocationType -Tag @{tags = $global:config.AzNetworkCloudAgentPool.tags} -UpgradeSettingMaxSurge $global:config.AzNetworkCloudAgentPool.maxSurge -Label $labels -Taint $taints } | Should -Not -Throw
+            New-AzNetworkCloudAgentPool -KubernetesClusterName $global:config.AzNetworkCloudAgentPool.clusterName -Name $global:config.AzNetworkCloudAgentPool.agentPoolName -ResourceGroupName $global:config.AzNetworkCloudAgentPool.agentPoolRg -Count $global:config.AzNetworkCloudAgentPool.count -Location $global:config.AzNetworkCloudAgentPool.location -Mode $global:config.AzNetworkCloudAgentPool.mode -VMSkuName $global:config.AzNetworkCloudAgentPool.vmSkuName -SubscriptionId $global:config.AzNetworkCloudAgentPool.subscriptionId -AdministratorConfigurationAdminUsername $global:config.AzNetworkCloudAgentPool.adminUsername -AdministratorConfigurationSshPublicKey $sshPublicKey -AgentOptionHugepagesCount $global:config.AzNetworkCloudAgentPool.hugepagesCount -AgentOptionHugepagesSize $global:config.AzNetworkCloudAgentPool.hugepagesSize -AttachedNetworkConfigurationL3Network $l3NetworkAttachment -AvailabilityZone $global:config.AzNetworkCloudAgentPool.availabilityZones -ExtendedLocationName $global:config.AzNetworkCloudAgentPool.clusterExtendedLocation -ExtendedLocationType $global:config.common.customLocationType -Tag @{tags = $global:config.AzNetworkCloudAgentPool.tags} -UpgradeSettingMaxSurge $global:config.AzNetworkCloudAgentPool.maxSurge -Label $labels -Taint $taints } | Should -Not -Throw
     }
 }

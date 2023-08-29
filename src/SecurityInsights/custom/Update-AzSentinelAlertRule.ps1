@@ -23,6 +23,7 @@ Updates the alert rule.
 https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15", ChangeDescription="Parameters of NRT set will be deprecated.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateScheduled', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

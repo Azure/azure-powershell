@@ -27,6 +27,12 @@ Create an in-memory object for KeySetUser.
 New-AzNetworkCloudKeySetUserObject -AzureUserName azureUserName -SshPublicKeyData "ssh-rsa-key" -Description "userDescription"
 ```
 
+```output
+AzureUserName Description
+------------- -----------
+azureUserName userDescription
+```
+
 Create an in-memory object for KeySetUser.
 
 ## PARAMETERS

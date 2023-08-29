@@ -23,15 +23,13 @@ Describe 'New-AzNetworkCloudServicesNetwork' {
             }
             $endpointEgressList = @()
             $endpointList = @()
-            $endpoint = @{
-                domainName = $cnsconfig.domainName
-                port = $cnsconfig.port
-            }
+            $endpoint = New-AzNetworkCloudEndpointDependencyObject `
+                -DomainName $cnsconfig.domainName `
+                -Port $cnsconfig.port
             $endpointList+= $endpoint
-            $additionalEgressEndpoint = @{
-                category = $cnsconfig.category
-                endpoint = $endpointList
-            }
+            $additionalEgressEndpoint = New-AzNetworkCloudEgressEndpointObject `
+                -Category $cnsconfig.category `
+                -Endpoint $endpointList
             $endpointEgressList+= $additionalEgressEndpoint
             New-AzNetworkCloudServicesNetwork -CloudServicesNetworkName $cnsconfig.cnsName `
                 -ResourceGroupName $cnsconfig.resourceGroup `

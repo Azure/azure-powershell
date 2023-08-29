@@ -18,13 +18,13 @@ Describe 'New-AzNetworkCloudBmcKeySet' {
             $tagHash = @{
                 tag1 = $bmcksconfig.tags
             }
-            $userList = @{
-                description   = $bmcksconfig.userDescription
-                azureUserName = $bmcksconfig.userName
-                sshPublicKey  = @{
+            $userList = New-AzNetworkCloudKeySetUserObject `
+                -description $bmcksconfig.userDescription `
+                -azureUserName $bmcksconfig.userName `
+                -sshPublicKey @{
                     keyData = $bmcksconfig.sshKey
                 }
-            }
+
             New-AzNetworkCloudBmcKeySet -ResourceGroupName $bmcksconfig.bmcksrg `
                 -Name $bmcksconfig.bmcKeySetName -ClusterName $bmcksconfig.clusterName `
                 -AzureGroupId $bmcksconfig.azureGroupId `

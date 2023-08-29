@@ -143,6 +143,9 @@ Create an in-memory object for EndpointDependency.
 ### [New-AzNetworkCloudInitialAgentPoolConfigurationObject](New-AzNetworkCloudInitialAgentPoolConfigurationObject.md)
 Create an in-memory object for InitialAgentPoolConfiguration.
 
+### [New-AzNetworkCloudIpAddressPoolObject](New-AzNetworkCloudIpAddressPoolObject.md)
+Create an in-memory object for IpAddressPool.
+
 ### [New-AzNetworkCloudKeySetUserObject](New-AzNetworkCloudKeySetUserObject.md)
 Create an in-memory object for KeySetUser.
 

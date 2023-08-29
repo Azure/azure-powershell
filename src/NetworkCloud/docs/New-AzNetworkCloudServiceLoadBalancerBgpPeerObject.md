@@ -25,13 +25,14 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 
 ### Example 1: Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```powershell
-
+New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name name -PeerAddress "203.0.113.254" -PeerAsn "64497" -BfdEnabled False -BgpMultiHop False -HoldTime "P300s" -KeepAliveTime "P300s" -MyAsn 64512 -Password passsword -PeerPort 1234
 ```
 
-```powershell
-New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name \<String\> -PeerAddress \<String\> -PeerAsn \<Int64\>
- [-BfdEnabled \<BfdEnabled\>] [-BgpMultiHop \<BgpMultiHop\>] [-HoldTime \<String\>] [-KeepAliveTime \<String\>]
- [-MyAsn \<Int64\>] [-Password \<String\>] [-PeerPort \<Int64\>] ```
+```output
+BfdEnabled BgpMultiHop HoldTime KeepAliveTime MyAsn Name Password  PeerAddress   PeerAsn PeerPort
+---------- ----------- -------- ------------- ----- ---- --------  -----------   ------- --------
+False      False       P300s    P300s         64512 name passsword 203.0.113.254 64497   1234
+```
 
 Create an in-memory object for ServiceLoadBalancerBgpPeer.
 

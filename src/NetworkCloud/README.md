@@ -254,8 +254,9 @@ directive:
     - EgressEndpoint
     - EndpointDependency
     - InitialAgentPoolConfiguration
-    - L3NetworkAttachmentConfiguration
+    - IpAddressPool
     - KeySetUser
+    - L3NetworkAttachmentConfiguration
     - NetworkAttachment
     - RackDefinition
     - ServiceLoadBalancerBgpPeer

@@ -142,7 +142,11 @@
     "registryUsername": "user",
     "registryPassword": "password",
     "registryUrl": "hbusipalleacr2.azurecr.io",
-    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23"
+    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23",
+    "attachmentDefaultGateway": "true",
+    "attachmentIpv4Address": "198.51.100.1",
+    "attachmentIpv6Address": "2001:0db8:0000:0000:0000:0000:0000:0001",
+    "attachmentName": "netAttachName01"
   },
   "AzNetworkCloudRack": {
     "rackName": "aa1234",
@@ -187,7 +191,9 @@
     "labelsKey": "fakelabel",
     "labelsValue": "true",
     "taintsKey": "kubernetes.taint",
-    "taintsValue": "true:NoSchedule"
+    "taintsValue": "true:NoSchedule",
+    "ipamEnabled": "true",
+    "pluginType": "SRIOV"
   },
   "AzNetworkCloudBareMetalMachine": {
     "bmmName": "rack1compute02",
@@ -254,7 +260,17 @@
     "clusterServicePrincipalTenantId": "80000000-4000-4000-4000-120000000000",
     "analyticsWorkspaceId": "/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.OperationalInsights/workspaces/simulator-law",
     "clusterLocation": "Foo Street, 3rd Floor, row 9",
-    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23"
+    "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23",
+    "bmcCredsUsername": "root",
+    "bmcMacAddress1": "AA:BB:CC:DD:E7:08",
+    "bmcMacAddress2": "B0:7B:25:EF:5E:B8",
+    "bmcMacAddress3": "B0:7B:25:EF:60:20",
+    "bootMacAddress1": "AA:BB:CC:F8:71:2E",
+    "bootMacAddress2": "B0:7B:25:DE:7F:F4",
+    "bootMacAddress3": "B0:7B:25:DE:79:FC",
+    "serialNumber1": "5HS7PK3",
+    "serialNumber2": "6P56PK3",
+    "serialNumber3": "7P56PK3"
   },
   "AzNetworkCloudVolume": {
     "volumeName": "ps-test-volume",
@@ -285,7 +301,7 @@
     "hugePagesSize": "1G",
     "agentPoolMode": "System",
     "maxSurge": "1",
-    "administratorConfiguration": "",
+    "administratorConfigurationUsername": "admin",
     "adminGroupObjectIds": "598f3796-d0dd-45ec-b0fc-e00731b0283f",
     "kubernetesVersion": "1.24.9",
     "adminUsername": "azureuser",
@@ -296,7 +312,24 @@
     "tagsUpdate": "tagUpdate",
     "resourceGroup": "pstest_rg2rsxo8",
     "subscriptionId": "a3eeb848-665a-4dbf-80a4-eb460930fb23",
-    "isHydrated": "false"
+    "isHydrated": "false",
+    "bgpIpAddressPool": "pool1",
+    "bgpIpAddressPoolName": "pool1",
+    "bgpIpAddressPoolAutoAssign": "true",
+    "bgpIpAddressPoolOnlyUseHostIp": "true",
+    "bgpAdvertiseToFabric": "true",
+    "bgpCommunity": "community1",
+    "bgpPeer": "peer1",
+    "bgpPeerName": "peer1",
+    "bgpPeerAddress": "203.0.113.254",
+    "bgpPeerAsn": "64497",
+    "bgpPeerBfdEnabled": "false",
+    "bgpPeerBgpMultiHop": "false",
+    "bgpPeerHoldTime": "P300s",
+    "bgpPeerKeepAliveTime": "P300s",
+    "bgpPeerMyAsn": "64512",
+    "bgpPeerPort": "1234",
+    "bgpFabricPeeringEnabled": "true"
   },
   "AzNetworkCloudKubernetesClusterNode": {
     "kubernetesClusterName": "professor-cat-naks",
