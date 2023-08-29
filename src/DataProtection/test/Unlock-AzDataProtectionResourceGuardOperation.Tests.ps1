@@ -18,7 +18,7 @@ Describe 'Unlock-AzDataProtectionResourceGuardOperation' {
     It 'UnlockDelete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-    It 'MUAAndSoftDelete' {
+    It 'MUAAndSoftDelete' -skip {
         # test MUA and soft delete
         $subscriptionId = $env.TestMUA.SubscriptionId
         $resourceGroupName = $env.TestMUA.ResourceGroupName

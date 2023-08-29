@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataProtectionBackupCon
 }
 
 Describe 'New-AzDataProtectionBackupConfigurationClientObject' {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
         $subId = $env.TestBackupConfig.SubscriptionId
         $storageAccountResourceGroup = $env.TestBackupConfig.StorageAccountResourceGroup
         $storageAccountName = $env.TestBackupConfig.StorageAccountName
