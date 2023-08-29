@@ -496,7 +496,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 //check omode params and throw error otherwise
                 checkFlexibleOrchestrationModeParams();
-                int platformFaultDomainCountFlexibleDefault = 1;
                 SwitchParameter singlePlacementGroupFlexibleDefault = false;
 
                 // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
@@ -614,7 +613,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
+                    platformFaultDomainCount: _cmdlet.PlatformFaultDomainCount,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
