@@ -24,7 +24,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehci
 
 function Initialize-AzMigrateHCIReplicationInfrastructure {
     [OutputType([System.Boolean], ParameterSetName = 'AzStackHCI')]
-    [CmdletBinding(DefaultParameterSetName = 'AzStackHCI', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'AzStackHCI', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [ValidateNotNull()]

@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserv
 #>
 function Remove-AzMigrateHCIServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
-    [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -103,6 +103,8 @@ function Remove-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('ForceRemove')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('InputObject')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($parameterSet -eq 'ByInputObject') {            
@@ -122,14 +124,16 @@ function Remove-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add('ForceDelete', [System.Convert]::ToBoolean($ForceRemove))
         }
 
-        $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
-        $jobName = $operation.Target.Split("/")[14].Split("?")[0]
-        
-        $null = $PSBoundParameters.Remove('ProtectedItemName')
-        $null = $PSBoundParameters.Remove('NoWait')
-        $null = $PSBoundParameters.Remove('ForceDelete')
-        $null = $PSBoundParameters.Add('Name', $jobName)
+        if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
+            $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
+            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+            
+            $null = $PSBoundParameters.Remove('ProtectedItemName')
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('ForceDelete')
+            $null = $PSBoundParameters.Add('Name', $jobName)
 
-        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+        }
     }
 }

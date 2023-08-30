@@ -15,13 +15,13 @@ Starts the migration for the replicating server.
 ### ByID (Default)
 ```
 Start-AzMigrateHCIServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Start-AzMigrateHCIServerMigration -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
- [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,6 +195,37 @@ Specifies whether the source server should be turned off post migration.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

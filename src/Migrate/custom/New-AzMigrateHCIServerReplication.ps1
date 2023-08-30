@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehciserverr
 #>
 function New-AzMigrateHCIServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
-    [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
@@ -167,6 +167,8 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('TargetStoragePathId')
         $null = $PSBoundParameters.Remove('OSDiskID')
         $null = $PSBoundParameters.Remove('MachineId')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
         
         $MachineIdArray = $MachineId.Split("/")
         $SiteType = $MachineIdArray[7]
@@ -530,20 +532,22 @@ function New-AzMigrateHCIServerReplication {
         
         $protectedItemProperties.CustomProperty = $customProperties
 
-        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $vaultName)
-        $null = $PSBoundParameters.Add('Name', $MachineName)
-        $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
-        $null = $PSBoundParameters.Add('NoWait', $true)
-        
-        $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
-        $jobName = $operation.Target.Split("/")[14].Split("?")[0]
-        
-        $null = $PSBoundParameters.Remove('Name')  
-        $null = $PSBoundParameters.Remove('Property')
-        $null = $PSBoundParameters.Remove('NoWait')
+        if ($PSCmdlet.ShouldProcess($MachineId, "Replicate VM.")){
+            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+            $null = $PSBoundParameters.Add('VaultName', $vaultName)
+            $null = $PSBoundParameters.Add('Name', $MachineName)
+            $null = $PSBoundParameters.Add('Property', $protectedItemProperties)
+            $null = $PSBoundParameters.Add('NoWait', $true)
+            
+            $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
+            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+            
+            $null = $PSBoundParameters.Remove('Name')  
+            $null = $PSBoundParameters.Remove('Property')
+            $null = $PSBoundParameters.Remove('NoWait')
 
-        $null = $PSBoundParameters.Add('Name', $jobName)
-        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            $null = $PSBoundParameters.Add('Name', $jobName)
+            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+        }
     }
 }

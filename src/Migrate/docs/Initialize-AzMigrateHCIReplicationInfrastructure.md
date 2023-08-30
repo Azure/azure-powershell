@@ -15,7 +15,7 @@ Initializes the infrastructure for the migrate project.
 ```
 Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName <String> -ResourceGroupName <String>
  -SourceApplianceName <String> -TargetApplianceName <String> [-CacheStorageAccountId <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infr
 
 ### Example 1: Initialize AzStackHCI replication infrastructure
 ```powershell
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
@@ -39,7 +39,7 @@ Cache storage account, replication policy, and replication extension will be cre
 ```powershell
 $cacheStorageAccount = Get-AzStorageAccount -ResourceGroupName "test-rg" -Name "customcachesa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
@@ -165,6 +165,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

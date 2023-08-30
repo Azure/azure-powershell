@@ -17,7 +17,7 @@ Set-AzMigrateHCIServerReplication -TargetObjectID <String>
  [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <Boolean>]
  [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>] [-TargetVirtualSwitch <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMName <String>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,6 +209,37 @@ Specifies the target RAM size in MB.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

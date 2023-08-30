@@ -1,6 +1,6 @@
 ### Example 1: Initialize AzStackHCI replication infrastructure
 ```powershell
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
@@ -13,7 +13,7 @@ Initialize AzStackHCI replication infrastructure. Cache storage account, replica
 ```powershell
 $cacheStorageAccount = Get-AzStorageAccount -ResourceGroupName "test-rg" -Name "customcachesa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThur:$true
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output

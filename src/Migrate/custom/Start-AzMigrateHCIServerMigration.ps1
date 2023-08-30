@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratehciserve
 #>
 function Start-AzMigrateHCIServerMigration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
-    [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -106,6 +106,9 @@ function Start-AzMigrateHCIServerMigration {
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('InputObject')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
+        
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($parameterSet -eq 'ByInputObject') {
@@ -161,14 +164,16 @@ function Start-AzMigrateHCIServerMigration {
         $null = $PSBoundParameters.Add('NoWait', $true)
         $null = $PSBoundParameters.Add('Property', $properties)
 
-        $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover @PSBoundParameters
-        $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+        if ($PSCmdlet.ShouldProcess($TargetObjectID, "Migrate VM.")) {
+            $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover @PSBoundParameters
+            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
 
-        $null = $PSBoundParameters.Remove('ProtectedItemName')  
-        $null = $PSBoundParameters.Remove('NoWait')
-        $null = $PSBoundParameters.Remove('Property')
-        $null = $PSBoundParameters.Add('Name', $jobName)
+            $null = $PSBoundParameters.Remove('ProtectedItemName')  
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('Property')
+            $null = $PSBoundParameters.Add('Name', $jobName)
 
-        return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+        }
     }
 }

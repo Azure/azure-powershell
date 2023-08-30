@@ -17,7 +17,7 @@ Starts replication for the specified server.
 New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
  -TargetStoragePathId <String> -TargetVirtualSwitch <String> -TargetVMName <String>
  [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
- [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -25,7 +25,8 @@ New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -Target
 New-AzMigrateHCIServerReplication -DiskToInclude <AzStackHCIDiskInput[]> -MachineId <String>
  -NicToInclude <AzStackHCINicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
  -TargetVMName <String> [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>]
- [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -308,6 +309,37 @@ Specifies the target RAM size in MB.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
