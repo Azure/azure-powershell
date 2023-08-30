@@ -144,7 +144,7 @@ Validate whether adhoc backup will be successful or not
 Validates if Restore can be triggered for a DataSource
 
 ### [Undo-AzDataProtectionBackupInstanceDeletion](Undo-AzDataProtectionBackupInstanceDeletion.md)
-
+Undeletes a soft deleted backup instance
 
 ### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
 Unlocks the critical operation which is protected by the resource guard

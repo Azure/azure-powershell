@@ -8,7 +8,7 @@ schema: 2.0.0
 # Undo-AzDataProtectionBackupInstanceDeletion
 
 ## SYNOPSIS
-
+Undeletes a soft deleted backup instance
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentit
 ```
 
 ## DESCRIPTION
-
+Undeletes a soft deleted backup instance
 
 ## EXAMPLES
 
