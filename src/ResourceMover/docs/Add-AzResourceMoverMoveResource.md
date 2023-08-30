@@ -20,7 +20,7 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.
+Creates or updates a Move Resource in the move collection. The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
 
 ## EXAMPLES
 

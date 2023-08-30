@@ -19,7 +19,7 @@ Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName <String> -Re
 ```
 
 ## DESCRIPTION
-Computes, resolves and validate the dependencies of the moveResources in the move collection.
+Computes, resolves and validate the dependencies of the moveResources in the move collection. The 'Resolve-AzResourceMoverMoveCollectionDependency' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections. However, while resolving the move collections with moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection whereas for 'RegionToRegion' type move collections it just resolves the move collection and the required dependencies are supposed to be added manually by the user.
 
 ## EXAMPLES
 

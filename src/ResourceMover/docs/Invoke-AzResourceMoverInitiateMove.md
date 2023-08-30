@@ -24,6 +24,7 @@ Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupNa
 Moves the set of resources included in the request body.
 The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
 
 ## EXAMPLES
 

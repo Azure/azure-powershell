@@ -21,7 +21,9 @@ New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-S
 ```
 
 ## DESCRIPTION
-Creates or updates a move collection.
+Creates or updates a move collection. The following types of move collections with move type based on the scenario are supported currently :
+    1. RegionToRegion (Moving resources across regions)
+    2. RegionToZone (Moving resources into a zone within a region)
 
 ## EXAMPLES
 
@@ -36,7 +38,20 @@ Etag                                   Location      Name                       
 "0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
 ```
 
-Create a new Move Collection.
+Create a new Move Collection for moving resources across regions. Please note that here the moveType is set to its default value "RegionToRegion"
+
+### Example 2: Create a new Move collection (RegionToZone).
+```powershell
+New-AzResourceMoverMoveCollection -Name "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveRegion "eastus" -Location "eastus2euap" -IdentityType "SystemAssigned" -MoveType "RegionToZone"
+```
+
+```output
+Etag                                   Location    Name
+----                                   --------    ----
+"0600b906-0000-3400-0000-64edffe00000" eastus2euap PS-demo-RegionToZone
+```
+
+Create a new Move Collection for moving resources into a zone within a region
 
 ## PARAMETERS
 
