@@ -25,6 +25,7 @@
 * Updated Azure.Core to 1.34.0.
 * Added new cmdlets `Get-AzHostSize` and `Update-AzHost`.
 * Added the `Standard` value to the `SecurityType` parameter to the cmdlets `Set-AzDiskSecurityType`, `New-AzvmssConfig`, `Set-AzVmssSecurityProfile`, `Update-AzVmss`, `New-AzVmss`, `New-AzVMConfig`, `Set-AzVMsecurityProfile`, and `New-AzVM`.
+* Fixed `Update-AzVMSS` to update ImageReferenceSKU [#22195]
 * Updated the above change to include `New-AzVMConfig` as 1 scenario was initially missed when only using this cmdlet.
 
 ## Version 6.2.0
