@@ -11,9 +11,9 @@ Initialize AzStackHCI replication infrastructure. Cache storage account, replica
 
 ### Example 2: Initialize AzStackHCI replication infrastructure with custom cache storage account
 ```powershell
-$cacheStorageAccount = Get-AzStorageAccount -ResourceGroupName "test-rg" -Name "customcachesa"
+$cacheStorageAccountId = "/subscriptions/xxx-xxx-xxxx/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/testSa"
 
-Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccount.Id -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
 ```output
