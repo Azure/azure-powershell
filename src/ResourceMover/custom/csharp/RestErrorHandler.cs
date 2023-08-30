@@ -12,7 +12,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
     {
         public static void WriteError(this Cmdlet cmdlet, HttpResponseMessage responseMessage, Task<ICloudError> errorResponseTask, ref Task<bool> returnNow)
         {
-            var errorString = responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            var response = errorResponseTask.ConfigureAwait(false).GetAwaiter().GetResult();
+            var errorString = string.Format("ErrorCode: {0}, Message: {1}", response.Code, response.Message);
+            errorString+= System.Environment.NewLine;
+
+            if (response?.Detail != null && response?.Detail?.Length != 0)
+            {
+                var errors = response.Detail;
+
+                foreach(var error in errors)
+                {
+                    errorString += string.Format("ErrorCode: {0}, Message: {1}", error.Code, error.Message);
+                    errorString+= System.Environment.NewLine;
+                }
+            }
             cmdlet.WriteError(new ErrorRecord(new System.Exception(), null, ErrorCategory.InvalidOperation, null)
             {
                 ErrorDetails = new ErrorDetails(errorString) { RecommendedAction = string.Empty }
