@@ -28,37 +28,20 @@ using System.ComponentModel;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using System.IO;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using Sku = Microsoft.Azure.Management.KeyVault.Models.Sku;
-using Newtonsoft.Json.Converters;
 using System.Globalization;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Threading.Tasks;
-// using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
-// using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
-// using Microsoft.Azure.Management.ResourceManager;
-// using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Collections;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Reflection;
 using ProvisioningState = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ProvisioningState;
 using System.Text;
 using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Microsoft.Azure.Commands.KeyVault.Progress;
-using System.Security.Cryptography;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
-using System.Threading;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
-using System.Runtime.CompilerServices;
-using Org.BouncyCastle.Utilities.Net;
-using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Deployment = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.Deployment;
 using DeploymentExtended = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentExtended;
 using DeploymentOperation = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentOperation;
@@ -68,6 +51,7 @@ using DeploymentProperties = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers
 using DeploymentMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentMode;
 using DebugSetting = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DebugSetting;
 using ParametersLink = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ParametersLink;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -159,23 +143,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             parameters.Name = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel, networkRuleSet);
             parameters.Location = null;
-            // var existed = ResourceManagementClient.Deployments.CheckExistence(parameters.ResourceGroupName, parameters.Name);
 
-            // WriteInfo("Validating KeyVault creation...", cmdlet);
-            // this.RunDeploymentValidation(parameters, deployment, cmdlet);
             this.BeginDeployment(parameters, deployment, cmdlet);
             var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
             
             return GetVault(parameters.Name, parameters.ResourceGroupName);
-        }
-        private void WriteInfo(string s, Cmdlet cmdlet)
-        {
-            string statusMessage = s;
-            var clearMessage = new string(' ', statusMessage.Length);
-            var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
-            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
-            var tags = new[] { "PSHOST" };
-            cmdlet.WriteInformation(information, tags);
         }
         private void WriteDeploymentProgress(VaultCreationOrUpdateParameters parameters, DeploymentOperationErrorInfo deploymentOperationError)
         {
@@ -356,103 +328,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
         private void BeginDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
-        {/*
-            bool threadCompleted = false;
-            var progressBarTimeSpan = 65;
-            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-            var creationStatus = new ProgressStatus(0, progressBarTimeSpan);
-            // var actionName = "Starting creating KeyVault...";
-            Action onComplete = () =>
-            {
-                threadCompleted = true;
-            };
-            
-            var creationThread = new Task(
-            () =>
-            {
-                var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
-                onComplete();
-            });
-            
-            await Task.Run(() =>
-            {
-                var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
-                onComplete();
-            });*/
-            var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
-            // validationResult = this.GetTemplateValidationResult(parameters, deployment);
-            /*ProgressTracker progressTracker = new ProgressTracker(creationStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
-            while (!threadCompleted)
-            {
-                progressTracker.Update(actionName);
-                Thread.Sleep(500);
-            }*/
-        }
-
-        
-        
-        private void RunDeploymentValidation(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
         {
-            TemplateValidationInfo validationResult = null;
-            var progressBarTimeSpan = 50;
-            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
-            var actionName = "Validating KeyVault";
-            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-            bool threadCompleted = false;
-
-            Action onComplete = () =>
-            {
-                threadCompleted = true;
-            };
-            var validationThread = new Thread(
-                () =>
-                {
-                    try
-                    {
-                        validationResult = this.GetTemplateValidationResult(parameters, deployment);
-                    }
-                    finally
-                    {
-                        onComplete();
-                    }
-                });
-            validationThread.Start();
-            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
-            while (!threadCompleted)
-            {
-                progressTracker.Update(actionName);
-                Thread.Sleep(500);
-            }
-
-            
-            
-            if (validationResult.Errors.Count != 0)
-            {
-                foreach (var error in validationResult.Errors)
-                {
-                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
-                    if (error.Details != null && error.Details.Count > 0)
-                    {
-                        foreach (var innerError in error.Details)
-                        {
-                            DisplayInnerDetailErrorMessage(innerError);
-                        }
-                    }
-                }
-                throw new InvalidOperationException(validationResult.Errors.FirstOrDefault().Message);
-            }
-            else
-            {
-                WriteVerbose("TemplateValid");
-            }
+            var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
         }
+
         private TemplateValidationInfo GetTemplateValidationResult(VaultCreationOrUpdateParameters parameters, Deployment deployment)
         {
             try
             {
-                // WriteVerbose("Start validating");
                 var validationResult = this.ValidateDeployment(parameters, deployment);
-                // WriteVerbose("Got result.");
                 return new TemplateValidationInfo(validationResult);
             }
             catch (Exception ex)
@@ -646,37 +530,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 WhatIfOperationResult whatIfOperationResult = null;
-                /*
-                bool threadCompleted = false;
-                var progressBarTimeSpan = 25;
-                Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
-                var creationStatus = new ProgressStatus(0, progressBarTimeSpan);
-                var actionName = "Checking what will happen if execute...";
-                Action onComplete = () =>
-                {
-                    threadCompleted = true;
-                };
-                var creationThread = new Thread(
-                    () =>
-                    {
-                        try
-                        {
-                            whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
-                        }
-                        finally
-                        {
-                            onComplete();
-                        }
-                    });
-                creationThread.Start();
-                // validationResult = this.GetTemplateValidationResult(parameters, deployment);
-                ProgressTracker progressTracker = new ProgressTracker(creationStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
-                while (!threadCompleted)
-                {
-                    progressTracker.Update(actionName);
-                    Thread.Sleep(500);
-                }*/
-
 
                 whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
 

@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
 {

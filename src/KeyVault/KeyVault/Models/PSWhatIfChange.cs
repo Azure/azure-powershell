@@ -17,9 +17,10 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
-using Microsoft.Azure.Commands.KeyVault.Commands;
+using Microsoft.Azure.Commands.KeyVault.Extensions;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSWhatIfChange
     {
@@ -38,14 +39,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             this.whatIfChange = whatIfChange;
 
             (string scope, string relativeResourceId) = ResourceIdUtility.SplitResourceId(whatIfChange.ResourceId);
-            this.Scope = scope;
-            this.RelativeResourceId = relativeResourceId;
+            Scope = scope;
+            RelativeResourceId = relativeResourceId;
 
-            this.apiVersion = new Lazy<string>(() =>
-                this.Before?["apiVersion"]?.Value<string>() ?? this.After?["apiVersion"]?.Value<string>());
-            this.before = new Lazy<JToken>(() => whatIfChange.Before.ToJToken());
-            this.after = new Lazy<JToken>(() => whatIfChange.After.ToJToken());
-            this.delta = new Lazy<IList<PSWhatIfPropertyChange>>(() =>
+            apiVersion = new Lazy<string>(() =>
+                Before?["apiVersion"]?.Value<string>() ?? After?["apiVersion"]?.Value<string>());
+            before = new Lazy<JToken>(() => whatIfChange.Before.ToJToken());
+            after = new Lazy<JToken>(() => whatIfChange.After.ToJToken());
+            delta = new Lazy<IList<PSWhatIfPropertyChange>>(() =>
                 whatIfChange.Delta?.Select(pc => new PSWhatIfPropertyChange(pc)).ToList());
         }
 
@@ -53,16 +54,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public string RelativeResourceId { get; }
 
-        public string FullyQualifiedResourceId => this.whatIfChange.ResourceId;
+        public string FullyQualifiedResourceId => whatIfChange.ResourceId;
 
-        public ChangeType ChangeType => this.whatIfChange.ChangeType;
+        public ChangeType ChangeType => whatIfChange.ChangeType;
 
-        public string ApiVersion => this.apiVersion.Value;
+        public string ApiVersion => apiVersion.Value;
 
-        public JToken Before => this.before.Value;
+        public JToken Before => before.Value;
 
-        public JToken After => this.after.Value;
+        public JToken After => after.Value;
 
-        public IList<PSWhatIfPropertyChange> Delta => this.delta.Value;
+        public IList<PSWhatIfPropertyChange> Delta => delta.Value;
     }
 }

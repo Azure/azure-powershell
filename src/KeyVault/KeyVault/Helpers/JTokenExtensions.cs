@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Commands;
+﻿using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

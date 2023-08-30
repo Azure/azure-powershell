@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     using System.Collections.Generic;
     using System;
     using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
     using System.Linq;
+
     public class PSWhatIfOperationResult
     {
         private readonly WhatIfOperationResult whatIfOperationResult;
@@ -29,13 +28,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSWhatIfOperationResult(WhatIfOperationResult whatIfOperationResult)
         {
             this.whatIfOperationResult = whatIfOperationResult;
-            this.changes = new Lazy<IList<PSWhatIfChange>>(() =>
+            changes = new Lazy<IList<PSWhatIfChange>>(() =>
                 whatIfOperationResult.Changes?.Select(c => new PSWhatIfChange(c)).ToList());
         }
 
-        public string Status => this.whatIfOperationResult.Status;
+        public string Status => whatIfOperationResult.Status;
 
-        public ErrorResponse Error => this.whatIfOperationResult.Error;
-        public IList<PSWhatIfChange> Changes => this.changes.Value;
+        public ErrorResponse Error => whatIfOperationResult.Error;
+        public IList<PSWhatIfChange> Changes => changes.Value;
     }
 }

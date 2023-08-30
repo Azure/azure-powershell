@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.KeyVault.Commands
+namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     internal class CamelCasePropertyNamesWithOverridesContractResolver : CamelCasePropertyNamesContractResolver
     {

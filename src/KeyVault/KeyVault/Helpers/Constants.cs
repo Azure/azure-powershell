@@ -1,5 +1,4 @@
-﻿
-namespace Microsoft.Azure.Commands.KeyVault
+﻿namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     public static class Constants
     {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// The deployments resource type.
         /// </summary>
-        public static readonly string MicrosoftResourcesDeploymentType = Constants.MicrosoftResourceNamesapce + "/deployments";
+        public static readonly string MicrosoftResourcesDeploymentType = MicrosoftResourceNamesapce + "/deployments";
         public static readonly string ResourceGroups = "ResourceGroups";
         public static readonly string Providers = "Providers";
     }

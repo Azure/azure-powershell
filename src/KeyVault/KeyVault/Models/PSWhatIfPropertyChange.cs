@@ -15,11 +15,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.KeyVault.Commands;
+using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSWhatIfPropertyChange
     {
@@ -34,21 +34,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSWhatIfPropertyChange(WhatIfPropertyChange whatIfPropertyChange)
         {
             this.whatIfPropertyChange = whatIfPropertyChange;
-            this.before = new Lazy<JToken>(() => whatIfPropertyChange.Before.ToJToken());
-            this.after = new Lazy<JToken>(() => whatIfPropertyChange.After.ToJToken());
-            this.children = new Lazy<IList<PSWhatIfPropertyChange>>(() =>
+            before = new Lazy<JToken>(() => whatIfPropertyChange.Before.ToJToken());
+            after = new Lazy<JToken>(() => whatIfPropertyChange.After.ToJToken());
+            children = new Lazy<IList<PSWhatIfPropertyChange>>(() =>
                 whatIfPropertyChange.Children?.Select(pc => new PSWhatIfPropertyChange(pc)).ToList());
         }
 
-        public string Path => this.whatIfPropertyChange.Path;
+        public string Path => whatIfPropertyChange.Path;
 
-        public PropertyChangeType PropertyChangeType => this.whatIfPropertyChange.PropertyChangeType;
+        public PropertyChangeType PropertyChangeType => whatIfPropertyChange.PropertyChangeType;
 
-        public JToken Before => this.before.Value;
+        public JToken Before => before.Value;
 
-        public JToken After => this.after.Value;
+        public JToken After => after.Value;
 
-        public IList<PSWhatIfPropertyChange> Children => this.children.Value;
+        public IList<PSWhatIfPropertyChange> Children => children.Value;
     }
 
 

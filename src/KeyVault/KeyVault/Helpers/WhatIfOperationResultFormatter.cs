@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Comparers;
-using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +20,9 @@ using System;
 using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.KeyVault.Extensions;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     public class WhatIfOperationResultFormatter : WhatIfJsonFormatter
     {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void FormatNoiseNotice()
         {
-            this.Builder
+            Builder
                 .AppendLine("WhatIfNoiseNotice")
                 .AppendLine();
         }
@@ -89,11 +89,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void FormatStats(IList<PSWhatIfChange> resourceChanges)
         {
-            this.Builder.AppendLine().Append("Resource changes: ");
+            Builder.AppendLine().Append("Resource changes: ");
 
             if (resourceChanges == null || resourceChanges.Count == 0)
             {
-                this.Builder.Append("no change");
+                Builder.Append("no change");
             }
             else
             {
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     .GroupBy(rc => rc.ChangeType)
                     .Select(g => new { ChangeType = g.Key, Count = g.Count() })
                     .Where(x => x.Count != 0)
-                    .Select(x => this.FormatChangeTypeCount(x.ChangeType, x.Count));
+                    .Select(x => FormatChangeTypeCount(x.ChangeType, x.Count));
 
-                this.Builder.Append(string.Join(", ", stats));
+                Builder.Append(string.Join(", ", stats));
             }
 
-            this.Builder.Append(".");
+            Builder.Append(".");
         }
 
         private string FormatChangeTypeCount(ChangeType changeType, int count)
@@ -157,13 +157,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                 PopulateChangeTypeSet(resourceChange.Delta);
             }
 
-            this.Builder
+            Builder
                 .Append("Resource and property changes are indicated with ")
                 .AppendLine(psChangeTypeSet.Count == 1 ? "this symbol:" : "these symbols:");
 
             psChangeTypeSet
                 .OrderBy(x => x, new PSChangeTypeComparer())
-                .ForEach(x => this.Builder
+                .ForEach(x => Builder
                     .Append(Indent())
                     .Append(x.ToSymbol(), x.ToColor())
                     .Append(Symbol.WhiteSpace)
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             int scopeCount = resourceChanges.Select(rc => rc.Scope.ToUpperInvariant()).Distinct().Count();
 
-            this.Builder
+            Builder
                 .AppendLine()
                 .Append("The deployment will update the following ")
                 .AppendLine(scopeCount == 1 ? "scope:" : "scopes:");
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private void FormatResourceChangesInScope(string scope, IList<PSWhatIfChange> resourceChanges)
         {
             // Scope.
-            this.Builder
+            Builder
                 .AppendLine()
                 .AppendLine($"Scope: {scope}");
 
@@ -210,17 +210,17 @@ namespace Microsoft.Azure.Commands.KeyVault
                 .ToDictionary(g => g.Key, g => g.ToList())
                 .ForEach(kvp =>
                 {
-                    using (this.Builder.NewColorScope(kvp.Key.ToColor()))
+                    using (Builder.NewColorScope(kvp.Key.ToColor()))
                     {
-                        kvp.Value.ForEach(rc => this.FormatResourceChange(rc, rc == sortedResourceChanges.Last()));
+                        kvp.Value.ForEach(rc => FormatResourceChange(rc, rc == sortedResourceChanges.Last()));
                     }
                 });
         }
 
         private void FormatResourceChange(PSWhatIfChange resourceChange, bool isLast)
         {
-            this.Builder.AppendLine();
-            this.FormatResourceChangePath(
+            Builder.AppendLine();
+            FormatResourceChangePath(
                 resourceChange.ChangeType,
                 resourceChange.RelativeResourceId,
                 resourceChange.ApiVersion);
@@ -228,27 +228,27 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (resourceChange.ChangeType)
             {
                 case ChangeType.Create when resourceChange.After != null:
-                    this.FormatJson(resourceChange.After, indentLevel: 2);
+                    FormatJson(resourceChange.After, indentLevel: 2);
 
                     return;
 
                 case ChangeType.Delete when resourceChange.Before != null:
-                    this.FormatJson(resourceChange.Before, indentLevel: 2);
+                    FormatJson(resourceChange.Before, indentLevel: 2);
 
                     return;
 
                 default:
                     if (resourceChange.Delta?.Count > 0)
                     {
-                        using (this.Builder.NewColorScope(Color.Reset))
+                        using (Builder.NewColorScope(Color.Reset))
                         {
                             IList<PSWhatIfPropertyChange> propertyChanges = resourceChange.Delta
                                 .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
                                 .ThenBy(pc => pc.Path)
                                 .ToList();
 
-                            this.Builder.AppendLine();
-                            this.FormatPropertyChanges(propertyChanges);
+                            Builder.AppendLine();
+                            FormatPropertyChanges(propertyChanges);
                         }
 
                         return;
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                     if (isLast)
                     {
-                        this.Builder.AppendLine();
+                        Builder.AppendLine();
                     }
 
                     return;
@@ -265,12 +265,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void FormatResourceChangePath(ChangeType changeType, string relativeResourceId, string apiVersion)
         {
-            this.FormatPath(
+            FormatPath(
                 relativeResourceId,
                 0,
                 1,
-                () => this.Builder.Append(changeType.ToSymbol()).Append(Symbol.WhiteSpace),
-                () => this.FormatResourceChangeApiVersion(apiVersion));
+                () => Builder.Append(changeType.ToSymbol()).Append(Symbol.WhiteSpace),
+                () => FormatResourceChangeApiVersion(apiVersion));
         }
 
         private void FormatResourceChangeApiVersion(string apiVersion)
@@ -280,9 +280,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            using (this.Builder.NewColorScope(Color.Reset))
+            using (Builder.NewColorScope(Color.Reset))
             {
-                this.Builder
+                Builder
                     .Append(Symbol.WhiteSpace)
                     .Append(Symbol.LeftSquareBracket)
                     .Append(apiVersion)
@@ -295,8 +295,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             int maxPathLength = GetMaxPathLength(propertyChanges);
             propertyChanges.ForEach(pc =>
             {
-                this.FormatPropertyChange(pc, maxPathLength, indentLevel);
-                this.Builder.AppendLine();
+                FormatPropertyChange(pc, maxPathLength, indentLevel);
+                Builder.AppendLine();
             });
         }
 
@@ -313,28 +313,28 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (propertyChange.PropertyChangeType)
             {
                 case PropertyChangeType.Create:
-                    this.FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
-                    this.FormatPropertyCreate(after, indentLevel + 1);
+                    FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
+                    FormatPropertyCreate(after, indentLevel + 1);
                     break;
 
                 case PropertyChangeType.Delete:
-                    this.FormatPropertyChangePath(propertyChangeType, path, before, children, maxPathLength, indentLevel);
-                    this.FormatPropertyDelete(before, indentLevel + 1);
+                    FormatPropertyChangePath(propertyChangeType, path, before, children, maxPathLength, indentLevel);
+                    FormatPropertyDelete(before, indentLevel + 1);
                     break;
 
                 case PropertyChangeType.Modify:
-                    this.FormatPropertyChangePath(propertyChangeType, path, before, children, maxPathLength, indentLevel);
-                    this.FormatPropertyModify(propertyChange, indentLevel + 1);
+                    FormatPropertyChangePath(propertyChangeType, path, before, children, maxPathLength, indentLevel);
+                    FormatPropertyModify(propertyChange, indentLevel + 1);
                     break;
 
                 case PropertyChangeType.Array:
-                    this.FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
-                    this.FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
+                    FormatPropertyChangePath(propertyChangeType, path, null, children, maxPathLength, indentLevel);
+                    FormatPropertyArrayChange(propertyChange.Children, indentLevel + 1);
                     break;
 
                 case PropertyChangeType.NoEffect:
-                    this.FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
-                    this.FormatPropertyNoEffect(after, indentLevel + 1);
+                    FormatPropertyChangePath(propertyChangeType, path, after, children, maxPathLength, indentLevel);
+                    FormatPropertyNoEffect(after, indentLevel + 1);
                     break;
 
                 default:
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             int paddingWidth = maxPathLength - path.Length + 1;
             bool hasChildren = children != null && children.Count > 0;
 
-            if (valueAfterPath.IsNonEmptyArray() || (propertyChangeType == PropertyChangeType.Array && hasChildren))
+            if (valueAfterPath.IsNonEmptyArray() || propertyChangeType == PropertyChangeType.Array && hasChildren)
             {
                 paddingWidth = 1;
             }
@@ -366,34 +366,34 @@ namespace Microsoft.Azure.Commands.KeyVault
                 paddingWidth = 0;
             }
 
-            this.FormatPath(
+            FormatPath(
                 path,
                 paddingWidth,
                 indentLevel,
-                () => this.FormatPropertyChangeType(propertyChangeType),
-                this.FormatColon);
+                () => FormatPropertyChangeType(propertyChangeType),
+                FormatColon);
         }
 
         private void FormatPropertyChangeType(PropertyChangeType propertyChangeType)
         {
-            this.Builder
+            Builder
                 .Append(propertyChangeType.ToSymbol(), propertyChangeType.ToColor())
                 .Append(Symbol.WhiteSpace);
         }
 
         private void FormatPropertyCreate(JToken value, int indentLevel)
         {
-            using (this.Builder.NewColorScope(Color.Green))
+            using (Builder.NewColorScope(Color.Green))
             {
-                this.FormatJson(value, indentLevel: indentLevel);
+                FormatJson(value, indentLevel: indentLevel);
             }
         }
 
         private void FormatPropertyDelete(JToken value, int indentLevel)
         {
-            using (this.Builder.NewColorScope(Color.Orange))
+            using (Builder.NewColorScope(Color.Orange))
             {
-                this.FormatJson(value, indentLevel: indentLevel);
+                FormatJson(value, indentLevel: indentLevel);
             }
         }
 
@@ -402,8 +402,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (propertyChange.Children != null)
             {
                 // Has nested changes.
-                this.Builder.AppendLine().AppendLine();
-                this.FormatPropertyChanges(propertyChange.Children
+                Builder.AppendLine().AppendLine();
+                FormatPropertyChanges(propertyChange.Children
                         .OrderBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
                         .ThenBy(pc => pc.Path)
                         .ToList(),
@@ -415,35 +415,35 @@ namespace Microsoft.Azure.Commands.KeyVault
                 JToken after = propertyChange.After;
 
                 // The before value.
-                this.FormatPropertyDelete(before, indentLevel);
+                FormatPropertyDelete(before, indentLevel);
 
                 // Space before =>
                 if (before.IsNonEmptyObject())
                 {
-                    this.Builder
+                    Builder
                         .AppendLine()
                         .Append(Indent(indentLevel));
                 }
                 else
                 {
-                    this.Builder.Append(Symbol.WhiteSpace);
+                    Builder.Append(Symbol.WhiteSpace);
                 }
 
                 // =>
-                this.Builder.Append("=>");
+                Builder.Append("=>");
 
                 // Space after =>
                 if (!after.IsNonEmptyObject())
                 {
-                    this.Builder.Append(Symbol.WhiteSpace);
+                    Builder.Append(Symbol.WhiteSpace);
                 }
 
                 // The after value.
-                this.FormatPropertyCreate(after, indentLevel);
+                FormatPropertyCreate(after, indentLevel);
 
                 if (!before.IsLeaf() && after.IsLeaf())
                 {
-                    this.Builder.AppendLine();
+                    Builder.AppendLine();
                 }
             }
         }
@@ -452,32 +452,32 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (propertyChanges.Count == 0)
             {
-                this.Builder.AppendLine("[]");
+                Builder.AppendLine("[]");
                 return;
             }
 
             // [
-            this.Builder
+            Builder
                 .Append(Symbol.LeftSquareBracket)
                 .AppendLine();
 
-            this.FormatPropertyChanges(propertyChanges
+            FormatPropertyChanges(propertyChanges
                     .OrderBy(pc => int.Parse(pc.Path))
                     .ThenBy(pc => pc.PropertyChangeType, new PropertyChangeTypeComparer())
                     .ToList(),
                 indentLevel);
 
             // ]
-            this.Builder
+            Builder
                 .Append(Indent(indentLevel))
                 .Append(Symbol.RightSquareBracket);
         }
 
         private void FormatPropertyNoEffect(JToken value, int indentLevel)
         {
-            using (this.Builder.NewColorScope(Color.Gray))
+            using (Builder.NewColorScope(Color.Gray))
             {
-                this.FormatJson(value, indentLevel: indentLevel);
+                FormatJson(value, indentLevel: indentLevel);
             }
         }
     }

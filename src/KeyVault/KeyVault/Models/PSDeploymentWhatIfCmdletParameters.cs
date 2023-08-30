@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var jsonInfo = JObject.Parse(templateContent);
             jsonInfo["resources"][0]["name"] = kvparameters.Name;
+            jsonInfo["resources"][0]["apiVersion"] = kvparameters.ApiVersion;
             jsonInfo["resources"][0]["location"] = parameters.Location;
             if (string.IsNullOrWhiteSpace(kvparameters.SkuFamilyName))
                 throw new ArgumentNullException("parameters.SkuFamilyName");

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public enum PSChangeType
     {

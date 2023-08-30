@@ -15,9 +15,8 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System;
-using Microsoft.Azure.Commands.KeyVault.Helpers;
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     public class WhatIfJsonFormatter
     {
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public WhatIfJsonFormatter(ColoredStringBuilder builder)
         {
-            this.Builder = builder;
+            Builder = builder;
         }
 
         public static string FormatJson(JToken value)
@@ -44,17 +43,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (value.IsLeaf())
             {
-                this.FormatJsonPath(path, maxPathLength - path.Length + 1, indentLevel);
-                this.FormatLeaf(value);
+                FormatJsonPath(path, maxPathLength - path.Length + 1, indentLevel);
+                FormatLeaf(value);
             }
             else if (value.IsNonEmptyArray())
             {
-                this.FormatJsonPath(path, 1, indentLevel);
-                this.FormatNonEmptyArray(value as JArray, indentLevel);
+                FormatJsonPath(path, 1, indentLevel);
+                FormatNonEmptyArray(value as JArray, indentLevel);
             }
             else if (value.IsNonEmptyObject())
             {
-                this.FormatNonEmptyObject(value as JObject, path, maxPathLength, indentLevel);
+                FormatNonEmptyObject(value as JObject, path, maxPathLength, indentLevel);
             }
             else
             {
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected void FormatIndent(int indentLevel)
         {
-            this.Builder.Append(Indent(indentLevel));
+            Builder.Append(Indent(indentLevel));
         }
 
         protected void FormatPath(string path, int paddingWidth, int indentLevel, Action formatHead = null, Action formatTail = null)
@@ -80,21 +79,21 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            this.FormatIndent(indentLevel);
+            FormatIndent(indentLevel);
             formatHead?.Invoke();
-            this.Builder.Append(path);
+            Builder.Append(path);
             formatTail?.Invoke();
-            this.Builder.Append(new string(Symbol.WhiteSpace.ToChar(), paddingWidth));
+            Builder.Append(new string(Symbol.WhiteSpace.ToChar(), paddingWidth));
         }
 
         protected void FormatColon()
         {
-            this.Builder.Append(Symbol.Colon, Color.Reset);
+            Builder.Append(Symbol.Colon, Color.Reset);
         }
 
         protected void FormatPadding(int paddingWidth)
         {
-            this.Builder.Append(new string(Symbol.WhiteSpace.ToChar(), paddingWidth));
+            Builder.Append(new string(Symbol.WhiteSpace.ToChar(), paddingWidth));
         }
 
         private static int GetMaxPathLength(JArray arrayValue)
@@ -159,22 +158,22 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (value.Type)
             {
                 case JTokenType.Null:
-                    this.Builder.Append("null");
+                    Builder.Append("null");
                     return;
 
                 case JTokenType.Boolean:
-                    this.Builder.Append(value.ToString().ToLowerInvariant());
+                    Builder.Append(value.ToString().ToLowerInvariant());
                     return;
 
                 case JTokenType.String:
-                    this.Builder
+                    Builder
                         .Append(Symbol.Quote)
                         .Append(value)
                         .Append(Symbol.Quote);
                     return;
 
                 default:
-                    this.Builder.Append(value);
+                    Builder.Append(value);
                     return;
             }
         }
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private void FormatNonEmptyArray(JArray value, int indentLevel)
         {
             // [
-            this.Builder
+            Builder
                 .Append(Symbol.LeftSquareBracket, Color.Reset)
                 .AppendLine();
 
@@ -195,19 +194,19 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (childValue.IsNonEmptyObject())
                 {
-                    this.FormatJsonPath(childPath, 0, indentLevel + 1);
-                    this.FormatNonEmptyObject(childValue as JObject, indentLevel: indentLevel + 1);
+                    FormatJsonPath(childPath, 0, indentLevel + 1);
+                    FormatNonEmptyObject(childValue as JObject, indentLevel: indentLevel + 1);
                 }
                 else
                 {
-                    this.FormatJson(childValue, childPath, maxPathLength, indentLevel + 1);
+                    FormatJson(childValue, childPath, maxPathLength, indentLevel + 1);
                 }
 
-                this.Builder.AppendLine();
+                Builder.AppendLine();
             }
 
             // ]
-            this.Builder
+            Builder
                 .Append(Indent(indentLevel))
                 .Append(Symbol.RightSquareBracket, Color.Reset);
         }
@@ -218,7 +217,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (isRoot)
             {
-                this.Builder.AppendLine().AppendLine();
+                Builder.AppendLine().AppendLine();
 
                 maxPathLength = GetMaxPathLength(value);
                 indentLevel++;
@@ -228,16 +227,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             foreach (KeyValuePair<string, JToken> property in value)
             {
                 string childPath = isRoot ? property.Key : $"{path}{Symbol.Dot}{property.Key}";
-                this.FormatJson(property.Value, childPath, maxPathLength, indentLevel);
+                FormatJson(property.Value, childPath, maxPathLength, indentLevel);
 
                 if (!property.Value.IsNonEmptyObject())
                 {
-                    this.Builder.AppendLine();
+                    Builder.AppendLine();
                 }
             }
         }
 
         private void FormatJsonPath(string path, int paddingWidth, int indentLevel) =>
-            this.FormatPath(path, paddingWidth, indentLevel, formatTail: this.FormatColon);
+            FormatPath(path, paddingWidth, indentLevel, formatTail: FormatColon);
     }
 }

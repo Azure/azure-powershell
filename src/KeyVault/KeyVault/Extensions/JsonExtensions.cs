@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Helpers;
+﻿using Microsoft.Azure.Commands.KeyVault.Commands;
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -10,7 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.KeyVault.Commands
+namespace Microsoft.Azure.Commands.KeyVault.Extensions
 {
     public static class JsonExtensions
     {
@@ -59,12 +60,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <summary>
         /// The JSON media type serializer.
         /// </summary>
-        public static readonly JsonSerializer JsonMediaTypeSerializer = JsonSerializer.Create(JsonExtensions.MediaSerializationSettings);
+        public static readonly JsonSerializer JsonMediaTypeSerializer = JsonSerializer.Create(MediaSerializationSettings);
 
         /// <summary>
         /// The JSON object type serializer.
         /// </summary>
-        public static readonly JsonSerializer JsonObjectTypeSerializer = JsonSerializer.Create(JsonExtensions.ObjectSerializationSettings);
+        public static readonly JsonSerializer JsonObjectTypeSerializer = JsonSerializer.Create(ObjectSerializationSettings);
 
         /// <summary>
         /// Serialize object to the JSON.
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <param name="obj">The object.</param>
         public static string ToJson(this object obj)
         {
-            return JsonConvert.SerializeObject(obj, JsonExtensions.ObjectSerializationSettings);
+            return JsonConvert.SerializeObject(obj, ObjectSerializationSettings);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <param name="json">JSON representation of object</param>
         public static T FromJson<T>(this string json)
         {
-            return JsonConvert.DeserializeObject<T>(json, JsonExtensions.ObjectSerializationSettings);
+            return JsonConvert.DeserializeObject<T>(json, ObjectSerializationSettings);
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             using (var streamReader = new StreamReader(stream))
             using (var jsonReader = new JsonTextReader(streamReader))
             {
-                return JsonExtensions.JsonObjectTypeSerializer.Deserialize<T>(jsonReader);
+                return JsonObjectTypeSerializer.Deserialize<T>(jsonReader);
             }
         }
 
@@ -163,7 +164,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 return jArray;
             }
 
-            return JToken.FromObject(obj, JsonExtensions.JsonObjectTypeSerializer);
+            return JToken.FromObject(obj, JsonObjectTypeSerializer);
         }
 
         /// <summary>
@@ -187,14 +188,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (string.IsNullOrWhiteSpace(str))
             {
-                result = default(TType);
+                result = default;
                 return true;
             }
 
             try
             {
                 result = str.FromJson<TType>();
-                return !object.Equals(result, default(TType));
+                return !Equals(result, default(TType));
             }
             catch (FormatException)
             {
@@ -206,7 +207,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
             }
 
-            result = default(TType);
+            result = default;
             return false;
         }
 
@@ -220,14 +221,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         {
             if (jobject == null)
             {
-                result = default(TType);
+                result = default;
                 return true;
             }
 
             try
             {
-                result = jobject.ToObject<TType>(JsonExtensions.JsonMediaTypeSerializer);
-                return !object.Equals(result, default(TType));
+                result = jobject.ToObject<TType>(JsonMediaTypeSerializer);
+                return !Equals(result, default(TType));
             }
             catch (FormatException)
             {
@@ -239,7 +240,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
             }
 
-            result = default(TType);
+            result = default;
             return false;
         }
 

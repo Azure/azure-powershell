@@ -23,7 +23,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 using Newtonsoft.Json;
-using Microsoft.Azure.Commands.KeyVault.Commands;
+using Microsoft.Azure.Commands.KeyVault.Extensions;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

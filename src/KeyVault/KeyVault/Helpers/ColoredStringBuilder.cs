@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
-    using Microsoft.Azure.Commands.KeyVault.Helpers;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -32,61 +31,61 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public ColoredStringBuilder Append(string value)
         {
-            this.stringBuilder.Append(value);
+            stringBuilder.Append(value);
 
             return this;
         }
 
         public ColoredStringBuilder Append(string value, Color color)
         {
-            this.PushColor(color);
-            this.Append(value);
-            this.PopColor();
+            PushColor(color);
+            Append(value);
+            PopColor();
 
             return this;
         }
 
         private void PopColor()
         {
-            this.colorStack.Pop();
-            this.stringBuilder.Append(this.colorStack.Count > 0 ? this.colorStack.Peek() : Color.Reset);
+            colorStack.Pop();
+            stringBuilder.Append(colorStack.Count > 0 ? colorStack.Peek() : Color.Reset);
         }
 
         public ColoredStringBuilder Append(object value)
         {
-            this.stringBuilder.Append(value);
+            stringBuilder.Append(value);
 
             return this;
         }
 
         public ColoredStringBuilder Append(object value, Color color)
         {
-            this.PushColor(color);
-            this.Append(value);
-            this.PopColor();
+            PushColor(color);
+            Append(value);
+            PopColor();
 
             return this;
         }
 
         public ColoredStringBuilder AppendLine()
         {
-            this.stringBuilder.AppendLine();
+            stringBuilder.AppendLine();
 
             return this;
         }
 
         public ColoredStringBuilder AppendLine(string value)
         {
-            this.stringBuilder.AppendLine(value);
+            stringBuilder.AppendLine(value);
 
             return this;
         }
 
         public ColoredStringBuilder AppendLine(string value, Color color)
         {
-            this.PushColor(color);
-            this.AppendLine(value);
-            this.PopColor();
+            PushColor(color);
+            AppendLine(value);
+            PopColor();
 
             return this;
         }
@@ -98,8 +97,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void PushColor(Color color)
         {
-            this.colorStack.Push(color);
-            this.stringBuilder.Append(color);
+            colorStack.Push(color);
+            stringBuilder.Append(color);
         }
 
         public class AnsiColorScope : IDisposable
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             public void Dispose()
             {
-                this.builder.PopColor();
+                builder.PopColor();
             }
         }
     }

@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
-using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -143,8 +138,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
             deploymentName: this.Name,
             resourceGroupName: this.ResourceGroupName
-            // templateUri: Path.GetDirectoryName(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath)
-            // Assembly.GetExecutingAssembly().GetManifestResourceNames().FirstOrDefault(r => r.Contains("Template"))
             );
         protected PSWhatIfOperationResult ExecuteWhatIf(VaultCreationOrUpdateParameters VaultCreationParameter)
         {
@@ -207,21 +200,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     }
                 };
             }
-
-            /*
-            try
-            {
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
-                using (var reader = new StreamReader(stream))
-                {
-                    this.TemplateFile = reader.ReadToEnd();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new AzPSArgumentException(string.Format(Resources.FileNotFound, ex.Message), nameof(this.TemplateFile));
-            };
-            */
 
             var VaultCreationParameter = new VaultCreationOrUpdateParameters()
             {

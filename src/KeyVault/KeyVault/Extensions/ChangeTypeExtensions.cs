@@ -4,6 +4,7 @@
     using Microsoft.Azure.Commands.KeyVault.Helpers;
     using System;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.KeyVault.Models;
 
     public static class ChangeTypeExtensions
     {
