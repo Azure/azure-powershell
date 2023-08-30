@@ -19,21 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added breaking change warnings for Azure Policy cmdlets.
 * Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
-### `New-AzPolicyAssignment`, `Get-AzPolicyAssignment`, `Set-AzPolicyAssignment`
-* Policy assignment output type is changed to flatten out the Properties object.
-* `Description`, `DisplayName`, `EnforcementMode`, `Metadata`, `NonComplianceMessages`, `NotScopes`, `Parameters`, `PolicyDefinitionId`, and `Scope` properties are moved to the top level.
-### `New-AzPolicyExemption`, `Get-AzPolicyExemption`, `Set-AzPolicyExemption`
-* Policy exemption output type is changed to flatten out the Properties object.
-* `Description`, `DisplayName`, `ExemptionCategory`, `ExpiresOn`, `Metadata`, `PolicyAssignmentId`, and `PolicyDefinitionReferenceIds` properties are moved to the top level.
-### `New-AzPolicyDefinition`, `Get-AzPolicyDefinition`, `Set-AzPolicyDefinition`
-* Policy definition output type is changed to flatten out the Properties object.
-* `Description`, `DisplayName`, `Metadata`, `Mode`, `Parameters`, `PolicyRule`, and `PolicyType` properties are moved to the top level.
-### `New-AzPolicySetDefinition`, `Get-AzPolicySetDefinition`, `Set-AzPolicySetDefinition`
-* Policy set definition output type is changed to flatten out the Properties object.
-* `Description`, `DisplayName`, `Metadata`, `Parameters`, `PolicyDefinitionGroups`, `PolicyDefinitions`, and `PolicyType` properties are moved to the top level.
-### `Remove-AzPolicyAssignment`, `Remove-AzPolicyDefinition`, `Remove-AzPolicyExemption`, `Remove-AzPolicySetDefinition`
-* Return boolean value is removed unless the -Passthru switch is given.
 
 ## Version 6.9.1
 * Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
