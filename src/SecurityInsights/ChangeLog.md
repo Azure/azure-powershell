@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.2
 * Added breaking change message for `Az.SecurityInsights`.
 
 ## Version 3.0.1
