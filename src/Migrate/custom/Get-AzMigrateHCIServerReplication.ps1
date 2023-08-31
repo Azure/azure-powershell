@@ -145,7 +145,7 @@ function Get-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\AzStackHCICommonSettings.ps1
+        Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
 
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('TargetObjectID')

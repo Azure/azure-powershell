@@ -129,7 +129,7 @@ function Set-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\AzStackHCICommonSettings.ps1
+        CheckResourcesModuleDependency
         
         $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')

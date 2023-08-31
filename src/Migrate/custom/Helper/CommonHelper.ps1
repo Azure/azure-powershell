@@ -1,0 +1,105 @@
+function CheckResourceGraphModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ResourceGraph" }
+        if ($null -eq $module) {
+            $message = "Az.ResourceGraph Module must be installed to run this command. Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
+            throw $message
+        }
+    }
+}
+
+function CheckResourcesModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Resources" }
+        if ($null -eq $module) {
+            $message = "Az.Resources Module must be installed to run this command. Please run 'Install-Module -Name Az.Resources' to install and continue."
+            throw $message
+        }
+    }
+}
+
+function CheckStorageModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param() 
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.Storage" }
+        if ($null -eq $module) {
+            $message = "Az.Storage Module must be installed to run this command. Please run 'Install-Module -Name Az.Storage' to install and continue."
+            throw $message
+        }
+    }
+}
+
+function GetStorageContainerARGQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies HCI Cluster Id.
+        ${HCIClusterID}
+    )
+
+    process {
+        $query =  "resources | where type == 'microsoft.extendedlocation/customlocations'"
+        $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += "| extend CustomLocation = toupper(tostring(id))"
+        $query += "| project ClusterId, CustomLocation"
+        $query += "| join ("
+        $query += "kubernetesconfigurationresources"
+        $query += "| where type == 'microsoft.kubernetesconfiguration/extensions'"
+        $query += "| where properties['ConfigurationSettings']['HCIClusterID'] =~ '$HCIClusterID'"
+        $query += "| project ClusterId = id"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += ") on ClusterId"
+        $query += "| join ("
+        $query += "resources | where type == 'microsoft.azurestackhci/storagecontainers'"
+        $query += "| extend CustomLocation = toupper(tostring(extendedLocation['name']))"
+        $query += "| extend AvailableSizeMB = properties['status']['availableSizeMB']"
+        $query += "| extend  ContainerSizeMB = properties['status']['containerSizeMB']"
+        $query += ") on CustomLocation"
+        $query += "| project-away ClusterId, CustomLocation"
+
+        return $query
+    }
+}
+
+function GetVirtualSwitchARGQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies HCI Cluster Id.
+        ${HCIClusterID}
+    )
+
+    process {
+        $query =  "resources | where type == 'microsoft.extendedlocation/customlocations'"
+        $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += "| extend CustomLocation = toupper(tostring(id))"
+        $query += "| project ClusterId, CustomLocation"
+        $query += "| join ("
+        $query += "kubernetesconfigurationresources"
+        $query += "| where type == 'microsoft.kubernetesconfiguration/extensions'"
+        $query += "| where properties['ConfigurationSettings']['HCIClusterID'] =~ '$HCIClusterID'"
+        $query += "| project ClusterId = id"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += ") on ClusterId"
+        $query += "| join ("
+        $query += "resources"
+        $query += "| where type == 'microsoft.azurestackhci/virtualnetworks'"
+        $query += "| extend CustomLocation = toupper(tostring(extendedLocation['name']))"
+        $query += ") on CustomLocation"
+        $query += "| project-away ClusterId, CustomLocation, ClusterId1, CustomLocation1"
+
+        return $query
+    }
+}

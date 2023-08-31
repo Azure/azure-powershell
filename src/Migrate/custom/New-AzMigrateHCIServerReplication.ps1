@@ -148,8 +148,8 @@ function New-AzMigrateHCIServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\AzStackHCICommonSettings.ps1
-        Import-Module Az.ResourceGraph
+        CheckResourceGraphModuleDependency
+        CheckResourcesModuleDependency
 
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
@@ -175,7 +175,7 @@ function New-AzMigrateHCIServerReplication {
         $SiteName = $MachineIdArray[8]
         $ResourceGroupName = $MachineIdArray[4]
         $MachineName = $MachineIdArray[10]
-
+       
         if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
             throw "Site type is not supported. Site type '$SiteType'"
         }
@@ -310,9 +310,8 @@ function New-AzMigrateHCIServerReplication {
         $targetSubscription = $targetClusterIdArray[2]
 
         # Get Storage Container
-        $storageContainers = Search-AzGraph `
-            -Query ($StorageContainerQuery -f $targetClusterId) `
-            -Subscription $targetSubscription
+        $storageContainerArgQuery = GetStorageContainerARGQuery -HCIClusterID $targetClusterId
+        $storageContainers = Az.ResourceGraph\Search-AzGraph -Query $storageContainerArgQuery -Subscription $targetSubscription
         $storageContainer = $storageContainers | Where-Object {$_.Id -eq $TargetStoragePathId}
         if ($null -eq $storageContainer) {
             throw "No storage '$TargetStoragePathId' found in cluster '$targetClusterId'."
@@ -322,11 +321,15 @@ function New-AzMigrateHCIServerReplication {
             throw "The storage '$TargetStoragePathId' provisioning state is '$($storageContainer.Properties.ProvisioningState).'"
         }
 
-        # Get Virtual Switch
+        # Get Virtual Switches
+        $virtualSwitchArgQuery = GetVirtualSwitchARGQuery -HCIClusterID $targetClusterId
         $virtualSwitchIds = if ($parameterSet -match 'DefaultUser') { $TargetVirtualSwitchId } else { $NicToInclude | Select-Object -Property TargetNetworkId }
-        $virtualSwitches = Search-AzGraph `
-            -Query ($VirtualSwitchQuery -f $targetClusterId) `
-            -Subscription $targetSubscription
+        $virtualSwitches = Az.ResourceGraph\Search-AzGraph -Query $virtualSwitchArgQuery -Subscription $targetSubscription
+        
+        if ($null -eq $virtualSwitches) {
+            throw "No virtual switch found in cluster '$targetClusterId'."
+        }
+
         foreach ($virtualSwitchId in $virtualSwitchIds) {
             $virtualSwitch = $virtualSwitches | Where-Object {$_.Id -eq $virtualSwitchId}
             if ($null -eq $virtualSwitch) {
