@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.6.0
 * Fixed `Get-AzInsightsPrivateLinkScope` to support `ResourceId` parameter [#22568]
 * Fixed `New-AzMetricAlertRuleV2DimensionSelection` to have "exclude" or "include" values only [#22256]
 * Fixed `Add-AzMetriAlertRuleV2` and `Get-AzMetricAlertRuleV2` to support web tests criteria [#22350]

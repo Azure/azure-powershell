@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 *  Upgraded API verision from 2022-02-14 to 2022-07-01.
    - Added a cmdlet named `Get-AzImageBuilderTrigger`.
    - Added a cmdlet named `New-AzImageBuilderTemplateDistributeVersionerLatestObject` to create an in-memory object for DistributeVersionerLatest.
