@@ -4741,3 +4741,67 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with SecurityType of Standard with Config.
+No SecurityPRofile should be made for now in this scenario. 
+#>
+function Test-VirtualMachineScaleSetFlexAnyPFDC
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $vmssScaleSetName = “vmss” + $rgname;
+        $pfdCount = 3;
+        $domainNameLabel = "d1" + $rgname;
+        
+        # Credentials
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        #Create New VMSS Scale set
+        $job = New-AzVmss `
+        -ResourceGroupName $rgname `
+        -Location $loc `
+        -Credential $cred `
+        -Zone "3" `
+        -PlatformFaultDomainCount $pfdCount `
+        -VMScaleSetName $vmssScaleSetName `
+        -OrchestrationMode "Flexible" `
+        -InstanceCount "3" `
+        -EnableUltraSSD `
+        -VMSize "Standard_E2bds_v5" `
+        -DomainNamelabel $domainNameLabel `
+        -AsJob;
+
+        # Wait for job
+        $result = $job | Wait-Job;
+        #Assert-AreEqual "Failed" $result.State;
+        #Assert-True { $result.Error[0].ToString().Contains("Long running operation failed")};
+        #$job = Stop-AzVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
+        #$result = $job | Wait-Job;
+        #Assert-AreEqual "Failed" $result.State;
+        #Assert-True { $result.Error[0].ToString().Contains("There is no ongoing Rolling Upgrade to cancel.")};
+
+        # Assert
+        $vmss = Get-AzVmss `
+          -ResourceGroupName $rgname `
+          -VMScaleSetName $vmssScaleSetName;
+
+        Assert-AreEqual $vmss.PlatformFaultDomainCount $pfdCount;
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

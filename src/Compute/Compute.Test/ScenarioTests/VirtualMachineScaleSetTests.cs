@@ -353,5 +353,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetFlexAnyPFDC()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetFlexAnyPFDC");
+        }
     }
 }
