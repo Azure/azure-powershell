@@ -101,6 +101,14 @@ function New-AzDataProtectionBackupConfigurationClientObject{
             $dataSourceParam.ObjectType = "BlobBackupDatasourceParameters"
             
             if($VaultedBackupContainer -ne $null){
+
+                # exclude containers which start with $ except $web, $root
+                $unsupportedContainers = $VaultedBackupContainer | Where-Object { $_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web"}
+                if($unsupportedContainers.Count -gt 0){
+                    $message = "Following containers are not allowed for configure protection with AzureBlob - $unsupportedContainers. Please remove them and proceed."
+                    throw $message
+                }
+
                 $dataSourceParam.ContainersList = $VaultedBackupContainer
             }
             elseif($IncludeAllContainer){
@@ -111,8 +119,11 @@ function New-AzDataProtectionBackupConfigurationClientObject{
 
                 CheckStorageModuleDependency
                 $storageAccount = Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName 
-                $containers=Get-AzStorageContainer -Context $storageAccount.Context
-                $dataSourceParam.ContainersList = $containers.Name
+                $containers = Get-AzStorageContainer -Context $storageAccount.Context
+
+                # exclude containers which start with $ except $web, $root
+                $allContainers = $containers.Name | Where-Object { -not($_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web")}
+                $dataSourceParam.ContainersList = $allContainers
             }
             elseif($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null){
                 $message = "Invalid parameters ExcludedResourceType, IncludedResourceType, ExcludedNamespace, IncludedNamespace, LabelSelector, SnapshotVolume, IncludeClusterScopeResource for given DatasourceType."
