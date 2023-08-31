@@ -22,14 +22,14 @@ Get information about a virtual machine image template
 .Example
 Get-AzImageBuilderTemplate
 .Example
-Get-AzImageBuilderTemplate -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder
 .Example
-Get-AzImageBuilderTemplate -Name test-img-temp -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder -Name azps-ibt-1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,11 +41,12 @@ INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [RunOutputName <String>]: The name of the run output
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
+  [TriggerName <String>]: The name of the trigger
 .Link
 https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplate
 #>
 function Get-AzImageBuilderTemplate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -84,7 +85,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -136,7 +138,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

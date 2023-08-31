@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.4
 * Refreshed module to ensure catalog file signed by Microsoft.
 
 ## Version 0.7.3
