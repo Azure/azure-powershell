@@ -91,12 +91,12 @@ function New-AzSentinelAlertRule {
 
         [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [System.String]
+        [System.String[]]
         ${DisplayNamesFilter},
 
         [Parameter(ParameterSetName = 'MicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [System.String]
+        [System.String[]]
         ${DisplayNamesExcludeFilter},
 
 
@@ -148,7 +148,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'Scheduled')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         #[Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
-        [System.String]
+        [System.String[]]
         #InitialAccess, Execution, Persistence, PrivilegeEscalation, DefenseEvasion, CredentialAccess, Discovery, LateralMovement, Collection, Exfiltration, CommandAndControl, Impact, PreAttack
         ${Tactic},
 
@@ -190,7 +190,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'Scheduled')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
         ${GroupByAlertDetail},
 
         [Parameter(ParameterSetName = 'NRT')]
@@ -203,7 +203,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'Scheduled')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
         ${GroupByEntity},
 
 
@@ -211,7 +211,7 @@ function New-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'Scheduled')]
         #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
         ${EntityMapping},
 
         [Parameter(ParameterSetName = 'NRT')]
