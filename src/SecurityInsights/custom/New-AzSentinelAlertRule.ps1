@@ -361,17 +361,17 @@ function New-AzSentinelAlertRule {
                 }
 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
 
                 If($PSBoundParameters['DisplayNamesFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesFilter']
+                    $AlertRule.DisplayNamesFilter = $PSBoundParameters['DisplayNamesFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesFilter')
                 }
 
                 If($PSBoundParameters['DisplayNamesExcludeFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesExcludeFilter']
+                    $AlertRule.DisplayNamesExcludeFilter = $PSBoundParameters['DisplayNamesExcludeFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesExcludeFilter')
                 }
 
@@ -379,7 +379,7 @@ function New-AzSentinelAlertRule {
                 $null = $PSBoundParameters.Remove('ProductFilter')
 
                 If($PSBoundParameters['SeveritiesFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['SeveritiesFilter']
+                    $AlertRule.SeveritiesFilter = $PSBoundParameters['SeveritiesFilter']
                     $null = $PSBoundParameters.Remove('SeveritiesFilter')
                 }
             }
@@ -417,7 +417,7 @@ function New-AzSentinelAlertRule {
                 }
 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
 
