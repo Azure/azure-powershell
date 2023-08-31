@@ -23,8 +23,7 @@ Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -MoveRe
 ## DESCRIPTION
 Discards the set of resources included in the request body.
 The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType 'RegionToZone' since discard is not a valid operation for region to zone move scenario.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br>The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType 'RegionToZone' since discard is not a valid operation for region to zone move scenario.
 
 ## EXAMPLES
 

@@ -18,7 +18,7 @@ Remove-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Deletes a move collection.
+Deletes a move collection.<br>The 'Remove-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
 
 ## EXAMPLES
 

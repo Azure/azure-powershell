@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Deletes a Move Resource from the move collection. The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
+Deletes a Move Resource from the move collection.<br>The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
 
 ## SYNTAX
 

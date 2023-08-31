@@ -19,7 +19,7 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Gets a list of unresolved dependencies. The 'Get-AzResourceMoverUnresolvedDependency' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections. However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
+Gets a list of unresolved dependencies.<br>The 'Get-AzResourceMoverUnresolvedDependency' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.<br>However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
 
 ## EXAMPLES
 

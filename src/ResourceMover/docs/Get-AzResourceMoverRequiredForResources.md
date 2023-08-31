@@ -18,7 +18,7 @@ Get-AzResourceMoverRequiredForResources -MoveCollectionName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-List of the move resources for which an arm resource is required for. The 'Get-AzResourceMoverRequiredForResources' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections. However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
+List of the move resources for which an arm resource is required for.<br>The 'Get-AzResourceMoverRequiredForResources' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.<br>However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
 
 ## EXAMPLES
 
