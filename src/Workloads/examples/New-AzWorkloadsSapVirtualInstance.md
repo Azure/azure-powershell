@@ -9,7 +9,7 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     SoftwareInstallationPending        eastus
 ```
 
-In this example, you Deploy the infrastructure for a three tier distributed SAP system. A sample json payload is a linked here: https://go.microsoft.com/fwlink/?linkid=2230236
+In this example, you Deploy the infrastructure for a three tier distributed SAP system.
 
 ### Example 2: Install SAP software on the infrastructure deployed for the three-tier distributed SAP system using Virtual Instances for SAP solutions
 ```powershell
@@ -22,7 +22,7 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     RegistrationComplete        eastus
 ```
 
-In this example, you Install the SAP software on  the deployed infrastructure for a three tier Non-High Availability distributed SAP system. A sample json payload is a linked here:https://go.microsoft.com/fwlink/?linkid=2230167
+In this example, you Install the SAP software on  the deployed infrastructure for a three tier Non-High Availability distributed SAP system.
 
 ### Example 3: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions 
 ```powershell
@@ -35,8 +35,7 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     SoftwareInstallationPending        eastus
 ```
 
-In this example, you Deploy the infrastructure for a three tier distributed Highly Available (HA)  SAP system. A sample json payload to use in this command is linked here: https://go.microsoft.com/fwlink/?linkid=2230402
-
+In this example, you Deploy the infrastructure for a three tier distributed Highly Available (HA)  SAP system.
 
 ### Example 4: Install SAP software on the infrastructure deployed for the three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions
 ```powershell
@@ -49,8 +48,7 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     RegistrationComplete        eastus
 ```
 
-In this example, you Install the SAP software on  the deployed infrastructure for a three tier distributed Highly Availabile SAP system with Transport directory and customized resource naming. A sample json payload to use in this command is linked here: https://go.microsoft.com/fwlink/?linkid=2230340
-
+In this example, you Install the SAP software on  the deployed infrastructure for a three tier distributed Highly Availabile SAP system with Transport directory and customized resource naming.
 
 ### Example 5: Register an existing SAP system as a VIS
 ```powershell
