@@ -135,6 +135,7 @@ backup of it that you can restore.
 
 ### Example 1: Create a key
 ```powershell
+Get-AzStorageAccount
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
 ```
 
