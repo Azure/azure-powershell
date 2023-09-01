@@ -62,7 +62,8 @@ if ($CommentDict.ContainsKey($LabelName)) {
     }
     else {
         try {
-            gh pr comment $PrUrl --body "$comment"
+            Out-File -FilePath comment.txt -InputObject $comment
+            gh pr comment $PrUrl -F comment.txt
         }
         catch {
             Write-Host "Failed to add comment: $_"
