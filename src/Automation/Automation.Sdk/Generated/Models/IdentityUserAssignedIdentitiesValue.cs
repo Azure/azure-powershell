@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.Automation.Models
 {
     using System.Linq;
 
-    public partial class UserAssignedIdentitiesProperties
+    public partial class IdentityUserAssignedIdentitiesValue
     {
         /// <summary>
-        /// Initializes a new instance of the UserAssignedIdentitiesProperties class.
+        /// Initializes a new instance of the IdentityUserAssignedIdentitiesValue class.
         /// </summary>
-        public UserAssignedIdentitiesProperties()
+        public IdentityUserAssignedIdentitiesValue()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserAssignedIdentitiesProperties class.
+        /// Initializes a new instance of the IdentityUserAssignedIdentitiesValue class.
         /// </summary>
 
         /// <param name="principalId">The principal id of user assigned identity.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="clientId">The client id of user assigned identity.
         /// </param>
-        public UserAssignedIdentitiesProperties(string principalId = default(string), string clientId = default(string))
+        public IdentityUserAssignedIdentitiesValue(string principalId = default(string), string clientId = default(string))
 
         {
             this.PrincipalId = principalId;

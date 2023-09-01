@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// dictionary key references will be ARM resource ids in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesProperties> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesProperties>))
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue>))
 
         {
             this.PrincipalId = principalId;
@@ -79,6 +79,6 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]
-        public System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesProperties> UserAssignedIdentities {get; set; }
+        public System.Collections.Generic.IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities {get; set; }
     }
 }

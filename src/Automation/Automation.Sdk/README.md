@@ -59,4 +59,9 @@ input-file:
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Automation
+directive:
+  - where:
+      model-name: UserAssignedIdentitiesProperties
+    set:
+      model-name: IdentityUserAssignedIdentitiesValue
 ```

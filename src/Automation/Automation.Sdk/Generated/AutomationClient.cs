@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Management.Automation
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
-        /// Gets the ISourceControlOperations
-        /// </summary>
-        public virtual ISourceControlOperations SourceControl { get; private set; }
-        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations
         /// </summary>
         public virtual IAgentRegistrationInformationOperations AgentRegistrationInformation { get; private set; }
@@ -127,6 +123,10 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IConnectionTypeOperations
         /// </summary>
         public virtual IConnectionTypeOperations ConnectionType { get; private set; }
+        /// <summary>
+        /// Gets the ISourceControlOperations
+        /// </summary>
+        public virtual ISourceControlOperations SourceControl { get; private set; }
         /// <summary>
         /// Gets the ISourceControlSyncJobOperations
         /// </summary>
@@ -442,7 +442,6 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         private void Initialize()
         {
-            this.SourceControl = new SourceControlOperations(this);
             this.AgentRegistrationInformation = new AgentRegistrationInformationOperations(this);
             this.DscNode = new DscNodeOperations(this);
             this.NodeReports = new NodeReportsOperations(this);
@@ -460,6 +459,7 @@ namespace Microsoft.Azure.Management.Automation
             this.Variable = new VariableOperations(this);
             this.Connection = new ConnectionOperations(this);
             this.ConnectionType = new ConnectionTypeOperations(this);
+            this.SourceControl = new SourceControlOperations(this);
             this.SourceControlSyncJob = new SourceControlSyncJobOperations(this);
             this.SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
             this.DscConfiguration = new DscConfigurationOperations(this);

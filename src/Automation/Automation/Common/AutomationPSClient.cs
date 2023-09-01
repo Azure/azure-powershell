@@ -171,10 +171,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             if ((userIds != null) && userIds.Any())
             {
-                var userIdDict = new Dictionary<string, UserAssignedIdentitiesProperties>();
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
                 foreach (var id in userIds)
                 {
-                    userIdDict.Add(id, new UserAssignedIdentitiesProperties());
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
                 }
 
                 var IdType = ResourceIdentityType.UserAssigned;
@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             if ((userIds != null) && userIds.Any())
             {
-                var userIdDict = new Dictionary<string, UserAssignedIdentitiesProperties>();
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
                 foreach (var id in userIds)
                 {
-                    userIdDict.Add(id, new UserAssignedIdentitiesProperties());
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
                 }
 
                 var IdType = ResourceIdentityType.UserAssigned;
