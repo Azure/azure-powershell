@@ -22,7 +22,7 @@ Name ResourceGroupName     Health Environment ProvisioningState SapProduct State
 L46  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     RegistrationComplete        eastus
 ```
 
-In this example, you Install the SAP software on  the deployed infrastructure for a three tier Non-High Availability distributed SAP system.
+In this example, you Install the SAP software on  the deployed infrastructure for a three tier Non-High Availability distributed SAP system. A sample json payload is a linked here:https://go.microsoft.com/fwlink/?linkid=2230167
 
 ### Example 3: Deploy infrastructure for a three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions 
 ```powershell
