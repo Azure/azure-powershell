@@ -171,10 +171,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             if ((userIds != null) && userIds.Any())
             {
-                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                var userIdDict = new Dictionary<string, UserAssignedIdentitiesProperties>();
                 foreach (var id in userIds)
                 {
-                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                    userIdDict.Add(id, new UserAssignedIdentitiesProperties());
                 }
 
                 var IdType = ResourceIdentityType.UserAssigned;
@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             if ((userIds != null) && userIds.Any())
             {
-                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                var userIdDict = new Dictionary<string, UserAssignedIdentitiesProperties>();
                 foreach (var id in userIds)
                 {
-                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                    userIdDict.Add(id, new UserAssignedIdentitiesProperties());
                 }
 
                 var IdType = ResourceIdentityType.UserAssigned;
@@ -1561,7 +1561,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var hybridWorkerCreationParams = new HybridRunbookWorkerCreateParameters()
             {
                 Name = hybridRunbookWorkerGroupName,
-                VmResourceId = vmResourceId,
+                VMResourceId = vmResourceId,
             };
 
             response = this.automationManagementClient.HybridRunbookWorkers.Create(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, workerName, hybridWorkerCreationParams);
