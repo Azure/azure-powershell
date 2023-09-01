@@ -19,11 +19,11 @@ Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName <String> -Re
 ```
 
 ## DESCRIPTION
-Computes, resolves and validate the dependencies of the moveResources in the move collection.<br>The 'Resolve-AzResourceMoverMoveCollectionDependency' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections. However, while resolving the move collections with moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection whereas for 'RegionToRegion' type move collections it just resolves the move collection and the required dependencies are supposed to be added manually by the user.
+Computes, resolves and validate the dependencies of the moveResources in the move collection.<br>Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.<br>However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.
 
 ## EXAMPLES
 
-### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection.
+### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection (RegionToRegion)
 ```powershell
 Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
 ```
