@@ -23,11 +23,11 @@ New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-S
 ## DESCRIPTION
 Creates or updates a move collection. The following types of move collections based on the move scenario are supported currently:<br>
     1. **RegionToRegion** (Moving resources across regions)<br>
-    2. **RegionToZone** (Moving resources into a zone within a region)
+    2. **RegionToZone** (Moving virtual machines into a zone within the same region)
 
 ## EXAMPLES
 
-### Example 1: Create a new Move collection.
+### Example 1: Create a new Move collection (RegionToRegion)
 ```powershell
 New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
 ```
@@ -38,9 +38,9 @@ Etag                                   Location      Name                       
 "0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
 ```
 
-Create a new Move Collection for moving resources across regions.<br>Please note that here the moveType is set to its **default value 'RegionToRegion'**, for 'RegionToRegion' type move collections, **'SourceRegion' and 'TargetRegion' are required parameters** and **'MoveRegion' parameter is not required** and should be set to null, as mentioned in the above example.
+Create a new Move Collection for moving resources across regions.<br>Please note that here the moveType is set to its **default value 'RegionToRegion'** for cross region move scenarios where **'SourceRegion' and 'TargetRegion' are required parameters**. Please ensure **'MoveRegion' parameter is not required** and should be set to null, as shown in the above example.
 
-### Example 2: Create a new Move collection (RegionToZone).
+### Example 2: Create a new Move collection (RegionToZone)
 ```powershell
 New-AzResourceMoverMoveCollection -Name "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveRegion "eastus" -Location "eastus2euap" -IdentityType "SystemAssigned" -MoveType "RegionToZone"
 ```
@@ -51,7 +51,7 @@ Etag                                   Location    Name
 "0600b906-0000-3400-0000-64edffe00000" eastus2euap PS-demo-RegionToZone
 ```
 
-Create a new Move Collection for moving resources into a zone within a region.<br>Please note that for 'RegionToZone' type move collections **'MoveType' parameter should be set as 'RegionToZone'** and **'MoveRegion' should be set as the location where resources undergoing zonal move reside**, for 'RegionToZone' type move collections **'SourceRegion' and 'TargetRegion' are not required and should be set to null**, as mentioned in the above example.
+Create a new Move Collection for moving resources into a zone within the same region.<br>Please note that for 'RegionToZone' type move collections **'MoveType' parameter should be set as 'RegionToZone'** and **'MoveRegion' should be set as the location where resources undergoing zonal move reside**. Please ensure  **'SourceRegion' and 'TargetRegion' are not required and should be set to null**, as shown in the above example.
 
 ## PARAMETERS
 
