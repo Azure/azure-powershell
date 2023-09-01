@@ -23,7 +23,7 @@ Please follow our [guide](https://eng.ms/docs/cloud-ai-platform/azure-core/azure
 "@
     "needs-revision" = @"
 This PR was labeled "needs-revision" because it has unresolved review comments or CI failures.
-Please resolve all open review comments and make sure all CI checks are green. Refer to our guide (link TBD) to troubleshoot common CI failures.
+Please resolve all open review comments and make sure all CI checks are green. Refer to our [guide](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/ci_tsg) to troubleshoot common CI failures.
 "@
 }
 
@@ -62,7 +62,7 @@ if ($CommentDict.ContainsKey($LabelName)) {
     }
     else {
         try {
-            gh pr comment $PrUrl --body $comment
+            gh pr comment $PrUrl --body "$comment"
         }
         catch {
             Write-Host "Failed to add comment: $_"
