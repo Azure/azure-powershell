@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.10.0
+* Added breaking change warnings for Azure Policy cmdlets.
 * Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
 
 ## Version 6.9.1
