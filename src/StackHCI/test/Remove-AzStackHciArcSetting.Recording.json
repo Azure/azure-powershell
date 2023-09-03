@@ -1,17 +1,17 @@
 {
-  "Remove-AzStackHciArcSetting+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default?api-version=2022-05-01+1": {
+  "Remove-AzStackHciArcSetting+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip/arcSettings/default?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/680d0dad-59aa-4464-adf3-b34b2b427e8c/resourceGroups/azurestackhci-pwsh-rg-c6/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusteryjod/arcSettings/default?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "f122d14c-a664-4bc9-8b84-5ef6cd805648" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "74257b0e-abd6-4dda-885a-461756c7cba7" ],
         "CommandName": [ "Remove-AzStackHciArcSetting" ],
         "FullCommandName": [ "Remove-AzStackHciArcSetting_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.0", "Az.StackHCI/1.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.StackHCI/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,16 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "mise-correlation-id": [ "cb541f8c-9cb0-4f0e-9d48-a9a88a33137a" ],
-        "x-ms-request-id": [ "67405cb2-e502-4163-82f1-e73ddec48a71" ],
-        "x-ms-correlation-request-id": [ "326f1259-dc62-461a-b88a-ab426e0482f2" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-routing-request-id": [ "EASTUS:20220615T105859Z:326f1259-dc62-461a-b88a-ab426e0482f2" ],
+        "mise-correlation-id": [ "ae6f8d5e-8845-4162-b17b-21f720e7ed80" ],
+        "x-ms-request-id": [ "14f838e0-6ad4-4684-9fc4-517e4812856b" ],
+        "x-ms-correlation-request-id": [ "870ad898-814a-435a-9121-90efc6ae6d9e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 15 Jun 2022 10:58:58 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20230726T051706Z:870ad898-814a-435a-9121-90efc6ae6d9e" ],
+        "Date": [ "Wed, 26 Jul 2023 05:17:06 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

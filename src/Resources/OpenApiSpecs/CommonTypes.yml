@@ -48,3 +48,16 @@ components:
               description: 'The full id of object in directory'
               nullable: true
           description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+    microsoft.graph.directoryObjectCollectionResponse:
+      title: Collection of directoryObject
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/microsoft.graph.directoryObject'
+        '@odata.nextLink':
+          type: string
+          nullable: true
+      additionalProperties:
+        type: object

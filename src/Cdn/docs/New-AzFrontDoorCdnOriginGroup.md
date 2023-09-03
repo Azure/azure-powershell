@@ -78,7 +78,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Load balancing settings for a backend pool
 To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ILoadBalancingSettingsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -251,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup
 
 ## NOTES
 

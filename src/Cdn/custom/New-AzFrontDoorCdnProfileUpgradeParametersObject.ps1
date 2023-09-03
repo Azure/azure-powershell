@@ -21,22 +21,22 @@ Create an in-memory object for ProfileUpgradeParameters.
 Create an in-memory object for ProfileUpgradeParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileUpgradeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 #>
 function New-AzFrontDoorCdnProfileUpgradeParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileUpgradeParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Web Application Firewall (WAF) and security policy mapping for the profile upgrade.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfileChangeSkuWafMapping[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileChangeSkuWafMapping[]]
         $WafMappingList
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileUpgradeParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('WafMappingList')) {
             $Object.WafMappingList = $WafMappingList

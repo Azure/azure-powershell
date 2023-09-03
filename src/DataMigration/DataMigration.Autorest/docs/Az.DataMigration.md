@@ -50,6 +50,9 @@ Initiate cutover for in-progress online database migration to SQL VM.
 ### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
 Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
+### [New-AzDataMigrationSqlServerSchema](New-AzDataMigrationSqlServerSchema.md)
+Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
+
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
 Create or Update Database Migration Service.
 
@@ -57,10 +60,12 @@ Create or Update Database Migration Service.
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
 ### [New-AzDataMigrationTdeCertificateMigration](New-AzDataMigrationTdeCertificateMigration.md)
-Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
+Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.

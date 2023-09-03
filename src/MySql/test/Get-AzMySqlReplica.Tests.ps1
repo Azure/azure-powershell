@@ -13,7 +13,8 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMySqlReplica' {
     It 'List' {
-        Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName | New-AzMySqlReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup
+        $server = Get-AzMySqlServer -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
+        New-AzMySqlReplica -InputObject $server -Replica $env.replicaName -ResourceGroupName $env.resourceGroup
         $replica = Get-AzMySqlReplica -ResourceGroupName $env.resourceGroup -ServerName $env.serverName
         $replica.Count | Should -Be 1
         Remove-AzMySqlServer -InputObject $replica

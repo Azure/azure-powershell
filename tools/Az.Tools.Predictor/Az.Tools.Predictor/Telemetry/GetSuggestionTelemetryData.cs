@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Gets the user input.
         /// </summary>
-        public Ast UserInput { get; }
+        public CommandAst UserInput { get; }
 
         /// <summary>
         /// Gets whether the command in <see cref="UserInput" /> is supported or not.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <param name="suggestion">The suggestions returned for the <paramref name="userInput"/>.</param>
         /// <param name="isCancellationRequested">Indicates if the cancellation has been requested.</param>
         /// <param name="exception">The exception that is thrown if there is an error.</param>
-        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, bool isSupported, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
+        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, CommandAst userInput, bool isSupported, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
         {
             Client = client;
             SuggestionSessionId = suggestionSessionId;
