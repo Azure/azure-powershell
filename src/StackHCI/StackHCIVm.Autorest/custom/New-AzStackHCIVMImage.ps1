@@ -1,7 +1,30 @@
-function New-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
+<#
+.Synopsis
+The operation to create an image.
+Please note some properties can be set only during  image creation.
+.Description
+The operation to create an image.
+Please note some properties can be set only during image creation.
+.Example
+PS C:\> {{ New-AzStackHciVMImage -Name "test"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" -ImagePath "C:\testfolder\testimage.vhdx" }}
+
+.Example
+PS C:\> {{ New-AzStackHciVMImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -Location "eastus" }}
+
+{{ Add output here }}
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
+.Link
+https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
+#>
+
+
+function New-AzStackHciVMImage{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
    
     param(
@@ -10,25 +33,26 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Parameter(ParameterSetName='MarketplaceURN',Mandatory)]
     [Alias('ImageName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # Name of the gallery image
+    # Name of the Image
+    #The name must start and end with an alphanumeric character and must contain all alphanumeric characters or ‘-‘, ‘.’, or ‘_’. The max length can be 80 characters and the minimum length is 1 character.
     ${Name},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The name of the resource group.
+    # The name of the Resource Group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
@@ -36,7 +60,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
@@ -44,89 +68,81 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.CloudInitDataSource])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.CloudInitDataSource]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.CloudInitDataSource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.CloudInitDataSource]
     # Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
     ${CloudInitDataSource},
 
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # Container Name for storage container
+    # Container Name for Storage Container to create image in. 
     ${ContainerName},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the extended location.
+    # The ARM Id of the extended location to create image resource in.
     ${CustomLocationId},
 
-    [Parameter(ParameterSetName='Marketplace')]
-    [Parameter(ParameterSetName='GalleryImage')]
-    [Parameter(ParameterSetName='MarketplaceURN')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration]
-    # The hypervisor generation of the Virtual Machine [V1, V2]
-    ${HyperVGeneration},
-
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # location of the image the gallery image should be created from
+    # Local path of image that the image should be created from. 
+    # This parameter is required for non marketplace images. 
     ${ImagePath},
 
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes]
     # Operating system type that the gallery image uses [Windows, Linux]
     ${OSType},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the gallery image definition offer.
+    # The name of the marketplae gallery image definition offer.
     ${Offer},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the gallery image definition publisher.
+    # The name of the marketplace gallery image definition publisher.
     ${Publisher},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the gallery image definition SKU.
+    # The name of the marketplace gallery image definition SKU.
     ${Sku},
 
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the gallery image definition SKU.
+    # The URN of the marketplace gallery image.
     ${URN},
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # This is the version of the gallery image.
+    # The version of the marketplace gallery image.
     ${Version},
 
     [Parameter(ParameterSetName='GalleryImage')]
@@ -134,16 +150,15 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='MarketplaceURN')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile}
 
     )
 
-    process {
         if (-Not ($name -match $imageNameRegex )) {
-            Write-Error "Invalid name for image provided: $name"
+            Write-Error "Invalid Name for image provided: $name" -ErrorAction Stop
         }
 
         if ($CustomLocationId -notmatch $customLocationRegex){
@@ -158,7 +173,7 @@ function New-AzStackHCIVMImage{
                 $PSBoundParameters['OSType'] = 'Linux'
             }
             else {
-                Write-Error "Invalid OSType provided: $OSType. Expected values are 'Windows' or 'Linux'."
+                Write-Error "Invalid OSType provided:  $OSType. Expected values are 'Windows' or 'Linux'." -ErrorAction Stop
             }
         }
 
@@ -172,7 +187,7 @@ function New-AzStackHCIVMImage{
                 $PSBoundParameters['CloudInitDataSource'] = 'Azure'
             }
             else {
-                Write-Error "Invalid CloudInitDataSource provided: $CloudInitDataSource. Expected values are 'NoCloud' or 'Azure'."
+                Write-Error "Invalid CloudInitDataSource provided: $CloudInitDataSource. Expected values are 'NoCloud' or 'Azure'." -ErrorAction Stop
             }
 
         }
@@ -186,7 +201,7 @@ function New-AzStackHCIVMImage{
                 $PSBoundParameters['HyperVGeneration'] = 'V2'
             }
             else {
-                Write-Error "Invalid HyperVGeneration provided: $HyperVGeneration. Expected values are 'V1' or 'V2'."
+                Write-Error "Invalid HyperVGeneration provided: $HyperVGeneration. Expected values are 'V1' or 'V2'." -ErrorAction Stop
             }
 
         }
@@ -194,7 +209,7 @@ function New-AzStackHCIVMImage{
 
         if ($PSCmdlet.ParameterSetName -eq "Marketplace")
         {
-            return Az.StackHCIVM\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            return Az.StackHciVM.internal\New-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
 
         } elseif ($PSCmdlet.ParameterSetName -eq "MarketplaceURN") {
             if ($URN -match $urnRegex){
@@ -209,21 +224,21 @@ function New-AzStackHCIVMImage{
                 $PSBoundParameters.Add('Sku', $sku)
                 $PSBoundParameters.Add('Version', $version)
             } else {
-                Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ."
+                Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ." -ErrorAction Stop
             }
 
-            return Az.StackHCIVM\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            return Az.StackHciVM.internal\New-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
 
         }
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
-           <#  if (-not (Test-Path -path $ImagePath)){
-                Write-Error "Invalid ImagePath provided: $ImagePath. Please specify a valid path."
-            } #>
-            return Az.StackHCIVM\New-AzStackHCIVMGalleryImage @PSBoundParameters
+            # if (-not (Test-Path $ImagePath -IsValid)){
+            #     Write-Error "Invalid ImagePath provided: $ImagePath. Please specify a valid path." -ErrorAction Stop
+            # } 
+            return Az.StackHciVM.internal\New-AzStackHciVMGalleryImage @PSBoundParameters
         }
 
        
-    }
+    
 }

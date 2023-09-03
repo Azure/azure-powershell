@@ -1,15 +1,15 @@
-function Remove-AzStackHCIVMImage{
+function Remove-AzStackHciVMImage{
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # Name of the gallery image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -17,91 +17,107 @@ function Remove-AzStackHCIVMImage{
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
  
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The ID of the target subscription.
+    # The ARM Resource ID of the image.
     ${ResourceId},
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
+    ${DefaultProfile},
+
+    [Parameter(HelpMessage='Forces the cmdlet to remove the network interface without prompting for confirmation.')]
+    [System.Management.Automation.SwitchParameter]
+    ${Force}
     )
 
-    process {
 
-        if ($PSCmdlet.ParameterSetName -eq "ByName"){
-            $isGalleryImage = $false
-            $isMarketplaceGalleryImage = $false
+    Write-Warning("Running this command will delete the image.")
+    $isGalleryImage = $false
+    $isMarketplaceGalleryImage = $false
 
+    if ($PSCmdlet.ParameterSetName -eq "ByName"){
+        $isGalleryImage = $false
+        $isMarketplaceGalleryImage = $false
+
+        try {
+            $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters 
+            $isGalleryImage = $true 
+        }
+        catch {
             try {
-                $galImage = Az.StackHCIVM\Get-AzStackHCIVMGalleryImage @PSBoundParameters 
-                $isGalleryImage = $true 
+                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+                $isMarketplaceGalleryImage = $true 
             }
             catch {
-                try {
-                    $marketplaceGalImage = Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
-                    $isMarketplaceGalleryImage = $true 
-                }
-                catch {
-                    Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName"
-                }
+                Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName"
             }
+        }
 
-            if ($isMarketplaceGalleryImage)
-            {
-                return Az.StackHCIVM\Remove-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+
+    }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
+    
+            if ($ResourceId -match $galImageRegex){
+            
+                $subscriptionId = $($Matches['subscriptionId'])
+                $resourceGroupName = $($Matches['resourceGroupName'])
+                $resourceName = $($Matches['imageName'])
+                $null = $PSBoundParameters.Remove("ResourceId")
+                $PSBoundParameters.Add("Name", $resourceName)
+                $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
+                $null = $PSBoundParameters.Remove("SubscriptionId")
+                $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
+
+                $isGalleryImage = $true 
+
+            } elseif ($ResourceId -match $marketplaceGalImageRegex){
+                $subscriptionId = $($Matches['subscriptionId'])
+                $resourceGroupName = $($Matches['resourceGroupName'])
+                $resourceName = $($Matches['imageName'])
+                $null = $PSBoundParameters.Remove("ResourceId")
+                $PSBoundParameters.Add("Name", $resourceName)
+                $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
+                $null = $PSBoundParameters.Remove("SubscriptionId")
+                $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
+
+                $isMarketplaceGalleryImage = $true
+            
+            } else {
+                Write-Error "Resource ID is invalid: $ResourceId"
             }
+    } 
 
-            if ($isGalleryImage)
-            {
-                return Az.StackHCIVM\Remove-AzStackHCIVMGalleryImage @PSBoundParameters
-            }
+    if ($PSCmdlet.ShouldProcess($PSBoundParameters['Name']) -and ($Force -or $PSCmdlet.ShouldContinue("Delete this virtual machine?", "Confirm")))
+    {
+        if ($PSBoundParameters.ContainsKey("Force")) {
+            $null = $PSBoundParameters.Remove("Force")
+        }
 
-        }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
-        
-               if ($ResourceId -match $galImageRegex){
-                
-                    $subscriptionId = $($Matches['subscriptionId'])
-                    $resourceGroupName = $($Matches['resourceGroupName'])
-                    $resourceName = $($Matches['imageName'])
-                    $null = $PSBoundParameters.Remove("ResourceId")
-                    $PSBoundParameters.Add("Name", $resourceName)
-                    $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
-                    $null = $PSBoundParameters.Remove("SubscriptionId")
-                    $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
+        if ($isMarketplaceGalleryImage)
+        {
+            return Az.StackHciVM.internal\Remove-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+        }
 
-                    return  Az.StackHCIVM\Remove-AzStackHCIVMGalleryImage @PSBoundParameters
-
-                } elseif ($ResourceId -match $marketplaceGalImageRegex){
-                    $subscriptionId = $($Matches['subscriptionId'])
-                    $resourceGroupName = $($Matches['resourceGroupName'])
-                    $resourceName = $($Matches['imageName'])
-                    $null = $PSBoundParameters.Remove("ResourceId")
-                    $PSBoundParameters.Add("Name", $resourceName)
-                    $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
-                    $null = $PSBoundParameters.Remove("SubscriptionId")
-                    $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
-
-                    return  Az.StackHCIVM\Remove-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
-                } else {
-                    Write-Error "Resource ID is invalid: $ResourceId"
-                }
-        } 
+        if ($isGalleryImage)
+        {
+            return Az.StackHciVM.internal\Remove-AzStackHciVMGalleryImage @PSBoundParameters
+        }
+    }
 
        
       
-    }
+    
 } 

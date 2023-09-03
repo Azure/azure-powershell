@@ -1,30 +1,30 @@
-function Add-AzStackHCIVMVirtualMachineDataDisk {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualMachines])]
+function Remove-AzStackHciVMVirtualMachineNic {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualMachines])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Alias('VirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # Name of the virtual machine
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The ID of the target subscription.
+    # The ARM Resource ID of the virtual machine.
     ${ResourceId},
 
     [Parameter(ParameterSetName='ByName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
@@ -32,25 +32,25 @@ param(
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
-    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    # NetworkInterfaces - list of network interfaces to be attached from  the virtual machine in id format. 
     ${NicIds},
 
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
-    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    # NetworkInterfaces - list of network interfaces to be removed from the virtual machine in name format.
     ${NicNames},
 
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # NetworkInterfaces - list of network interfaces to be attached to the virtual machine
+    # NetworkInterfaces - resource group of the network interfaces 
     ${NicResourceGroup}
 )
 
@@ -76,7 +76,7 @@ param(
         $NicIds = $PSBoundParameters['NicIds']
         $null = $PSBoundParameters.Remove("NicIds")
 
-        $VM = Az.StackHCIVM\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
+        $VM = Az.StackHciVM\Get-AzStackHciVMVirtualMachine @PSBoundParameters
         $NetworkProfileNetworkInterface =  $VM.NetworkProfileNetworkInterface
         
         foreach ($NicId in $NicIds){
@@ -94,11 +94,14 @@ param(
           $rg = $NicResourceGroup
         }
 
-        $VM = Az.StackHCIVM\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
+        $null = $PSBoundParameters.Remove("NicNames")
+        $null = $PSBoundParameters.Remove("NicResourceGroup")
+
+        $VM = Az.StackHciVM\Get-AzStackHciVMVirtualMachine @PSBoundParameters
         $NetworkProfileNetworkInterface =  $VM.NetworkProfileNetworkInterface
         
         foreach ($NicName in $NicNames){
-            $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.StackHCIVM/networkinterfaces/$NicName"
+            $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
             if ($NicId -in $NetworkProfileNetworkInterface){
                 $NetworkProfileNetworkInterface.Remove($NicId)
             } else {
@@ -106,10 +109,8 @@ param(
             }
         }
 
-        $null = $PSBoundParameters.Remove("NicNames")
-        $null = $PSBoundParameters.Remove("NicResourceGroup")
         $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
     }
 
-    return Az.StackHCIVM\Update-AzStackHCIVMVirtualMachine @PSBoundParameters
+    return Az.StackHciVM\Update-AzStackHciVMVirtualMachine @PSBoundParameters
 }

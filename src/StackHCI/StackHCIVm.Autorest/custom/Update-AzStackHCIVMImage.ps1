@@ -1,17 +1,17 @@
-function Update-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
+function Update-AzStackHciVMImage{
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
    
   param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # Name of the gallery image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -19,23 +19,22 @@ function Update-AzStackHCIVMImage{
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
- 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The ID of the target subscription.
+    # The ARM Resource ID of the image.
     ${ResourceId},
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IGalleryImagesUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IGalleryImagesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tags},
@@ -44,7 +43,7 @@ function Update-AzStackHCIVMImage{
     [Parameter(ParameterSetName='ByResourceId')]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile}
@@ -56,12 +55,12 @@ function Update-AzStackHCIVMImage{
             $isMarketplaceGalleryImage = $false
 
             try {
-                Az.StackHCIVM\Get-AzStackHCIVMGalleryImage @PSBoundParameters
+                Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters
                 $isGalleryImage = $true 
             }
             catch {
                 try {
-                Az.StackHCIVM\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
                 $isMarketplaceGalleryImage = $true 
                 }
                 catch {
@@ -70,11 +69,11 @@ function Update-AzStackHCIVMImage{
             }
 
             if ($isGalleryImage){
-                return  Az.StackHCIVM\Update-AzStackHCIVMGalleryImage @PSBoundParameters
+                return  Az.StackHciVM.internal\Update-AzStackHciVMGalleryImage @PSBoundParameters
             } 
 
             if ($isMarketplaceGalleryImage){
-                return  Az.StackHCIVM\Update-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                return  Az.StackHciVM.internal\Update-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
             }
 
         }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
@@ -90,7 +89,7 @@ function Update-AzStackHCIVMImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHCIVM\Update-AzStackHCIVMGalleryImage @PSBoundParameters
+                    return  Az.StackHciVM.internal\Update-AzStackHciVMGalleryImage @PSBoundParameters
                     
                 } elseif ($ResourceId -match $marketplaceGalImageRegex){
                     $subscriptionId = $($Matches['subscriptionId'])
@@ -102,7 +101,7 @@ function Update-AzStackHCIVMImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHCIVM\Update-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                    return  Az.StackHciVM.internal\Update-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
 
                 } else {
                     Write-Error "Resource ID is invalid: $ResourceId"

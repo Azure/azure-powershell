@@ -27,7 +27,7 @@ Please note some properties can be set only during virtual network creation.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualNetworks
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,188 +53,190 @@ SUBNET <IVirtualNetworkPropertiesSubnetsItem[]>: Subnet - list of subnets under 
   [RouteTableType <String>]: Type - READ-ONLY; Resource type.
   [Vlan <Int32?>]: Vlan to use for the subnet
 .Link
-https://learn.microsoft.com/powershell/module/az.StackHCIVM/new-azStackHCIVMvirtualnetwork
+https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualnetwork
 #>
-function New-AzStackHCIVMVirtualNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualNetworks])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function New-AzStackHciVMVirtualNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualNetworks])]
+[CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('VirtualNetworkName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # Name of the virtual network
     ${Name},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # The name of the extended location.
     ${CustomLocationId},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
     # The list of DNS servers IP addresses.
     ${DnsServers},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.NetworkTypeEnum])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.NetworkTypeEnum]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.NetworkTypeEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.NetworkTypeEnum]
     # Type of the network
     ${NetworkType},
 
-    <# [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualNetworkPropertiesSubnetsItem[]]
-    # Subnet - list of subnets under the virtual network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
-    ${Subnet}, #>
-
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tags},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # name of the network switch to be used for VMs
+    # Name of the network switch to be used for VMs
     ${VMSwitchName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials},
 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
+    # List of address prefixes for the subnet.
     $AddressPrefixes,
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
+    # The IP address allocation method. Possible values include: 'Static', 'Dynamic'
     $IpAllocationMethod, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
+    # End of the ip address pool
     $IpPoolEnd, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
+    # Start of the ip address pool
     $IpPoolStart, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
+    # Ip pool type
     $IpPoolType, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Collections.Hashtable[]]
+    # Network associated pool of IP Addresses
     $IpPools,
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Collections.Hashtable[]]
+    # Collection of routes contained within a route table.
     $Routes, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
+    # Name of the subnet
     $SubnetName, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Collections.Hashtable[]]
+    # List of subnets under the virtual network
     $Subnets, 
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int32]
+    # Vlan to use for the subnet
     $Vlan
 
 )
@@ -245,7 +247,7 @@ param(
 
     if ($CustomLocationId -notmatch $customLocationRegex){
       Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
-    }
+    } 
 
     if ($DnsServers){
       foreach ($DnsServer in $DnsServers){
@@ -278,9 +280,6 @@ param(
           
           if ($IpAllocationMethod -eq "static"){
             $Subnet["IPAllocationMethod"] = 'Static'
-            if(-Not ($IpPools -or ($IpPoolEnd -and $IpPoolStart))){
-                Write-Error "Invalid Configuration for Static IpAllocationMethod. IpPools or IpPoolStart and IpPoolEnd are required." -ErrorAction Stop
-            } 
             if (-Not $AddressPrefixes){
               Write-Error "Invalid Configuration for Static IpAllocationMethod. AddressPrefixes are required for Static IpAllocationMethod." -ErrorAction Stop
             }
@@ -363,5 +362,5 @@ param(
 
     }
    
-    return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualNetwork @PSBoundParameters
+    return Az.StackHciVM.internal\New-AzStackHciVMVirtualNetwork @PSBoundParameters
 }

@@ -1,20 +1,18 @@
 
-function Get-AzStackHCIVMVirtualNetwork {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualNetworks])]
+function Get-AzStackHciVMVirtualNetwork_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
- 
-    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The ID of the target subscription.
+    # The ARM ID of the virtual network.
     ${ResourceId},
 
 
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile}
@@ -33,7 +31,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
             
-            return  Az.StackHCIVM\Get-AzStackHCIVMVirtualNetwork @PSBoundParameters
+            return  Az.StackHciVM\Get-AzStackHciVMVirtualNetwork @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

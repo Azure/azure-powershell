@@ -1,33 +1,33 @@
-function New-AzStackHCIVMNetworkInterfaceIpConfig{
+function New-AzStackHciVMNetworkInterfaceIpConfig{
 param(
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # List of DNS server IP Addresses for the interface
+    # Gateway for network interface
     ${Gateway},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # List of DNS server IP Addresses for the interface
+    # PrivateIPAddress - Private IP address of the IP configuration.
     ${IpAddress},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # List of DNS server IP Addresses for the interface
+    # The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
     ${IpAllocationMethod},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int32]
-    # List of DNS server IP Addresses for the interface
+    # Prefix Length for network interface
     ${PrefixLength},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # List of DNS server IP Addresses for the interface
+    # The ARM resource id of the Subnet.
     ${SubnetId}
 )
     $IpConfig = @{}

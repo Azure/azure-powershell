@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the StackHciVM service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -55,19 +55,19 @@ In this directory, run AutoRest:
 
 ```yaml
 require:
-  - $(this-folder)/../../readme.azure.noprofile.md
+  - E:/azure-powershell/src/readme.azure.noprofile.md
 repo: azure-rest-api-specs-pr
 # lock the commit
 input-file:
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/common.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/galleryImages.json 
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/marketplaceGalleryImages.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/networkInterfaces.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/operations.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/storageContainers.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualHardDisks.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualMachines.json
-  - /mnt/e/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualNetworks.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/common.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/galleryImages.json 
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/marketplaceGalleryImages.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/networkInterfaces.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/operations.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/storageContainers.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualHardDisks.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualMachines.json
+  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2022-12-15-preview/virtualNetworks.json
 
 module-version: 1.1.0
 title: StackHCIVm
@@ -515,6 +515,30 @@ directive:
       subject: StorageContainer
     set:
       subject: StoragePath
-    
+ -  where:
+      verb: Remove
+      subject: VirtualHardDisk
+    hide: true
+ -  where:
+      verb: Remove
+      subject: VirtualMachine
+    hide: true
+ -  where:
+      verb: Remove
+      subject: NetworkInterface
+    hide: true
+ -  where:
+      verb: Remove
+      subject: VirtualNetwork
+    hide: true
+ -  where:
+      verb: Remove
+      subject: StoragePath
+    hide: true
+ -  where:
+      model-name: VirtualNetwork
+      property-name: Subnet
+    set:
+      property-name: Subnets
 
 ```

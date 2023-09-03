@@ -1,30 +1,30 @@
-function Remove-AzStackHCIVMVirtualMachineDataDisk {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualMachines])]
+function Remove-AzStackHciVMVirtualMachineDataDisk {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualMachines])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Alias('VirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # Name of the virtual machine
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The ID of the target subscription.
+    # The ARM Resource ID of the virtual machine.
     ${ResourceId},
 
     [Parameter(ParameterSetName='ByName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
@@ -32,25 +32,25 @@ param(
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
-    # Data Disks - list of data disks to be attached to the virtual machine
+    # Data Disks - list of data disks to be removed from  the virtual machine in id format.
     ${DataDiskIds},
 
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String[]]
-    # 
+    # Data Disks - list of data disks to be removed from  the virtual machine in name format.
     ${DataDiskNames},
 
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='ByName')]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # 
+    # Resource Group of the Data Disks.
     ${DataDiskResourceGroup}
 )
 
@@ -72,13 +72,13 @@ param(
         }
     }
 
-    $VM = Az.StackHCIVM\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
-    $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
+
+
     if ($DataDiskIds){
         $DataDisks = $PSBoundParameters['DataDiskIds']
         $null = $PSBoundParameters.Remove("DataDiskIds")
 
-        $VM = Az.StackHCIVM\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
+        $VM = Az.StackHciVM\Get-AzStackHciVMVirtualMachine @PSBoundParameters
         $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
       
         foreach ($DataDisk in $DataDisks){
@@ -97,11 +97,14 @@ param(
           $rg = $DataDiskResourceGroup
         }
 
-        $VM = Az.StackHCIVM\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
+        $null = $PSBoundParameters.Remove("DataDiskNames")
+        $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
+        
+        $VM = Az.StackHciVM\Get-AzStackHciVMVirtualMachine @PSBoundParameters
         $StorageProfileDataDisk =  $VM.StorageProfileDataDisk
 
         foreach ($DataDiskName in $DataDiskNames){
-            $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.StackHCIVM/virtualharddisks/$DataDiskName"
+            $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
             if ($DataDiskId -in $StorageProfileDataDisk){
                 $StorageProfileDataDisk.Remove($DataDiskId)
             } else {
@@ -109,10 +112,9 @@ param(
             }
         }
 
-        $null = $PSBoundParameters.Remove("DataDiskNames")
-        $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
+       
         $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
     }
 
-    return Az.StackHCIVM\Update-AzStackHCIVMVirtualMachine @PSBoundParameters
+    return Az.StackHciVM\Update-AzStackHciVMVirtualMachine @PSBoundParameters
 }

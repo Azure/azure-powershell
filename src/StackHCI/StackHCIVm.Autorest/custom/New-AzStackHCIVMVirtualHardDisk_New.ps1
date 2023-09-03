@@ -22,117 +22,117 @@ Please note some properties can be set only during virtual hard disk creation.
 The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzStackHciVMVirtualHardDisk -Name "sampleVirtualHardDisk-1396" -Dynamic -SizeGb "2" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" 
+
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualHardDisks
+Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualHardDisks
 .Link
-https://learn.microsoft.com/powershell/module/az.StackHCIVM/new-azStackHCIVMvirtualharddisk
+https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualharddisk
 #>
-function New-AzStackHCIVMVirtualHardDisk {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IVirtualHardDisks])]
+function New-AzStackHciVMVirtualHardDisk {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualHardDisks])]
 [CmdletBinding(PositionalBinding=$false,SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('VirtualHardDiskName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # Name of the virtual hard disk
+    # Name of the virtual hard disk. 
+    # Must contain all alphanumeric characters or ‘-’ or ‘_’. Max length is 80 characters, and min length is 1 character.  
     ${Name},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int32]
-    # .
+    # The block size, in bytes, of the virtual hard disk.  
     ${BlockSizeBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # Storage ContainerID of the storage container to be used for VHD
     ${StoragePathId},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # Storage Container Name to be used for the VHD 
     ${StoragePathName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # Storage Container resource group. The resource group of thr virtual hard disk will be used if this value is not provided. 
+    # Storage Container resource group. The resource group of the virtual hard disk will be used if this value is not provided. 
     ${StoragePathResourceGroup},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The name of the extended location.
+    # The ARM Id of the extended location to create virtual hard disk resource in.
     ${CustomLocationId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.DiskFileFormat])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.DiskFileFormat]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat]
     # The format of the actual VHD file [vhd, vhdx]
     ${DiskFileFormat},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int64]
     # Size of the disk in GB
     ${SizeGb},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Boolean for enabling dynamic sizing on the virtual hard disk
     ${Dynamic},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration]
     # The hypervisor generation of the Virtual Machine [V1, V2]
     ${HyperVGeneration},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int32]
-    # .
+    # Logical Sector Bytes of the Disk
     ${LogicalSectorBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.Int32]
-    # .
+    # Physical Sector Bytes of the Disk
     ${PhysicalSectorBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tags},
@@ -140,58 +140,58 @@ param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -203,7 +203,7 @@ param(
 
         if ($CustomLocationId -notmatch $customLocationRegex){
              Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
-        }
+        } 
 
         if ($DiskFileFormat){
             if ($DiskFileFormat.ToString().ToLower() -ne "vhd" -and $DiskFileFormat.ToString().ToLower() -ne "vhdx"){
@@ -212,15 +212,15 @@ param(
         }
 
         
-        if ($LogicalSectorByte){
-            if ($LogicalSectorByte -ne 512 -and $LogicalSectorByte -ne 4096){
+        if ($LogicalSectorBytes){
+            if ($LogicalSectorBytes -ne 512 -and $LogicalSectorBytes -ne 4096){
                 Write-Error "Invalid value for logical sector bytes provided. Allowed values are 512 and 4096. " -ErrorAction Stop
             }
         }
 
               
-        if ($PhysicalSectorByte){
-            if ($PhysicalSectorByte -ne 512 -and $PhysicalSectorByte -ne 4096){
+        if ($PhysicalSectorBytes){
+            if ($PhysicalSectorBytes -ne 512 -and $PhysicalSectorBytes -ne 4096){
                 Write-Error "Invalid value for physical sector bytes provided. Allowed values are 512 and 4096'. "  -ErrorAction Stop
             }
         }
@@ -239,16 +239,16 @@ param(
             $null = $PSBoundParameters.Remove("StoragePathId")
         } elseif ($StoragePathName){
             if ($StoragePathResourceGroup){
-                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$StoragePathResourceGroup/providers/Microsoft.StackHCIVM/storagecontainers/$StoragePathName"
+                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$StoragePathResourceGroup/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
             } else {
-                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.StackHCIVM/storagecontainers/$StoragePathName"
+                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
             }
             $PSBoundParameters.Add('ContainerId', $StoragePathId)
             $null = $PSBoundParameters.Remove("StoragePathName")
             $null = $PSBoundParameters.Remove("StoragePathReourceGroup")
         }
 
-        return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualHardDisk @PSBoundParameters
+        return Az.StackHciVM.internal\New-AzStackHciVMVirtualHardDisk @PSBoundParameters
     
 }
 
