@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;

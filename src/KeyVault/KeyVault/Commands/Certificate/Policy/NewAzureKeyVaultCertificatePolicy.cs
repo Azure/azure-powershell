@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections.Generic;

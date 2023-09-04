@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 using Track2Sdk = Azure.Security.KeyVault.Keys;

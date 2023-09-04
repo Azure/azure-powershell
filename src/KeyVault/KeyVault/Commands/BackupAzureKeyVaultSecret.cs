@@ -15,7 +15,6 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;

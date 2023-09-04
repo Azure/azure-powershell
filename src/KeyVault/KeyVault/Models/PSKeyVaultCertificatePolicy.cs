@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using System;

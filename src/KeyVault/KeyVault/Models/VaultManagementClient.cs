@@ -41,7 +41,6 @@ using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Microsoft.Azure.Commands.KeyVault.Progress;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.Linq;

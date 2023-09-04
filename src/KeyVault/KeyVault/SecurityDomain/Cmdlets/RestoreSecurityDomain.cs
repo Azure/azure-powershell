@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Commands;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+﻿using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
 using Newtonsoft.Json;

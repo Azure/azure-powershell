@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Management.Automation;
 using System.Xml;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 

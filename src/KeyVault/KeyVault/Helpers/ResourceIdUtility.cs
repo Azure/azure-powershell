@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;

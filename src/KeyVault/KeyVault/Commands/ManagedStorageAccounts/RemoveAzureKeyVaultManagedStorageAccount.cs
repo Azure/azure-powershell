@@ -18,7 +18,6 @@ using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.KeyVault.Commands;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
