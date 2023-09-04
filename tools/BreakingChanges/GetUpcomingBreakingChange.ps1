@@ -577,7 +577,7 @@ Function Export-BreakingChangeMessageOfCmdlet
             }
             Else
             {
-                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n"
+                $Result += "`n- Cmdlet breaking-change will happen to all parameter sets`n"
             }
             ForEach ($breakingChangeMsg In $CmdletBreakingChangeInfo[$ParameterSetName]['CmdletBreakingChange'])
             {
