@@ -700,6 +700,7 @@ function Test-FolderAccess {
 
 function Show-LatestModuleVersion{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
+    param()
     try 
     {
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
@@ -917,39 +918,39 @@ param(
 
 function Get-DefaultRegion{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
-    param(
-        [string] $EnvironmentName
-        )
-    
-        $defaultRegion = "eastus";
-    
-        if($EnvironmentName -eq $AzureCloud)
-        {
-            $defaultRegion = "eastus"
-        }
-        elseif($EnvironmentName -eq $AzureChinaCloud)
-        {
-            $defaultRegion = "chinaeast2"
-        }
-        elseif($EnvironmentName -eq $AzureUSGovernment)
-        {
-            $defaultRegion = "usgovvirginia"
-        }
-        elseif($EnvironmentName -eq $AzureGermanCloud)
-        {
-            $defaultRegion = "germanynortheast"
-        }
-        elseif($EnvironmentName -eq $AzurePPE)
-        {
-            $defaultRegion = "westus"
-        }
-        elseif($EnvironmentName -eq $AzureCanary)
-        {
-            $defaultRegion = "eastus2euap"
-        }
-    
-        return $defaultRegion
+param(
+    [string] $EnvironmentName
+    )
+
+    $defaultRegion = "eastus";
+
+    if($EnvironmentName -eq $AzureCloud)
+    {
+        $defaultRegion = "eastus"
     }
+    elseif($EnvironmentName -eq $AzureChinaCloud)
+    {
+        $defaultRegion = "chinaeast2"
+    }
+    elseif($EnvironmentName -eq $AzureUSGovernment)
+    {
+        $defaultRegion = "usgovvirginia"
+    }
+    elseif($EnvironmentName -eq $AzureGermanCloud)
+    {
+        $defaultRegion = "germanynortheast"
+    }
+    elseif($EnvironmentName -eq $AzurePPE)
+    {
+        $defaultRegion = "westus"
+    }
+    elseif($EnvironmentName -eq $AzureCanary)
+    {
+        $defaultRegion = "eastus2euap"
+    }
+
+    return $defaultRegion
+}
 
 function Get-GraphAccessToken{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -2442,6 +2443,8 @@ enum ErrorDetail
     Success
 }
 
+$global:HCILogsDirectory
+
 <#
     .Description
     Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
@@ -2537,8 +2540,6 @@ enum ErrorDetail
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
 #>
-
-$global:HCILogsDirectory
 function Register-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
 param(
@@ -3403,13 +3404,14 @@ param(
 
             Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
 
-                        if($isDefaultExtensionSupported)
-                        {
-                            Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
-                            Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
-                        }
+            if($isDefaultExtensionSupported)
+            {
+                Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
+                Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
+            }
+
             try {
-            $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
             }
             catch {
                 $operationStatus = [OperationStatus]::ArcFailed
@@ -3994,6 +3996,7 @@ function Remove-ResourceGroup {
 }
 
 function Get-LogsDirectoryHelper{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [Parameter(Mandatory = $false)]
     [System.Management.Automation.Runspaces.PSSession] $ClusterNodeSession
@@ -4123,6 +4126,7 @@ param(
 
 function Get-SetupLoggingDetails
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory = $false)]
         [System.Management.Automation.PSCredential] $Credential,
