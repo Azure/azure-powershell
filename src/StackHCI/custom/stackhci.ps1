@@ -81,7 +81,7 @@ $MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please in
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
-$RegisterArcFailedErrorMessage = "Some clustered nodes couldn't be Arc-enabled right now. Check the Arc Scheduled Task logs to investigate further. These logs can be found at C:\Windows\Tasks\ArcForServers."
+$RegisterArcFailedErrorMessage = "Some clustered nodes couldn't be Arc-enabled right now. Check the Arc Scheduled Task logs to investigate further."
 $RegisterArcFailedExceptionMessage = "Failed to enable Arc on some clustered nodes."
 $ArcSettingsPatchFailedWarningMessage = "Arc for Servers registration failed. Visit https://learn.microsoft.com/en-us/azure-stack/hci/deploy/troubleshoot-hci-registration#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed and follow the troubleshooting steps. If Azure-Arc registration continues failing for more than 12 hours, contact support."
 $ArcSettingsPatchFailedLogMessage = "Arc for Servers registration failed. Unable to find the cluster nodes in Arc Settings resource."
@@ -123,6 +123,8 @@ $DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
 $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
 $ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
+$AttestationCmdOnlyLegacyOS = "The command {0} is required only for Attestation with Legacy OS Support (V1). Legacy OS Support for IMDS Attestation needs to be enabled."
+$ShouldContinueAttestationV1Only = "Enabling Attestation is only required when using Attestation with Legacy OS Support (V1). Do you want to continue to enable Attestation with Legacy OS Support?"
 $MaskString = "XXXXXXX"
 $SetupCloudManagementActivityName = "Cloud Management configuration..."
 $ConfiguringCloudManagementMessage = "Configuring Cloud Management agent."
@@ -157,10 +159,12 @@ $PortalCanarySuffix = '?feature.armendpointprefix={0}'
 $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/providers/Microsoft.AzureStackHCI/clusters/{3}/overview'
 
 $Region_EASTUSEUAP = 'eastus2euap'
+$Region_CENTRALUSEUAP = 'centraluseuap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
-        $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com'
-        }
+    $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com'
+    $Region_CENTRALUSEUAP = 'https://canary.dp.stackhci.azure.com'
+    }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://dp.stackhci.azure.com"
 $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
@@ -223,7 +227,6 @@ $AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
 $AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
 $ArcOnboardingRole = "Azure Connected Machine Resource Manager"
 $ArcRegistrationTaskName = "ArcRegistrationTask"
-$LogFileDir = '\Tasks\ArcForServers'
 
 $ArcMachineResourceType = "Microsoft.HybridCompute/machines"
 
@@ -234,20 +237,34 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $GetArcSettingsWaitTimeMinutes = 1
 $GetArcSettingsSleepTimeSeconds = 15
-$ArcSettingsVerificationLimit = 5
+$ArcSettingsVerificationLimit = 10
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
+$defaultLogsDirectory = "C:/ProgramData/AzureStackHCI/Registration"
+
 # Cluster Agent Service Names
 $ClusterAgentServiceName = "HciClusterAgentSvc"
-$CloudManagementInfraServiceName = "AszCloudMgmtSvc"
+$CloudManagementInfraServiceName = "HciCloudManagementSvc"
 $ClusterAgentGroupName = "Cloud Management"
 
 $AzAccountsModuleMinVersion="2.11.2"
 $AzResourcesModuleMinVersion="6.2.0"
 
+enum AttestationLegacyOsSupport
+{
+    Disabled;
+    Enabled;
+}
+
+enum AttestationVersion
+{
+    Unknown;
+    V1;
+    V2;
+}
+
 Function Write-Log {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     Param(
     [Parameter(Mandatory=$False)]
@@ -263,12 +280,14 @@ Function Write-Log {
     $Stamp = (Get-Date).toString("yyyy/MM/dd HH:mm:ss")
     $Line = "$Stamp , $Level , $Message"
 
-    Add-Content $global:LogFileName -Value $Line
+    if ($null -ne $global:LogFileName)
+    {
+        Add-Content $global:LogFileName -Value $Line
+    }
 
 }
 
 Function Write-VerboseLog{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -281,7 +300,6 @@ Function Write-VerboseLog{
 
 
 Function Write-InfoLog{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -293,7 +311,6 @@ Function Write-InfoLog{
 }
 
 Function Write-WarnLog{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -309,7 +326,6 @@ Writes the Error output to registration log file and console
 If Category is passed as 'OperationStopped', the Script will not write the error message again in the final catch block
 #>
 Function Write-ErrorLog{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$true)]
@@ -356,7 +372,6 @@ Function Write-ErrorLog{
 }
 
 Function Write-NodeEventLog{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -413,7 +428,6 @@ Function Write-NodeEventLog{
 }
 
 Function Print-FunctionParameters{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -438,7 +452,7 @@ Function Print-FunctionParameters{
         {
             $body.add($param.Key, $param.Value)
         }
-    }    
+    }
     return "Parameters for {0} are: {1}" -f $Message, ($body | Out-String ) 
 }
 
@@ -464,28 +478,32 @@ $CheckNodeArcRegistrationStateScriptBlock = {
 $registerArcScript = {
     try
     {
+        #Setup Directory
+        $LogsDirectory = $env:ArcLogsDirectory
+        if([string]::IsNullOrEmpty($LogsDirectory))
+        {
+            $LogsDirectory = $env:windir + '\Tasks\ArcForServers'
+        }
+
+        if(-Not (Test-Path $LogsDirectory))
+        {
+            New-Item -ItemType Directory -Path $LogsDirectory -Force | Out-Null
+        }
         # Params for Enable-AzureStackHCIArcIntegration 
         $AgentInstaller_WebLink                  = 'https://aka.ms/AzureConnectedMachineAgent'
-        $AgentInstaller_Name                     =  $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi'
-        $AgentInstaller_LogFile                  =  $env:windir + '\Tasks\ArcForServers' +'\ConnectedMachineAgentInstallationLog.txt'
+        $AgentInstaller_Name                     =  $env:windir  + '\Temp' + '\AzureConnectedMachineAgent.msi'
+        $AgentInstaller_LogFile                  =  $LogsDirectory +'\ConnectedMachineAgentInstallationLog.txt'
         $AgentExecutable_Path                    =  $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
         $DebugPreference = 'Continue'
 
-        # Setup Directory.
-        $LogFileDir = $env:windir + '\Tasks\ArcForServers'
-        if (-Not $(Test-Path $LogFileDir))
-        {
-            New-Item -Type Directory -Path $LogFileDir
-        }
-
-        # Delete log files older than 15 days
-        Get-ChildItem -Path $LogFileDir -Recurse | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-15))} | Remove-Item
+        # Delete only arc related log files older than 15 days
+        Get-ChildItem -Path $LogsDirectory -Recurse | Where-Object {($_.Name.contains('RegisterArc'))} | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-15))} | Remove-Item -ErrorAction Ignore
 
         # Setup Log file name.
         $date = Get-Date
         $datestring = '{0}{1:d2}{2:d2}' -f $date.year,$date.month,$date.day
-        $LogFileName = $LogFileDir + '\RegisterArc_' + $datestring + '.log'
+        $LogFileName = $LogsDirectory + '\RegisterArc_' + $datestring + '.log'
     
         Start-Transcript -LiteralPath $LogFileName -Append | Out-Null
         $sourceExists = Get-EventLog -LogName Application -Source 'HCI Registration' -Newest 1 -ErrorAction SilentlyContinue
@@ -579,19 +597,6 @@ $registerArcScript = {
     }
     finally
     {
-        $customImdsScript = { try{ $customImdsRegKey = Get-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -ErrorAction Stop } catch{ $customImdsRegKey = New-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -Force -ErrorAction Stop } $customImdsRegKey | New-ItemProperty -Name 'CustomIMDSHostAddress' -Value 'http://127.0.0.1:42542' -Force -ErrorAction Stop | Out-Null }
-        try 
-        {
-            Write-Verbose ('Configuring CustomIMDSHostAddress')
-            Invoke-Command -ScriptBlock $customImdsScript 
-        } 
-        catch 
-        {
-            Write-Verbose ('Exception occurred while setting custom IMDS host. ErrorMessage : ' + $_.Exception.Message)
-            Write-Verbose ($_ | Out-String)
-            Write-Warning ('Could not configure CustomIMDSHostAddress for node.')
-        }
-
         try{ Stop-Transcript } catch {}
     }
 }
@@ -600,26 +605,92 @@ $registerArcScript = {
 
 $global:LogFileName
 function Setup-Logging{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
+    [string] $LogsDirectory,
     [string] $LogFilePrefix,
-    [bool] $DebugEnabled
+    [bool] $DebugEnabled, 
+    [bool] $IsClusterRegistered = $false,
+    [System.Management.Automation.Runspaces.PSSession] $ClusterNodeSession
     )
-    
-    $date = Get-Date
-    $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
-    $global:LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
-    if ($DebugEnabled)
-    {
-        $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
-        Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
-    }
 
+    try 
+    {
+        $date = Get-Date
+        $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
+        $session = @{}
+        if ($null -ne $ClusterNodeSession)
+        {
+            $session['ClusterNodeSession'] = $ClusterNodeSession
+        }
+
+        # If the cluster is registered from before, use previous log directory values 
+        if($IsClusterRegistered)
+        {
+            $LogsDirectory = Get-LogsDirectoryHelper @session | Out-string
+            if([string]::IsNullOrEmpty($LogsDirectory)) {
+                $LogsDirectory = $PWD.Path
+            }
+            $LogsDirectory = $LogsDirectory.Trim()
+        }
+
+        if([string]::IsNullOrEmpty($LogsDirectory) -or -Not(Test-FolderAccess $LogsDirectory)) {
+            $LogsDirectory = $defaultLogsDirectory
+        }
+
+        if(-Not (Test-Path $LogsDirectory))
+        {
+            New-Item -ItemType Directory -Path $LogsDirectory -Force | Out-Null
+        }
+
+        $global:LogFileName = $LogsDirectory + "/" + $LogFilePrefix + "_" + $datestring + ".log"
+        if ($DebugEnabled)
+        {
+            $DebugLogFileName = $LogsDirectory + "/" + $LogFilePrefix + "_" + "debug" + "_" + $datestring + ".log"
+            Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
+        }
+    }
+    catch 
+    {
+        Write-Error -Message "Could not setup logs directory. ErrorMessage : $($_.Exception.Message)" -Category OperationStopped
+        Exit 1
+    }
+    return $LogsDirectory
+}
+
+function Test-FolderAccess {
+    param (
+        [string] $folderPath
+    )
+
+    try 
+    {
+        Get-ChildItem -Path $folderPath -ErrorAction Stop | Out-Null
+    }
+    catch 
+    {
+        if($_.Exception.GetType() -eq [System.UnauthorizedAccessException])
+        {
+            Write-Warning("Access to folder $folderPath is denied, switching to default logs directory: $defaultLogsDirectory")
+            return $False
+        }
+
+        if($_.Exception.GetType() -eq [System.Management.Automation.ItemNotFoundException])
+        {
+            try 
+            {
+                New-Item -ItemType Directory -Path $folderPath -Force -ErrorAction Stop | Out-Null
+            }
+            catch 
+            {
+                Write-Warning("Access to folder $folderPath is denied, switching to default logs directory: $defaultLogsDirectory")
+                return $False
+            }
+        }
+    }
+    return $true
 }
 
 function Show-LatestModuleVersion{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
-    param()
     try 
     {
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
@@ -629,7 +700,7 @@ function Show-LatestModuleVersion{
         Write-VerboseLog $_.Exception.Message
         $latestModule = $Null
     }
-    
+
     if($Null -eq $latestModule)
     {
         $CouldNotGetLatestModuleInformationWarningMsg = $CouldNotGetLatestModuleInformationWarning -f $installedModule.Version.Major
@@ -661,7 +732,6 @@ Useful while running long running cmdlets (202 pattern) since progressbar from t
 do not have useful information
 #>
 function Execute-Without-ProgressBar{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -691,7 +761,6 @@ Useful for scripts where the error needs to be caught inside the Invoke-Command.
 Note: The parameters variable used inside $ScriptBlock should be named $Params or the method won't work as expected
 #>
 function Run-InvokeCommand {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [scriptblock] $ScriptBlock,
@@ -716,7 +785,6 @@ function Run-InvokeCommand {
 }
 
 function Retry-Command {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -797,7 +865,6 @@ function Retry-Command {
 }
 
 function Get-PortalDomain{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName,
@@ -836,43 +903,41 @@ param(
 }
 
 function Get-DefaultRegion{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
-param(
-    [string] $EnvironmentName
-    )
-
-    $defaultRegion = "eastus";
-
-    if($EnvironmentName -eq $AzureCloud)
-    {
-        $defaultRegion = "eastus"
+    param(
+        [string] $EnvironmentName
+        )
+    
+        $defaultRegion = "eastus";
+    
+        if($EnvironmentName -eq $AzureCloud)
+        {
+            $defaultRegion = "eastus"
+        }
+        elseif($EnvironmentName -eq $AzureChinaCloud)
+        {
+            $defaultRegion = "chinaeast2"
+        }
+        elseif($EnvironmentName -eq $AzureUSGovernment)
+        {
+            $defaultRegion = "usgovvirginia"
+        }
+        elseif($EnvironmentName -eq $AzureGermanCloud)
+        {
+            $defaultRegion = "germanynortheast"
+        }
+        elseif($EnvironmentName -eq $AzurePPE)
+        {
+            $defaultRegion = "westus"
+        }
+        elseif($EnvironmentName -eq $AzureCanary)
+        {
+            $defaultRegion = "eastus2euap"
+        }
+    
+        return $defaultRegion
     }
-    elseif($EnvironmentName -eq $AzureChinaCloud)
-    {
-        $defaultRegion = "chinaeast2"
-    }
-    elseif($EnvironmentName -eq $AzureUSGovernment)
-    {
-        $defaultRegion = "usgovvirginia"
-    }
-    elseif($EnvironmentName -eq $AzureGermanCloud)
-    {
-        $defaultRegion = "germanynortheast"
-    }
-    elseif($EnvironmentName -eq $AzurePPE)
-    {
-        $defaultRegion = "westus"
-    }
-    elseif($EnvironmentName -eq $AzureCanary)
-    {
-        $defaultRegion = "eastus2euap"
-    }
-
-    return $defaultRegion
-}
 
 function Get-GraphAccessToken{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName
@@ -890,7 +955,6 @@ param(
 }
 
 function Get-EnvironmentEndpoints{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $EnvironmentName,
     [ref] $ServiceEndpoint,
@@ -938,7 +1002,6 @@ param(
 
 
 function Get-PortalHCIResourcePageUrl{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName,
@@ -954,7 +1017,6 @@ param(
 }
 
 function Get-ResourceId{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $ResourceName,
     [string] $SubscriptionId,
@@ -1027,7 +1089,6 @@ function Check-DependentModules
 }
 
 function Azure-Login{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $SubscriptionId,
     [string] $TenantId,
@@ -1204,7 +1265,6 @@ param(
 }
 
 function Normalize-RegionName{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $Region
     )
@@ -1214,7 +1274,6 @@ param(
 }
 
 function Validate-RegionName{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $Region,
     [ref] $SupportedRegions
@@ -1236,7 +1295,6 @@ param(
 }
 
 function Get-ClusterDNSSuffix{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session
     )
@@ -1247,7 +1305,6 @@ param(
 }
 
 function Register-ResourceProviderIfRequired{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $ProviderNamespace
 )
@@ -1272,7 +1329,6 @@ param(
     }
 }
 function Get-ClusterDNSName{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session
     )
@@ -1283,7 +1339,6 @@ param(
 }
 
 function Check-ConnectionToCloudBillingService{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     $ClusterNodes,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1327,7 +1382,6 @@ param(
 }
 
 function Setup-Certificates{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     $ClusterNodes,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1514,7 +1568,6 @@ param(
     return $null
 }
 function Assign-ArcRoles {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $SpObjectId
     )
@@ -1578,7 +1631,6 @@ function Assign-ArcRoles {
 }
 
 function Verify-ArcSettings{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session
@@ -1619,7 +1671,6 @@ function Verify-ArcSettings{
 }
 
 function Verify-ArcRegistration{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session,
@@ -1671,7 +1722,6 @@ function Verify-ArcRegistration{
 }
 
 function Verify-NodesArcRegistrationState{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         $ClusterNodes,
         [string] $SubscriptionId,
@@ -1723,7 +1773,6 @@ function Verify-NodesArcRegistrationState{
 }
 
 function Enable-ArcForServers{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1797,7 +1846,6 @@ param(
 }
 
 function Disable-ArcForServers{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1862,7 +1910,6 @@ param(
 }
 
 function Register-ArcForServers{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $IsManagementNode,
     [string] $ComputerName,
@@ -2007,10 +2054,29 @@ param(
         {
             $clusterNameSession = New-PSSession -ComputerName ($clusterDNSName + "." + $ClusterDNSSuffix) -Credential $Credential
         }
-
-        Invoke-Command -Session $clusterNameSession -ScriptBlock { 
+        $ArcLogDir = $global:HCILogsDirectory
+        Invoke-Command -Session $clusterNameSession -ScriptBlock {
             $task =  Get-ScheduledTask -TaskName $using:ArcRegistrationTaskName -ErrorAction SilentlyContinue
-            $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $using:registerArcScript"
+            if($Null -ne $task){
+                #We only have one action in the scheduled task, hence 0 index
+                $currentAction = $task.Actions[0].Arguments
+                $actionArgument = ($currentAction -split '\r?\n')[0]
+                #Checks the 'Value' in the string for the environment variable. Currently, we only have one environment variable. May need to revisit if we add more.
+                $indexValue = $actionArgument.IndexOf("-Value")
+
+                if ($indexValue -eq -1){
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command $using:registerArcScript"
+                }
+                else {
+                    $logsdirectory = $actionArgument.substring($indexValue + 7)
+                    $logsdirectory = $logsdirectory.substring(0, $logsdirectory.Length - 2)
+                    $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $logsdirectory; $using:registerArcScript"
+                }
+            }
+            else {
+                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command Set-Item -Path Env:\ArcLogsDirectory -Value $using:ArcLogDir; $using:registerArcScript"
+
+            }
             
             # Repeat the script every hour of every day, starting from now.
             $date = Get-Date
@@ -2027,7 +2093,7 @@ param(
                 # Update cluster schedule task.
                 Set-ClusteredScheduledTask -TaskName $using:ArcRegistrationTaskName -Action $action -Trigger $dailyTrigger
             }
-        } | Out-Null
+        } | Out-Null            
     }
     catch
     {
@@ -2062,7 +2128,6 @@ param(
 }
 
 function Verify-arcSPNRoles{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $arcSPNObjectID
 )
@@ -2080,11 +2145,10 @@ param(
             $foundMachineResourceAdminstratorRole=$true
         }
     }
-    
+
     return $foundMachineResourceAdminstratorRole -and $foundConnectedMachineOnboardingRole 
 }
 function Unregister-ArcForServers{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $IsManagementNode,
     [string] $ComputerName,
@@ -2247,7 +2311,7 @@ param(
         {
             $DeletingArcCloudResourceMessageProgress = $DeletingArcCloudResourceMessage -f $arcResourceId
             Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $UnregisterArcProgressActivityName -Status $DeletingArcCloudResourceMessageProgress -PercentComplete 40
-            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force | Out-Null } 
+            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force | Out-Null }
             if(($Null -ne $arcStatus) -and ($Null -ne $arcStatus.ApplicationId))
             {
                 $arcAADApplication = Get-AzADApplication -ApplicationId $arcStatus.ApplicationId -ErrorAction:SilentlyContinue
@@ -2268,7 +2332,6 @@ param(
                         Write-WarnLog ($msg)
                     }
                 }
-                
             }
             else
             {
@@ -2319,7 +2382,7 @@ class ResourceProperties {
     }
 }
 
-enum OperationStatus 
+enum OperationStatus
 {
     Unused;
     Failed;
@@ -2329,14 +2392,14 @@ enum OperationStatus
     ArcFailed
 }
 
-enum ConnectionTestResult 
+enum ConnectionTestResult
 {
     Unused;
     Succeeded;
     Failed
 }
 
-enum ErrorDetail 
+enum ErrorDetail
 {
     Unused;
     ArcPermissionsMissing;
@@ -2399,9 +2462,12 @@ enum ErrorDetail
     .PARAMETER ArcServerResourceGroupName
     Specifies the Arc Resource Group name. If not specified, cluster resource group name will be used.
 
-     .PARAMETER ArcSpnCredential
+    .PARAMETER ArcSpnCredential
     Specifies the credentials to be used for onboarding ARC agent. If not specified, new set of credentials will be generated.
-    
+
+    .PARAMETER LogsDirectory
+    Specifies the Path where the log files are to be saved. Has to be an absolute Path. Default value would be: C:\ProgramData\AzureStackHCI
+
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
     Result: Success or Failed or Cancelled.
@@ -2436,6 +2502,8 @@ enum ErrorDetail
     ResourceId: /subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1
     PortalResourceURL: https://portal.azure.com/#@c31c0dbb-ce27-4c78-ad26-a5f717c14557/resource/subscriptions/12a0f531-56cb-4340-9501-257726d741fd/resourceGroups/HciRG/providers/Microsoft.AzureStackHCI/clusters/HciCluster1/overview
 #>
+
+$global:HCILogsDirectory
 function Register-AzStackHCI{
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
 param(
@@ -2488,7 +2556,16 @@ param(
     [string] $ArcServerResourceGroupName,
 
     [Parameter(Mandatory = $false)]
-    [System.Management.Automation.PSCredential] $ArcSpnCredential
+    [System.Management.Automation.PSCredential] $ArcSpnCredential,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateScript({
+        if(([string]::IsNullOrEmpty($_)) -or -Not(Split-Path $_ -IsAbsolute) -or -Not(Test-Path $_ -IsValid)){
+            throw "LogsDirectory path is not valid."
+        }
+        return $true
+    })]
+    [string] $LogsDirectory
     )
     
     if([string]::IsNullOrEmpty($ComputerName))
@@ -2503,10 +2580,17 @@ param(
 
     try
     {
-        Setup-Logging -LogFilePrefix "RegisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-
         $registrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
+
+        $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
+
+        $global:HCILogsDirectory = Setup-Logging -LogsDirectory $LogsDirectory -LogFilePrefix "RegisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession
+        
+        if($IsClusterRegistered -and !([string]::IsNullOrEmpty($LogsDirectory)))
+        {
+            Write-WarnLog ("Cluster is already registered, Logs directory cannot be re-configured. It is currently configured to $global:HCILogsDirectory. To change logs directory, please unregister the cluster and register again.")
+        }
         
         Show-LatestModuleVersion
 
@@ -2514,29 +2598,10 @@ param(
         Check-DependentModules
 
         Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 2
-        if($IsManagementNode)
-        {
-            Write-VerboseLog ("Connecting via Management Node")
-            if($Credential -eq $Null)
-            {
-                Write-VerboseLog ("Connecting without credentials")
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName
-            }
-            else
-            {
-                Write-VerboseLog ("Connecting to $ComputerName with credentials")
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
-            }
-        }
-        else
-        {
-            $clusterNodeSession = New-PSSession -ComputerName localhost
-        }
-
+        
         $msg = Print-FunctionParameters -Message "Register-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
 
-        $RegContext = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-AzureStackHCI }
 
             if(-Not ([string]::IsNullOrEmpty($RegContext.AzureResourceUri)))
             {
@@ -2711,7 +2776,7 @@ param(
 
         $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
         $isCloudManagementInfraSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and ($cloudManagementInfraCapable -eq $true)
-        $isDefaultExtensionSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber)
+        $isDefaultExtensionSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber)
         Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
         Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
         Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
@@ -2915,7 +2980,7 @@ param(
                 $payload = ConvertTo-Json -InputObject $properties
                 $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
                 Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
-                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
                 $clusterResult = New-ClusterWithRetries -ResourceIdWithAPI $resourceIdWithAPI -Payload $payload
                 if($clusterResult -eq $false) 
                 {
@@ -2945,7 +3010,7 @@ param(
                 $payload = ConvertTo-Json -InputObject $properties
                 $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
                 Write-VerboseLog ("$CloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
-                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                Write-VerboseLog ("ResourceIdWithApi: $resourceIdWithAPI")
                 $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PATCH -Payload $payload
                 if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
                 {
@@ -3303,14 +3368,13 @@ param(
 
             Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
 
-            if($isDefaultExtensionSupported)
-            {
-                Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
-                Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
-            }
-
+                        if($isDefaultExtensionSupported)
+                        {
+                            Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
+                            Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
+                        }
             try {
-                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres -HCIResource $resource
+            $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
             }
             catch {
                 $operationStatus = [OperationStatus]::ArcFailed
@@ -3318,7 +3382,6 @@ param(
                 Write-Output $registrationOutput | Format-List
                 throw $_.Exception.Message
             }
-
 
             if($arcResult -ne [ErrorDetail]::Success)
             {
@@ -3362,7 +3425,6 @@ param(
 }
 
 function Set-ArcRoleforRPSpn {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $RPObjectId,
         [String] $ArcServerResourceGroupName
@@ -3370,46 +3432,60 @@ function Set-ArcRoleforRPSpn {
     $stopLoop = $false
     [int]$retryCount = "0"
     [int]$maxRetryCount = "5"
-    Write-VerboseLog ("Assigning HCI RP App Arc Onboarding permissions")
-    do
-    {
-        try 
+
+    Write-VerboseLog ("Checking if  HCI RP App Arc Onboarding permissions is assigned already for SPN with Object ID: $SpObjectId")
+    $arcSPNRbacRoles = Get-AzRoleAssignment -ObjectId $RPObjectId -ResourceGroupName $ArcServerResourceGroupName 
+    $foundArcOnboardingRole = $false
+    $arcSPNRbacRoles | ForEach-Object {
+        $roleName = $_.RoleDefinitionName
+        if ($roleName -eq $ArcOnboardingRole)
         {
-            New-AzRoleAssignment -ObjectId $RPObjectId -ResourceGroupName $ArcServerResourceGroupName -RoleDefinitionName $ArcOnboardingRole | Out-Null
-            Write-VerboseLog("Sucessfully assigned ARC Roles to HCI RP service principal with Object Id $($RPObjectId)")
-            $stopLoop = $true
-        }
-        catch 
-        {
-            # 'Conflict' can happen when either the RoleAssignment already exists or the limit for number of role assignments has been reached.
-            if ($_.Exception.Response.StatusCode -eq 'Conflict') 
-            {
-                $roleAssignment  = Get-AzRoleAssignment -ObjectId $RPObjectId -ResourceGroupName $ArcServerResourceGroupName -RoleDefinitionName $ArcOnboardingRole
-                if ($null -ne $roleAssignment) 
-                {
-                    Write-VerboseLog("Sucessfully assigned ARC Roles to HCI RP service principal with Object Id $($RPObjectId)")
-                    return [ErrorDetail]::Success
-                }
-                Write-ErrorLog ("Failed to assign roles to service principal with object Id $($RPObjectId). ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $_.InvocationInfo.PositionMessage)
-                return [ErrorDetail]::ArcPermissionsMissing
-            }
-            if ($retryCount -ge $maxRetryCount) 
-            {
-                # Timed out.
-                Write-ErrorLog ("Failed to assign roles to service principal with object Id $($RPObjectId). ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $_.InvocationInfo.PositionMessage)
-                return [ErrorDetail]::ArcPermissionsMissing
-            }
-            Write-VerboseLog ("Could not assign roles to service principal with Object Id $($RPObjectId). Retrying in 10 seconds...")
-            Start-Sleep -Seconds 10
-            $retryCount = $retryCount + 1
+            $foundArcOnboardingRole=$true
+            Write-VerboseLog ("Found Arc Onboarding permissions for HCI RP App. Not Assigning")
         }
     }
-    While(-Not $stopLoop)
+    if( -not $foundArcOnboardingRole)
+    {
+        Write-VerboseLog ("Assigning HCI RP App Arc Onboarding permissions")
+        do
+        {
+            try 
+            {
+                New-AzRoleAssignment -ObjectId $RPObjectId -ResourceGroupName $ArcServerResourceGroupName -RoleDefinitionName $ArcOnboardingRole | Out-Null
+                Write-VerboseLog("Sucessfully assigned ARC Roles to HCI RP service principal with Object Id $($RPObjectId)")
+                $stopLoop = $true
+            }
+            catch 
+            {
+                # 'Conflict' can happen when either the RoleAssignment already exists or the limit for number of role assignments has been reached.
+                if ($_.Exception.Response.StatusCode -eq 'Conflict') 
+                {
+                    $roleAssignment  = Get-AzRoleAssignment -ObjectId $RPObjectId -ResourceGroupName $ArcServerResourceGroupName -RoleDefinitionName $ArcOnboardingRole
+                    if ($null -ne $roleAssignment) 
+                    {
+                        Write-VerboseLog("Sucessfully assigned ARC Roles to HCI RP service principal with Object Id $($RPObjectId)")
+                        return [ErrorDetail]::Success
+                    }
+                    Write-ErrorLog ("Failed to assign roles to service principal with object Id $($RPObjectId). ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $_.InvocationInfo.PositionMessage)
+                    return [ErrorDetail]::ArcPermissionsMissing
+                }
+                if ($retryCount -ge $maxRetryCount) 
+                {
+                    # Timed out.
+                    Write-ErrorLog ("Failed to assign roles to service principal with object Id $($RPObjectId). ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $_.InvocationInfo.PositionMessage)
+                    return [ErrorDetail]::ArcPermissionsMissing
+                }
+                Write-VerboseLog ("Could not assign roles to service principal with Object Id $($RPObjectId). Retrying in 10 seconds...")
+                Start-Sleep -Seconds 10
+                $retryCount = $retryCount + 1
+            }
+        }
+        While(-Not $stopLoop)
+    }
     return [ErrorDetail]::Success
 }
 
 function New-ClusterWithRetries {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceIdWithAPI, 
         [String] $Payload
@@ -3568,10 +3644,12 @@ param(
 
     try
     {
-        Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-
         $unregistrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
+
+        $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
+
+        Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession | Out-Null
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
         Check-DependentModules
@@ -3581,25 +3659,7 @@ param(
         $msg = Print-FunctionParameters -Message "Unregister-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
         Write-NodeEventLog -Message $UnregisterProgressActivityName -EventID 9005 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
-        if($IsManagementNode)
-        {
-            Write-VerboseLog ("Connecting from management node")
-            if($Credential -eq $Null)
-            {
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName
-            }
-            else
-            {
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
-            }
-
-            $RegContext = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-AzureStackHCI }
-        }
-        else
-        {
-            $RegContext = Get-AzureStackHCI
-            $clusterNodeSession = New-PSSession -ComputerName localhost
-        }
+        
         $clusScript = {
                 $clusterPowershell = Get-WindowsFeature -Name RSAT-Clustering-PowerShell;
                 if ( $clusterPowershell.Installed -eq $false)
@@ -3685,7 +3745,7 @@ param(
             }
 
             Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterHCIUsageMessage -percentcomplete 45
-        
+
             # Stop cluster agent service
             Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-ClusterGroup -Name $using:ClusterAgentGroupName -RemoveResources -ErrorAction Ignore -Force | Out-Null }
 
@@ -3736,7 +3796,7 @@ param(
                 $DeletingCloudResourceMessageProgress = $DeletingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $DeletingCloudResourceMessageProgress -percentcomplete 80
                 Write-VerboseLog ("$DeletingCloudResourceMessageProgress")
-                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -Force } 
+                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -Force }
                 $clusterAADApplication = Get-AzADApplication -ApplicationId $resource.Properties.aadClientId -ErrorAction:SilentlyContinue
                 if($clusterAADApplication -ne $Null)
                 {
@@ -3802,7 +3862,6 @@ param(
 }
 
 function Remove-ArcRoleAssignments {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName,
         [String] $ResourceId
@@ -3847,7 +3906,6 @@ function Remove-ArcRoleAssignments {
 }
 
 function Remove-ResourceGroup {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName 
     )
@@ -3894,6 +3952,179 @@ function Remove-ResourceGroup {
     {
         Write-VerboseLog ("Resource group not created by Az.StackHCI. Not deleting")
     }
+}
+
+function Get-LogsDirectoryHelper{
+param(
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.Runspaces.PSSession] $ClusterNodeSession
+)
+    try 
+    {
+        $logsDirectoryPath = $Null
+        $session = @{}
+        if ($null -ne $ClusterNodeSession)
+        {
+            $session['Session'] = $ClusterNodeSession
+        }
+
+        $logsDirectoryPath = Invoke-Command @session -ArgumentList $ArcRegistrationTaskName -ScriptBlock {
+            param ($ArcRegistrationTaskName)
+            $task = Get-ScheduledTask -TaskName $ArcRegistrationTaskName -ErrorAction SilentlyContinue
+            if($Null -ne $task)
+            {
+                #We only have one action in the scheduled task, hence 0 index
+                $action = $task.Actions[0].Arguments
+                $actionArgument = ($action -split '\r?\n')[0]
+                #Checks the 'Value' in the string for the environment variable. Currently, we only have one environment variable. May need to revisit if we add more.
+                $indexValue = $actionArgument.IndexOf("-Value")
+                if ($indexValue -ne -1) 
+                {
+                    $logsdirectory = $actionArgument.substring($indexValue + 7)
+                    $logsdirectory = $logsdirectory.substring(0, $logsdirectory.Length - 2)   
+                    return $logsdirectory  
+                }
+            }
+        }
+    }
+    catch 
+    {
+        Write-VerboseLog "Failed to get logs directory path. Error: $($_.Exception.Message) at $($_.InvocationInfo.PositionMessage). Switching to current directory"
+    }
+    
+    return $logsDirectoryPath
+}
+
+<#
+    .Description
+    Returns Logs directory path on the current node.
+    
+    .PARAMETER Credential
+    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+
+    .PARAMETER ComputerName
+    Specifies one of the cluster node in on-premise cluster that is registered to Azure.
+
+    .OUTPUTS
+    String. Returns the path to the logs directory.
+
+    .EXAMPLE
+    The example below returns the logs directory path on the current node.
+    
+    C:\PS> Get-AzStackHCILogsDirectory
+    HCI Registration Logs directory path: C:\ProgramData\AzureStackHCI
+#>
+function Get-AzStackHCILogsDirectory {
+[CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'High')]
+[OutputType([String])]
+param(
+    [Parameter(Mandatory = $false)]
+    [System.Management.Automation.PSCredential] $Credential,
+
+    [Parameter(Mandatory = $false)]
+    [string] $ComputerName
+    )
+
+    try 
+    {
+        if ([string]::IsNullOrEmpty($ComputerName)) 
+        {
+            $ComputerName = [Environment]::MachineName
+            $IsManagementNode = $False
+        }
+        else 
+        {
+            $IsManagementNode = $True
+        }
+
+        if ($IsManagementNode) 
+        {
+            Write-Verbose ("Connecting via Management Node")
+            if ($Null -eq $Credential) 
+            {
+                Write-Verbose ("Connecting without credentials")
+                $clusterNodeSession = New-PSSession -ComputerName $ComputerName
+            }
+            else 
+            {
+                Write-Verbose ("Connecting to $ComputerName with credentials")
+                $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
+            }
+        }
+        else 
+        {
+            $clusterNodeSession = New-PSSession -ComputerName localhost
+        }
+
+        $logsDirectory = Get-LogsDirectoryHelper -ClusterNodeSession $clusterNodeSession | Out-String
+    
+        if (![string]::IsNullOrEmpty($logsDirectory)) 
+        {
+            $logsDirectory = $logsDirectory.Trim()
+        }
+
+        if ([string]::IsNullOrEmpty($logsDirectory)) 
+        {
+            $logsDirectory = $PWD.Path
+            $arcLogsDirectory = $env:windir + "\Tasks\ArcForServers"
+            Write-Output ("HCI Arc Enablement Logs directory path: {0}" -f $arcLogsDirectory)
+        }
+    
+        Write-Output ("HCI Registration Logs directory path: {0}" -f $logsDirectory)
+    }
+    catch 
+    {
+        Write-Error "Exception occurred in Get-AzStackHCILogsDirectory" -Exception $_ -Category OperationStopped
+    }
+    finally 
+    {
+        Remove-PSSession $clusterNodeSession | Out-Null
+    }
+}
+
+function Get-SetupLoggingDetails
+{
+    param(
+        [Parameter(Mandatory = $false)]
+        [System.Management.Automation.PSCredential] $Credential,
+
+        [Parameter(Mandatory = $false)]
+        [string] $ComputerName,
+
+        [Parameter(Mandatory = $false)]
+        [boolean] $isManagementNode = $false,
+
+        [Parameter(Mandatory = $false)]
+        [boolean] $newSession = $true
+    )
+
+    $regContext = $null
+    $nodeSessionParams = @{
+        ErrorAction = "Stop"
+    }
+
+    if($isManagementNode)
+    {
+        $nodeSessionParams.Add('ComputerName', $ComputerName)
+
+        if($null -ne $Credential)
+        {
+            $nodeSessionParams.Add('Credential', $Credential)
+        }
+    }
+
+    if ($newSession)
+    {
+        $clusterNodeSession = New-PSSession @nodeSessionParams
+        $regContext = Invoke-Command $clusterNodeSession -ScriptBlock { Get-AzureStackHCI }
+    }
+    else
+    {
+        $regContext = Get-AzureStackHCI
+    }
+    $IsClusterRegistered = $regContext.RegistrationStatus -eq [RegistrationStatus]::Registered
+
+    return $regContext, $IsClusterRegistered, $clusterNodeSession, $nodeSessionParams
 }
 
 <#
@@ -4002,10 +4233,7 @@ param(
 
     try
     {
-        Setup-Logging -LogFilePrefix "SetAzStackHCI"  -DebugEnabled  ($DebugPreference -ne "SilentlyContinue")
-
-        Show-LatestModuleVersion
-
+        
         if([string]::IsNullOrEmpty($ComputerName))
         {
             $ComputerName = [Environment]::MachineName
@@ -4015,6 +4243,17 @@ param(
         {
             $isManagementNode = $true
         }
+
+        $regContext, $IsClusterRegistered, $clusterNodeSession, $nodeSessionParams = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode 
+
+        Setup-Logging -LogFilePrefix "SetAzStackHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession | Out-Null
+
+        if($clusterNodeSession -ne $Null)
+        {
+            Remove-PSSession $clusterNodeSession | Out-Null
+        }
+        
+        Show-LatestModuleVersion
         
         Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $CheckingDependentModules -PercentComplete 2
         Check-DependentModules
@@ -4023,27 +4262,9 @@ param(
 
         if($PSBoundParameters.ContainsKey('ResourceId') -eq $false)
         {
-            $regContext = $null
-
-            if($isManagementNode)
-            {
-                $nodeSessionParams.Add('ComputerName', $ComputerName)
-
-                if($Credential -ne $null)
-                {
-                    $nodeSessionParams.Add('Credential', $Credential)
-                }
-
-                $regContext = Invoke-Command @nodeSessionParams -ScriptBlock { Get-AzureStackHCI }
-            }
-            else
-            {
-                $regContext = Get-AzureStackHCI
-            }
-
             if ($regContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
             {
-                Write-ErrorLog -Category InvalidOperation -Message $SetAzResourceClusterNotRegistered -Category OperationStopped -ErrorAction Continue
+                Write-ErrorLog -Category OperationStopped -Message $SetAzResourceClusterNotRegistered -ErrorAction Continue
                 $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value ([OperationStatus]::Failed)
                 $setOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $SetAzResourceClusterNotRegistered
                 Write-Output $setOutput | Format-List
@@ -4267,7 +4488,6 @@ param(
 # IMDS Attestation Section
 #
 function Add-VMDevicesForImds{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [hashtable] $VmAdapterParams,
     [hashtable] $VmAdapterAdditionalParams,
@@ -4343,7 +4563,6 @@ param(
 }
 
 function Add-HostDevicesForImds{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [hashtable] $VmSwitchParams,
     [hashtable] $HostAdapterVlanParams,
@@ -4484,7 +4703,6 @@ param(
 }
 
 function Set-AttestationFirewallRules{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $Enabled,
     [hashtable] $SessionParams
@@ -4577,6 +4795,43 @@ param(
     $ret = Invoke-Command @SessionParams -ScriptBlock $sc -ArgumentList $Enabled
 }
 
+function IsAttestationV2Supported
+{
+param(
+    [hashtable] $SessionParams
+)
+
+    $sc = {
+        $attestation = Get-AzureStackHCIAttestation
+        return [bool]($attestation.PSobject.Properties.name -match "LegacyOsSupport")
+    }
+
+    Invoke-Command @SessionParams -ScriptBlock $sc
+}
+
+function IsAttestedDataLegacyOsSupportEnabled
+{
+param(
+    [hashtable] $SessionParams
+)
+
+    $sc = {
+        $attestation = Get-AzureStackHCIAttestation
+        if ([bool]($attestation.PSobject.Properties.name -match "LegacyOsSupport"))
+        {
+            # Attestation v2, so v1 is LegacyOsSupport
+            return $attestation.LegacyOsSupport -eq [AttestationLegacyOsSupport]::Enabled
+        }
+        else
+        {
+            # Attestation v1 only
+            return $attestation.Status -eq [ImdsAttestationNodeStatus]::Active
+        }
+    }
+
+    Invoke-Command @SessionParams -ScriptBlock $sc
+}
+
 
 $TemplateHostImdsParams = @{
     Name                    = "AZSHCI_HOST-IMDS_DO_NOT_MODIFY"
@@ -4637,7 +4892,7 @@ param(
     [string] $ComputerName,
     
     [Parameter(Mandatory = $false)]
-    [System.Management.Automation.PSCredential] $Credential = [System.Management.Automation.PSCredential]::Empty,
+    [System.Management.Automation.PSCredential] $Credential,
 
     [Parameter(Mandatory = $false)]
     [switch] $AddVM,
@@ -4655,13 +4910,6 @@ param(
 
         try
         {
-            $logPath = "EnableAzureStackHCIImds"
-            Setup-Logging -LogFilePrefix $logPath -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-            #Show-LatestModuleVersion
-
-            $enableImdsOutputList = [System.Collections.ArrayList]::new()
-            $HyperVInstallConfirmed = $false
-
             if([string]::IsNullOrEmpty($ComputerName))
             {
                 $ComputerName = [Environment]::MachineName
@@ -4671,12 +4919,27 @@ param(
             {
                 $IsManagementNode = $True
             }
-            
+
+            $LogFilePrefix = "EnableAzureStackHCIImds"
+            $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
+            $date = Get-Date
+            $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
+            $global:LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
+            if ($DebugEnabled)
+            {
+                $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
+                Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
+            }
+            #Show-LatestModuleVersion
+
             $percentComplete = 1
             Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
-            
+
+            $enableImdsOutputList = [System.Collections.ArrayList]::new()
+            $HyperVInstallConfirmed = $false
+
             $SessionParams = @{
-                    ErrorAction = "Stop"
+                ErrorAction = "Stop"
             }
 
             if($IsManagementNode)
@@ -4696,10 +4959,16 @@ param(
 
             # Validate cluster is registered
             $RegContext = Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCI }
+            $isAttestationV2Supported = IsAttestationV2Supported $SessionParams
 
             if($RegContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
             {
                 throw $ImdsClusterNotRegistered
+            }
+
+            if (!$Force -AND !($PSCmdlet.ShouldContinue($ShouldContinueAttestationV1Only, "Enable Attestation with Legacy OS Support")))
+            {
+                return
             }
 
             $percentComplete = 5
@@ -4708,13 +4977,17 @@ param(
             $ClusterName, $ClusterNodes, $ClusterNodeStateUp  = Invoke-Command @SessionParams -ScriptBlock {
                 $name           = (Get-Cluster).Name
                 $nodes          = Get-ClusterNode
-                $nodeStateUp    = [Microsoft.FailoverClusters.PowerShell.ClusterNodeState]::Up
+                $nodeStateUp    = "Up"
 
                 return $name, $nodes, $nodeStateUp
             }
 
+            if($ClusterNodeStateUp.Value -ne $null) {
+                $ClusterNodeStateUp = $ClusterNodeStateUp.Value
+            }
+
             # Validate Cluster nodes are online
-            if (($ClusterNodes | Where {$_.State -ne $ClusterNodeStateUp.Value} | Measure-Object).Count -ne 0)
+            if (($ClusterNodes | Where {$_.State -ne $ClusterNodeStateUp} | Measure-Object).Count -ne 0)
             {
                 throw $AllClusterNodesAreNotOnline
             }
@@ -4737,7 +5010,7 @@ param(
         foreach ($node in $ClusterNodes)
         {
             $NodeName = $node.Name
-            
+
             try 
             {
                 Write-InfoLog ("Enabling IMDS Attestation on $NodeName")
@@ -4746,7 +5019,7 @@ param(
                 $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
 
                 $SessionParams["ComputerName"] = $NodeName
-            
+
                 if ($NodeName -ieq [Environment]::MachineName)
                 {
                     $SessionParams.Remove("ComputerName")
@@ -4768,7 +5041,7 @@ param(
                         throw "Hyper-V RSAT tools required to continue"
                     }
                 }
-            
+
                 $attestationSwitchId = Invoke-Command @SessionParams -ScriptBlock { (Get-AzureStackHCIAttestation).AttestationSwitchId }
 
                 $HostVmSwitchParams = @{
@@ -4795,10 +5068,10 @@ param(
                     {
                         $percentComplete = $percentComplete + ($nodePercentChunk / 2)
                         $ConfiguringClusterNode -f $NodeName | % { Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $_ -percentcomplete $percentComplete }
-                        
+
                         $NotifyServiceNewSwitch = !$attestationSwitchId
                         $attestationSwitchId = Add-HostDevicesForImds -VmSwitchParams $HostVmSwitchParams -HostAdapterVlanParams $HostAdapterVlanParams -NetAdapterIpParams $NetAdapterIpParams -SessionParams $SessionParams
-                        
+
                         # Wait for networking stack to stabalize
                         $percentComplete = $percentComplete + ($nodePercentChunk / 2)
                         Start-Sleep 10
@@ -4816,6 +5089,14 @@ param(
                         $enableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
                         $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
                         $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
+                        if ($isAttestationV2Supported)
+                        {
+                            $enableImdsOutput | Add-Member -MemberType NoteProperty -Name LegacyOsSupport -Value ([AttestationLegacyOsSupport]($nodeAttestation.LegacyOsSupport))
+                        }
+                        else
+                        {
+                            $enableImdsOutput | Add-Member -MemberType NoteProperty -Name LegacyOsSupport -Value ([AttestationLegacyOsSupport]::Enabled)
+                        }
 
                         $enableImdsOutputList.Add($enableImdsOutput) | Out-Null
                     }
@@ -4827,7 +5108,7 @@ param(
                 else 
                 {
                     return
-                }          
+                }
             }
             catch 
             {
@@ -4908,7 +5189,7 @@ param(
     [string] $ComputerName,
     
     [Parameter(Mandatory = $false)]
-    [System.Management.Automation.PSCredential] $Credential = [System.Management.Automation.PSCredential]::Empty,
+    [System.Management.Automation.PSCredential] $Credential,
 
     [Parameter(Mandatory = $false)]
     [switch] $RemoveVM,
@@ -4921,12 +5202,6 @@ param(
     {   
         try
         {
-            $logPath = "DisableAzureStackHCIImds"
-            Setup-Logging -LogFilePrefix $logPath -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-            #Show-LatestModuleVersion
-
-            $disableImdsOutputList = [System.Collections.ArrayList]::new()
-
             if([string]::IsNullOrEmpty($ComputerName))
             {
                 $ComputerName = [Environment]::MachineName
@@ -4937,11 +5212,23 @@ param(
                 $IsManagementNode = $True
             }
 
+            $LogFilePrefix = "DisableAzureStackHCIImds"
+            $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
+            
+            $date = Get-Date
+            $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
+            $global:LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
+            if ($DebugEnabled)
+            {
+                $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
+                Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
+            }
+
             $percentComplete = 1
             Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
-            
+
             $SessionParams = @{
-                    ErrorAction = "Stop"
+                ErrorAction = "Stop"
             }
 
             if($IsManagementNode)
@@ -4958,6 +5245,9 @@ param(
                 # An empty SessionParams will ensure commands run locally without issue
                 #$SessionParams.add("ComputerName", "localhost")
             }
+
+            $isAttestationV2Supported = IsAttestationV2Supported $SessionParams
+            $disableImdsOutputList = [System.Collections.ArrayList]::new()
 
             $percentComplete = 5
             Write-Progress -Id $MainProgressBarId -activity $DisableAzsHciImdsActivity -status $DiscoveringClusterNodes -percentcomplete $percentComplete
@@ -4980,6 +5270,10 @@ param(
                 if (!$RemoveVM)
                 {
                     $guests = Invoke-Command @SessionParams -ScriptBlock { Get-AzStackHCIVMAttestation -Local }
+                    if ($isAttestationV2Supported)
+                    {
+                        $guests = $guests | ? {$_.LegacyOsSupport -eq "Enabled"}
+                    }
                     if (($guests | Measure-Object).Count -ne 0)
                     {
                         throw ("There are still guests connected to IMDS Attestation. Use switch -RemoveVM or Remove-AzStackHCIVMAttestation cmdlet.")
@@ -5046,7 +5340,15 @@ param(
                 $disableImdsOutput | Add-Member -MemberType NoteProperty -Name ComputerName -Value ($nodeAttestation.ComputerName)
                 $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([ImdsAttestationNodeStatus]($nodeAttestation.Status))
                 $disableImdsOutput | Add-Member -MemberType NoteProperty -Name Expiration -Value ($nodeAttestation.Expiration)
-                
+                if ($isAttestationV2Supported)
+                {
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name LegacyOsSupport -Value ([AttestationLegacyOsSupport]($nodeAttestation.LegacyOsSupport))
+                }
+                else
+                {
+                    $disableImdsOutput | Add-Member -MemberType NoteProperty -Name LegacyOsSupport -Value ([AttestationLegacyOsSupport]::Disabled)
+                }
+
                 $disableImdsOutputList.Add($disableImdsOutput) | Out-Null
             }
             catch 
@@ -5121,8 +5423,30 @@ param(
 
         try
         {
-            $logPath = "AddAzureStackHCIImds"
-            Setup-Logging -LogFilePrefix $logPath -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+            $LogFilePrefix = "AddAzureStackHCIImds"
+            $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
+            $date = Get-Date
+            $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
+            $global:LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
+            if ($DebugEnabled)
+            {
+                $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
+                Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
+            }
+
+            $SessionParams = @{
+                ErrorAction = "Stop"
+            }
+            
+            $isAttestationV2Supported = IsAttestationV2Supported $SessionParams
+            $isAttestedDataLegacyOsSupportEnabled = IsAttestedDataLegacyOsSupportEnabled $SessionParams
+            $RegContext = Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCI }
+
+            if ($isAttestationV2Supported -eq $true -AND $isAttestedDataLegacyOsSupportEnabled -eq $false)
+            {
+                Write-Verbose ($AttestationCmdOnlyLegacyOS -f $MyInvocation.MyCommand)
+                return
+            }
 
             $enableImdsOutputList = [System.Collections.ArrayList]::new()
             $ComputerName = [Environment]::MachineName
@@ -5130,13 +5454,6 @@ param(
             $percentcomplete = 1
             Write-Progress -Id $SecondaryProgressBarId -activity $AddAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentcomplete
             
-            $SessionParams = @{
-                    ErrorAction = "Stop"
-            }
-
-            # Validate cluster is registered
-            $RegContext = Invoke-Command @SessionParams -ScriptBlock { Get-AzureStackHCI }
-
             if($RegContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
             {
                 throw $ImdsClusterNotRegistered
@@ -5200,7 +5517,7 @@ param(
             {
                 $VirtualMachines = $VM
             }
-            
+
             $VmNetAdapterParams = @{
                     Name                    = $TemplateVmImdsParams["Name"]
                     VmSwitch                = $attestationSwitch
@@ -5223,7 +5540,7 @@ param(
                 {
                     $VmNetAdapterParams["VM"] = $vm
                     $vmAdapter = Add-VMDevicesForImds $VmNetAdapterParams $VmAdapterAdditionalParams $VmAdapterVlanParams $SessionParams
-                    
+
                     $enableImdsOutput = New-Object -TypeName PSObject
                     $enableImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm.Name
                     $enableImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $ComputerName
@@ -5231,7 +5548,6 @@ param(
                     $enableImdsOutputList.Add($enableImdsOutput) | Out-Null
                 }
             } 
-            
         }
         catch 
         {
@@ -5300,19 +5616,40 @@ param(
 
         try
         {
-            $logPath = "RemoveAzureStackHCIImds"
-            Setup-Logging -LogFilePrefix $logPath -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-            #Show-LatestModuleVersion
-
-            $removeImdsOutputList = [System.Collections.ArrayList]::new()
-            $ComputerName = [Environment]::MachineName
+            $LogFilePrefix = "RemoveAzureStackHCIImds"
+            $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
+            
+            $date = Get-Date
+            $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
+            $global:LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
+            if ($DebugEnabled)
+            {
+                $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
+                Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
+            }
 
             $percentcomplete = 1
             Write-Progress -Id $SecondaryProgressBarId -activity $RemoveAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentcomplete
-            
+
             $SessionParams = @{
-                    ErrorAction = "Stop"
+                ErrorAction = "Stop"
             }
+
+            $isAttestationV2Supported = IsAttestationV2Supported $SessionParams
+            $isAttestedDataLegacyOsSupportEnabled = IsAttestedDataLegacyOsSupportEnabled $SessionParams
+
+            if ($isAttestationV2Supported -eq $true -AND $isAttestedDataLegacyOsSupportEnabled -eq $false)
+            {
+                Write-Verbose ($AttestationCmdOnlyLegacyOS -f $MyInvocation.MyCommand)
+                # If Force is specified, attempt to do remove in case cleanup of v1 is needed.
+                if (!$Force)
+                {
+                    return
+                }
+            }
+
+            $removeImdsOutputList = [System.Collections.ArrayList]::new()
+            $ComputerName = [Environment]::MachineName
 
             $percentcomplete = 2
             Write-Progress -Id $SecondaryProgressBarId -activity $RemoveAzsHciImdsActivity -status "Removing guest attestation" -percentcomplete $percentComplete
@@ -5349,7 +5686,7 @@ param(
                 if ($PSCmdlet.ShouldProcess("Remove IMDS Attestation from $($vm.Name) on host $ComputerName", "Remove $($vm.Name) from IMDS Attestation on $ComputerName?", ""))
                 {
                     Invoke-Command @SessionParams -ScriptBlock { param($adapterName); Remove-VMNetworkAdapter -VM $vm -Name $adapterName -ErrorAction Stop } -ArgumentList $TemplateVmImdsParams["Name"]
-                    
+
                     $removeImdsOutput = New-Object -TypeName PSObject
                     $removeImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm.Name
                     $removeImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $ComputerName
@@ -5357,7 +5694,6 @@ param(
                     $removeImdsOutputList.Add($removeImdsOutput) | Out-Null
                 }
             }
-            
         }
         catch 
         {
@@ -5402,14 +5738,17 @@ param(
 )
 
     begin
-    {   
+    {
         try
         {
             $getImdsOutputList = [System.Collections.ArrayList]::new()
-            
+
             $SessionParams = @{
                     ErrorAction = "Stop"
             }
+
+            $isAttestationV2Supported             = IsAttestationV2Supported $SessionParams
+            $isAttestedDataLegacyOsSupportEnabled = IsAttestedDataLegacyOsSupportEnabled $SessionParams
         }
         catch
         {
@@ -5421,7 +5760,7 @@ param(
     Process
     {
         try 
-        {   
+        {
             $nodes = [Environment]::MachineName
 
             if (!$Local)
@@ -5432,7 +5771,7 @@ param(
             foreach ($node in $nodes)
             {
                 $SessionParams["ComputerName"] = $node
-            
+
                 if ($node -ieq [Environment]::MachineName)
                 {
                     $SessionParams.Remove("ComputerName")
@@ -5440,23 +5779,64 @@ param(
 
                 try 
                 {
-                    $VirtualMachinesAdapters = $null
-                    $VirtualMachinesAdapters = Invoke-Command @SessionParams -ScriptBlock {param($adapterName); Get-VMNetworkAdapter -All -Name $adapterName -ErrorAction SilentlyContinue} -ArgumentList $TemplateVmImdsParams["Name"]
+                    $VirtualMachinesAdapters = @()
+                    $AttestationV1VmNames = @()
+                    if ($isAttestedDataLegacyOsSupportEnabled)
+                    {
+                        $VirtualMachinesAdapters = Invoke-Command @SessionParams -ScriptBlock {param($adapterName); Get-VMNetworkAdapter -All -Name $adapterName -ErrorAction SilentlyContinue} -ArgumentList $TemplateVmImdsParams["Name"]
+                        if (($VirtualMachinesAdapters | Measure-Object).Count -gt 0)
+                        {
+                            $AttestationV1VmNames = $VirtualMachinesAdapters.VMName
+                        }
+                    }
+
+                    $VirtualMachinesV2 = @()
+                    $AttestationV2VmNames = @()
+                    if ($isAttestationV2Supported)
+                    {
+                        $VirtualMachinesV2 = Invoke-Command @SessionParams -ScriptBlock {Get-VM | ? { (Get-VMIntegrationService -VMName $_.Name -Name "Guest Service Interface" -ErrorAction SilentlyContinue).Enabled -eq $true }}
+                        if (($VirtualMachinesV2 | Measure-Object).Count -gt 0)
+                        {
+                            $AttestationV2VmNames = $VirtualMachinesV2.Name
+                        }
+                    }
                 }
                 catch 
                 {
                     Write-ErrorLog ("Exception occurred when querying cluster node $NodeName") -Exception $_ -Category OperationStopped
                 }
-                
-                foreach ($adapter in $VirtualMachinesAdapters)
+
+                foreach ($vm in $AttestationV1VmNames)
                 {
                     $getImdsOutput = New-Object -TypeName PSObject
-                    $getImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $adapter.VMName
+                    $getImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm
                     $getImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $node
                     $getImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([VMAttestationStatus]::Connected)
+                    if ($AttestationV2VmNames -contains $vm)
+                    {
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name SupportedVersions -Value @([AttestationVersion]::V1, [AttestationVersion]::V2)
+                    }
+                    else
+                    {
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name SupportedVersions -Value @([AttestationVersion]::V1)
+                    }
                     $getImdsOutputList.Add($getImdsOutput) | Out-Null
                 }
-            }   
+
+                if ($isAttestationV2Supported)
+                {
+                    $AttestationV2VmNames = $AttestationV2VmNames | ? {$AttestationV1VmNames -contains $_ -eq $false}
+                    foreach ($vm in $AttestationV2VmNames)
+                    {
+                        $getImdsOutput = New-Object -TypeName PSObject
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name Name -Value $vm
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name AttestationHost -Value $node
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name Status -Value ([VMAttestationStatus]::Connected)
+                        $getImdsOutput | Add-Member -MemberType NoteProperty -Name SupportedVersions -Value @([AttestationVersion]::V2)
+                        $getImdsOutputList.Add($getImdsOutput) | Out-Null
+                    }
+                }
+            }
         }
         catch 
         {
@@ -5484,7 +5864,6 @@ param(
 .NOTES
 #>
 function New-Directory{
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
     [Parameter(Mandatory=$true)][ValidateNotNull()][string]$Path
     )
@@ -5525,7 +5904,13 @@ function Invoke-DeploymentModuleDownload{
     $retryCount = 3
     try
     {
-        Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+        $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+        Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupport" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
+
+        if ($Null -ne $clusterNodeSession)
+        {
+            Remove-PSSession $clusterNodeSession | Out-Null
+        }
         Retry-Command -Attempts $retryCount -RetryIfNullOutput $false -ScriptBlock { Invoke-WebRequest -Uri $BlobLocation -outfile $OutFile }
     }
     finally
@@ -5550,7 +5935,6 @@ function Invoke-DeploymentModuleDownload{
 .NOTES
 #>
 function Install-DeployModule {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
@@ -5558,7 +5942,14 @@ function Install-DeployModule {
         $ModuleName
     )
 
-    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstallModule" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
+    
+    if ($Null -ne $clusterNodeSession)
+    {
+        Remove-PSSession $clusterNodeSession | Out-Null
+    }
+
     if(Get-Module | Where-Object { $_.Name -eq $ModuleName }){
         Write-InfoLog("$ModuleName is loaded already ...")
     }
@@ -5591,7 +5982,14 @@ function Install-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+
+    $IsClusterRegistered = $regContext.RegistrationStatus -eq [RegistrationStatus]::Registered
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportInstall" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
+    if ($Null -ne $clusterNodeSession)
+    {
+        Remove-PSSession $clusterNodeSession | Out-Null
+    }
 
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
@@ -5622,7 +6020,13 @@ function Remove-AzStackHCIRemoteSupport{
     [OutputType([Boolean])]
     param()
 
-    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportRemove" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
+    if ($Null -ne $clusterNodeSession)
+    {
+        Remove-PSSession $clusterNodeSession | Out-Null
+    }
+
     $agentInstallType = (Get-ItemProperty -Path "HKLM:\SYSTEM\Software\Microsoft\AzureStack\Observability\RemoteSupport" -ErrorAction SilentlyContinue).InstallType
     $observabilityStackPresent = Assert-IsObservabilityStackPresent
 
@@ -5803,11 +6207,17 @@ function Assert-IsObservabilityStackPresent{
     [OutputType([Boolean])]
     param()
 
-    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
+    $_, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails
+    Setup-Logging -LogFilePrefix "AzStackHCIRemoteSupportObsStackPresent" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -ClusterNodeSession $clusterNodeSession -IsClusterRegistered $IsClusterRegistered | Out-Null
+    if ($Null -ne $clusterNodeSession)
+    {
+        Remove-PSSession $clusterNodeSession | Out-Null
+    }
+
     try{
         $obsService = Get-Service -Name "*RemoteSupportAgent*" -ErrorAction SilentlyContinue
         if($obsService){
-            Write-InfoLog("RemoteSupportAgent exists, Status: $($obsService.Status).")
+            Write-InfoLog("RemoteSupportAgent exists, Name: $($obsService.Name) Status: $($obsService.Status).")
             return $true
         }
         else{
@@ -5891,3 +6301,4 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
 # Export-ModuleMember -Function Disable-AzStackHCIRemoteSupport
 # Export-ModuleMember -Function Get-AzStackHCIRemoteSupportAccess
 # Export-ModuleMember -Function Get-AzStackHCIRemoteSupportSessionHistory
+# Export-ModuleMember -Function Get-AzStackHCILogsDirectory
