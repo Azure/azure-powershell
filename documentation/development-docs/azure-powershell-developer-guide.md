@@ -219,7 +219,7 @@ To import modules automatically when debug has started, follow the below steps:
 - Choose any project and set it as the startup project in Visual Studio
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 ### Setup a Debug Profile
-- Please refer to [Debug Page, Project Designer](https://learn.microsoft.com/en-us/visualstudio/ide/reference/debug-page-project-designer?view=vs-2022) for how to access the Debug page
+- Please refer to [Debug Page, Project Designer](https://learn.microsoft.com/visualstudio/ide/reference/debug-page-project-designer?view=vs-2022) for how to access the Debug page
 - Create a **Excutable** new Debug profile
 - For Azure PowerShell, please setup debug profile in the following way
   - Set **Excutable** to the path of the excutable file of PowerShell core, for example,`C:\Program Files\PowerShell\7\pwsh.exe`
