@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.13.0
 * Supported in-tool notification for version upgrade.
 * Added an alias `Set-AzConfig` to `Update-AzConfig`
 * Refilled credentials from `AzKeyStore` when run `Save-AzContext` [#22355]

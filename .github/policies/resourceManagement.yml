@@ -188,7 +188,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - adrianhall
+            - akamenev
             - KedarJoshi
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -225,6 +225,18 @@ configuration:
         - mentionUsers:
             mentionees:
             - azmonapplicationinsights
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ArcResourceBridge
+        then:
+        - mentionUsers:
+            mentionees:
+            - alt-key
+            - saisankargochhayat
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -353,6 +365,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - jaspkaur28
+            - sanjkum
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1754,7 +1767,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - SameergMS
-            - dadunl
+            - yairgil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1927,6 +1940,7 @@ configuration:
             mentionees:
             - t-bzhan
             - gxue
+            - TracyYaoYao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

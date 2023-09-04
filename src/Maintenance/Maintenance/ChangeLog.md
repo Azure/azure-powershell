@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.3.1
 * Fixed breaking change information
   
 ## Version 1.3.0

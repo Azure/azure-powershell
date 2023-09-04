@@ -16,7 +16,7 @@
 # ```powershell
 # dotnet msbuild build.proj /t:build /p:configuration=Debug
 # Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.ps1
-# Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath .\artifacts\Debug\ -MarkdownPath UpcommingBreakingChange.md
+# Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath ./artifacts/Debug/ -MarkdownPath ./documentation/breaking-changes/upcoming-breaking-changes.md
 # ```
 
 $AllParameterSetsName = "AllParameterSets"
@@ -70,6 +70,10 @@ Function Get-AttributeSpecificMessage
     [CmdletBinding()]
     Param (
         [Parameter()]
+        [string]
+        $ModuleName,
+
+        [Parameter()]
         [System.Object]
         $attribute
     )
@@ -89,7 +93,7 @@ Function Get-AttributeSpecificMessage
     {
         $Message = "- $Message"
     }
-    $Message += "`n- This change is expected to take effect from version: $($attribute.DeprecateByVersion) and Az version: $($attribute.DeprecateByAzVersion)"
+    $Message += "`n- This change is expected to take effect from $ModuleName version: $($attribute.DeprecateByVersion) and Az version: $($attribute.DeprecateByAzVersion)"
     Return $Message
 }
 
@@ -99,6 +103,10 @@ Function Find-ParameterBreakingChange
     [CmdletBinding()]
     Param (
         [Parameter()]
+        [string]
+        $ModuleName,
+
+        [Parameter()]
         [System.Management.Automation.ParameterMetadata]
         $ParameterInfo
     )
@@ -107,7 +115,7 @@ Function Find-ParameterBreakingChange
     {
         If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $attribute.TypeId)
         {
-            Return Get-AttributeSpecIficMessage($attribute)
+            Return Get-AttributeSpecIficMessage -ModuleName $ModuleName -attribute $attribute
         }
     }
 
@@ -120,17 +128,22 @@ Function Find-CmdletBreakingChange
     [CmdletBinding()]
     Param (
         [Parameter()]
+        [string]
+        $ModuleName,
+
+        [Parameter()]
         [System.Management.Automation.CommandInfo]
         $CmdletInfo
     )
     $Result = @{}
+    Write-Debug "Find-CmdletBreakingChange: $ModuleName $($CmdletInfo.Name)"
     #Region get breaking change info of cmdlet
     $customAttributes = $CmdletInfo.ImplementingType.GetTypeInfo().GetCustomAttributes([System.object], $true)
     ForEach ($customAttribute In $customAttributes)
     {
         If (Test-TypeIsGenericBreakingChangeWithVersionAttribute $customAttribute.TypeId)
         {
-            $tmp = Get-AttributeSpecIficMessage($customAttribute)
+            $tmp = Get-AttributeSpecIficMessage -ModuleName $ModuleName -attribute $customAttribute
             If (-not $Result.ContainsKey($AllParameterSetsName))
             {
                 $Null = $Result.Add($AllParameterSetsName, @{
@@ -153,7 +166,8 @@ Function Find-CmdletBreakingChange
     $ParameterBreakingChanges = @{}
     ForEach ($ParameterInfo In $CmdletInfo.Parameters.values)
     {
-        $ParameterBreakingChange = Find-ParameterBreakingChange($ParameterInfo)
+        Write-Debug "Find-CmdletBreakingChange -> Find-ParameterBreakingChange $ModuleName $($ModuleName.GetType())"
+        $ParameterBreakingChange = Find-ParameterBreakingChange -ModuleName $ModuleName -ParameterInfo $ParameterInfo
         If ($Null -ne $ParameterBreakingChange)
         {
             $Null = $ParameterBreakingChanges.Add($ParameterInfo.Name, $ParameterBreakingChange)
@@ -210,7 +224,7 @@ Function Get-BreakingChangeInfoOfModule
         $ModuleInfo = Get-Module $ModuleName
         ForEach ($cmdletInfo In $ModuleInfo.ExportedCmdlets.Values)
         {
-            $cmdletBreakingChangeInfo = Find-CmdletBreakingChange($cmdletInfo)
+            $cmdletBreakingChangeInfo = Find-CmdletBreakingChange -ModuleName $ModuleName -CmdletInfo $cmdletInfo
             If ($cmdletBreakingChangeInfo.Count -ne 0)
             {
                 $BreakingChangeMessages.Add($cmdletInfo.Name, $cmdletBreakingChangeInfo)
@@ -563,7 +577,7 @@ Function Export-BreakingChangeMessageOfCmdlet
             }
             Else
             {
-                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n"
+                $Result += "`n- Cmdlet breaking-change will happen to all parameter sets`n"
             }
             ForEach ($breakingChangeMsg In $CmdletBreakingChangeInfo[$ParameterSetName]['CmdletBreakingChange'])
             {

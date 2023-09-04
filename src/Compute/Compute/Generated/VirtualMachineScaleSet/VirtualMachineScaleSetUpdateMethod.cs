@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.VirtualMachineScaleSet != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
-                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null)
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id != null)
                     {
                         var newImageRef = this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference;
                         var currVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
