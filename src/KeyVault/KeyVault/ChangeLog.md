@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Arm template leveraged for `New-AzKeyvault`.
+* Leveraged Arm template for `New-AzKeyvault`.
 
 ## Version 4.10.1
 * Removed maximum number for `IpAddressRange` and `VirtualNetworkResourceId` in `*-AzKeyVaultNetworkRuleSet*` from client side. [#22137]

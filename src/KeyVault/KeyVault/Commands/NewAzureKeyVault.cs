@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Commands;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
@@ -33,8 +34,6 @@ namespace Microsoft.Azure.Commands.KeyVault
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
         // #region Parameter Set Names
-        // private const string SdkParameterSet = "Sdk";
-        // private const string ArmParameterSet = "Arm";
 
         #region Input Parameter Definitions
 
@@ -154,7 +153,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 
                 PSWhatIfOperationResult whatIfResult;
                 // this.WhatIfParameters
-                whatIfResult = KeyVaultCreationClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter, NetworkRuleSet, this);
+                whatIfResult = KeyVaultDeploymentClient.ExecuteDeploymentWhatIf(this.WhatIfParameters, VaultCreationParameter, NetworkRuleSet, this);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);
@@ -237,7 +236,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
-                var newVault = KeyVaultCreationClient.CreateNewVault(VaultCreationParameter,
+                var newVault = KeyVaultDeploymentClient.CreateNewVault(VaultCreationParameter,
                     GraphClient,
                     NetworkRuleSet, this);
 
@@ -256,13 +255,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 string captionMessage = null;
                 PSWhatIfOperationResult whatIfResult = this.ExecuteWhatIf(VaultCreationParameter);
                 string whatIfFormattedOutput = WhatIfOperationResultFormatter.Format(whatIfResult);
-                string cursorUp = $"{(char)27}[1A";
 
                 // Use \r to override the built-in "What if:" in output.
                 whatIfMessage = $"\r        \r{Environment.NewLine}{whatIfFormattedOutput}{Environment.NewLine}";
                 warningMessage = $"{Environment.NewLine}{"ConfirmDeploymentMessage"}";
-                captionMessage = $"{cursorUp}{Color.Reset}{whatIfMessage}";
-                // this.WriteObject(whatIfResult);
+                captionMessage = $"{Color.Reset}{whatIfMessage}";
                 this.ShouldProcess(whatIfMessage, warningMessage, captionMessage);
             }
         }

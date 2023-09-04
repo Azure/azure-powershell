@@ -39,19 +39,9 @@ using ProvisioningState = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Re
 using System.Text;
 using Microsoft.Azure.Commands.KeyVault.Extensions;
 using Microsoft.Azure.Commands.KeyVault.Progress;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.KeyVault.Utilities;
-using Deployment = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.Deployment;
-using DeploymentExtended = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentExtended;
-using DeploymentOperation = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentOperation;
-using ErrorResponse = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ErrorResponse;
-using DeploymentValidateResult = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentValidateResult;
-using DeploymentProperties = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentProperties;
-using DeploymentMode = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DeploymentMode;
-using DebugSetting = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.DebugSetting;
-using ParametersLink = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ParametersLink;
-using Microsoft.Azure.Commands.KeyVault.Helpers;
+using Microsoft.Azure.Commands.KeyVault.Commands;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -84,11 +74,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// Used when provisioning the deployment status.
         /// </summary>
         private List<DeploymentOperation> operations;
-        public VaultManagementClient(IAzureContext context)
-        {
-            KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-        }
-        public VaultManagementClient(IAzureContext context, bool isARM)
+        // Progress Bar variants
+        static int progressBarTimeSpan = 25;
+        int step = 5;
+        int phaseOne = 10;
+        ProgressStatus progressStatus = new ProgressStatus(0, progressBarTimeSpan);
+        public VaultManagementClient(IAzureContext context, bool isARM=false)
         {
             KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             if (isARM)
@@ -171,15 +162,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var deploymentOperationError = new DeploymentOperationErrorInfo();
             Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deploymentOperationError);
 
-            int progressBarTimeSpan = 25;
-            int step = 5;
-            int phaseOne = 10;
-            var downloadStatus = new ProgressStatus(0, progressBarTimeSpan);
+            
             Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
 
             DeploymentExtended deploymentExtended = null;
 
-            ProgressTracker progressTracker = new ProgressTracker(downloadStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+            ProgressTracker progressTracker = new ProgressTracker(progressStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
             
             
             do

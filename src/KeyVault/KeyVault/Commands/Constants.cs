@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Azure.Commands.KeyVault.Helpers
+﻿namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     public static class Constants
     {

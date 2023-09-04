@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             set { _keyVaultManagementClient = value; }
         }
-        public VaultManagementClient KeyVaultCreationClient
+        public VaultManagementClient KeyVaultDeploymentClient
         {
             get
             {
