@@ -265,6 +265,7 @@ enum AttestationVersion
 }
 
 Function Write-Log {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     Param(
     [Parameter(Mandatory=$False)]
@@ -288,6 +289,7 @@ Function Write-Log {
 }
 
 Function Write-VerboseLog{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -300,6 +302,7 @@ Function Write-VerboseLog{
 
 
 Function Write-InfoLog{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -311,6 +314,7 @@ Function Write-InfoLog{
 }
 
 Function Write-WarnLog{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -326,6 +330,7 @@ Writes the Error output to registration log file and console
 If Category is passed as 'OperationStopped', the Script will not write the error message again in the final catch block
 #>
 Function Write-ErrorLog{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$true)]
@@ -372,6 +377,7 @@ Function Write-ErrorLog{
 }
 
 Function Write-NodeEventLog{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -428,6 +434,7 @@ Function Write-NodeEventLog{
 }
 
 Function Print-FunctionParameters{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param(
     [Parameter(Mandatory=$True)]
@@ -605,6 +612,7 @@ $registerArcScript = {
 
 $global:LogFileName
 function Setup-Logging{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $LogsDirectory,
     [string] $LogFilePrefix,
@@ -691,6 +699,7 @@ function Test-FolderAccess {
 }
 
 function Show-LatestModuleVersion{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     try 
     {
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
@@ -732,6 +741,7 @@ Useful while running long running cmdlets (202 pattern) since progressbar from t
 do not have useful information
 #>
 function Execute-Without-ProgressBar{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -761,6 +771,7 @@ Useful for scripts where the error needs to be caught inside the Invoke-Command.
 Note: The parameters variable used inside $ScriptBlock should be named $Params or the method won't work as expected
 #>
 function Run-InvokeCommand {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [scriptblock] $ScriptBlock,
@@ -785,6 +796,7 @@ function Run-InvokeCommand {
 }
 
 function Retry-Command {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
@@ -865,6 +877,7 @@ function Retry-Command {
 }
 
 function Get-PortalDomain{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName,
@@ -903,6 +916,7 @@ param(
 }
 
 function Get-DefaultRegion{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $EnvironmentName
         )
@@ -938,6 +952,7 @@ function Get-DefaultRegion{
     }
 
 function Get-GraphAccessToken{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName
@@ -955,6 +970,7 @@ param(
 }
 
 function Get-EnvironmentEndpoints{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $EnvironmentName,
     [ref] $ServiceEndpoint,
@@ -1002,6 +1018,7 @@ param(
 
 
 function Get-PortalHCIResourcePageUrl{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $TenantId,
     [string] $EnvironmentName,
@@ -1017,6 +1034,7 @@ param(
 }
 
 function Get-ResourceId{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $ResourceName,
     [string] $SubscriptionId,
@@ -1089,6 +1107,7 @@ function Check-DependentModules
 }
 
 function Azure-Login{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $SubscriptionId,
     [string] $TenantId,
@@ -1265,6 +1284,7 @@ param(
 }
 
 function Normalize-RegionName{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $Region
     )
@@ -1274,6 +1294,7 @@ param(
 }
 
 function Validate-RegionName{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $Region,
     [ref] $SupportedRegions
@@ -1295,6 +1316,7 @@ param(
 }
 
 function Get-ClusterDNSSuffix{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session
     )
@@ -1305,6 +1327,7 @@ param(
 }
 
 function Register-ResourceProviderIfRequired{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $ProviderNamespace
 )
@@ -1329,6 +1352,7 @@ param(
     }
 }
 function Get-ClusterDNSName{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session
     )
@@ -1339,6 +1363,7 @@ param(
 }
 
 function Check-ConnectionToCloudBillingService{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     $ClusterNodes,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1382,6 +1407,7 @@ param(
 }
 
 function Setup-Certificates{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     $ClusterNodes,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1568,6 +1594,7 @@ param(
     return $null
 }
 function Assign-ArcRoles {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $SpObjectId
     )
@@ -1631,6 +1658,7 @@ function Assign-ArcRoles {
 }
 
 function Verify-ArcSettings{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session
@@ -1671,6 +1699,7 @@ function Verify-ArcSettings{
 }
 
 function Verify-ArcRegistration{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [string] $ArcResourceId,
         [System.Management.Automation.Runspaces.PSSession] $Session,
@@ -1722,6 +1751,7 @@ function Verify-ArcRegistration{
 }
 
 function Verify-NodesArcRegistrationState{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         $ClusterNodes,
         [string] $SubscriptionId,
@@ -1773,6 +1803,7 @@ function Verify-NodesArcRegistrationState{
 }
 
 function Enable-ArcForServers{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1846,6 +1877,7 @@ param(
 }
 
 function Disable-ArcForServers{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
     [System.Management.Automation.PSCredential] $Credential,
@@ -1910,6 +1942,7 @@ param(
 }
 
 function Register-ArcForServers{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $IsManagementNode,
     [string] $ComputerName,
@@ -2128,6 +2161,7 @@ param(
 }
 
 function Verify-arcSPNRoles{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [string] $arcSPNObjectID
 )
@@ -2149,6 +2183,7 @@ param(
     return $foundMachineResourceAdminstratorRole -and $foundConnectedMachineOnboardingRole 
 }
 function Unregister-ArcForServers{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $IsManagementNode,
     [string] $ComputerName,
@@ -3425,6 +3460,7 @@ param(
 }
 
 function Set-ArcRoleforRPSpn {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $RPObjectId,
         [String] $ArcServerResourceGroupName
@@ -3486,6 +3522,7 @@ function Set-ArcRoleforRPSpn {
 }
 
 function New-ClusterWithRetries {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceIdWithAPI, 
         [String] $Payload
@@ -3862,6 +3899,7 @@ param(
 }
 
 function Remove-ArcRoleAssignments {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName,
         [String] $ResourceId
@@ -3906,6 +3944,7 @@ function Remove-ArcRoleAssignments {
 }
 
 function Remove-ResourceGroup {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [String] $ResourceGroupName 
     )
@@ -4488,6 +4527,7 @@ param(
 # IMDS Attestation Section
 #
 function Add-VMDevicesForImds{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [hashtable] $VmAdapterParams,
     [hashtable] $VmAdapterAdditionalParams,
@@ -4563,6 +4603,7 @@ param(
 }
 
 function Add-HostDevicesForImds{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [hashtable] $VmSwitchParams,
     [hashtable] $HostAdapterVlanParams,
@@ -4703,6 +4744,7 @@ param(
 }
 
 function Set-AttestationFirewallRules{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
     [bool] $Enabled,
     [hashtable] $SessionParams
@@ -5864,6 +5906,7 @@ param(
 .NOTES
 #>
 function New-Directory{
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
     [Parameter(Mandatory=$true)][ValidateNotNull()][string]$Path
     )
@@ -5935,6 +5978,7 @@ function Invoke-DeploymentModuleDownload{
 .NOTES
 #>
 function Install-DeployModule {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$true)]
