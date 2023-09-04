@@ -24,6 +24,12 @@ Remove-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> [-
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityVcenter
+```
+Remove-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Implements inventoryItem DELETE method.
 
@@ -90,7 +96,7 @@ Name of the inventoryItem.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityVcenter
 Aliases: InventoryItemName
 
 Required: True
@@ -142,6 +148,22 @@ Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VcenterInputObject
+Identity Parameter
+To construct, see NOTES section for VCENTERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
+Parameter Sets: DeleteViaIdentityVcenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -203,27 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[ResourceGroupName <String>]`: The Resource Group Name.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 

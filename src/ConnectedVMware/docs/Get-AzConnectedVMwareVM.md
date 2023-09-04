@@ -1,31 +1,29 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevminstancehybrididentitymetadata
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata
+# Get-AzConnectedVMwareVM
 
 ## SYNOPSIS
-Implements HybridIdentityMetadata GET method.
+Retrieves information about a virtual machine instance.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVM -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVM -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements HybridIdentityMetadata GET method.
+Retrieves information about a virtual machine instance.
 
 ## EXAMPLES
 
@@ -35,7 +33,7 @@ Implements HybridIdentityMetadata GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -46,7 +44,7 @@ Implements HybridIdentityMetadata GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -91,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVMInstanceHybridIdentityMetadata
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineInstance
 
 ## NOTES
 

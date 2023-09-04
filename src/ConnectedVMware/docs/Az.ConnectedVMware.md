@@ -29,7 +29,7 @@ Implements resourcePool GET method.
 ### [Get-AzConnectedVMwareVCenter](Get-AzConnectedVMwareVCenter.md)
 Implements vCenter GET method.
 
-### [Get-AzConnectedVMwareVMInstance](Get-AzConnectedVMwareVMInstance.md)
+### [Get-AzConnectedVMwareVM](Get-AzConnectedVMwareVM.md)
 Retrieves information about a virtual machine instance.
 
 ### [Get-AzConnectedVMwareVMInstanceGuestAgent](Get-AzConnectedVMwareVMInstanceGuestAgent.md)
@@ -45,35 +45,35 @@ Implements virtual machine template GET method.
 Implements virtual network GET method.
 
 ### [New-AzConnectedVMwareCluster](New-AzConnectedVMwareCluster.md)
-Create Or Update cluster.
+Create cluster.
 
 ### [New-AzConnectedVMwareDatastore](New-AzConnectedVMwareDatastore.md)
-Create Or Update datastore.
+Create datastore.
 
 ### [New-AzConnectedVMwareHost](New-AzConnectedVMwareHost.md)
-Create Or Update host.
+Create host.
 
 ### [New-AzConnectedVMwareInventoryItem](New-AzConnectedVMwareInventoryItem.md)
-Create Or Update InventoryItem.
+Create InventoryItem.
 
 ### [New-AzConnectedVMwareResourcePool](New-AzConnectedVMwareResourcePool.md)
-Create Or Update resourcePool.
+Create resourcePool.
 
 ### [New-AzConnectedVMwareVCenter](New-AzConnectedVMwareVCenter.md)
-Create Or Update vCenter.
+Create vCenter.
 
-### [New-AzConnectedVMwareVMInstance](New-AzConnectedVMwareVMInstance.md)
-The operation to create or update a virtual machine instance.
+### [New-AzConnectedVMwareVM](New-AzConnectedVMwareVM.md)
+The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ### [New-AzConnectedVMwareVMInstanceGuestAgent](New-AzConnectedVMwareVMInstanceGuestAgent.md)
-Create Or Update GuestAgent.
+Create GuestAgent.
 
 ### [New-AzConnectedVMwareVMTemplate](New-AzConnectedVMwareVMTemplate.md)
-Create Or Update virtual machine template.
+Create virtual machine template.
 
 ### [New-AzConnectedVMwareVNet](New-AzConnectedVMwareVNet.md)
-Create Or Update virtual network.
+Create virtual network.
 
 ### [Remove-AzConnectedVMwareCluster](Remove-AzConnectedVMwareCluster.md)
 Implements cluster DELETE method.
@@ -93,7 +93,7 @@ Implements resourcePool DELETE method.
 ### [Remove-AzConnectedVMwareVCenter](Remove-AzConnectedVMwareVCenter.md)
 Implements vCenter DELETE method.
 
-### [Remove-AzConnectedVMwareVMInstance](Remove-AzConnectedVMwareVMInstance.md)
+### [Remove-AzConnectedVMwareVM](Remove-AzConnectedVMwareVM.md)
 The operation to delete a virtual machine instance.
 
 ### [Remove-AzConnectedVMwareVMInstanceGuestAgent](Remove-AzConnectedVMwareVMInstanceGuestAgent.md)
@@ -105,13 +105,13 @@ Implements virtual machine template DELETE method.
 ### [Remove-AzConnectedVMwareVNet](Remove-AzConnectedVMwareVNet.md)
 Implements virtual network DELETE method.
 
-### [Restart-AzConnectedVMwareVMInstance](Restart-AzConnectedVMwareVMInstance.md)
+### [Restart-AzConnectedVMwareVM](Restart-AzConnectedVMwareVM.md)
 The operation to restart a virtual machine instance.
 
-### [Start-AzConnectedVMwareVMInstance](Start-AzConnectedVMwareVMInstance.md)
+### [Start-AzConnectedVMwareVM](Start-AzConnectedVMwareVM.md)
 The operation to start a virtual machine instance.
 
-### [Stop-AzConnectedVMwareVMInstance](Stop-AzConnectedVMwareVMInstance.md)
+### [Stop-AzConnectedVMwareVM](Stop-AzConnectedVMwareVM.md)
 The operation to power off (stop) a virtual machine instance.
 
 ### [Update-AzConnectedVMwareCluster](Update-AzConnectedVMwareCluster.md)
@@ -123,14 +123,20 @@ API to update certain properties of the datastore resource.
 ### [Update-AzConnectedVMwareHost](Update-AzConnectedVMwareHost.md)
 API to update certain properties of the host resource.
 
+### [Update-AzConnectedVMwareInventoryItem](Update-AzConnectedVMwareInventoryItem.md)
+Create InventoryItem.
+
 ### [Update-AzConnectedVMwareResourcePool](Update-AzConnectedVMwareResourcePool.md)
 API to update certain properties of the resourcePool resource.
 
 ### [Update-AzConnectedVMwareVCenter](Update-AzConnectedVMwareVCenter.md)
 API to update certain properties of the vCenter resource.
 
-### [Update-AzConnectedVMwareVMInstance](Update-AzConnectedVMwareVMInstance.md)
+### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
 The operation to update a virtual machine instance.
+
+### [Update-AzConnectedVMwareVMInstanceGuestAgent](Update-AzConnectedVMwareVMInstanceGuestAgent.md)
+Create GuestAgent.
 
 ### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)
 API to update certain properties of the virtual machine template resource.

@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzConnectedVMwareDatastore
 
 ## SYNOPSIS
-Create Or Update datastore.
+Create datastore.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
@@ -19,8 +20,22 @@ New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Locat
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create Or Update datastore.
+Create datastore.
 
 ## EXAMPLES
 
@@ -75,7 +90,7 @@ The extended location name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -90,7 +105,7 @@ The extended location type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -105,10 +120,40 @@ Gets or sets the inventory Item ID for the datastore.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,7 +167,7 @@ If supported, the resource provider must validate and persist this value.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -137,7 +182,7 @@ Gets or sets the location.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -152,7 +197,7 @@ Gets or sets the vCenter MoRef (Managed Object Reference) ID for the datastore.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -227,7 +272,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -242,7 +287,7 @@ Gets or sets the ARM Id of the vCenter resource in which this datastore resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -290,11 +335,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20231001.IDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IDatastore
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

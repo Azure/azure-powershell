@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarevminstanceguestagent
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/start-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedVMwareVMInstanceGuestAgent
+# Start-AzConnectedVMwareVM
 
 ## SYNOPSIS
-Implements GuestAgent DELETE method.
+The operation to start a virtual machine instance.
 
 ## SYNTAX
 
 ```
-Remove-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzConnectedVMwareVM -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements GuestAgent DELETE method.
+The operation to start a virtual machine instance.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ Implements GuestAgent DELETE method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -39,7 +39,7 @@ Implements GuestAgent DELETE method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -79,21 +79,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

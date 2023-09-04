@@ -1,49 +1,42 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwareinventoryitem
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwareinventoryitem
 schema: 2.0.0
 ---
 
-# New-AzConnectedVMwareInventoryItem
+# Update-AzConnectedVMwareInventoryItem
 
 ## SYNOPSIS
 Create InventoryItem.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
- -InventoryType <String> [-SubscriptionId <String>] [-Kind <String>] [-ManagedResourceId <String>]
+Update-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
+ [-SubscriptionId <String>] [-InventoryType <String>] [-Kind <String>] [-ManagedResourceId <String>]
  [-MoName <String>] [-MoRefId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityVcenter
+### UpdateViaIdentityExpanded
 ```
-New-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
- -Body <IInventoryItem> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityVcenterExpanded
-```
-New-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
- -InventoryType <String> [-Kind <String>] [-ManagedResourceId <String>] [-MoName <String>] [-MoRefId <String>]
+Update-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> [-InventoryType <String>]
+ [-Kind <String>] [-ManagedResourceId <String>] [-MoName <String>] [-MoRefId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### UpdateViaIdentityVcenter
 ```
-New-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
+ -Body <IInventoryItem> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityVcenterExpanded
 ```
-New-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
+ [-InventoryType <String>] [-Kind <String>] [-ManagedResourceId <String>] [-MoName <String>]
+ [-MoRefId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +50,7 @@ Create InventoryItem.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -68,7 +61,7 @@ Create InventoryItem.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -81,7 +74,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IInventoryItem
-Parameter Sets: CreateViaIdentityVcenter
+Parameter Sets: UpdateViaIdentityVcenter
 Aliases:
 
 Required: True
@@ -107,45 +100,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InventoryType
 They inventory type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVcenterExpanded
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,7 +138,7 @@ If supported, the resource provider must validate and persist this value.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVcenterExpanded
 Aliases:
 
 Required: False
@@ -174,7 +153,7 @@ Gets or sets the tracked resource id corresponding to the inventory resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVcenterExpanded
 Aliases:
 
 Required: False
@@ -189,7 +168,7 @@ Gets or sets the vCenter Managed Object name for the inventory item.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVcenterExpanded
 Aliases:
 
 Required: False
@@ -204,7 +183,7 @@ Gets or sets the MoRef (Managed Object Reference) ID for the inventory item.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityVcenterExpanded
 Aliases:
 
 Required: False
@@ -219,7 +198,7 @@ Name of the inventoryItem.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityVcenter, UpdateViaIdentityVcenterExpanded
 Aliases: InventoryItemName
 
 Required: True
@@ -234,7 +213,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -249,7 +228,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -265,7 +244,7 @@ To construct, see NOTES section for VCENTERINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentityVcenter, CreateViaIdentityVcenterExpanded
+Parameter Sets: UpdateViaIdentityVcenter, UpdateViaIdentityVcenterExpanded
 Aliases:
 
 Required: True
@@ -280,7 +259,7 @@ Name of the vCenter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True

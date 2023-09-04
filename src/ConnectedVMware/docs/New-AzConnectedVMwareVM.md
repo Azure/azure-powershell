@@ -1,35 +1,48 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevminstance
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# New-AzConnectedVMwareVMInstance
+# New-AzConnectedVMwareVM
 
 ## SYNOPSIS
-The operation to create or update a virtual machine instance.
+The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareVMInstance -ResourceUri <String> [-ExtendedLocationName <String>]
+New-AzConnectedVMwareVM -ResourceUri <String> [-ExtendedLocationName <String>]
  [-ExtendedLocationType <String>] [-HardwareProfileMemorySizeMb <Int32>]
  [-HardwareProfileNumCoresPerSocket <Int32>] [-HardwareProfileNumCpUs <Int32>]
- [-InfrastructureProfileFirmwareType <FirmwareType>] [-InfrastructureProfileInventoryItemId <String>]
+ [-InfrastructureProfileFirmwareType <String>] [-InfrastructureProfileInventoryItemId <String>]
  [-InfrastructureProfileSmbiosUuid <String>] [-InfrastructureProfileTemplateId <String>]
  [-InfrastructureProfileVCenterId <String>] [-NetworkProfileNetworkInterface <INetworkInterface[]>]
  [-OSProfileAdminPassword <String>] [-OSProfileAdminUsername <String>] [-OSProfileComputerName <String>]
- [-OSProfileGuestId <String>] [-OSProfileOstype <OSType>] [-PlacementProfileClusterId <String>]
+ [-OSProfileGuestId <String>] [-OSProfileOstype <String>] [-PlacementProfileClusterId <String>]
  [-PlacementProfileDatastoreId <String>] [-PlacementProfileHostId <String>]
  [-PlacementProfileResourcePoolId <String>] [-StorageProfileDisk <IVirtualDisk[]>]
  [-UefiSettingSecureBootEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzConnectedVMwareVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedVMwareVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The operation to create or update a virtual machine instance.
+The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ## EXAMPLES
@@ -40,7 +53,7 @@ Please note some properties can be set only during virtual machine instance crea
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -51,7 +64,7 @@ Please note some properties can be set only during virtual machine instance crea
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -94,7 +107,7 @@ The extended location name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -109,7 +122,7 @@ The extended location type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -124,7 +137,7 @@ Gets or sets memory size in MBs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -140,7 +153,7 @@ Defaults to 1 if unspecified.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -155,7 +168,7 @@ Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -169,8 +182,8 @@ Accept wildcard characters: False
 Firmware type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.FirmwareType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +198,7 @@ Gets or sets the inventory Item ID for the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +213,7 @@ Gets or sets the SMBIOS UUID of the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -215,7 +228,7 @@ Gets or sets the ARM Id of the template resource to deploy the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -230,10 +243,40 @@ Gets or sets the ARM Id of the vCenter resource in which this resource pool resi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -245,8 +288,8 @@ Gets or sets the list of network interfaces associated with the virtual machine.
 To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20231001.INetworkInterface[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterface[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -276,7 +319,7 @@ Sets administrator password.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -291,7 +334,7 @@ Gets or sets administrator username.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +349,7 @@ Gets or sets computer name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -321,7 +364,7 @@ Gets or sets the guestId.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -335,8 +378,8 @@ Accept wildcard characters: False
 Gets or sets the type of the os.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.OSType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -351,7 +394,7 @@ Gets or sets the ARM Id of the cluster resource on which this virtual machine wi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -366,7 +409,7 @@ Gets or sets the ARM Id of the datastore resource on which the data for the virt
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -381,7 +424,7 @@ Gets or sets the ARM Id of the host resource on which this virtual machine will 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -396,7 +439,7 @@ Gets or sets the ARM Id of the resourcePool resource on which this virtual machi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -426,8 +469,8 @@ Gets or sets the list of virtual disks associated with the virtual machine.
 To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20231001.IVirtualDisk[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDisk[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -442,7 +485,7 @@ Specifies whether secure boot should be enabled on the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -490,38 +533,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20231001.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualMachineInstance
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NETWORKPROFILENETWORKINTERFACE <INetworkInterface[]>`: Gets or sets the list of network interfaces associated with the virtual machine.
-  - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
-  - `[IPSettingAllocationMethod <IPAddressAllocationMethod?>]`: Gets or sets the nic allocation method.
-  - `[IPSettingDnsServer <String[]>]`: Gets or sets the dns servers.
-  - `[IPSettingGateway <String[]>]`: Gets or sets the gateway.
-  - `[IPSettingIpaddress <String>]`: Gets or sets the ip address for the nic.
-  - `[IPSettingSubnetMask <String>]`: Gets or sets the mask.
-  - `[Name <String>]`: Gets or sets the name of the network interface.
-  - `[NetworkId <String>]`: Gets or sets the ARM Id of the network resource to connect the virtual machine.
-  - `[NicType <NicType?>]`: NIC type
-  - `[PowerOnBoot <PowerOnBootOption?>]`: Gets or sets the power on boot.
-
-`STORAGEPROFILEDISK <IVirtualDisk[]>`: Gets or sets the list of virtual disks associated with the virtual machine.
-  - `[ControllerKey <Int32?>]`: Gets or sets the controller id.
-  - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
-  - `[DeviceName <String>]`: Gets or sets the device name.
-  - `[DiskMode <DiskMode?>]`: Gets or sets the disk mode.
-  - `[DiskSizeGb <Int32?>]`: Gets or sets the disk total size.
-  - `[DiskType <DiskType?>]`: Gets or sets the disk backing type.
-  - `[Name <String>]`: Gets or sets the name of the virtual disk.
-  - `[UnitNumber <Int32?>]`: Gets or sets the unit number of the disk on the controller.
 
 ## RELATED LINKS
 
