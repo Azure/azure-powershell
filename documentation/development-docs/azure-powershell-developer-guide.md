@@ -2,43 +2,48 @@
 
 The Azure PowerShell Developer Guide was created to help with the development and testing of Azure PowerShell cmdlets. This guide contains information on how to set up your environment, create a new project, implement cmdlets, record and run tests, and more.
 
-**Note: Except for the way described in this page, There is a new way to generate PowerShell modules through AutoRest PowerShell generator. And related links are attached in the end.**
+**Note: Except for the way described in this page, There is a new way to generate PowerShell modules through AutoRest PowerShell generator. Refer to [Autorest PowerShell Generator](#autorest-powershell-generator).**
 
 # Table of Contents
 
+- [Azure PowerShell Developer Guide](#azure-powershell-developer-guide)
+- [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Environment Setup](#environment-setup)
-    - [GitHub Basics](#github-basics)
-    - [Building the Environment](#building-the-environment)
-    - [Generating Help](#generating-help)
-    - [Running Static Analysis](#running-static-analysis)
-    - [Running Tests](#running-tests)
+  - [GitHub Basics](#github-basics)
+  - [Building the Environment](#building-the-environment)
+  - [Generating Help](#generating-help)
+  - [Running Static Analysis](#running-static-analysis)
+  - [Running Tests](#running-tests)
 - [Before Adding a New Project](#before-adding-a-new-project)
-    - [.NET SDK](#net-sdk)
-    - [Design Review](#design-review)
-    - [Contact](#point-of-contact)
+  - [.NET SDK](#net-sdk)
+  - [Design Review](#design-review)
+  - [Point of Contact](#point-of-contact)
 - [Setting Up a New Project](#setting-up-a-new-project)
-    - [Getting Started](#getting-started)
-        - [Creating the Project](#creating-the-project)
-        - [Adding Project References](#adding-project-references)
+  - [Getting Started](#getting-started)
+    - [Creating the Project](#creating-the-project)
+    - [Adding Project References](#adding-project-references)
 - [Creating Cmdlets](#creating-cmdlets)
-    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
-    - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
-        - [Importing Modules](#importing-modules)
-    - [Adding Help Content](#adding-help-content)
+  - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
+  - [Exceptions Guidelines](#exceptions-guidelines)
+  - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
+    - [Set a StartUp Project](#set-a-startup-project)
+    - [Setup a Debug Profile](#setup-a-debug-profile)
+  - [Adding Help Content](#adding-help-content)
 - [Adding Tests](#adding-tests)
-    - [Using Azure TestFramework](#using-azure-testframework)
-    - [Scenario Tests](#scenario-tests)
-        - [Adding Scenario Tests](#adding-scenario-tests)
-        - [Using Common Code](#using-common-code)
-        - [Using Active Directory](#using-active-directory)
-        - [Using Certificate](#using-certificate)
-        - [AD Scenario Tests](#ad-scenario-tests)
-        - [Recording/Running Tests](#recordingrunning-tests)
+  - [Using Azure TestFramework](#using-azure-testframework)
+  - [Scenario Tests](#scenario-tests)
+    - [Adding Test Project](#adding-test-project)
+    - [Adding Scenario Tests](#adding-scenario-tests)
+      - [Use local files in test](#use-local-files-in-test)
+    - [Using Active Directory](#using-active-directory)
+    - [AD Scenario Tests](#ad-scenario-tests)
+    - [Recording/Running Tests](#recordingrunning-tests)
 - [After Development](#after-development)
+  - [Change Log](#change-log)
 - [Misc](#misc)
-    - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
-- [Autorest PowerShell Generator](#autorest-powershell-generator)
+  - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
+- [AutoRest PowerShell Generator](#autorest-powershell-generator)
 
 # Prerequisites
 
@@ -212,6 +217,11 @@ There are a few existing projects that need to be added before developing any cm
 ## PowerShell Cmdlet Design Guidelines
 
 Please check out the [_Cmdlet Best Practices_](./design-guidelines/cmdlet-best-practices.md) document for more information on how to create cmdlets that follow the PowerShell guidelines.
+
+## Exceptions Guidelines
+
+Azure PowerShell defines most commonly used exceptions. Developers working on Azure PowerShell should use these exceptions during development, rather than other more generic exceptions.
+Refer to [_Azure PowerShell Exceptions_](./design-guidelines/azure-powershell-exceptions.md) for more information on Azure PowerShell Exceptions.
 
 ## Enable Running PowerShell when Debugging
 To import modules automatically when debug has started, follow the below steps:
