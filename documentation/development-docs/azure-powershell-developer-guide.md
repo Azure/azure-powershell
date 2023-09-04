@@ -214,22 +214,19 @@ There are a few existing projects that need to be added before developing any cm
 Please check out the [_Cmdlet Best Practices_](./design-guidelines/cmdlet-best-practices.md) document for more information on how to create cmdlets that follow the PowerShell guidelines.
 
 ## Enable Running PowerShell when Debugging
-
+To import modules automatically when debug has started, follow the below steps:
+### Set a StartUp Project
 - Choose any project and set it as the startup project in Visual Studio
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
-- Right-click on the project and select **Properties**
-- Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory
-  - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
+### Setup a Debug Profile
+- Please refer to [Debug Page, Project Designer](https://learn.microsoft.com/visualstudio/ide/reference/debug-page-project-designer?view=vs-2022) for how to access the Debug page
+- Create a **Excutable** new Debug profile
+- For Azure PowerShell, please setup debug profile in the following way
+  - Set **Excutable** to the path of the excutable file of PowerShell core, for example,`C:\Program Files\PowerShell\7\pwsh.exe`
+  - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
+    - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$DebugPreference='Continue'"`
 
-### Importing Modules
-
-To import modules automatically when debug has started, follow the below steps:
-
-- In the **Debug** tab mentioned previously, go to **Start Options**
-- Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
-  - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$DebugPreference='Continue'"`
-- **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
+**Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 
 ## Adding Help Content
 
