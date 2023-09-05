@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Add ability to deploy directly from a `.bicepparam` file.
 
 ## Version 6.10.0
 * Added breaking change warnings for Azure Policy cmdlets.

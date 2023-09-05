@@ -132,6 +132,16 @@ Set-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+Set-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String> [-Description <String>]
+ [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateParameterFile <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update a resource group scoped deployment stack.
 
@@ -424,7 +434,7 @@ Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile
+Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

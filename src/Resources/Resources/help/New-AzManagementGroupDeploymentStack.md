@@ -144,6 +144,17 @@ New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> 
  [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
+ -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
+ -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
+ [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
+ [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a management group scoped deployment stack.
 
@@ -465,7 +476,7 @@ Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile
+Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

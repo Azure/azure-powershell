@@ -156,6 +156,15 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
+ [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
+ -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzManagementGroupDeployment** cmdlet adds a deployment at a management group.
 
@@ -408,7 +417,7 @@ A file that has the template parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True
