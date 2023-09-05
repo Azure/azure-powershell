@@ -188,6 +188,5 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [JsonProperty(PropertyName = "recoveryPointProperties")]
         public RecoveryPointProperties RecoveryPointProperties { get; set; }
-
     }
 }
