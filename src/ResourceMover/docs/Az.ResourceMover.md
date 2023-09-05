@@ -66,8 +66,10 @@ To aid the user to prerequisite the operation the client can call operation with
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
 Creates or updates a move collection.
 The following types of move collections based on the move scenario are supported currently:
-1.**RegionToRegion** (Moving resources across regions)
-2.**RegionToZone** (Moving virtual machines into a zone within the same region)
+** 1.
+RegionToRegion** (Moving resources across regions)
+** 2.
+RegionToZone** (Moving virtual machines into a zone within the same region)
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
 Deletes a move collection.

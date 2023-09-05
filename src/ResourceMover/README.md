@@ -138,7 +138,7 @@ directive:
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}"].put
-    transform: $["description"] = "Creates or updates a move collection. The following types of move collections based on the move scenario are supported currently:<br>1.**RegionToRegion** (Moving resources across regions)<br>2.**RegionToZone** (Moving virtual machines into a zone within the same region)"
+    transform: $["description"] = "Creates or updates a move collection. The following types of move collections based on the move scenario are supported currently:<br>** 1. RegionToRegion** (Moving resources across regions)<br>** 2. RegionToZone** (Moving virtual machines into a zone within the same region)"
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}"].get
