@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.2
 * Removed device type check and only check if service already exists.
 
 ## Version 2.1.1

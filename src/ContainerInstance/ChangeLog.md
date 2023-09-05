@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.1
 * Fixed a bug in `Invoke-AzContainerInstanceCommand` when no result was returned under some conditions [#22453]
 
 ## Version 3.2.0
