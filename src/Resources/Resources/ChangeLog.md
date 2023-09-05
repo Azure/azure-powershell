@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed unexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
 
 ## Version 6.10.0
 * Added breaking change warnings for Azure Policy cmdlets.
