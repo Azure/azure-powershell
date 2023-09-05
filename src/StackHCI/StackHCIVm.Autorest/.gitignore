@@ -1,0 +1,10 @@
+bin
+
+.vs
+
+tools
+
+test/*-TestResults.xml
+
+
+
