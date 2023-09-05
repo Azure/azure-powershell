@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
             ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
             EnableAnalyticalStorage = databaseAccountGetResults.EnableAnalyticalStorage;
+            EnableBurstCapacity = databaseAccountGetResults.EnableBurstCapacity;
             NetworkAclBypass = databaseAccountGetResults.NetworkAclBypass;
             NetworkAclBypassResourceIds = databaseAccountGetResults.NetworkAclBypassResourceIds;
             InstanceId = databaseAccountGetResults.InstanceId;
@@ -188,6 +189,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether to enable storage analytics.
         public bool? EnableAnalyticalStorage { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether burst capacity is enabled.
+        public bool? EnableBurstCapacity { get; set; }
         //
         // Summary:
         //     Gets or sets flag to indicate whether Partition Merge is enabled.
