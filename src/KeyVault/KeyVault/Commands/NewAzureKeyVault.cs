@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             const string statusMessage = "Getting the latest status of all resources...";
             var clearMessage = new string(' ', statusMessage.Length);
             var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
-            var clearInformation = new HostInformationMessage { Message = $"\r{clearMessage}\r", NoNewLine = true };
+            var clearInformation = new HostInformationMessage { Message = $"{Environment.NewLine}{clearMessage}{Environment.NewLine}", NoNewLine = true };
             var tags = new[] { "PSHOST" };
 
             try
