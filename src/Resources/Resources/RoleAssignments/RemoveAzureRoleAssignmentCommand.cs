@@ -188,13 +188,18 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id
+                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id: null
                 },
                 // we should never expand principal groups in the Delete scenario
                 ExpandPrincipalGroups = false,
                 // never include classic administrators in the Delete scenario
                 IncludeClassicAdministrators = false
             };
+
+            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(options.Scope, options.ResourceIdentifier.Subscription));
+            }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
             ConfirmAction(

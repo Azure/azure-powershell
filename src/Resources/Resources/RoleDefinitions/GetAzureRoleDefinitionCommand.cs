@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id?.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id.ToString(): null
                 },
                 RoleDefinitionId = Id,
                 RoleDefinitionName = Name,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
             {
-                WriteTerminatingError("No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command.");
+                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(options.Scope, options.ResourceIdentifier.Subscription));
             }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
@@ -87,10 +87,7 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteObject(filteredRoleDefinitions, enumerateCollection: true);
             }
         }
-
-        private void WriteTerminatingError(string message, params object[] args)
-        {
-            ThrowTerminatingError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));
-        }
+        
+        
     }
 }
