@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmapping
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
 schema: 2.0.0
 ---
 
-# New-AzMigrateHCIDiskMapping
+# New-AzMigrateHCIDiskMappingObject
 
 ## SYNOPSIS
 Creates a new disk mapping
@@ -13,30 +13,36 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateHCIDiskMapping -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
+New-AzMigrateHCIDiskMappingObject -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
  -Size <Int64> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzMigrateHCIDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
 
 ## EXAMPLES
 
-### Example 1: Creates Disk to migrate
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzMigrateHCIDiskMapping -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
+{{ Add code here }}
 ```
 
 ```output
-DiskFileFormat     : VHDX
-DiskId             : a
-DiskSizeGb         : 1
-IsDynamic          : True
-IsOSDisk           : True
-StorageContainerId : 
+{{ Add output here }}
 ```
 
-Get disk object to provide input for New-AzMigrateHCIServerReplication
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

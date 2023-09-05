@@ -17,13 +17,13 @@
 .Synopsis
 Creates an object to update NIC properties of a replicating server.
 .Description
-The New-AzMigrateHCINicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
+The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated. This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
 #>
-function New-AzMigrateHCINicMapping {
+function New-AzMigrateHCINicMappingObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput])]
-    [CmdletBinding(DefaultParameterSetName = 'HyperV', PositionalBinding = $false)]
+    [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

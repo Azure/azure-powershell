@@ -29,7 +29,7 @@ function Get-AzMigrateHCIJob {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the job id for which the details needs to be retrieved.
-        ${JobID},
+        ${ID},
 
         [Parameter(ParameterSetName = 'GetByName', Mandatory)]
         [Parameter(ParameterSetName = 'ListByName', Mandatory)]
@@ -49,7 +49,7 @@ function Get-AzMigrateHCIJob {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Job identifier
-        ${JobName},
+        ${Name},
 
         [Parameter(ParameterSetName = 'GetByInputObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -126,10 +126,10 @@ function Get-AzMigrateHCIJob {
     
     process {
         $parameterSet = $PSCmdlet.ParameterSetName
-        $null = $PSBoundParameters.Remove('JobID')
+        $null = $PSBoundParameters.Remove('ID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
-        $null = $PSBoundParameters.Remove('JobName')
+        $null = $PSBoundParameters.Remove('Name')
         $null = $PSBoundParameters.Remove('InputObject')
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
@@ -157,18 +157,18 @@ function Get-AzMigrateHCIJob {
         }
         else {
             if ($parameterSet -eq 'GetByInputObject') {
-                $JobID = $InputObject.Id
+                $ID = $InputObject.Id
             }
-            $jobIdArray = $JobID.split('/')
+            $jobIdArray = $ID.split('/')
             $ResourceGroupName = $jobIdArray[4]
             $vaultName = $jobIdArray[8]
-            $JobName = $jobIdArray[10]
+            $Name = $jobIdArray[10]
         }
         
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
         if ($parameterSet -match 'Get') {
-            $null = $PSBoundParameters.Add('Name', $JobName)
+            $null = $PSBoundParameters.Add('Name', $Name)
         }
 
         return  Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters

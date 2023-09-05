@@ -75,13 +75,13 @@ This is for the scenario, when there is only one single disk that has to be prot
 ### Example 2: When there are multiple disks or NICs to migrate
 ```powershell
 [AzStackHCIDiskInput[]]$DisksToInclude = @()
-$OSDisk = New-AzMigrateHCIDiskMapping -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
-$DataDisk = New-AzMigrateHCIDiskMapping -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
+$OSDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -IsOSDisk true -IsDynamic true -Size 42 -Format VHD
+$DataDisk = New-AzMigrateHCIDiskMappingObject -DiskID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\C92FAB89-DA8B-47E9-92F3-364642ECDF39\0\0\L" -IsOSDisk false -IsDynamic true -Size 5 -Format VHD
 $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 
 [AzStackHCINicInput[]]$NicsToInclude = @()
-$Nic = New-AzMigrateHCINicMapping -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
 $NicsToInclude += $Nic
 
 New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude

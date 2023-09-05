@@ -17,13 +17,13 @@
 .Synopsis
 Creates a new disk mapping
 .Description
-The New-AzMigrateHCIDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
+The New-AzMigrateHCIDiskMappingObject cmdlet creates a mapping of the source disk attached to the server to be migrated
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmapping
+https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcidiskmappingobject
 #>
-function New-AzMigrateHCIDiskMapping {
+function New-AzMigrateHCIDiskMappingObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCIDiskInput])]
-    [CmdletBinding(DefaultParameterSetName = 'HyperV', PositionalBinding = $false)]
+    [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

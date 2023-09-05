@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmapping
+online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
 schema: 2.0.0
 ---
 
-# New-AzMigrateHCINicMapping
+# New-AzMigrateHCINicMappingObject
 
 ## SYNOPSIS
 Creates an object to update NIC properties of a replicating server.
@@ -13,28 +13,36 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMapping -NicID <String> -TargetNetworkID <String> [<CommonParameters>]
+New-AzMigrateHCINicMappingObject -NicID <String> -TargetNetworkID <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzMigrateHCINicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated.
+The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC attached to the server to be migrated.
 This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 
 ## EXAMPLES
 
-### Example 1: Create NIC to migrate
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzMigrateHCINicMapping -NicID a -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+{{ Add code here }}
 ```
 
 ```output
-NicId                    : a
-TargetNetworkId          : /subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external
-TestNetworkId            : /subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external
-SelectionTypeForFailover : SelectedByUser
+{{ Add output here }}
 ```
 
-Get NIC object to provide input for New-AzMigrateHCIServerReplication and Set-AzMigrateHCIServerReplication
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

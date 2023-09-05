@@ -20,8 +20,7 @@ Get-AzMigrateHCIJob -ProjectName <String> -ResourceGroupName <String> [-Subscrip
 
 ### GetById
 ```
-Get-AzMigrateHCIJob -JobID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMigrateHCIJob -ID <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
@@ -32,7 +31,7 @@ Get-AzMigrateHCIJob -InputObject <IMigrateIdentity> [-SubscriptionId <String>] [
 
 ### GetByName
 ```
-Get-AzMigrateHCIJob -JobName <String> -ProjectName <String> -ResourceGroupName <String>
+Get-AzMigrateHCIJob -Name <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -330,6 +329,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ID
+Specifies the job id for which the details needs to be retrieved.
+
+```yaml
+Type: System.String
+Parameter Sets: GetById
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Specifies the job object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -346,22 +360,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JobID
-Specifies the job id for which the details needs to be retrieved.
-
-```yaml
-Type: System.String
-Parameter Sets: GetById
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JobName
+### -Name
 Job identifier
 
 ```yaml

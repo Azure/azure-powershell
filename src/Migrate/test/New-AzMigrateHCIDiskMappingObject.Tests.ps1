@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCINicMapping'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCIDiskMappingObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMigrateHCINicMapping.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzMigrateHCIDiskMappingObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,10 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCINicMapping'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMigrateHCINicMapping' {
+Describe 'New-AzMigrateHCIDiskMappingObject' {
     It '__AllParameterSets' {
-        $output = New-AzMigrateHCINicMapping -NicID a -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+        $output = New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
         $output.Count | Should -BeGreaterOrEqual 1 
-        $output.NicID | Should -Be a
+        $output.DiskId | Should -Be a
     }
 }
