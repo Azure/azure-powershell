@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates Disk to migrate
 ```powershell
-{{ Add code here }}
+New-AzMigrateHCIDiskMappingObject -DiskID a -IsOSDisk true -IsDynamic true -Size 1 -Format VHDX
 ```
 
 ```output
-{{ Add output here }}
+DiskFileFormat     : VHDX
+DiskId             : a
+DiskSizeGb         : 1
+IsDynamic          : True
+IsOSDisk           : True
+StorageContainerId : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get disk object to provide input for New-AzMigrateHCIServerReplication
