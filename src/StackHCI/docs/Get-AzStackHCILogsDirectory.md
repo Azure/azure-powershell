@@ -103,9 +103,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-```output
-HCI Registration Logs directory path: C:\ProgramData\AzureStackHCI
-```
 
 ### System.String
 
