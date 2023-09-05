@@ -245,6 +245,11 @@ namespace Microsoft.Azure.Commands.Resources
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
             };
 
+            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(options.Scope, options.ResourceIdentifier.Subscription));
+            }
+
             AuthorizationClient.ValidateScope(options.Scope, true);
 
             List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id);

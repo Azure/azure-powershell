@@ -89,9 +89,14 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id.ToString() : null
                 }
             };
+
+            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(options.Scope, options.ResourceIdentifier.Subscription));
+            }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
