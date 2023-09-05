@@ -175,6 +175,7 @@ function Set-AzMigrateHCIServerReplication {
             if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
                 throw "The target virtual machine name must be between 1 and 64 characters long."
             }
+
             Import-Module Az.Resources
             $vmId = $customProperties.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
             $VMNamePresentInRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -184,6 +185,10 @@ function Set-AzMigrateHCIServerReplication {
     
             if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
                 throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+            }
+
+            if (IsReservedOrTrademarked($TargetVMName)) {
+                throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
             }
 
             $customProperties.TargetVMName = $TargetVMName

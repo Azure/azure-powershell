@@ -70,7 +70,6 @@ function GetStorageContainerARGQuery {
         return $query
     }
 }
-
 function GetVirtualSwitchARGQuery {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
@@ -102,4 +101,80 @@ function GetVirtualSwitchARGQuery {
 
         return $query
     }
+}
+
+function IsReservedOrTrademarked {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies VM name.
+        ${Value}
+    )
+
+    $uppercased = $Value.ToUpper();
+
+    # cannot be exactly one of these, but could be slighlty differnet (e.g. hololens2)
+    $reservedWords = @(
+        "ACCESS",
+        "APP_CODE",
+        "APP_THEMES",
+        "APP_DATA",
+        "APP_GLOBALRESOURCES",
+        "APP_LOCALRESOURCES",
+        "APP_WEBREFERENCES",
+        "APP_BROWSERS",
+        "AZURE",
+        "BING",
+        "BIZSPARK",
+        "BIZTALK",
+        "CORTANA",
+        "DIRECTX",
+        "DOTNET",
+        "DYNAMICS",
+        "EXCEL",
+        "EXCHANGE",
+        "FOREFRONT",
+        "GROOVE",
+        "HOLOLENS",
+        "HYPERV",
+        "KINECT",
+        "LYNC",
+        "MSDN",
+        "O365",
+        "OFFICE",
+        "OFFICE365",
+        "ONEDRIVE",
+        "ONENOTE",
+        "OUTLOOK",
+        "POWERPOINT",
+        "SHAREPOINT",
+        "SKYPE",
+        "VISIO",
+        "VISUALSTUDIO"
+    )
+
+    # The following words can't be used as either a whole word or a substring in the name:
+    $microsoft = "MICROSOFT";
+    $windows = "WINDOWS";
+
+    # The following words can't be used at the start of a resource name, but can be used later in the name:
+    $startLogin = "LOGIN";
+    $startXbox = "XBOX";
+
+    if ($uppercased.startsWith($startLogin) -or $uppercased.startsWith($startXbox)) {
+        return $true;
+    }
+
+    if ($uppercased.contains($microsoft) -or $uppercased.contains($windows)) {
+        return $true;
+    }
+
+    foreach ($reservedName in $reservedWords) {
+        if ($uppercased -eq $reservedName) {
+            return $true;
+        }
+    }
+
+    return $false;
 }

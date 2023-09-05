@@ -376,6 +376,10 @@ function New-AzMigrateHCIServerReplication {
             throw "The target virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
         }
 
+        if (IsReservedOrTrademarked($TargetVMName)) {
+            throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
+        }
+
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
             if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
@@ -492,6 +496,11 @@ function New-AzMigrateHCIServerReplication {
                     if ($null -eq $discoveredDisk) {
                         throw "No Disk found with Uuid '$($disk.DiskId)' from discovered machine disks."
                     }
+                }
+
+                $diskName =  Split-Path $discoveredDisk.Path -leaf $discoveredDisk
+                if (IsReservedOrTrademarked($diskName)) {
+                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
                 }
 
                 if (($null -ne $uniqueDisks) -and ($uniqueDisks.Contains($disk.DiskId))) {
