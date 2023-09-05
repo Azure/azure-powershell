@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
         private VaultManagementClient _keyVaultManagementClient;
-        private VaultManagementClient _keyVaultCreationClient;
+        private VaultManagementClient _keyVaultDeploymentClient;
         private DataServiceCredential _dataServiceCredential;
         public VaultManagementClient KeyVaultManagementClient
         {
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                return _keyVaultCreationClient ?? (_keyVaultCreationClient = new VaultManagementClient(DefaultContext, true));
+                return _keyVaultDeploymentClient ?? (_keyVaultDeploymentClient = new VaultManagementClient(DefaultContext, true));
             }
 
-            set { _keyVaultCreationClient = value; }
+            set { _keyVaultDeploymentClient = value; }
         }
 
 

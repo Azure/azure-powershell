@@ -17,7 +17,6 @@ using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public MhsmNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
-        // public string TemplateFile { get; set; }
         public DeploymentMode DeploymentMode { get; set; }
         public string QueryString { get; set; }
         public Hashtable TemplateObject { get; set; }
