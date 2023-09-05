@@ -28,14 +28,14 @@ Describe 'Get-AzMigrateHCIJob' {
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId `
-            -JobName $env.hciJobName
+            -Name $env.hciJobName
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetById' {
         $output = Get-AzMigrateHCIJob `
             -SubscriptionId $env.hciSubscriptionId `
-            -JobID $env.hciJobId
+            -ID $env.hciJobId
         $output.Count | Should -BeGreaterOrEqual 1
     }
 
@@ -44,7 +44,7 @@ Describe 'Get-AzMigrateHCIJob' {
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId `
-            -JobName $env.hciJobName
+            -Name $env.hciJobName
         
         $output1 = Get-AzMigrateHCIJob `
             -InputObject $output `

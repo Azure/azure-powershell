@@ -1,6 +1,6 @@
 ### Example 1: Get by job Id
 ```powershell
-Get-AzMigrateHCIJob -JobID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 ```
 
 ```output
@@ -40,7 +40,7 @@ Retrieves a job by its Id.
 
 ### Example 2: Get by job name
 ```powershell
-Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj" -JobName "0203aa1b-1dff-4653-89a9-b90a76d1601a"
+Get-AzMigrateHCIJob -ResourceGroupName "test-rg" -ProjectName "testproj" -Name "0203aa1b-1dff-4653-89a9-b90a76d1601a"
 ```
 
 ```output
@@ -80,7 +80,7 @@ Retrieves a job by its name.
 
 ### Example 3: Get by job input object
 ```powershell
-$InputObject = Get-AzMigrateHCIJob -JobID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
+$InputObject = Get-AzMigrateHCIJob -ID "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/testproj1234replicationvault/jobs/0203aa1b-1dff-4653-89a9-b90a76d1601a"
 
 Get-AzMigrateHCIJob -InputObject $InputObject
 
