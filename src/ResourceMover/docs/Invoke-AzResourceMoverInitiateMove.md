@@ -8,9 +8,8 @@ schema: 2.0.0
 # Invoke-AzResourceMoverInitiateMove
 
 ## SYNOPSIS
-Moves the set of resources included in the request body.
-The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+Moves the set of resources included in the request body.The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
@@ -21,9 +20,8 @@ Invoke-AzResourceMoverInitiateMove -MoveCollectionName <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-Moves the set of resources included in the request body.
-The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br>The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
+Moves the set of resources included in the request body.The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 

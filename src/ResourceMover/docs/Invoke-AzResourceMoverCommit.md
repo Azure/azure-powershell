@@ -11,6 +11,7 @@ schema: 2.0.0
 Commits the set of resources included in the request body.
 The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
@@ -23,7 +24,8 @@ Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <St
 ## DESCRIPTION
 Commits the set of resources included in the request body.
 The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br>The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 
@@ -89,7 +91,6 @@ Name           : d36ca519-8ced-48c9-a968-cb5e9c4db731
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:42:41 PM
 Status         : Succeeded
-
 
 ```
 

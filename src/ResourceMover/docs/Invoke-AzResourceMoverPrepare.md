@@ -11,6 +11,7 @@ schema: 2.0.0
 Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
 
 ## SYNTAX
 
@@ -23,7 +24,8 @@ Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <S
 ## DESCRIPTION
 Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
-To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br>The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
 
 ## EXAMPLES
 
@@ -51,12 +53,11 @@ MoveCollectionMissingRequiredDependentResources
 
 $resp.AdditionalInfo[0].InfoMoveResource
 
-SourceId                                                                                                                                  
---------                                                                                                                                  
+SourceId
+--------
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-vnet     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
-
 ```
 
 Validate the dependecies before prepare of the resources.

@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates or updates a Move Resource in the move collection.
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
@@ -20,12 +21,17 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.<br>The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
+Creates or updates a Move Resource in the move collection.
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 
 ### Example 1: Add a resource to the Move Collection.
 ```powershell
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
+$targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
+
 Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $targetResourceSettingsObj
 
 DependsOn                         : {}
@@ -57,11 +63,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
-$targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
-$targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
-
 ```
 
 Add a resource to the Move Collection.
@@ -101,15 +102,17 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
 ```
 
 Add a resource to the Move Collection that has existing target resource.
 
 ### Example 3: Update target resource settings after the Move Resource has been added.
 ```powershell
-Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+$moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
+$TargetResourceSettingObj = $moveResourceObj.ResourceSetting
+$TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
 
+Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
 
 DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
                                     m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
@@ -141,11 +144,6 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
-
-$moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
-$TargetResourceSettingObj = $moveResourceObj.ResourceSetting
-$TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
-
 ```
 
 Update target resource settings after the Move Resource has been added.

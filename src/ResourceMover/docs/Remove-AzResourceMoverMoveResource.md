@@ -8,7 +8,8 @@ schema: 2.0.0
 # Remove-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Deletes a Move Resource from the move collection.<br>The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.
+Deletes a Move Resource from the move collection.
+**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
 
@@ -20,10 +21,11 @@ Remove-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -
 
 ## DESCRIPTION
 Deletes a Move Resource from the move collection.
+**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 
-### Example 1: Remove one Move Resource from the Move Collection.
+### Example 1: Remove one Move Rresource from the Move Collection.
 ```powershell
 Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 ```
