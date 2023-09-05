@@ -53,7 +53,7 @@ $CreatingCloudResourceMessage = "Creating Azure Resource {0} representing Azure 
 $RepairingCloudResourceMessage = "Repairing Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
 $GettingCertificateMessage = "Getting new certificate from on-premises cluster to use as application credential"
 $AddAppCredentialMessage = "Adding certificate as application credential for the Azure AD application {0}"
-$DefaultExtensionPromptMessage = "Registering your system will automatically setup Azure Arc-enabled servers and install Mandatory Azure Arc extensions that help improve product quality and make it easier to get remote support. Learn more at aka.ms/azurestackhcimandatoryextensions."
+$MandatoryExtensionInfoMessage = "You agree that by registering Azure Stack HCI with an Azure subscription, additional features will be installed by Microsoft which may transmit data to Microsoft to help identify issues, improve product quality, and facilitate remote support. Learn more at aka.ms/azurestackhcimandatoryextensions."
 $RegisterAndSyncMetadataMessage = "Registering Azure Stack HCI cluster and syncing cluster census information from the on-premises cluster to the cloud"
 $UnregisterHCIUsageMessage = "Unregistering Azure Stack HCI cluster and cleaning up registration state on the on-premises cluster"
 $DeletingCloudResourceMessage = "Deleting Azure resource with ID {0} representing the Azure Stack HCI cluster"
@@ -67,7 +67,6 @@ $ArcAlreadyRegisteredInDifferentResourceGroupError = "Arc servers are already re
 $ClusterCreationFailureMessage = "Failed to create cluster resource"
 $rpObjectIdNullError = "Resource Provider Object Id is Null. Failed to assign roles to HCI RP for ARC Onboarding"
 $roleAssignmentHCIRPFailError = "Failed to assign Arc roles to HCI Resource Provider"
-$DefaultExtensionErrorMessage = "User has declined to install Mandatory Azure Arc extensions. Registration is not possible without a consent to install Mandatory extensions. Aborting registration."
 $RegisterArcProgressActivityName = "Registering Azure Stack HCI with Azure Arc..."
 $UnregisterArcProgressActivityName = "Unregistering Azure Stack HCI with Azure Arc..."
 $RegisterArcRPMessage = "Registering Microsoft.HybridCompute and Microsoft.GuestConfiguration resource providers to subscription"
@@ -241,7 +240,7 @@ $ArcSettingsVerificationLimit = 10
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
-$defaultLogsDirectory = "C:/ProgramData/AzureStackHCI/Registration"
+$defaultLogsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::CommonApplicationData) + "\AzureStackHCI\Registration"
 
 # Cluster Agent Service Names
 $ClusterAgentServiceName = "HciClusterAgentSvc"
@@ -2819,16 +2818,8 @@ param(
         
         if(($isDefaultExtensionSupported) -and (($null -eq $arcres) -or ($null -eq $arcres.Properties.DefaultExtensions.ConsentTime)))
         {
-            if($PSCmdlet.ShouldProcess($DefaultExtensionPromptMessage, $DefaultExtensionPromptMessage, "Do you want to continue?"))
-            {
-                Write-VerboseLog ("User has consented to install mandatory Azure Arc extensions. Continuing with registration.")                        
-            }
-            else
-            {
-                Write-VerboseLog ("User has declined to install Mandatory Azure Arc extensions. Registration is not possible without a consent to install Mandatory extensions. Aborting registration.")  
-                Write-ErrorLog -Message $DefaultExtensionErrorMessage                      
-                throw
-            }
+            Write-Output $MandatoryExtensionInfoMessage
+            Write-InfoLog ($MandatoryExtensionInfoMessage)
         }
 
         #USE CLUSTER RG AS ARC RG
