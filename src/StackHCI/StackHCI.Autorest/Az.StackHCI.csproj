@@ -2,8 +2,12 @@
   <PropertyGroup>
     <PsModuleName>StackHCI</PsModuleName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' == ''">
+    <TargetFrameworkIdentifier>.NETCOREAPP</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>3.1</TargetFrameworkVersion>
+  </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
