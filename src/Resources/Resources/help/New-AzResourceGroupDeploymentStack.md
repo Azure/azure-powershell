@@ -154,6 +154,13 @@ New-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResource
 
 Create a new resource group scoped deployment stack named 'MyRGStack' in management group 'MyResoourceGroup,' with deny settings being DenyDelete. 
 
+### Example 2: Use a .bicepparam file to create a stack
+```powershell
+New-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new stack at the resource group scope by using a .bicepparam file on disk.
+
 ## PARAMETERS
 
 ### -AsJob

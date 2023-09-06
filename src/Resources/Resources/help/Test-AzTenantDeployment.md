@@ -147,6 +147,14 @@ Test-AzTenantDeployment -Location "West US" -TemplateObject $TemplateObject -Tem
 
 This command tests a deployment at the current tenant scope using the an in-memory hashtable created from the given template file and a parameter file.
 
+### Example 3: Use a .bicepparam file to validate a deployment
+```powershell
+Test-AzTenantDeployment -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command validates the deployment at the current tenant scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
+
 ## PARAMETERS
 
 ### -DefaultProfile

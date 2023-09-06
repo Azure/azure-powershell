@@ -167,6 +167,14 @@ Test-AzResourceGroupDeployment -ResourceGroupName testRG01 -TemplateFile "D:\Azu
 
 This command tests a deployment in the given resource group and resource using the provided template file and a parameter file.
 
+### Example 3: Use a .bicepparam file to validate a deployment
+```powershell
+Test-AzResourceGroupDeployment -ResourceGroupName "myRG1" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command validates the deployment at the resource group scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
+
 ## PARAMETERS
 
 ### -DefaultProfile

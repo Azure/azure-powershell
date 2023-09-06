@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         [Parameter(ParameterSetName = ParameterFileTemplateSpecParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = ByParameterFileWithNoTemplateParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the deployment.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         public string TemplateParameterFile { get; set; }
 
         [Parameter(ParameterSetName = ParameterUriTemplateFileParameterSetName,

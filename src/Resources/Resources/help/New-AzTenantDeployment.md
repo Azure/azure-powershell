@@ -200,6 +200,14 @@ This command creates a new deployment at the current tenant by using a custom te
 The first two commands read the text for the template file on disk and convert it to an in-memory hashtable.
 The last command uses the *TemplateObject* parameter to specify this hashtable and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
 
+### Example 3: Use a .bicepparam file to create a deployment
+```powershell
+New-AzTenantDeployment -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new deployment at the current tenant scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
+
 ## PARAMETERS
 
 ### -AsJob

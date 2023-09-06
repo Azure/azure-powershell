@@ -90,15 +90,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable TemplateParameterObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateObjectParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = ByParameterFileWithNoTemplateParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A .bicepparam parameters file.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 

@@ -184,6 +184,14 @@ The command uses the *TemplateFile* parameter to specify a template file.
 The command uses the *TemplateParameterFile* parameter to specify a template parameter file.
 The command uses the *ResultFormat* parameter to set the What-If result to only contain resource IDs.
 
+### Example 3: Use a .bicepparam file to calculate What-If
+```powershell
+Get-AzManagementGroupDeploymentWhatIfResult -ManagementGroupId "myManagementGroup" -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command gets a What-If result at the management group scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
+
 ## PARAMETERS
 
 ### -DefaultProfile

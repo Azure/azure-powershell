@@ -163,6 +163,13 @@ Set-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json
 
 Update a subscription scoped deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete. 
 
+### Example 2: Use a .bicepparam file to update a stack
+```powershell
+Set-AzSubscriptionDeploymentStack -Name MySubStack -Location westus -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command updates a stack at the subscription scope by using a .bicepparam file on disk.
+
 ## PARAMETERS
 
 ### -AsJob

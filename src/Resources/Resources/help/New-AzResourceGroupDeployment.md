@@ -238,6 +238,14 @@ This command creates a new deployment using the template in TemplateUri which is
 Running this command effectively accesses the template using the url `https://example.com/example.json?foo`.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
 
+### Example 5: Use a .bicepparam file to create a deployment
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "RGName"  -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new deployment at the resource group scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
+
 ## PARAMETERS
 
 ### -AsJob
