@@ -163,6 +163,9 @@ function Get-AzMigrateHCIServerReplication {
      
         if ($parameterSet -eq "GetBySDSID") {
             $MachineIdArray = $DiscoveredMachineId.Split("/")
+            if ($MachineIdArray.Length -lt 11) {
+                throw "Invalid machine ID '$DiscoveredMachineId'"
+            }
             $SiteType = $MachineIdArray[7]
             $SiteName = $MachineIdArray[8]
             $ResourceGroupName = $MachineIdArray[4]

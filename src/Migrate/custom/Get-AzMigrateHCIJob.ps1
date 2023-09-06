@@ -136,7 +136,11 @@ function Get-AzMigrateHCIJob {
 
         if (($parameterSet -match 'Name') -or ($parameterSet -eq 'ListById')) {
             if ($parameterSet -eq 'ListById') {
-                $ProjectName = $ProjectID.Split("/")[8]
+                $ProjectIdArray = $ProjectID.Split("/")
+                if ($ProjectIdArray.Length -lt 9) {
+                    throw "Invalid Project ID '$ProjectID'"
+                }
+                $ProjectName = $ProjectIdArray[8]
                 $ResourceGroupName = $ResourceGroupID.Split("/")[4]
             }
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
@@ -145,7 +149,12 @@ function Get-AzMigrateHCIJob {
                 
             $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
             if ($solution -and ($solution.Count -ge 1)) {
-                $vaultName = $solution.DetailExtendedDetail["vaultId"].Split("/")[8]
+                $vaultId = $solution.DetailExtendedDetail["vaultId"]
+                $vaultIdArray = $vaultId.Split("/")
+                if ($vaultIdArray.Length -lt 9) {
+                    throw "Invalid Vault ID '$vaultId'"
+                }
+                $vaultName = $vaultIdArray[8]
             }
             else {
                 throw "Solution not found."
@@ -160,6 +169,9 @@ function Get-AzMigrateHCIJob {
                 $ID = $InputObject.Id
             }
             $jobIdArray = $ID.split('/')
+            if ($jobIdArray.Length -lt 11) {
+                throw "Invalid Job ID '$ID'"
+            }
             $ResourceGroupName = $jobIdArray[4]
             $vaultName = $jobIdArray[8]
             $Name = $jobIdArray[10]
