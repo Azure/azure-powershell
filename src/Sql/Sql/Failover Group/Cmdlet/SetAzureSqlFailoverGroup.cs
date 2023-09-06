@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +80,14 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
+        /// Gets or sets the list of partner servers of the Sql Azure Failover Group.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of partner servers in the failover group (empty list for 0 servers).")]
+        [ValidateNotNull]
+        public List<FailoverGroupPartnerServer> PartnerServers { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -110,6 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
             newModel.FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(effectivePolicy, originalGracePeriod: newModel.FailoverWithDataLossGracePeriodHours);
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
+            newModel.PartnerServers = MyInvocation.BoundParameters.ContainsKey("PartnerServers") ? PartnerServers : newModel.PartnerServers;
             newEntity.Add(newModel);
 
             return newEntity;
@@ -123,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.PatchUpdateFailoverGroup(entity.First())
+                ModelAdapter.UpsertFailoverGroup(entity.First())
             };
         }
     }

@@ -94,14 +94,23 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
         internal AzureSqlFailoverGroupModel UpsertFailoverGroup(AzureSqlFailoverGroupModel model)
         {
-            List < FailoverGroupPartnerServer >  partnerServers = new List<FailoverGroupPartnerServer>();
-            FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
-            partnerServer.Id = string.Format(
-                AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
-                model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
-                model.PartnerResourceGroupName,
-                model.PartnerServerName);
-            partnerServers.Add(partnerServer);
+            List<FailoverGroupPartnerServer> partnerServers;
+
+            if (model.PartnerServers != null)
+            {
+                partnerServers = model.PartnerServers.ToList();
+            }
+            else
+            {
+                partnerServers = new List<FailoverGroupPartnerServer>();
+                FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
+                partnerServer.Id = string.Format(
+                    AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
+                    model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
+                    model.PartnerResourceGroupName,
+                    model.PartnerServerName);
+                partnerServers.Add(partnerServer);
+            }
 
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
             readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
