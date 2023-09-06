@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -323,7 +324,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id : null,
+                    Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString(),
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
@@ -333,7 +334,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (parameters.Scope == null && parameters.ResourceIdentifier.Subscription == null)
             {
-                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(parameters.Scope, parameters.ResourceIdentifier.Subscription));
+                WriteTerminatingError(RoleHelper.ScopeAndSubscriptionBothNull);
             }
 
             AuthorizationClient.ValidateScope(parameters.Scope, true);

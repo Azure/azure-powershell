@@ -47,15 +47,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             return false;
         }
 
-        public static string ScopeAndSubscriptionBothNull(string Scope, string Subscription)
-        {
-            if (Scope == null && Subscription == null)
-            {
-                return "No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command.";
-            }
-            return null;
-        }
-
         public const string RequestResourceNotFound = "Request_ResourceNotFound";
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
     }

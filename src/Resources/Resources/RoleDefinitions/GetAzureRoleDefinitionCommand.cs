@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ActiveDirectory;
+using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id.ToString(): null
+                    Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
                 },
                 RoleDefinitionId = Id,
                 RoleDefinitionName = Name,
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
             {
-                WriteTerminatingError(OdataHelper.ScopeAndSubscriptionBothNull(options.Scope, options.ResourceIdentifier.Subscription));
+                WriteTerminatingError(RoleHelper.ScopeAndSubscriptionBothNull);
             }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
