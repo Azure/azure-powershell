@@ -62,7 +62,8 @@ RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll',
                'Azure.Security.KeyVault.Keys.dll', 
                'Azure.Security.KeyVault.Certificates.dll', 
                'Azure.Security.KeyVault.Administration.dll', 
-               'BouncyCastle.Crypto.dll'
+               'BouncyCastle.Crypto.dll',
+               'Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

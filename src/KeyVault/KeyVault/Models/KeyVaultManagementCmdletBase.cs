@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -47,6 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
         private VaultManagementClient _keyVaultManagementClient;
+        private VaultManagementClient _keyVaultDeploymentClient;
         private DataServiceCredential _dataServiceCredential;
         public VaultManagementClient KeyVaultManagementClient
         {
@@ -56,6 +56,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             set { _keyVaultManagementClient = value; }
+        }
+        public VaultManagementClient KeyVaultDeploymentClient
+        {
+            get
+            {
+                return _keyVaultDeploymentClient ?? (_keyVaultDeploymentClient = new VaultManagementClient(DefaultContext, true));
+            }
+
+            set { _keyVaultDeploymentClient = value; }
         }
 
 

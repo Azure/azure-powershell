@@ -77,7 +77,34 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
                 return ResourceManager.GetString("AddCertificate", resourceCulture);
             }
         }
-        
+
+        internal static string DeploymentOperationOuterError
+        {
+            get
+            {
+                return ResourceManager.GetString("DeploymentOperationOuterError", resourceCulture);
+            }
+        }
+
+        internal static string DeploymentOperationResultError
+        {
+            get
+            {
+                return ResourceManager.GetString("DeploymentOperationResultError", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CorrelationId: {0}.
+        /// </summary>
+        internal static string DeploymentCorrelationId
+        {
+            get
+            {
+                return ResourceManager.GetString("DeploymentCorrelationId", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Add certificate contact.
         /// </summary>
@@ -122,7 +149,95 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
                 return ResourceManager.GetString("ADGraphPermissionWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0} days {1:00}:{2:00}:{3:00}.
+        /// </summary>
+        internal static string PSSyncOutputEventsFormatDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsFormatDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to {0:0.0}% complete; Remaining Time: {1}; Throughput: {2:0.0}Mbps.
+        /// </summary>
+        internal static string PSSyncOutputEventsLogProgress
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsLogProgress", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string PSSyncOutputEventsLogProgressCompleteCompleted
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsLogProgressCompleteCompleted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Calculating MD5 Hash.
+        /// </summary>
+        internal static string PSSyncOutputEventsCalculatingMD5Hash
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5Hash", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Elapsed time for the operation: {0}.
+        /// </summary>
+        internal static string PSSyncOutputEventsElapsedTimeForOperation
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForOperation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MD5 hash calculation is completed..
+        /// </summary>
+        internal static string PSSyncOutputEventsMD5HashCalculationFinished
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsMD5HashCalculationFinished", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to MD5 hash is being calculated for the file &apos;{0}&apos;..
+        /// </summary>
+        internal static string PSSyncOutputEventsCalculatingMD5HashForFile
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5HashForFile", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Network disruption occurred, retrying..
+        /// </summary>
+        internal static string PSSyncOutputEventsRetryingAfterANetworkDisruption
+        {
+            get
+            {
+                return ResourceManager.GetString("PSSyncOutputEventsRetryingAfterANetworkDisruption", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet &apos;Get-AzContext&apos; is the current subscription&apos;s Azure Active Directory..
         /// </summary>

@@ -1,5 +1,4 @@
-﻿
-namespace Microsoft.Azure.Commands.KeyVault
+﻿namespace Microsoft.Azure.Commands.KeyVault
 {
     public static class Constants
     {
@@ -31,6 +30,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string DefaultSoftDeleteRetentionDaysString = "90";
 
         public const string KeyOpsImport = "import";
+        /// <summary>
+        /// The <c>Microsoft.Resource</c> namespace.
+        /// </summary>
+        public static readonly string MicrosoftResourceNamesapce = "Microsoft.Resources";
+        /// <summary>
+        /// The deployments resource type.
+        /// </summary>
+        public static readonly string MicrosoftResourcesDeploymentType = MicrosoftResourceNamesapce + "/deployments";
+        public static readonly string ResourceGroups = "ResourceGroups";
+        public static readonly string Providers = "Providers";
     }
 
     public static class CmdletNoun

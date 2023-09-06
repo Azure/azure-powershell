@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
@@ -40,5 +42,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public MhsmNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
+        public DeploymentMode DeploymentMode { get; set; }
+        public string QueryString { get; set; }
+        public Hashtable TemplateObject { get; set; }
+        public Hashtable TemplateParameterObject { get; set; }
+        public string ParameterUri { get; set; }
+        public string DeploymentDebugLogLevel { get; set; }
+        public OnErrorDeployment OnErrorDeployment { get; set; }
+        public string ApiVersion { get; set; }
     }
 }

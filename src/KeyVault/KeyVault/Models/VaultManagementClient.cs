@@ -20,11 +20,27 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using PSKeyVaultPropertiesResources = Microsoft.Azure.Commands.KeyVault.Properties.Resources;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
 using System.ComponentModel;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Common;
+using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources;
+using Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using System.Reflection;
+using ProvisioningState = Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Helpers.Resources.Models.ProvisioningState;
+using System.Text;
+using Microsoft.Azure.Commands.KeyVault.Extensions;
+using Microsoft.Azure.Commands.KeyVault.Progress;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.KeyVault.Utilities;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -49,12 +65,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
         public readonly string ManagedHsmResourceType = "Microsoft.KeyVault/managedHSMs";
-        
-        public VaultManagementClient(IAzureContext context)
+        public Action<string> ErrorLogger { get; set; }
+        public Action<string> WarningLogger { get; set; }
+        public Action<string> VerboseLogger { get; set; }
+        public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+        /// <summary>
+        /// Used when provisioning the deployment status.
+        /// </summary>
+        private List<DeploymentOperation> operations;
+        // Progress Bar variants
+        static int progressBarTimeSpan = 25;
+        int step = 5;
+        int phaseOne = 10;
+        ProgressStatus progressStatus = new ProgressStatus(0, progressBarTimeSpan);
+        public VaultManagementClient(IAzureContext context, bool isARM=false)
         {
             KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            if (isARM)
+            {
+                ResourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            }
         }
-
         /// <summary>
         /// Parameterless constructor for mocking
         /// </summary>
@@ -67,6 +98,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             set;
         }
 
+        private IResourceManagementClient ResourceManagementClient
+        {
+            get;
+            set;
+        }
+
+        #region Constants
+
+        private const string DefaultTemplatePath = "Microsoft.Azure.Commands.KeyVault.Resources.keyvaultTemplate.json";
+
+        #endregion
+
         #region Vault-related METHODS
         /// <summary>
         /// Create a new vault
@@ -74,8 +117,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="graphClient">the active directory client</param>
         /// <param name="networkRuleSet">the network rule set of the vault</param>
+        /// <param name="cmdlet"></param>
         /// <returns></returns>
-        public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null)
+        public PSKeyVault CreateNewVault(VaultCreationOrUpdateParameters parameters, IMicrosoftGraphClient graphClient = null, PSKeyVaultNetworkRuleSet networkRuleSet = null, KeyVaultManagementCmdletBase cmdlet = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -86,60 +130,432 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
 
-            var properties = new VaultProperties();
+            parameters.Name = GenerateDeploymentName(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel, networkRuleSet);
+            parameters.Location = null;
 
-            if (parameters.CreateMode != CreateMode.Recover)
+            this.BeginDeployment(parameters, deployment, cmdlet);
+            var dep = ProvisionDeploymentStatus(parameters, deployment, cmdlet).ToPSDeployment(resourceGroupName: parameters.ResourceGroupName);
+            
+            return GetVault(parameters.Name, parameters.ResourceGroupName);
+        }
+        private void WriteDeploymentProgress(VaultCreationOrUpdateParameters parameters, DeploymentOperationErrorInfo deploymentOperationError)
+        {
+            var result = ListDeploymentOperations(parameters.ResourceGroupName, parameters.Name);
+            var newOperations = GetNewOperations(operations, result);
+            operations.AddRange(newOperations);
+
+            foreach (DeploymentOperation operation in newOperations)
             {
-                if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
-                    throw new ArgumentNullException("parameters.SkuFamilyName");
-                if (parameters.TenantId == Guid.Empty)
-                    throw new ArgumentException("parameters.TenantId");
-                if (!string.IsNullOrWhiteSpace(parameters.SkuName))
+                if (operation.Properties.ProvisioningState == ProvisioningState.Failed.ToString())
                 {
-                    if (Enum.TryParse(parameters.SkuName, true, out SkuName skuName))
-                    {
-                        properties.Sku = new Sku(skuName);
-                    }
-                    else
-                    {
-                        throw new InvalidEnumArgumentException("parameters.SkuName");
-                    }
+                    deploymentOperationError.ProcessError(operation);
                 }
-                properties.EnabledForDeployment = parameters.EnabledForDeployment;
-                properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
-                properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
-                properties.EnableSoftDelete = parameters.EnableSoftDelete;
-                properties.EnablePurgeProtection = parameters.EnablePurgeProtection;
-                properties.EnableRbacAuthorization = parameters.EnableRbacAuthorization;
-                properties.SoftDeleteRetentionInDays = parameters.SoftDeleteRetentionInDays;
-                properties.TenantId = parameters.TenantId;
-                properties.VaultUri = "";
-                properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
+            }
+        }
+        public DeploymentExtended ProvisionDeploymentStatus(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
+        {
+            operations = new List<DeploymentOperation>();
+            ProvisioningState[] status = new ProvisioningState[] { ProvisioningState.Canceled, ProvisioningState.Succeeded, ProvisioningState.Failed };
+            var getDeploymentFunc = this.GetDeploymentAction(parameters);
+            var deploymentOperationError = new DeploymentOperationErrorInfo();
+            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deploymentOperationError);
 
-                properties.NetworkAcls = parameters.NetworkAcls;
-                properties.PublicNetworkAccess = parameters.PublicNetworkAccess;
-                if (networkRuleSet != null)
+            
+            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+
+            DeploymentExtended deploymentExtended = null;
+
+            ProgressTracker progressTracker = new ProgressTracker(progressStatus, Program.SyncOutput.ProgressOperationStatus, Program.SyncOutput.ProgressOperationComplete);
+            
+            
+            do
+            {
+                if (writeProgressAction != null)
                 {
-                    UpdateVaultNetworkRuleSetProperties(properties, networkRuleSet);
+                    writeProgressAction();
                 }
+                var getDeploymentTask = getDeploymentFunc();
+                var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult();
+                
+                var actionName = "Creation in progress...";
+                deploymentExtended = getResult.Body;
+                var response = getResult.Response;
+                if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
+                {
+                    step = response.Headers.RetryAfter.Delta.Value.Seconds;
+                }
+                else
+                {
+                    step = phaseOne-- > 0 ? 5 : 60;
+                }
+                for ( var i = 0; i < step; ++i)
+                {
+                    progressTracker.Update(actionName);
+                    System.Threading.Thread.Sleep(1000);
+                }
+            } while (!status.Any(s => s.ToString().Equals(deploymentExtended.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase))); 
+
+            if (deploymentOperationError.ErrorMessages.Count > 0)
+            {
+                WriteError(GetDeploymentErrorMessagesWithOperationId(deploymentOperationError,
+                    parameters.Name,
+                    deploymentExtended?.Properties?.CorrelationId));
+                throw new InvalidOperationException(deploymentOperationError.ErrorMessages.FirstOrDefault().Message);
+            }
+
+            return deploymentExtended;
+        }
+
+        Func<Task<AzureOperationResponse<DeploymentExtended>>> GetDeploymentAction(VaultCreationOrUpdateParameters parameters)
+        {
+            return () => ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.Name);
+        }
+
+        public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
+        {
+            if (errorInfo.ErrorMessages.Count == 0)
+                return String.Empty;
+
+            var sb = new StringBuilder();
+
+            int maxErrors = errorInfo.ErrorMessages.Count > DeploymentOperationErrorInfo.MaxErrorsToShow
+               ? DeploymentOperationErrorInfo.MaxErrorsToShow
+               : errorInfo.ErrorMessages.Count;
+
+            // Add outer message showing the total number of errors.
+            sb.AppendFormat("DeploymentOperationOuterError", deploymentName, maxErrors, errorInfo.ErrorMessages.Count);
+
+            // Add each error message
+            errorInfo.ErrorMessages
+                .Take(maxErrors).ToList()
+                .ForEach(m => sb
+                    .AppendLine()
+                    .AppendFormat("DeploymentOperationOuterError", m
+                            .ToFormattedString())
+                    .AppendLine());
+
+            // Add correlationId
+            sb.AppendLine().AppendFormat("DeploymentCorrelationId", correlationId);
+
+            return sb.ToString();
+        }
+
+        private List<DeploymentOperation> GetNewOperations(List<DeploymentOperation> old, IPage<DeploymentOperation> current)
+        {
+            List<DeploymentOperation> newOperations = new List<DeploymentOperation>();
+            foreach (DeploymentOperation operation in current)
+            {
+                DeploymentOperation operationWithSameIdAndProvisioningState = old.Find(o => o.OperationId.Equals(operation.OperationId) && o.Properties.ProvisioningState.Equals(operation.Properties.ProvisioningState));
+                if (operationWithSameIdAndProvisioningState == null)
+                {
+                    newOperations.Add(operation);
+                }
+
+                //If nested deployment, get the operations under those deployments as well
+                if (operation.Properties.TargetResource?.ResourceType?.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase) == true)
+                {
+                    HttpStatusCode statusCode;
+                    Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
+                    if (!statusCode.IsClientFailureRequest())
+                    {
+                        var nestedDeploymentOperations = this.GetNestedDeploymentOperations(operation.Properties.TargetResource.Id);
+
+                        foreach (DeploymentOperation op in nestedDeploymentOperations)
+                        {
+                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            {
+                                newOperations.Add(op);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return newOperations;
+        }
+        private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
+        {
+            return ResourceManagementClient.DeploymentOperations.List(resourceGroupName, deploymentName, null);
+        }
+        private List<DeploymentOperation> GetNestedDeploymentOperations(string deploymentId)
+        {
+            var resourceGroupName = ResourceIdUtility.GetResourceGroupName(deploymentId);
+            var deploymentName = ResourceIdUtility.GetDeploymentName(deploymentId);
+            
+            if (ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName) == true)
+            {
+                var result = this.ListDeploymentOperations(resourceGroupName, deploymentName);
+
+                return GetNewOperations(operations, result);
+            }
+
+            return new List<DeploymentOperation>();
+        }
+
+        private void WriteVerbose(string progress)
+        {
+            if (VerboseLogger != null)
+            {
+                VerboseLogger(progress);
+            }
+        }
+
+        private string GenerateDeploymentName(VaultCreationOrUpdateParameters parameters)
+        {
+            if (!string.IsNullOrEmpty(parameters.Name))
+            {
+                return parameters.Name;
             }
             else
             {
-                properties.CreateMode = CreateMode.Recover;
+                return Guid.NewGuid().ToString();
+            }
+        }
+        private void BeginDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment, KeyVaultManagementCmdletBase cmdlet = null)
+        {
+            var res = ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.Name, deployment);
+        }
+
+        private TemplateValidationInfo GetTemplateValidationResult(VaultCreationOrUpdateParameters parameters, Deployment deployment)
+        {
+            try
+            {
+                var validationResult = this.ValidateDeployment(parameters, deployment);
+                return new TemplateValidationInfo(validationResult);
+            }
+            catch (Exception ex)
+            {
+                var error = HandleError(ex).FirstOrDefault();
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
+            }
+        }
+
+        private List<ErrorResponse> HandleError(Exception ex)
+        {
+            if (ex == null)
+            {
+                return null;
             }
 
-            var response = KeyVaultManagementClient.Vaults.CreateOrUpdate(
-                resourceGroupName: parameters.ResourceGroupName,
-                vaultName: parameters.Name,
-                parameters: new VaultCreateOrUpdateParameters
-                {
-                    Location = parameters.Location,
-                    Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
-                    Properties = properties
-                });
+            ErrorResponse error = null;
+            var innerException = HandleError(ex.InnerException);
+            if (ex is CloudException)
+            {
+                var cloudEx = ex as CloudException;
+                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+            }
+            else
+            {
+                error = new ErrorResponse(null, ex.Message, null, innerException);
+            }
 
-            return new PSKeyVault(response, graphClient);
+            return new List<ErrorResponse> { error };
+
         }
+
+        private DeploymentValidateResult ValidateDeployment(VaultCreationOrUpdateParameters parameters, Deployment deployment)
+        {
+            return ResourceManagementClient.Deployments.BeginValidate(parameters.ResourceGroupName, parameters.Name, deployment);
+        }
+        private void WriteError(string error)
+        {
+            if (ErrorLogger != null)
+            {
+                ErrorLogger(error);
+            }
+        }
+        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
+        {
+            WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
+        }
+        private Deployment CreateBasicDeployment(VaultCreationOrUpdateParameters parameters, DeploymentMode deploymentMode, string debugSetting, PSKeyVaultNetworkRuleSet networkRuleSet)
+        {
+            Deployment deployment = new Deployment
+            {
+                Properties = new DeploymentProperties
+                {
+                    Mode = deploymentMode
+                }
+            };
+
+            if (!string.IsNullOrEmpty(debugSetting))
+            {
+                deployment.Properties.DebugSetting = new DebugSetting
+                {
+                    DetailLevel = debugSetting
+                };
+            }
+
+            string templateContent = null;
+            try
+            {
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(DefaultTemplatePath))
+                using (var reader = new StreamReader(stream))
+                {
+                    templateContent = reader.ReadToEnd();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new AzPSArgumentException(string.Format(PSKeyVaultPropertiesResources.FileNotFound, ex.Message), "TemplateFile");
+            };
+            var jsonInfo = JObject.Parse(templateContent);
+
+            jsonInfo["resources"][0]["name"] = parameters.Name;
+            jsonInfo["resources"][0]["apiVersion"] = parameters.ApiVersion;
+            jsonInfo["resources"][0]["location"] = parameters.Location;
+            if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
+                throw new ArgumentNullException("parameters.SkuFamilyName");
+            if (parameters.TenantId == Guid.Empty)
+                throw new ArgumentException("parameters.TenantId");
+            if (!string.IsNullOrWhiteSpace(parameters.SkuName))
+            {
+                if (Enum.TryParse(parameters.SkuName, true, out SkuName _))
+                {
+                    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                    jsonInfo["resources"][0]["properties"]["sku"]["skuName"] = myTI.ToTitleCase(parameters.SkuName);
+                    jsonInfo["parameters"]["skuName"]["defaultValue"] = myTI.ToTitleCase(parameters.SkuName);
+                }
+                else
+                {
+                    throw new InvalidEnumArgumentException("parameters.SkuName");
+                }
+            }
+            if( parameters.EnabledForDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = parameters.EnabledForDeployment;
+            if (parameters.EnabledForTemplateDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForTemplateDeployment"] = parameters.EnabledForTemplateDeployment;
+            if (parameters.EnabledForDiskEncryption is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDiskEncryption"] = parameters.EnabledForDiskEncryption;
+            if (parameters.EnableRbacAuthorization is true)
+                jsonInfo["resources"][0]["properties"]["enableRbacAuthorization"] = parameters.EnableRbacAuthorization;
+            jsonInfo["resources"][0]["properties"]["softDeleteRetentionInDays"] = parameters.SoftDeleteRetentionInDays;
+            if (parameters.EnabledForDeployment is true)
+                jsonInfo["resources"][0]["properties"]["enabledForDeployment"] = parameters.EnabledForDeployment;
+            if (parameters.EnablePurgeProtection is true)
+                jsonInfo["resources"][0]["properties"]["enablePurgeProtection"] = parameters.EnablePurgeProtection;
+            if (!string.IsNullOrWhiteSpace(parameters.PublicNetworkAccess))
+            {
+                TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+                jsonInfo["resources"][0]["properties"]["publicNetworkAccess"] = myTI.ToTitleCase(parameters.PublicNetworkAccess);
+                jsonInfo["parameters"]["publicNetworkAccess"]["defaultValue"] = myTI.ToTitleCase(parameters.PublicNetworkAccess);
+            }
+                
+            if (networkRuleSet != null)
+            {
+                jsonInfo["resources"][0]["properties"]["networkAcls"]["bypass"] = networkRuleSet.Bypass.ToString();
+                jsonInfo["resources"][0]["properties"]["networkAcls"]["defaultAction"] = networkRuleSet.DefaultAction.ToString();
+                if (networkRuleSet.IpAddressRanges != null && networkRuleSet.IpAddressRanges.Count > 0)
+                {
+                    var ipAddresses = JToken.FromObject(networkRuleSet.IpAddressRanges);
+                    jsonInfo["parameters"]["ipRules"]["defaultValue"] = ipAddresses;
+                }
+                if (networkRuleSet.VirtualNetworkResourceIds != null && networkRuleSet.VirtualNetworkResourceIds.Count > 0)
+                {
+                    var virtualNetworkIds = JToken.FromObject(networkRuleSet.VirtualNetworkResourceIds);
+                    jsonInfo["parameters"]["virtualNetworkRules"]["defaultValue"] = virtualNetworkIds;
+                }
+            }
+            if (parameters.Tags != null)
+            {
+                var tags = JToken.FromObject(parameters.Tags);
+                jsonInfo["parameters"]["tags"]["defaultValue"] = tags;
+            }
+
+            deployment.Properties.Template = jsonInfo;
+            
+            if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
+            {
+                deployment.Properties.ParametersLink = new ParametersLink
+                {
+                    Uri = parameters.ParameterUri
+                };
+            }
+            else
+            {
+                // ToDictionary is needed for extracting value from a secure string. Do not remove it.
+                Dictionary<string, object> parametersDictionary = parameters.TemplateParameterObject?.ToDictionary(false);
+                string parametersContent = parametersDictionary != null
+                    ? PSJsonSerializer.Serialize(parametersDictionary)
+                    : null;
+                // NOTE(jcotillo): Adding FromJson<> to parameters as well 
+                deployment.Properties.Parameters = !string.IsNullOrEmpty(parametersContent)
+                    ? parametersContent.FromJson<JObject>()
+                    : null;
+            }
+
+            deployment.Tags = parameters?.Tags == null ? null : parameters.Tags;
+            deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
+
+            return deployment;
+        }
+
+        /// <summary>
+        /// Executes deployment What-If at the specified scope.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="kvParameters"></param>
+        /// <param name="networkRuleSet"></param>
+        /// <param name="cmdlet"></param>
+        /// <returns></returns>
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters, VaultCreationOrUpdateParameters kvParameters, PSKeyVaultNetworkRuleSet networkRuleSet = null, KeyVaultManagementCmdletBase cmdlet = null)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf(parameters, kvParameters, networkRuleSet);
+            ScopedDeploymentWhatIf scopedDeploymentWhatIf = new ScopedDeploymentWhatIf(deploymentWhatIf.Location, deploymentWhatIf.Properties);
+
+            try
+            {
+                WhatIfOperationResult whatIfOperationResult = null;
+
+                whatIfOperationResult = deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf.Properties);
+
+                if (parameters.ExcludeChangeTypes != null)
+                {
+                    whatIfOperationResult.Changes = whatIfOperationResult.Changes
+                        .Where(change => parameters.ExcludeChangeTypes.All(changeType => changeType != change.ChangeType))
+                        .ToList();
+                }
+
+                return new PSWhatIfOperationResult(whatIfOperationResult);
+            }
+            catch (CloudException ce)
+            {
+                string errorMessage = $"{Environment.NewLine}{BuildCloudErrorMessage(ce.Body)}";
+                throw new CloudException(errorMessage);
+            }
+        }
+
+        private static string BuildCloudErrorMessage(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return string.Empty;
+            }
+
+            IList<string> messages = new List<string>
+            {
+                $"{cloudError.Code} - {cloudError.Message}"
+            };
+
+            foreach (CloudError innerError in cloudError.Details)
+            {
+                messages.Add(BuildCloudErrorMessage(innerError));
+            }
+
+            return string.Join(Environment.NewLine, messages);
+        }
+
 
         /// <summary>
         /// Get an existing vault. Returns null if vault is not found.
