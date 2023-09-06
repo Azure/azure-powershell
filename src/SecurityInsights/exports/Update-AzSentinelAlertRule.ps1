@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
+ENTITYMAPPING <EntityMapping[]>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
   [EntityType <EntityMappingType?>]: The V3 type of the mapped entity
   [FieldMapping <IFieldMapping[]>]: array of field mappings for the given entity mapping
     [ColumnName <String>]: the column name to be mapped to the identifier
@@ -240,7 +240,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
     ${GroupByAlertDetail},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -257,7 +257,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
     ${GroupByEntity},
 
     [Parameter(ParameterSetName='UpdateScheduled')]
@@ -265,7 +265,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
     [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
     # 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
     # To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
     ${EntityMapping},
@@ -337,13 +337,13 @@ param(
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
+    [System.String[]]
     ${DisplayNamesFilter},
 
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
+    [System.String[]]
     ${DisplayNamesExcludeFilter},
 
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
