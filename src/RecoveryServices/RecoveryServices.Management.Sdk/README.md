@@ -25,11 +25,12 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
+commit: fdf43f2fdacf17bd78c0621df44a5c024b61db82
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/fdf43f2fdacf17bd78c0621df44a5c024b61db82/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/registeredidentities.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fdf43f2fdacf17bd78c0621df44a5c024b61db82/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/replicationusages.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fdf43f2fdacf17bd78c0621df44a5c024b61db82/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/vaults.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fdf43f2fdacf17bd78c0621df44a5c024b61db82/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/vaultusages.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/registeredidentities.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/replicationusages.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/vaults.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2023-02-01/vaultusages.json
 
 output-folder: Generated
 

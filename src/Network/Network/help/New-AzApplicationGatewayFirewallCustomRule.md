@@ -13,9 +13,10 @@ Creates a new custom rule for the application gateway firewall policy.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String> [-State <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration <String>]
+ [-RateLimitThreshold <Int32>] -RuleType <String> -MatchCondition <PSApplicationGatewayFirewallCondition[]>
+ [-GroupByUserSession <PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]>] -Action <String>
+ [-State <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +80,46 @@ MatchConditionsText : [
 
 The command creates a new custom rule with name of example-rule, state as Disabled, priority 2 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow.
 
+### Example 3
+```powershell
+New-AzApplicationGatewayFirewallCustomRule -Name RateLimitRule3 -Priority 3 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Allow -State Disabled
+```
+
+```output
+Name                : RateLimitRule3
+Priority            : 3
+RateLimitDuration   : OneMin
+RateLimitThreshold  : 10
+RuleType            : RateLimitRule
+MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
+GroupByUserSession  : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByUserSession}
+Action              : Allow
+State               : Disabled
+MatchConditionsText : [
+                        {
+                          "MatchVariables": [
+                            {
+                              "VariableName": "RequestHeaders",
+                              "Selector": "Malicious-Header"
+                            }
+                          ],
+                          "OperatorProperty": "Any",
+                          "NegationConditon": false
+                        }
+                      ]
+GroupByUserSessionText : [
+                        {
+                          "groupByVariables": [
+                            {
+                              "variableName": "ClientAddr"
+                            }
+                          ]
+                        }
+                      ]
+```
+
+The command creates a new custom rule with name of RateLimitRule3, state as Disabled, priority 3, RateLimitDuration OneMin, RateLimitThreshold 10 and the rule type will be RateLimitRule with condition defined in the condition variable, the action will the allow, the GroupByUserSession defined in the GroupByUserSession condition variable.
+
 ## PARAMETERS
 
 ### -Action
@@ -104,6 +145,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupByUserSession
+List of match conditions.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByUserSession[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -158,6 +214,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RateLimitDuration
+Describes duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: OneMin, FiveMins
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RateLimitThreshold
+Describes rate limit threshold. Applies only when ruleType is RateLimitRule.Accepted range for this value is 1 - 5000.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RuleType
 Describes type of rule.
 
@@ -165,7 +252,7 @@ Describes type of rule.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: MatchRule
+Accepted values: MatchRule, RateLimitRule
 
 Required: True
 Position: Named

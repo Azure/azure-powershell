@@ -18,15 +18,67 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.10.0
+* Updated Azure.Core to 1.34.0.
+* Added support for encryption context 
+    - `New-AzDataLakeGen2Item`
+* Updated warning messages for an upcoming breaking change when creating a storage account 
+    - `New-AzStorageAccount`
+* Updated help file of `New-AzStorageQueueSASToken`
+
+
+## Version 5.9.0
+* Supported OAuth authentication on File service cmdlets
+    - `New-AzStorageContext`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+    - `Get-AzStorageFileHandle`
+    - `Close-AzStorageFileHandle`
+* Supported get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
+    - `Get-AzStorageShare`
+* Updated Azure.Core to 1.33.0.
+
+
+## Version 5.8.0
+* Supported TierToCold and TierToHot in Storage account management policy
+    - `Add-AzStorageAccountManagementPolicyAction`
+* Supported Blob Tier Cold
+    - `Copy-AzStorageBlob`
+    - `Set-AzStorageBlobContent`
+    - `Start-AzStorageBlobCopy`
+* Migrated the following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue' to 'Azure.Storage.Queue'
+    - `New-AzStorageQueueSASToken`
+* Added warning messages for an upcoming breaking change when creating SAS token
+    - `New-AzStorageBlobSasToken`
+    - `New-AzStorageContainerSasToken`
+    - `New-AzStorageAccountSasToken`
+    - `New-AzStorageContext`
+    - `New-AzStorageFileSasToken`
+    - `New-AzStorageShareSasToken`
+    - `New-AzStorageQueueSasToken`
+    - `New-AzStorageTableSasToken`
+    - `New-AzDataLakeGen2SasToken`
+* Added a warning message for an upcoming breaking change when creating a storage account
+    - `New-AzStorageAccount`
+
+## Version 5.7.0
 * Fixed issue of getting a single blob with leading slashes
     - `Get-AzStorageBlob`
 * Supported setting CORS rules in management plane cmdlets 
     - `Update-AzStorageBlobServiceProperty`
     - `Update-AzStorageFileServiceProperty`
-* Fixed an issue of StorageAccountName field in context object when the context is invalid 
+* Fixed an issue of `StorageAccountName` field in context object when the context is invalid 
     - `New-AzStorageContext`
-* Fixed an issue when a context does not have Crendentials field 
-* Added "$blobchangefeed" to be a valid container name
+* Fixed an issue when a context does not have Credentials field
+* Added `$blobchangefeed` to be a valid container name
 
 ## Version 5.6.0
 * Supported rename file and directory

@@ -37,8 +37,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.", "6.0.0")]
-    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "7.0.0")]
+    [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/TLaD.", "11.0.0", "7.0.0")]
+    [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "11.0.0", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
@@ -100,6 +100,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
+                            
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                            {
+                                if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
+
+                                }
+                                else
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                                }
+                            }
 
                             // For Cross-tenant RBAC sharing
                             Dictionary<string, List<string>> auxAuthHeader = null;
@@ -148,6 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             //Guest Attestation extension defaulting behavior check.
                             if (shouldGuestAttestationExtBeInstalled(parameters))
                             {
+                                string extensionNameGA = "GuestAttestation";
                                 var extensionDirect = new VirtualMachineScaleSetExtension();
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -172,18 +187,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     if (parameters.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
                                     {
 
-                                        extensionDirect.Name = "GuestAttestation";
+                                        extensionDirect.Name = extensionNameGA;
                                         extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
-                                        extensionDirect.Type1 = "GuestAttestation";
+                                        extensionDirect.Type1 = extensionNameGA;
                                         extensionDirect.TypeHandlerVersion = "1.0";
+                                        extensionDirect.EnableAutomaticUpgrade = true;
                                     }
                                     else
                                     {
 
-                                        extensionDirect.Name = "GuestAttestation";
+                                        extensionDirect.Name = extensionNameGA;
                                         extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
-                                        extensionDirect.Type1 = "GuestAttestation";
+                                        extensionDirect.Type1 = extensionNameGA;
                                         extensionDirect.TypeHandlerVersion = "1.0";
+                                        extensionDirect.EnableAutomaticUpgrade = true;
                                     }
                                 }
 
@@ -218,8 +235,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                             vmssVmExtParams = new VirtualMachineScaleSetVMExtension
                                             {
                                                 Publisher = "Microsoft.Azure.Security.LinuxAttestation",
-                                                Type1 = "GuestAttestation",
-                                                TypeHandlerVersion = "1.0"
+                                                Type1 = extensionNameGA,
+                                                TypeHandlerVersion = "1.0",
+                                                EnableAutomaticUpgrade = true
                                             };
                                         }
                                         else
@@ -228,11 +246,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                             vmssVmExtParams = new VirtualMachineScaleSetVMExtension
                                             {
                                                 Publisher = "Microsoft.Azure.Security.WindowsAttestation",
-                                                Type1 = "GuestAttestation",
-                                                TypeHandlerVersion = "1.0"
+                                                Type1 = extensionNameGA,
+                                                TypeHandlerVersion = "1.0",
+                                                EnableAutomaticUpgrade = true
                                             };
                                         }
-                                        string extensionNameGA = "GuestAttestation";
                                         var opt = this.VirtualMachineScaleSetVMExtensionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, currentVmssVm.InstanceId, extensionNameGA, vmssVmExtParams);
                                     }
 
@@ -264,7 +282,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vmssParameters != null &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)

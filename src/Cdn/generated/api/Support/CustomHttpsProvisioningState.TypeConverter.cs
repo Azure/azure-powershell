@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support
 {
 
-    /// <summary>Provisioning status of Custom Https of the custom domain.</summary>
+    /// <summary>Provisioning status of the custom domain.</summary>
     public partial class CustomHttpsProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

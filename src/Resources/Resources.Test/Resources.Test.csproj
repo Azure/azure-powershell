@@ -23,6 +23,10 @@
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
     <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
+	<ProjectReference Include="..\Resources.Sdk\Resources.Sdk.csproj" />
+    <ProjectReference Include="..\..\Purview\Purview\Purview.csproj" />
+    <ProjectReference Include="..\..\Purview\Purview.Autorest\Az.Purview.csproj" />
+    <ProjectReference Include="..\..\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,10 +36,7 @@
 	<None Update="*.bicepparam" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\*.pfx" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
-  </ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
   </ItemGroup>

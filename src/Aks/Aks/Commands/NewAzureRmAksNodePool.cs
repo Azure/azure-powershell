@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("Linux", "Windows")]
         public string OsType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify os SKU. Choose from Ubuntu, CBLMariner, Windows2019, Windows2022. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner", "Windows2019", "Windows2022")]
+        [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
         public string OsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Commands.Aks
                 name: Name,
                 count: Count,
                 vmSize: VmSize,
-                osDiskSizeGB: OsDiskSize,
+                osDiskSizeGb: OsDiskSize,
                 type: VmSetType ?? "AvailabilitySet",
-                vnetSubnetID: VnetSubnetID);
+                vnetSubnetId: VnetSubnetID);
 
             if (this.IsParameterBound(c => c.KubernetesVersion))
             {
@@ -185,11 +185,15 @@ namespace Microsoft.Azure.Commands.Aks
 
             if (this.IsParameterBound(c => c.OsType))
             {
-                agentPool.OsType = OsType;
+                agentPool.OSType = OsType;
             }
             if (this.IsParameterBound(c => c.OsSKU))
             {
-                agentPool.OsSKU = OsSKU;
+                agentPool.OSSku = OsSKU;
+                if (OsSKU.ToLower().Equals("cblmariner") || OsSKU.ToLower().Equals("mariner"))
+                {
+                    WriteWarning("The OsSKU 'AzureLinux' should be used going forward instead of 'CBLMariner' or 'Mariner'. The OsSKU 'CBLMariner' and 'Mariner' will eventually be deprecated.");
+                }
             }
             if (this.IsParameterBound(c => c.MaxPodCount))
             {
@@ -217,7 +221,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.NodePublicIPPrefixID))
             {
-                agentPool.NodePublicIPPrefixID = NodePublicIPPrefixID;
+                agentPool.NodePublicIPPrefixId = NodePublicIPPrefixID;
             }
             if (this.IsParameterBound(c => c.ScaleSetEvictionPolicy))
             {
@@ -257,7 +261,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableUltraSSD.IsPresent)
             {
-                agentPool.EnableUltraSSD = EnableUltraSSD.ToBool(); 
+                agentPool.EnableUltraSsd = EnableUltraSSD.ToBool(); 
             }
             if (this.IsParameterBound(c => c.LinuxOSConfig))
             {
@@ -273,7 +277,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.PPG))
             {
-                agentPool.ProximityPlacementGroupID = PPG;
+                agentPool.ProximityPlacementGroupId = PPG;
             }
             if (this.IsParameterBound(c => c.SpotMaxPrice))
             {
@@ -281,7 +285,7 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (EnableFIPS.IsPresent)
             {
-                agentPool.EnableFIPS = EnableFIPS.ToBool();
+                agentPool.EnableFips = EnableFIPS.ToBool();
             }
             if (this.IsParameterBound(c => c.GpuInstanceProfile))
             {
@@ -289,10 +293,10 @@ namespace Microsoft.Azure.Commands.Aks
             }
             if (this.IsParameterBound(c => c.HostGroupID))
             {
-                agentPool.HostGroupID = HostGroupID;
+                agentPool.HostGroupId = HostGroupID;
             }
             if (this.IsParameterBound(c => c.PodSubnetID)) {
-                agentPool.PodSubnetID = PodSubnetID;
+                agentPool.PodSubnetId = PodSubnetID;
             }
 
             return agentPool;

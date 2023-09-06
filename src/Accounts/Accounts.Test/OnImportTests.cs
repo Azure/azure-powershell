@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.OnImport();
 
             //Verify
-            Assert.Equal(AzureSession.Instance.ARMContextSaveMode, ContextSaveMode.Process);
+            Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.OnImport();
 
             //Verify
-            Assert.Equal(AzureSession.Instance.ARMContextSaveMode, ContextSaveMode.Process);
+            Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
         }
     }
 }

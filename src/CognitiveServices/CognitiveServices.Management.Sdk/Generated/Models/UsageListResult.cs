@@ -31,10 +31,13 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <summary>
         /// Initializes a new instance of the UsageListResult class.
         /// </summary>
+        /// <param name="nextLink">The link used to get the next page of
+        /// Usages.</param>
         /// <param name="value">The list of usages for Cognitive Service
         /// account.</param>
-        public UsageListResult(IList<Usage> value = default(IList<Usage>))
+        public UsageListResult(string nextLink = default(string), IList<Usage> value = default(IList<Usage>))
         {
+            NextLink = nextLink;
             Value = value;
             CustomInit();
         }
@@ -43,6 +46,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the link used to get the next page of Usages.
+        /// </summary>
+        [JsonProperty(PropertyName = "nextLink")]
+        public string NextLink { get; set; }
 
         /// <summary>
         /// Gets or sets the list of usages for Cognitive Service account.

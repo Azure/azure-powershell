@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] CreateTeam=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/createTeam"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSentinelIncidentTeam_Create", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Creates a Microsoft team to investigate the incident by sharing information and insights between participants.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]
@@ -44,9 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.SecurityInsights Client => Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Azure)]

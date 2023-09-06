@@ -12,7 +12,7 @@ Delete a routing intent resource associated with a VirtualHub.
 
 ## SYNTAX
 
-### ByRoutingInctentName (Default)
+### ByRoutingIntentName (Default)
 ```
 Remove-AzRoutingIntent -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob]
  [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,13 +24,13 @@ Remove-AzRoutingIntent -Name <String> -ParentObject <PSVirtualHub> [-AsJob] [-Fo
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentObject
+### ByRoutingIntentObject
 ```
 Remove-AzRoutingIntent -InputObject <PSRoutingIntent> [-AsJob] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByRoutingInctentResourceId
+### ByRoutingIntentResourceId
 ```
 Remove-AzRoutingIntent -ResourceId <String> [-AsJob] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -101,7 +101,7 @@ The RoutingIntent resource to remove.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRoutingIntent
-Parameter Sets: ByRoutingInctentObject
+Parameter Sets: ByRoutingIntentObject
 Aliases: RoutingIntent
 
 Required: True
@@ -116,7 +116,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName, ByVirtualHubObject
+Parameter Sets: ByRoutingIntentName, ByVirtualHubObject
 Aliases: ResourceName, RoutingIntentName
 
 Required: True
@@ -146,7 +146,7 @@ The parent resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName
+Parameter Sets: ByRoutingIntentName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
@@ -176,7 +176,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentName
+Parameter Sets: ByRoutingIntentName
 Aliases:
 
 Required: True
@@ -191,7 +191,7 @@ The resource id of the RoutingIntent resource to remove.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRoutingInctentResourceId
+Parameter Sets: ByRoutingIntentResourceId
 Aliases: RoutingIntentId
 
 Required: True

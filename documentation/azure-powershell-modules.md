@@ -21,12 +21,14 @@
 | Container Apps                 | `Az.App`                        | [![App]][AppGallery]                                               | [Changelog][AppChangeLog]                        |
 | App Configuration              | `Az.AppConfiguration`           | [![AppConfiguration]][AppConfigurationGallery]                     | [Changelog][AppConfigurationChangeLog]           |
 | Application Insights           | `Az.ApplicationInsights`        | [![ApplicationInsights]][ApplicationInsightsGallery]               | [Changelog][ApplicationInsightsChangeLog]        |
+| Arc Resource Bridge            | `Az.ArcResourceBridge`          | [![ArcResourceBridge]][ArcResourceBridgeGallery]                   | [Changelog][ArcResourceBridgeChangeLog]          |
 | Attestation                    | `Az.Attestation`                | [![Attestation]][AttestationGallery]                               | [Changelog][AttestationChangeLog]                |
 | Automanage                     | `Az.Automanage`                 | [![Automanage]][AutomanageGallery]                                 | [Changelog][AutomanageChangeLog]                 |
 | Automation                     | `Az.Automation`                 | [![Automation]][AutomationGallery]                                 | [Changelog][AutomationChangeLog]                 |
 | BareMetal                      | `Az.BareMetal`                  | [![BareMetal]][BareMetalGallery]                                   | [Changelog][BareMetalChangeLog]                  |
 | Batch                          | `Az.Batch`                      | [![Batch]][BatchGallery]                                           | [Changelog][BatchChangeLog]                      |
 | Billing                        | `Az.Billing`                    | [![Billing]][BillingGallery]                                       | [Changelog][BillingChangeLog]                    |
+| Billing Benefits               | `Az.BillingBenefits`            | [![BillingBenefits]][BillingBenefitsGallery]                       | [Changelog][BillingBenefitsChangeLog]            |
 | Blueprints                     | `Az.Blueprint`                  | [![Blueprint]][BlueprintGallery]                                   | [Changelog][BlueprintChangeLog]                  |
 | BotService                     | `Az.BotService`                 | [![BotService]][BotServiceGallery]                                 | [Changelog][BotServiceChangeLog]                 |
 | Content Delivery Network       | `Az.Cdn`                        | [![Cdn]][CdnGallery]                                               | [Changelog][CdnChangeLog]                        |
@@ -60,6 +62,7 @@
 | Dedicated HSM                  | `Az.DedicatedHsm`               | [![DedicatedHsm]][DedicatedHsmGallery]                             | [Changelog][DedicatedHsmChangeLog]               |
 | Deployment Manager             | `Az.DeploymentManager`          | [![DeploymentManager]][DeploymentManagerGallery]                   | [Changelog][DeploymentManagerChangeLog]          |
 | Windows Virtual Desktop        | `Az.DesktopVirtualization`      | [![DesktopVirtualization]][DesktopVirtualizationGallery]           | [Changelog][DesktopVirtualizationChangeLog]      |
+| DevCenter                      | `Az.DevCenter`                  | [![DevCenter]][DevCenterGallery]                                   | [Changelog][DevCenterChangeLog]                  |
 | Device Provisioning Services   | `Az.DeviceProvisioningServices` | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog][DeviceProvisioningServicesChangeLog] |
 | Device Update                  | `Az.DeviceUpdate`               | [![DeviceUpdate]][DeviceUpdateGallery]                             | [Changelog][DeviceUpdateChangeLog]               |
 | Dev Spaces                     | `Az.DevSpaces`                  | [![DevSpaces]][DevSpacesGallery]                                   | [Changelog][DevSpacesChangeLog]                  |
@@ -90,6 +93,8 @@
 | Key Vault                      | `Az.KeyVault`                   | [![KeyVault]][KeyVaultGallery]                                     | [Changelog][KeyVaultChangeLog]                   |
 | Kubernetes Configuration       | `Az.KubernetesConfiguration`    | [![KubernetesConfiguration]][KubernetesConfigurationGallery]       | [Changelog][KubernetesConfigurationChangeLog]    |
 | Kusto                          | `Az.Kusto`                      | [![Kusto]][KustoGallery]                                           | [Changelog][KustoChangeLog]                      |
+| Lab Services                   | `Az.LabServices`                | [![LabServices]][LabServicesGallery]                               | [Changelog][LabServicesChangeLog]                |
+| Load Testing                   | `Az.LoadTesting`                | [![LoadTesting]][LoadTestingGallery]                               | [Changelog][LoadTestingChangeLog]                |
 | Logic App                      | `Az.LogicApp`                   | [![LogicApp]][LogicAppGallery]                                     | [Changelog][LogicAppChangeLog]                   |
 | Logz.io                        | `Az.Logz`                       | [![Logz]][LogzGallery]                                             | [Changelog][LogzChangeLog]                       |
 | Machine Learning               | `Az.MachineLearning`            | [![MachineLearning]][MachineLearningGallery]                       | [Changelog][MachineLearningChangeLog]            |
@@ -124,6 +129,7 @@
 | Private Dns                    | `Az.PrivateDns`                 | [![PrivateDns]][PrivateDnsGallery]                                 | [Changelog][PrivateDnsChangeLog]                 |
 | Provider Hub                   | `Az.ProviderHub`                | [![ProviderHub]][ProviderHubGallery]                               | [Changelog][ProviderHubChangeLog]                |
 | Purview                        | `Az.Purview`                    | [![Purview]][PurviewGallery]                                       | [Changelog][PurviewChangeLog]                    |
+| Qumulo                         | `Az.Qumulo`                     | [![Qumulo]][QumuloGallery]                                         | [Changelog][QumuloChangeLog]                     |
 | Quota                          | `Az.Quota`                      | [![Quota]][QuotaGallery]                                           | [Changelog][QuotaChangeLog]                      |
 | Recovery Services              | `Az.RecoveryServices`           | [![RecoveryServices]][RecoveryServicesGallery]                     | [Changelog][RecoveryServicesChangeLog]           |
 | Redis Cache                    | `Az.RedisCache`                 | [![RedisCache]][RedisCacheGallery]                                 | [Changelog][RedisCacheChangeLog]                 |
@@ -136,6 +142,7 @@
 | Search                         | `Az.Search`                     | [![Search]][SearchGallery]                                         | [Changelog][SearchChangeLog]                     |
 | Security                       | `Az.Security`                   | [![Security]][SecurityGallery]                                     | [Changelog][SecurityChangeLog]                   |
 | Sentinel (SecurityInsights)    | `Az.SecurityInsights`           | [![SecurityInsights]][SecurityInsightsGallery]                     | [Changelog][SecurityInsightsChangeLog]           |
+| SelfHelp                       | `Az.SelfHelp`                   | [![SelfHelp]][SelfHelpGallery]                                     | [Changelog][SelfHelpChangeLog]                   |
 | Service Bus                    | `Az.ServiceBus`                 | [![ServiceBus]][ServiceBusGallery]                                 | [Changelog][ServiceBusChangeLog]                 |
 | Service Fabric                 | `Az.ServiceFabric`              | [![ServiceFabric]][ServiceFabricGallery]                           | [Changelog][ServiceFabricChangeLog]              |
 | Service Linker                 | `Az.ServiceLinker`              | [![ServiceLinker]][ServiceLinkerGallery]                           | [Changelog][ServiceLinkerChangeLog]              |
@@ -158,6 +165,7 @@
 | Voice Services                 | `Az.VoiceServices`              | [![VoiceServices]][VMwareGallery]                                  | [Changelog][VoiceServicesChangeLog]              |
 | Web App Service                | `Az.Websites`                   | [![Websites]][WebsitesGallery]                                     | [Changelog][WebsitesChangeLog]                   |
 | Windows Iot Services           | `Az.WindowsIotServices`         | [![WindowsIotServices]][WindowsIotServicesGallery]                 | [Changelog][WindowsIotServicesChangeLog]         |
+| Workloads                      | `Az.Workloads`                  | [![Workloads]][WorkloadsGallery]                                   | [Changelog][WorkloadsChangeLog]                  |
 
 
 
@@ -176,12 +184,14 @@
 [App]:                        https://img.shields.io/powershellgallery/v/Az.App.svg?style=flat-square&label=Az.App
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
+[ArcResourceBridge]:          https://img.shields.io/powershellgallery/v/Az.ArcResourceBridge.svg?style=flat-square&label=Az.ArcResourceBridge
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
 [Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
 [Billing]:                    https://img.shields.io/powershellgallery/v/Az.Billing.svg?style=flat-square&label=Az.Billing
+[BillingBenefits]:            https://img.shields.io/powershellgallery/v/Az.BillingBenefits.svg?style=flat-square&label=Az.BillingBenefits
 [Blueprint]:                  https://img.shields.io/powershellgallery/v/Az.Blueprint.svg?style=flat-square&label=Az.Blueprint
 [BotService]:                 https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
@@ -217,6 +227,7 @@
 [DigitalTwins]:               https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins
 [DiskPool]:                   https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
+[DevCenter]:                  https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter
 [DeviceProvisioningServices]: https://img.shields.io/powershellgallery/v/Az.DeviceProvisioningServices.svg?style=flat-square&label=Az.DeviceProvisioningServices
 [DeviceUpdate]:               https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate
 [DevSpaces]:                  https://img.shields.io/powershellgallery/v/Az.DevSpaces.svg?style=flat-square&label=Az.DevSpaces
@@ -245,6 +256,8 @@
 [KeyVault]:                   https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault
 [KubernetesConfiguration]:    https://img.shields.io/powershellgallery/v/Az.KubernetesConfiguration.svg?style=flat-square&label=Az.KubernetesConfiguration
 [Kusto]:                      https://img.shields.io/powershellgallery/v/Az.Kusto.svg?style=flat-square&label=Az.Kusto
+[LabServices]:                https://img.shields.io/powershellgallery/v/Az.LabServices.svg?style=flat-square&label=Az.LabServices
+[LoadTesting]:                https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting
 [LogicApp]:                   https://img.shields.io/powershellgallery/v/Az.LogicApp.svg?style=flat-square&label=Az.LogicApp
 [Logz]:                       https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz
 [MachineLearning]:            https://img.shields.io/powershellgallery/v/Az.MachineLearning.svg?style=flat-square&label=Az.MachineLearning
@@ -279,6 +292,7 @@
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
 [ProviderHub]:                https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub
 [Purview]:                    https://img.shields.io/powershellgallery/v/Az.Purview.svg?style=flat-square&label=Az.Purview
+[Qumulo]:                     https://img.shields.io/powershellgallery/v/Az.Qumulo.svg?style=flat-square&label=Az.Qumulo
 [Quota]:                      https://img.shields.io/powershellgallery/v/Az.Quota.svg?style=flat-square&label=Az.Quota
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
@@ -291,6 +305,7 @@
 [Search]:                     https://img.shields.io/powershellgallery/v/Az.Search.svg?style=flat-square&label=Az.Search
 [Security]:                   https://img.shields.io/powershellgallery/v/Az.Security.svg?style=flat-square&label=Az.Security
 [SecurityInsights]:           https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights
+[SelfHelp]:                   https://img.shields.io/powershellgallery/v/Az.SelfHelp.svg?style=flat-square&label=Az.SelfHelp
 [ServiceBus]:                 https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [ServiceLinker]:              https://img.shields.io/powershellgallery/v/Az.ServiceLinker.svg?style=flat-square&label=Az.ServiceLinker
@@ -313,6 +328,7 @@
 [VoiceServices]:              https://img.shields.io/powershellgallery/v/Az.VoiceServices.svg?style=flat-square&label=Az.VoiceServices
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
+[Workloads]:                  https://img.shields.io/powershellgallery/v/Az.Workloads.svg?style=flat-square&label=Az.Workloads
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -327,12 +343,14 @@
 [AppGallery]:                        https://www.powershellgallery.com/packages/Az.App/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
+[ArcResourceBridgeGallery]:          https://www.powershellgallery.com/packages/Az.ArcResourceBridge/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
 [AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
 [BillingGallery]:                    https://www.powershellgallery.com/packages/Az.Billing/
+[BillingBenefitsGallery]:            https://www.powershellgallery.com/packages/Az.BillingBenefits/
 [BlueprintGallery]:                  https://www.powershellgallery.com/packages/Az.Blueprint/
 [BotServiceGallery]:                 https://www.powershellgallery.com/packages/Az.BotService/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
@@ -368,6 +386,7 @@
 [DigitalTwinsGallery]:               https://www.powershellgallery.com/packages/Az.DigitalTwins/
 [DiskPoolGallery]:                   https://www.powershellgallery.com/packages/Az.DiskPool/
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
+[DevCenterGallery]:                  https://www.powershellgallery.com/packages/Az.DevCenter/
 [DeviceProvisioningServicesGallery]: https://www.powershellgallery.com/packages/Az.DeviceProvisioningServices/
 [DeviceUpdateGallery]:               https://www.powershellgallery.com/packages/Az.DeviceUpdate/
 [DevSpacesGallery]:                  https://www.powershellgallery.com/packages/Az.DevSpaces/
@@ -396,6 +415,8 @@
 [KeyVaultGallery]:                   https://www.powershellgallery.com/packages/Az.KeyVault/
 [KubernetesConfigurationGallery]:    https://www.powershellgallery.com/packages/Az.KubernetesConfiguration/
 [KustoGallery]:                      https://www.powershellgallery.com/packages/Az.Kusto/
+[LabServicesGallery]:                https://www.powershellgallery.com/packages/Az.LabServices/
+[LoadTestingGallery]:                https://www.powershellgallery.com/packages/Az.LoadTesting/
 [LogicAppGallery]:                   https://www.powershellgallery.com/packages/Az.LogicApp/
 [LogzGallery]:                       https://www.powershellgallery.com/packages/Az.Logz/
 [MachineLearningGallery]:            https://www.powershellgallery.com/packages/Az.MachineLearning/
@@ -430,6 +451,7 @@
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
 [ProviderHubGallery]:                https://www.powershellgallery.com/packages/Az.ProviderHub/
 [PurviewGallery]:                    https://www.powershellgallery.com/packages/Az.Purview/
+[QumuloGallery]:                     https://www.powershellgallery.com/packages/Az.Qumulo/
 [QuotaGallery]:                      https://www.powershellgallery.com/packages/Az.Quota/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
@@ -442,6 +464,7 @@
 [SearchGallery]:                     https://www.powershellgallery.com/packages/Az.Search/
 [SecurityGallery]:                   https://www.powershellgallery.com/packages/Az.Security/
 [SecurityInsightsGallery]:           https://www.powershellgallery.com/packages/Az.SecurityInsights/
+[SelfHelpGallery]:                   https://www.powershellgallery.com/packages/Az.SelfHelp/
 [ServiceBusGallery]:                 https://www.powershellgallery.com/packages/Az.ServiceBus/
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [ServiceLinkerGallery]:              https://www.powershellgallery.com/packages/Az.ServiceLinker/
@@ -464,6 +487,7 @@
 [VoiceServices]:                     https://www.powershellgallery.com/packages/Az.VoiceServices/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
+[WorkloadsGallery]:                  https://www.powershellgallery.com/packages/Az.Workloads/
 
 <!-- ChangeLog -->
 [AccountsChangeLog]:                   ../src/Accounts/Accounts/ChangeLog.md
@@ -476,12 +500,14 @@
 [AppChangeLog]:                        ../src/App/ChangeLog.md
 [AppConfigurationChangeLog]:           ../src/AppConfiguration/AppConfiguration/ChangeLog.md
 [ApplicationInsightsChangeLog]:        ../src/ApplicationInsights/ChangeLog.md
+[ArcResourceBridgeChangeLog]:          ../src/ArcResourceBridge/ChangeLog.md
 [AttestationChangeLog]:                ../src/Attestation/Attestation/ChangeLog.md
 [AutomanageChangeLog]:                 ../src/Automanage/ChangeLog.md
 [AutomationChangeLog]:                 ../src/Automation/Automation/ChangeLog.md
 [BareMetalChangeLog]:                  ../src/BareMetal/ChangeLog.md
 [BatchChangeLog]:                      ../src/Batch/Batch/ChangeLog.md
 [BillingChangeLog]:                    ../src/Billing/Billing/ChangeLog.md
+[BillingBenefitsChangeLog]:            ../src/BillingBenefits/ChangeLog.md
 [BlueprintChangeLog]:                  ../src/Blueprint/Blueprint/ChangeLog.md
 [BotServiceChangeLog]:                 ../src/BotService/ChangeLog.md
 [CdnChangeLog]:                        ../src/Cdn/ChangeLog.md
@@ -515,6 +541,7 @@
 [DedicatedHsmChangeLog]:               ../src/DedicatedHsm/ChangeLog.md
 [DeploymentManagerChangeLog]:          ../src/DeploymentManager/DeploymentManager/ChangeLog.md
 [DesktopVirtualizationChangeLog]:      ../src/DesktopVirtualization/ChangeLog.md
+[DevCenterChangeLog]:                  ../src/DevCenter/DevCenter/ChangeLog.md
 [DeviceProvisioningServicesChangeLog]: ../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md
 [DeviceUpdateChangeLog]:               ../src/DeviceUpdate/ChangeLog.md
 [DevSpacesChangeLog]:                  ../src/DevSpaces/DevSpaces/ChangeLog.md
@@ -545,6 +572,8 @@
 [KeyVaultChangeLog]:                   ../src/KeyVault/KeyVault/ChangeLog.md
 [KubernetesConfigurationChangeLog]:    ../src/KubernetesConfiguration/ChangeLog.md
 [KustoChangeLog]:                      ../src/Kusto/ChangeLog.md
+[LabServicesChangeLog]:                ../src/LabServices/ChangeLog.md
+[LoadTestingChangeLog]:                ../src/LoadTesting/ChangeLog.md
 [LogicAppChangeLog]:                   ../src/LogicApp/LogicApp/ChangeLog.md
 [LogzChangeLog]:                       ../src/Logz/ChangeLog.md
 [MachineLearningChangeLog]:            ../src/MachineLearning/MachineLearning/ChangeLog.md
@@ -579,6 +608,7 @@
 [PrivateDnsChangeLog]:                 ../src/PrivateDns/PrivateDns/ChangeLog.md
 [ProviderHubChangeLog]:                ../src/ProviderHub/ChangeLog.md
 [PurviewChangeLog]:                    ../src/Purview/Purview/ChangeLog.md
+[QumuloChangeLog]:                     ../src/Qumulo/ChangeLog.md
 [QuotaChangeLog]:                      ../src/Quota/ChangeLog.md
 [RecoveryServicesChangeLog]:           ../src/RecoveryServices/RecoveryServices/ChangeLog.md
 [RedisCacheChangeLog]:                 ../src/RedisCache/RedisCache/ChangeLog.md
@@ -591,6 +621,7 @@
 [SearchChangeLog]:                     ../src/Search/Search/ChangeLog.md
 [SecurityChangeLog]:                   ../src/Security/Security/ChangeLog.md
 [SecurityInsightsChangeLog]:           ../src/SecurityInsights/ChangeLog.md
+[SelfHelpChangeLog]:                   ../src/SelfHelp/ChangeLog.md
 [ServiceBusChangeLog]:                 ../src/ServiceBus/ServiceBus/ChangeLog.md
 [ServiceFabricChangeLog]:              ../src/ServiceFabric/ServiceFabric/ChangeLog.md
 [ServiceLinkerChangeLog]:              ../src/ServiceLinker/ChangeLog.md
@@ -613,3 +644,4 @@
 [VoiceServicesChangeLog]:              ../src/VoiceServices/ChangeLog.md
 [WebsitesChangeLog]:                   ../src/Websites/Websites/ChangeLog.md
 [WindowsIotServicesChangeLog]:         ../src/WindowsIotServices/ChangeLog.md
+[WorkloadsChangeLog]:                  ../src/Workloads/ChangeLog.md

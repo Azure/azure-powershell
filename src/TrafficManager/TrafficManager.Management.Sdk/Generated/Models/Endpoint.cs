@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// routing method.</param>
         /// <param name="endpointMonitorStatus">The monitoring status of the
         /// endpoint. Possible values include: 'CheckingEndpoint', 'Online',
-        /// 'Degraded', 'Disabled', 'Inactive', 'Stopped'</param>
+        /// 'Degraded', 'Disabled', 'Inactive', 'Stopped',
+        /// 'Unmonitored'</param>
         /// <param name="minChildEndpoints">The minimum number of endpoints
         /// that must be available in the child profile in order for the parent
         /// profile to be considered available. Only applicable to endpoint of
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <summary>
         /// Gets or sets the monitoring status of the endpoint. Possible values
         /// include: 'CheckingEndpoint', 'Online', 'Degraded', 'Disabled',
-        /// 'Inactive', 'Stopped'
+        /// 'Inactive', 'Stopped', 'Unmonitored'
         /// </summary>
         [JsonProperty(PropertyName = "properties.endpointMonitorStatus")]
         public string EndpointMonitorStatus { get; set; }

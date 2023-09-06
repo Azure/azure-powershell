@@ -614,6 +614,6 @@ function Test-ManagedDatabaseCreationWithLedgerEnabled
 	}
 	finally
 	{
-		Remove-ResourceGroupForTest $targetRg
+		Remove-ResourceGroupForTest $rg
 	}
 }

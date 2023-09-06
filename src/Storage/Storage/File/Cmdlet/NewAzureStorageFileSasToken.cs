@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,11 @@ using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 using Azure.Storage.Sas;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageFileSasToken : AzureStorageFileCmdletBase
     {
@@ -179,6 +181,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         snapshotTime: null,
                         ClientOptions);
                 fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
+            }
+
+
+            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
             }
 
             // Get share saved policy if any

@@ -62,6 +62,9 @@ Param(
     [Switch]
     $StaticAnalysisCmdletDiff,
 
+    [Switch]
+    $StaticAnalysisGeneratedSdk,
+
     [String]
     $RepoArtifacts='artifacts',
 
@@ -69,7 +72,7 @@ Param(
     $Configuration='Debug',
 
     [String]
-    $TestFramework='netcoreapp3.1',
+    $TestFramework='net6.0',
 
     [String]
     $TestOutputDirectory='artifacts/TestResults',
@@ -251,6 +254,17 @@ If ($Build)
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
+        
+        # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
+        # Also the analysis check and test is not necessary for Az.Accounts in these branches.
+        If ($Env:IsGenerateBased -eq "true")
+        {
+            ForEach ($phase In ($CIPlan | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }))
+            {
+                $CIPlan.$phase = $CIPlan.$phase | Where-Object { $_ -Ne "Accounts" }
+            }
+            ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
+        }
 
         ForEach ($DependencyStep In $DependencyStepList)
         {
@@ -298,12 +312,17 @@ If ($TestAutorest)
         Return
     }
     $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
+    If ($ModuleName.EndsWith(".Autorest"))
+    {
+        $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
+    }
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {
         $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
         If (-not ($CIPlan.test.Contains($ModuleFolderName)))
         {
+            Write-Debug "Skip test for $ModuleName because it is not in the test plan."
             Return
         }
         . $AutorestDirectory/test-module.ps1
@@ -386,13 +405,50 @@ If ($StaticAnalysis)
     {
         $Parameters["TargetModule"] = $TargetModule
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters
-    Return
+    $FailedTasks = @()
+    $ErrorLogPath = "$StaticAnalysisOutputDirectory/error.log"
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisBreakingChange @Parameters 2>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "BreakingChange"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisDependency @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "Dependency"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisSignature @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "Signature"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisHelp @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "Help"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "UXMetadata"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "CmdletDiff"
+    }
+    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisGeneratedSdk @Parameters 2>>$ErrorLogPath
+    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    {
+        $FailedTasks += "GenertedSdk"
+    }
+    If ($FailedTasks.Length -ne 0)
+    {
+        Write-Host "There are failed tasks: $FailedTasks"
+        $ErrorLog = Get-Content -Path $ErrorLogPath | Join-String -Separator "`n"
+        Write-Error $ErrorLog
+    }
+    Return 0
 }
 
 If ($StaticAnalysisBreakingChange)
@@ -409,8 +465,12 @@ If ($StaticAnalysisBreakingChange)
     {
         Write-Host "Running static analysis for breaking change..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers breaking-change -u -m $BreakingChangeCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
-    Return
+    Return 0
 }
 If ($StaticAnalysisDependency)
 {
@@ -426,9 +486,13 @@ If ($StaticAnalysisDependency)
     {
         Write-Host "Running static analysis for dependency..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers dependency -u -m $DependencyCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
         .($PSScriptRoot + "/CheckAssemblies.ps1") -BuildConfig $Configuration
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisSignature)
@@ -445,8 +509,12 @@ If ($StaticAnalysisSignature)
     {
         Write-Host "Running static analysis for signature..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers signature -u -m $SignatureCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisHelp)
@@ -463,8 +531,12 @@ If ($StaticAnalysisHelp)
     {
         Write-Host "Running static analysis for help..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers help -u -m $HelpCheckModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisUX)
@@ -481,8 +553,12 @@ If ($StaticAnalysisUX)
     {
         Write-Host "Running static analysis for UX metadata..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
-    Return
+    Return 0
 }
 
 If ($StaticAnalysisCmdletDiff)
@@ -499,6 +575,33 @@ If ($StaticAnalysisCmdletDiff)
     {
         Write-Host "Running static analysis for cmdlet diff..."
         dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers cmdlet-diff -u -m $CmdletDiffModuleList
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
     }
-    Return
+    Return 0
+}
+
+If ($StaticAnalysisGeneratedSdk)
+{
+    If ($PSBoundParameters.ContainsKey("TargetModule"))
+    {
+        $GeneratedSdkModuleList = $TargetModule
+    }
+    Else
+    {
+        $GeneratedSdkModuleList = Join-String -Separator ';' -InputObject $CIPlan.'generated-sdk'
+    }
+    If ("" -Ne $GeneratedSdkModuleList)
+    {
+        Write-Host "Running static analysis to verify generated sdk..."
+        $result = .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1")
+        Write-Host "Static analysis to verify generated sdk result: $result"
+        If ($LASTEXITCODE -ne 0)
+        {
+            Return $LASTEXITCODE
+        }
+    }
+    Return 0
 }

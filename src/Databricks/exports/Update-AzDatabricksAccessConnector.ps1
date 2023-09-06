@@ -20,14 +20,14 @@ Updates an azure databricks accessConnector.
 .Description
 Updates an azure databricks accessConnector.
 .Example
-Update-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Tag @{'key'='value'}
+Update-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Tag @{'key'='value'}
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
 #>
 function Update-AzDatabricksAccessConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -94,7 +94,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnectorUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnectorUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -104,7 +104,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -168,7 +169,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

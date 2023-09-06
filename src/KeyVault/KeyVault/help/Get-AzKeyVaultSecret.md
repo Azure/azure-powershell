@@ -282,7 +282,7 @@ Tags         :
 
 This command gets the current versions of all secrets in the key vault named Contoso that start with "secret".
 
-### Example 9: Get a secret in azure key vault by command Get-Secret in module Microsoft.PowerShell.SecretManagement
+### Example 9: Get a secret in Azure Key Vault by command Get-Secret in module Microsoft.PowerShell.SecretManagement
 ```powershell
 # Install module Microsoft.PowerShell.SecretManagement
 Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
@@ -291,14 +291,14 @@ Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @
 # Set secret for vault AzKeyVault
 $secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
-Get-Secret -Vault AzKeyVault -Name secureSecret -AsPlainText 
+Get-Secret -Vault AzKeyVault -Name secureSecret -AsPlainText
 ```
 
 ```output
 Password
 ```
 
-This example Gets a secret named `secureSecret` in azure key vault named `test-kv` by command `Get-Secret` in module `Microsoft.PowerShell.SecretManagement`.
+This example Gets a secret named `secureSecret` in Azure Key Vault named `test-kv` by command `Get-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
 ## PARAMETERS
 

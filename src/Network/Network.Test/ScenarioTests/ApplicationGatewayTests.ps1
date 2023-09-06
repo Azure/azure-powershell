@@ -643,7 +643,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Zone 1,2 -location $location -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -844,7 +844,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard -Zone 1,2
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -1240,6 +1240,397 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 
 		# Delete Application Gateway
 		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuCRUD
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# check trusted root
+		$trustedRoot02 = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $getgw -Name $trustedRootCertName
+		Assert-NotNull $trustedRoot02
+		Assert-AreEqual $getgw.BackendHttpSettingsCollection[0].TrustedRootCertificates.Count 1
+
+		# check sku
+		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku01
+		Assert-AreEqual $sku01.Capacity 2
+		Assert-AreEqual $sku01.Name Basic
+		Assert-AreEqual $sku01.Tier Basic
+
+		Set-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 1 -ApplicationGateway $getgw 
+
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 1
+		Assert-AreEqual $sku02.Name Basic
+		Assert-AreEqual $sku02.Tier Basic
+
+		# Set Application Gateway
+		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw
+		Assert-Null $(Get-AzApplicationGatewayIdentity -ApplicationGateway $getgw)
+
+		# Stop Application Gateway
+		$getgw03 = Stop-AzApplicationGateway -ApplicationGateway $getgw02
+
+		Assert-AreEqual "Stopped" $getgw03.OperationalState
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = "powershellBasicSkuTestPort80"
+	$frontendPort02Name = "powershellBasicSkuTestPort81"
+	$frontendPort03Name = "powershellBasicSkuTestPort82"
+	$frontendPort04Name = "powershellBasicSkuTestPort83"
+	$frontendPort05Name = "powershellBasicSkuTestPort84"
+	$frontendPort06Name = "powershellBasicSkuTestPort85"
+
+	$fipconfigName = Get-ResourceName
+	$listener01Name = "powershellBasicSkuTestListener1"
+	$listener02Name = "powershellBasicSkuTestListener2"
+	$listener03Name = "powershellBasicSkuTestListener3"
+	$listener04Name = "powershellBasicSkuTestListener4"
+	$listener05Name = "powershellBasicSkuTestListener5"
+	$listener06Name = "powershellBasicSkuTestListener6"
+
+	$pool01Name = "powershellBasicSkuTestBackendPool1"
+	$pool02Name = "powershellBasicSkuTestBackendPool2"
+	$pool03Name = "powershellBasicSkuTestBackendPool3"
+	$pool04Name = "powershellBasicSkuTestBackendPool4"
+	$pool05Name = "powershellBasicSkuTestBackendPool5"
+	$pool06Name = "powershellBasicSkuTestBackendPool6"
+
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$backendSetting01Name = "powershellBasicSkuTestBackendSettings1"
+	$backendSetting02Name = "powershellBasicSkuTestBackendSettings2"
+	$backendSetting03Name = "powershellBasicSkuTestBackendSettings3"
+	$backendSetting04Name = "powershellBasicSkuTestBackendSettings4"
+	$backendSetting05Name = "powershellBasicSkuTestBackendSettings5"
+	$backendSetting06Name = "powershellBasicSkuTestBackendSettings6"
+
+	$rule01Name = "powershellBasicSkuTestRoutingRule1"
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $pool01Name -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$createdAppGw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $createdAppGw.OperationalState
+
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort02Name -Port 81
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort03Name -Port 82
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort04Name -Port 83
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort05Name -Port 84
+		$createdAppGw = Add-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort06Name -Port 85
+
+		$fp02 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort02Name
+		$fp03 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort03Name
+		$fp04 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort04Name
+		$fp05 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort05Name
+		$fp06 = Get-AzApplicationGatewayFrontendPort -ApplicationGateway $createdAppGw -Name $frontendPort06Name
+
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener02Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp02
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener03Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp03
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener04Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp04
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener05Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp05
+		$createdAppGw = Add-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener06Name -Protocol Http -FrontendIpConfiguration $fipconfig -FrontendPort $fp06
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of HttpListeners exceeds the maximum allowed value. The number of HttpListeners is 6 and the maximum allowed is 5."
+		
+		$createdAppGw = Remove-AzApplicationGatewayHttpListener -ApplicationGateway $createdAppGw -Name $listener06Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendSetting -ApplicationGateway $createdAppGw -Name $backendSetting01Name -Port 88 -Protocol TCP
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*For specified sku-tier Basic, property BackendSettingsCollection or Listeners or RoutingRules is not supported."
+
+		$createdAppGw = Remove-AzApplicationGatewayBackendSetting -ApplicationGateway $createdAppGw -Name $backendSetting01Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayListener -ApplicationGateway $createdAppGw -Name $listener06Name -Protocol "TCP" -FrontendIpConfiguration $fipconfig -FrontendPort $fp06
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*For specified sku-tier Basic, property BackendSettingsCollection or Listeners or RoutingRules is not supported."
+
+		$createdAppGw = Remove-AzApplicationGatewayListener -ApplicationGateway $createdAppGw -Name $listener06Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name -BackendFqdns "contoso1.com", "contoso2.com", "contoso3.com", "contoso4.com", "contoso5.com", "contoso6.com"
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of BackendServersPerPool exceeds the maximum allowed value. The number of BackendServersPerPool is 6 and the maximum allowed is 5."
+
+		$createdAppGw = Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool02Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool03Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool04Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool05Name -BackendFqdns "contoso1.com"
+		$createdAppGw = Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool06Name -BackendFqdns "contoso1.com"
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*The number of BackendAddressPools exceeds the maximum allowed value. The number of BackendAddressPools is 6 and the maximum allowed is 5."
+		$createdAppGw = Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $createdAppGw -Name $pool06Name
+
+		$urlConfiguration = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/abc" -ModifiedQueryString "x=y&a=b"
+		$hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+		$action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
+		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name "rewriteRule" -ActionSet $action
+
+		$createdAppGw = Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $createdAppGw -Name "ruleset1" -RewriteRule $rewriteRule
+
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*does not support URL Rewrite for the selected SKU tier Basic. Supported SKU tiers are Standard_v2,WAF_v2."
+	
+		$createdAppGw = Remove-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $createdAppGw -Name "ruleset1"
+		$createdAppGw = Set-AzApplicationGateway -ApplicationGateway $createdAppGw
+
+		Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $createdAppGw -MaxCapacity 5 -MinCapacity 4
+		Assert-ThrowsLike { Set-AzApplicationGateway -ApplicationGateway $createdAppGw } "*does not support Autoscaling for the selected SKU tier Basic. Supported SKU tiers are Standard_v2,WAF_v2."
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway Basic SKU tests
+#>
+function Test-ApplicationGatewayBasicSkuMigration
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$identityName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		# trusted root cert part
+		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
+		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Operational State
+		Assert-AreEqual "Running" $getgw.OperationalState
+
+		# Check that migration to Standard_v2 was successful
+		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku01
+		Assert-AreEqual $sku01.Capacity 2
+		Assert-AreEqual $sku01.Name Basic
+		Assert-AreEqual $sku01.Tier Basic
+
+		# Migrate to Standard_v2
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
+
+		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
+
+		# Check that migration to Standard_v2 was successful
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 2
+		Assert-AreEqual $sku02.Name Standard_v2
+		Assert-AreEqual $sku02.Tier Standard_v2
 	}
 	finally
 	{
@@ -1700,7 +2091,8 @@ function Test-ApplicationGatewayCRUDSubItems
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	# Setting location to East US 2 EUAP because FIPS are enabled in the slice subscription
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -1730,7 +2122,7 @@ function Test-ApplicationGatewayCRUDSubItems
 	$probeName = Get-ResourceName
 
 	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another2.htm"
 
 	$redirectName = Get-ResourceName
 	$urlPathMapName = Get-ResourceName
@@ -1767,7 +2159,7 @@ function Test-ApplicationGatewayCRUDSubItems
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -DisabledSslProtocols TLSv1_0, TLSv1_1
 
 		#rule
-		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 
 		# sku
 		$sku = New-AzApplicationGatewaySku -Name Standard_Medium -Tier Standard -Capacity 2
@@ -3406,6 +3798,86 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 
 <#
 .SYNOPSIS
+Application gateway v2 top level waf tests with empty rule in ManagedRuleGroupOverride
+#>
+function Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule
+
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicy = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
+		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		$policy.CustomRules = $rule
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Second check firewll policy
+		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $rule.Priority
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $rule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].Transforms[0] $rule.MatchConditions[0].Transforms[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		# Add disabled rules to the firewall policy
+
+		$emptyRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-942-APPLICATION-ATTACK-SQLI 
+
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $emptyRuleGroupOverrideEntry
+		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 750 -MaxRequestBodySizeInKb 128
+		$policy.managedRules = $managedRules
+		$policy.PolicySettings = $policySettings
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+
+		# Get firewall policy
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 1
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules.Count 0
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+
+<#
+.SYNOPSIS
 Application gateway v2 waf policy with per rule exclusions
 #>
 function Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions
@@ -3469,6 +3941,55 @@ function Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway v2 waf policy with log scrubbing
+#>
+function Test-ApplicationGatewayFirewallPolicyWithLogScrubbing
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
+		$logScrubbingRule1 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
+		$logScrubbingRule2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny
+		$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1, $logScrubbingRule2
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 4000 -MaxRequestBodySizeInKb 2000 -LogScrubbing $logScrubbingRuleConfig
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules.Count 2
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].State $policySettings.LogScrubbing.ScrubbingRules[0].State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRules[0].MatchVariable
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].Selector $policySettings.LogScrubbing.ScrubbingRules[0].Selector
+
 	}
 	finally
 	{
@@ -4245,6 +4766,118 @@ function Test-ApplicationGatewayFirewallPolicyWithCustomRules
 	}
 }
 
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+		
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy with rate limiting rule custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$groupbyVar = New-AzApplicationGatewayFirewallCustomRuleGroupByVariable -VariableName ClientAddr 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].RateLimitDuration $customRule.RateLimitDuration
+		Assert-AreEqual $policy.CustomRules[0].RateLimitThreshold $customRule.RateLimitThreshold
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocation
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+		
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy with rate limiting rule custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$groupbyVar = New-AzApplicationGatewayFirewallCustomRuleGroupByVariable -VariableName GeoLocation 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].RateLimitDuration $customRule.RateLimitDuration
+		Assert-AreEqual $policy.CustomRules[0].RateLimitThreshold $customRule.RateLimitThreshold
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 function Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform
 {
 	# Setup
@@ -4288,6 +4921,60 @@ function Test-ApplicationGatewayFirewallPolicyWithUppercaseTransform
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicy = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Uppercase -NegationCondition $False
+		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -DisableRequestBodyEnforcement $True -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -DisableFileUploadEnforcement $True -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		$policy.CustomRules = $rule
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $rule.Priority
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $rule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].Transforms[0] $rule.MatchConditions[0].Transforms[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $False $policySettings.RequestBodyEnforcement
+		Assert-AreEqual $policy.PolicySettings.RequestBodyInspectLimitInKB $policySettings.RequestBodyInspectLimitInKB
+		Assert-AreEqual $False $policySettings.FileUploadEnforcement
 	}
 	finally
 	{

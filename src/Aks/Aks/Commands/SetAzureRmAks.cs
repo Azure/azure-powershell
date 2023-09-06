@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Aks
                 name: NodeName ?? "default",
                 count: NodeCount,
                 vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize);
+                osDiskSizeGb: NodeOsDiskSize);
 
             if (this.IsParameterBound(c => c.NodeMinCount))
             {
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Aks
                             if (this.IsParameterBound(c => c.NodeVmSize))
                             {
                                 WriteVerbose(Resources.UpdatingNodeVmSize);
-                                defaultAgentPoolProfile.VmSize = NodeVmSize;
+                                defaultAgentPoolProfile.VMSize = NodeVmSize;
                             }
 
                             if (this.IsParameterBound(c => c.NodeCount))
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Aks
                             if (this.IsParameterBound(c => c.NodeOsDiskSize))
                             {
                                 WriteVerbose(Resources.UpdatingNodeOsDiskSize);
-                                defaultAgentPoolProfile.OsDiskSizeGB = NodeOsDiskSize;
+                                defaultAgentPoolProfile.OSDiskSizeGb = NodeOsDiskSize;
                             }
 
                             if (this.IsParameterBound(c => c.NodePoolMode))
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     if (EnableOidcIssuer.IsPresent)
                     {
-                        cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
+                        cluster.OidcIssuerProfile = new ManagedClusterOidcIssuerProfile(enabled: true);
                     }
                     if (cluster.WindowsProfile != null)
                     {
@@ -445,19 +445,17 @@ namespace Microsoft.Azure.Commands.Aks
                             }
                         }
                     }
+                    if (this.IsParameterBound(c => c.DiskEncryptionSetID))
+                    {
+                        cluster.DiskEncryptionSetId = DiskEncryptionSetID;
+                    }
+                    if (this.IsParameterBound(c => c.DisableLocalAccount))
+                    {
+                        cluster.DisableLocalAccounts = DisableLocalAccount.ToBool();
+                    }
                     SetIdentity(cluster);
 
                     var kubeCluster = this.CreateOrUpdate(ResourceGroupName, Name, cluster);
-
-                    if (this.IsParameterBound(c => c.DiskEncryptionSetID))
-                    {
-                        cluster.DiskEncryptionSetID = DiskEncryptionSetID;
-                    }
-                    if (DisableLocalAccount.IsPresent)
-                    {
-                        cluster.DisableLocalAccounts = DisableLocalAccount;
-                    }
-
                     WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }
@@ -465,24 +463,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
-            string acrResourceId = null;
-            try
-            {
-                //Find Acr resourceId first
-                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
-                var acrObjects = RmClient.Resources.List(acrQuery);
-                acrResourceId = acrObjects.First().Id;
-            }
-            catch (Exception)
-            {
-                throw new AzPSArgumentException(
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
-                    acrParameterName,
-                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
-            }
+            string acrResourceId = getSpecifiedAcr(acrName, acrParameterName);
 
             var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
-            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId);
+            var spObjectId = getSPObjectId(acsServicePrincipal);
+
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId, acrResourceId, spObjectId);
             if (roleAssignment == null)
             {
                 throw new AzPSInvalidOperationException(

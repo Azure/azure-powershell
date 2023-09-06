@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             DefaultTtl = restorableSqlContainerPropertiesResourceContainer.DefaultTtl;
             UniqueKeyPolicy = new PSUniqueKeyPolicy(restorableSqlContainerPropertiesResourceContainer.UniqueKeyPolicy);
             ConflictResolutionPolicy = new PSConflictResolutionPolicy(restorableSqlContainerPropertiesResourceContainer.ConflictResolutionPolicy);
-            this._rid = restorableSqlContainerPropertiesResourceContainer._rid;
-            this._ts = restorableSqlContainerPropertiesResourceContainer._ts;
-            this._etag = restorableSqlContainerPropertiesResourceContainer._etag;
-            this._self = restorableSqlContainerPropertiesResourceContainer._self;
+            this._rid = restorableSqlContainerPropertiesResourceContainer.Rid;
+            this._ts = restorableSqlContainerPropertiesResourceContainer.Ts;
+            this._etag = restorableSqlContainerPropertiesResourceContainer.Etag;
+            this._self = restorableSqlContainerPropertiesResourceContainer.Self;
         }
 
         /// <summary>

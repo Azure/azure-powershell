@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.1
+* Fixed null reference bug when 'ScheduleEndDateTime' was not provided
+
+## Version 0.6.0
 * Added cmdlets for Prometheus rule group
 
 ## Version 0.5.0

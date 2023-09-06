@@ -196,6 +196,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 null,
                 new[] { AppliesTo.Az }));
+            //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.DisableErrorRecordsPersistence,
+                Resources.HelpMessageOfDisableErrorRecordsPersistence,
+                false,
+                string.Format("AzPS{0}", ConfigKeys.DisableErrorRecordsPersistence),
+                new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.CheckForUpgrade,
+                Resources.HelpMessageOfCheckForUpgrade,
+                false,
+                ConfigKeys.EnvCheckForUpgrade,
+                new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,
@@ -210,7 +223,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 ConfigKeys.TestCoverageLocation,
                 new[] { AppliesTo.Az }));
 #endif
-            
             configManager.RegisterConfig(new EnableLoginByWamConfig());
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());

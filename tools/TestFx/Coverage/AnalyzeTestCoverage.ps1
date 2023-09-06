@@ -33,7 +33,8 @@ $psCommonParameters = @("-Break", "-Confirm", "-Debug", "-DefaultProfile", "-Err
     "-OutBuffer", "-OutVariable", "-PassThru", "-PipelineVariable", "-Proxy", "-ProxyCredential", "-ProxyUseDefaultCredentials", "-Verbose", "-WarningAction", "-WarningVariable", "-WhatIf")
 
 $repoDir = $PSScriptRoot | Split-Path | Split-Path | Split-Path
-$debugDir = Join-Path -Path $repoDir -ChildPath "artifacts" | Join-Path -ChildPath "Debug"
+$artifactsDir = Join-Path -Path $repoDir -ChildPath "artifacts"
+$debugDir = Join-Path -Path $artifactsDir -ChildPath "Debug"
 
 $accountsModuleName = "Az.Accounts"
 $accountsModulePsd1 = Join-Path -Path $debugDir -ChildPath $accountsModuleName | Join-Path -ChildPath "$accountsModuleName.psd1"
@@ -59,16 +60,25 @@ else {
 $cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "Report.csv"
 ({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
+$allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
+
 if ($CalcBaseline.IsPresent) {
+    $testedModules = $allModules
     $cvgBaselineCsv = Join-Path -Path $cvgResultsDir -ChildPath "Baseline.csv"
     ({} | Select-Object "Module", "CommandCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
+}
+else {
+    $ciPlanFilePath = Join-Path -Path $artifactsDir -ChildPath "PipelineResult" | Join-Path -ChildPath "CIPlan.json"
+    $ciPlan = Get-Content -Path $ciPlanFilePath -Raw | ConvertFrom-Json
+    if ($ciPlan.test.Length -gt 0) {
+        $testedModules = $allModules | Where-Object { $_.Substring(3) -in $ciPlan.test }
+    }
 }
 
 $overallCommandsCount = 0
 $overallTestedCommandsCount = 0
 
-$allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
-foreach ($moduleName in $allModules) {
+foreach ($moduleName in $testedModules) {
     $simpleModuleName = $moduleName.Substring(3)
     $hasRawData = $true
 
@@ -191,11 +201,13 @@ foreach ($moduleName in $allModules) {
         $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
     }
 
-    Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
-    Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
-    Write-Host "##[section]`"$moduleName`" test coverage % : $cvgCommand" -ForegroundColor Green
+    if ($CalcBaseline.IsPresent) {
+        Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
+        Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
+        Write-Host "##[section]`"$moduleName`" test coverage % : $cvgCommand" -ForegroundColor Green
 
-    Write-Host
+        Write-Host
+    }
 }
 
 if ($CalcBaseline.IsPresent) {
@@ -207,8 +219,8 @@ if ($CalcBaseline.IsPresent) {
         CommandCoverage = $cvgOverall
     }
     $cvgReportOverall | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
-}
 
-Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
-Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta
-Write-Host "##[section]Overall test coverage % : $cvgOverall" -ForegroundColor Magenta
+    Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
+    Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta
+    Write-Host "##[section]Overall test coverage % : $cvgOverall" -ForegroundColor Magenta
+}

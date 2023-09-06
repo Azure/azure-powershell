@@ -215,7 +215,7 @@ function Test-AddRegionOperation
         }
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-    Start-Sleep -s 60
+    Start-TestSleep -Seconds 60
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }
@@ -343,6 +343,9 @@ function Test-CosmosDBLocations {
     Assert-NotNull $locationProperty.Properties.SupportsAvailabilityZone
     Assert-NotNull $locationProperty.Properties.IsResidencyRestricted
     Assert-NotNull $locationProperty.Properties.BackupStorageRedundancies
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+    Assert-NotNull $locationProperty.Properties.Status
   }
 
   $locationProperties = Get-AzCosmosDBLocation -Location $locationName
@@ -352,4 +355,7 @@ function Test-CosmosDBLocations {
   Assert-NotNull $locationProperties.Properties.SupportsAvailabilityZone
   Assert-NotNull $locationProperties.Properties.IsResidencyRestricted
   Assert-NotNull $locationProperties.Properties.BackupStorageRedundancies
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+  Assert-NotNull $locationProperty.Properties.Status
 }

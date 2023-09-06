@@ -105,6 +105,9 @@ Function Move-Generation2Master {
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object { $_ -ne "*" })
         }
+        If ($Psd1Metadata.AliasesToExport.Length -ne 1) {
+            $Psd1Metadata.AliasesToExport = @($Psd1Metadata.AliasesToExport | Where-Object { $_ -ne "*" })
+        }
         Update-ModuleManifest -Path $SourcePsd1Path @Psd1Metadata
         Copy-Item -Path $SourcePsd1Path -Destination $DestPsd1Path
         #EndRegion

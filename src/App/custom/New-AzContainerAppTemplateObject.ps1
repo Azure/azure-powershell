@@ -22,8 +22,6 @@ Create an in-memory object for Container.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
-.Link
-https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container')]

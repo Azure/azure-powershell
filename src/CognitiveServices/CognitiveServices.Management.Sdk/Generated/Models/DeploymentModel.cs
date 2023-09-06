@@ -31,12 +31,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         /// <param name="format">Deployment model format.</param>
         /// <param name="name">Deployment model name.</param>
-        /// <param name="version">Deployment model version.</param>
-        public DeploymentModel(string format = default(string), string name = default(string), string version = default(string), CallRateLimit callRateLimit = default(CallRateLimit))
+        /// <param name="version">Optional. Deployment model version. If
+        /// version is not specified, a default version will be assigned. The
+        /// default version is different for different models and might change
+        /// when there is new version available for a model. Default version
+        /// for a model could be found from list models API.</param>
+        /// <param name="source">Optional. Deployment model source ARM resource
+        /// ID.</param>
+        public DeploymentModel(string format = default(string), string name = default(string), string version = default(string), string source = default(string), CallRateLimit callRateLimit = default(CallRateLimit))
         {
             Format = format;
             Name = name;
             Version = version;
+            Source = source;
             CallRateLimit = callRateLimit;
             CustomInit();
         }
@@ -59,10 +66,20 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets deployment model version.
+        /// Gets or sets optional. Deployment model version. If version is not
+        /// specified, a default version will be assigned. The default version
+        /// is different for different models and might change when there is
+        /// new version available for a model. Default version for a model
+        /// could be found from list models API.
         /// </summary>
         [JsonProperty(PropertyName = "version")]
         public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. Deployment model source ARM resource ID.
+        /// </summary>
+        [JsonProperty(PropertyName = "source")]
+        public string Source { get; set; }
 
         /// <summary>
         /// </summary>

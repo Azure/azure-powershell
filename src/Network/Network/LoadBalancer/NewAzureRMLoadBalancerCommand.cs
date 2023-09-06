@@ -31,7 +31,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new Load Balancer. Please note that it will become the default behavior for Load Balancer creation in the future.")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class NewAzureRmLoadBalancer : NetworkBaseCmdlet
     {
@@ -189,28 +188,21 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             // Sku
-            PSLoadBalancerSku vSku = null;
+            PSLoadBalancerSku vSku = new PSLoadBalancerSku();
+            vSku.Name = "Standard";
 
             if (this.Sku != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Name = this.Sku;
             }
 
             // Tier
             if (this.Tier != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Tier = this.Tier;
             }
 
-            if ((vSku?.Tier ?? string.Empty) == "Global")
+            if ((vSku.Tier ?? string.Empty) == "Global")
             {
                 if ((this.InboundNatRule?.Count() ?? 0) > 0 || (this.OutboundRule?.Count() ?? 0) > 0)
                 {

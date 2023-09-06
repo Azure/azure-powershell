@@ -24,15 +24,15 @@ Creates or updates azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates azure databricks accessConnector
+### Example 1: Creates or updates azure databricks accessConnector.
 ```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command creates or updates azure databricks accessConnector.
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -230,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 
 ## NOTES
 

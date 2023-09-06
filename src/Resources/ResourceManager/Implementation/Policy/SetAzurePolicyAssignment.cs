@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PsPolicyAssignment), NewOutputProperties = new String[] { "Identity" })]
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PsPolicyAssignment), deprecateByAzVersion: "11.0.0", deprecateByVersion: "7.0.0", DeprecatedOutputProperties = new[] { "Properties" },
+        NewOutputProperties = new[] { "Description", "DisplayName", "EnforcementMode", "Metadata", "NonComplianceMessages", "NotScopes", "Parameters", "PolicyDefinitionId", "Scope" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyAssignment))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
@@ -107,7 +109,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string PolicyParameter { get; set; }
 
-        [CmdletParameterBreakingChange("AssignIdentity", ChangeDescription = "Parameter AssignIdentity is deprecated and will be removed in future releases. Please use the 'IdentityType' parameter instead.")]
         [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
         public SwitchParameter AssignIdentity { get; set; }
 

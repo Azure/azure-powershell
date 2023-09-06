@@ -17,7 +17,10 @@ New-AzStackHciCluster -Name <String> -ResourceGroupName <String> -Location <Stri
  [-AadApplicationObjectId <String>] [-AadClientId <String>] [-AadServicePrincipalObjectId <String>]
  [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
- [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>] [-Tag <Hashtable>]
+ [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>]
+ [-SoftwareAssurancePropertySoftwareAssuranceStatus <SoftwareAssuranceStatus>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,9 +48,9 @@ New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenant
 ```
 
 ```output
-Location   Name       ResourceGroupName
---------   ----       -----------------
-westeurope myCluster2 test-rg
+Location    Name      Resource Group
+--------    ----      -----------------
+westeurope  myCluster test-rg
 ```
 
 This command creates a Stack HCI cluster with DiagnosticLevel = "Off" and WindowsServerSubscription = "Enabled".
@@ -176,6 +179,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
@@ -216,6 +251,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftwareAssurancePropertySoftwareAssuranceIntent
+Customer Intent for Software Assurance Benefit.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftwareAssurancePropertySoftwareAssuranceStatus
+Status of the Software Assurance for the cluster.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,7 +355,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
 
 ## NOTES
 

@@ -27,7 +27,7 @@ Get-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName m
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,6 +36,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
@@ -44,7 +45,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumegroup
 #>
 function Get-AzElasticSanVolumeGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -89,7 +90,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -141,7 +143,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

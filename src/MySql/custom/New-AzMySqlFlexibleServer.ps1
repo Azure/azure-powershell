@@ -283,6 +283,7 @@ process {
 
         if ($PSBoundParameters.ContainsKey('Iops')) {
             $PSBoundParameters.StorageIop = $PSBoundParameters.Iops
+            $null = $PSBoundParameters.Remove('Iops')
         }
 
         if ($PSBoundParameters.ContainsKey('HighAvailability')){

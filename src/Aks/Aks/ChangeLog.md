@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.5.1
+* Fixed the issue of handling `nextLink` in `Set-AzAksCluster`. [#21846]
+* Fixed the issue of parameter `AcrNameToDetach` in `Set-AzAksCluster` due to role assignment name is a guid.
+* Added breaking change message for parameter `DockerBridgeCidr` in `New-AzAksCluster`.
+* Supported the value `AzureLinux` for parameter `-NodeOsSKU` in `New-AzAksCluster` and parameter `-OsSKU` in `New-AzAksNodePool`.
+* Fixed the issue of `-DisableLocalAccount` for `Set-AzAksCluster`. [#21835]
+
+## Version 5.5.0
 * Fixed the issue of `Enable-AzAksAddon` when there are no addons. [#21665]
 * Added parameter `-EnableAHUB` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-WindowsProfileAdminUserPassword` for `Set-AzAksCluster`

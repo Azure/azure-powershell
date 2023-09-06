@@ -274,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
         /// <summary>The reference to the databricks virtual network address space.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IAddressSpace DatabricksAddressSpace { get; set; }
         /// <summary>
-        /// The remote virtual network should be in the same region. See here to learn more (https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+        /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork DatabricksVirtualNetwork { get; set; }
         /// <summary>Resource ID.</summary>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
         /// <summary>A list of address blocks reserved for this virtual network in CIDR notation.</summary>
         string[] RemoteAddressSpaceAddressPrefix { get; set; }
         /// <summary>
-        /// The remote virtual network should be in the same region. See here to learn more (https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+        /// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork RemoteVirtualNetwork { get; set; }
         /// <summary>The Id of the remote virtual network.</summary>

@@ -102,7 +102,7 @@ The acceptable values for this parameter are:
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
+Accepted values: TLSv1_0, TLSv1_1, TLSv1_2, TLSv1_3
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ Minimum version of Ssl protocol to be supported on application gateway
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
+Accepted values: TLSv1_0, TLSv1_1, TLSv1_2, TLSv1_3
 
 Required: False
 Position: Named
@@ -149,7 +149,7 @@ Type of Ssl Policy
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Predefined, Custom
+Accepted values: Predefined, Custom, CustomV2
 
 Required: False
 Position: Named

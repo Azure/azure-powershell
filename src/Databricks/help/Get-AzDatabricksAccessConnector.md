@@ -40,62 +40,50 @@ Gets an azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: List all access connectors under a subscription
+### Example 1: List all access connectors under a subscription.
 ```powershell
 Get-AzDatabricksAccessConnector
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command lists all access connectors under a subscription.
 
-### Example 2: List all access connectors under a resource group
+### Example 2: List all access connectors under a resource group.
 ```powershell
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command lists all access connectors under a resource group.
 
-### Example 3: Get a access connectors by name
+### Example 3: Get a access connectors by name.
 ```powershell
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
+Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
 ```
 
 ```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
+Location Name                            ResourceGroupName
+-------- ----                            -----------------
+eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
 This command gets a access connectors by name.
 
-### Example 4: Get a access connectors by pipeline
-```powershell
-New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus | Get-AzDatabricksAccessConnector
-```
-
-```output
-Location Name          ResourceGroupName
--------- ----          -----------------
-eastus   databricks-ac databricks-rg-xyv4k5
-```
-
-This command gets a access connectors by pipeline.
-
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -180,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20221001Preview.IAccessConnector
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 
 ## NOTES
 

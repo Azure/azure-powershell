@@ -25,9 +25,9 @@ Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSet
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSet
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSetListResult
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSetListResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +51,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubnetworkruleset
 #>
 function Get-AzEventHubNetworkRuleSet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSet], [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSetListResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSet], [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSetListResult])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

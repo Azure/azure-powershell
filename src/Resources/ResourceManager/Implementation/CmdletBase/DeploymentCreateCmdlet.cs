@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
 
     public abstract class DeploymentCreateCmdlet: DeploymentWhatIfCmdlet
     {
@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
             if (this.DeploymentParameters.ScopeType == DeploymentScopeType.ResourceGroup)
             {
-                this.WriteObject(this.ResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
             }
             else
             {
-                this.WriteObject(this.ResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
             }
         }
 

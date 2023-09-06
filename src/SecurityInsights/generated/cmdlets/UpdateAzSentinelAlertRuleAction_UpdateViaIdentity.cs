@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Description = @"Action for alert rule.",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterBreakingChange("Action", "11.0.0", "4.0.0", "2023/11/15", IsBecomingMandatory=true, ChangeDescription="Action is required.")]
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest Action { get => this._action; set => this._action = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
@@ -56,9 +57,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.SecurityInsights Client => Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Azure)]
