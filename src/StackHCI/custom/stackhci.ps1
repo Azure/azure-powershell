@@ -236,7 +236,7 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $GetArcSettingsWaitTimeMinutes = 1
 $GetArcSettingsSleepTimeSeconds = 15
-$ArcSettingsVerificationLimit = 70
+$ArcSettingsVerificationLimit = 10
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
@@ -533,7 +533,7 @@ $registerArcScript = {
                     Write-Information 'Registering Arc for servers.'
                     Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9002 -EntryType 'Information' -Message 'Initiating Arc For Servers registration'
 
-                    $enableAzureStackHCIArcIntegrationRetryCount = 10
+                    $enableAzureStackHCIArcIntegrationRetryCount = 70
                     $currentCount = 1
                     $isEnableArcIntegrationSuccessful = $false
 
