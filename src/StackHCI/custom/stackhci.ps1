@@ -236,7 +236,7 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $GetArcSettingsWaitTimeMinutes = 1
 $GetArcSettingsSleepTimeSeconds = 15
-$ArcSettingsVerificationLimit = 10
+$ArcSettingsVerificationLimit = 70
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
