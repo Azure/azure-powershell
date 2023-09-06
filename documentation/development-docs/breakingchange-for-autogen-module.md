@@ -107,7 +107,9 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
     verb: New
     subject: VNetPeering
   set:
-    preview-message: This is a test preview message.
+    preview-announcement:
+      preview-message: This is a test preview message.
+      estimated-ga-date: 2023-09-30
 ```
 
 # For customized cmdlets
@@ -145,5 +147,5 @@ You must provide expected breaking change az version and moudle verision otherwi
 ## Case 5 — Preview message
 
 ```csharp
-[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PreviewMessageAttribute("This is a preview version")]
+[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PreviewMessageAttribute("This is a preview version", "2028/06/18")]
 ```
