@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -25,6 +24,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (parameters.Scope == null && parameters.ResourceIdentifier.Subscription == null)
             {
-                WriteTerminatingError(RoleHelper.ScopeAndSubscriptionBothNull);
+                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
             AuthorizationClient.ValidateScope(parameters.Scope, true);

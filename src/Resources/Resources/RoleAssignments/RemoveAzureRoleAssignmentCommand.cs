@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
             {
-                WriteTerminatingError(RoleHelper.ScopeAndSubscriptionBothNull);
+                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
