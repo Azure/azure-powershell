@@ -1,0 +1,129 @@
+{
+  "Remove-AzNetworkCloudL3Network+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "99b9b8e9-159a-4793-b10a-7c481a4d152a" ],
+        "CommandName": [ "Remove-AzNetworkCloudL3Network" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudL3Network_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"830b66b6-0000-0100-0000-6494c2210000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "23c22623-3542-4b7d-ae25-85bc78930426" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "dbdcb80e-bce4-4c6d-87e0-505a3e5f407d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230622T215025Z:dbdcb80e-bce4-4c6d-87e0-505a3e5f407d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Jun 2023 21:50:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudL3Network+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "99b9b8e9-159a-4793-b10a-7c481a4d152a" ],
+        "CommandName": [ "Remove-AzNetworkCloudL3Network" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudL3Network_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e702b405-0000-0100-0000-6494c2260000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "93c8f941-dabb-4507-8d24-bae4836d0d0a" ],
+        "x-ms-correlation-request-id": [ "ae69ef61-383a-41ae-8426-f0387f380d74" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230622T215055Z:ae69ef61-383a-41ae-8426-f0387f380d74" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Jun 2023 21:50:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895\",\"name\":\"c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network\",\"status\":\"Succeeded\",\"startTime\":\"2023-06-22T21:50:25.1250792Z\",\"endTime\":\"2023-06-22T21:50:30.2808119Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudL3Network+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "99b9b8e9-159a-4793-b10a-7c481a4d152a" ],
+        "CommandName": [ "Remove-AzNetworkCloudL3Network" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudL3Network_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e702b405-0000-0100-0000-6494c2260000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-request-id": [ "ea166946-cb0f-4b48-84f6-df4fbfc945a8" ],
+        "x-ms-correlation-request-id": [ "d1b90e2c-85c6-4eb9-919c-fec46b217af3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230622T215055Z:d1b90e2c-85c6-4eb9-919c-fec46b217af3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 22 Jun 2023 21:50:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895\",\"name\":\"c8ccf8cb-57e7-49ad-a699-03b30191e5a9*BC5E8EA20CEDC9D1F12CDD68CFAF74F199C1AE1BBF2ED455423CE9070B0F5895\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rgurh26o/providers/Microsoft.NetworkCloud/l3Networks/l3network\",\"status\":\"Succeeded\",\"startTime\":\"2023-06-22T21:50:25.1250792Z\",\"endTime\":\"2023-06-22T21:50:30.2808119Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

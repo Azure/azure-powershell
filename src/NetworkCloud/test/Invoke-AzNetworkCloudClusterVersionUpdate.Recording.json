@@ -1,0 +1,41 @@
+{
+  "Invoke-AzNetworkCloudClusterVersionUpdate+[NoContext]+Update+$POST+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test/updateVersion?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test/updateVersion?api-version=2023-07-01",
+      "Content": "{\n  \"targetClusterVersion\": \"3.5.0\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "37" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/2e054b7e-b112-4654-8ddd-c865761e77d4*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "65391d77-0e47-452d-8956-46870662af69" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/2e054b7e-b112-4654-8ddd-c865761e77d4*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "3e21e2b2-a269-43a2-bcf3-98e00dc5bc1b" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20230815T224525Z:3e21e2b2-a269-43a2-bcf3-98e00dc5bc1b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 15 Aug 2023 22:45:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  }
+}
