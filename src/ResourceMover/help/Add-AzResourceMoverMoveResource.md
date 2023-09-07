@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Creates or updates a Move Resource in the move collection.
 
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+
 ## SYNTAX
 
 ```
@@ -22,11 +24,13 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ## DESCRIPTION
 Creates or updates a Move Resource in the move collection.
 
+**The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+
 ## EXAMPLES
 
-### Example 1: Add a resource to the Move Collection.
+### Example 1: Add a resource to the Move Collection. (RegionToRegion)
 ```powershell
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
@@ -52,9 +56,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -65,9 +69,60 @@ TargetId                          :
 Type                              : 
 ```
 
-Add a resource to the Move Collection.
+Add a resource to 'RegionToRegion' type Move Collection.
 
-### Example 2: Add a resource to the Move Collection that has existing target resource.
+### Example 2: Add a resource to the Move Collection. (RegionToZone)
+```powershell
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+$targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
+$targetResourceSettingsObj.TargetResourceName = "demo-RegionToZone-VM-Target"
+$targetResourceSettingsObj.TargetAvailabilityZone = "1"
+
+Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-demo-RegionToZone" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM" -Name "PSDemoVM-RegionToZone" -ResourceSetting $targetResourceSettingsObj
+```
+
+```output
+DependsOn                         : {}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              :
+ErrorsPropertiesDetail            :
+ErrorsPropertiesMessage           :
+ErrorsPropertiesTarget            :
+ExistingTargetId                  :
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollection
+                                    s/PS-demo-RegionToZone/moveResources/PSDemoVM-RegionToZone
+IsResolveRequired                 : False
+JobStatusJobName                  :
+JobStatusJobProgress              :
+MoveStatusErrorsPropertiesCode    : DependencyComputationPending
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-R
+                                    egionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
+                                        Possible Causes: Dependency computation is pending for resource.
+                                        Recommended Action: Validate dependencies to compute the dependencies.
+
+MoveStatusErrorsPropertiesTarget  :
+MoveStatusMoveState               : MovePending
+Name                              : PSDemoVM-RegionToZone
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
+                                    demo-RegionToZone-VM
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
+SystemDataCreatedBy               : xxxxxxx
+SystemDataCreatedByType           : User
+SystemDataLastModifiedAt          : 9/5/2023 11:13:46 AM
+SystemDataLastModifiedBy          : xxxxxxx
+SystemDataLastModifiedByType      : User
+TargetId                          :
+Type                              :
+```
+
+Add a resource to 'RegionToZone' type Move Collection.
+
+### Example 3: Add a resource to the Move Collection that has existing target resource. (RegionToRegion)
 ```powershell
 Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS"  -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm"  -Name "psdemorm"  -ExistingTargetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target"
 ```
@@ -91,9 +146,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : psdemorm
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -104,15 +159,54 @@ TargetId                          :
 Type                              : 
 ```
 
-Add a resource to the Move Collection that has existing target resource.
+Add a resource to 'RegionToRegion' type Move Collection that has existing target resource.
 
-### Example 3: Update target resource settings after the Move Resource has been added.
+### Example 4: Add a resource to the Move Collection that has existing target resource. (RegionToZone)
+```powershell
+Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS"  -MoveCollectionName "PS-demo-RegionToZone" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-RegionToZone-RG/providers/Microsoft.Network/networkinterfaces/nic_demo-RegionToZone-VM"  -Name "PSDemoNIC-RegionToZone"  -ExistingTargetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-Existing/providers/Microsoft.Network/networkinterfaces/nic-demo-existing-target"
+```
+
+```output
+DependsOn                         : {}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              :
+ErrorsPropertiesDetail            :
+ErrorsPropertiesMessage           :
+ErrorsPropertiesTarget            :
+ExistingTargetId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-Existing/providers/Microsoft.Network/networkinterfaces/nic-demo-existing-target
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-demo-RegionToZone/moveResources/PSDemoNIC-RegionToZone
+IsResolveRequired                 : False
+JobStatusJobName                  :
+JobStatusJobProgress              :
+MoveStatusErrorsPropertiesCode    :
+MoveStatusErrorsPropertiesDetail  :
+MoveStatusErrorsPropertiesMessage :
+MoveStatusErrorsPropertiesTarget  :
+MoveStatusMoveState               : CommitPending
+Name                              : PSDemoNIC-RegionToZone
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PS-demo-RegionToZone-RG/providers/Microsoft.Network/networkinterfaces/nic_demo-RegionToZone-VM
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
+TargetId                          :
+Type                              :
+```
+
+Add a resource to 'RegionToZone' type Move Collection that has existing target resource.
+
+### Example 5: Update target resource settings after the Move Resource has been added.(RegionToRegion)
 ```powershell
 $moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
 $TargetResourceSettingObj = $moveResourceObj.ResourceSetting
-$TargetResourceSettingObj.TargetResourceName = "PSDemoVM-target"
+$TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
 
-Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
 ```
 
 ```output
@@ -135,9 +229,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -148,7 +242,55 @@ TargetId                          :
 Type                              : 
 ```
 
-Update target resource settings after the Move Resource has been added.
+Update target resource settings after the Move Resource has been added to 'RegionToRegion' type Move Collection.
+
+### Example 6: Update target resource settings after the Move Resource has been added. (RegionToZone)
+```powershell
+$moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-demo-RegionToZone" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM-RegionToZone"
+$TargetResourceSettingObj = $moveResourceObj.ResourceSetting
+$TargetResourceSettingObj.TargetVMSize = "Standard_D4s_v3"
+
+Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+```
+
+```output
+DependsOn                         : {}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              :
+ErrorsPropertiesDetail            :
+ErrorsPropertiesMessage           :
+ErrorsPropertiesTarget            :
+ExistingTargetId                  :
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-demo-RegionToZone/moveResources/PSDemoVM-RegionToZone
+IsResolveRequired                 : False
+JobStatusJobName                  :
+JobStatusJobProgress              :
+MoveStatusErrorsPropertiesCode    : DependencyComputationPending
+MoveStatusErrorsPropertiesDetail  : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody,
+                                    Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceErrorBody}
+MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM'.
+Possible Causes: Dependency computation is pending for resource.
+Recommended Action: Validate dependencies to compute the dependencies.
+
+MoveStatusErrorsPropertiesTarget  :
+MoveStatusMoveState               : MovePending
+Name                              : PSDemoVM-RegionToZone
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/
+                                    demo-RegionToZone-VM
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.VirtualMachineResourceSettings
+SystemDataCreatedAt               : 9/5/2023 11:13:46 AM
+SystemDataCreatedBy               : xxxxxxx
+SystemDataCreatedByType           : User
+SystemDataLastModifiedAt          : 9/5/2023 11:13:46 AM
+SystemDataLastModifiedBy          : xxxxxxx
+SystemDataLastModifiedByType      : User
+TargetId                          :
+Type                              :
+```
+
+Update target resource settings after the Move Resource has been added to 'RegionToZone' type Move Collection.
 
 ## PARAMETERS
 
@@ -168,7 +310,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -187,7 +330,7 @@ Gets or sets the move resource dependencies overrides.
 To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResourceDependencyOverride[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceDependencyOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +421,7 @@ Gets or sets the resource settings.
 To construct, see NOTES section for RESOURCESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IResourceSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceSettings
 Parameter Sets: (All)
 Aliases:
 
@@ -357,7 +500,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
 
 ## NOTES
 
@@ -370,13 +513,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>: Gets or sets the move resource dependencies overrides.
+`DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>`: Gets or sets the move resource dependencies overrides.
   - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.
   - `[TargetId <String>]`: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
 
-RESOURCESETTING `<IResourceSettings>`: Gets or sets the resource settings.
+`RESOURCESETTING <IResourceSettings>`: Gets or sets the resource settings.
   - `ResourceType <String>`: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-  - `TargetResourceName <String>`: Gets or sets the target Resource name.
+  - `[TargetResourceGroupName <String>]`: Gets or sets the target resource group name.
+  - `[TargetResourceName <String>]`: Gets or sets the target Resource name.
 
 ## RELATED LINKS
 
