@@ -188,8 +188,10 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - akamenev
+            - solankisamir
+            - mikebudzynski
             - KedarJoshi
+            - yingru97
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1314,8 +1316,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - Stefanus Hinardi
+            - AnatoliB
             - Francisco-Gamino
+            - shreyabatra4
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1996,6 +1999,9 @@ configuration:
         - mentionUsers:
             mentionees:
             - cdnfdsuppgithub
+            - t-bzhan
+            - gxue
+            - TracyYaoYao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2257,7 +2263,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - darshanhs90
+            - kenieva
             - AshishGargMicrosoft
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
