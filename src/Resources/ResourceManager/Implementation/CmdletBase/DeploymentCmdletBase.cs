@@ -19,19 +19,23 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 using Newtonsoft.Json.Linq;
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using System.Text;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    public abstract class ResourceWithParameterCmdletBase : ResourceManagerCmdletBase
+    public abstract class DeploymentCmdletBase : ResourceManagerCmdletBase
     {
         protected const string TemplateObjectParameterObjectParameterSetName = "ByTemplateObjectAndParameterObject";
         protected const string TemplateObjectParameterFileParameterSetName = "ByTemplateObjectAndParameterFile";
@@ -53,6 +57,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string TemplateSpecResourceIdParameterFileParameterSetName = "ByTemplateSpecResourceIdAndParams";
         protected const string TemplateSpecResourceIdParameterUriParameterSetName = "ByTemplateSpecResourceIdAndParamsUri";
         protected const string TemplateSpecResourceIdParameterObjectParameterSetName = "ByTemplateSpecResourceIdAndParamsObject";
+        
+        protected const string ByParameterFileWithNoTemplateParameterSetName = "ByParameterFileWithNoTemplate";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
@@ -68,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private ITemplateSpecsClient templateSpecsClient;
 
-        protected ResourceWithParameterCmdletBase()
+        protected DeploymentCmdletBase()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
         }
@@ -84,13 +90,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable TemplateParameterObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateObjectParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [Parameter(ParameterSetName = TemplateSpecResourceIdParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
+        [Parameter(ParameterSetName = ByParameterFileWithNoTemplateParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Parameter file to use for the template.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
@@ -188,20 +196,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (BicepUtility.IsBicepFile(TemplateUri))
             {
-                throw new NotSupportedException($"'-TemplateUri {TemplateUri}' is not supported. Please download the bicep file and pass it using -TemplateFile.");
+                throw new PSInvalidOperationException($"The -{nameof(TemplateUri)} parameter is not supported with .bicep files. Please download the file and pass it using -{nameof(TemplateFile)}.");
             }
 
-            if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && !BicepUtility.IsBicepFile(TemplateFile))
+            var isBicepParamFile = BicepUtility.IsBicepparamFile(TemplateParameterFile);
+            if (!isBicepParamFile && string.IsNullOrEmpty(TemplateFile) && string.IsNullOrEmpty(TemplateUri) && string.IsNullOrEmpty(TemplateSpecId) && TemplateObject == null)
             {
-                throw new NotSupportedException($"Bicepparam file {TemplateParameterFile} is only supported with a Bicep template file");
+                throw new PSInvalidOperationException($"One of the -{nameof(TemplateFile)}, -{nameof(TemplateUri)}, -{nameof(TemplateSpecId)} or -{nameof(TemplateObject)} parameters must be supplied unless a .bicepparam file is supplied with parameter -{nameof(TemplateParameterFile)}.");
+            }
+
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && !string.IsNullOrEmpty(TemplateFile) && !BicepUtility.IsBicepFile(TemplateFile))
+            {
+                throw new PSInvalidOperationException($"Parameter -{nameof(TemplateFile)} only permits .bicep files if a .bicepparam file is supplied with parameter -{nameof(TemplateParameterFile)}.");
+            }
+
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && (!string.IsNullOrEmpty(TemplateUri) || !string.IsNullOrEmpty(TemplateSpecId) || TemplateObject != null))
+            {
+                throw new PSInvalidOperationException($"Parameters -{nameof(TemplateUri)}, -{nameof(TemplateSpecId)} or -{nameof(TemplateObject)} cannot be used if a .bicepparam file is supplied with parameter -{nameof(TemplateParameterFile)}.");
+            }
+
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
+            {
+                BuildAndUseBicepParameters();
             }
 
             if (BicepUtility.IsBicepFile(TemplateFile))
             {
                 BuildAndUseBicepTemplate();
-
-                if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
-                    BuildAndUseBicepParameters();
             }
                
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
@@ -473,7 +494,64 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected void BuildAndUseBicepParameters()
         {
-            TemplateParameterFile = BicepUtility.BuildParamFile(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
+            var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
+
+            TemplateParameterFile = null;
+            TemplateParameterObject = GetParametersFromJson(output.parametersJson);
+
+            if (TemplateObject == null && 
+                string.IsNullOrEmpty(TemplateFile) && 
+                string.IsNullOrEmpty(TemplateUri) && 
+                string.IsNullOrEmpty(TemplateSpecId))
+            {
+                // When .bicepparam support was first introduced, we were missing the validation to block overriding the 'using' path in these cmdlets.
+                // We need to be careful to retain this behavior to avoid breaking existing users, until it is re-introduced intentionally with https://github.com/Azure/bicep/issues/10333.
+
+                if (!string.IsNullOrEmpty(output.templateJson))
+                {
+                    TemplateObject = JsonConvert.DeserializeObject<Hashtable>(output.templateJson);
+                }
+                else if (!string.IsNullOrEmpty(output.templateSpecId))
+                {
+                    TemplateSpecId = output.templateSpecId;
+                }
+                else
+                {
+                    // This shouldn't happen in practice - the Bicep CLI will return either templateJson or templateSpecId (or fail to run entirely).
+                    throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidFilePath, TemplateParameterFile));
+                }
+            }
+        }
+
+        private Hashtable GetParametersFromJsonStream(Stream parametersJson)
+        {
+            var parameters = new Hashtable();
+            var parametersFromJson = TemplateUtility.ParseTemplateParameterJson(parametersJson);
+
+            parametersFromJson.ForEach(dp =>
+            {
+                var parameter = new Hashtable();
+                if (dp.Value.Value != null)
+                {
+                    parameter.Add("value", dp.Value.Value);
+                }
+                if (dp.Value.Reference != null)
+                {
+                    parameter.Add("reference", dp.Value.Reference);
+                }
+
+                parameters[dp.Key] = parameter;
+            });
+
+            return parameters;
+        }
+
+        private Hashtable GetParametersFromJson(string parametersJson)
+        {
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(parametersJson)))
+            {
+                return GetParametersFromJsonStream(stream);
+            }
         }
     }
 }
