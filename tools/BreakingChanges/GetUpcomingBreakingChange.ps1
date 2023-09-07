@@ -278,7 +278,7 @@ Function Get-BreakingChangeOfGeneratedModule
 
     #Region Dll
     $Dll = [Reflection.Assembly]::LoadFrom($DllPath)
-    $Cmdlets = $Dll.ExportedTypes | Where-Object { $_.CustomAttributes.Attributetype.name -contains "GeneratedAttribute" }
+    $Cmdlets = $Dll.ExportedTypes | Where-Object { $_.CustomAttributes.Attributetype.name -contains "GeneratedAttribute" -and ($_.CustomAttributes.Attributetype.name -notcontains "InternalExportAttribute") }
 
     $BreakingChangeCmdlets = $Cmdlets | Where-Object { Test-TypeIsGenericBreakingChangeAttribute $_.CustomAttributes.Attributetype }
     ForEach ($BreakingChangeCmdlet in $BreakingChangeCmdlets)
@@ -290,23 +290,27 @@ Function Get-BreakingChangeOfGeneratedModule
         $CmdletName = "$Verb-$Noun"
 
         $BreakingChangeAttributes = $BreakingChangeCmdlet.CustomAttributes | Where-Object { Test-TypeIsGenericBreakingChangeAttribute $_.Attributetype }
-        ForEach ($BreakingChangeAttribute In $BreakingChangeAttributes)
+        $AttributeTypeList = $BreakingChangeAttributes | Select-Object -ExpandProperty AttributeType -Unique
+        ForEach ($AttributeType In $AttributeTypeList)
         {
-            $Attribute = $BreakingChangeAttribute.Constructor.Invoke(@($BreakingChangeAttribute.ConstructorArguments.value))
-            $BreakingChangeMessage = Get-BreakingChangeMessageFromGeneratedAttribute -Attribute $Attribute -AttributeType $Attribute.GetType()
-
-            If (-not $AllBreakingChangeMessages.ContainsKey($CmdletName))
+            $AttributeList = $BreakingChangeCmdlet.GetCustomAttributes($AttributeType, $true)
+            ForEach ($Attribute In $AttributeList)
             {
-                $AllBreakingChangeMessages.Add($CmdletName, @{})
-            }
-            If (-not $AllBreakingChangeMessages[$CmdletName].ContainsKey($ParameterSetName))
-            {
-                $AllBreakingChangeMessages[$CmdletName].Add($ParameterSetName, @{
-                    "CmdletBreakingChange" = [System.Collections.ArrayList]::New(@($BreakingChangeMessage))
-                })
-            }
-            Else {
-                $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add($BreakingChangeMessage)
+                $BreakingChangeMessage = Get-BreakingChangeMessageFromGeneratedAttribute -Attribute $Attribute -AttributeType $AttributeType
+    
+                If (-not $AllBreakingChangeMessages.ContainsKey($CmdletName))
+                {
+                    $AllBreakingChangeMessages.Add($CmdletName, @{})
+                }
+                If (-not $AllBreakingChangeMessages[$CmdletName].ContainsKey($ParameterSetName))
+                {
+                    $AllBreakingChangeMessages[$CmdletName].Add($ParameterSetName, @{
+                        "CmdletBreakingChange" = [System.Collections.ArrayList]::New(@($BreakingChangeMessage))
+                    })
+                }
+                Else {
+                    $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add($BreakingChangeMessage)
+                }
             }
         }
     }
@@ -325,9 +329,17 @@ Function Get-BreakingChangeOfGeneratedModule
         {
             $ParameterName = $Parameter.Name
             $ParameterAttribute = $Parameter.CustomAttributes | Where-Object { Test-TypeIsGenericBreakingChangeAttribute $_.AttributeType }
-            $Attribute = $ParameterAttribute.Constructor.Invoke(@($ParameterAttribute.ConstructorArguments.value))
-            $BreakingChangeMessage = Get-BreakingChangeMessageFromGeneratedAttribute -Attribute $Attribute -AttributeType $Attribute.GetType()
-            $ParameterBreakingChangeMessage.Add($ParameterName, $BreakingChangeMessage)
+            $AttributeTypeList = $ParameterAttribute | Select-Object -ExpandProperty AttributeType -Unique
+            ForEach ($AttributeType In $AttributeTypeList)
+            {
+                $AttributeList = $Parameter.GetCustomAttributes($AttributeType, $true)
+                ForEach ($Attribute In $AttributeList)
+                {
+                    $BreakingChangeMessage = Get-BreakingChangeMessageFromGeneratedAttribute -Attribute $Attribute -AttributeType $AttributeType
+                    $ParameterBreakingChangeMessage.Add($ParameterName, $BreakingChangeMessage)
+                }
+            }
+        
         }
         If ($ParameterBreakingChangeMessage.Count -ne 0)
         {
@@ -577,7 +589,7 @@ Function Export-BreakingChangeMessageOfCmdlet
             }
             Else
             {
-                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n"
+                $Result += "`n- Cmdlet breaking-change will happen to all parameter sets`n"
             }
             ForEach ($breakingChangeMsg In $CmdletBreakingChangeInfo[$ParameterSetName]['CmdletBreakingChange'])
             {
