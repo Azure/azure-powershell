@@ -32,10 +32,10 @@ Implements vCenter GET method.
 ### [Get-AzConnectedVMwareVM](Get-AzConnectedVMwareVM.md)
 Retrieves information about a virtual machine instance.
 
-### [Get-AzConnectedVMwareVMInstanceGuestAgent](Get-AzConnectedVMwareVMInstanceGuestAgent.md)
+### [Get-AzConnectedVMwareVMGuestAgent](Get-AzConnectedVMwareVMGuestAgent.md)
 Implements GuestAgent GET method.
 
-### [Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata](Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata.md)
+### [Get-AzConnectedVMwareVMHybridIdentityMetadata](Get-AzConnectedVMwareVMHybridIdentityMetadata.md)
 Implements HybridIdentityMetadata GET method.
 
 ### [Get-AzConnectedVMwareVMTemplate](Get-AzConnectedVMwareVMTemplate.md)
@@ -66,7 +66,7 @@ Create vCenter.
 The operation to Create a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
-### [New-AzConnectedVMwareVMInstanceGuestAgent](New-AzConnectedVMwareVMInstanceGuestAgent.md)
+### [New-AzConnectedVMwareVMGuestAgent](New-AzConnectedVMwareVMGuestAgent.md)
 Create GuestAgent.
 
 ### [New-AzConnectedVMwareVMTemplate](New-AzConnectedVMwareVMTemplate.md)
@@ -96,7 +96,7 @@ Implements vCenter DELETE method.
 ### [Remove-AzConnectedVMwareVM](Remove-AzConnectedVMwareVM.md)
 The operation to delete a virtual machine instance.
 
-### [Remove-AzConnectedVMwareVMInstanceGuestAgent](Remove-AzConnectedVMwareVMInstanceGuestAgent.md)
+### [Remove-AzConnectedVMwareVMGuestAgent](Remove-AzConnectedVMwareVMGuestAgent.md)
 Implements GuestAgent DELETE method.
 
 ### [Remove-AzConnectedVMwareVMTemplate](Remove-AzConnectedVMwareVMTemplate.md)
@@ -135,7 +135,7 @@ API to update certain properties of the vCenter resource.
 ### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
 The operation to update a virtual machine instance.
 
-### [Update-AzConnectedVMwareVMInstanceGuestAgent](Update-AzConnectedVMwareVMInstanceGuestAgent.md)
+### [Update-AzConnectedVMwareVMGuestAgent](Update-AzConnectedVMwareVMGuestAgent.md)
 Create GuestAgent.
 
 ### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)

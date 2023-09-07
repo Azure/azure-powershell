@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevminstanceguestagent
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevmguestagent
 schema: 2.0.0
 ---
 
-# Get-AzConnectedVMwareVMInstanceGuestAgent
+# Get-AzConnectedVMwareVMGuestAgent
 
 ## SYNOPSIS
 Implements GuestAgent GET method.
@@ -14,14 +14,12 @@ Implements GuestAgent GET method.
 
 ### Get (Default)
 ```
-Get-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +33,7 @@ Implements GuestAgent GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -46,7 +44,7 @@ Implements GuestAgent GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}

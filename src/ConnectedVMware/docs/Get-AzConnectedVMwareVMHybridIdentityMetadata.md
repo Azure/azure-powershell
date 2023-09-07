@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevminstancehybrididentitymetadata
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevmhybrididentitymetadata
 schema: 2.0.0
 ---
 
-# Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata
+# Get-AzConnectedVMwareVMHybridIdentityMetadata
 
 ## SYNOPSIS
 Implements HybridIdentityMetadata GET method.
@@ -14,13 +14,13 @@ Implements HybridIdentityMetadata GET method.
 
 ### Get (Default)
 ```
-Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
+Get-AzConnectedVMwareVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzConnectedVMwareVMInstanceHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
+Get-AzConnectedVMwareVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Implements HybridIdentityMetadata GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -46,7 +46,7 @@ Implements HybridIdentityMetadata GET method.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}

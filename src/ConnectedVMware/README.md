@@ -101,9 +101,13 @@ directive:
       parameter-name: ForceDeletion
   # Shorten cmdlet name
   - where:
-      subject: VirtualMachineInstance
+      subject: VMInstance(.*)
     set:
-      subject: VM
+      subject: VM$1
+  - where:
+      subject: VirtualMachineInstance(.*)
+    set:
+      subject: VM$1
   - where:
       subject: VirtualMachine(.*)
     set:

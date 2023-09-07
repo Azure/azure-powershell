@@ -1,35 +1,22 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevminstanceguestagent
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevmguestagent
 schema: 2.0.0
 ---
 
-# New-AzConnectedVMwareVMInstanceGuestAgent
+# Update-AzConnectedVMwareVMGuestAgent
 
 ## SYNOPSIS
 Create GuestAgent.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
+Update-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
  [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-PrivateLinkScopeResourceId <String>]
  [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +30,7 @@ Create GuestAgent.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -54,7 +41,7 @@ Create GuestAgent.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -81,7 +68,7 @@ Gets or sets the password to connect with the guest.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -96,7 +83,7 @@ Gets or sets username to connect with the guest.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -127,40 +114,10 @@ Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,7 +144,7 @@ The resource id of the private link scope this machine is assigned to, if any.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,7 +159,7 @@ Gets or sets the guest agent provisioning action.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

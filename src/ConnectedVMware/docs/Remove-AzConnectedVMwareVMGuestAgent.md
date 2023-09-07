@@ -1,26 +1,24 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevminstanceguestagent
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarevmguestagent
 schema: 2.0.0
 ---
 
-# Update-AzConnectedVMwareVMInstanceGuestAgent
+# Remove-AzConnectedVMwareVMGuestAgent
 
 ## SYNOPSIS
-Create GuestAgent.
+Implements GuestAgent DELETE method.
 
 ## SYNTAX
 
 ```
-Update-AzConnectedVMwareVMInstanceGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-PrivateLinkScopeResourceId <String>]
- [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create GuestAgent.
+Implements GuestAgent DELETE method.
 
 ## EXAMPLES
 
@@ -63,36 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CredentialsPassword
-Gets or sets the password to connect with the guest.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CredentialsUsername
-Gets or sets username to connect with the guest.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -101,21 +69,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpProxyConfigHttpsProxy
-Gets or sets httpsProxy url.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -139,26 +92,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkScopeResourceId
-The resource id of the private link scope this machine is assigned to, if any.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProvisioningAction
-Gets or sets the guest agent provisioning action.
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IGuestAgent
+### System.Boolean
 
 ## NOTES
 
