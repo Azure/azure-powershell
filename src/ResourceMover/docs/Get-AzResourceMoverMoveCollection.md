@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Gets the move collection.
+
 **The 'Get-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
@@ -33,6 +34,7 @@ Get-AzResourceMoverMoveCollection -ResourceGroupName <String> [-SubscriptionId <
 
 ## DESCRIPTION
 Gets the move collection.
+
 **The 'Get-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES

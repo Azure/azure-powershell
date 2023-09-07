@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates or updates a Move Resource in the move collection.
+
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
@@ -22,6 +23,7 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 
 ## DESCRIPTION
 Creates or updates a Move Resource in the move collection.
+
 **The 'Add-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES

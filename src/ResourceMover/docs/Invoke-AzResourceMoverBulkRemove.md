@@ -11,6 +11,7 @@ schema: 2.0.0
 Removes the set of move resources included in the request body from move collection.
 The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
 **The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## SYNTAX
@@ -25,6 +26,7 @@ Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName
 Removes the set of move resources included in the request body from move collection.
 The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
 **The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES

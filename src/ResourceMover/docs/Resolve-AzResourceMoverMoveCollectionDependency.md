@@ -9,7 +9,9 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
+
 **Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
 **However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
 
 ## SYNTAX
@@ -22,7 +24,9 @@ Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName <String> -Re
 
 ## DESCRIPTION
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
+
 **Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
 **However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
 
 ## EXAMPLES
