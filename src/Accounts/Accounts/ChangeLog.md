@@ -19,14 +19,7 @@
 -->
 
 ## Upcoming Release
-* Restored necessary initialization steps which were accidentally skipped for:
-    - `Disable-AzDataCollection`
-    - `Enable-AzDataCollection`
-    - `Remove-AzEnvironment`
-    - `Get-AzEnvironment`
-    - `Set-AzEnvironment`
-    - `Add-AzEnvironment`
-    - `Import-AzContext`
+* Fixed an issue that the usage of some cmdlets are not counted.
 
 ## Version 2.13.0
 * Supported in-tool notification for version upgrade.
