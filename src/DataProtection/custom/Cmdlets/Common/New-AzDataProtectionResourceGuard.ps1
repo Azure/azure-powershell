@@ -2,7 +2,7 @@
 
 function New-AzDataProtectionResourceGuard
 {   
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a resource guard under a resource group')]
 
@@ -23,7 +23,7 @@ function New-AzDataProtectionResourceGuard
         [System.String]
         ${ETag},
 
-        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='The IdentityType to be added to the resource guard, example: SystemAssigned, None')]
+        [Parameter(ParameterSetName="CreateResourceGuard", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be depricated')]
         [System.String]
         ${IdentityType},
                 
@@ -78,6 +78,13 @@ function New-AzDataProtectionResourceGuard
 
     process
     {
-        Az.DataProtection.Internal\New-AzDataProtectionResourceGuard  @PSBoundParameters
+        if($PSBoundParameters.ContainsKey("IdentityType"))
+        {
+            $null = $PSBoundParameters.Remove("IdentityType")
+
+            # DppRef : need to move this to parameter level 
+            Write-Warning "Parameter IdentityType is no longer in use and will be depricated in upcoming breaking change release"
+        }
+        Az.DataProtection.Internal\New-AzDataProtectionResourceGuard @PSBoundParameters
     }
 }
