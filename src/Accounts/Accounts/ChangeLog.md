@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Restored necessary initailization steps which were accidentally skipped for:
+* Restored necessary initialization steps which were accidentally skipped for:
     - `Disable-AzDataCollection`
     - `Enable-AzDataCollection`
     - `Remove-AzEnvironment`
