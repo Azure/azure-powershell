@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start Virtual Machine
 ```powershell
-{{ Add code here }}
+Start-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command start of a VM named `test-vm` in a resource group named `azcli-test-rg`.
