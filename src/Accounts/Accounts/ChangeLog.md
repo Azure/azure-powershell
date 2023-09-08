@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue that the usage of some cmdlets are not counted.
 
 ## Version 2.13.0
 * Supported in-tool notification for version upgrade.
