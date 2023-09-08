@@ -59,7 +59,9 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
 ```
 
 ## DESCRIPTION
-Creates or updates a SQL virtual machine.
+Creates or updates a SQL virtual machine. 
+
+If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed. For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/update-azsqlvm?view=azps-10.2.0) to prevent overwriting of unintended parameters.
 
 ## EXAMPLES
 
