@@ -1,10 +1,10 @@
-id:
+id: 
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
-owner:
+owner: 
 resource: repository
 disabled: false
-where:
+where: 
 configuration:
   resourceManagementConfiguration:
     scheduledSearches:
@@ -188,7 +188,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - adrianhall
+            - akamenev
             - KedarJoshi
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -365,6 +365,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - jaspkaur28
+            - sanjkum
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1766,7 +1767,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - SameergMS
-            - dadunl
+            - yairgil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1939,6 +1940,7 @@ configuration:
             mentionees:
             - t-bzhan
             - gxue
+            - TracyYaoYao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2610,22 +2612,6 @@ configuration:
             - vicancy
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
-      - if:
-        - or:
-            - labelAdded:
-                label: Service Attention
-            - labelAdded:
-                label: TestFabricBot
-        - hasLabel:
-            label: Service Attention
-        - hasLabel:
-            label: TestFabricBot
-        then:
-        - mentionUsers:
-            mentionees:
-            - vidai-msft
-            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
-            assignMentionees: False
       description: Triage issues to the service team
     - if:
       - payloadType: Pull_Request
@@ -2801,5 +2787,5 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
-onFailure:
-onSuccess:
+onFailure: 
+onSuccess: 
