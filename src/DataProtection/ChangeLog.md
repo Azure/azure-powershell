@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added soft delete and MUA feature for Backup vaults
 
 ## Version 2.0.0
 * Added support for Blob Hardened recovery points (VaultStore).
