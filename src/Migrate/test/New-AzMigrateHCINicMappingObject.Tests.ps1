@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCINicMappingObj
 
 Describe 'New-AzMigrateHCINicMappingObject' {
     It '__AllParameterSets' {
-        $output = New-AzMigrateHCINicMappingObject -NicID a -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+        $output = New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
         $output.Count | Should -BeGreaterOrEqual 1 
         $output.NicID | Should -Be a
     }

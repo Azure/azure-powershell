@@ -28,7 +28,7 @@ function Get-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'GetByItemID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replicating server.
+        # Specifies the replicating server ARM ID.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName = 'ListByName', Mandatory)]
@@ -72,7 +72,7 @@ function Get-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the display name of the replicating machine.
+        # Specifies the name of the replicating machine.
         ${MachineName},
 
         [Parameter(ParameterSetName = 'ListByName')]

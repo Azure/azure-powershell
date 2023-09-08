@@ -34,15 +34,25 @@ function New-AzMigrateHCINicMappingObject {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target network ID within the HCI cluster.
-        ${TargetNetworkID}
+        # Specifies the virtual switch ARM ID that the VMs will use.
+        ${TargetVirtualSwitchId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the test virtual switch ARM ID that the VMs will use.
+        ${TargetTestVirtualSwitchId}
     )
     
     process {
+        if (!$PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')) {
+            $TargetTestVirtualSwitchId = $TargetVirtualSwitchId
+        }
+
         $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
             $NicID,
-            $TargetNetworkId,
-            $TargetNetworkId
+            $TargetVirtualSwitchId,
+            $TargetTestVirtualSwitchId
         )
         
         return $NicObject

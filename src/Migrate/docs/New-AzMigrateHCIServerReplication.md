@@ -15,9 +15,10 @@ Starts replication for the specified server.
 ### ByIdDefaultUser (Default)
 ```
 New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
- -TargetStoragePathId <String> -TargetVirtualSwitch <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
- [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetStoragePathId <String> -TargetVirtualSwitchId <String> -TargetVMName <String>
+ [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -36,7 +37,7 @@ The New-AzMigrateHCIServerReplication cmdlet starts the replication for a partic
 
 ### Example 1: When there is only OS disk to migrate
 ```powershell
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitch "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
+New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
 ```
 
 ```output
@@ -81,7 +82,7 @@ $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 
 [AzStackHCINicInput[]]$NicsToInclude = @()
-$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
 $NicsToInclude += $Nic
 
 New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-Specifies the machine ID of the discovered server to be migrated.
+Specifies the machine ARM ID of the discovered server to be migrated.
 
 ```yaml
 Type: System.String
@@ -228,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceGroupId
-Specifies the Resource Group Id within the destination Azure subscription to which the server needs to be migrated.
+Specifies the target Resource Group Id where the migrated VM resources will reside.
 
 ```yaml
 Type: System.String
@@ -243,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetStoragePathId
-Specifies the storage path used when setting up ARC.
+Specifies the storage path ARM ID where the VMs will be stored.
 
 ```yaml
 Type: System.String
@@ -257,8 +258,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetVirtualSwitch
-Specifies the virtual switch to use.
+### -TargetTestVirtualSwitchId
+Specifies the test virtual switch ARM ID that the VMs will use.
+
+```yaml
+Type: System.String
+Parameter Sets: ByIdDefaultUser
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVirtualSwitchId
+Specifies the virtual switch ARM ID that the VMs will use.
 
 ```yaml
 Type: System.String
@@ -288,7 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetVMName
-Specifies the name of the Azure VM to be created.
+Specifies the name of the VM to be created.
 
 ```yaml
 Type: System.String

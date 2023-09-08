@@ -29,13 +29,13 @@ function New-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the machine ID of the discovered server to be migrated.
+        # Specifies the machine ARM ID of the discovered server to be migrated.
         ${MachineId}, 
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the storage path used when setting up ARC.
+        # Specifies the storage path ARM ID where the VMs will be stored.
         ${TargetStoragePathId},
 
         [Parameter()]
@@ -47,8 +47,14 @@ function New-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the virtual switch to use. 
-        ${TargetVirtualSwitch},
+        # Specifies the virtual switch ARM ID that the VMs will use. 
+        ${TargetVirtualSwitchId},
+
+        [Parameter(ParameterSetName = 'ByIdDefaultUser')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the test virtual switch ARM ID that the VMs will use. 
+        ${TargetTestVirtualSwitchId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -77,13 +83,13 @@ function New-AzMigrateHCIServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the Resource Group Id within the destination Azure subscription to which the server needs to be migrated.
+        # Specifies the target Resource Group Id where the migrated VM resources will reside.
         ${TargetResourceGroupId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the name of the Azure VM to be created.
+        # Specifies the name of the VM to be created.
         ${TargetVMName},
 
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -157,6 +163,7 @@ function New-AzMigrateHCIServerReplication {
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
+        $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
@@ -166,7 +173,8 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('NicToInclude')
         $null = $PSBoundParameters.Remove('TargetResourceGroupId')
         $null = $PSBoundParameters.Remove('TargetVMName')
-        $null = $PSBoundParameters.Remove('TargetVirtualSwitch')
+        $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
+        $null = $PSBoundParameters.Remove('TargetTestVirtualSwitchId')
         $null = $PSBoundParameters.Remove('TargetStoragePathId')
         $null = $PSBoundParameters.Remove('OSDiskID')
         $null = $PSBoundParameters.Remove('MachineId')
@@ -410,7 +418,7 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.FabricDiscoveryMachineId            = $InputObject.Id
         $customProperties.RunAsAccountId                      = $runAsAccount.Id
         $customProperties.SourceDraName                       = $sourceDra.Name
-        $customProperties.StorageContainerId                  = $storageContainer.Id
+        $customProperties.StorageContainerId                  = $($storageContainer.Id)
         $customProperties.TargetArcClusterCustomLocationId    = $storageContainer.ExtendedLocation.Name
         $customProperties.TargetDraName                       = $targetDra.Name
         $customProperties.TargetHciClusterId                  = $targetClusterId
@@ -463,8 +471,8 @@ function New-AzMigrateHCIServerReplication {
             foreach ($sourceNic in $InputObject.NetworkAdapter) {
                 $NicObject = [PSCustomObject]@{
                     NicId                    = $sourceNic.NicId
-                    TargetNetworkId          = $TargetVirtualSwitch
-                    TestNetworkId            = $TargetVirtualSwitch
+                    TargetNetworkId          = $TargetVirtualSwitchId
+                    TestNetworkId            = if ($HasTargetTestVirtualSwitchId) { $TargetTestVirtualSwitchId } else { $TargetVirtualSwitchId }
                     SelectionTypeForFailover = "SelectedByUser"
                 }
                 $nics += $NicObject

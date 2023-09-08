@@ -13,7 +13,8 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMappingObject -NicID <String> -TargetNetworkID <String> [<CommonParameters>]
+New-AzMigrateHCINicMappingObject -NicID <String> -TargetVirtualSwitchId <String>
+ [-TargetTestVirtualSwitchId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 
 ### Example 1: Create NIC to migrate
 ```powershell
-New-AzMigrateHCINicMappingObject -NicID a -TargetNetworkId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+New-AzMigrateHCINicMappingObject -NicID a -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
 ```
 
 ```output
@@ -53,8 +54,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetNetworkID
-Specifies the target network ID within the HCI cluster.
+### -TargetTestVirtualSwitchId
+Specifies the test virtual switch ARM ID that the VMs will use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVirtualSwitchId
+Specifies the virtual switch ARM ID that the VMs will use.
 
 ```yaml
 Type: System.String

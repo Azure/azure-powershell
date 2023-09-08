@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-Specifies the display name of the replicating machine.
+Specifies the name of the replicating machine.
 
 ```yaml
 Type: System.String
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectID
-Specifies the replicating server.
+Specifies the replicating server ARM ID.
 
 ```yaml
 Type: System.String

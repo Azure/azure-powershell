@@ -15,7 +15,7 @@ Updates the target properties for the replicating server.
 ```
 Set-AzMigrateHCIServerReplication -TargetObjectID <String>
  [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <Boolean>]
- [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>] [-TargetVirtualSwitch <String>]
+ [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>] [-TargetVirtualSwitchId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMName <String>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 
 ### -TargetObjectID
 Specifies the replicating server for which the properties need to be updated.
-The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
 
 ```yaml
 Type: System.String
@@ -157,8 +157,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetVirtualSwitch
-Specifies the virtual switch to use.
+### -TargetVirtualSwitchId
+Specifies the virtual switch ARM ID that the VMs will use.
 
 ```yaml
 Type: System.String

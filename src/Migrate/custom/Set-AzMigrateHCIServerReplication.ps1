@@ -28,7 +28,7 @@ function Set-AzMigrateHCIServerReplication {
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replicating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replicating server for which the properties need to be updated. The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter()]
@@ -46,8 +46,8 @@ function Set-AzMigrateHCIServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the virtual switch to use. 
-        ${TargetVirtualSwitch},
+        # Specifies the virtual switch ARM ID that the VMs will use.
+        ${TargetVirtualSwitchId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -136,7 +136,7 @@ function Set-AzMigrateHCIServerReplication {
         
         $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
-        $HasTargetVirtualSwitch = $PSBoundParameters.ContainsKey('TargetVirtualSwitch')
+        $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
@@ -144,7 +144,7 @@ function Set-AzMigrateHCIServerReplication {
 
         $null = $PSBoundParameters.Remove('TargetVMName')
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
-        $null = $PSBoundParameters.Remove('TargetVirtualSwitch')
+        $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
         $null = $PSBoundParameters.Remove('DynamicMemoryConfig')
         $null = $PSBoundParameters.Remove('TargetVMRam')
@@ -163,6 +163,10 @@ function Set-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("Name", $MachineName)
 
         $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+
+        if ($null -eq $ProtectedItem) {
+            throw "Replication item is not found with Id '$TargetObjectID'."
+        }
       
         $null = $PSBoundParameters.Remove("ResourceGroupName")
         $null = $PSBoundParameters.Remove("VaultName")
@@ -174,6 +178,10 @@ function Set-AzMigrateHCIServerReplication {
         $SiteType = $MachineIdArray[7]
         $SiteName = $MachineIdArray[8]
        
+        if (!$protectedItemProperties.AllowedJob.Contains('PlannedFailover')) {
+            throw "Set server replication is not allowed for this item '$TargetObjectID'."
+        }
+
         if ($HasTargetVMName) {
             if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
                 throw "The target virtual machine name must be between 1 and 64 characters long."
@@ -201,8 +209,8 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.TargetCpuCore = $TargetVMCPUCore
         }
 
-        if ($HasTargetVirtualSwitch) {
-            $customProperties.TargetVirtualSwitch = $TargetVirtualSwitch
+        if ($HasTargetVirtualSwitchId) {
+            $customProperties.TargetVirtualSwitch = $TargetVirtualSwitchId
         }
 
         # Memory
