@@ -849,8 +849,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
 
-            string snapshotResourceGroup = (string)ProviderData[PolicyParams.SnapshotResourceGroup];
-            string snapshotResourceGroupSuffix = (string)ProviderData[PolicyParams.SnapshotResourceGroupSuffix];
+            string azureBackupSnapshotRGName = (string)ProviderData[PolicyParams.AzureBackupSnapshotRGName];
+            string azureBackupSnapshotRGNameSuffix = (string)ProviderData[PolicyParams.AzureBackupSnapshotRGNameSuffix];
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);                       
@@ -920,17 +920,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             InstantRPAdditionalDetails instantRPAdditionalDetails = null;
-            if (snapshotResourceGroup != null)
+            if (azureBackupSnapshotRGName != null)
             {
                 instantRPAdditionalDetails = new InstantRPAdditionalDetails();
 
-                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotResourceGroup;
-                if (snapshotResourceGroupSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotResourceGroupSuffix;
+                instantRPAdditionalDetails.AzureBackupRGNamePrefix = azureBackupSnapshotRGName;
+                if (azureBackupSnapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = azureBackupSnapshotRGNameSuffix;
             }
-            else if(snapshotResourceGroupSuffix != null)
+            else if(azureBackupSnapshotRGNameSuffix != null)
             {
                 // resx
-                throw new ArgumentException("The parameter SnapshotResourceGroupSuffix cannot be used without the SnapshotResourceGroup parameter. Please provide the SnapshotResourceGroup parameter or remove the SnapshotResourceGroupSuffix parameter.");
+                throw new ArgumentException("The parameter AzureBackupSnapshotRGNameSuffix cannot be used without the AzureBackupSnapshotRGName parameter. Please provide the AzureBackupSnapshotRGName parameter or remove the AzureBackupSnapshotRGNameSuffix parameter.");
             }
 
             // construct Service Client policy request            
@@ -976,8 +976,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
 
-            string snapshotResourceGroup = (string)ProviderData[PolicyParams.SnapshotResourceGroup];
-            string snapshotResourceGroupSuffix = (string)ProviderData[PolicyParams.SnapshotResourceGroupSuffix];
+            string azureBackupSnapshotRGName = (string)ProviderData[PolicyParams.AzureBackupSnapshotRGName];
+            string azureBackupSnapshotRGNameSuffix = (string)ProviderData[PolicyParams.AzureBackupSnapshotRGNameSuffix];
 
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
@@ -1057,17 +1057,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             InstantRPAdditionalDetails instantRPAdditionalDetails = null;
-            if (snapshotResourceGroup != null)
+            if (azureBackupSnapshotRGName != null)
             {
                 instantRPAdditionalDetails = new InstantRPAdditionalDetails();
 
-                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotResourceGroup;
-                if (snapshotResourceGroupSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotResourceGroupSuffix;
+                instantRPAdditionalDetails.AzureBackupRGNamePrefix = azureBackupSnapshotRGName;
+                if (azureBackupSnapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = azureBackupSnapshotRGNameSuffix;
             }
-            else if (snapshotResourceGroupSuffix != null)
+            else if (azureBackupSnapshotRGNameSuffix != null)
             {
                 // resx
-                throw new ArgumentException("The parameter SnapshotResourceGroupSuffix cannot be used without the SnapshotResourceGroup parameter. Please provide the SnapshotResourceGroup parameter or remove the SnapshotResourceGroupSuffix parameter.");
+                throw new ArgumentException("The parameter AzureBackupSnapshotRGNameSuffix cannot be used without the AzureBackupSnapshotRGName parameter. Please provide the AzureBackupSnapshotRGName parameter or remove the AzureBackupSnapshotRGNameSuffix parameter.");
             }
 
             // construct Service Client policy request            

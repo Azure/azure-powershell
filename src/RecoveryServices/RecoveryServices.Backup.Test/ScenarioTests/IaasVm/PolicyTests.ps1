@@ -99,18 +99,18 @@ function Test-AzureVMSmartTieringPolicy
 		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency  Weekly 
 
 		# create tier recommended policy 
-		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended -SnapshotResourceGroup "rgpref1" -SnapshotResourceGroupSuffix "suffix1"
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended -AzureBackupSnapshotRGName "rgpref1" -AzureBackupSnapshotRGNameSuffix "suffix1"
 
 		Assert-True { $pol.Name -eq $tierRecommendedPolicy }		
 		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
 		Assert-True { $pol.AzureBackupRGNameSuffix -match "suffix1" }		
 
 		# error scenario for tier after policy
-		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 2 -TierAfterDurationType Months -SnapshotResourceGroup "rgpref1" -SnapshotResourceGroupSuffix "suffix1"} `
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 2 -TierAfterDurationType Months -AzureBackupSnapshotRGName "rgpref1" -AzureBackupSnapshotRGNameSuffix "suffix1"} `
 		"TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months";
 
 		# create tier after policy 
-		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 3 -TierAfterDurationType Months  -SnapshotResourceGroup "rgpref1" -SnapshotResourceGroupSuffix "suffix1"
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 3 -TierAfterDurationType Months  -AzureBackupSnapshotRGName "rgpref1" -AzureBackupSnapshotRGNameSuffix "suffix1"
 
 		Assert-True { $pol.Name -eq $tierAfterPolicy }
 		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
@@ -124,7 +124,7 @@ function Test-AzureVMSmartTieringPolicy
 		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
 		Assert-True { $pol.AzureBackupRGNameSuffix -match "suffix1" }
 
-		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierRecommended -SnapshotResourceGroup "rgpref2"
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierRecommended -AzureBackupSnapshotRGName "rgpref2"
 		
 		# error scenario for retention policy
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
