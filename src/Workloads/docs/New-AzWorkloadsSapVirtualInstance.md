@@ -75,7 +75,6 @@ SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     Softw
 ```
 
 In this example, you Deploy the infrastructure for a three tier distributed Highly Available (HA)  SAP system.
-A sample json payload to use in this command is linked here: https://go.microsoft.com/fwlink/?linkid=2230402
 
 ### Example 4: Install SAP software on the infrastructure deployed for the three-tier distributed Highly Available (HA) SAP system using Virtual Instances for SAP solutions
 ```powershell
@@ -89,7 +88,6 @@ SK1  PowerShell-CLI-TestRG        NonProd     Succeeded         S4HANA     Regis
 ```
 
 In this example, you Install the SAP software on  the deployed infrastructure for a three tier distributed Highly Availabile SAP system with Transport directory and customized resource naming.
-A sample json payload to use in this command is linked here: https://go.microsoft.com/fwlink/?linkid=2230340
 
 ### Example 5: Register an existing SAP system as a VIS
 ```powershell

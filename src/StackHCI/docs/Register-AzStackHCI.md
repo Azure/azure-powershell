@@ -17,8 +17,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-IsWAC] [-RepairRegistration]
+ [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,6 +222,23 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogsDirectory
+Specifies the Path where the log files are to be saved.
+Has to be an absolute Path.
+Default value would be: C:\ProgramData\AzureStackHCI
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

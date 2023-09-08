@@ -18,7 +18,7 @@ Describe 'Get-AzResourceMoverMoveResource' {
     }
 
     It 'Get' { 
-       $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "rms-sRg"
-       $moveResource.Name | Should -Be "rms-sRg"
+       $moveResource = Get-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "mr-nsg"
+       $moveResource.Name | Should -Be "mr-nsg"
     }
 }

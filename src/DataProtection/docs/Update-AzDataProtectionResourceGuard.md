@@ -47,7 +47,7 @@ The fourth command is used to exclude some critical operations from the resource
 
 ### -CriticalOperationExclusionList
 List of critical operations which are not protected by this resourceGuard.
-Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin
+Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance
 
 ```yaml
 Type: System.String[]
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType to be updated in resource guard, example: SystemAssigned, None
+This parameter is no longer in use and will be depricated
 
 ```yaml
 Type: System.String
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardResource
 
 ## NOTES
 

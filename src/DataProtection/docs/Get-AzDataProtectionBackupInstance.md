@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource
 
 ## NOTES
 
@@ -188,6 +188,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[RecoveryPointId <String>]`: 
   - `[RequestName <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceGuardProxyName <String>]`: name of the resource guard proxy
   - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[VaultName <String>]`: The name of the backup vault.
