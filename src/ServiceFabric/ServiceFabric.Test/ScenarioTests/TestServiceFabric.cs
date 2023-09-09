@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
     {
         public TestServiceFabric(ITestOutputHelper output) : base(output)
         {
-            AddAzureRmServiceFabricNodeType.dontRandom = true;
+            //AddAzureRmServiceFabricNodeType.dontRandom = true;
             ServiceFabricCommonCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;

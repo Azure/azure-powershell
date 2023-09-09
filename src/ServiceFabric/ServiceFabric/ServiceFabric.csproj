@@ -11,11 +11,69 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\ManagedClusters\Applications\**" />
+    <Compile Remove="Commands\ManagedClusters\ApplicationTypes\**" />
+    <Compile Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
+    <Compile Remove="Commands\ManagedClusters\Services\**" />
+    <EmbeddedResource Remove="Commands\ManagedClusters\Applications\**" />
+    <EmbeddedResource Remove="Commands\ManagedClusters\ApplicationTypes\**" />
+    <EmbeddedResource Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
+    <EmbeddedResource Remove="Commands\ManagedClusters\Services\**" />
+    <None Remove="Commands\ManagedClusters\Applications\**" />
+    <None Remove="Commands\ManagedClusters\ApplicationTypes\**" />
+    <None Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
+    <None Remove="Commands\ManagedClusters\Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commands\AddAzureRmServiceFabricClientCertificate.cs" />
+    <Compile Remove="Commands\AddAzureRmServiceFabricNode.cs" />
+    <Compile Remove="Commands\AddAzureRmServiceFabricNodeType.cs" />
+    <Compile Remove="Commands\GetAzServiceFabricApplication.cs" />
+    <Compile Remove="Commands\GetAzServiceFabricApplicationType.cs" />
+    <Compile Remove="Commands\GetAzServiceFabricApplicationTypeVersion.cs" />
+    <Compile Remove="Commands\GetAzServiceFabricService.cs" />
+    <Compile Remove="Commands\GetAzureRmServiceFabricClusterResouce.cs" />
+    <Compile Remove="Commands\ManagedClusters\ManagedApplicationCmdletBase.cs" />
+    <Compile Remove="Commands\NewAzServiceFabricApplication.cs" />
+    <Compile Remove="Commands\NewAzServiceFabricApplicationType.cs" />
+    <Compile Remove="Commands\NewAzServiceFabricApplicationTypeVersion.cs" />
+    <Compile Remove="Commands\NewAzServiceFabricService.cs" />
+    <Compile Remove="Commands\NewAzureRmServiceFabricCluster.cs" />
+    <Compile Remove="Commands\ProxyResourceCmdletBase.cs" />
+    <Compile Remove="Commands\RemoveAzServiceFabricApplication.cs" />
+    <Compile Remove="Commands\RemoveAzServiceFabricApplicationType.cs" />
+    <Compile Remove="Commands\RemoveAzServiceFabricApplicationTypeVersion.cs" />
+    <Compile Remove="Commands\RemoveAzServiceFabricService.cs" />
+    <Compile Remove="Commands\RemoveAzureRmServiceFabricClientCertificate.cs" />
+    <Compile Remove="Commands\RemoveAzureRmServiceFabricNode.cs" />
+    <Compile Remove="Commands\RemoveAzureRmServiceFabricNodeType.cs" />
+    <Compile Remove="Commands\RemoveAzureRmServiceFabricSetting.cs" />
+    <Compile Remove="Commands\ServiceFabricClientCertificateBase.cs" />
+    <Compile Remove="Commands\ServiceFabricClusterCertificateCmdlet.cs" />
+    <Compile Remove="Commands\ServiceFabricClusterCmdlet.cs" />
+    <Compile Remove="Commands\ServiceFabricNodeTypeCmdletBase.cs" />
+    <Compile Remove="Commands\ServiceFabricSettingsCmdletBase.cs" />
+    <Compile Remove="Commands\SetAzureRmServiceFabricSetting.cs" />
+    <Compile Remove="Commands\SetAzureRmServiceFabricUpgradeType.cs" />
+    <Compile Remove="Commands\UpdateAzServiceFabricApplication.cs" />
+    <Compile Remove="Commands\UpdateAzServiceFabricNodeType.cs" />
+    <Compile Remove="Commands\UpdateAzServiceFabricVmImage.cs" />
+    <Compile Remove="Commands\UpdateAzureRmServiceFabricDurability.cs" />
+    <Compile Remove="Commands\UpdateAzureRmServiceFabricNodeBase.cs" />
+    <Compile Remove="Commands\UpdateAzureRmServiceFabricReliability.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Azure.Identity" Version="1.9.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceFabricManagedClusters" Version="1.0.0" />
   </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
     <None Update="Template\**\*.json" CopyToOutputDirectory="PreserveNewest" />

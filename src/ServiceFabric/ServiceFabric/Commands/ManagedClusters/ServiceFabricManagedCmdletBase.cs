@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricManagedCmdletBase : ServiceFabricCommonCmdletBase
     {
-        private Lazy<ServiceFabricManagedClustersManagementClient> sfrpMcClient;
+        private Lazy<ServiceFabricManagementClient> sfrpMcClient;
 
-        internal ServiceFabricManagedClustersManagementClient SfrpMcClient
+        internal ServiceFabricManagementClient SfrpMcClient
         {
             get { return sfrpMcClient.Value; }
-            set { sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() => value); }
+            set { sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() => value); }
         }
 
         public ServiceFabricManagedCmdletBase()
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void InitializeManagementClients()
         {
-            this.sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() =>
+            this.sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() =>
             {
                 var armClient = AzureSession.Instance.ClientFactory.
-                CreateArmClient<ServiceFabricManagedClustersManagementClient>(
+                CreateArmClient<ServiceFabricManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager);
                 return armClient;

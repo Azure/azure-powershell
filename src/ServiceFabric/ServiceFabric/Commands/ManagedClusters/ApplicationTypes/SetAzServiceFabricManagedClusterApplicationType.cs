@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 if (updatedAppTypeParams != null && ShouldProcess(target: this.Name, action: $"Update managed app type name {this.Name}, cluster: {this.ClusterName} in resource group {this.ResourceGroupName}"))
                 {
-                    var managedAppType = this.SfrpMcClient.ApplicationTypes.CreateOrUpdate(this.ResourceGroupName, this.ClusterName, this.Name, updatedAppTypeParams);
+                    var managedAppType = this.SfrpMcClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedAppTypeParams).GetAwaiter().GetResult().Body;
 
                     WriteObject(new PSManagedApplicationType(managedAppType), false);
                 }
