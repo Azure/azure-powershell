@@ -47,7 +47,7 @@ function GetStorageContainerARGQuery {
     )
 
     process {
-        $query =  "resources | where type == 'microsoft.extendedlocation/customlocations'"
+        $query = "resources | where type == 'microsoft.extendedlocation/customlocations'"
         $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
         $query += "| extend ClusterId = toupper(tostring(ClusterId))"
         $query += "| extend CustomLocation = toupper(tostring(id))"
@@ -80,7 +80,7 @@ function GetVirtualSwitchARGQuery {
     )
 
     process {
-        $query =  "resources | where type == 'microsoft.extendedlocation/customlocations'"
+        $query = "resources | where type == 'microsoft.extendedlocation/customlocations'"
         $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
         $query += "| extend ClusterId = toupper(tostring(ClusterId))"
         $query += "| extend CustomLocation = toupper(tostring(id))"
@@ -177,4 +177,30 @@ function IsReservedOrTrademarked {
     }
 
     return $false;
+}
+
+function GenerateHashForArtifact {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies resource group name.
+        ${Artifact}
+    )
+
+    $hashCode = [System.Int128]0
+    $artifactLength = $Artifact.Length
+    $tempItemLength = 0
+    if ($artifactLength -gt 0) {
+        while ($tempItemLength -lt $artifactLength) {
+            $hashCode = (($hashCode -shl 5) - $hashCode) + $Artifact[$tempItemLength++] -bor 0
+        }
+    }
+
+    if ($hashCode -lt 0) {
+        return -1 * $hashCode
+    }
+    else {
+        return $hashCode
+    }
 }

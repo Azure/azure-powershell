@@ -28,13 +28,13 @@ function Start-AzMigrateHCIServerMigration {
         [Parameter(ParameterSetName = 'ByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replcating server for which migration needs to be initiated. The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName = 'ByInputObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
-        # Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${InputObject},
 
         [Parameter()]

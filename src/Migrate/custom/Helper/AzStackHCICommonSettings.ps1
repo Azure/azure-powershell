@@ -52,3 +52,21 @@ $RAMConfig = @{
     MinMemoryInMB = 1024;
     TargetMemoryBufferPercentage = 20;
 }
+
+enum ProvisioningState
+{
+    Canceled
+    Creating
+    Deleting
+    Deleted
+    Failed
+    Succeeded
+    Updating
+}
+
+enum StorageAccountProvisioningState
+{
+    Creating
+    ResolvingDNS
+    Succeeded
+}

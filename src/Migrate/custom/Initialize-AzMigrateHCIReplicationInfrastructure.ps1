@@ -43,7 +43,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the Storage Account Id to be used for private endpoint scenario.
+        # Specifies the Storage Account ARM Id to be used for private endpoint scenario.
         ${CacheStorageAccountId},
 
         [Parameter()]
@@ -144,7 +144,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         if ($null -eq $resourceGroup) {
             throw "Resource group '$($ResourceGroupName)' does not exist in the subscription. Please create the resource group and try again."
         }
-        Write-Host "*Selected Resource Group: '$($resourceGroup.ResourceGroupName)'."
+        Write-Host "*Selected Resource Group: '$($ResourceGroupName)'."
 
         # Verify user validity
         $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
@@ -171,7 +171,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         # Get Migrate Project
         $migrateProject = Az.Migrate\Get-AzMigrateProject `
             -Name $ProjectName `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $migrateProject) {
@@ -216,19 +216,19 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         $hyperVSiteTypeRegex = "(?<=/Microsoft.OffAzure/HyperVSites/).*$"
         $vmwareSiteTypeRegex = "(?<=/Microsoft.OffAzure/VMwareSites/).*$"
-        if ($appMap[$SourceApplianceName.ToLower()] -match $hyperVSiteTypeRegex) {
+        $sourceSiteId = $appMap[$SourceApplianceName.ToLower()]
+        if ($sourceSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
         }
-        elseif ($appMap[$SourceApplianceName.ToLower()] -match $vmwareSiteTypeRegex) {
+        elseif ($sourceSiteId -match $vmwareSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
         }
         else {
-            throw "Unknown VM site type encountered. Please verify the VM site type to be either for HyperV or VMware."
+            throw "Unknown source VM site type encountered with Id: $($sourceSiteId). Please verify the VM site type to be either for HyperV or VMware."
         }
-        Write-Host "Running '$($instanceType)' instance."
 
         # Get Source and Target Fabrics
-        $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $resourceGroup.ResourceGroupName
+        $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if (($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
@@ -260,7 +260,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         # Get Source and Target Dras from Fabrics
         $sourceDras = Az.Migrate.Internal\Get-AzMigrateDra `
             -FabricName $sourceFabric.Name `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $sourceDras) {
@@ -271,7 +271,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         $targetDras = Az.Migrate.Internal\Get-AzMigrateDra `
             -FabricName $targetFabric.Name `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $targetDras) {
@@ -280,37 +280,116 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         $targetDra = $targetDras[0]
         Write-Host "*Selected Target Dra: '$($targetDra.Name)'."
 
-        # Get Data Replication Service
-        $solution = Az.Migrate\Get-AzMigrateSolution `
-            -SubscriptionId $SubscriptionId `
+        # Get Data Replication Service, or the AMH solution
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
             -ResourceGroupName $ResourceGroupName `
             -MigrateProjectName $ProjectName `
             -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($solution -and ($solution.Count -ge 1)) {
-            # Get Replication Vault
-            $replicationVaultName = $solution.DetailExtendedDetail["vaultId"].Split("/")[8]
-            Write-Host "*Selected Replication Valut: '$($replicationVaultName)'."
-            $replicationVault = Az.Migrate.Internal\Get-AzMigrateVault -ResourceGroupName $resourceGroup.ResourceGroupName -Name $replicationVaultName
-            if ($null -eq $replicationVault) {
-                throw "No Replication Vault found in Resource Group '$($resourceGroup.ResourceGroupName)'."
-            }
-        }
-        else {
+        if ($null -eq $amhSolution) {
             throw "No Data Replication Service Solution found. Please verify your appliance setup."
+        }
+        
+        # Get Replication Vault
+        $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
+        $replicationVault = Az.Migrate.Internal\Get-AzMigrateVault `
+            -ResourceGroupName $ResourceGroupName `
+            -Name $replicationVaultName
+        if ($null -eq $replicationVault) {
+            throw "No Replication Vault found in Resource Group '$($ResourceGroupName)'."
         }
 
         # Put Policy
         $policyName = $replicationVault.Name + $instanceType + "policy"
         $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $replicationVault.Name `
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -eq $policy) {
+        
+        # Default policy is found
+        if ($null -ne $policy) {
+            # Give time for create/update to reach a terminal state. Timeout after 10min
+            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                $policy.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
+                Write-Host "Policy '$($policy.Name)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
+
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+
+                    if (-not (
+                            $policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                            $policy.Property.ProvisioningState -eq [ProvisioningState]::Updating)) {
+                        break
+                    }
+                }
+
+                # Make sure Policy is no longer in Creating or Updating state
+                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
+                    throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Check and remove if policy is in a bad terminal state
+            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                Write-Host "Policy '$($policy.Name)' found but in unusable terminal Provisioning State '$($policy.Property.ProvisioningState)'. Removing policy..."
+                    
+                # Remove policy
+                Az.Migrate.Internal\Remove-AzMigratePolicy -InputObject $policy | Out-Null
+
+                Start-Sleep -Seconds 30
+                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+
+                # Make sure Policy is no longer in Canceled or Failed state
+                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                    throw "Failed to change the Provisioning State of policy '$($policy.Name)'by removing. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Give time to remove policy. Timeout after 10min
+            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                Write-Host "Policy '$($policy.Name)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
+
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+                    if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                        break
+                    }
+                    elseif ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                        continue
+                    }
+
+                    throw "Policy '$($policy.Name)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
+                }
+
+                # Make sure Policy is no longer in Deleting state
+                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                    throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Indicate policy was removed
+            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                Write-Host "Policy '$($policy.Name)' was removed."
+            }
+        }
+
+        # Refresh local policy object if exists
+        if ($null -ne $policy) {
+            $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+        }
+
+        # Create policy if not found or previously deleted
+        if ($null -eq $policy -or $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
             Write-Host "Creating Policy..."
 
             $params = @{
@@ -329,7 +408,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
-                throw "Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
+                throw "Instance type '$($instanceType)' is not supported. Currently, for AzStackHCI scenario, only HyperV and VMware as the source is supported."
             }
             $policyCustomProperties.InstanceType = $params.InstanceType
             $policyCustomProperties.RecoveryPointHistoryInMinute = $params.RecoveryPointHistoryInMinute
@@ -339,128 +418,271 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         
             $policyOperation = Az.Migrate.Internal\New-AzMigratePolicy `
                 -Name $policyName `
-                -ResourceGroupName $resourceGroup.ResourceGroupName `
+                -ResourceGroupName $ResourceGroupName `
                 -VaultName $replicationVaultName `
                 -Property $policyProperties `
                 -SubscriptionId $SubscriptionId
-            $operationId = $policyOperation.Name
+            if ($null -eq $policyOperation) {
+                throw "Policy creation failed with no trackable opeartion. Please re-run this command or contact support if help needed."
+            }
 
-            # Check Policy creation status every 5s
-            while ($true) {
-                $operationStatus = Az.Migrate.Internal\Get-AzMigratePolicyOperationStatus `
-                    -PolicyName $policyName `
-                    -ResourceGroupName $resourceGroup.ResourceGroupName `
+            # Check Policy creation status every 30s. Timeout after 10min
+            for ($i = 0; $i -lt 20; $i++) {
+                Start-Sleep -Seconds 30
+                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                    -ResourceGroupName $ResourceGroupName `
+                    -Name $policyName `
                     -VaultName $replicationVault.Name `
                     -SubscriptionId $SubscriptionId `
-                    -OperationId $operationId `
                     -ErrorVariable notPresent `
                     -ErrorAction SilentlyContinue
-                if ($null -eq $operationStatus) {
-                    throw "Policy creation failed with no trackable opeartion."                        
+                if ($null -eq $policy) {
+                    throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
                 }
-                else {
-                    if ($operationStatus.Status -eq "Running") {
-                        Start-Sleep -Seconds 5
-                    }
-                    elseif ($operationStatus.Status -eq "Succeeded") {
-                        Write-Host "New Policy created."
-                        break
-                    }
-                    else {
-                        throw "Policy creation failed with Status '$($operationStatus.Status)'."
-                    }
+                
+                # Stop if policy reaches a terminal state
+                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                    break
                 }
             }
+
+            # Make sure Policy is in a terminal state
+            if (-not (
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
+                throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
+            }
         }
-        else {
-            Write-Host "Existing Policy found."
+        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Policy '$($policy.Name)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
-    
+
         $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $replicationVault.Name `
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -eq $policy) {
-            throw "Policy '$($policyName)' may have been accidently deleted. Please re-run this command to re-create it."
+        if ($null -ne $policy -and $policy.Property.ProvisioningState -eq [ProvisioningState]::Succeeded) {
+            Write-Host "*Selected Policy: '$($policy.Name)'."
         }
-        Write-Host "*Selected Policy: '$($policy.Name)'."
+        else {
+            throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
+        }
 
         # Put Cache Storage Account
+        $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
+        
+        # Record of rsa found in AMH solution
+        if (![string]::IsNullOrEmpty($amhStoredStorageAccountId)) {
+            $amhStoredStorageAccountName = $amhStoredStorageAccountId.Split("/")[8]
+            $amhStoredStorageAccount = Get-AzStorageAccount `
+                -ResourceGroupName $ResourceGroupName `
+                -Name $amhStoredStorageAccountName `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+
+            # Wait for amhStoredStorageAccount to reach a terminal state
+            if ($null -ne $amhStoredStorageAccount -and
+                $null -ne $amhStoredStorageAccount.ProvisioningState -and
+                $amhStoredStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
+                # Check rsa state every 30s if not Succeeded already. Timeout after 10min
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $amhStoredStorageAccount = Get-AzStorageAccount `
+                        -ResourceGroupName $ResourceGroupName `
+                        -Name $amhStoredStorageAccountName `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
+                    # Stop if amhStoredStorageAccount is not found or in a terminal state
+                    if ($null -eq $amhStoredStorageAccount -or
+                        $null -eq $amhStoredStorageAccount.ProvisioningState -or
+                        $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                        break
+                    }
+                }
+            }
+            
+            # amhStoredStorageAccount exists and in Succeeded state
+            if ($null -ne $amhStoredStorageAccount -and
+                $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                # Use amhStoredStorageAccount and ignore user provided Cache Storage Account Id
+                if (![string]::IsNullOrEmpty($CacheStorageAccountId) -and $amhStoredStorageAccount.Id -ne $CacheStorageAccountId) {
+                    Write-Host "A Cache Storage Account '$($amhStoredStorageAccountName)' has been linked already. The given -CacheStorageAccountId '$($CacheStorageAccountId)' will be ignored."
+                }
+
+                $cacheStorageAccount = $amhStoredStorageAccount
+            }
+            elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) {
+                # amhStoredStorageAccount is found but in a bad state, so log to ask user to remove
+                if ($null -ne $amhStoredStorageAccount -and $null -eq $amhStoredStorageAccount.ProvisioningState) {
+                    Write-Host "A previously linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' is found but in a unusable state. Please remove it manually and re-run this command."
+                }
+
+                # amhStoredStorageAccount is not found or in a bad state but AMH has a record of it, so remove the record
+                if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+                    $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId")
+                    $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null)
+                    Az.Migrate.Internal\Set-AzMigrateSolution `
+                        -MigrateProjectName $ProjectName `
+                        -Name $amhSolution.Name `
+                        -ResourceGroupName $ResourceGroupName `
+                        -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+                }
+            }
+            else {
+                throw "A linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' times out with Provisioning State: '$($amhStoredStorageAccount.ProvisioningState)'. Please re-run this command or contact support if help needed."
+            }
+
+            $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+                -ResourceGroupName $ResourceGroupName `
+                -MigrateProjectName $ProjectName `
+                -Name "Servers-Migration-ServerMigration_DataReplication" `
+                -SubscriptionId $SubscriptionId
+            # Check if AMH record is removed
+            if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
+                ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
+                throw "Unexpected error occurred in unlinking Cache Storage Account with Id '$($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])'. Please re-run this command or contact support if help needed."
+            }
+        }
+
+        # No linked Cache Storage Account found in AMH solution but user provides a Cache Storage Account Id
+        if ($null -eq $cacheStorageAccount -and ![string]::IsNullOrEmpty($CacheStorageAccountId)) {
+            $userProvidedStorageAccountIdSegs = $CacheStorageAccountId.Split("/")
+            if ($userProvidedStorageAccountIdSegs.Count -ne 9) {
+                throw "Invalid Cache Storage Account Id '$($CacheStorageAccountId)' provided. Please provide a valid one."
+            }
+
+            $userProvidedStorageAccountName = ($userProvidedStorageAccountIdSegs[8]).ToLower()
+
+            # Check if user provided Cache Storage Account exists
+            $userProvidedStorageAccount = Get-AzStorageAccount `
+                -ResourceGroupName $ResourceGroupName `
+                -Name $userProvidedStorageAccountName `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            
+            # Wait for userProvidedStorageAccount to reach a terminal state
+            if ($null -ne $userProvidedStorageAccount -and
+                $null -ne $userProvidedStorageAccount.ProvisioningState -and
+                $userProvidedStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
+                # Check rsa state every 30s if not Succeeded already. Timeout after 10min
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $userProvidedStorageAccount = Get-AzStorageAccount `
+                        -ResourceGroupName $ResourceGroupName `
+                        -Name $userProvidedStorageAccountName `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
+                    # Stop if userProvidedStorageAccount is not found or in a terminal state
+                    if ($null -eq $userProvidedStorageAccount -or
+                        $null -eq $userProvidedStorageAccount.ProvisioningState -or
+                        $userProvidedStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                        break
+                    }
+                }
+            }
+
+            if ($null -ne $userProvidedStorageAccount -and
+                $userProvidedStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                $cacheStorageAccount = $userProvidedStorageAccount
+            }
+            elseif ($null -eq $userProvidedStorageAccount) {
+                throw "Cache Storage Account with Id '$($CacheStorageAccountId)' is not found. Please re-run this command without -CacheStorageAccountId to create one automatically or re-create the Cache Storage Account yourself and try again."
+            }
+            elseif ($null -eq $userProvidedStorageAccount.ProvisioningState) {
+                throw "Cache Storage Account with Id '$($CacheStorageAccountId)' is found but in an unusable state. Please re-run this command without -CacheStorageAccountId to create one automatically or re-create the Cache Storage Account yourself and try again."
+            }
+            else {
+                throw "Cache Storage Account with Id '$($CacheStorageAccountId)' is found but times out with Provisioning State: '$($userProvidedStorageAccount.ProvisioningState)'. Please re-run this command or contact support if help needed."
+            }
+        }
+
+        # No Cache Storage Account found or provided, so create one
+        if ($null -eq $cacheStorageAccount) {
+            $suffix = (GenerateHashForArtifact -Artifact "$($sourceSiteId)/$($SourceApplianceName)").ToString().Substring(0, 14)
+            $cacheStorageAccountName = "migratersa" + $suffix
+            $cacheStorageAccountId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($cacheStorageAccountName)"
+
+            # Check if default Cache Storage Account already exists, which it shoudln't
+            $cacheStorageAccount = Get-AzStorageAccount `
+                -ResourceGroupName $ResourceGroupName `
+                -Name $cacheStorageAccountName `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            if ($null -ne $cacheStorageAccount) {
+                throw "Unexpteced error encountered: Cache Storage Account '$($cacheStorageAccountName)' already exists. Please re-run this command to create a different one or contact support if help needed."
+            }
+
+            Write-Host "Creating Cache Storage Account..."
+
+            $params = @{
+                name                                = $cacheStorageAccountName;
+                location                            = $migrateProject.Location;
+                migrateProjectName                  = $migrateProject.Name;
+                skuName                             = "Standard_LRS";
+                tags                                = @{ "Migrate Project" = $migrateProject.Name };
+                kind                                = "StorageV2";
+                encryption                          = @{ services = @{blob = @{ enabled = $true }; file = @{ enabled = $true } } };
+            }
+
+            # Create Cache Storage Account
+            $cacheStorageAccount = New-AzStorageAccount `
+                -ResourceGroupName $ResourceGroupName `
+                -Name $params.name `
+                -SkuName $params.skuName `
+                -Location $params.location `
+                -Kind $params.kind `
+                -Tags $params.tags `
+                -AllowBlobPublicAccess $true
+
+            if ($null -ne $cacheStorageAccount -and
+                $null -ne $cacheStorageAccount.ProvisioningState -and
+                $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
+                # Check rsa state every 30s if not Succeeded already. Timeout after 10min
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $cacheStorageAccount = Get-AzStorageAccount `
+                        -ResourceGroupName $ResourceGroupName `
+                        -Name $params.name `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
+                    # Stop if cacheStorageAccount is not found or in a terminal state
+                    if ($null -eq $cacheStorageAccount -or
+                        $null -eq $cacheStorageAccount.ProvisioningState -or
+                        $cacheStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
+                        break
+                    }
+                }
+            }
+
+            if ($null -eq $cacheStorageAccount -or $null -eq $cacheStorageAccount.ProvisioningState) {
+                throw "Unexpected error occurs during Cache Storgae Account creation process. Please re-run this command or provide -CacheStorageAccountId of the one created own your own."
+            }
+            elseif ($cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
+                throw "Cache Storage Account with Id '$($cacheStorageAccount.Id)' times out with Provisioning State: '$($cacheStorageAccount.ProvisioningState)' during creation process. Please remove it manually and re-run this command or contact support if help needed."
+            }
+        }
+
+        # Sanity check
+        if ($null -eq $cacheStorageAccount -or
+            $null -eq $cacheStorageAccount.ProvisioningState -or
+            $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
+            throw "Unexpected error occurs during Cache Storgae Account selection process. Please re-run this command or contact support if help needed."
+        }
+
         $params = @{
             contributorRoleDefId                = [System.Guid]::parse($RoleDefinitionIds.ContributorId);
             storageBlobDataContributorRoleDefId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId);
             sourceAppAadId                      = $sourceDra.ResourceAccessIdentityObjectId;
             targetAppAadId                      = $targetDra.ResourceAccessIdentityObjectId;
         }
-
-        if (![string]::IsNullOrEmpty($CacheStorageAccountId)) {
-            $cacheStorageAccountName = $CacheStorageAccountId.Split("/")[8]
-        }
-        else {
-            Write-Host "No custom Cache Stroage Account provided via -CacheStorageAccountId."
-
-            $prefix = $migrateProject.Name.ToLower()
-            $cacheStorageAccountName = $prefix + "migratesa"
-
-            # Attempt to get Cache Storage Account by default name to avoid recreation
-            $cacheStorageAccount = Get-AzStorageAccount `
-                -ResourceGroupName $resourceGroup.ResourceGroupName `
-                -Name $cacheStorageAccountName `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-            if ($null -eq $cacheStorageAccount) {
-                # No conflict, create new Cache Storage Account
-                Write-Host "Creating Cache Storage Account with default name '$($cacheStorageAccountName)'..."
-
-                $params = @{
-                    name                                = $cacheStorageAccountName;
-                    location                            = $migrateProject.Location;
-                    migrateProjectName                  = $migrateProject.Name;
-                    skuName                             = "Standard_LRS";
-                    tags                                = @{ "Migrate Project" = $migrateProject.Name };
-                    kind                                = "StorageV2";
-                    encryption                          = @{ services = @{blob = @{ enabled = $true }; file = @{ enabled = $true } } };
-                    contributorRoleDefId                = [System.Guid]::parse($RoleDefinitionIds.ContributorId);
-                    storageBlobDataContributorRoleDefId = [System.Guid]::parse($RoleDefinitionIds.StorageBlobDataContributorId);
-                    sourceAppAadId                      = $sourceDra.ResourceAccessIdentityObjectId;
-                    targetAppAadId                      = $targetDra.ResourceAccessIdentityObjectId;
-                }
-
-                # Create Cache Storage Account
-                try {
-                    $cacheStorageAccount = New-AzStorageAccount `
-                        -ResourceGroupName $resourceGroup.ResourceGroupName `
-                        -Name $params.name `
-                        -SkuName $params.skuName `
-                        -Location $params.location `
-                        -Kind $params.kind `
-                        -Tags $params.tags `
-                        -AllowBlobPublicAccess $true
-                }
-                catch {
-                    throw "Failed to create Cache Storage Account '$($cacheStorageAccountName)'.`n" +
-                    "Please re-run this command. If the problem persists, please create a Storage Account manually from Azure portal or " +
-                    "with PowerShell command 'New-AzStorageAccount', and then re-run this command with -CacheStorageAccountId set to its Id."
-                }
-
-                Write-Host "New Cache Storage Account created."
-            }
-        }
-
-        # Get Cache Storage Account
-        $cacheStorageAccount = Get-AzStorageAccount `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
-            -Name $cacheStorageAccountName `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $cacheStorageAccount) {
-            # This should never throw.
-            throw "Cache Storage Account '$($cacheStorageAccountName)' may have been accidently deleted. Please re-run this command to re-create it."
-        }
-        Write-Host "Existing Cache Storage Account found."
 
         # Grant Source Dra AAD App access to Cache Storage Account as "Contributor"
         $hasAadAppAccess = Get-AzRoleAssignment `
@@ -470,17 +692,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            try {
-                New-AzRoleAssignment `
-                    -ObjectId $params.sourceAppAadId `
-                    -RoleDefinitionId $params.contributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-            }
-            catch {
-                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
-                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
-            }
+            New-AzRoleAssignment `
+                -ObjectId $params.sourceAppAadId `
+                -RoleDefinitionId $params.contributorRoleDefId `
+                -Scope $cacheStorageAccount.Id | Out-Null
         }
 
         # Grant Source Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
@@ -491,17 +706,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            try {
-                New-AzRoleAssignment `
-                    -ObjectId $params.sourceAppAadId `
-                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-            }
-            catch {
-                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
-                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
-            }
+            New-AzRoleAssignment `
+                -ObjectId $params.sourceAppAadId `
+                -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                -Scope $cacheStorageAccount.Id | Out-Null
         }
 
         # Grant Target Dra AAD App access to Cache Storage Account as "Contributor"
@@ -512,17 +720,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            try {
-                New-AzRoleAssignment `
-                    -ObjectId $params.targetAppAadId `
-                    -RoleDefinitionId $params.contributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-            }
-            catch {
-                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
-                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
-            }
+            New-AzRoleAssignment `
+                -ObjectId $params.targetAppAadId `
+                -RoleDefinitionId $params.contributorRoleDefId `
+                -Scope $cacheStorageAccount.Id | Out-Null
         }
 
         # Grant Target Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
@@ -533,34 +734,129 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $hasAadAppAccess) {
-            try {
-                New-AzRoleAssignment `
-                    -ObjectId $params.targetAppAadId `
-                    -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
-                    -Scope $cacheStorageAccount.Id
-            }
-            catch {
-                throw "Necessary RoleAssignment failed to be assigned to the given Cache Storage Account '$($cacheStorageAccount.StorageAccountName)'.`n" +
-                "Please re-run this command. If the problem persists, please remove the Cache Storage Account from Azure portal or " +
-                "with PowerShell command 'Remove-AzStorageAccount', and then re-run this command."
-            }
+            New-AzRoleAssignment `
+                -ObjectId $params.targetAppAadId `
+                -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                -Scope $cacheStorageAccount.Id | Out-Null
+        }
+
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+            -ResourceGroupName $ResourceGroupName `
+            -MigrateProjectName $ProjectName `
+            -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId
+        $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
+
+        # Check whether AMH record aligns with chosen Cache Storage Account
+        if (![string]::IsNullOrEmpty($amhStoredStorageAccountId) -and $amhStoredStorageAccountId -ne $cacheStorageAccount.Id) {
+            throw "Unexpected error occurred in linking Cache Storage Account with Id '$($cacheStorageAccount.Id)'. Please re-run this command or contact support if help needed."
+        }
+        elseif ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId") -and
+                $amhStoredStorageAccountId -ne $cacheStorageAccount.Id) {
+                # Update AMH record with chosen Cache Storage Account
+                $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId")  | Out-Null
+                $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $cacheStorageAccount.Id)
+                Az.Migrate.Internal\Set-AzMigrateSolution `
+                    -MigrateProjectName $ProjectName `
+                    -Name $amhSolution.Name `
+                    -ResourceGroupName $ResourceGroupName `
+                    -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
         }
         Write-Host "*Selected Cache Stroage Account: '$($cacheStorageAccount.StorageAccountName)' in Location '$($cacheStorageAccount.Location)'."
-    
-        # Put Replication Extension
+
+        # Put replication extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
         $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -Name $replicationExtensionName `
             -VaultName $replicationVaultName `
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -eq $replicationExtension) {
+
+        # Default replication extension exists
+        if ($null -ne $replicationExtension) {
+            # Give time for create/update to reach a terminal state. Timeout after 10min
+            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
+                Write-Host "Replication Extension '$($replicationExtension.Name)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
+
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+
+                    if (-not (
+                            $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                            $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Updating)) {
+                        break
+                    }
+                }
+
+                # Make sure replication extension is no longer in Creating or Updating state
+                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
+                    throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Check and remove if replication extension is in a bad terminal state
+            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                Write-Host "Replication Extension '$($replicationExtension.Name)' found but in unusable terminal Provisioning State '$($replicationExtension.Property.ProvisioningState)'. Removing Replication Extension..."
+                    
+                # Remove replication extension
+                Az.Migrate.Internal\Remove-AzMigrateReplicationExtension -InputObject $replicationExtension | Out-Null
+
+                Start-Sleep -Seconds 30
+                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+
+                # Make sure replication extension is no longer in Canceled or Failed state
+                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                    throw "Failed to change the Provisioning State of Replication Extension '$($replicationExtension.Name)'by removing. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Give time to remove replication extension. Timeout after 10min
+            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                Write-Host "Replication Extension '$($replicationExtension.Name)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
+
+                for ($i = 0; $i -lt 20; $i++) {
+                    Start-Sleep -Seconds 30
+                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+                    if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                        break
+                    }
+                    elseif ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                        continue
+                    }
+
+                    throw "Replication Extension '$($replicationExtension.Name)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
+                }
+
+                # Make sure replication extension is no longer in Deleting state
+                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                    throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                }
+            }
+
+            # Indicate replication extension was removed
+            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                Write-Host "PolReplication Extensionicy '$($replicationExtension.Name)' was removed."
+            }
+        }
+
+        # Refresh local replication extension object if exists
+        if ($null -ne $replicationExtension) {
+            $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+        }
+
+        # Create replication extension if not found or previously deleted
+        if ($null -eq $replicationExtension -or $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
             Write-Host "Waiting 2 minutes for Cache Storage Account permissions to sync before creating Replication Extension..."
             Start-Sleep -Seconds 120
-            Write-Host "Creating Replication Extension..."
 
+            Write-Host "Creating Replication Extension..."
             $params = @{
                 InstanceType                = $instanceType;
                 SourceFabricArmId           = $sourceFabric.Id;
@@ -592,56 +888,63 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         
             $replicationExtensionOperation = Az.Migrate.Internal\New-AzMigrateReplicationExtension `
                 -Name $replicationExtensionName `
-                -ResourceGroupName $resourceGroup.ResourceGroupName `
+                -ResourceGroupName $ResourceGroupName `
                 -VaultName $replicationVaultName `
                 -Property $replicationExtensionProperties `
                 -SubscriptionId $SubscriptionId
-            $operationId = $replicationExtensionOperation.Name
+            if ($null -eq $replicationExtensionOperation) {
+                throw "Replication Extension creation failed with no trackable opeartion. Please re-run this command or contact support if help needed."
+            }
 
-            # Check Replication Extension creation status every 30s
-            while ($true) {
-                $operationStatus = Az.Migrate.Internal\Get-AzMigrateReplicationExtensionOperationStatus `
-                    -ReplicationExtensionName $replicationExtensionName `
-                    -ResourceGroupName $resourceGroup.ResourceGroupName `
-                    -VaultName $replicationVault.Name `
+            # Check replication extension creation status every 30s. Timeout after 10min
+            for ($i = 0; $i -lt 20; $i++) {
+                Start-Sleep -Seconds 30
+                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
+                    -ResourceGroupName $ResourceGroupName `
+                    -Name $replicationExtensionName `
+                    -VaultName $replicationVaultName `
                     -SubscriptionId $SubscriptionId `
-                    -OperationId $operationId `
                     -ErrorVariable notPresent `
                     -ErrorAction SilentlyContinue
-                if ($null -eq $operationStatus) {
-                    throw "Replication Extension creation failed with no trackable opeartion."                        
+                if ($null -eq $replicationExtension) {
+                    throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
                 }
-                else {
-                    if ($operationStatus.Status -eq "Running") {
-                        Start-Sleep -Seconds 30
-                    }
-                    elseif ($operationStatus.Status -eq "Succeeded") {
-                        Write-Host "New Replication Extension created."
-                        break
-                    }
-                    else {
-                        throw "Replication Extension creation failed with Status '$($operationStatus.Status)'."
-                    }
+                
+                # Stop if replication extension reaches a terminal state
+                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
+                    break
                 }
             }
+
+            # Make sure replicationExtension is in a terminal state
+            if (-not (
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
+                throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
+            }
         }
-        else {
-            Write-Host "Existing Replication Extension found."
+        elseif ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Replication Extension '$($replicationExtension.Name)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
-        # Get Replication Extension
         $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-            -ResourceGroupName $resourceGroup.ResourceGroupName `
+            -ResourceGroupName $ResourceGroupName `
             -Name $replicationExtensionName `
             -VaultName $replicationVaultName `
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -eq $replicationExtension) {
-            # This should never throw.
-            throw "Replication Extension '$($replicationExtensionName)' may have been accidently deleted. Please re-run this command to re-create it."
+        if ($null -ne $polireplicationExtensioncy -and $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Succeeded) {
+            Write-Host "*Selected Replication Extension: '$($replicationExtension.Name)'."
         }
-        Write-Host "*Selected Replication Extension: '$($replicationExtension.Name)'."
+        else {
+            throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
+        }
 
         if ($PassThru) {
             return $true

@@ -54,7 +54,7 @@ input-file:
   - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
   - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/service.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/57eb648f4042e369227e48ceec890ec6b8274e9e/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+  - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
 
 module-version: 1.0.1
 title: Migrate 
@@ -114,6 +114,10 @@ directive:
     - HyperVToAzStackHCIProtectedItemModelCustomProperties
     - VMwareToAzStackHCIProtectedItemModelCustomProperties
     - PlannedFailoverModelProperties
+    - WorkflowModelProperties
+    - WorkflowModelCustomProperties
+    - TaskModel
+    - TaskModelCustomProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
@@ -249,7 +253,12 @@ directive:
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$|Remove$|Update$
-      subject: ^Solution|ProjectSummary$
+      subject: ProjectSummary$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove$|Update$
+      subject: ^Solution
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -345,11 +354,6 @@ directive:
     remove: true
   - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
     where:
-      verb: Remove
-      subject: ^(Dra|Policy|ReplicationExtension|Vault)
-    remove: true
-  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
-    where:
       verb: Update
       subject: ^Vault
     remove: true
@@ -372,6 +376,11 @@ directive:
     set:
       subject: HCIReplicationPolicy
   # Hide cmldets used by custom
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Set$
+      subject: ^Solution
+    hide: true
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
       verb: Get$
