@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Customized output property for `Get-AzCdnEdgeNode` command
 
 ## Version 3.1.0
 * Upgraded API version to 2023-05-01
