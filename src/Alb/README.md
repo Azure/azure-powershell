@@ -149,16 +149,20 @@ directive:
   - where:
       verb: New
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Get
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Update
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Remove
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
