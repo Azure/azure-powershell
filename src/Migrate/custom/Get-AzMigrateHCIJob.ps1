@@ -180,7 +180,7 @@ function Get-AzMigrateHCIJob {
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
         if ($parameterSet -match 'Get') {
-            $null = $PSBoundParameters.Add('Name', $Name)
+            $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
         return  Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters

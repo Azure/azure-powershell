@@ -171,7 +171,7 @@ function Start-AzMigrateHCIServerMigration {
             $null = $PSBoundParameters.Remove('ProtectedItemName')  
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('Property')
-            $null = $PSBoundParameters.Add('Name', $jobName)
+            $null = $PSBoundParameters.Add('JobName', $jobName)
 
             return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
         }

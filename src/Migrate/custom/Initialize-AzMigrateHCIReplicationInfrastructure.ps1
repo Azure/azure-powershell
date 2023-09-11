@@ -316,7 +316,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             # Give time for create/update to reach a terminal state. Timeout after 10min
             if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
                 $policy.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
-                Write-Host "Policy '$($policy.Name)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
+                Write-Host "Policy '$($policyName)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
@@ -332,54 +332,69 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 # Make sure Policy is no longer in Creating or Updating state
                 if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
                     $policy.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
-                    throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                    throw "Policy '$($policyName)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Check and remove if policy is in a bad terminal state
             if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
                 $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
-                Write-Host "Policy '$($policy.Name)' found but in unusable terminal Provisioning State '$($policy.Property.ProvisioningState)'. Removing policy..."
+                Write-Host "Policy '$($policyName)' found but in an unusable terminal Provisioning State '$($policy.Property.ProvisioningState)'.`nRemoving policy..."
                     
                 # Remove policy
-                Az.Migrate.Internal\Remove-AzMigratePolicy -InputObject $policy | Out-Null
+                try {
+                    Az.Migrate.Internal\Remove-AzMigratePolicy -InputObject $policy | Out-Null
+                }
+                catch {
+                    if ($_.Exception.Message -notmatch "Status: OK") {
+                        throw $_.Exception.Message
+                    }
+                }
 
                 Start-Sleep -Seconds 30
-                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                    -InputObject $policy `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
 
                 # Make sure Policy is no longer in Canceled or Failed state
-                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
-                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
-                    throw "Failed to change the Provisioning State of policy '$($policy.Name)'by removing. Please re-run this command or contact support if help needed."
+                if ($null -ne $policy -and
+                    ($policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
+                    throw "Failed to change the Provisioning State of policy '$($policyName)'by removing. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Give time to remove policy. Timeout after 10min
-            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
-                Write-Host "Policy '$($policy.Name)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
+            if ($null -eq $policy -and $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                Write-Host "Policy '$($policyName)' found in Provisioning State '$($policy.Property.ProvisioningState)'."
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
-                    if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                        -InputObject $policy `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
+                    
+                    if ($null -eq $policy -or $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
                         break
                     }
                     elseif ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
                         continue
                     }
 
-                    throw "Policy '$($policy.Name)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
+                    throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
                 }
 
                 # Make sure Policy is no longer in Deleting state
-                if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
-                    throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                if ($null -ne $policy -and $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                    throw "Policy '$($policyName)' times out with Provisioning State: '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Indicate policy was removed
-            if ($policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
-                Write-Host "Policy '$($policy.Name)' was removed."
+            if ($null -eq $policy -or $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                Write-Host "Policy '$($policyName)' was removed."
             }
         }
 
@@ -416,14 +431,19 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             $policyCustomProperties.AppConsistentFrequencyInMinute = $params.AppConsistentFrequencyInMinute
             $policyProperties.CustomProperty = $policyCustomProperties
         
-            $policyOperation = Az.Migrate.Internal\New-AzMigratePolicy `
-                -Name $policyName `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $replicationVaultName `
-                -Property $policyProperties `
-                -SubscriptionId $SubscriptionId
-            if ($null -eq $policyOperation) {
-                throw "Policy creation failed with no trackable opeartion. Please re-run this command or contact support if help needed."
+            try {
+                Az.Migrate.Internal\New-AzMigratePolicy `
+                    -Name $policyName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -VaultName $replicationVaultName `
+                    -Property $policyProperties `
+                    -SubscriptionId $SubscriptionId `
+                    -NoWait | Out-Null
+            }
+            catch {
+                if ($_.Exception.Message -notmatch "Status: OK") {
+                    throw $_.Exception.Message
+                }
             }
 
             # Check Policy creation status every 30s. Timeout after 10min
@@ -455,11 +475,12 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                     $policy.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
                     $policy.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
                     $policy.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
-                throw "Policy '$($policy.Name)' times out with Provisioning State: '$($policy.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
+                throw "Policy '$($policyName)' times out with Provisioning State: '$($policy.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
             }
         }
-        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
-            throw "Policy '$($policy.Name)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+        
+        if ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
         $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
@@ -469,11 +490,14 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -ne $policy -and $policy.Property.ProvisioningState -eq [ProvisioningState]::Succeeded) {
-            Write-Host "*Selected Policy: '$($policy.Name)'."
+        if ($null -eq $policy) {
+            throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
+        }
+        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
         else {
-            throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
+            Write-Host "*Selected Policy: '$($policyName)'."
         }
 
         # Put Cache Storage Account
@@ -544,7 +568,9 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -ResourceGroupName $ResourceGroupName `
                 -MigrateProjectName $ProjectName `
                 -Name "Servers-Migration-ServerMigration_DataReplication" `
-                -SubscriptionId $SubscriptionId
+                -SubscriptionId $SubscriptionId `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
             # Check if AMH record is removed
             if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
                 ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
@@ -740,11 +766,63 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -Scope $cacheStorageAccount.Id | Out-Null
         }
 
+        # Give time for Cache Storage Account permissions to sync. Times out after 2min
+        $rsaPermissionGranted = $false
+        for ($i = 0; $i -lt 4; $i++) {
+            # Check Source Dra AAD App access to Cache Storage Account as "Contributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.sourceAppAadId `
+                -RoleDefinitionId $params.contributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            $rsaPermissionGranted = $null -ne $hasAadAppAccess
+
+            # Check Source Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.sourceAppAadId `
+                -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            $rsaPermissionGranted = $rsaPermissionGranted -and ($null -ne $hasAadAppAccess)
+
+            # Check Target Dra AAD App access to Cache Storage Account as "Contributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.targetAppAadId `
+                -RoleDefinitionId $params.contributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            $rsaPermissionGranted = $rsaPermissionGranted -and ($null -ne $hasAadAppAccess)
+
+            # Check Target Dra AAD App access to Cache Storage Account as "StorageBlobDataContributor"
+            $hasAadAppAccess = Get-AzRoleAssignment `
+                -ObjectId $params.targetAppAadId `
+                -RoleDefinitionId $params.storageBlobDataContributorRoleDefId `
+                -Scope $cacheStorageAccount.Id `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+            $rsaPermissionGranted = $rsaPermissionGranted -and ($null -ne $hasAadAppAccess)
+
+            if ($rsaPermissionGranted) {
+                break
+            }
+
+            Start-Sleep -Seconds 30
+        }
+
+        if (!$rsaPermissionGranted) {
+            throw "Failed to grant Cache Storage Account permissions. Please re-run this command or contact support if help needed."
+        }
+
         $amhSolution = Az.Migrate\Get-AzMigrateSolution `
             -ResourceGroupName $ResourceGroupName `
             -MigrateProjectName $ProjectName `
             -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
         $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
 
         # Check whether AMH record aligns with chosen Cache Storage Account
@@ -774,16 +852,43 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
 
-        # Default replication extension exists
+        # Remove replication extension if does not match the selected Cache Storage Account
+        if ($null -ne $replicationExtension -and $replicationExtension.Property.CustomProperty.StorageAccountId -ne $cacheStorageAccount.Id) {
+            Write-Host "Replication Extension '$($replicationExtensionName)' found but linked to a different Cache Storage Account '$($replicationExtension.Property.CustomProperty.StorageAccountId)'.`nRemoving Replication Extension..."
+        
+            try {
+                Az.Migrate.Internal\Remove-AzMigrateReplicationExtension -InputObject $replicationExtension | Out-Null
+            }
+            catch {
+                if ($_.Exception.Message -notmatch "Status: OK") {
+                    throw $_.Exception.Message
+                }
+            }
+
+            Start-Sleep -Seconds 30
+            $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
+                -InputObject $replicationExtension `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+
+            if ($null -eq $replicationExtension) {
+                Write-Host "Replication Extension '$($replicationExtensionName)' was removed."
+            }
+        }
+
+        # Replication extension exists
         if ($null -ne $replicationExtension) {
             # Give time for create/update to reach a terminal state. Timeout after 10min
             if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
                 $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
-                Write-Host "Replication Extension '$($replicationExtension.Name)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
+                Write-Host "Replication Extension '$($replicationExtensionName)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
+                        -InputObject $replicationExtension `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
 
                     if (-not (
                             $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
@@ -795,54 +900,70 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 # Make sure replication extension is no longer in Creating or Updating state
                 if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
                     $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Updating) {
-                    throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                    throw "Replication Extension '$($replicationExtensionName)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Check and remove if replication extension is in a bad terminal state
             if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
                 $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
-                Write-Host "Replication Extension '$($replicationExtension.Name)' found but in unusable terminal Provisioning State '$($replicationExtension.Property.ProvisioningState)'. Removing Replication Extension..."
+                Write-Host "Replication Extension '$($replicationExtensionName)' found but in an unusable terminal Provisioning State '$($replicationExtension.Property.ProvisioningState)'.`nRemoving Replication Extension..."
                     
                 # Remove replication extension
-                Az.Migrate.Internal\Remove-AzMigrateReplicationExtension -InputObject $replicationExtension | Out-Null
+                try {
+                    Az.Migrate.Internal\Remove-AzMigrateReplicationExtension -InputObject $replicationExtension | Out-Null
+                }
+                catch {
+                    if ($_.Exception.Message -notmatch "Status: OK") {
+                        throw $_.Exception.Message
+                    }
+                }
 
                 Start-Sleep -Seconds 30
-                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
+                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
+                    -InputObject $replicationExtension `
+                    -ErrorVariable notPresent `
+                    -ErrorAction SilentlyContinue
 
                 # Make sure replication extension is no longer in Canceled or Failed state
-                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
-                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed) {
-                    throw "Failed to change the Provisioning State of Replication Extension '$($replicationExtension.Name)'by removing. Please re-run this command or contact support if help needed."
+                if ($null -ne $replicationExtension -and
+                    ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
+                    $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
+                    throw "Failed to change the Provisioning State of Replication Extension '$($replicationExtensionName)'by removing. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Give time to remove replication extension. Timeout after 10min
-            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
-                Write-Host "Replication Extension '$($replicationExtension.Name)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
+            if ($null -ne $replicationExtension -and
+                $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                Write-Host "Replication Extension '$($replicationExtensionName)' found in Provisioning State '$($replicationExtension.Property.ProvisioningState)'."
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension -InputObject $replicationExtension
-                    if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                    $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
+                        -InputObject $replicationExtension `
+                        -ErrorVariable notPresent `
+                        -ErrorAction SilentlyContinue
+
+                    if ($null -eq $replicationExtension -or $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
                         break
                     }
                     elseif ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
                         continue
                     }
 
-                    throw "Replication Extension '$($replicationExtension.Name)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
+                    throw "Replication Extension '$($replicationExtensionName)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)' during removal process. Please re-run this command or contact support if help needed."
                 }
 
                 # Make sure replication extension is no longer in Deleting state
-                if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
-                    throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+                if ($null -ne $replicationExtension -and $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleting) {
+                    throw "Replication Extension '$($replicationExtensionName)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
                 }
             }
 
             # Indicate replication extension was removed
-            if ($replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
-                Write-Host "PolReplication Extensionicy '$($replicationExtension.Name)' was removed."
+            if ($null -eq $replicationExtension -or $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+                Write-Host "Replication Extension '$($replicationExtensionName)' was removed."
             }
         }
 
@@ -853,9 +974,6 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Create replication extension if not found or previously deleted
         if ($null -eq $replicationExtension -or $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
-            Write-Host "Waiting 2 minutes for Cache Storage Account permissions to sync before creating Replication Extension..."
-            Start-Sleep -Seconds 120
-
             Write-Host "Creating Replication Extension..."
             $params = @{
                 InstanceType                = $instanceType;
@@ -885,15 +1003,20 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             $replicationExtensionCustomProperties.StorageAccountId = $params.StorageAccountId
             $replicationExtensionCustomProperties.StorageAccountSasSecretName = $params.StorageAccountSasSecretName
             $replicationExtensionProperties.CustomProperty = $replicationExtensionCustomProperties
-        
-            $replicationExtensionOperation = Az.Migrate.Internal\New-AzMigrateReplicationExtension `
-                -Name $replicationExtensionName `
-                -ResourceGroupName $ResourceGroupName `
-                -VaultName $replicationVaultName `
-                -Property $replicationExtensionProperties `
-                -SubscriptionId $SubscriptionId
-            if ($null -eq $replicationExtensionOperation) {
-                throw "Replication Extension creation failed with no trackable opeartion. Please re-run this command or contact support if help needed."
+
+            try {
+                Az.Migrate.Internal\New-AzMigrateReplicationExtension `
+                    -Name $replicationExtensionName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -VaultName $replicationVaultName `
+                    -Property $replicationExtensionProperties `
+                    -SubscriptionId $SubscriptionId `
+                    -NoWait | Out-Null
+            }
+            catch {
+                if ($_.Exception.Message -notmatch "Status: OK") {
+                    throw $_.Exception.Message
+                }
             }
 
             # Check replication extension creation status every 30s. Timeout after 10min
@@ -925,11 +1048,12 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                     $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted -or
                     $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Canceled -or
                     $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Failed)) {
-                throw "Replication Extension '$($replicationExtension.Name)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
+                throw "Replication Extension '$($replicationExtensionName)' times out with Provisioning State: '$($replicationExtension.Property.ProvisioningState)' during creation process. Please re-run this command or contact support if help needed."
             }
         }
-        elseif ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
-            throw "Replication Extension '$($replicationExtension.Name)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
+        
+        if ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Replication Extension '$($replicationExtensionName)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
         $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
@@ -939,11 +1063,14 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -SubscriptionId $SubscriptionId `
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
-        if ($null -ne $polireplicationExtensioncy -and $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Succeeded) {
-            Write-Host "*Selected Replication Extension: '$($replicationExtension.Name)'."
+        if ($null -eq $replicationExtension) {
+            throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
+        }
+        elseif ($replicationExtension.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+            throw "Replication Extension '$($replicationExtensionName)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
         else {
-            throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
+            Write-Host "*Selected Replication Extension: '$($replicationExtensionName)'."
         }
 
         if ($PassThru) {
