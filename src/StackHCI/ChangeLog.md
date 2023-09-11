@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Bug fixes for Attestation commands.
 * Added support for installing mandatory extensions on HCI OS 22H2 and removed confirmation prompt for consent.
 * Added ability to customize the location of logs generated during registration.
