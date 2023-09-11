@@ -152,6 +152,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - dyu1208
+            - FumingZhang
             - andyliuliming
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
