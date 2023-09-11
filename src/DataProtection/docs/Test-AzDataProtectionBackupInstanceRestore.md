@@ -116,7 +116,7 @@ Restore request object for which to validate
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -212,6 +212,8 @@ To create the parameters described below, construct a hash table containing the 
     - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
     - `[RestoreLocation <String>]`: Target Restore region
   - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
+  - `[IdentityDetailUseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
+  - `[IdentityDetailUserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
   - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 ## RELATED LINKS

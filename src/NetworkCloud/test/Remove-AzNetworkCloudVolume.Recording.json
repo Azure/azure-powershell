@@ -1,0 +1,129 @@
+{
+  "Remove-AzNetworkCloudVolume+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "c2ec6127-f22a-48e7-8971-1048ab204ea5" ],
+        "CommandName": [ "Remove-AzNetworkCloudVolume" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudVolume_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d017dc3-0000-0100-0000-64cad17c0000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "90d09852-c0a9-4408-a0a8-709d9cf194f9" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "1b3c0eab-e4c7-405c-8bbb-1d9c96a8e485" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230802T215820Z:1b3c0eab-e4c7-405c-8bbb-1d9c96a8e485" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 21:58:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudVolume+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "c2ec6127-f22a-48e7-8971-1048ab204ea5" ],
+        "CommandName": [ "Remove-AzNetworkCloudVolume" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudVolume_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5c09f7cb-0000-0100-0000-64cad1820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "d6268b1a-6aba-4dd2-bc67-3714ef43022f" ],
+        "x-ms-correlation-request-id": [ "8d483ba8-da6c-493f-9409-445e5b4a1028" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230802T215851Z:8d483ba8-da6c-493f-9409-445e5b4a1028" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 21:58:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "646" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248\",\"name\":\"14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-02T21:58:20.6399559Z\",\"endTime\":\"2023-08-02T21:58:26.0534451Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudVolume+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "c2ec6127-f22a-48e7-8971-1048ab204ea5" ],
+        "CommandName": [ "Remove-AzNetworkCloudVolume" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudVolume_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5c09f7cb-0000-0100-0000-64cad1820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "6e0ed938-711b-4abd-8592-add9e85de051" ],
+        "x-ms-correlation-request-id": [ "1a835e7a-42f6-4080-8b35-2940e0f5b6b2" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230802T215851Z:1a835e7a-42f6-4080-8b35-2940e0f5b6b2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 21:58:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "646" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248\",\"name\":\"14ab4fb4-3e81-47d4-b6e0-e86841073cce*B304E4347483C98F966906D32D3B40D4BF3EC7713F808A4CEA6B93CB47EF8248\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/m16-1-739d849be2fc-HostedResources-61763B01/providers/Microsoft.NetworkCloud/volumes/ps-test-volume\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-02T21:58:20.6399559Z\",\"endTime\":\"2023-08-02T21:58:26.0534451Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

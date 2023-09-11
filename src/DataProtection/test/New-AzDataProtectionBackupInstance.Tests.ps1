@@ -43,18 +43,19 @@ Describe 'New-AzDataProtectionBackupInstance' {
     }
 
     It 'AzureKubernetesServiceBackup' {
-        $sub = $env.TestAksBackupScenario.SubscriptionId
-        $rgName = $env.TestAksBackupScenario.ResourceGroupName
-        $vaultName = $env.TestAksBackupScenario.VaultName
-        $policyName = $env.TestAksBackupScenario.PolicyName
-        $dataSourceLocation = $env.TestAksBackupScenario.DataSourceLocation
-        $sourceClusterId = $env.TestAksBackupScenario.SourceClusterId
-        $targetClusterId = $env.TestAksBackupScenario.TargetClusterId
-        $snapshotResourceGroupId = $env.TestAksBackupScenario.SnapshotResourceGroupId
-        $friendlyName = $env.TestAksBackupScenario.FriendlyName
+        $sub = $env.TestAksRestoreScenario.SubscriptionId
+        $rgName = $env.TestAksRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestAksRestoreScenario.VaultName
+        $policyName = $env.TestAksRestoreScenario.PolicyName
+        $dataSourceLocation = $env.TestAksRestoreScenario.DataSourceLocation
+        $sourceClusterId = $env.TestAksRestoreScenario.SourceClusterId
+        $targetClusterId = $env.TestAksRestoreScenario.TargetClusterId
+        $snapshotResourceGroupId = $env.TestAksRestoreScenario.SnapshotResourceGroupId
+        $friendlyName = $env.TestAksRestoreScenario.FriendlyName
+        $clusterName = $env.TestAksRestoreScenario.ClusterName
         
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName        
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match "aks-pstest" }        
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }        
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
 
         # remove permissions
@@ -73,27 +74,27 @@ Describe 'New-AzDataProtectionBackupInstance' {
         # Remove-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId -RoleDefinitionName "Contributor" -Scope $snapshotResourceGroupId
 
         # configure backup        
-        if($backupInstance -eq $null){
-            $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService # -LabelSelector "x=y","foo=bar"
+        # if($backupInstance -eq $null){
+            # $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService # -LabelSelector "x=y","foo=bar"
 
-            $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
+            # $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
                         
             ## set MSI permissions
             # Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup"
 
             ## enable protection
-            $tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2027"}
-            $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag        
-        }
+            # $tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2027"}
+            # $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag        
+        # }
         
         # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match "aks-pstest" }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
         ($backupInstance -ne $null) | Should be $true
                 
         while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
         {
             Start-Sleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match "aks-pstest" }
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
         }
 
         # adhoc backup
@@ -106,9 +107,9 @@ Describe 'New-AzDataProtectionBackupInstance' {
 
         # restore
         if($rps -ne $null){
-            $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData  -IncludeClusterScopeResource $true # -NamespaceMapping  @{"default"="restore-default";"ns1"="ns2"}
+            $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData  -IncludeClusterScopeResource $true # -NamespaceMapping  @{"default"="restore-default";"ns1"="ns2"}
 
-            $aksRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService  -SourceDataStore OperationalStore -RestoreLocation $dataSourceLocation -RestoreType OriginalLocation -RecoveryPoint $rps[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -BackupInstance $backupInstance 
+            $aksRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService  -SourceDataStore OperationalStore -RestoreLocation $dataSourceLocation -RestoreType OriginalLocation -RecoveryPoint $rps[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -BackupInstance $backupInstance
 
             # Set-AzDataProtectionMSIPermission -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $aksRestoreRequest -SnapshotResourceGroupId $snapshotResourceGroupId
 

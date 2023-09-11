@@ -1,0 +1,74 @@
+name: 🐛 AzureRM module bug report
+description: Report errors or unexpected behaviors for the AzureRM module
+labels: [needs-triage, AzureRM 6.x]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Thanks for reporting.
+
+      - AzureRM PowerShell modules will be retired on 29 February 2024. For more information, you can visit [Azure PowerShell Support Lifecycle](https://docs.microsoft.com/en-us/powershell/azure/azureps-support-lifecycle).
+      
+      - Please migrate module to Az and check whether issue can be resolved.
+
+      - Please search the existing issues to see if there has been a similar issue filed
+- type: textarea
+  attributes:
+    label: Description
+    description: >
+      Please describe the issue and expected result. Please paste error script to next "Debug output" section 
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Issue script & Debug output
+    description: >
+      Set `$DebugPreference='Continue'` before running the repro and paste the resulting debug stream in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> $DebugPreference='Continue'
+      PS> {}-Az{} ...
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Environment data
+    description: >
+      Please run `$PSVersionTable` and paste the output in the below textarea.
+      If running the Docker container image, indicate the tag of the image used and the version of Docker engine
+    render: PowerShell
+    placeholder: |
+      PS> $PSVersionTable
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Module versions
+    description: >
+      Please run `Get-Module AzureRM*` after cmdlet execution and paste the output in the below textarea.
+
+      If module cannot be installed or imported, please run `Get-Module -ListAvailable` and paste the output.
+    render: PowerShell
+    placeholder: |
+      PS> Get-Module AzureRM*
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Error output
+    description: >
+      Please run `Resolve-AzureRMError` and paste the output in the below textarea
+
+      **⚠ ATTENTION:** Be sure to remove any sensitive information that may be in the logs
+    render: PowerShell
+    placeholder: |
+      PS> Resolve-AzureRMError
+  validations:
+    required: false
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.
