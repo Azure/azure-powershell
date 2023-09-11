@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug fixes for Attestation commands.
 * Added support for installing mandatory extensions on HCI OS 22H2 and removed confirmation prompt for consent.
 * Added ability to customize the location of logs generated during registration.
     - Custom log location can be specified by specifying an optional `-LogsDirectory` parameter in `Register-AzStackHCI`.
