@@ -53,27 +53,21 @@ Create storage for a connectedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create storage for a connectedEnvironment.
 ```powershell
-{{ Add code here }}
+New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location canadacentral -SkuName Standard_GRS
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
+
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -StorageName azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create storage for a connectedEnvironment.
 
 ## PARAMETERS
 

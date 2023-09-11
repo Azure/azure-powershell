@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityprovidersobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityproviderobject
 schema: 2.0.0
 ---
 
-# New-AzContainerAppIdentityProvidersObject
+# New-AzContainerAppIdentityProviderObject
 
 ## SYNOPSIS
 Create an in-memory object for IdentityProviders.
@@ -13,7 +13,7 @@ Create an in-memory object for IdentityProviders.
 ## SYNTAX
 
 ```
-New-AzContainerAppIdentityProvidersObject [-AllowedPrincipalGroup <String[]>]
+New-AzContainerAppIdentityProviderObject [-AllowedPrincipalGroup <String[]>]
  [-AllowedPrincipalIdentity <String[]>] [-AppleEnabled <Boolean>] [-AppleLoginScope <String[]>]
  [-AppleRegistrationClientId <String>] [-AppleRegistrationClientSecretSettingName <String>]
  [-AzureActiveDirectoryEnabled <Boolean>] [-AzureActiveDirectoryIsAutoProvisioned <Boolean>]
@@ -42,27 +42,19 @@ Create an in-memory object for IdentityProviders.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an IdentityProviders object for AuthConfig.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-secret
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+...                              : ...
+RegistrationAppId                : xxxxxx@xxx.com
+RegistrationAppSecretSettingName : redis-secret
+...                              : ...
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an IdentityProviders object for AuthConfig.
 
 ## PARAMETERS
 

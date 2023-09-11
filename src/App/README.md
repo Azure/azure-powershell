@@ -79,6 +79,45 @@ directive:
         "format": "password",
         "x-ms-secret": true
       }
+  - from: swagger-document 
+    where: $.definitions.GithubActionConfiguration.properties.githubPersonalAccessToken
+    transform: >-
+      return {
+        "description": "One time Github PAT to configure github environment",
+        "type": "string",
+        "x-ms-mutability": [
+          "create",
+          "update"
+        ],
+        "format": "password",
+        "x-ms-secret": true
+      }
+  - from: swagger-document 
+    where: $.definitions.RegistryInfo.properties.registryPassword
+    transform: >-
+      return {
+        "description": "registry secret.",
+        "type": "string",
+        "x-ms-mutability": [
+          "create",
+          "update"
+        ],
+        "format": "password",
+        "x-ms-secret": true
+      }
+  - from: swagger-document 
+    where: $.definitions.AzureCredentials.properties.clientSecret
+    transform: >-
+      return {
+        "description": "Client Secret.",
+        "type": "string",
+        "x-ms-mutability": [
+          "create",
+          "update"
+        ],
+        "format": "password",
+        "x-ms-secret": true
+      }
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
@@ -239,18 +278,31 @@ directive:
     set:
       subject: ContainerAppJobMultipleExecution
 
+  - where:
+      verb: Invoke|Get
+      subject: ContainerAppJobExecution
+    hide: true
+
+  - where:
+      subject: ContainerAppSourceControl
+      parameter-name: SourceControlName
+    hide: true
+    set:
+      default:
+        script: "'current'"
+
   # Modifications were made to the command
   # - model-cmdlet:
   #   - model-name: RegistryCredentials
-  #     cmdlet-name: New-AzContainerAppRegistryCredentialsObject
+  #     cmdlet-name: New-AzContainerAppRegistryCredentialObject
   #   - model-name: Secret
   #     cmdlet-name: New-AzContainerAppSecretObject
   #   - model-name: JobScaleRule
   #     cmdlet-name: New-AzContainerAppJobScaleRuleObject
   #   - model-name: Container
-  #     cmdlet-name: New-AzContainerAppObject
+  #     cmdlet-name: New-AzContainerAppTemplateObject
   #   - model-name: InitContainer
-  #     cmdlet-name: New-AzContainerAppInitContainerObject
+  #     cmdlet-name: New-AzContainerAppInitContainerTemplateObject
   #   - model-name: Volume
   #     cmdlet-name: New-AzContainerAppVolumeObject
   #   - model-name: DaprMetadata
@@ -258,7 +310,7 @@ directive:
   #   - model-name: WorkloadProfile
   #     cmdlet-name: New-AzContainerAppWorkloadProfileObject
   #   - model-name: IdentityProviders
-  #     cmdlet-name: New-AzContainerAppIdentityProvidersObject
+  #     cmdlet-name: New-AzContainerAppIdentityProviderObject
   #   - model-name: Configuration
   #     cmdlet-name: New-AzContainerAppConfigurationObject
   #   - model-name: ScaleRule
@@ -284,7 +336,7 @@ directive:
   #   - model-name: SecretVolumeItem
   #     cmdlet-name: New-AzContainerAppSecretVolumeItemObject
   #   - model-name: ContainerAppProbeHttpGetHttpHeadersItem
-  #     cmdlet-name: New-AzContainerAppProbeHttpGetHttpHeadersItemObject
+  #     cmdlet-name: New-AzContainerAppProbeHeaderObject
 
   - where:
       parameter-name: ComponentName
@@ -362,18 +414,41 @@ directive:
           - Name
           - PlatformEnabled
           - ResourceGroupName
-
-  # - where:
-  #     subject: ContainerAppSourceControl
-  #   remove: true
-  # - where:
-  #     verb: Update
-  #     subject: ContainerAppManagedEnv
-  #   remove: true
-  # - where:
-  #     subject: ContainerAppRevisionReplica
-  #   remove: true
-  # - where:
-  #     subject: ContainerAppCustomHostName
-  #   remove: true
+  - where:
+      model-name: ConnectedEnvironment
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: ConnectedEnvironmentStorage
+    set:
+      format-table:
+        properties:
+          - Name
+          - AzureFileAccessMode
+          - AzureFileAccountName
+          - AzureFileShareName
+          - ResourceGroupName
+  - where:
+      model-name: Job
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: SourceControl
+    set:
+      format-table:
+        properties:
+          - Branch
+          - Name
+          - RepoUrl
+          - RegistryInfoRegistryUserName
+          - ResourceGroupName
 ```

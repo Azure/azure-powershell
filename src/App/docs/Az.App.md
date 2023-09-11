@@ -63,7 +63,7 @@ Get the properties of a Container App.
 Get the properties of a Container Apps Job.
 
 ### [Get-AzContainerAppJobExecution](Get-AzContainerAppJobExecution.md)
-Get a Container Apps Job's executions
+Get details of a single job execution
 
 ### [Get-AzContainerAppJobSecret](Get-AzContainerAppJobSecret.md)
 List secrets for a container apps job
@@ -110,9 +110,6 @@ List secrets for a container app
 ### [Get-AzContainerAppSourceControl](Get-AzContainerAppSourceControl.md)
 Get a SourceControl of a Container App.
 
-### [Invoke-AzContainerAppJobExecution](Invoke-AzContainerAppJobExecution.md)
-Get details of a single job execution
-
 ### [New-AzContainerApp](New-AzContainerApp.md)
 Create a Container App.
 
@@ -143,10 +140,10 @@ Create an in-memory object for DaprMetadata.
 ### [New-AzContainerAppEnvironmentVarObject](New-AzContainerAppEnvironmentVarObject.md)
 Create an in-memory object for EnvironmentVar.
 
-### [New-AzContainerAppIdentityProvidersObject](New-AzContainerAppIdentityProvidersObject.md)
+### [New-AzContainerAppIdentityProviderObject](New-AzContainerAppIdentityProviderObject.md)
 Create an in-memory object for IdentityProviders.
 
-### [New-AzContainerAppInitContainerObject](New-AzContainerAppInitContainerObject.md)
+### [New-AzContainerAppInitContainerTemplateObject](New-AzContainerAppInitContainerTemplateObject.md)
 Create an in-memory object for InitContainer.
 
 ### [New-AzContainerAppIPSecurityRestrictionRuleObject](New-AzContainerAppIPSecurityRestrictionRuleObject.md)
@@ -176,16 +173,13 @@ Create a Dapr Component in a Managed Environment.
 ### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
 Create storage for a managedEnvironment.
 
-### [New-AzContainerAppObject](New-AzContainerAppObject.md)
-Create an in-memory object for Container.
-
-### [New-AzContainerAppProbeHttpGetHttpHeadersItemObject](New-AzContainerAppProbeHttpGetHttpHeadersItemObject.md)
+### [New-AzContainerAppProbeHeaderObject](New-AzContainerAppProbeHeaderObject.md)
 Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 ### [New-AzContainerAppProbeObject](New-AzContainerAppProbeObject.md)
 Create an in-memory object for ContainerAppProbe.
 
-### [New-AzContainerAppRegistryCredentialsObject](New-AzContainerAppRegistryCredentialsObject.md)
+### [New-AzContainerAppRegistryCredentialObject](New-AzContainerAppRegistryCredentialObject.md)
 Create an in-memory object for RegistryCredentials.
 
 ### [New-AzContainerAppScaleRuleAuthObject](New-AzContainerAppScaleRuleAuthObject.md)
@@ -205,6 +199,9 @@ Create an in-memory object for ServiceBind.
 
 ### [New-AzContainerAppSourceControl](New-AzContainerAppSourceControl.md)
 Create the SourceControl for a Container App.
+
+### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
+Create an in-memory object for Container.
 
 ### [New-AzContainerAppTrafficWeightObject](New-AzContainerAppTrafficWeightObject.md)
 Create an in-memory object for TrafficWeight.

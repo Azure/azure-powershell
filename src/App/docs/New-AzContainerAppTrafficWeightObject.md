@@ -22,27 +22,18 @@ Create an in-memory object for TrafficWeight.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for TrafficWeight.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppTrafficWeightObject -Label "production" -RevisionName "testcontainerApp0-ab1234" -Weight 100 -LatestRevision:$True
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Label      LatestRevision RevisionName             Weight
+-----      -------------- ------------             ------
+production True           testcontainerApp0-ab1234 100
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for TrafficWeight.
 
 ## PARAMETERS
 

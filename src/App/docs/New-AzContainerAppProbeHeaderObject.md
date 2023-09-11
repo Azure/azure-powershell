@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobehttpgethttpheadersitemobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeheaderobject
 schema: 2.0.0
 ---
 
-# New-AzContainerAppProbeHttpGetHttpHeadersItemObject
+# New-AzContainerAppProbeHeaderObject
 
 ## SYNOPSIS
 Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
@@ -13,7 +13,7 @@ Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 ## SYNTAX
 
 ```
-New-AzContainerAppProbeHttpGetHttpHeadersItemObject -Name <String> -Value <String> [<CommonParameters>]
+New-AzContainerAppProbeHeaderObject -Name <String> -Value <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,27 +21,18 @@ Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a ContainerAppProbeHttpGetHttpHeadersItem object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Value
+----          -----
+Custom-Header Awesome
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a ContainerAppProbeHttpGetHttpHeadersItem object for ContainerApp.
 
 ## PARAMETERS
 

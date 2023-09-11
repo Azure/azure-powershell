@@ -8,17 +8,35 @@ schema: 2.0.0
 # Get-AzContainerAppJobExecution
 
 ## SYNOPSIS
-Get a Container Apps Job's executions
+Get details of a single job execution
 
 ## SYNTAX
 
+### Job (Default)
 ```
-Get-AzContainerAppJobExecution -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzContainerAppJobExecution -JobName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### JobViaIdentity
+```
+Get-AzContainerAppJobExecution -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### JobViaIdentityJob
+```
+Get-AzContainerAppJobExecution -JobInputObject <IAppIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzContainerAppJobExecution -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a Container Apps Job's executions
+Get details of a single job execution
 
 ## EXAMPLES
 
@@ -67,7 +85,7 @@ The filter to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -77,13 +95,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: JobViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JobInputObject
+Identity Parameter
+To construct, see NOTES section for JOBINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: JobViaIdentityJob
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JobName
 Job Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Job, List
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Job execution name.
+
+```yaml
+Type: System.String
+Parameter Sets: Job, JobViaIdentityJob
+Aliases: JobExecutionName
 
 Required: True
 Position: Named
@@ -98,7 +163,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Job, List
 Aliases:
 
 Required: True
@@ -112,8 +177,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Job, List
 Aliases:
 
 Required: False
@@ -127,6 +192,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 
 ## OUTPUTS
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappinitcontainerobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappinitcontainertemplateobject
 schema: 2.0.0
 ---
 
-# New-AzContainerAppInitContainerObject
+# New-AzContainerAppInitContainerTemplateObject
 
 ## SYNOPSIS
 Create an in-memory object for InitContainer.
@@ -13,9 +13,9 @@ Create an in-memory object for InitContainer.
 ## SYNTAX
 
 ```
-New-AzContainerAppInitContainerObject [-Arg <String[]>] [-Command <String[]>] [-Env <IEnvironmentVar[]>]
- [-Image <String>] [-Name <String>] [-ResourceCpu <Double>] [-ResourceMemory <String>]
- [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+New-AzContainerAppInitContainerTemplateObject [-Arg <String[]>] [-Command <String[]>]
+ [-Env <IEnvironmentVar[]>] [-Image <String>] [-Name <String>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,18 @@ Create an in-memory object for InitContainer.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for InitContainer.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","while true; do echo hello; sleep 10;done"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Image                                    Name                          ResourceCpu ResourceEphemeralStorage ResourceMemory
+-----                                    ----                          ----------- ------------------------ --------------
+mcr.microsoft.com/k8se/quickstart:latest simple-hello-world-container2 0.25                                 0.5Gi
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for InitContainer.
 
 ## PARAMETERS
 

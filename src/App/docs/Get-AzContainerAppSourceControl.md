@@ -12,16 +12,10 @@ Get a SourceControl of a Container App.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -31,8 +25,14 @@ Get-AzContainerAppSourceControl -InputObject <IAppIdentity> [-DefaultProfile <PS
 
 ### GetViaIdentityContainerApp
 ```
-Get-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,21 +134,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceControlName
-Name of the Container App SourceControl.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityContainerApp
 Aliases:
 
 Required: True

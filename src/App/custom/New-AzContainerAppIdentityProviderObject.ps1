@@ -23,9 +23,9 @@ Create an in-memory object for IdentityProviders.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 .Link
-https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityprovidersobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityproviderobject
 #>
-function New-AzContainerAppIdentityProvidersObject {
+function New-AzContainerAppIdentityProviderObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

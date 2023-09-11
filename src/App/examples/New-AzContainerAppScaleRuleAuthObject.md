@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a ScaleRuleAuth object for ScaleRule.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppScaleRuleAuthObject -SecretRef "redis-secret" -TriggerParameter "TriggerParameter"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+SecretRef    TriggerParameter
+---------    ----------------
+redis-secret TriggerParameter
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a ScaleRuleAuth object for ScaleRule.

@@ -22,27 +22,18 @@ Create an in-memory object for VolumeMount.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a VolumeMount object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeName"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MountPath  SubPath VolumeName
+---------  ------- ----------
+/mountPath         VolumeName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a VolumeMount object for ContainerApp.
 
 ## PARAMETERS
 

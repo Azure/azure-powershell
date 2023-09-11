@@ -15,44 +15,44 @@ Create the SourceControl for a Container App.
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> [-SubscriptionId <String>] [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <String>] [-AzureCredentialsKind <String>]
+ [-SubscriptionId <String>] [-AzureCredentialsClientId <String>]
+ [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
  [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
  [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
 ```
-Update-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
- [-AzureCredentialsClientId <String>] [-AzureCredentialsClientSecret <String>]
+Update-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity>
+ [-AzureCredentialsClientId <String>] [-AzureCredentialsClientSecret <SecureString>]
  [-AzureCredentialsKind <String>] [-AzureCredentialsSubscriptionId <String>]
  [-AzureCredentialsTenantId <String>] [-Branch <String>] [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <String>] [-AzureCredentialsKind <String>]
+ [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
  [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
  [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Client Secret.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 One time Github PAT to configure github environment
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 registry secret.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -439,21 +439,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceControlName
-Name of the Container App SourceControl.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
 Aliases:
 
 Required: True

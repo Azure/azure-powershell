@@ -72,27 +72,20 @@ Create the AuthConfig for a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create the AuthConfig for a Container App.
 ```powershell
-{{ Add code here }}
+$identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-config
+
+New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create the AuthConfig for a Container App.
 
 ## PARAMETERS
 

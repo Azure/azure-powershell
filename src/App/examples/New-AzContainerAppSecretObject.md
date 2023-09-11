@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for Secret.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppSecretObject -Name "redis-secret" -Value "redis-password"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Identity KeyVaultUrl Name         Value
+-------- ----------- ----         -----
+                     redis-secret redis-password
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for Secret.

@@ -21,27 +21,18 @@ Create an in-memory object for ServiceBind.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ServiceBind.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppServiceBindObject -Name "redisService" -ServiceId "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.App/containerApps/azps-containerapp-1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ServiceId
+----         ---------
+redisService /subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.App/containerApps/azps-containerapp-1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ServiceBind.
 
 ## PARAMETERS
 

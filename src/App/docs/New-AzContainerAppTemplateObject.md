@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptemplateobject
 schema: 2.0.0
 ---
 
-# New-AzContainerAppObject
+# New-AzContainerAppTemplateObject
 
 ## SYNOPSIS
 Create an in-memory object for Container.
@@ -13,9 +13,9 @@ Create an in-memory object for Container.
 ## SYNTAX
 
 ```
-New-AzContainerAppObject [-Arg <String[]>] [-Command <String[]>] [-Env <IEnvironmentVar[]>] [-Image <String>]
- [-Name <String>] [-Probe <IContainerAppProbe[]>] [-ResourceCpu <Double>] [-ResourceMemory <String>]
- [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+New-AzContainerAppTemplateObject [-Arg <String[]>] [-Command <String[]>] [-Env <IEnvironmentVar[]>]
+ [-Image <String>] [-Name <String>] [-Probe <IContainerAppProbe[]>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,21 @@ Create an in-memory object for Container.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for Container.
 ```powershell
-{{ Add code here }}
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+$probe = New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
+
+New-AzContainerAppTemplateObject -Image "repo/testcontainerApp0:v1" -Name "testcontainerApp0" -Probe $probe
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Image                     Name              ResourceCpu ResourceEphemeralStorage ResourceMemory
+-----                     ----              ----------- ------------------------ --------------
+repo/testcontainerApp0:v1 testcontainerApp0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for Container.
 
 ## PARAMETERS
 

@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Certificate.
 ```powershell
-{{ Add code here }}
+New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+Get-ChildItem -Path cert:\LocalMachine\My
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
+
+New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location canadacentral -InputFile "C:\mypfx.pfx" -Password $mypwd
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          --------      ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com F61C9A8C53D0500F819463A66C5921AA09E1B787 azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a Certificate.

@@ -23,9 +23,9 @@ Create an in-memory object for InitContainer.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer
 .Link
-https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappinitcontainerobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappinitcontainertemplateobject
 #>
-function New-AzContainerAppInitContainerObject {
+function New-AzContainerAppInitContainerTemplateObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

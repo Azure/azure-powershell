@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappregistrycredentialsobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappregistrycredentialobject
 schema: 2.0.0
 ---
 
-# New-AzContainerAppRegistryCredentialsObject
+# New-AzContainerAppRegistryCredentialObject
 
 ## SYNOPSIS
 Create an in-memory object for RegistryCredentials.
@@ -13,7 +13,7 @@ Create an in-memory object for RegistryCredentials.
 ## SYNTAX
 
 ```
-New-AzContainerAppRegistryCredentialsObject [-Identity <String>] [-PasswordSecretRef <String>]
+New-AzContainerAppRegistryCredentialObject [-Identity <String>] [-PasswordSecretRef <String>]
  [-Server <String>] [-Username <String>] [<CommonParameters>]
 ```
 
@@ -22,27 +22,18 @@ Create an in-memory object for RegistryCredentials.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a RegistryCredentials object for ContainerApp.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp-1 -Username azps-container-user
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Identity PasswordSecretRef Server              Username
+-------- ----------------- ------              --------
+system   myloginpassword   azps-containerapp-1 azps-container-user
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a RegistryCredentials object for ContainerApp.
 
 ## PARAMETERS
 

@@ -15,58 +15,58 @@ Create the SourceControl for a Container App.
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> [-SubscriptionId <String>] [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <String>] [-AzureCredentialsKind <String>]
+ [-SubscriptionId <String>] [-AzureCredentialsClientId <String>]
+ [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
  [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
  [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityContainerAppExpanded
 ```
-New-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
- [-AzureCredentialsClientId <String>] [-AzureCredentialsClientSecret <String>]
- [-AzureCredentialsKind <String>] [-AzureCredentialsSubscriptionId <String>]
- [-AzureCredentialsTenantId <String>] [-Branch <String>] [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> [-AzureCredentialsClientId <String>]
+ [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
+ [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
+ [-GithubActionConfigurationContextPath <String>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <String>] [-AzureCredentialsKind <String>]
+ [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
  [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
  [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <String>] [-GithubActionConfigurationImage <String>]
- [-GithubActionConfigurationOS <String>] [-GithubActionConfigurationPublishType <String>]
- [-GithubActionConfigurationRuntimeStack <String>] [-GithubActionConfigurationRuntimeVersion <String>]
- [-RegistryInfoRegistryPassword <String>] [-RegistryInfoRegistryUrl <String>]
- [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
+ [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
+ [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
+ [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
+ [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,27 +74,25 @@ Create the SourceControl for a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create the SourceControl for a Container App.
 ```powershell
-{{ Add code here }}
+$AzureCredentialsClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$RegistryInfoRegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$GithubActionConfigurationGithubPersonalAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+
+New-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -AzureCredentialsClientId "UserObjectId" -AzureCredentialsClientSecret $AzureCredentialsClientSecret -AzureCredentialsKind "feaderated" -AzureCredentialsTenantId "UserDirectoryID" -Branch "main" -GithubActionConfigurationContextPath "./" -GithubActionConfigurationGithubPersonalAccessToken $GithubActionConfigurationGithubPersonalAccessToken -GithubActionConfigurationImage "azps-containerapp-1" -RegistryInfoRegistryPassword $RegistryInfoRegistryPassword -RegistryInfoRegistryUrl "azpscontainerregistry.azurecr.io" -RegistryInfoRegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create the SourceControl for a Container App.
+User need to create a base resource of resource type "ContainerRegistry" and set AccessKeys to Enabled.
+User needs to provide the ObjectId(AzureCredentialsClientId) and password of the current account.
+User needs to provide the DirectoryID(AzureCredentialsTenantId) of the current account.
 
 ## PARAMETERS
 
@@ -132,7 +130,7 @@ Accept wildcard characters: False
 Client Secret.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -269,7 +267,7 @@ Accept wildcard characters: False
 One time Github PAT to configure github environment
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -420,7 +418,7 @@ Accept wildcard characters: False
 registry secret.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -483,21 +481,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceControlName
-Name of the Container App SourceControl.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True

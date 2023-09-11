@@ -25,27 +25,20 @@ Create an in-memory object for ContainerAppProbe.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ContainerAppProbe.
 ```powershell
-{{ Add code here }}
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+
+New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+FailureThreshold InitialDelaySecond PeriodSecond SuccessThreshold TerminationGracePeriodSecond TimeoutSecond
+---------------- ------------------ ------------ ---------------- ---------------------------- -------------
+                 3                  3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ContainerAppProbe.
 
 ## PARAMETERS
 

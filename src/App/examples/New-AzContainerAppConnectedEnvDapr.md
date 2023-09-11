@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Dapr Component in a connected environment.
 ```powershell
-{{ Add code here }}
+$scope = @("container-app-1","container-app-2")
+$secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+$daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
+
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv2 -ResourceGroupName azps_test_group_app -DaprName azps-connectedenvdapr -ComponentType "state.azure.cosmosdb" -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName    Version
+----                  -------------        ----------- ----------- -----------------    -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a Dapr Component in a connected environment.

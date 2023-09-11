@@ -23,9 +23,9 @@ Create an in-memory object for Container.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container
 .Link
-https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptemplateobject
 #>
-function New-AzContainerAppObject {
+function New-AzContainerAppTemplateObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

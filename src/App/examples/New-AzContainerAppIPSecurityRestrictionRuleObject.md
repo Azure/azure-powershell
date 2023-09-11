@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for IPSecurityRestrictionRule.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppIPSecurityRestrictionRuleObject -Action "Allow" -IPAddressRange "192.168.1.1/32" -Name "Allow work IP A subnet"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Action Description IPAddressRange Name
+------ ----------- -------------- ----
+Allow              192.168.1.1/32 Allow work IP A subnet
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for IPSecurityRestrictionRule.

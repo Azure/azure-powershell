@@ -15,8 +15,8 @@ Delete a Container App SourceControl.
 ### Delete (Default)
 ```
 Remove-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- -SourceControlName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -27,8 +27,8 @@ Remove-AzContainerAppSourceControl -InputObject <IAppIdentity> [-DefaultProfile 
 
 ### DeleteViaIdentityContainerApp
 ```
-Remove-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -SourceControlName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,21 +175,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceControlName
-Name of the Container App SourceControl.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityContainerApp
 Aliases:
 
 Required: True
