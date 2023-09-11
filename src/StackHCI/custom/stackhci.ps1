@@ -4957,7 +4957,7 @@ param(
                 $IsManagementNode = $True
             }
 
-            $LogFilePrefix = "EnableAzureStackHCIImds"
+            $LogFilePrefix = "EnableAzStackHCIAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             $date = Get-Date
             $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
@@ -4967,7 +4967,6 @@ param(
                 $DebugLogFileName = $LogFilePrefix + "_" + "debug"+ "_" +$datestring + ".log"
                 Start-Transcript -LiteralPath $DebugLogFileName -Append | Out-Null
             }
-            #Show-LatestModuleVersion
 
             $percentComplete = 1
             Write-Progress -Id $MainProgressBarId -activity $EnableAzsHciImdsActivity -status $FetchingRegistrationState -percentcomplete $percentComplete
@@ -4983,7 +4982,7 @@ param(
             {
                 $SessionParams.Add("ComputerName", $ComputerName)
                 
-                if($Null -eq $Credential)
+                if($Null -ne $Credential)
                 {
                     $SessionParams.Add("Credential", $Credential)
                 }
@@ -5014,13 +5013,9 @@ param(
             $ClusterName, $ClusterNodes, $ClusterNodeStateUp  = Invoke-Command @SessionParams -ScriptBlock {
                 $name           = (Get-Cluster).Name
                 $nodes          = Get-ClusterNode
-                $nodeStateUp    = "Up"
+                $nodeStateUp    = "Up" # Using FailoverCluster ClusterNodeState Enum type here will fail on management nodes without cluster RSAT
 
                 return $name, $nodes, $nodeStateUp
-            }
-
-            if($ClusterNodeStateUp.Value -ne $null) {
-                $ClusterNodeStateUp = $ClusterNodeStateUp.Value
             }
 
             # Validate Cluster nodes are online
@@ -5037,7 +5032,7 @@ param(
         }
         catch
         {
-            Write-ErrorLog -Message "Exception occurred in Enable-AzueStackHCIImdsAttestation" -Exception $_ -Category OperationStopped  -ErrorAction Continue
+            Write-ErrorLog -Message "Exception occurred in Enable-AzStackHCIAttestation" -Exception $_ -Category OperationStopped  -ErrorAction Continue
             throw
         }
     }
@@ -5249,7 +5244,7 @@ param(
                 $IsManagementNode = $True
             }
 
-            $LogFilePrefix = "DisableAzureStackHCIImds"
+            $LogFilePrefix = "DisableAzStackHCIAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             
             $date = Get-Date
@@ -5272,7 +5267,7 @@ param(
             {
                 $SessionParams.Add("ComputerName", $ComputerName)
                 
-                if($Null -eq $Credential)
+                if($Null -ne $Credential)
                 {
                     $SessionParams.Add("Credential", $Credential)
                 }
@@ -5330,7 +5325,7 @@ param(
         }
         catch
         {
-            Write-ErrorLog ("Exception occurred in Enable-AzueStackHCIImdsAttestation") -Exception $_ -Category OperationStopped -ErrorAction Continue
+            Write-ErrorLog ("Exception occurred in Disable-AzStackHCIAttestation") -Exception $_ -Category OperationStopped -ErrorAction Continue
             throw
         }
     }
@@ -5390,7 +5385,7 @@ param(
             }
             catch 
             {
-                Write-ErrorLog ("Exception occurred in Enable-AzueStackHCIImdsAttestation") -Exception $_ -Category OperationStopped -ErrorAction Continue
+                Write-ErrorLog ("Exception occurred in Disable-AzStackHCIAttestation") -Exception $_ -Category OperationStopped -ErrorAction Continue
                 throw
             }
         }
@@ -5460,7 +5455,7 @@ param(
 
         try
         {
-            $LogFilePrefix = "AddAzureStackHCIImds"
+            $LogFilePrefix = "AddAzStackHCIVMAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             $date = Get-Date
             $datestring = "{0}{1:d2}{2:d2}-{3:d2}{4:d2}" -f $date.year,$date.month,$date.day,$date.hour,$date.minute
@@ -5653,7 +5648,7 @@ param(
 
         try
         {
-            $LogFilePrefix = "RemoveAzureStackHCIImds"
+            $LogFilePrefix = "RemoveAzStackHCIVMAttestation"
             $DebugEnabled = $DebugPreference -ne "SilentlyContinue"
             
             $date = Get-Date
