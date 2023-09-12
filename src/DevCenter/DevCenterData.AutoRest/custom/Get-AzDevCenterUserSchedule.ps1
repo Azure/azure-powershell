@@ -51,42 +51,59 @@ function Get-AzDevCenterUserSchedule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.ISchedule])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
+        [Parameter(ParameterSetName ='Get', Mandatory)]
+        [Parameter(ParameterSetName ='GetViaIdentity', Mandatory)]
+        [Parameter(ParameterSetName ='List', Mandatory)]
+        [Parameter(ParameterSetName ='List1', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
-    
+
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
-
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
+    
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List1', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of a pool of Dev Boxes.
         ${PoolName},
-
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
+    
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName='List1', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
-
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [System.String]
+        # The name of a schedule.
+        ${ScheduleName},
+    
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
+    
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -95,40 +112,40 @@ function Get-AzDevCenterUserSchedule {
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -146,14 +163,6 @@ function Get-AzDevCenterUserSchedule {
         else {
             $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
             $PSBoundParameters["Endpoint"] = $Endpoint
-        }
-
-        $Default = "default"
-
-        if ($PSBoundParameters.ContainsKey('InputObject')) {
-            $PSBoundParameters["InputObject"].ScheduleName = $Default
-        } else {
-            $null = $PSBoundParameters.Add("ScheduleName", $Default)
         }
 
         Az.DevCenterdata.internal\Get-AzDevCenterUserSchedule @PSBoundParameters

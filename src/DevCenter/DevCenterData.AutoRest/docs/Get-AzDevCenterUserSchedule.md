@@ -12,16 +12,22 @@ Gets a schedule.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
+Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ScheduleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,6 +42,24 @@ Get-AzDevCenterUserSchedule -DevCenter <String> -InputObject <IDevCenterdataIden
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1ByDevCenter
+```
+Get-AzDevCenterUserSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterUserSchedule -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a schedule.
 
@@ -43,21 +67,21 @@ Gets a schedule.
 
 ### Example 1: Get schedule by endpoint
 ```powershell
-Get-AzDevCenterUserSchedule -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool
+Get-AzDevCenterUserSchedule -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool -ScheduleName default
 ```
 
 This command gets the schedule in the pool "DevPool".
 
 ### Example 2: Get schedule by dev center
 ```powershell
-Get-AzDevCenterUserSchedule -DevCenter Contoso -ProjectName DevProject -PoolName DevPool
+Get-AzDevCenterUserSchedule -DevCenter Contoso -ProjectName DevProject -PoolName DevPool -ScheduleName default
 ```
 
 This command gets the schedule in the pool "DevPool".
 
 ### Example 3: Get schedule by endpoint and InputObject
 ```powershell
-$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
+$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool"; "ScheduleName" = "default" }
 Get-AzDevCenterUserSchedule -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
@@ -65,11 +89,39 @@ This command gets the schedule in the pool "DevPool".
 
 ### Example 4: Get schedule by dev center and InputObject
 ```powershell
-$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
+$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool"; "ScheduleName" = "default" }
 Get-AzDevCenterUserSchedule -DevCenter Contoso -InputObject $devBoxInput
 ```
 
 This command gets the schedule in the pool "DevPool".
+
+### Example 5: List schedule by project and endpoint
+```powershell
+Get-AzDevCenterUserSchedule -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
+```
+
+This command lists the schedules in the project "DevProject".
+
+### Example 6: List schedule by project and dev center
+```powershell
+Get-AzDevCenterUserSchedule -DevCenter Contoso -ProjectName DevProject
+```
+
+This command lists the schedules in the project "DevProject".
+
+### Example 7: List schedule by pool and endpoint
+```powershell
+Get-AzDevCenterUserSchedule -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool
+```
+
+This command lists the schedules in the pool "DevPool".
+
+### Example 8: List schedule by pool and dev center
+```powershell
+Get-AzDevCenterUserSchedule -DevCenter Contoso -ProjectName DevProject -PoolName DevPool
+```
+
+This command lists the schedules in the pool "DevPool".
 
 ## PARAMETERS
 
@@ -94,7 +146,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
@@ -109,7 +161,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, List, List1
 Aliases:
 
 Required: True
@@ -140,7 +192,7 @@ The name of a pool of Dev Boxes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: Get, GetByDevCenter, List1, List1ByDevCenter
 Aliases:
 
 Required: True
@@ -152,6 +204,21 @@ Accept wildcard characters: False
 
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter, List, List1, List1ByDevCenter, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleName
+The name of a schedule.
 
 ```yaml
 Type: System.String
