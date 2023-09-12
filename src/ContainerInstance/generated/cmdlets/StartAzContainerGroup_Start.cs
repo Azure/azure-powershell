@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
     /// [OpenAPI] Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzContainerGroup_Start", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.OutputBreakingChange("bool", "11.0.0", "4.0.0", "2023/11/15", DeprecatedOutputProperties=new string[] {"PreviouState","PreviouStateDetailStatus","PreviouStateExitCode","PreviouStateFinishTime","PreviouStateStartTime"}, NewOutputProperties=new string[] {"PreviousState","PreviousStateDetailStatus","PreviousStateExitCode","PreviousStateFinishTime","PreviousStateStartTime"}, ChangeDescription="The parameters starts with PreviouState will be corrected as PreviousState.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Description(@"Starts all containers in a container group. Compute resources will be allocated and billing will start.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Generated]
