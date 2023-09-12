@@ -15,7 +15,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserSchedule'
 
 Describe 'Get-AzDevCenterUserSchedule' {
     It 'Get'  {
-        $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName
+        $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"
         $schedule.Time | Should -Be "18:30"
@@ -23,7 +23,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $schedule.Type | Should -Be "StopDevBox"
 
         if ($Record -or $Live) {
-            $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName
+            $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
             $schedule.Frequency | Should -Be "Daily"
             $schedule.Name | Should -Be "default"
             $schedule.Time | Should -Be "18:30"
@@ -33,7 +33,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
     }
 
     It 'GetViaIdentity'  {
-        $scheduleInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName }
+        $scheduleInput = @{"ProjectName" = $env.projectName; "PoolName" = $env.poolName; "ScheduleName" = "default" }
         
         $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -InputObject $scheduleInput
         $schedule.Frequency | Should -Be "Daily"
