@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.1
 * Added support for XenonMV3 webapps
 
 ## Version 3.1.0

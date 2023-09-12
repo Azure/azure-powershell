@@ -141,6 +141,16 @@ Set-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+Set-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ -DeploymentSubscriptionId <String> -Location <String> [-Description <String>] [-DeleteAll] [-DeleteResources]
+ [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
+ [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
+ [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update a management group scoped deployment stack.
 
@@ -152,6 +162,13 @@ Set-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangem
 ```
 
 Update a management group scoped deployment stack named 'MyMGStack' in management group 'MyManagementGroup,' with the scope of the underlying deployment being MySubId and deny settings being DenyDelete. 
+
+### Example 2: Use a .bicepparam file to create a stack
+```powershell
+Set-AzManagementGroupDeploymentStack -Name MyMGStack -ManagementGroupId MyMangementGroup -DeploymentSubscriptionId MySubId -Location westus -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command updates a stack at the management group scope by using a .bicepparam file on disk.
 
 ## PARAMETERS
 
@@ -462,7 +479,7 @@ Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile
+Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

@@ -46,6 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Description = @"The actions to execute when the automation rule is triggered",
         SerializedName = @"actions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterBreakingChange("Action", "11.0.0", "4.0.0", "2023/11/15", IsBecomingMandatory=true, ChangeDescription="Action is required.")]
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction[] Action { get => _automationRuleBody.Action ?? null /* arrayOf */; set => _automationRuleBody.Action = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Description = @"The display name of the automation rule",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterBreakingChange("DisplayName", "11.0.0", "4.0.0", "2023/11/15", IsBecomingMandatory=true, ChangeDescription="DisplayName is required.")]
         public string DisplayName { get => _automationRuleBody.DisplayName ?? null; set => _automationRuleBody.DisplayName = value; }
 
         /// <summary>Etag of the azure resource</summary>
@@ -136,6 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Description = @"The order of execution of the automation rule",
         SerializedName = @"order",
         PossibleTypes = new [] { typeof(int) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterBreakingChange("Order", "11.0.0", "4.0.0", "2023/11/15", IsBecomingMandatory=true, ChangeDescription="Order is required.")]
         public int Order { get => _automationRuleBody.Order ?? default(int); set => _automationRuleBody.Order = value; }
 
         /// <summary>

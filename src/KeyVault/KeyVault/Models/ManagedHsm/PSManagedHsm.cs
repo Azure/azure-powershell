@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SoftDeleteRetentionInDays = managedHsm.Properties.SoftDeleteRetentionInDays;
             StatusMessage = managedHsm.Properties.StatusMessage;
             ProvisioningState = managedHsm.Properties.ProvisioningState;
-            SecurityDomain = new PSManagedHSMSecurityDomain(managedHsm?.Properties?.SecurityDomainProperties);
+            SecurityDomain = new PSManagedHsmSecurityDomain(managedHsm?.Properties?.SecurityDomainProperties);
+            Regions = managedHsm?.Properties?.Regions?.Select(r => new PSMHSMGeoReplicatedRegion(r))?.ToArray();
             OriginalManagedHsm = managedHsm;
         }
 
@@ -72,7 +73,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string StatusMessage { get; private set; }
         public string ProvisioningState { get; private set; }
 
-        public PSManagedHSMSecurityDomain SecurityDomain { get; private set; }
+        public PSManagedHsmSecurityDomain SecurityDomain { get; private set; }
+
+        public PSMHSMGeoReplicatedRegion[] Regions { get; private set; }
 
         public ManagedHsm OriginalManagedHsm { get; private set; }
 

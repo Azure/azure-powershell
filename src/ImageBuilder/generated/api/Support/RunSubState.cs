@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState Distributing = @"Distributing";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState Optimizing = @"Optimizing";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState Queued = @"Queued";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.RunSubState Validating = @"Validating";

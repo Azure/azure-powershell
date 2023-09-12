@@ -1262,11 +1262,13 @@ function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-NotNull $databaseFromGet
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation $true
 
 	Remove-ResourceGroupForTest $rg
 }
@@ -1285,7 +1287,7 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -1293,10 +1295,11 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 
 	# Update the db with new EncryptionProtector
 	$encryptionProtector2 = "https://pstestkv.vault.azure.net/keys/testkey1/6218d117492a42eda0b6a9334c9a989d"
-	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2
+	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2 -EncryptionProtectorAutoRotation:$false
 	
 	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtectorAutoRotation $false
 
 	Remove-ResourceGroupForTest $rg
 }

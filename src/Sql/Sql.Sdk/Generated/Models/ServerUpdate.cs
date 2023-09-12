@@ -70,10 +70,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// restrict outbound network access for this server.  Value is
         /// optional but if passed in, must be 'Enabled' or 'Disabled'.
         /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// <param name="isIPv6Enabled">Whether or not to enable IPv6 support
+        /// for this server.  Value is optional but if passed in, must be
+        /// 'Enabled' or 'Disabled'. Possible values include: 'Enabled',
+        /// 'Disabled'</param>
         /// <param name="externalGovernanceStatus">Status of external
         /// governance. Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="tags">Resource tags.</param>
-        public ServerUpdate(ResourceIdentity identity = default(ResourceIdentity), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string externalGovernanceStatus = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ServerUpdate(ResourceIdentity identity = default(ResourceIdentity), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string isIPv6Enabled = default(string), string externalGovernanceStatus = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Identity = identity;
             AdministratorLogin = administratorLogin;
@@ -90,6 +94,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             KeyId = keyId;
             Administrators = administrators;
             RestrictOutboundNetworkAccess = restrictOutboundNetworkAccess;
+            IsIPv6Enabled = isIPv6Enabled;
             ExternalGovernanceStatus = externalGovernanceStatus;
             Tags = tags;
             CustomInit();
@@ -203,6 +208,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.restrictOutboundNetworkAccess")]
         public string RestrictOutboundNetworkAccess { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to enable IPv6 support for this server.
+        /// Value is optional but if passed in, must be 'Enabled' or
+        /// 'Disabled'. Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.isIPv6Enabled")]
+        public string IsIPv6Enabled { get; set; }
 
         /// <summary>
         /// Gets status of external governance. Possible values include:

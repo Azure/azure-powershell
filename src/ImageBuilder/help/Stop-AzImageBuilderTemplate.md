@@ -29,19 +29,19 @@ Cancel the long running image build based on the image template
 
 ## EXAMPLES
 
-### Example 1: Stop image template creation
+### Example 1: Cancel the long running image build based on the image template.
 ```powershell
-Stop-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+Stop-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-This command stops image template creation.
+Cancel the long running image build based on the image template.
 
-### Example 2: Stop image template creation
+### Example 2: Cancel the long running image build based on the image template.
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Stop-AzImageBuilderTemplate
+Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Stop-AzImageBuilderTemplate
 ```
 
-This command stops image template creation.
+Cancel the long running image build based on the image template.
 
 ## PARAMETERS
 
@@ -61,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -224,6 +225,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[RunOutputName <String>]`: The name of the run output
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
+  - `[TriggerName <String>]`: The name of the trigger
 
 ## RELATED LINKS
 

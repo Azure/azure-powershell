@@ -39,7 +39,7 @@ To run this cmdlet, the storage account must has already set EnableLocalUser as 
 
 
 ```
-PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa base64encodedkey=" -Description "sshpublickey name1"
 
 PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
@@ -57,7 +57,7 @@ PS C:\> $localuser.SshAuthorizedKeys
 
 Description       Key                     
 -----------       ---                     
-sshpulickey name1 ssh-rsa keykeykeykeykey=
+sshpublickey name1 ssh-rsa base64encodedkey=
 
 PS C:\> $localuser.PermissionScopes 
 
@@ -66,20 +66,21 @@ Permissions Service ResourceName
 rw          blob    container1
 ```
 
-The first 2 commands create 2 local objects that will be used in create or update local user. 
-The third command creates or updates the local user. 
-The following commands show the local user properties.
+The first command creates a local SSH public key object. Note that the key follows the format of `<algorithm> <data>` where data is the base64 encoded contents of the public key.
+The second command creates a local permission scope object that defines the container level access for the local user.
+The third command creates or updates the local user, using the local objects from the first 2 commands.
+The final command shows the local user properties.
 
 ### Example 2: Create or update a local user by input permission scope and ssh key with json
 ```powershell
 Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
             -SshAuthorizedKey (@{
                 Description="sshpulickey name1";
-                Key="ssh-rsa keykeykeykeykey=";                
+                Key="ssh-rsa base64encodedkey=";                
             },
             @{
                 Description="sshpulickey name2";
-                Key="ssh-rsa keykeykeykeykew="; 
+                Key="ssh-rsa otherbase64encodedkey="; 
             }) `
             -PermissionScope (@{
                 Permissions="rw";

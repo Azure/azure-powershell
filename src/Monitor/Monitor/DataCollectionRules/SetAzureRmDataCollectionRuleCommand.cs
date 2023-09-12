@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
     /// <summary>
     /// Update a Data Collection Rule
     /// </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter set ByResourceId will be deprecated", "11.0.0", "5.0.0", "2023/11/15", NewWay = "Update")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRule", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDataCollectionRuleResource))]
     public class SetAzureRmDataCollectionRuleCommand : ManagementCmdletBase

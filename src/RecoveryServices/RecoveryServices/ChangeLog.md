@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.5.1
 * Added StorageAccountName property to AzureFileShare job.
 * Added support for AFS restore to alternate storage account in different region and resource group than source storage account.
 
