@@ -27,7 +27,7 @@ Gets RDP Connection info
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IRemoteConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxremoteconnection
 #>
 function Get-AzDevCenterUserDevBoxRemoteConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IRemoteConnection])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

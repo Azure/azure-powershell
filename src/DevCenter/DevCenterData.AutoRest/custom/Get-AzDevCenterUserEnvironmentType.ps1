@@ -25,12 +25,12 @@ Lists all environment types configured for a project.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IEnvironmentType
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IEnvironmentType])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'List', Mandatory)]

@@ -23,6 +23,9 @@ Gets a Dev Box
 ### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
 
+### [Get-AzDevCenterUserDevBoxOperation](Get-AzDevCenterUserDevBoxOperation.md)
+Gets an operation on a Dev Box.
+
 ### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
 Gets RDP Connection info
 
@@ -58,6 +61,10 @@ Deletes a Dev Box.
 
 ### [Remove-AzDevCenterUserEnvironment](Remove-AzDevCenterUserEnvironment.md)
 Deletes an environment and all its associated resources
+
+### [Repair-AzDevCenterUserDevBox](Repair-AzDevCenterUserDevBox.md)
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
 
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
 Restarts a Dev Box

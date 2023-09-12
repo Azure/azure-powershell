@@ -27,9 +27,9 @@ Delays the occurrence of an action.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxAction
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxActionDelayResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxActionDelayResult])]
   [CmdletBinding(DefaultParameterSetName = 'Delay1', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
     [Parameter(ParameterSetName = 'Delay', Mandatory)]

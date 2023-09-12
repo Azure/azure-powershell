@@ -1,75 +1,79 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxremoteconnection
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxoperation
 schema: 2.0.0
 ---
 
-# Get-AzDevCenterUserDevBoxRemoteConnection
+# Get-AzDevCenterUserDevBoxOperation
 
 ## SYNOPSIS
-Gets RDP Connection info
+Gets an operation on a Dev Box.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -DevBoxName <String> -OperationId <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -DevBoxName <String> -OperationId <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByDevCenter
+```
+Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Gets RDP Connection info
+Gets an operation on a Dev Box.
 
 ## EXAMPLES
 
-### Example 1: Get the remote connection on the dev box by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
+{{ Add code here }}
 ```
 
-This commands gets the remote connection for the dev box "myDevBox".
-
-### Example 2: Get the remote connection on the dev box by dev center
-```powershell
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+```output
+{{ Add output here }}
 ```
 
-This commands gets the remote connection for the dev box "myDevBox".
+{{ Add description here }}
 
-### Example 3: Get the remote connection on the dev box by endpoint and InputObject
+### Example 2: {{ Add title here }}
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+{{ Add code here }}
 ```
 
-This commands gets the remote connection for the dev box "myDevBox".
-
-### Example 4: Get the remote connection on the dev box by dev center and InputObject
-```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -InputObject $devBoxInput
+```output
+{{ Add output here }}
 ```
 
-This commands gets the remote connection for the dev box "myDevBox".
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -94,7 +98,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -109,7 +113,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
@@ -124,7 +128,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
 Required: True
@@ -150,12 +154,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -OperationId
+The id of the operation on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -171,7 +190,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: False
@@ -190,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IRemoteConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxOperation
 
 ## NOTES
 

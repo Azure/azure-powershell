@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Gets a project.
+Gets an operation on a Dev Box.
 .Description
-Gets a project.
+Gets an operation on a Dev Box.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Gets a project.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxOperation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,42 +40,72 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserproject
+https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxoperation
 #>
-function Get-AzDevCenterUserProject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IProject])]
-    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+function Get-AzDevCenterUserDevBoxOperation {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxOperation])]
+    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'List', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
-    
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+
+        [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
     
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [System.String]
+        # The name of a Dev Box.
+        ${DevBoxName},
+    
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [System.String]
+        # The id of the operation on a Dev Box.
+        ${OperationId},
+    
+        [Parameter(ParameterSetName='Get', Mandatory)]
+        [Parameter(ParameterSetName='List', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
     
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='Get')]
+        [Parameter(ParameterSetName='List')]
+        [Parameter(ParameterSetName='ListByDevCenter')]
+        [Parameter(ParameterSetName='GetByDevCenter')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+        [System.String]
+        # The AAD object id of the user.
+        # If value is 'me', the identity is taken from the authentication context.
+        ${UserId},
+    
+        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
         # Identity Parameter
@@ -130,8 +160,7 @@ function Get-AzDevCenterUserProject {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-
-
+    
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
             $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
@@ -144,6 +173,9 @@ function Get-AzDevCenterUserProject {
             $PSBoundParameters["Endpoint"] = $Endpoint
         }
 
-        Az.DevCenterdata.internal\Get-AzDevCenterUserProject @PSBoundParameters
+        Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxOperation @PSBoundParameters
+    
     }
-}
+
+    }
+    
