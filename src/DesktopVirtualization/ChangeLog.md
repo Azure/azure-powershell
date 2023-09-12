@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlet:
+    - `Get-AzWvdScalingPlanPersonalSchedule`
+    - `New-AzWvdScalingPlanPersonalSchedule`
+    - `Remove-AzWvdScalingPlanPersonalSchedule`
+    - `Update-AzWvdScalingPlanPersonalSchedule`
+* Added parameters `ShowInFeed` to:
+    - `New-AzWvdApplicationGroup`
+    - `Update-AzWvdApplicationGroup`
 
 ## Version 4.0.0
 * Upgraded API version to 2022-09-09

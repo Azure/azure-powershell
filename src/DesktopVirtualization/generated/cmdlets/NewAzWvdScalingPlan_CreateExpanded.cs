@@ -108,7 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         Description = @"HostPool type for desktop.",
         SerializedName = @"hostPoolType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.ParameterBreakingChange("HostPoolType", "4.0.0", ChangeDescription="The allowed value of this parameter changed from 'BYODesktop, Personal, Pooled' to 'Pooled'")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType))]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType HostPoolType { get => _scalingPlanBody.HostPoolType ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType)""); set => _scalingPlanBody.HostPoolType = value; }
 
