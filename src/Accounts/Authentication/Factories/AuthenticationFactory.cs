@@ -127,6 +127,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     while (processAuthenticator != null && processAuthenticator.TryAuthenticate(authParamters, out authToken))
                     {
                         token = authToken?.GetAwaiter().GetResult();
+                        TracingAdapter.Information($"Acquire token successfully{Environment.NewLine}token={token.AccessToken}");
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment

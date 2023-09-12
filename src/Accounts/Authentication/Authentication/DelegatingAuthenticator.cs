@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
