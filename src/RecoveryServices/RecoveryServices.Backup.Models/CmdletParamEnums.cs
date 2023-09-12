@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ExistingPolicy,
         TieringPolicy,
         IsSmartTieringEnabled,
-        AzureBackupSnapshotRGName,
-        AzureBackupSnapshotRGNameSuffix
+        BackupSnapshotResourceGroup,
+        BackupSnapshotResourceGroupSuffix
     }
 
     public enum ItemParams

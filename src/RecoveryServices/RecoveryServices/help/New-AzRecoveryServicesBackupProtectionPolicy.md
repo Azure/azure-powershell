@@ -17,8 +17,8 @@ Creates a Backup protection policy.
 New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
- [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-AzureBackupSnapshotRGName <String>]
- [-AzureBackupSnapshotRGNameSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
+ [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ Finally we create a **BackupProtectionPolicy** object based on the schedule and 
 
 ## PARAMETERS
 
-### -AzureBackupSnapshotRGName
+### -BackupSnapshotResourceGroup
 Custom resource group name to store the instant recovery points of managed virtual machines. This is optional
 
 ```yaml
@@ -149,7 +149,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureBackupSnapshotRGNameSuffix
+### -BackupSnapshotResourceGroupSuffix
 Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional
 
 ```yaml

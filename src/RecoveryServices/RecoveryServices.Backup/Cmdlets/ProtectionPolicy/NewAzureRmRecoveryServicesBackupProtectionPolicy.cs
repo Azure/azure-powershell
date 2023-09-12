@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Custom resource group name to store the instant recovery points of managed virtual machines.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.AzureBackupResourceGroup)]        
-        public string AzureBackupSnapshotRGName { get; set; }
+        public string BackupSnapshotResourceGroup { get; set; }
 
         /// <summary>
         /// Custom resource group name suffix to store the instant recovery points of managed virtual machines.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.AzureBackupResourceGroupSuffix)]        
-        public string AzureBackupSnapshotRGNameSuffix { get; set; }
+        public string BackupSnapshotResourceGroupSuffix { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -195,8 +195,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(PolicyParams.SchedulePolicy, SchedulePolicy);
                 providerParameters.Add(PolicyParams.TieringPolicy, tieringDetails);
                 providerParameters.Add(PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled);
-                providerParameters.Add(PolicyParams.AzureBackupSnapshotRGName, AzureBackupSnapshotRGName);
-                providerParameters.Add(PolicyParams.AzureBackupSnapshotRGNameSuffix, AzureBackupSnapshotRGNameSuffix);
+                providerParameters.Add(PolicyParams.BackupSnapshotResourceGroup, BackupSnapshotResourceGroup);
+                providerParameters.Add(PolicyParams.BackupSnapshotResourceGroupSuffix, BackupSnapshotResourceGroupSuffix);
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(providerParameters, ServiceClientAdapter);                
 
