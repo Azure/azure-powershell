@@ -5,7 +5,7 @@
 
     param(
         [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource]
         ${BackupInstance},
         
         [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory=$false, HelpMessage='ID of the keyvault')]
@@ -27,7 +27,7 @@
         ${PermissionsScope},
 
         [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory, HelpMessage='Restore request object which will be used for restore')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest]
         ${RestoreRequest},
 
         [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory, HelpMessage='Sanpshot Resource Group')]
@@ -73,7 +73,20 @@
                           CheckAksModuleDependency
                                     
                           $aksCluster = Get-AzAksCluster -Id $RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
-                          $dataSourceMSI = $aksCluster.Identity.PrincipalId
+
+                          $dataSourceMSI = ""
+                          if($aksCluster.Identity.Type -match "UserAssigned"){
+                              $UAMIKey = $aksCluster.Identity.UserAssignedIdentities.Keys[0]
+
+                              if($UAMIKey -eq "" -or $UAMIKey -eq $null){
+                                  Write-Error "User assigned identity not found for AKS cluster."
+                              }
+                              $dataSourceMSI = $aksCluster.Identity.UserAssignedIdentities[$UAMIKey].PrincipalId
+                          }
+                          else{
+                              $dataSourceMSI = $aksCluster.Identity.PrincipalId
+                          }
+
                           $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $dataSourceMSI
                       }
 
@@ -291,7 +304,20 @@
                       CheckAksModuleDependency
                                     
                       $aksCluster = Get-AzAksCluster -Id $BackupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
-                      $dataSourceMSI = $aksCluster.Identity.PrincipalId
+
+                      $dataSourceMSI = ""
+                      if($aksCluster.Identity.Type -match "UserAssigned"){
+                          $UAMIKey = $aksCluster.Identity.UserAssignedIdentities.Keys[0]
+
+                          if($UAMIKey -eq "" -or $UAMIKey -eq $null){
+                              Write-Error "User assigned identity not found for AKS cluster."
+                          }
+                          $dataSourceMSI = $aksCluster.Identity.UserAssignedIdentities[$UAMIKey].PrincipalId
+                      }
+                      else{
+                          $dataSourceMSI = $aksCluster.Identity.PrincipalId
+                      }
+                      
                       $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $dataSourceMSI
                   }
 

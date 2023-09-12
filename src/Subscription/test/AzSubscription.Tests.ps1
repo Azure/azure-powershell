@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'AzSubscription')) {
 Describe 'AzSubscription' {
     It 'CreateAliasExpanded' {
         {
-            $config = New-AzSubscriptionAlias -AliasName $env.testSubName
+            $config = New-AzSubscriptionAlias -AliasName $env.testSubName -SubscriptionId $env.SubscriptionId
             $config.AliasName | Should -Be $env.testSubName
         } | Should -Not -Throw
     }
@@ -35,9 +35,9 @@ Describe 'AzSubscription' {
         } | Should -Not -Throw
     }
 
-    It 'RenameSub' -Skip {
+    It 'RenameSub' {
         {
-            $config = Rename-AzSubscription -Id $env.SubscriptionId -SubscriptionName "test-subscription"
+            $config = Rename-AzSubscription -Id $env.SubscriptionId -SubscriptionName "testsubscription"
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
@@ -48,7 +48,7 @@ Describe 'AzSubscription' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateSubPolicy' -Skip {
+    It 'UpdateSubPolicy' {
         {
             $config = Update-AzSubscriptionPolicy -BlockSubscriptionsIntoTenant:$false -BlockSubscriptionsLeavingTenant:$false 
             $config.Count | Should -BeGreaterThan 0
