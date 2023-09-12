@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
-                var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
                 var store = session.DataStore;
                 if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
                 {
@@ -142,12 +142,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                 if (adalData != null && adalData.Length > 0)
                 {
-                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal(session.TokenCacheFile);
                 }
             }
             catch (Exception e)
             {
                 writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
+            }
+        }
+
+        public static void MigrateMsalCacheWithoutSuffix(IAzureSession session, Action<string> writeWarning)
+        {
+            try
+            {
+                if (session.ARMContextSaveMode == ContextSaveMode.CurrentUser)
+                {
+                    var oldMsalCachePath = Path.Combine(session.TokenCacheDirectory, MsalCacheHelperProvider.LegacyTokenCacheName);
+                    var newMsalCachePath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+                    var store = session.DataStore;
+                    if (store.FileExists(oldMsalCachePath) && !store.FileExists(newMsalCachePath))
+                    {
+                        var data = File.ReadAllBytes(oldMsalCachePath);
+                        if (data != null && data.Length > 0)
+                        {
+                            File.WriteAllBytes(newMsalCachePath, data);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                writeWarning(Resources.FailedToMigrateMsalCacheWithLegayName.FormatInvariant(e.Message));
             }
         }
 
@@ -163,7 +188,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 CacheDirectory = cacheDirectory,
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
-                CacheFile = "msal.cache",
+                CacheFile = MsalCacheHelperProvider.LegacyTokenCacheName,
                 ContextFile = "AzureRmContext.json"
             };
 
@@ -181,6 +206,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
                     result.Settings = settings.Settings;
+                    result.KeyStoreFile = settings.KeyStoreFile;
                     bool updateSettings = false;
                     if (!settings.Settings.ContainsKey("InstallationId"))
                     {
@@ -271,8 +297,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
-            session.TokenCacheFile = autoSave.CacheFile;
-            session.KeyStoreFile = "keystore.cache";
+            session.TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(true, autoSave.CacheFile);
+            session.KeyStoreFile = autoSave.CacheFile ?? "keystore.cache";
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
