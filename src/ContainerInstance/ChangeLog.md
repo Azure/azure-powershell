@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added breaking change warning message for `Get/New/Remove-ContainerGroup`, `New-ContainerInstanceInitDefinitionObject`, `New-ContainerInstanceObject`.
 
 ## Version 3.2.1
 * Fixed a bug in `Invoke-AzContainerInstanceCommand` when no result was returned under some conditions [#22453]
