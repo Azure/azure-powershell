@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static MsalCacheHelper MsalCacheHelper;
         private static object ObjectLock = new object();
 
-        public static MsalCacheHelper GetCacheHelper()
+        private const string AzureIdentityTokenCacheNameSuffixCae = ".cae";
+        private const string AzureIdentityTokenCacheNameSuffixNoCae = ".nocae";
+
+        public static string LegacyTokenCacheName { get; } = "msal.cache";
+
+        public static string GetTokenCacheName(bool caeEnabled, string name = null)
         {
+            return name ?? LegacyTokenCacheName + (caeEnabled ? AzureIdentityTokenCacheNameSuffixCae : AzureIdentityTokenCacheNameSuffixNoCae);
+        }
+
+        public static string GetTokenCacheNameWithoutSuffix(string name)
+        {
+            return name.Replace(MsalCacheHelperProvider.AzureIdentityTokenCacheNameSuffixCae, string.Empty)
+                .Replace(MsalCacheHelperProvider.AzureIdentityTokenCacheNameSuffixNoCae, string.Empty);
+        }
+
+
+        public static MsalCacheHelper GetCacheHelper(string tokenCacheName)
+        {
+            if (string.IsNullOrEmpty(tokenCacheName))
+            {
+                throw new AzPSArgumentNullException($"{nameof(tokenCacheName)} cannot be null", nameof(tokenCacheName));
+            }
+            var keyRingSchema = GetTokenCacheNameWithoutSuffix(tokenCacheName);
             if(MsalCacheHelper == null)
             {
                 lock(ObjectLock)
@@ -35,9 +58,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         var cacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ".IdentityService");
                         try
                         {
-                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory)
+                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder(tokenCacheName, cacheDirectory)
                                 .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
-                                .WithLinuxKeyring("msal.cache", "default", "MSALCache",
+                                .WithLinuxKeyring(keyRingSchema, "default", "MSALCache",
                                 new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
                                 new KeyValuePair<string, string>("Microsoft.Developer.IdentityService", "1.0.0.0"))
                                 .Build();
@@ -48,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         }
                         catch(MsalCachePersistenceException)
                         {
-                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder("msal.cache", cacheDirectory)
+                            StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder(tokenCacheName, cacheDirectory)
                                 .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
                                 .WithLinuxUnprotectedFile()
                                 .Build();

@@ -399,4 +399,7 @@
   <data name="HelpMessageOfCheckForUpgrade" xml:space="preserve">
     <value>When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.</value>
   </data>
+  <data name="FailedToMigrateMsalCacheWithLegayName" xml:space="preserve">
+    <value>INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}</value>
+  </data>
 </root>

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
                 CreateAssembly("netcoreapp2.1", "Azure.Core", "1.35.0.0").WithPowerShellCore(),
-                CreateAssembly("netcoreapp2.1", "Microsoft.Identity.Client", "4.56.0.0").WithPowerShellCore(),
+                //CreateAssembly("netcoreapp2.1", "Microsoft.Identity.Client", "4.56.0.0").WithPowerShellCore(),
 
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.10.3.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.0.0.0"),
@@ -66,8 +66,8 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
 
                 CreateAssembly("netfx", "Azure.Core", "1.35.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "Microsoft.Identity.Client", "4.56.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "Microsoft.Identity.Client.Broker", "4.56.0.0").WithWindowsPowerShell(),
+                //CreateAssembly("netfx", "Microsoft.Identity.Client", "4.56.0.0").WithWindowsPowerShell(),
+                //CreateAssembly("netfx", "Microsoft.Identity.Client.Broker", "4.56.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "6.0.0.1").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),

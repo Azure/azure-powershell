@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string EnableDataCollection = "EnableDataCollection";
         public const string EnableTestCoverage = "EnableTestCoverage";
         public const string EnableLoginByWam = "EnableLoginByWam";
+        public const string EnableCAE = "EnableCAE";
         public const string TestCoverageLocation = "TestCoverageLocation";
         public const string DisplayRegionIdentified = "DisplayRegionIdentified";
         //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
