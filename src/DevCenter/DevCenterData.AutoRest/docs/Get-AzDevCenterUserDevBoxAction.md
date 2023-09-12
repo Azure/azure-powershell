@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxAction
 
 ## NOTES
 
@@ -249,6 +249,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[DevBoxName <String>]`: The name of a Dev Box.
   - `[EnvironmentName <String>]`: The name of the environment.
   - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: The id of the operation on a Dev Box.
   - `[PoolName <String>]`: The name of a pool of Dev Boxes.
   - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
   - `[ScheduleName <String>]`: The name of a schedule.

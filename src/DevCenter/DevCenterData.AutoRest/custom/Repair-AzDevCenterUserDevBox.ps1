@@ -16,9 +16,11 @@
 
 <#
 .Synopsis
-Gets a project.
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
 .Description
-Gets a project.
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +29,7 @@ Gets a project.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IProject
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,42 +42,58 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserproject
+https://learn.microsoft.com/powershell/module/az.devcenterdata/repair-azdevcenteruserdevbox
 #>
-function Get-AzDevCenterUserProject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IProject])]
-    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+function Repair-AzDevCenterUserDevBox {
+    [OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName='Repair', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'List', Mandatory)]
+        [Parameter(ParameterSetName='Repair', Mandatory)]
+        [Parameter(ParameterSetName='RepairViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
-    
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+
+        [Parameter(ParameterSetName = 'RepairViaIdentityByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'RepairByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
     
-        [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='Repair', Mandatory)]
+        [Parameter(ParameterSetName = 'RepairByDevCenter', Mandatory)]
+        [Alias('DevBoxName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [System.String]
+        # The name of a Dev Box.
+        ${Name},
+    
+        [Parameter(ParameterSetName='Repair', Mandatory)]
+        [Parameter(ParameterSetName = 'RepairByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
     
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='Repair')]
+        [Parameter(ParameterSetName = 'RepairByDevCenter')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+        [System.String]
+        # The AAD object id of the user.
+        # If value is 'me', the identity is taken from the authentication context.
+        ${UserId},
+    
+        [Parameter(ParameterSetName='RepairViaIdentity', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='RepairViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
         # Identity Parameter
@@ -90,6 +108,12 @@ function Get-AzDevCenterUserProject {
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
     
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
@@ -111,6 +135,12 @@ function Get-AzDevCenterUserProject {
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
         [System.Uri]
@@ -130,20 +160,22 @@ function Get-AzDevCenterUserProject {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-
-
+    
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
             $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
             $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
             $null = $PSBoundParameters.Remove("DevCenter")
       
-        }
-        else {
+          }
+          else {
             $Endpoint = ValidateAndProcessEndpoint -Endpoint $Endpoint
             $PSBoundParameters["Endpoint"] = $Endpoint
-        }
-
-        Az.DevCenterdata.internal\Get-AzDevCenterUserProject @PSBoundParameters
+          }
+      
+          Az.DevCenterdata.internal\Repair-AzDevCenterUserDevBox @PSBoundParameters
+    
     }
-}
+
+    }
+    

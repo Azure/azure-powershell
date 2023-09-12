@@ -1,86 +1,69 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserenvironment
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/repair-azdevcenteruserdevbox
 schema: 2.0.0
 ---
 
-# New-AzDevCenterUserEnvironment
+# Repair-AzDevCenterUserDevBox
 
 ## SYNOPSIS
-Creates or updates an environment.
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### Repair (Default)
 ```
-New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
+Repair-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpandedByDevCenter
+### RepairByDevCenter
 ```
-New-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-Parameter <Hashtable>]
+Repair-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### RepairViaIdentity
 ```
-New-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
+Repair-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpandedByDevCenter
+### RepairViaIdentityByDevCenter
 ```
-New-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <Hashtable>]
+Repair-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an environment.
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### Example 1: Create an environment by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-$functionAppParameters = @{"name" = "testfuncApp" }
-
-New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+{{ Add code here }}
 ```
 
-This command creates an environment named envtest" to the project "DevProject".
-
-### Example 2: Create an environment by dev center
-```powershell
-New-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+```output
+{{ Add output here }}
 ```
 
-This command creates an environment named envtest" to the project "DevProject".
+{{ Add description here }}
 
-### Example 3: Create an environment by endpoint and InputObject
+### Example 2: {{ Add title here }}
 ```powershell
-$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
-
-
-New-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
-
+{{ Add code here }}
 ```
 
-This command creates an environment named envtest" to the project "DevProject".
-
-### Example 4: Create an environment by dev center and InputObject
-```powershell
-$functionAppParameters = @{"name" = "testfuncApp" }
-$envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
-
-New-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+```output
+{{ Add output here }}
 ```
 
-This command creates an environment named envtest" to the project "DevProject".
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -93,21 +76,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CatalogName
-Name of the catalog.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,7 +103,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedByDevCenter, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: RepairByDevCenter, RepairViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -150,37 +118,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnvironmentDefinitionName
-Name of the environment definition.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnvironmentType
-Environment type.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Repair, RepairViaIdentity
 Aliases:
 
 Required: True
@@ -196,7 +134,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
+Parameter Sets: RepairViaIdentity, RepairViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -207,12 +145,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the environment.
+The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
-Aliases: EnvironmentName
+Parameter Sets: Repair, RepairByDevCenter
+Aliases: DevBoxName
 
 Required: True
 Position: Named
@@ -236,27 +174,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters object for the environment.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: Repair, RepairByDevCenter
 Aliases:
 
 Required: True
@@ -272,7 +195,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: Repair, RepairByDevCenter
 Aliases:
 
 Required: False

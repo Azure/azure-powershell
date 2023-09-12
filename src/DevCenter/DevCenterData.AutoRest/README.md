@@ -31,14 +31,14 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 4f6418dca8c15697489bbe6f855558bb79ca5bf5
+branch: e1faef4e920b3acb04f1a577f66cf3152ab09a74
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/devbox.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/environments.json
 title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
