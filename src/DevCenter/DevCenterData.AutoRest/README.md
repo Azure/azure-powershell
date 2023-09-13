@@ -72,6 +72,13 @@ directive:
         "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
       }
   - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:repair"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
     where: $.paths["/projects/{projectName}/users/{userId}/environments/{environmentName}"].put.responses
     transform: >
       $['200'] = {
