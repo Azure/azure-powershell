@@ -4821,8 +4821,8 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
         $disable = $false;
         $enable = $true;
         $securityType = "TrustedLaunch";
-        $adminUsername = "usertest";#Get-ComputeTestResourceName;
-        $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
         # Requirements for the TrustedLaunch default behavior.
@@ -4888,16 +4888,15 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
         $vmssName2 = 'vmss2' + $rgname;
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
-        $adminUsername = 'usertest';#Get-ComputeTestResourceName;
-        $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
+        $adminUsername = Get-ComputeTestResourceName;
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
 
         $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
         $imgRef.PublisherName = $PublisherName;
         $imgRef.Offer = $Offer;
         $imgRef.Skus = $SKU;
         $imgRef.Version = "latest";
-
-
+        
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
         $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
