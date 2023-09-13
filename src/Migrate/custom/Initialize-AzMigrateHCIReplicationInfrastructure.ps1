@@ -501,6 +501,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         # Put Cache Storage Account
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+            -ResourceGroupName $ResourceGroupName `
+            -MigrateProjectName $ProjectName `
+            -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $amhSolution) {
+            throw "No Data Replication Service Solution found. Please verify your appliance setup."
+        }
+
         $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
         
         # Record of rsa found in AMH solution
@@ -524,7 +535,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                         -Name $amhStoredStorageAccountName `
                         -ErrorVariable notPresent `
                         -ErrorAction SilentlyContinue
-                    # Stop if amhStoredStorageAccount is not found or in a terminal state
+                        # Stop if amhStoredStorageAccount is not found or in a terminal state
                     if ($null -eq $amhStoredStorageAccount -or
                         $null -eq $amhStoredStorageAccount.ProvisioningState -or
                         $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
@@ -551,8 +562,8 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
                 # amhStoredStorageAccount is not found or in a bad state but AMH has a record of it, so remove the record
                 if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
-                    $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId")
-                    $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null)
+                    $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId") | Out-Null
+                    $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null) | Out-Null
                     Az.Migrate.Internal\Set-AzMigrateSolution `
                         -MigrateProjectName $ProjectName `
                         -Name $amhSolution.Name `
@@ -571,7 +582,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -SubscriptionId $SubscriptionId `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            # Check if AMH record is removed
+                # Check if AMH record is removed
             if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
                 ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
                 throw "Unexpected error occurred in unlinking Cache Storage Account with Id '$($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])'. Please re-run this command or contact support if help needed."
@@ -593,7 +604,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -Name $userProvidedStorageAccountName `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            
+
             # Wait for userProvidedStorageAccount to reach a terminal state
             if ($null -ne $userProvidedStorageAccount -and
                 $null -ne $userProvidedStorageAccount.ProvisioningState -and
@@ -632,7 +643,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # No Cache Storage Account found or provided, so create one
         if ($null -eq $cacheStorageAccount) {
-            $suffix = (GenerateHashForArtifact -Artifact "$($sourceSiteId)/$($SourceApplianceName)").ToString().Substring(0, 14)
+            $suffix = (GenerateHashForArtifact -Artifact "$($sourceSiteId)/$($SourceApplianceName)").ToString()
+            if ($suffixHash.Length -gt 14) {
+                $suffix = $suffixHash.Substring(0, 14)
+            }
             $cacheStorageAccountName = "migratersa" + $suffix
             $cacheStorageAccountId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($cacheStorageAccountName)"
 
