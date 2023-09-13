@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
+            CustomerManagedKeyStatus = databaseAccountGetResults.CustomerManagedKeyStatus;
             PrivateEndpointConnections = databaseAccountGetResults.PrivateEndpointConnections;
             EnableFreeTier = databaseAccountGetResults.EnableFreeTier;
             ApiProperties = new PSApiProperties(databaseAccountGetResults.ApiProperties);
@@ -193,6 +194,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether burst capacity is enabled.
         public bool? EnableBurstCapacity { get; set; }
+        //
+        // Summary:
+        //     Indicates the status of the Customer Managed Key feature on the account. In
+        /// case there are errors, the property provides troubleshooting guidance.
+        public string CustomerManagedKeyStatus { get; set; }
         //
         // Summary:
         //     Gets or sets flag to indicate whether Partition Merge is enabled.
