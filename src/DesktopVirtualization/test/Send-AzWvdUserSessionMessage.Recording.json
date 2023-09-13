@@ -1,8 +1,8 @@
 {
-  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0/userSessions/3/sendMessage?api-version=2022-09-09+1": {
+  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2023-07-07-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/pwsh-0/userSessions/3/sendMessage?api-version=2022-09-09",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbUserSessionHP/sessionHosts/userSess-sh-0/userSessions/3/sendMessage?api-version=2023-07-07-preview",
       "Content": "{\r\n  \"messageTitle\": \"title\",\r\n  \"messageBody\": \"apple\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -20,19 +20,19 @@
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
-        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoLTAvdXNlclNlc3Npb25zLzM=" ],
-        "x-ms-lamport-ts": [ "95357378" ],
-        "x-ms-correlation-id": [ "d6e3718f-a14d-4383-baaf-36dbba091d10" ],
-        "x-ms-request-id": [ "b022527c-9d0f-4bee-b4ce-1bb041210661" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy91c2VyU2Vzcy1zaC0wL3VzZXJTZXNzaW9ucy8z" ],
+        "x-ms-lamport-ts": [ "115578195" ],
+        "x-ms-correlation-id": [ "73da3760-6f2d-4f53-b5ef-7fe6d2b67e7b" ],
+        "x-ms-request-id": [ "1d07031f-20af-40d9-bba7-297f0c4210fa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Set-Cookie": [ "ARRAffinity=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=8709cede3dff6cc96c3687614f6f6d07d26f1b7354152bf58fb5a84fbfd96a8a;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=8709cede3dff6cc96c3687614f6f6d07d26f1b7354152bf58fb5a84fbfd96a8a;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "82692bb8-b30b-43fc-a62c-722b15d5da04" ],
-        "x-ms-routing-request-id": [ "WESTUS:20230320T185349Z:82692bb8-b30b-43fc-a62c-722b15d5da04" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-correlation-request-id": [ "bd166196-10f6-4f09-8013-8898b7fc87d8" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230817T072033Z:bd166196-10f6-4f09-8013-8898b7fc87d8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 20 Mar 2023 18:53:49 GMT" ]
+        "Date": [ "Thu, 17 Aug 2023 07:20:32 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

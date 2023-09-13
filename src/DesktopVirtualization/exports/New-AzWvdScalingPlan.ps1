@@ -58,7 +58,7 @@ New-AzWvdScalingPlan `
             )
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -95,7 +95,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingPlanPooledSchedule definitions.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
 #>
 function New-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -146,7 +146,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingHostPoolReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingHostPoolReference[]]
     # List of ScalingHostPoolReference definitions.
     # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
     ${HostPoolReference},
@@ -225,7 +225,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingSchedule[]]
     # List of ScalingPlanPooledSchedule definitions.
     # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},
@@ -354,6 +354,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
