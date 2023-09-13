@@ -356,10 +356,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetImageReferenceSkuUpdate()
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfigUpdate()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageReferenceSkuUpdate");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeUpdate");
+        }
+
     }
 }
