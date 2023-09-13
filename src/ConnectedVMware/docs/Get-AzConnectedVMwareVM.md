@@ -27,27 +27,52 @@ Retrieves information about a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List VMs in current subscription
 ```powershell
-{{ Add code here }}
+Get-AzConnectedVMwareVM -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Kind   Location      Name                                                             ResourceGroupName
+----   --------      ----                                                             -----------------
+AVS    eastus        namratmpvm                                                       naprajap
+VMware eastus        vmurthy-vm01                                                     vmurthy-rg
+AVS    eastus        VM-avs-0511                                                      k0
+VMware eastus        namraonpremvm                                                    uxsetups
+VMware eastus        uxvmwareLinuxVM                                                  uxsetups
+VMware eastus        namrawintest                                                     uxsetups
+VMware eastus        TulipVM2                                                         shujRG
+VMware eastus        TulipVM3                                                         shujRG
 ```
 
-{{ Add description here }}
+This command lists VMs in current subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: List VMs in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzConnectedVMwareVM -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-vm      azcli-test-rg
+VMware eastus   test-vm2     azcli-test-rg
 ```
 
-{{ Add description here }}
+This command lists VMs in a resource group named `azcli-test-rg`.
+
+### Example 3: Get a specific VM
+```powershell
+Get-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+```
+
+```output
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-vm      azcli-test-rg
+```
+
+This command gets a VM named `test-vm` in a resource group named `azcli-test-rg`
 
 ## PARAMETERS
 
