@@ -1,0 +1,42 @@
+{
+  "Repair-AzDevCenterUserDevBox+[NoContext]+Repair+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2023-07-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/users/me/devboxes/devbox2:repair?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "02caea8b-93e5-4b47-8209-8eb38a9d421a" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Repair-AzDevCenterUserDevBox" ],
+        "FullCommandName": [ "Repair-AzDevCenterUserDevBox_Repair" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.13", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Date": [ "Wed, 13 Sep 2023 03:12:21 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4500d7ed-03ad-4e65-aeb7-99162e526780?api-version=2023-07-01-preview\u0026monitor=true" ],
+        "x-ms-correlation-request-id": [ "2a89e210-97cb-4e32-930b-da96fbf0f37d" ],
+        "x-ms-client-request-id": [ "02caea8b-93e5-4b47-8209-8eb38a9d421a" ],
+        "Operation-Location": [ "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-amlim-dc-euap.centraluseuap.devcenter.azure.com/projects/amlim-project/operationstatuses/4500d7ed-03ad-4e65-aeb7-99162e526780?api-version=2023-07-01-preview" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "298" ],
+        "X-Rate-Limit-Reset": [ "2023-09-13T03:13:19.2590338Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "271" ]
+      },
+      "Content": "{\n  \"id\": \"/projects/amlim-project/operationStatuses/4500d7ed-03ad-4e65-aeb7-99162e526780\",\n  \"name\": \"4500d7ed-03ad-4e65-aeb7-99162e526780\",\n  \"status\": \"NotStarted\",\n  \"resourceId\": \"/projects/amlim-project/users/c3c951b7-d307-4c40-9495-70bd562d98d5/devboxes/devbox2\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -13,10 +13,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserDevBoxOper
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-
 Describe 'Get-AzDevCenterUserDevBoxOperation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfOperations = Get-AzDevCenterUserDevBoxOperation -Endpoint $env.endpoint -ProjectName $env.projectName -DevBoxName $env.devboxName
+        $listOfOperations.Count | Should -BeGreaterOrEqual 1
+
+        if ($Record -or $Live) {
+            $listOfOperations = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+            $listOfOperations.Count | Should -BeGreaterOrEqual 1
+        }
+
     }
 
     It 'Get' -skip {

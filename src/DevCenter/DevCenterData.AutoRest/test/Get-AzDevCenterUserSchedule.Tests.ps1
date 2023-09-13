@@ -14,11 +14,32 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserSchedule'
 }
 
 Describe 'Get-AzDevCenterUserSchedule' {
+    It 'ListByProject'  {
+        $listofSchedules = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -ProjectName $env.projectName
+        $listofSchedules.Count | Should -Be 1
+
+        if ($Record -or $Live) {
+            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listofSchedules.Count | Should -Be 1
+
+        }
+    }
+
+    It 'ListByPool'  {
+        $listofSchedules = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName
+        $listofSchedules.Count | Should -Be 1
+
+        if ($Record -or $Live) {
+            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName
+            $listofSchedules.Count | Should -Be 1
+        }
+    }
+
     It 'Get'  {
         $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"
-        $schedule.Time | Should -Be "18:30"
+        $schedule.Time | Should -Be "19:00"
         $schedule.TimeZone | Should -Be "America/Los_Angeles"
         $schedule.Type | Should -Be "StopDevBox"
 
@@ -26,7 +47,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
             $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
             $schedule.Frequency | Should -Be "Daily"
             $schedule.Name | Should -Be "default"
-            $schedule.Time | Should -Be "18:30"
+            $schedule.Time | Should -Be "19:00"
             $schedule.TimeZone | Should -Be "America/Los_Angeles"
             $schedule.Type | Should -Be "StopDevBox"
         }
@@ -38,7 +59,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $schedule = Get-AzDevCenterUserSchedule -Endpoint $env.endpoint -InputObject $scheduleInput
         $schedule.Frequency | Should -Be "Daily"
         $schedule.Name | Should -Be "default"
-        $schedule.Time | Should -Be "18:30"
+        $schedule.Time | Should -Be "19:00"
         $schedule.TimeZone | Should -Be "America/Los_Angeles"
         $schedule.Type | Should -Be "StopDevBox"
 
@@ -46,7 +67,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
             $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -InputObject $scheduleInput
             $schedule.Frequency | Should -Be "Daily"
             $schedule.Name | Should -Be "default"
-            $schedule.Time | Should -Be "18:30"
+            $schedule.Time | Should -Be "19:00"
             $schedule.TimeZone | Should -Be "America/Los_Angeles"
             $schedule.Type | Should -Be "StopDevBox"
         }
