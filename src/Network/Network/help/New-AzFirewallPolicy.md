@@ -42,13 +42,13 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelMode "Deny"
 
 This example creates an azure firewall policy with a threat intel mode
 
-### Example 3: Create an empty policy with ThreatIntel Whitelist
+### Example 3: Create an empty policy with ThreatIntelWhitelist
 ```powershell
 $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelWhitelist $threatIntelWhitelist
 ```
 
-This example creates an azure firewall policy with a threat intel whitelist
+This example creates an azure firewall policy with a threat intel allowlist
 
 ### Example 4: Create policy with intrusion detection, identity and transport security
 ```powershell
@@ -372,7 +372,7 @@ Accept wildcard characters: False
 ```
 
 ### -ThreatIntelWhitelist
-The whitelist for Threat Intelligence
+The allowlist for Threat Intelligence
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyThreatIntelWhitelist
