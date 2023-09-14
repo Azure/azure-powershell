@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added warning messages for an upcoming breaking change for creating and updating a Queue access policy
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
     - `New-AzStorageQueueStoredAccessPolicy`
     - `Set-AzStorageQueueStoredAccessPolicy`
 
