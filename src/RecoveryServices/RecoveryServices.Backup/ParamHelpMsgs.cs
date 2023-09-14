@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TieringMode = "Specifies whether to move recommended or all eligible recovery points to archive";
             public const string TierAfterDuration = "Specifies the duration after which recovery points should start moving to the archive tier, value can be in days or months. Applicable only when TieringMode is TierAllEligible";
             public const string TierAfterDurationType = "Specifies whether the TierAfterDuration is in Days or Months";
+            public const string AzureBackupResourceGroup = "Custom resource group name to store the instant recovery points of managed virtual machines. This is optional";
+            public const string AzureBackupResourceGroupSuffix = "Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional";
         }
 
         internal static class Job
