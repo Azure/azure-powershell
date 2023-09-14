@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             commit.CommitType = commitType;
             commit.ConfigurationIds = configurationIds;
             commit.TargetLocations = targetLocations;
-            var commitResponse = this.NetworkManagerCommitClient.Post(commit, resourceGroupName, name);
+            var commitResponse = this.NetworkManagerCommitClient.Post(resourceGroupName, name, commit);
             var psNetworkManagerCommit = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerCommit>(commitResponse);
             return psNetworkManagerCommit;
         }

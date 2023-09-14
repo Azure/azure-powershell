@@ -126,8 +126,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
-            MNM.AuthenticationMethod.EAPTLS,
-            MNM.AuthenticationMethod.EAPMSCHAPv2,
+            MNM.AuthenticationMethod.Eaptls,
+            MNM.AuthenticationMethod.EapmschaPv2,
             IgnoreCase = true)]
         public string AuthenticationMethod { get; set; }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualWanVpnProfileParameters virtualWanVpnProfileParams = new PSVirtualWanVpnProfileParameters();
 
             virtualWanVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                ? MNM.AuthenticationMethod.Eaptls.ToString()
                 : this.AuthenticationMethod;
 
             if (this.VpnServerConfiguration != null)

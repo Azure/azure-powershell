@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 PeerAsn = this.PeerAsn,
-                PeerIp = this.PeerIp,
+                PeerIP = this.PeerIp,
                 HubVirtualNetworkConnection = hubVnetConnection
             };
 

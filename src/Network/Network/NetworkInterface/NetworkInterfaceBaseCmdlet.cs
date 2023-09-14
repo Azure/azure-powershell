@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Commands.Network
 
 		public void NullifyApplicationSecurityGroupIfAbsent(NetworkInterface nic)
 		{
-			if (nic == null || nic.IpConfigurations == null)
+			if (nic == null || nic.IPConfigurations == null)
 			{
 				return;
 			}
 
 			// Temporary - to be removed
-			foreach (var ipconfigModel in nic.IpConfigurations)
+			foreach (var ipconfigModel in nic.IPConfigurations)
 			{
 				if (ipconfigModel.ApplicationSecurityGroups != null && ipconfigModel.ApplicationSecurityGroups.Count == 0)
 				{
