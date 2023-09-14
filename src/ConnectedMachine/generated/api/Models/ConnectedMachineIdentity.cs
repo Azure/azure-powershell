@@ -19,6 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ExtensionName { get => this._extensionName; set => this._extensionName = value; }
 
+        /// <summary>Backing field for <see cref="ExtensionType" /> property.</summary>
+        private string _extensionType;
+
+        /// <summary>The extensionType of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string ExtensionType { get => this._extensionType; set => this._extensionType = value; }
+
         /// <summary>Backing field for <see cref="GroupName" /> property.</summary>
         private string _groupName;
 
@@ -36,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location of the target resource.</summary>
+        /// <summary>The location of the Extension being received.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -46,6 +53,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The name of the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string MachineName { get => this._machineName; set => this._machineName = value; }
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the hybrid machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
@@ -60,6 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The id (Guid) of the Azure Arc PrivateLinkScope resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string PrivateLinkScopeId { get => this._privateLinkScopeId; set => this._privateLinkScopeId = value; }
+
+        /// <summary>Backing field for <see cref="Publisher" /> property.</summary>
+        private string _publisher;
+
+        /// <summary>The publisher of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Publisher { get => this._publisher; set => this._publisher = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -82,6 +103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="Version" /> property.</summary>
+        private string _version;
+
+        /// <summary>The version of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public string Version { get => this._version; set => this._version = value; }
+
         /// <summary>Creates an new <see cref="ConnectedMachineIdentity" /> instance.</summary>
         public ConnectedMachineIdentity()
         {
@@ -99,6 +127,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"extensionName",
         PossibleTypes = new [] { typeof(string) })]
         string ExtensionName { get; set; }
+        /// <summary>The extensionType of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The extensionType of the Extension being received.",
+        SerializedName = @"extensionType",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExtensionType { get; set; }
         /// <summary>The name of the private link resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -115,11 +151,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The location of the target resource.</summary>
+        /// <summary>The location of the Extension being received.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The location of the target resource.",
+        Description = @"The location of the Extension being received.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -131,6 +167,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
         string MachineName { get; set; }
+        /// <summary>The name of the hybrid machine.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the hybrid machine.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string Name { get; set; }
         /// <summary>The name of the private endpoint connection.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -147,6 +191,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"privateLinkScopeId",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkScopeId { get; set; }
+        /// <summary>The publisher of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The publisher of the Extension being received.",
+        SerializedName = @"publisher",
+        PossibleTypes = new [] { typeof(string) })]
+        string Publisher { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -171,6 +223,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The version of the Extension being received.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of the Extension being received.",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        string Version { get; set; }
 
     }
     internal partial interface IConnectedMachineIdentityInternal
@@ -178,24 +238,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
         /// <summary>The name of the machine extension.</summary>
         string ExtensionName { get; set; }
+        /// <summary>The extensionType of the Extension being received.</summary>
+        string ExtensionType { get; set; }
         /// <summary>The name of the private link resource.</summary>
         string GroupName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The location of the target resource.</summary>
+        /// <summary>The location of the Extension being received.</summary>
         string Location { get; set; }
         /// <summary>The name of the hybrid machine.</summary>
         string MachineName { get; set; }
+        /// <summary>The name of the hybrid machine.</summary>
+        string Name { get; set; }
         /// <summary>The name of the private endpoint connection.</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The id (Guid) of the Azure Arc PrivateLinkScope resource.</summary>
         string PrivateLinkScopeId { get; set; }
+        /// <summary>The publisher of the Extension being received.</summary>
+        string Publisher { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>
         string ScopeName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The version of the Extension being received.</summary>
+        string Version { get; set; }
 
     }
 }

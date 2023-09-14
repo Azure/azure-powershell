@@ -281,6 +281,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -369,7 +377,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
-                FederatedClientId = this.FederatedClientId
+                FederatedClientId = this.FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

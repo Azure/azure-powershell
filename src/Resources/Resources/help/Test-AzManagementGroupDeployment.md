@@ -124,6 +124,13 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Test-AzManagementGroupDeployment** cmdlet determines whether a deployment template and its parameter values are valid at a management group.
 
@@ -144,6 +151,14 @@ Test-AzManagementGroupDeployment -ManagementGroupId "myMG" -Location "West US" -
 ```
 
 This command tests a deployment at the management group "myMG" using the an in-memory hashtable created from the given template file and a parameter file.
+
+### Example 3: Use a .bicepparam file to validate a deployment
+```powershell
+Test-AzManagementGroupDeployment -ManagementGroupId "myManagementGroup" -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command validates the deployment at the management group scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
 
 ## PARAMETERS
 
@@ -285,11 +300,11 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateParameterFile
-A file that has the template parameters.
+Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

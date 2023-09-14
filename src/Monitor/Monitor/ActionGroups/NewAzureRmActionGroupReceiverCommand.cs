@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Create an ActionGroup receiver
     /// </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameters about receiver will be replaced by child types.", "11.0.0", "5.0.0", "2023/11/15")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroupReceiver", DefaultParameterSetName = NewEmailReceiver)]
     [OutputType(typeof(PSActionGroupReceiverBase))]
     public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.3
+* Refreshed module to ensure catalog file signed by Microsoft.
+
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
 

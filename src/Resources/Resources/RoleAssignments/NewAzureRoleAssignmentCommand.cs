@@ -24,6 +24,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -323,13 +324,18 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription != null ? DefaultProfile.DefaultContext.Subscription.Id : "",
+                    Subscription = DefaultProfile.DefaultContext.Subscription?.Id?.ToString(),
                 },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
                 Condition = Condition,
                 ConditionVersion = ConditionVersion,
             };
+
+            if (parameters.Scope == null && parameters.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
+            }
 
             AuthorizationClient.ValidateScope(parameters.Scope, true);
 

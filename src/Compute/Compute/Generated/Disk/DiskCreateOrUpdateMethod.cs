@@ -35,7 +35,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzDisk\" cmdlet will deploy with the Trusted Launch configuration by default. This includes defaulting the \"HyperVGeneration\" parameter to \"v2\". To know more about Trusted Launch, please visit https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch",
+    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzDisk\" cmdlet will deploy with the Trusted Launch configuration by default. This includes defaulting the \"HyperVGeneration\" parameter to \"v2\". To know more about Trusted Launch, please visit https://aka.ms/TLaD",
         "11.0.0", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]

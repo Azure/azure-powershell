@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.13.1
+* Updated Azure.Core to 1.34.0.
+
 ## Version 0.13.0
 * Updated to api-version 2022-11-01        
 * Added `Identity` to NetAppAccountPatch

@@ -23,12 +23,12 @@ List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
 Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName DefaultCluster-11
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespaceIdContainer
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespaceIdContainer
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusternamespace
 #>
 function Get-AzEventHubClusterNamespace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEhNamespaceIdContainer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespaceIdContainer])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

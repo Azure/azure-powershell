@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 4.10.0
+* Fixed cmdlets to use 2018-06-01-preview api version
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation',
+* Added `EncryptionProtectorAutoRotation` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, `Restore-AzSqlDatabase` cmdlets
+
 ## Version 4.9.0
 * Added new cmdlets for Azure SQL Managed Instance start/stop schedule
     - 'Start-AzSqlInstance',

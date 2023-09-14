@@ -23,12 +23,12 @@ Create an in-memory object for KeyVaultProperties.
 New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.KeyVaultProperties
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.KeyVaultProperties
 .Link
 https://learn.microsoft.com/powershell/module/Az.EventHub/new-AzEventHubKeyVaultPropertiesObject
 #>
 function New-AzEventHubKeyVaultPropertiesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.KeyVaultProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.KeyVaultProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

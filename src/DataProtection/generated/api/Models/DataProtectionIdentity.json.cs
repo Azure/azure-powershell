@@ -75,6 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {_jobId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("jobId"), out var __jsonJobId) ? (string)__jsonJobId : (string)JobId;}
             {_resourceGuardsName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("resourceGuardsName"), out var __jsonResourceGuardsName) ? (string)__jsonResourceGuardsName : (string)ResourceGuardsName;}
             {_requestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("requestName"), out var __jsonRequestName) ? (string)__jsonRequestName : (string)RequestName;}
+            {_resourceGuardProxyName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("resourceGuardProxyName"), out var __jsonResourceGuardProxyName) ? (string)__jsonResourceGuardProxyName : (string)ResourceGuardProxyName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -121,6 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             AddIf( null != (((object)this._jobId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._jobId.ToString()) : null, "jobId" ,container.Add );
             AddIf( null != (((object)this._resourceGuardsName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._resourceGuardsName.ToString()) : null, "resourceGuardsName" ,container.Add );
             AddIf( null != (((object)this._requestName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._requestName.ToString()) : null, "requestName" ,container.Add );
+            AddIf( null != (((object)this._resourceGuardProxyName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._resourceGuardProxyName.ToString()) : null, "resourceGuardProxyName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

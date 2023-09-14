@@ -12,9 +12,16 @@ Creates a local dimension selection object that can be used to construct a metri
 
 ## SYNTAX
 
+### IncludeParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToInclude <String[]>
- [-ValuesToExclude <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ExcludeParameterSet
+```
+New-AzMetricAlertRuleV2DimensionSelection -DimensionName <String> -ValuesToExclude <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +80,10 @@ The ExcludeValues
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: ExcludeParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -88,7 +95,7 @@ The IncludeValues
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: IncludeParameterSet
 Aliases:
 
 Required: True

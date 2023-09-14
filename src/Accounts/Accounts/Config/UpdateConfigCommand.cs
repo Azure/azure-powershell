@@ -25,6 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Common.Authentication.Config
 {
     [Cmdlet("Update", AzureRMConstants.AzureRMPrefix + "Config", SupportsShouldProcess = true)]
+    [Alias("Set-AzConfig")]
     [OutputType(typeof(PSConfig))]
     public class UpdateConfigCommand : ConfigCommandBase, IDynamicParameters
     {

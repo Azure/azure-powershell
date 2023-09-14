@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = restorableGremlinGraphGetResult.Id;
             Name = restorableGremlinGraphGetResult.Name;
             Type = restorableGremlinGraphGetResult.Type;
-            _rid = restorableGremlinGraphGetResult.Resource._rid;
+            _rid = restorableGremlinGraphGetResult.Resource.Rid;
             OperationType = restorableGremlinGraphGetResult.Resource.OperationType;
             EventTimestamp = restorableGremlinGraphGetResult.Resource.EventTimestamp;
             OwnerId = restorableGremlinGraphGetResult.Resource.OwnerId;
