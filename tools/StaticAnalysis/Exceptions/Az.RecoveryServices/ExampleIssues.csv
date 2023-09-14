@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.RecoveryServices","Set-AzRecoveryServicesBackupProtectionPolicy","1","19","Invalid_Parameter_Name","5011","1","Set-AzRecoveryServicesBackupProtectionPolicy -BackupSnapshotResourceGroup is not a valid parameter name.","-BackupSnapshotResourceGroup","Check validity of the parameter -BackupSnapshotResourceGroup."
+"Az.RecoveryServices","Set-AzRecoveryServicesBackupProtectionPolicy","1","19","Invalid_Parameter_Name","5011","1","Set-AzRecoveryServicesBackupProtectionPolicy -BackupSnapshotResourceGroupSuffix is not a valid parameter name.","-BackupSnapshotResourceGroupSuffix","Check validity of the parameter -BackupSnapshotResourceGroupSuffix."
