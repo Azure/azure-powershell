@@ -18,7 +18,7 @@ function setupEnv() {
     $env.location = 'Central US'
     # For any resources you created for test, you should add it to $env here.
     # Important security
-    $env.githubAccessToken = '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'
+    $env.githubAccessToken = 'xxxxx'
     $env.repositoryUrl = 'https://github.com/LucasYao93/blazor-starter'
     $env.branch00 = 'lucas/dev'
     $env.branch01 = 'lucas/dev01'
@@ -42,7 +42,7 @@ function setupEnv() {
     Set-Content -Path .\test\deployment-templates\appservice-plan\parameters.json -Value (ConvertTo-Json $serverfarmsParam01)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\appservice-plan\template.json -TemplateParameterFile .\test\deployment-templates\appservice-plan\parameters.json -Name $env.serverfarmsName01 -ResourceGroupName $env.resourceGroup
     $env.appServiceplanId01 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Web/serverFarms/$($env.serverfarmsName01)"
-    
+
     $env.serverfarmsName02 = "serverfarmsName-" + (RandomString -allChars $false -len 6)
     $serverfarmsParam02 = Get-Content .\test\deployment-templates\appservice-plan\parameters.json | ConvertFrom-Json
     $serverfarmsParam02.parameters.serverfarms_name.value = $env.serverfarmsName02
@@ -78,7 +78,7 @@ function setupEnv() {
                        -RepositoryUrl $env.repositoryUrl -RepositoryToken $env.githubAccessToken -Branch $env.branch01 `
                        -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 
-    
+
     # Register funtion app for static web.
     Write-Host "Register funtion app for static web."
     Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location
@@ -90,7 +90,7 @@ function setupEnv() {
     # 3. create  App Service. ref:https://learn.microsoft.com/en-us/azure/app-service/
     # 4. deployment slot. ref: https://learn.microsoft.com/en-us/azure/app-service/deploy-staging-slots
     # 5. Create webjob for app and slot.
-    
+
     Write-Host -ForegroundColor Green "start to create test group"
     $env.webJobResourceGroup = "webjob-rg-test"
     New-AzResourceGroup -Name $env.webJobResourceGroup -Location $env.location
@@ -117,4 +117,3 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.resourceGroup
     Remove-AzResourceGroup -Name $env.webJobResourceGroup
 }
-
