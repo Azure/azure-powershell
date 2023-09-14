@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration, MNM.ConnectionMonitorIcmpConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorHttpConfiguration, MNM.ConnectionMonitorHttpConfiguration>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorSuccessThreshold, MNM.ConnectionMonitorSuccessThreshold>();
-                cfg.CreateMap<CNM.PSHTTPHeader, MNM.HTTPHeader>();
+                cfg.CreateMap<CNM.PSHTTPHeader, MNM.HttpHeader>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTestGroupObject, MNM.ConnectionMonitorTestGroup>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorOutputObject, MNM.ConnectionMonitorOutput>();
 
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectionMonitorIcmpConfiguration, CNM.PSNetworkWatcherConnectionMonitorIcmpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorHttpConfiguration, CNM.PSNetworkWatcherConnectionMonitorHttpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorSuccessThreshold, CNM.PSNetworkWatcherConnectionMonitorSuccessThreshold>();
-                cfg.CreateMap<MNM.HTTPHeader, CNM.PSHTTPHeader>();
+                cfg.CreateMap<MNM.HttpHeader, CNM.PSHTTPHeader>();
                 cfg.CreateMap<MNM.ConnectionMonitorTestGroup, CNM.PSNetworkWatcherConnectionMonitorTestGroupObject>();
                 cfg.CreateMap<MNM.ConnectionMonitorOutput, CNM.PSNetworkWatcherConnectionMonitorOutputObject>();
 
@@ -1454,7 +1454,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Azure Firewall Policies
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyExplicitProxy, MNM.ExplicitProxy>();
-                cfg.CreateMap<CNM.PSAzureFirewallPolicySNAT, MNM.FirewallPolicySNAT>().AfterMap((src, dst) =>
+                cfg.CreateMap<CNM.PSAzureFirewallPolicySNAT, MNM.FirewallPolicySnat>().AfterMap((src, dst) =>
                 {
                     dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
                 });
@@ -1469,7 +1469,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExplicitProxy, CNM.PSAzureFirewallPolicyExplicitProxy>();
-                cfg.CreateMap<MNM.FirewallPolicySNAT, CNM.PSAzureFirewallPolicySNAT>().AfterMap((src, dst) =>
+                cfg.CreateMap<MNM.FirewallPolicySnat, CNM.PSAzureFirewallPolicySNAT>().AfterMap((src, dst) =>
                 {
                     dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
                 });

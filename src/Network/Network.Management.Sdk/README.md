@@ -5,15 +5,15 @@ This directory contains management plane service clients of Az.Network module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
 title: NetworkManagementClient
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -92,4 +92,13 @@ input-file:
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Network
+
+directive:
+  - from: swagger-document
+    where: $.definitions.EffectiveNetworkSecurityGroup.properties.tagMap
+    transform: $.type = "object"
+  - where:
+      model-name: Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
+    set:
+      model-name: ManagedServiceIdentityUserAssignedIdentitiesValue
 ```

@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
                 PeerAsn = (uint)existingBgpConnection.PeerAsn;
-                PeerIp = existingBgpConnection.PeerIp;
+                PeerIp = existingBgpConnection.PeerIP;
             }
 
             ConfirmAction(
