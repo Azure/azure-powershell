@@ -6754,5 +6754,118 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
          # Cleanup
          Clean-ResourceGroup $rgname;
     }
+}
 
+<#
+.SYNOPSIS
+Test Virtual Machines SecurityType parameter with the Standard value.
+This should prevent the TrustedLaunch value from being defaulted in.
+No SecurityProfile value should be made at this time. 
+#>
+function Test-VirtualMachineSecurityTypeStandard
+{
+    # Setup
+        $rgname = Get-ComputeTestResourceName;
+        $loc = Get-ComputeVMLocation;
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+
+        $domainNameLabel1 = "d1" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname1 = $rgname + 'V';
+        $imageName = "Win2016DataCenterGenSecond";
+        $disable = $false;
+        $enable = $true;
+        $securityTypeStnd = "Standard";
+
+        # Creating a VM using Simple parameterset
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create Vmss
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
+        # Verify security value
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+        Assert-Null $vm1.SecurityProfile;
+
+        # validate GA extension is not installed by default.
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssignedUserAssigned";
+        $vmname = $vmname1;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+        Assert-ThrowsContains { Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName; } "was not found. For more details please go to"
+    }
+    finally
+    {
+         # Cleanup
+         Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines SecurityType parameter with the Standard value with New-AzVMConfig.
+No SecurityProfile should be made at this time. 
+#>
+function Test-VirtualMachineSecurityTypeStandardWithConfig
+{
+    # Setup
+        $rgname = Get-ComputeTestResourceName;
+        $loc = Get-ComputeVMLocation;
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+        $domainNameLabel = "d1" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = $rgname + 'Vm';
+        $securityTypeStnd = "Standard";
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $disable = $false;
+        $enable = $true;
+        
+        # Creating a VM using Simple parameterset
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Create Vmss
+        $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityTypeStnd;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        # Verify security value
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-Null $vm.SecurityProfile;
+    }
+    finally
+    {
+         # Cleanup
+         Clean-ResourceGroup $rgname;
+    }
 }

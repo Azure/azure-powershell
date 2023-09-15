@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubNamespaceV2'))
 }
 
 Describe 'New-AzEventHubNamespaceV2' {
-    It 'SetExpanded' -Skip {
+    It 'SetExpanded' {
         $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
         $eventHubNamespace.Name | Should -Be $env.namespaceV2
         $eventHubNamespace.SkuName | Should -Be Standard
@@ -41,7 +41,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.PublicNetworkAccess | Should -Be "Disabled"
         $eventHubNamespace.ZoneRedundant | Should -Be $true
 
-        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned
+        $eventhubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV4 -SkuName Premium -Location eastus -IdentityType SystemAssigned        
         $eventhubNamespace.MaximumThroughputUnit | Should -Be 0
         $eventhubNamespace.Name | Should -Be $env.namespaceV4
         $eventhubNamespace.IdentityType | Should -Be SystemAssigned

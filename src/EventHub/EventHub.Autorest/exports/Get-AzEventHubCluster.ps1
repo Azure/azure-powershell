@@ -25,7 +25,7 @@ Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name DefaultCluster-11
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +49,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubcluster
 #>
 function Get-AzEventHubCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

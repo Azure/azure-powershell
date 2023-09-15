@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) 
+                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,

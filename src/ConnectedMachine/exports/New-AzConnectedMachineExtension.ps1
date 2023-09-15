@@ -36,11 +36,11 @@ $ext = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTe
 $ext | New-AzConnectedMachineExtension -ExtensionParameter $ext
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,6 +50,12 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
+  [SystemDataCreatedBy <String>]: The identity that created the resource.
+  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
+  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
+  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
+  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [AutoUpgradeMinorVersion <Boolean?>]: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   [EnableAutomaticUpgrade <Boolean?>]: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   [ForceUpdateTag <String>]: How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -67,30 +73,28 @@ EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   [StatusLevel <StatusLevelTypes?>]: The level code.
   [StatusMessage <String>]: The detailed status message, including for alerts and error messages.
   [StatusTime <DateTime?>]: The time of the status.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [TypeHandlerVersion <String>]: Specifies the version of the script handler.
 
 INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
+  [ExtensionType <String>]: The extensionType of the Extension being received.
   [GroupName <String>]: The name of the private link resource.
   [Id <String>]: Resource identity path
-  [Location <String>]: The location of the target resource.
+  [Location <String>]: The location of the Extension being received.
   [MachineName <String>]: The name of the hybrid machine.
+  [Name <String>]: The name of the hybrid machine.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [Version <String>]: The version of the Extension being received.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineextension
 #>
 function New-AzConnectedMachineExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -135,7 +139,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension]
     # Describes a Machine Extension.
     # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
@@ -202,7 +206,7 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Alias('ProtectedSettings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionPropertiesProtectedSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionPropertiesProtectedSettings]))]
     [System.Collections.Hashtable]
     # The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
     ${ProtectedSetting},
@@ -218,7 +222,7 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Alias('Settings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionPropertiesSettings]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionPropertiesSettings]))]
     [System.Collections.Hashtable]
     # Json formatted public settings for the extension.
     ${Setting},
@@ -262,7 +266,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api10.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -279,7 +283,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -343,7 +348,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

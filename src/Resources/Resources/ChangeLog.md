@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Supported `TemplateParameterFile` to accept a `.bicepparam` file.
+* Fixed unexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
+
+## Version 6.10.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
+
+## Version 6.9.1
+* Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
 
 ## Version 6.9.0
 * Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.

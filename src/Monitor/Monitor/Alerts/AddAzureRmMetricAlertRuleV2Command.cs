@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,15 +79,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the TargetResourceType  parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = CreateAlertByScopes, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource type for rule")]       
         public string TargetResourceType { get; set; }
 
         /// <summary>
         /// Gets or sets the TargetResourceRegion  parameter
         /// </summary>
-        [Parameter(ParameterSetName = CreateAlertByScopes, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = CreateAlertByScopes, ValueFromPipelineByPropertyName = true, HelpMessage = "The target resource region for rule")]
         public string TargetResourceRegion { get; set; }
 
         /// <summary>
@@ -159,42 +156,64 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
 
             IDictionary<string, string> tags = null;
-            if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
+            if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+            {
+                var scopes = this.TargetResourceScope?.ToList<string>() ?? new List<string> { this.TargetResourceId };
+                MetricAlertCriteria criteria;
+                if (this.Condition.Count > 1)
+                {
+                    throw new ArgumentException("Only single Webtest location availability criterion is supported");
+                }
+
+                var psWebtestCriteria = this.Condition.First() as PSWebtestLocationAvailabilityCriteria;
+
+                criteria = new WebtestLocationAvailabilityCriteria(psWebtestCriteria.WebTestId, psWebtestCriteria.ComponentId, psWebtestCriteria.FailedLocationCount);
+                if (!scopes.Contains(psWebtestCriteria.ComponentId))
+                {
+                    scopes.Add(psWebtestCriteria.ComponentId);
+                }
+
+                tags = new Dictionary<string, string>()
+                    {
+                        {$"hidden-link:{psWebtestCriteria.WebTestId}", "Resource" },
+                        {$"hidden-link:{psWebtestCriteria.ComponentId}", "Resource" }
+                    };
+                var metricAlertResource = new MetricAlertResource(
+                        description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),
+                        severity: this.Severity,
+                        location: "global",
+                        enabled: !this.DisableRule,
+                        scopes: this.TargetResourceScope,
+                        evaluationFrequency: this.Frequency,
+                        windowSize: this.WindowSize,
+                        criteria: criteria,
+                        autoMitigate: this.AutoMitigate,
+                        actions: actions,
+                        tags: tags
+                    );
+                if (ShouldProcess(
+                    target: $"Create/update an alert rule: {this.Name} from resource group: {this.ResourceGroupName}",
+                    action: "Create/update an alert rule"))
+                {
+                    var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
+                    WriteObject(result);
+                }
+            }
+            else if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
             {
                 var scopes = new List<string> {this.TargetResourceId};
 
                 MetricAlertCriteria criteria;
 
-                if (this.Condition.Any(c => c.CriterionType == CriterionType.WebtestLocationAvailabilityCriterion))
+                var metricCriteria = new List<MetricCriteria>();
+                foreach (var metricCondition in this.Condition)
                 {
-                    if (this.Condition.Count > 1)
-                    {
-                        throw new ArgumentException("Only single Webtest location availability criterion is supported");
-                    }
-
-                    var psWebtestCriteria = this.Condition.First() as PSWebtestLocationAvailabilityCriteria ;
-
-                    criteria = new WebtestLocationAvailabilityCriteria(psWebtestCriteria.WebTestId, psWebtestCriteria.ComponentId, psWebtestCriteria.FailedLocationCount);
-                    scopes.Add(psWebtestCriteria.ComponentId);
-
-                    tags = new Dictionary<string, string>()
-                    {
-                        {$"hidden-link:{psWebtestCriteria.WebTestId}", "Resource" },
-                        {$"hidden-link:{psWebtestCriteria.ComponentId}", "Resource" }
-                    };
+                    var condition = metricCondition as PSMetricCriteria;
+                    metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
                 }
-                else
-                {
-                    var metricCriteria = new List<MetricCriteria>();
-                    foreach (var metricCondition in this.Condition)
-                    {
-                        var condition = metricCondition as PSMetricCriteria;
-                        metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions, skipMetricValidation: condition.SkipMetricValidation));
-                    }
-                    criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
-                        allOf: metricCriteria
-                    );
-                }
+                criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
+                    allOf: metricCriteria
+                );
 
                 var metricAlertResource = new MetricAlertResource(
                         description: this.Description ?? Utilities.GetDefaultDescription("new Metric alert rule"),

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.DataCollectionRules
     /// <summary>
     /// Delete a Data Collection Rule Association
     /// </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter set ByResourceId will be deprecated", "11.0.0", "5.0.0", "2023/11/15")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollectionRuleAssociation", DefaultParameterSetName = ByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmDataCollectionRuleAssociationCommand : ManagementCmdletBase

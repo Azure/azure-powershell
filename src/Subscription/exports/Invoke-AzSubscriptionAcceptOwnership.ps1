@@ -43,9 +43,8 @@ function Invoke-AzSubscriptionAcceptOwnership {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='AcceptExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Subscription Id.
     ${SubscriptionId},
@@ -171,9 +170,6 @@ begin {
         $mapping = @{
             AcceptExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptExpanded';
             AcceptViaIdentityExpanded = 'Az.Subscription.private\Invoke-AzSubscriptionAcceptOwnership_AcceptViaIdentityExpanded';
-        }
-        if (('AcceptExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

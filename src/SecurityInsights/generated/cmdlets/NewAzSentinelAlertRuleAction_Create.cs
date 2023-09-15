@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Description = @"Action for alert rule.",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.ParameterBreakingChange("Action", "11.0.0", "4.0.0", "2023/11/15", IsBecomingMandatory=true, ChangeDescription="Action is required.")]
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionRequest Action { get => this._action; set => this._action = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>

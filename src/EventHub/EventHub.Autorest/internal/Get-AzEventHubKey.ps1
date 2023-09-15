@@ -25,12 +25,12 @@ Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name RootManageSharedAccessKey
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey
 #>
 function Get-AzEventHubKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

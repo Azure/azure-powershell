@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="type">Resource type.</param>
         /// <param name="location">Resource location.</param>
         /// <param name="tags">Resource tags.</param>
+        /// <param name="size">A read-only string that represents the size of
+        /// the FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)</param>
         /// <param name="ruleCollectionGroups">List of references to
         /// FirewallPolicyRuleCollectionGroups.</param>
         /// <param name="provisioningState">The provisioning state of the
@@ -70,9 +72,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="identity">The identity of the firewall policy.</param>
-        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResource> ruleCollectionGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySNAT snat = default(FirewallPolicySNAT), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
+        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string size = default(string), IList<SubResource> ruleCollectionGroups = default(IList<SubResource>), string provisioningState = default(string), SubResource basePolicy = default(SubResource), IList<SubResource> firewalls = default(IList<SubResource>), IList<SubResource> childPolicies = default(IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySNAT snat = default(FirewallPolicySNAT), FirewallPolicySQL sql = default(FirewallPolicySQL), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
             : base(id, name, type, location, tags)
         {
+            Size = size;
             RuleCollectionGroups = ruleCollectionGroups;
             ProvisioningState = provisioningState;
             BasePolicy = basePolicy;
@@ -97,6 +100,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets a read-only string that represents the size of the
+        /// FirewallPolicyPropertiesFormat in MB. (ex 0.5MB)
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.size")]
+        public string Size { get; private set; }
 
         /// <summary>
         /// Gets list of references to FirewallPolicyRuleCollectionGroups.

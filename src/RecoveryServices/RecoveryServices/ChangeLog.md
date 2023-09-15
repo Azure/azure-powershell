@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 6.5.1
+* Added StorageAccountName property to AzureFileShare job.
+* Added support for AFS restore to alternate storage account in different region and resource group than source storage account.
+
 ## Version 6.5.0
 * Added CRR support for new regions malaysiasouth, chinanorth3, chinaeast3, jioindiacentral, jioindiawest.
 * Regenerated CRR SDK. Fixed issues with SQL CRR.

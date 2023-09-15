@@ -25,12 +25,12 @@ Lists available operations for the Microsoft.VirtualMachineImages provider
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderoperation
 #>
 function Get-AzImageBuilderOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -129,61 +130,14 @@ Create or update a virtual machine image template
 .Description
 Create or update a virtual machine image template
 .Example
-# Create a platform image source
-$source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
-# Create a shell customizer
-$customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name 'CheckSumCompareShellScript' -ScriptUri 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh' -Sha256Checksum 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
-# Create a shared image distributor
-$distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image' -ReplicationRegion 'eastus2' -RunOutputName 'runoutput-01' -ExcludeFromLatest $false
-# the userAssignedIdentity should have access permissions to the image above
-$userAssignedIdentity = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id'
-# Create a virtual machine image template
-New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
+$source = New-AzImageBuilderTemplateSourceObject -PlatformImageSource -Publisher "Canonical" -Offer "UbuntuServer" -Sku "18.04-LTS" -Version "latest"
+$customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name "CheckSumCompareShellScript" -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" -Sha256Checksum "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
+$distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
+$userAssignedIdentity = "/subscriptions/{subId}/resourcegroups/azps_test_group_imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-imagebuilder"
+
+New-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor
 .Example
-# request_body.json
-# {
-#   "location": "eastus",
-#   "properties": {
-#     "source": {
-#       "type": "PlatformImage",
-#       "publisher": "Canonical",
-#       "offer": "UbuntuServer",
-#       "sku": "18.04-LTS",
-#       "version": "latest"
-#     },
-#     "customize": [
-#       {
-#         "type": "Shell",
-#         "name": "CheckSumCompareShellScript",
-#         "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
-#         "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
-#       }
-#     ],
-#     "distribute": [
-#       {
-#         "type": "SharedImage",
-#         "runOutputName": "runoutput-01",
-#         "artifactTags": {
-#           "tag": "dis-share"
-#         },
-#         "galleryImageId": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image",
-#         "replicationRegions": [
-#           "eastus2"
-#         ],
-#         "excludeFromLatest": false
-#       }
-#     ]
-#   },
-#   "identity": {
-#     "type": "UserAssigned",
-#     "userAssignedIdentities": {
-#       "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id": {}
-#     }
-#   }
-# }
-New-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg -JsonTemplatePath ./request_body.json
-.Example
-New-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg -JsonString '{
+$requestbodyjson = '{
   "location": "eastus",
   "properties": {
     "source": {
@@ -206,26 +160,68 @@ New-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg -
         "type": "SharedImage",
         "runOutputName": "runoutput-01",
         "artifactTags": {
-          "tag": "dis-share"
+          "test": "dis-share"
         },
-        "galleryImageId": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Compute/galleries/bez_gallery/images/bez-image",
+        "galleryImageId": "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image",
         "replicationRegions": [
-          "eastus2"
-        ],
-        "excludeFromLatest": false
+          "eastus"
+        ]
       }
     ]
   },
   "identity": {
     "type": "UserAssigned",
     "userAssignedIdentities": {
-      "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id": {}
+      "/subscriptions/{subId}/resourcegroups/azps_test_group_imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-imagebuilder": {}
+    }
+  }
+}'
+$requestbodyjson | Out-File -FilePath "C:\request_body.json"
+
+New-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder -JsonTemplatePath "C:\request_body.json"
+.Example
+New-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder -JsonString '{
+  "location": "eastus",
+  "properties": {
+    "source": {
+      "type": "PlatformImage",
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "18.04-LTS",
+      "version": "latest"
+    },
+    "customize": [
+      {
+        "type": "Shell",
+        "name": "CheckSumCompareShellScript",
+        "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
+        "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
+      }
+    ],
+    "distribute": [
+      {
+        "type": "SharedImage",
+        "runOutputName": "runoutput-01",
+        "artifactTags": {
+          "test": "dis-share"
+        },
+        "galleryImageId": "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image",
+        "replicationRegions": [
+          "eastus"
+        ]
+      }
+    ]
+  },
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/{subId}/resourcegroups/azps_test_group_imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mi-imagebuilder": {}
     }
   }
 }'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -251,7 +247,7 @@ VALIDATOR <IImageTemplateInVMValidator[]>: List of validations to be performed.
 https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 #>
 function New-AzImageBuilderTemplate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -284,14 +280,14 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [System.Int32]
-    # Maximum duration to wait while building the image template (includes all customizations, validations, and distributions).
+    # Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions).
     # Omit or specify 0 to use the default (4 hours).
     ${BuildTimeoutInMinute},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateCustomizer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateCustomizer[]]
     # Specifies the properties used to describe the customization steps of the image, like Image source etc
     # To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
     ${Customize},
@@ -299,7 +295,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributor[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributor[]]
     # The distribution targets where the image output needs to go to.
     # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
     ${Distribute},
@@ -314,7 +310,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSource]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateSource]
     # Specifies the properties used to describe the source image.
     # To construct, see NOTES section for SOURCE properties and create a hash table.
     ${Source},
@@ -338,11 +334,19 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]
-    # The list of user identities associated with the image template.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
     ${UserAssignedIdentity},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState]
+    # Enabling this field will improve VM boot time by optimizing the final customized image output.
+    ${VMBootState},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -387,7 +391,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateInVMValidator[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateInVMValidator[]]
     # List of validations to be performed.
     # To construct, see NOTES section for VALIDATOR properties and create a hash table.
     ${Validator},
@@ -410,7 +414,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

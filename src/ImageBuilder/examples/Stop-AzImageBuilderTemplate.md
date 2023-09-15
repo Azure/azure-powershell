@@ -1,15 +1,13 @@
-### Example 1: Stop image template creation
+### Example 1: Cancel the long running image build based on the image template.
 ```powershell
-Stop-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+Stop-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-This command stops image template creation.
+Cancel the long running image build based on the image template.
 
-### Example 2: Stop image template creation
+### Example 2: Cancel the long running image build based on the image template.
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Stop-AzImageBuilderTemplate
+Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Stop-AzImageBuilderTemplate
 ```
 
-This command stops image template creation.
-
-
+Cancel the long running image build based on the image template.

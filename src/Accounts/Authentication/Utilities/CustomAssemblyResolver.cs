@@ -25,6 +25,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
     public static class CustomAssemblyResolver
     {
         private static IDictionary<string, (string Path, Version Version)> NetFxPreloadAssemblies = ConditionalAssemblyProvider.GetAssemblies();
+        private static ISet<string> CrossMajorVersionRedirectionAllowList = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "System.Diagnostics.DiagnosticSource",
+            "System.Runtime.CompilerServices.Unsafe",
+            "Newtonsoft.Json"
+        };
 
         public static void Initialize()
         {
@@ -42,10 +48,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 AssemblyName name = new AssemblyName(args.Name);
                 if (NetFxPreloadAssemblies.TryGetValue(name.Name, out var assembly))
                 {
-                    //For Newtonsoft.Json, allow to use bigger version to replace smaller version
                     if (assembly.Version >= name.Version
                         && (assembly.Version.Major == name.Version.Major
-                            || string.Equals(name.Name, "Newtonsoft.Json", StringComparison.OrdinalIgnoreCase)))
+                            || IsCrossMajorVersionRedirectionAllowed(name.Name)))
                     {
                         return Assembly.LoadFrom(assembly.Path);
                     }
@@ -55,6 +60,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
             }
             return null;
+        }
+
+        /// <summary>
+        /// We allow cross major version redirection for some assemblies to avoid shipping multiple versions of the same assembly.
+        /// Cautious should be taken when adding new assemblies to the allow list - make sure the new version is backward compatible.
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <returns></returns>
+        private static bool IsCrossMajorVersionRedirectionAllowed(string assemblyName)
+        {
+            return CrossMajorVersionRedirectionAllowList.Contains(assemblyName);
         }
     }
 }
