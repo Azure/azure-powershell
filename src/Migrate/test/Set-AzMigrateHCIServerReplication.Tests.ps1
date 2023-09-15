@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateHCIServerReplica
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzMigrateHCIServerReplication' {
-    It 'ByID' -skip {
+Describe 'Set-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
+    It 'ByID' {
         $output = Set-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem2 -TargetVMName $env.hciTgtVMNameEdit -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1
     }
