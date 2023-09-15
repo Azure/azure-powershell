@@ -188,12 +188,15 @@ function GenerateHashForArtifact {
         ${Artifact}
     )
 
-    $hashCode = [System.Int128]0
+    $hashCode = 0
     $artifactLength = $Artifact.Length
     $tempItemLength = 0
     if ($artifactLength -gt 0) {
         while ($tempItemLength -lt $artifactLength) {
-            $hashCode = (($hashCode -shl 5) - $hashCode) + $Artifact[$tempItemLength++] -bor 0
+            $hashCode = ((($hashCode -shl 5) - $hashCode) + $Artifact[$tempItemLength++] -bor 0)
+            
+            # Treat as Double, then convert to Bytes, then convert back to Int32 to match JavaScript behavior
+            $hashCode = [System.BitConverter]::ToInt32([System.BitConverter]::GetBytes($hashCode), 0)
         }
     }
 

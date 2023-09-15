@@ -340,9 +340,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[DatabaseInstanceName <String>]`: Unique name of a database instance in Azure migration hub.
   - `[DatabaseName <String>]`: Unique name of a database in Azure migration hub.
   - `[DeploymentId <String>]`: Deployment Id.
-  - `[DraName <String>]`: Dra name.
-  - `[EmailConfigurationName <String>]`: Email configuration name.
+  - `[EmailConfigurationName <String>]`: The email configuration name.
   - `[EventName <String>]`: Unique name of an event within a migrate project.
+  - `[FabricAgentName <String>]`: The fabric agent (Dra) name.
   - `[FabricName <String>]`: Fabric name.
   - `[HostName <String>]`: Host ARM name.
   - `[Id <String>]`: Resource identity path
@@ -361,13 +361,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[OperationStatusName <String>]`: Operation status ARM name.
   - `[PolicyName <String>]`: Replication policy name.
   - `[ProtectableItemName <String>]`: Protectable item name.
-  - `[ProtectedItemName <String>]`: Protected item name.
+  - `[ProtectedItemName <String>]`: The protected item name.
   - `[ProtectionContainerName <String>]`: Protection container name.
   - `[ProviderName <String>]`: Recovery services provider name.
   - `[RecoveryPlanName <String>]`: Name of the recovery plan.
   - `[RecoveryPointName <String>]`: The recovery point name.
   - `[ReplicatedProtectedItemName <String>]`: Replication protected item name.
-  - `[ReplicationExtensionName <String>]`: Replication extension name.
+  - `[ReplicationExtensionName <String>]`: The replication extension name.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: The name of the recovery services vault.
   - `[SiteName <String>]`: Site name.
@@ -375,11 +375,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[StorageClassificationMappingName <String>]`: Storage classification mapping name.
   - `[StorageClassificationName <String>]`: Storage classification name.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VaultName <String>]`: Vault name.
+  - `[VaultName <String>]`: The vault name.
   - `[VaultSettingName <String>]`: Vault setting name.
   - `[VcenterName <String>]`: VCenter ARM name.
   - `[VirtualMachineName <String>]`: Virtual Machine name.
-  - `[WorkflowName <String>]`: Workflow name.
 
 ## RELATED LINKS
 

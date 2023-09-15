@@ -369,12 +369,6 @@ directive:
       subject: ^Fabric$
     set:
       subject: HCIReplicationFabric
-  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
-    where:
-      verb: Get
-      subject: ^Policy$
-    set:
-      subject: HCIReplicationPolicy
   # Hide cmldets used by custom
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:

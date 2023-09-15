@@ -289,7 +289,7 @@ function New-AzMigrateHCIServerReplication {
 
         # Validate Policy
         $policyName = $vaultName + $instanceType + "policy"
-        $policyObj = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+        $policyObj = Az.Migrate.Internal\Get-AzMigratePolicy `
             -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $vaultName `

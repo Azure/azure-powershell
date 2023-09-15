@@ -303,7 +303,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Put Policy
         $policyName = $replicationVault.Name + $instanceType + "policy"
-        $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+        $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
             -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $replicationVault.Name `
@@ -320,7 +320,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+                    $policy = Az.Migrate.Internal\Get-AzMigratePolicy -InputObject $policy
 
                     if (-not (
                             $policy.Property.ProvisioningState -eq [ProvisioningState]::Creating -or
@@ -352,7 +352,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 }
 
                 Start-Sleep -Seconds 30
-                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
                     -InputObject $policy `
                     -ErrorVariable notPresent `
                     -ErrorAction SilentlyContinue
@@ -371,7 +371,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                    $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
                         -InputObject $policy `
                         -ErrorVariable notPresent `
                         -ErrorAction SilentlyContinue
@@ -400,7 +400,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Refresh local policy object if exists
         if ($null -ne $policy) {
-            $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy -InputObject $policy
+            $policy = Az.Migrate.Internal\Get-AzMigratePolicy -InputObject $policy
         }
 
         # Create policy if not found or previously deleted
@@ -449,7 +449,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             # Check Policy creation status every 30s. Timeout after 10min
             for ($i = 0; $i -lt 20; $i++) {
                 Start-Sleep -Seconds 30
-                $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+                $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
                     -ResourceGroupName $ResourceGroupName `
                     -Name $policyName `
                     -VaultName $replicationVault.Name `
@@ -483,7 +483,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
-        $policy = Az.Migrate\Get-AzMigrateHCIReplicationPolicy `
+        $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
             -ResourceGroupName $ResourceGroupName `
             -Name $policyName `
             -VaultName $replicationVault.Name `
@@ -501,6 +501,17 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         # Put Cache Storage Account
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+            -ResourceGroupName $ResourceGroupName `
+            -MigrateProjectName $ProjectName `
+            -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $amhSolution) {
+            throw "No Data Replication Service Solution found. Please verify your appliance setup."
+        }
+
         $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
         
         # Record of rsa found in AMH solution
@@ -524,7 +535,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                         -Name $amhStoredStorageAccountName `
                         -ErrorVariable notPresent `
                         -ErrorAction SilentlyContinue
-                    # Stop if amhStoredStorageAccount is not found or in a terminal state
+                        # Stop if amhStoredStorageAccount is not found or in a terminal state
                     if ($null -eq $amhStoredStorageAccount -or
                         $null -eq $amhStoredStorageAccount.ProvisioningState -or
                         $amhStoredStorageAccount.ProvisioningState -eq [StorageAccountProvisioningState]::Succeeded) {
@@ -551,8 +562,8 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
                 # amhStoredStorageAccount is not found or in a bad state but AMH has a record of it, so remove the record
                 if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
-                    $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId")
-                    $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null)
+                    $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId") | Out-Null
+                    $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $null) | Out-Null
                     Az.Migrate.Internal\Set-AzMigrateSolution `
                         -MigrateProjectName $ProjectName `
                         -Name $amhSolution.Name `
@@ -571,7 +582,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -SubscriptionId $SubscriptionId `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            # Check if AMH record is removed
+                # Check if AMH record is removed
             if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
                 ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
                 throw "Unexpected error occurred in unlinking Cache Storage Account with Id '$($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])'. Please re-run this command or contact support if help needed."
@@ -593,7 +604,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -Name $userProvidedStorageAccountName `
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
-            
+
             # Wait for userProvidedStorageAccount to reach a terminal state
             if ($null -ne $userProvidedStorageAccount -and
                 $null -ne $userProvidedStorageAccount.ProvisioningState -and
@@ -632,7 +643,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # No Cache Storage Account found or provided, so create one
         if ($null -eq $cacheStorageAccount) {
-            $suffix = (GenerateHashForArtifact -Artifact "$($sourceSiteId)/$($SourceApplianceName)").ToString().Substring(0, 14)
+            $suffix = (GenerateHashForArtifact -Artifact "$($sourceSiteId)/$($SourceApplianceName)").ToString()
+            if ($suffixHash.Length -gt 14) {
+                $suffix = $suffixHash.Substring(0, 14)
+            }
             $cacheStorageAccountName = "migratersa" + $suffix
             $cacheStorageAccountId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($cacheStorageAccountName)"
 
@@ -643,10 +657,10 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -ErrorVariable notPresent `
                 -ErrorAction SilentlyContinue
             if ($null -ne $cacheStorageAccount) {
-                throw "Unexpteced error encountered: Cache Storage Account '$($cacheStorageAccountName)' already exists. Please re-run this command to create a different one or contact support if help needed."
+                throw "Unexpected error encountered: Cache Storage Account '$($cacheStorageAccountName)' already exists. Please re-run this command to create a different one or contact support if help needed."
             }
 
-            Write-Host "Creating Cache Storage Account..."
+            Write-Host "Creating Cache Storage Account with default name '$($cacheStorageAccountName)'..."
 
             $params = @{
                 name                                = $cacheStorageAccountName;
@@ -766,7 +780,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 -Scope $cacheStorageAccount.Id | Out-Null
         }
 
-        # Give time for Cache Storage Account permissions to sync. Times out after 2min
+        # Give time for role assignments to be created. Times out after 2min
         $rsaPermissionGranted = $false
         for ($i = 0; $i -lt 4; $i++) {
             # Check Source Dra AAD App access to Cache Storage Account as "Contributor"
@@ -840,7 +854,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                     -ResourceGroupName $ResourceGroupName `
                     -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
         }
-        Write-Host "*Selected Cache Stroage Account: '$($cacheStorageAccount.StorageAccountName)' in Location '$($cacheStorageAccount.Location)'."
+        Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'."
 
         # Put replication extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
@@ -974,6 +988,9 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Create replication extension if not found or previously deleted
         if ($null -eq $replicationExtension -or $replicationExtension.Property.ProvisioningState -eq [ProvisioningState]::Deleted) {
+            Write-Host "Waiting 2 minutes for permissions to sync before creating Replication Extension..."
+            Start-Sleep -Seconds 120
+
             Write-Host "Creating Replication Extension..."
             $params = @{
                 InstanceType                = $instanceType;

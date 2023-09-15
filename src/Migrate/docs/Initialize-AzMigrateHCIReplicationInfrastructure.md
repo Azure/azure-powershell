@@ -52,7 +52,7 @@ Replication policy and replication extension will be created automatically.
 ## PARAMETERS
 
 ### -CacheStorageAccountId
-Specifies the Storage Account Id to be used for private endpoint scenario.
+Specifies the Storage Account ARM Id to be used for private endpoint scenario.
 
 ```yaml
 Type: System.String
