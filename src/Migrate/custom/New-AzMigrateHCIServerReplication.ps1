@@ -244,10 +244,9 @@ function New-AzMigrateHCIServerReplication {
         # Get fabrics and appliances in the project
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
-            if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
-                continue;
-            }
-
+            # if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
+            #     continue;
+            # }
             if ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance) {
                 $sourceFabric = $fabric
             }
@@ -320,6 +319,13 @@ function New-AzMigrateHCIServerReplication {
         $targetClusterIdArray = $targetClusterId.Split("/")
         $targetSubscription = $targetClusterIdArray[2]
 
+        # Get Target cluster
+        $hciClusterArgQuery = GetHCIClusterARGQuery -HCIClusterID $targetClusterId
+        $targetCluster = Az.ResourceGraph\Search-AzGraph -Query $hciClusterArgQuery -Subscription $targetSubscription
+        if ($null -eq $targetCluster) {
+            throw "No target cluster found with id '$targetClusterId'."
+        }
+
         # Get Storage Container
         $storageContainerArgQuery = GetStorageContainerARGQuery -HCIClusterID $targetClusterId
         $storageContainers = Az.ResourceGraph\Search-AzGraph -Query $storageContainerArgQuery -Subscription $targetSubscription
@@ -334,7 +340,7 @@ function New-AzMigrateHCIServerReplication {
 
         # Get Virtual Switches
         $virtualSwitchArgQuery = GetVirtualSwitchARGQuery -HCIClusterID $targetClusterId
-        $virtualSwitchIds = if ($parameterSet -match 'DefaultUser') { $TargetVirtualSwitchId } else { $NicToInclude | Select-Object -Property TargetNetworkId }
+        $virtualSwitchIds = if ($parameterSet -match 'DefaultUser') { $TargetVirtualSwitchId } else { $NicToInclude | Select-Object -ExpandProperty TargetNetworkId }
         $virtualSwitches = Az.ResourceGraph\Search-AzGraph -Query $virtualSwitchArgQuery -Subscription $targetSubscription
         
         if ($null -eq $virtualSwitches) {
@@ -414,12 +420,12 @@ function New-AzMigrateHCIServerReplication {
         }
 
         $customProperties.InstanceType                        = $instanceType
-        $customProperties.CustomLocationRegion                = $storageContainer.Location
+        $customProperties.CustomLocationRegion                = $targetCluster.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId            = $InputObject.Id
         $customProperties.RunAsAccountId                      = $runAsAccount.Id
         $customProperties.SourceDraName                       = $sourceDra.Name
         $customProperties.StorageContainerId                  = $($storageContainer.Id)
-        $customProperties.TargetArcClusterCustomLocationId    = $storageContainer.ExtendedLocation.Name
+        $customProperties.TargetArcClusterCustomLocationId    = $targetCluster.CustomLocation
         $customProperties.TargetDraName                       = $targetDra.Name
         $customProperties.TargetHciClusterId                  = $targetClusterId
         $customProperties.TargetResourceGroupId               = $TargetResourceGroupId
@@ -445,11 +451,21 @@ function New-AzMigrateHCIServerReplication {
                 if ($null -eq $osDisk) {
                     throw "No Disk found with InstanceId '$OSDiskID' from discovered machine disks."
                 }
+
+                $diskName = Split-Path $osDisk.Path -leaf
+                if (IsReservedOrTrademarked($diskName)) {
+                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
+                }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
                 $osDisk = $InputObject.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
                     throw "No Disk found with Uuid '$OSDiskID' from discovered machine disks."
+                }
+
+                $diskName = Split-Path $osDisk.Path -leaf
+                if (IsReservedOrTrademarked($diskName)) {
+                    throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
                 }
             }
 
@@ -509,7 +525,7 @@ function New-AzMigrateHCIServerReplication {
                     }
                 }
 
-                $diskName =  Split-Path $discoveredDisk.Path -leaf $discoveredDisk
+                $diskName = Split-Path $discoveredDisk.Path -leaf
                 if (IsReservedOrTrademarked($diskName)) {
                     throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
                 }
@@ -569,7 +585,7 @@ function New-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('Property')
             $null = $PSBoundParameters.Remove('NoWait')
 
-            $null = $PSBoundParameters.Add('Name', $jobName)
+            $null = $PSBoundParameters.Add('JobName', $jobName)
             return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
         }
     }
