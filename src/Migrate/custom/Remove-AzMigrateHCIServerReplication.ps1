@@ -38,6 +38,8 @@ function Remove-AzMigrateHCIServerReplication {
         ${InputObject},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
         # Specifies whether the replication needs to be force removed.
@@ -99,7 +101,7 @@ function Remove-AzMigrateHCIServerReplication {
     )
     
     process {
-        $hasDeleteOption = $PSBoundParameters.ContainsKey('ForceRemove')
+        $shouldForceRemove = [System.Convert]::ToBoolean($ForceRemove)
         $null = $PSBoundParameters.Remove('ForceRemove')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('InputObject')
@@ -119,10 +121,7 @@ function Remove-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add('VaultName', $vaultName)
         $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
         $null = $PSBoundParameters.Add('NoWait', $true)
-
-        if ($hasDeleteOption) {
-            $null = $PSBoundParameters.Add('ForceDelete', [System.Convert]::ToBoolean($ForceRemove))
-        }
+        $null = $PSBoundParameters.Add('ForceDelete', $shouldForceRemove)
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
             $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters

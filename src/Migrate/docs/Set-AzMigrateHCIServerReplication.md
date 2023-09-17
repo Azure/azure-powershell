@@ -14,7 +14,7 @@ Updates the target properties for the replicating server.
 
 ```
 Set-AzMigrateHCIServerReplication -TargetObjectID <String>
- [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <Boolean>]
+ [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>] [-IsDynamicMemoryEnabled <String>]
  [-NicToInclude <AzStackHCINicInput[]>] [-SubscriptionId <String>] [-TargetVirtualSwitchId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMName <String>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Specifies if RAM is dynamic or not.
 
 ```yaml
-Type: System.Boolean
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -14,9 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzMigrateHCIServerReplica
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
+Describe 'Set-AzMigrateHCIServerReplication' {
     It 'ByID' {
-        $output = Set-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem2 -TargetVMName $env.hciTgtVMNameEdit -SubscriptionId $env.hciSubscriptionId
+        $output = Set-AzMigrateHCIServerReplication `
+            -TargetObjectID $env.hciProtectedItem1 `
+            -SubscriptionId $env.hciSubscriptionId `
+            -IsDynamicMemoryEnabled "false"
         $output.Count | Should -BeGreaterOrEqual 1
     }
 }

@@ -50,8 +50,10 @@ function Set-AzMigrateHCIServerReplication {
         ${TargetVirtualSwitchId},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.Boolean]
+        [System.String]
         # Specifies if RAM is dynamic or not. 
         ${IsDynamicMemoryEnabled},
         
@@ -138,6 +140,9 @@ function Set-AzMigrateHCIServerReplication {
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
+        if ($HasIsDynamicMemoryEnabled) {
+            $isDynamicRamEnbaled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+        }
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasNicToInclude = $PSBoundParameters.ContainsKey('NicToInclude')
@@ -227,7 +232,7 @@ function Set-AzMigrateHCIServerReplication {
         }
         
         if ($HasIsDynamicMemoryEnabled) {
-            $customProperties.IsDynamicRam = $IsDynamicMemoryEnabled
+            $customProperties.IsDynamicRam = $isDynamicRamEnbaled
         }
 
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {

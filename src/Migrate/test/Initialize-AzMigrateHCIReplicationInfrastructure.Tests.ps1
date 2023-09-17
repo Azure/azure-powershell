@@ -14,14 +14,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Initialize-AzMigrateHCIReplic
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Initialize-AzMigrateHCIReplicationInfrastructure' {
-    It 'Default' -skip {
+Describe 'Initialize-AzMigrateHCIReplicationInfrastructure' -Tag 'LiveOnly' {
+    It 'Default' {
         $output = Initialize-AzMigrateHCIReplicationInfrastructure `
             -ProjectName $env.hciProjectName `
             -ResourceGroupName $env.hciMigResourceGroup `
             -SubscriptionId $env.hciSubscriptionId `
             -SourceApplianceName $env.hciSourceApplianceName `
             -TargetApplianceName $env.hciTargetApplianceName `
+            -CacheStorageAccountId $env.hciReplicationStorageAccountId `
             -PassThru
         $output | Should -Be $true
     }

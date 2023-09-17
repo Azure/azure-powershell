@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzMigrateHCIServerMigra
 
 Describe 'Start-AzMigrateHCIServerMigration' {
     It 'ByID' {
-        { Start-AzMigrateHCIServerMigration -TargetObjectID $env.hciProtectedItem3 -SubscriptionId $env.hciSubscriptionId } | Should -Not -Throw
+        { Start-AzMigrateHCIServerMigration -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId } | Should -Not -Throw
     }
 
-    It 'ByInputObject' -skip {
-        $obj = Get-AzMigrateHCIServerReplication -TargetObjectID  $env.hciProtectedItem3 -SubscriptionId $env.hciSubscriptionId
+    It 'ByInputObject' {
+        $obj = Get-AzMigrateHCIServerReplication -TargetObjectID  $env.hciProtectedItem2 -SubscriptionId $env.hciSubscriptionId
         $obj.Count | Should -BeGreaterOrEqual 1
         { Start-AzMigrateHCIServerMigration -InputObject $obj -SubscriptionId $env.hciSubscriptionId } | Should -Not -Throw
     }

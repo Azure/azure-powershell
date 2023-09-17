@@ -16,7 +16,7 @@ Starts replication for the specified server.
 ```
 New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -TargetResourceGroupId <String>
  -TargetStoragePathId <String> -TargetVirtualSwitchId <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
+ [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ New-AzMigrateHCIServerReplication -MachineId <String> -OSDiskID <String> -Target
 ```
 New-AzMigrateHCIServerReplication -DiskToInclude <AzStackHCIDiskInput[]> -MachineId <String>
  -NicToInclude <AzStackHCINicInput[]> -TargetResourceGroupId <String> -TargetStoragePathId <String>
- -TargetVMName <String> [-IsDynamicMemoryEnabled <Boolean>] [-SubscriptionId <String>]
+ -TargetVMName <String> [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>]
  [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifies if RAM is dynamic or not.
 
 ```yaml
-Type: System.Boolean
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

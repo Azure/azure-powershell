@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMigrateHCIServerRepl
 
 Describe 'Remove-AzMigrateHCIServerReplication' {
     It 'ByID' {
-        { Remove-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem3 -SubscriptionId $env.hciSubscriptionId } | Should -Not -Throw
+        { Remove-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId -ForceRemove "true" } | Should -Not -Throw
     }
 
-    It 'ByInputObject' -skip {
-        $obj = Get-AzMigrateHCIServerReplication -TargetObjectID  $env.hciProtectedItem3 -SubscriptionId $env.hciProtectedItem3
+    It 'ByInputObject' {
+        $obj = Get-AzMigrateHCIServerReplication -TargetObjectID  $env.hciProtectedItem2 -SubscriptionId $env.hciSubscriptionId
         $obj.Count | Should -BeGreaterOrEqual 1
-        { Remove-AzMigrateHCIServerReplication -InputObject $obj -SubscriptionId $env.hciProtectedItem3 } | Should -Not -Throw
+        { Remove-AzMigrateHCIServerReplication -InputObject $obj -SubscriptionId $env.hciSubscriptionId -ForceRemove "true" } | Should -Not -Throw
     }
 }

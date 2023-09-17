@@ -14,16 +14,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMigrateHCIServerReplica
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMigrateHCIServerReplication' {
-    It 'ByIdDefaultUser' -skip {
-        $output = New-AzMigrateHCIServerReplication -MachineId $env.hciSDSMachineId1 -TargetResourceGroupId $env.hciTargetRGId -TargetVMName $env.hciTgtVMName1 -TargetStoragePathId $env.hciTgtStoragePathId -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId -OSDiskID $env.hciDiskId1 -SubscriptionId $env.hciSubscriptionId
+Describe 'New-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
+    It 'ByIdDefaultUser' {
+        $output = New-AzMigrateHCIServerReplication `
+            -MachineId $env.hciSDSMachineId1 `
+            -TargetResourceGroupId $env.hciTargetRGId `
+            -TargetVMName $env.hciTgtVMName1 `
+            -TargetStoragePathId $env.hciTgtStoragePathId `
+            -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId `
+            -OSDiskID $env.hciDiskId1 `
+            -SubscriptionId $env.hciSubscriptionId `
+            -IsDynamicMemoryEnabled "true"
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'ByIdPowerUser' -skip {
-        $OSDisk = New-AzMigrateHCIDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk 'true' -IsDynamic 'true' -Size 1 -Format 'VHDX'
-        $Nic = New-AzMigrateHCINicMappingObject -NicID $env.hciNicId -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
-        $output = New-AzMigrateHCIServerReplication -MachineId $env.hciSDSMachineId2 -TargetResourceGroupId $env.hciTargetRGId -TargetVMName $env.hciTgtVMName2 -TargetStoragePathId $env.hciTgtStoragePathId -DiskToInclude $OSDisk -NicToInclude $Nic -SubscriptionId $env.hciSubscriptionId
+    It 'ByIdPowerUser' {
+        $diskToInclude = New-AzMigrateHCIDiskMappingObject -DiskID $env.hciDiskId2 -IsOSDisk "true" -IsDynamic "true" -Size 1 -Format "VHDX"
+        $nicToInclude = New-AzMigrateHCINicMappingObject -NicID $env.hciNicId2 -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId
+        $output = New-AzMigrateHCIServerReplication `
+            -MachineId $env.hciSDSMachineId2 `
+            -TargetResourceGroupId $env.hciTargetRGId `
+            -TargetVMName $env.hciTgtVMName2 `
+            -TargetStoragePathId $env.hciTgtStoragePathId `
+            -DiskToInclude $diskToInclude `
+            -NicToInclude $nicToInclude `
+            -SubscriptionId $env.hciSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }
