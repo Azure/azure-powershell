@@ -51,18 +51,6 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </param>
-        /// <param name='id'>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource
-        /// </param>
-        /// <param name='type'>
-        /// The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
-        /// <param name='lastModifiedTime'>
-        /// Returns the date and time the ManagementPolicies was last modified.
-        /// </param>
         /// <param name='policy'>
         /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </param>
@@ -78,7 +66,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagementPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagementPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, ManagementPolicySchema policy = default(ManagementPolicySchema), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the managementpolicy associated with the specified storage account.

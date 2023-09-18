@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </param>
-        public static ManagementPolicy CreateOrUpdate(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema))
+        public static ManagementPolicy CreateOrUpdate(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, ManagementPolicySchema policy = default(ManagementPolicySchema))
         {
-                return ((IManagementPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, id, name, type, lastModifiedTime, policy).GetAwaiter().GetResult();
+                return ((IManagementPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, policy).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ManagementPolicy> CreateOrUpdateAsync(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), ManagementPolicySchema policy = default(ManagementPolicySchema), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagementPolicy> CreateOrUpdateAsync(this IManagementPoliciesOperations operations, string resourceGroupName, string accountName, ManagementPolicySchema policy = default(ManagementPolicySchema), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, id, name, type, lastModifiedTime, policy, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, policy, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -293,21 +293,6 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </param>
-        /// <param name='id'>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource
-        /// </param>
-        /// <param name='type'>
-        /// The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
-        /// <param name='systemData'>
-        /// Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-        /// <param name='lastModifiedTime'>
-        /// Returns the last modified date and time of the blob inventory policy.
-        /// </param>
         /// <param name='policy'>
         /// The storage account blob inventory policy object. It is composed of policy rules.
         /// </param>
@@ -332,7 +317,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobInventoryPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? lastModifiedTime = default(System.DateTime?), BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BlobInventoryPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 

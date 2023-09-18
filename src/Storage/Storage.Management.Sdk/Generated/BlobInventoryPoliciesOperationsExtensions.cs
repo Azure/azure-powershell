@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </param>
-        public static BlobInventoryPolicy CreateOrUpdate(this IBlobInventoryPoliciesOperations operations, string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? lastModifiedTime = default(System.DateTime?), BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema))
+        public static BlobInventoryPolicy CreateOrUpdate(this IBlobInventoryPoliciesOperations operations, string resourceGroupName, string accountName, BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema))
         {
-                return ((IBlobInventoryPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, id, name, type, systemData, lastModifiedTime, policy).GetAwaiter().GetResult();
+                return ((IBlobInventoryPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, policy).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BlobInventoryPolicy> CreateOrUpdateAsync(this IBlobInventoryPoliciesOperations operations, string resourceGroupName, string accountName, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.DateTime? lastModifiedTime = default(System.DateTime?), BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BlobInventoryPolicy> CreateOrUpdateAsync(this IBlobInventoryPoliciesOperations operations, string resourceGroupName, string accountName, BlobInventoryPolicySchema policy = default(BlobInventoryPolicySchema), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, id, name, type, systemData, lastModifiedTime, policy, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, policy, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

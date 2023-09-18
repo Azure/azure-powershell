@@ -111,9 +111,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure resource
         /// </param>
-        public static PrivateEndpointConnection Put(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
+        public static PrivateEndpointConnection Put(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
         {
-                return ((IPrivateEndpointConnectionsOperations)operations).PutAsync(resourceGroupName, accountName, privateEndpointConnectionName, id, name, type, privateEndpoint, privateLinkServiceConnectionState, provisioningState).GetAwaiter().GetResult();
+                return ((IPrivateEndpointConnectionsOperations)operations).PutAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateEndpoint, privateLinkServiceConnectionState).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> PutAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateEndpointConnection> PutAsync(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, id, name, type, privateEndpoint, privateLinkServiceConnectionState, provisioningState, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PutWithHttpMessagesAsync(resourceGroupName, accountName, privateEndpointConnectionName, privateEndpoint, privateLinkServiceConnectionState, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

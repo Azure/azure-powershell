@@ -954,13 +954,16 @@ namespace Microsoft.Azure.Management.Storage
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
-            if (maxpagesize > 5000)
+            if (maxpagesize != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "maxpagesize", 5000);
-            }
-            if (maxpagesize < 1)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "maxpagesize", 1);
+                if (maxpagesize > 5000)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "maxpagesize", 5000);
+                }
+                if (maxpagesize < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "maxpagesize", 1);
+                }
             }
 
 

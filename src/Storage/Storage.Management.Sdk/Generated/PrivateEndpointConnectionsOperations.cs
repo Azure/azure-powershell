@@ -541,23 +541,11 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure resource
         /// </param>
-        /// <param name='id'>
-        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource
-        /// </param>
-        /// <param name='type'>
-        /// The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
         /// <param name='privateEndpoint'>
         /// The resource of private end point.
         /// </param>
         /// <param name='privateLinkServiceConnectionState'>
         /// A collection of information about the state of the connection between service consumer and provider.
-        /// </param>
-        /// <param name='provisioningState'>
-        /// The provisioning state of the private endpoint connection resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -580,7 +568,7 @@ namespace Microsoft.Azure.Management.Storage
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> PutWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateEndpointConnection>> PutWithHttpMessagesAsync(string resourceGroupName, string accountName, string privateEndpointConnectionName, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -642,7 +630,7 @@ namespace Microsoft.Azure.Management.Storage
             }
 
             PrivateEndpointConnection properties = new PrivateEndpointConnection();
-            if(id != null||name != null||type != null||privateEndpoint != null||privateLinkServiceConnectionState != null||provisioningState != null)
+            if(privateEndpoint != null||privateLinkServiceConnectionState != null)
             {
                 properties.PrivateEndpoint = privateEndpoint;
                 properties.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;

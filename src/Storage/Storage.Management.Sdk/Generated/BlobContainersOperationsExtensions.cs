@@ -261,9 +261,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='containerName'>
         /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
         /// </param>
-        public static LegalHold SetLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? hasLegalHold = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?))
+        public static LegalHold SetLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?))
         {
-                return ((IBlobContainersOperations)operations).SetLegalHoldAsync(resourceGroupName, accountName, containerName, tags, hasLegalHold, allowProtectedAppendWritesAll).GetAwaiter().GetResult();
+                return ((IBlobContainersOperations)operations).SetLegalHoldAsync(resourceGroupName, accountName, containerName, tags, allowProtectedAppendWritesAll).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -284,9 +284,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LegalHold> SetLegalHoldAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? hasLegalHold = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LegalHold> SetLegalHoldAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.SetLegalHoldWithHttpMessagesAsync(resourceGroupName, accountName, containerName, tags, hasLegalHold, allowProtectedAppendWritesAll, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.SetLegalHoldWithHttpMessagesAsync(resourceGroupName, accountName, containerName, tags, allowProtectedAppendWritesAll, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='containerName'>
         /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
         /// </param>
-        public static LegalHold ClearLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? hasLegalHold = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?))
+        public static LegalHold ClearLegalHold(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?))
         {
-                return ((IBlobContainersOperations)operations).ClearLegalHoldAsync(resourceGroupName, accountName, containerName, tags, hasLegalHold, allowProtectedAppendWritesAll).GetAwaiter().GetResult();
+                return ((IBlobContainersOperations)operations).ClearLegalHoldAsync(resourceGroupName, accountName, containerName, tags, allowProtectedAppendWritesAll).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -329,9 +329,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LegalHold> ClearLegalHoldAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? hasLegalHold = default(bool?), bool? allowProtectedAppendWritesAll = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LegalHold> ClearLegalHoldAsync(this IBlobContainersOperations operations, string resourceGroupName, string accountName, string containerName, System.Collections.Generic.IList<string> tags, bool? allowProtectedAppendWritesAll = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ClearLegalHoldWithHttpMessagesAsync(resourceGroupName, accountName, containerName, tags, hasLegalHold, allowProtectedAppendWritesAll, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ClearLegalHoldWithHttpMessagesAsync(resourceGroupName, accountName, containerName, tags, allowProtectedAppendWritesAll, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
