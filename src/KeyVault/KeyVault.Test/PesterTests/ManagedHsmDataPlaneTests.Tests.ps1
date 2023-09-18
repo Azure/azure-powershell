@@ -288,23 +288,22 @@ Describe 'Export Import Security Domain by Restore Blob' {
     }
 
     # Cannot test initializing because it needs a newly created HSM
-    It 'Can Initialize Security Domain Blob Recovery' {
-        $exchangeKeyPath = "$PSScriptRoot/ExchangeKey.cer"
-        Initialize-AzKeyvaultSecurityDomainRecovery -Name $hsmName -ExchangeKey $exchangeKeyPath
+    It 'Can Download Security Domain ExchangeKey' {
+        $exchangeKeyOutputPath = "$PSScriptRoot/ExchangeKey.cer"
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -ExchangeKeyOutputPath $exchangeKeyOutputPath -DownloadExchangeKey 
     }
     
     # This command can be executed offline
-    It 'Can Restore Security Domain Blob using ExchangeKey' {
+    It 'Can decrypt and encrypt Security Domain Data locally' {
         $exchangeKeyPath = "$PSScriptRoot/ExchangeKey.cer"
         $SecurityDomainRestoreBlob = "$PSScriptRoot/HsmRestoreBlob.json"
-        Restore-AzKeyVaultSecurityDomainBlob -Keys $certsKeys -ExchangeKey $exchangeKeyPath -SecurityDomainPath $sd.FullName -SecurityDomainRestoreBlob $SecurityDomainRestoreBlob
+        Import-AzKeyVaultSecurityDomain -Keys $certsKeys -ExchangeKey  $exchangeKeyPath -SecurityDomainPath $sd.FullName -SecurityDomainRestoreBlob $SecurityDomainRestoreBlob -RestoreBlob 
     }
 
     It 'Can Import Security Domain by Restore Blob' {
         $SecurityDomainRestoreBlob = "$PSScriptRoot/HsmRestoreBlob.json"
-        Import-AzKeyVaultSecurityDomain -Name $hsmName -SecurityDomainPath $SecurityDomainRestoreBlob -ByRestoreBlob
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -SecurityDomainPath $SecurityDomainRestoreBlob -ImportRestoredBlob
     }
-
 
     # Cannot test importing because it needs another HSM
     #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
