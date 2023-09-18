@@ -257,7 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICluster
 
 ## NOTES
 

@@ -10,6 +10,10 @@ schema: 2.0.0
 ## SYNOPSIS
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
 
+**Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
+**However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
+
 ## SYNTAX
 
 ```
@@ -21,9 +25,13 @@ Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName <String> -Re
 ## DESCRIPTION
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
 
+**Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
+**However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
+
 ## EXAMPLES
 
-### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection.
+### Example 1: Compute, resolve and validate the dependencies of the Move Resources in the Move collection. (RegionToRegion)
 ```powershell
 Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
 ```
@@ -33,19 +41,37 @@ AdditionalInfo :
 Code           : MoveCollectionResolveDependenciesOperationFailed
 Detail         : {}
 EndTime        : 2/9/2021 2:05:04 AM
-Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/c2ad006
-                 6-6a69-45fe-aa70-193c240a9bc0
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/c2ad0066-6a69-45fe-aa70-193c240a9bc0
 Message        : The resolve dependencies operation of one or more resources has failed. Check the move status of the resource for more details.
-                     Possible Causes: The resolve dependencies operation of one ore more resources has failed.
-                     Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
-                     
+Possible Causes: The resolve dependencies operation of one ore more resources has failed.
+Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
 Name           : c2ad0066-6a69-45fe-aa70-193c240a9bc0
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/9/2021 2:05:00 AM
 Status         : Succeeded
 ```
 
-Compute, resolve and validate the dependencies of the Move Resources in the Move collection.
+Compute, resolve and validate the dependencies of the Move Resources in 'RegionToRegion' type Move collection.
+
+### Example 2: Compute, resolve and validate the dependencies of the Move Resources in the Move collection. (RegionToZone)
+```powershell
+Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS"
+```
+
+```output
+AdditionalInfo :
+Code           :
+Detail         :
+EndTime        : 9/5/2023 11:45:11 AM
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-demo-RegionToZone/operations/26077f45-dd8a-406d-bfc9-1b2d59d27e25
+Message        :
+Name           : 26077f45-dd8a-406d-bfc9-1b2d59d27e25
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 9/5/2023 11:45:10 AM
+Status         : Succeeded
+```
+
+Compute, resolve and validate the dependencies of the Move Resources in 'RegionToZone' type Move collection.
 
 ## PARAMETERS
 
@@ -65,7 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -177,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
 
 ## NOTES
 

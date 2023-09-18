@@ -23,6 +23,7 @@ Get requirements state for a data connector type.
 https://learn.microsoft.com/powershell/module/az.securityinsights/test-azsentineldataconnectorcheckrequirement
 #>
 function Test-AzSentinelDataConnectorCheckRequirement {
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements])]
     [CmdletBinding(DefaultParameterSetName = 'AADTenant', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

@@ -35,6 +35,9 @@ Get HCI cluster.
 ### [Get-AzStackHciExtension](Get-AzStackHciExtension.md)
 Get particular Arc Extension of HCI Cluster.
 
+### [Get-AzStackHCILogsDirectory](Get-AzStackHCILogsDirectory.md)
+Returns Logs directory path on the current node.
+
 ### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
 Gets Remote Support Access.
 
@@ -47,7 +50,7 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 ### [Install-AzStackHCIRemoteSupport](Install-AzStackHCIRemoteSupport.md)
 Installs Remote Support.
 
-### [Invoke-AzStackHciConsentAndInstallDefaultExtensions](Invoke-AzStackHciConsentAndInstallDefaultExtensions.md)
+### [Invoke-AzStackHciConsentAndInstallDefaultExtension](Invoke-AzStackHciConsentAndInstallDefaultExtension.md)
 Add consent time for default extensions and initiate extensions installation
 
 ### [Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit](Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit.md)
