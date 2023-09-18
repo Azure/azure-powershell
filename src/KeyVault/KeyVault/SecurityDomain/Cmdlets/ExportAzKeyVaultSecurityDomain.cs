@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
     [OutputType(typeof(bool))]
-    public class BackupSecurityDomain: SecurityDomainCmdlet
+    public class ExportAzKeyVaultSecurityDomain: SecurityDomainCmdlet
     {
         protected const string ByName = "ByName";
         protected const string ByInputObject = "ByInputObject";
