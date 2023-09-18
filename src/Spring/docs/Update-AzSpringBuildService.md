@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringbuildservice
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringbuildservice
 schema: 2.0.0
 ---
 
@@ -20,11 +20,26 @@ Update-AzSpringBuildService -BuildName <String> -ResourceGroupName <String> -Ser
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityBuildServiceExpanded
+```
+Update-AzSpringBuildService -BuildName <String> -BuildServiceInputObject <ISpringAppsIdentity>
+ [-AgentPool <String>] [-Builder <String>] [-Env <Hashtable>] [-RelativePath <String>]
+ [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringBuildService -InputObject <ISpringIdentity> [-AgentPool <String>] [-Builder <String>]
+Update-AzSpringBuildService -InputObject <ISpringAppsIdentity> [-AgentPool <String>] [-Builder <String>]
  [-Env <Hashtable>] [-RelativePath <String>] [-ResourceRequestCpu <String>] [-ResourceRequestMemory <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringBuildService -BuildName <String> -SpringInputObject <ISpringAppsIdentity> [-AgentPool <String>]
+ [-Builder <String>] [-Env <Hashtable>] [-RelativePath <String>] [-ResourceRequestCpu <String>]
+ [-ResourceRequestMemory <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,13 +106,29 @@ The name of the build resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BuildServiceInputObject
+Identity Parameter
+To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: UpdateViaIdentityBuildServiceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -137,7 +168,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -228,6 +259,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -280,11 +327,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuild
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuild
 
 ## NOTES
 

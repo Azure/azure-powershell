@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/enable-azspringdeploymentremotedebugging
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/enable-azspringdeploymentremotedebugging
 schema: 2.0.0
 ---
 
@@ -19,22 +19,51 @@ Enable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <Stri
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Enable
+```
+Enable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <String>
+ -ResourceGroupName <String> -ServiceName <String> -RemoteDebuggingPayload <IRemoteDebuggingPayload>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### EnableViaIdentity
+```
+Enable-AzSpringDeploymentRemoteDebugging -InputObject <ISpringAppsIdentity>
+ -RemoteDebuggingPayload <IRemoteDebuggingPayload> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentityApp
+```
+Enable-AzSpringDeploymentRemoteDebugging -AppInputObject <ISpringAppsIdentity> -DeploymentName <String>
+ -RemoteDebuggingPayload <IRemoteDebuggingPayload> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### EnableViaIdentityAppExpanded
 ```
-Enable-AzSpringDeploymentRemoteDebugging -AppInputObject <ISpringIdentity> -DeploymentName <String>
+Enable-AzSpringDeploymentRemoteDebugging -AppInputObject <ISpringAppsIdentity> -DeploymentName <String>
  [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
 ```
-Enable-AzSpringDeploymentRemoteDebugging -InputObject <ISpringIdentity> [-Port <Int32>]
+Enable-AzSpringDeploymentRemoteDebugging -InputObject <ISpringAppsIdentity> [-Port <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### EnableViaIdentitySpring
+```
+Enable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <String>
+ -SpringInputObject <ISpringAppsIdentity> -RemoteDebuggingPayload <IRemoteDebuggingPayload>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentitySpringExpanded
 ```
 Enable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <String>
- -SpringInputObject <ISpringIdentity> [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -SpringInputObject <ISpringAppsIdentity> [-Port <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -86,8 +115,8 @@ Identity Parameter
 To construct, see NOTES section for APPINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: EnableViaIdentityAppExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: EnableViaIdentityApp, EnableViaIdentityAppExpanded
 Aliases:
 
 Required: True
@@ -102,7 +131,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentitySpringExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: Enable, EnableExpanded, EnableViaIdentitySpring, EnableViaIdentitySpringExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -148,7 +177,7 @@ The name of the Deployment resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityAppExpanded, EnableViaIdentitySpringExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: Enable, EnableExpanded, EnableViaIdentityApp, EnableViaIdentityAppExpanded, EnableViaIdentitySpring, EnableViaIdentitySpringExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -163,8 +192,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: EnableViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: EnableViaIdentity, EnableViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -234,13 +263,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RemoteDebuggingPayload
+Remote debugging payload.
+To construct, see NOTES section for REMOTEDEBUGGINGPAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IRemoteDebuggingPayload
+Parameter Sets: Enable, EnableViaIdentity, EnableViaIdentityApp, EnableViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -255,7 +300,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: True
@@ -270,8 +315,8 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: EnableViaIdentitySpringExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: EnableViaIdentitySpring, EnableViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -287,7 +332,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
+Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonString
 Aliases:
 
 Required: False
@@ -333,11 +378,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IRemoteDebuggingPayload
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IRemoteDebugging
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IRemoteDebugging
 
 ## NOTES
 

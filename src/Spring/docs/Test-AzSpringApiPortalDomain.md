@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/test-azspringapiportaldomain
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/test-azspringapiportaldomain
 schema: 2.0.0
 ---
 
@@ -19,15 +19,36 @@ Test-AzSpringApiPortalDomain -ApiPortalName <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
+### Validate
+```
+Test-AzSpringApiPortalDomain -ApiPortalName <String> -ResourceGroupName <String> -ServiceName <String>
+ -ValidatePayload <ICustomDomainValidatePayload> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzSpringApiPortalDomain -InputObject <ISpringAppsIdentity>
+ -ValidatePayload <ICustomDomainValidatePayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### ValidateViaIdentityExpanded
 ```
-Test-AzSpringApiPortalDomain -InputObject <ISpringIdentity> -Name <String> [-DefaultProfile <PSObject>]
+Test-AzSpringApiPortalDomain -InputObject <ISpringAppsIdentity> -Name <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentitySpring
+```
+Test-AzSpringApiPortalDomain -ApiPortalName <String> -SpringInputObject <ISpringAppsIdentity>
+ -ValidatePayload <ICustomDomainValidatePayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateViaIdentitySpringExpanded
 ```
-Test-AzSpringApiPortalDomain -ApiPortalName <String> -SpringInputObject <ISpringIdentity> -Name <String>
+Test-AzSpringApiPortalDomain -ApiPortalName <String> -SpringInputObject <ISpringAppsIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,7 +100,7 @@ The name of API portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -110,8 +131,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: ValidateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -172,7 +193,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -187,7 +208,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -202,8 +223,8 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: ValidateViaIdentitySpringExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -219,13 +240,29 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidatePayload
+Custom domain validate payload.
+To construct, see NOTES section for VALIDATEPAYLOAD properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomDomainValidatePayload
+Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -265,11 +302,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomDomainValidatePayload
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomDomainValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomDomainValidateResult
 
 ## NOTES
 

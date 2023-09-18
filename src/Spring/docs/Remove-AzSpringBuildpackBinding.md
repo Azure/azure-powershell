@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/remove-azspringbuildpackbinding
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringbuildpackbinding
 schema: 2.0.0
 ---
 
@@ -21,21 +21,27 @@ Remove-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -ResourceGr
 
 ### DeleteViaIdentity
 ```
-Remove-AzSpringBuildpackBinding -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSpringBuildpackBinding -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityBuilder
 ```
-Remove-AzSpringBuildpackBinding -BuilderInputObject <ISpringIdentity> -Name <String>
+Remove-AzSpringBuildpackBinding -BuilderInputObject <ISpringAppsIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityBuildService
 ```
-Remove-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISpringIdentity>
+Remove-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISpringAppsIdentity>
  -Name <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### DeleteViaIdentitySpring
+```
+Remove-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringAppsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,19 +49,27 @@ Operation to delete a Buildpack Binding
 
 ## EXAMPLES
 
-### Example 1: Operation to delete a Buildpack Binding
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal01 -BuilderName default -Name binging01
+{{ Add code here }}
 ```
 
-Operation to delete a Buildpack Binding.
-
-### Example 2: Operation to delete a Buildpack Binding by pipeline
-```powershell
-Get-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal01 -BuilderName default -Name binging01 | Remove-AzSpringBuildpackBinding
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Operation to delete a Buildpack Binding by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -79,7 +93,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentityBuilder
 Aliases:
 
@@ -95,7 +109,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuildService
+Parameter Sets: Delete, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
 Aliases:
 
 Required: True
@@ -110,7 +124,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentityBuildService
 Aliases:
 
@@ -142,7 +156,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -158,7 +172,7 @@ The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuilder, DeleteViaIdentityBuildService
+Parameter Sets: Delete, DeleteViaIdentityBuilder, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
 Aliases: BuildpackBindingName
 
 Required: True
@@ -229,6 +243,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: DeleteViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -281,7 +311,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringbuildpackobject
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringbuildpackobject
 schema: 2.0.0
 ---
 
@@ -21,18 +21,27 @@ Create an in-memory object for BuildpackProperties.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for BuildpackProperties
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringBuildpackObject -Id "tanzu-buildpacks/dotnet-core"
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-tanzu-buildpacks/dotnet-core
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for BuildpackProperties
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -58,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.BuildpackProperties
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.BuildpackProperties
 
 ## NOTES
 

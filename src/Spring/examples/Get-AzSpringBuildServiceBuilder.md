@@ -1,38 +1,22 @@
-### Example 1: List all KPack builder
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceBuilder -ResourceGroupName Springrg -ServiceName sspring-portal01
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState StackId                     StackVersion
-----    ----------------- ----------------- -------                     ------------
-default Springrg     Succeeded         io.buildpacks.stacks.bionic base
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List all KPack builder.
+{{ Add description here }}
 
-### Example 2: List all KPack builders under build service
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceBuilder -ResourceGroupName Springrg -ServiceName sspring-portal01 -Name default
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState StackId                     StackVersion
-----    ----------------- ----------------- -------                     ------------
-default Springrg     Succeeded         io.buildpacks.stacks.bionic base
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List all KPack builders under build service.
+{{ Add description here }}
 
-### Example 2: Get a KPack builder by pipeline
-```powershell
-New-AzSpringBuildServiceBuilder -ResourceGroupName Springrg -ServiceName sspring-portal01 -Name builder03 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base' | Get-AzSpringBuildServiceBuilder
-```
-
-```output
-Name    ResourceGroupName ProvisioningState StackId                     StackVersion
-----    ----------------- ----------------- -------                     ------------
-builder01 Springrg     Succeeded         io.buildpacks.stacks.bionic base
-```
-
-Get a KPack builder by pipeline.

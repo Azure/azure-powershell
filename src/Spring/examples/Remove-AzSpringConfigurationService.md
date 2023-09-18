@@ -1,13 +1,22 @@
-### Example 1: Disable the default Application Configuration Service
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service
+{{ Add code here }}
 ```
 
-Disable the default Application Configuration Service.
-
-### Example 2: Disable the default Application Configuration Service by pipeline
-```powershell
-Get-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service | Remove-AzSpringConfigurationService
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Disable the default Application Configuration Service by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

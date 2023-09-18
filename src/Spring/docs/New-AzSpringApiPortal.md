@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringapiportal
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringapiportal
 schema: 2.0.0
 ---
 
@@ -21,10 +21,19 @@ New-AzSpringApiPortal -Name <String> -ResourceGroupName <String> -ServiceName <S
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzSpringApiPortal -InputObject <ISpringAppsIdentity> [-GatewayId <String[]>] [-HttpsOnly] [-Public]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-SourceUrl <String[]>]
+ [-SsoPropertyClientId <String>] [-SsoPropertyClientSecret <String>] [-SsoPropertyIssuerUri <String>]
+ [-SsoPropertyScope <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### CreateViaIdentitySpringExpanded
 ```
-New-AzSpringApiPortal -Name <String> -SpringInputObject <ISpringIdentity> [-GatewayId <String[]>] [-HttpsOnly]
- [-Public] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-SourceUrl <String[]>]
+New-AzSpringApiPortal -Name <String> -SpringInputObject <ISpringAppsIdentity> [-GatewayId <String[]>]
+ [-HttpsOnly] [-Public] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-SourceUrl <String[]>]
  [-SsoPropertyClientId <String>] [-SsoPropertyClientSecret <String>] [-SsoPropertyIssuerUri <String>]
  [-SsoPropertyScope <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -109,7 +118,7 @@ The array of resource Ids of gateway to integrate with API portal.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -124,13 +133,29 @@ Indicate if only https is allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -169,7 +194,7 @@ The name of API portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ApiPortalName
 
 Required: True
@@ -199,7 +224,7 @@ Indicates whether the API portal exposes endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -245,7 +270,7 @@ Current capacity of the target resource
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -260,7 +285,7 @@ Name of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -275,7 +300,7 @@ Tier of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -290,7 +315,7 @@ Collection of OpenAPI source URL locations.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -305,7 +330,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -321,7 +346,7 @@ The public identifier for the application
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -336,7 +361,7 @@ The secret known only to the application and the authorization server
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -351,7 +376,7 @@ The URI of Issuer Identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -366,7 +391,7 @@ It defines the specific actions applications can be allowed to do on a user's be
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -428,11 +453,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IApiPortalResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IApiPortalResource
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/test-azspringconfigserver
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/test-azspringconfigserver
 schema: 2.0.0
 ---
 
@@ -21,9 +21,22 @@ Test-AzSpringConfigServer -Name <String> -ResourceGroupName <String> [-Subscript
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Validate
+```
+Test-AzSpringConfigServer -Name <String> -ResourceGroupName <String>
+ -ConfigServerSetting <IConfigServerSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzSpringConfigServer -InputObject <ISpringAppsIdentity> -ConfigServerSetting <IConfigServerSettings>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### ValidateViaIdentityExpanded
 ```
-Test-AzSpringConfigServer -InputObject <ISpringIdentity> [-GitHostKey <String>]
+Test-AzSpringConfigServer -InputObject <ISpringAppsIdentity> [-GitHostKey <String>]
  [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>] [-GitPrivateKey <String>]
  [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking]
  [-GitUri <String>] [-GitUsername <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -49,31 +62,27 @@ Check if the config server settings are valid.
 
 ## EXAMPLES
 
-### Example 1: Check if the config server settings are valid
+### Example 1: {{ Add title here }}
 ```powershell
- Test-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the config server settings are valid.
+{{ Add description here }}
 
-### Example 2: Check if the config server settings are valid by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service | Test-AzSpringConfigServer
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the config server settings are valid by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,6 +98,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigServerSetting
+The settings of config server.
+To construct, see NOTES section for CONFIGSERVERSETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerSettings
+Parameter Sets: Validate, ValidateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -188,7 +213,7 @@ Repositories of git.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGitPatternRepository[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGitPatternRepository[]
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -264,8 +289,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: ValidateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -310,7 +335,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -341,7 +366,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -357,7 +382,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: False
@@ -403,11 +428,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerSettings
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigServerSettingsValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerSettingsValidateResult
 
 ## NOTES
 

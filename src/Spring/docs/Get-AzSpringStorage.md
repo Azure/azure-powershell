@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringstorage
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringstorage
 schema: 2.0.0
 ---
 
@@ -26,12 +26,12 @@ Get-AzSpringStorage -Name <String> -ResourceGroupName <String> -ServiceName <Str
 
 ### GetViaIdentity
 ```
-Get-AzSpringStorage -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringStorage -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
-Get-AzSpringStorage -Name <String> -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringStorage -Name <String> -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -147,7 +147,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -179,11 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IStorageResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IStorageResource
 
 ## NOTES
 

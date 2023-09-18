@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringbuildservicebuilder
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringbuildservicebuilder
 schema: 2.0.0
 ---
 
@@ -22,14 +22,21 @@ Update-AzSpringBuildServiceBuilder -Name <String> -ResourceGroupName <String> -S
 
 ### UpdateViaIdentityBuildServiceExpanded
 ```
-Update-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringIdentity> -Name <String>
+Update-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringAppsIdentity> -Name <String>
  [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringBuildServiceBuilder -InputObject <ISpringIdentity>
+Update-AzSpringBuildServiceBuilder -InputObject <ISpringAppsIdentity>
+ [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringBuildServiceBuilder -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>] [-StackVersion <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -83,7 +90,7 @@ Builder buildpack groups.
 To construct, see NOTES section for BUILDPACKGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildpacksGroupProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildpacksGroupProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +106,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityBuildServiceExpanded
 Aliases:
 
@@ -131,7 +138,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -147,7 +154,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityBuildServiceExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -200,6 +207,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -285,11 +308,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuilderResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuilderResource
 
 ## NOTES
 

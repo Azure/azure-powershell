@@ -1,9 +1,22 @@
-### Example 1: Lists all of the available runtime versions supported by Microsoft.AppPlatform provider
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringRuntimeVersion
+{{ Add code here }}
 ```
 
 ```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringconfigurationservice
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringconfigurationservice
 schema: 2.0.0
 ---
 
@@ -21,7 +21,14 @@ Update-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <St
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringConfigurationService -InputObject <ISpringIdentity>
+Update-AzSpringConfigurationService -InputObject <ISpringAppsIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentitySpringExpanded
+```
+Update-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity>
  [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -91,7 +98,7 @@ Repositories of Application Configuration Service git property.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceGitRepository[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceGitRepository[]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +114,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -164,6 +171,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: UpdateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -216,11 +239,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceResource
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringgitpatternrepositoryobject
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringgitpatternrepositoryobject
 schema: 2.0.0
 ---
 
@@ -24,18 +24,27 @@ Create an in-memory object for GitPatternRepository.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for GitPatternRepository
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringGitPatternRepositoryObject -Name fake -Uri "https://github.com/fake-user/fake-repository"
+{{ Add code here }}
 ```
 
 ```output
-HostKey HostKeyAlgorithm Label Name Password Pattern PrivateKey SearchPath StrictHostKeyChecking Uri
-------- ---------------- ----- ---- -------- ------- ---------- ---------- --------------------- ---
-                               fake                                                              https://github.com/fa…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for GitPatternRepository.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -211,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.GitPatternRepository
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.GitPatternRepository
 
 ## NOTES
 

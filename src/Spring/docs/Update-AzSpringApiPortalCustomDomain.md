@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringapiportalcustomdomain
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringapiportalcustomdomain
 schema: 2.0.0
 ---
 
@@ -21,22 +21,22 @@ Update-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String
 
 ### UpdateViaIdentityApiPortalExpanded
 ```
-Update-AzSpringApiPortalCustomDomain -ApiPortalInputObject <ISpringIdentity> -DomainName <String>
+Update-AzSpringApiPortalCustomDomain -ApiPortalInputObject <ISpringAppsIdentity> -DomainName <String>
  [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringApiPortalCustomDomain -InputObject <ISpringIdentity> [-Thumbprint <String>]
+Update-AzSpringApiPortalCustomDomain -InputObject <ISpringAppsIdentity> [-Thumbprint <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentitySpringExpanded
 ```
 Update-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String>
- -SpringInputObject <ISpringIdentity> [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Identity Parameter
 To construct, see NOTES section for APIPORTALINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityApiPortalExpanded
 Aliases:
 
@@ -150,7 +150,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -212,7 +212,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -290,11 +290,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IApiPortalCustomDomainResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IApiPortalCustomDomainResource
 
 ## NOTES
 

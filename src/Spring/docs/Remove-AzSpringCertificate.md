@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/remove-azspringcertificate
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringcertificate
 schema: 2.0.0
 ---
 
@@ -21,14 +21,14 @@ Remove-AzSpringCertificate -Name <String> -ResourceGroupName <String> -ServiceNa
 
 ### DeleteViaIdentity
 ```
-Remove-AzSpringCertificate -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzSpringCertificate -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentitySpring
 ```
-Remove-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSpringCertificate -Name <String> -SpringInputObject <ISpringAppsIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,19 +36,27 @@ Delete the certificate resource.
 
 ## EXAMPLES
 
-### Example 1: Delete the certificate resource
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSpringCertificate -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service -Name mycertificate
+{{ Add code here }}
 ```
 
-Delete the certificate resource.
-
-### Example 2: Delete the certificate resource
-```powershell
-Get-AzSpringCertificate -ResourceGroupName Spring-gp-junxi -ServiceName Spring-service -Name mycertificate | Remove-AzSpringCertificate -InputObject $data
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete the certificate resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -88,7 +96,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -180,7 +188,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentitySpring
 Aliases:
 
@@ -243,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringbuildservice
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringbuildservice
 schema: 2.0.0
 ---
 
@@ -20,7 +20,19 @@ Get-AzSpringBuildService -ResourceGroupName <String> -ServiceName <String> [-Sub
 
 ### GetViaIdentity
 ```
-Get-AzSpringBuildService -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringBuildService -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringBuildService -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSpringBuildService -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,31 +40,27 @@ Get a build service resource.
 
 ## EXAMPLES
 
-### Example 1: Get a build service resource of the enterprise spring cloud
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildService -ResourceGroupName Springrg -ServiceName sspring-portal01
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
-----    ----------------- ----------------- ------------ ------------------ ---------------------
-default Springrg     Succeeded         0.5.2        2                  4Gi
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service resource of the enterprise spring cloud.
+{{ Add description here }}
 
-### Example 2: Get a build service resource of the enterprise spring cloud by id
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildService -InputObject "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Springrg/providers/Microsoft.AppPlatform/Spring/sspring-portal01/buildServices/default"
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
-----    ----------------- ----------------- ------------ ------------------ ---------------------
-default Springrg     Succeeded         0.5.2        2                  4Gi
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service resource of the enterprise spring cloud.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -77,7 +85,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -94,7 +102,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -109,7 +117,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -119,13 +127,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -140,11 +164,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildService
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildService
 
 ## NOTES
 

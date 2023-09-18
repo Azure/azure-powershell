@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringconfigurationservice
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringconfigurationservice
 schema: 2.0.0
 ---
 
@@ -20,8 +20,20 @@ Get-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <Strin
 
 ### GetViaIdentity
 ```
-Get-AzSpringConfigurationService -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringConfigurationService -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,33 +41,27 @@ Get the Application Configuration Service and its properties.
 
 ## EXAMPLES
 
-### Example 1: Get all Application Configuration Service and its properties
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
-                                                                                                     y
-----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
-default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 7:46:06        v-junxisu@microsoft.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all Application Configuration Service and its properties.
+{{ Add description here }}
 
-### Example 2: Get the Application Configuration Service and its properties
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
-                                                                                                     y
-----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
-default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 7:46:06        v-junxisu@microsoft.com
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the Application Configuration Service and its properties.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -80,7 +86,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -97,7 +103,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -112,7 +118,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -122,13 +128,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -143,11 +165,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceResource
 
 ## NOTES
 

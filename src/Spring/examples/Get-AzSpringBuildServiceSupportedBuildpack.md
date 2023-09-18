@@ -1,29 +1,22 @@
-### Example 1: Get all supported buildpack resource.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedBuildpack -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-Name                         ResourceGroupName BuildpackId
-----                         ----------------- -----------
-tanzu-buildpacks-java-azure  Springrg     tanzu-buildpacks/java-azure
-tanzu-buildpacks-dotnet-core Springrg     tanzu-buildpacks/dotnet-core
-tanzu-buildpacks-go          Springrg     tanzu-buildpacks/go
-tanzu-buildpacks-nodejs      Springrg     tanzu-buildpacks/nodejs
-tanzu-buildpacks-python      Springrg     tanzu-buildpacks/python
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all supported buildpack resource.
+{{ Add description here }}
 
-### Example 2: Get the supported buildpack resource by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedBuildpack -ResourceGroupName Springrg -ServiceName sspring-portal01 -Name tanzu-buildpacks-python
+{{ Add code here }}
 ```
 
 ```output
-Name                    ResourceGroupName BuildpackId
-----                    ----------------- -----------
-tanzu-buildpacks-python Springrg     tanzu-buildpacks/python
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the supported buildpack resource by name.
+{{ Add description here }}
+

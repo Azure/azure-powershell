@@ -1,25 +1,22 @@
-### Example 1: List all the certificate resource under a spring service
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringCertificate -ResourceGroupName lucas-rg-test -ServiceName springapp-pwsh01
+{{ Add code here }}
 ```
 
 ```output
-Name   ResourceGroupName
-----   -----------------
-cert01 lucas-rg-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List all the certificate resource under a spring service.
+{{ Add description here }}
 
-### Example 2: Get a certificate resource by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringCertificate -ResourceGroupName lucas-rg-test -ServiceName springapp-pwsh01 -Name cert01  
+{{ Add code here }}
 ```
 
 ```output
-Name   ResourceGroupName
-----   -----------------
-cert01 lucas-rg-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a certificate resource by name.
+{{ Add description here }}
+

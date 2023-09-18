@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringruntimeversion
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringruntimeversion
 schema: 2.0.0
 ---
 
@@ -21,12 +21,27 @@ Lists all of the available runtime versions supported by Microsoft.AppPlatform p
 
 ## EXAMPLES
 
-### Example 1: Lists all of the available runtime versions supported by Microsoft.AppPlatform provider
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringRuntimeVersion
+{{ Add code here }}
 ```
 
-Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -53,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAvailableRuntimeVersions
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IAvailableRuntimeVersions
 
 ## NOTES
 

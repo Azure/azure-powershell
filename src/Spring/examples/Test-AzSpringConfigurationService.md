@@ -1,12 +1,22 @@
-### Example 1: Check if the Application Configuration Service settings are valid
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the Application Configuration Service settings are valid.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

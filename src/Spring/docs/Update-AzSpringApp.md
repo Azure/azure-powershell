@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringapp
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringapp
 schema: 2.0.0
 ---
 
@@ -29,7 +29,7 @@ Update-AzSpringApp -Name <String> -ResourceGroupName <String> -ServiceName <Stri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringApp -InputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
+Update-AzSpringApp -InputObject <ISpringAppsIdentity> [-AddonConfig <Hashtable>]
  [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
  [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
@@ -43,7 +43,7 @@ Update-AzSpringApp -InputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
 
 ### UpdateViaIdentitySpringExpanded
 ```
-Update-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
+Update-AzSpringApp -Name <String> -SpringInputObject <ISpringAppsIdentity> [-AddonConfig <Hashtable>]
  [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
  [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
@@ -74,71 +74,27 @@ Operation to update an exiting App.
 
 ## EXAMPLES
 
-### Example 1: Update Spring Cloud App by name
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -AddonConfig @{'test' = 'value1'}
+{{ Add code here }}
 ```
 
 ```output
-ActiveDeploymentName    : default
-CreatedTime             : 2020-08-08 15:37:43
-Fqdn                    : spring-cloud-service.azuremicroservices.io
-HttpsOnly               : False
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service/apps/gateway
-IdentityPrincipalId     :
-IdentityTenantId        :
-IdentityType            :
-Location                : eastus
-Name                    : gateway
-PersistentDiskMountPath : /persistent
-PersistentDiskSizeInGb  : 0
-PersistentDiskUsedInGb  :
-ProvisioningState       : Succeeded
-Public                  : False
-TemporaryDiskMountPath  : /tmp
-TemporaryDiskSizeInGb   : 5
-Type                    : Microsoft.AppPlatform/Spring/apps
-Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TemporaryDisk
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update Spring Cloud App by name.
+{{ Add description here }}
 
-### Example 2: Update Spring Cloud App by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Update-AzSpringApp -AddonConfig @{'test' = 'value1'}
+{{ Add code here }}
 ```
 
 ```output
-ActiveDeploymentName    : default
-CreatedTime             : 2020-08-08 15:37:43
-Fqdn                    : spring-cloud-service.azuremicroservices.io
-HttpsOnly               : False
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/spring-cloud-rg/providers/Microsoft.AppPlatform/Spring/spring-cloud-service/apps/gateway
-IdentityPrincipalId     :
-IdentityTenantId        :
-IdentityType            :
-Location                : eastus
-Name                    : gateway
-PersistentDiskMountPath : /persistent
-PersistentDiskSizeInGb  : 0
-PersistentDiskUsedInGb  :
-ProvisioningState       : Succeeded
-Public                  : False
-TemporaryDiskMountPath  : /tmp
-TemporaryDiskSizeInGb   : 5
-Type                    : Microsoft.AppPlatform/Spring/apps
-Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.Api20190501Preview.TemporaryDisk
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update Spring Cloud App by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -192,7 +148,7 @@ List of custom persistent disks
 To construct, see NOTES section for CUSTOMPERSISTENTDISK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICustomPersistentDiskResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomPersistentDiskResource[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -389,7 +345,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -435,7 +391,7 @@ Collection of loaded certificates
 To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ILoadedCertificate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ILoadedCertificate[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -572,7 +528,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -680,11 +636,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IAppResource
 
 ## NOTES
 

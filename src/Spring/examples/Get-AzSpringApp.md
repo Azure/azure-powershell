@@ -1,25 +1,22 @@
-### Example 1: List all App under the spring service.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring
+{{ Add code here }}
 ```
 
 ```output
-Location Name  ProvisioningState ResourceGroupName
--------- ----  ----------------- -----------------
-eastus   tools Succeeded         azps_test_group_spring
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Lise all App under the spring service.
+{{ Add description here }}
 
-### Example 2: Get an App and its properties.
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring -Name tools
+{{ Add code here }}
 ```
 
 ```output
-Location Name  ProvisioningState ResourceGroupName
--------- ----  ----------------- -----------------
-eastus   tools Succeeded         azps_test_group_spring
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get an App and its properties.
+{{ Add description here }}
+

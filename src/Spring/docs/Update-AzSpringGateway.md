@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringgateway
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringgateway
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ Update-AzSpringGateway -Name <String> -ResourceGroupName <String> -ServiceName <
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringGateway -InputObject <ISpringIdentity> [-ApiMetadataPropertyDescription <String>]
+Update-AzSpringGateway -InputObject <ISpringAppsIdentity> [-ApiMetadataPropertyDescription <String>]
  [-ApiMetadataPropertyDocumentation <String>] [-ApiMetadataPropertyServerUrl <String>]
  [-ApiMetadataPropertyTitle <String>] [-ApiMetadataPropertyVersion <String>] [-CorPropertyAllowCredentials]
  [-CorPropertyAllowedHeader <String[]>] [-CorPropertyAllowedMethod <String[]>]
@@ -41,7 +41,7 @@ Update-AzSpringGateway -InputObject <ISpringIdentity> [-ApiMetadataPropertyDescr
 
 ### UpdateViaIdentitySpringExpanded
 ```
-Update-AzSpringGateway -Name <String> -SpringInputObject <ISpringIdentity>
+Update-AzSpringGateway -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-ApiMetadataPropertyDescription <String>] [-ApiMetadataPropertyDocumentation <String>]
  [-ApiMetadataPropertyServerUrl <String>] [-ApiMetadataPropertyTitle <String>]
  [-ApiMetadataPropertyVersion <String>] [-CorPropertyAllowCredentials] [-CorPropertyAllowedHeader <String[]>]
@@ -303,7 +303,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -470,7 +470,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -593,11 +593,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayResource
 
 ## NOTES
 

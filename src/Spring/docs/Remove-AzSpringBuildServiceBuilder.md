@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/remove-azspringbuildservicebuilder
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringbuildservicebuilder
 schema: 2.0.0
 ---
 
@@ -21,13 +21,19 @@ Remove-AzSpringBuildServiceBuilder -Name <String> -ResourceGroupName <String> -S
 
 ### DeleteViaIdentity
 ```
-Remove-AzSpringBuildServiceBuilder -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzSpringBuildServiceBuilder -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityBuildService
 ```
-Remove-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringIdentity> -Name <String>
+Remove-AzSpringBuildServiceBuilder -BuildServiceInputObject <ISpringAppsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentitySpring
+```
+Remove-AzSpringBuildServiceBuilder -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,19 +42,27 @@ Delete a KPack builder.
 
 ## EXAMPLES
 
-### Example 1: Delete a KPack builder
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSpringBuildServiceBuilder -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -Name mybuilder
+{{ Add code here }}
 ```
 
-Delete a KPack builder.
-
-### Example 2: Delete a KPack builder by pipeline
-```powershell
-Get-AzSpringBuildServiceBuilder -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -Name mybuilder | Remove-AzSpringBuildServiceBuilder
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete a KPack builder by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -72,7 +86,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentityBuildService
 Aliases:
 
@@ -104,7 +118,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -120,7 +134,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityBuildService
+Parameter Sets: Delete, DeleteViaIdentityBuildService, DeleteViaIdentitySpring
 Aliases:
 
 Required: True
@@ -191,6 +205,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: DeleteViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -243,7 +273,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringdeploymentremotedebuggingconfig
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringdeploymentremotedebuggingconfig
 schema: 2.0.0
 ---
 
@@ -21,20 +21,21 @@ Get-AzSpringDeploymentRemoteDebuggingConfig -AppName <String> -DeploymentName <S
 
 ### GetViaIdentity
 ```
-Get-AzSpringDeploymentRemoteDebuggingConfig -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringDeploymentRemoteDebuggingConfig -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityApp
 ```
-Get-AzSpringDeploymentRemoteDebuggingConfig -AppInputObject <ISpringIdentity> -DeploymentName <String>
+Get-AzSpringDeploymentRemoteDebuggingConfig -AppInputObject <ISpringAppsIdentity> -DeploymentName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
 Get-AzSpringDeploymentRemoteDebuggingConfig -AppName <String> -DeploymentName <String>
- -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +72,7 @@ Identity Parameter
 To construct, see NOTES section for APPINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentityApp
 Aliases:
 
@@ -133,7 +134,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -180,7 +181,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -243,11 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IRemoteDebugging
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IRemoteDebugging
 
 ## NOTES
 

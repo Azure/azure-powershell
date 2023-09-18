@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/test-azspringconfigurationservice
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/test-azspringconfigurationservice
 schema: 2.0.0
 ---
 
@@ -19,9 +19,36 @@ Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <Stri
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Validate
+```
+Test-AzSpringConfigurationService -ResourceGroupName <String> -ServiceName <String>
+ -Setting <IConfigurationServiceSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzSpringConfigurationService -InputObject <ISpringAppsIdentity> -Setting <IConfigurationServiceSettings>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### ValidateViaIdentityExpanded
 ```
-Test-AzSpringConfigurationService -InputObject <ISpringIdentity>
+Test-AzSpringConfigurationService -InputObject <ISpringAppsIdentity>
+ [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentitySpring
+```
+Test-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity>
+ -Setting <IConfigurationServiceSettings> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ValidateViaIdentitySpringExpanded
+```
+Test-AzSpringConfigurationService -SpringInputObject <ISpringAppsIdentity>
  [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -45,18 +72,27 @@ Check if the Application Configuration Service settings are valid.
 
 ## EXAMPLES
 
-### Example 1: Check if the Application Configuration Service settings are valid
+### Example 1: {{ Add title here }}
 ```powershell
-Test-AzSpringConfigurationService -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the Application Configuration Service settings are valid.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,8 +132,8 @@ Repositories of Application Configuration Service git property.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceGitRepository[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceGitRepository[]
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded, ValidateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -112,8 +148,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: ValidateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -174,7 +210,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -189,7 +225,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: True
@@ -199,13 +235,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Setting
+The settings of Application Configuration Service.
+To construct, see NOTES section for SETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceSettings
+Parameter Sets: Validate, ValidateViaIdentity, ValidateViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: ValidateViaIdentitySpring, ValidateViaIdentitySpringExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
+Parameter Sets: Validate, ValidateExpanded, ValidateViaJsonFilePath, ValidateViaJsonString
 Aliases:
 
 Required: False
@@ -251,11 +319,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceSettings
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigurationServiceSettingsValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigurationServiceSettingsValidateResult
 
 ## NOTES
 

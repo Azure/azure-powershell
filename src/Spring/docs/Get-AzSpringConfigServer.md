@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringconfigserver
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringconfigserver
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzSpringConfigServer -Name <String> -ResourceGroupName <String> [-Subscripti
 
 ### GetViaIdentity
 ```
-Get-AzSpringConfigServer -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringConfigServer -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,18 +28,27 @@ Get the config server and its properties.
 
 ## EXAMPLES
 
-### Example 1: Get all properties of the config server 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigServer -ResourceGroupName "Spring-rg-0zquav" -Name "spring-f7lz2n"
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState
-----    ----------------- -----------------
-default Springrg     Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all properties of the config server.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -64,7 +73,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -127,11 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigServerResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerResource
 
 ## NOTES
 

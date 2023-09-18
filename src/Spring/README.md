@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Spring
-This directory contains the PowerShell module for the Spring service.
+# Az.SpringApps
+This directory contains the PowerShell module for the SpringApps service.
 
 ---
 ## Status
-[![Az.Spring](https://img.shields.io/powershellgallery/v/Az.Spring.svg?style=flat-square&label=Az.Spring "Az.Spring")](https://www.powershellgallery.com/packages/Az.Spring/)
+[![Az.SpringApps](https://img.shields.io/powershellgallery/v/Az.SpringApps.svg?style=flat-square&label=Az.SpringApps "Az.SpringApps")](https://www.powershellgallery.com/packages/Az.SpringApps/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Spring`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.SpringApps`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -47,15 +47,15 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 4b7481587132ce0bde5f0a6d6ab590129f7b7179
+branch: 0b6eab579426b030aa84996b9c1b35ce137a7f9f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/appplatform.json
     
-title: Spring
+title: SpringApps
 module-version: 0.1.0
-subject-prefix: $(service-name)
+subject-prefix: Spring
 
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -76,7 +76,16 @@ directive:
       subject: AppActiveDeployment
     set:
       verb: Update
-      subject: AppActiveDeployment
+
+  - where:
+      subject: ServiceRegistry
+      variant: Create
+    set:
+      variant: CreateRegistryExpanded
+
+  - where:
+      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+    remove: true
 
   - where:
       verb: Set
@@ -85,29 +94,9 @@ directive:
   # rename subject
   - where:
       subject: ^Binding$
-    set:
-      subject: AppBinding
+    remove: true
 
-  - where:
-      subject: ^Deployment$
-    set:
-      subject: AppDeployment
-
-  - where:
-      subject: ^CustomDomain$
-    set:
-      subject: AppCustomDomain
-
-  - where:
-      subject: ^DeploymentLogFileUrl$
-    set:
-      subject: AppDeploymentLogFileUrl
-
-  - where:
-      subject: ^DeploymentJfr$
-    set:
-      subject: AppDeploymentJfr
-
+  # rename subject
   - where:
       subject: ^ConfigServerPatch$
     set:
@@ -117,11 +106,16 @@ directive:
       subject: ^MonitoringSettingPatch$
     set:
       subject: MonitoringSetting
-
   - where:
       subject: ^AppDomain$
     set:
-      subject: AppCustomDomain
+      subject: CustomDomain
+
+  - where:
+      verb: Test
+      subject: CustomDomain
+    set:
+      subject: CustomDomainNameAvailability
 
 # remove cmdlet
   - where:
@@ -142,132 +136,6 @@ directive:
   - where:
       verb: Update
       subject: BuildpackBinding
-    remove: true
-
-  # remove variant
-  - where: 
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^CreateViaIdentitySpring$
-    remove: true
-  - where: 
-      variant: ^Update$|^UpdateViaIdentity$|^UpdateViaIdentitySpring$
-    remove: true
-  - where: 
-      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
-    remove: true
-
-  - where: 
-      subject: DeploymentRemoteDebugging
-      variant: ^Enable$|^EnableViaIdentity$|^EnableViaIdentityApp$|^EnableViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: ApiPortalDomain
-      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: ApiPortalCustomDomain
-      variant: ^CreateViaIdentityApiPortal$|^UpdateViaIdentityApiPortal$
-    remove: true
-
-  - where: 
-      subject: BuildpackBinding
-      variant: ^GetViaIdentitySpring$|^CreateViaIdentityBuilder$|^CreateViaIdentityBuildService$|^CreateViaIdentityBuildServiceExpanded$|^DeleteViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: BuildService
-      variant: ^GetViaIdentitySpring$|^List$|^UpdateViaIdentityBuildService$|^UpdateViaIdentityBuildServiceExpanded$|^UpdateViaIdentitySpringExpanded$
-    remove: true
-
-  - where: 
-      subject: BuildServiceAgentPool
-      variant: ^GetViaIdentitySpring$|^GetViaIdentityBuildService$|^List$|^UpdateViaIdentityBuildService$|^UpdateViaIdentityExpanded$|^UpdateViaIdentityBuildServiceExpanded$|^UpdateViaIdentitySpringExpanded$
-    remove: true
-
-  - where: 
-      subject: BuildServiceBuilder
-      variant: ^GetViaIdentitySpring$|^CreateViaIdentityBuildService$|^CreateViaIdentityBuildServiceExpanded$|^DeleteViaIdentitySpring$|^UpdateViaIdentityBuildService$|^UpdateViaIdentitySpringExpanded$
-    remove: true
-
-  - where: 
-      subject: BuildServiceSupportedBuildpack
-      variant: ^GetViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: BuildServiceSupportedStack
-      variant: ^GetViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: ConfigurationService
-      variant: ^GetViaIdentitySpring$|^List$|^DeleteViaIdentitySpring$|^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$|^ValidateViaIdentitySpringExpanded$|^UpdateViaIdentitySpringExpanded$
-    remove: true
-
-  - where:
-      subject: Registry
-      variant: ^List$
-    remove: true
-
-  - where: 
-      subject: AppBinding
-      variant: ^CreateViaIdentityApp$
-    remove: true
-
-  - where: 
-      subject: AppCustomDomain
-      variant: ^CreateViaIdentityApp$|^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$|^UpdateViaIdentityApp$
-    remove: true
-
-  - where: 
-      subject: AppDeployment
-      variant: ^CreateViaIdentityApp$|^UpdateViaIdentityApp$
-    remove: true
-
-  - where: 
-      subject: TestKey
-      variant: ^Regenerate$|^RegenerateViaIdentity$
-    remove: true
-
-  - where: 
-      subject: AppDeploymentJfr
-      variant: ^StartViaIdentityApp$|^StartViaIdentitySpring$|^Start$|^StartViaIdentity$|
-    remove: true
-
-  - where:
-      subject: ConfigServer
-      variant: ^Validate$|^ValidateViaIdentity$
-    remove: true
-
-  - where: 
-      subject: NameAvailability
-      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
-    remove: true
-
-  - where: 
-      subject: AppActiveDeployment
-      variant: ^SetViaIdentitySpring$|^SetViaIdentity$|^Set$
-    remove: true
-
-  - where: 
-      subject: AppBinding
-      variant: ^UpdateViaIdentityApp$
-    remove: true
-
-  - where: 
-      subject: GatewayDomain
-      variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentitySpring$
-    remove: true
-
-  - where: 
-      subject: GatewayCustomDomain
-      variant: ^CreateViaIdentityGateway$|^UpdateViaIdentityGateway$
-    remove: true
-
-  - where: 
-      subject: GatewayRouteConfig
-      variant: ^CreateViaIdentityGateway$|^UpdateViaIdentityGateway$
     remove: true
 
   # ReName parameter
@@ -434,7 +302,7 @@ directive:
 
   # Only support default value
   - where:
-      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$|^Registry$
+      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$|^ServiceRegistry$
       parameter-name: Name
     hide: true
     set:
@@ -449,10 +317,10 @@ directive:
       default:
         script: "'default'"
 
-  # Returns a random value of RelativePath after each execution of Get-AzSpringAppResourceUploadUrl
+  # Returns a random value of RelativePath after each execution of Get-AzSpringResourceUploadUrl
   - where:
       verb: Get
-      subject: ^AppResourceUploadUrl$
+      subject: ^ResourceUploadUrl$
     hide: true
 
   - where:
@@ -463,32 +331,11 @@ directive:
   - where:
       subject: ^BuildServiceBuild$
     hide: true
-
   - where:
       subject: ^BuildServiceBuildResult$
     hide: true
-
   - where:
       subject: ^BuildServiceBuildResultLog$
-    hide: true
-
-  # Customization
-  - where:
-      verb: New
-      subject: ^Service$
-    hide: true
-  - where:
-      subject: ^Service(.*)
-    set:
-      subject: $1
-
-  - where:
-      verb: New
-      subject: ^App$
-    hide: true
-  - where:
-      verb: Remove
-      subject: ^Registry$
     hide: true
 
   - where:
@@ -596,6 +443,16 @@ directive:
           - ProvisioningState
 
   - where:
+      model-name: CustomDomainResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - AppName
+
+  - where:
       model-name: MonitoringSettingResource
     set:
       format-table:
@@ -610,28 +467,34 @@ directive:
     - CertificateProperties
 
   # Modifications were made to the command
-  # - model-cmdlet:
-  #   - model-name: GatewayApiRoute
-  #   - model-name: CustomPersistentDiskResource
-  #   - model-name: BuildpacksGroupProperties
-  #   - model-name: ConfigurationServiceGitRepository
-  #   - model-name: GitPatternRepository
-  #   - model-name: LoadedCertificate
-  #     cmdlet-name: New-AzSpringBuildpacksGroupObject
-  #   - model-name: BuildpackProperties
-  #     cmdlet-name: New-AzSpringBuildpackObject
-  #   - model-name: DeploymentSettings
-  #     cmdlet-name: New-AzSpringDeploymentSettingObject
-  #   - model-name: KeyVaultCertificateProperties
-  #     cmdlet-name: New-AzSpringKeyVaultCertificateObject
-  #   - model-name: ContentCertificateProperties
-  #     cmdlet-name: New-AzSpringContentCertificateObject
-  #   - model-name: JarUploadedUserSourceInfo
-  #     cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
-  #   - model-name: NetCoreZipUploadedUserSourceInfo
-  #     cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
-  #   - model-name: SourceUploadedUserSourceInfo
-  #     cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
-  #   - model-name: BuildResultUserSourceInfo
-  #     cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
+  - model-cmdlet:
+    - model-name: DeploymentSettingsEnvironmentVariables
+      cmdlet-name: New-AzSpringDeploymentSettingsEnvVariableObject
+    - model-name: DeploymentSettingsAddonConfigs
+      cmdlet-name: New-AzSpringDeploymentSettingAddonConfigObject
+    - model-name: UserSourceInfo
+    - model-name: ActiveDeploymentCollection
+    - model-name: GatewayApiRoute
+    - model-name: CustomPersistentDiskResource
+    - model-name: BuildpacksGroupProperties
+    - model-name: ConfigurationServiceGitRepository
+    - model-name: GitPatternRepository
+    - model-name: LoadedCertificate
+      cmdlet-name: New-AzSpringBuildpacksGroupObject
+    - model-name: BuildpackProperties
+      cmdlet-name: New-AzSpringBuildpackObject
+    - model-name: DeploymentSettings
+      cmdlet-name: New-AzSpringDeploymentSettingObject
+    - model-name: KeyVaultCertificateProperties
+      cmdlet-name: New-AzSpringKeyVaultCertificateObject
+    - model-name: ContentCertificateProperties
+      cmdlet-name: New-AzSpringContentCertificateObject
+    - model-name: JarUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringDeploymentJarUploadedObject
+    - model-name: NetCoreZipUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringDeploymentNetCoreZipUploadedObject
+    - model-name: SourceUploadedUserSourceInfo
+      cmdlet-name: New-AzSpringDeploymentSourceUploadedObject
+    - model-name: BuildResultUserSourceInfo
+      cmdlet-name: New-AzSpringDeploymentBuildResultObject
 ```

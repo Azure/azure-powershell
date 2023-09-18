@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for BuildpackProperties
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringBuildpackObject -Id "tanzu-buildpacks/dotnet-core"
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-tanzu-buildpacks/dotnet-core
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for BuildpackProperties
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

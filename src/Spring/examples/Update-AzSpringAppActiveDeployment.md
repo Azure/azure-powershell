@@ -1,27 +1,22 @@
-### Example 1: Set existing Deployment under the app as active
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringAppActiveDeployment -ResourceGroupName Springrg -ServiceName standardspring-demo -Name demo -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active.
+{{ Add description here }}
 
-### Example 2: Set existing Deployment under the app as active by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName Springrg -ServiceName standardspring-demo -Name demo | Update-AzSpringAppActiveDeployment -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active by pipeline.
+{{ Add description here }}
+

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringgateway
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringgateway
 schema: 2.0.0
 ---
 
@@ -26,9 +26,22 @@ New-AzSpringGateway -Name <String> -ResourceGroupName <String> -ServiceName <Str
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzSpringGateway -InputObject <ISpringAppsIdentity> [-ApiMetadataPropertyDescription <String>]
+ [-ApiMetadataPropertyDocumentation <String>] [-ApiMetadataPropertyServerUrl <String>]
+ [-ApiMetadataPropertyTitle <String>] [-ApiMetadataPropertyVersion <String>] [-CorPropertyAllowCredentials]
+ [-CorPropertyAllowedHeader <String[]>] [-CorPropertyAllowedMethod <String[]>]
+ [-CorPropertyAllowedOrigin <String[]>] [-CorPropertyExposedHeader <String[]>] [-CorPropertyMaxAge <Int32>]
+ [-HttpsOnly] [-Public] [-ResourceRequestsCpu <String>] [-ResourceRequestsMemory <String>]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>] [-SsoPropertyClientId <String>]
+ [-SsoPropertyClientSecret <String>] [-SsoPropertyIssuerUri <String>] [-SsoPropertyScope <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentitySpringExpanded
 ```
-New-AzSpringGateway -Name <String> -SpringInputObject <ISpringIdentity>
+New-AzSpringGateway -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-ApiMetadataPropertyDescription <String>] [-ApiMetadataPropertyDocumentation <String>]
  [-ApiMetadataPropertyServerUrl <String>] [-ApiMetadataPropertyTitle <String>]
  [-ApiMetadataPropertyVersion <String>] [-CorPropertyAllowCredentials] [-CorPropertyAllowedHeader <String[]>]
@@ -88,7 +101,7 @@ Detailed description of the APIs available on the Gateway instance (default: `Ge
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -103,7 +116,7 @@ Location of additional documentation for the APIs available on the Gateway insta
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -118,7 +131,7 @@ Base URL that API consumers will use to access APIs on the Gateway instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -133,7 +146,7 @@ Title describing the context of the APIs available on the Gateway instance (defa
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -148,7 +161,7 @@ Version of APIs available on this Gateway instance (default: `unspecified`).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -179,7 +192,7 @@ Valid values: `true`, `false`.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -195,7 +208,7 @@ The special value `*` allows actual requests to send any header.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -212,7 +225,7 @@ If not set, `GET` and `HEAD` are allowed by default.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -228,7 +241,7 @@ The special value `*` allows all domains.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -243,7 +256,7 @@ HTTP response headers to expose for cross-site requests.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -258,7 +271,7 @@ How long, in seconds, the response from a pre-flight request can be cached by cl
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -289,13 +302,29 @@ Indicate if only https is allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -334,7 +363,7 @@ The name of Spring Cloud Gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: GatewayName
 
 Required: True
@@ -364,7 +393,7 @@ Indicates whether the Spring Cloud Gateway exposes endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -395,7 +424,7 @@ Cpu allocated to each Spring Cloud Gateway instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -410,7 +439,7 @@ Memory allocated to each Spring Cloud Gateway instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -440,7 +469,7 @@ Current capacity of the target resource
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -455,7 +484,7 @@ Name of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -470,7 +499,7 @@ Tier of the Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -485,7 +514,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -501,7 +530,7 @@ The public identifier for the application
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -516,7 +545,7 @@ The secret known only to the application and the authorization server
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -531,7 +560,7 @@ The URI of Issuer Identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -546,7 +575,7 @@ It defines the specific actions applications can be allowed to do on a user's be
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -608,11 +637,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayResource
 
 ## NOTES
 

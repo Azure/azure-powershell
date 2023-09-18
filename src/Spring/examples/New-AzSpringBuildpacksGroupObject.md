@@ -1,16 +1,22 @@
-### Example 1: Create an in-memory object for BuildpacksGroupProperties
+### Example 1: {{ Add title here }}
 ```powershell
-$pack = @()
-$pack += New-AzSpringBuildpackObject -Id "tanzu-buildpacks/dotnet-core"
-$pack += New-AzSpringBuildpackObject -Id "tanzu-buildpacks/python"
-$pack += New-AzSpringBuildpackObject -Id "tanzu-buildpacks/java-azure"
-New-AzSpringBuildpacksGroupObject -Name 'packtest' -Buildpack $pack
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-packtest
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for BuildpacksGroupProperties.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

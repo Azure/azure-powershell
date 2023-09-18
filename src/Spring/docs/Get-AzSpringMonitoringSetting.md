@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringmonitoringsetting
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringmonitoringsetting
 schema: 2.0.0
 ---
 
@@ -20,7 +20,8 @@ Get-AzSpringMonitoringSetting -Name <String> -ResourceGroupName <String> [-Subsc
 
 ### GetViaIdentity
 ```
-Get-AzSpringMonitoringSetting -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringMonitoringSetting -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,31 +29,27 @@ Get the Monitoring Setting and its properties.
 
 ## EXAMPLES
 
-### Example 1: Get the Monitoring Setting and its properties
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringMonitoringSetting -ResourceGroupName Spring-gp-junxi -Name Spring-service
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState TraceEnabled
-----    ----------------- ----------------- ------------
-default azurespringrg     Succeeded         True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the Monitoring Setting and its properties.
+{{ Add description here }}
 
-### Example 2: Get the Monitoring Setting and its properties by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
- Update-AzSpringMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" | Get-AzSpringMonitoringSetting
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState TraceEnabled
-----    ----------------- ----------------- ------------
-default azurespringrg     Succeeded         True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the Monitoring Setting and its properties by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -77,7 +74,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -140,11 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IMonitoringSettingResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IMonitoringSettingResource
 
 ## NOTES
 

@@ -1,25 +1,22 @@
-### Example 1: Check if the config server settings are valid
+### Example 1: {{ Add title here }}
 ```powershell
- Test-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the config server settings are valid.
+{{ Add description here }}
 
-### Example 2: Check if the config server settings are valid by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service | Test-AzSpringConfigServer
+{{ Add code here }}
 ```
 
 ```output
-IsValid
--------
-True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Check if the config server settings are valid by pipeline.
+{{ Add description here }}
+

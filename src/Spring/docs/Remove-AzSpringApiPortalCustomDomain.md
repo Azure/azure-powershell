@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/remove-azspringapiportalcustomdomain
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringapiportalcustomdomain
 schema: 2.0.0
 ---
 
@@ -21,21 +21,21 @@ Remove-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String
 
 ### DeleteViaIdentity
 ```
-Remove-AzSpringApiPortalCustomDomain -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzSpringApiPortalCustomDomain -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityApiPortal
 ```
-Remove-AzSpringApiPortalCustomDomain -ApiPortalInputObject <ISpringIdentity> -DomainName <String>
+Remove-AzSpringApiPortalCustomDomain -ApiPortalInputObject <ISpringAppsIdentity> -DomainName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentitySpring
 ```
 Remove-AzSpringApiPortalCustomDomain -ApiPortalName <String> -DomainName <String>
- -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ Identity Parameter
 To construct, see NOTES section for APIPORTALINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentityApiPortal
 Aliases:
 
@@ -149,7 +149,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -226,7 +226,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DeleteViaIdentitySpring
 Aliases:
 
@@ -289,7 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 

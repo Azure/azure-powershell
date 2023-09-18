@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringgateway
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringgateway
 schema: 2.0.0
 ---
 
@@ -26,12 +26,12 @@ Get-AzSpringGateway -Name <String> -ResourceGroupName <String> -ServiceName <Str
 
 ### GetViaIdentity
 ```
-Get-AzSpringGateway -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringGateway -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
-Get-AzSpringGateway -Name <String> -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringGateway -Name <String> -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -147,7 +147,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -179,11 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayResource
 
 ## NOTES
 

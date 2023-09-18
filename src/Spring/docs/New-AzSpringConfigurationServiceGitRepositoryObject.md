@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringconfigurationservicegitrepositoryobject
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringconfigurationservicegitrepositoryobject
 schema: 2.0.0
 ---
 
@@ -23,18 +23,27 @@ Create an in-memory object for ConfigurationServiceGitRepository.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ConfigurationServiceGitRepository
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringConfigurationServiceGitRepositoryObject -Name fake -Label master -Uri "https://github.com/fake-user/fake-repository" -Pattern "app/dev" -debug
+{{ Add code here }}
 ```
 
 ```output
-HostKey HostKeyAlgorithm Label  Name Password Pattern   PrivateKey SearchPath StrictHostKeyChecking Uri
-------- ---------------- -----  ---- -------- -------   ---------- ---------- --------------------- ---
-                         master fake          {app/dev}                                             https://github.com…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ConfigurationServiceGitRepository.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -210,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ConfigurationServiceGitRepository
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ConfigurationServiceGitRepository
 
 ## NOTES
 

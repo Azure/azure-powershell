@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringappactivedeployment
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringappactivedeployment
 schema: 2.0.0
 ---
 
@@ -19,15 +19,36 @@ Update-AzSpringAppActiveDeployment -Name <String> -ResourceGroupName <String> -S
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Set
+```
+Update-AzSpringAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -ActiveDeploymentCollection <IActiveDeploymentCollection> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaIdentity
+```
+Update-AzSpringAppActiveDeployment -InputObject <ISpringAppsIdentity>
+ -ActiveDeploymentCollection <IActiveDeploymentCollection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### SetViaIdentityExpanded
 ```
-Update-AzSpringAppActiveDeployment -InputObject <ISpringIdentity> [-DeploymentName <String[]>]
+Update-AzSpringAppActiveDeployment -InputObject <ISpringAppsIdentity> [-DeploymentName <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaIdentitySpring
+```
+Update-AzSpringAppActiveDeployment -Name <String> -SpringInputObject <ISpringAppsIdentity>
+ -ActiveDeploymentCollection <IActiveDeploymentCollection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentitySpringExpanded
 ```
-Update-AzSpringAppActiveDeployment -Name <String> -SpringInputObject <ISpringIdentity>
+Update-AzSpringAppActiveDeployment -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-DeploymentName <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -51,35 +72,45 @@ Set existing Deployment under the app as active
 
 ## EXAMPLES
 
-### Example 1: Set existing Deployment under the app as active
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringAppActiveDeployment -ResourceGroupName Springrg -ServiceName standardspring-demo -Name demo -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active.
+{{ Add description here }}
 
-### Example 2: Set existing Deployment under the app as active by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName Springrg -ServiceName standardspring-demo -Name demo | Update-AzSpringAppActiveDeployment -DeploymentName 'green'
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Set existing Deployment under the app as active by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -ActiveDeploymentCollection
+Object that includes an array of Deployment resource name and set them as active.
+To construct, see NOTES section for ACTIVEDEPLOYMENTCOLLECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IActiveDeploymentCollection
+Parameter Sets: Set, SetViaIdentity, SetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -132,8 +163,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: SetViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: SetViaIdentity, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -178,7 +209,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentitySpringExpanded, SetViaJsonFilePath, SetViaJsonString
+Parameter Sets: Set, SetExpanded, SetViaIdentitySpring, SetViaIdentitySpringExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -209,7 +240,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
+Parameter Sets: Set, SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -224,7 +255,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
+Parameter Sets: Set, SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: True
@@ -239,8 +270,8 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
-Parameter Sets: SetViaIdentitySpringExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: SetViaIdentitySpring, SetViaIdentitySpringExpanded
 Aliases:
 
 Required: True
@@ -256,7 +287,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaJsonFilePath, SetViaJsonString
+Parameter Sets: Set, SetExpanded, SetViaJsonFilePath, SetViaJsonString
 Aliases:
 
 Required: False
@@ -302,11 +333,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IActiveDeploymentCollection
+
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IAppResource
 
 ## NOTES
 

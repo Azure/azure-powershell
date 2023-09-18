@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringapp
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringapp
 schema: 2.0.0
 ---
 
@@ -15,21 +15,44 @@ Create a new App or update an exiting App.
 ### CreateExpanded (Default)
 ```
 New-AzSpringApp -Name <String> -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>]
- [-AddonConfig <Hashtable>] [-EnableEndToEndTl] [-Fqdn <String>] [-HttpsOnly] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-LoadedCertificate <ILoadedCertificate[]>]
- [-Location <String>] [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
- [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddonConfig <Hashtable>] [-ClientAuthCertificate <String[]>]
+ [-CustomPersistentDisk <ICustomPersistentDiskResource[]>] [-EnableEndToEndTl] [-HttpsOnly]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-IngressSettingBackendProtocol <String>]
+ [-IngressSettingReadTimeoutInSecond <Int32>] [-IngressSettingSendTimeoutInSecond <Int32>]
+ [-IngressSettingSessionAffinity <String>] [-IngressSettingSessionCookieMaxAge <Int32>]
+ [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
+ [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
+ [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSpringApp -InputObject <ISpringAppsIdentity> [-AddonConfig <Hashtable>]
+ [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
+ [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IngressSettingBackendProtocol <String>] [-IngressSettingReadTimeoutInSecond <Int32>]
+ [-IngressSettingSendTimeoutInSecond <Int32>] [-IngressSettingSessionAffinity <String>]
+ [-IngressSettingSessionCookieMaxAge <Int32>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
+ [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
+ [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySpringExpanded
 ```
-New-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> [-AddonConfig <Hashtable>]
- [-EnableEndToEndTl] [-Fqdn <String>] [-HttpsOnly] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-LoadedCertificate <ILoadedCertificate[]>]
- [-Location <String>] [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
- [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSpringApp -Name <String> -SpringInputObject <ISpringAppsIdentity> [-AddonConfig <Hashtable>]
+ [-ClientAuthCertificate <String[]>] [-CustomPersistentDisk <ICustomPersistentDiskResource[]>]
+ [-EnableEndToEndTl] [-HttpsOnly] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IngressSettingBackendProtocol <String>] [-IngressSettingReadTimeoutInSecond <Int32>]
+ [-IngressSettingSendTimeoutInSecond <Int32>] [-IngressSettingSessionAffinity <String>]
+ [-IngressSettingSessionCookieMaxAge <Int32>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
+ [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
+ [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-VnetAddonPublicEndpoint]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -51,18 +74,27 @@ Create a new App or update an exiting App.
 
 ## EXAMPLES
 
-### Example 1: Create a new App or update an exiting App.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring -Name tools
+{{ Add code here }}
 ```
 
 ```output
-Location Name  ProvisioningState ResourceGroupName
--------- ----  ----------------- -----------------
-eastus   tools Succeeded         azps_test_group_spring
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a new App or update an exiting App.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -71,7 +103,7 @@ Collection of addons
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -87,6 +119,37 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientAuthCertificate
+Collection of certificate resource id.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomPersistentDisk
+List of custom persistent disks
+To construct, see NOTES section for CUSTOMPERSISTENTDISK properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICustomPersistentDiskResource[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -117,22 +180,7 @@ Indicate if end to end TLS is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Fqdn
-Fully qualified dns Name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -147,7 +195,7 @@ Indicate if only https is allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -162,7 +210,7 @@ Principal Id of system-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -177,7 +225,7 @@ Tenant Id of system-assigned managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -192,13 +240,119 @@ Type of the managed identity
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+Properties of user-assigned managed identities
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingBackendProtocol
+How ingress should communicate with this app backend service.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingReadTimeoutInSecond
+Ingress read time out in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSendTimeoutInSecond
+Ingress send time out in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSessionAffinity
+Type of the affinity, set this to Cookie to enable session affinity.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressSettingSessionCookieMaxAge
+Time in seconds until the cookie expires.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -237,8 +391,8 @@ Collection of loaded certificates
 To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ILoadedCertificate[]
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ILoadedCertificate[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -253,7 +407,7 @@ The GEO location of the application, always the same with its parent resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -268,7 +422,7 @@ The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: AppName
 
 Required: True
@@ -298,7 +452,7 @@ Mount path of the persistent disk
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -313,7 +467,7 @@ Size of the persistent disk in GB
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -328,7 +482,7 @@ Indicates whether the App exposes public endpoint
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -374,7 +528,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -406,7 +560,7 @@ Mount path of the temporary disk
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -421,7 +575,22 @@ Size of the temporary disk in GB
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VnetAddonPublicEndpoint
+Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -467,11 +636,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IAppResource
 
 ## NOTES
 

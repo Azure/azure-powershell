@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringgatewaycustomdomain
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringgatewaycustomdomain
 schema: 2.0.0
 ---
 
@@ -26,20 +26,20 @@ Get-AzSpringGatewayCustomDomain -DomainName <String> -GatewayName <String> -Reso
 
 ### GetViaIdentity
 ```
-Get-AzSpringGatewayCustomDomain -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringGatewayCustomDomain -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityGateway
 ```
-Get-AzSpringGatewayCustomDomain -DomainName <String> -GatewayInputObject <ISpringIdentity>
+Get-AzSpringGatewayCustomDomain -DomainName <String> -GatewayInputObject <ISpringAppsIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
 Get-AzSpringGatewayCustomDomain -DomainName <String> -GatewayName <String>
- -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Identity Parameter
 To construct, see NOTES section for GATEWAYINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentityGateway
 Aliases:
 
@@ -138,7 +138,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -185,7 +185,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -217,11 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayCustomDomainResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayCustomDomainResource
 
 ## NOTES
 

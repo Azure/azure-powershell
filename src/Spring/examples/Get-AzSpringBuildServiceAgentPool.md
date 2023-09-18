@@ -1,26 +1,22 @@
-### Example 1: Get a build service agent pool
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceAgentPool -ResourceGroupName Springrg -ServiceName sspring-portal01
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
-----    ----------------- ----------------- ----------- -------------- ------------
-default Springrg     Succeeded         2           4Gi            S1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service agent pool.
+{{ Add description here }}
 
-
-### Example 2: Get a build service agent pool by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzSpringBuildServiceAgentPool -ResourceGroupName Springrg -ServiceName espring-pwsh01 -PoolSizeName "S1" | Get-AzSpringBuildServiceAgentPool
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
-----    ----------------- ----------------- ----------- -------------- ------------
-default Springrg     Succeeded         2           4Gi            S1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service agent pool by pipeline.
+{{ Add description here }}
+

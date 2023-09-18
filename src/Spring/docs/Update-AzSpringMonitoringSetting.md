@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringmonitoringsetting
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringmonitoringsetting
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Update-AzSpringMonitoringSetting -Name <String> -ResourceGroupName <String> [-Su
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringMonitoringSetting -InputObject <ISpringIdentity> [-AppInsightsInstrumentationKey <String>]
+Update-AzSpringMonitoringSetting -InputObject <ISpringAppsIdentity> [-AppInsightsInstrumentationKey <String>]
  [-AppInsightsSamplingRate <Double>] [-Code <String>] [-Message <String>] [-TraceEnabled]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -46,31 +46,27 @@ Update the Monitoring Setting.
 
 ## EXAMPLES
 
-### Example 1: Update the Monitoring Setting
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringMonitoringSetting -ResourceGroupName Spring-gp-junxi -Name Spring-service -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState TraceEnabled
-----    ----------------- ----------------- ------------
-default azurespringrg     Succeeded         True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update the Monitoring Setting.
+{{ Add description here }}
 
-### Example 2: Update the Monitoring Setting by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringMonitoringSetting -ResourceGroupName Spring-gp-junxi -Name Spring-service | Update-AzSpringMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState TraceEnabled
-----    ----------------- ----------------- ------------
-default azurespringrg     Succeeded         True
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update the Monitoring Setting by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -155,7 +151,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -325,11 +321,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IMonitoringSettingResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IMonitoringSettingResource
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringgatewayrouteconfig
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringgatewayrouteconfig
 schema: 2.0.0
 ---
 
@@ -22,14 +22,14 @@ Update-AzSpringGatewayRouteConfig -GatewayName <String> -ResourceGroupName <Stri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringGatewayRouteConfig -InputObject <ISpringIdentity> [-AppResourceId <String>]
+Update-AzSpringGatewayRouteConfig -InputObject <ISpringAppsIdentity> [-AppResourceId <String>]
  [-OpenApiUri <String>] [-Protocol <String>] [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityGatewayExpanded
 ```
-Update-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringIdentity> -RouteConfigName <String>
+Update-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringAppsIdentity> -RouteConfigName <String>
  [-AppResourceId <String>] [-OpenApiUri <String>] [-Protocol <String>] [-Route <IGatewayApiRoute[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -37,9 +37,9 @@ Update-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringIdentity> -RouteCo
 ### UpdateViaIdentitySpringExpanded
 ```
 Update-AzSpringGatewayRouteConfig -GatewayName <String> -RouteConfigName <String>
- -SpringInputObject <ISpringIdentity> [-AppResourceId <String>] [-OpenApiUri <String>] [-Protocol <String>]
- [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-AppResourceId <String>] [-OpenApiUri <String>]
+ [-Protocol <String>] [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +122,7 @@ Identity Parameter
 To construct, see NOTES section for GATEWAYINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityGatewayExpanded
 Aliases:
 
@@ -153,7 +153,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -230,7 +230,7 @@ Array of API routes, each route contains properties such as `title`, `uri`, `sso
 To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayApiRoute[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayApiRoute[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +276,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentitySpringExpanded
 Aliases:
 
@@ -339,11 +339,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayRouteConfigResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayRouteConfigResource
 
 ## NOTES
 

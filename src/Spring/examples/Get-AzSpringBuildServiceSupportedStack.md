@@ -1,26 +1,22 @@
-### Example 1: Get all supported stack resource
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedStack -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-Name                             ResourceGroupName StackId                     Version
-----                             ----------------- -------                     -------
-io.buildpacks.stacks.bionic-base Springrg     io.buildpacks.stacks.bionic base
-io.buildpacks.stacks.bionic-full Springrg     io.buildpacks.stacks.bionic full
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all supported stack resource.
+{{ Add description here }}
 
-### Example 2: Get the supported stack resource
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedStack -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -Name io.buildpacks.stacks.bionic-full
+{{ Add code here }}
 ```
 
 ```output
-Name                             ResourceGroupName StackId                     Version
-----                             ----------------- -------                     -------
-io.buildpacks.stacks.bionic-base Springrg     io.buildpacks.stacks.bionic base
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the supported stack resource.
+{{ Add description here }}
+

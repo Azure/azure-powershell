@@ -1,13 +1,22 @@
-### Example 1: Delete a KPack builder
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSpringBuildServiceBuilder -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -Name mybuilder
+{{ Add code here }}
 ```
 
-Delete a KPack builder.
-
-### Example 2: Delete a KPack builder by pipeline
-```powershell
-Get-AzSpringBuildServiceBuilder -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -Name mybuilder | Remove-AzSpringBuildServiceBuilder
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete a KPack builder by pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringbuildpackbinding
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringbuildpackbinding
 schema: 2.0.0
 ---
 
@@ -26,18 +26,25 @@ Get-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -ResourceGroup
 
 ### GetViaIdentity
 ```
-Get-AzSpringBuildpackBinding -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringBuildpackBinding -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityBuilder
 ```
-Get-AzSpringBuildpackBinding -BuilderInputObject <ISpringIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSpringBuildpackBinding -BuilderInputObject <ISpringAppsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityBuildService
 ```
-Get-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISpringIdentity> -Name <String>
+Get-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISpringAppsIdentity>
+ -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -46,47 +53,27 @@ Get a buildpack binding by name.
 
 ## EXAMPLES
 
-### Example 1: List all buildpack binding
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildpackBinding -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -BuilderName default
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List all buildpack binding.
+{{ Add description here }}
 
-### Example 2: Get a buildpack binding by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildpackBinding -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01 -BuilderName default -Name default
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a buildpack binding by name.
-
-### Example 2: Get a buildpack binding by pipeline
-```powershell
-New-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal01 -BuilderName default -Name binging01 -BindingType 'AppDynamics' | Get-AzSpringBuildpackBinding
-```
-
-```output
-Name      SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----      ------------------- -------------------     ----------------------- ------------------------ ------------------
-binging01 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
-```
-
-Get a buildpack binding by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -95,7 +82,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentityBuilder
 Aliases:
 
@@ -111,7 +98,7 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuildService, List
+Parameter Sets: Get, GetViaIdentityBuildService, GetViaIdentitySpring, List
 Aliases:
 
 Required: True
@@ -126,7 +113,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentityBuildService
 Aliases:
 
@@ -158,7 +145,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -174,7 +161,7 @@ The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuilder, GetViaIdentityBuildService
+Parameter Sets: Get, GetViaIdentityBuilder, GetViaIdentityBuildService, GetViaIdentitySpring
 Aliases: BuildpackBindingName
 
 Required: True
@@ -215,6 +202,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -236,11 +239,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildpackBindingResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildpackBindingResource
 
 ## NOTES
 

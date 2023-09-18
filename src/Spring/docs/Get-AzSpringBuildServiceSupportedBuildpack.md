@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringbuildservicesupportedbuildpack
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringbuildservicesupportedbuildpack
 schema: 2.0.0
 ---
 
@@ -26,13 +26,19 @@ Get-AzSpringBuildServiceSupportedBuildpack -Name <String> -ResourceGroupName <St
 
 ### GetViaIdentity
 ```
-Get-AzSpringBuildServiceSupportedBuildpack -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringBuildServiceSupportedBuildpack -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityBuildService
 ```
-Get-AzSpringBuildServiceSupportedBuildpack -BuildServiceInputObject <ISpringIdentity> -Name <String>
+Get-AzSpringBuildServiceSupportedBuildpack -BuildServiceInputObject <ISpringAppsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringBuildServiceSupportedBuildpack -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -41,35 +47,27 @@ Get the supported buildpack resource.
 
 ## EXAMPLES
 
-### Example 1: Get all supported buildpack resource.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedBuildpack -ResourceGroupName Spring-gp-junxi -ServiceName Spring-01
+{{ Add code here }}
 ```
 
 ```output
-Name                         ResourceGroupName BuildpackId
-----                         ----------------- -----------
-tanzu-buildpacks-java-azure  Springrg     tanzu-buildpacks/java-azure
-tanzu-buildpacks-dotnet-core Springrg     tanzu-buildpacks/dotnet-core
-tanzu-buildpacks-go          Springrg     tanzu-buildpacks/go
-tanzu-buildpacks-nodejs      Springrg     tanzu-buildpacks/nodejs
-tanzu-buildpacks-python      Springrg     tanzu-buildpacks/python
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all supported buildpack resource.
+{{ Add description here }}
 
-### Example 2: Get the supported buildpack resource by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceSupportedBuildpack -ResourceGroupName Springrg -ServiceName sspring-portal01 -Name tanzu-buildpacks-python
+{{ Add code here }}
 ```
 
 ```output
-Name                    ResourceGroupName BuildpackId
-----                    ----------------- -----------
-tanzu-buildpacks-python Springrg     tanzu-buildpacks/python
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get the supported buildpack resource by name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -78,7 +76,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentityBuildService
 Aliases:
 
@@ -110,7 +108,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -126,7 +124,7 @@ The name of the buildpack resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBuildService
+Parameter Sets: Get, GetViaIdentityBuildService, GetViaIdentitySpring
 Aliases:
 
 Required: True
@@ -167,6 +165,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -188,13 +202,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISupportedBuildpackResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISupportedBuildpackResource
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISupportedBuildpacksCollection
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISupportedBuildpacksCollection
 
 ## NOTES
 

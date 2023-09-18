@@ -1,12 +1,22 @@
-### Example 1: Create or update a KPack builder
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringBuildServiceBuilder -ResourceGroupName Springrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
+{{ Add code here }}
 ```
 
 ```output
-Name      ResourceGroupName ProvisioningState StackId                     StackVersion
-----      ----------------- ----------------- -------                     ------------
-builder01 Springrg     Succeeded         io.buildpacks.stacks.bionic base
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update a KPack builder.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

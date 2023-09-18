@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for KeyVaultCertificateProperties
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringKeyVaultCertificateObject -VaultUri "keyvaluturi" -Name 'keycert'
+{{ Add code here }}
 ```
 
 ```output
-ActivateDate DnsName ExpirationDate IssuedDate Issuer SubjectName Thumbprint CertVersion ExcludePrivateKey KeyVaultCertName VaultUri
------------- ------- -------------- ---------- ------ ----------- ---------- ----------- ----------------- ---------------- --------
-                                                                                                           keycert          keyvaluturi
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for KeyVaultCertificateProperties
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

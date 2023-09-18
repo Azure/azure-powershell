@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringgatewaycustomdomain
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringgatewaycustomdomain
 schema: 2.0.0
 ---
 
@@ -19,9 +19,15 @@ New-AzSpringGatewayCustomDomain -DomainName <String> -GatewayName <String> -Reso
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzSpringGatewayCustomDomain -InputObject <ISpringAppsIdentity> [-Thumbprint <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityGatewayExpanded
 ```
-New-AzSpringGatewayCustomDomain -DomainName <String> -GatewayInputObject <ISpringIdentity>
+New-AzSpringGatewayCustomDomain -DomainName <String> -GatewayInputObject <ISpringAppsIdentity>
  [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -29,8 +35,8 @@ New-AzSpringGatewayCustomDomain -DomainName <String> -GatewayInputObject <ISprin
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringGatewayCustomDomain -DomainName <String> -GatewayName <String>
- -SpringInputObject <ISpringIdentity> [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -112,7 +118,7 @@ The name of the Spring Cloud Gateway custom domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -127,7 +133,7 @@ Identity Parameter
 To construct, see NOTES section for GATEWAYINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentityGatewayExpanded
 Aliases:
 
@@ -150,6 +156,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -234,7 +256,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -266,7 +288,7 @@ The thumbprint of bound certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -312,11 +334,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayCustomDomainResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayCustomDomainResource
 
 ## NOTES
 

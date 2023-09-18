@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringbuildpackbinding
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringbuildpackbinding
 schema: 2.0.0
 ---
 
@@ -22,14 +22,28 @@ New-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -ResourceGroup
 
 ### CreateViaIdentityBuilderExpanded
 ```
-New-AzSpringBuildpackBinding -BuilderInputObject <ISpringIdentity> -Name <String> [-BindingType <String>]
+New-AzSpringBuildpackBinding -BuilderInputObject <ISpringAppsIdentity> -Name <String> [-BindingType <String>]
+ [-LaunchProperty <Hashtable>] [-LaunchSecret <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityBuildServiceExpanded
+```
+New-AzSpringBuildpackBinding -BuilderName <String> -BuildServiceInputObject <ISpringAppsIdentity>
+ -Name <String> [-BindingType <String>] [-LaunchProperty <Hashtable>] [-LaunchSecret <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzSpringBuildpackBinding -InputObject <ISpringAppsIdentity> [-BindingType <String>]
  [-LaunchProperty <Hashtable>] [-LaunchSecret <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentitySpringExpanded
 ```
-New-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringIdentity>
+New-AzSpringBuildpackBinding -BuilderName <String> -Name <String> -SpringInputObject <ISpringAppsIdentity>
  [-BindingType <String>] [-LaunchProperty <Hashtable>] [-LaunchSecret <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -53,18 +67,27 @@ Create a buildpack binding.
 
 ## EXAMPLES
 
-### Example 1: Create or update a buildpack binding
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
+{{ Add code here }}
 ```
 
 ```output
-Name      SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----      -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-binging01 7/22/2022 2:24:28 AM v-diya@microsoft.com User                    7/22/2022 2:24:28 AM     v-diya@microsoft.com     User                         Springrg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update a buildpack binding.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -88,7 +111,7 @@ Buildpack Binding Type
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -103,7 +126,7 @@ Identity Parameter
 To construct, see NOTES section for BUILDERINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentityBuilderExpanded
 Aliases:
 
@@ -119,13 +142,29 @@ The name of the builder resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BuildServiceInputObject
+Identity Parameter
+To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityBuildServiceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -142,6 +181,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -180,7 +235,7 @@ Non-sensitive properties for launchProperties
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -195,7 +250,7 @@ Sensitive properties for launchProperties
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentityExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -210,7 +265,7 @@ The name of the Buildpack Binding Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityBuilderExpanded, CreateViaIdentityBuildServiceExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: BuildpackBindingName
 
 Required: True
@@ -271,7 +326,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -334,11 +389,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildpackBindingResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildpackBindingResource
 
 ## NOTES
 

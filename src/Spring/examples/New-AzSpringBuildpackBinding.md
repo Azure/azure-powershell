@@ -1,12 +1,22 @@
-### Example 1: Create or update a buildpack binding
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzSpringBuildpackBinding -ResourceGroupName Springrg -ServiceName sspring-portal0 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
+{{ Add code here }}
 ```
 
 ```output
-Name      SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----      -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-binging01 7/22/2022 2:24:28 AM v-diya@microsoft.com User                    7/22/2022 2:24:28 AM     v-diya@microsoft.com     User                         Springrg
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update a buildpack binding.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

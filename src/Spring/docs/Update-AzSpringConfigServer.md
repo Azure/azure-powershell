@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/update-azspringconfigserver
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/update-azspringconfigserver
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Update-AzSpringConfigServer -Name <String> -ResourceGroupName <String> [-Subscri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSpringConfigServer -InputObject <ISpringIdentity> [-Code <String>] [-GitHostKey <String>]
+Update-AzSpringConfigServer -InputObject <ISpringAppsIdentity> [-Code <String>] [-GitHostKey <String>]
  [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>] [-GitPrivateKey <String>]
  [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking]
  [-GitUri <String>] [-GitUsername <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -49,33 +49,27 @@ Update the config server.
 
 ## EXAMPLES
 
-### Example 1: Update the config server
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 7:22:54    *********@microsoft.com User                    2022/7/1 7:22:54         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update the config server.
+{{ Add description here }}
 
-### Example 2: Update the config server by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigServer -ResourceGroupName Spring-gp-junxi -Name Spring-service | Update-AzSpringConfigServer
+{{ Add code here }}
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
-                                                                                                     fiedBy
-----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/1 7:22:54    *********@microsoft.com User                    2022/7/1 7:22:54         **********@microso…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update the config server by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -205,7 +199,7 @@ Repositories of git.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGitPatternRepository[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGitPatternRepository[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -281,7 +275,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -435,11 +429,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IConfigServerResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IConfigServerResource
 
 ## NOTES
 

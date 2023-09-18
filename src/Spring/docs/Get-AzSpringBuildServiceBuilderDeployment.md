@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringbuildservicebuilderdeployment
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringbuildservicebuilderdeployment
 schema: 2.0.0
 ---
 
@@ -178,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentList
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IDeploymentList
 
 ## NOTES
 

@@ -1,13 +1,22 @@
-### Example 1: Create or update certificate resource
+### Example 1: {{ Add title here }}
 ```powershell
-$cert = New-AzSpringKeyVaultCertificateObject -Name "cert01" -VaultUri "https://xxxxxx.vault.azure.net" -Version "xxxxxxxxxxxxxxxxxxxxx" -ExcludePrivateKey $false
-New-AzSpringCertificate -ResourceGroupName spring-rg-test -ServiceName springapp-pwsh01 -Name cert01 -Property $cert
+{{ Add code here }}
 ```
 
 ```output
-Name   ResourceGroupName
-----   -----------------
-cert01 lucas-rg-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create or update certificate resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

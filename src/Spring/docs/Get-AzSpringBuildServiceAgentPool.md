@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringbuildserviceagentpool
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringbuildserviceagentpool
 schema: 2.0.0
 ---
 
@@ -20,8 +20,26 @@ Get-AzSpringBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <Stri
 
 ### GetViaIdentity
 ```
-Get-AzSpringBuildServiceAgentPool -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringBuildServiceAgentPool -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityBuildService
+```
+Get-AzSpringBuildServiceAgentPool -BuildServiceInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentitySpring
+```
+Get-AzSpringBuildServiceAgentPool -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSpringBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,33 +47,45 @@ Get build service agent pool.
 
 ## EXAMPLES
 
-### Example 1: Get a build service agent pool
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringBuildServiceAgentPool -ResourceGroupName Springrg -ServiceName sspring-portal01
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
-----    ----------------- ----------------- ----------- -------------- ------------
-default Springrg     Succeeded         2           4Gi            S1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service agent pool.
+{{ Add description here }}
 
-### Example 2: Get a build service agent pool by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzSpringBuildServiceAgentPool -ResourceGroupName Springrg -ServiceName espring-pwsh01 -PoolSizeName "S1" | Get-AzSpringBuildServiceAgentPool
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
-----    ----------------- ----------------- ----------- -------------- ------------
-default Springrg     Succeeded         2           4Gi            S1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a build service agent pool by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -BuildServiceInputObject
+Identity Parameter
+To construct, see NOTES section for BUILDSERVICEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentityBuildService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -78,7 +108,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -95,7 +125,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -110,7 +140,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -120,13 +150,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SpringInputObject
+Identity Parameter
+To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: GetViaIdentitySpring
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -141,11 +187,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IBuildServiceAgentPoolResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildServiceAgentPoolResource
 
 ## NOTES
 

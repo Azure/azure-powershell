@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/Az.Spring/new-azspringdeploymentsettingobject
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringdeploymentsettingobject
 schema: 2.0.0
 ---
 
@@ -63,7 +63,7 @@ Collection of addons.
 To construct, see NOTES section for ADDONCONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentSettingsAddonConfigs
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IDeploymentSettingsAddonConfigs
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Collection of environment variables.
 To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IDeploymentSettingsEnvironmentVariables
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IDeploymentSettingsEnvironmentVariables
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +501,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.DeploymentSettings
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.DeploymentSettings
 
 ## NOTES
 

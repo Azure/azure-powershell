@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringcertificate
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringcertificate
 schema: 2.0.0
 ---
 
@@ -26,12 +26,12 @@ Get-AzSpringCertificate -Name <String> -ResourceGroupName <String> -ServiceName 
 
 ### GetViaIdentity
 ```
-Get-AzSpringCertificate -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCertificate -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
-Get-AzSpringCertificate -Name <String> -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>]
+Get-AzSpringCertificate -Name <String> -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -40,31 +40,27 @@ Get the certificate resource.
 
 ## EXAMPLES
 
-### Example 1: List all the certificate resource under a spring service
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringCertificate -ResourceGroupName lucas-rg-test -ServiceName springapp-pwsh01
+{{ Add code here }}
 ```
 
 ```output
-Name   ResourceGroupName
-----   -----------------
-cert01 lucas-rg-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List all the certificate resource under a spring service.
+{{ Add description here }}
 
-### Example 2: Get a certificate resource by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringCertificate -ResourceGroupName lucas-rg-test -ServiceName springapp-pwsh01 -Name cert01  
+{{ Add code here }}
 ```
 
 ```output
-Name   ResourceGroupName
-----   -----------------
-cert01 lucas-rg-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get a certificate resource by name.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,7 +85,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -151,7 +147,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -183,11 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ICertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ICertificateResource
 
 ## NOTES
 

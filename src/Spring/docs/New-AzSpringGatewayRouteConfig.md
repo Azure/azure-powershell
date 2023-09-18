@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/new-azspringgatewayrouteconfig
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/new-azspringgatewayrouteconfig
 schema: 2.0.0
 ---
 
@@ -20,9 +20,16 @@ New-AzSpringGatewayRouteConfig -GatewayName <String> -ResourceGroupName <String>
  [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzSpringGatewayRouteConfig -InputObject <ISpringAppsIdentity> [-AppResourceId <String>]
+ [-OpenApiUri <String>] [-Protocol <String>] [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityGatewayExpanded
 ```
-New-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringIdentity> -RouteConfigName <String>
+New-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringAppsIdentity> -RouteConfigName <String>
  [-AppResourceId <String>] [-OpenApiUri <String>] [-Protocol <String>] [-Route <IGatewayApiRoute[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -30,9 +37,9 @@ New-AzSpringGatewayRouteConfig -GatewayInputObject <ISpringIdentity> -RouteConfi
 ### CreateViaIdentitySpringExpanded
 ```
 New-AzSpringGatewayRouteConfig -GatewayName <String> -RouteConfigName <String>
- -SpringInputObject <ISpringIdentity> [-AppResourceId <String>] [-OpenApiUri <String>] [-Protocol <String>]
- [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SpringInputObject <ISpringAppsIdentity> [-AppResourceId <String>] [-OpenApiUri <String>]
+ [-Protocol <String>] [-Route <IGatewayApiRoute[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -83,7 +90,7 @@ The resource Id of the Azure Spring Apps app, required unless route defines `uri
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -129,7 +136,7 @@ Identity Parameter
 To construct, see NOTES section for GATEWAYINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentityGatewayExpanded
 Aliases:
 
@@ -152,6 +159,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -205,7 +228,7 @@ The URI of OpenAPI specification.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -220,7 +243,7 @@ Protocol of routed Azure Spring Apps applications.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -251,8 +274,8 @@ Array of API routes, each route contains properties such as `title`, `uri`, `sso
 To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayApiRoute[]
-Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayApiRoute[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded
 Aliases:
 
 Required: False
@@ -267,7 +290,7 @@ The name of the Spring Cloud Gateway route config.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityGatewayExpanded, CreateViaIdentitySpringExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -297,7 +320,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: CreateViaIdentitySpringExpanded
 Aliases:
 
@@ -360,11 +383,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IGatewayRouteConfigResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IGatewayRouteConfigResource
 
 ## NOTES
 

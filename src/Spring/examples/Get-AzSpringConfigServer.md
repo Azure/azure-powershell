@@ -1,12 +1,22 @@
-### Example 1: Get all properties of the config server 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringConfigServer -ResourceGroupName "Spring-rg-0zquav" -Name "spring-f7lz2n"
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName ProvisioningState
-----    ----------------- -----------------
-default Springrg     Succeeded
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get all properties of the config server.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

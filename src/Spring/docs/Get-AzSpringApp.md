@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/get-azspringapp
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/get-azspringapp
 schema: 2.0.0
 ---
 
@@ -26,13 +26,13 @@ Get-AzSpringApp -Name <String> -ResourceGroupName <String> -ServiceName <String>
 
 ### GetViaIdentity
 ```
-Get-AzSpringApp -InputObject <ISpringIdentity> [-SyncStatus <String>] [-DefaultProfile <PSObject>]
+Get-AzSpringApp -InputObject <ISpringAppsIdentity> [-SyncStatus <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentitySpring
 ```
-Get-AzSpringApp -Name <String> -SpringInputObject <ISpringIdentity> [-SyncStatus <String>]
+Get-AzSpringApp -Name <String> -SpringInputObject <ISpringAppsIdentity> [-SyncStatus <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -41,31 +41,27 @@ Get an App and its properties.
 
 ## EXAMPLES
 
-### Example 1: List all App under the spring service.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring
+{{ Add code here }}
 ```
 
 ```output
-Location Name  ProvisioningState ResourceGroupName
--------- ----  ----------------- -----------------
-eastus   tools Succeeded         azps_test_group_spring
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Lise all App under the spring service.
+{{ Add description here }}
 
-### Example 2: Get an App and its properties.
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzSpringApp -ResourceGroupName azps_test_group_spring -ServiceName azps-spring -Name tools
+{{ Add code here }}
 ```
 
 ```output
-Location Name  ProvisioningState ResourceGroupName
--------- ----  ----------------- -----------------
-eastus   tools Succeeded         azps_test_group_spring
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get an App and its properties.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -90,7 +86,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -152,7 +148,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: GetViaIdentitySpring
 Aliases:
 
@@ -199,11 +195,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IAppResource
 
 ## NOTES
 

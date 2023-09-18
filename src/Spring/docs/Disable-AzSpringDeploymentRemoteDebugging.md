@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.Spring
-online version: https://learn.microsoft.com/powershell/module/az.spring/disable-azspringdeploymentremotedebugging
+Module Name: Az.SpringApps
+online version: https://learn.microsoft.com/powershell/module/az.springapps/disable-azspringdeploymentremotedebugging
 schema: 2.0.0
 ---
 
@@ -21,20 +21,20 @@ Disable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <Str
 
 ### DisableViaIdentity
 ```
-Disable-AzSpringDeploymentRemoteDebugging -InputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzSpringDeploymentRemoteDebugging -InputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisableViaIdentityApp
 ```
-Disable-AzSpringDeploymentRemoteDebugging -AppInputObject <ISpringIdentity> -DeploymentName <String>
+Disable-AzSpringDeploymentRemoteDebugging -AppInputObject <ISpringAppsIdentity> -DeploymentName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisableViaIdentitySpring
 ```
 Disable-AzSpringDeploymentRemoteDebugging -AppName <String> -DeploymentName <String>
- -SpringInputObject <ISpringIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -SpringInputObject <ISpringAppsIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Identity Parameter
 To construct, see NOTES section for APPINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DisableViaIdentityApp
 Aliases:
 
@@ -149,7 +149,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DisableViaIdentity
 Aliases:
 
@@ -211,7 +211,7 @@ Identity Parameter
 To construct, see NOTES section for SPRINGINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 Parameter Sets: DisableViaIdentitySpring
 Aliases:
 
@@ -274,11 +274,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.ISpringIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.ISpringAppsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Spring.Models.IRemoteDebugging
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IRemoteDebugging
 
 ## NOTES
 
