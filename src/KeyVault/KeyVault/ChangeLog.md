@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.12.0
 * Leveraged ARM template for `New-AzKeyvault`.
 
 ## Version 4.11.0
