@@ -843,5 +843,13 @@
   {
     "module": "PaloAltoNetworks",
     "alias": "PaloAltoNetworks"
+  },
+  {
+    "module": "DevCenter",
+    "alias": "DevCenter"
+  },
+  {
+    "alias": "NetworkCloud",
+    "module": "NetworkCloud"
   }
 ]

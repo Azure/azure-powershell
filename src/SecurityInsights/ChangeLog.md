@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed parameters' issues for `New-AzSentinelAlertRule` and `Update-AzSentinelAlertRule` [#21181][#21217][#22318]
+
+## Version 3.0.2
 * Added breaking change message for `Az.SecurityInsights`.
 
 ## Version 3.0.1

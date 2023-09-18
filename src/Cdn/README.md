@@ -272,6 +272,13 @@ directive:
         labels:
           PropertiesMigratedProfileResourceIdId: MigratedProfileResourceId
 
+  - where:
+      model-name: EdgeNode
+    set:
+      format-table:
+        properties:
+          - Id
+
   # Delete 404
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].delete

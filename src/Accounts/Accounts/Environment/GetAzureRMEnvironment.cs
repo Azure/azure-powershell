@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -34,11 +33,10 @@ namespace Microsoft.Azure.Commands.Profile
         [EnvironmentCompleter()]
         public string Name { get; set; }
 
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
-
 
         public override void ExecuteCmdlet()
         {

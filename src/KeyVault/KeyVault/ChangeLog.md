@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Splitted steps of `Import-AzKeyVaultSecurityDomain` to avoid exposing keys online.
     - Added `DownloadExchangeKey`, `RestoreBlob` and `ImportRestoredBlob` in `Import-AzKeyVaultSecurityDomain`.
+
+## Version 4.11.0
 * Fixed certificate policy bugs if DnsName is null. [#22642]
 * Supported multi-regions for Managed Hsm: Added `Add/Get/Remove-AzAzKeyVaultManagedHsmRegion`.
 * Added `Test-AzKeyVaultNameAvailability` and `Test-AzKeyVaultManagedHsmNameAvailability`.
