@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// The Private Endpoint resource.
+    /// The commitment plan account association properties.
     /// </summary>
-    public partial class PrivateEndpoint
+    public partial class CommitmentPlanAccountAssociationProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the CommitmentPlanAccountAssociationProperties class.
         /// </summary>
-        public PrivateEndpoint()
+        public CommitmentPlanAccountAssociationProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the CommitmentPlanAccountAssociationProperties class.
         /// </summary>
 
-        /// <param name="id">The ARM identifier for Private Endpoint
+        /// <param name="accountId">The Azure resource id of the account.
         /// </param>
-        public PrivateEndpoint(string id = default(string))
+        public CommitmentPlanAccountAssociationProperties(string accountId = default(string))
 
         {
-            this.Id = id;
+            this.AccountId = accountId;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
 
         /// <summary>
-        /// Gets the ARM identifier for Private Endpoint
+        /// Gets or sets the Azure resource id of the account.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accountId")]
+        public string AccountId {get; set; }
     }
 }
