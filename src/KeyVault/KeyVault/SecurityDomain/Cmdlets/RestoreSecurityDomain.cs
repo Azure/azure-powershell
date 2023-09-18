@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
         [Parameter(HelpMessage = "Local file path to store the security domain encrypted with the exchange key.", Mandatory = true, ParameterSetName = DoRestoreBlob)]
         [ValidateNotNullOrEmpty]
-        public string SecurityDomainRestoreBlob { get; set; }
+        public string SecurityDomainRestoredBlob { get; set; }
 
         [Parameter(HelpMessage = "Information about the exchange key used to encrypt the security domain data. Constructed by Initialize-AzKeyVaultSecurityDomainRecovery.", Mandatory = true, ParameterSetName=DoRestoreBlob)]
         [ValidateNotNullOrEmpty]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
             else if (ParameterSetName == DoRestoreBlob)
             {
                 ValidateParameters();
-                if (ShouldProcess($"Generating file {SecurityDomainRestoreBlob}", $"restore security domain data from file \"{SecurityDomainPath}\""))
+                if (ShouldProcess($"Generating file {SecurityDomainRestoredBlob}", $"restore security domain data from file \"{SecurityDomainPath}\""))
                 {
                     Keys = Keys.Select(key => new KeyPath()
                     {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                         PrivateKey = ResolveUserPath(key.PrivateKey)
                     }).ToArray();
                     ExchangeKey = ResolveUserPath(ExchangeKey);
-                    SecurityDomainRestoreBlob = ResolveUserPath(SecurityDomainRestoreBlob);
+                    SecurityDomainRestoredBlob = ResolveUserPath(SecurityDomainRestoredBlob);
 
                     // Decrypt using Private Keys
                     var securityDomain = LoadSdFromFile(ResolveUserPath(SecurityDomainPath));
@@ -118,10 +118,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
                     var encryptedSecurityDomain = Client.EncryptForRestore(rawSecurityDomain, exchangeKey);
                     string securityDomainBlob = JsonConvert.SerializeObject(encryptedSecurityDomain);
 
-                    if (!AzureSession.Instance.DataStore.FileExists(SecurityDomainRestoreBlob) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, SecurityDomainRestoreBlob), Resources.FileOverwriteCaption))
+                    if (!AzureSession.Instance.DataStore.FileExists(SecurityDomainRestoredBlob) || Force || ShouldContinue(string.Format(Resources.FileOverwriteMessage, SecurityDomainRestoredBlob), Resources.FileOverwriteCaption))
                     {
-                        AzureSession.Instance.DataStore.WriteFile(SecurityDomainRestoreBlob, securityDomainBlob);
-                        WriteDebug($"Security domain data of exported managed HSM '{SecurityDomainPath}' restored to '{SecurityDomainRestoreBlob}'.");
+                        AzureSession.Instance.DataStore.WriteFile(SecurityDomainRestoredBlob, securityDomainBlob);
+                        WriteDebug($"Security domain data of exported managed HSM '{SecurityDomainPath}' restored to '{SecurityDomainRestoredBlob}'.");
                     }
                 }
             }
