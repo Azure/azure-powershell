@@ -44,6 +44,7 @@ $rgname = <Resource Group Name>
 $vmssName = <VMSS Name>
 $vmssFlex = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName 
 $vmssvms = Get-AzvmssVM -ResourceGroupName $vmssFlex.ResourceGroupName -VMScaleSetName $vmssFlex.Name
+# Get the first VM's name to delete it. 
 $vmName = $vmssvms[0].Name
 Remove-AzVM -ResourceGroupName $rgname -Name $vmName
 ```
