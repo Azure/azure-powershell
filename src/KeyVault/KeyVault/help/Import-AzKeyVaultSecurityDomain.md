@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExchangeKey
-Information about the exchange key used to encrypt the security domain data. Constructed by Initialize-AzKeyVaultSecurityDomainRecovery.
+Information about the exchange key used to encrypt the security domain data. Constructed by running Import-AzKeyVaultSecurityDomain with -DownloadExchangeKey.
 
 ```yaml
 Type: System.String
