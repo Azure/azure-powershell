@@ -37,7 +37,7 @@ Remove-AzVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 
 This command removes the virtual machine named VirtualMachine07 in the resource group ResourceGroup11.
 
-### Example 2: Remove a Vm in a VMSS with the orchestation mode set to Flex.
+### Example 2: Remove a VM in a VMSS with the orchestation mode set to Flex.
 ```powershell
 # Get a VMSS with the orchestation mode set to Flex.
 $rgname = <Resource Group Name>
