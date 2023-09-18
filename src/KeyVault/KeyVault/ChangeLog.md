@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Splitted steps of `Import-AzKeyVaultSecurityDomain` to avoid exposing keys online.
+* Supported splitting `Import-AzKeyVaultSecurityDomain` process into three steps to allow keys to be hidden offline.
     - Added `DownloadExchangeKey`, `RestoreBlob` and `ImportRestoredBlob` in `Import-AzKeyVaultSecurityDomain`.
 
 ## Version 4.11.0
