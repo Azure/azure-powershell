@@ -1,5 +1,9 @@
 ## Upcoming Release
-* Remove the usage of `Get-InstalledModule` from product codes.
+* Updated the docs of parameter `Scope` [#16768]
+* Removed the usage of `Get-InstalledModule` from product codes
+* Fix the issue of uninstalling the AzureRM modules
+* Collected the telemetry data when the cmdlets fail
+
 ## 0.2.1
 * Fixed the issue of installation and updating when Repository is not provided (#20209)
 * Updated telemetry assembly to 2.13.1

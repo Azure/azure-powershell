@@ -39,5 +39,6 @@ function Add-RepositoryArgumentCompleter()
     {
         # All this functionality is optional, so suppress errors
         Write-Debug -Message "Error registering argument completer: $_"
+        Write-Error "Error registering argument completer: $_" -ErrorVariable +errorRecords
     }
 }
