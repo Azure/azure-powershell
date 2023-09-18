@@ -104,9 +104,6 @@ Imports a certificate to a key vault.
 ### [Import-AzKeyVaultSecurityDomain](Import-AzKeyVaultSecurityDomain.md)
 Imports previously exported security domain data to a managed HSM.
 
-### [Initialize-AzKeyVaultSecurityDomainRecovery](Initialize-AzKeyVaultSecurityDomainRecovery.md)
-Generate an exchange key to initialize Local Security Domain Recovery.
-
 ### [Invoke-AzKeyVaultKeyOperation](Invoke-AzKeyVaultKeyOperation.md)
 Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
 
@@ -196,9 +193,6 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### [Restore-AzKeyVaultSecret](Restore-AzKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
-
-### [Restore-AzKeyVaultSecurityDomainBlob](Restore-AzKeyVaultSecurityDomainBlob.md)
-Restores an exported managed HSM locally to get ready for importing.
 
 ### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Grants or modifies existing permissions for a user, application, or security group to perform operations with a key vault.
