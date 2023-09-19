@@ -30,3 +30,4 @@
     - New-AzWvdScalingPlanPersonalSchedule
     - Remove-AzWvdScalingPlanPersonalSchedule
     - Update-AzWvdScalingPlanPersonalSchedule
+* Updated rampDownCapacityThresholdPct minimum value from 0 to 1 on ScalingPlanPooledSchedule cmdlets
