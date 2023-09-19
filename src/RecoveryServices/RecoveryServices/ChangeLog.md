@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.
 * Added TLaD warning https://aka.ms/TLaD for Azure Site Recovery and Backup.
+* Added support for setting AlwaysON soft delete state for recovery services vault.
 
 ## Version 6.5.1
 * Added StorageAccountName property to AzureFileShare job.
