@@ -1,5 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -9,8 +11,21 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 {
     [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzurePrefix + CmdletNoun.KeyVault + "SecurityDomain", SupportsShouldProcess = true, DefaultParameterSetName = ByName)]
     [OutputType(typeof(bool))]
-    public class BackupSecurityDomain: SecurityDomainCmdlet
+    public class ExportAzKeyVaultSecurityDomain: SecurityDomainCmdlet
     {
+        protected const string ByName = "ByName";
+        protected const string ByInputObject = "ByInputObject";
+        // protected const string ByResourceId = "ByResourceID";
+
+        [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
+        [Alias("HsmName")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(HelpMessage = "Object representing a managed HSM.", Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true)]
+        [ValidateNotNull]
+        public PSKeyVaultIdentityItem InputObject { get; set; }
+
         [Parameter(HelpMessage = "Paths to the certificates that are used to encrypt the security domain data.", Mandatory = true)]
         [ValidateNotNullOrEmpty()]
         public string[] Certificates { get; set; }
@@ -31,6 +46,10 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
 
         public override void DoExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                Name = InputObject.VaultName;
+            }
             ValidateParameters();
 
             var certificates = Certificates.Select(path => new X509Certificate2(ResolveUserPath(path)));
