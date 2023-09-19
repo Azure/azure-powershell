@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`
+    - PartnerServers
+    - ReadOnlyEndpointTargetServer
 
 ## Version 4.10.0
 * Fixed cmdlets to use 2018-06-01-preview api version
