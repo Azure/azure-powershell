@@ -16,8 +16,9 @@ This command creates a new Azure SQL Database Failover Group.
 New-AzSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String>
  [-PartnerSubscriptionId <String>] [-PartnerResourceGroupName <String>] -PartnerServerName <String>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
+ [-PartnerServers <System.Collections.Generic.List`1[System.String]>] [-ReadOnlyEndpointTargetServer <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,6 @@ Newly created Failover Groups do not contain any databases. To control the set o
 Only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 [!NOTE] It's possible to deploy your auto-failover group across subscriptions by using the -PartnerSubscriptionId parameter in Azure Powershell starting with [Az.SQL 3.11.0](https://www.powershellgallery.com/packages/Az.Sql/3.11.0).
-
 
 ## EXAMPLES
 
@@ -177,8 +177,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PartnerServers
+The list of partner servers in the failover group (empty list for 0 servers).
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PartnerSubscriptionId
 The name of the secondary subscription id of the Azure SQL Database Failover Group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReadOnlyEndpointTargetServer
+The name of the target server for the read only endpoint. If empty, defaults to value of PartnerServerName.
 
 ```yaml
 Type: System.String
