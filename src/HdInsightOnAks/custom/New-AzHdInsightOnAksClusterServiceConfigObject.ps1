@@ -12,7 +12,7 @@ Create a component config.
 Create a component config.
 .Example
 $coreSiteConfigFile=New-AzHDInsightAksClusterConfigFile -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]
@@ -21,9 +21,9 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig
 .Notes
 
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightAksClusterServiceConfigObject
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
 #>
-function New-AzHdInsightAksClusterServiceConfigObject {
+function New-AzHdInsightOnAksClusterServiceConfigObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
     param(

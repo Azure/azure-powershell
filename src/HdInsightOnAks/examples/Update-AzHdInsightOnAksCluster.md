@@ -4,8 +4,8 @@ $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
 $clusterName = "flinkcluster"
 $coreSiteConfigFile = New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"testvalue1"="111"}
-$yarnComponentConfig = New-AzHdInsightAksClusterServiceConfigObject -ComponentName "hadoop-config" -File $coreSiteConfigFile
-$yarnServiceConfigProfile = New-AzHdInsightAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
+$yarnComponentConfig = New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "hadoop-config" -File $coreSiteConfigFile
+$yarnServiceConfigProfile = New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
 Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -PoolName $clusterpoolName -Name $clusterName -ClusterProfileServiceConfigsProfile $yarnServiceConfigProfile
 ```

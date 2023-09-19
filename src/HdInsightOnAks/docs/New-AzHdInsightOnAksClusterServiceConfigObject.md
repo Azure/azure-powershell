@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightAksClusterServiceConfigObject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigObject
 schema: 2.0.0
 ---
 
-# New-AzHdInsightAksClusterServiceConfigObject
+# New-AzHdInsightOnAksClusterServiceConfigObject
 
 ## SYNOPSIS
 Create a component config.
@@ -13,7 +13,7 @@ Create a component config.
 ## SYNTAX
 
 ```
-New-AzHdInsightAksClusterServiceConfigObject -ComponentName <String> -File <IClusterConfigFile[]> [-Confirm]
+New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName <String> -File <IClusterConfigFile[]> [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,8 +24,8 @@ Create a component config.
 
 ### Example 1: Create a component config.
 ```powershell
-$coreSiteConfigFile=New-AzHDInsightAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 ```
 
 This cmdlet create the component config of "yarn-config" based the existing config file $coreSiteConfigFile.

@@ -32,12 +32,6 @@ Gets a cluster pool.
 ### [Get-AzHdInsightOnAksClusterServiceConfig](Get-AzHdInsightOnAksClusterServiceConfig.md)
 Lists the config dump of all services running in cluster.
 
-### [New-AzHdInsightAksClusterServiceConfigObject](New-AzHdInsightAksClusterServiceConfigObject.md)
-Create a component config.
-
-### [New-AzHdInsightAksClusterServiceConfigsProfileObject](New-AzHdInsightAksClusterServiceConfigsProfileObject.md)
-Create a service config profile.
-
 ### [New-AzHdInsightOnAksCluster](New-AzHdInsightOnAksCluster.md)
 Creates a cluster.
 
@@ -46,6 +40,12 @@ Create cluster config file.
 
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
 Create a cluster pool.
+
+### [New-AzHdInsightOnAksClusterServiceConfigObject](New-AzHdInsightOnAksClusterServiceConfigObject.md)
+Create a component config.
+
+### [New-AzHdInsightOnAksClusterServiceConfigsProfileObject](New-AzHdInsightOnAksClusterServiceConfigsProfileObject.md)
+Create a service config profile.
 
 ### [New-AzHdInsightOnAksFlinkJobObject](New-AzHdInsightOnAksFlinkJobObject.md)
 Create an object as a parameter for submitting cluster work

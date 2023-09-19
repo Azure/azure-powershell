@@ -55,10 +55,10 @@ Describe 'ClusterUpdateConfig' {
 
     It "New AzHDInsightAksClusterServiceConfigsProfile"{
         $coreSiteConfigFile = New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"testvalue1"="111"}
-        $yarnComponentConfig = New-AzHdInsightAksClusterServiceConfigObject -ComponentName "hadoop-config" -File $coreSiteConfigFile
-        $yarnServiceConfigProfile = New-AzHdInsightAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
+        $yarnComponentConfig = New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "hadoop-config" -File $coreSiteConfigFile
+        $yarnServiceConfigProfile = New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
-        [Console]::WriteLine("New-AzHdInsightAksClusterServiceConfigsProfileObject done")
+        [Console]::WriteLine("New-AzHdInsightOnAksClusterServiceConfigsProfileObject done")
     }
 
     It "Update AzHdInsightOnAksCluster"{

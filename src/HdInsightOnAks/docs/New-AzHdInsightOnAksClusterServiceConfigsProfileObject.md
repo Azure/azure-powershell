@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightAksClusterServiceConfigsProfileObject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 schema: 2.0.0
 ---
 
-# New-AzHdInsightAksClusterServiceConfigsProfileObject
+# New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 
 ## SYNOPSIS
 Create a service config profile.
@@ -13,7 +13,7 @@ Create a service config profile.
 ## SYNTAX
 
 ```
-New-AzHdInsightAksClusterServiceConfigsProfileObject -Config <IClusterServiceConfig[]> -ServiceName <String>
+New-AzHdInsightOnAksClusterServiceConfigsProfileObject -Config <IClusterServiceConfig[]> -ServiceName <String>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,9 +24,9 @@ Create a service config profile.
 
 ### Example 1: Create a service config profile
 ```powershell
-$coreSiteConfigFile=New-AzHDInsightAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
-$yarnServiceConfigProfile=New-AzHdInsightAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
+$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+$yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 ```
 
 This cmdlet creates the service config profile of "yarn-service" with the component service config.

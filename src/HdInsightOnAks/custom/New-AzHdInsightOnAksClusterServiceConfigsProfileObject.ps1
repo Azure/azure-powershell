@@ -12,8 +12,8 @@ Create a service config profile.
 Create a service config profile.
 .Example
 $coreSiteConfigFile=New-AzHDInsightAksClusterConfigFile -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
-$yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
-$yarnServiceConfigProfile=New-AzHdInsightAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
+$yarnComponentConfig= New-AzHdInsightOnAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
+$yarnServiceConfigProfile=New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
 .Inputs
 System.String
@@ -24,9 +24,9 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster
 .Notes
 
 .Link
-https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightAksClusterServiceConfigsProfileObject
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterServiceConfigsProfileObject
 #>
-function New-AzHdInsightAksClusterServiceConfigsProfileObject {
+function New-AzHdInsightOnAksClusterServiceConfigsProfileObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
     param(
