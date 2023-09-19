@@ -73,6 +73,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="ResourceGuardProxyName" /> property.</summary>
+        private string _resourceGuardProxyName;
+
+        /// <summary>name of the resource guard proxy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string ResourceGuardProxyName { get => this._resourceGuardProxyName; set => this._resourceGuardProxyName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGuardsName" /> property.</summary>
         private string _resourceGuardsName;
 
@@ -177,6 +184,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>name of the resource guard proxy</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"name of the resource guard proxy",
+        SerializedName = @"resourceGuardProxyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceGuardProxyName { get; set; }
         /// <summary>The name of ResourceGuard</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -226,6 +241,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         string RequestName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>name of the resource guard proxy</summary>
+        string ResourceGuardProxyName { get; set; }
         /// <summary>The name of ResourceGuard</summary>
         string ResourceGuardsName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>

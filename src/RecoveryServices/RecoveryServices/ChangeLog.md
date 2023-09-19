@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.
+* Added TLaD warning https://aka.ms/TLaD for Azure Site Recovery and Backup.
 
 ## Version 6.5.1
 * Added StorageAccountName property to AzureFileShare job.

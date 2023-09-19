@@ -2114,6 +2114,7 @@ for a better powershell experience and as a result would witness breaking change
   - Update-AzFrontDoorCdnCustomDomainValidationToken
   - Update-AzFrontDoorCdnRule
 * Renamed Set cmdlets to Update cmdlets
+* Renamed 'Unpublish-AzCdnEndpointContent' cmdlets to 'Clear-AzCdnEndpointContent'
 * Added 'Object' suffix to memory object creation cmdlets
 
 #### Az.Compute

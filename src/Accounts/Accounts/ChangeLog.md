@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgrade Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
 
 ## Version 2.13.0
 * Supported in-tool notification for version upgrade.

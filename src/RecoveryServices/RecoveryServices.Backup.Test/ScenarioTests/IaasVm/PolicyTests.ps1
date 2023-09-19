@@ -99,26 +99,38 @@ function Test-AzureVMSmartTieringPolicy
 		$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency  Weekly 
 
 		# create tier recommended policy 
-		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended 
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierRecommendedPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierRecommended -BackupSnapshotResourceGroup "rgpref1" -BackupSnapshotResourceGroupSuffix "suffix1"
 
-		Assert-True { $pol.Name -eq $tierRecommendedPolicy }
-		
+		Assert-True { $pol.Name -eq $tierRecommendedPolicy }		
+		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
+		Assert-True { $pol.AzureBackupRGNameSuffix -match "suffix1" }		
+
 		# error scenario for tier after policy
-		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 2 -TierAfterDurationType Months } `
+		Assert-ThrowsContains { $pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy  -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 2 -TierAfterDurationType Months -BackupSnapshotResourceGroup "rgpref1" -BackupSnapshotResourceGroupSuffix "suffix1"} `
 		"TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months";
 
 		# create tier after policy 
-		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 3 -TierAfterDurationType Months
+		$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name $tierAfterPolicy -WorkloadType AzureVM  -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID  -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 3 -TierAfterDurationType Months  -BackupSnapshotResourceGroup "rgpref1" -BackupSnapshotResourceGroupSuffix "suffix1"
 
 		Assert-True { $pol.Name -eq $tierAfterPolicy }
+		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
+		Assert-True { $pol.AzureBackupRGNameSuffix -match "suffix1" }
 
 		# modify policy 
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
 		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $false
-		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierRecommended
+
+		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
+		Assert-True { $pol.AzureBackupRGName -match "rgpref1" }
+		Assert-True { $pol.AzureBackupRGNameSuffix -match "suffix1" }
+
+		Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $pol[0] -MoveToArchiveTier $true -TieringMode TierRecommended -BackupSnapshotResourceGroup "rgpref2"
 		
 		# error scenario for retention policy
 		$pol = Get-AzRecoveryServicesBackupProtectionPolicy  -VaultId $vault.ID | Where { $_.Name -match $tierRecommendedPolicy }
+		Assert-True { $pol.AzureBackupRGName -match "rgpref2" }
+		Assert-True { $pol.AzureBackupRGNameSuffix -eq $null }
+
 		$pol.RetentionPolicy.IsYearlyScheduleEnabled = $false
 		$pol.RetentionPolicy.MonthlySchedule.DurationCountInMonths = 8
 

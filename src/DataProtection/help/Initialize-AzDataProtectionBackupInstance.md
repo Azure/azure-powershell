@@ -76,7 +76,7 @@ Use this parameter to configure protection for AzureKubernetesService.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource
 
 ## NOTES
 

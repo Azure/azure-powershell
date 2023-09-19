@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Bug fixes for Attestation commands.
+* Added support for installing mandatory extensions on HCI OS 22H2 and removed confirmation prompt for consent.
+* Added ability to customize the location of logs generated during registration.
+    - Custom log location can be specified by specifying an optional `-LogsDirectory` parameter in `Register-AzStackHCI`.
+    - `Get-AzStackHCILogsDirectory` can be used to obtain the log location.
+* Increased retry count for setting up ARC integration.
+
 ## Version 2.1.2
 * Removed device type check and only check if service already exists.
 
