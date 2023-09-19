@@ -23,7 +23,6 @@
     - Get-AzWvdPrivateEndpointConnection
     - Get-AzWvdPrivateLinkResource
     - Remove-AzWvdPrivateEndpointConnection
-    - Remove-AzWvdPrivateLinkResource
 * Added Scaling Plan Personal Schedule cmdlets
     - Get-AzWvdScalingPlanPersonalSchedule
     - New-AzWvdScalingPlanPersonalSchedule
