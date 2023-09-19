@@ -24,10 +24,15 @@
     - Get-AzWvdPrivateLinkResource
     - Remove-AzWvdPrivateEndpointConnection
     - Remove-AzWvdPrivateLinkResource
-* Added showInFeed property to ApplicationGroups
 * Added Scaling Plan Personal Schedule cmdlets
     - Get-AzWvdScalingPlanPersonalSchedule
     - New-AzWvdScalingPlanPersonalSchedule
     - Remove-AzWvdScalingPlanPersonalSchedule
     - Update-AzWvdScalingPlanPersonalSchedule
+* Added Scaling Plan Pooled Schedule cmdlets
+    - Get-AzWvdScalingPlanPooledSchedule
+    - New-AzWvdScalingPlanPooledSchedule
+    - Remove-AzWvdScalingPlanPooledSchedule
+    - Update-AzWvdScalingPlanPooledSchedule
 * Updated rampDownCapacityThresholdPct minimum value from 0 to 1 on ScalingPlanPooledSchedule cmdlets
+* Added showInFeed property to ApplicationGroups
