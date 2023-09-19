@@ -956,7 +956,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cosmos
+            label: CosmosDB
         then:
         - mentionUsers:
             mentionees:
