@@ -39,7 +39,7 @@ Create or update a ScalingPlanPersonalSchedule.
 
 ### Example 1: Create a Scaling Plan Personal Schedule
 ```powershell
-New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName dallintest `
+New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName PSTest `
                                         -ScalingPlanScheduleName PSSchedule `
                                         -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
