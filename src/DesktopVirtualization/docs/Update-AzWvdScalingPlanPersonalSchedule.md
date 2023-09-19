@@ -565,7 +565,7 @@ Accept wildcard characters: False
 
 ### -RampUpStartVMOnConnect
 The desired configuration of Start VM On Connect for the hostpool during the ramp up phase.
-If this is disabled, session hosts must be turned on using RampUpAutoStartHost or by turning them on manually.
+If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SetStartVMOnConnect
@@ -680,7 +680,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
 
 ## NOTES
 
