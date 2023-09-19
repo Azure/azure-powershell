@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* ListConnectionStrings response now includes keyKind and type properties
 
 ## Version 1.12.0
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
