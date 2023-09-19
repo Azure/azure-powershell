@@ -1,6 +1,6 @@
 ### Example 1: Create a service config profile
 ```powershell
-$coreSiteConfigFile=New-AzHDInsightAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
 $yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 $yarnServiceConfigProfile=New-AzHdInsightAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 `````

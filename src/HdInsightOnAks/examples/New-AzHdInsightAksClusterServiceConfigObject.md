@@ -1,6 +1,6 @@
 ### Example 1: Create a component config.
 ```powershell
-$coreSiteConfigFile=New-AzHDInsightAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
+$coreSiteConfigFile=New-AzHdInsightOnAksClusterConfigFileObject -FileName "core-site.xml" -Value @{"fs.defaultFS"="abfs://testcontainer@$teststorage.dfs.core.windows.net"}
 $yarnComponentConfig= New-AzHdInsightAksClusterServiceConfigObject -ComponentName "yarn-config" -File $coreSiteConfigFile
 ```
 
