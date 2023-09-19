@@ -3,27 +3,35 @@
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
-                                        -rampUpMinimumHostsPct 20 `
-                                        -rampUpCapacityThresholdPct 20 `
-                                        -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpAutoStartHost All `
+                                        -RampUpStartVMOnConnect Enable `
+                                        -RampUpActionOnDisconnect None `
+                                        -RampUpMinutesToWaitOnDisconnect 10 `
+                                        -RampUpActionOnLogoff None `
+                                        -RampUpMinutesToWaitOnLogoff 10 `
+                                        -PeakStartTimeHour 8 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakStartVMOnConnect Enable `
+                                        -PeakActionOnDisconnect None `
+                                        -PeakMinutesToWaitOnDisconnect 10 `
+                                        -PeakMinutesToWaitOnLogoff 10 `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
-                                        -rampDownMinimumHostsPct 20 `
-                                        -rampDownCapacityThresholdPct 20 `
-                                        -rampDownForceLogoffUser:$true `
-                                        -rampDownWaitTimeMinute 30 `
-                                        -rampDownNotificationMessage "Log out now, please." `
-                                        -rampDownStopHostsWhen ZeroSessions `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakLoadBalancingAlgorithm DepthFirst
+                                        -RampDownStartVMOnConnect Enable `
+                                        -RampDownActionOnDisconnect None `
+                                        -RampDownMinutesToWaitOnDisconnect 10 `
+                                        -RampDownMinutesToWaitOnLogoff 10 `
+                                        -RampDownActionOnLogoff None `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakStartVMOnConnect Enable `
+                                        -OffPeakActionOnDisconnect None `
+                                        -OffPeakMinutesToWaitOnDisconnect 10 `
+                                        -OffPeakActionOnLogoff Deallocate `
+                                        -OffPeakMinutesToWaitOnLogoff 10
 ```
 
 ```output

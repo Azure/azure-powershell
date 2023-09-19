@@ -39,38 +39,38 @@ Create or update a ScalingPlanPersonalSchedule.
 
 ### Example 1: Create a Scaling Plan Personal Schedule
 ```powershell
-New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
-                                        -ScalingPlanName spName `
-                                        -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -RampUpAutoStartHost "All" `
-                                        -rampUpStartVMOnConnect Enable `
-                                        -rampUpActionOnDisconnect None `
-                                        -rampUpMinutesToWaitOnDisconnect 10 `
-                                        -rampUpActionOnLogoff None `
-                                        -rampUpMinutesToWaitOnLogoff 10 `
+New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName dallintest `
+                                        -ScalingPlanName PSTest `
+                                        -ScalingPlanScheduleName PSSchedule `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpAutoStartHost "None" `
+                                        -RampUpStartVMOnConnect Enable `
+                                        -RampUpActionOnDisconnect None `
+                                        -RampUpMinutesToWaitOnDisconnect 10 `
+                                        -RampUpActionOnLogoff None `
+                                        -RampUpMinutesToWaitOnLogoff 10 `
                                         -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakStartVMOnConnect Enable `
-                                        -peakActionOnDisconnect None `
-                                        -peakMinutesToWaitOnDisconnect 10 `
-                                        -peakMinutesToWaitOnLogoff 10 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakStartVMOnConnect Enable `
+                                        -PeakActionOnDisconnect None `
+                                        -PeakMinutesToWaitOnDisconnect 10 `
+                                        -PeakMinutesToWaitOnLogoff 10 `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownStartVMOnConnect Enable `
-                                        -rampDownActionOnDisconnect None `
-                                        -rampDownMinutesToWaitOnDisconnect 10 `
-                                        -rampDownMinutesToWaitOnLogoff 10 `
-                                        -rampDownActionOnLogoff None `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakStartVMOnConnect Enable `
-                                        -offPeakActionOnDisconnect None `
-                                        -offPeakMinutesToWaitOnDisconnect 10 `
-                                        -offPeakActionOnLogoff Deallocate `
-                                        -offPeakMinutesToWaitOnLogoff 10
+                                        -RampDownStartVMOnConnect Enable `
+                                        -RampDownActionOnDisconnect None `
+                                        -RampDownMinutesToWaitOnDisconnect 10 `
+                                        -RampDownMinutesToWaitOnLogoff 10 `
+                                        -RampDownActionOnLogoff None `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakStartVMOnConnect Enable `
+                                        -OffPeakActionOnDisconnect None `
+                                        -OffPeakMinutesToWaitOnDisconnect 10 `
+                                        -OffPeakActionOnLogoff Deallocate `
+                                        -OffPeakMinutesToWaitOnLogoff 10
 ```
 
 ```output
