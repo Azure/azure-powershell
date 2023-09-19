@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -85,7 +86,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The list of partner servers in the failover group (empty list for 0 servers).")]
         [ValidateNotNull]
-        public List<FailoverGroupPartnerServer> PartnerServers { get; set; }
+        public List<string> PartnerServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read only endpoint target server of the Sql Azure Failover Group.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the target server for the read only endpoint.")]
+        [ValidateNotNull]
+        public string ReadOnlyEndpointTargetServer { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -93,8 +102,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
+            bool useV2Get = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName)
+                ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get)
             };
         }
 
@@ -119,7 +129,29 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
             newModel.FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(effectivePolicy, originalGracePeriod: newModel.FailoverWithDataLossGracePeriodHours);
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
-            newModel.PartnerServers = MyInvocation.BoundParameters.ContainsKey("PartnerServers") ? PartnerServers : newModel.PartnerServers;
+            if (MyInvocation.BoundParameters.ContainsKey("PartnerServers"))
+            {
+                List<FailoverGroupPartnerServer> serversToAdd = new List<FailoverGroupPartnerServer>();
+                foreach (string serverName in PartnerServers)
+                {
+                    serversToAdd.Add(new FailoverGroupPartnerServer()
+                    {
+                        Id = serverName,
+                        ReplicationRole = Management.Sql.LegacySdk.Models.ReplicationRole.Secondary
+                    });
+                }
+                newModel.PartnerServers = serversToAdd;
+
+                // This case can happen when converting an existing failover group into a multi-partner one.
+                if (newModel.FailoverGroupReadWriteEndpointV2 == null)
+                {
+                    newModel.FailoverGroupReadWriteEndpointV2 = new FailoverGroupReadWriteEndpoint(newModel.ReadWriteFailoverPolicy, newModel.FailoverWithDataLossGracePeriodHours);
+                }
+            }
+            if (MyInvocation.BoundParameters.ContainsKey("ReadOnlyEndpointTargetServer"))
+            {
+                newModel.FailoverGroupReadOnlyEndpointV2 = new FailoverGroupReadOnlyEndpoint(newModel.ReadOnlyFailoverPolicy, ReadOnlyEndpointTargetServer);
+            }
             newEntity.Add(newModel);
 
             return newEntity;
@@ -132,8 +164,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
+            bool useV2 = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.UpsertFailoverGroup(entity.First())
+                ModelAdapter.UpsertFailoverGroup(entity.First(), useV2)
             };
         }
     }

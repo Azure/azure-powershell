@@ -40,12 +40,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// group instance.</param>
         /// <param name="databases">List of databases in the failover
         /// group.</param>
+        /// <param name="partnerServers">List of partner server information for
+        /// the failover group.</param>
         /// <param name="tags">Resource tags.</param>
-        public FailoverGroupUpdate(FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), IList<string> databases = default(IList<string>), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public FailoverGroupUpdate(FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), IList<string> databases = default(IList<string>), IList<PartnerInfo> partnerServers = default(IList<PartnerInfo>), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             ReadWriteEndpoint = readWriteEndpoint;
             ReadOnlyEndpoint = readOnlyEndpoint;
             Databases = databases;
+            PartnerServers = partnerServers;
             Tags = tags;
             CustomInit();
         }
@@ -74,6 +77,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         public IList<string> Databases { get; set; }
 
         /// <summary>
+        /// Gets or sets list of partner server information for the failover
+        /// group.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.partnerServers")]
+        public IList<PartnerInfo> PartnerServers { get; set; }
+
+        /// <summary>
         /// Gets or sets resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
@@ -90,6 +100,16 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (ReadWriteEndpoint != null)
             {
                 ReadWriteEndpoint.Validate();
+            }
+            if (PartnerServers != null)
+            {
+                foreach (var element in PartnerServers)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }
