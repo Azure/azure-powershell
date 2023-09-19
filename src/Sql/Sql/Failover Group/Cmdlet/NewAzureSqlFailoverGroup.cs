@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the list of partner servers of the Sql Azure Failover Group.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The list of partner servers in the failover group (empty list for 0 servers).")]
         [ValidateNotNull]
         public List<string> PartnerServers { get; set; }
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the read only endpoint target server of the Sql Azure Failover Group.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The name of the target server for the read only endpoint. If empty, defaults to value of PartnerServerName.")]
         [ValidateNotNull]
         public string ReadOnlyEndpointTargetServer { get; set; }
