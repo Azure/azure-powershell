@@ -851,5 +851,9 @@
   {
     "alias": "NetworkCloud",
     "module": "NetworkCloud"
+  },
+  {
+    "alias": "HdInsightOnAks",
+    "module": "HdInsightOnAks"
   }
 ]
