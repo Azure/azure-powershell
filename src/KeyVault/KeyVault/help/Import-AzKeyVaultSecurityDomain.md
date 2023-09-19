@@ -28,7 +28,7 @@ Import-AzKeyVaultSecurityDomain -Name <String> -SecurityDomainPath <String> [-Im
 
 ### GenerateExchangeKey
 ```
-Import-AzKeyVaultSecurityDomain -Name <String> -ExchangeKeyOutputPath <String> [-Force] [-DownloadExchangeKey]
+Import-AzKeyVaultSecurityDomain -Name <String> -ExchangeKey <String> [-Force] [-DownloadExchangeKey]
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -67,7 +67,7 @@ Then, The **Import-AzKeyVaultSecurityDomain** command restores previous backed u
 $exchangeKeyOutputPath = "ExchangeKey.cer"
 $SecurityDomainRestoredBlob = "HsmRestoreBlob.json"
 $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
-Import-AzKeyVaultSecurityDomain -Name testmhsm -ExchangeKeyOutputPath $exchangeKeyOutputPath -DownloadExchangeKey 
+Import-AzKeyVaultSecurityDomain -Name testmhsm -ExchangeKey $exchangeKeyOutputPath -DownloadExchangeKey 
 Import-AzKeyVaultSecurityDomain -Keys $keys -ExchangeKey  $exchangeKeyPath -SecurityDomainPath sd.ps.json -SecurityDomainRestoredBlob sd_restored.ps.json -RestoreBlob
 Import-AzKeyVaultSecurityDomain -Name testmhsm -SecurityDomainPath $SecurityDomainRestoredBlob -ImportRestoredBlob
 ```
@@ -123,7 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExchangeKeyOutputPath
+### -ExchangeKey
 Local file path to store the exported key.
 
 ```yaml

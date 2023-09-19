@@ -290,7 +290,7 @@ Describe 'Export Import Security Domain by Restored Blob' {
     # Cannot test initializing because it needs a newly created HSM
     It 'Can Download Security Domain ExchangeKey' {
         $exchangeKeyOutputPath = "$PSScriptRoot/ExchangeKey.cer"
-        Import-AzKeyVaultSecurityDomain -Name $hsmName -ExchangeKeyOutputPath $exchangeKeyOutputPath -DownloadExchangeKey 
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -ExchangeKey $exchangeKeyOutputPath -DownloadExchangeKey 
     }
     
     # This command can be executed offline
