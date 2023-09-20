@@ -56,8 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.PowerShell.ContainerRegistry.Sdk.dll', 
-               'Microsoft.Azure.ContainerRegistry.dll', 
+RequiredAssemblies = 'Microsoft.Azure.ContainerRegistry.dll', 
                'Azure.Containers.ContainerRegistry.dll', 
                'ContainerRegistry.Autorest\bin\Az.ContainerRegistry.private.dll'
 
