@@ -38,15 +38,17 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
-branch: 8dc5f1df21caf602944de05e68945c2bbf009c2d
+branch: a54263176acce91199a19333d6c4717367a3317e
 input-file:
-  - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-06-01/Marketplace.json
+  - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/Marketplace.json
 
 module-version: 1.1.0
 title: Marketplace
 subject-prefix: $(service-name)
-
 inlining-threshold: 50
+
+use-extension: 
+  "@autorest/powershell": "4.x"
 
 directive:
   # Remove the unexpanded parameter set
@@ -157,7 +159,5 @@ directive:
       verb: Get
       subject: PrivateStore
     set:
-      subject: PrivateStoreV1
-
-   
+      subject: PrivateStoreV1 
 ```
