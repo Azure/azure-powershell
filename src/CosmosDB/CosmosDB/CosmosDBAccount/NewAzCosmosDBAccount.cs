@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSLocation[] LocationObject { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
+        [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
+        public string MinimalTlsVersion { get; set; }
 
         // As of 03082022, using this list only for Mongo Accounts >= 3.6
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
@@ -171,6 +175,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
 
             if (IpRule != null && IpRule.Length > 0)
             {

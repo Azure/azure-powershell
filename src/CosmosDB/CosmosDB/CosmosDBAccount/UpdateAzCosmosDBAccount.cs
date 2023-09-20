@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
+        public string MinimalTlsVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -228,6 +231,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         }
                     };
                 }
+            }
+
+            if(!string.IsNullOrEmpty(MinimalTlsVersion))
+            {
+                databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             }
             
             // Update analytical storage schema type.
