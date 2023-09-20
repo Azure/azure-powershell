@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.
 * Fixed inexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
 
