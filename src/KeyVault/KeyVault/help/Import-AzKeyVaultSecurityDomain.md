@@ -52,7 +52,7 @@ This cmdlet imports previously exported security domain data to a managed HSM.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Import Security domain
 ```powershell
 $keys = @{PublicKey = "sd1.cer"; PrivateKey = "sd1.key"}, @{PublicKey = "sd2.cer"; PrivateKey = "sd2.key"}, @{PublicKey = "sd3.cer"; PrivateKey = "sd3.key"}
 Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath sd.ps.json
@@ -61,7 +61,7 @@ Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath s
 First, the keys need be provided to decrypt the security domain data.
 Then, The **Import-AzKeyVaultSecurityDomain** command restores previous backed up security domain data to a managed HSM using these keys.
 
-### Example 2
+### Example 2: Import Security domain by separate steps 
 ```powershell
 $exchangeKeyOutputPath = "ExchangeKey.cer"
 $SecurityDomainRestoredBlob = "HsmRestoreBlob.json"
