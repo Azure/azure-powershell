@@ -118,11 +118,31 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
 
             paramValues.Add("path", TargetPath);
-            paramValues.Add("isasync", Async.IsPresent.ToString());
-            paramValues.Add("restart", Restart.IsPresent.ToString());
-            paramValues.Add("clean", Clean.IsPresent.ToString());
-            paramValues.Add("ignorestack", IgnoreStack.IsPresent.ToString());
-            paramValues.Add("reset", Reset.IsPresent.ToString());
+
+            if (Async.IsPresent)
+            {
+                paramValues.Add("async", Async.ToString());
+            }
+
+            if (Restart.IsPresent)
+            {
+                paramValues.Add("restart", Restart.ToString());
+            }
+
+            if (Clean.IsPresent)
+            {
+                paramValues.Add("clean", Clean.ToString());
+            }
+
+            if (IgnoreStack.IsPresent)
+            {
+                paramValues.Add("ignorestack", IgnoreStack.ToString());
+            }
+
+            if (Reset.IsPresent)
+            {
+                paramValues.Add("reset", Reset.ToString());
+            }
 
             uriBuilder.Query = paramValues.ToString();
 
