@@ -1,45 +1,56 @@
 ---
 external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiagnostic
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelptroubleshooter
 schema: 2.0.0
 ---
 
-# Get-AzSelfHelpDiagnostic
+# Get-AzSelfHelpTroubleshooter
 
 ## SYNOPSIS
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.\<br/\> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.
+This API requires the Troubleshooter resource name that was created using the Create API.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSelfHelpDiagnostic -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.\<br/\> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and result of each step in the Troubleshooter workflow.
+This API requires the Troubleshooter resource name that was created using the Create API.
 
 ## EXAMPLES
 
-### Example 1: Get diagnostic by resource id and diagnostic name
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSelfHelpDiagnostic -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -SResourceName ab-test-983
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-ab-test-983
+{{ Add output here }}
 ```
 
-Get diagnostic by resource id and diagnostic name
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,13 +86,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+### -Name
+Troubleshooter resource Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: TroubleshooterName
 
 Required: True
 Position: Named
@@ -90,13 +101,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SResourceName
-Unique resource name for insight resources
+### -Scope
+This is an extension resource provider and only resource level extension is supported at the moment.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: DiagnosticsResourceName
+Aliases:
 
 Required: True
 Position: Named
@@ -114,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource
 
 ## NOTES
 

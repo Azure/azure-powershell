@@ -1,45 +1,55 @@
 ---
 external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiagnostic
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/stop-azselfhelptroubleshooter
 schema: 2.0.0
 ---
 
-# Get-AzSelfHelpDiagnostic
+# Stop-AzSelfHelpTroubleshooter
 
 ## SYNOPSIS
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Ends the troubleshooter action
 
 ## SYNTAX
 
-### Get (Default)
+### End (Default)
 ```
-Get-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Stop-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### EndViaIdentity
 ```
-Get-AzSelfHelpDiagnostic -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Stop-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Ends the troubleshooter action
 
 ## EXAMPLES
 
-### Example 1: Get diagnostic by resource id and diagnostic name
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzSelfHelpDiagnostic -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -SResourceName ab-test-983
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-ab-test-983
+{{ Add output here }}
 ```
 
-Get diagnostic by resource id and diagnostic name
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -65,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: EndViaIdentity
 Aliases:
 
 Required: True
@@ -75,12 +85,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Troubleshooter resource Name.
+
+```yaml
+Type: System.String
+Parameter Sets: End
+Aliases: TroubleshooterName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 This is an extension resource provider and only resource level extension is supported at the moment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: End
 Aliases:
 
 Required: True
@@ -90,15 +130,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SResourceName
-Unique resource name for insight resources
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: DiagnosticsResourceName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+### System.Boolean
 
 ## NOTES
 
