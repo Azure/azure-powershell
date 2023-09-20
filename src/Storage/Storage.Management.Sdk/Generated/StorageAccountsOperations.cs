@@ -3816,11 +3816,11 @@ namespace Microsoft.Azure.Management.Storage
                 }
             }
             BlobRestoreParameters parameters = new BlobRestoreParameters();
-            if(timeToRestore != null||blobRanges != null)
+            if(blobRanges != null)
             {
-                parameters.TimeToRestore = timeToRestore;
                 parameters.BlobRanges = blobRanges;
             }
+            parameters.TimeToRestore = timeToRestore;
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
