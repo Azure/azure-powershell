@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                     failoverGroupReadOnlyEndpoint = new FailoverGroupReadOnlyEndpoint(readOnlyPolicy, PartnerServerName);
                 }
 
-                failoverGroupReadWriteEndpoint = new FailoverGroupReadWriteEndpoint(FailoverPolicy.ToString(), ComputeEffectiveGracePeriod(FailoverPolicy, originalGracePeriod: null));
+                failoverGroupReadWriteEndpoint = new FailoverGroupReadWriteEndpoint(FailoverPolicy.ToString(), 60 * ComputeEffectiveGracePeriod(FailoverPolicy, originalGracePeriod: null));
             }
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             newEntity.Add(new AzureSqlFailoverGroupModel()
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
-            bool useV2 = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
+            bool useV2 = entity.First().PartnerServers.Count() > 1;
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.UpsertFailoverGroup(entity.First(), useV2)
             };

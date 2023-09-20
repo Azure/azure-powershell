@@ -103,9 +103,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
             bool useV2Get = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
-            return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get)
-            };
+            AzureSqlFailoverGroupModel model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get);
+
+            // For cases when existing failover group is multi-secondary, but no multi-secondary properties change in the Set invocation.
+            if (model.PartnerServers != null && model.PartnerServers.Any() && model.PartnerServers.Count > 1)
+            {
+                useV2Get = true;
+                model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get);
+            }
+            return new List<AzureSqlFailoverGroupModel>() { model };
         }
 
         /// <summary>
@@ -118,6 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             AzureSqlFailoverGroupModel newModel = model.First();
+            bool isMultiSecondary = (newModel.PartnerServers != null && newModel.PartnerServers.Any() && newModel.PartnerServers.Count > 1);
 
             FailoverPolicy effectivePolicy = FailoverPolicy;
             if (!MyInvocation.BoundParameters.ContainsKey("FailoverPolicy"))
@@ -141,13 +148,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                     });
                 }
                 newModel.PartnerServers = serversToAdd;
-
-                // This case can happen when converting an existing failover group into a multi-partner one.
-                if (newModel.FailoverGroupReadWriteEndpointV2 == null)
-                {
-                    newModel.FailoverGroupReadWriteEndpointV2 = new FailoverGroupReadWriteEndpoint(newModel.ReadWriteFailoverPolicy, newModel.FailoverWithDataLossGracePeriodHours);
-                }
             }
+
+            if (isMultiSecondary)
+            {
+                newModel.FailoverGroupReadWriteEndpointV2 = new FailoverGroupReadWriteEndpoint(newModel.ReadWriteFailoverPolicy, newModel.FailoverWithDataLossGracePeriodHours);
+            }
+
             if (MyInvocation.BoundParameters.ContainsKey("ReadOnlyEndpointTargetServer"))
             {
                 newModel.FailoverGroupReadOnlyEndpointV2 = new FailoverGroupReadOnlyEndpoint(newModel.ReadOnlyFailoverPolicy, ReadOnlyEndpointTargetServer);
@@ -164,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
-            bool useV2 = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
+            bool useV2 = entity.First().PartnerServers.Count() > 1;
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.UpsertFailoverGroup(entity.First(), useV2)
             };
