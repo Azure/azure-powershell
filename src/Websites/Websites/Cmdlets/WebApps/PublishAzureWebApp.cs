@@ -119,9 +119,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             paramValues.Add("path", TargetPath);
 
+            // default async to true if not provided to match old behavior
             if (Async.IsPresent)
             {
                 paramValues.Add("async", Async.ToString());
+            }
+
+            else
+            {
+                paramValues.Add("async", "true");
             }
 
             if (Restart.IsPresent)
