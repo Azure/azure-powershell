@@ -160,11 +160,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         {
             if (Keys.Length < 2)
             {
-                throw new AzPSArgumentException(string.Format(Resources.RestoreSecurityDomainNotEnoughKey, Common.Constants.MinQuorum), "Keys");
+                throw new AzPSArgumentException(string.Format(Resources.RestoreSecurityDomainNotEnoughKey, Common.Constants.MinQuorum), nameof(Keys));
             }
             if (Keys.Any(key => string.IsNullOrEmpty(key.PublicKey) || string.IsNullOrEmpty(key.PrivateKey)))
             {
-                throw new AzPSArgumentException(Resources.RestoreSecurityDomainBadKey, "Keys");
+                throw new AzPSArgumentException(Resources.RestoreSecurityDomainBadKey, nameof(Keys));
             }
         }
 
