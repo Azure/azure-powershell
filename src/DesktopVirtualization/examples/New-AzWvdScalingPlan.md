@@ -86,4 +86,4 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
 ```
 
-This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation. This method is only available for pooled host pools. Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule and New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation. 
+This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation. This method is only available for pooled host pools. Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation. 

@@ -58,9 +58,9 @@ Update a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
-### Example 1: Update a ScalingPlanPooledSchedule
+### Example 1: Update a ScalingPlanPersonalSchedule
 ```powershell
-Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
+Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
                                         -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `

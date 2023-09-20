@@ -1,8 +1,8 @@
 ### Example 1: Create a Scaling Plan Personal Schedule
 ```powershell
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
-                                        -ScalingPlanName PSTest `
-                                        -ScalingPlanScheduleName PSSchedule `
+                                        -ScalingPlanName spName `
+                                        -ScalingPlanScheduleName scheduleName `
                                         -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -RampUpStartTimeHour 6 `
                                         -RampUpStartTimeMinute 30 `
