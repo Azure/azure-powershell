@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The list of partner servers in the failover group (empty list for 0 servers).")]
         [ValidateNotNull]
-        public List<string> PartnerServers { get; set; }
+        public List<string> PartnerServerList { get; set; }
 
         /// <summary>
         /// Gets or sets the read only endpoint target server of the Sql Azure Failover Group.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> GetEntity()
         {
-            bool useV2Get = MyInvocation.BoundParameters.ContainsKey("PartnerServers");
+            bool useV2Get = MyInvocation.BoundParameters.ContainsKey("PartnerServerList");
             AzureSqlFailoverGroupModel model = ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName, useV2Get);
 
             // For cases when existing failover group is multi-secondary, but no multi-secondary properties change in the Set invocation.
@@ -136,10 +136,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
             newModel.FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(effectivePolicy, originalGracePeriod: newModel.FailoverWithDataLossGracePeriodHours);
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
-            if (MyInvocation.BoundParameters.ContainsKey("PartnerServers"))
+            if (MyInvocation.BoundParameters.ContainsKey("PartnerServerList"))
             {
                 List<FailoverGroupPartnerServer> serversToAdd = new List<FailoverGroupPartnerServer>();
-                foreach (string serverName in PartnerServers)
+                foreach (string serverName in PartnerServerList)
                 {
                     serversToAdd.Add(new FailoverGroupPartnerServer()
                     {

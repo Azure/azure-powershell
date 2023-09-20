@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The list of partner servers in the failover group (empty list for 0 servers).")]
         [ValidateNotNull]
-        public List<string> PartnerServers { get; set; }
+        public List<string> PartnerServerList { get; set; }
 
         /// <summary>
         /// Gets or sets the read only endpoint target server of the Sql Azure Failover Group.
@@ -159,9 +159,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<FailoverGroupPartnerServer> serversToAdd = new List<FailoverGroupPartnerServer>();
             FailoverGroupReadOnlyEndpoint failoverGroupReadOnlyEndpoint = null;
             FailoverGroupReadWriteEndpoint failoverGroupReadWriteEndpoint = null;
-            if (MyInvocation.BoundParameters.ContainsKey("PartnerServers"))
+            if (MyInvocation.BoundParameters.ContainsKey("PartnerServerList"))
             {
-                foreach (string serverName in PartnerServers)
+                foreach (string serverName in PartnerServerList)
                 {
                     serversToAdd.Add(new FailoverGroupPartnerServer()
                     {
