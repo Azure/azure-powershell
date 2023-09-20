@@ -16,12 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelIncident'))
 
 Describe 'Remove-AzSentinelIncident' {
     It 'Delete' {
-        { Remove-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveincidentId } | Should -Not -Throw
+        { Remove-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveIncidentId } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id $env.RemoveViaIdincidentId
+            -Id $env.NewincidentId
         { Remove-AzSentinelIncident -InputObject $incident } | Should -Not -Throw
     }
 }

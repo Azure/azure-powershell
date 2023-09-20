@@ -16,17 +16,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentRelatio
 
 Describe 'Get-AzSentinelIncidentRelation' {
     It 'List' {
-        $incidentRelations = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId
+        $incidentRelations = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId
         $incidentRelations.Count | Should -BeGreaterorEqual 1
     }
 
     It 'Get' {
-        $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId -RelationName $env.GetincidentRelationId
+        $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId -RelationName $env.GetincidentRelationId
         $incidentRelation.Name | Should -Be $env.GetincidentRelationId
     }
 
     It 'GetViaIdentity' {
-        $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentRelationIncidentId -RelationName $env.GetincidentRelationId
+        $incidentRelation = Get-AzSentinelincidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.$env.GetIncidentId -RelationName $env.GetincidentRelationId
         $incidentRelationViaIdentity = Get-AzSentinelincidentRelation -InputObject $incidentRelation
         $incidentRelationViaIdentity.Name | Should -Be $env.GetincidentRelationId
     }

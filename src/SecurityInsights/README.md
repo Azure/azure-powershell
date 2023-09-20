@@ -82,7 +82,12 @@ directive:
   - no-inline:
     - SecurityMlAnalyticsSetting
   - model-cmdlet:
-    - model-name: AnomalySecurityMlAnalyticsSettings
+    - model-name: PropertyConditionProperties
+    - model-name: PropertyChangedConditionProperties
+    - model-name: PropertyArrayChangedConditionProperties
+    - model-name: AutomationRuleRunPlaybookAction
+    - model-name: AutomationRuleModifyPropertiesAction
+    - model-name: SecurityMlAnalyticsSettingsDataSource
   - from: SecurityMLAnalyticsSettings.json
     where: $.definitions.AnomalySecurityMLAnalyticsSettingsProperties.properties.customizableObservations
     transform: >-

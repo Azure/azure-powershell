@@ -1,11 +1,11 @@
 ### Example 1: Create a PropertyChanged automation rule condition object for automation rule
 ```powershell
-New-AzSentinelAutomationRuleActionCondition -Type PropertyChanged -ChangedPropertyName IncidentOwner
+New-AzSentinelPropertyChangedConditionPropertiesObject -ConditionPropertyName IncidentStatus
 ```
 
 ```output
 ConditionPropertyChangeType : 
-ConditionPropertyName       : IncidentOwner
+ConditionPropertyName       : IncidentStatus
 ConditionPropertyOperator   : 
 ConditionPropertyValue      : 
 ConditionType               : PropertyChanged

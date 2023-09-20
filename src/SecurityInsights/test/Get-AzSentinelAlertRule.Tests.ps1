@@ -21,13 +21,19 @@ Describe 'Get-AzSentinelAlertRule' {
     }
 
     It 'Get' {
-        $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleId
-        $alertRule.Name | Should -Be $env.GetAlertRuleId
+        $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID
+        $alertRule.Name | Should -Be $env.GetUpdateAlertRuleID
     }
 
     It 'GetViaIdentity' {
-        $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleId
+        $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID
         $alertRuleViaId = Get-AzSentinelAlertRule -InputObject $alertRule
-        $alertRuleViaId.Name | Should -Be $env.GetAlertRuleId
+        $alertRuleViaId.Name | Should -Be $env.GetUpdateAlertRuleID
+    }
+
+    It 'GetViaIdentityWorkspace' {
+        $workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName
+        $alertRuleViaWSId = Get-AzSentinelAlertRule -WorkspaceInputObject $workspace -RuleId $env.GetUpdateAlertRuleID
+        $alertRuleViaWSId.Name | Should -Be $env.GetUpdateAlertRuleID
     }
 }

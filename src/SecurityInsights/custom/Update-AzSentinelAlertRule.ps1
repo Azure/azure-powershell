@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create the alert rule.
+Update the alert rule.
 .Description
-Create the alert rule.
+Update the alert rule.
 .Example
 Update-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -ruleId "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Query "SecurityAlert | take 2"
 
@@ -59,586 +59,591 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAlertRule])]
-[CmdletBinding(DefaultParameterSetName='UpdateScheduled', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
-    [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAlertRule])]
+    [CmdletBinding(DefaultParameterSetName='UpdateScheduled', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        # The name is case insensitive.
+        ${ResourceGroupName},
+    
+        [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [System.String]
+        # Alert rule ID
+        ${RuleId},
+    
+        [Parameter(ParameterSetName='UpdateFusionMLTI')]
+        [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName='UpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
+    
+        [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [System.String]
+        # The name of the workspace.
+        ${WorkspaceName},
+    
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
+    
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${FusionMLorTI},
+    
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${MicrosoftSecurityIncidentCreation},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${Scheduled},
+    
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${AlertRuleTemplateName},
+    
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${Enabled},
+    
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${Disabled},
+    
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${Description},
+    
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String[]]
+        ${DisplayNamesFilter},
+    
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String[]]
+        ${DisplayNamesExcludeFilter},
+    
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${ProductFilter},
+    
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
+        [System.String[]]
+        ${SeveritiesFilter},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${Query},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${DisplayName},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'New-TimeSpan -Hours 5')]
+        [System.TimeSpan]
+        ${SuppressionDuration},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${SuppressionEnabled},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${Severity},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Reconnaissance", "ResourceDevelopment", "InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack", "ImpairProcessControl", "InhibitResponseFunction")]
+        [System.String[]]
+        ${Tactic},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${CreateIncident},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${GroupingConfigurationEnabled},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${ReOpenClosedIncident},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'New-TimeSpan -Hours 5')]
+        [System.TimeSpan]
+        ${LookbackDuration},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"AllEntities"')]
+        [ValidateSet('AllEntities', 'AnyAlert', 'Selected')]
+        [System.String]
+        ${MatchingMethod},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String[]]
+        ${GroupByAlertDetail},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [string[]]
+        ${GroupByCustomDetail},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String[]]
+        ${GroupByEntity},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]]
+        ${EntityMapping},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${AlertDescriptionFormat},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${AlertDisplayNameFormat},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${AlertSeverityColumnName},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${AlertTacticsColumnName},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.TimeSpan]
+        ${QueryFrequency},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.TimeSpan]
+        ${QueryPeriod},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${TriggerOperator},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [int]
+        ${TriggerThreshold},
+    
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [System.String]
+        ${EventGroupingSettingAggregationKind},
+    
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        ${DefaultProfile},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
+    
+    process {
+        try {
+            $null = $PSBoundParameters.Remove('FusionMLorTI')
+            $null = $PSBoundParameters.Remove('MicrosoftSecurityIncidentCreation')
+            $null = $PSBoundParameters.Remove('NRT')
+            $null = $PSBoundParameters.Remove('Scheduled')
+            #Handle Get
+            $GetPSBoundParameters = @{}
+            if($PSBoundParameters['InputObject']){
+                $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
+            }
+            else {
+                $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
+                $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
+                $GetPSBoundParameters.Add('RuleId', $PSBoundParameters['RuleId'])
+            }
+            $AlertRule = Az.SecurityInsights\Get-AzSentinelAlertRule @GetPSBoundParameters
+    
+            #Fusion
+            if ($AlertRule.Kind -eq 'Fusion'){
+                If($PSBoundParameters['AlertTemplateName']){
+                    $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
+                    $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                }
+                
+                If($PSBoundParameters['Enabled']){
+                    $AlertRule.Enabled = $true
+                    $null = $PSBoundParameters.Remove('Enabled')
+                }
+                if($PSBoundParameters['Disabled']) {
+                    $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
+                }
+            }
+            #MSIC
+            if($AlertRule.Kind -eq 'MicrosoftSecurityIncidentCreation'){
+                If($PSBoundParameters['AlertRuleTemplateName']){
+                    $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
+                    $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                }
+                
+                If($PSBoundParameters['Enabled']){
+                    $AlertRule.Enabled = $true
+                    $null = $PSBoundParameters.Remove('Enabled')
+                }
+                if($PSBoundParameters['Disabled']) {
+                    $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
+                }
+                
+                If($PSBoundParameters['Description']){
+                    $AlertRule.Description = $PSBoundParameters['Description']
+                    $null = $PSBoundParameters.Remove('Description')
+                }
 
-    [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
-    [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # Alert rule ID
-    ${RuleId},
+                If($PSBoundParameters['DisplayName']){
+                    $AlertRule.DisplayName = $PSBoundParameters['DisplayName']
+                    $null = $PSBoundParameters.Remove('DisplayName')
+                }
 
-    [Parameter(ParameterSetName='UpdateFusionMLTI')]
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName='UpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
+                If($PSBoundParameters['DisplayNamesFilter']){
+                    $AlertRule.DisplayNamesFilter = $PSBoundParameters['DisplayNamesFilter']
+                    $null = $PSBoundParameters.Remove('DisplayNamesFilter')
+                }
+                
+                If($PSBoundParameters['DisplayNamesExcludeFilter']){
+                    $AlertRule.DisplayNamesExcludeFilter = $PSBoundParameters['DisplayNamesExcludeFilter']
+                    $null = $PSBoundParameters.Remove('DisplayNamesExcludeFilter')
+                }
+                
+                If($PSBoundParameters['ProductFilter']){
+                    $AlertRule.ProductFilter = $PSBoundParameters['ProductFilter']
+                    $null = $PSBoundParameters.Remove('ProductFilter')
+                }
+    
+                If($PSBoundParameters['SeveritiesFilter']){
+                    $Parameter.SeveritiesFilter = $PSBoundParameters['SeveritiesFilter']
+                    $null = $PSBoundParameters.Remove('SeveritiesFilter')
+                }
+            }
+            #Scheduled
+            if ($AlertRule.Kind -eq 'Scheduled'){
+                If($PSBoundParameters['AlertRuleTemplateName']){
+                    $AlertRule.Enabled = $PSBoundParameters['AlertRuleTemplateName']
+                    $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
+                }
+                
+                If($PSBoundParameters['Enabled']){
+                    $AlertRule.Enabled = $true
+                    $null = $PSBoundParameters.Remove('Enabled')
+                }
+                if($PSBoundParameters['Disabled']) {
+                    $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
+                }
+                
+                If($PSBoundParameters['Description']){
+                    $AlertRule.Description = $PSBoundParameters['Description']
+                    $null = $PSBoundParameters.Remove('Description')
+                }
+                
+                If($PSBoundParameters['Query']){
+                    $AlertRule.Query = $PSBoundParameters['Query']
+                    $null = $PSBoundParameters.Remove('Query')
+                }
 
-    [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
-    [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the workspace.
-    ${WorkspaceName},
+                If($PSBoundParameters['DisplayName']){
+                    $AlertRule.DisplayName = $PSBoundParameters['DisplayName']
+                    $null = $PSBoundParameters.Remove('DisplayName')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+                If($PSBoundParameters['SuppressionDuration']){
+                    $AlertRule.SuppressionDuration = $PSBoundParameters['SuppressionDuration']
+                    $null = $PSBoundParameters.Remove('SuppressionDuration')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateFusionMLTI', Mandatory)]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    ${FusionMLorTI},
+                If($PSBoundParameters['SuppressionEnabled']){
+                    $AlertRule.SuppressionEnabled = $true
+                    $null = $PSBoundParameters.Remove('SuppressionEnabled')
+                }
+                else{
+                    $AlertRule.SuppressionEnabled = $false
+                }
+                
+                If($PSBoundParameters['Severity']){
+                    $AlertRule.Severity = $PSBoundParameters['Severity']
+                    $null = $PSBoundParameters.Remove('Severity')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    ${MicrosoftSecurityIncidentCreation},
+                If($PSBoundParameters['Tactic']){
+                    $AlertRule.Tactic = $PSBoundParameters['Tactic']
+                    $null = $PSBoundParameters.Remove('Tactic')
+                }
+                
+                If($PSBoundParameters['CreateIncident']){
+                    $AlertRule.IncidentConfigurationCreateIncident = $true
+                    $null = $PSBoundParameters.Remove('CreateIncident')
+                }
+                else{
+                    $AlertRule.IncidentConfigurationCreateIncident = $false
+                }
+                
+                If($PSBoundParameters['GroupingConfigurationEnabled']){
+                    $AlertRule.GroupingConfigurationEnabled = $true
+                    $null = $PSBoundParameters.Remove('GroupingConfigurationEnabled')
+                }
+                else{
+                    $AlertRule.GroupingConfigurationEnabled = $false
+                }
+                
+                If($PSBoundParameters['ReOpenClosedIncident']){
+                    $AlertRule.GroupingConfigurationReOpenClosedIncident = $PSBoundParameters['ReOpenClosedIncident']
+                    $null = $PSBoundParameters.Remove('ReOpenClosedIncident')
+                }
+                else{
+                    $AlertRule.GroupingConfigurationReOpenClosedIncident = $false
+                }
+                
+                If($PSBoundParameters['LookbackDuration']){
+                    $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['LookbackDuration']
+                    $null = $PSBoundParameters.Remove('LookbackDuration')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateScheduled', Mandatory)]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    ${Scheduled},
+                If($PSBoundParameters['MatchingMethod']){
+                    $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['MatchingMethod']
+                    $null = $PSBoundParameters.Remove('MatchingMethod')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${AlertRuleTemplateName},
+                If($PSBoundParameters['GroupByAlertDetail']){
+                    $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupByAlertDetail']
+                    $null = $PSBoundParameters.Remove('GroupByAlertDetail')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${Enabled},
+                If($PSBoundParameters['GroupByCustomDetail']){
+                    $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupByCustomDetail']
+                    $null = $PSBoundParameters.Remove('GroupByCustomDetail')
+                }
+                
+                If($PSBoundParameters['GroupByEntity']){
+                    $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupByEntity']
+                    $null = $PSBoundParameters.Remove('GroupByEntity')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${Disabled},
+                If($PSBoundParameters['EntityMapping']){
+                    $AlertRule.EntityMapping = $PSBoundParameters['EntityMapping']
+                    $null = $PSBoundParameters.Remove('EntityMapping')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${Description},
+                If($PSBoundParameters['AlertDescriptionFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDescriptionFormat']
+                    $null = $PSBoundParameters.Remove('AlertDescriptionFormat')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${DisplayNamesFilter},
+                If($PSBoundParameters['AlertDisplayNameFormat']){
+                    $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDisplayNameFormat']
+                    $null = $PSBoundParameters.Remove('AlertDisplayNameFormat')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${DisplayNamesExcludeFilter},
+                If($PSBoundParameters['AlertSeverityColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertSeverityColumnName']
+                    $null = $PSBoundParameters.Remove('AlertSeverityColumnName')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Microsoft Cloud App Security", "Azure Security Center", "Azure Advanced Threat Protection", "Azure Active Directory Identity Protection", "Azure Security Center for IoT")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${ProductFilter},
+                If($PSBoundParameters['AlertTacticsColumnName']){
+                    $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertTacticsColumnName']
+                    $null = $PSBoundParameters.Remove('AlertTacticsColumnName')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
-    [System.String[]]
-    ${SeveritiesFilter},
+                If($PSBoundParameters['QueryFrequency']){
+                    $AlertRule.QueryFrequency = $PSBoundParameters['QueryFrequency']
+                    $null = $PSBoundParameters.Remove('QueryFrequency')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${Query},
+                If($PSBoundParameters['QueryPeriod']){
+                    $AlertRule.QueryPeriod = $PSBoundParameters['QueryPeriod']
+                    $null = $PSBoundParameters.Remove('QueryPeriod')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${DisplayName},
+                If($PSBoundParameters['TriggerOperator']){
+                    $AlertRule.TriggerOperator = $PSBoundParameters['TriggerOperator']
+                    $null = $PSBoundParameters.Remove('TriggerOperator')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'New-TimeSpan -Hours 5')]
-    [System.TimeSpan]
-    ${SuppressionDuration},
+                If($null -ne $PSBoundParameters['TriggerThreshold']){
+                    $AlertRule.TriggerThreshold = $PSBoundParameters['TriggerThreshold']
+                    $null = $PSBoundParameters.Remove('TriggerThreshold')
+                }
 
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${SuppressionEnabled},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${Severity},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Reconnaissance", "ResourceDevelopment", "InitialAccess", "Execution", "Persistence", "PrivilegeEscalation", "DefenseEvasion", "CredentialAccess", "Discovery", "LateralMovement", "Collection", "Exfiltration", "CommandAndControl", "Impact", "PreAttack", "ImpairProcessControl", "InhibitResponseFunction")]
-    [System.String]
-    ${Tactic},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${CreateIncident},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${GroupingConfigurationEnabled},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Switch]
-    ${ReOpenClosedIncident},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = 'New-TimeSpan -Hours 5')]
-    [System.TimeSpan]
-    ${LookbackDuration},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '"AllEntities"')]
-    [ValidateSet('AllEntities', 'AnyAlert', 'Selected')]
-    [System.String]
-    ${MatchingMethod},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("DisplayName", "Severity")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${GroupByAlertDetail},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [string[]]
-    ${GroupByCustomDetail},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Account", "Host", "IP", "Malware", "File", "Process", "CloudApplication", "DNS", "AzureResource", "FileHash", "RegistryKey", "RegistryValue", "SecurityGroup", "URL", "Mailbox", "MailCluster", "MailMessage", "SubmissionMail")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${GroupByEntity},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping]
-    ${EntityMapping},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${AlertDescriptionFormat},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${AlertDisplayNameFormat},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${AlertSeverityColumnName},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${AlertTacticsColumnName},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.TimeSpan]
-    ${QueryFrequency},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.TimeSpan]
-    ${QueryPeriod},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("GreaterThan", "LessThan", "Equal", "NotEqual")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${TriggerOperator},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [int]
-    ${TriggerThreshold},
-
-    [Parameter(ParameterSetName = 'UpdateScheduled')]
-    [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SingleAlert", "AlertPerResult")]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.String]
-    ${EventGroupingSettingAggregationKind},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-process {
-    try {
-        $null = $PSBoundParameters.Remove('FusionMLorTI')
-        $null = $PSBoundParameters.Remove('MicrosoftSecurityIncidentCreation')
-        $null = $PSBoundParameters.Remove('NRT')
-        $null = $PSBoundParameters.Remove('Scheduled')
-        #Handle Get
-        $GetPSBoundParameters = @{}
-        if($PSBoundParameters['InputObject']){
-            $GetPSBoundParameters.Add('InputObject', $PSBoundParameters['InputObject'])
+                If($PSBoundParameters['EventGroupingSettingAggregationKind']){
+                    $AlertRule.EventGroupingSettingAggregationKind = $PSBoundParameters['EventGroupingSettingAggregationKind']
+                    $null = $PSBoundParameters.Remove('EventGroupingSettingAggregationKind')
+                }
+            }
+            
+            $null = $PSBoundParameters.Add('AlertRule', $AlertRule) 
+    
+            Az.SecurityInsights.internal\Update-AzSentinelAlertRule @PSBoundParameters
         }
-        else {
-            $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
-            $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
-            $GetPSBoundParameters.Add('RuleId', $PSBoundParameters['RuleId'])
+        catch {
+            throw
         }
-        $AlertRule = Az.SecurityInsights\Get-AzSentinelAlertRule @GetPSBoundParameters
-
-        #Fusion
-        if ($AlertRule.Kind -eq 'Fusion'){
-            If($PSBoundParameters['AlertTemplateName']){
-                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
-            }
-            
-            If($PSBoundParameters['Enabled']){
-                $AlertRule.Enabled = $true
-                $null = $PSBoundParameters.Remove('Enabled')
-            }
-            if($PSBoundParameters['Disabled']) {
-                $AlertRule.Enabled = $false
-                $null = $PSBoundParameters.Remove('Disabled')
-            }
-        }
-        #MSIC
-        if($AlertRule.Kind -eq 'MicrosoftSecurityIncidentCreation'){
-            If($PSBoundParameters['AlertRuleTemplateName']){
-                $AlertRule.AlertRuleTemplateName = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
-            }
-            
-            If($PSBoundParameters['Enabled']){
-                $AlertRule.Enabled = $true
-                $null = $PSBoundParameters.Remove('Enabled')
-            }
-            if($PSBoundParameters['Disabled']) {
-                $AlertRule.Enabled = $false
-                $null = $PSBoundParameters.Remove('Disabled')
-            }
-            
-            If($PSBoundParameters['Description']){
-                $AlertRule.Enabled = $PSBoundParameters['Description']
-                $null = $PSBoundParameters.Remove('Description')
-            }
-            
-            If($PSBoundParameters['DisplayNamesFilter']){
-                $AlertRule.Enabled = $PSBoundParameters['DisplayNamesFilter']
-                $null = $PSBoundParameters.Remove('DisplayNamesFilter')
-            }
-            
-            If($PSBoundParameters['DisplayNamesExcludeFilter']){
-                $AlertRule.Enabled = $PSBoundParameters['DisplayNamesExcludeFilter']
-                $null = $PSBoundParameters.Remove('DisplayNamesExcludeFilter')
-            }
-            
-            If($PSBoundParameters['ProductFilter']){
-                $AlertRule.ProductFilter = $PSBoundParameters['ProductFilter']
-                $null = $PSBoundParameters.Remove('ProductFilter')
-            }
-
-            If($PSBoundParameters['SeveritiesFilter']){
-                $Parameter.Enabled = $PSBoundParameters['SeveritiesFilter']
-                $null = $PSBoundParameters.Remove('SeveritiesFilter')
-            }
-        }
-        #Scheduled
-        if ($AlertRule.Kind -eq 'Scheduled'){
-            If($PSBoundParameters['AlertRuleTemplateName']){
-                $AlertRule.Enabled = $PSBoundParameters['AlertRuleTemplateName']
-                $null = $PSBoundParameters.Remove('AlertRuleTemplateName')
-            }
-            
-            If($PSBoundParameters['Enabled']){
-                $AlertRule.Enabled = $true
-                $null = $PSBoundParameters.Remove('Enabled')
-            }
-            if($PSBoundParameters['Disabled']) {
-                $AlertRule.Enabled = $false
-                $null = $PSBoundParameters.Remove('Disabled')
-            }
-            
-            If($PSBoundParameters['Description']){
-                $AlertRule.Enabled = $PSBoundParameters['Description']
-                $null = $PSBoundParameters.Remove('Description')
-            }
-            
-            If($PSBoundParameters['Query']){
-                $AlertRule.Query = $PSBoundParameters['Query']
-                $null = $PSBoundParameters.Remove('Query')
-            }
-
-            If($PSBoundParameters['DisplayName']){
-                $AlertRule.DisplayName = $PSBoundParameters['DisplayName']
-                $null = $PSBoundParameters.Remove('DisplayName')
-            }
-
-            If($PSBoundParameters['SuppressionDuration']){
-                $AlertRule.SuppressionDuration = $PSBoundParameters['SuppressionDuration']
-                $null = $PSBoundParameters.Remove('SuppressionDuration')
-            }
-
-            If($PSBoundParameters['SuppressionEnabled']){
-                $AlertRule.SuppressionEnabled = $true
-                $null = $PSBoundParameters.Remove('SuppressionEnabled')
-            }
-            else{
-                $AlertRule.SuppressionEnabled = $false
-            }
-            
-            If($PSBoundParameters['Severity']){
-                $AlertRule.Severity = $PSBoundParameters['Severity']
-                $null = $PSBoundParameters.Remove('Severity')
-            }
-
-            If($PSBoundParameters['Tactic']){
-                $AlertRule.Tactic = $PSBoundParameters['Tactic']
-                $null = $PSBoundParameters.Remove('Tactic')
-            }
-            
-            If($PSBoundParameters['CreateIncident']){
-                $AlertRule.IncidentConfigurationCreateIncident = $true
-                $null = $PSBoundParameters.Remove('CreateIncident')
-            }
-            else{
-                $AlertRule.IncidentConfigurationCreateIncident = $false
-            }
-            
-            If($PSBoundParameters['GroupingConfigurationEnabled']){
-                $AlertRule.GroupingConfigurationEnabled = $true
-                $null = $PSBoundParameters.Remove('GroupingConfigurationEnabled')
-            }
-            else{
-                $AlertRule.GroupingConfigurationEnabled = $false
-            }
-            
-            If($PSBoundParameters['ReOpenClosedIncident']){
-                $AlertRule.GroupingConfigurationReOpenClosedIncident = $PSBoundParameters['ReOpenClosedIncident']
-                $null = $PSBoundParameters.Remove('ReOpenClosedIncident')
-            }
-            else{
-                $AlertRule.GroupingConfigurationReOpenClosedIncident = $false
-            }
-            
-            If($PSBoundParameters['LookbackDuration']){
-                $AlertRule.GroupingConfigurationLookbackDuration = $PSBoundParameters['LookbackDuration']
-                $null = $PSBoundParameters.Remove('LookbackDuration')
-            }
-
-            If($PSBoundParameters['MatchingMethod']){
-                $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['MatchingMethod']
-                $null = $PSBoundParameters.Remove('MatchingMethod')
-            }
-
-            If($PSBoundParameters['GroupByAlertDetail']){
-                $AlertRule.GroupingConfigurationGroupByAlertDetail = $PSBoundParameters['GroupByAlertDetail']
-                $null = $PSBoundParameters.Remove('GroupByAlertDetail')
-            }
-
-            If($PSBoundParameters['GroupByCustomDetail']){
-                $AlertRule.GroupingConfigurationGroupByCustomDetail = $PSBoundParameters['GroupByCustomDetail']
-                $null = $PSBoundParameters.Remove('GroupByCustomDetail')
-            }
-            
-            If($PSBoundParameters['GroupByEntity']){
-                $AlertRule.GroupingConfigurationGroupByEntity = $PSBoundParameters['GroupByEntity']
-                $null = $PSBoundParameters.Remove('GroupByEntity')
-            }
-
-            If($PSBoundParameters['EntityMapping']){
-                $AlertRule.EntityMapping = $PSBoundParameters['EntityMapping']
-                $null = $PSBoundParameters.Remove('EntityMapping')
-            }
-
-            If($PSBoundParameters['AlertDescriptionFormat']){
-                $AlertRule.AlertDetailOverrideAlertDescriptionFormat = $PSBoundParameters['AlertDescriptionFormat']
-                $null = $PSBoundParameters.Remove('AlertDescriptionFormat')
-            }
-
-            If($PSBoundParameters['AlertDisplayNameFormat']){
-                $AlertRule.AlertDetailOverrideAlertDisplayNameFormat = $PSBoundParameters['AlertDisplayNameFormat']
-                $null = $PSBoundParameters.Remove('AlertDisplayNameFormat')
-            }
-
-            If($PSBoundParameters['AlertSeverityColumnName']){
-                $AlertRule.AlertDetailOverrideAlertSeverityColumnName = $PSBoundParameters['AlertSeverityColumnName']
-                $null = $PSBoundParameters.Remove('AlertSeverityColumnName')
-            }
-
-            If($PSBoundParameters['AlertTacticsColumnName']){
-                $AlertRule.AlertDetailOverrideAlertTacticsColumnName = $PSBoundParameters['AlertTacticsColumnName']
-                $null = $PSBoundParameters.Remove('AlertTacticsColumnName')
-            }
-
-            If($PSBoundParameters['QueryFrequency']){
-                $AlertRule.QueryFrequency = $PSBoundParameters['QueryFrequency']
-                $null = $PSBoundParameters.Remove('QueryFrequency')
-            }
-
-            If($PSBoundParameters['QueryPeriod']){
-                $AlertRule.QueryPeriod = $PSBoundParameters['QueryPeriod']
-                $null = $PSBoundParameters.Remove('QueryPeriod')
-            }
-
-            If($PSBoundParameters['TriggerOperator']){
-                $AlertRule.TriggerOperator = $PSBoundParameters['TriggerOperator']
-                $null = $PSBoundParameters.Remove('TriggerOperator')
-            }
-
-            If($PSBoundParameters['TriggerThreshold'] -ne $null){
-                $AlertRule.TriggerThreshold = $PSBoundParameters['TriggerThreshold']
-                $null = $PSBoundParameters.Remove('TriggerThreshold')
-            }
-
-            If($PSBoundParameters['EventGroupingSettingAggregationKind']){
-                $AlertRule.EventGroupingSettingAggregationKind = $PSBoundParameters['EventGroupingSettingAggregationKind']
-                $null = $PSBoundParameters.Remove('EventGroupingSettingAggregationKind')
-            }
-        }
-        
-        $null = $PSBoundParameters.Add('AlertRule', $AlertRule) 
-
-        Az.SecurityInsights.internal\Update-AzSentinelAlertRule @PSBoundParameters
     }
-    catch {
-        throw
-    }
-}
 }

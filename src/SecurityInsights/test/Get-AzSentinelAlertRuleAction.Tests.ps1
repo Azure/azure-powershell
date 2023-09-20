@@ -16,18 +16,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelAlertRuleAction
 
 Describe 'Get-AzSentinelAlertRuleAction' {
     It 'List' {
-        $alertRuleActions = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId
+        $alertRuleActions = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID
         $alertRuleActions.Count | Should -BeGreaterorEqual 1
     }
 
     It 'Get' {
-        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId -Id $env.GetAlertRuleActionId
-        $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
+        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID -Id $env.GetAlertRuleActionId
+        $alertRuleAction.LogicAppResourceId | Should -Be $env.AlertLogicAppResourceId
     }
 
     It 'GetViaIdentity' {
-        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetAlertRuleActionRuleId -Id $env.GetAlertRuleActionId
+        $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID -Id $env.GetAlertRuleActionId
         $alertRuleActionviaId = Get-AzSentinelAlertRuleAction -InputObject $alertRuleAction
-        $alertRuleActionviaId.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
+        $alertRuleActionviaId.LogicAppResourceId | Should -Be $env.AlertLogicAppResourceId
+    }
+
+    It 'GetViaIdentityAlertRule' {
+        $alertRule = Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID
+        $alertRuleActionViaRuleId = Get-AzSentinelAlertRuleAction -AlertRuleInputObject $alertRule -Id $env.GetAlertRuleActionId
+        $alertRuleActionViaRuleId.LogicAppResourceId | Should -Be $env.AlertLogicAppResourceId
+    }
+
+    It 'GetViaIdentityWorkspace' {
+        $workspace = Get-AzOperationalInsightsWorkspace -Name $workspaceName
+        $alertRuleActionViaWSId = Get-AzSentinelAlertRuleAction -WorkspaceInputObject $workspace -RuleId $env.GetUpdateAlertRuleID -Id $env.GetAlertRuleActionId
+        $alertRuleActionViaWSId.LogicAppResourceId | Should -Be $env.AlertLogicAppResourceId
     }
 }

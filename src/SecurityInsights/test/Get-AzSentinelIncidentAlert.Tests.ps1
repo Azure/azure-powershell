@@ -16,8 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentAlert')
 
 Describe 'Get-AzSentinelIncidentAlert' {
     It 'List' {
-        $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where {$_.Title -eq "Sign-ins from IPs that attempt sign-ins to disabled accounts"}
-        $incidentAlerts = Get-AzSentinelIncidentAlert -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $incident[0].Name
+        $incidentAlerts = Get-AzSentinelIncidentAlert -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId
         $incidentAlerts.Count | Should -BeGreaterorEqual 1
     }
 }

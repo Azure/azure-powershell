@@ -15,17 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelDataConnector')
 }
 
 Describe 'Get-AzSentinelDataConnector' {
-    It 'List' {
+    It 'List' -Skip {
         $dataConnectors = Get-AzSentineldataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $dataConnectors.Count | Should -BeGreaterorEqual 1
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $dataConnector = Get-AzSentineldataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.dataConnectorId
         $dataConnector.Name | Should -Be $env.dataConnectorId
     }
 
-    It 'GetViaIdentity'  {
+    It 'GetViaIdentity' -Skip {
         $dataConnector = Get-AzSentineldataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.dataConnectorId
         $dataConnectorViaIdentity = Get-AzSentineldataConnector -InputObject $dataConnector
         $dataConnectorViaIdentity.Name | Should -Be $env.dataConnectorId

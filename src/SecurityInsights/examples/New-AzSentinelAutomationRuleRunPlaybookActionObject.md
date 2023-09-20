@@ -1,6 +1,7 @@
 ### Example 1: Create a RunPlaybook automation rule action object for automation rule
 ```powershell
-New-AzSentinelAutomationRuleActionObject -ActionType RunPlaybook -Order 1 -LogicAppResourceId $LogicAppResource.Id -TenantId (Get-AzContext).Tenant.Id
+$LogicAppResource = Get-AzLogicApp -ResourceGroupName "si-jj-test" -Name "AlertLogicApp"
+New-AzSentinelAutomationRuleRunPlaybookActionObject -Order 1 -ActionConfigurationLogicAppResourceId $LogicAppResource.Id -ActionConfigurationTenantId (Get-AzContext).Tenant.Id
 ```
 
 ```output

@@ -16,18 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSentinelIncidentComment
 
 Describe 'Get-AzSentinelIncidentComment' {
     It 'List' {
-        $incidentComments = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId
+        $incidentComments = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId
         $incidentComments.Count | Should -BeGreaterorEqual 1
     }
 
     It 'Get' {
-        $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId -Id $env.GetincidentCommentId
-        $incidentComment.Name | Should -Be $env.GetincidentCommentId
+        $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId -Id $env.GetIncidentCommentId
+        $incidentComment.Name | Should -Be $env.GetIncidentCommentId
     }
 
     It 'GetViaIdentity' -skip {
-        $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetincidentCommentIncidentId -Id $env.GetincidentCommentId
+        $incidentComment = Get-AzSentinelincidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.GetIncidentId -Id $env.GetIncidentCommentId
         $incidentCommentViaId = Get-AzSentinelincident -InputObject $incidentComment
-        $incidentCommentViaId.Name | Should -Be $env.GetincidentCommentId
+        $incidentCommentViaId.Name | Should -Be $env.GetIncidentCommentId
     }
 }

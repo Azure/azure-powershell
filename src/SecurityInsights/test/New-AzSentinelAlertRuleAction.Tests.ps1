@@ -16,12 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelAlertRuleAction
 
 Describe 'New-AzSentinelAlertRuleAction' {
     It 'CreateExpanded' {
-        $alertRule = New-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Kind Scheduled -RuleId $env.NewalertRuleActionRuleId -Query "SecurityEvent | take 1" -DisplayName $env.NewalertRuleActionRuleName -Severity Informational `
-            -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Days 1) -TriggerOperator "GreaterThan" -TriggerThreshold 1
-        $alertRuleAction =  New-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName `
-            -Id $env.NewAlertRuleActionId -RuleId $env.NewalertRuleActionRuleId -WorkspaceName $env.workspaceName -LogicAppResourceId $env.Playbook1LogicAppResourceId `
-            -TriggerUri $env.Playbook1TriggerUrl
-        $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook1LogicAppResourceId
+        Get-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID
+        $alertRuleAction = New-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName`
+            -Id $env.NewAlertRuleActionId -RuleId $env.GetUpdateAlertRuleID  -LogicAppResourceId $env.IncidentLogicAppResourceId `
+            -TriggerUri $env.IncidentLogicAppTriggerUri
+        $alertRuleAction.LogicAppResourceId | Should -Be $env.IncidentLogicAppResourceId
     }
 }

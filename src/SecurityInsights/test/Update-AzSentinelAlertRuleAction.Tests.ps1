@@ -17,14 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAlertRuleAct
 Describe 'Update-AzSentinelAlertRuleAction' {
     It 'UpdateExpanded' {
         $alertRuleAction = Update-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
-            -RuleId $env.UpdateAlertRuleActionRuleId -Id $env.UpdateAlertRuleActionId -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl
-        $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook3LogicAppResourceId
+            -RuleId $env.GetUpdateAlertRuleID -Id $env.UpdateAlertRuleActionId -LogicAppResourceId $env.UpdateLogicAppResourceId -TriggerUri $env.UpdateLogicAppTriggerUri
+        $alertRuleAction.LogicAppResourceId | Should -Be $env.UpdateLogicAppResourceId
     }
 
     It 'UpdateViaIdentityExpanded' {
         $alertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
-            -RuleId $env.UpdateViaIdAlertRuleActionRuleId -Id $env.UpdateViaIdAlertRuleActionId
-        $alertRuleAction = Update-AzSentinelAlertRuleAction -InputObject $alertRuleAction -LogicAppResourceId $env.Playbook3LogicAppResourceId -TriggerUri $env.Playbook3TriggerUrl
-        $alertRuleAction.LogicAppResourceId | Should -Be $env.Playbook3LogicAppResourceId
+            -RuleId $env.GetUpdateAlertRuleID -Id $env.UpdateViaIdAlertRuleActionId
+        $alertRuleAction = Update-AzSentinelAlertRuleAction -InputObject $alertRuleAction -LogicAppResourceId $env.UpdateLogicAppResourceId -TriggerUri $env.UpdateLogicAppTriggerUri
+        $alertRuleAction.LogicAppResourceId | Should -Be $env.UpdateLogicAppResourceId
     }
 }

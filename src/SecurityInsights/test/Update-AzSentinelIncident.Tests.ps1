@@ -16,16 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelIncident'))
 
 Describe 'Update-AzSentinelIncident' {
     It 'UpdateExpanded' {
-        $getIncident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateincidentId
+        $getIncident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetIncidentId
         $incident = Update-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id $env.UpdateincidentId -Status "Active" -Title $getIncident.Title -Severity $getIncident.Severity
+            -Id $env.GetIncidentId -Status "Active" -Title $getIncident.Title -Severity $getIncident.Severity
         $incident.Status | Should -Be "Active"
     }
 
     It 'UpdateViaIdentityExpanded' {
         $incident = Get-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id $env.UpdateViaIdincidentId 
-        $incidentUpdate = Update-AzSentinelIncident -InputObject $incident -Status "Active" -Title $incident.Title -Severity $incident.Severity
-        $incidentUpdate.Status | Should -Be "Active"
+            -Id $env.GetIncidentId 
+        $incidentUpdate = Update-AzSentinelIncident -InputObject $incident -Status Closed -Title $incident.Title -Severity $incident.Severity
+        $incidentUpdate.Status | Should -Be "Closed"
     }
 }

@@ -16,14 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelAutomationRule'
 
 Describe 'New-AzSentinelAutomationRule' {
     It 'CreateExpanded' {
-       $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
-       $automationRuleAction.Order = 1
-       $automationRuleAction.ActionType = "RunPlaybook"
-       $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook2LogicAppResourceId
-        $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-       $automationRule = New-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName `
-        -WorkspaceName $env.workspaceName -Id $env.NewAutomationRuleId -Action $automationRuleAction -DisplayName $env.NewAutomationRule -Order 2 `
-        -TriggeringLogicIsEnabled
+        $automationRuleAction = New-AzSentinelAutomationRuleRunPlaybookActionObject -Order 1 -ActionConfigurationLogicAppResourceId $env.AlertLogicAppResourceId -ActionConfigurationTenantId $env.Tenant
+        $automationRule = New-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+            -Id $env.NewAutomationRuleId -Action $automationRuleAction -DisplayName "Run Playbook to create alerts" -Order 2 `
+            -TriggeringLogicIsEnabled -TriggeringLogicTriggersOn Alerts -TriggeringLogicTriggersWhen Created
         $automationRule.DisplayName | Should -Be $env.NewAutomationRule
     }
 }

@@ -16,15 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelIncidentComm
 
 Describe 'Update-AzSentinelIncidentComment' {
     It 'UpdateExpanded' {
-         $incidentComment = Update-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.UpdateincidentCommentIncidentId -Id $env.UpdateincidentCommentId -Message "UpdateIncidentCommentPSTest"
+        $incidentComment = Update-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+            -IncidentId $env.GetIncidentId -Id $env.GetIncidentCommentId -Message "UpdateIncidentCommentPSTest"
         $incidentComment.Message | Should -Be "UpdateIncidentCommentPSTest"
     }
 
     It 'UpdateViaIdentityExpanded' {
         $incidentComment = Get-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.UpdateincidentCommentIncidentId -Id $env.UpdateincidentCommentId 
-        $incidentCommentUpdate = Update-AzSentinelIncidentComment -InputObject $incidentComment -Message "UpdateIncidentCommentPSTest"
-        $incidentCommentUpdate.Message | Should -Be "UpdateIncidentCommentPSTest"
+            -IncidentId $env.GetIncidentId -Id $env.GetIncidentCommentId 
+        $incidentCommentUpdate = Update-AzSentinelIncidentComment -InputObject $incidentComment -Message "UpdateViaIncidentCommentPSTest"
+        $incidentCommentUpdate.Message | Should -Be "UpdateViaIncidentCommentPSTest"
     }
 }

@@ -16,12 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelAlertRuleAct
 
 Describe 'Remove-AzSentinelAlertRuleAction' {
     It 'Delete' {
-        { Remove-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.RemoveAlertRuleActionRuleId -Id $env.RemoveAlertRuleActionId} | Should -Not -Throw
+        {
+            Remove-AzSentinelAlertRuleAction -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.GetUpdateAlertRuleID -Id $env.NewAlertRuleActionId
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         $alertRuleAction =  Get-AzSentinelAlertRuleAction -ResourceGroupName $env.ResourceGroupName -WorkspaceName $env.workspaceName `
-            -RuleId $env.RemoveViaIdAlertRuleActionRuleId -Id $env.RemoveViaIdAlertRuleActionId
+            -RuleId $env.GetUpdateAlertRuleID -Id $env.RemoveAlertRuleActionId
         { Remove-AzSentinelAlertRuleAction -InputObject $alertRuleAction } | Should -Not -Throw
     }
 }

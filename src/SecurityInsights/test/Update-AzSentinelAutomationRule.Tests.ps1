@@ -16,24 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAutomationRu
 
 Describe 'Update-AzSentinelAutomationRule' {
     It 'UpdateExpanded' {
-        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
-        $automationRuleAction.Order = 1
-        $automationRuleAction.ActionType = "RunPlaybook"
-        $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
-        $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId
-        $automationRule = Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
+        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetAutomationRuleId
+        $automationRuleAction = New-AzSentinelAutomationRuleRunPlaybookActionObject -Order 2 -ActionConfigurationLogicAppResourceId $env.UpdateLogicAppResourceId -ActionConfigurationTenantId $env.Tenant
+        $automationRuleActionList = $getRule.Action + $automationRuleAction
+        $automationRule = Update-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId -Action $automationRuleActionList -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
         $automationRule.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
-        $automationRuleAction.Order = 1
-        $automationRuleAction.ActionType = "RunPlaybook"
-        $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
-        $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.UpdateAutomationRuleId
-        $automationRuleUpdate = Update-AzSentinelAutomationRule -InputObject $getRule -Action $automationRuleAction -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
+        $getRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetAutomationRuleId
+        $automationRuleAction = New-AzSentinelAutomationRuleRunPlaybookActionObject -Order 3 -ActionConfigurationLogicAppResourceId $env.UpdateLogicAppResourceId -ActionConfigurationTenantId $env.Tenant
+        $automationRuleActionList = $getRule.Action + $automationRuleAction
+        $automationRuleUpdate = Update-AzSentinelAutomationRule -InputObject $getRule -Action $automationRuleActionList -DisplayName $getRule.DisplayName -Order $getRule.Order -TriggeringLogicIsEnabled
         $automationRuleUpdate.Action.ActionConfigurationLogicAppResourceId | Should -Be $env.Playbook4LogicAppResourceId
     }
 }

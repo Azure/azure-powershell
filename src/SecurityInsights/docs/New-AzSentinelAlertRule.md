@@ -23,8 +23,8 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Ale
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
  -Kind <String> -ProductFilter <String> [-RuleId <String>] [-SubscriptionId <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
- [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String[]>]
+ [-DisplayNamesFilter <String[]>] [-Enabled] [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,11 +35,11 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
  -TriggerOperator <String> -TriggerThreshold <Int32> [-RuleId <String>] [-SubscriptionId <String>]
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
- [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <String>] [-GroupByAlertDetail <String>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <String>] [-GroupingConfigurationEnabled]
+ [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping[]>]
+ [-EventGroupingSettingAggregationKind <String>] [-GroupByAlertDetail <String[]>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String[]>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-ReOpenClosedIncident]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-DefaultProfile <PSObject>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -316,7 +316,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -362,7 +362,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping[]
 Parameter Sets: Scheduled
 Aliases:
 
@@ -392,7 +392,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Scheduled
 Aliases:
 
@@ -422,7 +422,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Scheduled
 Aliases:
 
@@ -693,7 +693,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Scheduled
 Aliases:
 

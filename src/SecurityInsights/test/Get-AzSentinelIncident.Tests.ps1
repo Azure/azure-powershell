@@ -21,13 +21,13 @@ Describe 'Get-AzSentinelIncident' {
     }
 
     It 'Get' {
-        $incident = Get-AzSentinelincident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetincidentId
-        $incident.Name | Should -Be $env.GetincidentId
+        $incident = Get-AzSentinelincident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetIncidentId
+        $incident.Name | Should -Be $env.GetIncidentId
     }
 
     It 'GetViaIdentity' {
-        $incident = Get-AzSentinelincident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetincidentId
+        $incident = Get-AzSentinelincident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.GetIncidentId
         $incidentviaId = Get-AzSentinelincident -InputObject $incident 
-        $incidentviaId.Name | Should -Be $env.GetincidentId
+        $incidentviaId.Name | Should -Be $env.GetIncidentId
     }
 }

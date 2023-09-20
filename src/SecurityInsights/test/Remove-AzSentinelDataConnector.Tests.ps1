@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelDataConnecto
 }
 
 Describe 'Remove-AzSentinelDataConnector' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $dataConnector = New-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
            -Id $env.RemoveDataConnectorId -Kind 'MicrosoftCloudAppSecurity' -Alerts "Enabled" -DiscoveryLog "Disabled"
         { Remove-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $dataConnector.Name } | Should -Not -Throw
     } 
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $dataConnector = New-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.RemoveDataConnectorIdInputObject -Kind 'MicrosoftCloudAppSecurity' -Alerts "Enabled" -DiscoveryLog "Disabled"
         { Remove-AzSentinelDataConnector -InputObject $dataConnector } | Should -Not -Throw

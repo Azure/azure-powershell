@@ -28,7 +28,7 @@ Create an in-memory object for AutomationRuleModifyPropertiesAction.
 
 ### Example 1: Create a ModifyProperties automation rule action object for automation rule
 ```powershell
-New-AzSentinelAutomationRuleActionObject -ActionType ModifyProperties -Order 1 -Severity High
+New-AzSentinelAutomationRuleModifyPropertiesActionObject -Order 1 -ActionConfigurationSeverity High
 ```
 
 ```output

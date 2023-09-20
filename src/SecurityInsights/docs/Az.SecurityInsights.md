@@ -71,7 +71,7 @@ Create the alert rule.
 ### [New-AzSentinelAlertRuleAction](New-AzSentinelAlertRuleAction.md)
 Create the action of alert rule.
 
-### [New-AzSentinelAnomalySecurityMlAnalyticsSettingsObject](New-AzSentinelAnomalySecurityMlAnalyticsSettingsObject.md)
+### [New-AzSentinelAnomalySecurityMlAnalyticsSettingObject](New-AzSentinelAnomalySecurityMlAnalyticsSettingObject.md)
 Create an in-memory object for AnomalySecurityMlAnalyticsSettings.
 
 ### [New-AzSentinelAutomationRule](New-AzSentinelAutomationRule.md)
@@ -147,7 +147,7 @@ Delete Sentinel onboarding state
 Delete the Security ML Analytics Settings.
 
 ### [Update-AzSentinelAlertRule](Update-AzSentinelAlertRule.md)
-Create the alert rule.
+Update the alert rule.
 
 ### [Update-AzSentinelAlertRuleAction](Update-AzSentinelAlertRuleAction.md)
 Create the action of alert rule.

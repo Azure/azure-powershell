@@ -16,12 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelBookmark'))
 
 Describe 'Remove-AzSentinelBookmark' {
     It 'Delete' {
-        { Remove-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveBookmarkId } | Should -Not -Throw
+        {
+            Remove-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.NewBookmarkId
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         $bookmark = Get-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-        -Id $env.RemoveViaIdBookmarkId
+        -Id $env.RemoveBookmarkId
         { Remove-AzSentinelBookmark -InputObject $bookmark } | Should -Not -Throw
     }
 }

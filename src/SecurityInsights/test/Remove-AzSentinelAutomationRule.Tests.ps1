@@ -16,12 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelAutomationRu
 
 Describe 'Remove-AzSentinelAutomationRule' {
     It 'Delete' {
-        { Remove-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveAutomationRuleId } | Should -Not -Throw
+        {
+            Remove-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -Id $env.RemoveAutomationRuleId
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         $automationRule = Get-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id $env.RemoveViaIdAutomationRuleId
+            -Id $env.NewAutomationRuleId
         { Remove-AzSentinelAutomationRule -InputObject $automationRule} | Should -Not -Throw
     }
 }

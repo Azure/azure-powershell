@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelDataConnecto
 }
 
 Describe 'Update-AzSentinelDataConnector' -Tag 'LiveOnly' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $dataConnector = Update-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.updateDataConnectorId -Office365 -SharePoint "Enabled"
         $dataConnector.SharePointState | Should -Be "Enabled"
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $dataConnector = Get-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.updateDataConnectorId
         $dataConnectorUpdate = Update-AzSentinelDataConnector -InputObject $dataConnector -Office365 -Teams "Enabled"

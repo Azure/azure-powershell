@@ -18,7 +18,7 @@ Describe 'New-AzSentinelBookmark' {
     It 'CreateExpanded' {
         $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
             -Id $env.NewBookmarkId -WorkspaceName $env.workspaceName -DisplayName $env.NewBookmarkName -Query "SecurityEvent | take 1" `
-            -QueryStartTime (get-date).AddDays(-1).ToUniversalTime() -QueryEndTime (get-date).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
+            -QueryStartTime (Get-Date).AddDays(-1).ToUniversalTime() -QueryEndTime (Get-Date).ToUniversalTime() -EventTime (Get-Date).ToUniversalTime()
         $bookmark.DisplayName | Should -Be $env.NewBookmarkName
     }
 }

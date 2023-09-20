@@ -16,12 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelIncidentComm
 
 Describe 'Remove-AzSentinelIncidentComment' {
     It 'Delete' {
-        { Remove-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.RemoveincidentCommentIncidentId -Id $env.RemoveincidentCommentId } | Should -Not -Throw
+        { Remove-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -IncidentId $env.NewIncidentCommentIncidentId -Id $env.NewIncidentCommentId
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         $incidentComment = Get-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.RemoveViaIdincidentCommentIncidentId -Id $env.RemoveViaIdincidentCommentId 
+            -IncidentId $env.GetIncidentId -Id $env.RemoveViaIncidentCommentId 
         { Remove-AzSentinelIncidentComment -InputObject $incidentComment } | Should -Not -Throw
     }
 }

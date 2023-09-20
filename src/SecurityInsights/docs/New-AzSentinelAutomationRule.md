@@ -48,7 +48,7 @@ Create the automation rule.
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
 $LogicAppResource = Get-AzLogicApp -ResourceGroupName "si-jj-test" -Name "AlertLogicApp"
-$automationRuleAction = New-AzSentinelAutomationRuleActionObject -ActionType RunPlaybook -Order 1 -LogicAppResourceId $LogicAppResource.Id -TenantId (Get-AzContext).Tenant.Id
+$automationRuleAction = New-AzSentinelAutomationRuleRunPlaybookActionObject -Order 1 -ActionConfigurationLogicAppResourceId $LogicAppResource.Id -ActionConfigurationTenantId (Get-AzContext).Tenant.Id
 New-AzSentinelAutomationRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws3" -Action $automationRuleAction -DisplayName "Run Playbook to create alerts" -Order 2 -TriggeringLogicIsEnabled -TriggeringLogicTriggersOn Alerts -TriggeringLogicTriggersWhen Created
 ```
 

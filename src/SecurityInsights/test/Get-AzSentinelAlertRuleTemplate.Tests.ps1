@@ -21,13 +21,13 @@ Describe 'Get-AzSentinelAlertRuleTemplate' {
     }
 
     It 'Get' {
-        $alertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where {$_.Kind -eq "Fusion"}
-        $alertRuleTemplate.Kind | Should -Be "Fusion"
+        $alertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where-Object {$_.Kind -eq "Scheduled"}
+        $alertRuleTemplate.Kind | Should -Be "Scheduled"
     }
 
     It 'GetViaIdentity' {
-        $alertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | where {$_.Kind -eq "Fusion"}
+        $alertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName | Where-Object {$_.Kind -eq "Scheduled"}
         $alertRuleTemplateViaIdentity = Get-AzSentinelAlertRuleTemplate -InputObject $alertRuleTemplate
-        $alertRuleTemplateViaIdentity.Kind | Should -Be "Fusion"
+        $alertRuleTemplateViaIdentity.Kind | Should -Be "Scheduled"
     }
 }
