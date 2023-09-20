@@ -161,8 +161,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Patch updates an Azure Sql Database FailoverGroup.
         /// </summary>
         /// <param name="model">The input parameters for the create/update operation</param>
+        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy functaion and model</param>
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
-        internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model)
+        internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model, bool useV2 = false)
         {
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
             readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
@@ -173,6 +174,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
+            }
+
+            if (useV2)
+            {
+                FailoverGroupUpdate updateV2Params = new FailoverGroupUpdate()
+                {
+                    ReadOnlyEndpoint = model.FailoverGroupReadOnlyEndpointV2,
+                    ReadWriteEndpoint = model.FailoverGroupReadWriteEndpointV2,
+                    PartnerServers = ConvertPartnerServerList(model.PartnerServers.ToList()),
+                    Databases = model.Databases
+
+                };
+                var response = Communicator.PatchUpdateV2(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, updateV2Params);
+                return CreateCurrentFailoverGroupModelFromResponse(response);
             }
 
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, new FailoverGroupPatchUpdateParameters()

@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             bool useV2 = entity.First().PartnerServers.Count() > 1;
             return new List<AzureSqlFailoverGroupModel>() {
-                ModelAdapter.UpsertFailoverGroup(entity.First(), useV2)
+                ModelAdapter.PatchUpdateFailoverGroup(entity.First(), useV2)
             };
         }
     }

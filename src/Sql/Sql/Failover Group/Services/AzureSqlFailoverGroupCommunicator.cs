@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             return resp.FailoverGroup;
         }
 
-                /// <summary>
+        /// <summary>
         /// Creates or updates an Failover Group
         /// </summary>
         public Management.Sql.Models.FailoverGroup CreateOrUpdateV2(string resourceGroupName, string serverName, string FailoverGroupName, Management.Sql.Models.FailoverGroup parameters)
@@ -137,6 +137,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         {
             var resp = GetLegacySqlClient().FailoverGroups.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
+        }
+
+        /// <summary>
+        /// Patch-updates an Failover Group
+        /// </summary>
+        public Management.Sql.Models.FailoverGroup PatchUpdateV2(string resourceGroupName, string serverName, string FailoverGroupName, FailoverGroupUpdate parameters)
+        {
+            var resp = GetCurrentSqlClient().FailoverGroups.Update(resourceGroupName, serverName, FailoverGroupName, parameters);
+            return resp;
         }
 
 
