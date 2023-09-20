@@ -41,6 +41,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(3)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetServiceFabricClustersPages()
+        {
+            TestRunner.RunTestScript("Test-GetServiceFabricClustersPages");
+        }
+
+        [Fact, TestPriority(3)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricDurability()
         {
             TestRunner.RunTestScript("Test-UpdateAzureRmServiceFabricDurability");

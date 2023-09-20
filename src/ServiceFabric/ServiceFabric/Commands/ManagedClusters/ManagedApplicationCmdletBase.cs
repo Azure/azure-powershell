@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
@@ -66,8 +67,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 WriteVerbose($"Creating managed app type '{applicationTypeName}'.");
-                ApplicationTypeResource newAppTypeParams = this.GetNewAppTypeParameters(location, tags:tags);
-                return this.SfrpMcClient.ApplicationTypes.CreateOrUpdate(this.ResourceGroupName, this.ClusterName, applicationTypeName, newAppTypeParams);
+                //ApplicationTypeResource newAppTypeParams = this.GetNewAppTypeParameters(location, tags:tags);
+                return this.SfrpMcClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName, 
+                    this.ClusterName, 
+                    applicationTypeName, 
+                    location:location, 
+                    tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string))
+                    .GetAwaiter().GetResult().Body;
+
+
             }
         }
 

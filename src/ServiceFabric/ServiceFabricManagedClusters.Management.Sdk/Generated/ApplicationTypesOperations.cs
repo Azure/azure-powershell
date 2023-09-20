@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 systemData: systemData,
                 provisioningState: provisioningState);
 
-            if(id != null||name != null||type != null||location != null||tags != null||systemData != null||provisioningState != null)
+            if(location != null||tags != null)
             {
                 parameters.Location = location;
                 parameters.Tags = tags;

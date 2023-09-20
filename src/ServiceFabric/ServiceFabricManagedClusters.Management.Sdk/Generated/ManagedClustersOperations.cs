@@ -732,8 +732,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 tracingParameters.Add("clusterName", clusterName);
 
                 tracingParameters.Add("parameters", parameters);
-
-                tracingParameters.Add("cancellationToken", cancellationToken);
+                               tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL

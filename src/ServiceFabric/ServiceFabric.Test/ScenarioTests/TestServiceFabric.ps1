@@ -12,6 +12,25 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-GetServiceFabricClustersPages
+{
+    #$clusterName = "azurermsfclustertptest"
+    #$resourceGroupName = "azurermsfrgTP"
+    #$keyvaulturi = Get-SecretUrl
+    #$vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
+
+    #$cluster = New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
+    #    -TemplateFile (Join-Path $pwd '\Resources\template.json') -ParameterFile (Join-Path $pwd '\Resources\parameters.json') -SecretIdentifier $keyvaulturi -Verbose
+
+    $clusters = Get-AzServiceFabricCluster
+
+	#$newClsuter = $clusters.Where({$_.Name -eq $clusterName})
+	Assert-NotNull $clusters
+	Assert-AreEqual 0 $clusters.Count
+	#Assert-NotNull $newClsuter.Certificate
+	#Assert-Null $newClsuter.CertificateCommonNames
+}
+
 function Test-UpdateAzureRmServiceFabricDurability
 {
 

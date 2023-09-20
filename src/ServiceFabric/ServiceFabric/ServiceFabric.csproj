@@ -12,16 +12,10 @@
 
   <ItemGroup>
     <Compile Remove="Commands\ManagedClusters\Applications\**" />
-    <Compile Remove="Commands\ManagedClusters\ApplicationTypes\**" />
-    <Compile Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
     <Compile Remove="Commands\ManagedClusters\Services\**" />
     <EmbeddedResource Remove="Commands\ManagedClusters\Applications\**" />
-    <EmbeddedResource Remove="Commands\ManagedClusters\ApplicationTypes\**" />
-    <EmbeddedResource Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
     <EmbeddedResource Remove="Commands\ManagedClusters\Services\**" />
     <None Remove="Commands\ManagedClusters\Applications\**" />
-    <None Remove="Commands\ManagedClusters\ApplicationTypes\**" />
-    <None Remove="Commands\ManagedClusters\ApplicationTypeVersions\**" />
     <None Remove="Commands\ManagedClusters\Services\**" />
   </ItemGroup>
 
@@ -33,8 +27,6 @@
     <Compile Remove="Commands\GetAzServiceFabricApplicationType.cs" />
     <Compile Remove="Commands\GetAzServiceFabricApplicationTypeVersion.cs" />
     <Compile Remove="Commands\GetAzServiceFabricService.cs" />
-    <Compile Remove="Commands\GetAzureRmServiceFabricClusterResouce.cs" />
-    <Compile Remove="Commands\ManagedClusters\ManagedApplicationCmdletBase.cs" />
     <Compile Remove="Commands\NewAzServiceFabricApplication.cs" />
     <Compile Remove="Commands\NewAzServiceFabricApplicationType.cs" />
     <Compile Remove="Commands\NewAzServiceFabricApplicationTypeVersion.cs" />
@@ -51,7 +43,6 @@
     <Compile Remove="Commands\RemoveAzureRmServiceFabricSetting.cs" />
     <Compile Remove="Commands\ServiceFabricClientCertificateBase.cs" />
     <Compile Remove="Commands\ServiceFabricClusterCertificateCmdlet.cs" />
-    <Compile Remove="Commands\ServiceFabricClusterCmdlet.cs" />
     <Compile Remove="Commands\ServiceFabricNodeTypeCmdletBase.cs" />
     <Compile Remove="Commands\ServiceFabricSettingsCmdletBase.cs" />
     <Compile Remove="Commands\SetAzureRmServiceFabricSetting.cs" />
@@ -72,7 +63,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj" />
-    <ProjectReference Include="..\ServiceFabricManagedClusters.Management.Sdk\ServiceFabric.Management.sdk.csproj" />
+    <ProjectReference Include="..\ServiceFabric.Management.Sdk\ServiceFabric.Management.sdk.csproj" />
 	</ItemGroup>
 
   <ItemGroup>

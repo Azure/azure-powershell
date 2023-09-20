@@ -204,7 +204,7 @@ function WaitForManagedClusterReadyStateIfRecord($clusterName, $resourceGroupNam
 	}
 }
 
-function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 1200)
+function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 2100)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
@@ -216,7 +216,7 @@ function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $time
         }
 
         Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
-        Start-TestSleep -Seconds 15
+        Start-TestSleep -Seconds 30
     }
 
     Write-Error "WaitForClusterReadyState timed out"
@@ -350,12 +350,12 @@ function Get-AppTypeV2Name
 
 function Get-AppPackageV1
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+    return "https://sfmconeboxsa.blob.core.windows.net/winfab-rp-feature-sfmc/Voting.sfpkg?sp=r&st=2023-09-20T16:47:38Z&se=2023-11-02T00:47:38Z&spr=https&sv=2022-11-02&sr=b&sig=QJagqSYBVTyY9wYZft4lY0CZs0wTFYF%2B%2B6x0%2BqdODFE%3D"
 }
 
 function Get-AppPackageV2
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+    return "https://sfmconeboxsa.blob.core.windows.net/winfab-rp-feature-sfmc/Voting.2.0.0.sfpkg?sp=r&st=2023-09-20T16:49:19Z&se=2023-11-02T00:49:19Z&spr=https&sv=2022-11-02&sr=b&sig=opvqPf%2FyQOzTGlg0cw8uoT2cNcZAHhK05%2FzmS2Eqaac%3D"
 }
 
 function Get-ServiceTypeName

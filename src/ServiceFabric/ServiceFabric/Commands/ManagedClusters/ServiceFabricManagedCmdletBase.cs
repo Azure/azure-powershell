@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -239,6 +240,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
                 return clone;
+            }
+        }
+
+        protected void AddToList(IDictionary<string, string> currentList, Hashtable listToAdd)
+        {
+            foreach (DictionaryEntry entry in listToAdd)
+            {
+                currentList.Add(new KeyValuePair<string, string>(entry.Key.ToString(), entry.Value.ToString()));
             }
         }
 
