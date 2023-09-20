@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                         SourceLogicalName = dataDirectoryPath.LogicalName,
                                         SourcePath = dataDirectoryPath.Path,
                                         TargetPath = GetTargetPath(dataDirectoryPath.Path, dataDirectoryPath.LogicalName, dataDirectoryPath.Type,
-                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths // RsvRef: do we need to call it in Crr model ?
+                                        ((AzureVmWorkloadSQLInstanceWorkloadItem)itemResponse.Properties).DataDirectoryPaths
                                         as List<SQLDataDirectory>, offset)
                                     });
                                 }
@@ -462,8 +462,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
-
-            // RsvRef : fetching recovery points from primary region 
+                        
             var rpResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,

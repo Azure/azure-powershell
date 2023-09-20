@@ -154,7 +154,15 @@ param(
     [System.Management.Automation.PSCredential]
     # Specifies the credentials to be used for onboarding ARC agent.
     # If not specified, new set of credentials will be generated.
-    ${ArcSpnCredential}
+    ${ArcSpnCredential},
+
+    [Parameter(Position=14)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Specifies the Path where the log files are to be saved.
+    # Has to be an absolute Path.
+    # Default value would be: C:\ProgramData\AzureStackHCI
+    ${LogsDirectory}
 )
 
 begin {

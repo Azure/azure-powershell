@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary> Create new test notifications </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.CmdletDeprecationWithVersion("11.0.0", "5.0.0", "2023/11/15", ReplacementCmdletName = "New-AzActionGroupNotification")]
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSTestNotificationDetailsResponse))]
     public class TestAzureRmActionGroupCommand : ManagementCmdletBase

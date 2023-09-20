@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Customizing'", "Customizing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Customizing");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Optimizing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Optimizing'", "Optimizing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Optimizing");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Validating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Validating'", "Validating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Validating");

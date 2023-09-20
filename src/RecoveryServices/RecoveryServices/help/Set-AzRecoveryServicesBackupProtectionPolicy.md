@@ -17,14 +17,16 @@ Modifies a Backup protection policy.
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [-MoveToArchiveTier <Boolean>] [-TieringMode <TieringMode>]
- [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-BackupSnapshotResourceGroup <String>]
+ [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FixPolicyParamSet
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-FixForInconsistentItems]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-BackupSnapshotResourceGroup <String>] [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,14 +57,14 @@ $RetPol.WeeklySchedule.DurationCountInWeeks = 365
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
 $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "TestPolicy" -VaultId $vault.ID
 $Pol.SnapshotRetentionInDays=5
-Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol -BackupSnapshotResourceGroup "snapshotResourceGroupPrefix" -BackupSnapshotResourceGroupSuffix "snapshotResourceGroupSuffix"
 ```
 
 Here is the high-level description of the steps to be followed for modifying a protection policy: 
 1.	Get a base SchedulePolicyObject and base RetentionPolicyObject. Store them in some variable.
 2.	Set the different parameters of schedule and retention policy object as per your requirement. For example- In the above sample script, we are trying to set a weekly protection policy. Hence, we changed the schedule frequency to "Weekly" and also updated the schedule run time. In the retention policy object, we updated the weekly retention duration and set the correct "weekly schedule enabled" flag. In case you want to set a Daily policy, set the "daily schedule enabled" flag to true and assign appropriate values for other object parameters.
 3.	Get the backup protection policy that you want to modify and store it in a variable. In the above example, we retrieved the backup policy with the name "TestPolicy" that we wanted to modify.
-4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object.
+4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object. We use BackupSnapshotResourceGroup, BackupSnapshotResourceGroupSuffix parameter to update the snapshot resource group name for instant RPs.
 
 ### Example 2: Modify Azure fileshare policy for multiple backups per day
 ```powershell
@@ -100,6 +102,36 @@ $pol = Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $
 This command is used to disable archive smart tiering for the policy $policy, we set -MoveToArchiveTier parameter to $false. Please note that disabling archive smart tiering might have cost implications.
 
 ## PARAMETERS
+
+### -BackupSnapshotResourceGroup
+Custom resource group name to store the instant recovery points of managed virtual machines. This is optional
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupSnapshotResourceGroupSuffix
+Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

@@ -41,3 +41,14 @@ ETag IdentityPrincipalId                  IdentityTenantId                     I
 
 This command gets a specific vault by given vault name.
 
+### Example 4: Get secure score of backup vault.
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName hiaga-rg -VaultName hiaga-vault
+$vault.SecureScore
+```
+
+```output
+Adequate
+```
+
+First command gets a specific vault by given vault name, then we fetch the secure score of the vault which shows Adequate.

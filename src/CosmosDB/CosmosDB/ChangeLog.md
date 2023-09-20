@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.12.0
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.11.3
