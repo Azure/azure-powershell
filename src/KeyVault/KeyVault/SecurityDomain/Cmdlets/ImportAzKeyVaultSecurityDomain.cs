@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
@@ -159,11 +160,11 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         {
             if (Keys.Length < 2)
             {
-                throw new ArgumentException(string.Format(Resources.RestoreSecurityDomainNotEnoughKey, Common.Constants.MinQuorum));
+                throw new AzPSArgumentException(string.Format(Resources.RestoreSecurityDomainNotEnoughKey, Common.Constants.MinQuorum), nameof(Keys));
             }
             if (Keys.Any(key => string.IsNullOrEmpty(key.PublicKey) || string.IsNullOrEmpty(key.PrivateKey)))
             {
-                throw new ArgumentException(Resources.RestoreSecurityDomainBadKey);
+                throw new AzPSArgumentException(Resources.RestoreSecurityDomainBadKey, nameof(Keys));
             }
         }
 
