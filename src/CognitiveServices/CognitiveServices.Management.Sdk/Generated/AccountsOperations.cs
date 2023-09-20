@@ -1084,7 +1084,6 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 }
             }
             RegenerateKeyParameters parameters = new RegenerateKeyParameters();
-
             parameters.KeyName = keyName;
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;

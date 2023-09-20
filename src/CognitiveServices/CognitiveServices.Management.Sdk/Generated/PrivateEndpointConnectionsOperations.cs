@@ -680,6 +680,12 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "privateEndpointConnectionName");
             }
 
+            PrivateEndpointConnection properties1 = new PrivateEndpointConnection();
+            if(properties != null||location != null)
+            {
+                properties1.Properties = properties;
+                properties1.Location = location;
+            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -691,7 +697,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 tracingParameters.Add("accountName", accountName);
                 tracingParameters.Add("privateEndpointConnectionName", privateEndpointConnectionName);
 
-                tracingParameters.Add("properties", properties);
+                tracingParameters.Add("properties1", properties1);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
@@ -746,9 +752,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
             // Serialize Request
             string _requestContent = null;
-            if(properties != null)
+            if(properties1 != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(properties, this.Client.SerializationSettings);
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(properties1, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
