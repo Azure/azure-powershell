@@ -17,8 +17,9 @@ New-AzSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String
  [-PartnerSubscriptionId <String>] [-PartnerResourceGroupName <String>] -PartnerServerName <String>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
  [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-PartnerServers <System.Collections.Generic.List`1[System.String]>] [-ReadOnlyEndpointTargetServer <String>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PartnerServerList <System.Collections.Generic.List`1[System.String]>]
+ [-ReadOnlyEndpointTargetServer <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,6 +163,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PartnerServerList
+The list of partner servers in the failover group (empty list for 0 servers).
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PartnerServerName
 The name of the secondary server of the Azure SQL Database Failover Group.
 
@@ -171,21 +187,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PartnerServers
-The list of partner servers in the failover group (empty list for 0 servers).
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

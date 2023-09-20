@@ -16,8 +16,9 @@ Modifies the configuration of an Azure SQL Database Failover Group.
 Set-AzSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupName] <String>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
  [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-PartnerServers <System.Collections.Generic.List`1[System.String]>] [-ReadOnlyEndpointTargetServer <String>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PartnerServerList <System.Collections.Generic.List`1[System.String]>]
+ [-ReadOnlyEndpointTargetServer <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +122,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerServers
+### -PartnerServerList
 The list of partner servers in the failover group (empty list for 0 servers).
 
 ```yaml
