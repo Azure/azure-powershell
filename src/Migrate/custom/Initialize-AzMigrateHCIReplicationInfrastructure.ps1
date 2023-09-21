@@ -834,26 +834,29 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             -ResourceGroupName $ResourceGroupName `
             -MigrateProjectName $ProjectName `
             -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
-
-        # Check whether AMH record aligns with chosen Cache Storage Account
-        if (![string]::IsNullOrEmpty($amhStoredStorageAccountId) -and $amhStoredStorageAccountId -ne $cacheStorageAccount.Id) {
-            throw "Unexpected error occurred in linking Cache Storage Account with Id '$($cacheStorageAccount.Id)'. Please re-run this command or contact support if help needed."
-        }
-        elseif ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId") -and
-                $amhStoredStorageAccountId -ne $cacheStorageAccount.Id) {
-                # Update AMH record with chosen Cache Storage Account
+            -SubscriptionId $SubscriptionId
+        if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+            $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
+            if ([string]::IsNullOrEmpty($amhStoredStorageAccountId)) {
+                # Remove "replicationStorageAccountId" key
                 $amhSolution.DetailExtendedDetail.Remove("replicationStorageAccountId")  | Out-Null
-                $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $cacheStorageAccount.Id)
-                Az.Migrate.Internal\Set-AzMigrateSolution `
-                    -MigrateProjectName $ProjectName `
-                    -Name $amhSolution.Name `
-                    -ResourceGroupName $ResourceGroupName `
-                    -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+            }
+            elseif ($amhStoredStorageAccountId -ne $cacheStorageAccount.Id) {
+                # Record of rsa mismatch
+                throw "Unexpected error occurred in linking Cache Storage Account with Id '$($cacheStorageAccount.Id)'. Please re-run this command or contact support if help needed."
+            }
         }
+
+        # Update AMH record with chosen Cache Storage Account
+        if (!$amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
+            $amhSolution.DetailExtendedDetail.Add("replicationStorageAccountId", $cacheStorageAccount.Id)
+            Az.Migrate.Internal\Set-AzMigrateSolution `
+                -MigrateProjectName $ProjectName `
+                -Name $amhSolution.Name `
+                -ResourceGroupName $ResourceGroupName `
+                -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties | Out-Null
+        }
+
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'."
 
         # Put replication extension
