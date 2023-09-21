@@ -18,7 +18,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
  [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-InternetIngressIps <PSVirtualApplianceInternetIngressIpsProperties[]>]
+ [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
  [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-InternetIngressIps <PSVirtualApplianceInternetIngressIpsProperties[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties[]>] [-InternetIngressIp <PSVirtualApplianceInternetIngressIpsProperties[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,9 +73,9 @@ $pip2 = Get-AzPublicIpAddress -Name publicip2name
 
 $id2 = $pip2.Id
 
-$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpIds $id1, $id2 -HasPublicIp $true
+$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId $id1, $id2
 
-$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -InternetIngressIps $IngressIps
+$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -InternetIngressIp $IngressIps
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg with 2 Internet Ingress Public IPs attached to it.
@@ -204,7 +204,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InternetIngressIps
+### -InternetIngressIp
 The Internet Ingress IPs to be attached to the Virtual Appliance.
 
 ```yaml

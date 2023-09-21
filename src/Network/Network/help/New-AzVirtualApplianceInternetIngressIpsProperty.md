@@ -13,7 +13,7 @@ Define a Network Virtual Appliance Internet Ingress IPs Property for the resourc
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpIds <String> 
+New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId <String> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,18 +24,18 @@ The New-AzVirtualApplianceInternetIngressIpsProperty command defines Public IPs 
 
 ### Example 1
 ```powershell
-$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpIds "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/publicIPAddresses/{publicipname}"
+$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/publicIPAddresses/{publicipname}"
 ```
 
 Create an Internet Ingress Property object to be used with New-AzNetworkVirtualAppliance command.
 
 ### Example 2
 ```powershell
-$pip1 = Get-AzPublicIpAddress -Name $publicip1name
+$pip1 = Get-AzPublicIpAddress -Name "publicip1name"
 $id1 = $pip1.Id
-$pip2 = Get-AzPublicIpAddress -Name $publicip2name
+$pip2 = Get-AzPublicIpAddress -Name "publicip2name"
 $id2 = $pip2.Id
-$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpIds $id1, $id2
+$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId $id1, $id2
 ```
 
 Creates a list of Internet Ingress Property object which has 2 Public IPs which can be attached to the Network Virtual Appliance resource.
@@ -57,7 +57,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InternetIngressPublicIpIds
+### -InternetIngressPublicIpId
 The IDs of the Public IPs which can be given as comma separated input.
 
 ```yaml

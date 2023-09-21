@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The Public IPs for Internet Ingress.")]
         [ValidateNotNullOrEmpty]
-        public string[] InternetIngressPublicIpIds { get; set; }
+        public string[] InternetIngressPublicIpId { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            int elements = InternetIngressPublicIpIds.Length;
+            int elements = InternetIngressPublicIpId.Length;
             var InternetIngressIpsList = new List<PSVirtualApplianceInternetIngressIpsProperties>();
 
             for (int i = 0; i < elements; i++)
             {
                 var currentelement = new PSVirtualApplianceInternetIngressIpsProperties();
-                currentelement.internetId = InternetIngressPublicIpIds[i];
+                currentelement.internetId = InternetIngressPublicIpId[i];
                 InternetIngressIpsList.Add(currentelement);
             }
 
