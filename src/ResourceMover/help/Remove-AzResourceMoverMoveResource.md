@@ -10,6 +10,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Deletes a Move Resource from the move collection.
 
+**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+
 ## SYNTAX
 
 ```
@@ -21,9 +23,11 @@ Remove-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -
 ## DESCRIPTION
 Deletes a Move Resource from the move collection.
 
+**The 'Remove-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+
 ## EXAMPLES
 
-### Example 1: Remove one Move Rresource from the Move Collection.
+### Example 1: Remove one Move Resource from the Move Collection.
 ```powershell
 Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
 ```
@@ -33,8 +37,7 @@ AdditionalInfo :
 Code           : 
 Detail         : 
 EndTime        : 2/10/2021 1:08:49 PM
-Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralu
-                 s-demoRMS/operations/bee69758-c7cb-4160-b3e0-8e4b69ec3731
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/bee69758-c7cb-4160-b3e0-8e4b69ec3731
 Message        : 
 Name           : bee69758-c7cb-4160-b3e0-8e4b69ec3731
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
@@ -43,7 +46,7 @@ Status         : Succeeded
 
 ```
 
-Remove one Move Rresource from the Move Collection.
+Remove one Move Resource from the Move Collection.
 
 ## PARAMETERS
 
@@ -63,7 +66,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -205,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
 
 ## NOTES
 
