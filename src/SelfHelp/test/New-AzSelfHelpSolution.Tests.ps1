@@ -16,6 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSelfHelpSolution'))
 
 Describe 'New-AzSelfHelpSolution' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $resourceName = RandomString -allChars $false -len 10
+            $apolloToInvoke = [ordered]@{
+                "name"="SolutionId"
+                "value" = "keyvault-lostdeletedkeys-apollo-solution"
+            }
+            New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriteria $apolloToInvoke -Parameters $parameters
+        } | Should -Not -Throw
     }
 }

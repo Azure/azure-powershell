@@ -16,18 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpCheckNameAva
 
 Describe 'Invoke-AzSelfHelpCheckNameAvailability' {
     It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Post' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $resourceName = RandomString -allChars $true -len 10
+        $scope = "/subscriptions/$($env.SubscriptionId)"
+        $type = "microsoft.help/help"
+        $result = Invoke-AzSelfHelpDiagnosticNameAvailability -Name $resourceName -Type $type -Scope $scope
+        $result.NameAvailable | Should -Be $true
     }
 }

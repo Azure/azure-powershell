@@ -16,10 +16,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzSelfHelpTroubleshooter
 
 Describe 'Stop-AzSelfHelpTroubleshooter' {
     It 'End' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'EndViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {   $resourceName = New-Guid
+            $parameters = [ordered]@{
+                "ResourceUri"= "/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6"
+            }
+            New-AzSelfHelpTroubleshooter -Scope $env.scope -SolutionId "e104dbdf-9e14-4c9f-bc78-21ac90382231" -Name $resourceName -Parameter $parameters
+            $response = Stop-AzSelfHelpTroubleshooter -Scope $env.scope -Name $resourceName
+        } | Should -Not -Throw
     }
 }
