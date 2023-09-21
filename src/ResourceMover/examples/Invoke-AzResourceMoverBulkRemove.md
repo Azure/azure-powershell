@@ -1,9 +1,7 @@
 ### Example 1: Validate the dependecies before remove of the Move Resources from Move Collection
 ```powershell
-Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId" -ValidateOnly
-```
+PS C:\> Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId" -ValidateOnly
 
-```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -23,9 +21,7 @@ Validate the dependecies before remove of the move resources from Move Collectio
 ### Example 2: Remove the Move Resource from Move Collection using "MoveResource Name" as input
 ```powershell
 Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM') -MoveResourceInputType "MoveResourceId"
-```
 
-```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -44,9 +40,7 @@ Remove the Move Resource from Move Collection using "MoveResource Name" as input
 ### Example 3: Remove the Move Resource from Move Collection using "SourceARMID" as input
 ```powershell
 Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
-```
 
-```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
