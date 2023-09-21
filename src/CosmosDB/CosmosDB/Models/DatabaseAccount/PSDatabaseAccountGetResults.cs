@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             CreateMode = databaseAccountGetResults.CreateMode;
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
+            MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
         }
 
         //
@@ -234,5 +235,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
         public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
+        public string MinimalTlsVersion { get; set; }
     }
 }
