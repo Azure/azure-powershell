@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 BreakFileLocksRequest _breakFileLockBody = null;
                 if (string.IsNullOrWhiteSpace(ClientIp))
                 {
-                    _breakFileLockBody = new BreakFileLocksRequest() { ClientIp = ClientIp, ConfirmRunningDisruptiveOperation = true };
+                    _breakFileLockBody = new BreakFileLocksRequest() { ClientIP = ClientIp, ConfirmRunningDisruptiveOperation = true };
                 }                
                 AzureNetAppFilesManagementClient.Volumes.BreakFileLocks(ResourceGroupName, AccountName, PoolName, Name, body: _breakFileLockBody);
                 success = true;
