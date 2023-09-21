@@ -63,6 +63,9 @@ nested-object-to-string: true
 enable-parent-pipeline-input-for-list: false
 auto-switch-view: false
 
+use-extension: 
+  "@autorest/powershell": "4.x"
+
 directive:
   - where:
       verb: Set
@@ -86,6 +89,9 @@ directive:
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
+  - where: 
+      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
+    remove: true
 
   - where:
       verb: Set
@@ -93,36 +99,80 @@ directive:
 
   # rename subject
   - where:
-      subject: ^Binding$
-    remove: true
-
-  # rename subject
-  - where:
-      subject: ^ConfigServerPatch$
+      subject: ConfigServerPatch
     set:
       subject: ConfigServer
 
   - where:
-      subject: ^MonitoringSettingPatch$
+      subject: MonitoringSettingPatch
     set:
       subject: MonitoringSetting
+
   - where:
-      subject: ^AppDomain$
+      subject: ServiceRegistry
     set:
+      subject: Registry
+
+  - where:
+      subject: ServiceTestKey
+    set:
+      subject: TestKey
+
+  - where:
+      subject: AppDomain
+    set:
+      subject: AppCustomDomain
+
+  - where:
       subject: CustomDomain
+    set:
+      subject: AppCustomDomain
+
+  - where:
+      subject: ^ServiceTestEndpoint$
+    set:
+      subject: TestEndpoint
+
+  - where:
+      subject: Deployment
+    set:
+      subject: AppDeployment
+
+  - where:
+      subject: Binding
+    set:
+      subject: AppBinding
+
+  - where:
+      subject: DeploymentLogFileUrl
+    set:
+      subject: AppDeploymentLogFileUrl
+
+  - where:
+      subject: DeploymentRemoteDebuggingConfig
+    set:
+      subject: AppDeploymentRemoteDebuggingConfig
+
+  - where:
+      subject: DeploymentJfr
+    set:
+      subject: AppDeploymentJfr
+
+  - where:
+      subject: ServiceNameAvailability
+    set:
+      subject: NameAvailability
 
   - where:
       verb: Test
-      subject: CustomDomain
+      subject: AppCustomDomain
     set:
-      subject: CustomDomainNameAvailability
+      subject: AppCustomDomainNameAvailability
 
 # remove cmdlet
   - where:
       subject: ^DeploymentHeapDump$
     set:
-      subject: AppDeploymentHeapDump
-  - where:
       subject: AppDeploymentHeapDump
     remove: true
 
@@ -130,14 +180,7 @@ directive:
       subject: ^DeploymentThreadDump$
     set:
       subject: AppDeploymentThreadDump
-  - where:
-      subject: AppDeploymentThreadDump
     remove: true
-  - where:
-      verb: Update
-      subject: BuildpackBinding
-    remove: true
-
   # ReName parameter
   - where: 
       subject: ^Service$
@@ -317,7 +360,7 @@ directive:
       default:
         script: "'default'"
 
-  # Returns a random value of RelativePath after each execution of Get-AzSpringResourceUploadUrl
+  # Returns a random value of RelativePath after each execution of Get-AzSpringAppsResourceUploadUrl
   - where:
       verb: Get
       subject: ^ResourceUploadUrl$
@@ -468,33 +511,35 @@ directive:
 
   # Modifications were made to the command
   - model-cmdlet:
-    - model-name: DeploymentSettingsEnvironmentVariables
-      cmdlet-name: New-AzSpringDeploymentSettingsEnvVariableObject
-    - model-name: DeploymentSettingsAddonConfigs
-      cmdlet-name: New-AzSpringDeploymentSettingAddonConfigObject
     - model-name: UserSourceInfo
-    - model-name: ActiveDeploymentCollection
     - model-name: GatewayApiRoute
     - model-name: CustomPersistentDiskResource
-    - model-name: BuildpacksGroupProperties
     - model-name: ConfigurationServiceGitRepository
     - model-name: GitPatternRepository
-    - model-name: LoadedCertificate
+    - model-name: DeploymentSettingsEnvironmentVariables
+      cmdlet-name: New-AzSpringAppDeploymentSettingEnvVariableObject
+    - model-name: DeploymentSettingsAddonConfigs
+      cmdlet-name: New-AzSpringAppDeploymentSettingAddonConfigObject
+    - model-name: ActiveDeploymentCollection
+      cmdlet-name: New-AzSpringAppActiveDeploymentCollectionObject
+    - model-name: BuildpacksGroupProperties
       cmdlet-name: New-AzSpringBuildpacksGroupObject
+    - model-name: LoadedCertificate
+      cmdlet-name: New-AzSpringAppLoadedCertificateObject
     - model-name: BuildpackProperties
       cmdlet-name: New-AzSpringBuildpackObject
     - model-name: DeploymentSettings
-      cmdlet-name: New-AzSpringDeploymentSettingObject
+      cmdlet-name: New-AzSpringAppDeploymentSettingObject
     - model-name: KeyVaultCertificateProperties
       cmdlet-name: New-AzSpringKeyVaultCertificateObject
     - model-name: ContentCertificateProperties
       cmdlet-name: New-AzSpringContentCertificateObject
     - model-name: JarUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringDeploymentJarUploadedObject
+      cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
     - model-name: NetCoreZipUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringDeploymentNetCoreZipUploadedObject
+      cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
     - model-name: SourceUploadedUserSourceInfo
-      cmdlet-name: New-AzSpringDeploymentSourceUploadedObject
+      cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
     - model-name: BuildResultUserSourceInfo
-      cmdlet-name: New-AzSpringDeploymentBuildResultObject
+      cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
 ```

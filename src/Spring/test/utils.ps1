@@ -81,47 +81,46 @@ function setupEnv() {
     # Create spring server for test.
     Write-Host -ForegroundColor Green "Start create app platform for test..."
     
-    New-AzSpring -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 -Location $env.location
-    New-AzSpring -ResourceGroupName $env.resourceGroup -Name $env.enterpriseSpringName01 -Location $env.location -SkuTier "Enterprise" -SkuName "E0"
+    New-AzSpringService -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 -Location $env.location
+    New-AzSpringService -ResourceGroupName $env.resourceGroup -Name $env.enterpriseSpringName01 -Location $env.location -SkuTier "Enterprise" -SkuName "E0"
     $jarSource = New-AzSpringAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
     
     New-AzSpringApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appGateway -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
-    -Source $jarSource -EnvironmentVariable @{"env" = "test"}
+    -Source $jarSource
     
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
-    -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
+    -Source $jarSource
 
     New-AzSpringApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
-    -Source $jarSource -EnvironmentVariable @{"env" = "test"}
+    -Source $jarSource
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
-    -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
+    -Source $jarSource
 
     New-AzSpringApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appGateway -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     $buildSource = New-AzSpringAppDeploymentBuildResultObject
     
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
-    -Source $buildSource -EnvironmentVariable @{"env" = "test"}
+    -Source $buildSource
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
-    -Source $buildSource -EnvironmentVariable @{"env" = "prod"}
+    -Source $buildSource
 
     New-AzSpringApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
-    -Source $buildSource -EnvironmentVariable @{"env" = "test"}
+    -Source $buildSource
     New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
-    -Source $buildSource -EnvironmentVariable @{"env" = "prod"}
+    -Source $buildSource
     
     Write-Host -ForegroundColor Green "App platform created successfully."
    
-    <#
     # cmdlet disable service binding and identity.
     # deploy key vault
     Write-Host -ForegroundColor Green "Start deploying key vault for test..."
@@ -165,7 +164,6 @@ function setupEnv() {
     $env.add("cosmosDbName40Key", $cosmosdbKey01.Item("PrimaryMasterKey"))
     $env.add("cosmosDbName41Key", $cosmosdbKey02.Item("PrimaryMasterKey"))
     Write-Host -ForegroundColor Green "Cosmos db created successfully."
-    #>
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -176,6 +174,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

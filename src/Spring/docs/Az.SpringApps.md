@@ -17,13 +17,13 @@ Deploy the build file to an existing deployment.
 ### [Disable-AzSpringDeploymentRemoteDebugging](Disable-AzSpringDeploymentRemoteDebugging.md)
 Disable remote debugging.
 
-### [Disable-AzSpringServiceTestEndpoint](Disable-AzSpringServiceTestEndpoint.md)
+### [Disable-AzSpringTestEndpoint](Disable-AzSpringTestEndpoint.md)
 Disable test endpoint functionality for a Service.
 
 ### [Enable-AzSpringDeploymentRemoteDebugging](Enable-AzSpringDeploymentRemoteDebugging.md)
 Enable remote debugging.
 
-### [Enable-AzSpringServiceTestEndpoint](Enable-AzSpringServiceTestEndpoint.md)
+### [Enable-AzSpringTestEndpoint](Enable-AzSpringTestEndpoint.md)
 Enable test endpoint functionality for a Service.
 
 ### [Get-AzSpringApiPortal](Get-AzSpringApiPortal.md)
@@ -34,6 +34,21 @@ Get the API portal custom domain.
 
 ### [Get-AzSpringApp](Get-AzSpringApp.md)
 Get an App and its properties.
+
+### [Get-AzSpringAppBinding](Get-AzSpringAppBinding.md)
+Get a Binding and its properties.
+
+### [Get-AzSpringAppCustomDomain](Get-AzSpringAppCustomDomain.md)
+Get the custom domain of one lifecycle application.
+
+### [Get-AzSpringAppDeployment](Get-AzSpringAppDeployment.md)
+Get a Deployment and its properties.
+
+### [Get-AzSpringAppDeploymentLogFileUrl](Get-AzSpringAppDeploymentLogFileUrl.md)
+Get deployment log file URL
+
+### [Get-AzSpringAppDeploymentRemoteDebuggingConfig](Get-AzSpringAppDeploymentRemoteDebuggingConfig.md)
+Get remote debugging config.
 
 ### [Get-AzSpringAppResourceUploadUrl](Get-AzSpringAppResourceUploadUrl.md)
 Get an resource upload URL for an App, which may be artifacts or source archive.
@@ -68,18 +83,6 @@ Get the config server and its properties.
 ### [Get-AzSpringConfigurationService](Get-AzSpringConfigurationService.md)
 Get the Application Configuration Service and its properties.
 
-### [Get-AzSpringCustomDomain](Get-AzSpringCustomDomain.md)
-Get the custom domain of one lifecycle application.
-
-### [Get-AzSpringDeployment](Get-AzSpringDeployment.md)
-Get a Deployment and its properties.
-
-### [Get-AzSpringDeploymentLogFileUrl](Get-AzSpringDeploymentLogFileUrl.md)
-Get deployment log file URL
-
-### [Get-AzSpringDeploymentRemoteDebuggingConfig](Get-AzSpringDeploymentRemoteDebuggingConfig.md)
-Get remote debugging config.
-
 ### [Get-AzSpringGateway](Get-AzSpringGateway.md)
 Get the Spring Cloud Gateway and its properties.
 
@@ -92,17 +95,14 @@ Get the Spring Cloud Gateway route configs.
 ### [Get-AzSpringMonitoringSetting](Get-AzSpringMonitoringSetting.md)
 Get the Monitoring Setting and its properties.
 
+### [Get-AzSpringRegistry](Get-AzSpringRegistry.md)
+Get the Service Registry and its properties.
+
 ### [Get-AzSpringRuntimeVersion](Get-AzSpringRuntimeVersion.md)
 Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
 
 ### [Get-AzSpringService](Get-AzSpringService.md)
 Get a Service and its properties.
-
-### [Get-AzSpringServiceRegistry](Get-AzSpringServiceRegistry.md)
-Get the Service Registry and its properties.
-
-### [Get-AzSpringServiceTestKey](Get-AzSpringServiceTestKey.md)
-List test keys for a Service.
 
 ### [Get-AzSpringSku](Get-AzSpringSku.md)
 Lists all of the available skus of the Microsoft.AppPlatform provider.
@@ -110,8 +110,8 @@ Lists all of the available skus of the Microsoft.AppPlatform provider.
 ### [Get-AzSpringStorage](Get-AzSpringStorage.md)
 Get the storage resource.
 
-### [New-AzSpringActiveDeploymentCollectionObject](New-AzSpringActiveDeploymentCollectionObject.md)
-Create an in-memory object for ActiveDeploymentCollection.
+### [Get-AzSpringTestKey](Get-AzSpringTestKey.md)
+List test keys for a Service.
 
 ### [New-AzSpringApiPortal](New-AzSpringApiPortal.md)
 Create the default API portal or update the existing API portal.
@@ -122,6 +122,42 @@ Create the API portal custom domain.
 ### [New-AzSpringApp](New-AzSpringApp.md)
 Create a new App or update an exiting App.
 
+### [New-AzSpringAppActiveDeploymentCollectionObject](New-AzSpringAppActiveDeploymentCollectionObject.md)
+Create an in-memory object for ActiveDeploymentCollection.
+
+### [New-AzSpringAppBinding](New-AzSpringAppBinding.md)
+Create a new Binding or update an exiting Binding.
+
+### [New-AzSpringAppCustomDomain](New-AzSpringAppCustomDomain.md)
+Create custom domain of one lifecycle application.
+
+### [New-AzSpringAppDeployment](New-AzSpringAppDeployment.md)
+Create a new Deployment or update an exiting Deployment.
+
+### [New-AzSpringAppDeploymentBuildResultObject](New-AzSpringAppDeploymentBuildResultObject.md)
+Create an in-memory object for BuildResultUserSourceInfo.
+
+### [New-AzSpringAppDeploymentJarUploadedObject](New-AzSpringAppDeploymentJarUploadedObject.md)
+Create an in-memory object for JarUploadedUserSourceInfo.
+
+### [New-AzSpringAppDeploymentNetCoreZipUploadedObject](New-AzSpringAppDeploymentNetCoreZipUploadedObject.md)
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
+
+### [New-AzSpringAppDeploymentSettingAddonConfigObject](New-AzSpringAppDeploymentSettingAddonConfigObject.md)
+Create an in-memory object for DeploymentSettingsAddonConfigs.
+
+### [New-AzSpringAppDeploymentSettingEnvVariableObject](New-AzSpringAppDeploymentSettingEnvVariableObject.md)
+Create an in-memory object for DeploymentSettingsEnvironmentVariables.
+
+### [New-AzSpringAppDeploymentSettingObject](New-AzSpringAppDeploymentSettingObject.md)
+Create an in-memory object for DeploymentSettings.
+
+### [New-AzSpringAppDeploymentSourceUploadedObject](New-AzSpringAppDeploymentSourceUploadedObject.md)
+Create an in-memory object for SourceUploadedUserSourceInfo.
+
+### [New-AzSpringAppLoadedCertificateObject](New-AzSpringAppLoadedCertificateObject.md)
+Create an in-memory object for LoadedCertificate.
+
 ### [New-AzSpringBuildpackBinding](New-AzSpringBuildpackBinding.md)
 Create a buildpack binding.
 
@@ -129,9 +165,6 @@ Create a buildpack binding.
 Create an in-memory object for BuildpackProperties.
 
 ### [New-AzSpringBuildpacksGroupObject](New-AzSpringBuildpacksGroupObject.md)
-Create an in-memory object for LoadedCertificate.
-
-### [New-AzSpringBuildpacksGroupPropertiesObject](New-AzSpringBuildpacksGroupPropertiesObject.md)
 Create an in-memory object for BuildpacksGroupProperties.
 
 ### [New-AzSpringBuildServiceAgentPool](New-AzSpringBuildServiceAgentPool.md)
@@ -152,35 +185,8 @@ Create an in-memory object for ConfigurationServiceGitRepository.
 ### [New-AzSpringContentCertificateObject](New-AzSpringContentCertificateObject.md)
 Create an in-memory object for ContentCertificateProperties.
 
-### [New-AzSpringCustomDomain](New-AzSpringCustomDomain.md)
-Create custom domain of one lifecycle application.
-
 ### [New-AzSpringCustomPersistentDiskResourceObject](New-AzSpringCustomPersistentDiskResourceObject.md)
 Create an in-memory object for CustomPersistentDiskResource.
-
-### [New-AzSpringDeployment](New-AzSpringDeployment.md)
-Create a new Deployment or update an exiting Deployment.
-
-### [New-AzSpringDeploymentBuildResultObject](New-AzSpringDeploymentBuildResultObject.md)
-Create an in-memory object for BuildResultUserSourceInfo.
-
-### [New-AzSpringDeploymentJarUploadedObject](New-AzSpringDeploymentJarUploadedObject.md)
-Create an in-memory object for JarUploadedUserSourceInfo.
-
-### [New-AzSpringDeploymentNetCoreZipUploadedObject](New-AzSpringDeploymentNetCoreZipUploadedObject.md)
-Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
-
-### [New-AzSpringDeploymentSettingAddonConfigObject](New-AzSpringDeploymentSettingAddonConfigObject.md)
-Create an in-memory object for DeploymentSettingsAddonConfigs.
-
-### [New-AzSpringDeploymentSettingObject](New-AzSpringDeploymentSettingObject.md)
-Create an in-memory object for DeploymentSettings.
-
-### [New-AzSpringDeploymentSettingsEnvVariableObject](New-AzSpringDeploymentSettingsEnvVariableObject.md)
-Create an in-memory object for DeploymentSettingsEnvironmentVariables.
-
-### [New-AzSpringDeploymentSourceUploadedObject](New-AzSpringDeploymentSourceUploadedObject.md)
-Create an in-memory object for SourceUploadedUserSourceInfo.
 
 ### [New-AzSpringGateway](New-AzSpringGateway.md)
 Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
@@ -200,17 +206,17 @@ Create an in-memory object for GitPatternRepository.
 ### [New-AzSpringKeyVaultCertificateObject](New-AzSpringKeyVaultCertificateObject.md)
 Create an in-memory object for KeyVaultCertificateProperties.
 
+### [New-AzSpringRegistry](New-AzSpringRegistry.md)
+Create the default Service Registry or update the existing Service Registry.
+
 ### [New-AzSpringService](New-AzSpringService.md)
 Create a new Service or update an exiting Service.
 
-### [New-AzSpringServiceRegistry](New-AzSpringServiceRegistry.md)
-Create the default Service Registry or update the existing Service Registry.
-
-### [New-AzSpringServiceTestKey](New-AzSpringServiceTestKey.md)
-Regenerate a test key for a Service.
-
 ### [New-AzSpringStorage](New-AzSpringStorage.md)
 Create storage resource.
+
+### [New-AzSpringTestKey](New-AzSpringTestKey.md)
+Regenerate a test key for a Service.
 
 ### [New-AzSpringUserSourceInfoObject](New-AzSpringUserSourceInfoObject.md)
 Create an in-memory object for UserSourceInfo.
@@ -224,6 +230,15 @@ Delete the API portal custom domain.
 ### [Remove-AzSpringApp](Remove-AzSpringApp.md)
 Operation to delete an App.
 
+### [Remove-AzSpringAppBinding](Remove-AzSpringAppBinding.md)
+Operation to delete a Binding.
+
+### [Remove-AzSpringAppCustomDomain](Remove-AzSpringAppCustomDomain.md)
+Delete the custom domain of one lifecycle application.
+
+### [Remove-AzSpringAppDeployment](Remove-AzSpringAppDeployment.md)
+Operation to delete a Deployment.
+
 ### [Remove-AzSpringBuildpackBinding](Remove-AzSpringBuildpackBinding.md)
 Operation to delete a Buildpack Binding
 
@@ -236,12 +251,6 @@ Delete the certificate resource.
 ### [Remove-AzSpringConfigurationService](Remove-AzSpringConfigurationService.md)
 Disable the default Application Configuration Service.
 
-### [Remove-AzSpringCustomDomain](Remove-AzSpringCustomDomain.md)
-Delete the custom domain of one lifecycle application.
-
-### [Remove-AzSpringDeployment](Remove-AzSpringDeployment.md)
-Operation to delete a Deployment.
-
 ### [Remove-AzSpringGateway](Remove-AzSpringGateway.md)
 Disable the default Spring Cloud Gateway.
 
@@ -251,28 +260,28 @@ Delete the Spring Cloud Gateway custom domain.
 ### [Remove-AzSpringGatewayRouteConfig](Remove-AzSpringGatewayRouteConfig.md)
 Delete the Spring Cloud Gateway route config.
 
+### [Remove-AzSpringRegistry](Remove-AzSpringRegistry.md)
+Disable the default Service Registry.
+
 ### [Remove-AzSpringService](Remove-AzSpringService.md)
 Operation to delete a Service.
-
-### [Remove-AzSpringServiceRegistry](Remove-AzSpringServiceRegistry.md)
-Disable the default Service Registry.
 
 ### [Remove-AzSpringStorage](Remove-AzSpringStorage.md)
 Delete the storage resource.
 
-### [Restart-AzSpringDeployment](Restart-AzSpringDeployment.md)
+### [Restart-AzSpringAppDeployment](Restart-AzSpringAppDeployment.md)
 Restart the deployment.
 
-### [Start-AzSpringDeployment](Start-AzSpringDeployment.md)
+### [Start-AzSpringAppDeployment](Start-AzSpringAppDeployment.md)
 Start the deployment.
 
-### [Start-AzSpringDeploymentJfr](Start-AzSpringDeploymentJfr.md)
+### [Start-AzSpringAppDeploymentJfr](Start-AzSpringAppDeploymentJfr.md)
 Start JFR
 
 ### [Start-AzSpringService](Start-AzSpringService.md)
 Start a Service.
 
-### [Stop-AzSpringDeployment](Stop-AzSpringDeployment.md)
+### [Stop-AzSpringAppDeployment](Stop-AzSpringAppDeployment.md)
 Stop the deployment.
 
 ### [Stop-AzSpringService](Stop-AzSpringService.md)
@@ -281,19 +290,19 @@ Stop a Service.
 ### [Test-AzSpringApiPortalDomain](Test-AzSpringApiPortalDomain.md)
 Check the domains are valid as well as not in use.
 
+### [Test-AzSpringAppCustomDomainNameAvailability](Test-AzSpringAppCustomDomainNameAvailability.md)
+Check the resource name is valid as well as not in use.
+
 ### [Test-AzSpringConfigServer](Test-AzSpringConfigServer.md)
 Check if the config server settings are valid.
 
 ### [Test-AzSpringConfigurationService](Test-AzSpringConfigurationService.md)
 Check if the Application Configuration Service settings are valid.
 
-### [Test-AzSpringCustomDomainNameAvailability](Test-AzSpringCustomDomainNameAvailability.md)
-Check the resource name is valid as well as not in use.
-
 ### [Test-AzSpringGatewayDomain](Test-AzSpringGatewayDomain.md)
 Check the domains are valid as well as not in use.
 
-### [Test-AzSpringServiceNameAvailability](Test-AzSpringServiceNameAvailability.md)
+### [Test-AzSpringNameAvailability](Test-AzSpringNameAvailability.md)
 Checks that the resource name is valid and is not already in use.
 
 ### [Update-AzSpringApiPortal](Update-AzSpringApiPortal.md)
@@ -307,6 +316,18 @@ Operation to update an exiting App.
 
 ### [Update-AzSpringAppActiveDeployment](Update-AzSpringAppActiveDeployment.md)
 Set existing Deployment under the app as active
+
+### [Update-AzSpringAppBinding](Update-AzSpringAppBinding.md)
+Operation to update an exiting Binding.
+
+### [Update-AzSpringAppCustomDomain](Update-AzSpringAppCustomDomain.md)
+Update custom domain of one lifecycle application.
+
+### [Update-AzSpringAppDeployment](Update-AzSpringAppDeployment.md)
+Operation to update an exiting Deployment.
+
+### [Update-AzSpringBuildpackBinding](Update-AzSpringBuildpackBinding.md)
+Create a buildpack binding.
 
 ### [Update-AzSpringBuildService](Update-AzSpringBuildService.md)
 Create a KPack build.
@@ -325,12 +346,6 @@ Update the config server.
 
 ### [Update-AzSpringConfigurationService](Update-AzSpringConfigurationService.md)
 Create the default Application Configuration Service or update the existing Application Configuration Service.
-
-### [Update-AzSpringCustomDomain](Update-AzSpringCustomDomain.md)
-Update custom domain of one lifecycle application.
-
-### [Update-AzSpringDeployment](Update-AzSpringDeployment.md)
-Operation to update an exiting Deployment.
 
 ### [Update-AzSpringGateway](Update-AzSpringGateway.md)
 Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.

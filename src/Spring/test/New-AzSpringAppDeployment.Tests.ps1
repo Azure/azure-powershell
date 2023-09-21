@@ -17,11 +17,11 @@ Describe 'New-AzSpringAppDeployment' {
     It 'CreateExpanded' {
         $jarSource = New-AzSpringAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
         $deploy = New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
-        -Source $jarSource -EnvironmentVariable @{"env" = "test"}
+        -Source $jarSource
         $deploy.ProvisioningState | Should -Be "Succeeded"
 
         $deploy = New-AzSpringAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.springName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
-        -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
+        -Source $jarSource
         $deploy.ProvisioningState | Should -Be "Succeeded"
     }
 }

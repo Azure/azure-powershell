@@ -21,7 +21,7 @@ Describe 'Enable-AzSpringTestEndpoint' {
 
     It 'EnableViaIdentity' -skip { 
         {
-            $spring = Get-AzSpring -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01
+            $spring = Get-AzSpringService -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01
             Enable-AzSpringTestEndpoint -InputObject $spring
         } | Should -Not -Throw
     } 

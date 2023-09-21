@@ -1,23 +1,24 @@
 ---
 external help file:
 Module Name: Az.SpringApps
-online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringbuildpacksgroupobject
+online version: https://learn.microsoft.com/powershell/module/Az.SpringApps/new-azspringappdeploymentjaruploadedobject
 schema: 2.0.0
 ---
 
-# New-AzSpringBuildpacksGroupObject
+# New-AzSpringAppDeploymentJarUploadedObject
 
 ## SYNOPSIS
-Create an in-memory object for BuildpacksGroupProperties.
+Create an in-memory object for JarUploadedUserSourceInfo.
 
 ## SYNTAX
 
 ```
-New-AzSpringBuildpacksGroupObject [-Buildpack <IBuildpackProperties[]>] [-Name <String>] [<CommonParameters>]
+New-AzSpringAppDeploymentJarUploadedObject [-JvmOption <String>] [-RelativePath <String>]
+ [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for BuildpacksGroupProperties.
+Create an in-memory object for JarUploadedUserSourceInfo.
 
 ## EXAMPLES
 
@@ -45,12 +46,11 @@ Create an in-memory object for BuildpacksGroupProperties.
 
 ## PARAMETERS
 
-### -Buildpack
-Buildpacks in the buildpack group.
-To construct, see NOTES section for BUILDPACK properties and create a hash table.
+### -JvmOption
+JVM parameter.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.IBuildpackProperties[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,8 +61,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Buildpack group name.
+### -RelativePath
+Relative path of the storage which stores the source.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuntimeVersion
+Runtime version of the Jar file.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version of the source.
 
 ```yaml
 Type: System.String
@@ -83,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.BuildpacksGroupProperties
+### Microsoft.Azure.PowerShell.Cmdlets.SpringApps.Models.JarUploadedUserSourceInfo
 
 ## NOTES
 
