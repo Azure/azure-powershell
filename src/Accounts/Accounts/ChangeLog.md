@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.13.1
 * Added the module name in breaking change messages 
 * Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
 
