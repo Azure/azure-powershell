@@ -37,6 +37,23 @@ function CheckStorageModuleDependency {
     }
 }
 
+function GetHCIClusterARGQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [System.String]
+        # Specifies HCI Cluster Id.
+        ${HCIClusterID}
+    )
+
+    process {
+        $query = "resources | where type == 'microsoft.azurestackhci/clusters'"
+        $query += "| where toupper(resourceGroup) == toupper('${resourceGroupName}')"
+
+        return $query
+    }
+}
+
 function GetStorageContainerARGQuery {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
