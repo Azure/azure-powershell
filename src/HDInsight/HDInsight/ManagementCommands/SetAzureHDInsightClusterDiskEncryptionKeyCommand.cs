@@ -20,9 +20,11 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterDiskEncryptionKey", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightCluster))]
     public class SetAzureHDInsightClusterDiskEncryptionKeyCommand : HDInsightCmdletBase
     {

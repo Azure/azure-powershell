@@ -7,11 +7,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
     /// <summary>
-    /// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+    /// Specifies the storage account type to be used to store the Azure Compute Gallery image version in.
     /// </summary>
     public partial struct SharedImageStorageAccountType :
         System.IEquatable<SharedImageStorageAccountType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType PremiumLrs = @"Premium_LRS";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType StandardLrs = @"Standard_LRS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType StandardZrs = @"Standard_ZRS";

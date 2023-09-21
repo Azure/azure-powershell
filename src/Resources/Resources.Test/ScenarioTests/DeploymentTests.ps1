@@ -887,6 +887,41 @@ function Test-NewDeploymentFromBicepFileAndBicepparamFile
     }
 }
 
+
+
+<#
+.SYNOPSIS
+Tests deployment via .bicepparam file without supplying a .bicep file.
+#>
+function Test-NewDeploymentFromBicepparamFileOnly
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile sampleDeploymentBicepFileParams.bicepparam
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $subId = (Get-AzContext).Subscription.SubscriptionId
+        $deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+        $getById = Get-AzResourceGroupDeployment -Id $deploymentId
+        Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 is running live in target environment

@@ -161,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -195,7 +196,7 @@ Describes a Machine Extension Update.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -439,13 +440,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 
 ## NOTES
 
@@ -472,15 +473,19 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the target resource.
+  - `[Location <String>]`: The location of the Extension being received.
   - `[MachineName <String>]`: The name of the hybrid machine.
+  - `[Name <String>]`: The name of the hybrid machine.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
   - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  - `[Publisher <String>]`: The publisher of the Extension being received.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[Version <String>]`: The version of the Extension being received.
 
 ## RELATED LINKS
 

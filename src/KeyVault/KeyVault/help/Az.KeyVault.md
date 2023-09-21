@@ -20,6 +20,9 @@ Adds a contact for certificate notifications.
 ### [Add-AzKeyVaultKey](Add-AzKeyVaultKey.md)
 Creates a key in a key vault or imports a key into a key vault.
 
+### [Add-AzKeyVaultManagedHsmRegion](Add-AzKeyVaultManagedHsmRegion.md)
+The List operation gets information about the regions associated with the managed HSM Pool.
+
 ### [Add-AzKeyVaultManagedStorageAccount](Add-AzKeyVaultManagedStorageAccount.md)
 Adds an existing Azure Storage Account to the specified key vault for its keys to be managed by the Key Vault service.
 
@@ -65,14 +68,23 @@ Gets the policy for a certificate in a key vault.
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
 Gets Key Vault keys. Please notes that detailed information about a key, like key type or key size, only available when querying a specific key version.
 
+### [Get-AzKeyVaultKeyRotationPolicy](Get-AzKeyVaultKeyRotationPolicy.md)
+Gets the key rotation policy for the specified key in Key Vault.
+
 ### [Get-AzKeyVaultManagedHsm](Get-AzKeyVaultManagedHsm.md)
 Get managed HSMs.
+
+### [Get-AzKeyVaultManagedHsmRegion](Get-AzKeyVaultManagedHsmRegion.md)
+The List operation gets information about the regions associated with the managed HSM Pool.
 
 ### [Get-AzKeyVaultManagedStorageAccount](Get-AzKeyVaultManagedStorageAccount.md)
 Gets Key Vault managed Azure Storage Accounts.
 
 ### [Get-AzKeyVaultManagedStorageSasDefinition](Get-AzKeyVaultManagedStorageSasDefinition.md)
 Gets Key Vault managed Storage SAS Definitions.
+
+### [Get-AzKeyVaultRandomNumber](Get-AzKeyVaultRandomNumber.md)
+Get the requested number of bytes containing random values from a managed HSM.
 
 ### [Get-AzKeyVaultRoleAssignment](Get-AzKeyVaultRoleAssignment.md)
 Get or list role assignments of a managed HSM. Use respective parameters to list assignments to a specific user or a role definition.
@@ -83,6 +95,9 @@ List role definitions of a given managed HSM at a given scope.
 ### [Get-AzKeyVaultSecret](Get-AzKeyVaultSecret.md)
 Gets the secrets in a key vault.
 
+### [Get-AzKeyVaultSetting](Get-AzKeyVaultSetting.md)
+Retrieves a specified key vault account setting or all available key vault account settings that can be configured. 
+
 ### [Import-AzKeyVaultCertificate](Import-AzKeyVaultCertificate.md)
 Imports a certificate to a key vault.
 
@@ -91,6 +106,9 @@ Imports previously exported security domain data to a managed HSM.
 
 ### [Invoke-AzKeyVaultKeyOperation](Invoke-AzKeyVaultKeyOperation.md)
 Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specified key stored in a key vault or managed hsm.
+
+### [Invoke-AzKeyVaultKeyRotation](Invoke-AzKeyVaultKeyRotation.md)
+Creates a new key version in Key Vault, stores it, then returns the new key.
 
 ### [New-AzKeyVault](New-AzKeyVault.md)
 Creates a key vault.
@@ -138,7 +156,10 @@ Deletes a certificate operation from a key vault.
 Deletes a key in a key vault.
 
 ### [Remove-AzKeyVaultManagedHsm](Remove-AzKeyVaultManagedHsm.md)
-Deletes a managed HSM.
+Deletes/Purges a managed HSM.
+
+### [Remove-AzKeyVaultManagedHsmRegion](Remove-AzKeyVaultManagedHsmRegion.md)
+The List operation gets information about the regions associated with the managed HSM Pool.
 
 ### [Remove-AzKeyVaultManagedStorageAccount](Remove-AzKeyVaultManagedStorageAccount.md)
 Removes a Key Vault managed Azure Storage Account and all associated SAS definitions.
@@ -182,6 +203,9 @@ Sets a certificate issuer in a key vault.
 ### [Set-AzKeyVaultCertificatePolicy](Set-AzKeyVaultCertificatePolicy.md)
 Creates or updates the policy for a certificate in a key vault.
 
+### [Set-AzKeyVaultKeyRotationPolicy](Set-AzKeyVaultKeyRotationPolicy.md)
+Sets the key rotation policy for the specified key in Key Vault.
+
 ### [Set-AzKeyVaultManagedStorageSasDefinition](Set-AzKeyVaultManagedStorageSasDefinition.md)
 Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
 
@@ -191,11 +215,20 @@ Creates or updates a secret in a key vault.
 ### [Stop-AzKeyVaultCertificateOperation](Stop-AzKeyVaultCertificateOperation.md)
 Cancels a certificate operation in key vault.
 
+### [Test-AzKeyVaultManagedHsmNameAvailability](Test-AzKeyVaultManagedHsmNameAvailability.md)
+Checks that the managed hsm name is valid and is not already in use.
+
+### [Test-AzKeyVaultNameAvailability](Test-AzKeyVaultNameAvailability.md)
+Checks that the vault name is valid and is not already in use.
+
 ### [Undo-AzKeyVaultCertificateRemoval](Undo-AzKeyVaultCertificateRemoval.md)
 Recovers a deleted certificate in a key vault into an active state.
 
 ### [Undo-AzKeyVaultKeyRemoval](Undo-AzKeyVaultKeyRemoval.md)
 Recovers a deleted key in a key vault into an active state.
+
+### [Undo-AzKeyVaultManagedHsmRemoval](Undo-AzKeyVaultManagedHsmRemoval.md)
+Recover a managed HSM.
 
 ### [Undo-AzKeyVaultManagedStorageAccountRemoval](Undo-AzKeyVaultManagedStorageAccountRemoval.md)
 Recovers a previously deleted KeyVault-managed storage account.
@@ -205,9 +238,6 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 
 ### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
-
-### [Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)
-Recovers a deleted HSM into an active state.
 
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers a deleted secret in a key vault into an active state.
@@ -235,4 +265,7 @@ Updates the network rule set on a key vault.
 
 ### [Update-AzKeyVaultSecret](Update-AzKeyVaultSecret.md)
 Updates attributes of a secret in a key vault.
+
+### [Update-AzKeyVaultSetting](Update-AzKeyVaultSetting.md)
+Update specific setting associated with the managed HSM.
 

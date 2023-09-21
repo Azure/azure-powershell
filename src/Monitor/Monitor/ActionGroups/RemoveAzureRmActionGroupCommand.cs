@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
+    [WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter set ByResourceId will be deprecated", "11.0.0", "5.0.0", "2023/11/15")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmActionGroupCommand : ManagementCmdletBase

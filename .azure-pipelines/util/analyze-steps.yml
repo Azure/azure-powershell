@@ -2,26 +2,12 @@ parameters:
   configuration: ''
   testFramework: ''
   powerShellPlatform: ''
+  IsGenerateBased: ''
 
 steps:
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
-- task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Install autorest
-  inputs:
-    versionSpec: '14.17.1'
-    command: custom
-    verbose: false
-    customCommand: install autorest@latest
-- task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Setup environment for autorest
-  inputs:
-    targetType: inline
-    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
-    pwsh: true
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk 6.0.x'
@@ -61,6 +47,7 @@ steps:
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
       OCTOKITPAT: $(OCTOKITPAT)
+      IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml
   parameters:

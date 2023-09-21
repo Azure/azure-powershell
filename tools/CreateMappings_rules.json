@@ -835,5 +835,21 @@
   {
     "module": "GraphServices",
     "alias": "GraphServices"
+  },
+  {
+    "module": "Alb",
+    "alias": "Alb"
+  },
+  {
+    "module": "PaloAltoNetworks",
+    "alias": "PaloAltoNetworks"
+  },
+  {
+    "module": "DevCenter",
+    "alias": "DevCenter"
+  },
+  {
+    "alias": "NetworkCloud",
+    "module": "NetworkCloud"
   }
 ]

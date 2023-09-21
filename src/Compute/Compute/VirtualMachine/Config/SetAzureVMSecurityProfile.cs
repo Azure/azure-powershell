@@ -41,24 +41,23 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set. Possible values are 'ConfidentialVM' and 'TrustedLaunch'.")]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if(this.VM.SecurityProfile == null)
-            {
-                this.VM.SecurityProfile = new SecurityProfile();
-            }
-
-            if (this.IsParameterBound(c => c.SecurityType))
+            if (this.IsParameterBound(c => c.SecurityType) && SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
             {
                 if (this.VM.SecurityProfile == null)
                 {
                     this.VM.SecurityProfile = new SecurityProfile();
                 }
                 this.VM.SecurityProfile.SecurityType = SecurityType;
+            }
+            else if (SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            {
+                WriteInformation("You have set the SecurityType to Standard. This value makes this cmdlet perform no actions at this time.", new string[] { "PSHOST" });
             }
 
             WriteObject(this.VM);

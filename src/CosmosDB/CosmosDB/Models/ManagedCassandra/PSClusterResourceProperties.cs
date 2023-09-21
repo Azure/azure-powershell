@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             RepairEnabled = clusterProperties.RepairEnabled;
-            PrometheusEndpoint = new PSSeedNode(clusterProperties.PrometheusEndpoint?.IpAddress);
+            PrometheusEndpoint = new PSSeedNode(clusterProperties.PrometheusEndpoint?.IPAddress);
             HoursBetweenBackups = clusterProperties.HoursBetweenBackups;
             InitialCassandraAdminPassword = clusterProperties.InitialCassandraAdminPassword;
             AuthenticationMethod = clusterProperties.AuthenticationMethod;
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             foreach (SeedNode externalSeedNode in clusterProperties.ExternalSeedNodes ?? Enumerable.Empty<SeedNode>())
             {
-                ExternalSeedNodes.Add(new PSSeedNode(externalSeedNode?.IpAddress));
+                ExternalSeedNodes.Add(new PSSeedNode(externalSeedNode?.IPAddress));
             }
 
             SeedNodes = new List<PSSeedNode>();
             foreach (SeedNode seedNode in clusterProperties.SeedNodes)
             {
-                SeedNodes.Add(new PSSeedNode(seedNode?.IpAddress));
+                SeedNodes.Add(new PSSeedNode(seedNode?.IPAddress));
             }
         }
 

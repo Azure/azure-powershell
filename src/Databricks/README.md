@@ -31,7 +31,7 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 96c583e9d5d09c51fe8a21843180c51b98b4a7db
+branch: a078cebc3964c8968d141906c613794ca0453861
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/readme.md
@@ -248,6 +248,8 @@ directive:
       verb: Set
       subject: VNetPeering
     hide: true
+    set: 
+      verb: Update
 
   - where:
       model-name: Workspace

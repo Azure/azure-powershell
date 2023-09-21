@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added breaking change warning message for `Get/New/Remove-ContainerGroup`, `New-ContainerInstanceInitDefinitionObject`, `New-ContainerInstanceObject` [#22268]
+    - Output properties starting with `PreviouState` will be corrected to `PreviousState`
+
+## Version 3.2.1
+* Fixed a bug in `Invoke-AzContainerInstanceCommand` when no result was returned under some conditions [#22453]
 
 ## Version 3.2.0
 * Added `priority` property to Container Group properties

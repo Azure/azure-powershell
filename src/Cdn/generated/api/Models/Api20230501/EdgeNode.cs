@@ -22,10 +22,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501
 
         /// <summary>List of ip address groups.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IIPAddressGroup[] IPAddressGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNodePropertiesInternal)Property).IPAddressGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNodePropertiesInternal)Property).IPAddressGroup = value ?? null /* arrayOf */; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.FormatTable(Index = 0)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceInternal)__resource).Id; }
 
         /// <summary>Internal Acessors for Property</summary>
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501
 
         /// <summary>Resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceInternal)__resource).Name; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501
 
         /// <summary>The JSON object that contains the properties required to create an edgenode.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNodeProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.EdgeNodeProperties()); set => this._property = value; }
 
         /// <summary>Read only system data</summary>
@@ -91,6 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceInternal)__resource).Type; }
 
         /// <summary>Creates an new <see cref="EdgeNode" /> instance.</summary>

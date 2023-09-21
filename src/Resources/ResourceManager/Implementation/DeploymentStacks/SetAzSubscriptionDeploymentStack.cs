@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -75,7 +76,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
-        [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation when overwriting an existing stack.")]
@@ -94,12 +94,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Hashtable parameters = new Hashtable();
                 string filePath = "";
-                string parameterFilePath = "";
-
-                if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && !BicepUtility.IsBicepFile(TemplateFile))
-                {
-                    throw new NotSupportedException($"Bicepparam file {TemplateParameterFile} is only supported with a Bicep template file");
-                }
 
                 switch (ParameterSetName)
                 {
@@ -116,13 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         break;
                     case ParameterFileTemplateSpecParameterSetName:
                     case ParameterFileTemplateUriParameterSetName:
-                        parameterFilePath = this.TryResolvePath(TemplateParameterFile);
-                        if (!File.Exists(parameterFilePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateParameterFile));
-                        }
-                        parameters = this.GetParameterObject(parameterFilePath);
+                        parameters = ResolveParameters();
 
                         // contruct the protected template URI if a query string was provided
                         if (!string.IsNullOrEmpty(QueryString))
@@ -134,6 +122,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         }
                         break;
                     case ParameterFileTemplateFileParameterSetName:
+                        parameters = ResolveParameters();
+
                         filePath = this.TryResolvePath(TemplateFile);
                         if (!File.Exists(filePath))
                         {
@@ -142,14 +132,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         }
                         filePath = ResolveBicepFile(filePath);
 
-                        parameterFilePath = this.TryResolvePath(TemplateParameterFile);
-                        if (!File.Exists(parameterFilePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateParameterFile));
-                        }
-                        parameters = this.GetParameterObject(ResolveBicepParameterFile(parameterFilePath));
                         TemplateUri = filePath;
+                        break;
+                    case ByParameterFileWithNoTemplateParameterSetName:
+                        parameters = ResolveParameters();
                         break;
                     case ParameterObjectTemplateFileParameterSetName:
                         filePath = this.TryResolvePath(TemplateFile);
@@ -193,6 +179,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // construct deploymentScope if ResourceGroup was provided
                 var deploymentScope = DeploymentResourceGroupName != null ? "/subscriptions/" + DeploymentStacksSdkClient.DeploymentStacksClient.SubscriptionId
                         + "/resourceGroups/" + DeploymentResourceGroupName : null;
+                
+                var currentStack = DeploymentStacksSdkClient.GetSubscriptionDeploymentStack(Name, throwIfNotExists: false);
+                if (currentStack != null && Tag == null)
+                {
+                    Tag = TagsConversionHelper.CreateTagHashtable(currentStack.Tags);
+                }
 
                 Action createOrUpdateAction = () =>
                 {
@@ -201,6 +193,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             location: Location,
                             templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
                             templateSpec: TemplateSpecId,
+                            templateJson: TemplateJson,
                             parameterUri: TemplateParameterUri,
                             parameters: parameters,
                             description: Description,
@@ -218,9 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteObject(deploymentStack);
                 };
 
-                if (!Force.IsPresent && DeploymentStacksSdkClient.GetSubscriptionDeploymentStack(
-                        Name,
-                        throwIfNotExists: false) == null)
+                if (!Force.IsPresent && currentStack == null)
                 {
                     string confirmationMessage =
                         $"The DeploymentStack '{Name}' you're trying to modify does not exist in the current subscription scope. Do you want to create a new stack?";

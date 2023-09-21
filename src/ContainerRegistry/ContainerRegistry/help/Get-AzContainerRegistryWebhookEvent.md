@@ -204,7 +204,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: The tags of the resource.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Action <WebhookAction[]>]`: The list of actions that trigger the webhook to post notifications.
-  - `[AzureAsyncOperation <String>]`: 
   - `[Scope <String>]`: The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
   - `[Status <WebhookStatus?>]`: The status of the webhook at the time the operation was called.
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzStackHciCluster_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Create an HCI cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
     public partial class NewAzStackHciCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Cluster details.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster _clusterBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.Cluster();
+        private Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster _clusterBody = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.Cluster();
 
         /// <summary>Object id of cluster AAD identity.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Object id of cluster AAD identity.")]
@@ -145,6 +145,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType IdentityType { get => _clusterBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.ManagedServiceIdentityType)""); set => _clusterBody.IdentityType = value; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.IUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _clusterBody.IdentityUserAssignedIdentity ?? null /* object */; set => _clusterBody.IdentityUserAssignedIdentity = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -217,6 +247,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Customer Intent for Software Assurance Benefit.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Customer Intent for Software Assurance Benefit.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Customer Intent for Software Assurance Benefit.",
+        SerializedName = @"softwareAssuranceIntent",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent))]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent SoftwareAssurancePropertySoftwareAssuranceIntent { get => _clusterBody.SoftwareAssurancePropertySoftwareAssuranceIntent ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent)""); set => _clusterBody.SoftwareAssurancePropertySoftwareAssuranceIntent = value; }
+
+        /// <summary>Status of the Software Assurance for the cluster.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of the Software Assurance for the cluster.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Status of the Software Assurance for the cluster.",
+        SerializedName = @"softwareAssuranceStatus",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus SoftwareAssurancePropertySoftwareAssuranceStatus { get => _clusterBody.SoftwareAssurancePropertySoftwareAssuranceStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus)""); set => _clusterBody.SoftwareAssurancePropertySoftwareAssuranceStatus = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -244,32 +298,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.ITrackedResourceTags Tag { get => _clusterBody.Tag ?? null /* object */; set => _clusterBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ITrackedResourceTags Tag { get => _clusterBody.Tag ?? null /* object */; set => _clusterBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -445,12 +499,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -467,7 +521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_clusterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -485,12 +539,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster">Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -502,7 +556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
                 WriteObject((await response));
             }
         }

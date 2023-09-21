@@ -170,6 +170,15 @@ New-AzResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mod
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
+ [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>]
+ [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-Force]
+ [-ProceedIfNoChange] [-AsJob] [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzResourceGroupDeployment** cmdlet adds a deployment to an existing resource group.
 This includes the resources that the deployment requires.
@@ -228,6 +237,14 @@ New-AzResourceGroupDeployment -ResourceGroupName "RGName" -TemplateUri "https://
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
 Running this command effectively accesses the template using the url `https://example.com/example.json?foo`.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
+
+### Example 5: Use a .bicepparam file to create a deployment
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "RGName"  -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new deployment at the resource group scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
 
 ## PARAMETERS
 
@@ -490,7 +507,7 @@ To use the dynamic parameters, type a minus sign (-) to indicate a parameter nam
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

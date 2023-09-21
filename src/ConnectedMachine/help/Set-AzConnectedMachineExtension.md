@@ -99,7 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -133,7 +134,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 Parameter Sets: Update
 Aliases:
 
@@ -496,11 +497,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 
 ## NOTES
 
@@ -515,6 +516,12 @@ To create the parameters described below, construct a hash table containing the 
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -532,12 +539,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[StatusLevel <StatusLevelTypes?>]`: The level code.
   - `[StatusMessage <String>]`: The detailed status message, including for alerts and error messages.
   - `[StatusTime <DateTime?>]`: The time of the status.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
 
 ## RELATED LINKS

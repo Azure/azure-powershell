@@ -62,7 +62,7 @@ Backup Instance
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstance
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -229,6 +229,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
     - `ObjectType <String>`: Type of the specific object - used for deserializing
   - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
+  - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+    - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
+    - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
   - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS

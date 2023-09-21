@@ -1,4 +1,3 @@
-  
 $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -11,6 +10,8 @@ while(-not $mockingPath) {
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
+
+Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'Connect-AzConnectedMachine' {
     BeforeAll {
@@ -83,7 +84,7 @@ Describe 'Connect-AzConnectedMachine' {
             $pssession = New-PSSession -ComputerName localhost
         }
         catch {
-            Enable-PSRemoting -Force
+            Enable-PSRemoting –SkipNetworkProfileCheck
             $pssession = New-PSSession -ComputerName localhost -EnableNetworkAccess
         }
 

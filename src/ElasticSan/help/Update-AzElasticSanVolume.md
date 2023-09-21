@@ -15,8 +15,8 @@ Update an Volume.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-SizeGiB <Int64>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-SizeGiB <Int64>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -34,8 +34,8 @@ Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> -Parameter <IVolume
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-SizeGiB <Int64>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-SizeGiB <Int64>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ Update an Volume.
 
 ### Example 1: Update an Elastic SAN volume
 ```powershell
-$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -Tag @{tag3 = "value3"} -SizeGib 120
+$volume = Update-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGib 120
 ```
 
 ```output
@@ -65,7 +65,6 @@ SystemDataCreatedByType        : Application
 SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
 SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType   : Application
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                           : Microsoft.ElasticSan/ElasticSans
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```
@@ -171,7 +170,7 @@ Response for Volume request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -228,21 +227,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VolumeGroupName
 The name of the VolumeGroup.
 
@@ -294,13 +278,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolume
 
 ## NOTES
 
@@ -314,6 +298,7 @@ To create the parameters described below, construct a hash table containing the 
 `INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
   - `[ElasticSanName <String>]`: The name of the ElasticSan.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The name of the Private Endpoint connection.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
@@ -321,8 +306,6 @@ To create the parameters described below, construct a hash table containing the 
 
 `PARAMETER <IVolumeUpdate>`: Response for Volume request.
   - `[SizeGiB <Int64?>]`: Volume size.
-  - `[Tag <IVolumeUpdateTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

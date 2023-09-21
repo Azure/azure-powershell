@@ -20,7 +20,7 @@ Accept subscription ownership status.
 .Description
 Accept subscription ownership status.
 .Example
-Get-AzSubscriptionAcceptOwnershipStatus  -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
@@ -43,9 +43,8 @@ function Get-AzSubscriptionAcceptOwnershipStatus {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse])]
 [CmdletBinding(DefaultParameterSetName='AcceptExpanded', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='AcceptExpanded')]
+    [Parameter(ParameterSetName='AcceptExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # Subscription Id.
     ${SubscriptionId},
@@ -134,9 +133,6 @@ begin {
         $mapping = @{
             AcceptExpanded = 'Az.Subscription.private\Get-AzSubscriptionAcceptOwnershipStatus_AcceptExpanded';
             AcceptViaIdentityExpanded = 'Az.Subscription.private\Get-AzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded';
-        }
-        if (('AcceptExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
