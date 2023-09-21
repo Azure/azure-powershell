@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// to cloud-init and config blob.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), IList<string> bootStrapConfigurationBlobs = default(IList<string>), SubResource virtualHub = default(SubResource), IList<string> cloudInitConfigurationBlobs = default(IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), IList<VirtualApplianceNicProperties> virtualApplianceNics = default(IList<VirtualApplianceNicProperties>), IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(IList<VirtualApplianceAdditionalNicProperties>), IList<SubResource> virtualApplianceSites = default(IList<SubResource>), IList<SubResource> virtualApplianceConnections = default(IList<SubResource>), IList<SubResource> inboundSecurityRules = default(IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string))
+        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), IList<string> bootStrapConfigurationBlobs = default(IList<string>), SubResource virtualHub = default(SubResource), IList<string> cloudInitConfigurationBlobs = default(IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), IList<VirtualApplianceNicProperties> virtualApplianceNics = default(IList<VirtualApplianceNicProperties>), IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(IList<VirtualApplianceAdditionalNicProperties>), IList<SubResource> virtualApplianceSites = default(IList<SubResource>), IList<SubResource> virtualApplianceConnections = default(IList<SubResource>), IList<SubResource> inboundSecurityRules = default(IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), IList<VirtualApplianceInternetIngressIpsProperties> internetIngressPublicIps = default(IList<VirtualApplianceInternetIngressIpsProperties>))
             : base(id, name, type, location, tags)
         {
             NvaSku = nvaSku;
@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Management.Network.Models
             PartnerManagedResource = partnerManagedResource;
             Identity = identity;
             Etag = etag;
+            InternetIngressPublicIps = internetIngressPublicIps;
             CustomInit();
         }
 
@@ -225,6 +226,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets details for Internet Ingress Public IPs.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.internetIngressPublicIps")]
+        public IList<VirtualApplianceInternetIngressIpsProperties> InternetIngressPublicIps { get; set; }
 
         /// <summary>
         /// Validate the object.

@@ -1570,6 +1570,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceSite, MNM.VirtualApplianceSite>();
                 cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceConnection, MNM.NetworkVirtualApplianceConnection>();
+                cfg.CreateMap<CNM.PSVirtualApplianceInternetIngressIpsProperties, MNM.VirtualApplianceInternetIngressIpsProperties>();
 
                 // MNM to CNM
                 // Where CNM - models from Powershell
@@ -1583,6 +1584,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
                 cfg.CreateMap<MNM.VirtualApplianceAdditionalNicProperties, CNM.PSVirtualApplianceAdditionalNicProperties>();
+                cfg.CreateMap<MNM.VirtualApplianceInternetIngressIpsProperties, CNM.PSVirtualApplianceInternetIngressIpsProperties>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
 
                 // NetworkManager

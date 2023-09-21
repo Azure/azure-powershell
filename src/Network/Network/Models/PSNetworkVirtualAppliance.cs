@@ -46,5 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSVirtualApplianceSkuProperties NvaSku { get; set; }
 
         public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNics { get; set; }
+
+        public IList<PSVirtualApplianceInternetIngressIpsProperties> InternetIngressPublicIps { get; set; }
     }
 }
