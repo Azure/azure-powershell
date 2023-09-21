@@ -19,10 +19,8 @@
 -->
 
 ## Upcoming Release
-
-## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.
-* Fixed inexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
+* Fixed unexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
 
 ## Version 6.10.0
 * Added breaking change warnings for Azure Policy cmdlets.

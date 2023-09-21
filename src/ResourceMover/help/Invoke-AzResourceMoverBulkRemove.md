@@ -12,8 +12,6 @@ Removes the set of move resources included in the request body from move collect
 The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
-**The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
-
 ## SYNTAX
 
 ```
@@ -26,8 +24,6 @@ Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName
 Removes the set of move resources included in the request body from move collection.
 The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
-
-**The 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 
 ## EXAMPLES
 
@@ -113,8 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -271,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
 
 ## NOTES
 

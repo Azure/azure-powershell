@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 3.2.2
 * Added breaking change warning message for `Get/New/Remove-ContainerGroup`, `New-ContainerInstanceInitDefinitionObject`, `New-ContainerInstanceObject` [#22268]
     - Output properties starting with `PreviouState` will be corrected to `PreviousState`
 

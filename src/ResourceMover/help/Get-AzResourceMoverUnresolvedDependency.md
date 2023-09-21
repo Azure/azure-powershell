@@ -10,11 +10,6 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets a list of unresolved dependencies.
 
-**The 'Get-AzResourceMoverUnresolvedDependency' command is applicable for 'RegionToRegion' type move collections.**
-
-**However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
-Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
-
 ## SYNTAX
 
 ```
@@ -25,11 +20,6 @@ Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGr
 
 ## DESCRIPTION
 Gets a list of unresolved dependencies.
-
-**The 'Get-AzResourceMoverUnresolvedDependency' command is applicable for 'RegionToRegion' type move collections.**
-
-**However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
-Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
 
 ## EXAMPLES
 
@@ -52,8 +42,7 @@ Get a list of unresolved dependent resources for a Move Collection.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -166,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUnresolvedDependency
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency
 
 ## NOTES
 
