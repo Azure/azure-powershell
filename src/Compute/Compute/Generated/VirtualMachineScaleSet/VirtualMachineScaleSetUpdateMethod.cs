@@ -1314,6 +1314,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+            // SecurityType, includes TrustedLaunch and ConfidentialVM and Standard. 
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1339,7 +1340,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableVtpm))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1360,7 +1361,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableSecureBoot))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
