@@ -31,11 +31,7 @@ Create an Internet Ingress Property object to be used with New-AzNetworkVirtualA
 
 ### Example 2
 ```powershell
-$pip1 = Get-AzPublicIpAddress -Name "publicip1name"
-$id1 = $pip1.Id
-$pip2 = Get-AzPublicIpAddress -Name "publicip2name"
-$id2 = $pip2.Id
-$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId $id1, $id2
+$IngressIps=New-AzVirtualApplianceInternetIngressIpsProperty -InternetIngressPublicIpId "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/publicIPAddresses/{publicipname}", "/subscriptions/{subscriptionid}/resourceGroups/{rgname}/providers/Microsoft.Network/publicIPAddresses/{publicipname}"
 ```
 
 Creates a list of Internet Ingress Property object which has 2 Public IPs which can be attached to the Network Virtual Appliance resource.
