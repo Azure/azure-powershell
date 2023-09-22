@@ -2116,7 +2116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableVtpm))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -2133,7 +2133,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableSecureBoot))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
