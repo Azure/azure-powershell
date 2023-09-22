@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List dapr component by env name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+List dapr component by env name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dapr component by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+Get a dapr component by name.
 
+### Example 3: Get a dapr component.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
+```
+
+```output
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
+```
+
+Get a dapr component.

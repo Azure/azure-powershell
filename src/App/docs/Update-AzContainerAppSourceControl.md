@@ -14,44 +14,36 @@ Create the SourceControl for a Container App.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppSourceControl -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
- [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
- [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
- [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
- [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
- [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
- [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzContainerAppSourceControl -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AzureClientId <String>] [-AzureClientSecret <SecureString>]
+ [-AzureKind <String>] [-AzureSubscriptionId <String>] [-AzureTenantId <String>] [-Branch <String>]
+ [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
+ [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
+ [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
 ```
-Update-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity>
- [-AzureCredentialsClientId <String>] [-AzureCredentialsClientSecret <SecureString>]
- [-AzureCredentialsKind <String>] [-AzureCredentialsSubscriptionId <String>]
- [-AzureCredentialsTenantId <String>] [-Branch <String>] [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
- [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
- [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
- [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
- [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -Name <String>
+ [-AzureClientId <String>] [-AzureClientSecret <SecureString>] [-AzureKind <String>]
+ [-AzureSubscriptionId <String>] [-AzureTenantId <String>] [-Branch <String>]
+ [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
+ [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
+ [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureCredentialsClientId <String>]
- [-AzureCredentialsClientSecret <SecureString>] [-AzureCredentialsKind <String>]
- [-AzureCredentialsSubscriptionId <String>] [-AzureCredentialsTenantId <String>] [-Branch <String>]
- [-GithubActionConfigurationContextPath <String>]
- [-GithubActionConfigurationGithubPersonalAccessToken <SecureString>]
- [-GithubActionConfigurationImage <String>] [-GithubActionConfigurationOS <String>]
- [-GithubActionConfigurationPublishType <String>] [-GithubActionConfigurationRuntimeStack <String>]
- [-GithubActionConfigurationRuntimeVersion <String>] [-RegistryInfoRegistryPassword <SecureString>]
- [-RegistryInfoRegistryUrl <String>] [-RegistryInfoRegistryUserName <String>] [-RepoUrl <String>]
+Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <String>]
+ [-AzureClientSecret <SecureString>] [-AzureKind <String>] [-AzureSubscriptionId <String>]
+ [-AzureTenantId <String>] [-Branch <String>] [-GithubAccessToken <SecureString>]
+ [-GithubConfigurationImage <String>] [-GithubContextPath <String>] [-GithubOS <String>]
+ [-GithubPublishType <String>] [-GithubRuntimeStack <String>] [-GithubRuntimeVersion <String>]
+ [-RegistryPassword <SecureString>] [-RegistryUrl <String>] [-RegistryUserName <String>] [-RepoUrl <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -60,27 +52,58 @@ Create the SourceControl for a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update source control for a Container App.
 ```powershell
-{{ Add code here }}
+$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+
+Update-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
 ```
 
-{{ Add description here }}
+Update source control for a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update source control for a Container App.
 ```powershell
-{{ Add code here }}
+$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$sourcecontrol = Get-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current
+
+Update-AzContainerAppSourceControl -InputObject $sourcecontrol -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
 ```
 
-{{ Add description here }}
+Update source control for a Container App.
+
+### Example 3: Update source control for a Container App.
+```powershell
+$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+
+Update-AzContainerAppSourceControl -ContainerAppInputObject $containerapp -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
+```
+
+```output
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
+```
+
+Update source control for a Container App.
 
 ## PARAMETERS
 
@@ -99,7 +122,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureCredentialsClientId
+### -AzureClientId
 Client Id.
 
 ```yaml
@@ -114,7 +137,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureCredentialsClientSecret
+### -AzureClientSecret
 Client Secret.
 
 ```yaml
@@ -129,7 +152,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureCredentialsKind
+### -AzureKind
 Kind of auth github does for deploying the template
 
 ```yaml
@@ -144,7 +167,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureCredentialsSubscriptionId
+### -AzureSubscriptionId
 Subscription Id.
 
 ```yaml
@@ -159,7 +182,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureCredentialsTenantId
+### -AzureTenantId
 Tenant Id.
 
 ```yaml
@@ -236,22 +259,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationContextPath
-Context path
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GithubActionConfigurationGithubPersonalAccessToken
+### -GithubAccessToken
 One time Github PAT to configure github environment
 
 ```yaml
@@ -266,7 +274,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationImage
+### -GithubConfigurationImage
 Image name
 
 ```yaml
@@ -281,7 +289,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationOS
+### -GithubContextPath
+Context path
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GithubOS
 Operation system
 
 ```yaml
@@ -296,7 +319,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationPublishType
+### -GithubPublishType
 Code or Image
 
 ```yaml
@@ -311,7 +334,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationRuntimeStack
+### -GithubRuntimeStack
 Runtime stack
 
 ```yaml
@@ -326,7 +349,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GithubActionConfigurationRuntimeVersion
+### -GithubRuntimeVersion
 Runtime version
 
 ```yaml
@@ -357,6 +380,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Container App SourceControl.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -372,7 +410,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegistryInfoRegistryPassword
+### -RegistryPassword
 registry secret.
 
 ```yaml
@@ -387,7 +425,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegistryInfoRegistryUrl
+### -RegistryUrl
 registry server Url.
 
 ```yaml
@@ -402,7 +440,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegistryInfoRegistryUserName
+### -RegistryUserName
 registry username.
 
 ```yaml

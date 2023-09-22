@@ -20,7 +20,7 @@ Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String
 
 ### Get
 ```
-Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+Get-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,8 +31,8 @@ Get-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSObjec
 
 ### GetViaIdentityContainerApp
 ```
-Get-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -RevisionName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,27 +40,45 @@ Get a revision of a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List revision of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
 ```
 
-{{ Add description here }}
+List revision of a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a revision by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
 ```
 
-{{ Add description here }}
+Get a revision by name.
+
+### Example 3: Get a revision by Container App.
+```powershell
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Get-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2
+```
+
+```output
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
+```
+
+Get a revision by Container App.
 
 ## PARAMETERS
 
@@ -142,13 +160,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the Container App Revision.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityContainerApp
 Aliases:
 
 Required: True
@@ -158,12 +175,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RevisionName
-Name of the Container App Revision.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityContainerApp
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

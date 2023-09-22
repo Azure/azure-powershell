@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all available workload profiles for a location.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppAvailableWorkloadProfile -Location eastus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        Location
+----        --------
+D4          eastus
+D8          eastus
+D16         eastus
+D32         eastus
+E4          eastus
+E8          eastus
+E16         eastus
+E32         eastus
+Consumption eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Get all available workload profiles for a location.

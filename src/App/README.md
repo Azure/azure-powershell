@@ -66,9 +66,21 @@ resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
 
+use-extension: 
+  "@autorest/powershell": "4.x"
+
 directive:
   - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
+    transform: >-
+      return {
+        "description": "Certificate password",
+        "type": "string",
+        "format": "password",
+        "x-ms-secret": true
+      }
+  - from: swagger-document 
+    where: $.definitions.CustomDomainConfiguration.properties.certificatePassword
     transform: >-
       return {
         "description": "Certificate password.",
@@ -118,8 +130,12 @@ directive:
         "format": "password",
         "x-ms-secret": true
       }
+
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+    remove: true
+  - where:
+      variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -279,64 +295,61 @@ directive:
       subject: ContainerAppJobMultipleExecution
 
   - where:
-      verb: Invoke|Get
+      verb: Get
       subject: ContainerAppJobExecution
-    hide: true
-
+    remove: true
   - where:
-      subject: ContainerAppSourceControl
-      parameter-name: SourceControlName
-    hide: true
+      verb: Invoke
+      subject: ContainerAppJobExecution
     set:
-      default:
-        script: "'current'"
+      verb: Get
 
   # Modifications were made to the command
-  # - model-cmdlet:
-  #   - model-name: RegistryCredentials
-  #     cmdlet-name: New-AzContainerAppRegistryCredentialObject
-  #   - model-name: Secret
-  #     cmdlet-name: New-AzContainerAppSecretObject
-  #   - model-name: JobScaleRule
-  #     cmdlet-name: New-AzContainerAppJobScaleRuleObject
-  #   - model-name: Container
-  #     cmdlet-name: New-AzContainerAppTemplateObject
-  #   - model-name: InitContainer
-  #     cmdlet-name: New-AzContainerAppInitContainerTemplateObject
-  #   - model-name: Volume
-  #     cmdlet-name: New-AzContainerAppVolumeObject
-  #   - model-name: DaprMetadata
-  #     cmdlet-name: New-AzContainerAppDaprMetadataObject
-  #   - model-name: WorkloadProfile
-  #     cmdlet-name: New-AzContainerAppWorkloadProfileObject
-  #   - model-name: IdentityProviders
-  #     cmdlet-name: New-AzContainerAppIdentityProviderObject
-  #   - model-name: Configuration
-  #     cmdlet-name: New-AzContainerAppConfigurationObject
-  #   - model-name: ScaleRule
-  #     cmdlet-name: New-AzContainerAppScaleRuleObject
-  #   - model-name: ServiceBind
-  #     cmdlet-name: New-AzContainerAppServiceBindObject
-  #   - model-name: JobExecutionContainer
-  #     cmdlet-name: New-AzContainerAppJobExecutionContainerObject
-  #   - model-name: CustomDomain
-  #     cmdlet-name: New-AzContainerAppCustomDomainObject
-  #   - model-name: IPSecurityRestrictionRule
-  #     cmdlet-name: New-AzContainerAppIPSecurityRestrictionRuleObject
-  #   - model-name: TrafficWeight
-  #     cmdlet-name: New-AzContainerAppTrafficWeightObject
-  #   - model-name: ContainerAppProbe
-  #     cmdlet-name: New-AzContainerAppProbeObject
-  #   - model-name: EnvironmentVar
-  #     cmdlet-name: New-AzContainerAppEnvironmentVarObject
-  #   - model-name: VolumeMount
-  #     cmdlet-name: New-AzContainerAppVolumeMountObject
-  #   - model-name: ScaleRuleAuth
-  #     cmdlet-name: New-AzContainerAppScaleRuleAuthObject
-  #   - model-name: SecretVolumeItem
-  #     cmdlet-name: New-AzContainerAppSecretVolumeItemObject
-  #   - model-name: ContainerAppProbeHttpGetHttpHeadersItem
-  #     cmdlet-name: New-AzContainerAppProbeHeaderObject
+  - model-cmdlet:
+    - model-name: RegistryCredentials
+      cmdlet-name: New-AzContainerAppRegistryCredentialObject
+    - model-name: Secret
+      cmdlet-name: New-AzContainerAppSecretObject
+    - model-name: JobScaleRule
+      cmdlet-name: New-AzContainerAppJobScaleRuleObject
+    - model-name: Container
+      cmdlet-name: New-AzContainerAppTemplateObject
+    - model-name: InitContainer
+      cmdlet-name: New-AzContainerAppInitContainerTemplateObject
+    - model-name: Volume
+      cmdlet-name: New-AzContainerAppVolumeObject
+    - model-name: DaprMetadata
+      cmdlet-name: New-AzContainerAppDaprMetadataObject
+    - model-name: WorkloadProfile
+      cmdlet-name: New-AzContainerAppWorkloadProfileObject
+    - model-name: IdentityProviders
+      cmdlet-name: New-AzContainerAppIdentityProviderObject
+    - model-name: Configuration
+      cmdlet-name: New-AzContainerAppConfigurationObject
+    - model-name: ScaleRule
+      cmdlet-name: New-AzContainerAppScaleRuleObject
+    - model-name: ServiceBind
+      cmdlet-name: New-AzContainerAppServiceBindObject
+    - model-name: JobExecutionContainer
+      cmdlet-name: New-AzContainerAppJobExecutionContainerObject
+    - model-name: CustomDomain
+      cmdlet-name: New-AzContainerAppCustomDomainObject
+    - model-name: IPSecurityRestrictionRule
+      cmdlet-name: New-AzContainerAppIPSecurityRestrictionRuleObject
+    - model-name: TrafficWeight
+      cmdlet-name: New-AzContainerAppTrafficWeightObject
+    - model-name: ContainerAppProbe
+      cmdlet-name: New-AzContainerAppProbeObject
+    - model-name: EnvironmentVar
+      cmdlet-name: New-AzContainerAppEnvironmentVarObject
+    - model-name: VolumeMount
+      cmdlet-name: New-AzContainerAppVolumeMountObject
+    - model-name: ScaleRuleAuth
+      cmdlet-name: New-AzContainerAppScaleRuleAuthObject
+    - model-name: SecretVolumeItem
+      cmdlet-name: New-AzContainerAppSecretVolumeItemObject
+    - model-name: ContainerAppProbeHttpGetHttpHeadersItem
+      cmdlet-name: New-AzContainerAppProbeHeaderObject
 
   - where:
       parameter-name: ComponentName
@@ -346,6 +359,129 @@ directive:
       parameter-name: EnvironmentName
     set:
       parameter-name: EnvName
+  - where:
+      parameter-name: AzureCredentialsClientId
+    set:
+      parameter-name: AzureClientId
+  - where:
+      parameter-name: AzureCredentialsClientSecret
+    set:
+      parameter-name: AzureClientSecret
+  - where:
+      parameter-name: AzureCredentialsTenantId
+    set:
+      parameter-name: AzureTenantId
+  - where:
+      parameter-name: AzureCredentialsKind
+    set:
+      parameter-name: AzureKind
+  - where:
+      parameter-name: AzureCredentialsSubscriptionId
+    set:
+      parameter-name: AzureSubscriptionId
+  - where:
+      parameter-name: AzureCredentialsTenantId
+    set:
+      parameter-name: AzureTenantId
+  - where:
+      parameter-name: GithubActionConfigurationContextPath
+    set:
+      parameter-name: GithubContextPath
+  - where:
+      parameter-name: GithubActionConfigurationImage
+    set:
+      parameter-name: GithubConfigurationImage
+  - where:
+      parameter-name: GithubActionConfigurationGithubPersonalAccessToken
+    set:
+      parameter-name: GithubAccessToken
+  - where:
+      parameter-name: GithubActionConfigurationOS
+    set:
+      parameter-name: GithubOS
+  - where:
+      parameter-name: GithubActionConfigurationPublishType
+    set:
+      parameter-name: GithubPublishType
+  - where:
+      parameter-name: GithubActionConfigurationRuntimeStack
+    set:
+      parameter-name: GithubRuntimeStack
+  - where:
+      parameter-name: GithubActionConfigurationRuntimeVersion
+    set:
+      parameter-name: GithubRuntimeVersion
+  - where:
+      parameter-name: RegistryInfoRegistryPassword
+    set:
+      parameter-name: RegistryPassword
+  - where:
+      parameter-name: RegistryInfoRegistryUrl
+    set:
+      parameter-name: RegistryUrl
+  - where:
+      parameter-name: RegistryInfoRegistryUserName
+    set:
+      parameter-name: RegistryUserName
+  - where:
+      parameter-name: CustomDomainConfigurationCertificatePassword
+    set:
+      parameter-name: CustomDomainPassword
+  - where:
+      subject: ContainerAppConnectedEnvCert
+      parameter-name: CertificateName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppConnectedEnvDapr
+      parameter-name: DaprName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppConnectedEnvStorage
+      parameter-name: StorageName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppAuthConfig
+      parameter-name: AuthConfigName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppSourceControl
+      parameter-name: SourceControlName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppManagedEnv
+      parameter-name: EnvName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppManagedEnvDapr
+      parameter-name: DaprName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppManagedEnvStorage
+      parameter-name: StorageName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppRevision
+      parameter-name: RevisionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppRevisionReplica
+      parameter-name: ReplicaName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ContainerAppManagedEnvDiagnosticDetector
+      parameter-name: DetectorName
+    set:
+      parameter-name: Name
 
   - where:
       model-name: ManagedEnvironment
@@ -450,5 +586,56 @@ directive:
           - Name
           - RepoUrl
           - RegistryInfoRegistryUserName
+          - ResourceGroupName
+  - where:
+      model-name: ContainerAppAuthToken
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: EnvironmentAuthToken
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: AvailableWorkloadProfile
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+  - where:
+      model-name: BillingMeterCollection
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+  - where:
+      model-name: Diagnostics
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: Replica
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: ReplicaCollection
+    set:
+      format-table:
+        properties:
+          - Name
           - ResourceGroupName
 ```

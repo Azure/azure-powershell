@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start a container app.
 ```powershell
-{{ Add code here }}
+Start-AzContainerApp -Name azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Start a container app.

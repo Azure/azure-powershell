@@ -20,7 +20,7 @@ Get-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String
 
 ### Get
 ```
-Get-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+Get-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-DefaultProfile
 
 ### GetViaIdentityManagedEnvironment
 ```
-Get-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+Get-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -41,27 +41,45 @@ Get storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List storage for a managedEnvironment.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+List storage for a managedEnvironment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get storage for a managedEnvironment by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+Get storage for a managedEnvironment by name.
+
+### Example 3: Get storage for a managedEnvironment.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa
+```
+
+```output
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+```
+
+Get storage for a managedEnvironment.
 
 ## PARAMETERS
 
@@ -128,13 +146,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityManagedEnvironment
 Aliases:
 
 Required: True
@@ -144,12 +161,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedEnvironment
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

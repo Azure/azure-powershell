@@ -22,27 +22,18 @@ List secrets for a dapr component
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List secrets for a dapr component.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDaprSecret -DaprName azps-dapr -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      Value
+----      -----
+masterkey keyvalue
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+List secrets for a dapr component.
 
 ## PARAMETERS
 

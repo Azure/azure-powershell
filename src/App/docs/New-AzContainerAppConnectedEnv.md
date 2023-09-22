@@ -15,8 +15,8 @@ Create an connectedEnvironment.
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomDomainConfigurationCertificatePassword <String>]
- [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
+ [-SubscriptionId <String>] [-CustomDomainConfigurationCertificateValueInputFile <String>]
+ [-CustomDomainConfigurationDnsSuffix <String>] [-CustomDomainPassword <SecureString>]
  [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -25,11 +25,10 @@ New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -Locat
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppConnectedEnv -InputObject <IAppIdentity> -Location <String>
- [-CustomDomainConfigurationCertificatePassword <String>]
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
- [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -83,21 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomDomainConfigurationCertificatePassword
-Certificate password
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomDomainConfigurationCertificateValueInputFile
 Input File for CustomDomainConfigurationCertificateValue (PFX or PEM blob)
 
@@ -118,6 +102,21 @@ Dns suffix for the environment domain
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainPassword
+Certificate password.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

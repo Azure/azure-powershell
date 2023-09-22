@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deactivates a revision for a Container App.
 ```powershell
-{{ Add code here }}
+Disable-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Deactivates a revision for a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deactivates a revision for a Container App.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Disable-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Deactivates a revision for a Container App.

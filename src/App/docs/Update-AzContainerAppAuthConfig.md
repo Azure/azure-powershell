@@ -14,8 +14,8 @@ Create the AuthConfig for a Container App.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-CookieExpirationConvention <String>]
+Update-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-CookieExpirationConvention <String>]
  [-CookieExpirationTimeToExpiration <String>] [-ForwardProxyConvention <String>]
  [-ForwardProxyCustomHostHeaderName <String>] [-ForwardProxyCustomProtoHeaderName <String>]
  [-GlobalValidationExcludedPath <String[]>] [-GlobalValidationRedirectToProvider <String>]
@@ -28,7 +28,7 @@ Update-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <Stri
 
 ### UpdateViaIdentityContainerAppExpanded
 ```
-Update-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
+Update-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
  [-CookieExpirationConvention <String>] [-CookieExpirationTimeToExpiration <String>]
  [-ForwardProxyConvention <String>] [-ForwardProxyCustomHostHeaderName <String>]
  [-ForwardProxyCustomProtoHeaderName <String>] [-GlobalValidationExcludedPath <String[]>]
@@ -81,21 +81,6 @@ Create the AuthConfig for a Container App.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AuthConfigName
-Name of the Container App AuthConfig.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ContainerAppInputObject
 Identity Parameter
@@ -336,6 +321,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Container App AuthConfig.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

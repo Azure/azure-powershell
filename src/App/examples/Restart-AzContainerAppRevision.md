@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restarts a revision for a Container App.
 ```powershell
-{{ Add code here }}
+Restart-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Restarts a revision for a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Restarts a revision for a Container App.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Restart-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Restarts a revision for a Container App.

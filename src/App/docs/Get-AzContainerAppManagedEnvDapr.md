@@ -20,7 +20,7 @@ Get-AzContainerAppManagedEnvDapr -EnvName <String> -ResourceGroupName <String> [
 
 ### Get
 ```
-Get-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+Get-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-DefaultProfile <P
 
 ### GetViaIdentityManagedEnvironment
 ```
-Get-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+Get-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -40,44 +40,47 @@ Get a dapr component.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List dapr component by env name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+List dapr component by env name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dapr component by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+Get a dapr component by name.
+
+### Example 3: Get a dapr component.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
+```
+
+```output
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
+```
+
+Get a dapr component.
 
 ## PARAMETERS
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -139,6 +142,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

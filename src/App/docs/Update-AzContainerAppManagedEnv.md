@@ -14,19 +14,17 @@ Patches a Managed Environment using JSON Merge Patch
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AppLogConfigurationDestination <String>] [-CustomDomainConfigurationCertificatePassword <String>]
- [-CustomDomainConfigurationCertificateValueInputFile <String>] [-DaprAiConnectionString <String>]
- [-DaprAiInstrumentationKey <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
- [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
- [-WorkloadProfile <IWorkloadProfile[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AppLogConfigurationDestination <String>] [-CustomDomainConfigurationCertificateValueInputFile <String>]
+ [-DaprAiConnectionString <String>] [-DaprAiInstrumentationKey <String>] [-Kind <String>]
+ [-LogAnalyticConfigurationCustomerId <String>] [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled]
+ [-Tag <Hashtable>] [-WorkloadProfile <IWorkloadProfile[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppManagedEnv -InputObject <IAppIdentity> [-AppLogConfigurationDestination <String>]
- [-CustomDomainConfigurationCertificatePassword <String>]
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-DaprAiConnectionString <String>]
  [-DaprAiInstrumentationKey <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
  [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
@@ -36,14 +34,14 @@ Update-AzContainerAppManagedEnv -InputObject <IAppIdentity> [-AppLogConfiguratio
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonFilePath <String>
+Update-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonString <String>
+Update-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -53,27 +51,33 @@ Patches a Managed Environment using JSON Merge Patch
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a managed environment.
 ```powershell
-{{ Add code here }}
+Update-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
+Update a managed environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a managed environment.
 ```powershell
-{{ Add code here }}
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnv -InputObject $managedenv -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
+Update a managed environment.
 
 ## PARAMETERS
 
@@ -98,21 +102,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomDomainConfigurationCertificatePassword
-Certificate password
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,21 +166,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnvName
-Name of the Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -298,6 +272,21 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

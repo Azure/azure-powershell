@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of Managed Environment used to host container apps by sub.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnv
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of Managed Environment used to host container apps by sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the properties of Managed Environment used to host container apps by resource group name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of Managed Environment used to host container apps by resource group name.
 
+### Example 3: Get the properties of a Managed Environment used to host container apps by name.
+```powershell
+Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -Name azps-env
+```
+
+```output
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
+```
+
+Get the properties of a Managed Environment used to host container apps by name.

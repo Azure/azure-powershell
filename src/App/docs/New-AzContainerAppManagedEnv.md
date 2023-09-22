@@ -14,24 +14,24 @@ Create a Managed Environment used to host container apps.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -Location <String>
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>]
- [-CustomDomainConfigurationCertificatePassword <String>]
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
- [-DaprAiConnectionString <String>] [-DaprAiInstrumentationKey <String>]
- [-InfrastructureResourceGroup <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
- [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
- [-VnetConfigurationDockerBridgeCidr <String>] [-VnetConfigurationInfrastructureSubnetId <String>]
- [-VnetConfigurationInternal] [-VnetConfigurationPlatformReservedCidr <String>]
- [-VnetConfigurationPlatformReservedDnsIP <String>] [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>]
+ [-DaprAiInstrumentationKey <String>] [-InfrastructureResourceGroup <String>] [-Kind <String>]
+ [-LogAnalyticConfigurationCustomerId <String>] [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled]
+ [-Tag <Hashtable>] [-VnetConfigurationDockerBridgeCidr <String>]
+ [-VnetConfigurationInfrastructureSubnetId <String>] [-VnetConfigurationInternal]
+ [-VnetConfigurationPlatformReservedCidr <String>] [-VnetConfigurationPlatformReservedDnsIP <String>]
+ [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedEnv -InputObject <IAppIdentity> -Location <String>
- [-AppLogConfigurationDestination <String>] [-CustomDomainConfigurationCertificatePassword <String>]
- [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
+ [-AppLogConfigurationDestination <String>] [-CustomDomainConfigurationCertificateValueInputFile <String>]
+ [-CustomDomainConfigurationDnsSuffix <String>] [-CustomDomainPassword <SecureString>]
  [-DaprAiConnectionString <String>] [-DaprAiInstrumentationKey <String>]
  [-InfrastructureResourceGroup <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
  [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
@@ -43,14 +43,14 @@ New-AzContainerAppManagedEnv -InputObject <IAppIdentity> -Location <String>
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> -JsonString <String>
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -67,13 +67,13 @@ New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name 
 $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).CustomerId
 $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).PrimarySharedKey
 
-New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
+New-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Location eastus -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
 ```
 
 ```output
-Location       Name     ResourceGroupName
---------       ----     -----------------
-Canada Central azps-env azps_test_group_app
+Location Name    ResourceGroupName
+-------- ----    -----------------
+East US  azps-env azps_test_group_app
 ```
 
 Create a Managed Environment used to host container apps.
@@ -110,21 +110,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomDomainConfigurationCertificatePassword
-Certificate password
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomDomainConfigurationCertificateValueInputFile
 Input File for CustomDomainConfigurationCertificateValue (PFX or PEM blob)
 
@@ -145,6 +130,21 @@ Dns suffix for the environment domain
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomDomainPassword
+Certificate password.
+
+```yaml
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -195,21 +195,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnvName
-Name of the Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -347,6 +332,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

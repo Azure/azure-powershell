@@ -14,7 +14,7 @@ Delete storage for a managedEnvironment.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+Remove-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-DefaultProf
 
 ### DeleteViaIdentityManagedEnvironment
 ```
-Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,27 +35,29 @@ Delete storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App ManagedEnvStorage.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App ManagedEnvStorage.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App ManagedEnvStorage.
 ```powershell
-{{ Add code here }}
+$managedenvstorage = Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
+
+Remove-AzContainerAppManagedEnvStorage -InputObject $managedenvstorage
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete a Container App ManagedEnvStorage.
+
+### Example 3: Delete a Container App ManagedEnvStorage.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa
 ```
 
-{{ Add description here }}
+Delete a Container App ManagedEnvStorage.
 
 ## PARAMETERS
 
@@ -122,6 +124,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the storage.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -144,21 +161,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageName
-Name of the storage.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedEnvironment
 Aliases:
 
 Required: True

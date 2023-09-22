@@ -48,7 +48,6 @@ Get-AzContainerApp
 Location       Name                ResourceGroupName
 --------       ----                -----------------
 Canada Central azps-containerapp-1 azps_test_group_app
-Australia East azps-containerapp   azps_test_group_app
 ```
 
 List the properties of a Container App.
@@ -62,7 +61,6 @@ Get-AzContainerApp -ResourceGroupName azps_test_group_app
 Location       Name                ResourceGroupName
 --------       ----                -----------------
 Canada Central azps-containerapp-1 azps_test_group_app
-Australia East azps-containerapp   azps_test_group_app
 ```
 
 Get the properties of a Container App by Resource Group.

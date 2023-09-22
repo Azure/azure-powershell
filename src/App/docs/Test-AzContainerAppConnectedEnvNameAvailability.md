@@ -26,19 +26,6 @@ Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <Strin
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CheckViaIdentity
-```
-Test-AzContainerAppConnectedEnvNameAvailability -InputObject <IAppIdentity>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzContainerAppConnectedEnvNameAvailability -InputObject <IAppIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CheckViaJsonFilePath
 ```
 Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName <String> -ResourceGroupName <String>
@@ -58,27 +45,18 @@ Checks if resource connectedEnvironmentName is available.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Checks if resource connectedEnvironmentName is available.
 ```powershell
-{{ Add code here }}
+Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Type Microsoft.App/containerApps -Name azpsconenv
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Checks if resource connectedEnvironmentName is available.
 
 ## PARAMETERS
 
@@ -88,7 +66,7 @@ To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest
-Parameter Sets: Check, CheckViaIdentity
+Parameter Sets: Check
 Aliases:
 
 Required: True
@@ -103,7 +81,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -126,22 +104,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -180,7 +142,7 @@ The name of the resource for which availability needs to be checked.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -196,7 +158,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -211,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,7 +188,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: False
@@ -271,8 +233,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest
 

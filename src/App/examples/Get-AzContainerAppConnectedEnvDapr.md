@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List dapr component by connected env name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+List dapr component by connected env name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dapr component by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+Get a dapr component by name.
 
+### Example 3: Get a dapr component.
+```powershell
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject $connectedenv -Name azps-connectedenvdapr
+```
+
+```output
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
+```
+
+Get a dapr component.

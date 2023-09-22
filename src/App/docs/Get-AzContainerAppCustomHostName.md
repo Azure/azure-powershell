@@ -23,27 +23,18 @@ Analyzes a custom hostname for a Container App
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Analyzes a custom hostname for a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppCustomHostName -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ConflictWithEnvironmentCustomDomain ConflictingContainerAppResourceId CustomDomainVerificationTest HasConflictOnManagedEnvironment HostName IsHostnameAlreadyVerified
+----------------------------------- --------------------------------- ---------------------------- ------------------------------- -------- -------------------------
+False                                                                 Failed                       False                                    False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Analyzes a custom hostname for a Container App.
 
 ## PARAMETERS
 

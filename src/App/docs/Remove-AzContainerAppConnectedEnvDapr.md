@@ -14,7 +14,7 @@ Delete a Dapr Component from a connected environment.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ Remove-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-DefaultProfi
 
 ### DeleteViaIdentityConnectedEnvironment
 ```
-Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -DaprName <String>
+Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -91,21 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -135,6 +120,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

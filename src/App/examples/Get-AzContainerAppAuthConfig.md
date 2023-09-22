@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List AuthConfig of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
 ```
 
-{{ Add description here }}
+List AuthConfig of a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a AuthConfig of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp -ResourceGroupName azps_test_group_app -Name current
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
 ```
 
-{{ Add description here }}
+Get a AuthConfig of a Container App.
 
+### Example 3: Get a AuthConfig of a Container App.
+```powershell
+$containerapp = Get-AzContainerApp -Name azps-containerapp -ResourceGroupName azps_test_group_app
+Get-AzContainerAppAuthConfig -ContainerAppInputObject $containerapp -Name current
+```
+
+```output
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
+```
+
+Get a AuthConfig of a Container App.

@@ -29,27 +29,20 @@ Delete a Container App.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerApp -Name azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -Name azps-containerapp-1 -ResourceGroupName azps_test_group_app
+Remove-AzContainerApp -InputObject $containerapp
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete a Container App.
 
 ## PARAMETERS
 

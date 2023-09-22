@@ -30,27 +30,32 @@ Get auth token for a container app
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get auth token for a container app.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppAuthToken -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
-{{ Add description here }}
+Get auth token for a container app.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get auth token for a container app.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Get-AzContainerAppAuthToken -InputObject $containerapp
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
-{{ Add description here }}
+Get auth token for a container app.
 
 ## PARAMETERS
 

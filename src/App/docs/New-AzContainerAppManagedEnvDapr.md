@@ -14,7 +14,7 @@ Create a Dapr Component in a Managed Environment.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+New-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>]
  [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-ComponentType <St
 
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
-New-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+New-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -38,14 +38,14 @@ New-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObje
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+New-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+New-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -61,7 +61,7 @@ $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 
-New-AzContainerAppManagedEnvDapr -DaprName azps-dapr -EnvName azps-env -ResourceGroupName azps_test_group_app -componentType state.azure.cosmosdb -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
+New-AzContainerAppManagedEnvDapr -Name azps-dapr -EnvName azps-env -ResourceGroupName azps_test_group_app -componentType state.azure.cosmosdb -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
@@ -83,21 +83,6 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMana
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,6 +222,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMana
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

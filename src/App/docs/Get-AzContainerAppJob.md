@@ -39,27 +39,44 @@ Get the properties of a Container Apps Job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of Container Apps Job by sub.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppJob
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name         ProvisioningState ResourceGroupName
+-------- ----         ----------------- -----------------
+East US  azps-app-job Succeeded         azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of Container Apps Job by sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the properties of Container Apps Job by resource group name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppJob -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name         ProvisioningState ResourceGroupName
+-------- ----         ----------------- -----------------
+East US  azps-app-job Succeeded         azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of Container Apps Job by resource group name.
+
+### Example 3: Get the properties of a Container Apps Job by name.
+```powershell
+Get-AzContainerAppJob -ResourceGroupName azps_test_group_app -Name azps-app-job
+```
+
+```output
+Location Name         ProvisioningState ResourceGroupName
+-------- ----         ----------------- -----------------
+East US  azps-app-job Succeeded         azps_test_group_app
+```
+
+Get the properties of a Container Apps Job by name.
 
 ## PARAMETERS
 

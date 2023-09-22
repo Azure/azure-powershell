@@ -14,7 +14,7 @@ Delete a Managed Environment if it does not have any container apps.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,27 +29,21 @@ Delete a Managed Environment if it does not have any container apps.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App ManagedEnv.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App ManagedEnv.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App ManagedEnv.
 ```powershell
-{{ Add code here }}
+$managedenv = Get-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnv -InputObject $managedenv
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete a Container App ManagedEnv.
 
 ## PARAMETERS
 
@@ -84,21 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvName
-Name of the Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -112,6 +91,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

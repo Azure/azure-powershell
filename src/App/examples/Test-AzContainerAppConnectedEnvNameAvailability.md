@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Checks if resource connectedEnvironmentName is available.
 ```powershell
-{{ Add code here }}
+Test-AzContainerAppConnectedEnvNameAvailability -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Type Microsoft.App/containerApps -Name azpsconenv
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Checks if resource connectedEnvironmentName is available.

@@ -58,27 +58,18 @@ Start a Container Apps Job
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a Container Apps Job.
 ```powershell
-{{ Add code here }}
+Start-AzContainerAppJob -Name azps-app-job -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 ResourceGroupName
+----                 -----------------
+azps-app-job-i7sw0ar azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Start a Container Apps Job.
 
 ## PARAMETERS
 

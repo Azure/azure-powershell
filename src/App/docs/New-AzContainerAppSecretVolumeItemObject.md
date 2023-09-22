@@ -21,27 +21,18 @@ Create an in-memory object for SecretVolumeItem.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for SecretVolumeItem.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppSecretVolumeItemObject -Path "secretVolumePath" -SecretRef "redis-secret"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Path             SecretRef
+----             ---------
+secretVolumePath redis-secret
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for SecretVolumeItem.
 
 ## PARAMETERS
 

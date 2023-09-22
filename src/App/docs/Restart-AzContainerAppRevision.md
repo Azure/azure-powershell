@@ -14,7 +14,7 @@ Restarts a revision for a Container App
 
 ### Restart (Default)
 ```
-Restart-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+Restart-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Restart-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSO
 
 ### RestartViaIdentityContainerApp
 ```
-Restart-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -RevisionName <String>
+Restart-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,27 +35,28 @@ Restarts a revision for a Container App
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restarts a revision for a Container App.
 ```powershell
-{{ Add code here }}
+Restart-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Restarts a revision for a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Restarts a revision for a Container App.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Restart-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Restarts a revision for a Container App.
 
 ## PARAMETERS
 
@@ -122,6 +123,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Container App Revision.
+
+```yaml
+Type: System.String
+Parameter Sets: Restart, RestartViaIdentityContainerApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -144,21 +160,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Restart
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RevisionName
-Name of the Container App Revision.
-
-```yaml
-Type: System.String
-Parameter Sets: Restart, RestartViaIdentityContainerApp
 Aliases:
 
 Required: True

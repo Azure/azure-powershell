@@ -22,27 +22,19 @@ Create an in-memory object for JobScaleRule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for JobScaleRule.
 ```powershell
-{{ Add code here }}
+$scaleRuleAuth = New-AzContainerAppScaleRuleAuthObject -SecretRef "redis-secret" -TriggerParameter "TriggerParameter"
+New-AzContainerAppJobScaleRuleObject -Auth $scaleRuleAuth -Name azps-job-scale -Type azure-servicebus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+azps-job-scale
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for JobScaleRule.
 
 ## PARAMETERS
 

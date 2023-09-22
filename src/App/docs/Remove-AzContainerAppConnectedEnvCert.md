@@ -14,7 +14,7 @@ Deletes the specified Certificate.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+Remove-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -27,9 +27,8 @@ Remove-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> [-DefaultProfi
 
 ### DeleteViaIdentityConnectedEnvironment
 ```
-Remove-AzContainerAppConnectedEnvCert -CertificateName <String>
- -ConnectedEnvironmentInputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzContainerAppConnectedEnvCert -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,21 +59,6 @@ Deletes the specified Certificate.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -CertificateName
-Name of the Certificate.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
@@ -136,6 +120,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -29,27 +29,22 @@ Delete an connectedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App ConnectedEnv.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App ConnectedEnv.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App ConnectedEnv.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Remove-AzContainerAppConnectedEnv -InputObject $connectedenv
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Delete a Container App ConnectedEnv.
 
 ## PARAMETERS
 

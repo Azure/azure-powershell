@@ -4,8 +4,8 @@ New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name 
 
 $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).CustomerId
 $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).PrimarySharedKey
-New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
-$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -EnvName azps-env).Id
+New-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
+$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -Name azps-env).Id
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
@@ -14,7 +14,7 @@ Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B7
 New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location canadacentral -InputFile "C:\mypfx.pfx" -Password $mypwd
 $EnvCertId = (Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert).Id
 
-$trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -RevisionName "testcontainerApp0-ab1234" -Weight 100
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
 $iPSecurityRestrictionRule = New-AzContainerAppIPSecurityRestrictionRuleObject -Action "Allow" -IPAddressRange "192.168.1.1/32" -Name "Allow work IP A subnet"
 $secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
 $configuration = New-AzContainerAppConfigurationObject -IngressIPSecurityRestriction $iPSecurityRestrictionRule -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -IngressClientCertificateMode "accept" -CorPolicyAllowedOrigin "https://a.test.com","https://b.test.com" -CorPolicyAllowedMethod "GET","POST" -CorPolicyAllowedHeader "HEADER1","HEADER2" -CorPolicyExposeHeader "HEADER3","HEADER4" -CorPolicyMaxAge 1234 -CorPolicyAllowCredentials:$True -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject
@@ -30,9 +30,9 @@ New-AzContainerApp -Name "azps-containerapp-1" -ResourceGroupName "azps_test_gro
 ```
 
 ```output
-Location       Name                ResourceGroupName
---------       ----                -----------------
-Canada Central azps-containerapp-1 azps_test_group_app
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
 Create a Container App.

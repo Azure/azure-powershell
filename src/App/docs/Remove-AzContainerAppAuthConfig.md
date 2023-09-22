@@ -14,9 +14,8 @@ Delete a Container App AuthConfig.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -27,7 +26,7 @@ Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PS
 
 ### DeleteViaIdentityContainerApp
 ```
-Remove-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
+Remove-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -59,21 +58,6 @@ Delete a Container App AuthConfig.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AuthConfigName
-Name of the Container App AuthConfig.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityContainerApp
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ContainerAppInputObject
 Identity Parameter
@@ -135,6 +119,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Container App AuthConfig.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityContainerApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

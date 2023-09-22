@@ -14,15 +14,15 @@ Create storage for a connectedEnvironment.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- -StorageName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
  [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
-New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,16 +36,16 @@ New-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFileAcc
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- -StorageName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- -StorageName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,10 +55,10 @@ Create storage for a connectedEnvironment.
 
 ### Example 1: Create storage for a connectedEnvironment.
 ```powershell
-New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location canadacentral -SkuName Standard_GRS
+New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location eastus -SkuName Standard_GRS
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 
-New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -StorageName azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
 ```
 
 ```output
@@ -224,13 +224,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -240,12 +239,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True

@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List SourceControl of a Container App.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
 ```
 
-{{ Add description here }}
+List SourceControl of a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a SourceControl of a Container App by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
 ```
 
-{{ Add description here }}
+Get a SourceControl of a Container App by name.
 
+### Example 3: Get a SourceControl of a Container App.
+```powershell
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Get-AzContainerAppSourceControl -ContainerAppInputObject $containerapp -Name current
+```
+
+```output
+Branch Name    RepoUrl                                 RegistryInfoRegistryUserName ResourceGroupName
+------ ----    -------                                 ---------------------------- -----------------
+main   current https://github.com/lijinpei2008/ghatest azpscontainerregistry        azps_test_group_app
+```
+
+Get a SourceControl of a Container App.

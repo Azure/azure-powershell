@@ -14,7 +14,7 @@ Delete a Dapr Component from a Managed Environment.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+Remove-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-DefaultProfile
 
 ### DeleteViaIdentityManagedEnvironment
 ```
-Remove-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+Remove-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,44 +35,32 @@ Delete a Dapr Component from a Managed Environment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Dapr Component from a Managed Environment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Dapr Component from a Managed Environment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Dapr Component from a Managed Environment.
 ```powershell
-{{ Add code here }}
+$managedenvdapr = Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
+
+Remove-AzContainerAppManagedEnvDapr -InputObject $managedenvdapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete a Dapr Component from a Managed Environment.
+
+### Example 3: Delete a Dapr Component from a Managed Environment.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
 ```
 
-{{ Add description here }}
+Delete a Dapr Component from a Managed Environment.
 
 ## PARAMETERS
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -134,6 +122,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

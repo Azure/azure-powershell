@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update certificate.
 ```powershell
-{{ Add code here }}
+Update-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----                  -------- ------              ----------------- -----------         ----------                               -----------------
+azps-connectedenvcert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-{{ Add description here }}
+Update certificate.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update certificate.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Update-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentInputObject $connectedenv -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----                  -------- ------              ----------------- -----------         ----------                               -----------------
+azps-connectedenvcert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-{{ Add description here }}
-
+Update certificate.

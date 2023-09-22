@@ -14,7 +14,7 @@ Create the AuthConfig for a Container App.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String> -ResourceGroupName <String>
+New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-CookieExpirationConvention <String>]
  [-CookieExpirationTimeToExpiration <String>] [-ForwardProxyConvention <String>]
  [-ForwardProxyCustomHostHeaderName <String>] [-ForwardProxyCustomProtoHeaderName <String>]
@@ -28,7 +28,7 @@ New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
 
 ### CreateViaIdentityContainerAppExpanded
 ```
-New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppInputObject <IAppIdentity>
+New-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
  [-CookieExpirationConvention <String>] [-CookieExpirationTimeToExpiration <String>]
  [-ForwardProxyConvention <String>] [-ForwardProxyCustomHostHeaderName <String>]
  [-ForwardProxyCustomProtoHeaderName <String>] [-GlobalValidationExcludedPath <String[]>]
@@ -55,14 +55,14 @@ New-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationConve
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String> -ResourceGroupName <String>
+New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String> -ResourceGroupName <String>
+New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -76,7 +76,7 @@ Create the AuthConfig for a Container App.
 ```powershell
 $identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-config
 
-New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
+New-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
 ```
 
 ```output
@@ -88,21 +88,6 @@ current True            azps_test_group_app
 Create the AuthConfig for a Container App.
 
 ## PARAMETERS
-
-### -AuthConfigName
-Name of the Container App AuthConfig.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ContainerAppInputObject
 Identity Parameter
@@ -373,6 +358,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateVia
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Container App AuthConfig.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

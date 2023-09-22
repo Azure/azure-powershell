@@ -15,7 +15,7 @@ Get details of a single job execution
 ### Job (Default)
 ```
 Get-AzContainerAppJobExecution -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### JobViaIdentity
@@ -27,12 +27,6 @@ Get-AzContainerAppJobExecution -InputObject <IAppIdentity> [-DefaultProfile <PSO
 ```
 Get-AzContainerAppJobExecution -JobInputObject <IAppIdentity> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzContainerAppJobExecution -JobName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +74,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-The filter to apply on the operation.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -132,7 +111,7 @@ Job Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Job, List
+Parameter Sets: Job
 Aliases:
 
 Required: True
@@ -163,7 +142,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Job, List
+Parameter Sets: Job
 Aliases:
 
 Required: True
@@ -177,8 +156,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Job, List
+Type: System.String[]
+Parameter Sets: Job
 Aliases:
 
 Required: False

@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a managed environment.
 ```powershell
-{{ Add code here }}
+Update-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
+Update a managed environment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a managed environment.
 ```powershell
-{{ Add code here }}
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnv -InputObject $managedenv -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
-
+Update a managed environment.

@@ -4,7 +4,7 @@ $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv2 -ResourceGroupName azps_test_group_app -DaprName azps-connectedenvdapr -ComponentType "state.azure.cosmosdb" -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr -ComponentType "state.azure.cosmosdb" -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output

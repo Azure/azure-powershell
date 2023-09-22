@@ -14,15 +14,15 @@ Create storage for a connectedEnvironment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- -StorageName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
+Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureFileAccessMode <String>]
  [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>] [-AzureFileShareName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
-Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -186,13 +186,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -202,12 +201,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True

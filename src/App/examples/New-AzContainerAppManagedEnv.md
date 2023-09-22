@@ -5,13 +5,13 @@ New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name 
 $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).CustomerId
 $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).PrimarySharedKey
 
-New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
+New-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Location eastus -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
 ```
 
 ```output
-Location       Name     ResourceGroupName
---------       ----     -----------------
-Canada Central azps-env azps_test_group_app
+Location Name    ResourceGroupName
+-------- ----    -----------------
+East US  azps-env azps_test_group_app
 ```
 
 Create a Managed Environment used to host container apps.

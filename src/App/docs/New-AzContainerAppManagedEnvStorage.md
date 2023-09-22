@@ -14,7 +14,7 @@ Create storage for a managedEnvironment.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -29,21 +29,21 @@ New-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAcces
 
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
-New-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+New-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+New-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -55,10 +55,10 @@ Create storage for a managedEnvironment.
 
 ### Example 1: Create or update storage for a managedEnvironment.
 ```powershell
-New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location canadacentral -SkuName Standard_GRS
+New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location eastus -SkuName Standard_GRS
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 
-New-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -StorageName azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+New-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
 ```
 
 ```output
@@ -224,13 +224,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -240,12 +239,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True

@@ -14,7 +14,7 @@ Create a Dapr Component in a connected environment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
  [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -23,7 +23,7 @@ Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprNa
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
-Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -DaprName <String>
+Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -112,21 +112,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -199,6 +184,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

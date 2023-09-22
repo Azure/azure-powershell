@@ -62,8 +62,8 @@ New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name 
 
 $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).CustomerId
 $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).PrimarySharedKey
-New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
-$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -EnvName azps-env).Id
+New-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Location canadacentral -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false
+$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -Name azps-env).Id
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
@@ -88,9 +88,9 @@ New-AzContainerApp -Name "azps-containerapp-1" -ResourceGroupName "azps_test_gro
 ```
 
 ```output
-Location       Name                ResourceGroupName
---------       ----                -----------------
-Canada Central azps-containerapp-1 azps_test_group_app
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
 Create a Container App.

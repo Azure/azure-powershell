@@ -14,7 +14,7 @@ Create a Dapr Component in a Managed Environment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+Update-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>]
  [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ Update-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-ComponentType 
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
 ```
-Update-AzContainerAppManagedEnvDapr -DaprName <String> -ManagedEnvironmentInputObject <IAppIdentity>
+Update-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -41,27 +41,58 @@ Create a Dapr Component in a Managed Environment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a managed environment dapr component.
 ```powershell
-{{ Add code here }}
+$scope = @("container-app-1","container-app-2")
+$secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+$daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
+
+Update-AzContainerAppManagedEnvDapr -Name azps-dapr -EnvName azps-env -ResourceGroupName azps_test_group_app -componentType state.azure.cosmosdb -Version v2 -IgnoreError:$false -InitTimeout 60s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       60s         azps_test_group_app v2
 ```
 
-{{ Add description here }}
+Update a managed environment dapr component.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a managed environment dapr component.
 ```powershell
-{{ Add code here }}
+$scope = @("container-app-1","container-app-2")
+$secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+$daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
+$managedenvdapr = Get-AzContainerAppManagedEnvDapr -Name azps-dapr -EnvName 4azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvDapr -InputObject $managedenvdapr -componentType state.azure.cosmosdb -Version v2 -IgnoreError:$false -InitTimeout 60s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       60s         azps_test_group_app v2
 ```
 
-{{ Add description here }}
+Update a managed environment dapr component.
+
+### Example 3: Update a managed environment dapr component.
+```powershell
+$scope = @("container-app-1","container-app-2")
+$secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+$daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvDapr -Name azps-dapr -ManagedEnvironmentInputObject $managedenv -componentType state.azure.cosmosdb -Version v2 -IgnoreError:$false -InitTimeout 60s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
+```
+
+```output
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       60s         azps_test_group_app v2
+```
+
+Update a managed environment dapr component.
 
 ## PARAMETERS
 
@@ -74,21 +105,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,6 +214,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

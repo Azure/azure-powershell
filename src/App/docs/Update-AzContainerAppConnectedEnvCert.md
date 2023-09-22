@@ -15,16 +15,15 @@ Currently only patching of tags is supported
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+Update-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
 ```
-Update-AzContainerAppConnectedEnvCert -CertificateName <String>
- -ConnectedEnvironmentInputObject <IAppIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzContainerAppConnectedEnvCert -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,14 +34,14 @@ Update-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> [-Tag <Hashtab
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+Update-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+Update-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -53,44 +52,34 @@ Currently only patching of tags is supported
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update certificate.
 ```powershell
-{{ Add code here }}
+Update-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----                  -------- ------              ----------------- -----------         ----------                               -----------------
+azps-connectedenvcert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-{{ Add description here }}
+Update certificate.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update certificate.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Update-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentInputObject $connectedenv -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----                  -------- ------              ----------------- -----------         ----------                               -----------------
+azps-connectedenvcert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-{{ Add description here }}
+Update certificate.
 
 ## PARAMETERS
-
-### -CertificateName
-Name of the Certificate.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
@@ -176,6 +165,21 @@ Json string supplied to the Update operation
 ```yaml
 Type: System.String
 Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True

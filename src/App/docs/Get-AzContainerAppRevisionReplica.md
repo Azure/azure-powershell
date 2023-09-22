@@ -20,7 +20,7 @@ Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ResourceGroupName 
 
 ### Get
 ```
-Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ReplicaName <String> -ResourceGroupName <String>
+Get-AzContainerAppRevisionReplica -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,13 +32,13 @@ Get-AzContainerAppRevisionReplica -InputObject <IAppIdentity> [-DefaultProfile <
 
 ### GetViaIdentityContainerApp
 ```
-Get-AzContainerAppRevisionReplica -ContainerAppInputObject <IAppIdentity> -ReplicaName <String>
+Get-AzContainerAppRevisionReplica -ContainerAppInputObject <IAppIdentity> -Name <String>
  -RevisionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityRevision
 ```
-Get-AzContainerAppRevisionReplica -ReplicaName <String> -RevisionInputObject <IAppIdentity>
+Get-AzContainerAppRevisionReplica -Name <String> -RevisionInputObject <IAppIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ReplicaName
+### -Name
 Name of the Container App Revision Replica.
 
 ```yaml

@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all billingMeters for a location.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppBillingMeter -Location eastus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        Location
+----        --------
+D4          East US
+D4          East US
+D4          East US
+D8          East US
+D8          East US
+D8          East US
+D16         East US
+D16         East US
+D16         East US
+D32         East US
+D32         East US
+D32         East US
+E4          East US
+E4          East US
+E4          East US
+E8          East US
+E8          East US
+E8          East US
+E16         East US
+E16         East US
+E16         East US
+E32         East US
+E32         East US
+E32         East US
+Consumption East US
+Consumption East US
+Consumption East US
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Get all billingMeters for a location.

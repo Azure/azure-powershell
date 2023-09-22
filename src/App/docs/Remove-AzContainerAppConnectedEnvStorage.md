@@ -14,8 +14,8 @@ Delete storage for a connectedEnvironment.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- -StorageName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Remove-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-DefaultPr
 
 ### DeleteViaIdentityConnectedEnvironment
 ```
-Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -123,6 +123,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the storage.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -145,21 +160,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageName
-Name of the storage.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
 Aliases:
 
 Required: True

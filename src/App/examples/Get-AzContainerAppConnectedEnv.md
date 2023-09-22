@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the properties of connectedEnvironment by sub.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnv
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-connectedenv azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of connectedEnvironment by sub.
 
-### Example 2: {{ Add title here }}
+### Example 2: List the properties of connectedEnvironment by resource group name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-connectedenv azps_test_group_app
 ```
 
-{{ Add description here }}
+List the properties of connectedEnvironment by resource group name.
 
+### Example 3: Get the properties of an connectedEnvironment by name.
+```powershell
+Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps-connectedenv azps_test_group_app
+```
+
+Get the properties of an connectedEnvironment by name.

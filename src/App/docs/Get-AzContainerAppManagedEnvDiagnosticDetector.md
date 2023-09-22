@@ -20,8 +20,8 @@ Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName <String> -ResourceGroupN
 
 ### Get
 ```
-Get-AzContainerAppManagedEnvDiagnosticDetector -DetectorName <String> -EnvName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -32,8 +32,8 @@ Get-AzContainerAppManagedEnvDiagnosticDetector -InputObject <IAppIdentity> [-Def
 
 ### GetViaIdentityManagedEnvironment
 ```
-Get-AzContainerAppManagedEnvDiagnosticDetector -DetectorName <String>
- -ManagedEnvironmentInputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppManagedEnvDiagnosticDetector -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,21 +75,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DetectorName
-Name of the Managed Environment detector.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityManagedEnvironment
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,6 +125,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Managed Environment detector.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

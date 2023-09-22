@@ -14,7 +14,7 @@ Create storage for a managedEnvironment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
+Update-AzContainerAppManagedEnvStorage -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -29,7 +29,7 @@ Update-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAc
 
 ### UpdateViaIdentityManagedEnvironmentExpanded
 ```
-Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -StorageName <String>
+Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
  [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -39,27 +39,52 @@ Create storage for a managedEnvironment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a managed environment storage.
 ```powershell
-{{ Add code here }}
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
+
+Update-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+Update a managed environment storage.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a managed environment storage.
 ```powershell
-{{ Add code here }}
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
+$managedenvstorage = Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
+
+Update-AzContainerAppManagedEnvStorage -InputObject $managedenvstorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+Update a managed environment storage.
+
+### Example 3: Update a managed environment storage.
+```powershell
+$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+```
+
+```output
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+```
+
+Update a managed environment storage.
 
 ## PARAMETERS
 
@@ -186,13 +211,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the storage.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: True
@@ -202,12 +226,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageName
-Name of the storage.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True

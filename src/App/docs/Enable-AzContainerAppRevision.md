@@ -14,7 +14,7 @@ Activates a revision for a Container App
 
 ### Activate (Default)
 ```
-Enable-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+Enable-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Enable-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSOb
 
 ### ActivateViaIdentityContainerApp
 ```
-Enable-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -RevisionName <String>
+Enable-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,27 +35,28 @@ Activates a revision for a Container App
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Activates a revision for a Container App.
 ```powershell
-{{ Add code here }}
+Enable-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Activates a revision for a Container App.
 
-### Example 2: {{ Add title here }}
+### Example 2: Activates a revision for a Container App.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Enable-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Activates a revision for a Container App.
 
 ## PARAMETERS
 
@@ -122,6 +123,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Container App Revision.
+
+```yaml
+Type: System.String
+Parameter Sets: Activate, ActivateViaIdentityContainerApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -144,21 +160,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Activate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RevisionName
-Name of the Container App Revision.
-
-```yaml
-Type: System.String
-Parameter Sets: Activate, ActivateViaIdentityContainerApp
 Aliases:
 
 Required: True

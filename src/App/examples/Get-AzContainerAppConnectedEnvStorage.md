@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List storage by connected env name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+List storage by connected env name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get storage for a connectedEnvironment by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
 ```
 
-{{ Add description here }}
+Get storage for a connectedEnvironment by name.
 
+### Example 3: Get storage for a connectedEnvironment.
+```powershell
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject $connectedenv -Name azpstestsa
+```
+
+```output
+Name       AzureFileAccessMode AzureFileAccountName AzureFileShareName ResourceGroupName
+----       ------------------- -------------------- ------------------ -----------------
+azpstestsa ReadWrite           azpstestsa           azps-rw-sharename  azps_test_group_app
+```
+
+Get storage for a connectedEnvironment.

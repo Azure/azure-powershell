@@ -29,27 +29,18 @@ Get the properties of a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the properties of a Managed Environment used to host container apps.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDiagnosticRoot -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the properties of a Managed Environment used to host container apps.
 
 ## PARAMETERS
 

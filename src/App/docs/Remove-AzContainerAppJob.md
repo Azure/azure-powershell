@@ -29,27 +29,20 @@ Delete a Container Apps Job.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App Job.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppJob -ResourceGroupName azps_test_group_app -Name azps-app-job
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App Job.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App Job.
 ```powershell
-{{ Add code here }}
+$job = Get-AzContainerAppJob -ResourceGroupName azps_test_group_app -Name azps-app-job
+Remove-AzContainerAppJob -InputObject $job
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete a Container App Job.
 
 ## PARAMETERS
 

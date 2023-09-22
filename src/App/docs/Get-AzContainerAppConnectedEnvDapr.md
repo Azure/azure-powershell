@@ -20,7 +20,7 @@ Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -ResourceG
 
 ### Get
 ```
-Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-DefaultProfile 
 
 ### GetViaIdentityConnectedEnvironment
 ```
-Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -DaprName <String>
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -41,27 +41,45 @@ Get a dapr component.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List dapr component by connected env name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+List dapr component by connected env name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dapr component by name.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-{{ Add description here }}
+Get a dapr component by name.
+
+### Example 3: Get a dapr component.
+```powershell
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject $connectedenv -Name azps-connectedenvdapr
+```
+
+```output
+Name                  ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----                  -------------        ----------- ----------- -----------------   -------
+azps-connectedenvdapr state.azure.cosmosdb False       50s         azps_test_group_app v1
+```
+
+Get a dapr component.
 
 ## PARAMETERS
 
@@ -87,21 +105,6 @@ Name of the connected environment.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityConnectedEnvironment
 Aliases:
 
 Required: True
@@ -140,6 +143,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityConnectedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

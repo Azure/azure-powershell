@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Checks if resource name is available.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvAuthToken -ResourceGroupName azps_test_group_app -EnvName azps-env
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Checks if resource name is available.

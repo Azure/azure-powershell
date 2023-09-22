@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Dapr Component from a Managed Environment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Dapr Component from a Managed Environment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Dapr Component from a Managed Environment.
 ```powershell
-{{ Add code here }}
+$managedenvdapr = Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
+
+Remove-AzContainerAppManagedEnvDapr -InputObject $managedenvdapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete a Dapr Component from a Managed Environment.
+
+### Example 3: Delete a Dapr Component from a Managed Environment.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
 ```
 
-{{ Add description here }}
-
+Delete a Dapr Component from a Managed Environment.

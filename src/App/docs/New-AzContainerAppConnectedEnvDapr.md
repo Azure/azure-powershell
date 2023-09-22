@@ -14,7 +14,7 @@ Create a Dapr Component in a connected environment.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
  [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -23,7 +23,7 @@ New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName 
 
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -DaprName <String>
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -39,14 +39,14 @@ New-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-ComponentType <
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -DaprName <String>
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -62,7 +62,7 @@ $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv2 -ResourceGroupName azps_test_group_app -DaprName azps-connectedenvdapr -ComponentType "state.azure.cosmosdb" -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr -ComponentType "state.azure.cosmosdb" -Version v1 -IgnoreError:$false -InitTimeout 50s -Scope $scope -Secret $secretObject -Metadata $daprMetaData
 ```
 
 ```output
@@ -112,21 +112,6 @@ Name of the connected environment.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -238,6 +223,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, C
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

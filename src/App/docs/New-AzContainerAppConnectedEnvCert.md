@@ -14,7 +14,7 @@ Create a Certificate.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-InputFile <String>]
  [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ New-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironme
 
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
-New-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentInputObject <IAppIdentity>
+New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
  -Location <String> [-InputFile <String>] [-Password <SecureString>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,14 +36,14 @@ New-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> -Location <String
 
 ### CreateViaJsonFilePath
 ```
-New-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzContainerAppConnectedEnvCert -CertificateName <String> -ConnectedEnvironmentName <String>
+New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -60,7 +60,7 @@ Get-ChildItem -Path cert:\LocalMachine\My
 $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 
-New-AzContainerAppConnectedEnvCert -CertificateName azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
+New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 ```
 
 ```output
@@ -72,21 +72,6 @@ azps-connectedenvcert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabr
 Create a Certificate.
 
 ## PARAMETERS
-
-### -CertificateName
-Name of the Certificate.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
@@ -211,8 +196,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Password
-Certificate password.
+Certificate password
 
 ```yaml
 Type: System.Security.SecureString

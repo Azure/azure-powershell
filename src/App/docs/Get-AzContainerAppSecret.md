@@ -22,27 +22,18 @@ List secrets for a container app
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List secrets for a container app.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppSecret -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Identity KeyVaultUrl Name         Value
+-------- ----------- ----         -----
+                     redis-config redis-password
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+List secrets for a container app.
 
 ## PARAMETERS
 
