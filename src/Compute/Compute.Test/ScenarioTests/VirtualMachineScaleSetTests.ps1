@@ -4825,21 +4825,11 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
         $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        # Requirements for the TrustedLaunch default behavior.
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        # Create TL vmss
         $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 ;
         Assert-Null $res.VirtualMachineProfile.SecurityProfile;
 
-        # Update-AzVmss EnableVtpm
-        # $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -EnableVtpm $true;
-        # $vmssGet = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
-        # Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
-
-        # $vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -EnableSecureBoot $true;
-        # $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
-        # Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-
+        # Test update functionality
         $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -SecurityType $securityType -EnableSecureBoot $disable -EnableVtpm $disable;
         $vmssGet = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
@@ -4861,8 +4851,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled
-for the certain Trusted Launch feature setup.
+Test Virtual Machine Scale Set TL update and the EnableVtpm and EnableSecureBoot values.
 #>
 function Test-VirtualMachineScaleSetSecurityTypeUpdate
 {
@@ -4914,17 +4903,12 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
             -ImageReferencePublisher $imgRef.PublisherName ;
 
-        # Requirements for the TrustedLaunch default behavior.
-        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
-        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        #$vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+        # Create TL Vmss
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
-
         Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType;
-        # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
-        # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-        
+
+        # Test update functionality
         Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet -SecurityType $securityType -EnableSecureBoot $disable -EnableVtpm $disable;
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
