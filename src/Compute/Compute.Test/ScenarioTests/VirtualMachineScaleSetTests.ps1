@@ -4840,9 +4840,17 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
         # $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
         # Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
-        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -SecurityType $securityType;
+        $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -SecurityType $securityType -EnableSecureBoot $disable -EnableVtpm $disable;
         $vmssGet = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+
+        $vmssUp1 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -EnableVtpm $true;
+        $vmssGet1 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-AreEqual $vmssGet1.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+
+        $vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -EnableSecureBoot $true;
+        $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
     }
     finally
     {
@@ -4917,10 +4925,18 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
         # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
         # Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
         
-        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet -SecurityType $securityType;
+        Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet -SecurityType $securityType -EnableSecureBoot $disable -EnableVtpm $disable;
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+
+        $vmssUp1 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet -EnableVtpm $true;
+        $vmssGet1 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-AreEqual $vmssGet1.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+
+        $vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet1 -EnableSecureBoot $true;
+        $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         # Guest Attestation extension defaulting test
         # Validate
