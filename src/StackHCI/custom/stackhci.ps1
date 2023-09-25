@@ -59,6 +59,7 @@ $UnregisterHCIUsageMessage = "Unregistering Azure Stack HCI cluster and cleaning
 $DeletingCloudResourceMessage = "Deleting Azure resource with ID {0} representing the Azure Stack HCI cluster"
 $DeletingArcCloudResourceMessage = "Deleting Azure resource with ID {0} representing the Azure Stack HCI cluster Arc integration"
 $DeletingExtensionMessage = "Deleting extension {0} on cluster {1}"
+$AlreadyRegisteredArcMessageForCloudDeployment = "The nodes are already arc enabled for cloud deployment, so skipping arc for server registration"
 $RegisterArcMessage = "Arc for servers registration triggered"
 $UnregisterArcMessage = "Arc for servers unregistration triggered"
 $ArcMachineAlreadyExistsInResourceGroupError = "Arc machine(s) with names: {0} already exists in the Resource Group {1}. Use a different Resource group for registration or specify a different Arc for Servers Resource Group."
@@ -78,6 +79,9 @@ $CleanArcMessage = "Cleaning up Azure Arc integration"
 
 $MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please install the missing module(s) using 'Install-Module -Name <Module_Name>' and try again."
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
+
+$ArcResourceGroupNullForCloudBasedDeployment = "Arc Resource Group needs to be configured for cloud based deployment scenarios"
+$ClusterArmResourceNotPresentForCloudBasedDeployment = "Cluster Resource needs to be pre-configured for Cloud Based Deployment"
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
 $RegisterArcFailedErrorMessage = "Some clustered nodes couldn't be Arc-enabled right now. Check the Arc Scheduled Task logs to investigate further."
@@ -1802,6 +1806,16 @@ function Verify-NodesArcRegistrationState{
     }
 }
 
+function ValidateCloudDeployment {
+    if ($env:DEPLOYMENTTYPE -eq "cloud_deployment")
+    {
+        Write-VerboseLog "Cloud Deployment is enabled"
+        return $true
+    }
+    Write-VerboseLog "Cloud Deployment is disabled, normal deployment"
+    return $false
+}
+
 function Enable-ArcForServers{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
@@ -2923,9 +2937,17 @@ param(
 
         if ($arcResGroup -eq $Null) 
         {
-            $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ArcServerResourceGroupName
-            Write-VerboseLog ("$CreatingResourceGroupMessageProgress")
-            $arcResGroup = New-AzResourceGroup -Name $ArcServerResourceGroupName -Location $Region -Tag @{$ResourceGroupCreatedByName = $ResourceGroupCreatedByValue }
+            if (ValidateCloudDeployment)
+            {
+                Write-ErrorLog -Message $ArcResourceGroupNullForCloudBasedDeployment -Category OperationStopped
+                throw $ArcResourceGroupNullForCloudBasedDeployment
+            }
+            else
+            {
+                $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ArcServerResourceGroupName
+                Write-VerboseLog ("$CreatingResourceGroupMessageProgress")
+                $arcResGroup = New-AzResourceGroup -Name $ArcServerResourceGroupName -Location $Region -Tag @{$ResourceGroupCreatedByName = $ResourceGroupCreatedByValue }
+            }
         }
         $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
 
@@ -2991,7 +3013,11 @@ param(
             if($Null -eq $resource)
             {
                 # Create new HCI resource by calling RP
-
+                if (ValidateCloudDeployment)
+                {
+                    Write-ErrorLog -Message $ClusterArmResourceNotPresentForCloudBasedDeployment -Category OperationStopped
+                    throw $ClusterArmResourceNotPresentForCloudBasedDeployment
+                }
                 if($Null -eq $resGroup)
                 {
                     $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ResourceGroupName
@@ -3079,15 +3105,23 @@ param(
             }
 
             $RPObjectId = $resource.Properties.ResourceProviderObjectId
-            $setRolesResult = Set-ArcRoleforRPSpn -RPObjectId $RPObjectId -ArcServerResourceGroupName $ArcServerResourceGroupName
-            if($setRolesResult -ne [ErrorDetail]::Success) 
+            if (ValidateCloudDeployment)
             {
-                Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
-                Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
-                $operationStatus = [OperationStatus]::ArcFailed
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $setRolesResult
-                Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
-                throw
+                # In cloud deployment role assignment happens in the cloud already and the reg script runs in the context of the ARC MSI which does not have necessary permission to assign roles
+                Write-VerboseLog "Skipping assigning Azure Connected Machine Resource Manager role to the HCI RP For cloud based deployment"
+            }
+            else
+            {
+                $setRolesResult = Set-ArcRoleforRPSpn -RPObjectId $RPObjectId -ArcServerResourceGroupName $ArcServerResourceGroupName
+                if($setRolesResult -ne [ErrorDetail]::Success) 
+                {
+                    Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
+                    Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
+                    $operationStatus = [OperationStatus]::ArcFailed
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $setRolesResult
+                    Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+                    throw
+                }
             }
 
             $serviceEndpoint = $resource.properties.serviceEndpoint
@@ -3316,105 +3350,115 @@ param(
             $operationStatus = [OperationStatus]::Success
         }
 
-        # Arc enablement starts here
-        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 93
-        Write-VerboseLog ("$RegisterArcMessage")
-        $ArcCmdletsAbsentOnNodes = [System.Collections.ArrayList]::new()
-
-        Foreach ($clusNode in $clusterNodes)
+        if (ValidateCloudDeployment)
         {
-            $nodeSession = $null
-
-            try
-            {
-                if($Credential -eq $Null)
-                {
-                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
-                }
-                else
-                {
-                    $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
-                }
-            }
-            catch
-            {
-                Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
-                Write-VerboseLog ($_)
-                $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
-                continue
-            }
-
-            # Check if node has Arc registration Cmdlets
-            $cmdlet = Invoke-Command -Session $nodeSession -ScriptBlock { Get-Command Get-AzureStackHCIArcIntegration -Type Cmdlet -ErrorAction Ignore }
-
-            if($cmdlet -eq $null)
-            {
-                Write-VerboseLog ("Arc cmdlet not present on node : {0}" -f $clusNode.Name)
-                $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
-            }
-
-            if($nodeSession -ne $null)
-            {
-                Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
-            }
-        }
-
-        if($ArcCmdletsAbsentOnNodes.Count -ge 1)
-        {
-            $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
-            Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-            Write-Output $registrationOutput | Format-List
-            Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-            throw
+            # Arc Enablement is not required for cloud based deployment
+            Sync-AzureStackHCI
+            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $AlreadyRegisteredArcMessageForCloudDeployment -percentcomplete 100
+            Write-VerboseLog("$AlreadyRegisteredArcMessageForCloudDeployment")
         }
         else
         {
-            $arcResourceId = $resourceId + $HCIArcInstanceName
+            # Arc enablement starts here
+            Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RegisterArcMessage -percentcomplete 93
+            Write-VerboseLog ("$RegisterArcMessage")
+            $ArcCmdletsAbsentOnNodes = [System.Collections.ArrayList]::new()
 
-            Write-VerboseLog ("checking if Arc resource $arcResourceId already exists")
-            
-            if($null -eq $arcres)
+            Foreach ($clusNode in $clusterNodes)
             {
-                Write-VerboseLog ("Arc Resource does not exist, create new resource")
-                $arcInstanceResourceGroup = @{"arcInstanceResourceGroup" = $ArcServerResourceGroupName}
-                $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -PropertyObject $arcInstanceResourceGroup -Force
-            }
-            else
-            {
-                Write-VerboseLog ("Arc Resource already exists")
-                if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                $nodeSession = $null
+
+                try
                 {
-                    Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                    Write-Output $registrationOutput | Format-List
-                    Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                    throw
+                    if($Credential -eq $Null)
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
+                    }
+                    else
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
+                    }
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($clusNode.Name). ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
+                    continue
+                }
+
+                # Check if node has Arc registration Cmdlets
+                $cmdlet = Invoke-Command -Session $nodeSession -ScriptBlock { Get-Command Get-AzureStackHCIArcIntegration -Type Cmdlet -ErrorAction Ignore }
+
+                if($cmdlet -eq $null)
+                {
+                    Write-VerboseLog ("Arc cmdlet not present on node : {0}" -f $clusNode.Name)
+                    $ArcCmdletsAbsentOnNodes.Add($clusNode.Name) | Out-Null
+                }
+
+                if($nodeSession -ne $null)
+                {
+                    Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
                 }
             }
 
-            Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
-
-            if($isDefaultExtensionSupported)
+            if($ArcCmdletsAbsentOnNodes.Count -ge 1)
             {
-                Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
-                Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
-            }
-
-            try {
-                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
-            }
-            catch {
-                $operationStatus = [OperationStatus]::ArcFailed
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $operationStatus
+                $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
+                Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
                 Write-Output $registrationOutput | Format-List
-                throw $_.Exception.Message
+                Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                throw
             }
-
-            if($arcResult -ne [ErrorDetail]::Success)
+            else
             {
-                $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+                $arcResourceId = $resourceId + $HCIArcInstanceName
+
+                Write-VerboseLog ("checking if Arc resource $arcResourceId already exists")
+                
+                if($null -eq $arcres)
+                {
+                    Write-VerboseLog ("Arc Resource does not exist, create new resource")
+                    $arcInstanceResourceGroup = @{"arcInstanceResourceGroup" = $ArcServerResourceGroupName}
+                    $arcres = New-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -PropertyObject $arcInstanceResourceGroup -Force
+                }
+                else
+                {
+                    Write-VerboseLog ("Arc Resource already exists")
+                    if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
+                    {
+                        Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                        Write-Output $registrationOutput | Format-List
+                        Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                        throw
+                    }
+                }
+
+                Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
+
+                if($isDefaultExtensionSupported)
+                {
+                    Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
+                    Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
+                }
+
+                try {
+                    $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
+                }
+                catch {
+                    $operationStatus = [OperationStatus]::ArcFailed
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $operationStatus
+                    Write-Output $registrationOutput | Format-List
+                    throw $_.Exception.Message
+                }
+
+                if($arcResult -ne [ErrorDetail]::Success)
+                {
+                    $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+                }
             }
         }
 
