@@ -425,12 +425,12 @@ function New-AzMigrateHCIServerReplication {
         }
 
         $customProperties.InstanceType = $instanceType
-        $customProperties.CustomLocationRegion = $storageContainer.Location
+        $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
         $customProperties.FabricDiscoveryMachineId = $InputObject.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
         $customProperties.SourceDraName = $sourceDra.Name
         $customProperties.StorageContainerId = $($storageContainer.Id)
-        $customProperties.TargetArcClusterCustomLocationId = $storageContainer.ExtendedLocation.Name
+        $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
         $customProperties.TargetDraName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId

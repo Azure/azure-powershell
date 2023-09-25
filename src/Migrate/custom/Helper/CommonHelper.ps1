@@ -47,8 +47,26 @@ function GetHCIClusterARGQuery {
     )
 
     process {
-        $query = "resources | where type == 'microsoft.azurestackhci/clusters'"
-        $query += "| where toupper(resourceGroup) == toupper('${resourceGroupName}')"
+        $query = "resources | where type == 'microsoft.extendedlocation/customlocations'"
+        $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += "| extend CustomLocation = toupper(tostring(id))"
+        $query += "| extend resourceBridgeID = toupper(tostring(properties['hostResourceId']))"
+        $query += "| extend customLocationRegion = location"
+        $query += "| join ("
+        $query += "kubernetesconfigurationresources"
+        $query += "| where type == 'microsoft.kubernetesconfiguration/extensions'"
+        $query += "| where properties['ConfigurationSettings']['HCIClusterID'] =~ '$HCIClusterID'"
+        $query += "| project ClusterId = id"
+        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
+        $query += ") on ClusterId"
+        $query += "| join ("
+        $query += "resources"
+        $query += "| where type == 'microsoft.resourceconnector/appliances'"
+        $query += "| where properties['provisioningState'] == 'Succeeded'"
+        $query += "| extend statusOfTheBridge = properties['status']"
+        $query += "| extend resourceBridgeID = toupper(tostring(id))"
+        $query += ") on resourceBridgeID"
 
         return $query
     }
