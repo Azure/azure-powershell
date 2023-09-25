@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.1
 * Added changes to selectively enable ARC.
 
 ## Version 2.2.0
