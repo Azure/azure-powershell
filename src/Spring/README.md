@@ -109,11 +109,6 @@ directive:
       subject: MonitoringSetting
 
   - where:
-      subject: ServiceRegistry
-    set:
-      subject: Registry
-
-  - where:
       subject: ServiceTestKey
     set:
       subject: TestKey
@@ -137,11 +132,6 @@ directive:
       subject: Deployment
     set:
       subject: AppDeployment
-
-  - where:
-      subject: Binding
-    set:
-      subject: AppBinding
 
   - where:
       subject: DeploymentLogFileUrl
@@ -169,7 +159,24 @@ directive:
     set:
       subject: AppCustomDomainNameAvailability
 
+  - where:
+      subject: Gateway
+    set:
+      subject: CloudGateway
+
 # remove cmdlet
+  - where:
+      subject: Sku
+    remove: true
+
+  - where:
+      subject: RuntimeVersion
+    remove: true
+
+  - where:
+      subject: Binding
+    remove: true
+
   - where:
       subject: ^DeploymentHeapDump$
     set:

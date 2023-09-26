@@ -35,9 +35,6 @@ Get the API portal custom domain.
 ### [Get-AzSpringApp](Get-AzSpringApp.md)
 Get an App and its properties.
 
-### [Get-AzSpringAppBinding](Get-AzSpringAppBinding.md)
-Get a Binding and its properties.
-
 ### [Get-AzSpringAppCustomDomain](Get-AzSpringAppCustomDomain.md)
 Get the custom domain of one lifecycle application.
 
@@ -77,14 +74,14 @@ Get the supported stack resource.
 ### [Get-AzSpringCertificate](Get-AzSpringCertificate.md)
 Get the certificate resource.
 
+### [Get-AzSpringCloudGateway](Get-AzSpringCloudGateway.md)
+Get the Spring Cloud Gateway and its properties.
+
 ### [Get-AzSpringConfigServer](Get-AzSpringConfigServer.md)
 Get the config server and its properties.
 
 ### [Get-AzSpringConfigurationService](Get-AzSpringConfigurationService.md)
 Get the Application Configuration Service and its properties.
-
-### [Get-AzSpringGateway](Get-AzSpringGateway.md)
-Get the Spring Cloud Gateway and its properties.
 
 ### [Get-AzSpringGatewayCustomDomain](Get-AzSpringGatewayCustomDomain.md)
 Get the Spring Cloud Gateway custom domain.
@@ -95,17 +92,11 @@ Get the Spring Cloud Gateway route configs.
 ### [Get-AzSpringMonitoringSetting](Get-AzSpringMonitoringSetting.md)
 Get the Monitoring Setting and its properties.
 
-### [Get-AzSpringRegistry](Get-AzSpringRegistry.md)
-Get the Service Registry and its properties.
-
-### [Get-AzSpringRuntimeVersion](Get-AzSpringRuntimeVersion.md)
-Lists all of the available runtime versions supported by Microsoft.AppPlatform provider.
-
 ### [Get-AzSpringService](Get-AzSpringService.md)
 Get a Service and its properties.
 
-### [Get-AzSpringSku](Get-AzSpringSku.md)
-Lists all of the available skus of the Microsoft.AppPlatform provider.
+### [Get-AzSpringServiceRegistry](Get-AzSpringServiceRegistry.md)
+Get the Service Registry and its properties.
 
 ### [Get-AzSpringStorage](Get-AzSpringStorage.md)
 Get the storage resource.
@@ -124,9 +115,6 @@ Create a new App or update an exiting App.
 
 ### [New-AzSpringAppActiveDeploymentCollectionObject](New-AzSpringAppActiveDeploymentCollectionObject.md)
 Create an in-memory object for ActiveDeploymentCollection.
-
-### [New-AzSpringAppBinding](New-AzSpringAppBinding.md)
-Create a new Binding or update an exiting Binding.
 
 ### [New-AzSpringAppCustomDomain](New-AzSpringAppCustomDomain.md)
 Create custom domain of one lifecycle application.
@@ -176,6 +164,9 @@ Create a KPack builder.
 ### [New-AzSpringCertificate](New-AzSpringCertificate.md)
 Create certificate resource.
 
+### [New-AzSpringCloudGateway](New-AzSpringCloudGateway.md)
+Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
+
 ### [New-AzSpringConfigurationService](New-AzSpringConfigurationService.md)
 Create the default Application Configuration Service or update the existing Application Configuration Service.
 
@@ -187,9 +178,6 @@ Create an in-memory object for ContentCertificateProperties.
 
 ### [New-AzSpringCustomPersistentDiskResourceObject](New-AzSpringCustomPersistentDiskResourceObject.md)
 Create an in-memory object for CustomPersistentDiskResource.
-
-### [New-AzSpringGateway](New-AzSpringGateway.md)
-Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
 
 ### [New-AzSpringGatewayApiRouteObject](New-AzSpringGatewayApiRouteObject.md)
 Create an in-memory object for GatewayApiRoute.
@@ -206,11 +194,11 @@ Create an in-memory object for GitPatternRepository.
 ### [New-AzSpringKeyVaultCertificateObject](New-AzSpringKeyVaultCertificateObject.md)
 Create an in-memory object for KeyVaultCertificateProperties.
 
-### [New-AzSpringRegistry](New-AzSpringRegistry.md)
-Create the default Service Registry or update the existing Service Registry.
-
 ### [New-AzSpringService](New-AzSpringService.md)
 Create a new Service or update an exiting Service.
+
+### [New-AzSpringServiceRegistry](New-AzSpringServiceRegistry.md)
+Create the default Service Registry or update the existing Service Registry.
 
 ### [New-AzSpringStorage](New-AzSpringStorage.md)
 Create storage resource.
@@ -230,9 +218,6 @@ Delete the API portal custom domain.
 ### [Remove-AzSpringApp](Remove-AzSpringApp.md)
 Operation to delete an App.
 
-### [Remove-AzSpringAppBinding](Remove-AzSpringAppBinding.md)
-Operation to delete a Binding.
-
 ### [Remove-AzSpringAppCustomDomain](Remove-AzSpringAppCustomDomain.md)
 Delete the custom domain of one lifecycle application.
 
@@ -248,11 +233,11 @@ Delete a KPack builder.
 ### [Remove-AzSpringCertificate](Remove-AzSpringCertificate.md)
 Delete the certificate resource.
 
+### [Remove-AzSpringCloudGateway](Remove-AzSpringCloudGateway.md)
+Disable the default Spring Cloud Gateway.
+
 ### [Remove-AzSpringConfigurationService](Remove-AzSpringConfigurationService.md)
 Disable the default Application Configuration Service.
-
-### [Remove-AzSpringGateway](Remove-AzSpringGateway.md)
-Disable the default Spring Cloud Gateway.
 
 ### [Remove-AzSpringGatewayCustomDomain](Remove-AzSpringGatewayCustomDomain.md)
 Delete the Spring Cloud Gateway custom domain.
@@ -260,11 +245,11 @@ Delete the Spring Cloud Gateway custom domain.
 ### [Remove-AzSpringGatewayRouteConfig](Remove-AzSpringGatewayRouteConfig.md)
 Delete the Spring Cloud Gateway route config.
 
-### [Remove-AzSpringRegistry](Remove-AzSpringRegistry.md)
-Disable the default Service Registry.
-
 ### [Remove-AzSpringService](Remove-AzSpringService.md)
 Operation to delete a Service.
+
+### [Remove-AzSpringServiceRegistry](Remove-AzSpringServiceRegistry.md)
+Disable the default Service Registry.
 
 ### [Remove-AzSpringStorage](Remove-AzSpringStorage.md)
 Delete the storage resource.
@@ -317,9 +302,6 @@ Operation to update an exiting App.
 ### [Update-AzSpringAppActiveDeployment](Update-AzSpringAppActiveDeployment.md)
 Set existing Deployment under the app as active
 
-### [Update-AzSpringAppBinding](Update-AzSpringAppBinding.md)
-Operation to update an exiting Binding.
-
 ### [Update-AzSpringAppCustomDomain](Update-AzSpringAppCustomDomain.md)
 Update custom domain of one lifecycle application.
 
@@ -341,14 +323,14 @@ Create a KPack builder.
 ### [Update-AzSpringCertificate](Update-AzSpringCertificate.md)
 Create certificate resource.
 
+### [Update-AzSpringCloudGateway](Update-AzSpringCloudGateway.md)
+Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
+
 ### [Update-AzSpringConfigServer](Update-AzSpringConfigServer.md)
 Update the config server.
 
 ### [Update-AzSpringConfigurationService](Update-AzSpringConfigurationService.md)
 Create the default Application Configuration Service or update the existing Application Configuration Service.
-
-### [Update-AzSpringGateway](Update-AzSpringGateway.md)
-Create the default Spring Cloud Gateway or update the existing Spring Cloud Gateway.
 
 ### [Update-AzSpringGatewayCustomDomain](Update-AzSpringGatewayCustomDomain.md)
 Create the Spring Cloud Gateway custom domain.
