@@ -943,6 +943,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
+            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default " +
+                "to security type Trusted Launch. Azure Site Recovery currently does not support Trusted Launch VMs, hence, " +
+                "to keep using Azure Site Recovery please create Virtual Machine with security type Standard. Non-Trusted Launch " +
+                "Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, " +
+                "please visit https://aka.ms/TLaD.");
+
             var providerSettings = new A2AEnableProtectionInput()
             {
                 FabricObjectId = this.AzureVmId,

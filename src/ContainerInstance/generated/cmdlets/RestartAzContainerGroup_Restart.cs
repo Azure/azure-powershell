@@ -15,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
     /// [OpenAPI] Restart=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Restart, @"AzContainerGroup_Restart", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.OutputBreakingChange("bool", "11.0.0", "4.0.0", "2023/11/15", DeprecatedOutputProperties=new string[] {"PreviouState","PreviouStateDetailStatus","PreviouStateExitCode","PreviouStateFinishTime","PreviouStateStartTime"}, NewOutputProperties=new string[] {"PreviousState","PreviousStateDetailStatus","PreviousStateExitCode","PreviousStateFinishTime","PreviousStateStartTime"}, ChangeDescription="The parameters starts with PreviouState will be corrected as PreviousState.")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Description(@"Restarts all containers in a container group in place. If container image has updates, new image will be downloaded.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Generated]

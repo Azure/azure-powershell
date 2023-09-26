@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded API version to 2023-08-01.
+* Improved error reporting to the customer using custom cmdlets to handle the error in a better manner.
+
 ## Version 1.1.0
 * Added support for Tags in azure resource mover
 * Added support for SystemData in azure resource mover

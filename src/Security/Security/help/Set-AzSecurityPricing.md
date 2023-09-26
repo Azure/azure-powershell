@@ -9,7 +9,10 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-Enables or disables Azure Defender plans for a subscription in Azure Security Center.
+Enables or disables Microsoft Defender plans for a subscription in Microsoft Defender for Cloud.
+
+> [!NOTE]
+> For CloudPosture (Defender Cloud Security Posture Management), [the agentless extensions](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/enhanced-cloud-security-value-added-with-defender-cspm-s/ba-p/3880746) will not be enabled when using this command. To enable extensions, please use the Azure Policy definition or scripts in the [Microsoft Defender for Cloud Community Repository](https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Policy/Configure-DCSPM-Extensions).
 
 ## SYNTAX
 

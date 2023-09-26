@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 5.10.1
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+    - `Get-AzStorageQueueStoredAccessPolicy`
+    - `Set-AzStorageQueueStoredAccessPolicy`
+
 ## Version 5.10.0
 * Updated Azure.Core to 1.34.0.
 * Added support for encryption context 

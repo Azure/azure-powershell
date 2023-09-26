@@ -34,7 +34,8 @@ $skipModules = @(
     'Az.Automation',
     'Az.CognitiveServices',
     'Az.CosmosDB',
-    'Az.KeyVault'
+    'Az.KeyVault',
+    'Az.NetAppFiles'
 )
 
 $MissReadMe = 9000
