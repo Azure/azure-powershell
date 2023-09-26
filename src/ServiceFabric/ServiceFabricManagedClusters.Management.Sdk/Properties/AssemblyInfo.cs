@@ -26,6 +26,3 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Test")]
-#if !SIGN
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.Test")]
-#endif

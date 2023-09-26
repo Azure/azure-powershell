@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             WriteVerbose(string.Format("Creating app type '{0}'.", applicationTypeName));
-            return this.SFRPClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, applicationTypeName).GetAwaiter().GetResult().Body;
+            return this.SFRPClient.ApplicationTypes.CreateOrUpdate(this.ResourceGroupName, this.ClusterName, applicationTypeName, new ApplicationTypeResource());
         }
 
         protected ApplicationTypeVersionResource CreateApplicationTypeVersion(string applicationTypeName, string typeVersion, string packageUrl, bool force, Hashtable defaultParameters = null)

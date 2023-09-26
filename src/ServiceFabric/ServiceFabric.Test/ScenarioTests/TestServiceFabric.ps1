@@ -12,21 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-GetServiceFabricClustersPages
-{
-    $nodeTypeName = Get-NewNodeTypeName
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
-	$durabilityLevel = Get-DurabilityLevel
-    $newNodeTypeName = Get-NewNodeTypeName
-
-	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
-
-	$cluster = Update-AzServiceFabricDurability -Level $durabilityLevel -NodeType $nodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
-	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).DurabilityLevel $durabilityLevel
-}
-
 function Test-UpdateAzureRmServiceFabricDurability
 {
 
