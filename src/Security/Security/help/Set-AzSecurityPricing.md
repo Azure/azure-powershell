@@ -54,6 +54,12 @@ Set-AzSecurityPricing -Name "AppServices" -PricingTier "Standard"
 Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard" -SubPlan P2
 ```
 
+### Example 3
+
+```powershell
+Set-AzSecurityPricing -Name CloudPosture -PricingTier Standard -Extensions '[{"name":"SensitiveDataDiscovery","isEnabled":"True","additionalExtensionProperties":null},{"name":"ContainerRegistriesVulnerabilityAssessments","isEnabled":"True","additionalExtensionProperties":null},{"name":"AgentlessDiscoveryForKubernetes","isEnabled":"True","additionalExtensionProperties":null},{"name":"AgentlessVmScanning","isEnabled":"True","additionalExtensionProperties":{"ExclusionTags":"[{\"key\":\"Microsoft\",\"value\":\"Defender\"},{\"key\":\"For\",\"value\":\"Cloud\"}]"}}]'
+```
+
 Enables **Azure Defender for servers** for the subscription.
 
 "Standard" refers to the "On" state for an Azure Defender plan as shown in Azure Security Center's pricing and settings area of the Azure portal.
