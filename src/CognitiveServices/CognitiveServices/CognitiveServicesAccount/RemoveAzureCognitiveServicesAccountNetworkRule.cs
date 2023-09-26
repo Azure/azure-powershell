@@ -123,12 +123,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (accountACL.IpRules == null)
-                            accountACL.IpRules = new List<IpRule>();
+                        if (accountACL.IPRules == null)
+                            accountACL.IPRules = new List<IpRule>();
                         foreach (string s in IpAddressOrRange)
                         {
                             IpRule rule = new IpRule(s);
-                            if (!RemoveIpRule(accountACL.IpRules, rule))
+                            if (!RemoveIpRule(accountACL.IPRules, rule))
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.Value));
                         }
                         break;
@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (accountACL.IpRules == null)
-                            accountACL.IpRules = new List<IpRule>();
+                        if (accountACL.IPRules == null)
+                            accountACL.IPRules = new List<IpRule>();
                         foreach (PSIpRule rule in IpRule)
                         {
-                            if (!RemoveIpRule(accountACL.IpRules, rule.ToIpRule()))
+                            if (!RemoveIpRule(accountACL.IPRules, rule.ToIpRule()))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IpAddress));
                         }
                         break;

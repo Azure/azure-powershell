@@ -1,7 +1,9 @@
 ### Example 1: Validate the dependecies before commit of the resources.
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId" -ValidateOnly
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -16,12 +18,14 @@ Status         : Succeeded
 
 ```
 
-Validate the dependecies before commit of the resources.
+Validate the dependencies before commit of the resources. The same command can be used for both 'RegionToRegion' and 'RegionToZone' type move collections.
 
-### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input.
+### Example 2: Commit the set of resources in the Move Collection using "MoveResource Name" as input. (RegionToRegion)
 ```powershell
-PS C:\>Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -MoveResourceInputType "MoveResourceId"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -37,12 +41,35 @@ Status         : Succeeded
 
 ```
 
-Commit the set of resources in the Move Collection using "MoveResource Name" as input.
+Commit the set of resources in 'RegionToRegion' type Move Collection using "MoveResource Name" as input.
 
-### Example 3: Commit the set of resources in the Move Collection using "SourceARMID" as input.
+### Example 3: Commit the set of resources in the Move Collection using "MoveResource Name" as input. (RegionToZone)
 ```powershell
-PS C:\> Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResource $('PSDemoVM-RegionToZone') -MoveResourceInputType "MoveResourceId"
+```
 
+```output
+AdditionalInfo :
+Code           :
+Detail         :
+EndTime        : 9/5/2023 12:03:41 PM
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-demo-RegionToZone/operations/804a7a40-dd8a-4c55-aba1-4a68978b59f9
+Message        :
+Name           : 804a7a40-dd8a-4c55-aba1-4a68978b59f9
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 9/5/2023 12:02:33 PM
+Status         : Succeeded
+
+```
+
+Commit the set of resources in 'RegionToZone' type Move Collection using "MoveResource Name" as input.
+
+### Example 4: Commit the set of resources in the Move Collection using "SourceARMID" as input. (RegionToRegion)
+```powershell
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkSecurityGroups/PSDemoVM-nsg') -MoveResourceInputType "MoveResourceSourceId"
+```
+
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 
@@ -55,7 +82,28 @@ Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:42:41 PM
 Status         : Succeeded
 
+```
+
+Commit the set of resources in 'RegionToRegion' type Move Collection using "SourceARMID" as input.
+
+
+### Example 5: Commit the set of resources in the Move Collection using "SourceARMID" as input. (RegionToZone)
+```powershell
+Invoke-AzResourceMoverCommit -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -MoveResource $('/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PS-demo-RegionToZone-RG/providers/Microsoft.Compute/virtualMachines/demo-RegionToZone-VM') -MoveResourceInputType "MoveResourceSourceId"
+```
+
+```output
+AdditionalInfo :
+Code           :
+Detail         :
+EndTime        : 9/5/2023 12:05:38 PM
+Id             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-demo-RegionToZone/operations/48c9f452-10c6-a519-888b-d46cb5e9c4db
+Message        :
+Name           : 48c9f452-10c6-a519-888b-d46cb5e9c4db
+Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
+StartTime      : 9/5/2023 12:04:28 PM
+Status         : Succeeded
 
 ```
 
-Commit the set of resources in the Move Collection using "SourceARMID" as input.
+Commit the set of resources in 'RegionToZone' type Move Collection using "SourceARMID" as input.
