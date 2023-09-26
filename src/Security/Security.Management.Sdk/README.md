@@ -69,6 +69,9 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2022-05-01/settings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-01-15-preview/ingestionSettings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-05-01-preview/softwareInventories.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2022-08-01-preview/securityConnectors.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/governanceRules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/governanceAssignments.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2022-07-01-preview/applications.json
 
 override-info:
