@@ -24,7 +24,7 @@
 * Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
 * Fixed bug in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to add "GeoLocation" as a valid input for VariableName
 * Added breaking change message for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
-* Add cmdlet "New-AzSaaSNetworkVirtualAppliance" for creating a NetworkVirtualAppliance of SaaS type.
+* Add cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
