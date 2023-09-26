@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added changes to selectively enable ARC.
 
 ## Version 2.2.0
 * Bug fixes for Attestation commands.
