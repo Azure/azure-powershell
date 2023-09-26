@@ -14,21 +14,17 @@
 
 function Test-GetServiceFabricClustersPages
 {
-    #$clusterName = "azurermsfclustertptest"
-    #$resourceGroupName = "azurermsfrgTP"
-    #$keyvaulturi = Get-SecretUrl
-    #$vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
+    $nodeTypeName = Get-NewNodeTypeName
+	$clusterName = Get-ClusterName
+	$resourceGroupName = Get-ResourceGroupName
+	$durabilityLevel = Get-DurabilityLevel
+    $newNodeTypeName = Get-NewNodeTypeName
 
-    #$cluster = New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
-    #    -TemplateFile (Join-Path $pwd '\Resources\template.json') -ParameterFile (Join-Path $pwd '\Resources\parameters.json') -SecretIdentifier $keyvaulturi -Verbose
+	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
 
-    $clusters = Get-AzServiceFabricCluster
-
-	#$newClsuter = $clusters.Where({$_.Name -eq $clusterName})
-	Assert-NotNull $clusters
-	Assert-AreEqual 0 $clusters.Count
-	#Assert-NotNull $newClsuter.Certificate
-	#Assert-Null $newClsuter.CertificateCommonNames
+	$cluster = Update-AzServiceFabricDurability -Level $durabilityLevel -NodeType $nodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
+	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
+	Assert-AreEqual $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).DurabilityLevel $durabilityLevel
 }
 
 function Test-UpdateAzureRmServiceFabricDurability
