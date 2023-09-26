@@ -30,7 +30,7 @@ remove, or list keys in the managed HSM, user should:
 
 ### Example 1: Create a StandardB1 managed HSM
 ```powershell
-New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -SoftDeleteRetentionInDays 70
 ```
 
 ```output
@@ -45,7 +45,7 @@ value for the *SKU* parameter, it creates a Standard_B1 managed HSM.
 
 ### Example 2: Create a CustomB32 managed HSM
 ```powershell
-New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32'
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32' -SoftDeleteRetentionInDays 70
 ```
 
 ```output
