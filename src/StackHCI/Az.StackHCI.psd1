@@ -12,7 +12,7 @@
 RootModule = './Az.StackHCI.psm1'
 
 # Version number of this module.
-ModuleVersion = '2.2.0'
+ModuleVersion = '2.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = './bin/Az.StackHCI.private.dll'
@@ -121,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Added changes to selectively enable ARC.'
 
         # Prerelease string of this module
         # Prerelease = ''
