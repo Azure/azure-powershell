@@ -46,6 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Canceled".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Canceled'", "Canceled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Canceled");
+            }
         }
     }
 }

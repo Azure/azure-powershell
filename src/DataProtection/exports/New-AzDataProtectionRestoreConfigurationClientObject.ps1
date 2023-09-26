@@ -20,7 +20,7 @@ Creates new restore configuration object
 .Description
 Creates new restore configuration object
 .Example
-$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -NamespaceMapping  @{"sourcenamespace1"="targetnamespace1";"sourcenamespace2"="targetnamespace2"} -ExcludedNamespace "excludeNS1","excludeNS2"
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -NamespaceMapping  @{"sourcenamespace1"="targetnamespace1";"sourcenamespace2"="targetnamespace2"} -ExcludedNamespace "excludeNS1","excludeNS2" -RestoreHookReference @(@{name='restorehookname';namespace='default'},@{name='restorehookname1';namespace='hrweb'})
 
 .Outputs
 System.Management.Automation.PSObject
@@ -31,6 +31,10 @@ To create the parameters described below, construct a hash table containing the 
 
 NAMESPACEMAPPING <KubernetesClusterRestoreCriteriaNamespaceMappings>: Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
   [(Any) <String>]: This indicates any property can be added to this object.
+
+RESTOREHOOKREFERENCE <NamespacedNameResource[]>: Hook reference to be executed during restore.
+  [Name <String>]: Name of the resource
+  [Namespace <String>]: Namespace in which the resource exists
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionrestoreconfigurationclientobject
 #>
@@ -91,7 +95,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteriaNamespaceMappings]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteriaNamespaceMappings]
     # Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
     # To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
     ${NamespaceMapping},
@@ -102,7 +106,14 @@ param(
     # Restore mode for persistent volumes.
     # Allowed values are RestoreWithVolumeData, RestoreWithoutVolumeData.
     # Default value is RestoreWithVolumeData
-    ${PersistentVolumeRestoreMode}
+    ${PersistentVolumeRestoreMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]]
+    # Hook reference to be executed during restore.
+    # To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
+    ${RestoreHookReference}
 )
 
 begin {

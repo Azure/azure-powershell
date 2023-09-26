@@ -4,7 +4,7 @@ Invoke-LiveTestScenario -Name "Get and update key vault setting in a MSHM" -Desc
 
     $rgName = $rg.ResourceGroupName
     $hsmName = "bezmhsm" + (New-LiveTestRandomName -Option AllNumbers)
-    $hsmLocation = 'eastus2euap'
+    $hsmLocation = 'eastasia'
     $appId = (Get-AzContext).Account.Id
     $adminId = (Get-AzADServicePrincipal -ApplicationId $appId).Id
     $hsmObject = New-AzKeyVaultManagedHsm -HsmName $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $adminId

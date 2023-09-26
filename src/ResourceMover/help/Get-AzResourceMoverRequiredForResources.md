@@ -10,6 +10,11 @@ schema: 2.0.0
 ## SYNOPSIS
 List of the move resources for which an arm resource is required for.
 
+**The 'Get-AzResourceMoverRequiredForResources' command is applicable for 'RegionToRegion' type move collections.
+
+However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
+Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
+
 ## SYNTAX
 
 ```
@@ -19,6 +24,11 @@ Get-AzResourceMoverRequiredForResources -MoveCollectionName <String> -ResourceGr
 
 ## DESCRIPTION
 List of the move resources for which an arm resource is required for.
+
+**The 'Get-AzResourceMoverRequiredForResources' command is applicable for 'RegionToRegion' type move collections.
+
+However, for move collections with moveType 'RegionToZone' dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed.
+Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
 
 ## EXAMPLES
 
@@ -39,7 +49,8 @@ Get a list of required resource ARMIDs that are required to be added, to add the
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

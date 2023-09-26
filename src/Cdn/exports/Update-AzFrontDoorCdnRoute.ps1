@@ -23,6 +23,8 @@ Updates an existing route with the specified route name under the specified subs
 Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example
 Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Update-AzFrontDoorCdnRoute -EnabledState "Enabled"
+.Example
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -CompressionSettingIsCompressionEnabled:true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

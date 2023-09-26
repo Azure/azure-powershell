@@ -20,6 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Diagnostics;
@@ -83,28 +84,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
         {
-            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
-
             if (!string.IsNullOrEmpty(templateParameterFilePath) && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
-                try
-                {
-                    // NOTE(jcotillo): We must use JsonExtensions to ensure the proper use of serialization settings.
-                    // otherwise we could get invalid date time serializations.
-                    parameters =
-                        FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath)
-                        .FromJson<Dictionary<string, TemplateFileParameterV1>>();
-                }
-                catch (JsonSerializationException)
-                {
-                    var parametersv2 =
-                        FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath)
-                        .FromJson<TemplateFileParameterV2>();
-                    parameters = new Dictionary<string, TemplateFileParameterV1>(parametersv2.Parameters);
-                }
+                return ParseTemplateParameterJson(FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath));
             }
 
-            return parameters;
+            return new Dictionary<string, TemplateFileParameterV1>();
+        }
+
+        public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterJson(Stream stream)
+        {
+            using (var streamReader = new StreamReader(stream))
+            {
+                return ParseTemplateParameterJson(streamReader);
+            }
+        }
+
+        private static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterJson(TextReader reader)
+        {
+            // Read once to avoid having to rewind the stream
+            var parametersJson = reader.ReadToEnd();
+
+            try
+            {
+                // NOTE(jcotillo): We must use JsonExtensions to ensure the proper use of serialization settings.
+                // otherwise we could get invalid date time serializations.
+                return parametersJson.FromJson<Dictionary<string, TemplateFileParameterV1>>();
+            }
+            catch (JsonSerializationException)
+            {
+                var parametersv2 = parametersJson.FromJson<TemplateFileParameterV2>();
+                return new Dictionary<string, TemplateFileParameterV1>(parametersv2.Parameters);
+            }
         }
 
         public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterContent(string templateParameterContent)

@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Update(snapshotPolicyPatch, ResourceGroupName, AccountName, snapshotPolicyName: Name);
+                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Update(ResourceGroupName, AccountName, snapshotPolicyName: Name, snapshotPolicyPatch);
                 WriteObject(anfSnapshotPolicy.ConvertToPs());
             }
         }

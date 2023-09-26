@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
             var volumeGroup = CreateVolumeGroup(Name, ResourceGroupName, AccountName, poolResourceId, tagPairs);
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfVolumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.Create(volumeGroup, ResourceGroupName, AccountName, Name);
+                var anfVolumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.Create(ResourceGroupName, AccountName, Name, volumeGroup);
                 var ret = anfVolumeGroups.ConvertToPs();
                 WriteObject(ret);
             }
@@ -371,8 +371,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                     Rules = new List<ExportPolicyRule>()
                     {
                         new ExportPolicyRule { Nfsv3 = false, Nfsv41 = true, RuleIndex = 1, AllowedClients = "0.0.0.0/0", UnixReadOnly = false, UnixReadWrite = true, 
-                            Kerberos5ReadOnly = false, Kerberos5iReadOnly = false, Kerberos5iReadWrite = false, Kerberos5pReadOnly = false, 
-                            Kerberos5pReadWrite = false, Kerberos5ReadWrite = false
+                            Kerberos5ReadOnly = false, Kerberos5IReadOnly = false, Kerberos5IReadWrite = false, Kerberos5PReadOnly = false, 
+                            Kerberos5PReadWrite = false, Kerberos5ReadWrite = false
                         }
                     }
                 };

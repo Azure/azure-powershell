@@ -43,7 +43,7 @@ $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName
 Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore OperationalStore -RestoreLocation $vault.Location -RestoreType OriginalLocation -BackupInstance $instances[0] -PointInTime (Get-Date).AddDays(-1) -ItemLevelRecovery -FromPrefixPattern "container1/aaa","container1/ccc", "container2/aab", "container3" -ToPrefixPattern "container1/bbb","container1/ddd", "container2/abc", "container3-0"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -79,6 +79,9 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
       ObjectType <String>: Type of the specific object - used for deserializing
     [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
+    [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+      [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+      [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -95,11 +98,14 @@ RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>: Restore configuration f
   [NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
     [(Any) <String>]: This indicates any property can be added to this object.
   [PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
+  [RestoreHookReference <INamespacedNameResource[]>]: Gets or sets the restore hook references. This property sets the hook reference to be executed during restore.
+    [Name <String>]: Name of the resource
+    [Namespace <String>]: Namespace in which the resource exists
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
 function Initialize-AzDataProtectionRestoreRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest])]
 [CmdletBinding(DefaultParameterSetName='AlternateLocationFullRecovery', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -159,7 +165,7 @@ param(
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteria]
     # Restore configuration for restore.
     # Use this parameter to restore with AzureKubernetesService.
     # To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
@@ -226,7 +232,7 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.BackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.BackupInstanceResource]
     # Backup Instance object to trigger original localtion restore.
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},

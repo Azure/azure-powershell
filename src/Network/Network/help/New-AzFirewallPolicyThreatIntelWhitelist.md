@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyThreatIntelWhitelist
 
 ## SYNOPSIS
-Create a new threat intelligence whitelist for Azure Firewall Policy
+Create a new threat intelligence allowlist for Azure Firewall Policy
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzFirewallPolicyThreatIntelWhitelist [-FQDN <String[]>] [-IpAddress <String[
 ```
 
 ## DESCRIPTION
-The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel whitelist object, which can be used when creating or setting an Azure Firewall Policy.
+The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel allowlist object, which can be used when creating or setting an Azure Firewall Policy.
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The **New-AzFirewallPolicyThreatIntelWhitelist** cmdlet creates a threat intel w
 New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
 ```
 
-This example creates a threat intel whitelist containing a FQDN whitelist of one entry and an Ip address whitelist of two entries
+This example creates a threat intel allowlist containing a FQDN allowlist of one entry and an Ip address allowlist of two entries
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -FQDN
-The FQDNs of the Threat Intel Whitelist
+The FQDNs of the Threat Intel allowlist
 
 ```yaml
 Type: System.String[]
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddress
-The IP Addresses of the Threat Intel Whitelist
+The IP Addresses of the Threat Intel allowlist
 
 ```yaml
 Type: System.String[]

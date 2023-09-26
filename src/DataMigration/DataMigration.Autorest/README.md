@@ -340,19 +340,23 @@ directive:
   - where:
       subject: (^SqlService)
     set:
-      preview-message: This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)
+      preview-announcement:
+        preview-message: This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)
   - where:
       subject: (^ToSqlManagedInstance)
     set:
-      preview-message: Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance
+      preview-announcement:
+        preview-message: Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance
   - where:
       subject: (^ToSqlVM)
     set:
-      preview-message: Only use cmdlets containing ToSqlVM in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlVM
+      preview-announcement:
+        preview-message: Only use cmdlets containing ToSqlVM in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlVM
   - where:
       subject: (^ToSqlDb)
     set:
-      preview-message: Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb
+      preview-announcement:
+        preview-message: Only use cmdlets containing ToSqlDb in their name for getting or stopping or deleting a migration created using New-AzDataMigrationToSqlDb
 
   # Making parameters required/optional
   - from: swagger-document
