@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.11.1
 * Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
 
 ## Version 6.11.0

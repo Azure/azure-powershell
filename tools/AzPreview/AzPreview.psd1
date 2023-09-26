@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '10.4.0'
+ModuleVersion = '10.4.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -186,7 +186,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.1'; },
             @{ModuleName = 'Az.Reservations'; RequiredVersion = '0.12.0'; }, 
             @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '0.13.0'; }, 
             @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.2.0'; }, 
-            @{ModuleName = 'Az.Resources'; RequiredVersion = '6.11.0'; }, 
+            @{ModuleName = 'Az.Resources'; RequiredVersion = '6.11.1'; }, 
             @{ModuleName = 'Az.Search'; RequiredVersion = '0.9.0'; }, 
             @{ModuleName = 'Az.Security'; RequiredVersion = '1.4.0'; }, 
             @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.1.0'; }, 
