@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Management.Security.Models
         /// alert.</param>
         /// <param name="productComponentName">The name of Azure Security
         /// Center pricing tier which powering this alert. Learn more:
-        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-pricing</param>
+        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing</param>
         /// <param name="alertDisplayName">The display name of the
         /// alert.</param>
         /// <param name="description">Description of the suspicious activity
         /// that was detected.</param>
         /// <param name="severity">The risk level of the threat that was
         /// detected. Learn more:
-        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
+        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
         /// Possible values include: 'Informational', 'Low', 'Medium',
         /// 'High'</param>
         /// <param name="intent">The kill chain related intent behind the
@@ -84,8 +84,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="timeGeneratedUtc">The UTC time the alert was generated
         /// in ISO8601 format.</param>
         /// <param name="productName">The name of the product which published
-        /// this alert (Azure Security Center, Azure ATP, Microsoft Defender
-        /// ATP, O365 ATP, MCAS, and so on).</param>
+        /// this alert (Microsoft Sentinel, Microsoft Defender for Identity,
+        /// Microsoft Defender for Endpoint, Microsoft Defender for Office,
+        /// Microsoft Defender for Cloud Apps, and so on).</param>
         /// <param name="processingEndTimeUtc">The UTC processing end time of
         /// the alert in ISO8601 format.</param>
         /// <param name="entities">A list of entities related to the
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <summary>
         /// Gets the name of Azure Security Center pricing tier which powering
         /// this alert. Learn more:
-        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-pricing
+        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-pricing
         /// </summary>
         [JsonProperty(PropertyName = "properties.productComponentName")]
         public string ProductComponentName { get; private set; }
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <summary>
         /// Gets the risk level of the threat that was detected. Learn more:
-        /// https://learn.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
+        /// https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
         /// Possible values include: 'Informational', 'Low', 'Medium', 'High'
         /// </summary>
         [JsonProperty(PropertyName = "properties.severity")]
@@ -264,9 +265,10 @@ namespace Microsoft.Azure.Management.Security.Models
         public System.DateTime? TimeGeneratedUtc { get; private set; }
 
         /// <summary>
-        /// Gets the name of the product which published this alert (Azure
-        /// Security Center, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS,
-        /// and so on).
+        /// Gets the name of the product which published this alert (Microsoft
+        /// Sentinel, Microsoft Defender for Identity, Microsoft Defender for
+        /// Endpoint, Microsoft Defender for Office, Microsoft Defender for
+        /// Cloud Apps, and so on).
         /// </summary>
         [JsonProperty(PropertyName = "properties.productName")]
         public string ProductName { get; private set; }

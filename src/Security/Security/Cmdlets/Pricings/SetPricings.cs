@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, tier, subPlan).GetAwaiter().GetResult().Body;
+                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, new Pricing(tier, subPlan)).GetAwaiter().GetResult().Body;
 
                 WriteObject(pricing.ConvertToPSType(), enumerateCollection: false); 
             }
