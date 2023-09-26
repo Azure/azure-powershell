@@ -463,7 +463,4 @@ This means the role assignment was not able to be created. Please assign a role 
   <data name="SuccessfullRARemove" xml:space="preserve">
     <value>Succesfully removed role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
   </data>
-  <data name="ScopeAndSubscriptionNeitherProvided" xml:space="preserve">
-    <value>No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command.</value>
-  </data>
 </root>

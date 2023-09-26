@@ -898,15 +898,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command..
-        /// </summary>
-        internal static string ScopeAndSubscriptionNeitherProvided {
-            get {
-                return ResourceManager.GetString("ScopeAndSubscriptionNeitherProvided", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions/&lt;subid&gt;/resourceGroups&apos;..
         /// </summary>
         internal static string ScopeShouldBeginWithSubscriptionsAndResourceGroups {
