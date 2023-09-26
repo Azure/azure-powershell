@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             for (int i = 0; i < elements; i++)
             {
                 var currentelement = new PSVirtualApplianceInternetIngressIpsProperties();
-                currentelement.internetId = InternetIngressPublicIpId[i];
+                currentelement.Id = InternetIngressPublicIpId[i];
                 InternetIngressIpsList.Add(currentelement);
             }
 

@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSVirtualApplianceInternetIngressIpsProperties
     {
-        public string internetId { get; set; }
+        public string Id { get; set; }
     }
 }
