@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
 
 ## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.
