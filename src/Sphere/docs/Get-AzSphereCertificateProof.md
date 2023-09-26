@@ -19,27 +19,6 @@ Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Retrieve
-```
-Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
- -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RetrieveViaIdentity
-```
-Get-AzSphereCertificateProof -InputObject <ISphereIdentity>
- -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RetrieveViaIdentityCatalog
-```
-Get-AzSphereCertificateProof -CatalogInputObject <ISphereIdentity> -SerialNumber <String>
- -ProofOfPossessionNonceRequest <IProofOfPossessionNonceRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### RetrieveViaIdentityCatalogExpanded
 ```
 Get-AzSphereCertificateProof -CatalogInputObject <ISphereIdentity> -SerialNumber <String>
@@ -52,46 +31,30 @@ Get-AzSphereCertificateProof -InputObject <ISphereIdentity> -ProofOfPossessionNo
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RetrieveViaJsonFilePath
-```
-Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
- -JsonFilePath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RetrieveViaJsonString
-```
-Get-AzSphereCertificateProof -CatalogName <String> -ResourceGroupName <String> -SerialNumber <String>
- -JsonString <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets the proof of possession nonce.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get proof of possession nonce
 ```powershell
-{{ Add code here }}
+Get-AzSphereCertificateProof -CatalogName "MyCEVtest" -ResourceGroupName "glumenCEVRG" -SerialNumber "11D6501213A2B3987929F7909769F7B5" -ProofOfPossessionNonce "BFF18CC17D19D7E3B7884091981E0190F8E84181"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Certificate       : MIICKjCCAbCgAwIBAgIRAJ0Bv2x21vVb3RlsnKOLnx4wCgYIKoZIzj0EAwMwgZoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xRDBCBgNVBAMTO0
+                    1pY3Jvc29mdCBBenVyZSBTcGhlcmUgYmU1MTA1N2UtZTZlYi00ODdkLTgyYzgtYTcwNDNjY2FiOWUxMB4XDTIzMDcxNDE4NTMyN1oXDTIzMDcxNDE5NTgyN1owMzExMC8GA1UEAxMoQkZGMThDQzE3RDE5RDdFM0I3ODg0MDkxOTgxRTAxOTBGOEU4NDE4
+                    MTB2MBAGByqGSM49AgEGBSuBBAAiA2IABJYzRLCg2BTjUCZTARW7F4dEWnysqzz2FuIIwIGKlK9BcFAGAow1SxPtAxPnQHRAAoKfqlzWAzux4vW134ZPQnOBG98CEX5PWMrmAupVE5BVmq+aLeUI9+lwY8qS9n0PnKMgMB4wDgYDVR0PAQH/BAQDAgABMA
+                    wGA1UdJQEB/wQCMAAwCgYIKoZIzj0EAwMDaAAwZQIxALHFPhMjGpIMeLrH6HEt4Hix+uvlRrpiQP2+fGD6Wr5OThAaj8qTtx2JBLUzkmduQwIwcoWNNpamt6Ib8UP2JdBYdO4VZ0B6S1swM9CrmAYuxH0gU9Ewx34u7VnZoMwU+xKT
+ExpiryUtc         : 
+NotBeforeUtc      : 
+ProvisioningState : 
+Status            : 
+Subject           : 
+Thumbprint        : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets the proof of possession nonce.
 
 ## PARAMETERS
 
@@ -101,7 +64,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: RetrieveViaIdentityCatalog, RetrieveViaIdentityCatalogExpanded
+Parameter Sets: RetrieveViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -116,7 +79,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
+Parameter Sets: RetrieveExpanded
 Aliases:
 
 Required: True
@@ -148,43 +111,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: RetrieveViaIdentity, RetrieveViaIdentityExpanded
+Parameter Sets: RetrieveViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Retrieve operation
-
-```yaml
-Type: System.String
-Parameter Sets: RetrieveViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Retrieve operation
-
-```yaml
-Type: System.String
-Parameter Sets: RetrieveViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,29 +126,13 @@ The proof of possession nonce
 
 ```yaml
 Type: System.String
-Parameter Sets: RetrieveExpanded, RetrieveViaIdentityCatalogExpanded, RetrieveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProofOfPossessionNonceRequest
-Request for the proof of possession nonce
-To construct, see NOTES section for PROOFOFPOSSESSIONNONCEREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProofOfPossessionNonceRequest
-Parameter Sets: Retrieve, RetrieveViaIdentity, RetrieveViaIdentityCatalog
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -225,7 +142,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
+Parameter Sets: RetrieveExpanded
 Aliases:
 
 Required: True
@@ -241,7 +158,7 @@ Use '.default' to get current active certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaIdentityCatalog, RetrieveViaIdentityCatalogExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
+Parameter Sets: RetrieveExpanded, RetrieveViaIdentityCatalogExpanded
 Aliases:
 
 Required: True
@@ -256,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Retrieve, RetrieveExpanded, RetrieveViaJsonFilePath, RetrieveViaJsonString
+Parameter Sets: RetrieveExpanded
 Aliases:
 
 Required: False
@@ -301,8 +218,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProofOfPossessionNonceRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 

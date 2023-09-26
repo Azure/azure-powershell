@@ -29,7 +29,7 @@ Delete a Catalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete specific catalog with specified resource group
 ```powershell
 {{ Add code here }}
 ```

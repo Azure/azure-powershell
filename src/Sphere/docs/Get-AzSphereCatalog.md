@@ -23,6 +23,11 @@ Get-AzSphereCatalog -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzSphereCatalog -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzSphereCatalog -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
@@ -34,27 +39,77 @@ Get a Catalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all catalogs for a given resource group
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalog -ResourceGroupName test-sataneja-10
 ```
 
 ```output
-{{ Add output here }}
+Location Name                   SystemDataCreatedAt    SystemDataCreatedBy    SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGro 
+                                                                                                                                                                                     upName      
+-------- ----                   -------------------    -------------------    ----------------------- ------------------------ ------------------------ ---------------------------- ----------- 
+global   CAT43                  9/24/2022 12:54:16 PM  sataneja@microsoft.com User                    9/24/2022 12:54:16 PM    sataneja@microsoft.com   User                         test-satan… 
+global   CAT007                 9/26/2022 8:58:15 PM   sataneja@microsoft.com User                    9/26/2022 8:58:15 PM     sataneja@microsoft.com   User                         test-satan… 
+global   CAT10                  10/10/2022 4:23:53 PM  sataneja@microsoft.com User                    10/10/2022 4:23:53 PM    sataneja@microsoft.com   User                         test-satan… 
+global   TCAT01                 10/14/2022 12:12:22 AM sataneja@microsoft.com User                    10/14/2022 12:12:22 AM   sataneja@microsoft.com   User                         test-satan… 
+global   TestCatalog1x3         4/25/2023 10:00:52 PM  sataneja@microsoft.com User                    4/25/2023 10:00:52 PM    sataneja@microsoft.com   User                         test-satan… 
+global   TestCatalog1x3_Catalog 5/11/2023 6:12:50 PM   sataneja@microsoft.com User                    5/11/2023 6:12:50 PM     sataneja@microsoft.com   User                         test-satan… 
 ```
 
-{{ Add description here }}
+This command lists all catalogs for a given resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get specific catalog with specified resource group
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalog -Name "testcat" -ResourceGroupName "goyedokun"
 ```
 
 ```output
-{{ Add output here }}
+Id                           : /subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/goyedokun/providers/Microsoft.AzureSphere/catalogs/testcat
+Location                     : global
+Name                         : testcat
+ProvisioningState            : Succeeded
+ResourceGroupName            : goyedokun
+RetryAfter                   : 
+SystemDataCreatedAt          : 6/27/2023 6:49:50 PM
+SystemDataCreatedBy          : goyedokun@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 6/27/2023 6:49:50 PM
+SystemDataLastModifiedBy     : goyedokun@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : microsoft.azuresphere/catalogs
 ```
 
-{{ Add description here }}
+This command get specific catalog with specified resource group.
+
+### Example 2: List all catalogs for connected subscription
+```powershell
+Get-AzSphereCatalog
+```
+
+```output
+Location Name                           SystemDataCreatedAt    SystemDataCreatedBy                  SystemDataCreatedByType SystemDataLastModifiedAt SystemData
+                                                                                                                                                     LastModifi 
+                                                                                                                                                     edBy       
+-------- ----                           -------------------    -------------------                  ----------------------- ------------------------ ---------- 
+global   MyCatalog3                     4/21/2021 9:32:32 PM   andborja@microsoft.com               User                    8/10/2023 3:21:08 PM     goyedokun… 
+global   MyCatalog2                     5/20/2021 4:44:38 PM   andborja@microsoft.com               User                    5/20/2021 4:44:38 PM     andborja@… 
+global   MyCatalog1                     5/20/2021 4:45:44 PM   andborja@microsoft.com               User                    5/20/2021 4:45:44 PM     andborja@… 
+global   CatalogARMSetup_39f85f04       8/18/2021 8:28:11 PM   5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             8/18/2021 8:28:11 PM     5223a8bc-… 
+global   CatalogARMSetup_3b15f308       9/17/2021 6:41:41 PM   5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             9/17/2021 6:41:41 PM     5223a8bc-… 
+global   mrarmcatalog1                  9/21/2021 7:27:16 PM   mayukhr@microsoft.com                User                    9/21/2021 7:27:16 PM     mayukhr@m… 
+global   CatalogARMSetup_eb5cca0a       9/21/2021 10:06:28 PM  5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             9/21/2021 10:06:28 PM    5223a8bc-… 
+global   CatalogARMSetup_f8c1fea7       9/21/2021 10:06:31 PM  5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             9/21/2021 10:06:31 PM    5223a8bc-… 
+global   CatalogARMSetup_f2d88f81       9/21/2021 10:06:38 PM  5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             9/21/2021 10:06:38 PM    5223a8bc-… 
+global   CatalogARMSetup_1711d4b8       9/21/2021 10:06:42 PM  5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             9/21/2021 10:06:42 PM    5223a8bc-… 
+global   CatalogARMSetup_04744136       10/1/2021 7:14:04 PM   5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             10/1/2021 7:14:04 PM     5223a8bc-… 
+global   CatalogARMSetup_bff4a3fe       10/5/2021 5:14:48 PM   5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             10/5/2021 5:14:48 PM     5223a8bc-… 
+global   CatalogARMSetup_e05ad6ac       10/5/2021 5:15:05 PM   5223a8bc-448a-411c-bcd4-7d41745ed6ba Application             10/5/2021 5:15:05 PM     5223a8bc-… 
+global   newCatalog                     8/15/2023 3:06:31 AM   v-jiaji@microsoft.com                User                    8/15/2023 3:10:39 AM     v-jiaji@m… 
+```
+
+This command lists all catalogs for current subscription.
 
 ## PARAMETERS
 
@@ -71,6 +126,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -110,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -124,6 +195,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 

@@ -19,28 +19,6 @@ Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String>
- -ListDeviceGroupsRequest <IListDeviceGroupsRequest> [-SubscriptionId <String[]>] [-Filter <String>]
- [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereCatalogDeviceGroup -CatalogInputObject <ISphereIdentity>
- -ListDeviceGroupsRequest <IListDeviceGroupsRequest> [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListViaIdentityCatalogExpanded
-```
-Get-AzSphereCatalogDeviceGroup -CatalogInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DeviceGroupName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ListViaJsonFilePath
 ```
 Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> -JsonFilePath <String>
@@ -62,50 +40,23 @@ List the device groups for the catalog.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeviceGroup -CatalogName newCatalog -ResourceGroupName "ps1-test"
 ```
 
 ```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
 
-### -CatalogInputObject
-Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: ListViaIdentityCatalog, ListViaIdentityCatalogExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -136,7 +87,7 @@ Device Group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded, ListViaIdentityCatalogExpanded
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -191,22 +142,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ListDeviceGroupsRequest
-Request of the action to list device groups for a catalog.
-To construct, see NOTES section for LISTDEVICEGROUPSREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IListDeviceGroupsRequest
-Parameter Sets: List, ListViaIdentityCatalog
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Maxpagesize
 The maximum number of result items per page.
 
@@ -228,7 +163,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -258,7 +193,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, ListExpanded, ListViaJsonFilePath, ListViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,10 +253,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IListDeviceGroupsRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 

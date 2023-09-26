@@ -29,27 +29,30 @@ Create a Catalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a catalog
 ```powershell
-{{ Add code here }}
+New-AzSphereCatalog -Name 'newCatalog' -ResourceGroupName 'ps1-test' -Location global
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/newCatalog  
+Location                     : global
+Name                         : newCatalog
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps1-test
+RetryAfter                   : 
+SystemDataCreatedAt          : 8/15/2023 3:06:31 AM
+SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 8/15/2023 3:06:31 AM
+SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : microsoft.azuresphere/catalogs
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a catalog.
 
 ## PARAMETERS
 

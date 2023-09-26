@@ -26,6 +26,11 @@ Get-AzSphereDeployment -CatalogName <String> -DeviceGroupName <String> -Name <St
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzSphereDeployment -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -Name <String>
@@ -42,25 +47,6 @@ Get-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> -Name <String> 
 ```
 Get-AzSphereDeployment -DeviceGroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereDeployment -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String> -ProductName <String>
- [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ListViaIdentityDeviceGroup
-```
-Get-AzSphereDeployment -DeviceGroupInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityProduct
-```
-Get-AzSphereDeployment -DeviceGroupName <String> -ProductInputObject <ISphereIdentity> [-Filter <String>]
- [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +85,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityCatalog, ListViaIdentityCatalog
+Parameter Sets: GetViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -146,7 +132,7 @@ To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityDeviceGroup, ListViaIdentityDeviceGroup
+Parameter Sets: GetViaIdentityDeviceGroup
 Aliases:
 
 Required: True
@@ -161,7 +147,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityProduct, List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityProduct, List
 Aliases:
 
 Required: True
@@ -176,7 +162,7 @@ Filter the result list using the given expression
 
 ```yaml
 Type: System.String
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityDeviceGroup, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -186,12 +172,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Maxpagesize
 The maximum number of result items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityDeviceGroup, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -223,7 +225,7 @@ To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityProduct, ListViaIdentityProduct
+Parameter Sets: GetViaIdentityProduct
 Aliases:
 
 Required: True
@@ -238,7 +240,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCatalog, List, ListViaIdentityCatalog
+Parameter Sets: Get, GetViaIdentityCatalog, List
 Aliases:
 
 Required: True
@@ -269,7 +271,7 @@ The number of result items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityDeviceGroup, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -299,7 +301,7 @@ The number of result items to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityDeviceGroup, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False

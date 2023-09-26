@@ -31,7 +31,7 @@ For information on how to develop for `Az.Sphere`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 753f386a4ff062f7cd696d21ef7428f23e2a32a9
+branch: 018905ddfbba9e08961964784a5de7093815b42e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -61,8 +61,21 @@ directive:
   - where:
       variant: ^(Create|Update|Generate|Claim)(?!.*?Expanded)
     remove: true
+  - where:
+      variant: List
+      subject: CatalogDeviceGroup
+    hide: true
+  - where:
+      variant: ^(Retrieve)(?!.*?Expanded)
+      subject: CertificateProof
+    hide: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
+    hide: true
+  # Required parameter customization: Description
+  - where:
+      verb: New
+      subject: ^Product$|^DeviceGroup$
     hide: true
 ```

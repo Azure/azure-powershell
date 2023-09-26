@@ -1,6 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzSphereDeployment -Name AzureSphereD1 -CatalogName "newCatalog" -DeviceGroupName "Marketing" -ProductName "MyProd816" -ResourceGroupName "ps1-test"
 ```
 
 ```output

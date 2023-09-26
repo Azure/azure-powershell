@@ -12,17 +12,10 @@ Lists devices for catalog.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzSphereCatalogDevice -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereCatalogDevice -CatalogInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,52 +23,43 @@ Lists devices for catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List devices with specified catalog
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDevice -CatalogName "MyCEVtest" -ResourceGroupName "glumenCEVRG"
 ```
 
 ```output
-{{ Add output here }}
+ChipSku                      : MT3620AN
+DeviceId                     : F9DE980873CC1878693BE5146D42BB5BCC432EE075ED13F7F1249D2606A2114F0F1F18937E67FC45E44EB72586D6F59CE736ACC25E3A51FE4D171E0D5240176D
+Id                           : /subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/glumenCEVRG/providers/Microsoft.AzureSphere/catalogs/MyCEVtest/products/MyCEVProd42/deviceGroups/Field 
+                               Test/devices/F9DE980873CC1878693BE5146D42BB5BCC432EE075ED13F7F1249D2606A2114F0F1F18937E67FC45E44EB72586D6F59CE736ACC25E3A51FE4D171E0D5240176D
+LastAvailableOSVersion       : 
+LastInstalledOSVersion       : 
+LastOSUpdateUtc              : 
+LastUpdateRequestUtc         : 
+Name                         : F9DE980873CC1878693BE5146D42BB5BCC432EE075ED13F7F1249D2606A2114F0F1F18937E67FC45E44EB72586D6F59CE736ACC25E3A51FE4D171E0D5240176D
+ProvisioningState            : Succeeded
+ResourceGroupName            : glumenCEVRG
+RetryAfter                   : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/products/deviceGroups/devices
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists devices for catalog with filter and other options.
 
 ## PARAMETERS
-
-### -CatalogInputObject
-Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: ListViaIdentityCatalog
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -137,7 +121,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,8 +211,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 

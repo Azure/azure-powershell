@@ -25,15 +25,15 @@ Get-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <Str
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzSphereProduct -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereProduct -CatalogInputObject <ISphereIdentity> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereProduct -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,11 +44,23 @@ Get a Product.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSphereProduct -CatalogName newCatalog -ResourceGroupName "ps1-test"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description                  : Contoso DW100 models
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/newCatalog/products/MyProd815
+Name                         : MyProd815
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps1-test
+RetryAfter                   : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/products
 ```
 
 {{ Add description here }}
@@ -72,7 +84,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityCatalog, ListViaIdentityCatalog
+Parameter Sets: GetViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -110,6 +122,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

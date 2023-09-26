@@ -26,6 +26,11 @@ Get-AzSphereDeviceGroup -CatalogName <String> -Name <String> -ProductName <Strin
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzSphereDeviceGroup -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDeviceGroup -CatalogInputObject <ISphereIdentity> -Name <String> -ProductName <String>
@@ -38,18 +43,6 @@ Get-AzSphereDeviceGroup -Name <String> -ProductInputObject <ISphereIdentity> [-D
  [<CommonParameters>]
 ```
 
-### ListViaIdentityCatalog
-```
-Get-AzSphereDeviceGroup -CatalogInputObject <ISphereIdentity> -ProductName <String> [-Filter <String>]
- [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityProduct
-```
-Get-AzSphereDeviceGroup -ProductInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
@@ -58,22 +51,58 @@ Get a DeviceGroup.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSphereDeviceGroup -CatalogName NewCatalog -ProductName MyProd815 -ResourceGroupName ps1-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AllowCrashDumpsCollection    : Disabled
+Description                  : test device group
+HasDeployment                : False
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroup 
+                               s/Marketing
+Name                         : Marketing
+OSFeedType                   : Retail
+ProvisioningState            : Succeeded
+RegionalDataBoundary         : None
+ResourceGroupName            : ps1-test
+RetryAfter                   : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/products/deviceGroups
+UpdatePolicy                 : UpdateAll
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSphereDeviceGroup -CatalogName NewCatalog -Name Marketing -ProductName MyProd815 -ResourceGroupName ps1-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AllowCrashDumpsCollection    : Disabled
+Description                  : test device group
+HasDeployment                : 
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroup 
+                               s/Marketing
+Name                         : Marketing
+OSFeedType                   : Retail
+ProvisioningState            : Succeeded
+RegionalDataBoundary         : None
+ResourceGroupName            : ps1-test
+RetryAfter                   : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/products/deviceGroups
+UpdatePolicy                 : UpdateAll
 ```
 
 {{ Add description here }}
@@ -86,7 +115,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityCatalog, ListViaIdentityCatalog
+Parameter Sets: GetViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -132,7 +161,7 @@ Filter the result list using the given expression
 
 ```yaml
 Type: System.String
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -142,12 +171,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Maxpagesize
 The maximum number of result items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -178,7 +223,7 @@ To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityProduct, ListViaIdentityProduct
+Parameter Sets: GetViaIdentityProduct
 Aliases:
 
 Required: True
@@ -193,7 +238,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCatalog, List, ListViaIdentityCatalog
+Parameter Sets: Get, GetViaIdentityCatalog, List
 Aliases:
 
 Required: True
@@ -224,7 +269,7 @@ The number of result items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -254,7 +299,7 @@ The number of result items to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: List
 Aliases:
 
 Required: False

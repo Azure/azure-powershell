@@ -25,6 +25,11 @@ Get-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -Pro
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzSphereDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDevice -CatalogInputObject <ISphereIdentity> -GroupName <String> -Name <String>
@@ -41,23 +46,6 @@ Get-AzSphereDevice -DeviceGroupInputObject <ISphereIdentity> -Name <String> [-De
 ```
 Get-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereDevice -CatalogInputObject <ISphereIdentity> -GroupName <String> -ProductName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityDeviceGroup
-```
-Get-AzSphereDevice -DeviceGroupInputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListViaIdentityProduct
-```
-Get-AzSphereDevice -GroupName <String> -ProductInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +84,7 @@ To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityCatalog, ListViaIdentityCatalog
+Parameter Sets: GetViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -143,7 +131,7 @@ To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityDeviceGroup, ListViaIdentityDeviceGroup
+Parameter Sets: GetViaIdentityDeviceGroup
 Aliases:
 
 Required: True
@@ -158,13 +146,29 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityProduct, List, ListViaIdentityCatalog, ListViaIdentityProduct
+Parameter Sets: Get, GetViaIdentityCatalog, GetViaIdentityProduct, List
 Aliases: DeviceGroupName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -189,7 +193,7 @@ To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GetViaIdentityProduct, ListViaIdentityProduct
+Parameter Sets: GetViaIdentityProduct
 Aliases:
 
 Required: True
@@ -204,7 +208,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityCatalog, List, ListViaIdentityCatalog
+Parameter Sets: Get, GetViaIdentityCatalog, List
 Aliases:
 
 Required: True

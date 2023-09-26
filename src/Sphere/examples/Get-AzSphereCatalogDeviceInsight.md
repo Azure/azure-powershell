@@ -1,6 +1,6 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeviceInsight -CatalogName newCatalog -ResourceGroupName "ps1-test"
 ```
 
 ```output
@@ -8,15 +8,3 @@
 ```
 
 {{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

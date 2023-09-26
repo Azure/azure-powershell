@@ -15,21 +15,21 @@ Create a Product.
 
 ### CreateExpanded (Default)
 ```
-New-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSphereProduct -CatalogName <String> -Name <String> -ResourceGroupName <String> -Description <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityCatalogExpanded
 ```
-New-AzSphereProduct -CatalogInputObject <ISphereIdentity> -Name <String> [-Description <String>]
+New-AzSphereProduct -CatalogInputObject <ISphereIdentity> -Name <String> -Description <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzSphereProduct -InputObject <ISphereIdentity> [-Description <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSphereProduct -InputObject <ISphereIdentity> -Description <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,27 +38,29 @@ Create a Product.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a product with description
 ```powershell
-{{ Add code here }}
+New-AzSphereProduct -CatalogName newCatalog -Name MyProd815 -ResourceGroupName ps1-test -Description "Contoso DW100 models"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description                  : Contoso DW100 models
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/newCatalog/ 
+                               products/MyProd815
+Name                         : MyProd815
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps1-test
+RetryAfter                   : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/products
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command create a product with description.
 
 ## PARAMETERS
 
@@ -132,7 +134,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

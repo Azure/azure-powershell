@@ -12,17 +12,10 @@ Lists deployments for catalog.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzSphereCatalogDeployment -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListViaIdentityCatalog
-```
-Get-AzSphereCatalogDeployment -CatalogInputObject <ISphereIdentity> [-Filter <String>] [-Maxpagesize <Int32>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,52 +23,21 @@ Lists deployments for catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List deployments for specific catalog with specified resource group
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeployment -ResourceGroupName test -CatalogName CAT
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists deployments for specific catalog with specified resource group
 
 ## PARAMETERS
-
-### -CatalogInputObject
-Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: ListViaIdentityCatalog
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -137,7 +99,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,7 +129,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,8 +189,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 
