@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultManagedHsm", SupportsShouldProcess = true)]
     [OutputType(typeof(PSManagedHsm))]
-    public class NewAzureManagedHsm : KeyVaultManagementCmdletBase
+    public class NewAzKeyVaultManagedHsm : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
 
