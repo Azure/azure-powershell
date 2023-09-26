@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [PSArgumentCompleter("StandardB1", "CustomB32")]
         public string Sku { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged. The default is " + Constants.DefaultSoftDeleteRetentionDaysString + " days.")]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged.")]
         [ValidateRange(Constants.MinSoftDeleteRetentionDays, Constants.MaxSoftDeleteRetentionDays)]
         [ValidateNotNullOrEmpty]
         public int SoftDeleteRetentionInDays { get; set; }
@@ -127,9 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     Administrator = this.Administrator,
                     SkuFamilyName = DefaultManagedHsmSkuFamily,
                     // If retention days is not specified, use the default value
-                    SoftDeleteRetentionInDays = this.IsParameterBound(c => c.SoftDeleteRetentionInDays)
-                            ? SoftDeleteRetentionInDays
-                            : Constants.DefaultSoftDeleteRetentionDays,
+                    SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
                     // false is not accepted
                     EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
                     // use default network rule set
