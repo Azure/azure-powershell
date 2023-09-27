@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added new parameter `EnableBurstCapacity` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 
 ## Version 1.12.0
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
