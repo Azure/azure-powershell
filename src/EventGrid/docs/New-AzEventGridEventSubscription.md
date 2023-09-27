@@ -25,18 +25,6 @@ New-AzEventGridEventSubscription -Name <String> -Scope <String> [-DeadLetterWith
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzEventGridEventSubscription -Name <String> -Scope <String> -EventSubscriptionInfo <IEventSubscription>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzEventGridEventSubscription -InputObject <IEventGridIdentity> -EventSubscriptionInfo <IEventSubscription>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzEventGridEventSubscription -InputObject <IEventGridIdentity>
@@ -231,22 +219,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSubscriptionInfo
-Event Subscription
-To construct, see NOTES section for EVENTSUBSCRIPTIONINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ExpirationTimeUtc
 Expiration time of the event subscription.
 
@@ -360,7 +332,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -421,7 +393,7 @@ Event subscription names must be between 3 and 64 characters in length and shoul
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: EventSubscriptionName
 
 Required: True
@@ -498,7 +470,7 @@ For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscr
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -545,8 +517,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
 
 ## OUTPUTS
 

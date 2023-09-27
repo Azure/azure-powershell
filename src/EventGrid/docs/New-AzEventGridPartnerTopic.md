@@ -23,18 +23,6 @@ New-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> -Location
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> -PartnerTopicInfo <IPartnerTopic>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> -PartnerTopicInfo <IPartnerTopic>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
 New-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> -Location <String> [-ActivationState <String>]
@@ -233,7 +221,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -308,7 +296,7 @@ Name of the partner topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: PartnerTopicName
 
 Required: True
@@ -349,22 +337,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerTopicInfo
-Event Grid Partner Topic.
-To construct, see NOTES section for PARTNERTOPICINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -385,7 +357,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -417,7 +389,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -479,8 +451,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
 
 ## OUTPUTS
 

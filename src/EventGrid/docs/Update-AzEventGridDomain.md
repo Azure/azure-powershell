@@ -16,22 +16,10 @@ Asynchronously updates a domain with the specified parameters.
 ```
 Update-AzEventGridDomain -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AutoCreateTopicWithFirstSubscription] [-AutoDeleteTopicWithLastSubscription]
- [-DataResidencyBoundary <String>] [-DisableLocalAuth] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InboundIPRule <IInboundIPRule[]>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzEventGridDomain -Name <String> -ResourceGroupName <String>
- -DomainUpdateParameter <IDomainUpdateParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridDomain -InputObject <IEventGridIdentity> -DomainUpdateParameter <IDomainUpdateParameters>
+ [-DataResidencyBoundary <String>] [-DisableLocalAuth] [-EventTypeInfoInlineEventType <Hashtable>]
+ [-EventTypeInfoKind <String>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-InboundIPRule <IInboundIPRule[]>]
+ [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -39,10 +27,11 @@ Update-AzEventGridDomain -InputObject <IEventGridIdentity> -DomainUpdateParamete
 ```
 Update-AzEventGridDomain -InputObject <IEventGridIdentity> [-AutoCreateTopicWithFirstSubscription]
  [-AutoDeleteTopicWithLastSubscription] [-DataResidencyBoundary <String>] [-DisableLocalAuth]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-InboundIPRule <IInboundIPRule[]>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>] [-IdentityPrincipalId <String>]
+ [-IdentityTenantId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-InboundIPRule <IInboundIPRule[]>] [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -188,19 +177,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainUpdateParameter
-Properties of the Domain update.
-To construct, see NOTES section for DOMAINUPDATEPARAMETER properties and create a hash table.
+### -EventTypeInfoInlineEventType
+A collection of inline event types for the resource.
+The inline event type keys are of type string which represents the name of the event.An example of a valid inline event name is "Contoso.OrderCreated".The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventTypeInfoKind
+The kind of event type used.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -290,7 +294,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -330,12 +334,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinimumTlsVersionAllowed
+Minimum TLS version of the publisher allowed to publish to this domain
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: DomainName
 
 Required: True
@@ -397,10 +416,26 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The Sku name of the resource.
+The possible values are: Basic or Premium.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -413,7 +448,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -473,8 +508,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 

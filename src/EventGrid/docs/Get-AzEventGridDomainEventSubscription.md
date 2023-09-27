@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainName
-Name of the partner topic.
+Name of the domain.
 
 ```yaml
 Type: System.String

@@ -19,20 +19,6 @@ Update-AzEventGridPartnerRegistration -Name <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridPartnerRegistration -Name <String> -ResourceGroupName <String>
- -PartnerRegistrationUpdateParameter <IPartnerRegistrationUpdateParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridPartnerRegistration -InputObject <IEventGridIdentity>
- -PartnerRegistrationUpdateParameter <IPartnerRegistrationUpdateParameters> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridPartnerRegistration -InputObject <IEventGridIdentity> [-Tag <Hashtable>]
@@ -119,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,7 +150,7 @@ Name of the partner registration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: PartnerRegistrationName
 
 Required: True
@@ -189,22 +175,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerRegistrationUpdateParameter
-Properties of the Partner Registration update.
-To construct, see NOTES section for PARTNERREGISTRATIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerRegistrationUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -225,7 +195,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -241,7 +211,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -303,8 +273,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerRegistrationUpdateParameters
 
 ## OUTPUTS
 

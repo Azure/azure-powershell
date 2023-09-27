@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/az.eventgrid/grant-azeventgridpartnerconfigurationpartner
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/enable-azeventgridpartnerconfiguration
 schema: 2.0.0
 ---
 
-# Grant-AzEventGridPartnerConfigurationPartner
+# Enable-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
 Authorize a single partner either by partner registration immutable Id or by partner name.
@@ -14,7 +14,7 @@ Authorize a single partner either by partner registration immutable Id or by par
 
 ### AuthorizeExpanded (Default)
 ```
-Grant-AzEventGridPartnerConfigurationPartner -ResourceGroupName <String> [-SubscriptionId <String>]
+Enable-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthorizationExpirationTimeInUtc <DateTime>] [-PartnerName <String>]
  [-PartnerRegistrationImmutableId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,19 +22,19 @@ Grant-AzEventGridPartnerConfigurationPartner -ResourceGroupName <String> [-Subsc
 
 ### Authorize
 ```
-Grant-AzEventGridPartnerConfigurationPartner -ResourceGroupName <String> -PartnerInfo <IPartner>
+Enable-AzEventGridPartnerConfiguration -ResourceGroupName <String> -PartnerInfo <IPartner>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AuthorizeViaJsonFilePath
 ```
-Grant-AzEventGridPartnerConfigurationPartner -ResourceGroupName <String> -JsonFilePath <String>
+Enable-AzEventGridPartnerConfiguration -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AuthorizeViaJsonString
 ```
-Grant-AzEventGridPartnerConfigurationPartner -ResourceGroupName <String> -JsonString <String>
+Enable-AzEventGridPartnerConfiguration -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

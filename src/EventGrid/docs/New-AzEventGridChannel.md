@@ -17,23 +17,14 @@ Synchronously Create a new channel with the specified parameters.
 New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ChannelType <String>] [-EventTypeInfoInlineEventType <Hashtable>]
  [-EventTypeInfoKind <String>] [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-MessageForActivation <String>]
+ [-PartnerDestinationInfoAzureSubscriptionId <String>]
+ [-PartnerDestinationInfoEndpointServiceContext <String>] [-PartnerDestinationInfoName <String>]
+ [-PartnerDestinationInfoResourceGroupName <String>]
+ [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>]
  [-ProvisioningState <String>] [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
- -ChannelInfo <IChannel> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzEventGridChannel -InputObject <IEventGridIdentity> -ChannelInfo <IChannel> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -41,16 +32,14 @@ New-AzEventGridChannel -InputObject <IEventGridIdentity> -ChannelInfo <IChannel>
 New-AzEventGridChannel -InputObject <IEventGridIdentity> [-ChannelType <String>]
  [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
  [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-MessageForActivation <String>]
+ [-PartnerDestinationInfoAzureSubscriptionId <String>]
+ [-PartnerDestinationInfoEndpointServiceContext <String>] [-PartnerDestinationInfoName <String>]
+ [-PartnerDestinationInfoResourceGroupName <String>]
+ [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>]
  [-ProvisioningState <String>] [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityPartnerNamespace
-```
-New-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
- -ChannelInfo <IChannel> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPartnerNamespaceExpanded
@@ -58,6 +47,10 @@ New-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridId
 New-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
  [-ChannelType <String>] [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
  [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-MessageForActivation <String>]
+ [-PartnerDestinationInfoAzureSubscriptionId <String>]
+ [-PartnerDestinationInfoEndpointServiceContext <String>] [-PartnerDestinationInfoName <String>]
+ [-PartnerDestinationInfoResourceGroupName <String>]
+ [-PartnerDestinationInfoResourceMoveChangeHistory <IResourceMoveChangeHistory[]>]
  [-PartnerTopicInfoAzureSubscriptionId <String>] [-PartnerTopicInfoName <String>]
  [-PartnerTopicInfoResourceGroupName <String>] [-PartnerTopicInfoSource <String>]
  [-ProvisioningState <String>] [-ReadinessState <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
@@ -106,22 +99,6 @@ Synchronously Create a new channel with the specified parameters.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ChannelInfo
-Channel info.
-To construct, see NOTES section for CHANNELINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannel
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityPartnerNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -ChannelType
 The type of the event channel which represents the direction flow of events.
@@ -207,7 +184,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -267,10 +244,88 @@ Name of the channel.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityPartnerNamespace, CreateViaIdentityPartnerNamespaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityPartnerNamespaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ChannelName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerDestinationInfoAzureSubscriptionId
+Azure subscription ID of the subscriber.
+The partner destination associated with the channel will becreated under this Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerDestinationInfoEndpointServiceContext
+Additional context of the partner destination endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerDestinationInfoName
+Name of the partner destination associated with the channel.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerDestinationInfoResourceGroupName
+Azure Resource Group of the subscriber.
+The partner destination associated with the channel will becreated under this resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerDestinationInfoResourceMoveChangeHistory
+Change history of the resource move.
+To construct, see NOTES section for PARTNERDESTINATIONINFORESOURCEMOVECHANGEHISTORY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceMoveChangeHistory[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityPartnerNamespaceExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -283,7 +338,7 @@ To construct, see NOTES section for PARTNERNAMESPACEINPUTOBJECT properties and c
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentityPartnerNamespace, CreateViaIdentityPartnerNamespaceExpanded
+Parameter Sets: CreateViaIdentityPartnerNamespaceExpanded
 Aliases:
 
 Required: True
@@ -298,7 +353,7 @@ Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -421,7 +476,7 @@ The name of the resource group within the partners subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -437,7 +492,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -482,8 +537,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannel
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 

@@ -26,21 +26,6 @@ Update-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -Resour
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -TopicName <String> -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridTopicEventSubscription -InputObject <IEventGridIdentity>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridTopicEventSubscription -InputObject <IEventGridIdentity>
@@ -51,13 +36,6 @@ Update-AzEventGridTopicEventSubscription -InputObject <IEventGridIdentity>
  [-FilterEnableAdvancedFilteringOnArray] [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive]
  [-FilterSubjectBeginsWith <String>] [-FilterSubjectEndsWith <String>] [-Label <String[]>]
  [-RetryPolicyEventTimeToLiveInMinute <Int32>] [-RetryPolicyMaxDeliveryAttempt <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityTopic
-```
-Update-AzEventGridTopicEventSubscription -EventSubscriptionName <String>
- -TopicInputObject <IEventGridIdentity> -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -263,29 +241,13 @@ Name of the event subscription to be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityTopic, UpdateViaIdentityTopicExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityTopicExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventSubscriptionUpdateParameter
-Properties of the Event Subscription update.
-To construct, see NOTES section for EVENTSUBSCRIPTIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityTopic
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -402,7 +364,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -492,7 +454,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -538,7 +500,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -554,7 +516,7 @@ To construct, see NOTES section for TOPICINPUTOBJECT properties and create a has
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentityTopic, UpdateViaIdentityTopicExpanded
+Parameter Sets: UpdateViaIdentityTopicExpanded
 Aliases:
 
 Required: True
@@ -569,7 +531,7 @@ Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -616,8 +578,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
 
 ## OUTPUTS
 

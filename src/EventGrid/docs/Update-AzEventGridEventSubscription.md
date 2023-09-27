@@ -25,20 +25,6 @@ Update-AzEventGridEventSubscription -Name <String> -Scope <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridEventSubscription -Name <String> -Scope <String>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridEventSubscription -InputObject <IEventGridIdentity>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridEventSubscription -InputObject <IEventGridIdentity>
@@ -233,22 +219,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSubscriptionUpdateParameter
-Properties of the Event Subscription update.
-To construct, see NOTES section for EVENTSUBSCRIPTIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ExpirationTimeUtc
 Information about the expiration time for the event subscription.
 
@@ -362,7 +332,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -422,7 +392,7 @@ Name of the event subscription to be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: EventSubscriptionName
 
 Required: True
@@ -499,7 +469,7 @@ For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscr
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -546,8 +516,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
 
 ## OUTPUTS
 

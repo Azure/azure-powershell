@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/az.eventgrid/invoke-azeventgriddeactivatepartnertopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridnamespace
 schema: 2.0.0
 ---
 
-# Invoke-AzEventGridDeactivatePartnerTopic
+# Remove-AzEventGridNamespace
 
 ## SYNOPSIS
-Deactivate specific partner topic.
+Delete existing namespace.
 
 ## SYNTAX
 
-### Deactivate (Default)
+### Delete (Default)
 ```
-Invoke-AzEventGridDeactivatePartnerTopic -PartnerTopicName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzEventGridNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeactivateViaIdentity
+### DeleteViaIdentity
 ```
-Invoke-AzEventGridDeactivatePartnerTopic -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>]
+Remove-AzEventGridNamespace -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deactivate specific partner topic.
+Delete existing namespace.
 
 ## EXAMPLES
 
@@ -53,6 +53,21 @@ Deactivate specific partner topic.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: DeactivateViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -85,15 +100,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PartnerTopicName
-Name of the partner topic.
+### -Name
+Name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Deactivate
-Aliases:
+Parameter Sets: Delete
+Aliases: NamespaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,7 +150,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Deactivate
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -136,7 +166,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Deactivate
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -186,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
+### System.Boolean
 
 ## NOTES
 

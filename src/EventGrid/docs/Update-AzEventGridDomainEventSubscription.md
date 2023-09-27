@@ -26,28 +26,6 @@ Update-AzEventGridDomainEventSubscription -DomainName <String> -EventSubscriptio
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridDomainEventSubscription -DomainName <String> -EventSubscriptionName <String>
- -ResourceGroupName <String> -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridDomainEventSubscription -InputObject <IEventGridIdentity>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityDomain
-```
-Update-AzEventGridDomainEventSubscription -DomainInputObject <IEventGridIdentity>
- -EventSubscriptionName <String> -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityDomainExpanded
 ```
 Update-AzEventGridDomainEventSubscription -DomainInputObject <IEventGridIdentity>
@@ -234,7 +212,7 @@ To construct, see NOTES section for DOMAININPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentityDomain, UpdateViaIdentityDomainExpanded
+Parameter Sets: UpdateViaIdentityDomainExpanded
 Aliases:
 
 Required: True
@@ -249,7 +227,7 @@ Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -294,29 +272,13 @@ Name of the event subscription to be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityDomain, UpdateViaIdentityDomainExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDomainExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventSubscriptionUpdateParameter
-Properties of the Event Subscription update.
-To construct, see NOTES section for EVENTSUBSCRIPTIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityDomain
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -433,7 +395,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -523,7 +485,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -569,7 +531,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -616,8 +578,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
 
 ## OUTPUTS
 

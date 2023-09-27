@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainName
-Name of the domain topic.
+Name of the domain.
 
 ```yaml
 Type: System.String

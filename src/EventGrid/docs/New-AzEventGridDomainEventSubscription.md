@@ -26,27 +26,6 @@ New-AzEventGridDomainEventSubscription -DomainName <String> -EventSubscriptionNa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzEventGridDomainEventSubscription -DomainName <String> -EventSubscriptionName <String>
- -ResourceGroupName <String> -EventSubscriptionInfo <IEventSubscription> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzEventGridDomainEventSubscription -InputObject <IEventGridIdentity>
- -EventSubscriptionInfo <IEventSubscription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityDomain
-```
-New-AzEventGridDomainEventSubscription -DomainInputObject <IEventGridIdentity> -EventSubscriptionName <String>
- -EventSubscriptionInfo <IEventSubscription> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityDomainExpanded
 ```
 New-AzEventGridDomainEventSubscription -DomainInputObject <IEventGridIdentity> -EventSubscriptionName <String>
@@ -232,7 +211,7 @@ To construct, see NOTES section for DOMAININPUTOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentityDomain, CreateViaIdentityDomainExpanded
+Parameter Sets: CreateViaIdentityDomainExpanded
 Aliases:
 
 Required: True
@@ -247,7 +226,7 @@ Name of the domain topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -287,29 +266,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSubscriptionInfo
-Event Subscription
-To construct, see NOTES section for EVENTSUBSCRIPTIONINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityDomain
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -EventSubscriptionName
 Name of the event subscription to be created.
 Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityDomain, CreateViaIdentityDomainExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityDomainExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -432,7 +395,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -522,7 +485,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -568,7 +531,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -615,8 +578,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscription
 
 ## OUTPUTS
 

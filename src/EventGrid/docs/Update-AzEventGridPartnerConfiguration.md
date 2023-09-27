@@ -19,13 +19,6 @@ Update-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-Subscriptio
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridPartnerConfiguration -ResourceGroupName <String>
- -PartnerConfigurationUpdateParameter <IPartnerConfigurationUpdateParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaJsonFilePath
 ```
 Update-AzEventGridPartnerConfiguration -ResourceGroupName <String> -JsonFilePath <String>
@@ -161,22 +154,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerConfigurationUpdateParameter
-Properties of the partner configuration update.
-To construct, see NOTES section for PARTNERCONFIGURATIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfigurationUpdateParameters
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -273,8 +250,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfigurationUpdateParameters
 
 ## OUTPUTS
 

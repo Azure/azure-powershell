@@ -21,13 +21,6 @@ New-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId
  [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzEventGridPartnerConfiguration -ResourceGroupName <String>
- -PartnerConfigurationInfo <IPartnerConfiguration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridPartnerConfiguration -ResourceGroupName <String> -JsonFilePath <String>
@@ -195,22 +188,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerConfigurationInfo
-Partner configuration information
-To construct, see NOTES section for PARTNERCONFIGURATIONINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -322,8 +299,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
 
 ## OUTPUTS
 

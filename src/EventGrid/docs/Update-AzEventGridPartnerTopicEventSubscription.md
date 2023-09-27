@@ -26,21 +26,6 @@ Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName <String> 
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName <String> -PartnerTopicName <String>
- -ResourceGroupName <String> -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridPartnerTopicEventSubscription -InputObject <IEventGridIdentity>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridPartnerTopicEventSubscription -InputObject <IEventGridIdentity>
@@ -52,14 +37,6 @@ Update-AzEventGridPartnerTopicEventSubscription -InputObject <IEventGridIdentity
  [-FilterSubjectBeginsWith <String>] [-FilterSubjectEndsWith <String>] [-Label <String[]>]
  [-RetryPolicyEventTimeToLiveInMinute <Int32>] [-RetryPolicyMaxDeliveryAttempt <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityPartnerTopic
-```
-Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName <String>
- -PartnerTopicInputObject <IEventGridIdentity>
- -EventSubscriptionUpdateParameter <IEventSubscriptionUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPartnerTopicExpanded
@@ -265,29 +242,13 @@ Event subscription names must be between 3 and 100 characters in length and use 
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityPartnerTopic, UpdateViaIdentityPartnerTopicExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerTopicExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventSubscriptionUpdateParameter
-Properties of the Event Subscription update.
-To construct, see NOTES section for EVENTSUBSCRIPTIONUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityPartnerTopic
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -404,7 +365,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -480,7 +441,7 @@ To construct, see NOTES section for PARTNERTOPICINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentityPartnerTopic, UpdateViaIdentityPartnerTopicExpanded
+Parameter Sets: UpdateViaIdentityPartnerTopicExpanded
 Aliases:
 
 Required: True
@@ -495,7 +456,7 @@ Name of the partner topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -525,7 +486,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -571,7 +532,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -618,8 +579,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionUpdateParameters
 
 ## OUTPUTS
 

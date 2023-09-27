@@ -11,11 +11,35 @@ Locale: en-US
 Microsoft Azure PowerShell: EventGrid cmdlets
 
 ## Az.EventGrid Cmdlets
+### [Disable-AzEventGridPartnerConfiguration](Disable-AzEventGridPartnerConfiguration.md)
+Unauthorize a single partner either by partner registration immutable Id or by partner name.
+
+### [Disable-AzEventGridPartnerTopic](Disable-AzEventGridPartnerTopic.md)
+Deactivate specific partner topic.
+
+### [Enable-AzEventGridPartnerConfiguration](Enable-AzEventGridPartnerConfiguration.md)
+Authorize a single partner either by partner registration immutable Id or by partner name.
+
+### [Enable-AzEventGridPartnerDestination](Enable-AzEventGridPartnerDestination.md)
+Activate a newly created partner destination.
+
+### [Enable-AzEventGridPartnerTopic](Enable-AzEventGridPartnerTopic.md)
+Activate a newly created partner topic.
+
+### [Get-AzEventGridCaCertificate](Get-AzEventGridCaCertificate.md)
+Get properties of a CA certificate.
+
 ### [Get-AzEventGridChannel](Get-AzEventGridChannel.md)
 Get properties of a channel.
 
 ### [Get-AzEventGridChannelFullUrl](Get-AzEventGridChannelFullUrl.md)
 Get the full endpoint URL of a partner destination channel.
+
+### [Get-AzEventGridClient](Get-AzEventGridClient.md)
+Get properties of a client.
+
+### [Get-AzEventGridClientGroup](Get-AzEventGridClientGroup.md)
+Get properties of a client group.
 
 ### [Get-AzEventGridDomain](Get-AzEventGridDomain.md)
 Get properties of a domain.
@@ -62,8 +86,26 @@ List all event subscriptions from the given location under a specific Azure subs
 ### [Get-AzEventGridExtensionTopic](Get-AzEventGridExtensionTopic.md)
 Get the properties of an extension topic.
 
+### [Get-AzEventGridNamespace](Get-AzEventGridNamespace.md)
+Get properties of a namespace.
+
+### [Get-AzEventGridNamespaceSharedAccessKey](Get-AzEventGridNamespaceSharedAccessKey.md)
+List the two keys used to publish to a namespace.
+
+### [Get-AzEventGridNamespaceTopic](Get-AzEventGridNamespaceTopic.md)
+Get properties of a namespace topic.
+
+### [Get-AzEventGridNamespaceTopicEventSubscription](Get-AzEventGridNamespaceTopicEventSubscription.md)
+Get properties of an event subscription of a namespace topic.
+
+### [Get-AzEventGridNamespaceTopicSharedAccessKey](Get-AzEventGridNamespaceTopicSharedAccessKey.md)
+List the two keys used to publish to a namespace topic.
+
 ### [Get-AzEventGridPartnerConfiguration](Get-AzEventGridPartnerConfiguration.md)
 Get properties of a partner configuration.
+
+### [Get-AzEventGridPartnerDestination](Get-AzEventGridPartnerDestination.md)
+Get properties of a partner destination.
 
 ### [Get-AzEventGridPartnerNamespace](Get-AzEventGridPartnerNamespace.md)
 Get properties of a partner namespace.
@@ -85,6 +127,9 @@ Get all delivery attributes for an event subscription of a partner topic.
 
 ### [Get-AzEventGridPartnerTopicEventSubscriptionFullUrl](Get-AzEventGridPartnerTopicEventSubscriptionFullUrl.md)
 Get the full endpoint URL for an event subscription of a partner topic.
+
+### [Get-AzEventGridPermissionBinding](Get-AzEventGridPermissionBinding.md)
+Get properties of a permission binding.
 
 ### [Get-AzEventGridSystemTopic](Get-AzEventGridSystemTopic.md)
 Get properties of a system topic.
@@ -116,6 +161,9 @@ List event types for a topic.
 ### [Get-AzEventGridTopicSharedAccessKey](Get-AzEventGridTopicSharedAccessKey.md)
 List the two keys used to publish to a topic.
 
+### [Get-AzEventGridTopicSpace](Get-AzEventGridTopicSpace.md)
+Get properties of a topic space.
+
 ### [Get-AzEventGridTopicType](Get-AzEventGridTopicType.md)
 Get information about a topic type.
 
@@ -125,20 +173,20 @@ List event types for a topic type.
 ### [Get-AzEventGridVerifiedPartner](Get-AzEventGridVerifiedPartner.md)
 Get properties of a verified partner.
 
-### [Grant-AzEventGridPartnerConfigurationPartner](Grant-AzEventGridPartnerConfigurationPartner.md)
-Authorize a single partner either by partner registration immutable Id or by partner name.
+### [New-AzEventGridAdvancedFilterObject](New-AzEventGridAdvancedFilterObject.md)
+Create an in-memory object for AdvancedFilter.
 
-### [Initialize-AzEventGridPartnerTopic](Initialize-AzEventGridPartnerTopic.md)
-Activate a newly created partner topic.
-
-### [Invoke-AzEventGridDeactivatePartnerTopic](Invoke-AzEventGridDeactivatePartnerTopic.md)
-Deactivate specific partner topic.
-
-### [Invoke-AzEventGridPartnerConfigurationUnauthorize](Invoke-AzEventGridPartnerConfigurationUnauthorize.md)
-Unauthorize a single partner either by partner registration immutable Id or by partner name.
+### [New-AzEventGridCaCertificate](New-AzEventGridCaCertificate.md)
+Create a CA certificate with the specified parameters.
 
 ### [New-AzEventGridChannel](New-AzEventGridChannel.md)
 Synchronously Create a new channel with the specified parameters.
+
+### [New-AzEventGridClient](New-AzEventGridClient.md)
+Create a client with the specified parameters.
+
+### [New-AzEventGridClientGroup](New-AzEventGridClientGroup.md)
+Create a client group with the specified parameters.
 
 ### [New-AzEventGridDomain](New-AzEventGridDomain.md)
 Asynchronously Create a new domain with the specified parameters.
@@ -149,23 +197,51 @@ Asynchronously creates a new event subscription or updates an existing event sub
 ### [New-AzEventGridDomainKey](New-AzEventGridDomainKey.md)
 Regenerate a shared access key for a domain.
 
-### [New-AzEventGridDomainTopic](New-AzEventGridDomainTopic.md)
-Asynchronously Create a new domain topic with the specified parameters.
-
 ### [New-AzEventGridDomainTopicEventSubscription](New-AzEventGridDomainTopicEventSubscription.md)
 Asynchronously creates a new event subscription or updates an existing event subscription.
+
+### [New-AzEventGridDynamicRoutingEnrichmentObject](New-AzEventGridDynamicRoutingEnrichmentObject.md)
+Create an in-memory object for DynamicRoutingEnrichment.
 
 ### [New-AzEventGridEventSubscription](New-AzEventGridEventSubscription.md)
 Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
 
+### [New-AzEventGridFilterObject](New-AzEventGridFilterObject.md)
+Create an in-memory object for Filter.
+
+### [New-AzEventGridInboundIPRuleObject](New-AzEventGridInboundIPRuleObject.md)
+Create an in-memory object for InboundIPRule.
+
+### [New-AzEventGridNamespace](New-AzEventGridNamespace.md)
+Asynchronously Create a new namespace with the specified parameters.
+
+### [New-AzEventGridNamespaceKey](New-AzEventGridNamespaceKey.md)
+Regenerate a shared access key for a namespace.
+
+### [New-AzEventGridNamespaceTopic](New-AzEventGridNamespaceTopic.md)
+Asynchronously creates a new namespace topic with the specified parameters.
+
+### [New-AzEventGridNamespaceTopicEventSubscription](New-AzEventGridNamespaceTopicEventSubscription.md)
+Asynchronously Create an event subscription of a namespace topic with the specified parameters.
+Existing event subscriptions will be updated with this API.
+
+### [New-AzEventGridNamespaceTopicKey](New-AzEventGridNamespaceTopicKey.md)
+Regenerate a shared access key for a namespace topic.
+
 ### [New-AzEventGridPartnerConfiguration](New-AzEventGridPartnerConfiguration.md)
 Synchronously Create a partner configuration with the specified parameters.
+
+### [New-AzEventGridPartnerDestination](New-AzEventGridPartnerDestination.md)
+Asynchronously creates a new partner destination with the specified parameters.
 
 ### [New-AzEventGridPartnerNamespace](New-AzEventGridPartnerNamespace.md)
 Asynchronously creates a new partner namespace with the specified parameters.
 
 ### [New-AzEventGridPartnerNamespaceKey](New-AzEventGridPartnerNamespaceKey.md)
 Regenerate a shared access key for a partner namespace.
+
+### [New-AzEventGridPartnerObject](New-AzEventGridPartnerObject.md)
+Create an in-memory object for Partner.
 
 ### [New-AzEventGridPartnerRegistration](New-AzEventGridPartnerRegistration.md)
 Creates a new partner registration with the specified parameters.
@@ -176,6 +252,18 @@ Asynchronously creates a new partner topic with the specified parameters.
 ### [New-AzEventGridPartnerTopicEventSubscription](New-AzEventGridPartnerTopicEventSubscription.md)
 Asynchronously Create an event subscription of a partner topic with the specified parameters.
 Existing event subscriptions will be updated with this API.
+
+### [New-AzEventGridPermissionBinding](New-AzEventGridPermissionBinding.md)
+Create a permission binding with the specified parameters.
+
+### [New-AzEventGridPrivateEndpointConnectionObject](New-AzEventGridPrivateEndpointConnectionObject.md)
+Create an in-memory object for PrivateEndpointConnection.
+
+### [New-AzEventGridResourceMoveChangeHistoryObject](New-AzEventGridResourceMoveChangeHistoryObject.md)
+Create an in-memory object for ResourceMoveChangeHistory.
+
+### [New-AzEventGridStaticRoutingEnrichmentObject](New-AzEventGridStaticRoutingEnrichmentObject.md)
+Create an in-memory object for StaticRoutingEnrichment.
 
 ### [New-AzEventGridSystemTopic](New-AzEventGridSystemTopic.md)
 Asynchronously creates a new system topic with the specified parameters.
@@ -193,8 +281,20 @@ Asynchronously creates a new event subscription or updates an existing event sub
 ### [New-AzEventGridTopicKey](New-AzEventGridTopicKey.md)
 Regenerate a shared access key for a topic.
 
+### [New-AzEventGridTopicSpace](New-AzEventGridTopicSpace.md)
+Create a topic space with the specified parameters.
+
+### [Remove-AzEventGridCaCertificate](Remove-AzEventGridCaCertificate.md)
+Delete an existing CA certificate.
+
 ### [Remove-AzEventGridChannel](Remove-AzEventGridChannel.md)
 Delete an existing channel.
+
+### [Remove-AzEventGridClient](Remove-AzEventGridClient.md)
+Delete an existing client.
+
+### [Remove-AzEventGridClientGroup](Remove-AzEventGridClientGroup.md)
+Delete an existing client group.
 
 ### [Remove-AzEventGridDomain](Remove-AzEventGridDomain.md)
 Delete existing domain.
@@ -211,8 +311,20 @@ Delete a nested existing event subscription for a domain topic.
 ### [Remove-AzEventGridEventSubscription](Remove-AzEventGridEventSubscription.md)
 Delete an existing event subscription.
 
+### [Remove-AzEventGridNamespace](Remove-AzEventGridNamespace.md)
+Delete existing namespace.
+
+### [Remove-AzEventGridNamespaceTopic](Remove-AzEventGridNamespaceTopic.md)
+Delete existing namespace topic.
+
+### [Remove-AzEventGridNamespaceTopicEventSubscription](Remove-AzEventGridNamespaceTopicEventSubscription.md)
+Delete an existing event subscription of a namespace topic.
+
 ### [Remove-AzEventGridPartnerConfiguration](Remove-AzEventGridPartnerConfiguration.md)
 Delete existing partner configuration.
+
+### [Remove-AzEventGridPartnerDestination](Remove-AzEventGridPartnerDestination.md)
+Delete existing partner destination.
 
 ### [Remove-AzEventGridPartnerNamespace](Remove-AzEventGridPartnerNamespace.md)
 Delete existing partner namespace.
@@ -226,6 +338,9 @@ Delete existing partner topic.
 ### [Remove-AzEventGridPartnerTopicEventSubscription](Remove-AzEventGridPartnerTopicEventSubscription.md)
 Delete an existing event subscription of a partner topic.
 
+### [Remove-AzEventGridPermissionBinding](Remove-AzEventGridPermissionBinding.md)
+Delete an existing permission binding.
+
 ### [Remove-AzEventGridSystemTopic](Remove-AzEventGridSystemTopic.md)
 Delete existing system topic.
 
@@ -238,8 +353,20 @@ Delete existing topic.
 ### [Remove-AzEventGridTopicEventSubscription](Remove-AzEventGridTopicEventSubscription.md)
 Delete an existing event subscription for a topic.
 
+### [Remove-AzEventGridTopicSpace](Remove-AzEventGridTopicSpace.md)
+Delete an existing topic space.
+
+### [Update-AzEventGridCaCertificate](Update-AzEventGridCaCertificate.md)
+Create a CA certificate with the specified parameters.
+
 ### [Update-AzEventGridChannel](Update-AzEventGridChannel.md)
 Synchronously updates a channel with the specified parameters.
+
+### [Update-AzEventGridClient](Update-AzEventGridClient.md)
+Create a client with the specified parameters.
+
+### [Update-AzEventGridClientGroup](Update-AzEventGridClientGroup.md)
+Create a client group with the specified parameters.
 
 ### [Update-AzEventGridDomain](Update-AzEventGridDomain.md)
 Asynchronously updates a domain with the specified parameters.
@@ -253,8 +380,20 @@ Update an existing event subscription for a domain topic.
 ### [Update-AzEventGridEventSubscription](Update-AzEventGridEventSubscription.md)
 Asynchronously updates an existing event subscription.
 
+### [Update-AzEventGridNamespace](Update-AzEventGridNamespace.md)
+Asynchronously updates a namespace with the specified parameters.
+
+### [Update-AzEventGridNamespaceTopic](Update-AzEventGridNamespaceTopic.md)
+Asynchronously updates a namespace topic with the specified parameters.
+
+### [Update-AzEventGridNamespaceTopicEventSubscription](Update-AzEventGridNamespaceTopicEventSubscription.md)
+Update an existing event subscription of a namespace topic.
+
 ### [Update-AzEventGridPartnerConfiguration](Update-AzEventGridPartnerConfiguration.md)
 Synchronously updates a partner configuration with the specified parameters.
+
+### [Update-AzEventGridPartnerDestination](Update-AzEventGridPartnerDestination.md)
+Asynchronously updates a partner destination with the specified parameters.
 
 ### [Update-AzEventGridPartnerNamespace](Update-AzEventGridPartnerNamespace.md)
 Asynchronously updates a partner namespace with the specified parameters.
@@ -268,6 +407,9 @@ Asynchronously updates a partner topic with the specified parameters.
 ### [Update-AzEventGridPartnerTopicEventSubscription](Update-AzEventGridPartnerTopicEventSubscription.md)
 Update an existing event subscription of a partner topic.
 
+### [Update-AzEventGridPermissionBinding](Update-AzEventGridPermissionBinding.md)
+Create a permission binding with the specified parameters.
+
 ### [Update-AzEventGridSystemTopic](Update-AzEventGridSystemTopic.md)
 Asynchronously updates a system topic with the specified parameters.
 
@@ -279,4 +421,7 @@ Asynchronously updates a topic with the specified parameters.
 
 ### [Update-AzEventGridTopicEventSubscription](Update-AzEventGridTopicEventSubscription.md)
 Update an existing event subscription for a topic.
+
+### [Update-AzEventGridTopicSpace](Update-AzEventGridTopicSpace.md)
+Create a topic space with the specified parameters.
 

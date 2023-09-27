@@ -1,45 +1,41 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/az.eventgrid/invoke-azeventgridpartnerconfigurationunauthorize
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridpermissionbinding
 schema: 2.0.0
 ---
 
-# Invoke-AzEventGridPartnerConfigurationUnauthorize
+# Update-AzEventGridPermissionBinding
 
 ## SYNOPSIS
-Unauthorize a single partner either by partner registration immutable Id or by partner name.
+Create a permission binding with the specified parameters.
 
 ## SYNTAX
 
-### PartnerExpanded (Default)
+### UpdateExpanded (Default)
 ```
-Invoke-AzEventGridPartnerConfigurationUnauthorize -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AuthorizationExpirationTimeInUtc <DateTime>] [-PartnerName <String>]
- [-PartnerRegistrationImmutableId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Update-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ClientGroupName <String>] [-Description <String>] [-Permission <String>]
+ [-TopicSpaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Partner
+### UpdateViaIdentityExpanded
 ```
-Invoke-AzEventGridPartnerConfigurationUnauthorize -ResourceGroupName <String> -PartnerInfo <IPartner>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PartnerViaJsonFilePath
-```
-Invoke-AzEventGridPartnerConfigurationUnauthorize -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventGridPermissionBinding -InputObject <IEventGridIdentity> [-ClientGroupName <String>]
+ [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PartnerViaJsonString
+### UpdateViaIdentityNamespaceExpanded
 ```
-Invoke-AzEventGridPartnerConfigurationUnauthorize -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEventGridIdentity>
+ [-ClientGroupName <String>] [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Unauthorize a single partner either by partner registration immutable Id or by partner name.
+Create a permission binding with the specified parameters.
 
 ## EXAMPLES
 
@@ -67,14 +63,27 @@ Unauthorize a single partner either by partner registration immutable Id or by p
 
 ## PARAMETERS
 
-### -AuthorizationExpirationTimeInUtc
-Expiration time of the partner authorization.
-If this timer expires, any request from this partner to create, update or delete resources in subscriber'scontext will fail.
-If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: PartnerExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientGroupName
+The name of the client group resource that the permission is bound to.The client group needs to be a resource under the same namespace the permission binding is a part of.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -100,43 +109,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Partner operation
+### -Description
+Description for the Permission Binding resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Partner operation
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: PartnerViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PartnerInfo
-Information about the partner.
-To construct, see NOTES section for PARTNERINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner
-Parameter Sets: Partner
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -146,41 +140,72 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PartnerName
-The partner name.
+### -Name
+The permission binding name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded
+Aliases: PermissionBindingName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartnerRegistrationImmutableId
-The immutableId of the corresponding partner registration.
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+Name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: PartnerExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Permission
+The allowed permission.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +221,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -212,12 +237,27 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicSpaceName
+The name of the Topic Space resource that the permission is bound to.The Topic space needs to be a resource under the same namespace the permission binding is a part of.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -258,11 +298,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPermissionBinding
 
 ## NOTES
 

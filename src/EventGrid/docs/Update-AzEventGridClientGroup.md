@@ -1,31 +1,39 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/az.eventgrid/initialize-azeventgridpartnertopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridclientgroup
 schema: 2.0.0
 ---
 
-# Initialize-AzEventGridPartnerTopic
+# Update-AzEventGridClientGroup
 
 ## SYNOPSIS
-Activate a newly created partner topic.
+Create a client group with the specified parameters.
 
 ## SYNTAX
 
-### Activate (Default)
+### UpdateExpanded (Default)
 ```
-Initialize-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventGridClientGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-Query <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ActivateViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Initialize-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzEventGridClientGroup -InputObject <IEventGridIdentity> [-Description <String>] [-Query <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityNamespaceExpanded
+```
+Update-AzEventGridClientGroup -Name <String> -NamespaceInputObject <IEventGridIdentity>
+ [-Description <String>] [-Query <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Activate a newly created partner topic.
+Create a client group with the specified parameters.
 
 ## EXAMPLES
 
@@ -53,6 +61,21 @@ Activate a newly created partner topic.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -69,13 +92,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description for the Client Group resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: ActivateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -86,12 +124,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the partner topic.
+The client group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Activate
-Aliases: PartnerTopicName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded
+Aliases: ClientGroupName
 
 Required: True
 Position: Named
@@ -100,11 +138,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
+Parameter Sets: UpdateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+Name of the namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Query
+The grouping query for the clients.Example : attributes.keyName IN ['a', 'b', 'c'].
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +204,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Activate
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -136,7 +220,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Activate
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -186,7 +270,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerTopic
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IClientGroup
 
 ## NOTES
 

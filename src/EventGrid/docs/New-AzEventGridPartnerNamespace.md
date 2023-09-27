@@ -16,30 +16,18 @@ Asynchronously creates a new partner namespace with the specified parameters.
 ```
 New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-DisableLocalAuth] [-InboundIPRule <IInboundIPRule[]>]
- [-PartnerRegistrationFullyQualifiedId <String>] [-PartnerTopicRoutingMode <String>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String>
- -PartnerNamespaceInfo <IPartnerNamespace> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> -PartnerNamespaceInfo <IPartnerNamespace>
+ [-MinimumTlsVersionAllowed <String>] [-PartnerRegistrationFullyQualifiedId <String>]
+ [-PartnerTopicRoutingMode <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> -Location <String> [-DisableLocalAuth]
- [-InboundIPRule <IInboundIPRule[]>] [-PartnerRegistrationFullyQualifiedId <String>]
- [-PartnerTopicRoutingMode <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InboundIPRule <IInboundIPRule[]>] [-MinimumTlsVersionAllowed <String>]
+ [-PartnerRegistrationFullyQualifiedId <String>] [-PartnerTopicRoutingMode <String>]
+ [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -156,7 +144,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -211,12 +199,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinimumTlsVersionAllowed
+Minimum TLS version of the publisher allowed to publish to this partner namespace
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: PartnerNamespaceName
 
 Required: True
@@ -238,22 +241,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PartnerNamespaceInfo
-EventGrid Partner Namespace.
-To construct, see NOTES section for PARTNERNAMESPACEINFO properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerNamespace
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -325,7 +312,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -341,7 +328,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -403,8 +390,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerNamespace
 
 ## OUTPUTS
 

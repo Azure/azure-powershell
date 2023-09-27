@@ -21,12 +21,12 @@ Get-AzEventGridPartnerNamespace [-SubscriptionId <String[]>] [-Filter <String>] 
 ### Get
 ```
 Get-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Get-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -137,7 +137,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

@@ -20,31 +20,11 @@ Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -Resourc
  [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
- -ChannelUpdateParameter <IChannelUpdateParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzEventGridChannel -InputObject <IEventGridIdentity> -ChannelUpdateParameter <IChannelUpdateParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridChannel -InputObject <IEventGridIdentity> [-EventTypeInfoInlineEventType <Hashtable>]
  [-EventTypeInfoKind <String>] [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityPartnerNamespace
-```
-Update-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
- -ChannelUpdateParameter <IChannelUpdateParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPartnerNamespaceExpanded
@@ -97,22 +77,6 @@ Synchronously updates a channel with the specified parameters.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ChannelUpdateParameter
-Properties of the Channel update.
-To construct, see NOTES section for CHANNELUPDATEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity, UpdateViaIdentityPartnerNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -183,7 +147,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -228,7 +192,7 @@ Name of the channel.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityPartnerNamespace, UpdateViaIdentityPartnerNamespaceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerNamespaceExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ChannelName
 
 Required: True
@@ -244,7 +208,7 @@ To construct, see NOTES section for PARTNERNAMESPACEINPUTOBJECT properties and c
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentityPartnerNamespace, UpdateViaIdentityPartnerNamespaceExpanded
+Parameter Sets: UpdateViaIdentityPartnerNamespaceExpanded
 Aliases:
 
 Required: True
@@ -259,7 +223,7 @@ Name of the partner namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -289,7 +253,7 @@ The name of the resource group within the partners subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -305,7 +269,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -350,8 +314,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IChannelUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
 

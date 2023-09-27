@@ -19,19 +19,6 @@ New-AzEventGridTopicKey -ResourceGroupName <String> -TopicName <String> -KeyName
  [<CommonParameters>]
 ```
 
-### Regenerate
-```
-New-AzEventGridTopicKey -ResourceGroupName <String> -TopicName <String>
- -RegenerateKeyRequest <ITopicRegenerateKeyRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzEventGridTopicKey -InputObject <IEventGridIdentity> -RegenerateKeyRequest <ITopicRegenerateKeyRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RegenerateViaIdentityExpanded
 ```
 New-AzEventGridTopicKey -InputObject <IEventGridIdentity> -KeyName <String> [-DefaultProfile <PSObject>]
@@ -118,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
+Parameter Sets: RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -203,28 +190,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RegenerateKeyRequest
-Topic regenerate share access key request
-To construct, see NOTES section for REGENERATEKEYREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopicRegenerateKeyRequest
-Parameter Sets: Regenerate, RegenerateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -240,7 +211,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: False
@@ -255,7 +226,7 @@ Name of the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -302,8 +273,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopicRegenerateKeyRequest
 
 ## OUTPUTS
 
