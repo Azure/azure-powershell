@@ -54,6 +54,304 @@ use-extension:
   "@autorest/powershell": "4.x"
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/Domain"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/Domain"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{domainTopicName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/DomainTopic"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/DomainTopic"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "EventSubscription CreateOrUpdate request accepted.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "EventSubscription update request accepted.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/PartnerNamespace"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/PartnerNamespace"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/{parentType}/{parentName}/privateEndpointConnections/{privateEndpointConnectionName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "NoContent"
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 404 Not Found.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}"].put.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK.",
+          "schema": {
+            "$ref": "#/definitions/Topic"
+          }
+        },
+        "201": {
+          "description": "Created",
+          "schema": {
+            "$ref": "#/definitions/Topic"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK."
+        },
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Location": {
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "NoContent"
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 404 Not Found.\n\n * 500 Internal Server Error."
+        }
+      }
+
   - where:
       variant: ^(Create|Update|Regenerate).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
