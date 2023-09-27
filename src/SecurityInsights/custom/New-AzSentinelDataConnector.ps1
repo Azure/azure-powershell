@@ -23,6 +23,7 @@ Creates or updates the data connector.
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15", ChangeDescription="ParameterSets AmazonWebServicesS3, Dynamics365, MicrosoftThreatIntelligence, MicrosoftThreatProtection, OfficeATP, OfficeIRM, ThreatIntelligenceTaxii will be deprecated.")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
     [CmdletBinding(DefaultParameterSetName = 'AADAATP', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

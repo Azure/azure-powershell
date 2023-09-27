@@ -21,12 +21,12 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,7 +37,7 @@ function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
         [string]
         $Location,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
@@ -52,7 +52,7 @@ function New-AzImageBuilderTemplateDistributorObject_ManagedImageDistributor {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor]::New()
 
         if ($PSBoundParameters.ContainsKey('ImageId')) {
             $Object.ImageId = $ImageId

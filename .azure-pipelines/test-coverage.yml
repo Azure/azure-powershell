@@ -1,7 +1,4 @@
 parameters:
-- name: dotnet_sdk_3_1
-  displayName: .NET Core 3.1
-  default: 3.1.x
 - name: dotnet_sdk_6
   displayName: .NET 6
   type: string
@@ -13,7 +10,7 @@ parameters:
 - name: testFramework
   displayName: Test Framework
   type: string
-  default: netcoreapp3.1
+  default: net6.0
 - name: testPoolName
   displayName: Test Pool Name
   type: string
@@ -64,10 +61,10 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Install .NET Core 3.1 SDK'
+    displayName: 'Install .NET 6.0 SDK'
     inputs:
       packageType: sdk
-      version: ${{ parameters.dotnet_sdk_3_1 }}
+      version: ${{ parameters.dotnet_sdk_6 }}
 
   - task: PowerShell@2
     displayName: Initialize Environment

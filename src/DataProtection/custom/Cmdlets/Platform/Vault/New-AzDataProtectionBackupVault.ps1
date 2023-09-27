@@ -30,7 +30,7 @@
         ${Location},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IStorageSetting[]]
         ${StorageSetting},
 
         [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
@@ -42,6 +42,11 @@
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
+
+        [Parameter(Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState]
+        [ValidateSet('Disabled','Enabled')]
+        ${CrossRegionRestoreState},
         
         [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
