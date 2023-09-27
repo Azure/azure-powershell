@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.11.1
+* Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
+
 ## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.
 * Fixed inexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
