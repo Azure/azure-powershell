@@ -1,4 +1,6 @@
 ## Upcoming Release
+
+## 0.2.2
 * Updated the docs of parameter `Scope` [#16768]
 * Removed the usage of `Get-InstalledModule` from product codes
 * Fix the issue of uninstalling the AzureRM modules
