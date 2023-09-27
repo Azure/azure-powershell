@@ -37,7 +37,7 @@ function Update-AzModule {
         [string]
         ${Repository},
 
-        [Parameter(HelpMessage = 'Scope to install modules. Default value is `CurrentUser` for all the Powershell platforms. Accepted values: CurrentUser, AllUser.')]
+        [Parameter(HelpMessage = 'Scope to update modules. Default value is `CurrentUser` for all the Powershell platforms. Accepted values: CurrentUser, AllUser.')]
         [ValidateSet('CurrentUser', 'AllUsers')]
         [string]
         ${Scope},
