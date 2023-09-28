@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
 * Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
 * Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets

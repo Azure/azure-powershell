@@ -149,13 +149,13 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [System.String]
+        [System.String[]]
         ${DisplayNamesFilter},
 
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [System.String]
+        [System.String[]]
         ${DisplayNamesExcludeFilter},
 
 
@@ -222,7 +222,7 @@ function Update-AzSentinelAlertRule {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
-        [System.String]
+        [System.String[]]
         ${Tactic},
             
         
@@ -276,7 +276,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]]
         ${GroupByAlertDetail}, 
         
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -293,7 +293,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]]
         ${GroupByEntity},
     
         
@@ -303,7 +303,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]]
         ${EntityMapping},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -482,17 +482,17 @@ function Update-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
                 
                 If($PSBoundParameters['DisplayNamesFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesFilter']
+                    $AlertRule.DisplayNamesFilter = $PSBoundParameters['DisplayNamesFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesFilter')
                 }
                 
                 If($PSBoundParameters['DisplayNamesExcludeFilter']){
-                    $AlertRule.Enabled = $PSBoundParameters['DisplayNamesExcludeFilter']
+                    $AlertRule.DisplayNamesExcludeFilter = $PSBoundParameters['DisplayNamesExcludeFilter']
                     $null = $PSBoundParameters.Remove('DisplayNamesExcludeFilter')
                 }
                 
@@ -502,7 +502,7 @@ function Update-AzSentinelAlertRule {
                 }
 
                 If($PSBoundParameters['SeveritiesFilter']){
-                    $Parameter.Enabled = $PSBoundParameters['SeveritiesFilter']
+                    $Parameter.SeveritiesFilter = $PSBoundParameters['SeveritiesFilter']
                     $null = $PSBoundParameters.Remove('SeveritiesFilter')
                 }
             }
@@ -540,7 +540,7 @@ function Update-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
                 
@@ -606,7 +606,7 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('LookbackDuration')
                 }
 
-                If($PSBoundParameters['LookbackDuration']){
+                If($PSBoundParameters['MatchingMethod']){
                     $AlertRule.GroupingConfigurationMatchingMethod = $PSBoundParameters['MatchingMethod']
                     $null = $PSBoundParameters.Remove('MatchingMethod')
                 }
@@ -669,7 +669,7 @@ function Update-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Description']){
-                    $AlertRule.Enabled = $PSBoundParameters['Description']
+                    $AlertRule.Description = $PSBoundParameters['Description']
                     $null = $PSBoundParameters.Remove('Description')
                 }
                 
@@ -795,7 +795,7 @@ function Update-AzSentinelAlertRule {
                     $null = $PSBoundParameters.Remove('TriggerOperator')
                 }
 
-                If($PSBoundParameters['TriggerThreshold'] -ne $null){
+                If($null -ne $PSBoundParameters['TriggerThreshold']){
                     $AlertRule.TriggerThreshold = $PSBoundParameters['TriggerThreshold']
                     $null = $PSBoundParameters.Remove('TriggerThreshold')
                 }

@@ -1,10 +1,10 @@
-id: 
+id:
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
-owner: 
+owner:
 resource: repository
 disabled: false
-where: 
+where:
 configuration:
   resourceManagementConfiguration:
     scheduledSearches:
@@ -152,6 +152,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - dyu1208
+            - FumingZhang
             - andyliuliming
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -188,8 +190,10 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - adrianhall
+            - solankisamir
+            - mikebudzynski
             - KedarJoshi
+            - yingru97
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -225,6 +229,18 @@ configuration:
         - mentionUsers:
             mentionees:
             - azmonapplicationinsights
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ArcResourceBridge
+        then:
+        - mentionUsers:
+            mentionees:
+            - alt-key
+            - saisankargochhayat
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -353,6 +369,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - jaspkaur28
+            - sanjkum
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -939,7 +956,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cosmos
+            label: CosmosDB
         then:
         - mentionUsers:
             mentionees:
@@ -1301,8 +1318,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - Stefanus Hinardi
+            - AnatoliB
             - Francisco-Gamino
+            - shreyabatra4
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1754,7 +1772,7 @@ configuration:
         - mentionUsers:
             mentionees:
             - SameergMS
-            - dadunl
+            - yairgil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1927,6 +1945,7 @@ configuration:
             mentionees:
             - t-bzhan
             - gxue
+            - TracyYaoYao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1982,6 +2001,9 @@ configuration:
         - mentionUsers:
             mentionees:
             - cdnfdsuppgithub
+            - t-bzhan
+            - gxue
+            - TracyYaoYao
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2243,7 +2265,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - darshanhs90
+            - kenieva
             - AshishGargMicrosoft
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -2359,6 +2381,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - mwesigwaguma
             - a-Santamaria
             - LukeSlev
             - jkochhar
@@ -2654,70 +2677,6 @@ configuration:
       triggerOnOwnActions: true
     - if:
       - payloadType: Issues
-      - isOpen
-      - labelAdded:
-          label: CXP Attention
-      - not:
-          hasLabel:
-            label: Service Attention
-      then:
-      - addReply:
-          reply: Thank you for your feedback.  This has been routed to the support team for assistance.
-      description: '[CXP Pilot] CXP Attention Responder'
-    - if:
-      - payloadType: Issues
-      - isOpen
-      - labelAdded:
-          label: customer-reported
-      - not:
-          hasLabel:
-            label: CXP Attention
-      - not:
-          hasLabel:
-            label: Service Attention
-      - or:
-        - titleContains:
-            pattern: Synapse
-            isRegex: False
-        - titleContains:
-            pattern: OperationalInsights
-            isRegex: False
-        - titleContains:
-            pattern: Storage
-            isRegex: False
-        - titleContains:
-            pattern: DataFactory
-            isRegex: False
-        - titleContains:
-            pattern: Webapp
-            isRegex: False
-        - titleContains:
-            pattern: AppService
-            isRegex: False
-        - titleContains:
-            pattern: FrontDoor
-            isRegex: False
-        - titleContains:
-            pattern: Consumption
-            isRegex: False
-        - titleContains:
-            pattern: CosmosDB
-            isRegex: False
-        - titleContains:
-            pattern: AzAutomation
-            isRegex: False
-        - titleContains:
-            pattern: AzWvd
-            isRegex: False
-      then:
-      - addLabel:
-          label: CXP Attention
-      - addReply:
-          reply: Thank you for your feedback.  This has been routed to the support team for assistance.
-      description: '[CXP Pilot] CXP Attention to service module'
-      triggerOnOwnActions: true
-    - if:
-      - payloadType: Issues
       - labelAdded:
           label: issue-addressed
       then:
@@ -2773,5 +2732,5 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
-onFailure: 
-onSuccess: 
+onFailure:
+onSuccess:

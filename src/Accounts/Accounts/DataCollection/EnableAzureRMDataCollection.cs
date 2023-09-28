@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
 
         public override void ExecuteCmdlet()

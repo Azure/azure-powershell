@@ -276,14 +276,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (!ExtendPolicy.IsPresent)
                 {
                     policy = this.StorageClient.BlobContainers.CreateOrUpdateImmutabilityPolicy(
-                                this.ResourceGroupName,
-                                this.StorageAccountName,
-                                this.ContainerName,
-                                new ImmutabilityPolicy(
+                                resourceGroupName: this.ResourceGroupName,
+                                accountName: this.StorageAccountName,
+                                containerName: this.ContainerName,
+                                parameters: new ImmutabilityPolicy(
                                     immutabilityPeriodSinceCreationInDays: immutabilityPeriod,
                                     allowProtectedAppendWrites: this.allowProtectedAppendWrite,
                                     allowProtectedAppendWritesAll: this.allowProtectedAppendWriteAll),
-                                this.Etag);
+                                ifMatch: this.Etag);
                 }
                 else
                 {

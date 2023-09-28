@@ -124,15 +124,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (accountACL.IpRules == null)
+                        if (accountACL.IPRules == null)
                         {
-                            accountACL.IpRules = new List<IpRule>();
+                            accountACL.IPRules = new List<IpRule>();
                         }
 
                         foreach (string s in IpAddressOrRange)
                         {
                             IpRule rule = new IpRule(s);
-                            accountACL.IpRules.Add(rule);
+                            accountACL.IPRules.Add(rule);
                         }
                         break;
                     case NetworkRuleObjectParameterSet:
@@ -147,14 +147,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (accountACL.IpRules == null)
+                        if (accountACL.IPRules == null)
                         {
-                            accountACL.IpRules = new List<IpRule>();
+                            accountACL.IPRules = new List<IpRule>();
                         }
 
                         foreach (PSIpRule rule in IpRule)
                         {
-                            accountACL.IpRules.Add(rule.ToIpRule());
+                            accountACL.IPRules.Add(rule.ToIpRule());
                         }
                         break;
                 }

@@ -126,3 +126,6 @@ $updatedJsonObjectGraph = [Newtonsoft.Json.JsonConvert]::DeserializeObject[Syste
 $yamlSerializer = [YamlDotNet.Serialization.SerializerBuilder]::new().Build()
 $updatedYamlContent = $yamlSerializer.Serialize($updatedJsonObjectGraph)
 $updatedYamlContent | Out-File -FilePath $yamlConfigPath -NoNewline -Force
+
+# Remove trailing space on each line
+(Get-Content -Path $yamlConfigPath) | ForEach-Object { $_.TrimEnd() } | Set-Content -Path $yamlConfigPath
