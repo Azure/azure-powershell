@@ -1,0 +1,46 @@
+{
+  "Get-AzSelfHelpDiscoverySolution+[NoContext]+List+$GET+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/qvop21digl/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-09-01-preview\u0026$filter=ProblemClassificationId eq \u0027a5db90c3-f147-bce6-83b0-ab5e0aeca1f0\u0027+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/qvop21digl/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions?api-version=2023-09-01-preview\u0026$filter=ProblemClassificationId%20eq%20\u0027a5db90c3-f147-bce6-83b0-ab5e0aeca1f0\u0027",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "dc020990-86bd-48de-b760-947776b814a1" ],
+        "CommandName": [ "Get-AzSelfHelpDiscoverySolution" ],
+        "FullCommandName": [ "Get-AzSelfHelpDiscoverySolution_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.0.1", "PSVersion/v7.2.14", "Az.SelfHelp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "6068d89d-b697-4945-a65e-5978884a6052" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "6068d89d-b697-4945-a65e-5978884a6052" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230928T205709Z:6068d89d-b697-4945-a65e-5978884a6052" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C49D27767951485DB0ACF34EE7910C86 Ref B: BN1AA2051013029 Ref C: 2023-09-28T20:57:09Z" ],
+        "Date": [ "Thu, 28 Sep 2023 20:57:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "704" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/qvop21digl/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/discoverySolutions/a5db90c3-f147-bce6-83b0-ab5e0aeca1f0\",\"name\":\"a5db90c3-f147-bce6-83b0-ab5e0aeca1f0\",\"type\":\"Microsoft.Help/discoverySolutions\",\"properties\":{\"solutions\":[{\"solutionId\":\"apollo-storage-blob-archiving\",\"solutionType\":\"Solutions\",\"description\":\"Řešení potíží s přesunem dat do archivní úrovně\"},{\"solutionId\":\"StorageAccountTierInsight\",\"solutionType\":\"Diagnostics\",\"description\":\"Diagnostic to show which tiers a storage account supports for.\",\"requiredInputs\":[\"SapId\",\"ResourceUri\"]}]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

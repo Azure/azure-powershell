@@ -15,14 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSelfHelpSolution'))
 }
 
 Describe 'New-AzSelfHelpSolution' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         { 
             $resourceName = RandomString -allChars $false -len 10
-            $apolloToInvoke = [ordered]@{
-                "name"="SolutionId"
-                "value" = "keyvault-lostdeletedkeys-apollo-solution"
-            }
-            New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriteria $apolloToInvoke -Parameters $parameters
+            $criteria = [ordered]@{ 
+                "name" ="SolutionId" 
+                "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+            } 
+            $parameters = [ordered]@{ 
+            
+                 "SearchText" = "Can not RDP" 
+                "vault_name" = "DemoKeyvault" 
+            } 
+            
+            New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion $criteria -Parameter $parameters
         } | Should -Not -Throw
     }
 }

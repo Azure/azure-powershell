@@ -15,11 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSelfHelpSolution'))
 }
 
 Describe 'Update-AzSelfHelpSolution' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $resourceName = RandomString -allChars $false -len 10
+            $criteriaReplacementKey = [ordered]@{ 
+                "name" ="ReplacementKey" 
+                "value" = "<!--85c7bc9e-4405-4e3a-82b0-8c4edc29a04d-->" 
+            } 
+            $criteria = [ordered]@{ 
+                "name" ="SolutionId" 
+                "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+            } 
+            $parameters = [ordered]@{ 
+            
+                "SearchText" = "Can not RDP" 
+               "vault_name" = "DemoKeyvault" 
+           }
+           New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion $criteria -Parameter $parameters 
+           Update-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion $criteriaReplacementKey -Parameter $parameters
+         } | Should -Not -Throw
     }
 }

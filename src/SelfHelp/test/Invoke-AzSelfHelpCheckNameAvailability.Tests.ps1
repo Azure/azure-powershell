@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpCheckNameAva
 }
 
 Describe 'Invoke-AzSelfHelpCheckNameAvailability' {
-    It 'PostExpanded' -skip {
-        $resourceName = RandomString -allChars $true -len 10
+    It 'PostExpanded' {
         $scope = "/subscriptions/$($env.SubscriptionId)"
-        $type = "microsoft.help/help"
-        $result = Invoke-AzSelfHelpDiagnosticNameAvailability -Name $resourceName -Type $type -Scope $scope
+        $CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
+            "name" ="helloworld" 
+            “type” = “solutions” 
+        } 
+        $result = Invoke-AzSelfHelpCheckNameAvailability -Scope $scope -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST
         $result.NameAvailable | Should -Be $true
     }
 }

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get-AzSelfHelpSolution by resource id
 ```powershell
-{{ Add code here }}
+Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/testkv/testDB
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName
+-------- ----         -----------------
+         test-resource testRG
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Get SelfHelp Solution by resource id

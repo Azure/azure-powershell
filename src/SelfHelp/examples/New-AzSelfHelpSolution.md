@@ -1,22 +1,18 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$criteria = [ordered]@{
+    "name" ="SolutionId"
+    "value" = "keyvault-lostdeletedkeys-apollo-solution"
+}
+$parameters = [ordered]@{
+        "SearchText" = "Can not RDP"
+        "vault_name" = "DemoKeyvault"
+}
+New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/kv/testDB -Parameter $parameters -TriggerCriterion $criteria
 ```
 
 ```output
-{{ Add output here }}
+New-AzSelfHelpSolution_CreateExpanded: The server responded with an unrecognized response, Status: OK
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a SelfHelp Solution for a resource.

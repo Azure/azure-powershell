@@ -15,7 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpSolution'))
 }
 
 Describe 'Get-AzSelfHelpSolution' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $resourceName = RandomString -allChars $false -len 10
+        $criteria = [ordered]@{ 
+            "name" ="SolutionId" 
+            "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+        } 
+        $parameters = [ordered]@{ 
+        
+             "SearchText" = "Can not RDP" 
+            "vault_name" = "DemoKeyvault" 
+        } 
+        
+        New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion  $criteria -Parameter $parameters
+        Get-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName
     }
 }

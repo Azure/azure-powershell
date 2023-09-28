@@ -15,7 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpContinueTrou
 }
 
 Describe 'Invoke-AzSelfHelpContinueTroubleshooter' {
-    It 'ContinueExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ContinueExpanded' {
+        {   $resourceName = New-Guid
+            $parameters = [ordered]@{
+                "ResourceUri"= "/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6"
+            }
+            New-AzSelfHelpTroubleshooter -Scope $env.scope -SolutionId "e104dbdf-9e14-4c9f-bc78-21ac90382231" -Name $resourceName -Parameter $parameters
+            $response = Get-AzSelfHelpTroubleshooter -Scope $env.scope -Name $resourceName 
+            $jsonResponse = $response | ConvertFrom-Json -Depth 100
+            $stepId = $jsonResponse.properties.steps[0].id
+            $continueRequest = [ordered]@{ 
+
+                "StepId" = $stepId 
+            
+            } 
+            Invoke-AzSelfHelpContinueTroubleshooter  -Scope $env.scope -TroubleshooterName $resourceName -ContinueRequestBody $continueRequest
+        } | Should -Not -Throw
     }
 }
