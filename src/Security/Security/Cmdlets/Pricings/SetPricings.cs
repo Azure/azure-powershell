@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.SubPlan)]
         public string SubPlan { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Extensions)]
-        public string Extensions { get; set; }
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = false, HelpMessage = ParameterHelpMessages.Extension)]
+        public string Extension { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
             var name = Name;
             var tier = PricingTier;
             var subPlan = SubPlan;
-            var extensions = Extensions;
+            var extensions = Extension;
 
             switch (ParameterSetName)
             {

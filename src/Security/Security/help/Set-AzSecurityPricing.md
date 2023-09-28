@@ -18,14 +18,8 @@ Enables or disables Microsoft Defender plans for a subscription in Microsoft Def
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionLevelResource (With  optional SubPlan)
-```
-Set-AzSecurityPricing -Name <String> -PricingTier <String> -SubPlan <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSecurityPricing -Name <String> -PricingTier <String> [-SubPlan <String>] [-Extension <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -74,6 +68,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Extension
+The extensions offered under the plan
+
+```yaml
+Type: System.String
+Parameter Sets: SubscriptionLevelResource
+Aliases:
 
 Required: False
 Position: Named
@@ -184,11 +193,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
-
 ## NOTES
 
 ## RELATED LINKS
