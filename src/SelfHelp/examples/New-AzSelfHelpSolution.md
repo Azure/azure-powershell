@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create New SelfHelp Solution
 ```powershell
 $criteria = [ordered]@{
     "name" ="SolutionId"
@@ -12,7 +12,9 @@ New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid
 ```
 
 ```output
-New-AzSelfHelpSolution_CreateExpanded: The server responded with an unrecognized response, Status: OK
+Location Name             ResourceGroupName
+-------- ----             -----------------
+         test-resource    testRg
 ```
 
 Creates a SelfHelp Solution for a resource.

@@ -45,25 +45,24 @@ This API is used to check the uniqueness of a resource name used for a diagnosti
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
+    "name" ="helloworld" 
+    “type” = “solutions” 
+
+} 
+
+Invoke-AzSelfHelpCheckNameAvailability -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST 
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason 
+
+------- ------------- ------ 
+
+        True 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Checks if resource name is avilabale/unique for the scope or not
 
 ## PARAMETERS
 

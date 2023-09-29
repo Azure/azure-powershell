@@ -28,27 +28,20 @@ Get the solution using the applicable solutionResourceName while creating the so
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Azure Solution
 ```powershell
-{{ Add code here }}
+Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/testRg/providers/Microsoft.KeyVault/vaults/testVault 
 ```
 
 ```output
-{{ Add output here }}
+Location Name          ResourceGroupName 
+
+-------- ----          ----------------- 
+
+         test-resource testRg 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the solution using the applicable solution ResourceName while creating the solution.
 
 ## PARAMETERS
 

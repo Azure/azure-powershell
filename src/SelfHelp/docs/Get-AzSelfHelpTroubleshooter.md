@@ -30,27 +30,20 @@ This API requires the Troubleshooter resource name that was created using the Cr
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Troubleshooter result
 ```powershell
-{{ Add code here }}
+Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" 
 ```
 
 ```output
-{{ Add output here }}
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName 
+
+----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- 
+
+02d59989-f8a9-4b69-9919-1ef51df4eff6 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Use to get troubleshooter result. It is also used to determine the step status/result of the troubleshooter resource name that is being executed.
 
 ## PARAMETERS
 

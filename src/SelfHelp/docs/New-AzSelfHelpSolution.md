@@ -45,25 +45,25 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$criteria = [ordered]@{ 
+    "name" ="SolutionId" 
+    "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+} 
+
+$parameters = [ordered]@{ 
+        "SearchText" = "Can not RDP" 
+        "vault_name" = "DemoKeyvault" 
+} 
+
+New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/testRg/providers/Microsoft.KeyVault/vaults/testVault -Parameter $parameters -TriggerCriterion $criteria 
 ```
 
 ```output
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+Creates Solution Resource on give Scope.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

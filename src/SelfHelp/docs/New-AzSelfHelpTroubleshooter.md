@@ -32,27 +32,25 @@ parameters’ in the request body of Troubleshooters API.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+
+### Example 1: Create new Troubleshooter Resource
 ```powershell
-{{ Add code here }}
+$parameters = [ordered]@{ 
+  "ResourceUri"= "/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6" 
+ } 
+
+New-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" -Parameter $parameters 
 ```
 
 ```output
-{{ Add output here }}
+Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName 
+
+----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- 
+
+12d59989-f8a9-4b69-9919-1ef51df4eff6 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates new troubleshooter resource.
 
 ## PARAMETERS
 
