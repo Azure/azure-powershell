@@ -43,7 +43,7 @@ This API is used to check the uniqueness of a resource name used for a diagnosti
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Checks if resource name is avilabale/unique for the scope or not
 ```powershell
 $CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
     "name" ="helloworld" 

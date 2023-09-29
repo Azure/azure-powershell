@@ -63,16 +63,6 @@ Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43
 ```
 If continue is success, you will see no response. If continue is not success, you will see the error message. You can see the status of the troubleshooter step by using `Get-AzSelfHelpTroubleshooter` cmdlet.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -43,7 +43,7 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates Self Help Solution Resource on give Scope.
 ```powershell
 $criteria = [ordered]@{ 
     "name" ="SolutionId" 
@@ -59,7 +59,9 @@ New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/6bded6
 ```
 
 ```output
-{{ Add output here }}
+Location Name             ResourceGroupName
+-------- ----             -----------------
+         test-resource    testRg
 ```
 
 Creates Solution Resource on give Scope.
