@@ -10,7 +10,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 2
 
 use-extension:
-  "@autorest/powershell": "~4.0.0-dev"
+  "@autorest/powershell": "4.x"
 
 commit: da459cd725e11aa72e7fbc3b65d523b6e2b6453b
 input-file:
