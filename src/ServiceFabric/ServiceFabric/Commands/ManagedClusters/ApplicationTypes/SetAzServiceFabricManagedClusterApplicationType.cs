@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.ResourceGroupName,
                         this.ClusterName,
                         this.Name,
-                        id: this.ResourceId,
                         tags: updatedAppTypeParams.Tags,
                         location: updatedAppTypeParams.Location)
                         .GetAwaiter().GetResult().Body;
