@@ -23,8 +23,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -37,8 +38,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
  [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
- [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -480,6 +482,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FreeLimitExhaustionBehavior
+Exhaustion behavior of free limit database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HighAvailabilityReplicaCount
 The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.
 
@@ -690,6 +707,21 @@ with the new database. For example:
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseFreeLimit
+Use free limit on this database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

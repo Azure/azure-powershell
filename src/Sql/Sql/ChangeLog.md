@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Added `UseFreeLimit` and `FreeLimitExhaustionBehavior` parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`
+
 ## Version 4.10.0
 * Fixed cmdlets to use 2018-06-01-preview api version
     - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
