@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureActiveDirectoryEnabled
-\<code\>false\</code\> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, \<code\>true\</code\>.
+\<code\>false\</code\> if the Microsoft Entra provider should not be enabled despite the set registration; otherwise, \<code\>true\</code\>.
 
 ```yaml
 Type: System.Boolean
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureActiveDirectoryIsAutoProvisioned
-Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.
+Gets a value indicating whether the Microsoft Entra configuration was auto-provisioned using 1st party tooling.
         This is an internal flag primarily intended to support the Azure Management Portal.
 Users should not
         read or write to this property.
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 
 ### -AzureActiveDirectoryRegistrationClientId
 The Client ID of this relying party application, known as the client_id.
-        This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
+        This setting is required for enabling OpenID Connect authentication with Microsoft Entra ID or
         other 3rd party OpenID Connect providers.
         More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html.
 
@@ -260,8 +260,8 @@ Accept wildcard characters: False
 ```
 
 ### -CustomOpenIdConnectProvider
-The map of the name of the alias of each custom Open ID Connect provider to the
-        configuration settings of the custom Open ID Connect provider.
+The map of the name of the alias of each custom OpenID Connect provider to the
+        configuration settings of the custom OpenID Connect provider.
 To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
 
 ```yaml
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultAuthorizationPolicyAllowedApplication
-The configuration settings of the Azure Active Directory allowed applications.
+The configuration settings of the Microsoft Entra ID allowed applications.
 
 ```yaml
 Type: System.String[]
@@ -652,7 +652,7 @@ Accept wildcard characters: False
 
 ### -RegistrationOpenIdIssuer
 The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
-        When using Azure Active Directory, this value is the URI of the directory tenant, e.g.
+        When using Microsoft Entra ID, this value is the URI of the directory tenant, e.g.
 `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
         This URI is a case-sensitive identifier for the token issuer.
         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html.
@@ -702,8 +702,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>`: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
+`CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>`: The map of the name of the alias of each custom OpenID Connect provider to the         configuration settings of the custom OpenID Connect provider.
   - `[(Any) <ICustomOpenIdConnectProvider>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-
