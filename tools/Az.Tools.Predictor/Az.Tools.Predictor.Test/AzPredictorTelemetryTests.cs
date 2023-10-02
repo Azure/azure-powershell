@@ -623,9 +623,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("start_of_snippet", @"-StorageAccountKey""xxx""New-AzStorageContainer -context xxx")]
         [InlineData("start_of_snippet", @"New-AzureStorageContext-StorageAccountName ""xxx"" -StorageAccountKey ""xxx""")]
         [InlineData("start_of_snippet", @"sig=xxxxxxxxxxx/Sensor-Azure")]
+        [InlineData("start_of_snippet", @"sig=xxxxxxxxxxx/Get-az")]
         [InlineData("start_of_snippet", @"sig=Signature/Test-Sensor-Azu")]
+        [InlineData("start_of_snippet", @"sig=Signature/Set-azstorage")]
         [InlineData("start_of_snippet", "New-AzStorage\"key=value\"")]
-        [InlineData("start_of_snippet", "New-Az\\\"key=value\\\"")]
+        [InlineData("start_of_snippet", "New-az\\\"key=value\\\"")]
         [InlineData("start_of_snippet", "git")]
         [InlineData("start_of_snippet", "Get-Key -Key abcd")]
         public void VerifyUserInputInGetSuggestionEvent(string expectedUserInput, string input)
