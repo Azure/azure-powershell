@@ -12,6 +12,15 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Note(antmarti): Commands to quickly re-record a test in this file:
+#
+# $accessToken = & az account get-access-token --query accessToken --output tsv
+# $tenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+# $subscriptionId = "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+# $env:TEST_CSM_ORGID_AUTHENTICATION="Environment=Prod;SubscriptionId=$subscriptionId;TenantId=$tenantId;RawToken=$accessToken;HttpRecorderMode=Record;"
+# $env:AZURE_TEST_MODE="Record"
+# dotnet test ./src/Resources/Resources.Test --filter <your_test_name>
+
 <#
 .SYNOPSIS
 Converts an object to a Hashtable.
