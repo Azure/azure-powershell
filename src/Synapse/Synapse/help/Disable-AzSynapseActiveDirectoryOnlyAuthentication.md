@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disable-AzSynapseActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Disables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+Disables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Disable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId <String>
 ```
 
 ## DESCRIPTION
-The **Disable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet disables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+The **Disable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet disables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
 ```
-This command disables Azure AD only authentication for workspace ContosoWorkspace.
+This command disables Microsoft Entra-only authentication for workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
@@ -56,7 +56,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
 ```
-This command disables Azure AD only authentication for workspace ContosoWorkspace through pipeline.
+This command disables Microsoft Entra-only authentication for workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
@@ -67,7 +67,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
 ```
-This command disables Azure AD only authentication for workspace ContosoWorkspace by ResourceId.
+This command disables Microsoft Entra-only authentication for workspace ContosoWorkspace by ResourceId.
 
 ## PARAMETERS
 
