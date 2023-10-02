@@ -238,7 +238,9 @@ MaintenanceConfigurationId			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
 
 This command creates a new instance with maintenance configuration MI_2
 
-### Example 7: Create a new instance with External(Azure Active Directory) Administrator, Azure Active Directory Only Authentication and no SqlAdministratorCredentials
+<a name='example-7-create-a-new-instance-with-externalazure-active-directory-administrator-azure-active-directory-only-authentication-and-no-sqladministratorcredentials'></a>
+
+### Example 7: Create a new instance with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication -Location westcentralus -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
@@ -316,7 +318,7 @@ InstancePoolName         :
 ZoneRedundant            : true
 ```
 
-This command creates a new instance with external administrator properties and azure active directory only authentication enabled.
+This command creates a new instance with external administrator properties and Microsoft Entra-only authentication enabled.
 
 ### Example 9: Create a new instance with TDE CMK
 ```powershell
@@ -379,7 +381,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.
+Generate and assign a Microsoft Entra identity for this Managed instance for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -500,7 +502,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExternalAdminName
-Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.
+Specifies the display name of the user, group or application which is the Microsoft Entra administrator for the server. This display name must exist in the active directory associated with the current subscription.
 
 ```yaml
 Type: System.String
@@ -515,7 +517,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExternalAdminSID
-Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.
+Specifies the object ID of the user, group or application which is the Microsoft Entra administrator.
 
 ```yaml
 Type: System.Nullable`1[System.Guid]
