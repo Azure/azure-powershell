@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// The telemetry property name for "Prediction".
         /// </summary>
-        public const string PropertyNamePrediction = "Prediction3";
+        public const string PropertyNamePrediction = "Prediction_Three";
 
         /// <summary>
         /// The telemetry property name for "SuggestionSessionId".
@@ -44,9 +44,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";
 
         /// <summary>
-        /// The telemetry property name fo "userInput".
+        /// The telemetry property name fo "userInput" used as the nested property.
         /// </summary>
-        public const string PropertyNameUserInput = "UserInput3";
+        public const string PropertyNameInnerUserInput = "UserInput";
+
+        /// <summary>
+        /// The telemetry property name fo "userInput" used as a top-level property.
+        /// </summary>
+        public const string PropertyNameOuterUserInput = "UserInput_Three";
 
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
