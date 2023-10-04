@@ -8378,6 +8378,9 @@ General availability for Az.RecoveryServices module.
 * Fixed a date parsing bug in 'Get-AzDeletedWebApp'
 * Fix backward compatibility issue with Az.Accounts module
 
+#### Az.Network
+* Add support for Managed IP based load balancer
+
 ## Version 1.0.0 - December 2018
 ### Highlights since the last major release
 * General availability of `Az` module
