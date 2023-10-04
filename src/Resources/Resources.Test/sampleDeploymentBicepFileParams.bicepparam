@@ -1,5 +1,5 @@
 using 'sampleDeploymentBicepFileWithoutParamValues.bicep'
 
 param location = 'westus2'
-param name = 'bezstorageparam0007'
+param baseName = 'bsa'
 param storageSku = 'Standard_LRS'
