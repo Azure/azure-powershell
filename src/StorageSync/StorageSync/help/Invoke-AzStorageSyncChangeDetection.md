@@ -80,6 +80,9 @@ Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> [-PassThru]
 ## DESCRIPTION
 Periodically, Azure File Sync checks the namespace inside a syncing Azure file share for changes that came into the file share by other means than sync. The goal is to identify these changes and ultimately sync them to connected servers. This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so individual item change detection can finish quickly and within the 10,000 items limit. Otherwise, run the command without the -DirectoryPath or -Path parameters to invoke full share-level change detection.
 
+> [!Note]  
+> The Invoke-AzStorageSyncChangeDetection cmdlet will cancel a cloud change enumeration job that is in progress. To avoid cancelling a currently running job, go to the Cloud Endpoint properties in the portal to check if a job is currently running.
+
 ## EXAMPLES
 
 ### Example 1
