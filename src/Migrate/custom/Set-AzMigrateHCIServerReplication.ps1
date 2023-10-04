@@ -46,7 +46,7 @@ function Set-AzMigrateHCIServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the virtual switch ARM ID that the VMs will use.
+        # Specifies the logical network ARM ID that the VMs will use.
         ${TargetVirtualSwitchId},
 
         [Parameter()]

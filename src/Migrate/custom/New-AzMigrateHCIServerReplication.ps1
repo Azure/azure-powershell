@@ -47,13 +47,13 @@ function New-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the virtual switch ARM ID that the VMs will use. 
+        # Specifies the logical network ARM ID that the VMs will use. 
         ${TargetVirtualSwitchId},
 
         [Parameter(ParameterSetName = 'ByIdDefaultUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the test virtual switch ARM ID that the VMs will use. 
+        # Specifies the test logical network ARM ID that the VMs will use. 
         ${TargetTestVirtualSwitchId},
 
         [Parameter()]
@@ -328,39 +328,7 @@ function New-AzMigrateHCIServerReplication {
         $hciClusterArgQuery = GetHCIClusterARGQuery -HCIClusterID $targetClusterId
         $targetCluster = Az.ResourceGraph\Search-AzGraph -Query $hciClusterArgQuery -Subscription $targetSubscription
         if ($null -eq $targetCluster) {
-            throw "No target cluster found with id '$targetClusterId'."
-        }
-
-        # Get Storage Container
-        $storageContainerArgQuery = GetStorageContainerARGQuery -HCIClusterID $targetClusterId
-        $storageContainers = Az.ResourceGraph\Search-AzGraph -Query $storageContainerArgQuery -Subscription $targetSubscription
-        $storageContainer = $storageContainers | Where-Object { $_.Id -eq $TargetStoragePathId }
-        if ($null -eq $storageContainer) {
-            throw "No storage '$TargetStoragePathId' found in cluster '$targetClusterId'."
-        }
-
-        if ("Succeeded" -ne $storageContainer.Properties.ProvisioningState) {
-            throw "The storage '$TargetStoragePathId' provisioning state is '$($storageContainer.Properties.ProvisioningState).'"
-        }
-
-        # Get Virtual Switches
-        $virtualSwitchArgQuery = GetVirtualSwitchARGQuery -HCIClusterID $targetClusterId
-        $virtualSwitchIds = if ($parameterSet -match 'DefaultUser') { $TargetVirtualSwitchId } else { $NicToInclude | Select-Object -ExpandProperty TargetNetworkId }
-        $virtualSwitches = Az.ResourceGraph\Search-AzGraph -Query $virtualSwitchArgQuery -Subscription $targetSubscription
-        
-        if ($null -eq $virtualSwitches) {
-            throw "No virtual switch found in cluster '$targetClusterId'."
-        }
-
-        foreach ($virtualSwitchId in $virtualSwitchIds) {
-            $virtualSwitch = $virtualSwitches | Where-Object { $_.Id -eq $virtualSwitchId }
-            if ($null -eq $virtualSwitch) {
-                throw "No virtual switch '$virtualSwitchId' found in cluster '$targetClusterId'."
-            }
-
-            if ("Succeeded" -ne $virtualSwitch.Properties.ProvisioningState) {
-                throw "The virtual switch '$virtualSwitchId' provisioning state is '$($virtualSwitch.Properties.ProvisioningState)'."
-            }
+            throw "Validate target cluster with id '$targetClusterId' exists. Check ARC resource bridge is running on this cluster."
         }
             
         # Get source appliance RunAsAccount
@@ -429,7 +397,7 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.FabricDiscoveryMachineId = $InputObject.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
         $customProperties.SourceDraName = $sourceDra.Name
-        $customProperties.StorageContainerId = $($storageContainer.Id)
+        $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $targetCluster.CustomLocation
         $customProperties.TargetDraName = $targetDra.Name
         $customProperties.TargetHciClusterId = $targetClusterId

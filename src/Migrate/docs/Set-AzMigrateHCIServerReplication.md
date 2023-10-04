@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetVirtualSwitchId
-Specifies the virtual switch ARM ID that the VMs will use.
+Specifies the logical network ARM ID that the VMs will use.
 
 ```yaml
 Type: System.String
