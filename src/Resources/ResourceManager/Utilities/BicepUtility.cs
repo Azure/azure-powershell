@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepparamFileBuild = "0.16.1";
 
-        private const string MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides = "0.22.1";
+        private const string MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides = "0.22.6";
 
         public delegate void OutputCallback(string msg);
 
