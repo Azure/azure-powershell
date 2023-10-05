@@ -124,7 +124,7 @@ function Start-AzMigrateHCIServerMigration {
         $null = $PSBoundParameters.Add("VaultName", $vaultName)
         $null = $PSBoundParameters.Add("Name", $protectedItemName)
 
-        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($null -eq $protectedItem) {
             throw "The replicating server doesn't exist. Please check the input and try again."
         }

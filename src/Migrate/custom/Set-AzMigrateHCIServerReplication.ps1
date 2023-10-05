@@ -167,8 +167,7 @@ function Set-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
         $null = $PSBoundParameters.Add("Name", $MachineName)
 
-        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
-
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($null -eq $ProtectedItem) {
             throw "Replication item is not found with Id '$TargetObjectID'."
         }

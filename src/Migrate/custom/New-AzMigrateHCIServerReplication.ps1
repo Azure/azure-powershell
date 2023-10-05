@@ -243,7 +243,7 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove("MigrateProjectName")
 
         if (($null -eq $solution) -or [string]::IsNullOrEmpty($vaultName)) {
-            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the initialize-azmigratehcireplicationinfrastructure script before proceeding.'
+            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding.'
         }
         
         # Get fabrics and appliances in the project
@@ -303,7 +303,7 @@ function New-AzMigrateHCIServerReplication {
             -ErrorAction SilentlyContinue
 
         if ($null -eq $policyObj) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
+            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         }
 
         # Validate Replication Extension
@@ -317,7 +317,7 @@ function New-AzMigrateHCIServerReplication {
             -ErrorAction SilentlyContinue
 
         if ($null -eq $replicationExtension) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
+            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         }
         
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
