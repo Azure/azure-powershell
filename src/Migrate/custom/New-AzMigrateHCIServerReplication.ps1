@@ -249,9 +249,9 @@ function New-AzMigrateHCIServerReplication {
         # Get fabrics and appliances in the project
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
-            # if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
-            #     continue;
-            # }
+            if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
+                continue;
+            }
             if ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance) {
                 $sourceFabric = $fabric
             }
