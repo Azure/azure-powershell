@@ -216,20 +216,39 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         $hyperVSiteTypeRegex = "(?<=/Microsoft.OffAzure/HyperVSites/).*$"
         $vmwareSiteTypeRegex = "(?<=/Microsoft.OffAzure/VMwareSites/).*$"
+
+        # Validate SourceApplianceName & TargetApplianceName
         $sourceSiteId = $appMap[$SourceApplianceName.ToLower()]
-        if ($sourceSiteId -match $hyperVSiteTypeRegex) {
+        $targetSiteId = $appMap[$TargetApplianceName.ToLower()]
+        if ($sourceSiteId -match $hyperVSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
         }
-        elseif ($sourceSiteId -match $vmwareSiteTypeRegex) {
+        elseif ($sourceSiteId -match $vmwareSiteTypeRegex -and $targetSiteId -match $vmwareSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
         }
         else {
-            throw "Unknown source VM site type encountered with Id: $($sourceSiteId). Please verify the VM site type to be either for HyperV or VMware."
+            throw "Error encountered in matching the given source appliance name '$SourceApplianceName' and target appliance name '$TargetApplianceName'. Please verify the VM site type to be either for HyperV or VMware for both source and target appliances, and the appliance names are correct."
+        }
+
+        # Get Data Replication Service, or the AMH solution
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+            -ResourceGroupName $ResourceGroupName `
+            -MigrateProjectName $ProjectName `
+            -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $amhSolution) {
+            throw "No Data Replication Service Solution found. Please verify your appliance setup."
         }
 
         # Get Source and Target Fabrics
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
+            if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $amhSolution.Id) {
+                continue
+            }
+
             if (($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
                 $sourceFabric = $fabric
@@ -279,18 +298,6 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
         $targetDra = $targetDras[0]
         Write-Host "*Selected Target Dra: '$($targetDra.Name)'."
-
-        # Get Data Replication Service, or the AMH solution
-        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $amhSolution) {
-            throw "No Data Replication Service Solution found. Please verify your appliance setup."
-        }
         
         # Get Replication Vault
         $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]

@@ -183,6 +183,6 @@ function Get-AzMigrateHCIJob {
             $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
-        return  Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+        return  Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
     }
 }

@@ -202,8 +202,7 @@ function Get-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $MachineName)
 
-            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
-            
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         }
             
         if (($parameterSet -match 'List') -or ($parameterSet -eq "GetByMachineName")) {
@@ -227,7 +226,7 @@ function Get-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove("MigrateProjectName")
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
                 
-            $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+            $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
             if ($parameterSet -eq "GetByMachineName") {
                 $replicatingItems = $replicatingItems | Where-Object { $_.Property.FabricObjectName -eq $MachineName }
@@ -247,7 +246,7 @@ function Get-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $MachineName)
     
-            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         }
     }
 }

@@ -165,7 +165,7 @@ function New-AzMigrateHCIServerReplication {
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
-            $isDynamicRamEnbaled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+            $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
         $HasTargetTestVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')
@@ -243,15 +243,16 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove("MigrateProjectName")
 
         if (($null -eq $solution) -or [string]::IsNullOrEmpty($vaultName)) {
-            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the initialize-azmigratehcireplicationinfrastructure script before proceeding.'
+            throw 'Azure Migrate Project not configured. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding.'
         }
         
         # Get fabrics and appliances in the project
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
             if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $solution.Id) {
-                continue;
+                continue
             }
+
             if ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance) {
                 $sourceFabric = $fabric
             }
@@ -303,7 +304,7 @@ function New-AzMigrateHCIServerReplication {
             -ErrorAction SilentlyContinue
 
         if ($null -eq $policyObj) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
+            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         }
 
         # Validate Replication Extension
@@ -317,7 +318,7 @@ function New-AzMigrateHCIServerReplication {
             -ErrorAction SilentlyContinue
 
         if ($null -eq $replicationExtension) {
-            throw "The replication infrastructure is not initialized. Run the initialize-azmigratehcireplicationinfrastructure script again."
+            throw "The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         }
         
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
@@ -406,7 +407,7 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.HyperVGeneration = if ($SiteType -eq $SiteTypes.HyperVSites) { $InputObject.Generation } else { "1" }
         $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $InputObject.NumberOfProcessorCore }
         $customProperties.TargetMemoryInMegaByte = if ($HasTargetVMRam) { $TargetVMRam } else { $InputObject.AllocatedMemoryInMB }
-        $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnbaled } else { $InputObject.IsDynamicMemoryEnabled }
+        $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else { $InputObject.IsDynamicMemoryEnabled }
 
         $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.MinMemoryInMB)

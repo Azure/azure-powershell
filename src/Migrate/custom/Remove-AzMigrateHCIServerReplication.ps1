@@ -42,8 +42,8 @@ function Remove-AzMigrateHCIServerReplication {
         [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
-        # Specifies whether the replication needs to be force removed.
-        ${ForceRemove},
+        # Specifies whether the replication needs to be force removed. Default to "false".
+        ${ForceRemove} = "false",
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

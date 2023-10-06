@@ -141,7 +141,7 @@ function Set-AzMigrateHCIServerReplication {
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
-            $isDynamicRamEnbaled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+            $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
@@ -167,8 +167,7 @@ function Set-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $VaultName)
         $null = $PSBoundParameters.Add("Name", $MachineName)
 
-        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
-
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($null -eq $ProtectedItem) {
             throw "Replication item is not found with Id '$TargetObjectID'."
         }
@@ -232,7 +231,7 @@ function Set-AzMigrateHCIServerReplication {
         }
         
         if ($HasIsDynamicMemoryEnabled) {
-            $customProperties.IsDynamicRam = $isDynamicRamEnbaled
+            $customProperties.IsDynamicRam = $isDynamicRamEnabled
         }
 
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
