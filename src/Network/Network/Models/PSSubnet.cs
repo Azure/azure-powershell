@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> IpAllocations { get; set; }
 
         [JsonProperty(Order = 1)]
-        public bool DefaultOutboundAccess { get; set; }
+        public bool? DefaultOutboundAccess { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText

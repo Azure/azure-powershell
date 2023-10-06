@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Default outbound connectivity for all VMs in the subnet
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
