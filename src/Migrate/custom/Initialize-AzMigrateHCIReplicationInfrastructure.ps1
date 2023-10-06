@@ -227,9 +227,25 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
             throw "Unknown source VM site type encountered with Id: $($sourceSiteId). Please verify the VM site type to be either for HyperV or VMware."
         }
 
+        # Get Data Replication Service, or the AMH solution
+        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
+            -ResourceGroupName $ResourceGroupName `
+            -MigrateProjectName $ProjectName `
+            -Name "Servers-Migration-ServerMigration_DataReplication" `
+            -SubscriptionId $SubscriptionId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $amhSolution) {
+            throw "No Data Replication Service Solution found. Please verify your appliance setup."
+        }
+
         # Get Source and Target Fabrics
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
         foreach ($fabric in $allFabrics) {
+            if ($fabric.Property.CustomProperty.MigrationSolutionId -ne $amhSolution.Id) {
+                continue
+            }
+
             if (($instanceType -eq $AzStackHCIInstanceTypes.HyperVToAzStackHCI) -and
                 ($fabric.Property.CustomProperty.InstanceType -ceq $FabricInstanceTypes.HyperVInstance)) {
                 $sourceFabric = $fabric
@@ -279,18 +295,6 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
         $targetDra = $targetDras[0]
         Write-Host "*Selected Target Dra: '$($targetDra.Name)'."
-
-        # Get Data Replication Service, or the AMH solution
-        $amhSolution = Az.Migrate\Get-AzMigrateSolution `
-            -ResourceGroupName $ResourceGroupName `
-            -MigrateProjectName $ProjectName `
-            -Name "Servers-Migration-ServerMigration_DataReplication" `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $amhSolution) {
-            throw "No Data Replication Service Solution found. Please verify your appliance setup."
-        }
         
         # Get Replication Vault
         $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]

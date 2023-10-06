@@ -141,7 +141,7 @@ function Set-AzMigrateHCIServerReplication {
         $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
-            $isDynamicRamEnbaled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
+            $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
         }
         $HasDynamicMemoryConfig = $PSBoundParameters.ContainsKey('DynamicMemoryConfig')
         $HasTargetVMRam = $PSBoundParameters.ContainsKey('TargetVMRam')
@@ -231,7 +231,7 @@ function Set-AzMigrateHCIServerReplication {
         }
         
         if ($HasIsDynamicMemoryEnabled) {
-            $customProperties.IsDynamicRam = $isDynamicRamEnbaled
+            $customProperties.IsDynamicRam = $isDynamicRamEnabled
         }
 
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
