@@ -1,6 +1,6 @@
 ### Example 1: When there is only OS disk to migrate
 ```powershell
-New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
+New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -OSDiskID "Microsoft:0EC082D5-6827-457A-BAE2-F986E1B94851\83F8638B-8DCA-4152-9EDA-2CA8B33039B4\0\0\L" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM"
 ```
 
 ```output
@@ -45,7 +45,7 @@ $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 
 [AzStackHCINicInput[]]$NicsToInclude = @()
-$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/external"
+$Nic = New-AzMigrateHCINicMappingObject -NicID "Microsoft:C1A34301-3BFF-4EC6-97F1-6C4BD5ADCDE0\99CDFD2E-D60C-4218-AC2E-E7C2D8253EB9" -TargetVirtualSwitchId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/external"
 $NicsToInclude += $Nic
 
 New-AzMigrateHCIServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
