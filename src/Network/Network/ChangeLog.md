@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added DefaultOutboundAccess parameter on subnet creation
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
 
 ## Version 6.2.0
