@@ -1,56 +1,73 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
+online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumesnapshot
 schema: 2.0.0
 ---
 
-# Remove-AzElasticSanVolume
+# New-AzElasticSanVolumeSnapshot
 
 ## SYNOPSIS
-Delete an Volume.
+Create a Volume Snapshot.
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+ -VolumeGroupName <String> -CreationDataSourceId <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CreateViaIdentityElasticSanExpanded
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-XmsDeleteSnapshot <String>]
- [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+New-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+ -VolumeGroupName <String> -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> -CreationDataSourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityVolumegroupExpanded
+```
+New-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+ -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityVolumegroup
-```
-Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Delete an Volume.
+Create a Volume Snapshot.
 
 ## EXAMPLES
 
-### Example 1: Remove a volume 
+### Example 1: Create a volume snapshot 
 ```powershell
-Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
+ $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
+ New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -SnapshotName mysnapshot
 ```
 
-This command removes a volume.
+```output
+CreationDataSourceId         : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/volumes/myvolume
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot
+Name                         : mysnapshot
+ProvisioningState            : Succeeded
+ResourceGroupName            : myresourcegroup
+SourceVolumeSizeGiB          : 1
+SystemDataCreatedAt          : 10/7/2023 3:37:01 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 10/7/2023 3:37:01 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : Microsoft.ElasticSan/elasticSans/volumeGroups/snapshots
+VolumeName                   : testvol1
+```
+
+The first command creates a volume, and the second command creates a snapshot of the volume.
 
 ## PARAMETERS
 
@@ -63,6 +80,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreationDataSourceId
+Fully qualified resource ID of the volume.
+E.g.
+"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,7 +125,7 @@ To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentityElasticSan
+Parameter Sets: CreateViaIdentityElasticSanExpanded
 Aliases:
 
 Required: True
@@ -106,7 +140,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -122,7 +156,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -132,38 +166,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Volume.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
-Aliases: VolumeName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,7 +187,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotName
+The name of the volume snapshot within the given volume group.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityElasticSanExpanded, CreateViaIdentityVolumegroupExpanded
 Aliases:
 
 Required: True
@@ -198,7 +217,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,7 +233,7 @@ To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: DeleteViaIdentityVolumegroup
+Parameter Sets: CreateViaIdentityVolumegroupExpanded
 Aliases:
 
 Required: True
@@ -229,44 +248,10 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan
+Parameter Sets: CreateExpanded, CreateViaIdentityElasticSanExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -XmsDeleteSnapshot
-Optional, used to delete snapshots under volume.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -XmsForceDelete
-Optional, used to delete volume if active sessions present.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -313,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISnapshot
 
 ## NOTES
 

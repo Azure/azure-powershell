@@ -31,27 +31,37 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 3794130ff888bf159dc93dd8d673415863df0cd6
+branch: 9770615578c920dad8cb6fce33d79c7e112824c0
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2022-12-01-preview/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/elasticsan.json
 
 # Normally, title is the service name
 title: ElasticSan
 # For new RP, the version is 0.1.0
-module-version: 0.2.0
+module-version: 1.0.0
 subject-prefix: $(service-name)
+
+use-extension: 
+  "@autorest/powershell": "4.x"
+enable-parent-pipeline-input: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
 directive:
-  - model-cmdlet:
-      - VirtualNetworkRule
   - where:
-      model-name: ElasticSan|Volume|VolumeGroup
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  - model-cmdlet:
+      - model-name: VirtualNetworkRule
+        cmdlet-name: New-AzElasticSanVirtualNetworkRuleObject
+  # - model-cmdlet:
+  #   - VirtualNetworkRule
+  - where:
+      model-name: ElasticSan|Volume|VolumeGroup|Snapshot
     set:
       suppress-format: true
   # Set alias for Name paramaters
@@ -88,6 +98,26 @@ directive:
       parameter-name: GroupName
     set:
       parameter-name: VolumeGroupName
+  - where: 
+      subject: VolumeSnapshot
+      verb: Update
+    remove: true
+  - where:
+      parameter-name: EncryptionIdentityEncryptionUserAssignedIdentity
+    set:
+      parameter-name: EncryptionUserAssignedIdentity
+  - where:
+      parameter-name: KeyVaultPropertyKeyName
+    set:
+      parameter-name: KeyName
+  - where:
+      parameter-name: KeyVaultPropertyKeyVaultUri
+    set:
+      parameter-name: KeyVaultUri
+  - where:
+      parameter-name: KeyVaultPropertyKeyVersion
+    set:
+      parameter-name: KeyVersion
   # Change the description of cmdlets that correspond to multiple APIs
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}"].get
@@ -101,4 +131,16 @@ directive:
   - where:
       subject: ^PrivateEndpointConnection$|^PrivateLinkResource$
     hide: true
+  - where: 
+      verb: ^New$|^Update$
+      subject: ^VolumeGroup$
+    hide: true
+  - where: 
+      verb: New
+      subject: Volume 
+      parameter-name: ManagedByResourceId 
+    hide: true
+  - from: IdentityUserAssignedIdentities.dictionary.cs
+    where: $
+    transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
 ```

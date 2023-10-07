@@ -1,8 +1,8 @@
 {
-  "Get-AzElasticSan+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/elasticSans?api-version=2022-12-01-preview+1": {
+  "Get-AzElasticSan+[NoContext]+List+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/elasticSans?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/elasticSans?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.ElasticSan/elasticSans?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans/testelasticsan13xqpmojl?api-version=2022-12-01-preview+1": {
+  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans/testelasticsan13xqpmojl?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans/testelasticsan13xqpmojl?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans/testelasticsan13xqpmojl?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/yifanz1/providers/Microsoft.ElasticSan/elasticSans/testpreviewes2?api-version=2022-12-01-preview+2": {
+  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/yifanz1/providers/Microsoft.ElasticSan/elasticSans/testpreviewes2?api-version=2023-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/yifanz1/providers/Microsoft.ElasticSan/elasticSans/testpreviewes2?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/yifanz1/providers/Microsoft.ElasticSan/elasticSans/testpreviewes2?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,10 +122,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSan+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans?api-version=2022-12-01-preview+1": {
+  "Get-AzElasticSan+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans?api-version=2022-12-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg3xqpmojl/providers/Microsoft.ElasticSan/elasticSans?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
