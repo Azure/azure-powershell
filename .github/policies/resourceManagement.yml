@@ -713,6 +713,17 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
+            label: Communication
+        then:
+        - mentionUsers:
+            mentionees:
+            - acsdevx-msft
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
             label: Compute
         then:
         - mentionUsers:
