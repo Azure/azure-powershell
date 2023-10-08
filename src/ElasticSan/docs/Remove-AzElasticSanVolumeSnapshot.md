@@ -14,7 +14,7 @@ Delete a Volume Snapshot.
 
 ### Delete (Default)
 ```
-Remove-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+Remove-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -27,14 +27,14 @@ Remove-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultPr
 
 ### DeleteViaIdentityElasticSan
 ```
-Remove-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+Remove-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
  -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityVolumegroup
 ```
-Remove-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+Remove-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -130,6 +130,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the volume snapshot within the given volume group.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -167,21 +182,6 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SnapshotName
-The name of the volume snapshot within the given volume group.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
 Aliases:
 
 Required: True

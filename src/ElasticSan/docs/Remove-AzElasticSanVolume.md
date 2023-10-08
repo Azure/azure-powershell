@@ -15,28 +15,28 @@ Delete an Volume.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-XmsDeleteSnapshot <String>]
- [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityElasticSan
 ```
 Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityVolumegroup
 ```
 Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -85,6 +85,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteSnapshot
+Optional, used to delete snapshots under volume.
+Allowed value are only true or false.
+Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ElasticSanInputObject
 Identity Parameter
 To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
@@ -110,6 +127,23 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDelete
+Optional, used to delete volume if active sessions present.
+Allowed value are only true or false.
+Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,40 +267,6 @@ Parameter Sets: Delete, DeleteViaIdentityElasticSan
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -XmsDeleteSnapshot
-Optional, used to delete snapshots under volume.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -XmsForceDelete
-Optional, used to delete volume if active sessions present.
-Allowed value are only true or false.
-Default value is false.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

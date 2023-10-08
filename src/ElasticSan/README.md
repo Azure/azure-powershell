@@ -58,8 +58,6 @@ directive:
   - model-cmdlet:
       - model-name: VirtualNetworkRule
         cmdlet-name: New-AzElasticSanVirtualNetworkRuleObject
-  # - model-cmdlet:
-  #   - VirtualNetworkRule
   - where:
       model-name: ElasticSan|Volume|VolumeGroup|Snapshot
     set:
@@ -80,6 +78,18 @@ directive:
       parameter-name: Name 
     set:
       alias: VolumeName
+  - where:
+      parameter-name: ^XmsDeleteSnapshot$
+    set:
+      parameter-name: DeleteSnapshot
+  - where:
+      parameter-name: ^XmsForceDelete$
+    set:
+      parameter-name: ForceDelete
+  - where:
+      parameter-name: SnapshotName 
+    set:
+      parameter-name: Name
   - where:
       property-name: TotalIop
     set:

@@ -20,7 +20,7 @@ Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <Stri
 
 ### Get
 ```
-Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,13 +32,13 @@ Get-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultProfi
 
 ### GetViaIdentityElasticSan
 ```
-Get-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+Get-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
  -VolumeGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVolumegroup
 ```
-Get-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+Get-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -229,13 +229,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+The name of the volume snapshot within the given volume group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
 Aliases:
 
 Required: True
@@ -245,12 +244,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SnapshotName
-The name of the volume snapshot within the given volume group.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

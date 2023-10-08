@@ -571,28 +571,28 @@ Delete an Volume.
 + Delete (Default)
 ```powershell
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-XmsDeleteSnapshot <String>]
- [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentityElasticSan
 ```powershell
 Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + DeleteViaIdentityVolumegroup
 ```powershell
 Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-XmsDeleteSnapshot <String>] [-XmsForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -1285,14 +1285,14 @@ Create a Volume Snapshot.
 
 + CreateExpanded (Default)
 ```powershell
-New-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+New-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> -CreationDataSourceId <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + CreateViaIdentityElasticSanExpanded
 ```powershell
-New-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+New-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
  -VolumeGroupName <String> -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -1305,7 +1305,7 @@ New-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> -CreationDataS
 
 + CreateViaIdentityVolumegroupExpanded
 ```powershell
-New-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+New-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -1353,7 +1353,7 @@ Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <Stri
 
 + Get
 ```powershell
-Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+Get-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -1365,13 +1365,13 @@ Get-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultProfi
 
 + GetViaIdentityElasticSan
 ```powershell
-Get-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+Get-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
  -VolumeGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + GetViaIdentityVolumegroup
 ```powershell
-Get-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+Get-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -1489,7 +1489,7 @@ Delete a Volume Snapshot.
 
 + Delete (Default)
 ```powershell
-Remove-AzElasticSanVolumeSnapshot -ElasticSanName <String> -ResourceGroupName <String> -SnapshotName <String>
+Remove-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
  -VolumeGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -1502,14 +1502,14 @@ Remove-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> [-DefaultPr
 
 + DeleteViaIdentityElasticSan
 ```powershell
-Remove-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -SnapshotName <String>
+Remove-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
  -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentityVolumegroup
 ```powershell
-Remove-AzElasticSanVolumeSnapshot -SnapshotName <String> -VolumegroupInputObject <IElasticSanIdentity>
+Remove-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

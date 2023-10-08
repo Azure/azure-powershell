@@ -229,7 +229,6 @@ function New-AzElasticSanVolumeGroup {
     process {
       if ($PSBoundParameters.ContainsKey('IdentityUserAssignedIdentityId')) {
         $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.UserAssignedIdentity]::New()
-        # $userAssignedIdentityId = $IdentityUserAssignedIdentityId
         $PSBoundParameters.IdentityUserAssignedIdentity = @{$IdentityUserAssignedIdentityId=$userIdentityObject}
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentityId')
       }
