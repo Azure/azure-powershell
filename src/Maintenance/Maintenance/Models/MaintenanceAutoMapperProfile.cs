@@ -52,8 +52,10 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<FROM.ApplyUpdate, TO.PSApplyUpdate>();
+                cfg.CreateMap<FROM.ApplyUpdate, TO.PSApplyUpdate>()
+                    .ForMember(dest => dest.Status, src => src.MapFrom(o => o.Status));
                 cfg.CreateMap<TO.PSApplyUpdate, FROM.ApplyUpdate>()
+                    .ForMember(dest => dest.Status, src => src.MapFrom(o => o.Status))
                     .ForMember(src => src.SystemData, s => s.Ignore());
                 cfg.CreateMap<FROM.ConfigurationAssignment, TO.PSConfigurationAssignment>()
                     .ForMember(dest => dest.FilterResourceGroup, src => src.MapFrom(o => o.Filter.ResourceGroups))
