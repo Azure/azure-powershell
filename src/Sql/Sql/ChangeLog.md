@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Added `UseFreeLimit` and `FreeLimitExhaustionBehavior` parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`
 
 ## Version 4.10.0
