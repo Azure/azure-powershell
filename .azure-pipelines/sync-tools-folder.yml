@@ -29,7 +29,6 @@ trigger:
       
 variables:
   GenerationBranchName: generation
-  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -41,6 +40,15 @@ jobs:
         BranchName: ${{ variables.GenerationBranchName }}
 
   steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: '$(AzureSubscription)'
+      ScriptType: 'InlineScript'
+      Inline: |
+        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
+        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
+      azurePowerShellVersion: 'LatestVersion'
+    displayName: Get Github PAT from Key Vault
   - task: PowerShell@2
     displayName: Sync branch
     inputs:

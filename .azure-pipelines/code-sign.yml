@@ -12,13 +12,23 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: '$(AzureSubscription)'
+      ScriptType: 'InlineScript'
+      Inline: |
+        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
+        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
+      azurePowerShellVersion: 'LatestVersion'
+    displayName: Get Github PAT from Key Vault
+
   - task: PowerShell@2
     displayName: checkout OOBbranch
     inputs:
       targetType: 'inline'
       script: |
           if ('${{ parameters.OOBBranch }}' -ne 'none') {
-            git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+            git remote set-url origin https://azure-powershell-bot:$GithubToken@github.com/Azure/azure-powershell.git;
             git fetch origin
             git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
           }
