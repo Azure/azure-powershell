@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
 
 ## Version 6.11.1
 * Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
