@@ -37,8 +37,10 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
         static RecorderUtilities()
         {
             JsonPathSanitizers.Add("$..primaryKey");
+            JsonPathSanitizers.Add("$..primaryMasterKey");
             JsonPathSanitizers.Add("$..primaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..secondaryKey");
+            JsonPathSanitizers.Add("$..secondaryMasterKey");
             JsonPathSanitizers.Add("$..secondaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..primaryConnectionString");
             JsonPathSanitizers.Add("$..secondaryConnectionString");
