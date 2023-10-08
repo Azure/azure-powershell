@@ -8,33 +8,21 @@ namespace Microsoft.Azure.Management.RedisCache.Models
     using System.Linq;
 
     /// <summary>
-    /// A private link resource
+    /// Properties of a private link resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : Resource
+    public partial class PrivateLinkResourceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the PrivateLinkResourceProperties class.
         /// </summary>
-        public PrivateLinkResource()
+        public PrivateLinkResourceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the PrivateLinkResourceProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
 
         /// <param name="groupId">The private link resource group id.
         /// </param>
@@ -44,9 +32,8 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <param name="requiredZoneNames">The private link resource Private link DNS zone name.
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public PrivateLinkResourceProperties(string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
@@ -63,19 +50,19 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <summary>
         /// Gets the private link resource group id.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.groupId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; private set; }
 
         /// <summary>
         /// Gets the private link resource required member names.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredMembers")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredMembers")]
         public System.Collections.Generic.IList<string> RequiredMembers {get; private set; }
 
         /// <summary>
         /// Gets or sets the private link resource Private link DNS zone name.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredZoneNames")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredZoneNames")]
         public System.Collections.Generic.IList<string> RequiredZoneNames {get; set; }
     }
 }

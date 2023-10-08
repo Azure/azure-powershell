@@ -8,33 +8,21 @@ namespace Microsoft.Azure.Management.RedisCache.Models
     using System.Linq;
 
     /// <summary>
-    /// The Private Endpoint Connection resource.
+    /// Properties of the PrivateEndpointConnectProperties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : Resource
+    public partial class PrivateEndpointConnectionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-        public PrivateEndpointConnection()
+        public PrivateEndpointConnectionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
 
         /// <param name="privateEndpoint">The resource of private end point.
         /// </param>
@@ -45,9 +33,8 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <param name="provisioningState">The provisioning state of the private endpoint connection resource.
         /// Possible values include: 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string provisioningState = default(string))
+        public PrivateEndpointConnectionProperties(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
 
-        : base(id, name, type)
         {
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -64,20 +51,36 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <summary>
         /// Gets or sets the resource of private end point.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets a collection of information about the state of the connection
         /// between service consumer and provider.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the private endpoint connection resource. Possible values include: &#39;Succeeded&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.PrivateLinkServiceConnectionState == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PrivateLinkServiceConnectionState");
+            }
+
+
+
+        }
     }
 }

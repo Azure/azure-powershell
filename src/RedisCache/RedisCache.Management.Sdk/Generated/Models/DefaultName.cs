@@ -7,14 +7,12 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 {
 
     /// <summary>
-    /// Defines values for PrivateEndpointServiceConnectionStatus.
+    /// Defines values for DefaultName.
     /// </summary>
 
 
-    public static class PrivateEndpointServiceConnectionStatus
+    public static class DefaultName
     {
-        public const string Pending = "Pending";
-        public const string Approved = "Approved";
-        public const string Rejected = "Rejected";
+        public const string Default = "default";
     }
 }
