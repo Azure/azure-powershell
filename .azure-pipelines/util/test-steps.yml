@@ -16,13 +16,6 @@ steps:
     packageType: sdk
     version: 6.0.x
 
-- task: PowerShell@2
-  displayName: Remove pre-installed Az modules
-  inputs:
-    pwsh: true
-    targetType: filePath
-    filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
-
 - task: AzurePowerShell@5
   inputs:
     azureSubscription: '$(AzureSubscription)'
@@ -32,6 +25,13 @@ steps:
       Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
     azurePowerShellVersion: 'LatestVersion'
   displayName: Get Github PAT from Key Vault
+
+- task: PowerShell@2
+  displayName: Remove pre-installed Az modules
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
 
 - task: DotNetCoreCLI@2
   displayName: Test
