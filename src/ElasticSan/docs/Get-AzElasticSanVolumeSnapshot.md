@@ -88,7 +88,7 @@ This command lists all snapshots under a volume group.
 
 ### Example 2: Get a specific snapshot
 ```powershell
- Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -SnapshotName mysnap1
+ Get-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name mysnap1
 ```
 
 ```output

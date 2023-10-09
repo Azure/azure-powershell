@@ -40,7 +40,7 @@ input-file:
 # Normally, title is the service name
 title: ElasticSan
 # For new RP, the version is 0.1.0
-module-version: 1.0.0
+module-version: 0.3.0
 subject-prefix: $(service-name)
 
 use-extension: 
