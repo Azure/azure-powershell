@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
         }
 
-        private static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterJson(TextReader reader)
+        public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterJson(TextReader reader)
         {
             // Read once to avoid having to rewind the stream
             var parametersJson = reader.ReadToEnd();
