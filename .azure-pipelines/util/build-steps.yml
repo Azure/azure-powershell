@@ -4,6 +4,7 @@ parameters:
   powerShellPlatform: ''
 
 steps:
+- template: get-github-pat-steps.yml
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest

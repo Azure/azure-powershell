@@ -38,7 +38,6 @@ jobs:
   pool: pool-windows-2019
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - template: util/build-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
@@ -53,7 +52,6 @@ jobs:
   pool: pool-windows-2019
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - template: util/analyze-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
@@ -85,7 +83,6 @@ jobs:
     vmImage: $(agentPoolVMImage)
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - template: util/test-steps.yml
     parameters:
       osName: $(OSName)

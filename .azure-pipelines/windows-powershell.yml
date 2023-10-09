@@ -30,7 +30,6 @@ jobs:
   pool: ${{ variables.AgentPoolName }}
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
     continueOnError: true
@@ -48,7 +47,6 @@ jobs:
   pool: ${{ variables.AgentPoolName }}
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - template: util/analyze-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
@@ -63,7 +61,6 @@ jobs:
   pool: ${{ variables.AgentPoolName }}
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - template: util/test-steps.yml
     parameters:
       osName: ${{ variables.WindowsName }}
