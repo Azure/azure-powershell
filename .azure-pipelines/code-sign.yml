@@ -12,16 +12,7 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
-  - task: AzurePowerShell@5
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      ScriptType: 'InlineScript'
-      Inline: |
-        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-      azurePowerShellVersion: 'LatestVersion'
-    displayName: Get Github PAT from Key Vault
-
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: checkout OOBbranch
     inputs:

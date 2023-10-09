@@ -60,6 +60,7 @@ jobs:
     vmImage: ${{ parameters.testPoolVMImage }}
 
   steps:
+  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Install .NET 6.0 SDK'
     inputs:
@@ -122,16 +123,6 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
       arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
-
-  - task: AzurePowerShell@5
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      ScriptType: 'InlineScript'
-      Inline: |
-        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-      azurePowerShellVersion: 'LatestVersion'
-    displayName: Get Github PAT from Key Vault
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
