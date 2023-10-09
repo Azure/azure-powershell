@@ -160,4 +160,127 @@ directive:
       subject: PrivateStore
     set:
       subject: PrivateStoreV1 
+
+    # Rename POST methods
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/anyExistingOffersInTheCollections
+  - where:
+      verb: Invoke
+      subject: AnyPrivateStoreExistingOffer
+    set:
+      verb: Test
+      subject: PrivateStoreAnyExistingOffer
+  - where:
+      verb: Get
+      subject: PrivateStoreUserOffer
+      variant: Query(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserOffers
+  - where:
+      verb: Invoke
+      subject: QueryPrivateStoreUserOffer
+    set:
+      verb: Get
+      subject: PrivateStoreUserOffer
+  - where:
+      verb: Get
+      subject: PrivateStoreUserOffer
+      variant: Query(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryUserRules
+  - where:
+      verb: Invoke
+      subject: QueryUserRule
+    set:
+      verb: Get
+      subject: PrivateStoreUserRule
+  - where:
+      verb: Get
+      subject: PrivateStoreUserRule
+      variant: Query(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/approveAllItems
+  - where:
+      verb: Approve
+      subject: PrivateStoreCollectionItem
+    set:
+      verb: Enable
+      subject: PrivateStoreCollectionAllItem
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/disableApproveAllItems"
+  - where:
+      verb: Disable
+      subject: PrivateStoreCollectionApproveItem
+    set:
+      subject: PrivateStoreCollectionAllItem 
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/mapOffersToContexts
+  - where:
+      verb: Get
+      subject: PrivateStoreCollectionOffer
+      variant: ^List\S+
+    set:
+      subject: PrivateStoreCollectionMapOffersToContext
+  - where:
+      verb: Get
+      subject: PrivateStoreCollectionMapOffersToContext
+      variant: List(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules
+  - where:
+      verb: Set
+      subject: CollectionRule
+    set:
+      verb: New
+      subject: PrivateStoreCollectionRule
+  - where:
+      verb: New
+      subject: PrivateStoreCollectionRule
+      variant: Set(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/queryRules
+  - where: 
+      verb: Invoke
+      subject: QueryRule
+    set:
+      verb: Get
+      subject: PrivateStoreCollectionRule
+    
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/upsertOfferWithMultiContext
+  - where:
+      verb: Invoke
+      subject: OfferPrivateStoreCollectionOfferUpsert
+    set:
+      verb: New
+      subject: PrivateStoreCollectionOfferMultiContext
+  - where:
+      verb: New
+      subject: PrivateStoreCollectionOfferMultiContext
+      variant: Offer(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant
+  - where:
+      verb: Invoke
+      subject: FetchPrivateStoreSubscription
+    set:
+      verb: Get
+      subject: PrivateStoreAllSubscriptionInTenant
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listStopSellOffersPlansNotifications
+  - where:
+      verb: Get
+      subject: PrivateStoreStopSellOfferPlanNotification
+      variant: List(?!.*?Expanded)
+    remove: true
+
+  # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listSubscriptionsContext
+  - where:
+      verb: Get
+      subject: PrivateStoreSubscriptionContext
+    set:
+      subject: PrivateStoreSubscription
 ```
