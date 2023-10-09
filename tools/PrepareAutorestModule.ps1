@@ -129,7 +129,10 @@ foreach ($Module in $ModuleList)
     Copy-Item -Path "$TmpFolder\src\$Module" "$TmpFolder\src\.."  -Recurse -Force
 }
 #EndRegion
+Write-Host "==================================================="
 Remove-Item -Path "$TmpFolder\src" -Recurse -Force
 Remove-Item -Path "$TmpFolder\artifacts" -Recurse -Force
 Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
+Write-Host "After removing the artifacts folder"
 Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Exclude src,.git,tools,build.proj -Recurse -Force
+Write-Host "After copying the tmp folder"
