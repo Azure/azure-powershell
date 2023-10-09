@@ -91,43 +91,43 @@ If ($ModuleSet.Contains("Compute"))
 #Region generate the code and make the struture same with main branch.
 $AutorestOutputDir = "$PSScriptRoot\..\artifacts\autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
-# foreach ($Module in $ModuleList)
-# {
-#     $RootModuleFolder = "$PSScriptRoot\..\src\$Module\"
-#     $ModuleFolders = (Get-ChildItem -path $RootModuleFolder -filter Az.*.psd1 -Recurse).Directory
-#     if ($Null -eq $ModuleFolders)
-#     {
-#         # Module is not found maybe it's deleted in this PR
-#         Write-Warning "Cannot find any psd1 files in $RootModuleFolder."
-#         continue
-#     }
-#     # Go through the module including nested modules.
-#     foreach ($ModuleFolder in $ModuleFolders) {
-#         Set-Location -Path $ModuleFolder
-#         # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
-#         # We need to redirect output stream to file to avoid the mistake.
-#         npx autorest --max-memory-size=8192 >> "$AutorestOutputDir\$Module.log"
-#         # Exit if generation fails
-#         if ($lastexitcode -ne 0)
-#         {
-#             exit $lastexitcode
-#         }
+foreach ($Module in $ModuleList)
+{
+    $RootModuleFolder = "$PSScriptRoot\..\src\$Module\"
+    $ModuleFolders = (Get-ChildItem -path $RootModuleFolder -filter Az.*.psd1 -Recurse).Directory
+    if ($Null -eq $ModuleFolders)
+    {
+        # Module is not found maybe it's deleted in this PR
+        Write-Warning "Cannot find any psd1 files in $RootModuleFolder."
+        continue
+    }
+    # Go through the module including nested modules.
+    foreach ($ModuleFolder in $ModuleFolders) {
+        Set-Location -Path $ModuleFolder
+        # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
+        # We need to redirect output stream to file to avoid the mistake.
+        npx autorest --max-memory-size=8192 >> "$AutorestOutputDir\$Module.log"
+        # Exit if generation fails
+        if ($lastexitcode -ne 0)
+        {
+            exit $lastexitcode
+        }
 
-#         ./build-module.ps1
-#     }
-#     $subModuleFolders =  Get-ChildItem -path $RootModuleFolder -Directory -Filter *.Autorest
-#     if ($null -eq $subModuleFolders) {
-#         write-host "autogen module"
-#         Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src
-#     } else {
-#         #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
-#         Write-Host "hybrid module"
-#         Move-Generation2MasterHybrid -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
-#     }
-#     Set-Location -Path $TmpFolder
-#     Remove-Item "$RootModuleFolder\*" -Recurse -Force
-#     Copy-Item -Path "$TmpFolder\src\$Module" "$TmpFolder\src\.."  -Recurse -Force
-# }
+        ./build-module.ps1
+    }
+    $subModuleFolders =  Get-ChildItem -path $RootModuleFolder -Directory -Filter *.Autorest
+    if ($null -eq $subModuleFolders) {
+        write-host "autogen module"
+        # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src
+    } else {
+        #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
+        Write-Host "hybrid module"
+        # Move-Generation2MasterHybrid -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
+    }
+    Set-Location -Path $TmpFolder
+    Remove-Item "$RootModuleFolder\*" -Recurse -Force
+    Copy-Item -Path "$TmpFolder\src\$Module" "$TmpFolder\src\.."  -Recurse -Force
+}
 #EndRegion
 Write-Host "==================================================="
 Remove-Item -Path "$TmpFolder\src" -Recurse -Force
