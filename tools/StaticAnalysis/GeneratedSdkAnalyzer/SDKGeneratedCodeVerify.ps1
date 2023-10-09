@@ -38,6 +38,7 @@ $skipModules = @(
     'Az.NetAppFiles',
     'Az.Storage',
     'Az.Search'
+    'Az.RedisCache'
 )
 
 $MissReadMe = 9000
