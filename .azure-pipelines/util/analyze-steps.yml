@@ -28,16 +28,6 @@ steps:
       tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
       . Az-Cmdlets-latest/InstallModule.ps1
     pwsh: true
-
-- task: AzurePowerShell@5
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    ScriptType: 'InlineScript'
-    Inline: |
-      $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-    azurePowerShellVersion: 'LatestVersion'
-  displayName: Get Github PAT from Key Vault
   
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
