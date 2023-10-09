@@ -38,13 +38,23 @@ jobs:
     inputs:
       targetType: inline
       script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
+
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: '$(AzureSubscription)'
+      ScriptType: 'InlineScript'
+      Inline: |
+        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
+        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
+      azurePowerShellVersion: 'LatestVersion'
+    displayName: Get Github PAT from Key Vault
   - task: PowerShell@2
     displayName: Build
     inputs:
       targetType: inline
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
