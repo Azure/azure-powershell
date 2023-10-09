@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSNetworkVirtualApplianceDelegationProperties : PSTopLevelResource
+    public class PSNetworkVirtualApplianceDelegationProperties
     {
 
         public string ServiceName { get; set; }
