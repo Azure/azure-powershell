@@ -8,43 +8,29 @@ namespace Microsoft.Azure.Management.RedisCache.Models
     using System.Linq;
 
     /// <summary>
-    /// A firewall rule on a redis cache has a name, and describes a contiguous
-    /// range of IP addresses permitted to connect
+    /// Specifies a range of IP addresses permitted to connect to the cache
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RedisFirewallRule : ProxyResource
+    public partial class RedisFirewallRuleProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RedisFirewallRule class.
+        /// Initializes a new instance of the RedisFirewallRuleProperties class.
         /// </summary>
-        public RedisFirewallRule()
+        public RedisFirewallRuleProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RedisFirewallRule class.
+        /// Initializes a new instance of the RedisFirewallRuleProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
 
         /// <param name="startIP">lowest IP address included in the range
         /// </param>
 
         /// <param name="endIP">highest IP address included in the range
         /// </param>
-        public RedisFirewallRule(string startIP, string endIP, string id = default(string), string name = default(string), string type = default(string))
+        public RedisFirewallRuleProperties(string startIP, string endIP)
 
-        : base(id, name, type)
         {
             this.StartIP = startIP;
             this.EndIP = endIP;
@@ -60,13 +46,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <summary>
         /// Gets or sets lowest IP address included in the range
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startIP")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "startIP")]
         public string StartIP {get; set; }
 
         /// <summary>
         /// Gets or sets highest IP address included in the range
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endIP")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endIP")]
         public string EndIP {get; set; }
         /// <summary>
         /// Validate the object.

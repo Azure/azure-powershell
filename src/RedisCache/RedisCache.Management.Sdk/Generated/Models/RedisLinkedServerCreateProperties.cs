@@ -8,21 +8,20 @@ namespace Microsoft.Azure.Management.RedisCache.Models
     using System.Linq;
 
     /// <summary>
-    /// Parameter required for creating a linked server to redis cache.
+    /// Create properties for a linked server
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RedisLinkedServerCreateParameters
+    public partial class RedisLinkedServerCreateProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RedisLinkedServerCreateParameters class.
+        /// Initializes a new instance of the RedisLinkedServerCreateProperties class.
         /// </summary>
-        public RedisLinkedServerCreateParameters()
+        public RedisLinkedServerCreateProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RedisLinkedServerCreateParameters class.
+        /// Initializes a new instance of the RedisLinkedServerCreateProperties class.
         /// </summary>
 
         /// <param name="linkedRedisCacheId">Fully qualified resourceId of the linked redis cache.
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="primaryHostName">The changing DNS name that resolves to the current geo-primary cache among
         /// the linked redis caches before or after the Geo Failover.
         /// </param>
-        public RedisLinkedServerCreateParameters(string linkedRedisCacheId, string linkedRedisCacheLocation, ReplicationRole serverRole, string geoReplicatedPrimaryHostName = default(string), string primaryHostName = default(string))
+        public RedisLinkedServerCreateProperties(string linkedRedisCacheId, string linkedRedisCacheLocation, ReplicationRole serverRole, string geoReplicatedPrimaryHostName = default(string), string primaryHostName = default(string))
 
         {
             this.LinkedRedisCacheId = linkedRedisCacheId;
@@ -61,33 +60,33 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <summary>
         /// Gets or sets fully qualified resourceId of the linked redis cache.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.linkedRedisCacheId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linkedRedisCacheId")]
         public string LinkedRedisCacheId {get; set; }
 
         /// <summary>
         /// Gets or sets location of the linked redis cache.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.linkedRedisCacheLocation")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "linkedRedisCacheLocation")]
         public string LinkedRedisCacheLocation {get; set; }
 
         /// <summary>
         /// Gets or sets role of the linked server. Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serverRole")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serverRole")]
         public ReplicationRole ServerRole {get; set; }
 
         /// <summary>
         /// Gets the unchanging DNS name which will always point to current geo-primary
         /// cache among the linked redis caches for seamless Geo Failover experience.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.geoReplicatedPrimaryHostName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "geoReplicatedPrimaryHostName")]
         public string GeoReplicatedPrimaryHostName {get; private set; }
 
         /// <summary>
         /// Gets the changing DNS name that resolves to the current geo-primary cache
         /// among the linked redis caches before or after the Geo Failover.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.primaryHostName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "primaryHostName")]
         public string PrimaryHostName {get; private set; }
         /// <summary>
         /// Validate the object.
