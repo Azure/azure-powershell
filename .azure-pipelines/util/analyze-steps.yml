@@ -28,6 +28,16 @@ steps:
       tar -xvzf "Az-Cmdlets-latest/Az-Cmdlets-latest.tar.gz" -C "Az-Cmdlets-latest"
       . Az-Cmdlets-latest/InstallModule.ps1
     pwsh: true
+
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: '$(AzureSubscription)'
+    ScriptType: 'InlineScript'
+    Inline: |
+      $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
+      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
+    azurePowerShellVersion: 'LatestVersion'
+  displayName: Get Github PAT from Key Vault
   
 - task: DotNetCoreCLI@2
   displayName: 'Generate Help'
@@ -36,7 +46,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: DotNetCoreCLI@2
@@ -46,7 +56,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
       IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml
