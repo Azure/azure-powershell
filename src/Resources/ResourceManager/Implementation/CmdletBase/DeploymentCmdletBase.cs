@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -71,6 +72,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string templateSpecId;
 
         protected string protectedTemplateUri;
+
+        protected IReadOnlyDictionary<string, TemplateFileParameterV1> bicepparamFileParameters;
 
         private ITemplateSpecsClient templateSpecsClient;
 
@@ -229,6 +232,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 // Resolve the static parameter names for this cmdlet:
                 string[] staticParameterNames = this.GetStaticParameterNames();
+                var combinedParameterObject = GetCombinedTemplateParameterObject();
 
                 if (TemplateObject != null && TemplateObject != templateObject)
                 {
@@ -237,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             TemplateObject,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
                     }
@@ -245,7 +249,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             TemplateObject,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
                     }
@@ -258,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             this.ResolvePath(TemplateFile),
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
                     }
@@ -266,7 +270,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             this.ResolvePath(TemplateFile),
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
                     }
@@ -286,7 +290,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             templateUri,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
                     }
@@ -294,7 +298,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             templateUri,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
                     }
@@ -346,7 +350,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             templateObj,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             this.ResolvePath(TemplateParameterFile),
                             staticParameterNames);
                     }
@@ -354,7 +358,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
                             templateObj,
-                            TemplateParameterObject,
+                            combinedParameterObject,
                             TemplateParameterUri,
                             staticParameterNames);
                     }
@@ -366,23 +370,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return dynamicParameters;
         }
 
-        protected Hashtable GetTemplateParameterObject(Hashtable templateParameterObject)
+        private static void AddToParametersHashtable(IReadOnlyDictionary<string, TemplateFileParameterV1> parameters, Hashtable parameterObject)
         {
-            // NOTE(jogao): create a new Hashtable so that user can re-use the templateParameterObject.
-            var parameterObject = new Hashtable();
-            if (templateParameterObject != null)
+            parameters.ForEach(dp =>
             {
-                foreach (var parameterKey in templateParameterObject.Keys)
+                var parameter = new Hashtable();
+                if (dp.Value.Value != null)
+                {
+                    parameter.Add("value", dp.Value.Value);
+                }
+                if (dp.Value.Reference != null)
+                {
+                    parameter.Add("reference", dp.Value.Reference);
+                }
+
+                parameterObject[dp.Key] = parameter;
+            });
+        }
+
+        protected Hashtable GetTemplateParameterObject()
+        {
+            var parameterObject = new Hashtable();
+            if (bicepparamFileParameters != null)
+            {
+                AddToParametersHashtable(bicepparamFileParameters, parameterObject);
+            }
+            else if (TemplateParameterObject != null)
+            {
+                foreach (var parameterKey in TemplateParameterObject.Keys)
                 {
                     // Let default behavior of a value parameter if not a KeyVault reference Hashtable
-                    var hashtableParameter = templateParameterObject[parameterKey] as Hashtable;
+                    var hashtableParameter = TemplateParameterObject[parameterKey] as Hashtable;
                     if (hashtableParameter != null && hashtableParameter.ContainsKey("reference"))
                     {
-                        parameterObject[parameterKey] = templateParameterObject[parameterKey];
+                        parameterObject[parameterKey] = TemplateParameterObject[parameterKey];
                     }
                     else
                     {
-                        parameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                        parameterObject[parameterKey] = new Hashtable { { "value", TemplateParameterObject[parameterKey] } };
                     }
                 }
             }
@@ -395,21 +420,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 if (FileUtilities.DataStore.FileExists(templateParameterFilePath))
                 {
                     var parametersFromFile = TemplateUtility.ParseTemplateParameterFileContents(templateParameterFilePath);
-                    parametersFromFile.ForEach(dp =>
-                    {
-                        var parameter = new Hashtable();
-                        if (dp.Value.Value != null)
-                        {
-                            parameter.Add("value", dp.Value.Value);
-                        }
-                        if (dp.Value.Reference != null)
-                        {
-                            parameter.Add("reference", dp.Value.Reference);
-                        }
-
-                        parameterObject[dp.Key] = parameter;
-                    });
-
+                    AddToParametersHashtable(parametersFromFile, parameterObject);
                 }
                 else
                 {
@@ -497,7 +508,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
 
             TemplateParameterFile = null;
-            TemplateParameterObject = GetParametersFromJson(output.parametersJson);
+            TemplateParameterObject = null;
+            bicepparamFileParameters = GetParametersFromJson(output.parametersJson);
 
             if (TemplateObject == null && 
                 string.IsNullOrEmpty(TemplateFile) && 
@@ -523,34 +535,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
         }
 
-        private Hashtable GetParametersFromJsonStream(Stream parametersJson)
+        private Hashtable GetCombinedTemplateParameterObject()
         {
-            var parameters = new Hashtable();
-            var parametersFromJson = TemplateUtility.ParseTemplateParameterJson(parametersJson);
-
-            parametersFromJson.ForEach(dp =>
+            if (bicepparamFileParameters != null)
             {
-                var parameter = new Hashtable();
-                if (dp.Value.Value != null)
+                // The TemplateParameterObject property expects parameters to be in a different format to the parameters file JSON.
+                // Here we convert from { "foo": { "value": "blah" } } to { "foo": "blah" }
+                // with the exception of KV secret references which are left as { "foo": { "reference": ... } }
+                var parameters = new Hashtable();
+                foreach (var paramName in bicepparamFileParameters.Keys)
                 {
-                    parameter.Add("value", dp.Value.Value);
-                }
-                if (dp.Value.Reference != null)
-                {
-                    parameter.Add("reference", dp.Value.Reference);
+                    var param = bicepparamFileParameters[paramName];
+                    if (param.Value != null)
+                    {
+                        parameters[paramName] = param.Value;
+                    }
+                    if (param.Reference != null)
+                    {
+                        var parameter = new Hashtable();
+                        parameter.Add("reference", param.Reference);
+                        parameters[paramName] = parameter;
+                    }
                 }
 
-                parameters[dp.Key] = parameter;
-            });
+                return parameters;
+            }
 
-            return parameters;
+            return TemplateParameterObject;
         }
 
-        private Hashtable GetParametersFromJson(string parametersJson)
+        private IReadOnlyDictionary<string, TemplateFileParameterV1> GetParametersFromJson(string parametersJson)
         {
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(parametersJson)))
+            using (var reader = new StringReader(parametersJson))
             {
-                return GetParametersFromJsonStream(stream);
+                return TemplateUtility.ParseTemplateParameterJson(reader);
             }
         }
     }
