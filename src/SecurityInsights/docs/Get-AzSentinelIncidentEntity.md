@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncidentEntity
 
 ## SYNOPSIS
-Gets all incident related entities.
+Gets all entities for an incident.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzSentinelIncidentEntity -IncidentId <String> -ResourceGroupName <String> -W
 ```
 
 ## DESCRIPTION
-Gets all incident related entities.
+Gets all entities for an incident.
 
 ## EXAMPLES
 
@@ -152,11 +152,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentEntitiesResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentEntitiesResponse
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

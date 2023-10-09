@@ -30,6 +30,12 @@ Get-AzSentinelAutomationRule -InputObject <ISecurityInsightsIdentity> [-DefaultP
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzSentinelAutomationRule -Id <String> -WorkspaceInputObject <ISecurityInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the automation rule.
 
@@ -37,35 +43,108 @@ Gets the automation rule.
 
 ### Example 1: List all Automation Rules
 ```powershell
- Get-AzSentinelAutomationRule -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+Get-AzSentinelAutomationRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws"
 ```
 
 ```output
-DisplayName                 : VIP automation rule
-CreatedByEmail              : luke@contoso.com
-CreatedByUserPrincipalName  : luke@contoso.com
-TriggeringLogicIsEnabled    : True
-TriggeringLogicTriggersOn   : Incidents
-TriggeringLogicTriggersWhen : Created
-Name                       	: 2f32af32-ad13-4fbb-9fbc-e19e0e7ff767
-
+Action                           : {{
+                                     "order": 1,
+                                     "actionType": "ModifyProperties",
+                                     "actionConfiguration": {
+                                       "severity": "High"
+                                     }
+                                   }}
+CreatedByEmail                   : v-jiaji@microsoft.com
+CreatedByName                    : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId                : 6205f759-1234-453c-9712-34d7671bceff
+CreatedByUserPrincipalName       : v-jiaji@microsoft.com
+CreatedTimeUtc                   : 8/4/2023 10:07:55 AM
+DisplayName                      : Change severity to High
+Etag                             : "0b009c21-0000-0100-0000-64cccdfb0000"
+Id                               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/ 
+                                   providers/Microsoft.SecurityInsights/AutomationRules/240357d9-583c-4889-ae96-a8372d62349a
+LastModifiedByEmail              : v-jiaji@microsoft.com
+LastModifiedByName               : Joyer Jin (Wicresoft North America Ltd)
+LastModifiedByObjectId           : 6205f759-1234-453c-9712-34d7671bceff
+LastModifiedByUserPrincipalName  : v-jiaji@microsoft.com
+LastModifiedTimeUtc              : 8/4/2023 10:07:55 AM
+Name                             : 240357d9-583c-4889-ae96-a8372d62349a
+Order                            : 3
+ResourceGroupName                : si-jj-test
+SystemDataCreatedAt              : 
+SystemDataCreatedBy              : 
+SystemDataCreatedByType          : 
+SystemDataLastModifiedAt         : 
+SystemDataLastModifiedBy         : 
+SystemDataLastModifiedByType     : 
+TriggeringLogicCondition         : {{
+                                     "conditionType": "PropertyChanged",
+                                     "conditionProperties": {
+                                       "propertyName": "IncidentStatus",
+                                       "changeType": "ChangedTo",
+                                       "operator": "Equals",
+                                       "propertyValues": [ "Active" ]
+                                     }
+                                   }}
+TriggeringLogicExpirationTimeUtc : 
+TriggeringLogicIsEnabled         : True
+TriggeringLogicTriggersOn        : Incidents
+TriggeringLogicTriggersWhen      : Updated
+Type                             : Microsoft.SecurityInsights/AutomationRules
 ```
 
 This command lists all Automation Rules under a Microsoft Sentinel workspace.
 
 ### Example 2: Get an Automation Rule
 ```powershell
- Get-AzSentinelAutomationRule -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "2f32af32-ad13-4fbb-9fbc-e19e0e7ff767"
+ Get-AzSentinelAutomationRule -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -Id "240357d9-583c-4889-ae96-a8372d62349a"
 ```
 
 ```output
-DisplayName                 : VIP automation rule
-CreatedByEmail              : luke@contoso.com
-CreatedByUserPrincipalName  : luke@contoso.com
-TriggeringLogicIsEnabled    : True
-TriggeringLogicTriggersOn   : Incidents
-TriggeringLogicTriggersWhen : Created
-Name                       	: 2f32af32-ad13-4fbb-9fbc-e19e0e7ff767
+Action                           : {{
+                                     "order": 1,
+                                     "actionType": "ModifyProperties",
+                                     "actionConfiguration": {
+                                       "severity": "High"
+                                     }
+                                   }}
+CreatedByEmail                   : v-jiaji@microsoft.com
+CreatedByName                    : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId                : 6205f759-1234-453c-9712-34d7671bceff
+CreatedByUserPrincipalName       : v-jiaji@microsoft.com
+CreatedTimeUtc                   : 8/4/2023 10:07:55 AM
+DisplayName                      : Change severity to High
+Etag                             : "0b009c21-0000-0100-0000-64cccdfb0000"
+Id                               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/ 
+                                   providers/Microsoft.SecurityInsights/AutomationRules/240357d9-583c-4889-ae96-a8372d62349a
+LastModifiedByEmail              : v-jiaji@microsoft.com
+LastModifiedByName               : Joyer Jin (Wicresoft North America Ltd)
+LastModifiedByObjectId           : 6205f759-1234-453c-9712-34d7671bceff
+LastModifiedByUserPrincipalName  : v-jiaji@microsoft.com
+LastModifiedTimeUtc              : 8/4/2023 10:07:55 AM
+Name                             : 240357d9-583c-4889-ae96-a8372d62349a
+Order                            : 3
+ResourceGroupName                : si-jj-test
+SystemDataCreatedAt              : 
+SystemDataCreatedBy              : 
+SystemDataCreatedByType          : 
+SystemDataLastModifiedAt         : 
+SystemDataLastModifiedBy         : 
+SystemDataLastModifiedByType     : 
+TriggeringLogicCondition         : {{
+                                     "conditionType": "PropertyChanged",
+                                     "conditionProperties": {
+                                       "propertyName": "IncidentStatus",
+                                       "changeType": "ChangedTo",
+                                       "operator": "Equals",
+                                       "propertyValues": [ "Active" ]
+                                     }
+                                   }}
+TriggeringLogicExpirationTimeUtc : 
+TriggeringLogicIsEnabled         : True
+TriggeringLogicTriggersOn        : Incidents
+TriggeringLogicTriggersWhen      : Updated
+Type                             : Microsoft.SecurityInsights/AutomationRules
 ```
 
 This command gets an Automation Rule.
@@ -93,7 +172,7 @@ Automation rule ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases: AutomationRuleId
 
 Required: True
@@ -150,6 +229,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace.
 
@@ -174,40 +269,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
 
 ## RELATED LINKS
 

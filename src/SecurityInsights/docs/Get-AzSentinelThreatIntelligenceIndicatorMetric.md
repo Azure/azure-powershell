@@ -107,11 +107,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceMetrics
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceMetricsList
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

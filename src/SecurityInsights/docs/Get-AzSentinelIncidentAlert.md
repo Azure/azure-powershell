@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncidentAlert
 
 ## SYNOPSIS
-Gets all incident alerts.
+Gets all alerts for an incident.
 
 ## SYNTAX
 
@@ -18,13 +18,13 @@ Get-AzSentinelIncidentAlert -IncidentId <String> -ResourceGroupName <String> -Wo
 ```
 
 ## DESCRIPTION
-Gets all incident alerts.
+Gets all alerts for an incident.
 
 ## EXAMPLES
 
 ### Example 1: List all Alerts for a given Incident
 ```powershell
- Get-AzSentinelIncidentAlert -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId"
+Get-AzSentinelIncidentAlert -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -IncidentId "9f5c6069-39bc-4814-bd1b-728012a3c95d"
 ```
 
 ```output
@@ -158,11 +158,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISecurityAlert
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentAlertList
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

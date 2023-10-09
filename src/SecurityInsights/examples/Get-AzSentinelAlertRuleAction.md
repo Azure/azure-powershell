@@ -1,15 +1,23 @@
 ### Example 1: List all Actions for a given Alert Rule
 ```powershell
- Get-AzSentinelAlertRuleAction -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "myRuleId"
+Get-AzSentinelAlertRuleAction -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -RuleId "727fde97-bd0a-4b6d-a730-9d77fbcdb786"
 ```
 ```output
-LogicAppResourceId : /subscriptions/174b1a81-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/myResourceGroup/providers/Microsoft.Logic/workflows/A-Demo-1
-Name               : f32239c5-cb9c-48da-a3f6-bd5bd3d924a4
-WorkflowId         : 3c73d72560fa4cb6a72a0f10d3a80940
-
-LogicAppResourceId : /subscriptions/274b1a41-c53c-4092-8d4a-7210f6a44a0c/resourceGroups/myResourceGroup/providers/Microsoft.Logic/workflows/EmptyPlaybook
-Name               : cf815c77-bc65-4c02-946f-d81e15e9a100
-WorkflowId         : 1ac8ccb8bd134253b4baf0c75fe3ecc6
+Etag                         : "3100142b-0000-0300-0000-64cc637a0000"
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/prov 
+                               iders/Microsoft.SecurityInsights/alertRules/asicustomalertsv3_727fde97-bd0a-4b6d-a730-9d77fbcdb786_830f0b57-f450-48d2-8930-45e8a8657385/actions/ 
+                               830f0b57-f450-48d2-8930-45e8a8657385
+LogicAppResourceId           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.Logic/workflows/myLogicApp
+Name                         : 830f0b57-f450-48d2-8930-45e8a8657385
+ResourceGroupName            : si-jj-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.SecurityInsights/alertRules/actions
+WorkflowId                   : 71ed151a52fb4db8b40b43ef4b71ef32
 ```
 
 This command lists all Actions for a given Alert Rule.

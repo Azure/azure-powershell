@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelDataConnector
 
 ## SYNOPSIS
-Updates the data connector.
+Create the data connector.
 
 ## SYNTAX
 
@@ -28,10 +28,8 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
 
 ### UpdateAmazonWebServicesS3
 ```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -AWSS3
- [-SubscriptionId <String>] [-AWSRoleArn <String>] [-DetinationTable <String>] [-Log <String>]
- [-SQSURL <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzSentinelDataConnector [-DetinationTable <String>] [-SQSURL <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateAzureSecurityCenter
@@ -39,26 +37,6 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  -AzureSecurityCenter [-SubscriptionId <String>] [-Alerts <String>] [-ASCSubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateDynamics365
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -Dynamics365
- [-SubscriptionId <String>] [-CommonDataServiceActivity <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateGenericUI
-```
-Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
- [-PermissionCustom <PermissionsCustomsItem[]>]
- [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
- [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-UiConfigCustomImage <String>]
- [-UiConfigDataType <LastDataReceivedDataType[]>] [-UiConfigDescriptionMarkdown <String>]
- [-UiConfigGraphQueriesTableName <String>] [-UiConfigGraphQuery <GraphQueries[]>]
- [-UiConfigInstructionStep <InstructionSteps[]>] [-UiConfigPublisher <String>]
- [-UiConfigSampleQuery <SampleQueries[]>] [-UiConfigTitle <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftCloudAppSecurity
@@ -75,22 +53,6 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateMicrosoftThreatIntelligence
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -MicrosoftTI
- [-SubscriptionId <String>] [-BingSafetyPhishingUrlLookbackPeriod <String>] [-BingSafetyPhishinURL <String>]
- [-MicrosoftEmergingThreatFeed <String>] [-MicrosoftEmergingThreatFeedLookbackPeriod <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateMicrosoftThreatProtection
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- -MicrosoftThreatProtection [-SubscriptionId <String>] [-Incident <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateOffice365
 ```
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -Office365
@@ -98,33 +60,10 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateOfficeATP
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -OfficeATP
- [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateOfficeIRM
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -OfficeIRM
- [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateThreatIntelligence
 ```
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  -ThreatIntelligence [-SubscriptionId <String>] [-Indicator <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateThreatIntelligenceTaxii
-```
-Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- -APIRootURL <String> -ThreatIntelligenceTaxii [-SubscriptionId <String>] [-CollectionId <String>]
- [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <PollingFrequency>]
- [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -142,37 +81,10 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AWSClou
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityAmazonWebServicesS3
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AWSS3 [-AWSRoleArn <String>]
- [-DetinationTable <String>] [-Log <String>] [-SQSURL <String[]>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityAzureSecurityCenter
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AzureSecurityCenter
  [-Alerts <String>] [-ASCSubscriptionId <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityDynamics365
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -Dynamics365
- [-CommonDataServiceActivity <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityGenericUI
-```
-Update-AzSentinelDataConnector [-AvailabilityIsPreview <Boolean>] [-AvailabilityStatus <Int32>]
- [-PermissionCustom <PermissionsCustomsItem[]>]
- [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
- [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-UiConfigCustomImage <String>]
- [-UiConfigDataType <LastDataReceivedDataType[]>] [-UiConfigDescriptionMarkdown <String>]
- [-UiConfigGraphQueriesTableName <String>] [-UiConfigGraphQuery <GraphQueries[]>]
- [-UiConfigInstructionStep <InstructionSteps[]>] [-UiConfigPublisher <String>]
- [-UiConfigSampleQuery <SampleQueries[]>] [-UiConfigTitle <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -190,41 +102,11 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -Defende
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityMicrosoftThreatIntelligence
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -MicrosoftTI
- [-BingSafetyPhishingUrlLookbackPeriod <String>] [-BingSafetyPhishinURL <String>]
- [-MicrosoftEmergingThreatFeed <String>] [-MicrosoftEmergingThreatFeedLookbackPeriod <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityMicrosoftThreatProtection
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -MicrosoftThreatProtection
- [-Incident <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityOffice365
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -Office365 [-Exchange <String>]
  [-SharePoint <String>] [-Teams <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityOfficeATP
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -OfficeATP [-Alerts <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityOfficeIRM
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -OfficeIRM [-Alerts <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityThreatIntelligence
@@ -234,25 +116,17 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -ThreatI
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityThreatIntelligenceTaxii
-```
-Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -ThreatIntelligenceTaxii
- [-CollectionId <String>] [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <PollingFrequency>]
- [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Updates the data connector.
+Create the data connector.
 
 ## EXAMPLES
 
 ### Example 1: Update a Sentinel data connector
 ```powershell
-Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
+Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id 3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
 ```
 
-This command updates a Sentinel data connector
+This command updates a Sentinel data connector.
 
 ## PARAMETERS
 
@@ -261,25 +135,10 @@ This command updates a Sentinel data connector
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOfficeATP, UpdateOfficeIRM, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM
+Parameter Sets: UpdateAADAATP, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityAADAATP, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -APIRootURL
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -316,36 +175,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilityIsPreview
-
-
-```yaml
-Type: System.Boolean
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityStatus
-
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AWSCloudTrail
 
 
@@ -366,25 +195,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesCloudTrail
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AWSS3
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateAmazonWebServicesS3, UpdateViaIdentityAmazonWebServicesS3
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -421,42 +235,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BingSafetyPhishingUrlLookbackPeriod
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatIntelligence
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BingSafetyPhishinURL
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatIntelligence
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CloudAppSecurity
-[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
-[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory)]
-[Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-[System.Management.Automation.SwitchParameter]
-${GenericUI},
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -470,38 +250,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CollectionId
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommonDataServiceActivity
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateDynamics365, UpdateViaIdentityDynamics365
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -535,7 +286,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesS3, UpdateViaIdentityAmazonWebServicesS3
+Parameter Sets: UpdateAmazonWebServicesS3
 Aliases:
 
 Required: False
@@ -560,21 +311,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Dynamics365
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateDynamics365, UpdateViaIdentityDynamics365
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Exchange
 
 
@@ -590,46 +326,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FriendlyName
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Id
-[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
- The Id of the Data Connector.
+Connector ID
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
-Aliases:
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOffice365, UpdateThreatIntelligence
+Aliases: DataConnectorId
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Incident
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateMicrosoftThreatProtection, UpdateViaIdentityMicrosoftThreatProtection
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -652,14 +357,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]
- Identity Parameter
-
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
-Parameter Sets: UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityThreatIntelligence
 Aliases:
 
 Required: True
@@ -674,70 +377,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3
+Parameter Sets: UpdateAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesCloudTrail
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MicrosoftEmergingThreatFeed
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatIntelligence
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MicrosoftEmergingThreatFeedLookbackPeriod
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatIntelligence
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MicrosoftThreatProtection
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateMicrosoftThreatProtection, UpdateViaIdentityMicrosoftThreatProtection
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MicrosoftTI
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatIntelligence
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -774,103 +417,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfficeATP
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateOfficeATP, UpdateViaIdentityOfficeATP
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfficeIRM
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateOfficeIRM, UpdateViaIdentityOfficeIRM
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Password
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PermissionCustom
-To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PermissionResourceProvider
-To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PollingFrequency
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
- The Resource Group Name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOffice365, UpdateThreatIntelligence
 Aliases:
 
 Required: True
@@ -900,7 +453,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateAmazonWebServicesS3, UpdateViaIdentityAmazonWebServicesS3
+Parameter Sets: UpdateAmazonWebServicesS3
 Aliases:
 
 Required: False
@@ -911,33 +464,16 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-[Parameter(ParameterSetName = 'UpdateGenericUI')]
- Gets subscription credentials which uniquely identify Microsoft Azure subscription.
- The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOffice365, UpdateThreatIntelligence
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TaxiiLookbackPeriod
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -958,12 +494,11 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
- The TenantId.
+The TenantId.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii, UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAmazonWebServicesS3, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityDynamics365, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityMicrosoftThreatIntelligence, UpdateViaIdentityMicrosoftThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityOfficeATP, UpdateViaIdentityOfficeIRM, UpdateViaIdentityThreatIntelligence, UpdateViaIdentityThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOffice365, UpdateThreatIntelligence, UpdateViaIdentityAADAATP, UpdateViaIdentityAmazonWebServicesCloudTrail, UpdateViaIdentityAzureSecurityCenter, UpdateViaIdentityMicrosoftCloudAppSecurity, UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection, UpdateViaIdentityOffice365, UpdateViaIdentityThreatIntelligence
 Aliases:
 
 Required: False
@@ -988,208 +523,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ThreatIntelligenceTaxii
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigConnectivityCriterion
-To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigCustomImage
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigDataType
-To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigDescriptionMarkdown
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigGraphQueriesTableName
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigGraphQuery
-To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigInstructionStep
-To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigPublisher
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigSampleQuery
-To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UiConfigTitle
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateGenericUI, UpdateViaIdentityGenericUI
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserName
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceId
-
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
-[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
- The name of the workspace.
+The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAmazonWebServicesS3, UpdateAzureSecurityCenter, UpdateDynamics365, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateMicrosoftThreatIntelligence, UpdateMicrosoftThreatProtection, UpdateOffice365, UpdateOfficeATP, UpdateOfficeIRM, UpdateThreatIntelligence, UpdateThreatIntelligenceTaxii
+Parameter Sets: UpdateAADAATP, UpdateAmazonWebServicesCloudTrail, UpdateAzureSecurityCenter, UpdateMicrosoftCloudAppSecurity, UpdateMicrosoftDefenderAdvancedThreatProtection, UpdateOffice365, UpdateThreatIntelligence
 Aliases:
 
 Required: True
@@ -1239,78 +578,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
-`PERMISSIONCUSTOM <PermissionsCustomsItem[]>`: 
-  - `[Description <String>]`: Customs permissions description
-  - `[Name <String>]`: Customs permissions name
-
-`PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>`: 
-  - `[PermissionsDisplayText <String>]`: Permission description text
-  - `[Provider <ProviderName?>]`: Provider name
-  - `[ProviderDisplayName <String>]`: Permission provider display name
-  - `[RequiredPermissionAction <Boolean?>]`: action permission
-  - `[RequiredPermissionDelete <Boolean?>]`: delete permission
-  - `[RequiredPermissionRead <Boolean?>]`: read permission
-  - `[RequiredPermissionWrite <Boolean?>]`: write permission
-  - `[Scope <PermissionProviderScope?>]`: Permission provider scope
-
-`UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>`: 
-  - `[Type <ConnectivityType?>]`: type of connectivity
-  - `[Value <String[]>]`: Queries for checking connectivity
-
-`UICONFIGDATATYPE <LastDataReceivedDataType[]>`: 
-  - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
-  - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
-
-`UICONFIGGRAPHQUERY <GraphQueries[]>`: 
-  - `[BaseQuery <String>]`: The base query for the graph
-  - `[Legend <String>]`: The legend for the graph
-  - `[MetricName <String>]`: the metric that the query is checking
-
-`UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>`: 
-  - `[Description <String>]`: Instruction step description
-  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
-    - `Type <SettingType>`: The kind of the setting
-    - `[Parameter <IAny>]`: The parameters for the setting
-  - `[Title <String>]`: Instruction step title
-
-`UICONFIGSAMPLEQUERY <SampleQueries[]>`: 
-  - `[Description <String>]`: The sample query description
-  - `[Query <String>]`: the sample query
 
 ## RELATED LINKS
 

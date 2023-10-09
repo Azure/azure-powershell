@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAutomationRu
 
 Describe 'Update-AzSentinelAutomationRule' {
     It 'UpdateExpanded' {
-        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
         $automationRuleAction.Order = 1
         $automationRuleAction.ActionType = "RunPlaybook"
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId
@@ -27,7 +27,7 @@ Describe 'Update-AzSentinelAutomationRule' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+        $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
         $automationRuleAction.Order = 1
         $automationRuleAction.ActionType = "RunPlaybook"
         $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook4LogicAppResourceId

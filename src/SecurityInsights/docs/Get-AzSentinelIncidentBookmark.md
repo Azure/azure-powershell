@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelIncidentBookmark
 
 ## SYNOPSIS
-Gets all incident bookmarks.
+Gets all bookmarks for an incident.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzSentinelIncidentBookmark -IncidentId <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Gets all incident bookmarks.
+Gets all bookmarks for an incident.
 
 ## EXAMPLES
 
@@ -157,11 +157,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentBookmarkList
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

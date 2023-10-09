@@ -30,6 +30,12 @@ Get-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
+### GetViaIdentityWorkspace
+```
+Get-AzSentinelBookmark -Id <String> -WorkspaceInputObject <ISecurityInsightsIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a bookmark.
 
@@ -37,33 +43,84 @@ Gets a bookmark.
 
 ### Example 1: List all Bookmarks
 ```powershell
- Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+Get-AzSentinelBookmark -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws"
 ```
 
 ```output
-DisplayName    	: SecurityAlert - 28b401e1e0c9
-CreatedByEmail	: john@contoso.com
-CreatedByName  	: John Contoso
-Label          	: {}
-Note           	: This needs further investigation
-Name           	: 515fc035-2ed8-4fa1-ad7d-28b401e1e0c9
-
+Created                      : 8/2/2023 9:34:31 AM
+CreatedByEmail               : v-jiaji@microsoft.com
+CreatedByName                : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
+DisplayName                  : Incident Evidence
+Etag                         : "5a0a5305-0000-0100-0000-64ca23270000"
+EventTime                    : 8/2/2023 9:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/prov 
+                               iders/Microsoft.SecurityInsights/Bookmarks/70aaef57-7165-444b-959d-67e6668d57d0
+IncidentInfoIncidentId       : 
+IncidentInfoRelationName     : 
+IncidentInfoSeverity         : 
+IncidentInfoTitle            : 
+Label                        : {}
+Name                         : 70aaef57-7165-444b-959d-67e6668d57d0
+Note                         : 
+Query                        : SecurityEvent | take 1
+QueryEndTime                 : 8/2/2023 9:00:00 AM
+QueryResult                  : 
+QueryStartTime               : 8/1/2023 9:00:00 AM
+ResourceGroupName            : si-jj-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.SecurityInsights/Bookmarks
+Updated                      : 8/2/2023 9:34:31 AM
+UpdatedByEmail               : v-jiaji@microsoft.com
+UpdatedByName                : Joyer Jin (Wicresoft North America Ltd)
+UpdatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
 ```
 
 This command lists all Bookmarks under a Microsoft Sentinel workspace.
 
 ### Example 2: Get a Bookmark
 ```powershell
- Get-AzSentinelBookmark -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "515fc035-2ed8-4fa1-ad7d-28b401e1e0c9"
+Get-AzSentinelBookmark -ResourceGroupName "si-jj-test" -WorkspaceName "si-test-ws" -Id "70aaef57-7165-444b-959d-67e6668d57d0"
 ```
 
 ```output
-DisplayName    	: SecurityAlert - 28b401e1e0c9
-CreatedByEmail	: john@contoso.com
-CreatedByName  	: John Contoso
-Label          	: {}
-Note           	: This needs further investigation
-Name           	: 515fc035-2ed8-4fa1-ad7d-28b401e1e0c9
+Created                      : 8/2/2023 9:34:31 AM
+CreatedByEmail               : v-jiaji@microsoft.com
+CreatedByName                : Joyer Jin (Wicresoft North America Ltd)
+CreatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
+DisplayName                  : Incident Evidence
+Etag                         : "5a0a5305-0000-0100-0000-64ca23270000"
+EventTime                    : 8/2/2023 9:00:00 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/si-jj-test/providers/Microsoft.OperationalInsights/workspaces/si-test-ws/prov 
+                               iders/Microsoft.SecurityInsights/Bookmarks/70aaef57-7165-444b-959d-67e6668d57d0
+IncidentInfoIncidentId       : 
+IncidentInfoRelationName     : 
+IncidentInfoSeverity         : 
+IncidentInfoTitle            : 
+Label                        : {}
+Name                         : 70aaef57-7165-444b-959d-67e6668d57d0
+Note                         : 
+Query                        : SecurityEvent | take 1
+QueryEndTime                 : 8/2/2023 9:00:00 AM
+QueryResult                  : 
+QueryStartTime               : 8/1/2023 9:00:00 AM
+ResourceGroupName            : si-jj-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.SecurityInsights/Bookmarks
+Updated                      : 8/2/2023 9:34:31 AM
+UpdatedByEmail               : v-jiaji@microsoft.com
+UpdatedByName                : Joyer Jin (Wicresoft North America Ltd)
+UpdatedByObjectId            : 6205f759-1234-453c-9712-34d7671bceff
 ```
 
 This command gets a Bookmark.
@@ -91,7 +148,7 @@ Bookmark ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases: BookmarkId
 
 Required: True
@@ -148,6 +205,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: GetViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkspaceName
 The name of the workspace.
 
@@ -172,40 +245,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
 
 ## RELATED LINKS
 
