@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             NetworkRuleSet = new List<PSIpRule>();
             if (searchService.NetworkRuleSet != null)
             {
-                NetworkRuleSet = searchService.NetworkRuleSet.IpRules.Select(ipRule => (PSIpRule)ipRule).ToList();
+                NetworkRuleSet = searchService.NetworkRuleSet.IPRules.Select(ipRule => (PSIpRule)ipRule).ToList();
             }
 
             PrivateEndpointConnections = new List<PSPrivateEndpointConnection>();
