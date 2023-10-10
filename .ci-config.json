@@ -119,7 +119,7 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/*/UX/*/*.json$"
+        "src/{ModuleName}/*UX/*.json$"
       ],
       "phases": [
         "build:module",
@@ -145,15 +145,7 @@
       "patterns": [
         "tools/StaticAnalysis/Exceptions/{ModuleName}/*"
       ],
-      "phases": [
-        "build:module",
-        "breaking-change:module",
-        "help:module",
-        "signature:module",
-        "file-change:module",
-        "ux:module",
-        "cmdlet-diff:module"
-      ]
+      "phases": []
     },
     {
       "patterns": [
