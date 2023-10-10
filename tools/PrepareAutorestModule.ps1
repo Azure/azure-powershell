@@ -118,7 +118,7 @@ foreach ($Module in $ModuleList)
     $subModuleFolders =  Get-ChildItem -path $RootModuleFolder -Directory -Filter *.Autorest
     if ($null -eq $subModuleFolders) {
         write-host "autogen module"
-        Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src
+        # Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src
     } else {
         #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
         Write-Host "hybrid module"
