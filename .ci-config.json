@@ -143,6 +143,20 @@
     },
     {
       "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/*"
+      ],
+      "phases": [
+        "build:module",
+        "breaking-change:module",
+        "help:module",
+        "signature:module",
+        "file-change:module",
+        "ux:module",
+        "cmdlet-diff:module"
+      ]
+    },
+    {
+      "patterns": [
         "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/MissingAssemblies.csv",
         "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/AssemblyVersionConflict.csv",
         "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/ExtraAssemblies.csv",
