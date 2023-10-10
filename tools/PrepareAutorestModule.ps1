@@ -122,7 +122,7 @@ foreach ($Module in $ModuleList)
     } else {
         #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
         Write-Host "hybrid module"
-        # Move-Generation2MasterHybrid -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
+        Move-Generation2MasterHybrid -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
     }
     Set-Location -Path $TmpFolder
     Remove-Item "$RootModuleFolder\*" -Recurse -Force
