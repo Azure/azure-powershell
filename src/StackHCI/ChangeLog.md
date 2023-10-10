@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Reverted remove CustomIMDSHost
 
 ## Version 2.2.1
 * Added changes to selectively enable ARC.
