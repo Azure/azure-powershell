@@ -21,6 +21,7 @@ jobs:
   pool: pool-windows-2019
   steps:
   - checkout: self
+  - template: util/get-github-pat-steps.yml
   - task: NodeTool@0
     displayName: Use Node 14.15.5
     inputs:
@@ -44,16 +45,6 @@ jobs:
           $subModuleFolders | foreach-object { cd $_.FullName; autorest --max-memory-size=8192};
         }
       workingDirectory: src/${{ parameters.ServiceName }}
-
-  - task: AzurePowerShell@5
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      ScriptType: 'InlineScript'
-      Inline: |
-        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-      azurePowerShellVersion: 'LatestVersion'
-    displayName: Get Github PAT from Key Vault
 
   - task: PowerShell@2
     displayName: Build
