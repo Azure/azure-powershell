@@ -1274,7 +1274,7 @@ function Test-PublishAzureWebAppOnedeploy
         New-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rgname -ResourceType Microsoft.Web/sites/config -ResourceName "$appName/web" -ApiVersion 2018-02-01 -Force
 
 		$warPath = Join-Path $ResourcesPath "HelloJava.war"
-		$publishedApp = Publish-AzWebApp -ResourceGroupName $rgname -Name $appName -ArchivePath $warPath -Type war -Clean $true -TargetPath /home/site/wwwroot/webapps/ROOT -Force
+		$publishedApp = Publish-AzWebApp -ResourceGroupName:$rgname -Name:$appName -ArchivePath:$warPath -Type:war -Clean:$true -TargetPath:/home/site/wwwroot/webapps/ROOT -Force
 
 		Assert-NotNull $publishedApp
 	}

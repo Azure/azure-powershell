@@ -64,7 +64,7 @@ function Install-AzModule_Default {
     process {
         Write-Progress -Id $script:FixProgressBarId "Find modules on $Repository."
 
-        $Name = Normalize-ModuleName $Name
+        $Name = Normalize-ModuleName $Name -ErrorVariable +errorRecords
         $findModuleParams = @{
             Name = $Name
             AllowPrerelease = $AllowPrerelease
@@ -79,7 +79,7 @@ function Install-AzModule_Default {
         }
 
         $modules = @()
-        $modules += Get-AzModuleFromRemote @findModuleParams | Sort-Object -Property Name
+        $modules += Get-AzModuleFromRemote @findModuleParams -ErrorVariable +errorRecords | Sort-Object -Property Name
         if ($modules) {
             $Repository = $modules.Repository | Select-Object -First 1
         }
@@ -89,17 +89,17 @@ function Install-AzModule_Default {
             if ($moduleExcluded) {
                 $azVersion = if ($RequiredAzVersion) {$RequiredAzVersion} else {"Latest"}
                 $Repository = if ($Repository) {$Repository} else {'the registered repositories'}
-                Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version."
+                Write-Error "[$Invoker] The following specified modules:$moduleExcluded cannot be found in $Repository with the $azVersion version." -ErrorVariable +errorRecords
             }
         }
 
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
             Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
-            Remove-AzureRM
+            Remove-AzureRM -ErrorVariable +errorRecords
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
+            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue -ErrorVariable +errorRecords
         }
 
         if ($modules) {
@@ -118,7 +118,7 @@ function Install-AzModule_Default {
                 Force = $Force
                 Invoker = $Invoker
             }
-            $output = Install-AzModuleInternal @installModuleParams
+            $output = Install-AzModuleInternal @installModuleParams -ErrorVariable +errorRecords
 
             if (!$WhatIfPreference -and $output) {
                 Write-Output $output

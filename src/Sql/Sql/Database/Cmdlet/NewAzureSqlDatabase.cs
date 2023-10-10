@@ -289,6 +289,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         /// <summary>
+        /// Gets or sets the value indicating if free limit will be used on this database
+        /// </summary>
+        [Parameter(Mandatory = false, 
+            HelpMessage = "Use free limit on this database.")]
+        public SwitchParameter UseFreeLimit { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the exhaustion behavior of database if free limit is selected
+        /// </summary>
+        [Parameter(Mandatory = false, 
+        HelpMessage = "Exhaustion behavior of free limit database.")]
+        [PSArgumentCompleter(
+            "AutoPause",
+            "BillOverUsage")]
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -378,7 +396,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId,
-                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null,
+                UseFreeLimit = this.IsParameterBound(p => p.UseFreeLimit) ? UseFreeLimit.ToBool() : (bool?)null,
+                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

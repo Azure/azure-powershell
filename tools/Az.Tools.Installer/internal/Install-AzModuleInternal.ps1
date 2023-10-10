@@ -60,14 +60,14 @@ function Install-AzModuleInternal {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
                 #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
                 if (Test-Path -Path $tempRepo) {
-                    Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
+                    Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false -ErrorVariable errorRecords
                 }
-                $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
+                $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false -ErrorVariable errorRecords
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop'
-                PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
+                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue' -ErrorVariable errorRecords
+                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable errorRecords
+                PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted -ErrorVariable errorRecords
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
                 $InstallStarted = Get-Date
@@ -126,7 +126,7 @@ function Install-AzModuleInternal {
                     if ($confirmUninstallation) {
                         PowerShellGet\Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
-                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)"
+                    PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)" -ErrorVariable +errorRecords
                 }
                 $moduleInstalled += [PSCustomObject]@{
                     Name = "Az.Accounts"
@@ -171,14 +171,15 @@ function Install-AzModuleInternal {
                                 Import-Module PackageManagement
                                 Import-Module PowerShellGet -MinimumVersion 2.1.3 -MaximumVersion 3.0.0.0 -Scope Global
                                 if ($RemovePrevious) {
-                                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
+                                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue' -ErrorVariable +errorRecords
                                 }
-                                PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion"
+                                PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion" -ErrorVariable +errorRecords
                                 $state = "succeeded"
                             }
                             catch {
                                 $state = "failed"
                                 $errorString = $_
+                                Write-Error $errorString -ErrorVariable +errorRecords
                             }
                             finally {
                                 Write-Output @{
@@ -204,9 +205,9 @@ function Install-AzModuleInternal {
                             $jobs  += Start-ThreadJob -Name "Az.Tools.Installer" -InitializationScript $functions -ScriptBlock {
                                 $tmodule = $using:module
                                 $tInstallModuleParam = $using:installModuleParams
-                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
+                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation) -ErrorVariable +errorRecords
                                 Write-Output $result
-                            } -ThrottleLimit $maxJobCount
+                            } -ThrottleLimit $maxJobCount -ErrorVariable +errorRecords
                         }
                     }
                     else {
@@ -229,7 +230,7 @@ function Install-AzModuleInternal {
                             $jobs += Start-Job -Name "Az.Tools.Installer"  -InitializationScript $functions -ScriptBlock {
                                 $tmodule = $using:module
                                 $tInstallModuleParam = $using:installModuleParams
-                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
+                                $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation) -ErrorVariable +errorRecords
                                 Write-Output $result
                             }
                             Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -Status "$($module.Name) version $($module.Version)" -PercentComplete ($index / $modules.Count * 100)
@@ -254,9 +255,9 @@ function Install-AzModuleInternal {
                             }
                         }
                         else {
-                            Write-Error "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is failed. `n$($result.Error)"
+                            Write-Error "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is failed. `n$($result.Error)" -ErrorVariable +errorRecords
                         }
-                        Remove-Job $job -Confirm:$false
+                        Remove-Job $job -Confirm:$false -ErrorVariable +errorRecords
                         if ($PSVersionTable.PSEdition -eq "Core") {
                             Write-Progress -ParentId $script:FixProgressBarId -Activity "Install Module" -Status "$($result.ModuleName) of version $($result.ModuleVersion)" -PercentComplete ($index / $jobs.Count * 100)
                             $index += 1
@@ -270,7 +271,7 @@ function Install-AzModuleInternal {
                 $jobs = Get-Job -Name "Az.Tools.Installer" -ErrorAction 'SilentlyContinue'
                 if ($jobs) {
                     Stop-Job $jobs
-                    Remove-Job $jobs -Confirm:$false
+                    Remove-Job $jobs -Confirm:$false -ErrorVariable +errorRecords
                 }
             }
 
@@ -281,11 +282,11 @@ function Install-AzModuleInternal {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
                     Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
-                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
+                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue' -ErrorVariable +errorRecords
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     if (Test-Path -Path $tempRepo) {
-                        Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
+                        Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false -ErrorVariable +errorRecords
                     }
                 }
             }

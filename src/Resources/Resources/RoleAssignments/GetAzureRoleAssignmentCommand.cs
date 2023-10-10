@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -240,16 +239,11 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription?.Id?.ToString()
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
             };
-
-            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
-            {
-                WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
-            }
 
             AuthorizationClient.ValidateScope(options.Scope, true);
 
