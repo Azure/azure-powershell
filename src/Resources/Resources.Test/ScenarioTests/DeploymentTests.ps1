@@ -933,6 +933,51 @@ function Test-NewDeploymentFromBicepparamFileOnly
 
 <#
 .SYNOPSIS
+Tests deployment via .bicepparam file with inline parameter overrides.
+#>
+function Test-NewDeploymentFromBicepparamFileWithOverrides
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+	  $expectedAllOutput = @'
+{
+  "array": [
+    "abc"
+  ],
+  "string": "hello",
+  "object": {
+    "def": "ghi"
+  },
+  "int": 42,
+  "bool": true
+}
+'@ | ConvertFrom-Json
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithParamOverrides.bicepparam `
+          -myArray @("abc") -myObject @{"def" = "ghi";} -myString "hello" -myInt 42 -myBool $true
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $actualAllOutput = $deployment.Outputs["all"].Value.ToString() | ConvertFrom-Json
+        Assert-AreEqual ($expectedAllOutput | ConvertTo-Json) ($actualAllOutput | ConvertTo-Json)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 is running live in target environment
 #>
 function IsLive
