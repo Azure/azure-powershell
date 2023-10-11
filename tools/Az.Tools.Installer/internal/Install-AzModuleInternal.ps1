@@ -128,7 +128,7 @@ function Install-AzModuleInternal {
                         PowerShellGet\Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
                     PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)"
-                    Update-ModuleInstallationRepository -ModuleName "Az.Accounts" -Version $modules[0].Version -Repository $Repository
+                    Update-ModuleInstallationRepository -ModuleName "Az.Accounts" -InstalledVersion "$($modules[0].Version)" -Repository $Repository
                 }
                 $moduleInstalled += [PSCustomObject]@{
                     Name = "Az.Accounts"
@@ -255,7 +255,7 @@ function Install-AzModuleInternal {
                                 Name = $result.ModuleName
                                 Version = ($result.ModuleVersion | Select-Object -First 1)
                             }
-                            Update-ModuleInstallationRepository -ModuleName $result.ModuleName -Version $result.ModuleVersion -Repository $Repository
+                            Update-ModuleInstallationRepository -ModuleName $result.ModuleName -InstalledVersion $result.ModuleVersion[0] -Repository $Repository
                         }
                         else {
                             Write-Error "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is failed. `n$($result.Error)"

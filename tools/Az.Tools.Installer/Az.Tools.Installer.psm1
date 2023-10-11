@@ -433,7 +433,7 @@ function Update-ModuleInstallationRepository {
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         [Version]
-        ${Version},
+        ${InstalledVersion},
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -443,7 +443,7 @@ function Update-ModuleInstallationRepository {
 
     process {
         try {
-            $moduleBase = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $Version}).ModuleBase
+            $moduleBase = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $InstalledVersion}).ModuleBase
             $moduleInfoFile = Join-Path -Path $moduleBase -ChildPath 'PSGetModuleInfo.xml'
             Write-Debug "Checking file: $moduleInfoFile"
             $xmlText = Get-Content $moduleInfoFile
