@@ -6,13 +6,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50f6763e-ff2a-4896-bf4b-26540beea72b"
+          "eeadc0e8-b091-4754-bba4-3363c9f134cf"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2223.42425",
+          "FxVersion/6.0.2323.48002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.12.0"
@@ -36,22 +36,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11971"
+          "11992"
         ],
         "x-ms-request-id": [
-          "c15c9cc1-77b6-4f20-9d4c-383f0811ccc8"
+          "12c86066-7684-4278-bebc-fdc64273bc01"
         ],
         "x-ms-correlation-request-id": [
-          "c15c9cc1-77b6-4f20-9d4c-383f0811ccc8"
+          "12c86066-7684-4278-bebc-fdc64273bc01"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20231008T081635Z:c15c9cc1-77b6-4f20-9d4c-383f0811ccc8"
+          "CENTRALINDIA:20231011T053524Z:12c86066-7684-4278-bebc-fdc64273bc01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 08 Oct 2023 08:16:35 GMT"
+          "Wed, 11 Oct 2023 05:35:23 GMT"
         ],
         "Content-Length": [
           "22190"
@@ -69,13 +69,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8012aa1b-9a54-479f-af44-8435c9dda3c9"
+          "87b7fbdd-cb36-4baf-a53b-94c2dddc423b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2223.42425",
+          "FxVersion/6.0.2323.48002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.12.0"
@@ -99,22 +99,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11993"
         ],
         "x-ms-request-id": [
-          "3c1757dc-99bc-4ad6-80ab-6f705fb833b3"
+          "969ef02e-880b-4188-9ed2-9897adc8a80d"
         ],
         "x-ms-correlation-request-id": [
-          "3c1757dc-99bc-4ad6-80ab-6f705fb833b3"
+          "969ef02e-880b-4188-9ed2-9897adc8a80d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20231008T081638Z:3c1757dc-99bc-4ad6-80ab-6f705fb833b3"
+          "CENTRALINDIA:20231011T053526Z:969ef02e-880b-4188-9ed2-9897adc8a80d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 08 Oct 2023 08:16:37 GMT"
+          "Wed, 11 Oct 2023 05:35:26 GMT"
         ],
         "Content-Length": [
           "408"
