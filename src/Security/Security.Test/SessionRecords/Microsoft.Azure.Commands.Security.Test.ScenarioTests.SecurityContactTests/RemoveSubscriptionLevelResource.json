@@ -6,13 +6,13 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8a2d5b8e-0721-4f11-8a48-b6170ec7ad10"
+          "b7dadf65-7b03-42e2-8418-f00ac9802927"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2223.42425",
+          "FxVersion/6.0.2323.48002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -42,13 +42,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "07f75ea5-af54-4623-8871-1500187b17ce"
+          "d489a4c0-2217-4a1b-af68-e174274eda9b"
         ],
         "x-ms-correlation-request-id": [
-          "07f75ea5-af54-4623-8871-1500187b17ce"
+          "d489a4c0-2217-4a1b-af68-e174274eda9b"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20230928T144434Z:07f75ea5-af54-4623-8871-1500187b17ce"
+          "FRANCESOUTH:20231011T082929Z:d489a4c0-2217-4a1b-af68-e174274eda9b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,7 +57,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 28 Sep 2023 14:44:34 GMT"
+          "Wed, 11 Oct 2023 08:29:29 GMT"
         ],
         "Content-Length": [
           "434"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"notificationsByRole\": {\r\n      \"state\": \"On\",\r\n      \"roles\": [\r\n        \"Owner\"\r\n      ]\r\n    },\r\n    \"emails\": \"ascasc@microsoft.com\",\r\n    \"phone\": \"123123123\",\r\n    \"alertNotifications\": {\r\n      \"state\": \"On\",\r\n      \"minimalSeverity\": \"High\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/securityContacts\",\r\n  \"etag\": \"\\\"040030c1-0000-0d00-0000-651591520000\\\"\",\r\n  \"location\": \"West Europe\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"notificationsByRole\": {\r\n      \"state\": \"On\",\r\n      \"roles\": [\r\n        \"Owner\"\r\n      ]\r\n    },\r\n    \"emails\": \"ascasc@microsoft.com\",\r\n    \"phone\": \"123123123\",\r\n    \"alertNotifications\": {\r\n      \"state\": \"On\",\r\n      \"minimalSeverity\": \"High\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/securityContacts\",\r\n  \"etag\": \"\\\"3200788f-0000-0d00-0000-65265ce90000\\\"\",\r\n  \"location\": \"West Europe\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -78,13 +78,13 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "92c0391f-c6b6-400f-9aa7-4c2c297bd9c8"
+          "36f34874-6d65-4c82-ad0f-10c2f4ea0370"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2223.42425",
+          "FxVersion/6.0.2323.48002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "api-supported-versions": [
           "2020-01-01-preview"
@@ -108,13 +108,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "7de82352-c981-420e-bf47-ed74b0bbd2d1"
+          "ee4afe90-06f0-45ff-8543-b605bdaf50ed"
         ],
         "x-ms-correlation-request-id": [
-          "7de82352-c981-420e-bf47-ed74b0bbd2d1"
+          "ee4afe90-06f0-45ff-8543-b605bdaf50ed"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20230928T144436Z:7de82352-c981-420e-bf47-ed74b0bbd2d1"
+          "FRANCESOUTH:20231011T082931Z:ee4afe90-06f0-45ff-8543-b605bdaf50ed"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +123,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 28 Sep 2023 14:44:35 GMT"
+          "Wed, 11 Oct 2023 08:29:30 GMT"
         ],
         "Content-Length": [
           "2"
