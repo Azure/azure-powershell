@@ -73,6 +73,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSLoadBalancerBackendAddress[] LoadBalancerBackendAddress { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sync mode of the backend pool.")]
+        [PSArgumentCompleter(
+            "Automatic",
+            "Manual"
+        )]
+        [ValidateNotNullOrEmpty]
+        public string SyncMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The virtual network associated with the backend pool.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualNetworkId { get; set; }
+
         public override void Execute()
         {
 
@@ -126,6 +142,20 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        private void SetVnetIdAndSyncMode(BackendAddressPool backendAddressPool)
+        {
+            if (this.SyncMode != null)
+            {
+                if (this.VirtualNetworkId == null)
+                {
+                    throw new ArgumentException("VirtualNetworkId must not be null when SyncMode is specified.");
+                }
+
+                backendAddressPool.SyncMode = this.SyncMode;
+                backendAddressPool.VirtualNetwork = new SubResource(this.VirtualNetworkId);
+            }
+        }
+
         private PSBackendAddressPool CreatePsBackendPool()
         {
             var backendAddressPool = new BackendAddressPool();
@@ -142,6 +172,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            this.SetVnetIdAndSyncMode(backendAddressPool);
             this.AddTunnelInterfacesToPool(backendAddressPool);
             var loadBalancerBackendAddressPool = this.NetworkClient.NetworkManagementClient.LoadBalancerBackendAddressPools.CreateOrUpdate(this.ResourceGroupName, this.LoadBalancerName, this.Name, backendAddressPool);
             var loadBalancerBackendAddressPoolModel = NetworkResourceManagerProfile.Mapper.Map<PSBackendAddressPool>(loadBalancerBackendAddressPool);
