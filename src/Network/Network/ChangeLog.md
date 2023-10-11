@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
+	- `Set-AzApplicationGatewayListener`
+	- `Add-AzApplicationGatewayListener`
+	- `New-AzApplicationGatewayListener`
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
