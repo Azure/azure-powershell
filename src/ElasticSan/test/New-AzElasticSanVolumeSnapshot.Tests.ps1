@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticSanVolume'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSanVolumeSnapshot'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzElasticSanVolume.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzElasticSanVolumeSnapshot.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,20 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticSanVolume'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzElasticSanVolume' {
-    It 'Delete' -skip {
+Describe 'New-AzElasticSanVolumeSnapshot' {
+    It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentityVolumegroup' -skip {
+    It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentityElasticSan' -skip {
+    It 'CreateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'CreateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
