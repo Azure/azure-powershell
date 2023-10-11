@@ -1651,3 +1651,147 @@ function Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState
         Clean-ResourceGroup $rgname
      }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway traffic block preferences that may be configured by customers
+#>
+function Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "centraluseuap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the virtual network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+        # Create the public IP
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static 
+
+        # Create & Get virtual network gateway
+        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+        $createdGateway = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance
+        
+        # Brand-new gateway validations
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $retrievedGateway.ResourceGroupName $createdGateway.ResourceGroupName	
+        Assert-AreEqual $retrievedGateway.Name $createdGateway.Name	
+        Assert-AreEqual "ExpressRoute" $retrievedGateway.GatewayType
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Update vnet-to-vWAN
+        $retrievedGateway.AllowVirtualWanTraffic = $true
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Update vnet-to-vnet
+        $retrievedGateway.AllowRemoteVnetTraffic = $true
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "True" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Reset all
+        $retrievedGateway.AllowVirtualWanTraffic = $false
+        $retrievedGateway.AllowRemoteVnetTraffic = $false
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+} 
+
+<#
+.SYNOPSIS
+Virtual network gateway traffic block preferences that may be configured by customers
+#>
+function Test-HelloWorld
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "centraluseuap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the virtual network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+        # Create the public IP
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static 
+
+        # Create & Get virtual network gateway
+        $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+        $createdGateway = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance
+        
+        # Brand-new gateway validations
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual $retrievedGateway.ResourceGroupName $createdGateway.ResourceGroupName	
+        Assert-AreEqual $retrievedGateway.Name $createdGateway.Name	
+        Assert-AreEqual "ExpressRoute" $retrievedGateway.GatewayType
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Update vnet-to-vWAN
+        $retrievedGateway.AllowVirtualWanTraffic = $true
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Update vnet-to-vnet
+        $retrievedGateway.AllowRemoteVnetTraffic = $true
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "True" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+
+        # Reset all
+        $retrievedGateway.AllowVirtualWanTraffic = $false
+        $retrievedGateway.AllowRemoteVnetTraffic = $false
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
+        $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

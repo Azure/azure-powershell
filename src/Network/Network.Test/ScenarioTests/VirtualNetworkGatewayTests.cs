@@ -188,5 +188,21 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayCRUDwithAdminState");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestVirtualNetworkExpressRouteGatewayUpdatesForDifferentCustomerBlockTrafficPreferences()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestHelloWorld()
+        {
+            TestRunner.RunTestScript("Test-HelloWorld");
+        }
+
     }
 }
