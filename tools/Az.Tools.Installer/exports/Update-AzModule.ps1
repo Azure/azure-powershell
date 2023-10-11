@@ -119,7 +119,7 @@ function Update-AzModule {
             }
 
             if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-                Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue -ErrorVariable +errorRecords
+                Uninstall-Module -Name 'Az' -AllVersion -ErrorAction 'SilentlyContinue'
             }
 
             if ($moduleUpdateTable) {
