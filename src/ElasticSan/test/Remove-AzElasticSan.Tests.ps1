@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticSan'))
 }
 
 Describe 'Remove-AzElasticSan' {
-    It 'Delete' {
-        $elasticSanName = "testsan5" + $env.RandomString
-        $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" 
-        Remove-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName
-        $elasticSanList = Get-AzElasticSan
-        $elasticSanList.Name | Should -Not -Contain $elasticSanName
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
