@@ -223,7 +223,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         if ($sourceSiteId -match $hyperVSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
         }
-        elseif ($sourceSiteId -match $vmwareSiteTypeRegex -and $targetSiteId -match $vmwareSiteTypeRegex) {
+        elseif ($sourceSiteId -match $vmwareSiteTypeRegex -and $targetSiteId -match $hyperVSiteTypeRegex) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
         }
         else {
