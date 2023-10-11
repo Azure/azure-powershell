@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="4" not-run="0" inconclusive="0" ignored="95" skipped="0" invalid="0" date="2023-06-06" time="11:14:20">
+  <environment nunit-version="2.5.8.0" user-domain="REDMOND" clr-version="Unknown" cwd="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest" platform="Microsoft Windows 10 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" user="havedati" os-version="10.0.19045" machine-name="HAVEDATI-DEV" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="175.0827" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Add-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="1.3144" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Add-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzStackHCIVMVirtualMachineDataDisk" executed="True" result="Ignored" success="True" time="0.817" asserts="0" description="Add-AzStackHCIVMVirtualMachineDataDisk">
+            <results>
+              <test-case description="ByResourceId" name="Add-AzStackHCIVMVirtualMachineDataDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Add-AzStackHCIVMVirtualMachineDataDisk.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-IpConfigrations.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3201" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-IpConfigrations.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-IpConfigrations" executed="True" result="Ignored" success="True" time="0.0615" asserts="0" description="Confirm-IpConfigrations">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-IpConfigrations.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-IpPools.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2855" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-IpPools.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-IpPools" executed="True" result="Ignored" success="True" time="0.055" asserts="0" description="Confirm-IpPools">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-IpPools.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-Routes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2744" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-Routes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-Routes" executed="True" result="Ignored" success="True" time="0.0608" asserts="0" description="Confirm-Routes">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-Routes.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-Subnets.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2786" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Confirm-Subnets.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-Subnets" executed="True" result="Ignored" success="True" time="0.0633" asserts="0" description="Confirm-Subnets">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-Subnets.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.323" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.1107" asserts="0" description="Get-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMGalleryImage.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMGalleryImage.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMGalleryImage.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMGalleryImage.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3292" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.0774" asserts="0" description="Get-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMGuestAgent.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMGuestAgent.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMGuestAgent.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2627" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0475" asserts="0" description="Get-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMHybridIdentityMetadata.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMHybridIdentityMetadata.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMHybridIdentityMetadata.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3008" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMImage" executed="True" result="Ignored" success="True" time="0.114" asserts="0" description="Get-AzStackHCIVMImage">
+            <results>
+              <test-case description="BySubscription" name="Get-AzStackHCIVMImage.BySubscription" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Get-AzStackHCIVMImage.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByResourceGroup" name="Get-AzStackHCIVMImage.ByResourceGroup" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ListAllSupportedImages" name="Get-AzStackHCIVMImage.ListAllSupportedImages" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ListImagesByOffer" name="Get-AzStackHCIVMImage.ListImagesByOffer" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ListImagesByPublisher" name="Get-AzStackHCIVMImage.ListImagesByPublisher" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ListImagesBySku" name="Get-AzStackHCIVMImage.ListImagesBySku" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMImage.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2797" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0584" asserts="0" description="Get-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMMachineExtension.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMMachineExtension.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMMachineExtension.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2942" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0698" asserts="0" description="Get-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMMarketplaceGalleryImage.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMMarketplaceGalleryImage.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMMarketplaceGalleryImage.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMMarketplaceGalleryImage.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2933" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.0579" asserts="0" description="Get-AzStackHCIVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMNetworkInterface.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMStoragePath.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2739" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMStoragePath" executed="True" result="Ignored" success="True" time="0.0548" asserts="0" description="Get-AzStackHCIVMStoragePath">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMStoragePath.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2521" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0544" asserts="0" description="Get-AzStackHCIVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualHardDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2231" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0374" asserts="0" description="Get-AzStackHCIVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3112" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Get-AzStackHCIVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0565" asserts="0" description="Get-AzStackHCIVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualNetwork.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.252" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0723" asserts="0" description="New-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMGalleryImage.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2636" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.0508" asserts="0" description="New-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMGuestAgent.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3078" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0584" asserts="0" description="New-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMHybridIdentityMetadata.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMImage.Tests.ps1" executed="True" result="Failure" success="False" time="156.8857" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMImage" executed="True" result="Failure" success="False" time="156.6446" asserts="0" description="New-AzStackHCIVMImage">
+            <results>
+              <test-case description="MarketplaceURN" name="New-AzStackHCIVMImage.MarketplaceURN" time="32.8674" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Failed to fetch SAS token for the URN: microsoftwindowsserver:windowsserver:2022-datacenter-azure-edition-core:latest. Status code: NotFound, Error details: {"error":{"code":"NotFound","message":"Resource not found.","details":[{"code":"ResourceNotFound","message":"Requested resource not found."}],"internal":false,"inner":null}}</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\custom\New-AzStackHCIVMImage.ps1: line 215
+215:             return Az.StackHCIVM\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="GalleryImage" name="New-AzStackHCIVMImage.GalleryImage" time="62.3862" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Marketplace" name="New-AzStackHCIVMImage.Marketplace" time="61.0706" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.4125" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0629" asserts="0" description="New-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMMachineExtension.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2506" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0377" asserts="0" description="New-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMMarketplaceGalleryImage.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMNetworkInterface.Tests.ps1" executed="True" result="Failure" success="False" time="0.4547" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMNetworkInterface" executed="True" result="Failure" success="False" time="0.2184" asserts="0" description="New-AzStackHCIVMNetworkInterface">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHCIVMNetworkInterface.CreateExpanded" time="0.1426" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing recording file: 'E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMNetworkInterface.Recording.json' (Parameter 'recordingPath')</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\custom\New-AzStackHCIVMVirtualNetwork_New.ps1: line 366
+366:     return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualNetwork @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMNetworkInterfaceIpConfig.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3108" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMNetworkInterfaceIpConfig.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMNetworkInterfaceIpConfig" executed="True" result="Ignored" success="True" time="0.0872" asserts="0" description="New-AzStackHCIVMNetworkInterfaceIpConfig">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzStackHCIVMNetworkInterfaceIpConfig.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMStoragePath.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2221" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMStoragePath" executed="True" result="Ignored" success="True" time="0.0349" asserts="0" description="New-AzStackHCIVMStoragePath">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHCIVMStoragePath.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualHardDisk.Tests.ps1" executed="True" result="Failure" success="False" time="0.3253" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualHardDisk" executed="True" result="Failure" success="False" time="0.1344" asserts="0" description="New-AzStackHCIVMVirtualHardDisk">
+            <results>
+              <test-case description="Create" name="New-AzStackHCIVMVirtualHardDisk.Create" time="0.0811" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing recording file: 'E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualHardDisk.Recording.json' (Parameter 'recordingPath')</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\custom\New-AzStackHCIVMVirtualHardDisk_New.ps1: line 251
+251:         return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualHardDisk @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2673" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0674" asserts="0" description="New-AzStackHCIVMVirtualMachine">
+            <results>
+              <test-case description="ByImageId" name="New-AzStackHCIVMVirtualMachine.ByImageId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByImageName" name="New-AzStackHCIVMVirtualMachine.ByImageName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByOsDiskId" name="New-AzStackHCIVMVirtualMachine.ByOsDiskId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByOsDiskName" name="New-AzStackHCIVMVirtualMachine.ByOsDiskName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualNetwork.Tests.ps1" executed="True" result="Failure" success="False" time="0.3249" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualNetwork" executed="True" result="Failure" success="False" time="0.095" asserts="0" description="New-AzStackHCIVMVirtualNetwork">
+            <results>
+              <test-case description="Create" name="New-AzStackHCIVMVirtualNetwork.Create" time="0.0234" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Missing recording file: 'E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\New-AzStackHCIVMVirtualNetwork.Recording.json' (Parameter 'recordingPath')</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\custom\New-AzStackHCIVMVirtualNetwork_New.ps1: line 366
+366:     return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualNetwork @PSBoundParameters
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3171" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0745" asserts="0" description="Remove-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMGalleryImage.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMGalleryImage.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2635" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.046" asserts="0" description="Remove-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMGuestAgent.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMGuestAgent.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2971" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0812" asserts="0" description="Remove-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMHybridIdentityMetadata.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMHybridIdentityMetadata.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHCIVMImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.246" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHCIVMImage" executed="True" result="Ignored" success="True" time="0.0405" asserts="0" description="Remove-AzStackHCIVMImage">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHCIVMImage.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Remove-AzStackHCIVMImage.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2702" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0524" asserts="0" description="Remove-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMMachineExtension.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMMachineExtension.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2175" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0425" asserts="0" description="Remove-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMMarketplaceGalleryImage.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMMarketplaceGalleryImage.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2405" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.0367" asserts="0" description="Remove-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMNetworkInterface.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMStoragePath.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2583" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMStoragePath" executed="True" result="Ignored" success="True" time="0.0368" asserts="0" description="Remove-AzStackHciVMStoragePath">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMStoragePath.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2409" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0374" asserts="0" description="Remove-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualHardDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2469" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0363" asserts="0" description="Remove-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2526" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHCIVMVirtualMachineDataDisk" executed="True" result="Ignored" success="True" time="0.0388" asserts="0" description="Remove-AzStackHCIVMVirtualMachineDataDisk">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHCIVMVirtualMachineDataDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Remove-AzStackHCIVMVirtualMachineDataDisk.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2695" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Remove-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0568" asserts="0" description="Remove-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualNetwork.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Restart-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2437" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Restart-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0363" asserts="0" description="Restart-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Restart-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2462" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0579" asserts="0" description="Set-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2277" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0362" asserts="0" description="Set-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMMachineExtension.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2492" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0578" asserts="0" description="Set-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMMarketplaceGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2694" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.0605" asserts="0" description="Set-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMNetworkInterface.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMStorageContainer.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2923" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMStorageContainer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMStorageContainer" executed="True" result="Ignored" success="True" time="0.0513" asserts="0" description="Set-AzStackHciVMStorageContainer">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMStorageContainer.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2871" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0533" asserts="0" description="Set-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualHardDisk.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2675" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0515" asserts="0" description="Set-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.269" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Set-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0521" asserts="0" description="Set-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualNetwork.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Start-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2954" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Start-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0587" asserts="0" description="Start-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Start-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Stop-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2358" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Stop-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0345" asserts="0" description="Stop-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Stop-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2431" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0505" asserts="0" description="Update-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMGalleryImage.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHCIVMImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2472" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHCIVMImage" executed="True" result="Ignored" success="True" time="0.042" asserts="0" description="Update-AzStackHCIVMImage">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHCIVMImage.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Update-AzStackHCIVMImage.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2297" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0409" asserts="0" description="Update-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMMachineExtension.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMMachineExtension.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2558" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0375" asserts="0" description="Update-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMMarketplaceGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMMarketplaceGalleryImage.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2431" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.0498" asserts="0" description="Update-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMNetworkInterface.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMStoragePath.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2599" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMStoragePath" executed="True" result="Ignored" success="True" time="0.0397" asserts="0" description="Update-AzStackHciVMStoragePath">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMStoragePath.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMStoragePath.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3019" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0496" asserts="0" description="Update-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMVirtualHardDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3086" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0545" asserts="0" description="Update-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMVirtualMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMVirtualMachine.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2542" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Update-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0523" asserts="0" description="Update-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMVirtualNetwork.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-IpPools.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3082" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-IpPools.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-IpPools" executed="True" result="Ignored" success="True" time="0.0653" asserts="0" description="Validate-IpPools">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-IpPools.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-Routes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2721" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-Routes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-Routes" executed="True" result="Ignored" success="True" time="0.0521" asserts="0" description="Validate-Routes">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-Routes.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-Subnets.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2617" asserts="0" description="E:\new\azure-powershell2\src\StackHCI\StackHCIVm.Autorest\test\Validate-Subnets.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-Subnets" executed="True" result="Ignored" success="True" time="0.0529" asserts="0" description="Validate-Subnets">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-Subnets.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
