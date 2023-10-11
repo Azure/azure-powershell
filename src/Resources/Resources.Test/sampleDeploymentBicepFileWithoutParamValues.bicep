@@ -1,9 +1,9 @@
 ﻿param location string
-param name string 
+param baseName string = 'mysa'
 param storageSku string 
 
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-  name: name
+  name: '${baseName}${uniqueString(resourceGroup().id)}'
   location: location
   kind: 'Storage'
   sku: {

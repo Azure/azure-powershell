@@ -17,13 +17,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     using Newtonsoft.Json;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Exceptions;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
-    using System.Management.Automation;
     using System.Text.RegularExpressions;
 
     public class BicepBuildParamsStdout
@@ -37,7 +35,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
     internal static class BicepUtility
     {
-        private static bool IsBicepExecutable = false;
+        private static Lazy<string> BicepVersionLazy = new Lazy<string>(() => {
+            var processInvoker = ProcessInvoker.Create();
+            if (!processInvoker.CheckExecutableExists(BicepExecutable))
+            {
+                return null;
+            }
+
+            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = "-v" });            
+            
+            var pattern = new Regex("\\d+(\\.\\d+)+");
+            return pattern.Match(output.Stdout)?.Value;
+        });
+
+        private static string BicepVersion => BicepVersionLazy.Value;
+
+        /// <summary>
+        /// The Bicep executable to use. By default, this'll be resolved from the system PATH.
+        /// </summary>
+        /// <remarks>
+        /// If you want to test locally with a private build, you can replace this with a fully-qualified file path (e.g. "/Users/ant/.azure/bin/bicep").
+        /// </remarks>
+        private const string BicepExecutable = "bicep";
 
         private const string MinimalVersionRequirement = "0.3.1";
 
@@ -48,6 +67,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         private const string MinimalVersionRequirementForBicepPublishWithOptionalForceParameter = "0.17.1";
 
         private const string MinimalVersionRequirementForBicepparamFileBuild = "0.16.1";
+
+        private const string MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides = "0.22.6";
 
         public delegate void OutputCallback(string msg);
 
@@ -67,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             string tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(tempDirectory);
 
-            RunBicepCommand($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'", MinimalVersionRequirement, writeVerbose, writeWarning);
+            RunBicepCommand($"build {GetQuotedFilePath(bicepTemplateFilePath)} --outdir {GetQuotedFilePath(tempDirectory)}", MinimalVersionRequirement, writeVerbose, writeWarning);
 
             string buildResultPath = Path.Combine(tempDirectory, Path.GetFileName(bicepTemplateFilePath)).Replace(".bicep", ".json");
             if (!FileUtilities.DataStore.FileExists(buildResultPath))
@@ -78,14 +99,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return buildResultPath;
         }
 
-        public static BicepBuildParamsStdout BuildParams(string bicepParamFilePath, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        public static BicepBuildParamsStdout BuildParams(string bicepParamFilePath, IReadOnlyDictionary<string, object> overrideParams, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
             if (!FileUtilities.DataStore.FileExists(bicepParamFilePath))
             {
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepparamFilePath, "TemplateParameterFile");
             }
 
-            var stdout = RunBicepCommandWithStdoutCapture($"build-params {GetQuotedFilePath(bicepParamFilePath)} --stdout", MinimalVersionRequirementForBicepparamFileBuild, writeVerbose, writeWarning);
+            var envVars = new Dictionary<string, string>();
+            if (overrideParams.Any())
+            {
+                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides);
+                writeVerbose?.Invoke($"Overriding the following parameters: {string.Join(", ", overrideParams.Keys)}");
+                envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams);
+            }
+
+            var stdout = RunBicepCommandWithStdoutCapture(
+                $"build-params {GetQuotedFilePath(bicepParamFilePath)} --stdout",
+                MinimalVersionRequirementForBicepparamFileBuild,
+                envVars,
+                writeVerbose,
+                writeWarning);
 
             return JsonConvert.DeserializeObject<BicepBuildParamsStdout>(stdout);
         }
@@ -97,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "File");
             }
 
-            string bicepPublishCommand = $"bicep publish '{bicepFilePath}' --target '{target}'";
+            string bicepPublishCommand = $"publish {GetQuotedFilePath(bicepFilePath)} --target '{target}'";
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
@@ -116,136 +150,69 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private static void CheckBicepExecutable()
         {
-            using (var powerShell = PowerShell.Create())
+            if (BicepVersion == null)
             {
-                if (IsBicepExecutable)
-                {
-                    return;
-                }
-
-                powerShell.AddScript("Get-Command bicep");
-                powerShell.Invoke();
-                powerShell.AddScript("$?");
-                var result = powerShell.Invoke();
-                // Cache result
-                bool.TryParse(result[0].ToString(), out IsBicepExecutable);
-
-                if (!IsBicepExecutable)
-                {
-                    throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
-                }
+                throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
             }
         }
 
         private static string CheckMinimalVersionRequirement(string minimalVersionRequirement)
         {
-            string currentBicepVersion = GetBicepVersion();
-            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(currentBicepVersion)) > 0)
+            CheckBicepExecutable();
+
+            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(BicepVersion)) > 0)
             {
                 throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, minimalVersionRequirement));
             };
-            return currentBicepVersion;
+
+            return BicepVersion;
         }
 
-        private static string GetBicepVersion()
+        private static string RunBicepCommandWithStdoutCapture(string arguments, string minimalVersionRequirement, Dictionary<string, string> envVars = null, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
-            using (var powerShell = PowerShell.Create())
-            {
-                powerShell.AddScript("bicep -v");
-                var result = powerShell.Invoke()[0].ToString();
-                Regex pattern = new Regex("\\d+(\\.\\d+)+");
-                string bicepVersion = pattern.Match(result)?.Value;
-
-                return bicepVersion;
-            }
-        }
-
-        private static int GetLastExitCode(PowerShell powershell)
-        {
-            powershell.AddScript("$LASTEXITCODE");
-            var result = powershell.Invoke();
-            int.TryParse(result[0]?.ToString(), out int exitcode);
-            return exitcode;
-        }
-
-        private static string RunBicepCommandWithStdoutCapture(string arguments, string minimalVersionRequirement, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
-        {
-            CheckBicepExecutable();
-
             string currentBicepVersion = CheckMinimalVersionRequirement(minimalVersionRequirement);
             writeVerbose?.Invoke($"Using Bicep v{currentBicepVersion}");
 
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "bicep",
-                    Arguments = arguments,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                }
-            };
-
             writeVerbose?.Invoke($"Calling Bicep with arguments: {arguments}");
 
-            proc.Start();
-            var stdout = proc.StandardOutput.ReadToEnd();
-            var stderr = proc.StandardError.ReadToEnd();
-            proc.WaitForExit();
+            var processInvoker = ProcessInvoker.Create();
+            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = arguments, EnvVars = envVars });
 
-            if (proc.ExitCode != 0)
+            if (output.ExitCode != 0)
             {
-                throw new AzPSApplicationException(stderr);
+                throw new AzPSApplicationException(output.Stderr);
             }
 
             // print warning message
-            if (!string.IsNullOrEmpty(stderr))
+            if (!string.IsNullOrEmpty(output.Stderr))
             {
-                writeWarning?.Invoke(stderr);
+                writeWarning?.Invoke(output.Stderr);
             }
 
-            return stdout;
+            return output.Stdout;
         }
 
-        private static void RunBicepCommand(string command, string minimalVersionRequirement, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        private static void RunBicepCommand(string arguments, string minimalVersionRequirement, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
-            CheckBicepExecutable();
-
             string currentBicepVersion = CheckMinimalVersionRequirement(minimalVersionRequirement);
+            writeVerbose?.Invoke($"Using Bicep v{currentBicepVersion}");
 
-            using (var powerShell = PowerShell.Create())
+            writeVerbose?.Invoke($"Calling Bicep with arguments: {arguments}");
+
+            var processInvoker = ProcessInvoker.Create();
+            var output = processInvoker.Invoke(new ProcessInput { Executable = BicepExecutable, Arguments = arguments });
+
+            writeVerbose?.Invoke(output.Stdout);
+
+            if (output.ExitCode != 0)
             {
-                powerShell.AddScript(command);
-                var result = powerShell.Invoke();
+                throw new AzPSApplicationException(output.Stderr);
+            }
 
-                if (writeVerbose != null)
-                {
-                    writeVerbose(string.Format("Using Bicep v{0}", currentBicepVersion));
-                    result.ForEach(r => writeVerbose(r.ToString()));
-                }
-
-                // Bicep uses error stream to report warning message and error message, record it
-                string warningOrErrorMsg = string.Empty;
-                if (powerShell.HadErrors)
-                {
-                    powerShell.Streams.Error.ForEach(e => { warningOrErrorMsg += (e + Environment.NewLine); });
-                    warningOrErrorMsg = warningOrErrorMsg.Substring(0, warningOrErrorMsg.Length - Environment.NewLine.Length);
-                }
-
-                if (0 == GetLastExitCode(powerShell))
-                {
-                    // print warning message
-                    if (writeWarning != null && !string.IsNullOrEmpty(warningOrErrorMsg))
-                    {
-                        writeWarning(warningOrErrorMsg);
-                    }
-                }
-                else
-                {
-                    throw new AzPSApplicationException(warningOrErrorMsg);
-                }
+            // print warning message
+            if (!string.IsNullOrEmpty(output.Stderr))
+            {
+                writeWarning?.Invoke(output.Stderr);
             }
         }
 

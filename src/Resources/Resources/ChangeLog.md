@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
+* Allowed supplemental parameters for Deployments cmdlets when used with `.bicepparam` file.
 
 ## Version 6.11.1
 * Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]

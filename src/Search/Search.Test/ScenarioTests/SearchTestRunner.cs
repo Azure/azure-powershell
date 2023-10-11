@@ -38,19 +38,6 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                     helper.GetRMModulePath("Az.Search.psd1"),
                     helper.GetRMModulePath("Az.Storage.psd1")
                 })
-                .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>
-                    {
-                        {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
-                    },
-                    resourceProviders: new Dictionary<string, string>
-                    {
-                        {"Microsoft.Resources", null},
-                        {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null},
-                        {"Microsoft.Storage", null}
-                    }
-                )
                 .Build();
         }
     }
