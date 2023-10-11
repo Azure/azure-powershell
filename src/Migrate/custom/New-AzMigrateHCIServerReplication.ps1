@@ -193,7 +193,7 @@ function New-AzMigrateHCIServerReplication {
         $MachineName = $MachineIdArray[10]
        
         if (($SiteType -ne $SiteTypes.HyperVSites) -and ($SiteType -ne $SiteTypes.VMwareSites)) {
-            throw "Site type is not supported. Site type '$SiteType'"
+            throw "Site type is not supported. Site type '$SiteType'. Check MachineId provided."
         }
 
         # Get the source site and the discovered machine
@@ -388,9 +388,11 @@ function New-AzMigrateHCIServerReplication {
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
             $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $isSourceDynamicMemoryEnabled = $InputObject.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $isSourceDynamicMemoryEnabled = $false
         }
 
         $customProperties.InstanceType = $instanceType
@@ -407,8 +409,8 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.HyperVGeneration = if ($SiteType -eq $SiteTypes.HyperVSites) { $InputObject.Generation } else { "1" }
         $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $InputObject.NumberOfProcessorCore }
         $customProperties.TargetMemoryInMegaByte = if ($HasTargetVMRam) { $TargetVMRam } else { $InputObject.AllocatedMemoryInMB }
-        $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else { $InputObject.IsDynamicMemoryEnabled }
-
+        $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
+    
         $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.MinMemoryInMB)
         $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.MaxMemoryInMB)

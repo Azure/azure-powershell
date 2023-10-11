@@ -172,7 +172,6 @@ function Set-AzMigrateHCIServerReplication {
         $customProperties = $protectedItemProperties.CustomProperty
         $MachineIdArray = $customProperties.FabricDiscoveryMachineId.Split("/")
         $SiteType = $MachineIdArray[7]
-        $SiteName = $MachineIdArray[8]
        
         if (!$protectedItemProperties.AllowedJob.Contains('PlannedFailover')) {
             throw "Set server replication is not allowed for this item '$TargetObjectID'."
@@ -223,16 +222,16 @@ function Set-AzMigrateHCIServerReplication {
         }
 
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
-            if ($customProperties.TargetMemoryInMegaBytes -lt $DynamicMemoryConfig.MinimumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.MinMemoryInMB) and $($customProperties.TargetMemoryInMegaBytes)"
+            if ($customProperties.TargetMemoryInMegaByte -lt $DynamicMemoryConfig.MinimumMemoryInMegaByte) {
+                throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.MinMemoryInMB) and $($customProperties.TargetMemoryInMegaByte)"
             }
 
             if (($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
                 throw "DynamicMemoryConfig - Specify minimum memory in multiples of $($RAMConfig.MinMemoryInMB) MB"    
             }
 
-            if ($customProperties.TargetMemoryInMegaBytes -gt $DynamicMemoryConfig.MaximumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaBytes) and $($RAMConfig.MaxMemoryInMB)"
+            if ($customProperties.TargetMemoryInMegaByte -gt $DynamicMemoryConfig.MaximumMemoryInMegaByte) {
+                throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaByte) and $($RAMConfig.MaxMemoryInMB)"
             }
 
             if (($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
@@ -242,21 +241,14 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.DynamicMemoryConfig = $DynamicMemoryConfig
         }
 
-        # Get the discovered object.
-        $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-        $null = $PSBoundParameters.Add("SiteName", $SiteName)
-        $null = $PSBoundParameters.Add("MachineName", $MachineName)
-
-        if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $InputObject = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
+        if ($customProperties.IsDynamicRam -and ($null -eq $customProperties.DynamicMemoryConfig)) {
+            $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
+            $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.MinMemoryInMB)
+            $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.MaxMemoryInMB)
+            $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.TargetMemoryBufferPercentage
+    
+            $customProperties.DynamicMemoryConfig = $memoryConfig
         }
-        elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-            $InputObject = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
-        }
-
-        $null = $PSBoundParameters.Remove('ResourceGroupName')
-        $null = $PSBoundParameters.Remove('SiteName')
-        $null = $PSBoundParameters.Remove('MachineName')
 
         # Nics
         [PSCustomObject[]]$nics = @()
