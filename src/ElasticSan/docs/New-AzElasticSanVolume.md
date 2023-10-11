@@ -53,7 +53,7 @@ New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelas
 
 ```output
 CreationDataCreateSource       : 
-CreationDataSourceId          : https://abc.com
+CreationDataSourceId           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup/volumes/myvolume
 Name                           : myvolume
 SizeGiB                        : 100

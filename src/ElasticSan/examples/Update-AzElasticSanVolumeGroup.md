@@ -65,7 +65,7 @@ IdentityPrincipalId                                    :
 IdentityTenantId                                       :
 IdentityType                                           : UserAssigned
 IdentityUserAssignedIdentity                           : {
-                                                           "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/yifanz1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai": {
+                                                           "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai": {
                                                            }
                                                          }
 KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :

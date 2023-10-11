@@ -23,30 +23,30 @@ Describe 'Create/Remove volume, Create/Get/Remove snapshot' {
         $volume.SizeGiB | Should -Be 100
         $volume.CreationDataCreateSource | Should -Be 'None'
 
-        $vg = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -Name $vgName 
-        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -Name testesvol1 -SizeGiB 1 
+        $vg = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -Name $vgName 
+        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Name testesvol1 -SizeGiB 1 
         $volume.Name | Should -be "testesvol1"
 
-        $snapshot = New-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -CreationDataSourceId $volume.Id -Name tests1
+        $snapshot = New-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -CreationDataSourceId $volume.Id -Name tests1
         $snapshot.Name | Should -Be "tests1"
         $snapshot.VolumeName | Should -Be "testesvol1"
 
-        $snapshot = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -Name tests1 
+        $snapshot = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Name tests1 
         $snapshot.Name | Should -Be "tests1"
         $snapshot.VolumeName | Should -Be "testesvol1"
 
-        $snapshot2 = New-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -CreationDataSourceId $volume.Id -Name tests2
+        $snapshot2 = New-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -CreationDataSourceId $volume.Id -Name tests2
         $snapshot2.Name | Should -Be "tests2"
         $snapshot2.VolumeName | Should -Be "testesvol1"
 
-        $snapshots = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName 
+        $snapshots = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName 
         $snapshots.Count | Should -Be 2
 
-        $snapshots = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -Filter 'volumeName eq testesvol1'
+        $snapshots = Get-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Filter 'volumeName eq testesvol1'
         $snapshots.Count | Should -Be 2
 
-        Remove-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -Name tests1 
-        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName3 -ElasticSanName $env.ElasticSanName4 -VolumeGroupName $vgName -Name "testesvol1" -DeleteSnapshot true
+        Remove-AzElasticSanVolumeSnapshot -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Name tests1 
+        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName2 -ElasticSanName $env.ElasticSanName3 -VolumeGroupName $vgName -Name "testesvol1" -DeleteSnapshot true
         Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $volName
     }
 }
