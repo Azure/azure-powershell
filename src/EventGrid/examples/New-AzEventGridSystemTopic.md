@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously creates a new system topic with the specified parameters.
 ```powershell
-{{ Add code here }}
+New-AzEventGridSystemTopic -Name azps-systopic -ResourceGroupName azps_test_group_eventgrid -Location eastus -Source "/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.Storage/storageAccounts/azpssa" -TopicType "microsoft.storage.storageaccounts"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Asynchronously creates a new system topic with the specified parameters.

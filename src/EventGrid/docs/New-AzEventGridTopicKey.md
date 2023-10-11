@@ -44,27 +44,18 @@ Regenerate a shared access key for a topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate a shared access key for a topic.
 ```powershell
-{{ Add code here }}
+New-AzEventGridTopicKey -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -KeyName key1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Regenerate a shared access key for a topic.
 
 ## PARAMETERS
 

@@ -52,27 +52,18 @@ Asynchronously creates a new namespace topic with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously creates a new namespace topic with the specified parameters.
 ```powershell
-{{ Add code here }}
+New-AzEventGridNamespaceTopic -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -PublisherType Custom -EventRetentionInDay 1 -InputSchema CloudEventSchemaV1_0
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName
+----       -----------------
+azps-topic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Asynchronously creates a new namespace topic with the specified parameters.
 
 ## PARAMETERS
 

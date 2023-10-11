@@ -53,27 +53,18 @@ Create a permission binding with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a permission binding with the specified parameters.
 ```powershell
-{{ Add code here }}
+New-AzEventGridPermissionBinding -Name azps-pb -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a permission binding with the specified parameters.
 
 ## PARAMETERS
 

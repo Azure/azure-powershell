@@ -76,27 +76,20 @@ Existing event subscriptions will be updated with this API.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously Create an event subscription of a namespace topic with the specified parameters.
 ```powershell
-{{ Add code here }}
+$TimeSpan = New-TimeSpan -Hours 1 -Minutes 25
+New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName azps-eventsubname -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -DeliveryConfigurationDeliveryMode Queue -QueueReceiveLockDurationInSecond 60 -QueueMaxDeliveryCount 4 -QueueEventTimeToLive $TimeSpan -EventDeliverySchema CloudEventSchemaV1_0
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Asynchronously Create an event subscription of a namespace topic with the specified parameters.
+Existing event subscriptions will be updated with this API.
 
 ## PARAMETERS
 

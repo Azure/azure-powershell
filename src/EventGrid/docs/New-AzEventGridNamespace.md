@@ -63,27 +63,18 @@ Asynchronously Create a new namespace with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously Create a new namespace with the specified parameters.
 ```powershell
-{{ Add code here }}
+New-AzEventGridNamespace -Name azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Location eastus -TopicSpaceConfigurationState Enabled
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                    ResourceGroupName
+-------- ----                    -----------------
+eastus   azps-eventgridnamespace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Asynchronously Create a new namespace with the specified parameters.
 
 ## PARAMETERS
 
