@@ -15,15 +15,15 @@ Partially updates a project.
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminProject -InputObject <IDevCenterIdentity> [-Description <String>]
- [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-MaxDevBoxesPerUser <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +82,21 @@ Accept wildcard characters: False
 
 ### -Description
 Description of the project.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the project.
 
 ```yaml
 Type: System.String
@@ -243,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProject
 
 ## NOTES
 
@@ -259,6 +274,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[CatalogName <String>]`: The name of the Catalog.
   - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
   - `[DevCenterName <String>]`: The name of the devcenter.
+  - `[EnvironmentDefinitionName <String>]`: The name of the Environment Definition.
   - `[EnvironmentTypeName <String>]`: The name of the environment type.
   - `[GalleryName <String>]`: The name of the gallery.
   - `[Id <String>]`: Resource identity path
@@ -271,6 +287,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TaskName <String>]`: The name of the Task.
   - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS

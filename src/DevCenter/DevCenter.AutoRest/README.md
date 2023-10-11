@@ -36,9 +36,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/commonDefinitions.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
+  - $(this-folder)/../../specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/vdi.json
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses

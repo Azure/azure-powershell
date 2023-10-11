@@ -11,17 +11,41 @@ Locale: en-US
 Microsoft Azure PowerShell: DevCenter cmdlets
 
 ## Az.DevCenter Cmdlets
+### [Connect-AzDevCenterAdminCatalog](Connect-AzDevCenterAdminCatalog.md)
+Connects a catalog to enable syncing.
+
 ### [Get-AzDevCenterAdminAttachedNetwork](Get-AzDevCenterAdminAttachedNetwork.md)
 Gets an attached NetworkConnection.
 
 ### [Get-AzDevCenterAdminCatalog](Get-AzDevCenterAdminCatalog.md)
 Gets a catalog
 
+### [Get-AzDevCenterAdminCatalogDevBoxDefinition](Get-AzDevCenterAdminCatalogDevBoxDefinition.md)
+Gets a Dev Box definition from the catalog
+
+### [Get-AzDevCenterAdminCatalogDevBoxDefinitionErrorDetail](Get-AzDevCenterAdminCatalogDevBoxDefinitionErrorDetail.md)
+Gets Catalog Devbox Definition error details
+
+### [Get-AzDevCenterAdminCatalogSyncErrorDetail](Get-AzDevCenterAdminCatalogSyncErrorDetail.md)
+Gets catalog synchronization error details
+
+### [Get-AzDevCenterAdminCustomizationTask](Get-AzDevCenterAdminCustomizationTask.md)
+Gets a Task from the catalog
+
+### [Get-AzDevCenterAdminCustomizationTaskErrorDetail](Get-AzDevCenterAdminCustomizationTaskErrorDetail.md)
+Gets Customization Task error details
+
 ### [Get-AzDevCenterAdminDevBoxDefinition](Get-AzDevCenterAdminDevBoxDefinition.md)
 Gets a Dev Box definition
 
 ### [Get-AzDevCenterAdminDevCenter](Get-AzDevCenterAdminDevCenter.md)
 Gets a devcenter.
+
+### [Get-AzDevCenterAdminEnvironmentDefinition](Get-AzDevCenterAdminEnvironmentDefinition.md)
+Gets an environment definition from the catalog.
+
+### [Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail](Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail.md)
+Gets Environment Definition error details
 
 ### [Get-AzDevCenterAdminEnvironmentType](Get-AzDevCenterAdminEnvironmentType.md)
 Gets an environment type.

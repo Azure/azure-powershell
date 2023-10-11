@@ -132,7 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IOperationStatus
 
 ## NOTES
 
@@ -148,6 +148,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[CatalogName <String>]`: The name of the Catalog.
   - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
   - `[DevCenterName <String>]`: The name of the devcenter.
+  - `[EnvironmentDefinitionName <String>]`: The name of the Environment Definition.
   - `[EnvironmentTypeName <String>]`: The name of the environment type.
   - `[GalleryName <String>]`: The name of the gallery.
   - `[Id <String>]`: Resource identity path
@@ -160,6 +161,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TaskName <String>]`: The name of the Task.
   - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS
