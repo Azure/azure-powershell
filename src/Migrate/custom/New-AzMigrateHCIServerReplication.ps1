@@ -477,6 +477,11 @@ function New-AzMigrateHCIServerReplication {
                 throw "Invalid NicToInclude. Atleast one NIC is required."
             }
 
+            $selectedNics = $NicToInclude | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser"}
+            if ($null -eq $selectedNics -or $selectedNics.length -lt 1) {
+                throw "Invalid NicToInclude. Atleast one NIC is required on target."
+            }
+
             # Validate OSDisk is set.
             $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk -eq $True }
             if (($null -eq $osDisk) -or ($osDisk.length -ne 1)) {
@@ -513,7 +518,7 @@ function New-AzMigrateHCIServerReplication {
                 $disks += [PSCustomObject]$htDisk
             }
 
-            # Validate nics
+            # Validate NicToInclude
             foreach ($nic in $NicToInclude) {
                 $discoveredNic = $InputObject.NetworkAdapter | Where-Object { $_.NicId -eq $nic.NicId }
                 if ($null -eq $discoveredNic) {
@@ -529,6 +534,22 @@ function New-AzMigrateHCIServerReplication {
                 $htNic = @{}
                 $nic.PSObject.Properties | ForEach-Object { $htNic[$_.Name] = $_.Value }
                 $nics += [PSCustomObject]$htNic
+            }
+
+            # Include Nics not added by user as 'NotSelected'
+            foreach ($sourceNic in $InputObject.NetworkAdapter) {
+                $selectedNic = $nics | Where-Object { $_.NicId -eq $sourceNic.NicId }
+                if ($null -ne $selectedNic) {
+                    continue
+                }
+
+                $NicObject = [PSCustomObject]@{
+                    NicId                    = $sourceNic.NicId
+                    TargetNetworkId          = $nics[0].TargetNetworkId
+                    TestNetworkId            = $nics[0].TestNetworkId
+                    SelectionTypeForFailover = "NotSelected"
+                }
+                $nics += $NicObject
             }
         }
 

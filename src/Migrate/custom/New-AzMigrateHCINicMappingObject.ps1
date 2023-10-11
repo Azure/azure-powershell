@@ -41,7 +41,15 @@ function New-AzMigrateHCINicMappingObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the test logical network ARM ID that the VMs will use.
-        ${TargetTestVirtualSwitchId}
+        ${TargetTestVirtualSwitchId},
+
+        [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies whether the this Nic should be created at target.
+        ${CreateAtTarget} = "true"
     )
     
     process {
@@ -49,10 +57,13 @@ function New-AzMigrateHCINicMappingObject {
             $TargetTestVirtualSwitchId = $TargetVirtualSwitchId
         }
 
+        $selectionTypeForFailover = if ($CreateAtTarget -eq "true") { "SelectedByUser" } else { "NotSelected" }
+
         $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
-            $TargetTestVirtualSwitchId
+            $TargetTestVirtualSwitchId,
+            $selectionTypeForFailover
         )
         
         return $NicObject

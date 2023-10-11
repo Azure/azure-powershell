@@ -44,12 +44,6 @@ function Set-AzMigrateHCIServerReplication {
         ${TargetVMCPUCore},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.String]
-        # Specifies the logical network ARM ID that the VMs will use.
-        ${TargetVirtualSwitchId},
-
-        [Parameter()]
         [ValidateSet("true" , "false")]
         [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -138,7 +132,6 @@ function Set-AzMigrateHCIServerReplication {
         
         $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
-        $HasTargetVirtualSwitchId = $PSBoundParameters.ContainsKey('TargetVirtualSwitchId')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
             $isDynamicRamEnabled = [System.Convert]::ToBoolean($IsDynamicMemoryEnabled)
@@ -149,7 +142,6 @@ function Set-AzMigrateHCIServerReplication {
 
         $null = $PSBoundParameters.Remove('TargetVMName')
         $null = $PSBoundParameters.Remove('TargetVMCPUCore')
-        $null = $PSBoundParameters.Remove('TargetVirtualSwitchId')
         $null = $PSBoundParameters.Remove('IsDynamicMemoryEnabled')
         $null = $PSBoundParameters.Remove('DynamicMemoryConfig')
         $null = $PSBoundParameters.Remove('TargetVMRam')
@@ -213,10 +205,6 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.TargetCpuCore = $TargetVMCPUCore
         }
 
-        if ($HasTargetVirtualSwitchId) {
-            $customProperties.TargetVirtualSwitch = $TargetVirtualSwitchId
-        }
-
         # Memory
         if ($HasTargetVMRam) {
             if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
@@ -272,36 +260,30 @@ function Set-AzMigrateHCIServerReplication {
 
         # Nics
         [PSCustomObject[]]$nics = @()
+        foreach ($nic in $customProperties.ProtectedNic) {
+            $NicObject = [PSCustomObject]@{
+                NicId                    = $nic.NicId
+                TargetNetworkId          = $nic.TargetNetworkId
+                TestNetworkId            = $nic.TestNetworkId
+                SelectionTypeForFailover = "SelectedByUser"
+            }
+          
+            $nics += $NicObject
+        }
+
         if ($HasNicToInclude -and $NicToInclude.length -gt 0) {
             foreach ($nic in $NicToInclude)
             {
-                $discoveredNic = $InputObject.NetworkAdapter | Where-Object { $_.NicId -eq $nic.NicId }
-                if ($null -eq $discoveredNic){
+                $updatedNic = $nics | Where-Object { $_.NicId -eq $nic.NicId }
+                if ($null -eq $updatedNic){
                     throw "The Nic id '$($nic.NicId)' is not found."
                 }
-
-                if (($null -ne $uniqueNics) -and ($uniqueNics.Contains($nic.NicId))) {
-                    throw "The Nic id '$($nic.NicId)' is already taken."
-                }
                 
-                $uniqueNics += $nic.NicId
-                
-                $htNic = @{}
-                $nics += [PSCustomeObject]($nic.PSObject.Properties | ForEach-Object { $htNic[$_.Name] = $_.Value })
+                $updatedNic.TargetNetworkId            = $nic.TargetNetworkId
+                $updatedNic.TestNetworkId              = $nic.TestNetworkId 
+                $updatedNic.SelectionTypeForFailover   = $nic.SelectionTypeForFailover
             }
-        }  
-        else {
-            foreach ($nic in $customProperties.ProtectedNic) {
-                $NicObject = [PSCustomObject]@{
-                    NicId                    = $nic.NicId
-                    TargetNetworkId          = $nic.TargetNetworkId
-                    TestNetworkId            = $nic.TestNetworkId
-                    SelectionTypeForFailover = "SelectedByUser"
-                }
-              
-                $nics += $NicObject
-            }
-        }
+        } 
 
         # Disks
         [PSCustomObject[]]$disks = @()

@@ -13,7 +13,7 @@ Creates an object to update NIC properties of a replicating server.
 ## SYNTAX
 
 ```
-New-AzMigrateHCINicMappingObject -NicID <String> -TargetVirtualSwitchId <String>
+New-AzMigrateHCINicMappingObject -NicID <String> -TargetVirtualSwitchId <String> [-CreateAtTarget <String>]
  [-TargetTestVirtualSwitchId <String>] [<CommonParameters>]
 ```
 
@@ -38,6 +38,21 @@ SelectionTypeForFailover : SelectedByUser
 Get NIC object to provide input for New-AzMigrateHCIServerReplication and Set-AzMigrateHCIServerReplication
 
 ## PARAMETERS
+
+### -CreateAtTarget
+Specifies whether the this Nic should be created at target.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -NicID
 Specifies the ID of the NIC to be updated.

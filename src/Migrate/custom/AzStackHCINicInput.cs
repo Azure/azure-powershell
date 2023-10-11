@@ -8,12 +8,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview
         public AzStackHCINicInput(
             string nicId,
             string targetNetworkId,
-            string testNetworkId)
+            string testNetworkId,
+            string selectionTypeForFailover)
         {
             NicId = nicId;
             TargetNetworkId = targetNetworkId;
             TestNetworkId = testNetworkId;
-            SelectionTypeForFailover = "SelectedByUser";
+            SelectionTypeForFailover = selectionTypeForFailover;
         }
 
         /// <summary>Gets or sets the NIC Id.</summary>
