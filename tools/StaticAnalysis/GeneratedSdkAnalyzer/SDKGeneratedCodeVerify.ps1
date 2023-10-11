@@ -29,7 +29,17 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
-$skipModules = @('Az.KeyVault', 'Az.CosmosDB', 'Az.AlertsManagement')
+$skipModules = @(
+    'Az.AlertsManagement',
+    'Az.Automation',
+    'Az.CognitiveServices',
+    'Az.CosmosDB',
+    'Az.KeyVault',
+    'Az.NetAppFiles',
+    'Az.Storage',
+    'Az.Search'
+    'Az.RedisCache'
+)
 
 $MissReadMe = 9000
 $GenSdkChanged = 9090
@@ -81,7 +91,7 @@ try{
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
         }
-        
+
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
@@ -100,7 +110,7 @@ try{
                     Remediation = "You may need to rebase on the latest main, regenerate code accroding to README.md file under $_, and make sure no more updates based on generated files."
                 }
             }
-            
+
         }
         Set-Location $SavePath
     }
@@ -110,7 +120,7 @@ catch{
 }
 finally {
     Write-Host ""
-    Write-Host "Summary:" 
+    Write-Host "Summary:"
     Write-Host ""
     Write-Host "  $($ExceptionList.Length) error(s) detected while verifying generated sdk:"
     Write-Host ""

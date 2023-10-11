@@ -27,7 +27,7 @@ Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupNa
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBaseBackupPolicyResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicyResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,6 +43,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [RecoveryPointId <String>]: 
   [RequestName <String>]: 
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
@@ -50,7 +51,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackuppolicy
 #>
 function Get-AzDataProtectionBackupPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBaseBackupPolicyResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicyResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

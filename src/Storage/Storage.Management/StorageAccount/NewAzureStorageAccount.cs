@@ -77,11 +77,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(StorageModels.SkuName.StandardLRS,
             StorageModels.SkuName.StandardZRS,
             StorageModels.SkuName.StandardGRS,
-            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.StandardRagrs,
             StorageModels.SkuName.PremiumLRS,
             StorageModels.SkuName.PremiumZRS,
-            StorageModels.SkuName.StandardGZRS,
-            StorageModels.SkuName.StandardRAGZRS,
+            StorageModels.SkuName.StandardGzrs,
+            StorageModels.SkuName.StandardRagzrs,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                 if (enableAzureActiveDirectoryDomainServicesForFile != null && enableAzureActiveDirectoryDomainServicesForFile.Value)
                 {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.Aadds;
                 }
                 else if (enableActiveDirectoryDomainServicesForFile != null && enableActiveDirectoryDomainServicesForFile.Value)
                 {
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 else if (enableAzureActiveDirectoryKerberosForFile != null && enableAzureActiveDirectoryKerberosForFile.Value)
                 {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADKERB;
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.Aadkerb;
                     if (this.ActiveDirectoryDomainName != null || this.ActiveDirectoryDomainGuid != null)
                     {
                         createParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()

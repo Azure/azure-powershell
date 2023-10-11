@@ -209,7 +209,10 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
                 {
                     foreach (JToken token in parsedJson.SelectTokens(jsonPath))
                     {
-                        token.Replace(SanitizeValue);
+                        if (token.Type == JTokenType.String && token.Value<string>() != string.Empty)
+                        {
+                            token.Replace(SanitizeValue);
+                        }
                     }
                 }
                 return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);

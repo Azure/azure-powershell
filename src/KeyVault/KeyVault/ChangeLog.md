@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
+
+## Version 4.12.0
+* Supported splitting `Import-AzKeyVaultSecurityDomain` process into three steps to allow keys to be hidden offline.
+    - Added `DownloadExchangeKey`, `RestoreBlob` and `ImportRestoredBlob` in `Import-AzKeyVaultSecurityDomain`.
 
 ## Version 4.11.0
 * Fixed certificate policy bugs if DnsName is null. [#22642]
@@ -37,7 +42,7 @@
 
 ## Version 4.10.0
 * Added breaking change announcement for parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm`. The parameter `SoftDeleteRetentionInDays` is becoming mandatory
-    - This change will take effect on version 6.0.0
+    - This change will take effect on version 5.0.0
 * Changed the encoding way from a string into byte array in `Invoke-AzKeyVaultKeyOperation` from ASCII to UTF8. UTF8 is backward-compatible with ASCII. [#21269]
 * Bug fix: Changed the decoding way from byte array into a string from system default encoding to UTF8 to match encoding way. [#21269]
 * Added parameter `PolicyPath` and `PolicyObject` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]

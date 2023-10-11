@@ -28,7 +28,7 @@ $instance = Initialize-AzDataProtectionBackupInstance -SnapshotResourceGroupId $
 Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -BackupInstance  $instance[0].Property
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,12 +63,15 @@ BACKUPINSTANCE <IBackupInstance>: Backup Instance
   [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
     ObjectType <String>: Type of the specific object - used for deserializing
   [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
+  [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+    [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+    [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
   [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 #>
 function Test-AzDataProtectionBackupInstanceReadiness {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -94,7 +97,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstance]
     # Backup Instance
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},

@@ -35,6 +35,9 @@ Get HCI cluster.
 ### [Get-AzStackHciExtension](Get-AzStackHciExtension.md)
 Get particular Arc Extension of HCI Cluster.
 
+### [Get-AzStackHCILogsDirectory](Get-AzStackHCILogsDirectory.md)
+Returns Logs directory path on the current node.
+
 ### [Get-AzStackHCIRemoteSupportAccess](Get-AzStackHCIRemoteSupportAccess.md)
 Gets Remote Support Access.
 

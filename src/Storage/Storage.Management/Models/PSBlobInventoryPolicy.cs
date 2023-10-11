@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 Rules = invRules
             };
             return new BlobInventoryPolicy(
-                policySchema,
-                this.Id,
-                this.Name,
-                this.Type,
-                this.LastModifiedTime,
-                this.SystemData is null ? null : this.SystemData.ParseSystemData()
+                policy: policySchema,
+                id: this.Id,
+                name: this.Name,
+                type: this.Type,
+                lastModifiedTime: this.LastModifiedTime,
+                systemData: this.SystemData is null ? null : this.SystemData.ParseSystemData()
             );
         }
 
