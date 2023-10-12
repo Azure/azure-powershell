@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.13.0
 * Added new parameter `EnableBurstCapacity` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 * Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 * Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.

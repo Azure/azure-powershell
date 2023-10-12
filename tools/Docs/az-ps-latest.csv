@@ -32,7 +32,7 @@ pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.0.nupkg;sourceType=sa]Az.ConnectedNetwork,0.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.3.2.2.nupkg;sourceType=sa]Az.ContainerInstance,3.2.2
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerRegistry.4.1.1.nupkg;sourceType=sa]Az.ContainerRegistry,4.1.1
-pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CosmosDB.1.12.0.nupkg;sourceType=sa]Az.CosmosDB,1.12.0
+pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CosmosDB.1.13.0.nupkg;sourceType=sa]Az.CosmosDB,1.13.0
 pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CostManagement.0.3.1.nupkg;sourceType=sa]Az.CostManagement,0.3.1
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CustomLocation.0.1.0.nupkg;sourceType=sa]Az.CustomLocation,0.1.0
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CustomProviders.0.1.0.nupkg;sourceType=sa]Az.CustomProviders,0.1.0
