@@ -25,8 +25,8 @@
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.7" />
     <!--The following packages are build-time indirect dependencies of Azure PowerShell. We pinned fixed versions here to make sure the safety at build-time.-->
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
-	<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
-	<PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.4" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
