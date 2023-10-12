@@ -130,13 +130,13 @@ namespace Microsoft.Azure.Commands.Network
         private static void MapRouteTableV2sToRouteTables<MnmType, CnmType>(MnmType mnmObj, CnmType cnmObj)
         {
             /*
-             * MNM type Virtual Hub contains the property VirtualHubRouteTableV2s which
+             * MNM type Virtual Hub contains the property VirtualHubRouteTableV2S which
              * maps to the RouteTables property of the CNM type VirtualHub
              * So, we get the value of RouteTableV2s from the MNM obj and 
              * set it to the RouteTables property of the CNM obj.
              */
             string psRouteTablesPropName = "RouteTables";
-            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2s";
+            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2S";
 
             var cnmRouteTablesProp = typeof(CnmType).GetProperty(psRouteTablesPropName);
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Network
         private static void MapRouteTablesToRouteTableV2s<CnmType, MnmType>(CnmType cnmObj, MnmType mnmObj)
         {
             string psRouteTablesPropName = "RouteTables";
-            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2s";
+            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2S";
 
             var mnmRouteTableV2sProp = typeof(MnmType).GetProperty(mnmRouteTableV2sPropName);
 

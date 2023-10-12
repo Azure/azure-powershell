@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routeTableName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

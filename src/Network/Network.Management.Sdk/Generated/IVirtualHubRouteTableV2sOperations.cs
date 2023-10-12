@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeTableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <remarks>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeTableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <remarks>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

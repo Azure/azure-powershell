@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Retrieves the details of all VirtualHubRouteTableV2s.
+        /// Retrieves the details of all VirtualHubRouteTableV2S.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
