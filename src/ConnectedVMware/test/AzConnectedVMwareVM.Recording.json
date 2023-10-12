@@ -1,0 +1,167 @@
+{
+  "AzConnectedVMwareVM+[NoContext]+CreateExpanded+$PUT+https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"infrastructureProfile\": {\r\n      \"inventoryItemId\": \"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-1528583\"\r\n    }\r\n  },\r\n  \"extendedLocation\": {\r\n    \"type\": \"CustomLocation\",\r\n    \"name\": \"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "493" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3503bab5-0000-0100-0000-652827e30000\"" ],
+        "Location": [ "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "api-supported-versions": [ "2020-10-01-preview, 2022-01-10-preview, 2022-07-15-preview, 2023-03-01-preview, 2023-10-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/42895dc4-d839-40f4-ab18-4bcbafdf66db*29CAA6C16E90406C039D6AA0CEB79BFF4D3AEEAB26FA0C3D8358567A9EA34BD2?api-version=2023-10-01\u0026t=638327272678246888\u0026c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc\u0026s=SXTDfw-muuwVi7Fi47Yk82NntHKcxTLZ04gDPhEnwURFC_eB7pGArlH7tS2cVjuOjHsRdQHaomuYPB5oraRyYy4nE2Mu7UJRf8S5nIb1pjJvO-xIvg5weg2bZYJtqKcSjBybFrNWzcymGnTUBzumS6dEAl3SgcOXhlQna1RqSA25qPFTcf9uDEj8KQ7epa85XxZxGcBvy4XGh6e73Gcufnym0Dftsylz0p5co7hQacOolj1aM2oJDbMrpfVe7n16IdMPihX32UAwtLWV_OowjQdrWsK1sqjmvWROMHLbV6bgxde6RkOizXqmcTZbDyDCW5yYBScR4Bn38iMzl6wMwQ\u0026h=OBguyrYHQIvBWiq4SEmxIAnD1vKIIH_YzVp2bbJH5CI" ],
+        "x-ms-request-id": [ "42895dc4-d839-40f4-ab18-4bcbafdf66db" ],
+        "x-ms-correlation-request-id": [ "d4902afb-b32f-46d4-9405-5bdc3224097c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20231012T170747Z:d4902afb-b32f-46d4-9405-5bdc3224097c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Oct 2023 17:07:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1531" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default\",\"name\":\"default\",\"type\":\"microsoft.connectedvmwarevsphere/virtualmachineinstances\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-12T17:07:46.3715931Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-12T17:07:46.3715931Z\"},\"properties\":{\"infrastructureProfile\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-1528583\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc\"},\"provisioningState\":\"Accepted\",\"statuses\":[{\"status\":\"False\",\"type\":\"Ready\",\"reason\":\"Provisioning\",\"message\":\"The resource is being provisioned.\",\"severity\":\"Info\",\"lastUpdatedAt\":\"2023-10-12T17:07:47.4869808Z\"},{\"status\":\"False\",\"type\":\"Idle\",\"reason\":\"Provisioning\",\"message\":\"The resource is being provisioned.\",\"severity\":\"Info\",\"lastUpdatedAt\":\"2023-10-12T17:07:47.4869808Z\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedVMwareVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/42895dc4-d839-40f4-ab18-4bcbafdf66db*29CAA6C16E90406C039D6AA0CEB79BFF4D3AEEAB26FA0C3D8358567A9EA34BD2?api-version=2023-10-01\u0026t=638327272678246888\u0026c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc\u0026s=SXTDfw-muuwVi7Fi47Yk82NntHKcxTLZ04gDPhEnwURFC_eB7pGArlH7tS2cVjuOjHsRdQHaomuYPB5oraRyYy4nE2Mu7UJRf8S5nIb1pjJvO-xIvg5weg2bZYJtqKcSjBybFrNWzcymGnTUBzumS6dEAl3SgcOXhlQna1RqSA25qPFTcf9uDEj8KQ7epa85XxZxGcBvy4XGh6e73Gcufnym0Dftsylz0p5co7hQacOolj1aM2oJDbMrpfVe7n16IdMPihX32UAwtLWV_OowjQdrWsK1sqjmvWROMHLbV6bgxde6RkOizXqmcTZbDyDCW5yYBScR4Bn38iMzl6wMwQ\u0026h=OBguyrYHQIvBWiq4SEmxIAnD1vKIIH_YzVp2bbJH5CI+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/42895dc4-d839-40f4-ab18-4bcbafdf66db*29CAA6C16E90406C039D6AA0CEB79BFF4D3AEEAB26FA0C3D8358567A9EA34BD2?api-version=2023-10-01\u0026t=638327272678246888\u0026c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc\u0026s=SXTDfw-muuwVi7Fi47Yk82NntHKcxTLZ04gDPhEnwURFC_eB7pGArlH7tS2cVjuOjHsRdQHaomuYPB5oraRyYy4nE2Mu7UJRf8S5nIb1pjJvO-xIvg5weg2bZYJtqKcSjBybFrNWzcymGnTUBzumS6dEAl3SgcOXhlQna1RqSA25qPFTcf9uDEj8KQ7epa85XxZxGcBvy4XGh6e73Gcufnym0Dftsylz0p5co7hQacOolj1aM2oJDbMrpfVe7n16IdMPihX32UAwtLWV_OowjQdrWsK1sqjmvWROMHLbV6bgxde6RkOizXqmcTZbDyDCW5yYBScR4Bn38iMzl6wMwQ\u0026h=OBguyrYHQIvBWiq4SEmxIAnD1vKIIH_YzVp2bbJH5CI",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "f4a7992b-1979-4ec7-abc1-f94d5d245f6b" ],
+        "CommandName": [ "New-AzConnectedVMwareVM" ],
+        "FullCommandName": [ "New-AzConnectedVMwareVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.15", "Az.ConnectedVMware/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"5802c8a3-0000-0100-0000-652827f10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11987" ],
+        "x-ms-request-id": [ "8b7c5693-2175-415a-9af0-014801afa61d" ],
+        "x-ms-correlation-request-id": [ "188a2fd4-6145-46e6-93db-d231da09b057" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20231012T170818Z:188a2fd4-6145-46e6-93db-d231da09b057" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Oct 2023 17:08:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "660" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/42895dc4-d839-40f4-ab18-4bcbafdf66db*29CAA6C16E90406C039D6AA0CEB79BFF4D3AEEAB26FA0C3D8358567A9EA34BD2\",\"name\":\"42895dc4-d839-40f4-ab18-4bcbafdf66db*29CAA6C16E90406C039D6AA0CEB79BFF4D3AEEAB26FA0C3D8358567A9EA34BD2\",\"resourceId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default\",\"status\":\"Succeeded\",\"startTime\":\"2023-10-12T17:07:47.1660485Z\",\"endTime\":\"2023-10-12T17:08:01.9366726Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedVMwareVM+[NoContext]+CreateExpanded+$GET+https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "f4a7992b-1979-4ec7-abc1-f94d5d245f6b" ],
+        "CommandName": [ "New-AzConnectedVMwareVM" ],
+        "FullCommandName": [ "New-AzConnectedVMwareVM_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.15", "Az.ConnectedVMware/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3503f6b5-0000-0100-0000-652827f10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "39b854cc-28e4-4b04-b53e-fe010fe76fed" ],
+        "x-ms-correlation-request-id": [ "34fd7000-380e-4a20-a634-5a551b2c15b1" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20231012T170818Z:34fd7000-380e-4a20-a634-5a551b2c15b1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Oct 2023 17:08:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2766" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default\",\"name\":\"default\",\"type\":\"microsoft.connectedvmwarevsphere/virtualmachineinstances\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-12T17:07:46.3715931Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-12T17:07:46.3715931Z\"},\"properties\":{\"infrastructureProfile\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-1528583\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc\",\"customResourceName\":\"96d7ee67-626f-4dc6-b460-b729f1b11c06\",\"moRefId\":\"vm-1528583\",\"instanceUuid\":\"5015d462-e12c-623f-45ad-ddfecc541d51\",\"moName\":\"test-ps-vm\",\"folderPath\":\"ArcPrivateClouds-67/azcli-test-folder\",\"smbiosUuid\":\"421532ab-22b5-67b4-41fd-829f0e7355b9\",\"firmwareType\":\"bios\"},\"provisioningState\":\"Succeeded\",\"statuses\":[{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2023-10-12T17:08:01.3577325Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2023-10-12T17:08:01.3577325Z\"}],\"placementProfile\":{},\"resourceUid\":\"2daa936f-6ffa-4091-94cf-caf319803cc0\",\"networkProfile\":{\"networkInterfaces\":[{\"label\":\"Network adapter 1\",\"macAddress\":\"00:50:56:95:5e:81\",\"networkMoRefId\":\"network-563661\",\"networkMoName\":\"VM Network\",\"nicType\":\"vmxnet3\",\"deviceKey\":4000,\"powerOnBoot\":\"enabled\",\"ipSettings\":{\"allocationMethod\":\"unset\"}}]},\"storageProfile\":{\"disks\":[{\"diskObjectId\":\"7406-2000\",\"label\":\"Hard disk 1\",\"diskSizeGB\":32,\"deviceKey\":2000,\"diskMode\":\"persistent\",\"controllerKey\":1000,\"unitNumber\":0,\"diskType\":\"flat\"}],\"scsiControllers\":[{\"type\":\"lsilogic\",\"controllerKey\":1000,\"scsiCtlrUnitNumber\":7,\"sharing\":\"noSharing\"}]},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":false}},\"osProfile\":{\"computerName\":\"arcvmware-virtual-machine\",\"osSku\":\"Ubuntu Linux (64-bit)\",\"osType\":\"Linux\",\"guestId\":\"ubuntu64Guest\",\"toolsRunningStatus\":\"guestToolsNotRunning\",\"toolsVersionStatus\":\"guestToolsUnmanaged\",\"toolsVersion\":\"11360\"},\"hardwareProfile\":{\"memorySizeMB\":8192,\"numCPUs\":4,\"numCoresPerSocket\":1,\"cpuHotAddEnabled\":false,\"cpuHotRemoveEnabled\":false,\"memoryHotAddEnabled\":false},\"powerState\":\"poweredOff\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzConnectedVMwareVM+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default?api-version=2023-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "0faaa138-9104-4e07-8dee-9cf0c4cde8f7" ],
+        "CommandName": [ "Get-AzConnectedVMwareVM" ],
+        "FullCommandName": [ "Get-AzConnectedVMwareVM_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.15", "Az.ConnectedVMware/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"3503f6b5-0000-0100-0000-652827f10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "14b9070b-e3ea-4386-be1e-128b135b2b41" ],
+        "x-ms-correlation-request-id": [ "f94ad08c-11e4-42d6-95f8-7e554d323367" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20231012T170819Z:f94ad08c-11e4-42d6-95f8-7e554d323367" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Oct 2023 17:08:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2766" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default\",\"name\":\"default\",\"type\":\"microsoft.connectedvmwarevsphere/virtualmachineinstances\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-12T17:07:46.3715931Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-12T17:07:46.3715931Z\"},\"properties\":{\"infrastructureProfile\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-1528583\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc\",\"customResourceName\":\"96d7ee67-626f-4dc6-b460-b729f1b11c06\",\"moRefId\":\"vm-1528583\",\"instanceUuid\":\"5015d462-e12c-623f-45ad-ddfecc541d51\",\"moName\":\"test-ps-vm\",\"folderPath\":\"ArcPrivateClouds-67/azcli-test-folder\",\"smbiosUuid\":\"421532ab-22b5-67b4-41fd-829f0e7355b9\",\"firmwareType\":\"bios\"},\"provisioningState\":\"Succeeded\",\"statuses\":[{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2023-10-12T17:08:01.3577325Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2023-10-12T17:08:01.3577325Z\"}],\"placementProfile\":{},\"resourceUid\":\"2daa936f-6ffa-4091-94cf-caf319803cc0\",\"networkProfile\":{\"networkInterfaces\":[{\"label\":\"Network adapter 1\",\"macAddress\":\"00:50:56:95:5e:81\",\"networkMoRefId\":\"network-563661\",\"networkMoName\":\"VM Network\",\"nicType\":\"vmxnet3\",\"deviceKey\":4000,\"powerOnBoot\":\"enabled\",\"ipSettings\":{\"allocationMethod\":\"unset\"}}]},\"storageProfile\":{\"disks\":[{\"diskObjectId\":\"7406-2000\",\"label\":\"Hard disk 1\",\"diskSizeGB\":32,\"deviceKey\":2000,\"diskMode\":\"persistent\",\"controllerKey\":1000,\"unitNumber\":0,\"diskType\":\"flat\"}],\"scsiControllers\":[{\"type\":\"lsilogic\",\"controllerKey\":1000,\"scsiCtlrUnitNumber\":7,\"sharing\":\"noSharing\"}]},\"securityProfile\":{\"uefiSettings\":{\"secureBootEnabled\":false}},\"osProfile\":{\"computerName\":\"arcvmware-virtual-machine\",\"osSku\":\"Ubuntu Linux (64-bit)\",\"osType\":\"Linux\",\"guestId\":\"ubuntu64Guest\",\"toolsRunningStatus\":\"guestToolsNotRunning\",\"toolsVersionStatus\":\"guestToolsUnmanaged\",\"toolsVersion\":\"11360\"},\"hardwareProfile\":{\"memorySizeMB\":8192,\"numCPUs\":4,\"numCoresPerSocket\":1,\"cpuHotAddEnabled\":false,\"cpuHotRemoveEnabled\":false,\"memoryHotAddEnabled\":false},\"powerState\":\"poweredOff\"}}",
+      "isContentBase64": false
+    }
+  }
+}

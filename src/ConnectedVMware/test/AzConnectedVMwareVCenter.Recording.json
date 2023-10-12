@@ -1,0 +1,44 @@
+{
+  "AzConnectedVMwareVCenter+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/azcli-test-vc?api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/azcli-test-vc?api-version=2023-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "e1926d1e-a52f-447c-ae02-7e93acfee0e1" ],
+        "CommandName": [ "Get-AzConnectedVMwareVCenter" ],
+        "FullCommandName": [ "Get-AzConnectedVMwareVCenter_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.15", "Az.ConnectedVMware/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"4501f14b-0000-0100-0000-652019fb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "34a27445-0a40-4009-bfb1-f0b0b24475e8" ],
+        "x-ms-correlation-request-id": [ "b6d94055-33fa-41f0-8cd2-f26f303fd539" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20231012T170745Z:b6d94055-33fa-41f0-8cd2-f26f303fd539" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 12 Oct 2023 17:07:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1330" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/azcli-test-vc\",\"name\":\"azcli-test-vc\",\"type\":\"microsoft.connectedvmwarevsphere/vcenters\",\"kind\":\"VMware\",\"location\":\"eastus\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/azcli-test-rg/providers/microsoft.extendedlocation/customlocations/azcli-test-cl\"},\"tags\":{\"vc\":\"test\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-02-16T15:53:39.9929387Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-06T14:30:18.6963246Z\"},\"properties\":{\"credentials\":{\"username\":\"arcvmware\"},\"uuid\":\"e6048b2a-ba86-4334-adff-ba3d617d12ef\",\"fqdn\":\"idclab-vcen67.fareast.corp.microsoft.com\",\"port\":443,\"version\":\"6.7.0\",\"instanceUuid\":\"db73f8f2-624c-4a0f-905b-8c6f34442cbc\",\"customResourceName\":\"e6048b2a-ba86-4334-adff-ba3d617d12ef\",\"connectionStatus\":\"Connected\",\"provisioningState\":\"Succeeded\",\"statuses\":[{\"status\":\"True\",\"type\":\"Connected\",\"lastUpdatedAt\":\"2023-09-18T08:04:35Z\"},{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2023-08-01T05:26:07.8798425Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2023-08-01T05:26:07.8798425Z\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}
