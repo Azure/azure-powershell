@@ -79,51 +79,63 @@ function Get-AzMigrateDiscoveredServer {
     
     process {
         $parameterSet = $PSCmdlet.ParameterSetName
+        $hasApplianceName = $PSBoundParameters.ContainsKey("ApplianceName")
         
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
         $discoverySolution = Az.Migrate\Get-AzMigrateSolution -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $ProjectName -Name $discoverySolutionName
-        if ($discoverySolution.Name -ne $discoverySolutionName) {
+        if ($discoverySolution.Name -ne $discoverySolutionName)
+        {
             throw "Server Discovery Solution not found."
         }
 
         $appMap = @{}
 
-        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"]) {
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"])
+        {
             $appMapV2 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
             # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
-            foreach ($item in $appMapV2) {
+            foreach ($item in $appMapV2)
+            {
                 $appMap[$item.ApplianceName] = $item.SiteId
             }
         }
         
-        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"]) {
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"])
+        {
             $appMapV3 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
-            foreach ($item in $appMapV3) {
+            foreach ($item in $appMapV3)
+            {
                 $t = $item.psobject.properties
                 $appMap[$t.Name] = $t.Value.SiteId
             }    
         }
 
         if ($null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
-            $null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
+            $null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] )
+        {
             throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 
         # Regex to match site name.
-        if ($SourceMachineType -eq "VMware") {
+        if ($SourceMachineType -eq "VMware")
+        {
             $siteRegex = "(?<=/Microsoft.OffAzure/VMwareSites/).*$"
         }
         else {
             $siteRegex = "(?<=/Microsoft.OffAzure/HyperVSites/).*$"
         }
 
-        if ($parameterSet -match 'Get') {
+        if ($parameterSet -match 'Get')
+        {
             # Get or GetInSite
-            foreach ($kvp in $appMap.GetEnumerator()) {
+            foreach ($kvp in $appMap.GetEnumerator())
+            {
                 if (($kvp.Value -match $siteRegex) -and
-                    (-not (($parameterSet -eq 'GetInSite') -and ($kvp.Key -ne $ApplianceName)))) {
+                    (-not (($parameterSet -eq 'GetInSite') -and ($kvp.Key -ne $ApplianceName))))
+                {
                     $siteNameTmp = $Matches[0]
-                    if ($SourceMachineType -eq "VMware") {
+                    if ($SourceMachineType -eq "VMware")
+                    {
                         $machine = Az.Migrate.Internal\Get-AzMigrateMachine `
                             -Name $Name `
                             -ResourceGroupName $ResourceGroupName `
@@ -142,23 +154,39 @@ function Get-AzMigrateDiscoveredServer {
                             -ErrorVariable notPresent `
                             -ErrorAction SilentlyContinue
                     }
+
+                    # Remove server marked as Deleted.
+                    if ($null -ne $machine -and $machine.IsDeleted)
+                    {
+                        $machine = $null
+                    }
     
-                    if ($null -ne $machine) {
+                    if ($null -ne $machine)
+                    {
                         return $machine
                     }
                 }
             }
 
-            throw "No machine with Name '$($Name)' of the type '$($SourceMachineType)' found in project '$($ProjectName)'."
+            $errorMsg = "No machine with machine Name '$Name' of Type '$SourceMachineType' found in Project '$ProjectName'"
+            if ($hasApplianceName)
+            {
+                $errorMsg += " with Appliance '$ApplianceName'"
+            }
+
+            throw $errorMsg
         }
         else {
             # List or ListInSite
             $allMachines = [System.Collections.ArrayList]::new()
-            foreach ($kvp in $appMap.GetEnumerator()) {
+            foreach ($kvp in $appMap.GetEnumerator())
+            {
                 if (($kvp.Value -match $siteRegex) -and
-                    (-not (($parameterSet -eq 'ListInSite') -and ($kvp.Key -ne $ApplianceName)))) {
+                    (-not (($parameterSet -eq 'ListInSite') -and ($kvp.Key -ne $ApplianceName))))
+                {
                     $siteNameTmp = $Matches[0]
-                    if ($SourceMachineType -eq "VMware") {
+                    if ($SourceMachineType -eq "VMware")
+                    {
                         $machines = Az.Migrate.Internal\Get-AzMigrateMachine `
                             -ResourceGroupName $ResourceGroupName `
                             -SiteName $siteNameTmp `
@@ -172,18 +200,35 @@ function Get-AzMigrateDiscoveredServer {
                             -SubscriptionId $SubscriptionId
                     }
 
-                    if ($null -ne $machines) {
+                    if ($null -ne $machines)
+                    {
                         $allMachines.AddRange($machines)
                     }
                 }
             }
 
-            if ($DisplayName) {
+            # Remove servers marked as Deleted.
+            $allMachines = $allMachines | Where-Object { !$_.IsDeleted }
+
+            if ($allMachines.Count -gt 0 -and $DisplayName)
+            {
                 $allMachines = $allMachines | Where-Object { $_.DisplayName -match $DisplayName }
             }
 
-            if ($allMachines.Count -eq 0) {
-                throw "No machine of the type '$($SourceMachineType)' found in project '$($ProjectName)'."
+            if ($allMachines.Count -eq 0)
+            {
+                $errorMsg = "No machine of Type '$SourceMachineType' found in Project '$ProjectName'"
+                if ($hasApplianceName)
+                {
+                    $errorMsg += " with Appliance '$ApplianceName'"
+                }
+
+                if ($DisplayName)
+                {
+                    $errorMsg += " with matching machine DisplayName '$DisplayName'"
+                }
+
+                throw $errorMsg
             }
             
             return $allMachines
