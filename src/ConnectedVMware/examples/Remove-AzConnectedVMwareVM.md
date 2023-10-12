@@ -1,9 +1,9 @@
-### Example 1: Delete VM
+### Example 1: Delete VM Instances
 ```powershell
-Remove-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+Remove-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
 ```output
 ```
 
-This command delete a VM named `test-vm` from a resource group named `azcli-test-rg`.
+This command will delete of a VM Instances of machine named `test-machine`.

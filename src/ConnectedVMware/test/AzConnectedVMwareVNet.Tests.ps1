@@ -15,16 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareVNet'))
 }
 
 Describe 'AzConnectedVMwareVNet' {
-    It 'CreateExpanded' -Skip {
-        New-AzConnectedVMwareVNet -Name $env.$vNetName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/network-563661"
+    It 'CreateExpanded' {
+        New-AzConnectedVMwareVNet -Name $env.vNetName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/network-563661"
     }
-
-    It 'Get' -Skip {
+    
+    It 'Get' {
         $vnet = Get-AzConnectedVMwareVNet -ResourceGroupName $env.ResourceGroupName -Name $env.vNetName
         $vnet.Name | Should -Be $env.vNetName
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         Remove-AzConnectedVMwareVNet -Name $env.vNetName -ResourceGroupName $env.resourceGroupName
     }
 }

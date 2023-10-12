@@ -13,7 +13,7 @@ The operation to start a virtual machine instance.
 ## SYNTAX
 
 ```
-Start-AzConnectedVMwareVM -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Start-AzConnectedVMwareVM -MachineId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,10 +24,10 @@ The operation to start a virtual machine instance.
 
 ### Example 1: Start Virtual Machine
 ```powershell
-Start-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+Start-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
-This command start of a VM named `test-vm` in a resource group named `azcli-test-rg`.
+This command start of a VM named `test-vm` in a resource group named `test-rg`.
 
 ## PARAMETERS
 
@@ -62,6 +62,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -71,21 +86,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

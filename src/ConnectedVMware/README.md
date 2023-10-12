@@ -116,4 +116,10 @@ directive:
       subject: VirtualNetwork(.*)
     set:
       subject: VNet$1
+  - where:
+      subject: VM|VMGuestAgent
+      parameter-name: ResourceUri
+    set:
+      parameter-name: MachineId 
+
 ```

@@ -1,293 +1,42 @@
 {
-  "AzConnectedVMwareCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview+1": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"inventoryItemId\": \"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/domain-c644614\"\r\n  },\r\n  \"extendedLocation\": {\r\n    \"type\": \"CustomLocation\",\r\n    \"name\": \"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "483" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 201,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2002cf7c-0000-0100-0000-637c87760000\"" ],
-        "Location": [ "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "api-supported-versions": [ "2020-10-01-preview, 2022-01-10-preview, 2022-07-15-preview" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/3c65c6ba-cc63-494e-8d29-ccea359f023a*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview" ],
-        "x-ms-request-id": [ "3c65c6ba-cc63-494e-8d29-ccea359f023a" ],
-        "x-ms-correlation-request-id": [ "2a0d7391-bb8a-45b1-acdd-8dfd7fb693d2" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082528Z:2a0d7391-bb8a-45b1-acdd-8dfd7fb693d2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:25:27 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1104" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"name\":\"test-clusterwvr97\",\"type\":\"microsoft.connectedvmwarevsphere/clusters\",\"location\":\"eastus\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-22T08:25:23.3512203Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-22T08:25:23.3512203Z\"},\"properties\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/domain-c644614\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3\",\"provisioningState\":\"Accepted\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/3c65c6ba-cc63-494e-8d29-ccea359f023a*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview+2": {
+  "AzConnectedVMwareCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a1ffc958-d2c7-493e-9f1e-125a0477f536/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/Cluster1?api-version=2023-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/3c65c6ba-cc63-494e-8d29-ccea359f023a*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/a1ffc958-d2c7-493e-9f1e-125a0477f536/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/Cluster1?api-version=2023-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "0fc0ca85-1cd3-4beb-b613-99c1022216d1" ],
-        "CommandName": [ "New-AzConnectedVMwareCluster" ],
-        "FullCommandName": [ "New-AzConnectedVMwareCluster_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"7c013199-0000-0100-0000-637c87880000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
-        "x-ms-request-id": [ "54f811b8-037a-40ab-8e3a-4ec9a1d5dfbd" ],
-        "x-ms-correlation-request-id": [ "28ef432d-d720-4665-9732-f1481ea7da86" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082558Z:28ef432d-d720-4665-9732-f1481ea7da86" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:25:58 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "589" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/3c65c6ba-cc63-494e-8d29-ccea359f023a*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"name\":\"3c65c6ba-cc63-494e-8d29-ccea359f023a*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"resourceId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-22T08:25:26.4830824Z\",\"endTime\":\"2022-11-22T08:25:44.4135034Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "0fc0ca85-1cd3-4beb-b613-99c1022216d1" ],
-        "CommandName": [ "New-AzConnectedVMwareCluster" ],
-        "FullCommandName": [ "New-AzConnectedVMwareCluster_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2002dc7c-0000-0100-0000-637c87880000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "5fa00444-3d6c-4103-aa4e-c1e2baf90e31" ],
-        "x-ms-correlation-request-id": [ "e4dae2a0-2cba-44bd-8ff1-15f211bccd6b" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082559Z:e4dae2a0-2cba-44bd-8ff1-15f211bccd6b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:25:59 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1471" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"name\":\"test-clusterwvr97\",\"type\":\"microsoft.connectedvmwarevsphere/clusters\",\"location\":\"eastus\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-22T08:25:23.3512203Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-22T08:25:23.3512203Z\"},\"properties\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/domain-c644614\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3\",\"provisioningState\":\"Succeeded\",\"uuid\":\"e039be4d-63b6-4632-be66-0c597cb48cd9\",\"statuses\":[{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2022-11-22T08:25:44.040222Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2022-11-22T08:25:44.040222Z\"}],\"customResourceName\":\"e039be4d-63b6-4632-be66-0c597cb48cd9\",\"moRefId\":\"domain-c644614\",\"datastoreIds\":[],\"networkIds\":[],\"moName\":\"Cluster2-Standard\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "6918449c-86ba-4029-b196-f97601cf33d7" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ad123659-09a0-4cb1-b911-085a7a273271" ],
         "CommandName": [ "Get-AzConnectedVMwareCluster" ],
         "FullCommandName": [ "Get-AzConnectedVMwareCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.14", "Az.ConnectedVMware/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 403,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2002dc7c-0000-0100-0000-637c87880000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "d06a5424-850d-45c9-b3b3-7e1d08e4eef7" ],
-        "x-ms-correlation-request-id": [ "10560fc3-2110-4ca4-8eaf-78713ba6ae97" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082600Z:10560fc3-2110-4ca4-8eaf-78713ba6ae97" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "16812288-87d8-4ab3-8b69-0457022f63dc" ],
+        "x-ms-correlation-request-id": [ "16812288-87d8-4ab3-8b69-0457022f63dc" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20231005T104826Z:16812288-87d8-4ab3-8b69-0457022f63dc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:26:00 GMT" ]
+        "Date": [ "Thu, 05 Oct 2023 10:48:26 GMT" ],
+        "Connection": [ "close" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1471" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "483" ]
       },
-      "Content": "{\"id\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"name\":\"test-clusterwvr97\",\"type\":\"microsoft.connectedvmwarevsphere/clusters\",\"location\":\"eastus\",\"extendedLocation\":{\"type\":\"CustomLocation\",\"name\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3\"},\"systemData\":{\"createdBy\":\"sanmishra@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-22T08:25:23.3512203Z\",\"lastModifiedBy\":\"sanmishra@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-22T08:25:23.3512203Z\"},\"properties\":{\"inventoryItemId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/domain-c644614\",\"vCenterId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3\",\"provisioningState\":\"Succeeded\",\"uuid\":\"e039be4d-63b6-4632-be66-0c597cb48cd9\",\"statuses\":[{\"status\":\"True\",\"type\":\"Ready\",\"lastUpdatedAt\":\"2022-11-22T08:25:44.040222Z\"},{\"status\":\"True\",\"type\":\"Idle\",\"lastUpdatedAt\":\"2022-11-22T08:25:44.040222Z\"}],\"customResourceName\":\"e039be4d-63b6-4632-be66-0c597cb48cd9\",\"moRefId\":\"domain-c644614\",\"datastoreIds\":[],\"networkIds\":[],\"moName\":\"Cluster2-Standard\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97?api-version=2022-01-10-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "db987d8e-9ddc-4639-8fa5-73718c2fd6f9" ],
-        "CommandName": [ "Remove-AzConnectedVMwareCluster" ],
-        "FullCommandName": [ "Remove-AzConnectedVMwareCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2002de7c-0000-0100-0000-637c87990000\"" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-providerhub-traffic": [ "True" ],
-        "api-supported-versions": [ "2020-10-01-preview, 2022-01-10-preview, 2022-07-15-preview" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview" ],
-        "x-ms-request-id": [ "f9a16c7b-f29b-4ae4-8ea9-e10aa5779714" ],
-        "x-ms-correlation-request-id": [ "2d5bb425-14ef-4627-8421-5cef61b8097b" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082601Z:2d5bb425-14ef-4627-8421-5cef61b8097b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:26:01 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "4" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "bnVsbA==",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "db987d8e-9ddc-4639-8fa5-73718c2fd6f9" ],
-        "CommandName": [ "Remove-AzConnectedVMwareCluster" ],
-        "FullCommandName": [ "Remove-AzConnectedVMwareCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"7c013399-0000-0100-0000-637c879e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
-        "x-ms-request-id": [ "f2ffe45a-ba81-4dfd-802a-f70d48d10bf0" ],
-        "x-ms-correlation-request-id": [ "8b31a8d5-083a-4b9a-ae85-6292301ddb43" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082632Z:8b31a8d5-083a-4b9a-ae85-6292301ddb43" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:26:31 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "589" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"name\":\"f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"resourceId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-22T08:26:01.2271052Z\",\"endTime\":\"2022-11-22T08:26:06.1647763Z\",\"properties\":null}",
-      "isContentBase64": false
-    }
-  },
-  "AzConnectedVMwareCluster+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09?api-version=2022-01-10-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "db987d8e-9ddc-4639-8fa5-73718c2fd6f9" ],
-        "CommandName": [ "Remove-AzConnectedVMwareCluster" ],
-        "FullCommandName": [ "Remove-AzConnectedVMwareCluster_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.ConnectedVMware/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"7c013399-0000-0100-0000-637c879e0000\"" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
-        "x-ms-request-id": [ "51b88bf3-8ee4-4183-96c2-9fbd1e759da7" ],
-        "x-ms-correlation-request-id": [ "9a2a2e91-60a4-4566-afed-768245d3e29c" ],
-        "x-ms-routing-request-id": [ "CENTRALINDIA:20221122T082632Z:9a2a2e91-60a4-4566-afed-768245d3e29c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 22 Nov 2022 08:26:31 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "589" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/providers/Microsoft.ConnectedVMwarevSphere/locations/EASTUS/operationStatuses/f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"name\":\"f9a16c7b-f29b-4ae4-8ea9-e10aa5779714*BD1558EC93D6753F707EE2587F12C7F82793EADC03E522159A2E2330222EAB09\",\"resourceId\":\"/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/test-clusterwvr97\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-22T08:26:01.2271052Z\",\"endTime\":\"2022-11-22T08:26:06.1647763Z\",\"properties\":null}",
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027sanmishra@microsoft.com\u0027 with object id \u002753497f26-f5bb-460a-8e64-f81c3e0cd5c9\u0027 does not have authorization to perform action \u0027Microsoft.ConnectedVMwarevSphere/clusters/read\u0027 over scope \u0027/subscriptions/a1ffc958-d2c7-493e-9f1e-125a0477f536/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/clusters/Cluster1\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
       "isContentBase64": false
     }
   }

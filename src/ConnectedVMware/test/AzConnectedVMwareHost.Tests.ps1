@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareHost'))
 
 Describe 'AzConnectedVMwareHost' {
     It 'CreateExpanded' {
-        New-AzConnectedVMwareHost -Name $env.hostName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/host-713902"
+        New-AzConnectedVMwareHost -Name $env.hostName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/host-1147412"
     }
 
     It 'Get' {
