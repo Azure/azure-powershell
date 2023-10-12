@@ -8,6 +8,8 @@
 // regenerated.
 // </auto-generated>
 
+// Unexpected changed
+
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
