@@ -72,7 +72,7 @@ function Uninstall-AzModule {
             }
 
             if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-                Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue -ErrorVariable +errorRecords
+                Uninstall-Module -Name 'Az' -AllVersion -ErrorAction 'SilentlyContinue'
             }
 
             Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
