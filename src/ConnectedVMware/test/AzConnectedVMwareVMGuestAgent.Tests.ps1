@@ -15,12 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareVMGuestAgent
 }
 
 Describe 'AzConnectedVMwareVMGuestAgent' {
-    It 'CreateExpanded' -Skip {
-        New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-vm-ins-ps" -CredentialsUsername "arcvmware" -CredentialsPassword $Secure_String_Pwd -ProvisioningAction "install"
+    It 'CreateExpanded' {
+        $password = ConvertTo-SecureString -String $env.guestPwd -AsPlainText -Force
+        New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-guest-vm-ps" -CredentialsUsername $env.guestUsername -CredentialsPassword $password -ProvisioningAction "install"
     }
 
-    It 'Get' -Skip {
-        $vm = Get-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-vm-ins-ps"
+    It 'Get' {
+        $vm = Get-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-guest-vm-ps"
         $vm.Name | Should -Be "default"
     }
 }

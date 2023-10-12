@@ -59,6 +59,12 @@ function setupEnv() {
     $vmTemplateName = "test-vmtemplate" + (RandomString -allChars $false -len 5)
     $env.Add("vmTemplateName", $vmTemplateName)
 
+    $guestUsername = "azcli-user"
+    $env.Add("guestUsername", $guestUsername)
+
+    $guestPwd = "azcli-password"
+    $env.Add("guestPwd", $guestPwd)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
