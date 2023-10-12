@@ -25,12 +25,12 @@ Gets a list of ElasticSan operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanoperation
 #>
 function Get-AzElasticSanOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
