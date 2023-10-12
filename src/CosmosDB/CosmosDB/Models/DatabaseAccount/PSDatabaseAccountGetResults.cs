@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
             EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
             DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
+            EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
+            MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
         }
 
         //
@@ -204,6 +206,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public bool? EnableBurstCapacity { get; set; }
         //
         // Summary:
+        //     Indicates the status of the Customer Managed Key feature on the account. In
+        /// case there are errors, the property provides troubleshooting guidance.
+        public string CustomerManagedKeyStatus { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Partition Merge is enabled.
+        public bool? EnablePartitionMerge { get; set; }
+        //
+        // Summary:
         //     Gets or sets flag to indicate to allow Network Acl Bypass.
         public NetworkAclBypass? NetworkAclBypass { get; set; }
         //
@@ -245,5 +256,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
         public string DefaultPriorityLevel { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
+        public string MinimalTlsVersion { get; set; }
     }
 }

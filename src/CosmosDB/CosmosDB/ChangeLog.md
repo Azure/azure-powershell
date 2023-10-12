@@ -22,6 +22,8 @@
 * Added SecuredByPerimeter value to PublicNetworkAccess enum
 * Added Default Priority Level and Priority Based Execution enablement features
 * Locations show response now includes status, isSubscriptionRegionAccessAllowedForRegular and isSubscriptionRegionAccessAllowedForAz properties
+* Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSLocation[] LocationObject { get; set; }
-
+        
         // As of 03082022, using this list only for Mongo Accounts >= 3.6
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -172,6 +172,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
             Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
+            databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
             databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
 

@@ -119,6 +119,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
             }
+            if(MinimalTlsVersion != null)
+            {
+                databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {

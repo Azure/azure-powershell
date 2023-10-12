@@ -62,6 +62,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
         public const string EnablePriorityBasedExecutionHelpMessage = "Bool to indicate if Priority Based Execution is enabled on the account.";
         public const string DefaultPriorityLevelHelpMessage = "The Default Priority Level of requests for the CosmosDB database account. Accepted values: High, Low. Default is High.";
+        public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
+        public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
