@@ -381,20 +381,20 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;
             }
 	    
-	    if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
+	        if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
             {
                 if (vm.SecurityProfile == null)
                 {
                     vm.SecurityProfile = new SecurityProfile();
                 }
-                if (vm.SecurityProfile.UefiSettings == null)
-                {
-                    vm.SecurityProfile.UefiSettings = new UefiSettings();
-                }
                 vm.SecurityProfile.SecurityType = this.SecurityType;
 
                 if (vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || vm.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
+                    if (vm.SecurityProfile.UefiSettings == null)
+                    {
+                        vm.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
                     vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
@@ -424,6 +424,42 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
+            }
+
+            // Trusted Launch as the default scenario.
+            if (!this.IsParameterBound(c => c.SecurityType))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                vm.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    if (vm.SecurityProfile == null)
+                    {
+                        vm.SecurityProfile = new SecurityProfile();
+                    }
+                    if (vm.SecurityProfile.UefiSettings == null)
+                    {
+                        vm.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
+                    vm.SecurityProfile.UefiSettings.VTpmEnabled = true;
+                }
+
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                {
+                    if (vm.SecurityProfile == null)
+                    {
+                        vm.SecurityProfile = new SecurityProfile();
+                    }
+                    if (vm.SecurityProfile.UefiSettings == null)
+                    {
+                        vm.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
+                    vm.SecurityProfile.UefiSettings.SecureBootEnabled = true;
+                }
             }
 
             WriteObject(vm);

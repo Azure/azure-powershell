@@ -51,6 +51,7 @@ using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -764,6 +765,24 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 
             }
+            // Default TrustedLaunch values for SimpleParameterSet (no config)
+            else
+            {
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                if (!this.IsParameterBound(c => c.Image) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                }
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                {
+                    this.EnableSecureBoot = true;
+                }
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    this.EnableVtpm = true;
+                }
+            }
+            
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -971,6 +990,20 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.Identity == null)
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+
+            // TODO might not need this. 
+            // Default TrustedLaunch Image, but this was already handled in NEw-AzVMConfig!
+            if (this.VM.SecurityProfile.SecurityType == ConstantValues.TrustedLaunchSecurityType
+                && this.VM?.StorageProfile?.ImageReference == null)
+            {
+                this.VM.StorageProfile.ImageReference = new ImageReference
+                {
+                    Publisher = "MicrosoftWindowsServer",
+                    Offer = "WindowsServer",
+                    Sku = "2022-datacenter-azure-edition-core",
+                    Version = "latest"
+                };
             }
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))

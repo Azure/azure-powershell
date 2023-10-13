@@ -605,5 +605,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandardWithConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunch()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunch");
+        }
     }
 }
