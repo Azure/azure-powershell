@@ -78,11 +78,11 @@ foreach ($_ in $ChangedSdks) {
     if( Test-Path -Path "README.md" -PathType Leaf){
         Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
         autorest --use:@microsoft.azure/autorest.csharp@2.3.90 2>&1
-        Write-Host "=========== finish test error stream ==============="
+        Write-Host "=========== finish test error stream $LASTEXITCODE ==============="
         autorest --use:@microsoft.azure/autorest.csharp@2.3.90 3>&1
-        Write-Host "=========== finish test warning stream ==============="
+        Write-Host "=========== finish test warning stream $LASTEXITCODE ==============="
         autorest --use:@microsoft.azure/autorest.csharp@2.3.90 4>&1
-        Write-Host "=========== finish test verbose stream ==============="
+        Write-Host "=========== finish test verbose stream $LASTEXITCODE ==============="
         autorest README.md --version=v2 3>&1
     }
     else {
