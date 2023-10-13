@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMigrateHCIServerRepl
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzMigrateHCIServerReplication' {
+Describe 'Remove-AzMigrateHCIServerReplication' -Tag 'LiveOnly' {
     It 'ByID' {
         { Remove-AzMigrateHCIServerReplication -TargetObjectID $env.hciProtectedItem1 -SubscriptionId $env.hciSubscriptionId -ForceRemove "true" } | Should -Not -Throw
     }
