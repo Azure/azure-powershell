@@ -116,9 +116,24 @@ function Remove-AzMigrateHCIServerReplication {
         $resourceGroupName = $protectedItemIdArray[4]
         $vaultName = $protectedItemIdArray[8]
         $protectedItemName = $protectedItemIdArray[10]
+
+        $null = $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
+        $null = $PSBoundParameters.Add("VaultName", $vaultName)
+        $null = $PSBoundParameters.Add("Name", $protectedItemName)
+
+        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        if ($null -eq $ProtectedItem)
+        {
+            throw "Replication item is not found with Id '$TargetObjectID'."
+        }
+
+        $null = $PSBoundParameters.Remove('Name')
+
+        if ("DisableProtection" -notin $ProtectedItem.Property.AllowedJob)
+        {
+            throw "Replication item with Id '$TargetObjectID' cannot be removed at this moment. Current protection state is '$($protectedItem.Property.ProtectionStateDescription)'."
+        }
         
-        $null = $PSBoundParameters.Add('ResourceGroupName', $resourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $vaultName)
         $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
         $null = $PSBoundParameters.Add('NoWait', $true)
         $null = $PSBoundParameters.Add('ForceDelete', $shouldForceRemove)

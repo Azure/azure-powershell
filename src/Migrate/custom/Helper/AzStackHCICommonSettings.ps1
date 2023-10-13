@@ -48,9 +48,15 @@ $SiteTypes = @{
 }
 
 $RAMConfig = @{
-    MaxMemoryInMB = 1048576;
-    MinMemoryInMB = 1024;
-    TargetMemoryBufferPercentage = 20;
+    GbToMb = 1024;
+    MinTargetMemoryInMB = 1024; # 1 GB
+    MaxTargetMemoryGen1InMB = 1048576; # 1 TB
+    MaxTargetMemoryGen2InMB = 12582912; # 12 TB
+    DefaultMinDynamicMemoryInMB = 1024; # 1 GB
+    DefaultMaxDynamicMemoryInMB = 1048576; # 1 TB
+    DefaultTargetMemoryBufferPercentage = 20; # 20 %
+    MinTargetMemoryBufferPercentage = 5; # 5 %
+    MaxTargetMemoryBufferPercentage = 2000; # 2000 %
 }
 
 enum ProvisioningState

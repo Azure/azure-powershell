@@ -204,14 +204,30 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.TargetCpuCore = $TargetVMCPUCore
         }
 
-        # Memory
+        # Validate TargetVMRam
         if ($HasTargetVMRam) {
-            if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
-                throw "Specify RAM between $($RAMConfig.MinMemoryInMB) and $($RAMConfig.MaxMemoryInMB)"
+            # TargetVMRam needs to be a multiple of 1024 MB for the time being
+            if (($TargetVMRam % $RAMConfig.GbToMb) -ne 0) {
+                throw "Specify target RAM in multiples of $($RAMConfig.GbToMb) MB"    
             }
 
-            if ($TargetVMRam % $RAMConfig.MinMemoryInMB -ne 0) {
-                throw "Specify target RAM in multiples of $($RAMConfig.MinMemoryInMB) MB"    
+            if ($customProperties.HyperVGeneration -eq "1")
+            {
+                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen1InMB)
+                {
+                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen1InMB) for Gen1 Hyper-V VM."
+                }
+            }
+            elseif ($customProperties.HyperVGeneration -eq "2")
+            {
+                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen2InMB)
+                {
+                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen2InMB) for Gen2 Hyper-V VM."
+                }
+            }
+            else
+            {
+                throw "Unsupported Hyper-V VM generation '$($customProperties.HyperVGeneration)'."
             }
 
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam
@@ -221,31 +237,38 @@ function Set-AzMigrateHCIServerReplication {
             $customProperties.IsDynamicRam = $isDynamicRamEnabled
         }
 
+        # Dynamic memory enabled & DynamicMemoryConfig supplied
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
             if ($customProperties.TargetMemoryInMegaByte -lt $DynamicMemoryConfig.MinimumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.MinMemoryInMB) and $($customProperties.TargetMemoryInMegaByte)"
+                throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.DefaultMinDynamicMemoryInMB) and $($customProperties.TargetMemoryInMegaByte)"
             }
 
-            if (($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
-                throw "DynamicMemoryConfig - Specify minimum memory in multiples of $($RAMConfig.MinMemoryInMB) MB"    
+            if (($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.GbToMb) -ne 0) {
+                throw "DynamicMemoryConfig - Specify minimum memory in multiples of $($RAMConfig.GbToMb) MB"    
             }
 
             if ($customProperties.TargetMemoryInMegaByte -gt $DynamicMemoryConfig.MaximumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaByte) and $($RAMConfig.MaxMemoryInMB)"
+                throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaByte) and $($RAMConfig.DefaultMaxDynamicMemoryInMB)"
             }
 
-            if (($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.MinMemoryInMB) -ne 0) {
-                throw "DynamicMemoryConfig - Specify maximum memory in multiples of $($RAMConfig.MinMemoryInMB) MB"    
+            if (($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.GbToMb) -ne 0) {
+                throw "DynamicMemoryConfig - Specify maximum memory in multiples of $($RAMConfig.GbToMb) MB"    
+            }
+
+            if ($DynamicMemoryConfig.TargetMemoryBufferPercentage -NotIn $RAMConfig.MinTargetMemoryBufferPercentage..$RAMConfig.MaxTargetMemoryBufferPercentage)
+            {
+                throw "DynamicMemoryConfig - Specify target memory buffer percentage between $($RAMConfig.MinTargetMemoryBufferPercentage) % and $($RAMConfig.MaxTargetMemoryBufferPercentage) %."
             }
 
             $customProperties.DynamicMemoryConfig = $DynamicMemoryConfig
         }
 
-        if ($customProperties.IsDynamicRam -and ($null -eq $customProperties.DynamicMemoryConfig)) {
+        # Dynamic memory is newly enabled and needs a default
+        if ($customProperties.IsDynamicRam -and $null -eq $customProperties.DynamicMemoryConfig) {
             $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
-            $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.MinMemoryInMB)
-            $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.MaxMemoryInMB)
-            $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.TargetMemoryBufferPercentage
+            $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
+            $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
+            $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
     
             $customProperties.DynamicMemoryConfig = $memoryConfig
         }
@@ -276,6 +299,12 @@ function Set-AzMigrateHCIServerReplication {
                 $updatedNic.SelectionTypeForFailover   = $nic.SelectionTypeForFailover
             }
         } 
+
+        $selectedNics = $nics | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser" }
+        if ($null -eq $selectedNics -or $selectedNics.length -eq 0)
+        {
+            throw "At least one NIC must be selected for creation at target."
+        }
 
         # Disks
         [PSCustomObject[]]$disks = @()

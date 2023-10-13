@@ -203,14 +203,14 @@ function New-AzMigrateHCIServerReplication {
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
-            $InputObject = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
+            $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
             
             $null = $PSBoundParameters.Remove('MachineName')
             $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
-            $InputObject = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
+            $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
 
             $null = $PSBoundParameters.Remove('MachineName')
             $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters
@@ -219,7 +219,7 @@ function New-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('SiteName')
 
-        if ($null -eq $InputObject) {
+        if ($null -eq $machine) {
             throw "No machine '$MachineName' found in resource group '$ResourceGroupName' and site '$SiteName'."
         }
 
@@ -371,24 +371,13 @@ function New-AzMigrateHCIServerReplication {
             throw "The target virtual machine name '$TargetVMName' or part of the name is a trademarked or reserved word."
         }
 
-        # Validate TargetVMRam
-        if ($HasTargetVMRam) {
-            if ($TargetVMRam -NotIn $RAMConfig.MinMemoryInMB..$RAMConfig.MaxMemoryInMB) {
-                throw "Specify RAM between $($RAMConfig.MinMemoryInMB) and $($RAMConfig.MaxMemoryInMB)"
-            }
-
-            if (($TargetVMRam % $RAMConfig.MinMemoryInMB) -ne 0) {
-                throw "Specify target RAM in multiples of $($RAMConfig.MinMemoryInMB)MB"    
-            }
-        }
-
         $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
         $protectedItemProperties.ReplicationExtensionName = $replicationExtensionName
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
             $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
-            $isSourceDynamicMemoryEnabled = $InputObject.IsDynamicMemoryEnabled
+            $isSourceDynamicMemoryEnabled = $machine.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
             $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
@@ -397,7 +386,7 @@ function New-AzMigrateHCIServerReplication {
 
         $customProperties.InstanceType = $instanceType
         $customProperties.CustomLocationRegion = $targetCluster.CustomLocationRegion
-        $customProperties.FabricDiscoveryMachineId = $InputObject.Id
+        $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccount.Id
         $customProperties.SourceDraName = $sourceDra.Name
         $customProperties.StorageContainerId = $TargetStoragePathId
@@ -406,15 +395,51 @@ function New-AzMigrateHCIServerReplication {
         $customProperties.TargetHciClusterId = $targetClusterId
         $customProperties.TargetResourceGroupId = $TargetResourceGroupId
         $customProperties.TargetVMName = $TargetVMName
-        $customProperties.HyperVGeneration = if ($SiteType -eq $SiteTypes.HyperVSites) { $InputObject.Generation } else { "1" }
-        $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $InputObject.NumberOfProcessorCore }
-        $customProperties.TargetMemoryInMegaByte = if ($HasTargetVMRam) { $TargetVMRam } else { $InputObject.AllocatedMemoryInMB }
+        $customProperties.HyperVGeneration = if ($SiteType -eq $SiteTypes.HyperVSites) { $machine.Generation } else { "1" }
+        $customProperties.TargetCpuCore = if ($HasTargetVMCPUCore) { $TargetVMCPUCore } else { $machine.NumberOfProcessorCore }
         $customProperties.IsDynamicRam = if ($HasIsDynamicMemoryEnabled) { $isDynamicRamEnabled } else {  $isSourceDynamicMemoryEnabled }
     
+        # Validate TargetVMRam
+        if ($HasTargetVMRam) {
+            # TargetVMRam needs to be a multiple of 1024 MB for the time being
+            if (($TargetVMRam % $RAMConfig.GbToMb) -ne 0) {
+                throw "Specify target RAM in multiples of $($RAMConfig.GbToMb) MB"    
+            }
+
+            if ($customProperties.HyperVGeneration -eq "1")
+            {
+                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen1InMB)
+                {
+                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen1InMB) for Gen1 Hyper-V VM."
+                }
+            }
+            elseif ($customProperties.HyperVGeneration -eq "2")
+            {
+                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen2InMB)
+                {
+                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen2InMB) for Gen2 Hyper-V VM."
+                }
+            }
+            else
+            {
+                throw "Unsupported Hyper-V VM generation '$($customProperties.HyperVGeneration)'."
+            }
+        }
+
+        if ($HasTargetVMRam)
+        {
+            $customProperties.TargetMemoryInMegaByte = $TargetVMRam 
+        }
+        else
+        {
+            $customProperties.TargetMemoryInMegaByte = [System.Math]::Max($machine.AllocatedMemoryInMB, $RAMConfig.MinTargetMemoryInMB)
+        }
+
+        # Construct default dynamic memory config
         $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
-        $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.MinMemoryInMB)
-        $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.MaxMemoryInMB)
-        $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.TargetMemoryBufferPercentage
+        $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
+        $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
+        $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
 
         $customProperties.DynamicMemoryConfig = $memoryConfig
         
@@ -423,7 +448,7 @@ function New-AzMigrateHCIServerReplication {
         [PSCustomObject[]]$nics = @()
         if ($parameterSet -match 'DefaultUser') {
             if ($SiteType -eq $SiteTypes.HyperVSites) {
-                $osDisk = $InputObject.Disk | Where-Object { $_.InstanceId -eq $OSDiskID }
+                $osDisk = $machine.Disk | Where-Object { $_.InstanceId -eq $OSDiskID }
                 if ($null -eq $osDisk) {
                     throw "No Disk found with InstanceId '$OSDiskID' from discovered machine disks."
                 }
@@ -434,7 +459,7 @@ function New-AzMigrateHCIServerReplication {
                 }
             }
             elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-                $osDisk = $InputObject.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
+                $osDisk = $machine.Disk | Where-Object { $_.Uuid -eq $OSDiskID }
                 if ($null -eq $osDisk) {
                     throw "No Disk found with Uuid '$OSDiskID' from discovered machine disks."
                 }
@@ -445,7 +470,7 @@ function New-AzMigrateHCIServerReplication {
                 }
             }
 
-            foreach ($sourceDisk in $InputObject.Disk) {
+            foreach ($sourceDisk in $machine.Disk) {
                 $diskId = if ($SiteType -eq $SiteTypes.HyperVSites) { $sourceDisk.InstanceId } else { $sourceDisk.Uuid }
                 $diskSize = if ($SiteType -eq $SiteTypes.HyperVSites) { $sourceDisk.MaxSizeInByte } else { $sourceDisk.MaxSizeInBytes }
 
@@ -460,7 +485,7 @@ function New-AzMigrateHCIServerReplication {
                 $disks += $DiskObject
             }
             
-            foreach ($sourceNic in $InputObject.NetworkAdapter) {
+            foreach ($sourceNic in $machine.NetworkAdapter) {
                 $NicObject = [PSCustomObject]@{
                     NicId                    = $sourceNic.NicId
                     TargetNetworkId          = $TargetVirtualSwitchId
@@ -471,35 +496,37 @@ function New-AzMigrateHCIServerReplication {
             }
         }
         else {
-            if ($null -eq $DiskToInclude -or $DiskToInclude.length -lt 1) {
-                throw "Invalid DiskToInclude. Atleast one disk is required."
+            if ($null -eq $DiskToInclude -or $DiskToInclude.length -eq 0) {
+                throw "Invalid DiskToInclude. At least one disk is required."
             }
 
-            if ($null -eq $NicToInclude -or $NicToInclude.length -lt 1) {
-                throw "Invalid NicToInclude. Atleast one NIC is required."
-            }
-
-            $selectedNics = $NicToInclude | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser"}
-            if ($null -eq $selectedNics -or $selectedNics.length -lt 1) {
-                throw "Invalid NicToInclude. Atleast one NIC is required on target."
+            if ($null -eq $NicToInclude -or $NicToInclude.length -eq 0) {
+                throw "Invalid NicToInclude. At least one NIC is required."
             }
 
             # Validate OSDisk is set.
-            $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk -eq $True }
+            $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk }
             if (($null -eq $osDisk) -or ($osDisk.length -ne 1)) {
-                throw "One disk must be set as OS Disk."
+                throw "Invalid DiskToInclude. One and only one disk must be set as OS Disk."
+            }
+
+            # Validate at least one NIC is selected by user.
+            $selectedNics = $NicToInclude | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser"}
+            if ($null -eq $selectedNics -or $selectedNics.length -eq 0) {
+                throw "Invalid NicToInclude. At least one NIC is required to be marked as to be created at target."
             }
             
-            # Validate disks
+            # Validate DiskToInclude
+            [PSCustomObject[]]$uniqueDisks = @()
             foreach ($disk in $DiskToInclude) {
                 if ($SiteType -eq $SiteTypes.HyperVSites) {
-                    $discoveredDisk = $InputObject.Disk | Where-Object { $_.InstanceId -eq $disk.DiskId }
+                    $discoveredDisk = $machine.Disk | Where-Object { $_.InstanceId -eq $disk.DiskId }
                     if ($null -eq $discoveredDisk) {
                         throw "No Disk found with InstanceId '$($disk.DiskId)' from discovered machine disks."
                     }
                 }
                 elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-                    $discoveredDisk = $InputObject.Disk | Where-Object { $_.Uuid -eq $disk.DiskId }
+                    $discoveredDisk = $machine.Disk | Where-Object { $_.Uuid -eq $disk.DiskId }
                     if ($null -eq $discoveredDisk) {
                         throw "No Disk found with Uuid '$($disk.DiskId)' from discovered machine disks."
                     }
@@ -510,7 +537,7 @@ function New-AzMigrateHCIServerReplication {
                     throw "The disk name '$diskName' or part of the name is a trademarked or reserved word."
                 }
 
-                if (($null -ne $uniqueDisks) -and ($uniqueDisks.Contains($disk.DiskId))) {
+                if ($uniqueDisks.Contains($disk.DiskId)) {
                     throw "The disk id '$($disk.DiskId)' is already taken."
                 }
                 $uniqueDisks += $disk.DiskId
@@ -521,16 +548,16 @@ function New-AzMigrateHCIServerReplication {
             }
 
             # Validate NicToInclude
+            [PSCustomObject[]]$uniqueNics = @()
             foreach ($nic in $NicToInclude) {
-                $discoveredNic = $InputObject.NetworkAdapter | Where-Object { $_.NicId -eq $nic.NicId }
+                $discoveredNic = $machine.NetworkAdapter | Where-Object { $_.NicId -eq $nic.NicId }
                 if ($null -eq $discoveredNic) {
                     throw "The Nic id '$($nic.NicId)' is not found."
                 }
 
-                if (($null -ne $uniqueNics) -and ($uniqueNics.Contains($nic.NicId))) {
+                if ($uniqueNics.Contains($nic.NicId)) {
                     throw "The Nic id '$($nic.NicId)' is already taken."
                 }
-                
                 $uniqueNics += $nic.NicId
                 
                 $htNic = @{}
@@ -539,14 +566,11 @@ function New-AzMigrateHCIServerReplication {
             }
 
             # Include Nics not added by user as 'NotSelected'
-            foreach ($sourceNic in $InputObject.NetworkAdapter) {
-                $selectedNic = $nics | Where-Object { $_.NicId -eq $sourceNic.NicId }
-                if ($null -ne $selectedNic) {
-                    continue
-                }
-
+            $userGivenNicIds = $nics | Select-Object -ExpandProperty NicId
+            $remainingNics = $machine.NetworkAdapter | Where-Object { $_.NicId -notin $userGivenNicIds }
+            foreach ($remainingNic in $remainingNics) {
                 $NicObject = [PSCustomObject]@{
-                    NicId                    = $sourceNic.NicId
+                    NicId                    = $remainingNic.NicId
                     TargetNetworkId          = $nics[0].TargetNetworkId
                     TestNetworkId            = $nics[0].TestNetworkId
                     SelectionTypeForFailover = "NotSelected"

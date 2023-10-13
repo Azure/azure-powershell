@@ -130,7 +130,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         $context = Get-AzContext
         # Get SubscriptionId
         if ([string]::IsNullOrEmpty($SubscriptionId)) {
-            Write-Host "No -SubscriptionId provided."
+            Write-Host "No -SubscriptionId provided. Using the one from Get-AzContext."
 
             $SubscriptionId = $context.Subscription.Id
             if ([string]::IsNullOrEmpty($SubscriptionId)) {
