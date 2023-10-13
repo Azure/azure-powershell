@@ -103,11 +103,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             NodeType currentNodeType = this.SfrpMcClient.NodeTypes.Get(this.ResourceGroupName, this.ClusterName, this.NodeTypeName);
 
-            if (currentNodeType.VMExtensions != null)
+            if (currentNodeType.VmExtensions != null)
             {
-                var originalLength = currentNodeType.VMExtensions.Count();
-                currentNodeType.VMExtensions = currentNodeType.VMExtensions.Where(ext => !string.Equals(ext.Name, this.Name, StringComparison.OrdinalIgnoreCase)).ToList();
-                if (originalLength == currentNodeType.VMExtensions.Count())
+                var originalLength = currentNodeType.VmExtensions.Count();
+                currentNodeType.VmExtensions = currentNodeType.VmExtensions.Where(ext => !string.Equals(ext.Name, this.Name, StringComparison.OrdinalIgnoreCase)).ToList();
+                if (originalLength == currentNodeType.VmExtensions.Count())
                 {
                     throw new ArgumentException(string.Format("extension with name {0} not found", this.Name));
                 }
