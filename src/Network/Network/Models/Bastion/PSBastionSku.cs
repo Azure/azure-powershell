@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
     using System.Linq;
 
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using MNM = Management.Network.Models;
 
     public class PSBastionSku
     {
@@ -31,12 +30,11 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
 
         public PSBastionSku(string skuName = null)
         {
-            if (string.IsNullOrWhiteSpace(skuName))
+            Name = Standard;
+            if (!string.IsNullOrWhiteSpace(skuName))
             {
-                this.Name = MNM.BastionHostSkuName.Standard;
+                Name = GetSkuTier().FirstOrDefault(sku => sku.Equals(skuName, StringComparison.OrdinalIgnoreCase));
             }
-
-            this.Name = GetSkuTier().FirstOrDefault(sku => sku.Equals(skuName, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<string> GetSkuTier()

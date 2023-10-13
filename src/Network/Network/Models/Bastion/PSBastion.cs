@@ -32,27 +32,27 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSBastion()
         {
-            this.Sku = new PSBastionSku();
-            this.ScaleUnit = MinimumScaleUnits;
-            this.EnableKerberos = false;
-            this.DisableCopyPaste = false;
-            this.EnableTunneling = false;
-            this.EnableIpConnect = false;
-            this.EnableShareableLink = false;
+            Sku = new PSBastionSku();
+            ScaleUnit = MinimumScaleUnits;
+            EnableKerberos = false;
+            DisableCopyPaste = false;
+            EnableTunneling = false;
+            EnableIpConnect = false;
+            EnableShareableLink = false;
         }
 
         public PSBastion(string name, string rgName, string location, string sku = null)
         {
-            this.Name = name;
-            this.ResourceGroupName = rgName;
-            this.Location = location;
-            this.Sku = new PSBastionSku(sku);
-            this.ScaleUnit = MinimumScaleUnits;
-            this.EnableKerberos = false;
-            this.DisableCopyPaste = false;
-            this.EnableTunneling = false;
-            this.EnableIpConnect = false;
-            this.EnableShareableLink = false;
+            Name = name;
+            ResourceGroupName = rgName;
+            Location = location;
+            Sku = new PSBastionSku(sku);
+            ScaleUnit = MinimumScaleUnits;
+            EnableKerberos = false;
+            DisableCopyPaste = false;
+            EnableTunneling = false;
+            EnableIpConnect = false;
+            EnableShareableLink = false;
         }
 
         public List<PSBastionIPConfiguration> IpConfigurations { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {BastionSubnetName}");
             }
 
-            this.IpConfigurations = new List<PSBastionIPConfiguration>
+            IpConfigurations = new List<PSBastionIPConfiguration>
             {
                 new PSBastionIPConfiguration
                 {
@@ -134,12 +134,12 @@ namespace Microsoft.Azure.Commands.Network.Models
                 }
             };
 
-            this.IpConfigurations[0].Subnet = new PSResourceId { Id = BastionSubnet.Id };
+            IpConfigurations[0].Subnet = new PSResourceId { Id = BastionSubnet.Id };
         }
 
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSBastionIPConfiguration>();
+            IpConfigurations = new List<PSBastionIPConfiguration>();
         }
     }
 }
