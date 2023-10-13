@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// want to use and then click Want to deploy programmatically, Get Started -&gt;.
         /// Enter any required information and then click Save.
         /// </param>
-        public NodeType(bool isPrimary, int? vmInstanceCount, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), int? dataDiskSizeGB = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), VmImagePlan vmImagePlan = default(VmImagePlan), NodeTypeSku sku = default(NodeTypeSku))
+        public NodeType(bool isPrimary, int vmInstanceCount, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), int dataDiskSizeGB = default(int), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), string securityType = default(string), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), VmImagePlan vmImagePlan = default(VmImagePlan), NodeTypeSku sku = default(NodeTypeSku))
 
         : base(id, name, type, tags, systemData)
         {
@@ -312,14 +312,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// defined &lt;br /&gt; 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vmInstanceCount")]
-        public int? VmInstanceCount {get; set; }
+        public int VmInstanceCount {get; set; }
 
         /// <summary>
         /// Gets or sets disk size for the managed disk attached to the vms on the node
         /// type in GBs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dataDiskSizeGB")]
-        public int? DataDiskSizeGB {get; set; }
+        public int DataDiskSizeGB {get; set; }
 
         /// <summary>
         /// Gets or sets managed data disk type. Specifies the storage account type for
@@ -623,17 +623,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                 this.Sku.Validate();
             }
 
-            if (this.VmInstanceCount != null)
+            if (this.VmInstanceCount > 2147483647)
             {
-                if (this.VmInstanceCount > 2147483647)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "VMInstanceCount", 2147483647);
-                }
-                if (this.VmInstanceCount < -1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VMInstanceCount", -1);
-                }
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "VMInstanceCount", 2147483647);
             }
+            if (this.VmInstanceCount < -1)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VMInstanceCount", -1);
+            }
+
 
             if (this.DataDiskLetter != null)
             {
