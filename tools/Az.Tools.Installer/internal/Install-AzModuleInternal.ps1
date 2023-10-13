@@ -65,7 +65,7 @@ function Install-AzModuleInternal {
                 $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false -ErrorVariable errorRecords
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue' -ErrorVariable errorRecords
+                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
                 PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable errorRecords
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted -ErrorVariable errorRecords
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
@@ -171,7 +171,7 @@ function Install-AzModuleInternal {
                                 Import-Module PackageManagement
                                 Import-Module PowerShellGet -MinimumVersion 2.1.3 -MaximumVersion 3.0.0.0 -Scope Global
                                 if ($RemovePrevious) {
-                                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue' -ErrorVariable +errorRecords
+                                    PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                                 }
                                 PowerShellGet\Install-Module @installModuleParam -Name $moduleName -RequiredVersion "$moduleVersion" -ErrorVariable +errorRecords
                                 $state = "succeeded"

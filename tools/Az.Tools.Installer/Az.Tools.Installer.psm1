@@ -423,8 +423,8 @@ function Get-RepositoryUrl {
     }
 }
 
-$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
-$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
+$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction 'SilentlyContinue' )
+$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction 'SilentlyContinue' )
 
 $allFunctions = $internalFunctions + $exportedFunctions
 foreach ($function in $allFunctions) {

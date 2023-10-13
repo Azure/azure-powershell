@@ -25,13 +25,13 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 312544c27464f61bf9639924099d4238bdfa1d71
+commit: def187e2e78d7173d8fdd7f77740dd9719e1dfbf
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-10-01-preview/mdeOnboardings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/customAssessmentAutomation.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/customEntityStoreAssignment.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2017-08-01/complianceResults.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2022-03-01/pricings.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2023-01-01/pricings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-01-01/advancedThreatProtectionSettings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/deviceSecurityGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/iotSecuritySolutions.json

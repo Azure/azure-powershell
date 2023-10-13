@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
+* Upgraded Azure.Core to 1.35.0.
 
 ## Version 4.12.0
 * Supported splitting `Import-AzKeyVaultSecurityDomain` process into three steps to allow keys to be hidden offline.
