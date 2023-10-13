@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string AllowNonVirtualWanTraffic { get; set; }
+        public bool AllowNonVirtualWanTraffic { get; set; }
 
         [JsonIgnore]
         public string VirtualHubText

@@ -1660,6 +1660,8 @@ function Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficP
 {
     # Setup
     $rgname = Get-ResourceGroupName
+    # return
+
     $rname = Get-ResourceName
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
