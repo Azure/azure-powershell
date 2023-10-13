@@ -60,8 +60,6 @@ try{
         return
     }
     Write-Host "Preparing Autorest..."
-    # Expand the space size to avoid out of memory
-    $env:NODE_OPTIONS = "--max-old-space-size=65536"
     autorest --reset
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
