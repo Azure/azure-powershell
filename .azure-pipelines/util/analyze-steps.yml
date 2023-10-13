@@ -9,6 +9,13 @@ steps:
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
+- task: NodeTool@0
+  displayName: Install autorest
+  inputs:
+    versionSpec: '14.17.1'
+    command: custom
+    verbose: false
+    customCommand: install autorest@latest
 
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk 6.0.x'
