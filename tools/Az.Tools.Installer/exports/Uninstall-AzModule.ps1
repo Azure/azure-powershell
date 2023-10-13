@@ -68,7 +68,7 @@ function Uninstall-AzModule {
         try {
             if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
                 Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
-                Remove-AzureRM -ErrorVariable +errorRecords
+                Remove-AzureRM
             }
 
             if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
@@ -78,7 +78,7 @@ function Uninstall-AzModule {
             Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
 
             $allInstalled = @()
-            $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly -ErrorVariable +errorRecords
+            $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
 
             $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
             if ($Name) {
@@ -91,7 +91,7 @@ function Uninstall-AzModule {
             }
             else {
                 if ($ExcludeModule) {
-                    $ExcludeModule = Normalize-ModuleName $ExcludeModule -ErrorVariable +errorRecords
+                    $ExcludeModule = Normalize-ModuleName $ExcludeModule
                     $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
                     $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
                     if ($modulesNotInstalled) {
@@ -129,11 +129,11 @@ function Uninstall-AzModule {
                                 }
                             }
                             foreach ($versionString in $versionStrings) {
-                                PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue' -ErrorVariable +errorRecords
+                                PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
                             }
                         }
                         else {
-                            PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue' -ErrorVariable +errorRecords
+                            PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
                         }
                         Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
                         $index += 1

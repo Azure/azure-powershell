@@ -84,7 +84,7 @@ function Install-SingleModuleFromPackage{
             if ($confirmUninstallation) {
                 PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
             }
-            PowerShellGet\Install-Module @installModuleParams -Name $moduleName -RequiredVersion "$moduleVersion"  -ErrorVariable +errorRecords
+            PowerShellGet\Install-Module @installModuleParams -Name $moduleName -RequiredVersion "$moduleVersion"
         }
 
         if (!$WhatIfPreference) {
