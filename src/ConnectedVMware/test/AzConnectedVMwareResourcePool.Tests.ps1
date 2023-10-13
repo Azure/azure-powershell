@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareResourcePool
 
 Describe 'AzConnectedVMwareResourcePool' {
     It 'CreateExpanded' {
-        New-AzConnectedVMwareResourcePool -Name $env.resourcePoolName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/resgroup-714155"
+        New-AzConnectedVMwareResourcePool -Name $env.resourcePoolName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/resgroup-724471"
     }
 
     It 'Get' {

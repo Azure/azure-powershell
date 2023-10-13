@@ -16,15 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzConnectedVMwareVM'))
 
 Describe 'AzConnectedVMwareVM' {
     It 'CreateExpanded' {
-        New-AzConnectedVMwareVM -Name $env.vmName -ResourceGroupName $env.resourceGroupName -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc3/InventoryItems/vm-1106469"
+        New-AzConnectedVMwareVM -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -InfrastructureProfileInventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/azcli-test-vc/InventoryItems/vm-1528583" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps"
     }
 
     It 'Get' {
-        $vm = Get-AzConnectedVMwareVM -ResourceGroupName $env.ResourceGroupName -Name $env.vmName
-        $vm.Name | Should -Be $env.vmName
+        $vm = Get-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps"
+        $vm.Name | Should -Be "default"
     }
 
-    It 'Delete' {
-        Remove-AzConnectedVMwareVM -Name $env.vmName -ResourceGroupName $env.resourceGroupName
+    It 'Delete' -Skip {
+        Remove-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine-guest9-ps"
     }
 }

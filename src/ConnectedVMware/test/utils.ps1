@@ -16,7 +16,7 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
+    $env.SubscriptionId = "204898ee-cd13-4332-b9d4-55ca5c25496d"
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
@@ -29,10 +29,10 @@ function setupEnv() {
     $extendedLocationType = "CustomLocation"
     $env.Add("extendedLocationType", $extendedLocationType)
 
-    $extendedLocationName = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl3"
+    $extendedLocationName = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/Microsoft.ExtendedLocation/customLocations/azcli-test-cl"
     $env.Add("extendedLocationName", $extendedLocationName)
 
-    $vcenterId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/microsoft.connectedvmwarevsphere/VCenters/azcli-test-vc3"
+    $vcenterId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/azcli-test-rg/providers/microsoft.connectedvmwarevsphere/VCenters/azcli-test-vc"
     $env.Add("vcenterId", $vcenterId)
 
     $clusterName = "test-cluster" + (RandomString -allChars $false -len 5)
@@ -44,17 +44,26 @@ function setupEnv() {
     $hostName = "test-host" + (RandomString -allChars $false -len 5)
     $env.Add("hostName", $hostName)
 
-    $resourcePoolName = "test-resourcePool" + (RandomString -allChars $false -len 5)
+    $resourcePoolName = "test-rp" + (RandomString -allChars $false -len 5)
     $env.Add("resourcePoolName", $resourcePoolName)
 
-    $vcenterName = "azcli-test-vc3"
+    $vnetName = "test-vnet" + (RandomString -allChars $false -len 5)
+    $env.Add("vnetName", $vnetName)
+
+    $vcenterName = "azcli-test-vc"
     $env.Add("vcenterName", $vcenterName)
 
-    $vmName = "vm-1106469"
+    $vmName = "test-vm" + (RandomString -allChars $false -len 5)
     $env.Add("vmName", $vmName)
 
     $vmTemplateName = "test-vmtemplate" + (RandomString -allChars $false -len 5)
     $env.Add("vmTemplateName", $vmTemplateName)
+
+    $guestUsername = "azcli-user"
+    $env.Add("guestUsername", $guestUsername)
+
+    $guestPwd = "azcli-password"
+    $env.Add("guestPwd", $guestPwd)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

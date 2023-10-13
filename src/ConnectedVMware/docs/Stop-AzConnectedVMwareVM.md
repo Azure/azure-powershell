@@ -14,25 +14,25 @@ The operation to power off (stop) a virtual machine instance.
 
 ### StopExpanded (Default)
 ```
-Stop-AzConnectedVMwareVM -ResourceUri <String> [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzConnectedVMwareVM -MachineId <String> [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Stop
 ```
-Stop-AzConnectedVMwareVM -ResourceUri <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>]
+Stop-AzConnectedVMwareVM -MachineId <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaJsonFilePath
 ```
-Stop-AzConnectedVMwareVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+Stop-AzConnectedVMwareVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaJsonString
 ```
-Stop-AzConnectedVMwareVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+Stop-AzConnectedVMwareVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -43,10 +43,10 @@ The operation to power off (stop) a virtual machine instance.
 
 ### Example 1: Stop Virtual Machine
 ```powershell
-Stop-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+Stop-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/azcli-test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
-This command stop of a VM named `test-vm` in a resource group named `azcli-test-rg`.
+This command stop of a VM named `test-vm` in a resource group named `test-rg`.
 
 ## PARAMETERS
 
@@ -127,6 +127,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -136,21 +151,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

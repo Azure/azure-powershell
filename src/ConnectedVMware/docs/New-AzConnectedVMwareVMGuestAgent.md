@@ -14,7 +14,7 @@ Create GuestAgent.
 
 ### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
+New-AzConnectedVMwareVMGuestAgent -MachineId <String> [-CredentialsPassword <SecureString>]
  [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-PrivateLinkScopeResourceId <String>]
  [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,13 +22,13 @@ New-AzConnectedVMwareVMGuestAgent -ResourceUri <String> [-CredentialsPassword <S
 
 ### CreateViaJsonFilePath
 ```
-New-AzConnectedVMwareVMGuestAgent -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzConnectedVMwareVMGuestAgent -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>]
+New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,18 +37,43 @@ Create GuestAgent.
 
 ## EXAMPLES
 
-### Example 1: Enable Guest Agent on VM
+### Example 1: Enable Guest Agent on VM Instances
 ```powershell
-New-AzConnectedVMwareGuestAgent -Name "default" -VirtualMachineName "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -CredentialsUsername $VM_User_Name -CredentialsPassword $Secure_String_Pwd -ProvisioningAction "install"
+New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -CredentialsUsername $VM_User_Name -CredentialsPassword $Secure_String_Pwd -ProvisioningAction "install"
 ```
 
 ```output
-Name    ResourceGroupName
-----    -----------------
-default azcli-test-rg
+CredentialsPassword          :
+CredentialsUsername          : abc
+CustomResourceName           : d04a3534-2dfa-42c8-8959-83796a1bcac1
+HttpProxyConfigHttpsProxy    :
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default
+Name                         : default
+PrivateLinkScopeResourceId   :
+ProvisioningAction           : install
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+Status                       : Enabled
+Statuses                     : {{
+                                 "type": "Ready",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T14:47:02.1828535Z"
+                               }, {
+                                 "type": "Idle",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-10-06T14:47:02.1828535Z"
+                               }}
+SystemDataCreatedAt          : 10/6/2023 2:45:33 PM
+SystemDataCreatedBy          : xyz
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/6/2023 2:45:33 PM
+SystemDataLastModifiedBy     : xyz
+SystemDataLastModifiedByType : User
+Type                         : microsoft.connectedvmwarevsphere/virtualmachineinstances/guestagents
+Uuid                         : 6a37a700-e02c-476d-a19f-258761575c40
 ```
 
-This command Enable Guest Agent of a VM named `test-vm` in a resource group named `azcli-test-rg`.
+This command Enable Guest Agent of a VM Instances of machine named `test-machine`.
 
 ## PARAMETERS
 
@@ -158,6 +183,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -197,21 +237,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

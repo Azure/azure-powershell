@@ -19,5 +19,4 @@ Describe 'AzConnectedVMwareVCenter' {
         $vc = Get-AzConnectedVMwareVCenter -ResourceGroupName $env.ResourceGroupName -Name $env.vcenterName
         $vc.Name | Should -Be $env.vcenterName
     }
-
 }
