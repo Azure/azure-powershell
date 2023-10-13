@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="appPackageUrl">The URL to the application package
         /// </param>
-        public ApplicationTypeVersionResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), string appPackageUrl = default(string))
+        public ApplicationTypeVersionResource(string appPackageUrl, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string))
 
         : base(id, name, type, location, tags, systemData)
         {

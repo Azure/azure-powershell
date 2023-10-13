@@ -268,26 +268,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        /// <param name='id'>
-        /// Azure resource identifier.
-        /// </param>
-        /// <param name='name'>
-        /// Azure resource name.
-        /// </param>
-        /// <param name='type'>
-        /// Azure resource type.
-        /// </param>
-        /// <param name='location'>
-        /// Resource location depends on the parent resource.
-        /// </param>
-        /// <param name='tags'>
-        /// Azure resource tags.
-        /// </param>
-        /// <param name='systemData'>
-        /// Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-        /// <param name='provisioningState'>
-        /// The current deployment or provisioning state, which only appears in the response.
+        /// /// <param name='parameters'>
+        /// The application type name resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -310,12 +292,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationTypeResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ApplicationTypeResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string applicationTypeName, ApplicationTypeResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
- 
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -339,19 +321,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
-
-            ApplicationTypeResource parameters = new ApplicationTypeResource(
-                id: id,
-                name: name,
-                type: type,
-                systemData: systemData,
-                provisioningState: provisioningState);
-
-            if(location != null||tags != null)
-            {
-                parameters.Location = location;
-                parameters.Tags = tags;
             }
 
             // Tracing

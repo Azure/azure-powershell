@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PsModuleName>ServiceFabricManagedClusters</PsModuleName>
     </PropertyGroup>
@@ -10,4 +10,7 @@
         <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
     </PropertyGroup>
     <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+    <ItemGroup>
+      <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
 </Project>

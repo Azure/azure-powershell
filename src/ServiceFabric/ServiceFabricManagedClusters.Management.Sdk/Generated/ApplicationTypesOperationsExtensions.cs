@@ -6,6 +6,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 {
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Linq;
 
     /// <summary>
     /// Extension methods for ApplicationTypesOperations
@@ -97,7 +99,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// </param>
         public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, id, name, type, location, tags, systemData, provisioningState, null, cancellationToken).ConfigureAwait(false))
+            ApplicationTypeResource applicationType = new ApplicationTypeResource(
+                location: location,
+                tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
+                id: id,
+                name: name,
+                type: type,
+                systemData: systemData,
+                provisioningState: provisioningState);
+
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, applicationType, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

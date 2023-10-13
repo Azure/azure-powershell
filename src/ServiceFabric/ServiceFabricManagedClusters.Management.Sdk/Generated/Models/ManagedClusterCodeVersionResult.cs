@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="supportExpiryUtc">The date of expiry of support of the version.
         /// </param>
-        public ManagedClusterCodeVersionResult(string id = default(string), string name = default(string), string type = default(string), string osType = default(string), string clusterCodeVersion = default(string), string supportExpiryUtc = default(string))
+        public ManagedClusterCodeVersionResult(string id = default(string), string name = default(string), string type = default(string), string clusterCodeVersion = default(string), string supportExpiryUtc = default(string), string osType = default(string))
 
         {
             this.Id = id;
