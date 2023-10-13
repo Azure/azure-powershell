@@ -96,8 +96,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         this.ResourceGroupName,
                         this.ClusterName,
                         this.Name,
-                        tags: updatedAppTypeParams.Tags,
-                        location: updatedAppTypeParams.Location)
+                        updatedAppTypeParams)
                         .GetAwaiter().GetResult().Body;
 
                     WriteObject(new PSManagedApplicationType(managedAppType), false);

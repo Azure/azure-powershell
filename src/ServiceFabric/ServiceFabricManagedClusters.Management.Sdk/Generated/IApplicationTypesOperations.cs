@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
+        /// /// /// <param name='parameters'>
+        /// The application type name resource.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>

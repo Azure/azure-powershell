@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var newNodeType = new NodeType(
                 isPrimary: this.Primary.IsPresent,
                 vmInstanceCount: this.InstanceCount,
-                dataDiskSizeGb: this.DiskSize,
+                dataDiskSizeGB: this.DiskSize,
                 dataDiskType: this.DiskType.ToString(),
                 name: this.Name,
                 vmSize: this.VmSize,
