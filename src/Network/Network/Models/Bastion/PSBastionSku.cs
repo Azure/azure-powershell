@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models.Bastion
 
     public class PSBastionSku
     {
-        [Ps1Xml(Target = ViewControl.List)]
+        [Ps1Xml(Target = ViewControl.All)]
         public string Name { get; set; }
 
         public const string Basic = "Basic";

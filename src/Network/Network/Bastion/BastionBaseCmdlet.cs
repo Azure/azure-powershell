@@ -148,6 +148,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 switch (existingSkuTier)
                 {
+                    case PSBastionSku.Basic:
+                        return false;
                     // Standard -> Basic
                     case PSBastionSku.Standard:
                         if (newSkuTier == PSBastionSku.Basic)

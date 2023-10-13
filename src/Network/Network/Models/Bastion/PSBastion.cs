@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [DefaultValue(false)]
         public bool? DisableCopyPaste { get; set; }
 
-        [Ps1Xml(Label = "Native Client Support", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Native Client", Target = ViewControl.All)]
         [DefaultValue(false)]
         public bool? EnableTunneling { get; set; }
 

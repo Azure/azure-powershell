@@ -43,8 +43,6 @@ function Test-BastionCRUD {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 		
         # Create Bastion
-        # $bastion = New-AzBastion -ResourceGroupName $rgname –Name $bastionName -PublicIpAddressRgName $rgname -PublicIpAddressName $publicIpName -VirtualNetworkRgName $rgname -VirtualNetworkName $vnetName -Sku "Basic" -ScaleUnit 3
-
         $bastion = New-AzBastion -ResourceGroupName $rgname –Name $bastionName -PublicIpAddressRgName $rgname -PublicIpAddressName $publicIpName -VirtualNetworkRgName $rgname -VirtualNetworkName $vnetName -Sku "Standard"
 
         # Get Bastion by Name
@@ -62,6 +60,11 @@ function Test-BastionCRUD {
         Assert-AreEqual $publicip.Id $bastionObj.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $bastionObj.Sku.Name "Standard"
         Assert-AreEqual $bastionObj.ScaleUnit 2
+        Assert-AreEqual $false $bastionObj.EnableKerberos
+        Assert-AreEqual $false $bastionObj.DisableCopyPaste
+        Assert-AreEqual $false $bastionObj.EnableTunneling
+		Assert-AreEqual $false $bastionObj.EnableIpConnect
+        Assert-AreEqual $false $bastionObj.EnableShareableLink
 
         # Get Bastion by Id
         $bastionObj = Get-AzBastion -ResourceId $bastion.id

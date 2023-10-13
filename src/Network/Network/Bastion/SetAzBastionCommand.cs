@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "Native Client Support")]
+            HelpMessage = "Native Client")]
         public bool? EnableTunneling { get; set; }
 
         [Parameter(
@@ -115,8 +115,6 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 {
                     if (this.TryGetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name, out PSBastion getBastionHost))
                     {
-                        //PSBastion getBastionHost = this.GetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name);
-
                         #region SKU Validations
                         // If Sku parameter is present
                         if (!string.IsNullOrWhiteSpace(this.Sku))
@@ -132,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         // If Sku parameter is not present
                         else
                         {
-                            // Check if getBastionHost Sku is being downgraded from InputObject by setting InputObject.Sku.Name = "Basic"
+                            // Check if getBastionHost Sku is being downgraded from InputObject by setting InputObject.Sku.Name
                             if (IsSkuDowngrade(getBastionHost, this.InputObject.Sku.Name))
                             {
                                 throw new ArgumentException("Downgrading Sku is not allowed");
@@ -174,8 +172,9 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                         }
                         #endregion
 
+                        //// Map to the sdk object
                         MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);
-                        // PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+                        //// PS does not allow plurals which is why there is a mismatch in property name and hence the below line
                         bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
                         bastionHostModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 

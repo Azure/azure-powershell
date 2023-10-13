@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Alias("ResourceName", "BastionName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The bastion resource name.")]
+            HelpMessage = "The Bastion resource name.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         public string Name { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The Scale Units for BastionHost")]
+            HelpMessage = "The Scale Units for Bastion")]
         [DefaultValue(2)]
         public int? ScaleUnit { get; set; }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "Native Client Support")]
+            HelpMessage = "Native Client")]
         [DefaultValue(false)]
         public bool? EnableTunneling { get; set; }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         private PSBastion CreateBastion()
         {
-            var bastion = new PSBastion(this.Name, this.ResourceGroupName, this.VirtualNetwork.Location, this.Sku);
+            PSBastion bastion = new PSBastion(this.Name, this.ResourceGroupName, this.VirtualNetwork.Location, this.Sku);
 
             #region Feature Validations
             ValidateFeatures(bastion, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             //// Map to the sdk object
             var BastionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(bastion);
-            // PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+            //// PS does not allow plurals which is why there is a mismatch in property name and hence the below line
             BastionModel.ScaleUnits = bastion.ScaleUnit;
             BastionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
