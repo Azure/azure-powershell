@@ -132,7 +132,7 @@ pac130,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac131,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.12.0.nupkg;sourceType=sa]Az.Reservations,0.12.0
 pac132,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.0.13.0.nupkg;sourceType=sa]Az.ResourceGraph,0.13.0
 pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.2.0.nupkg;sourceType=sa]Az.ResourceMover,1.2.0
-pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.6.11.1.nupkg;sourceType=sa]Az.Resources,6.11.1
+pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.6.11.2.nupkg;sourceType=sa]Az.Resources,6.11.2
 pac135,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.9.0.nupkg;sourceType=sa]Az.Search,0.9.0
 pac136,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.4.0.nupkg;sourceType=sa]Az.Security,1.4.0
 pac137,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.1.0.nupkg;sourceType=sa]Az.SecurityInsights,3.1.0

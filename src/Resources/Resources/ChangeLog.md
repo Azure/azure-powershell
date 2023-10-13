@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.11.2
 * Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
 * Allowed supplemental parameters for Deployments cmdlets when used with `.bicepparam` file.
 
