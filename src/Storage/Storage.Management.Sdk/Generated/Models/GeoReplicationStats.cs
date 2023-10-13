@@ -44,12 +44,27 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="canFailover">A boolean flag which indicates whether or not account failover is supported
         /// for the account.
         /// </param>
-        public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?))
+
+        /// <param name="canPlannedFailover">A boolean flag which indicates whether or not planned account failover is
+        /// supported for the account.
+        /// </param>
+
+        /// <param name="postFailoverRedundancy">The redundancy type of the account after an account failover is performed.
+        /// Possible values include: 'Standard_LRS', 'Standard_ZRS'</param>
+
+        /// <param name="postPlannedFailoverRedundancy">The redundancy type of the account after a planned account failover is
+        /// performed.
+        /// Possible values include: 'Standard_GRS', 'Standard_GZRS', 'Standard_RAGRS',
+        /// 'Standard_RAGZRS'</param>
+        public GeoReplicationStats(string status = default(string), System.DateTime? lastSyncTime = default(System.DateTime?), bool? canFailover = default(bool?), bool? canPlannedFailover = default(bool?), string postFailoverRedundancy = default(string), string postPlannedFailoverRedundancy = default(string))
 
         {
             this.Status = status;
             this.LastSyncTime = lastSyncTime;
             this.CanFailover = canFailover;
+            this.CanPlannedFailover = canPlannedFailover;
+            this.PostFailoverRedundancy = postFailoverRedundancy;
+            this.PostPlannedFailoverRedundancy = postPlannedFailoverRedundancy;
             CustomInit();
         }
 
@@ -86,5 +101,26 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "canFailover")]
         public bool? CanFailover {get; private set; }
+
+        /// <summary>
+        /// Gets a boolean flag which indicates whether or not planned account failover
+        /// is supported for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "canPlannedFailover")]
+        public bool? CanPlannedFailover {get; private set; }
+
+        /// <summary>
+        /// Gets the redundancy type of the account after an account failover is
+        /// performed. Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_ZRS&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "postFailoverRedundancy")]
+        public string PostFailoverRedundancy {get; private set; }
+
+        /// <summary>
+        /// Gets the redundancy type of the account after a planned account failover is
+        /// performed. Possible values include: &#39;Standard_GRS&#39;, &#39;Standard_GZRS&#39;, &#39;Standard_RAGRS&#39;, &#39;Standard_RAGZRS&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "postPlannedFailoverRedundancy")]
+        public string PostPlannedFailoverRedundancy {get; private set; }
     }
 }

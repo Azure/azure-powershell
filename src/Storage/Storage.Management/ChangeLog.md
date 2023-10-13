@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SDK via autorest.powershell.
+* Supported creationTime filter in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
 * Upgraded Azure.Core to 1.35.0.
 
 ## Version 5.10.1
