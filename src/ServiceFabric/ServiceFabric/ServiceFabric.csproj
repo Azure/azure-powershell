@@ -8,6 +8,7 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   
   <ItemGroup>
