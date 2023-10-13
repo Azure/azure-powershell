@@ -61,6 +61,7 @@ try{
     }
     Write-Host "Preparing Autorest..."
     npm install -g autorest@latest
+    $env:NODE_OPTIONS = "--max-old-space-size=65536"
     autorest --reset
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
