@@ -65,8 +65,8 @@ function Install-AzModuleInternal {
                 $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
+                $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
+                $null = PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
@@ -282,7 +282,7 @@ function Install-AzModuleInternal {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
                     Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
-                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
+                    $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     if (Test-Path -Path $tempRepo) {
