@@ -36,6 +36,7 @@
     <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.2</TestFramework>
     <IsGenerateBased Condition="'$(IsGenerateBased)' != 'true'">false</IsGenerateBased>
     <IsSecurityCheck Condition="'$(IsSecurityCheck)' != 'true'">false</IsSecurityCheck>
+    <CheckChangeLog Condition="'$(CheckChangeLog)' != 'true'">false</CheckChangeLog>
 
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
@@ -157,7 +158,7 @@
   </Target>
 
   <Target Name="BuildNormalModules">
-    <ItemGroup Condition="$(PullRequestNumber) == '' AND $(TargetModule) == ''">
+    <ItemGroup Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND '$(CheckChangeLog)' == 'false'">
       <CsprojFiles Include="$(RepoRoot)src/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
@@ -173,6 +174,18 @@
       <!-- Add test projects only if Configuration is not Release -->
       <CsprojFiles Include="@(BuildCsprojList)" />
       <CsprojFiles Include="@(TestCsprojList)" Condition="'$(Configuration)' != 'Release'" />
+    </ItemGroup>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\CheckChangelogs.ps1 -outputFile $(RepoArtifacts)/ChangedModule.txt -rootPath $(RepoRoot)src/ &quot;" Condition="'$(CheckChangeLog)' == 'true'"/>
+    <ReadLinesFromFile File="$(RepoArtifacts)/ChangedModule.txt" Condition="'$(CheckChangeLog)' == 'true'">
+        <Output TaskParameter="Lines" ItemName="ChangedModuleList" />
+    </ReadLinesFromFile>
+    <ItemGroup Condition="'$(CheckChangeLog)' == 'true' AND '@(ChangedModuleList)' != ''">
+      <!-- Add changed projects only if CheckChangeLog is true -->
+      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
+      <CsprojFiles Include="$(CoreTests)" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'Core'" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true' and '$(TestFramework)' != 'net472'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" Condition="'@(CsprojFiles)' != ''" />
@@ -251,21 +264,12 @@
     <Error Text="StaticAnalysis has failed. Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md" />
   </Target>
 
-  <Target Name="ChangeLogCheck">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckChangeLog.ps1 -FilesChanged '@(FilesChanged)'&quot;" Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest' " />
-    <OnError ExecuteTargets="ChangeLogErrorMessage" />
-  </Target>
-
   <Target Name="AzToolsInstaller">
     <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="AzToolsPredictor">
     <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
-  </Target>
-
-  <Target Name="ChangeLogErrorMessage">
-    <Error Text="Modified files were found with no update to their change log. Please add a snippet to the affected modules' change log." />
   </Target>
 
   <Target Name="Publish" Condition="'$(Configuration)' == 'Release'">
