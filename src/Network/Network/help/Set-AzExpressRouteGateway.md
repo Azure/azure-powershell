@@ -64,23 +64,32 @@ An ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 sca
 
 
 ### Example 2: Configure this gateway to accept traffic from non Virtual Wan networks.
-```powershell
-$gateway=Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
-$gateway.AllowNonVirtualWanTraffic = $true
-$gateway = Set-AzExpressRouteGateway $gateway
-```
+You may either retrieve the gateway, configure its AllowNonVirtualWanTraffic property and save the changes on the gateway or you may just use the switch on the Set-AzExpressRouteGateway cmdlet
 
-The above commands will retrieve the gateway object, configure it to allow traffic from VNets and persist those changes.
+```powershell
+# Option 1 - Retrieve the gateway object, configure it to allow traffic from VNets and persist those changes.  
+$gateway = Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowNonVirtualWanTraffic = $true
+$gateway = Set-AzExpressRouteGateway -InputObject $gateway
+
+# Option 2 - Use the cmdlet switch
+Set-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001" -AllowNonVirtualWanTraffic $true
+```
 
 
 ### Example 3: Configure this gateway to block traffic from non Virtual Wan networks.
+You may either retrieve the gateway, configure its AllowNonVirtualWanTraffic property and save the changes on the gateway or you may just use the switch on the Set-AzExpressRouteGateway cmdlet
+
 ```powershell
+# Option 1 - Retrieve the gateway object, configure it to block traffic from VNets and persist those changes.  
 $gateway=Get-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
 $gateway.AllowNonVirtualWanTraffic = $false
-$gateway = Set-AzExpressRouteGateway $gateway
+$gateway = Set-AzExpressRouteGateway -InputObject $gateway
+
+# Option 2 - Use the cmdlet switch
+Set-AzExpressRouteGateway -ResourceGroupName "resourceGroup001" -Name "gateway001" -AllowNonVirtualWanTraffic $false
 ```
 
-The above commands will retrieve the gateway object, configure it to block traffic from VNets and persist those changes.
 
 
 ## PARAMETERS
