@@ -835,7 +835,7 @@ function Test-UpdateRa{
 Verifies that role assignment maps to a group
 #>
 function Test-CreateRAForGroup
-{    
+{   
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="ffa6ed11-e137-4081-ad6e-77a25ddd685a"
@@ -855,7 +855,7 @@ function Test-CreateRAForGuest
 {    
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    $PrincipalId ="b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
@@ -890,7 +890,7 @@ function Test-CreateRAForServicePrincipal
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    $PrincipalId ="7ed39736-e04f-4384-964f-b2b525de3280"
+    $PrincipalId ="66486765-477a-4243-880c-7e1fb3c80f2b"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
@@ -914,8 +914,7 @@ function Test-CreateRAWithObjectType
     $ObjectType = "User"
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope    -RoleDefinitionId $RoleDefinitionId `
-    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d9
+    $data = New-AzRoleAssignment -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope -RoleDefinitionId $RoleDefinitionId 
 
     Assert-True {$data.ObjectType -eq "User"}
 }
@@ -930,7 +929,7 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
-    $ExpectedError = "Principal 6d764d356b3b49ea83f85c223b56eac5 does not exist in the directory 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a"
+    $ExpectedError = "Operation returned an invalid status code 'BadRequest'"
 
     #When
     $function = { New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId }

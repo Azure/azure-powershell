@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaById()
         {
             TestRunner.RunTestScript("Test-RaById");
@@ -206,42 +206,43 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        // [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAForGroup()
         {
             TestRunner.RunTestScript("Test-CreateRAForGroup");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAForGuest()
         {
             TestRunner.RunTestScript("Test-CreateRAForGuest");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAForMember()
         {
             TestRunner.RunTestScript("Test-CreateRAForMember");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAForServicePrincipal()
         {
             TestRunner.RunTestScript("Test-CreateRAForServicePrincipal");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAWhenIdNotExist()
         {
             TestRunner.RunTestScript("Test-CreateRAWhenIdNotExist");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateRAWithObjectType()
         {
             TestRunner.RunTestScript("Test-CreateRAWithObjectType");
