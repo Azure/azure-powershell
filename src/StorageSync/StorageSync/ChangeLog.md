@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adding generated code within powershell module to accommodate track1 sdk
+* Fixed minor issues.
 
 ## Version 2.0.0
 * Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
