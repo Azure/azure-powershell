@@ -23,11 +23,11 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 New-AzStorageMoverSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -StorageAccountResourceId $accountresourceid -FileShareName $fileshareName -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
