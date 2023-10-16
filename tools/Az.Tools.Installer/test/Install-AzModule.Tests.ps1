@@ -90,12 +90,12 @@ Describe 'Install-AzModule' {
         {Install-AzModule -AllowPrerelease -Repository PSGallery -RequiredAzVersion 5.9} | Should -Throw
     }
 
-    It 'InstallByUri' -Skip {
-        $output = [Array] (Install-AzModule -Path "https://azposhpreview.blob.core.windows.net/public/Az.Accounts.2.6.0.nupkg")
+    It 'InstallByUri' {
+        $output = [Array] (Install-AzModule -Path "https://azposhpreview.blob.core.windows.net/public/Az.Accounts.2.12.3.nupkg")
         $output.Count | Should -Be 1
 
-        $package = Join-Path $PSScriptRoot "../package"
-        $package = Join-Path $package "Az.Storage.3.10.1-preview.nupkg"
+        $package = Join-Path $PSScriptRoot "resources"
+        $package = Join-Path $package "az.storage.5.4.2-preview.nupkg"
         $output = [Array] (Install-AzModule -Path $package)
         $output.Count | Should -Be 1
 

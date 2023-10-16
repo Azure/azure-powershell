@@ -88,10 +88,10 @@ function Install-AzModule {
         try {
             $Invoker = $MyInvocation.MyCommand
             if ($PSCmdlet.ParameterSetName -eq 'Default') {
-                Install-AzModule_Default @PSBoundParameters -Invoker $Invoker -ErrorVariable +errorRecords
+                Install-AzModule_Default @PSBoundParameters -Invoker $Invoker
             }
             else {
-                Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker -ErrorVariable +errorRecords
+                Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker
             }
             $IsSuccess = $true
         }

@@ -62,8 +62,8 @@ function Update-AzModule {
         try {
             Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
 
-            $Name = Normalize-ModuleName $Name -ErrorVariable +errorRecords
-            $allInstalled = Get-AllAzModule -ErrorVariable +errorRecords
+            $Name = Normalize-ModuleName $Name
+            $allInstalled = Get-AllAzModule
             if (!$allInstalled) {
                 Write-Warning "[$Invoker] No Az modules are installled."
                 $IsSuccess = $true
@@ -75,7 +75,7 @@ function Update-AzModule {
                 $intersection = $intersection | Where-Object {$_.Name -eq "Az.Accounts" -or $Name -Contains $_.Name}
                 $modulesNotInstalled = $Name | Where-Object {$allInstalled.Name -NotContains $_}
                 if ($modulesNotInstalled) {
-                    Write-Error "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update." -ErrorVariable +errorRecords
+                    Write-Error "[$Invoker] $modulesNotInstalled are not installed. Please firstly install them before update."
                     #If Az.Accounts is in modulesNotInstalled，it will be warned but installed anyway.
                 }
             }
@@ -94,7 +94,7 @@ function Update-AzModule {
             if ($Repository) {
                 $findModuleParams.Add('Repository', $Repository)
             }
-            $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams -ErrorVariable +errorRecords
+            $modulesToUpdate = Get-AzModuleFromRemote @findModuleParams
             if ($modulesToUpdate) {
                 $Repository = $modulesToUpdate.Repository | Select-Object -First 1
             }
@@ -147,7 +147,7 @@ function Update-AzModule {
                         Force = $Force
                         Invoker = $Invoker
                     }
-                    $output = Install-AzModuleInternal @installModuleParams -ErrorVariable +errorRecords
+                    $output = Install-AzModuleInternal @installModuleParams
 
                     if ($output) {
                         $moduleUpdated  = $moduleUpdateTable | Where-Object {$output.Name.Contains($_.Name)}
