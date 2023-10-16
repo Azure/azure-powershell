@@ -94,7 +94,7 @@ Describe 'Install-AzModule' {
         $output = [Array] (Install-AzModule -Path "https://azposhpreview.blob.core.windows.net/public/Az.Accounts.2.12.3.nupkg")
         $output.Count | Should -Be 1
 
-        $package = Join-Path $PSScriptRoot "../package"
+        $package = Join-Path $PSScriptRoot "resources"
         $package = Join-Path $package "az.storage.5.4.2-preview.nupkg"
         $output = [Array] (Install-AzModule -Path $package)
         $output.Count | Should -Be 1
