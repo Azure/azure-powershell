@@ -62,7 +62,7 @@ pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DynatraceObservability.0.1.0.nupkg;sourceType=sa]Az.DynatraceObservability,0.1.0
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.1.0.nupkg;sourceType=sa]Az.EdgeOrder,0.1.0
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.1.0.nupkg;sourceType=sa]Az.Elastic,0.1.0
-pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ElasticSan.0.1.1.nupkg;sourceType=sa]Az.ElasticSan,0.1.1
+pac64,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ElasticSan.0.1.2.nupkg;sourceType=sa]Az.ElasticSan,0.1.2
 pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventGrid.1.6.0.nupkg;sourceType=sa]Az.EventGrid,1.6.0
 pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.4.1.0.nupkg;sourceType=sa]Az.EventHub,4.1.0
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.1.0.nupkg;sourceType=sa]Az.FluidRelay,0.1.0
