@@ -111,7 +111,7 @@ function Install-AzModule_Default {
             }
             $installModuleParams = @{
                 ModuleList = $moduleList
-                RepositoryUrl = (Get-RepositoryUrl $Repository)
+                Repository = $Repository
                 AllowPrerelease = $AllowPrerelease
                 Scope = if ($Scope) {$Scope} else {'CurrentUser'}
                 RemovePrevious = $RemovePrevious

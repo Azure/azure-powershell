@@ -27,6 +27,9 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Network'
         $modules.Name | Should -Contain 'Az.Compute'
         $modules.Name | Should -Contain 'Az.KeyVault'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Storage', 'Az.Network', 'Az.Compute', 'Az.KeyVault')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'InstallByNamePrerelease' {
@@ -40,6 +43,9 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Maps'
         $modules.Name | Should -Contain 'Az.KeyVault'
 
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Storage', 'Az.Network', 'Az.Maps', 'Az.KeyVault')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
+
         $output = Install-AzModule -Repository PSGallery -Name keyvault,resources,storage -RemovePrevious
         $output.Count | Should -Be 4
         $modules = Get-AzSubModule
@@ -50,6 +56,9 @@ Describe 'Install-AzModule' {
         $modules.Name | Should -Contain 'Az.Maps'
         $modules.Name | Should -Contain 'Az.KeyVault'
         $modules.Name | Should -Contain 'Az.Resources'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Storage', 'Az.Network', 'Az.Maps', 'Az.KeyVault', 'Az.Resources')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'InstallByNameLatest' {
@@ -59,6 +68,9 @@ Describe 'Install-AzModule' {
         $modules.Count | Should -Be 2
         $modules.Name | Should -Contain 'Az.Accounts'
         $modules.Name | Should -Contain 'Az.Storage'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Storage')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'InstallAllGA' {
@@ -69,6 +81,8 @@ Describe 'Install-AzModule' {
         $modules.Count | Should -Be $azModule.Dependencies.Count
         $expectedVersion = [Version] ($azModule.Dependencies | Where-Object {$_.Name -eq 'Az.Accounts'})['MinimumVersion']
         ($modules | Where-Object {$_.Name -eq 'Az.Accounts'}).Version | Should -Be $expectedVersion
+
+        (Get-InstalledModule -Name 'Az.Accounts').Repository | Should -Be 'PSGallery'
     }
 
     It 'InstallByUnexistingName' {
@@ -84,6 +98,8 @@ Describe 'Install-AzModule' {
         $output.Count | Should -Be 1
         (Get-AzSubModule).Name | Should -Be 'Az.Accounts'
         Get-InstalledModule -Name Azure* -ErrorAction 'Continue' | Should -Be $null
+
+        (Get-InstalledModule -Name 'Az.Accounts').Repository | Should -Be 'PSGallery'
     }
 
     It 'InstallByUnexistingVersion' {
@@ -118,6 +134,9 @@ Describe 'Install-AzModule' {
             $modules.Name | Should -Contain 'Az.Accounts'
             $modules.Name | Should -Contain 'Az.Storage'
             $modules.Name | Should -Contain 'Az.Network'
+
+            $allmoduleInstalled = @('Az.Accounts', 'Az.Storage', 'Az.Network')
+            (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
         }
         finally {
             foreach ($repo in $repos) {

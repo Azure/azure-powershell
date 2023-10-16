@@ -140,7 +140,7 @@ function Update-AzModule {
                     }
                     $installModuleParams = @{
                         ModuleList = $moduleList
-                        RepositoryUrl = (Get-RepositoryUrl $Repository)
+                        Repository = $Repository
                         AllowPrerelease = $true
                         Scope = if ($Scope) {$Scope} else {'CurrentUser'}
                         RemovePrevious = !$KeepPrevious
