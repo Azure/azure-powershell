@@ -29,12 +29,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Initializes a new instance of the Identity class.
         /// </summary>
-        /// <param name="principalId">The principal ID of resource
-        /// identity.</param>
-        /// <param name="tenantId">The tenant ID of resource.</param>
+        /// <param name="principalId">The principal ID of resource identity.
+        /// The value must be an UUID.</param>
+        /// <param name="tenantId">The tenant ID of resource. The value must be
+        /// an UUID.</param>
         /// <param name="type">The identity type. Possible values include:
         /// 'SystemAssigned'</param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?))
+        public Identity(System.Guid? principalId = default(System.Guid?), System.Guid? tenantId = default(System.Guid?), ResourceIdentityType? type = default(ResourceIdentityType?))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
@@ -48,16 +49,17 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the principal ID of resource identity.
+        /// Gets the principal ID of resource identity. The value must be an
+        /// UUID.
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
-        public string PrincipalId { get; private set; }
+        public System.Guid? PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the tenant ID of resource.
+        /// Gets the tenant ID of resource. The value must be an UUID.
         /// </summary>
         [JsonProperty(PropertyName = "tenantId")]
-        public string TenantId { get; private set; }
+        public System.Guid? TenantId { get; private set; }
 
         /// <summary>
         /// Gets or sets the identity type. Possible values include:

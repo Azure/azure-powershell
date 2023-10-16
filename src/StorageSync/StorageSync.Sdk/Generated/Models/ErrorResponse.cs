@@ -14,25 +14,30 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// The private endpoint resource.
+    /// Error response
     /// </summary>
-    public partial class PrivateEndpoint
+    /// <remarks>
+    /// Common error response for all Azure Resource Manager APIs to return
+    /// error details for failed operations. (This also follows the OData error
+    /// response format.).
+    /// </remarks>
+    public partial class ErrorResponse
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        public PrivateEndpoint()
+        public ErrorResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="id">The ARM identifier for private endpoint.</param>
-        public PrivateEndpoint(string id = default(string))
+        /// <param name="error">The error object.</param>
+        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
         {
-            Id = id;
+            Error = error;
             CustomInit();
         }
 
@@ -42,10 +47,10 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ARM identifier for private endpoint.
+        /// Gets or sets the error object.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
+        [JsonProperty(PropertyName = "error")]
+        public ErrorDetail Error { get; set; }
 
     }
 }

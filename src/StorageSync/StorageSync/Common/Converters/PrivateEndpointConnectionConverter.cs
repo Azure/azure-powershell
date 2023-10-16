@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             source.PrivateEndpointConnectionName,
             source.Type,
             new SystemDataConverter().Convert(source.SystemData),
+            source.GroupIds,
             new PrivateEndpointConverter().Convert(source.PrivateEndpoint),
             source.ProvisioningState);
 
@@ -62,7 +63,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 PrivateLinkServiceConnectionState = new PrivateLinkServiceConnectionStateConverter().Convert(source.PrivateLinkServiceConnectionState),
                 ProvisioningState = source.ProvisioningState,
                 Type = source.Type,
-                SystemData = new SystemDataConverter().Convert(source.SystemData)
+                SystemData = new SystemDataConverter().Convert(source.SystemData),
+                GroupIds = source.GroupIds
             };
         }
     }

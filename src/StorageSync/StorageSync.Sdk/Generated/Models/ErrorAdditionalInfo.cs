@@ -14,25 +14,27 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// The private endpoint resource.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class PrivateEndpoint
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public PrivateEndpoint()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpoint class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        /// <param name="id">The ARM identifier for private endpoint.</param>
-        public PrivateEndpoint(string id = default(string))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            Id = id;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -42,10 +44,16 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ARM identifier for private endpoint.
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the additional info.
+        /// </summary>
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
 
     }
 }

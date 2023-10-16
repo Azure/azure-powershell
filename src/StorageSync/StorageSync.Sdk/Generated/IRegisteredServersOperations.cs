@@ -108,6 +108,37 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </exception>
         Task<AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Update registered server.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='serverId'>
+        /// GUID identifying the on-premises server.
+        /// </param>
+        /// <param name='identity'>
+        /// Apply server with newly discovered ApplicationId if available.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Delete the given registered server.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -191,6 +222,37 @@ namespace Microsoft.Azure.Management.StorageSync
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse<RegisteredServer,RegisteredServersCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, RegisteredServerCreateParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Update registered server.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='serverId'>
+        /// GUID identifying the on-premises server.
+        /// </param>
+        /// <param name='identity'>
+        /// Apply server with newly discovered ApplicationId if available.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<RegisteredServer,RegisteredServersUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, string serverId, bool? identity = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete the given registered server.
         /// </summary>

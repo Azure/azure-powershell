@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Management.StorageSync
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Microsoft Storage Sync Service API
+    /// Microsoft Storage Sync Service API. This belongs to
+    /// Microsoft.StorageSync Resource Provider
     /// </summary>
     public partial class StorageSyncManagementClient : ServiceClient<StorageSyncManagementClient>, IStorageSyncManagementClient, IAzureClient
     {
@@ -54,9 +55,9 @@ namespace Microsoft.Azure.Management.StorageSync
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set; }
+        public System.Guid SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -378,7 +379,7 @@ namespace Microsoft.Azure.Management.StorageSync
             Workflows = new WorkflowsOperations(this);
             OperationStatus = new OperationStatusOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2020-09-01";
+            ApiVersion = "2022-09-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
@@ -444,17 +445,6 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </return>
         public async Task<AzureOperationResponse<LocationOperationStatus,LocationOperationStatusHeaders>> LocationOperationStatusMethodWithHttpMessagesAsync(string locationName, string operationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
-            }
-            if (SubscriptionId != null)
-            {
-                if (SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "SubscriptionId", 1);
-                }
-            }
             if (ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
@@ -489,7 +479,7 @@ namespace Microsoft.Azure.Management.StorageSync
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(SafeJsonConvert.SerializeObject(SubscriptionId, SerializationSettings).Trim('"')));
             _url = _url.Replace("{locationName}", System.Uri.EscapeDataString(locationName));
             _url = _url.Replace("{operationId}", System.Uri.EscapeDataString(operationId));
             List<string> _queryParameters = new List<string>();

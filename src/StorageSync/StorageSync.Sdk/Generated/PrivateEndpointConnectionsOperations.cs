@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -118,17 +118,6 @@ namespace Microsoft.Azure.Management.StorageSync
                     throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
                 }
             }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (privateEndpointConnectionName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -151,7 +140,7 @@ namespace Microsoft.Azure.Management.StorageSync
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{storageSyncServiceName}", System.Uri.EscapeDataString(storageSyncServiceName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(Client.SubscriptionId, Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -291,7 +280,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// resource.
         /// </param>
         /// <param name='properties'>
         /// The private endpoint connection properties.
@@ -322,7 +311,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -369,17 +358,6 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </return>
         public async Task<AzureOperationResponse<IEnumerable<PrivateEndpointConnection>,PrivateEndpointConnectionsListByStorageSyncServiceHeaders>> ListByStorageSyncServiceWithHttpMessagesAsync(string resourceGroupName, string storageSyncServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -425,7 +403,7 @@ namespace Microsoft.Azure.Management.StorageSync
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections").ToString();
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(Client.SubscriptionId, Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{storageSyncServiceName}", System.Uri.EscapeDataString(storageSyncServiceName));
             List<string> _queryParameters = new List<string>();
@@ -579,7 +557,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// resource.
         /// </param>
         /// <param name='properties'>
         /// The private endpoint connection properties.
@@ -637,17 +615,6 @@ namespace Microsoft.Azure.Management.StorageSync
                     throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
                 }
             }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (privateEndpointConnectionName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -679,7 +646,7 @@ namespace Microsoft.Azure.Management.StorageSync
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{storageSyncServiceName}", System.Uri.EscapeDataString(storageSyncServiceName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(Client.SubscriptionId, Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -838,7 +805,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the Azure
-        /// resource
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -890,17 +857,6 @@ namespace Microsoft.Azure.Management.StorageSync
                     throw new ValidationException(ValidationRules.MinLength, "Client.ApiVersion", 1);
                 }
             }
-            if (Client.SubscriptionId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
-            }
-            if (Client.SubscriptionId != null)
-            {
-                if (Client.SubscriptionId.Length < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
             if (privateEndpointConnectionName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "privateEndpointConnectionName");
@@ -923,7 +879,7 @@ namespace Microsoft.Azure.Management.StorageSync
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}").ToString();
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
             _url = _url.Replace("{storageSyncServiceName}", System.Uri.EscapeDataString(storageSyncServiceName));
-            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(Client.SubscriptionId, Client.SerializationSettings).Trim('"')));
             _url = _url.Replace("{privateEndpointConnectionName}", System.Uri.EscapeDataString(privateEndpointConnectionName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)

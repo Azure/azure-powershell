@@ -44,9 +44,11 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// for the metric.</param>
         /// <param name="fillGapWithZero">Fill gaps in the metric with
         /// zero.</param>
+        /// <param name="lockAggregationType">Lock Aggregation type for the
+        /// metric.</param>
         /// <param name="dimensions">Dimensions for the metric
         /// specification.</param>
-        public OperationResourceMetricSpecification(string name = default(string), string displayName = default(string), string displayDescription = default(string), string unit = default(string), string aggregationType = default(string), IList<string> supportedAggregationTypes = default(IList<string>), bool? fillGapWithZero = default(bool?), IList<OperationResourceMetricSpecificationDimension> dimensions = default(IList<OperationResourceMetricSpecificationDimension>))
+        public OperationResourceMetricSpecification(string name = default(string), string displayName = default(string), string displayDescription = default(string), string unit = default(string), string aggregationType = default(string), IList<string> supportedAggregationTypes = default(IList<string>), bool? fillGapWithZero = default(bool?), string lockAggregationType = default(string), IList<OperationResourceMetricSpecificationDimension> dimensions = default(IList<OperationResourceMetricSpecificationDimension>))
         {
             Name = name;
             DisplayName = displayName;
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             AggregationType = aggregationType;
             SupportedAggregationTypes = supportedAggregationTypes;
             FillGapWithZero = fillGapWithZero;
+            LockAggregationType = lockAggregationType;
             Dimensions = dimensions;
             CustomInit();
         }
@@ -105,6 +108,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "fillGapWithZero")]
         public bool? FillGapWithZero { get; set; }
+
+        /// <summary>
+        /// Gets or sets lock Aggregation type for the metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "lockAggregationType")]
+        public string LockAggregationType { get; set; }
 
         /// <summary>
         /// Gets or sets dimensions for the metric specification.

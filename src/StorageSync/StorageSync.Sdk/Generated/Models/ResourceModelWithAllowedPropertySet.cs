@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// mode deployment will not delete the resource if it is removed from
         /// the template since it is managed by another resource.</param>
         /// <param name="kind">Metadata used by portal/tooling/etc to render
-        /// different UX experiences for resources of the same type; e.g.
+        /// different UX experiences for resources of the same type. E.g.
         /// ApiApps are a kind of Microsoft.Web/sites type.  If supported, the
         /// resource provider must validate and persist this value.</param>
         /// <param name="etag">The etag field is *not* required. If it is
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
 
         /// <summary>
         /// Gets or sets metadata used by portal/tooling/etc to render
-        /// different UX experiences for resources of the same type; e.g.
+        /// different UX experiences for resources of the same type. E.g.
         /// ApiApps are a kind of Microsoft.Web/sites type.  If supported, the
         /// resource provider must validate and persist this value.
         /// </summary>

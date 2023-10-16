@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.StorageSync
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Microsoft Storage Sync Service API
+    /// Microsoft Storage Sync Service API. This belongs to
+    /// Microsoft.StorageSync Resource Provider
     /// </summary>
     public partial interface IStorageSyncManagementClient : System.IDisposable
     {
@@ -50,9 +51,9 @@ namespace Microsoft.Azure.Management.StorageSync
         string ApiVersion { get; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set; }
+        System.Guid SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.

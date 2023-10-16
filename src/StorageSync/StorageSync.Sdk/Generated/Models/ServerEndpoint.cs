@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Initializes a new instance of the ServerEndpoint class.
         /// </summary>
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// sync session is performed. Possible values include:
         /// 'ServerAuthoritative', 'Merge'</param>
         /// <param name="serverName">Server name</param>
-        public ServerEndpoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string serverLocalPath = default(string), string cloudTiering = default(string), int? volumeFreeSpacePercent = default(int?), int? tierFilesOlderThanDays = default(int?), string friendlyName = default(string), string serverResourceId = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), ServerEndpointSyncStatus syncStatus = default(ServerEndpointSyncStatus), string offlineDataTransfer = default(string), string offlineDataTransferStorageAccountResourceId = default(string), string offlineDataTransferStorageAccountTenantId = default(string), string offlineDataTransferShareName = default(string), ServerEndpointCloudTieringStatus cloudTieringStatus = default(ServerEndpointCloudTieringStatus), ServerEndpointRecallStatus recallStatus = default(ServerEndpointRecallStatus), string initialDownloadPolicy = default(string), string localCacheMode = default(string), string initialUploadPolicy = default(string), string serverName = default(string))
+        /// <param name="serverEndpointProvisioningStatus">Server Endpoint
+        /// provisioning status</param>
+        public ServerEndpoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string serverLocalPath = default(string), string cloudTiering = default(string), int? volumeFreeSpacePercent = default(int?), int? tierFilesOlderThanDays = default(int?), string friendlyName = default(string), string serverResourceId = default(string), string provisioningState = default(string), string lastWorkflowId = default(string), string lastOperationName = default(string), ServerEndpointSyncStatus syncStatus = default(ServerEndpointSyncStatus), string offlineDataTransfer = default(string), string offlineDataTransferStorageAccountResourceId = default(string), string offlineDataTransferStorageAccountTenantId = default(string), string offlineDataTransferShareName = default(string), ServerEndpointCloudTieringStatus cloudTieringStatus = default(ServerEndpointCloudTieringStatus), ServerEndpointRecallStatus recallStatus = default(ServerEndpointRecallStatus), string initialDownloadPolicy = default(string), string localCacheMode = default(string), string initialUploadPolicy = default(string), string serverName = default(string), ServerEndpointProvisioningStatus serverEndpointProvisioningStatus = default(ServerEndpointProvisioningStatus))
             : base(id, name, type, systemData)
         {
             ServerLocalPath = serverLocalPath;
@@ -102,6 +104,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
             LocalCacheMode = localCacheMode;
             InitialUploadPolicy = initialUploadPolicy;
             ServerName = serverName;
+            ServerEndpointProvisioningStatus = serverEndpointProvisioningStatus;
             CustomInit();
         }
 
@@ -238,6 +241,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.serverName")]
         public string ServerName { get; private set; }
+
+        /// <summary>
+        /// Gets or sets server Endpoint provisioning status
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.serverEndpointProvisioningStatus")]
+        public ServerEndpointProvisioningStatus ServerEndpointProvisioningStatus { get; set; }
 
         /// <summary>
         /// Validate the object.

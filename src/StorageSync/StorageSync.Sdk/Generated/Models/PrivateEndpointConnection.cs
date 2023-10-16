@@ -13,10 +13,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The Private Endpoint Connection resource.
+    /// The private endpoint connection resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PrivateEndpointConnection : Resource
@@ -35,22 +37,25 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="privateLinkServiceConnectionState">A collection of
         /// information about the state of the connection between service
         /// consumer and provider.</param>
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
         /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="systemData">Azure Resource Manager metadata containing
         /// createdBy and modifiedBy information.</param>
-        /// <param name="privateEndpoint">The resource of private end
-        /// point.</param>
+        /// <param name="groupIds">The group ids for the private endpoint
+        /// resource.</param>
+        /// <param name="privateEndpoint">The private endpoint
+        /// resource.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// private endpoint connection resource. Possible values include:
         /// 'Succeeded', 'Creating', 'Deleting', 'Failed'</param>
-        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
+        public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IList<string> groupIds = default(IList<string>), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string))
             : base(id, name, type, systemData)
         {
+            GroupIds = groupIds;
             PrivateEndpoint = privateEndpoint;
             PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             ProvisioningState = provisioningState;
@@ -63,7 +68,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the resource of private end point.
+        /// Gets the group ids for the private endpoint resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.groupIds")]
+        public IList<string> GroupIds { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the private endpoint resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint { get; set; }

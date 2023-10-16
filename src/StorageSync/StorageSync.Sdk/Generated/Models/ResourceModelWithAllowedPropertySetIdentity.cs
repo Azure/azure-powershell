@@ -27,12 +27,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the
         /// ResourceModelWithAllowedPropertySetIdentity class.
         /// </summary>
-        /// <param name="principalId">The principal ID of resource
-        /// identity.</param>
-        /// <param name="tenantId">The tenant ID of resource.</param>
+        /// <param name="principalId">The principal ID of resource identity.
+        /// The value must be an UUID.</param>
+        /// <param name="tenantId">The tenant ID of resource. The value must be
+        /// an UUID.</param>
         /// <param name="type">The identity type. Possible values include:
         /// 'SystemAssigned'</param>
-        public ResourceModelWithAllowedPropertySetIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?))
+        public ResourceModelWithAllowedPropertySetIdentity(System.Guid? principalId = default(System.Guid?), System.Guid? tenantId = default(System.Guid?), ResourceIdentityType? type = default(ResourceIdentityType?))
             : base(principalId, tenantId, type)
         {
             CustomInit();

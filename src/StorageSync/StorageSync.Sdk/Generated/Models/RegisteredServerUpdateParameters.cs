@@ -16,21 +16,23 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// Sync Group object.
+    /// The parameters used when updating a registered server.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class SyncGroup : ProxyResource
+    public partial class RegisteredServerUpdateParameters : ProxyResource
     {
         /// <summary>
-        /// Initializes a new instance of the SyncGroup class.
+        /// Initializes a new instance of the RegisteredServerUpdateParameters
+        /// class.
         /// </summary>
-        public SyncGroup()
+        public RegisteredServerUpdateParameters()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SyncGroup class.
+        /// Initializes a new instance of the RegisteredServerUpdateParameters
+        /// class.
         /// </summary>
         /// <param name="id">Fully qualified resource ID for the resource. E.g.
         /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
@@ -40,13 +42,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="systemData">Azure Resource Manager metadata containing
         /// createdBy and modifiedBy information.</param>
-        /// <param name="uniqueId">Unique Id</param>
-        /// <param name="syncGroupStatus">Sync group status</param>
-        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string uniqueId = default(string), string syncGroupStatus = default(string))
+        /// <param name="identity">Apply server with newly discovered
+        /// ApplicationId if available.</param>
+        public RegisteredServerUpdateParameters(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), bool? identity = default(bool?))
             : base(id, name, type, systemData)
         {
-            UniqueId = uniqueId;
-            SyncGroupStatus = syncGroupStatus;
+            Identity = identity;
             CustomInit();
         }
 
@@ -56,16 +57,11 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets unique Id
+        /// Gets or sets apply server with newly discovered ApplicationId if
+        /// available.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.uniqueId")]
-        public string UniqueId { get; private set; }
-
-        /// <summary>
-        /// Gets sync group status
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.syncGroupStatus")]
-        public string SyncGroupStatus { get; private set; }
+        [JsonProperty(PropertyName = "properties.identity")]
+        public bool? Identity { get; set; }
 
     }
 }

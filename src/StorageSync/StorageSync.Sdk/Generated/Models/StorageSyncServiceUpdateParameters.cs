@@ -38,13 +38,20 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// </summary>
         /// <param name="tags">The user-specified tags associated with the
         /// storage sync service.</param>
+        /// <param name="identity">managed identities for the Container App to
+        /// interact with other Azure services without maintaining any secrets
+        /// or credentials in code.</param>
         /// <param name="incomingTrafficPolicy">Incoming Traffic Policy.
         /// Possible values include: 'AllowAllTraffic',
         /// 'AllowVirtualNetworksOnly'</param>
-        public StorageSyncServiceUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), string incomingTrafficPolicy = default(string))
+        /// <param name="useIdentity">Use Identity authorization when customer
+        /// have finished setup RBAC permissions.</param>
+        public StorageSyncServiceUpdateParameters(IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string incomingTrafficPolicy = default(string), bool? useIdentity = default(bool?))
         {
             Tags = tags;
+            Identity = identity;
             IncomingTrafficPolicy = incomingTrafficPolicy;
+            UseIdentity = useIdentity;
             CustomInit();
         }
 
@@ -61,11 +68,39 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets managed identities for the Container App to interact
+        /// with other Azure services without maintaining any secrets or
+        /// credentials in code.
+        /// </summary>
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity { get; set; }
+
+        /// <summary>
         /// Gets or sets incoming Traffic Policy. Possible values include:
         /// 'AllowAllTraffic', 'AllowVirtualNetworksOnly'
         /// </summary>
         [JsonProperty(PropertyName = "properties.incomingTrafficPolicy")]
         public string IncomingTrafficPolicy { get; set; }
 
+        /// <summary>
+        /// Gets or sets use Identity authorization when customer have finished
+        /// setup RBAC permissions.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.useIdentity")]
+        public bool? UseIdentity { get; set; }
+
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Identity != null)
+            {
+                Identity.Validate();
+            }
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             public static PrivateEndpointConnection Get(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName, string privateEndpointConnectionName)
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             public static PrivateEndpointConnectionsDeleteHeaders Delete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName, string privateEndpointConnectionName)
             {
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='properties'>
             /// The private endpoint connection properties.
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             public static PrivateEndpointConnectionsDeleteHeaders BeginDelete(this IPrivateEndpointConnectionsOperations operations, string resourceGroupName, string storageSyncServiceName, string privateEndpointConnectionName)
             {
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Management.StorageSync
             /// </param>
             /// <param name='privateEndpointConnectionName'>
             /// The name of the private endpoint connection associated with the Azure
-            /// resource
+            /// resource.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
