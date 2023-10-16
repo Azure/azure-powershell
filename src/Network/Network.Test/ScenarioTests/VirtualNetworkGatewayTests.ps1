@@ -1694,52 +1694,52 @@ function Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficP
         Assert-AreEqual $retrievedGateway.ResourceGroupName $createdGateway.ResourceGroupName	
         Assert-AreEqual $retrievedGateway.Name $createdGateway.Name	
         Assert-AreEqual "ExpressRoute" $retrievedGateway.GatewayType
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
 
         # Update vnet-to-vWAN via property
         $retrievedGateway.AllowVirtualWanTraffic = $true
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $true $retrievedGateway.AllowVirtualWanTraffic
         $retrievedGateway.AllowVirtualWanTraffic = $false
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
 
         # Update vnet-to-vWAN via switch
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowVirtualWanTraffic $true
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "True" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $true $retrievedGateway.AllowVirtualWanTraffic
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowVirtualWanTraffic $false
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
 
         # Update vnet-to-vnet via property
         $retrievedGateway.AllowRemoteVnetTraffic = $true
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "True" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $true $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowRemoteVnetTraffic $false
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoveVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoveVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
 
         # Update vnet-to-vnet via switch
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowRemoteVnetTraffic $true
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "True" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $true $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
         Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowRemoteVnetTraffic $false
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-        Assert-AreEqual "False" $retrievedGateway.AllowRemoteVnetTraffic
-        Assert-AreEqual "False" $retrievedGateway.AllowVirtualWanTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowRemoteVnetTraffic
+        Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
     }
     finally
     {
