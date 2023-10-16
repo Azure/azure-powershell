@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
                 return;
             }
             {_currentState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("currentState"), out var __jsonCurrentState) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerState.FromJson(__jsonCurrentState) : CurrentState;}
-            {_previousState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("previousState"), out var __jsonPreviousState) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerState.FromJson(__jsonPreviousState) : PreviousState;}
+            {_previousStateInternal = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject>("previousState"), out var __jsonPreviousState) ? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerState.FromJson(__jsonPreviousState) : PreviousStateInternal;}
             {_restartCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNumber>("restartCount"), out var __jsonRestartCount) ? (int?)__jsonRestartCount : RestartCount;}
             {_event = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonArray>("events"), out var __jsonEvents) ? If( __jsonEvents as Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEvent[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEvent) (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Event.FromJson(__u) )) ))() : null : Event;}
             AfterFromJson(json);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SerializationMode.IncludeReadOnly))
             {
-                AddIf( null != this._previousState ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._previousState.ToJson(null,serializationMode) : null, "previousState" ,container.Add );
+                AddIf( null != this._previousStateInternal ? (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode) this._previousStateInternal.ToJson(null,serializationMode) : null, "previousState" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.SerializationMode.IncludeReadOnly))
             {
