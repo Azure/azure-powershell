@@ -4945,3 +4945,90 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set securityType TrustedLaunch is default.
+Defaults in the New-AzVmssConfig cmdlet and New-AzVmss.
+#>
+function Test-VirtualMachineScaleSetSecurityTypeDefaulting 
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $imageName = "Win2022AzureEdition";
+        $sku = "2022-Datacenter-Azure-Edition";
+        
+        $domainNameLabel1 = "d1" + $rgname;
+        $disable = $false;
+        $enable = $true;
+        $securityType = "TrustedLaunch";
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Requirements for the TrustedLaunch default behavior.
+        $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -DomainNameLabel $domainNameLabel1;
+
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        Assert-AreEqual $res.VirtualMachineProfile.StorageProfile.ImageReference.Sku $sku;
+        
+        # With Config scenario:
+        $vmssName2 = 'vmss2' + $rgname;
+        $imageName = "Win2022AzureEdition";
+        $publisherName = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $sku = "2022-Datacenter-Azure-Edition";#"2022-datacenter-azure-edition-core";
+        $version = "latest";
+
+        # NRP
+        $vnetworkName = 'vnet' + $rgname;
+        $subnetName = 'subnet' + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        
+        # Image setup
+        $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        $imgRef.PublisherName = $publisherName;
+        $imgRef.Offer = $offer;
+        $imgRef.Skus = $sku;
+        $imgRef.Version = $version;
+        
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+
+        # Create TL Vmss
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku $sku;
+    
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string StandardSecurityType = "standard";
         public const string TrustedLaunchSecurityType = "trustedlaunch";
         public const string ConfidentialVMSecurityType = "confidentialvm";
-        public const string TrustedLaunchDefaultImageAlias = "Win2022AzureEditionCore";
+        public const string TrustedLaunchDefaultImageAlias = "Win2022AzureEdition";
     }
 
     public static class ProfileNouns

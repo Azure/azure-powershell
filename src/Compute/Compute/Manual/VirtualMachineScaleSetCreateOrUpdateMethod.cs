@@ -567,9 +567,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    
                 }
-
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -650,6 +648,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else
             {
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
+            }
+
+            // TL default for Simple Param Set, no config object
+            if (!this.IsParameterBound(c => c.SecurityType))
+            {
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                }
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                {
+                    this.EnableSecureBoot = true;
+                }
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    this.EnableVtpm = true;
+                }
             }
 
             //Guest Attestation Identity stuff

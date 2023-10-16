@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Kind = "StorageV2",
                         Sku = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.Sku
                         {
-                            Name = SkuName.PremiumLRS
+                            Name = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.SkuName.PremiumLRS
                         },
                         Location = Location
                     });
