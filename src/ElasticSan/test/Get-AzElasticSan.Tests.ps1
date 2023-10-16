@@ -26,6 +26,21 @@ Describe 'Get-AzElasticSan' {
         $elasticSan.BaseSizeTib | Should -Be $env.BaseSizeTib
         $elasticSan.ExtendedCapacitySizeTib | Should -Be $env.ExtendedCapacitySizeTib
         $elasticSan.Tag.Count | Should -BeGreaterOrEqual 1
+
+        $elasticSan = Get-AzElasticSan -ResourceGroupName $env.ResourceGroupName2 -Name $env.ElasticSanName3
+        $elasticSan.PrivateEndpointConnection.Count | Should -Be 3
+        $elasticSan.PrivateEndpointConnection[0].name | Should -BeLike "testvgpe*"
+        $elasticSan.PrivateEndpointConnection[0].PrivateLinkServiceConnectionStateStatus | Should -Be "Approved"
+        $elasticSan.PrivateEndpointConnection[0].PrivateEndpointId | Should -BeLike "*testconnection01*"
+        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
+        $elasticSan.PrivateEndpointConnection[1].name | Should -BeLike "testvgpe*"
+        $elasticSan.PrivateEndpointConnection[1].PrivateLinkServiceConnectionStateStatus | Should -Be "Approved"
+        $elasticSan.PrivateEndpointConnection[1].PrivateEndpointId | Should -BeLike "*testconnection02*"
+        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
+        $elasticSan.PrivateEndpointConnection[2].name | Should -BeLike "testvgpe*"
+        $elasticSan.PrivateEndpointConnection[2].PrivateLinkServiceConnectionStateStatus | Should -Be "Pending"
+        $elasticSan.PrivateEndpointConnection[2].PrivateEndpointId | Should -BeLike "*testconnection03*"
+        $elasticSan.PrivateEndpointConnection.GroupId | Should -Contain "testvgpe"
     }
 
     It 'List1' {

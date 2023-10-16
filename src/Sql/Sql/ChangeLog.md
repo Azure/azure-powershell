@@ -18,7 +18,37 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `UseFreeLimit` and `FreeLimitExhaustionBehavior` parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`
+
+## Version 4.10.0
+* Fixed cmdlets to use 2018-06-01-preview api version
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation',
+* Added `EncryptionProtectorAutoRotation` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, `Restore-AzSqlDatabase` cmdlets
+
+## Version 4.9.0
+* Added new cmdlets for Azure SQL Managed Instance start/stop schedule
+    - 'Start-AzSqlInstance',
+    - 'Stop-AzSqlInstance',
+    - 'Get-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceStartStopSchedule',
+    - 'Remove-AzSqlInstanceStartStopSchedule',
+    - 'New-AzSqlInstanceScheduleItem'
+
+## Version 4.8.0
 * Added `TryPlannedBeforeForcedFailover` parameter to `Switch-AzSqlDatabaseFailoverGroup`
+* Added new cmdlets for managed database move and copy operations
+    - 'Copy-AzSqlInstanceDatabase'
+    - 'Move-AzSqlInstanceDatabase'
+    - 'Complete-AzSqlInstanceDatabaseCopy'
+    - 'Stop-AzSqlInstanceDatabaseCopy'
+    - 'Complete-AzSqlInstanceDatabaseMove'
+    - 'Stop-AzSqlInstanceDatabaseMove'
+    - 'Get-AzSqlInstanceDatabaseMoveOperation'
+    - 'Get-AzSqlInstanceDatabaseCopyOperation'
+
 
 ## Version 4.7.0
 * Added new cmdlets `Get-AzSqlInstanceDatabaseLedgerDigestUpload`, `Disable-AzSqlInstanceDatabaseLedgerDigestUpload`, and `Enable-AzSqlInstanceDatabaseLedgerDigestUpload`

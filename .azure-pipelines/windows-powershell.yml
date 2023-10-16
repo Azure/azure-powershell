@@ -2,7 +2,7 @@ variables:
   AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: netcoreapp3.1
+  TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
@@ -52,11 +52,11 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      IsGenerateBased: ${{ variables.IsGenerateBased }}
 
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
   pool: ${{ variables.AgentPoolName }}
 

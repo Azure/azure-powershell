@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Added soft delete and MUA feature for Backup vaults
+
 ## Version 2.0.0
 * Added support for Blob Hardened recovery points (VaultStore).
 * Added Cross Subscription Restore for `AzureDisk`, `AzureDatabaseForPostgreSQL` and `AzureBlob`.

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
     /// <summary>
     /// Defines the New-DataShareSubscription cmdlet.
     /// </summary>
-    [GenericBreakingChange("Parameter SourceShareLocation is mandatory to support cross region share subscription creation.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscription", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDataShare))]
     public class NewAzDataShareSubscription : AzureDataShareCmdletBase
     {

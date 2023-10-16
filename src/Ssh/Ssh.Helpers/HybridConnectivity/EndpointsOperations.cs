@@ -275,6 +275,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <param name='expiresin'>
         /// The is how long the endpoint access token is valid (in seconds).
         /// </param>
+        /// <param name='listCredentialsRequest'>
+        /// Object of type ListCredentialsRequest
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -296,7 +299,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EndpointAccessResource>> ListCredentialsWithHttpMessagesAsync(string resourceUri, string endpointName, long? expiresin = 10800, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EndpointAccessResource>> ListCredentialsWithHttpMessagesAsync(string resourceUri, string endpointName, long? expiresin = 10800, ListCredentialsRequest listCredentialsRequest = default(ListCredentialsRequest), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.ApiVersion == null)
             {
@@ -335,6 +338,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
                 tracingParameters.Add("resourceUri", resourceUri);
                 tracingParameters.Add("endpointName", endpointName);
                 tracingParameters.Add("expiresin", expiresin);
+                tracingParameters.Add("listCredentialsRequest", listCredentialsRequest);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListCredentials", tracingParameters);
             }
@@ -390,6 +394,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
 
             // Serialize Request
             string _requestContent = null;
+            if(listCredentialsRequest != null)
+            {
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(listCredentialsRequest, Client.SerializationSettings);
+                _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
             // Set Credentials
             if (Client.Credentials != null)
             {

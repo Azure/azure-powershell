@@ -21,18 +21,18 @@ Create an in-memory object for VirtualNetworkRule.
 Create an in-memory object for VirtualNetworkRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
+https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-azelasticsanvirtualnetworkruleobject
 #>
 function New-AzElasticSanVirtualNetworkRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The action of virtual network rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.Action])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.Action]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Allow")]
+        [string]
         $Action,
         [Parameter(Mandatory, HelpMessage="Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.")]
         [string]
@@ -40,7 +40,7 @@ function New-AzElasticSanVirtualNetworkRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

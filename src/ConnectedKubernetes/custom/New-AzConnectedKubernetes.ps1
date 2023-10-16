@@ -168,6 +168,12 @@ function New-AzConnectedKubernetes {
         ${Tag},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # OID of 'custom-locations' app.
+        ${CustomLocationsOid},
+
+        [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
         ${AcceptEULA},
@@ -281,6 +287,13 @@ function New-AzConnectedKubernetes {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
+        }
+        if ($PSBoundParameters.ContainsKey('PrivateLinkState') -and ($null -ne $CustomLocationsOid) -and ($CustomLocationsOid -ne '')) {
+            Write-Warning "The features 'cluster-connect' and 'custom-locations' cannot be enabled for a private link enabled connected cluster."
+            $CustomLocationsOid = $null
+        }
+        if ($PSBoundParameters.ContainsKey('CustomLocationsOid')) {
+            $Null = $PSBoundParameters.Remove('CustomLocationsOid')
         }
         $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
@@ -476,6 +489,9 @@ function New-AzConnectedKubernetes {
         }
         if (-not ([string]::IsNullOrEmpty($KubeContext))) {
             $options += " --kube-context $KubeContext"
+        }
+        if (-not ([string]::IsNullOrEmpty($CustomLocationsOid))) {
+            $options += " --set systemDefaultValues.customLocations.oid=$CustomLocationsOid"
         }
         if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"

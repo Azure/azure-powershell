@@ -145,7 +145,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the snapshot object")]
         [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChange("Snapshot", ChangeDescription = "Snapshot invalid and preserved for compatibility. Parameter SnapshotPolicyId should be used instead")]
         public PSNetAppFilesVolumeSnapshot Snapshot { get; set; }
 
         [Parameter(
@@ -222,7 +221,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.")]
-        [CmdletParameterBreakingChange("UnixPermissions", ChangeDescription = "Parameter Alias UnixPermissions will be removed, please use UnixPermission.")]
         [Alias("UnixPermissions")]
         public string UnixPermission { get; set; }
 
@@ -416,7 +414,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(volumeBody, ResourceGroupName, AccountName, PoolName, Name);
+                var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }

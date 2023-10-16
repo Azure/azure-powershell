@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, Name)))
             {
-                var anfSubvolume = AzureNetAppFilesManagementClient.Subvolumes.Update(subvolumePatch, ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name);
+                var anfSubvolume = AzureNetAppFilesManagementClient.Subvolumes.Update(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName, subvolumeName: Name, subvolumePatch);
                 WriteObject(anfSubvolume.ConvertToPs());
             }
         }

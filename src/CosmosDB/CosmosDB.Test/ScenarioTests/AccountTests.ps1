@@ -32,8 +32,8 @@ function Test-AccountRelatedCmdlets
   $publicNetworkAccess = "Enabled"
   $networkAclBypass = "AzureServices"
   $networkAclBypassResourceId = @("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")
-
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480
+  
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12"
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -50,6 +50,8 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.NetworkAclBypassResourceIds.Count 0
   Assert-AreEqual $cosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $cosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
+  Assert-AreEqual $cosmosDBAccount.EnableBurstCapacity 1
+  Assert-AreEqual $cosmosDBAccount.MinimalTlsVersion "Tls12" 
 
   # create an existing database
   Try {
@@ -59,7 +61,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnablePartitionMerge 0
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnablePartitionMerge 0 -EnableBurstCapacity 0 -MinimalTlsVersion "Tls12"
 
   Assert-AreEqual $cosmosDBAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -73,6 +75,11 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 0
+  Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 0
+  Assert-AreEqual $updatedCosmosDBAccount.MinimalTlsVersion "Tls12"
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableBurstCapacity 1
+  Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 1
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Geo"
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
@@ -215,7 +222,7 @@ function Test-AddRegionOperation
         }
 
     $updatedCosmosDBAccount = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName -Location $locationlist
-    Start-Sleep -s 60
+    Start-TestSleep -Seconds 60
     $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
     Assert-AreEqual $updatedCosmosDBAccount.Locations.Count 2
    }
@@ -343,6 +350,9 @@ function Test-CosmosDBLocations {
     Assert-NotNull $locationProperty.Properties.SupportsAvailabilityZone
     Assert-NotNull $locationProperty.Properties.IsResidencyRestricted
     Assert-NotNull $locationProperty.Properties.BackupStorageRedundancies
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+    Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+    Assert-NotNull $locationProperty.Properties.Status
   }
 
   $locationProperties = Get-AzCosmosDBLocation -Location $locationName
@@ -352,4 +362,7 @@ function Test-CosmosDBLocations {
   Assert-NotNull $locationProperties.Properties.SupportsAvailabilityZone
   Assert-NotNull $locationProperties.Properties.IsResidencyRestricted
   Assert-NotNull $locationProperties.Properties.BackupStorageRedundancies
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForRegular
+  Assert-NotNull $locationProperty.Properties.IsSubscriptionRegionAccessAllowedForAz
+  Assert-NotNull $locationProperty.Properties.Status
 }

@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.1
+* Customized output property for `Get-AzCdnEdgeNode` command
+
+## Version 3.1.0
 * Upgraded API version to 2023-05-01
 * Fixed known issue for `Update-AzCdnProfile`, `Update-AzFrontDoorCdnProfile`, `Remove-AzCdnProfile`, `Remove-AzCdnProfile`
 
@@ -48,6 +53,7 @@
   - Update-AzFrontDoorCdnCustomDomainValidationToken
   - Update-AzFrontDoorCdnRule
 * Renamed Set cmdlets to Update cmdlets
+* Renamed `Unpublish-AzCdnEndpointContent` cmdlets to `Clear-AzCdnEndpointContent`
 * Added `Object` suffix to memory object creation cmdlets
 
 ## Version 1.8.3

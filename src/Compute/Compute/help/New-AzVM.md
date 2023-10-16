@@ -27,7 +27,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
- [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -159,7 +160,7 @@ You can confirm your login status by using the **Get-AzSubscription** cmdlet.
 ```powershell
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "password" -AsPlainText -Force
-$LocationName = "westus"
+$LocationName = "eastus2"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
 $VMName = "MyVM"
@@ -189,11 +190,11 @@ This command creates a VM from a marketplace image without a Public IP.
 
 ### Example 4: Create a VM with a UserData value:
 ```powershell
-## VM Account
+# VM Account
 $VMLocalAdminUser = "LocalAdminUser";
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
 
-## Azure Account
+# Azure Account
 $LocationName = "eastus";
 $ResourceGroupName = "MyResourceGroup";
 
@@ -208,7 +209,7 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
 $userData = [Convert]::ToBase64String($bytes);
 
 # Create VM
-New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData;
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 ```
 
@@ -235,19 +236,23 @@ This example deploys a Windows VM from the marketplace in one resource group wit
 
 ### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
 ```powershell
-$resourceGroupName= "Resource Group Name"
-$domainNameLabel = "Domain Name Label Name"
-$vmname = "Virtual Machine Name"
-$platformFaultDomainVMDefaultSet = 2
-$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
-$user = "Username"
-$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$vmssName = "Vmss Name";
+$resourceGroupName= "ResourceGroupName";
+$loc = 'eastus';
+New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force;
+
+$domainNameLabel = "d1" + $resourceGroupName;
+$vmname = "vm" + $resourceGroupName;
+$platformFaultDomainVMDefaultSet = 2;
+$vmssFaultDomain = 3;
+$securePassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$user = <USERNAME>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+$vmssName = "vmss" + $resourceGroupName;
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
-$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id;
 ```
 
 This example creates a new VM as part of a VMSS with a PlatformFaultDomain value.
@@ -328,17 +333,56 @@ $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
 $user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
-New-AzResourceGroup -Name $rgname -Location $loc -Force
+New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force
 
 # Create a VM using an Image alias.
-$vmname = 'v' + $rgname
-$domainNameLabel = "d" + $rgname
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
+$vmname = 'v' + $resourceGroupName
+$domainNameLabel = "d" + $resourceGroupName
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
 
-$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 ```
 
 This example creates a new VM using the -Image parameter, providing many default values to the VM. 
+
+### Example 9: Creating a VM for Trusted Launch SecurityType.
+```powershell
+$rgname = <Resource Group Name>;
+$loc = "eastus";
+ 
+New-AzResourceGroup -Name $rgname -Location $loc -Force;    
+# VM Profile & Hardware       
+$domainNameLabel1 = 'd1' + $rgname;
+$vmsize = 'Standard_D4s_v3';
+$vmname1 = 'v' + $rgname;
+$imageName = "Win2016DataCenterGenSecond";
+$disable = $false;
+$enable = $true;
+$securityType = "TrustedLaunch";
+
+$password = <Password>;
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <Username>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+# VM creation using Simple parameterset
+New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityType;
+$vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
+# Verify Values
+#$vm1.SecurityProfile.SecurityType "TrustedLaunch";
+#$vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
+#$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+# Verify the GuestAttestation extension is installed.
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+$extDefaultName = "GuestAttestation";
+$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extDefaultName;
+# $vmExt.Name "GuestAttestation";
+```
+
+This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. 
+It also checks that the GuestAttestation extension is installed by default when using TrustedLaunch and the EnableSecureBoot and EnableVtpm are True.
 
 ## PARAMETERS
 
@@ -579,6 +623,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Use UltraSSD disks for the vm.
 
@@ -591,6 +650,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -687,7 +761,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian11, OpenSuseLeap154Gen2, RHEL, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String
@@ -973,6 +1047,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

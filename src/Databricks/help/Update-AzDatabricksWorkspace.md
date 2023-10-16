@@ -15,29 +15,32 @@ Updates a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>] [-EnableNoPublicIP]
+ [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
+ [-KeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
- [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>] [-Tag <Hashtable>] [-UiDefinitionUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-AmlWorkspaceId <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-EncryptionKeyName <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
  [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>]
  [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
  [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
- [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>] [-Tag <Hashtable>] [-UiDefinitionUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,6 +166,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableNoPublicIP
+The value which should be used for this field.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -434,6 +452,22 @@ Enables the Managed Identity for managed storage account.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+The network access type for accessing workspace.
+Set value to disabled to access workspace only via private link.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 

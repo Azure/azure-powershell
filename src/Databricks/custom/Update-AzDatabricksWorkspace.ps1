@@ -20,15 +20,16 @@ Updates a workspace.
 .Description
 Updates a workspace.
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
-Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t1 | Update-AzDatabricksWorkspace -Tag @{"key"="value"}
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://keyvalult-j3kube.vault.azure.net/ -EncryptionKeyName key-p3bjsf -EncryptionKeyVersion 853999da89714fb4a1408681945135fd
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -PrepareEncryption
+$updWsp = Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2
+Set-AzKeyVaultAccessPolicy -VaultName azps-keyvault -ObjectId $updWsp.StorageAccountIdentityPrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -EncryptionKeySource 'Microsoft.KeyVault' -EncryptionKeyVaultUri https://azps-keyvault.vault.azure.net/ -EncryptionKeyName azps-k1 -EncryptionKeyVersion a563a8021cba47109d93bd6d690621a7
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -EncryptionKeySource 'Default'
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 -EncryptionKeySource 'Default'
 .Example
-Update-AzDatabricksWorkspace -ResourceGroupName lucas-rg-test -Name databricks-t01 -RequiredNsgRule 'NoAzureDatabricksRules'
+Update-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t2 -RequiredNsgRule 'AllRules'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -217,6 +218,20 @@ function Update-AzDatabricksWorkspace {
         # 'NoAzureServiceRules' value is for internal use only.
         ${RequiredNsgRule},
 
+        [Parameter(HelpMessage="The network access type for accessing workspace. Set value to disabled to access workspace only via private link.")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+        # The network access type for accessing workspace.
+        # Set value to disabled to access workspace only via private link.
+        ${PublicNetworkAccess},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # The value which should be used for this field.
+        ${EnableNoPublicIP},
+        
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -302,6 +317,8 @@ function Update-AzDatabricksWorkspace {
             $hasUiDefinitionUri = $PSBoundParameters.Remove('UiDefinitionUri')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasRequiredNsgRule = $PSBoundParameters.Remove('RequiredNsgRule')
+            $hasEnableNoPublicIP = $PSBoundParameters.Remove('EnableNoPublicIP')
+            $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
@@ -380,6 +397,12 @@ function Update-AzDatabricksWorkspace {
                 $workspace.UiDefinitionUri = $UiDefinitionUri
             }
 
+            if ($hasEnableNoPublicIP) {
+                $workspace.EnableNoPublicIP = $EnableNoPublicIP
+            }
+            if ($hasPublicNetworkAccess) {
+                $workspace.PublicNetworkAccess = $PublicNetworkAccess
+            }
             if ($hasRequiredNsgRule) {
                 $workspace.RequiredNsgRule = $RequiredNsgRule
             }

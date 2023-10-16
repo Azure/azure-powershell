@@ -12,6 +12,9 @@
 // limitations under the License.
 // ---------------------------------------------------------------------------------
 
+using Azure.Storage.Files.Shares;
+using Microsoft.Azure.Storage.File;
+
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
     using Microsoft.Azure.Storage.Blob;
@@ -24,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.Auth;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Azure storage file object
@@ -35,7 +39,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>    
         [Ps1Xml(Label = "Share Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudFile.Share.Uri")]
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
-        public CloudFile CloudFile { get; private set; }
+        public CloudFile CloudFile
+        {
+            get
+            {
+                if (privateCloudFile == null)
+                {
+                    privateCloudFile = GetTrack1FileClient(ShareFileClient, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
+                }
+                return privateCloudFile;
+            }
+        }
+        private CloudFile privateCloudFile = null;
 
         /// <summary>
         /// File length
@@ -98,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public AzureStorageFile(CloudFile file, AzureStorageContext storageContext, ShareClientOptions clientOptions = null)
         {
             Name = file.Name;
-            CloudFile = file;
+            privateCloudFile = file;
             Length = file.Properties.Length;
             LastModified = file.Properties.LastModified;
             Context = storageContext;
@@ -116,7 +131,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = shareFileClient.Name;
             this.privateFileClient = shareFileClient;
-            CloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials);
+            if (!storageContext.StorageAccount.Credentials.IsToken) // not oauth
+            {
+                privateCloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials);
+            }
             if (shareFileItem != null)
             {
                 ListFileProperties = shareFileItem;
@@ -144,7 +162,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = shareFileClient.Name;
             this.privateFileClient = shareFileClient;
-            CloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials);
+            if (!storageContext.StorageAccount.Credentials.IsToken) // not oauth
+            {
+                privateCloudFile = GetTrack1FileClient(shareFileClient, storageContext.StorageAccount.Credentials);
+            }
             if (shareFileProperties != null)
             {
                 privateFileProperties = shareFileProperties;
@@ -158,6 +179,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         // Convert Track2 File object to Track 1 file object
         public static CloudFile GetTrack1FileClient(ShareFileClient shareFileClient, StorageCredentials credentials)
         {
+            if (credentials.IsToken)
+            {
+                return new InvalidCloudFile(shareFileClient.Uri, credentials);
+            }
             if (credentials.IsSAS) // the Uri already contains credentail.
             {
                 credentials = null;

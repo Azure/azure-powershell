@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }
         public NetworkRuleSet NetworkAcls { get; set; }
-        public MHSMNetworkRuleSet MhsmNetworkAcls { get; set; }
+        public MhsmNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
     }

@@ -16,14 +16,14 @@ Gets details for a Backup job.
 
 ### JobFilterSet (Default)
 ```
-Get-AzRecoveryServicesBackupJobDetail [-Job] <JobBase> [-UseSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupJobDetail [-Job] <JobBase> [-UseSecondaryRegion] [-VaultLocation <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Get-AzRecoveryServicesBackupJobDetail [-JobId] <String> [-UseSecondaryRegion] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupJobDetail [-JobId] <String> [-UseSecondaryRegion] [-VaultLocation <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +128,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VaultLocation
+Location of the Recovery Services Vault used to fetch the secondary region jobs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

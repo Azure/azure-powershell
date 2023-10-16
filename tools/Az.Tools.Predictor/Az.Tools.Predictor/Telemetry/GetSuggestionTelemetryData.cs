@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// The telemetry property name for "Prediction".
         /// </summary>
-        public const string PropertyNamePrediction = "Prediction2";
+        public const string PropertyNamePrediction = "Prediction_a";
 
         /// <summary>
         /// The telemetry property name for "SuggestionSessionId".
@@ -44,9 +44,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";
 
         /// <summary>
-        /// The telemetry property name fo "userInput".
+        /// The telemetry property name fo "userInput" used as the nested property.
         /// </summary>
-        public const string PropertyNameUserInput = "UserInput";
+        public const string PropertyNameInnerUserInput = "UserInput";
+
+        /// <summary>
+        /// The telemetry property name fo "userInput" used as a top-level property.
+        /// </summary>
+        public const string PropertyNameOuterUserInput = "UserInput_a";
 
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
@@ -60,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Gets the user input.
         /// </summary>
-        public Ast UserInput { get; }
+        public CommandAst UserInput { get; }
 
         /// <summary>
         /// Gets whether the command in <see cref="UserInput" /> is supported or not.
@@ -100,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <param name="suggestion">The suggestions returned for the <paramref name="userInput"/>.</param>
         /// <param name="isCancellationRequested">Indicates if the cancellation has been requested.</param>
         /// <param name="exception">The exception that is thrown if there is an error.</param>
-        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, bool isSupported, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
+        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, CommandAst userInput, bool isSupported, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
         {
             Client = client;
             SuggestionSessionId = suggestionSessionId;

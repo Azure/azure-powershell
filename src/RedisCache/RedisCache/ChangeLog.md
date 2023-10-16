@@ -18,14 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed minor issues
+
+## Version 1.8.0
+* Upgraded API version to 2023-04-01
 
 ## Version 1.7.1
 * Updated `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` to print `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`.
 
 ## Version 1.7.0
-* Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`  
-* Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`  
-* Added 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`in `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` 
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Export-AzRedisCache`
+* Added optional parameter `PreferredDataArchiveAuthMethod` in `Import-AzRedisCache`
+* Added 4 additional properties for a geo replication link: `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`in `Get-AzRedisCacheLink` and `New-AzRedisCacheLink`
 
 ## Version 1.6.0
 * Added `IdentityType` and `UserAssignedIdentity` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets.

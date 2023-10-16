@@ -17,253 +17,26 @@
 <#
 .Synopsis
 Gets the Move Resource.
+
+**The 'Get-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 .Description
 Gets the Move Resource.
+
+**The 'Get-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
 .Example
-PS C:\>Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS"         
-
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
-                                    m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/PSDemoVM
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : PSDemoVM
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-
-                                    vnet, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroup
-                                    s/psdemovm-nsg, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/psdemovm111
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : psdemovm111
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkInterfaceResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm
-                                    111
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkInterfaceResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/psdemorm-vnet
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : psdemorm-vnet
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualNetworkResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-v
-                                    net
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualNetworkResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/psdemovm-nsg
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : psdemovm-nsg
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkSecurityGroupResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psde
-                                    movm-nsg
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkSecurityGroupResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
-DependsOn                         : {}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/psdemorm
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : DeleteSourcePending
-Name                              : psdemorm
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target
-Type                              :
-
+Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS"         
 .Example
-PS C:\> Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"   
-                                                     
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
-                                    m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS/moveResources/PSDemoVM
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : PSDemoVM
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
+Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"   
 .Example
-PS C:\WINDOWS\system32> Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Filter "Properties/SourceResourceName eq 'psdemovm111'"
-
-
-DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-
-                                    vnet, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroup
-                                    s/psdemovm-nsg, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm}
-DependsOnOverride                 : {}
-ErrorsPropertiesCode              : 
-ErrorsPropertiesDetail            : 
-ErrorsPropertiesMessage           : 
-ErrorsPropertiesTarget            : 
-ExistingTargetId                  : 
-Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveColle
-                                    ctions/PS-centralus-westcentralus-demoRMS1/moveResources/psdemovm111
-IsResolveRequired                 : False
-JobStatusJobName                  : 
-JobStatusJobProgress              : 
-MoveStatusErrorsPropertiesCode    : 
-MoveStatusErrorsPropertiesDetail  : 
-MoveStatusErrorsPropertiesMessage : 
-MoveStatusErrorsPropertiesTarget  : 
-MoveStatusMoveState               : PreparePending
-Name                              : psdemovm111
-ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkInterfaceResourceSettings
-SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm
-                                    111
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.NetworkInterfaceResourceSettings
-SystemDataCreatedAt               :
-SystemDataCreatedBy               :
-SystemDataCreatedByType           :
-SystemDataLastModifiedAt          :
-SystemDataLastModifiedBy          :
-SystemDataLastModifiedByType      :
-TargetId                          : 
-Type                              : 
-
+Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Filter "Properties/SourceResourceName eq 'psdemovm111'"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource
 #>
 function Get-AzResourceMoverMoveResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -304,7 +77,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -354,6 +128,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.ResourceMover.private\Get-AzResourceMoverMoveResource_Get';
             List = 'Az.ResourceMover.private\Get-AzResourceMoverMoveResource_List';
@@ -368,6 +160,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -376,15 +169,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

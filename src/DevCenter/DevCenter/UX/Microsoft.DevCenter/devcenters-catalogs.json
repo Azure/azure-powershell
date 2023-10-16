@@ -1,0 +1,138 @@
+{
+  "resourceType": "devcenters/catalogs",
+  "apiVersion": "2023-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminCatalog",
+      "description": "Gets a catalog",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalog"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DevCenterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a catalog",
+          "parameters": [
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDevCenterAdminCatalog",
+      "description": "Deletes a catalog resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradmincatalog"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DevCenterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a catalog resource.",
+          "parameters": [
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzDevCenterAdminCatalog",
+      "description": "Syncs templates for a template source.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/sync-azdevcenteradmincatalog"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DevCenterName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Syncs templates for a template source.",
+          "parameters": [
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -19,4 +19,10 @@
 	<ProjectReference Include="..\NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ScenarioTests\QueryRegionInfoTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

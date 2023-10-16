@@ -18,8 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adjusted `Publish-AzWebApp` default behavior
+
+## Version 3.1.1
+* Added support for XenonMV3 webapps
+
+## Version 3.1.0
+* Added AppServicePlan management support for P0V3 and P*mv3 tiers
+
+## Version 3.0.1
 * Increased timeout for Publish-AzWebApp command
-* Fixed Set-AzWebApp isue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]
+* Fixed Set-AzWebApp issue with `Set-AzWebApp` when piping in Get-AzWebApp object [#21820]
+* Added support for the PremiumMV3 tier to `New-AzAppServicePlan` [#21933]
 
 ## Version 3.0.0
 * Removed `New-AzWebAppContainerPSSession` and `Enter-AzWebAppContainerPSSession` cmdlets

@@ -1,9 +1,10 @@
-﻿param location string = 'westus'
-param name string = 'bezstorage007'
+param location string = 'westus'
+param baseName string = 'mysa'
+
 var storageSku = 'Standard_LRS'
 
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-  name: name
+  name: '${baseName}${uniqueString(resourceGroup().id)}'
   location: location
   kind: 'Storage'
   sku: {

@@ -5,30 +5,35 @@ This directory contains management plane service clients of Az.KeyVault module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
+use-extension:
+  "@autorest/powershell": "4.x"
 ```
 
 ###
 ``` yaml
+commit: 33f06ff82a4c751bcbc842b7ed4da2e81b0717b6
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/keyvault.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fead0dec636e7554fb8401370418085136d4f052/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/managedHsm.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2022-07-01/keyvault.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/managedHsm.json
 
 ### there are 2 same "reason" property with same x-ms-enum.name="Reason" defined in both keyvault.json and managedHsm.json. Rename one of them to avoid autorest converting error.
 ### 
 directive:
+  - no-inline:
+      - Error
   - from: swagger-document
     where: $.definitions.CheckMhsmNameAvailabilityResult.properties.reason["x-ms-enum"]
     transform: $.name = "ReasonForCheckMhsmNameAvailabilityResult"

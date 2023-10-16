@@ -1,6 +1,6 @@
 ---
 Module Name: Az.SqlVirtualMachine
-Module Guid: b0fb9454-c75f-4eb7-ab6a-aaae12f8bde3
+Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
 Download Help Link: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine
 Help Version: 1.0.0.0
 Locale: en-US

@@ -89,12 +89,13 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityType
-Enum that represents the security type (ex: Trusted Launch)
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: Named

@@ -19,6 +19,32 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.2
+* Reverted remove CustomIMDSHost
+
+## Version 2.2.1
+* Added changes to selectively enable ARC.
+
+## Version 2.2.0
+* Bug fixes for Attestation commands.
+* Added support for installing mandatory extensions on HCI OS 22H2 and removed confirmation prompt for consent.
+* Added ability to customize the location of logs generated during registration.
+    - Custom log location can be specified by specifying an optional `-LogsDirectory` parameter in `Register-AzStackHCI`.
+    - `Get-AzStackHCILogsDirectory` can be used to obtain the log location.
+* Increased retry count for setting up ARC integration.
+
+## Version 2.1.2
+* Removed device type check and only check if service already exists.
+
+## Version 2.1.1
+* Used the correct version of cloud management service in `Register-AzStackHCI` cmdlet.
+* Fixed the bugs in `Register-AzStackHCI` and `Enable-AzStackHCIAttestation` cmdlets.
+
+## Version 2.1.0
+* Updated to api-version 2023-03-01.
+* Cmdlets added:
+    - Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit : Enable Software Assurance for a cluster
+    - Invoke-AzStackHciConsentAndInstallDefaultExtensions : Consent to installing default extensions on the cluster
 ## Version 2.0.0
 * Made Region parameter mandatory in `Register-AzStackHCI` cmdlet.
 * Removed EnableAzureArcServer parameter from `Register-AzStackHCI` cmdlet.

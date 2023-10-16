@@ -96,6 +96,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Days", "Months")]
         public string TierAfterDurationType { get; set; }
 
+        /// <summary>
+        /// Custom resource group name to store the instant recovery points of managed virtual machines.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.AzureBackupResourceGroup)]        
+        public string BackupSnapshotResourceGroup { get; set; }
+
+        /// <summary>
+        /// Custom resource group name suffix to store the instant recovery points of managed virtual machines.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Policy.AzureBackupResourceGroupSuffix)]        
+        public string BackupSnapshotResourceGroupSuffix { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -184,7 +196,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                         { PolicyParams.ExistingPolicy, servicePolicy},
                         { PolicyParams.TieringPolicy, tieringDetails},
-                        { PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled}
+                        { PolicyParams.IsSmartTieringEnabled, isSmartTieringEnabled},
+                        { PolicyParams.BackupSnapshotResourceGroup, BackupSnapshotResourceGroup},
+                        { PolicyParams.BackupSnapshotResourceGroupSuffix, BackupSnapshotResourceGroupSuffix}
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(

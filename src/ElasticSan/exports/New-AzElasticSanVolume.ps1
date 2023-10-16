@@ -20,63 +20,68 @@ Create a Volume.
 .Description
 Create a Volume.
 .Example
-New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot'
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+ELASTICSANINPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [ElasticSanName <String>]: The name of the ElasticSan.
   [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
 
-PARAMETER <IVolume>: Response for Volume request.
-  [Tag <IResourceTags>]: Azure resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-  [CreationDataCreateSource <VolumeCreateOption?>]: This enumerates the possible sources of a volume creation.
-  [CreationDataSourceUri <String>]: If createOption is Copy, this is the ARM id of the source snapshot or disk. If createOption is Restore, this is the ARM-like id of the source disk restore point.
-  [SizeGiB <Int64?>]: Volume size.
-  [StorageTargetStatus <OperationalStatus?>]: Operational status of the iSCSI Target.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
+
+VOLUMEGROUPINPUTOBJECT <IElasticSanIdentity>: Identity Parameter
+  [ElasticSanName <String>]: The name of the ElasticSan.
+  [Id <String>]: Resource identity path
+  [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VolumeGroupName <String>]: The name of the VolumeGroup.
+  [VolumeName <String>]: The name of the Volume.
 .Link
 https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolume
 #>
 function New-AzElasticSanVolume {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [System.String]
     # The name of the ElasticSan.
     ${ElasticSanName},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityElasticSanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityVolumegroupExpanded', Mandatory)]
     [Alias('VolumeName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [System.String]
     # The name of the Volume.
     ${Name},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [System.String]
@@ -84,7 +89,6 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -92,14 +96,20 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityElasticSanExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [System.String]
     # The name of the VolumeGroup.
     ${VolumeGroupName},
 
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityElasticSanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
+    ${ElasticSanInputObject},
+
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
@@ -107,44 +117,33 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume]
-    # Response for Volume request.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
+    [Parameter(ParameterSetName='CreateViaIdentityVolumegroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
+    ${VolumegroupInputObject},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.VolumeCreateOption])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.VolumeCreateOption]
-    # This enumerates the possible sources of a volume creation.
-    ${CreationDataCreateSource},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [System.String]
-    # If createOption is Copy, this is the ARM id of the source snapshot or disk.
-    # If createOption is Restore, this is the ARM-like id of the source disk restore point.
-    ${CreationDataSourceUri},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.Int64]
     # Volume size.
     ${SizeGiB},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "VolumeSnapshot", "DiskSnapshot", "Disk", "DiskRestorePoint")]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IResourceTags]))]
-    [System.Collections.Hashtable]
-    # Azure resource tags.
-    ${Tag},
+    [System.String]
+    # This enumerates the possible sources of a volume creation.
+    ${CreationDataCreateSource},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Fully qualified resource ID for the resource.
+    # E.g.
+    # "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+    ${CreationDataSourceId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -233,16 +232,20 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.ElasticSan.private\New-AzElasticSanVolume_Create';
             CreateExpanded = 'Az.ElasticSan.private\New-AzElasticSanVolume_CreateExpanded';
-            CreateViaIdentity = 'Az.ElasticSan.private\New-AzElasticSanVolume_CreateViaIdentity';
+            CreateViaIdentityElasticSanExpanded = 'Az.ElasticSan.private\New-AzElasticSanVolume_CreateViaIdentityElasticSanExpanded';
             CreateViaIdentityExpanded = 'Az.ElasticSan.private\New-AzElasticSanVolume_CreateViaIdentityExpanded';
+            CreateViaIdentityVolumegroupExpanded = 'Az.ElasticSan.private\New-AzElasticSanVolume_CreateViaIdentityVolumegroupExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

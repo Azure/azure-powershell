@@ -35,7 +35,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -227,7 +228,7 @@ $subnetId = $vnet.Subnets[0].Id;
 $vmssName = 'vmss' + $rgname;
 $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 $adminUsername = <USER NAME>;
-$adminPassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = <PASSWORD>;
 $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
 $imgRef.PublisherName = $PublisherName;
 $imgRef.Offer = $Offer;
@@ -253,6 +254,29 @@ $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineS
 ```
 
 Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type
+
+### Example 5: Create a Vmss with the security type TrustedLaunch
+```powershell
+$rgname = "rganme";
+$loc = "eastus";
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+# VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
+$vmssSize = 'Standard_D4s_v3';
+$vmssName1 = 'vmss1' + $rgname;
+$vmssName2 = 'vmss2' + $rgname;
+$imageName = "Win2016DataCenterGenSecond";
+$adminUsername = "<Username>";
+$adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+# VMSS Creation 
+$result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
+# Validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+```
+
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch'.
 
 ## PARAMETERS
 
@@ -447,6 +471,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Use UltraSSD disks for the VMs in the scale set.
 
@@ -459,6 +498,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -524,7 +578,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian11, OpenSuseLeap154Gen2, RHEL, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String
@@ -760,6 +814,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

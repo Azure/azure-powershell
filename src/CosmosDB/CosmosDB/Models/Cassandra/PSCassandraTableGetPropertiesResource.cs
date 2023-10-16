@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             DefaultTtl = cassandraTableGetPropertiesResource.DefaultTtl;
             Schema = new PSCassandraSchema(cassandraTableGetPropertiesResource.Schema);
             AnalyticalStorageTtl = cassandraTableGetPropertiesResource.AnalyticalStorageTtl;
-            _rid = cassandraTableGetPropertiesResource._rid;
-            _ts = cassandraTableGetPropertiesResource._ts;
-            _etag = cassandraTableGetPropertiesResource._etag;
+            _rid = cassandraTableGetPropertiesResource.Rid;
+            _ts = cassandraTableGetPropertiesResource.Ts;
+            _etag = cassandraTableGetPropertiesResource.Etag;
         }
 
         //

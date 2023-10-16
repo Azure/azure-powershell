@@ -102,10 +102,18 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
             }
+            if (EnableBurstCapacity != null)
+            {
+                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
+            }
+            if(MinimalTlsVersion != null)
+            {
+                databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
@@ -141,7 +149,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IpRule != null)
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
-                databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
+                databaseAccountUpdateParameters.IPRules = base.PopulateIpRules(IpRule);
             }
 
             if (ServerVersion != null)
@@ -225,7 +233,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     };
                 }
             }
-            
+
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 

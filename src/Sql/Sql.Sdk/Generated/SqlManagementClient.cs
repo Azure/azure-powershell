@@ -377,11 +377,6 @@ namespace Microsoft.Azure.Management.Sql
         public virtual ILongTermRetentionManagedInstanceBackupsOperations LongTermRetentionManagedInstanceBackups { get; private set; }
 
         /// <summary>
-        /// Gets the IManagedInstancesOperations.
-        /// </summary>
-        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
-
-        /// <summary>
         /// Gets the IRestorableDroppedManagedDatabasesOperations.
         /// </summary>
         public virtual IRestorableDroppedManagedDatabasesOperations RestorableDroppedManagedDatabases { get; private set; }
@@ -515,6 +510,21 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IFailoverGroupsOperations.
         /// </summary>
         public virtual IFailoverGroupsOperations FailoverGroups { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedDatabaseMoveOperations.
+        /// </summary>
+        public virtual IManagedDatabaseMoveOperations ManagedDatabaseMoveOperations { get; private set; }
+
+        /// <summary>
+        /// Gets the IManagedInstancesOperations.
+        /// </summary>
+        public virtual IManagedInstancesOperations ManagedInstances { get; private set; }
+
+        /// <summary>
+        /// Gets the IStartStopManagedInstanceSchedulesOperations.
+        /// </summary>
+        public virtual IStartStopManagedInstanceSchedulesOperations StartStopManagedInstanceSchedules { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the SqlManagementClient class.
@@ -819,7 +829,6 @@ namespace Microsoft.Azure.Management.Sql
             Usages = new UsagesOperations(this);
             LongTermRetentionBackups = new LongTermRetentionBackupsOperations(this);
             LongTermRetentionManagedInstanceBackups = new LongTermRetentionManagedInstanceBackupsOperations(this);
-            ManagedInstances = new ManagedInstancesOperations(this);
             RestorableDroppedManagedDatabases = new RestorableDroppedManagedDatabasesOperations(this);
             DistributedAvailabilityGroups = new DistributedAvailabilityGroupsOperations(this);
             ServerTrustCertificates = new ServerTrustCertificatesOperations(this);
@@ -847,6 +856,9 @@ namespace Microsoft.Azure.Management.Sql
             ManagedLedgerDigestUploads = new ManagedLedgerDigestUploadsOperations(this);
             ManagedDatabases = new ManagedDatabasesOperations(this);
             FailoverGroups = new FailoverGroupsOperations(this);
+            ManagedDatabaseMoveOperations = new ManagedDatabaseMoveOperations(this);
+            ManagedInstances = new ManagedInstancesOperations(this);
+            StartStopManagedInstanceSchedules = new StartStopManagedInstanceSchedulesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

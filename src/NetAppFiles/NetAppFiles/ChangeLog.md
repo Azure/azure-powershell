@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed some minor issues
+* Upgraded Azure.Core to 1.35.0.
+
+## Version 0.13.1
+* Updated Azure.Core to 1.34.0.
+
+## Version 0.13.0
+* Updated to api-version 2022-11-01        
+* Added `Identity` to NetAppAccountPatch
+* Added `ActualThroughputMibps` and `OriginatingResourceId`
+* Added `SnapshotDirectoryVisible` to Update-AzNetAppFilesVolume
+    - If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)
+* Updated Azure.Core to 1.33.0.
+
 
 ## Version 0.12.0
 * Updated Azure.Core to 1.31.0.

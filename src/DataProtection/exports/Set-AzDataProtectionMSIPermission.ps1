@@ -69,6 +69,9 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     [DatasourceAuthCredentials <IAuthCredentials>]: Credentials to use to authenticate with data source provider.
       ObjectType <String>: Type of the specific object - used for deserializing
     [FriendlyName <String>]: Gets or sets the Backup Instance friendly name.
+    [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
+      [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+      [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 RESTOREREQUEST <IAzureBackupRestoreRequest>: Restore request object which will be used for restore
@@ -77,6 +80,8 @@ RESTOREREQUEST <IAzureBackupRestoreRequest>: Restore request object which will b
     ObjectType <String>: Type of Datasource object, used to initialize the right inherited type
     [RestoreLocation <String>]: Target Restore region
   SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
+  [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
+  [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
   [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
@@ -105,7 +110,7 @@ param(
 
     [Parameter(ParameterSetName='SetPermissionsForBackup', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource]
     # Backup instance request object which will be used to configure backup
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -118,7 +123,7 @@ param(
 
     [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest]
     # Restore request object which will be used for restore
     # To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
     ${RestoreRequest},

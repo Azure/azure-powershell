@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
-
+        
         [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
@@ -324,6 +324,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
         public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableSecureBoot { get; set; } = null;
 
         protected override void ProcessRecord()
         {
@@ -565,6 +585,62 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile();
                 }
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
+            }
+            
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.TrustedLaunchSecurityType || vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
 
             if (this.IsParameterBound(c => c.BootDiagnostic))

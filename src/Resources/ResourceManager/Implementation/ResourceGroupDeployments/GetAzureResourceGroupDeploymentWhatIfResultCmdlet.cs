@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateObject: this.TemplateObject,
             templateSpecId: TemplateSpecId,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.ResultFormat,
             excludeChangeTypes: this.ExcludeChangeType);
     }

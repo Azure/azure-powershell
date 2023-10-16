@@ -1477,6 +1477,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update vault setting.
+        /// </summary>
+        internal static string UpdateKeyVaultSetting {
+            get {
+                return ResourceManager.GetString("UpdateKeyVaultSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update vault network rule.
         /// </summary>
         internal static string UpdateNetworkRule {

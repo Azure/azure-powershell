@@ -30,10 +30,10 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChange("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In November 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win10")]
+            "Win10",
+            "Win2016DataCenterGenSecond")]
         [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
@@ -235,6 +236,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
+        
+        [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
+           ParameterSetName = SimpleParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+         HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+         ParameterSetName = SimpleParameterSet,
+         ValueFromPipelineByPropertyName = true,
+         Mandatory = false)]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ParameterSetName = SimpleParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        public bool? EnableSecureBoot { get; set; } = null;
 
         const int FirstPortRangeStart = 50000;
 
@@ -375,6 +399,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.WriteInformation(ValidateBase64EncodedString.UserDataEncodeNotification, new string[] { "PSHOST" });
                     }
                 }
+                
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                {
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
+                }
 
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
@@ -430,7 +464,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
                     diskControllerType: _cmdlet.DiskControllerType,
-                    sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null
+                    sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 
@@ -452,6 +489,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 checkFlexibleOrchestrationModeParams();
                 int platformFaultDomainCountFlexibleDefault = 1;
                 SwitchParameter singlePlacementGroupFlexibleDefault = false;
+
+                // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
+                if ((_cmdlet.ImageName == "CentOS" || _cmdlet.ImageName == "Debian" || _cmdlet.ImageName == "RHEL"
+                     || _cmdlet.ImageName == "UbuntuLTS"))
+                {
+                    string ImageOutdatedMessage = "You are using the image " + _cmdlet.ImageName + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
+                    _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
+                }
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -513,6 +558,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             backendPort: backendPort);
                     }
                 }
+                
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                {
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
+                    
+                }
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
@@ -552,7 +608,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
-                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null
+                    capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 
@@ -581,14 +640,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var client = new Client(DefaultProfile.DefaultContext);
 
-            var parameters = new Parameters(this, client);
-
-            if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
-            {
-                WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
-                    "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
-            }
-
             // If the user did not specify a load balancer name, mark the LB setting to ignore
             // preexisting check. The most common scenario is users will let the cmdlet create and name the LB for them with the default
             // config. We do not want to block that scenario in case the cmdlet failed mid operation and tthe user kicks it off again.
@@ -599,6 +650,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             else
             {
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
+            }
+
+            //Guest Attestation Identity stuff
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    this.SecurityType = this.SecurityType;
+                    this.EnableVtpm = this.EnableVtpm ?? true;
+                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                }          
+            }
+            if (shouldGuestAttestationExtBeInstalledSimple()
+                && !this.IsParameterBound(c => c.SystemAssignedIdentity)
+                && !this.IsParameterBound(c => c.UserAssignedIdentity)
+                    )
+            {
+                this.SystemAssignedIdentity = true;
+            }
+            
+            var parameters = new Parameters(this, client);
+
+            if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
+            {
+                WriteWarning("You are deploying VMSS pinned to a specific image version from Azure Marketplace. \n" +
+                    "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
             }
 
             var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
@@ -631,6 +708,87 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
+            
+            if (shouldGuestAttestationExtBeInstalledSimple())
+            {
+                string extensionNameGA = "GuestAttestation";
+                var extensionDirect = new VirtualMachineScaleSetExtension();
+                
+                if (result.VirtualMachineProfile?.OsProfile != null)
+                {
+                    if (result.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
+                    {
+
+                        extensionDirect.Name = extensionNameGA;
+                        extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
+                        extensionDirect.Type1 = extensionNameGA;
+                        extensionDirect.TypeHandlerVersion = "1.0";
+                        extensionDirect.EnableAutomaticUpgrade = true;
+                    }
+                    else
+                    {
+
+                        extensionDirect.Name = extensionNameGA;
+                        extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
+                        extensionDirect.Type1 = extensionNameGA;
+                        extensionDirect.TypeHandlerVersion = "1.0";
+                        extensionDirect.EnableAutomaticUpgrade = true;
+                    }
+                }
+
+                VirtualMachineScaleSetUpdate parametersupdate = new VirtualMachineScaleSetUpdate();
+                parametersupdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                parametersupdate.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
+                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions.Add(extensionDirect);
+                result = VirtualMachineScaleSetsClient.Update(this.ResourceGroupName, this.VMScaleSetName, parametersupdate);
+
+                var vmssVmExtParams = new VirtualMachineScaleSetVMExtension();
+                var resultVmssVm = VirtualMachineScaleSetVMsClient.List(this.ResourceGroupName, this.VMScaleSetName);
+                var resultList = resultVmssVm.ToList();
+                var nextPageLink = resultVmssVm.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+
+                foreach (var currentVmssVm in resultList)
+                {
+                    if (currentVmssVm.StorageProfile != null &&
+                        currentVmssVm.StorageProfile.OsDisk != null)
+                    {
+                        if (currentVmssVm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
+                        {
+                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
+                            {
+                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                Type1 = extensionNameGA,
+                                TypeHandlerVersion = "1.0",
+                                EnableAutomaticUpgrade = true
+                            };
+                        }
+                        else
+                        {
+
+                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
+                            {
+                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                Type1 = extensionNameGA,
+                                TypeHandlerVersion = "1.0",
+                                EnableAutomaticUpgrade = true
+                            };
+                        }
+                        var opt = this.VirtualMachineScaleSetVMExtensionsClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.VMScaleSetName, currentVmssVm.InstanceId, extensionNameGA, vmssVmExtParams);
+                    }
+
+                }
+            }
+            
         }
 
         /// <summary>
@@ -659,6 +817,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                              : null,
                 }
                 : null;
+        }
+        
+        /// <summary>
+        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
+        /// Requirements for this scenario to be true:
+        /// 1) DisableIntegrityMonitoring is not true.
+        /// 2) SecurityType is TrustedLaunch.
+        /// 3) SecureBootEnabled is true.
+        /// 4) VTpmEnabled is true.
+        /// </summary>
+        /// <returns></returns>
+        private bool shouldGuestAttestationExtBeInstalledSimple()
+        {
+            if (this.DisableIntegrityMonitoring != true &&
+                    this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
+                    this.EnableSecureBoot == true &&
+                    this.EnableVtpm == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

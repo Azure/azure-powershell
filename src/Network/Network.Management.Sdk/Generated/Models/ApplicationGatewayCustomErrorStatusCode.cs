@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string HttpStatus404 = "HttpStatus404";
         public const string HttpStatus405 = "HttpStatus405";
         public const string HttpStatus408 = "HttpStatus408";
-        public const string HttpStatus499 = "HttpStatus499";
         public const string HttpStatus500 = "HttpStatus500";
         public const string HttpStatus502 = "HttpStatus502";
         public const string HttpStatus503 = "HttpStatus503";

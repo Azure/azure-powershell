@@ -338,8 +338,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else
                     {
-                        ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
-                        secondaryRegion = BackupUtils.regionMap[vault.Location];
+                        throw new PSArgumentException(Resources.VaultLocationRequiredForCRR);
                     }
                     providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
                 }
@@ -432,8 +431,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
                         // eliminate non-vault tier RPs 
-                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)
-                        {                               
+                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard ) // TODO: For Enhanced policy, we need to enable snapshot or vault RP. We can enable in general, service would throw the appropriate error.
+                        {   
+                            // TODO: validate to check if snapshot/SV RP is not more than 4 Hrs old we show an error/warning (check with PMs)
+
                             // check CZR eligibility for RA-GRS
                             if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled)
                             {                                

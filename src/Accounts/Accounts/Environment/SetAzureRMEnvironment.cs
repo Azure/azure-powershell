@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -195,9 +196,9 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Microsoft Graph Url")]
         public string MicrosoftGraphUrl { get; set; }
 
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
 
         public override void ExecuteCmdlet()
@@ -238,7 +239,8 @@ namespace Microsoft.Azure.Commands.Profile
                             try
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
-                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl).Result;
+                                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory factory);
+                                MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(newEnvironment.ResourceManagerUrl, factory).Result;
                                 string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
 
                                 SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,

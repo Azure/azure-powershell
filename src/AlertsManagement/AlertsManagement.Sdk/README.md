@@ -5,14 +5,14 @@ This directory contains management plane service clients of Az.AlertsManagement 
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 azure-arm: true
@@ -24,10 +24,11 @@ title: AlertsManagementClient
 
 ###
 ``` yaml
+commit: 9366804c62e024801daf8a578924099ff644ccf6
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/9366804c62e024801daf8a578924099ff644ccf6/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/AlertProcessingRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/9366804c62e024801daf8a578924099ff644ccf6/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/SmartGroups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/9366804c62e024801daf8a578924099ff644ccf6/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/AlertProcessingRules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/SmartGroups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/AlertsManagement.json
 
 output-folder: Generated
 

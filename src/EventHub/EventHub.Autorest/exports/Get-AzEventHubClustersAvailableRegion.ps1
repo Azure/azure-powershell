@@ -23,12 +23,12 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 Get-AzEventHubClustersAvailableRegion
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAvailableCluster
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAvailableCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
 #>
 function Get-AzEventHubClustersAvailableRegion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAvailableCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAvailableCluster])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

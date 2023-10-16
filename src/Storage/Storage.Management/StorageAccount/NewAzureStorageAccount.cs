@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +26,10 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChange("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication will be changed from True to False in a future release. \n" +
-        "When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account. \n" +
-        "When AllowCrossTenantReplication is False on a storage account, cross AAD tenant object replication is not allowed.",
+    [GenericBreakingChangeWithVersion("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication settings on storage account will be changed to False in the future release. \n" +
+        "When AllowBlobPublicAccess is False on a storage account, container ACLs cannot be configured to allow anonymous access to blobs within the storage account. \n" +
+        "When AllowCrossTenantReplication is False on a storage account, cross AAD tenant object replication is not allowed when setting up Object Replication policies.",
+        "11.0.0", "6.0.0",
         OldWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to True by defult.", 
         NewWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to False by default.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
@@ -76,11 +77,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(StorageModels.SkuName.StandardLRS,
             StorageModels.SkuName.StandardZRS,
             StorageModels.SkuName.StandardGRS,
-            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.StandardRagrs,
             StorageModels.SkuName.PremiumLRS,
             StorageModels.SkuName.PremiumZRS,
-            StorageModels.SkuName.StandardGZRS,
-            StorageModels.SkuName.StandardRAGZRS,
+            StorageModels.SkuName.StandardGzrs,
+            StorageModels.SkuName.StandardRagzrs,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -287,7 +288,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
-        [CmdletParameterBreakingChange("EnableLargeFileShare", ChangeDescription = "EnableLargeFileShare parameter will be deprecated in a future release.")]
         [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
         public SwitchParameter EnableLargeFileShare { get; set; }
 
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                 if (enableAzureActiveDirectoryDomainServicesForFile != null && enableAzureActiveDirectoryDomainServicesForFile.Value)
                 {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.Aadds;
                 }
                 else if (enableActiveDirectoryDomainServicesForFile != null && enableActiveDirectoryDomainServicesForFile.Value)
                 {
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 else if (enableAzureActiveDirectoryKerberosForFile != null && enableAzureActiveDirectoryKerberosForFile.Value)
                 {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADKERB;
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.Aadkerb;
                     if (this.ActiveDirectoryDomainName != null || this.ActiveDirectoryDomainGuid != null)
                     {
                         createParameters.AzureFilesIdentityBasedAuthentication.ActiveDirectoryProperties = new ActiveDirectoryProperties()

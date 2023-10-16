@@ -443,6 +443,54 @@ function Test-CreateDatabaseWithPreferredEnclaveType
 	}
 }
 
+function Test-FreeLimitDatabaseCreate
+{
+	#Setup 
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		$databaseName = Get-DatabaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -Edition GeneralPurpose -UseFreeLimit -FreeLimitExhaustionBehavior AutoPause
+		Assert-AreEqual true $db.UseFreeLimit
+		Assert-AreEqual AutoPause $db.FreeLimitExhaustionBehavior
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior
+{
+	#Setup 
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName 
+
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-RequestedServiceObjectiveName GP_S_Gen5_2 -Edition GeneralPurpose -UseFreeLimit -FreeLimitExhaustionBehavior AutoPause
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		$job = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -FreeLimitExhaustionBehavior BillOverUsage -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual true $db1.UseFreeLimit
+		Assert-AreEqual BillOverUsage $db1.FreeLimitExhaustionBehavior
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
 <#
 	.SYNOPSIS
 	Tests updating a database
@@ -737,7 +785,7 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 function Test-UpdateDatabaseWithPreferredEnclaveType()
 {
 	# Setup
-	$location = "eastus2euap"
+	$location = "uksouth"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -1262,11 +1310,13 @@ function Test-DatabaseCreateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-NotNull $databaseFromGet
 	Assert-AreEqual $databaseFromGet.EncryptionProtector $encryptionProtector
+	Assert-AreEqual $databaseFromGet.EncryptionProtectorAutoRotation $true
 
 	Remove-ResourceGroupForTest $rg
 }
@@ -1285,7 +1335,7 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 
 	# Create with per db cmk enabled
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -AssignIdentity -EncryptionProtector $encryptionProtector -UserAssignedIdentityId $umi -EncryptionProtectorAutoRotation
 
 	# Validate Get-AzSqlDatabase returns cmk properties
 	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -1293,10 +1343,11 @@ function Test-DatabaseUpdateWithPerDBCMK ($location = "eastus2euap")
 
 	# Update the db with new EncryptionProtector
 	$encryptionProtector2 = "https://pstestkv.vault.azure.net/keys/testkey1/6218d117492a42eda0b6a9334c9a989d"
-	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2
+	$dbAfterUpdate = Set-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EncryptionProtector $encryptionProtector2 -EncryptionProtectorAutoRotation:$false
 	
 	$databaseGetAfterUpdate = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtector $encryptionProtector2
+	Assert-AreEqual $databaseGetAfterUpdate.EncryptionProtectorAutoRotation $false
 
 	Remove-ResourceGroupForTest $rg
 }

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed minor issues
 
 ## Version 0.9.0
 * Added support for RBAC authentication

@@ -14,6 +14,7 @@
 
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Text;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
@@ -37,24 +38,55 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 return null;
             }
 
-            Ast ast = Parser.ParseInput(commandLine, out _, out _);
-            return CommandLineUtilities.GetCommandAst(ast);
+            // We used to call Parser.ParseInput and then Ast.FindAll() to get the last CommandAst. That isn't very accurate
+            // when it handles @{} parameter value. So we change to use PredictionContext which is also similar to how we
+            // parse the user input passed from PSReadLine.
+
+            var predictionContext = PredictionContext.Create(commandLine);
+
+            return GetCommandAst(predictionContext);
         }
 
         /// <summary>
-        /// Gets the CommandAst for the ast for the raw command line.
+        /// Gets the CommandAst for the whole command line.
         /// </summary>
-        /// <param name="ast">The original ast to get the CommandAst.</param>
+        /// <param name="commandLine">The command line to get the CommandAst.</param>
         /// <returns>The CommandAst.</returns>
-        public static CommandAst GetCommandAst(Ast ast)
+        /// <remarks>This parses the command line and returns the last one it encounters. The reason to choose the last one is because <see cref="AzPredictorService.GetSuggestion" /> returns suggestions to the last one too.
+        /// It doesn't work well in a complex command line, for example: <c>Get-AzContext | Set-AzContext</c> will return <c>Set-AzContext</c>.</remarks>
+        public static CommandAst GetCommandAst(PredictionContext commandLine)
         {
-            if (ast is null)
+            var relatedAsts = commandLine.RelatedAsts;
+
+            for (var i = relatedAsts.Count - 1; i >= 0; --i)
             {
-                return null;
+                if (relatedAsts[i] is CommandAst c)
+                {
+                    return c;
+                }
+                else if (relatedAsts[i] is ScriptBlockAst s)
+                {
+                    // Some are wrapped inside a ScriptBlockAst (when there is a command at the end),
+                    // e.g. Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+                    var extracted = ExtractCommandAstFromScriptBlockAst(s);
+                    if (extracted != null)
+                    {
+                        return extracted;
+                    }
+                }
+                else if (relatedAsts[i] is ParenExpressionAst p)
+                {
+                    // Some are wrapped inside parenthesis
+                    // e.g. Remove-AzRoleAssignment -RoleDefinitionId (Get-AzRoleAssignment -ObjectId xxx")
+                    var extracted = ExtractCommandAstFromStatement(p.Pipeline);
+                    if (extracted != null)
+                    {
+                        return extracted;
+                    }
+                }
             }
 
-            var commandAst = ast.FindAll((ast) => ast is CommandAst, searchNestedScriptBlocks: false).LastOrDefault() as CommandAst;
-            return commandAst;
+            return null;
         }
 
         /// <summary>
@@ -133,7 +165,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             return text.Replace("<", "'<")
                 .Replace(">", ">'")
                 .Replace("{", "[[")
-                .Replace("}", "]]");
+                .Replace("}", "]]")
+                .Replace("\\\"", "\"");
         }
 
         /// <summary>
@@ -149,6 +182,45 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                 .Replace(">'", "}")
                 .Replace("[[", "{")
                 .Replace("]]", "}");
+        }
+
+        private static CommandAst ExtractCommandAstFromScriptBlockAst(ScriptBlockAst scriptAst)
+        {
+            if (scriptAst.EndBlock is not null)
+            {
+                for (var i = scriptAst.EndBlock.Statements.Count - 1; i >= 0; --i)
+                {
+                    var statement = scriptAst.EndBlock.Statements[i];
+                    var commandAst = ExtractCommandAstFromStatement(statement);
+
+                    if(commandAst is not null)
+                    {
+                        return commandAst;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private static CommandAst ExtractCommandAstFromStatement(StatementAst statement)
+        {
+            if (statement is CommandAst commandAst)
+            {
+                return commandAst;
+            }
+            else if (statement is PipelineAst pipelineAst)
+            {
+                foreach (var pipeline in pipelineAst.PipelineElements)
+                {
+                    if (pipeline is CommandAst commandAst2)
+                    {
+                        return commandAst2;
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

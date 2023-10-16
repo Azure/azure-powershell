@@ -2,7 +2,6 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 online version: https://learn.microsoft.com/powershell/module/az.storage/rename-azstoragefile
-
 schema: 2.0.0
 ---
 
@@ -13,32 +12,33 @@ Renames a file.
 
 ## SYNTAX
 
-### ShareName
+### ShareName (Default)
 ```
 Rename-AzStorageFile [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileObject
 ```
 Rename-AzStorageFile [-ShareFileClient] <ShareFileClient> [[-DestinationPath] <String>] [-ContentType <String>]
  [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-DestinationPath] <String>]
  [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DirecotryObject
 ```
 Rename-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-SourcePath] <String>
  [[-DestinationPath] <String>] [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ File                   512 testfile2
 
 This command renames a file from testfile1 to testfile2 under file share myshare. 
 
-### Example 2 : Rename a file from a file share using pipeline 
+### Example 2 : Rename a file from a file share using pipeline
 ```powershell
 Get-AzStorageFile -ShareName myshare -Path testfile1 | Rename-AzStorageFile -DestinationPath testfile2
 ```
@@ -273,6 +273,36 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

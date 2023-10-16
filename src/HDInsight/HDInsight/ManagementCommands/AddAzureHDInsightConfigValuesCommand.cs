@@ -22,6 +22,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightConfig), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
+        DeprecatedOutputProperties = new string[] {"Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"}, 
+        NewOutputProperties = new string[] {"Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"})]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValue"),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {

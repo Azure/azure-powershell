@@ -34,6 +34,7 @@ using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -86,6 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.");
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
@@ -383,7 +386,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             ItemBase item = (ItemBase)ProviderData[ItemParams.Item];
-            DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
+            // setting the default expiry time of 30 days for AzureVM workload, this doesn't apply to MSSQL workload as the default value for SQL is 45 days.
+            DateTime? expiryDateTime = (ProviderData[ItemParams.ExpiryDateTimeUTC] != null) ? (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC] : DateTime.UtcNow.AddDays(30);
             AzureVmItem iaasVmItem = item as AzureVmItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
@@ -842,9 +846,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
                 (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
-
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
+
+            string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
+            string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);                       
@@ -912,7 +918,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-            
+
+            InstantRPAdditionalDetails instantRPAdditionalDetails = null;
+            if (snapshotRGName != null)
+            {
+                instantRPAdditionalDetails = new InstantRPAdditionalDetails();
+
+                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotRGNameSuffix;
+            }
+            else if(snapshotRGNameSuffix != null)
+            {
+                // resx
+                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -924,7 +944,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TieringPolicy = PolicyHelpers.GetServiceClientTieringPolicy(tieringDetails, isSmartTieringEnabled),
                     PolicyType = (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     TimeZone = timeZone,
-                    InstantRpRetentionRangeInDays = snapshotRetentionInDays
+                    InstantRpRetentionRangeInDays = snapshotRetentionInDays,
+                    InstantRPDetails = instantRPAdditionalDetails
                 }
             };
 
@@ -954,6 +975,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
+
+            string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
+            string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
 
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
@@ -1031,7 +1055,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-            
+
+            InstantRPAdditionalDetails instantRPAdditionalDetails = null;
+            if (snapshotRGName != null)
+            {
+                instantRPAdditionalDetails = new InstantRPAdditionalDetails();
+
+                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotRGNameSuffix;
+            }
+            else if (snapshotRGNameSuffix != null)
+            {
+                // resx
+                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -1044,7 +1082,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
-                    InstantRPDetails = new InstantRPAdditionalDetails(
+                    InstantRPDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix)
                 }

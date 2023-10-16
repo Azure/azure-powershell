@@ -577,5 +577,33 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineEdgeZoneSimpleParameterSet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeWithoutConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeStandard()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeStandardWithConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandardWithConfig");
+        }
     }
 }

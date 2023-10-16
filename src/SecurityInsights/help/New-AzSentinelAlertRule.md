@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSentinelAlertRule
 
 ## SYNOPSIS
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ## SYNTAX
 
@@ -23,9 +23,9 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Ale
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Kind <AlertRuleKind>
  -ProductFilter <MicrosoftSecurityProductName> [-RuleId <String>] [-SubscriptionId <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
- [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String[]>]
+ [-DisplayNamesFilter <String[]>] [-Enabled] [-SeveritiesFilter <AlertSeverity[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NRT
@@ -34,10 +34,10 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
  -Kind <AlertRuleKind> -Query <String> -Severity <AlertSeverity> [-RuleId <String>] [-SubscriptionId <String>]
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
- [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping[]>] [-GroupByAlertDetail <AlertDetail[]>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-ReOpenClosedIncident]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-DefaultProfile <PSObject>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,16 +48,16 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
  -Severity <AlertSeverity> -TriggerOperator <TriggerOperator> -TriggerThreshold <Int32> [-RuleId <String>]
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
- [-CreateIncident] [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-CreateIncident] [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping[]>]
+ [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail[]>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType[]>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-ReOpenClosedIncident]
- [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-DefaultProfile <PSObject>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the alert rule.
+Creates the alert rule.
 
 ## EXAMPLES
 
@@ -280,7 +280,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -295,7 +295,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping[]
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -356,7 +356,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail[]
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -386,7 +386,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType[]
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -659,7 +659,7 @@ Accept wildcard characters: False
 InitialAccess, Execution, Persistence, PrivilegeEscalation, DefenseEvasion, CredentialAccess, Discovery, LateralMovement, Collection, Exfiltration, CommandAndControl, Impact, PreAttack
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -764,7 +764,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ENTITYMAPPING <EntityMapping>`: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
+`ENTITYMAPPING <EntityMapping[]>`: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
   - `[EntityType <EntityMappingType?>]`: The V3 type of the mapped entity
   - `[FieldMapping <IFieldMapping[]>]`: array of field mappings for the given entity mapping
     - `[ColumnName <String>]`: the column name to be mapped to the identifier

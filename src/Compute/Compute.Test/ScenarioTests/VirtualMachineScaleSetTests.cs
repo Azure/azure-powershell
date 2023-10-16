@@ -318,12 +318,62 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetOSImageScheduledEvents");
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetGetById()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGetById");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeStandard()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeStandardWithConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetImageReferenceSkuUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageReferenceSkuUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfigUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeUpdate");
+        }
+
     }
 }

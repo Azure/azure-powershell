@@ -91,11 +91,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ISkuInformation
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ISkuInformation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
