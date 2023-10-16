@@ -166,6 +166,9 @@ Deletes a Scheduled.
 Triggers a new health check run.
 The execution and health check result can be tracked via the network Connection health check details
 
+### [Start-AzDevCenterAdminPoolHealthCheck](Start-AzDevCenterAdminPoolHealthCheck.md)
+Triggers a refresh of the pool status.
+
 ### [Sync-AzDevCenterAdminCatalog](Sync-AzDevCenterAdminCatalog.md)
 Syncs templates for a template source.
 

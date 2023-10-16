@@ -15,20 +15,15 @@ Creates or updates a devcenter resource
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityDelegatedIdentityClientId <String>] [-KeyEncryptionKeyIdentityType <IdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> -Location <String>
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-DisplayName <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-KeyEncryptionKeyIdentityDelegatedIdentityClientId <String>] [-KeyEncryptionKeyIdentityType <IdentityType>]
- [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-Tag <Hashtable>]
+New-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> -Location <String> [-DisplayName <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -75,22 +70,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomerManagedKeyEncryptionKeyUrl
-key encryption key Url, versioned or non-versioned.
-Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,55 +156,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -KeyEncryptionKeyIdentityDelegatedIdentityClientId
-delegated identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyEncryptionKeyIdentityType
-Values can be systemAssignedIdentity or userAssignedIdentity
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.IdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId
-user assigned identity to use for accessing key encryption key Url.
-Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/\<resource group\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
-Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
