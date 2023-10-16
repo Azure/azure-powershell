@@ -112,15 +112,26 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
+  - where:
+      subject: DevCenter
+      parameter-name: CustomerManagedKeyEncryptionKeyUrl
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityDelegatedIdentityClientId
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityType
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityUserAssignedIdentityResourceId
+    hide: true
 # Remove Set per design review
   - where:
       verb: Set
     remove: true
-# API not available yet
-  - where:
-      verb: Start
-      subject: PoolHealthCheck
-    hide: true
 # Remove extra input object variant 
   - where:
       verb: Get 
