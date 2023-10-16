@@ -15,10 +15,12 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChangeWithVersionAttribute("The generic type for 'property ComponentVersions' will change from 'System.Collections.Generic.IDictionary`2[System.String,System.String]' to 'System.Collections.Generic.IReadOnlyDictionary`2[System.String,System.String]'. ",Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(AzureHDInsightCapabilities))]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {

@@ -12,7 +12,8 @@ autorest.cmd README.md --version=v2
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -20,8 +21,6 @@ azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 2
 ```
-
-
 
 ###
 ``` yaml

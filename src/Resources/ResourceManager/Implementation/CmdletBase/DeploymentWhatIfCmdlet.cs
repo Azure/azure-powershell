@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
-    public abstract class DeploymentWhatIfCmdlet: ResourceWithParameterCmdletBase, IDynamicParameters
+    public abstract class DeploymentWhatIfCmdlet: DeploymentCmdletBase, IDynamicParameters
     {
         protected abstract PSDeploymentWhatIfCmdletParameters WhatIfParameters { get; }
 

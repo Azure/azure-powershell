@@ -193,7 +193,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 Identity = model.Database.Identity,
                 Keys = model.Database.Keys,
                 EncryptionProtector = model.Database.EncryptionProtector,
-                FederatedClientId = model.Database.FederatedClientId
+                FederatedClientId = model.Database.FederatedClientId,
+                EncryptionProtectorAutoRotation = model.Database.EncryptionProtectorAutoRotation,
+                UseFreeLimit = model.Database.UseFreeLimit,
+                FreeLimitExhaustionBehavior = model.Database.FreeLimitExhaustionBehavior
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

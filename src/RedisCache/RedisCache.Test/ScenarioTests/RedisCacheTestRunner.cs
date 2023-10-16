@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
@@ -38,15 +37,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                     helper.GetRMModulePath("Az.RedisCache.psd1"),
                     helper.GetRMModulePath("Az.Storage.psd1")
                 })
-                .WithNewRecordMatcherArguments(
-                    userAgentsToIgnore: new Dictionary<string, string>(),
-                    resourceProviders: new Dictionary<string, string>
-                    {
-                        {"Microsoft.Resources", null},
-                        {"Microsoft.Features", null},
-                        {"Microsoft.Authorization", null}
-                    }
-                )
                 .Build();
         }
     }

@@ -14,16 +14,19 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.Azure.Storage.Queue;
     using Microsoft.Azure.Storage.Queue.Protocol;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
+    [GenericBreakingChangeWithVersion("Permissions in the ouput access policy will be changed to a string like \"raup\" in a future release.",
+        "11.0.0", "6.0.0")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy"), OutputType(typeof(SharedAccessQueuePolicy))]
     public class GetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {

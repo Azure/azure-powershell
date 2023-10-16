@@ -21,8 +21,9 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
  [<CommonParameters>]
 ```
 
@@ -69,6 +70,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CheckForUpgrade
+When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -100,8 +116,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableErrorRecordsPersistence
+When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayRegionIdentified
+When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

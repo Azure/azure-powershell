@@ -54,8 +54,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChangeWithVersion("Consider using the image alias including the version of the distribution you want to use in the \"-Image\" parameter of the \"New-AzVM\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.", "11.0.0", "7.0.0")]
-    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "11.0.0", "7.0.0")]
+    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://aka.ms/TLaD", "11.0.0", "7.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
         public bool ConfigAsyncVisited = false;
-
+        
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = true,
@@ -429,8 +428,8 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -534,14 +533,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
-                    // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                    if ((_cmdlet.Image == "CentOS" || _cmdlet.Image == "Debian" || _cmdlet.Image == "RHEL"
-                         || _cmdlet.Image == "UbuntuLTS"))
-                    {
-                        string ImageOutdatedMessage = "You are using the image " + _cmdlet.Image + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
-                        _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
-                    }
-
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
                 }
@@ -584,11 +575,14 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
-                    _cmdlet.SecurityType = _cmdlet.SecurityType;
-                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
-                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
                 }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
@@ -760,16 +754,20 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             // Check Guest Attestation
-            if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
+            if (this.IsParameterBound(c => c.SecurityType))
             {
-                this.SecurityType = this.SecurityType;
-                this.EnableVtpm = this.EnableVtpm ?? true;
-                this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    this.SecurityType = this.SecurityType;
+                    this.EnableVtpm = this.EnableVtpm ?? true;
+                    this.EnableSecureBoot = this.EnableSecureBoot ?? true;
+                }
+                
             }
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
-                    )
+               )
             {
                 this.SystemAssignedIdentity = true;
             }
@@ -955,21 +953,17 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Guest Attestation extension defaulting scenario check.
-            
-            
-            if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
+            if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
-
                 }
                 else
                 {
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                 }
-
             }
             // Check if Identity can be defaulted in. 
             if (shouldGuestAttestationExtBeInstalled() &&
@@ -1142,7 +1136,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.ParameterSetName == DefaultParameterSet &&
                     this.VM != null &&
                     this.VM.SecurityProfile != null &&
-                    this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    this.VM.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     this.VM.SecurityProfile.UefiSettings != null &&
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
@@ -1151,7 +1145,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.DisableIntegrityMonitoring != true &&
                      this.ParameterSetName == SimpleParameterSet &&
-                     this.SecurityType == "TrustedLaunch" &&
+                     this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                      this.EnableSecureBoot == true &&
                      this.EnableVtpm == true)
             {

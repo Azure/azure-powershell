@@ -18,6 +18,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SDK via autorest.powershell.
+* Supported creationTime filter in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Upgraded Azure.Core to 1.35.0.
+
+## Version 5.10.1
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+    - `Get-AzStorageQueueStoredAccessPolicy`
+    - `Set-AzStorageQueueStoredAccessPolicy`
+
+## Version 5.10.0
+* Updated Azure.Core to 1.34.0.
+* Added support for encryption context 
+    - `New-AzDataLakeGen2Item`
+* Updated warning messages for an upcoming breaking change when creating a storage account 
+    - `New-AzStorageAccount`
+* Updated help file of `New-AzStorageQueueSASToken`
+
 
 ## Version 5.9.0
 * Supported OAuth authentication on File service cmdlets

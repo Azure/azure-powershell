@@ -14,7 +14,7 @@ Accept subscription ownership status.
 
 ### AcceptExpanded (Default)
 ```
-Get-AzSubscriptionAcceptOwnershipStatus [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Accept subscription ownership status.
 
 ### Example 1: Accept subscription ownership status.
 ```powershell
-Get-AzSubscriptionAcceptOwnershipStatus  -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
 ```output
@@ -84,9 +84,9 @@ Type: System.String[]
 Parameter Sets: AcceptExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

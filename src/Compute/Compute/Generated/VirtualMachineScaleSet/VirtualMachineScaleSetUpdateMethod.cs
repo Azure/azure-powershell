@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.VirtualMachineScaleSet != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
-                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null)
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id != null)
                     {
                         var newImageRef = this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference;
                         var currVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
@@ -391,8 +392,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -1313,6 +1314,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+            // SecurityType, includes TrustedLaunch and ConfidentialVM and Standard. 
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1332,13 +1334,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType == "ConfidentialVM")
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableVtpm))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1359,7 +1361,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
             }
-
+            // Only used for SecurityType == TrustedLaunch
             if (this.IsParameterBound(c => c.EnableSecureBoot))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -2091,6 +2093,62 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
                 }
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+            // Only used for SecurityType == TrustedLaunch
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+            // Only used for SecurityType == TrustedLaunch
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
 
             if (this.VirtualMachineScaleSet != null

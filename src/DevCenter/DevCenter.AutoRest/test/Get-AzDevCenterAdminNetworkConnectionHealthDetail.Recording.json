@@ -1,0 +1,46 @@
+{
+  "Get-AzDevCenterAdminNetworkConnectionHealthDetail+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/networkConnections/7xsgmy/healthChecks/latest?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/f141e9f2-4778-45a4-9aa0-8b31e6469454/resourceGroups/pwshRggm9tz2/providers/Microsoft.DevCenter/networkConnections/7xsgmy/healthChecks/latest?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "2268642d-0bcb-4a67-8c0a-9f7f22ce8672" ],
+        "CommandName": [ "Get-AzDevCenterAdminNetworkConnectionHealthDetail" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminNetworkConnectionHealthDetail_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.2.11", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11894" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "295" ],
+        "X-Rate-Limit-Reset": [ "2023-06-23T00:10:53.9492420Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d28c2f63-9f56-4b30-a343-8367c8c9862b" ],
+        "x-ms-correlation-request-id": [ "209cdb06-6b7d-47d3-a9ca-286c24ce47c1" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230623T001005Z:209cdb06-6b7d-47d3-a9ca-286c24ce47c1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 23 Jun 2023 00:10:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1229" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"startDateTime\":\"2023-06-23T00:01:55.000000Z\",\"endDateTime\":\"2023-06-23T00:07:31.000000Z\",\"healthChecks\":[{\"status\":\"Passed\",\"displayName\":\"Azure tenant readiness\",\"startDateTime\":\"2023-06-23T00:01:56.470976Z\",\"endDateTime\":\"2023-06-23T00:02:41.034469Z\"},{\"status\":\"Passed\",\"displayName\":\"Azure virtual network readiness\",\"startDateTime\":\"2023-06-23T00:01:56.633663Z\",\"endDateTime\":\"2023-06-23T00:01:58.417032Z\"},{\"status\":\"Passed\",\"displayName\":\"Intune enrollment restrictions allow Windows enrollment\",\"startDateTime\":\"2023-06-23T00:01:56.852955Z\",\"endDateTime\":\"2023-06-23T00:01:58.100062Z\"},{\"status\":\"Passed\",\"displayName\":\"Azure subnet IP address usage\",\"startDateTime\":\"2023-06-23T00:01:58.602797Z\",\"endDateTime\":\"2023-06-23T00:01:58.762849Z\"},{\"status\":\"Passed\",\"displayName\":\"Endpoint connectivity\",\"startDateTime\":\"2023-06-23T00:06:55.000000Z\",\"endDateTime\":\"2023-06-23T00:07:11.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"Localization language package readiness\",\"startDateTime\":\"2023-06-23T00:06:55.000000Z\",\"endDateTime\":\"2023-06-23T00:07:11.000000Z\"},{\"status\":\"Passed\",\"displayName\":\"UDP connection check\",\"startDateTime\":\"2023-06-23T00:07:13.000000Z\",\"endDateTime\":\"2023-06-23T00:07:14.000000Z\"}]}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -88,7 +88,7 @@ KeyName         : test-keyAM +00:00
 LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: P30D]}
 ExpiresIn       : P2Y
 CreatedOn       : 12/10/2021 3:21:51 AM +00:00
-UpdatedOn       : 6/9/2022 7:43:27 
+UpdatedOn       : 6/9/2022 7:43:27
 ```
 
 These commands set the rotation policy of key `test-key` by JSON file.
@@ -105,7 +105,7 @@ KeyName         : test-keyAM +00:00
 LifetimeActions : {[Action: Notify, TimeAfterCreate: , TimeBeforeExpiry: P30D]}
 ExpiresIn       : P2Y
 CreatedOn       : 12/10/2021 3:21:51 AM +00:00
-UpdatedOn       : 6/9/2022 7:43:27 
+UpdatedOn       : 6/9/2022 7:43:27
 ```
 
 These commands set the expiry time will be applied on the new key version of `test-key` as 2 years.
@@ -132,7 +132,7 @@ These commands set the duration before expiry to attempt to rotate `test-key` as
 ```powershell
 $policy = Get-AzKeyVaultKeyRotationPolicy -VaultName test-kv -Name test-key1
 $policy.KeyName = "test-key2"
-$policy | Set-AzKeyVaultKeyRotationPolicy 
+$policy | Set-AzKeyVaultKeyRotationPolicy
 ```
 
 ```output

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.ResultFormat,
             excludeChangeTypes: this.ExcludeChangeType);
     }

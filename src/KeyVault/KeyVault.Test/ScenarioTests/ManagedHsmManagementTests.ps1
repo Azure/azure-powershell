@@ -20,13 +20,13 @@ function Test-ManagedHsmCRUD {
     $rgName = getAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
-    $administrator = "c1be1392-39b8-4521-aafc-819a47008545"
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
+    $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0" # (Get-AzADUser -StartsWith Beisi).Id
     New-AzResourceGroup -Name $rgName -Location $rgLocation
 
     try {
         # Test create a default managed HSM
-        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
         Assert-AreEqual $hsmName $hsm.Name
         Assert-AreEqual $rgName $hsm.ResourceGroupName
         Assert-AreEqual $hsmLocation $hsm.Location
@@ -43,9 +43,10 @@ function Test-ManagedHsmCRUD {
         Assert-AreEqual $hsmName $got.Name
         Assert-AreEqual $rgName $got.ResourceGroupName
         Assert-AreEqual $hsmLocation $got.Location
-        
+        Assert-NotNull $got.SecurityDomain
+
         # Test throws for existing managed HSM
-        Assert-Throws { New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator }
+        Assert-Throws { New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90}
 
         # Test remove managed HSM
         Remove-AzKeyVaultManagedHsm -InputObject $got -Force
@@ -53,11 +54,13 @@ function Test-ManagedHsmCRUD {
         Assert-Null $deletedMhsm
 
         # Test throws for resourcegroup nonexistent
-        Assert-Throws {  New-AzKeyVaultManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator }
+        Assert-Throws {  New-AzKeyVaultManagedHsm -Name (getAssetName) -ResourceGroupName (getAssetName) -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90}
     }
 
     finally {
-        Remove-AzResourceGroup -Name $rgName -Force
+        # Clean Up
+        Remove-AzResourceGroup -Name $rgName -Force        
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
     }
 
 }
@@ -70,27 +73,32 @@ function Test-CreateManagedHsmWithPublicNetworkAccess{
     $rgName = getAssetName
     $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $hsmName = getAssetName
-    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "West US"
+    $hsmName2 = getAssetName
+    $hsmName3 = getAssetName
+    $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "India"
+    $hsmLocation2 = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
+    $hsmLocation3 = Get-Location "Microsoft.KeyVault" "managedHSMs" "West Europe"
     # bez's object id
     $administrator = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
     New-AzResourceGroup -Name $rgName -Location $rgLocation
     try {
         # Test creating a default managed HSM
-        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
         Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. The default of PublicNetworkAccess is Enabled"
         
         # Test create a managed HSM with disabled PublicNetworkAccess
-        $hsmName2 = getAssetName
-        $hsm2 = New-AzKeyVaultManagedHsm -Name $hsmName2 -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -PublicNetworkAccess Disabled
+        $hsm2 = New-AzKeyVaultManagedHsm -Name $hsmName2 -ResourceGroupName $rgName -Location $hsmLocation2 -Administrator $administrator -PublicNetworkAccess Disabled -SoftDeleteRetentionInDays 90
         Assert-AreEqual "Disabled" $hsm2.PublicNetworkAccess "2. create managed HSM with disabled PublicNetworkAccess"
 
         # Test create a managed HSM with enabled PublicNetworkAccess
-        $hsmName3 = getAssetName
-        $hsm3 = New-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -PublicNetworkAccess Enabled
+        $hsm3 = New-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -Location $hsmLocation3 -Administrator $administrator -PublicNetworkAccess Enabled -SoftDeleteRetentionInDays 90
         Assert-AreEqual "Enabled" $hsm3.PublicNetworkAccess "3. create managed HSM with enabled PublicNetworkAccess"
 
-    }finally{
+    }finally{        
         Remove-AzResourceGroup -Name $rgName -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName -Location $hsmLocation -InRemovedState -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName2 -Location $hsmLocation2 -InRemovedState -Force
+        Remove-AzKeyVaultManagedHsm -Name $hsmName3 -Location $hsmLocation3 -InRemovedState -Force
     }
 }
 
@@ -108,7 +116,7 @@ function Test-UpdateManagedHsmWithPublicNetworkAccess{
     New-AzResourceGroup -Name $rgName -Location $rgLocation
     try {
         # Test creating a default managed HSM
-        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+        $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
         Assert-AreEqual "Enabled" $hsm.PublicNetworkAccess "1. The default of PublicNetworkAccess is Enabled"
         
         # Test updating PublicNetworkAccess as Disabled
@@ -167,15 +175,12 @@ function Test-ManagedHsmPurgeProtection{
             $rgName = getAssetName
             $rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
             $hsmName = getAssetName
-            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East US 2"
+            $hsmLocation = Get-Location "Microsoft.KeyVault" "managedHSMs" "East Asia"
             $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109"
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a default managed HSM
-            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
-            
-            # Test: EnablePurgeProtection
-            $purgeProtectedHsm = Update-AzKeyVaultManagedHsm -InputObject $hsm -EnablePurgeProtection
+            $purgeProtectedHsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -EnablePurgeProtection -SoftDeleteRetentionInDays 7
             Assert-AreEqual $true $purgeProtectedHsm.EnablePurgeProtection
             
             # Test: purge deleted managed Hsm            
@@ -198,7 +203,7 @@ function Test-UndoManagedHsmRemoval{
             New-AzResourceGroup -Name $rgName -Location $rgLocation
 
             # Test: create a managed HSM
-            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator
+            $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 90
 
             Remove-AzKeyVaultManagedHsm -InputObject $hsm -Force
             

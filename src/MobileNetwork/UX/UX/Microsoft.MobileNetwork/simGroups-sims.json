@@ -1,0 +1,95 @@
+{
+  "resourceType": "simGroups/sims",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkSim",
+      "description": "Gets information about the specified SIM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/simGroups/{simGroupName}/sims/{simName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworksim"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GroupName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified SIM.",
+          "parameters": [
+            {
+              "name": "-GroupName",
+              "value": "[Path.simGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.simName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkSim",
+      "description": "Deletes the specified SIM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/simGroups/{simGroupName}/sims/{simName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworksim"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GroupName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified SIM.",
+          "parameters": [
+            {
+              "name": "-GroupName",
+              "value": "[Path.simGroupName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.simName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

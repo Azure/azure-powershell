@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Updated the API version to stable 2022-12-27
+* Added cmdlet `Install-AzConnectedMachinePatch`, `Invoke-AzConnectedAssessMachinePatch` and `Get-AzConnectedExtensionMetadata`
+
 ## Version 0.4.1
 * Fixed issue with Connect-AzConnectedMachine throwing errors when onboarding multiple machines at once
 

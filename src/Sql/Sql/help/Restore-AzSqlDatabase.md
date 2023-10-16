@@ -19,10 +19,9 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
- [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromPointInTimeBackupWithVcore
@@ -31,10 +30,9 @@ Restore-AzSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Resource
  -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
  -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
+ [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
@@ -43,11 +41,9 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
  [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
- [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackupWithVcore
@@ -56,10 +52,9 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
  -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-HAReplicaCount <Int32>]
  [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity]
- [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromGeoBackup
@@ -67,9 +62,8 @@ Restore-AzSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -De
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
  [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob]
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
- [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -79,11 +73,9 @@ Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
 Restore-AzSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String> -TargetDatabaseName <String>
  -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>]
  [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-Tag <Hashtable>]
- [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
+ [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackup
@@ -92,10 +84,9 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
  -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
  [-AsJob] [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-ZoneRedundant] [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
+ [-EncryptionProtectorAutoRotation] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackupWithVcore
@@ -103,9 +94,8 @@ Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -Serve
 Restore-AzSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
  [-LicenseType <String>] [-HAReplicaCount <Int32>] [-BackupStorageRedundancy <String>] [-ZoneRedundant]
- [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>]
+ [-KeyList <String[]>] [-FederatedClientId <Guid>] [-EncryptionProtectorAutoRotation]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -324,6 +314,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionProtectorAutoRotation
+The AKV Key Auto Rotation status
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -FederatedClientId
 The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
 
@@ -420,7 +425,7 @@ Accept wildcard characters: False
 The list of AKV keys for the SQL Database.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -569,7 +574,7 @@ Accept wildcard characters: False
 The list of user assigned identity for the SQL Database.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

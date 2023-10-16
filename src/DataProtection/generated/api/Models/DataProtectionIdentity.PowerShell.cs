@@ -111,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
             }
+            if (content.Contains("ResourceGuardProxyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardProxyName = (string) content.GetValueForProperty("ResourceGuardProxyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardProxyName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -175,6 +179,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("RequestName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName = (string) content.GetValueForProperty("RequestName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RequestName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGuardProxyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardProxyName = (string) content.GetValueForProperty("ResourceGuardProxyName",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceGuardProxyName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
