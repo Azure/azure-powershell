@@ -49,7 +49,11 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
-  # Remove cmdlet, Private link related resource should be ignored. 
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedDisk;', '_managedDisk;')
+
+# Remove cmdlet, Private link related resource should be ignored. 
   - where:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
