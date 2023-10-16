@@ -15,7 +15,7 @@ Retrieves the details of the replicating server.
 ### ListByName (Default)
 ```
 Get-AzMigrateHCIServerReplication -ProjectName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
@@ -45,7 +45,7 @@ Get-AzMigrateHCIServerReplication -DiscoveredMachineId <String> [-SubscriptionId
 ### ListById
 ```
 Get-AzMigrateHCIServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,21 +162,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter options.
-
-```yaml
-Type: System.String
-Parameter Sets: ListById, ListByName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -262,21 +247,6 @@ Parameter Sets: GetByMachineName, ListByName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-The pagination token.
-
-```yaml
-Type: System.String
-Parameter Sets: ListById, ListByName
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
