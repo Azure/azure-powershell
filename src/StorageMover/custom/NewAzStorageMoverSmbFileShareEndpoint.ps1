@@ -37,7 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbfileshareendpoint
 #>
 function New-AzStorageMoverSmbFileShareEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -131,7 +131,7 @@ function New-AzStorageMoverSmbFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.AzureStorageSmbFileShareEndpointProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureStorageSmbFileShareEndpointProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('FileShareName')) {
             $Properties.FileShareName = $FileShareName

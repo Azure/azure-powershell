@@ -54,7 +54,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazstoragecontainerendpoint
 #>
 function Update-AzStorageMoverAzStorageContainerEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,7 +146,7 @@ function Update-AzStorageMoverAzStorageContainerEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.AzureStorageBlobContainerEndpointUpdateProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureStorageBlobContainerEndpointUpdateProperties]::New()
         $Properties.EndpointType = 'AzureStorageBlobContainer'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

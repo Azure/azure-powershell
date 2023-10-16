@@ -31,12 +31,12 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-brach: c53808ba54beef57059371708f1fa6949a11a280
+brach: 74948e5fb9b1e1f8b9d58fb65fc81d5cba6b6ced
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2023-07-01-preview/storagemover.json
+  - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-10-01/storagemover.json
 
 # For new RP, the version is 0.1.0
 module-version: 1.1.0

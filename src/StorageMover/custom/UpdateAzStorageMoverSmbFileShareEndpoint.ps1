@@ -54,7 +54,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbfileshareendpoint
 #>
 function Update-AzStorageMoverSmbFileShareEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IEndpoint])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -146,7 +146,7 @@ function Update-AzStorageMoverSmbFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.AzureStorageSmbFileShareEndpointUpdateProperties]::New()
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureStorageSmbFileShareEndpointUpdateProperties]::New()
         $Properties.EndpointType = 'AzureStorageSmbFileShare'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

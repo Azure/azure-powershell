@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230701Preview.IJobRun
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobRun
 
 ## NOTES
 
