@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// resource.
         /// </param>
 
+        /// <param name="identity">Managed service identity (system assigned and/or user assigned identities)
+        /// </param>
+
         /// <param name="groupId">Group identifier of private link resource.
         /// </param>
 
@@ -55,9 +58,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="requiredZoneNames">Required DNS zone names of the the private link resource.
         /// </param>
-        public MhsmPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
+        public MhsmPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type, location, sku, tags, systemData)
+        : base(id, name, type, location, sku, tags, systemData, identity)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
