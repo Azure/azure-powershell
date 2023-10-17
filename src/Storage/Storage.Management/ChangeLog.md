@@ -22,10 +22,6 @@
 * Supported creationTime filter in Blob Inventory
     - `New-AzStorageBlobInventoryPolicyRule`
 * Upgraded Azure.Core to 1.35.0.
-* Upgraded Azure.Storage.Blobs to 12.18.0
-* Upgraded Azure.Storage.Files.Shares to 12.16.0
-* Upgraded Azure.Storage.Files.DataLake to 12.16.0
-* Upgraded Azure.Storage.Queues to 12.16.0
 
 ## Version 5.10.1
 * Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
