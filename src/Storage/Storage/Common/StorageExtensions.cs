@@ -40,10 +40,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             string sasToken = GetFileSASToken(file);
-            if (!sasToken.StartsWith("?"))
-            {
-                sasToken = "?" + sasToken;
-            }
             
             if (string.IsNullOrEmpty(sasToken))
             {
@@ -303,11 +299,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             else // sharedkey
             {
                 sasToken = sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
-            }
-
-            if (sasToken[0] != '?')
-            {
-                sasToken = "?" + sasToken;
             }
             return sasToken;
         }

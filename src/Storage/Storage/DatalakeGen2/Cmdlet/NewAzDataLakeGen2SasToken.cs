@@ -208,8 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (FullUri)
             {
-                string fullUri = pathClient.Uri.ToString();
-                fullUri = fullUri + "?" + sasToken;
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(pathClient.Uri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else
