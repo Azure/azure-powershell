@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ManagedInstanceExternalAdministrator()
                 {
-                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 },

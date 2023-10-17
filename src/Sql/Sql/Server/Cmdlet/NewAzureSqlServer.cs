@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 FederatedClientId = this.FederatedClientId,
                 Administrators = new Management.Sql.Models.ServerExternalAdministrator()
                 {
-                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 }              
