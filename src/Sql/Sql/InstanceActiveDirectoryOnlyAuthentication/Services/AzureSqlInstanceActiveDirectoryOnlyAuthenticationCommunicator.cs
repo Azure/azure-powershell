@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         public Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication Get(string resourceGroupName, string InstanceName)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.GetAsync(resourceGroupName, InstanceName).Result;
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.GetAsync(resourceGroupName, InstanceName).Result;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         public Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication CreateOrUpdate(string resourceGroupName, string InstanceName, ManagedInstanceAzureADOnlyAuthentication parameters)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.CreateOrUpdate(resourceGroupName, InstanceName, parameters);
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.CreateOrUpdate(resourceGroupName, InstanceName, parameters);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// </summary>
         public IEnumerable<Management.Sql.Models.ManagedInstanceAzureADOnlyAuthentication> List(string resourceGroupName, string InstanceName)
         {
-            return GetCurrentSqlClient().ManagedInstanceAzureADOnlyAuthentications.ListByInstance(resourceGroupName, InstanceName);
+            return GetCurrentSqlClient().ManagedInstanceAzureAdOnlyAuthentications.ListByInstance(resourceGroupName, InstanceName);
         }
 
         /// <summary>

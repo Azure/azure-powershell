@@ -29,7 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
-    <ProjectReference Include="..\Sql.Sdk\Sql.Sdk.csproj" />
+    <ProjectReference Include="..\Sql.Management.Sdk\Sql.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
