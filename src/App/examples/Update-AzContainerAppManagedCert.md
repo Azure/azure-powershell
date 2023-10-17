@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patches a managed certificate.
 ```powershell
-{{ Add code here }}
+Update-AzContainerAppManagedCert -EnvName azps-env -Name azps-managedcert -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SubjectName   Location ResourceGroupName   DomainControlValidation
+----             -----------   -------- -----------------   -----------------------
+azps-managedcert mycertweb.com East US  azps_test_group_app TXT
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Patches a managed certificate.
+Oly patching of tags is supported.

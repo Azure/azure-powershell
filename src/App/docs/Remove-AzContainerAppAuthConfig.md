@@ -35,27 +35,30 @@ Delete a Container App AuthConfig.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Container App AuthConfig.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -Name current
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Container App AuthConfig.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Container App AuthConfig.
 ```powershell
-{{ Add code here }}
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-2
+
+Remove-AzContainerAppAuthConfig -ContainerAppInputObject $containerapp -Name current
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete a Container App AuthConfig.
+
+### Example 3: Delete a Container App AuthConfig.
+```powershell
+$authconfig = Get-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppAuthConfig -InputObject $authconfig
 ```
 
-{{ Add description here }}
+Delete a Container App AuthConfig.
 
 ## PARAMETERS
 

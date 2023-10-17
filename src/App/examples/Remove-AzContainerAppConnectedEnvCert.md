@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified Certificate.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvcert
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified Certificate.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes the specified Certificate.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+
+Remove-AzContainerAppConnectedEnvCert -ConnectedEnvironmentInputObject $connectedenv -Name azps-connectedenvcert
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Deletes the specified Certificate.
+
+### Example 3: Deletes the specified Certificate.
+```powershell
+$connectedenvcert = Get-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvcert
+
+Remove-AzContainerAppConnectedEnvCert -InputObject $connectedenvcert
 ```
 
-{{ Add description here }}
-
+Deletes the specified Certificate.

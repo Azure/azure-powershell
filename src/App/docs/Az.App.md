@@ -269,9 +269,6 @@ Stop a container app
 ### [Stop-AzContainerAppJobExecution](Stop-AzContainerAppJobExecution.md)
 Terminates execution of a running container apps job
 
-### [Stop-AzContainerAppJobMultipleExecution](Stop-AzContainerAppJobMultipleExecution.md)
-Terminates execution of a running container apps job
-
 ### [Test-AzContainerAppConnectedEnvNameAvailability](Test-AzContainerAppConnectedEnvNameAvailability.md)
 Checks if resource connectedEnvironmentName is available.
 

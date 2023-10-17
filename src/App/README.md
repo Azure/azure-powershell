@@ -293,6 +293,7 @@ directive:
       subject: JobMultipleExecution
     set:
       subject: ContainerAppJobMultipleExecution
+    remove: true
 
   - where:
       verb: Get
@@ -638,4 +639,20 @@ directive:
         properties:
           - Name
           - ResourceGroupName
+  - where:
+      model-name: WorkloadProfileStates
+    set:
+      format-table:
+        properties:
+          - Name
+  - where:
+      model-name: ManagedCertificate
+    set:
+      format-table:
+        properties:
+          - Name
+          - SubjectName
+          - Location
+          - ResourceGroupName
+          - DomainControlValidation
 ```

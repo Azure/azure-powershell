@@ -42,8 +42,6 @@ $connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_grou
 Remove-AzContainerAppConnectedEnv -InputObject $connectedenv
 ```
 
-```
-
 Delete a Container App ConnectedEnv.
 
 ## PARAMETERS

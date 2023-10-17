@@ -54,6 +54,7 @@ Delete a Container App ManagedEnvStorage.
 ### Example 3: Delete a Container App ManagedEnvStorage.
 ```powershell
 $managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
 Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa
 ```
 

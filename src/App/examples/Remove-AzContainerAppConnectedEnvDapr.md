@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Dapr Component from a connected environment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete a Dapr Component from a connected environment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Dapr Component from a connected environment.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+
+Remove-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject $connectedenv -Name azps-connectedenvdapr
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete a Dapr Component from a connected environment.
+
+### Example 3: Delete a Dapr Component from a connected environment.
+```powershell
+$connectedenvdapr = Get-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azps-connectedenvdapr
+
+Remove-AzContainerAppConnectedEnvDapr -InpitObject $connectedenvdapr
 ```
 
-{{ Add description here }}
-
+Delete a Dapr Component from a connected environment.

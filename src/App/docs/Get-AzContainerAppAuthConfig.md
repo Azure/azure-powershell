@@ -42,7 +42,7 @@ Get a AuthConfig of a Container App.
 
 ### Example 1: List AuthConfig of a Container App.
 ```powershell
-Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp -ResourceGroupName azps_test_group_app
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
@@ -55,7 +55,7 @@ List AuthConfig of a Container App.
 
 ### Example 2: Get a AuthConfig of a Container App.
 ```powershell
-Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp -ResourceGroupName azps_test_group_app -Name current
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -Name current
 ```
 
 ```output
@@ -68,7 +68,7 @@ Get a AuthConfig of a Container App.
 
 ### Example 3: Get a AuthConfig of a Container App.
 ```powershell
-$containerapp = Get-AzContainerApp -Name azps-containerapp -ResourceGroupName azps_test_group_app
+$containerapp = Get-AzContainerApp -Name azps-containerapp-2 -ResourceGroupName azps_test_group_app
 Get-AzContainerAppAuthConfig -ContainerAppInputObject $containerapp -Name current
 ```
 

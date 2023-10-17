@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete storage for a connectedEnvironment.
 ```powershell
-{{ Add code here }}
+Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Delete storage for a connectedEnvironment.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete storage for a connectedEnvironment.
 ```powershell
-{{ Add code here }}
+$connectedenv = Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv
+
+Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject $connectedenv -Name azpstestsa
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Delete storage for a connectedEnvironment.
+
+### Example 3: Delete storage for a connectedEnvironment.
+```powershell
+$connectedenvstorage = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Name azpstestsa
+
+Remove-AzContainerAppConnectedEnvStorage -InputObject $connectedenvstorage
 ```
 
-{{ Add description here }}
-
+Delete storage for a connectedEnvironment.

@@ -34,27 +34,18 @@ Get details of a single job execution
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get details of a single job execution.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppJobExecution -JobName azps-app-job -ResourceGroupName azps_test_group_app -Name "azps-app-job-vvhlnul"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndTime Name                 ResourceGroupName   StartTime Status
+------- ----                 -----------------   --------- ------
+        azps-app-job-vvhlnul azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get details of a single job execution.
 
 ## PARAMETERS
 
