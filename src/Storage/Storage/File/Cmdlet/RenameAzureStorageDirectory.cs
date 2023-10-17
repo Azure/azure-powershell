@@ -129,6 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     }
 
                     srcDirectoryClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, sourceClientOptions).GetShareClient(this.ShareName).GetDirectoryClient(this.SourcePath);
+                    // Need to set ClientOptions.AllowSourceTrailingDot, to allow/disallow  TrailingDot in Rename() 
                     srcDirectoryClientForRename = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetDirectoryClient(this.SourcePath);
                     destFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;
