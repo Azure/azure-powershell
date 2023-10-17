@@ -1725,7 +1725,8 @@ function Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficP
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $true $retrievedGateway.AllowRemoteVnetTraffic
         Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
-        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway -AllowRemoteVnetTraffic $false
+        $retrievedGateway.AllowRemoteVnetTraffic = $false
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $retrievedGateway
         $retrievedGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $false $retrievedGateway.AllowRemoveVnetTraffic
         Assert-AreEqual $false $retrievedGateway.AllowVirtualWanTraffic
