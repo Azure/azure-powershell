@@ -40,7 +40,7 @@ Returns the specified data collection rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get data collection rules by subscription ID
 ```powershell
 Get-AzDataCollectionRule
 ```

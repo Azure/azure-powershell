@@ -40,7 +40,7 @@ Returns the specified data collection endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get data collection endpoints by subscription ID
 ```powershell
 Get-AzDataCollectionEndpoint
 ```
@@ -52,9 +52,9 @@ Etag                                   Kind Location Name                  Resou
 "ba021b4b-0000-0100-0000-650170c20000"      eastus   myCollectionEndpoint2 AMCS-TEST
 ```
 
-{{ Add description here }}
+This command lists all the data collection endpoints for the current subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get data collection endpoints for the given resource group
 ```powershell
 Get-AzDataCollectionEndpoint -ResourceGroupName AMCS-TEST
 ```
@@ -66,9 +66,9 @@ Etag                                   Kind Location Name                  Resou
 "ba021b4b-0000-0100-0000-650170c20000"      eastus   myCollectionEndpoint2 AMCS-TEST
 ```
 
-{{ Add description here }}
+This command lists data collection endpoints for the given resource group.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get a data collection endpoint
 ```powershell
 Get-AzDataCollectionEndpoint -ResourceGroupName AMCS-TEST -Name myCollection
 ```
@@ -108,7 +108,7 @@ Tag                                 : {
 Type                                : Microsoft.Insights/dataCollectionEndpoints
 ```
 
-{{ Add description here }}
+This command lists one (a list with a single element) data collection endpoint.
 
 ## PARAMETERS
 

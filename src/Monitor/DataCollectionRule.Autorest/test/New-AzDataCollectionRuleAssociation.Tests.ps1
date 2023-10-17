@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataCollectionRuleAssoc
 }
 
 Describe 'New-AzDataCollectionRuleAssociation' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            New-AzDataCollectionRuleAssociation -AssociationName $env.testAssociation1 -ResourceUri $env.VMId -DataCollectionRuleId $env.ruleID
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {

@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzLogAnalyticsDestination
 
 Describe 'New-AzLogAnalyticsDestinationObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            New-AzLogAnalyticsDestinationObject -Name centralWorkspace -WorkspaceResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/sipstestcx9d03/providers/microsoft.operationalinsights/workspaces/asptest4k37qz
+        } | Should -Not -Throw
     }
 }

@@ -15,23 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataCollectionRuleAssoc
 }
 
 Describe 'Get-AzDataCollectionRuleAssociation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $association = Get-AzDataCollectionRuleAssociation -ResourceUri $env.VMId
+            $association.Count | Should -BeGreaterorEqual 1
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $association = Get-AzDataCollectionRuleAssociation -ResourceUri $env.VMId -AssociationName $env.testAssociation2
+            $association.Name | Should -Be $env.testAssociation2
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $association = Get-AzDataCollectionRuleAssociation -ResourceGroupName $env.resourceGroup2 -DataCollectionRuleName $env.testCollectionRule2
+            $association.Name | Should -Be $env.testAssociation2
+        } | Should -Not -Throw
     }
 
-    It 'List2' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List2' {
+        {
+            $association = Get-AzDataCollectionRuleAssociation -ResourceGroupName $env.resourceGroup -DataCollectionEndpointName $env.testCollectionEndpoint
+            $association.Name | Should -Be $env.testEndpointAssociation
+        } | Should -Not -Throw
     }
 }

@@ -16,11 +16,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataCollectionEndpoint'
 
 Describe 'New-AzDataCollectionEndpoint' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # Skip
+            New-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint -ResourceGroupName $env.resourceGroup -Location $env.Location -NetworkAclsPublicNetworkAccess Enabled
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # Skip
+            New-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint -ResourceGroupName $env.resourceGroup2 -JsonFilePath (Join-Path $PSScriptRoot '.\jsonfile\endpointTest1.json')
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {

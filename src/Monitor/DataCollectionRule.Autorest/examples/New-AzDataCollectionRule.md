@@ -202,7 +202,7 @@ Type                                      : Microsoft.Insights/dataCollectionRul
 
 This command creates a data collection rules for the current subscription.
 
-### Example 1: {{ Add title here }}
+### Example 3: Create a data collection rule with syslog
 ```powershell
 $dataflow2 = New-AzDataFlowObject -Stream Microsoft-Perf,Microsoft-Syslog -Destination centralWorkspace
 $performanceCounter3 = New-AzPerfCounterDataSourceObject -CounterSpecifier "\\Processor(_Total)\\% Processor Time","\\Memory\\Committed Bytes","\\LogicalDisk(_Total)\\Free Megabytes","\\PhysicalDisk(_Total)\\Avg. Disk Queue Length" -Name cloudTeamCoreCounters -SamplingFrequencyInSecond 15 -Stream Microsoft-Perf

@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataCollectionRule')
 }
 
 Describe 'Remove-AzDataCollectionRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzDataCollectionRule -ResourceGroupName $env.resourceGroup -Name $env.testCollectionRule3
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        {
+            $rule = Get-AzDataCollectionRule -ResourceGroupName $env.resourceGroup -Name $env.testCollectionRule4
+            Remove-AzDataCollectionRule -InputObject $rule
+        } | Should -Not -Throw
     }
 }

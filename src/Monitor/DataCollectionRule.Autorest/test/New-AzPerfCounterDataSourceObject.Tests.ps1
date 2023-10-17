@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPerfCounterDataSourceOb
 }
 
 Describe 'New-AzPerfCounterDataSourceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzPerfCounterDataSourceObject -CounterSpecifier "\\Processor(_Total)\\% Processor Time" -Name perfCounter01 -SamplingFrequencyInSecond 60 -Stream Microsoft-InsightsMetrics
+        } | Should -Not -Throw
     }
 }

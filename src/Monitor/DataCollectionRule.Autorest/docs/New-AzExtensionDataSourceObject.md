@@ -22,7 +22,7 @@ Create an in-memory object for ExtensionDataSource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create extension data source object
 ```powershell
 {{ Add code here }}
 ```
@@ -31,18 +31,7 @@ Create an in-memory object for ExtensionDataSource.
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a extension data source object.
 
 ## PARAMETERS
 

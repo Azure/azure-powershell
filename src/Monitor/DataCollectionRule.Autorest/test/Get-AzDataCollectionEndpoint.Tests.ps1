@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataCollectionEndpoint'
 }
 
 Describe 'Get-AzDataCollectionEndpoint' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $ruleList = Get-AzDataCollectionEndpoint
+            $ruleList.Count | Should -BeGreaterThan 1
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $rule = Get-AzDataCollectionEndpoint -ResourceGroupName $env.resourceGroup -Name $env.testCollectionEndpoint
+            $rule.Name | Should -Be $env.testCollectionEndpoint
+        } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $ruleList2 = Get-AzDataCollectionEndpoint -ResourceGroupName $env.resourceGroup
+            $ruleList2.Count | Should -BeGreaterorEqual 1
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $object = "/subscriptions/"+$env.SubscriptionId+"/resourceGroups/"+$env.resourceGroup+"/providers/Microsoft.Insights/dataCollectionEndpoints/"+$env.testCollectionEndpoint
+            $rule2 = Get-AzDataCollectionEndpoint -InputObject $object
+            $rule2.Name | Should -Be $env.testCollectionEndpoint
+        } | Should -Not -Throw
     }
 }

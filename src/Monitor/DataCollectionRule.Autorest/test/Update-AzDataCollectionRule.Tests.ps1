@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataCollectionRule')
 }
 
 Describe 'Update-AzDataCollectionRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            Update-AzDataCollectionRule -Name $env.testCollectionRule1 -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"}
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

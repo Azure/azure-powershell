@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataCollectionRuleAs
 }
 
 Describe 'Update-AzDataCollectionRuleAssociation' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            Update-AzDataCollectionRuleAssociation -AssociationName $env.testEndpointAssociation -DataCollectionEndpointId $env.endpointId -ResourceUri $env.VMId -Description "monitor test VM endpoint association"
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $association = Get-AzDataCollectionRuleAssociation -ResourceUri $env.VMId -AssociationName $env.testAssociation2
+            Update-AzDataCollectionRuleAssociation -InputObject $association -Description "test VM AMCS association"
+        } | Should -Not -Throw
     }
 }

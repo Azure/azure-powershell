@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataCollectionEndpoi
 }
 
 Describe 'Remove-AzDataCollectionEndpoint' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint2 -ResourceGroupName $env.resourceGroup2
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        {
+            $endpoint = New-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint2 -ResourceGroupName $env.resourceGroup2 -Location $env.Location -NetworkAclsPublicNetworkAccess Enabled
+            Remove-AzDataCollectionEndpoint -InputObject $endpoint
+        } | Should -Not -Throw
     }
 }
