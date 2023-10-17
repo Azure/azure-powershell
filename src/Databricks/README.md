@@ -49,6 +49,11 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
+# Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedService;', '_managedService;')
+
   - from: EncryptionEntitiesDefinition.json.cs
     where: $
     transform: $ = $.replace('ManagedDisk;', '_managedDisk;')
