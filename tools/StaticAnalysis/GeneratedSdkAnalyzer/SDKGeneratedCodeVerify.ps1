@@ -116,7 +116,8 @@ try{
     }
 }
 catch{
-    Write-Host "Caught an error."
+    Write-Host -foregroundcolor Red "An error occurred: $_"
+    Write-Error 'Unexpected error.' -ErrorAction Stop
 }
 finally {
     Write-Host ""
