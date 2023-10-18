@@ -401,33 +401,11 @@ function New-AzMigrateHCIServerReplication {
     
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
-            # TargetVMRam needs to be a multiple of 1024 MB for the time being
-            if (($TargetVMRam % $RAMConfig.GbToMb) -ne 0) {
-                throw "Specify target RAM in multiples of $($RAMConfig.GbToMb) MB"    
+            # TargetVMRam needs to be greater than 0
+            if ($TargetVMRam -le 0) {
+                throw "Specify target RAM greater than 0"    
             }
 
-            if ($customProperties.HyperVGeneration -eq "1")
-            {
-                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen1InMB)
-                {
-                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen1InMB) for Gen1 Hyper-V VM."
-                }
-            }
-            elseif ($customProperties.HyperVGeneration -eq "2")
-            {
-                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen2InMB)
-                {
-                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen2InMB) for Gen2 Hyper-V VM."
-                }
-            }
-            else
-            {
-                throw "Unsupported Hyper-V VM generation '$($customProperties.HyperVGeneration)'."
-            }
-        }
-
-        if ($HasTargetVMRam)
-        {
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam 
         }
         else

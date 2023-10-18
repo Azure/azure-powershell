@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-Specifies the name of the replicating machine.
+Specifies the display name of the replicating machine.
 
 ```yaml
 Type: System.String

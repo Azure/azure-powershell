@@ -72,7 +72,7 @@ function Get-AzMigrateHCIServerReplication {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the name of the replicating machine.
+        # Specifies the display name of the replicating machine.
         ${MachineName},
     
         [Parameter()]
@@ -142,20 +142,17 @@ function Get-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
         $null = $PSBoundParameters.Remove('MachineName')
-
-        # Retrieve ProjectName if GetBySDSID
+     
         if ($parameterSet -eq 'GetBySDSID') {
-            $machineIdArray = $DiscoveredMachineId.Split('/')
+            $machineIdArray = $DiscoveredMachineId.Split("/")
             if ($machineIdArray.Length -lt 11) {
-                throw "Invalid machine ID '$DiscoveredMachineId'."
+                throw "Invalid machine ID '$DiscoveredMachineId'"
             }
-
-            $ResourceGroupName = $machineIdArray[4]
             $siteType = $machineIdArray[7]
             $siteName = $machineIdArray[8]
-            $MachineName = $machineIdArray[10]
+            $ResourceGroupName = $machineIdArray[4]
+            $ProtectedItemName = $machineIdArray[10]
 
-            # Get machine site
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $siteName)
 
@@ -164,103 +161,99 @@ function Get-AzMigrateHCIServerReplication {
             }
             elseif ($siteType -eq $SiteTypes.HyperVSites) {
                 $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-            }
+            } 
             else {
                 throw "Unknown machine site '$siteName' with Type '$siteType'."
             }
-
-            $null = $PSBoundParameters.Remove('SiteName')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-
+            
             if ($null -eq $siteObject) {
                 throw "Machine site '$siteName' with Type '$siteType' not found."
             }
-            elseif ([string]::IsNullOrEmpty($siteObject.DiscoverySolutionId)) {
-                throw "Discovery solution Id is not found in machine site '$siteName' with Type '$siteType'."
-            }
             else {
-                $discoverySolutionIdArray = $siteObject.DiscoverySolutionId.Split("/")
-                if ($discoverySolutionIdArray.Length -lt 9) {
-                    throw "Invalid discovery solution Id '$discoveredMachineId' found in machine site '$siteName' with Type '$siteType'."
-                }
-
-                $ProjectName = $discoverySolutionIdArray[8]
+                $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
             }
-        }
-
-        # Retrieve ResourceGroupName, ProjectName if ListByID
-        if ($parameterSet -eq 'ListByID') {
-            $resourceGroupIdArray = $ResourceGroupID.Split('/')
-            if ($resourceGroupIdArray.Length -lt 5) {
-                throw "Invalid resource group Id '$ResourceGroupID'."
-            }
-
-            $ResourceGroupName = $resourceGroupIdArray[4]
-
-            $projectIdArray = $ProjectID.Split('/')
-            if ($projectIdArray.Length -lt 9) {
-                throw "Invalid migrate project Id '$ProjectID'."
-            }
-
-            $ProjectName = $projectIdArray[8]
-        }
-
-        # Retrieve VaultName if GetBySDSID, GetByMachineName, ListByID, or ListByName
-        if ($parameterSet -eq 'GetBySDSID' -or $parameterSet -eq 'GetByMachineName' -or
-            $parameterSet -eq 'ListByID' -or $parameterSet -eq 'ListByName') {
-            $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-            $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
-            $null = $PSBoundParameters.Add('Name', 'Servers-Migration-ServerMigration_DataReplication')
-
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
-
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('MigrateProjectName')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-
-            if ($null -eq $solution -or $solution.Count -eq 0) {
-                throw "Solution 'Servers-Migration-ServerMigration_DataReplication' not found."
-            }
-            else {
-                $vaultId = $solution.DetailExtendedDetail.AdditionalProperties.vaultId
-                if ([string]::IsNullOrEmpty($vaultId)) {
-                    throw "Replication vauld Id is not found in Solution 'Servers-Migration-ServerMigration_DataReplication'."
-                }
-
-                $vaultIdArray = $vaultId.Split("/")
-                if ($vaultIdArray.Length -lt 9) {
-                    throw "Invalid replication vault Id '$vaultId' found in Solution 'Servers-Migration-ServerMigration_DataReplication'."
-                }
                 
-                $VaultName = $vaultIdArray[8]
+            $null = $PSBoundParameters.Remove('SiteName')
+
+            $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+            $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                    
+            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+            if ($solution -and ($solution.Count -ge 1)) {
+                $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
             }
+            else {
+                throw "Solution not found."
+            }
+
+            $null = $PSBoundParameters.Remove("Name")
+            $null = $PSBoundParameters.Remove("MigrateProjectName")
+    
+            $null = $PSBoundParameters.Add("VaultName", $VaultName)
+            $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
+
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        }
+            
+        if (($parameterSet -match 'List') -or ($parameterSet -eq 'GetByMachineName')) {
+             # Retrieve ResourceGroupName, ProjectName if ListByID
+            if ($parameterSet -eq 'ListByID') {
+                $resourceGroupIdArray = $ResourceGroupID.Split('/')
+                if ($resourceGroupIdArray.Length -lt 5) {
+                    throw "Invalid resource group Id '$ResourceGroupID'."
+                }
+
+                $ResourceGroupName = $resourceGroupIdArray[4]
+
+                $projectIdArray = $ProjectID.Split('/')
+                if ($projectIdArray.Length -lt 9) {
+                    throw "Invalid migrate project Id '$ProjectID'."
+                }
+
+                $ProjectName = $projectIdArray[8]
+            }
+
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("Name", "Servers-Migration-ServerMigration_DataReplication")
+            $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+                
+            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters
+            if ($solution -and ($solution.Count -ge 1)) {
+                $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+            }
+            else {
+                throw "Solution not found."
+            }
+
+            $null = $PSBoundParameters.Remove("Name")
+            $null = $PSBoundParameters.Remove("MigrateProjectName")
+            $null = $PSBoundParameters.Add("VaultName", $VaultName)
+                
+            $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+            if ($parameterSet -eq "GetByMachineName") {
+                $replicatingItems = $replicatingItems | Where-Object { $_.Property.FabricObjectName -eq $MachineName }
+            }
+            return $replicatingItems
         }
 
-        # Retrieve ResourceGroupName, VaultName, MachineName if by InputObject or ItemID
-        if (($parameterSet -eq 'GetByInputObject') -or ($parameterSet -eq 'GetByItemID')) {
+        if (($parameterSet -eq "GetByInputObject") -or ($parameterSet -eq "GetByItemID")) {
             if ($parameterSet -eq 'GetByInputObject') {
                 $TargetObjectID = $InputObject.Id
             }
-
-            $objectIdArray = $TargetObjectID.Split('/')
+            $objectIdArray = $TargetObjectID.Split("/")
             if ($objectIdArray.Length -lt 11) {
                 throw "Invalid target object ID '$TargetObjectID'."
             }
 
             $ResourceGroupName = $objectIdArray[4]
             $VaultName = $objectIdArray[8]
-            $MachineName = $objectIdArray[10]
+            $ProtectedItemName = $objectIdArray[10]
+            $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+            $null = $PSBoundParameters.Add("VaultName", $VaultName)
+            $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
+    
+            return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
         }
-
-        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-        $null = $PSBoundParameters.Add('VaultName', $VaultName)
-        if ($parameterSet -match 'Get') {
-            $null = $PSBoundParameters.Add('Name', $MachineName)
-        }
-        
-        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
-        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
-
-        return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
     }
 }

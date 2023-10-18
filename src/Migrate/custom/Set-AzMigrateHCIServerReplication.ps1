@@ -201,33 +201,17 @@ function Set-AzMigrateHCIServerReplication {
         }
 
         if ($HasTargetVMCPUCore) {
+            if ($TargetVMCPUCore -le 0) {
+                throw "Specify target CPU core greater than 0"    
+            }
+
             $customProperties.TargetCpuCore = $TargetVMCPUCore
         }
 
         # Validate TargetVMRam
         if ($HasTargetVMRam) {
-            # TargetVMRam needs to be a multiple of 1024 MB for the time being
-            if (($TargetVMRam % $RAMConfig.GbToMb) -ne 0) {
-                throw "Specify target RAM in multiples of $($RAMConfig.GbToMb) MB"    
-            }
-
-            if ($customProperties.HyperVGeneration -eq "1")
-            {
-                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen1InMB)
-                {
-                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen1InMB) for Gen1 Hyper-V VM."
-                }
-            }
-            elseif ($customProperties.HyperVGeneration -eq "2")
-            {
-                if ($TargetVMRam -NotIn $RAMConfig.MinTargetMemoryInMB..$RAMConfig.MaxTargetMemoryGen2InMB)
-                {
-                    throw "Specify RAM between $($RAMConfig.MinTargetMemoryInMB) and $($RAMConfig.MaxTargetMemoryGen2InMB) for Gen2 Hyper-V VM."
-                }
-            }
-            else
-            {
-                throw "Unsupported Hyper-V VM generation '$($customProperties.HyperVGeneration)'."
+            if ($TargetVMRam -le 0) {
+                throw "Specify target RAM greater than 0"    
             }
 
             $customProperties.TargetMemoryInMegaByte = $TargetVMRam
@@ -240,19 +224,11 @@ function Set-AzMigrateHCIServerReplication {
         # Dynamic memory enabled & DynamicMemoryConfig supplied
         if ($customProperties.IsDynamicRam -and $HasDynamicMemoryConfig) {
             if ($customProperties.TargetMemoryInMegaByte -lt $DynamicMemoryConfig.MinimumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify minimum memory between $($RAMConfig.DefaultMinDynamicMemoryInMB) and $($customProperties.TargetMemoryInMegaByte)"
+                throw "DynamicMemoryConfig - Specify minimum memory less than $($customProperties.TargetMemoryInMegaByte)"
             }
-
-            if (($DynamicMemoryConfig.MinimumMemoryInMegaByte % $RAMConfig.GbToMb) -ne 0) {
-                throw "DynamicMemoryConfig - Specify minimum memory in multiples of $($RAMConfig.GbToMb) MB"    
-            }
-
+          
             if ($customProperties.TargetMemoryInMegaByte -gt $DynamicMemoryConfig.MaximumMemoryInMegaByte) {
-                throw "DynamicMemoryConfig - Specify maximum memory between $($customProperties.TargetMemoryInMegaByte) and $($RAMConfig.DefaultMaxDynamicMemoryInMB)"
-            }
-
-            if (($DynamicMemoryConfig.MaximumMemoryInMegaByte % $RAMConfig.GbToMb) -ne 0) {
-                throw "DynamicMemoryConfig - Specify maximum memory in multiples of $($RAMConfig.GbToMb) MB"    
+                throw "DynamicMemoryConfig - Specify maximum memory greater than $($customProperties.TargetMemoryInMegaByte)"
             }
 
             if ($DynamicMemoryConfig.TargetMemoryBufferPercentage -NotIn $RAMConfig.MinTargetMemoryBufferPercentage..$RAMConfig.MaxTargetMemoryBufferPercentage)
@@ -280,7 +256,7 @@ function Set-AzMigrateHCIServerReplication {
                 NicId                    = $nic.NicId
                 TargetNetworkId          = $nic.TargetNetworkId
                 TestNetworkId            = $nic.TestNetworkId
-                SelectionTypeForFailover = "SelectedByUser"
+                SelectionTypeForFailover = $nic.SelectionTypeForFailover
             }
           
             $nics += $NicObject
