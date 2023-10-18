@@ -44,8 +44,6 @@ Important note: When connecting to Azure Arc resources, this cmdlet requires the
 
 ## EXAMPLES
 
-<a name='example-1-export-a-ssh-configuration-file-for-connecting-to-a-resource-using-aad-issued-certificates-for-authentication'></a>
-
 ### Example 1: Export a SSH configuration file for connecting to a resource using Microsoft Entra ID issued certificates for authentication.
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePath ./sshconfig.config
