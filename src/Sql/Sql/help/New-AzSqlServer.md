@@ -46,8 +46,6 @@ Tags                     :
 
 This command creates a version 12 Azure SQL Database server.
 
-<a name='example-2-create-a-new-azure-sql-database-server-with-externalazure-active-directory-administrator-azure-active-directory-only-authentication-and-no-sqladministratorcredentials'></a>
-
 ### Example 2: Create a new Azure SQL Database server with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
