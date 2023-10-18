@@ -120,8 +120,6 @@ New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorag
 
 This command creates a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 
-<a name='example-6-create-a-storage-account-with-azure-files-aad-ds-authentication-and-enable-large-file-share'></a>
-
 ### Example 6: Create a Storage account with Azure Files Microsoft Entra Domain Services Authentication, and enable large file share.
 ```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
