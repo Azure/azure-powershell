@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The subscription Id at which the deployment should be created.")]
-        [ValidateNotNullOrEmpty]
         public string DeploymentSubscriptionId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
