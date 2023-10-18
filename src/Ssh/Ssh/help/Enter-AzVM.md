@@ -66,8 +66,6 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -Private
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser
 ```
 
-<a name='example-5-connect-to-the-public-ip-of-an-azure-virtual-machine-using-aad-issued-certificates'></a>
-
 ### Example 5: Connect to the Public Ip of an Azure Virtual Machine using Microsoft Entra issued certificates
 ```powershell
 Enter-AzVM -Ip 1.2.3.4
