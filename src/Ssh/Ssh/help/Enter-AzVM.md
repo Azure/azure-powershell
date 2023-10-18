@@ -42,8 +42,6 @@ Important note: When connecting to Azure Arc resources, this cmdlet requires the
 
 ## EXAMPLES
 
-<a name='example-1-connect-to-azure-resource-using-aad-issued-certificates'></a>
-
 ### Example 1: Connect to Azure Resource using Microsoft Entra issued certificates
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine
