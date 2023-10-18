@@ -172,8 +172,6 @@ Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccoun
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
-<a name='example-10-update-a-storage-account-by-enable-azure-files-aad-ds-authentication-and-set-defaultsharepermission'></a>
-
 ### Example 10: Update a Storage account by enable Azure Files Microsoft Entra Domain Services Authentication and set DefaultSharePermission.
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareContributor
