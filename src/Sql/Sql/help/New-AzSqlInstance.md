@@ -238,8 +238,6 @@ MaintenanceConfigurationId			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
 
 This command creates a new instance with maintenance configuration MI_2
 
-<a name='example-7-create-a-new-instance-with-externalazure-active-directory-administrator-azure-active-directory-only-authentication-and-no-sqladministratorcredentials'></a>
-
 ### Example 7: Create a new instance with External (Microsoft Entra ID) Administrator, Microsoft Entra-only Authentication and no SqlAdministratorCredentials
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
