@@ -32,6 +32,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Compute.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -70,6 +75,61 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                         }
                     }
+
+                // Default in TrustedLaunch when able.
+                // Will not trigger if the Gallery image is provided. 
+                // can't find where Lun is, seems to only be defined in GalleryImagereference. 
+                if (disk.CreationData?.CreateOption == "FromImage" && disk.SecurityProfile?.SecurityType == null
+                    && disk.CreationData?.GalleryImageReference?.Id != null)
+                    {
+                        if (disk.SecurityProfile == null)
+                        {
+                            disk.SecurityProfile = new DiskSecurityProfile();
+                        }
+                        disk.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                        // TODO find the image and if it supports v2. 
+                        var imageRef = disk.CreationData?.ImageReference;
+                        // Must an ImageReference have a publisher and offer and sku and version? I think so.
+                        var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                            DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+                        var loc = resourceClient.ResourceGroups.GetAsync(this.ResourceGroupName).Result.Location;
+                        // now call the get image api
+                        // assume publisher and offer ans sku are all here?
+                        /*
+                        var response = this.VirtualMachineImageClient.GetWithHttpMessagesAsync(
+                        loc.Canonicalize(),
+                        imageRef.  PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        version: this.Version).GetAwaiter().GetResult();
+                        
+                        var image = new PSVirtualMachineImageDetail
+                        {
+                            RequestId = response.RequestId,
+                            StatusCode = response.Response.StatusCode,
+                            Id = response.Body.Id,
+                            Location = response.Body.Location,
+                            Name = response.Body.Name,
+                            Version = this.Version,
+                            PublisherName = this.PublisherName,
+                            Offer = this.Offer,
+                            Skus = this.Skus,
+                            OSDiskImage = response.Body.OsDiskImage,
+                            ImageDeprecationStatus = response.Body.ImageDeprecationStatus,
+                            DataDiskImages = response.Body.DataDiskImages,
+                            PurchasePlan = response.Body.Plan,
+                            AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
+                            HyperVGeneration = response.Body.HyperVGeneration
+                        };
+                        */
+
+                        if (disk.HyperVGeneration == null)
+                        {
+                            disk.HyperVGeneration = HyperVGeneration.V2;
+                        }
+                    }
+                    
 
                     Disk result;
                     if (auxAuthHeader != null)
