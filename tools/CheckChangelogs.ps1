@@ -15,7 +15,7 @@ param(
     [Parameter(Mandatory)]
     [string] $rootPath = "src",
     [Parameter(Mandatory=$True)]
-    [string] $outputFile = "artifacts"
+    [string] $outputFile = "artifacts/ChangedModule.txt"
 )
 $changelogFiles = Get-ChildItem -Path $rootPath -Filter changelog.md -Recurse -File
 
@@ -40,7 +40,10 @@ foreach ($file in $changelogFiles) {
     }
 
     if ($hasChanges) {
-        $modifiedDirectories.Add((Get-Item $file.DirectoryName).Name)
+        $fullPath = $file.DirectoryName
+        $relativePath = $fullPath.Substring($rootPath.Length).TrimStart('\', '/')
+        $firstSubDirectory = ($relativePath -split '[\\/]', 2)[0]
+        $modifiedDirectories.Add($firstSubDirectory)
     }
 }
 

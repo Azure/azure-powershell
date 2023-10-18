@@ -36,7 +36,7 @@
     <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.2</TestFramework>
     <IsGenerateBased Condition="'$(IsGenerateBased)' != 'true'">false</IsGenerateBased>
     <IsSecurityCheck Condition="'$(IsSecurityCheck)' != 'true'">false</IsSecurityCheck>
-    <CheckChangeLog Condition="'$(CheckChangeLog)' != 'true'">false</CheckChangeLog>
+    <ModifiedModuleBuild Condition="'$(ModifiedModuleBuild)' != 'true'">false</ModifiedModuleBuild>
 
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
@@ -152,41 +152,48 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
+    <CallTarget Targets="IncludeCsprojFiles" />
     <CallTarget Targets="BuildNormalModules" />
     <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
     <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
   </Target>
 
-  <Target Name="BuildNormalModules">
-    <ItemGroup Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND '$(CheckChangeLog)' == 'false'">
+  <Target Name="IncludeCsprojFiles">
+    <ItemGroup Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND '$(ModifiedModuleBuild)' == 'false'">
       <CsprojFiles Include="$(RepoRoot)src/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
       <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
       <CsprojFiles Include="$(CoreTests)" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'Core'" />
       <CsprojFiles Include="$(RepoRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true' and '$(TestFramework)' != 'net472'" />
     </ItemGroup>
+
     <ItemGroup Condition="$(PullRequestNumber) != ''">
       <!-- Always build and test common code -->
       <CsprojFiles Include="@(BuildCsprojList)" />
       <CsprojFiles Include="@(TestCsprojList)" />
     </ItemGroup>
+
     <ItemGroup Condition="$(TargetModule) != ''">
       <!-- Add test projects only if Configuration is not Release -->
       <CsprojFiles Include="@(BuildCsprojList)" />
       <CsprojFiles Include="@(TestCsprojList)" Condition="'$(Configuration)' != 'Release'" />
     </ItemGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\CheckChangelogs.ps1 -outputFile $(RepoArtifacts)/ChangedModule.txt -rootPath $(RepoRoot)src/ &quot;" Condition="'$(CheckChangeLog)' == 'true'"/>
-    <ReadLinesFromFile File="$(RepoArtifacts)/ChangedModule.txt" Condition="'$(CheckChangeLog)' == 'true'">
-        <Output TaskParameter="Lines" ItemName="ChangedModuleList" />
+
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\CheckChangeLogs.ps1 -outputFile $(RepoArtifacts)/ModifiedModule.txt -rootPath $(RepoRoot)src/ &quot;" Condition="'$(ModifiedModuleBuild)' == 'true'"/>
+    <ReadLinesFromFile File="$(RepoArtifacts)/ModifiedModule.txt" Condition="'$(ModifiedModuleBuild)' == 'true'">
+        <Output TaskParameter="Lines" ItemName="ModifiedModuleList" />
     </ReadLinesFromFile>
-    <ItemGroup Condition="'$(CheckChangeLog)' == 'true' AND '@(ChangedModuleList)' != ''">
-      <!-- Add changed projects only if CheckChangeLog is true -->
-      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
-      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
-      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
+    <ItemGroup Condition="'$(ModifiedModuleBuild)' == 'true' AND '@(ModifiedModuleList)' != ''">
+      <!-- Add changed projects only if ModifiedModuleBuild is true -->
+      <CsprojFiles Include="$(RepoRoot)src/%(ModifiedModuleList.Identity)/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ModifiedModuleList.Identity)/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ModifiedModuleList.Identity)/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
       <CsprojFiles Include="$(CoreTests)" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'Core'" />
-      <CsprojFiles Include="$(RepoRoot)src/%(ChangedModuleList.Identity)/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true' and '$(TestFramework)' != 'net472'" />
+      <CsprojFiles Include="$(RepoRoot)src/%(ModifiedModuleList.Identity)/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true' and '$(TestFramework)' != 'net472'" />
     </ItemGroup>
+  </Target>
+
+  <Target Name="BuildNormalModules">
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" Condition="'@(CsprojFiles)' != ''" />
     <PropertyGroup>
