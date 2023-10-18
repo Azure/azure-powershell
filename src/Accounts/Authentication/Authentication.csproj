@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.6.1" />
+    <PackageReference Include="Azure.Identity" Version="1.10.2" />
     <PackageReference Include="Azure.Identity.BrokeredAuthentication" Version="1.0.0-beta.3" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.49.1" />
     <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="2.23.0" />
