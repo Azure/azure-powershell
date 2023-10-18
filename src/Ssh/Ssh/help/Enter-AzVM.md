@@ -78,8 +78,6 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.Hybri
 
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
-<a name='example-7-connect-to-azure-resource-using-aad-certificate-issued-certificates-and-custom-key-files'></a>
-
 ### Example 7: Connect to Azure Resource using Microsoft Entra certificate issued certificates and custom key files
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
