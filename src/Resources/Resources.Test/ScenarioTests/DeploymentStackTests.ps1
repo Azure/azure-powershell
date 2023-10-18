@@ -1257,7 +1257,7 @@ function Test-NewManagementGroupDeploymentStack
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Success - MG scoped deployment
-		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Failure - template file not found
@@ -1444,7 +1444,7 @@ function Test-SetManagementGroupDeploymentStack
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Success - MG scoped deployment
-		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
+		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Failure - template file not found
