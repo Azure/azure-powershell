@@ -62,7 +62,7 @@ This command disables Microsoft Entra-only authentication for workspace ContosoW
 ```powershell
 Disable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
-```outout
+```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                              False Consistent 3/23/2022 8:27:47 AM
