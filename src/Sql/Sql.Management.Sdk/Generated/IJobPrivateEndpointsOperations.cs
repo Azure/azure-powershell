@@ -9,15 +9,15 @@ namespace Microsoft.Azure.Management.Sql
     using Models;
 
     /// <summary>
-    /// JobStepsOperations operations.
+    /// JobPrivateEndpointsOperations operations.
     /// </summary>
-    public partial interface IJobStepsOperations
+    public partial interface IJobPrivateEndpointsOperations
     {
         /// <summary>
-        /// Gets all job steps for a job&#39;s current version.
+        /// Gets a list of job agent private endpoints.
         /// </summary>
         /// <remarks>
-        /// Gets all job steps for a job&#39;s current version.
+        /// Gets a list of job agent private endpoints.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='jobAgentName'>
         /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,13 +40,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobStep>>> ListByJobWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobPrivateEndpoint>>> ListByAgentWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a job step in a job&#39;s current version.
+        /// Gets a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Gets a job step in a job&#39;s current version.
+        /// Gets a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -60,11 +57,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='jobAgentName'>
         /// The name of the job agent.
         /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step.
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,13 +72,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobStep>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, string stepName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates a job step. This will implicitly create a new job version.
+        /// Creates or updates a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a job step. This will implicitly create a new job version.
+        /// Creates or updates a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -95,14 +89,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='jobAgentName'>
         /// The name of the job agent.
         /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step.
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='parameters'>
-        /// The requested state of the job step.
+        /// The requested private endpoint state.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -116,13 +107,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobStep>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, string stepName, JobStep parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a job step. This will implicitly create a new job version.
+        /// Deletes a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Deletes a job step. This will implicitly create a new job version.
+        /// Deletes a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -133,11 +124,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='jobAgentName'>
         /// The name of the job agent.
         /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step to delete.
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint to delete.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -148,13 +136,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, string stepName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all job steps in the specified job version.
+        /// Creates or updates a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Gets all job steps in the specified job version.
+        /// Creates or updates a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -165,49 +153,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='jobAgentName'>
         /// The name of the job agent.
         /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
         /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobStep>>> ListByVersionWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the specified version of a job step.
-        /// </summary>
-        /// <remarks>
-        /// Gets the specified version of a job step.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step.
+        /// <param name='parameters'>
+        /// The requested private endpoint state.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -221,13 +171,42 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobStep>> GetByVersionWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, string stepName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all job steps for a job&#39;s current version.
+        /// Deletes a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Gets all job steps for a job&#39;s current version.
+        /// Deletes a private endpoint.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint to delete.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets a list of job agent private endpoints.
+        /// </summary>
+        /// <remarks>
+        /// Gets a list of job agent private endpoints.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -244,30 +223,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobStep>>> ListByJobNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets all job steps in the specified job version.
-        /// </summary>
-        /// <remarks>
-        /// Gets all job steps in the specified job version.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobStep>>> ListByVersionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobPrivateEndpoint>>> ListByAgentNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
