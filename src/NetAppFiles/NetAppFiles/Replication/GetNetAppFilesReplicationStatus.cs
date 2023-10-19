@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 Name = NameParts[2];
             }
 
-            var anfReplicationStatus = AzureNetAppFilesManagementClient.Volumes.ReplicationStatusMethod(ResourceGroupName, AccountName, PoolName, Name);
+            var anfReplicationStatus = AzureNetAppFilesManagementClient.Volumes.ReplicationStatus(ResourceGroupName, AccountName, PoolName, Name);
             WriteObject(anfReplicationStatus.ToPsNetAppFilesReplicationStatus());
         }
     }

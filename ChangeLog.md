@@ -1,3 +1,168 @@
+## 10.4.0 - September 2023
+#### Az.Accounts 2.13.1
+* Added the module name in breaking change messages 
+* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
+
+#### Az.Cdn 3.1.1
+* Customized output property for 'Get-AzCdnEdgeNode' command
+
+#### Az.ContainerInstance 3.2.2
+* Added breaking change warning message for 'Get/New/Remove-ContainerGroup', 'New-ContainerInstanceInitDefinitionObject', 'New-ContainerInstanceObject' [#22268]
+    - Output properties starting with 'PreviouState' will be corrected to 'PreviousState'
+
+#### Az.DataProtection 2.1.0
+* Added soft delete and MUA feature for Backup vaults
+
+#### Az.KeyVault 4.12.0
+* Supported splitting 'Import-AzKeyVaultSecurityDomain' process into three steps to allow keys to be hidden offline.
+    - Added 'DownloadExchangeKey', 'RestoreBlob' and 'ImportRestoredBlob' in 'Import-AzKeyVaultSecurityDomain'.
+
+#### Az.RecoveryServices 6.6.0
+* Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.
+* Added TLaD warning https://aka.ms/TLaD for Azure Site Recovery and Backup.
+* Added support for setting AlwaysON soft delete state for recovery services vault.
+
+#### Az.ResourceMover 1.2.0
+* Upgraded API version to 2023-08-01.
+* Improved error reporting to the customer using custom cmdlets to handle the error in a better manner.
+
+#### Az.Resources 6.11.0
+* Supported 'TemplateParameterFile' to accept a '.bicepparam' file.
+* Fixed inexplicable error message when subscription and scope are neither provided in 'Get-AzRoleDefinition'. [#22716]
+
+#### Az.SecurityInsights 3.1.0
+* Fixed parameters' issues for 'New-AzSentinelAlertRule' and 'Update-AzSentinelAlertRule' [#21181][#21217][#22318]
+
+#### Az.StackHCI 2.2.0
+* Bug fixes for Attestation commands.
+* Added support for installing mandatory extensions on HCI OS 22H2 and removed confirmation prompt for consent.
+* Added ability to customize the location of logs generated during registration.
+    - Custom log location can be specified by specifying an optional '-LogsDirectory' parameter in 'Register-AzStackHCI'.
+    - 'Get-AzStackHCILogsDirectory' can be used to obtain the log location.
+* Increased retry count for setting up ARC integration.
+
+#### Az.Storage 5.10.1
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+    - 'Get-AzStorageQueueStoredAccessPolicy'
+    - 'Set-AzStorageQueueStoredAccessPolicy'
+
+## 10.3.0 - September 2023
+#### Az.Accounts 2.13.0
+* Supported in-tool notification for version upgrade.
+* Added an alias 'Set-AzConfig' to 'Update-AzConfig'
+* Refilled credentials from 'AzKeyStore' when run 'Save-AzContext' [#22355]
+* Added config 'DisableErrorRecordsPersistence' to disable writing error records to file system [#21732]
+* Updated Azure.Core to 1.34.0.
+
+#### Az.ArcResourceBridge 1.0.0
+* General availability for module Az.ArcResourceBridge
+
+#### Az.Compute 6.3.0
+* Added '-Hibernate' switch parameter to 'Stop-AzVmss' default parameter set. 
+* For 'Get-AzVmRunCommand', a bug is fixed to work when returning a list of RunCommands [#22403]
+* Updated Azure.Core to 1.34.0.
+* Added new cmdlets 'Get-AzHostSize' and 'Update-AzHost'.
+* Added the 'Standard' value to the 'SecurityType' parameter to the cmdlets 'Set-AzDiskSecurityType', 'New-AzvmssConfig', 'Set-AzVmssSecurityProfile', 'Update-AzVmss', 'New-AzVmss', 'New-AzVMConfig', 'Set-AzVMsecurityProfile', and 'New-AzVM'.
+* Fixed 'Update-AzVMSS' to update ImageReferenceSKU [#22195]
+* Updated the above change to include 'New-AzVMConfig' as 1 scenario was initially missed when only using this cmdlet.
+
+#### Az.ContainerInstance 3.2.1
+* Fixed a bug in 'Invoke-AzContainerInstanceCommand' when no result was returned under some conditions [#22453]
+
+#### Az.ContainerRegistry 4.1.1
+* Updated Azure.Core to 1.34.0.
+
+#### Az.CosmosDB 1.12.0
+* Added PublicNetworkAccess parameter to 'Restore-AzCosmosDBAccount'.
+
+#### Az.DataLakeAnalytics 1.0.3
+* Refreshed module to ensure catalog file signed by Microsoft.
+
+#### Az.EventHub 4.1.0
+* Supported EventHub MSI capture feature in cmdlets 'New-AzEventHub' and 'Set-AzEventHub'
+
+#### Az.HDInsight 6.0.1
+* This change adds some warning messages to the incoming break changes for the next version, with detailed information as follows:
+  * Added warning message for planning to replace the type of property 'DiskEncryption' of type 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster' from 'Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties' to 'Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties'.
+  * Added warning message for planning to replace the type of property 'WorkerNodeDataDisksGroups' of type 'Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster'  from 'List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>' to 'List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>'.
+  * Added warning message for planning to replace the parameter 'NodeType' type from 'Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType' to 'Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType'.
+
+#### Az.KeyVault 4.11.0
+* Fixed certificate policy bugs if DnsName is null. [#22642]
+* Supported multi-regions for Managed Hsm: Added 'Add/Get/Remove-AzAzKeyVaultManagedHsmRegion'.
+* Added 'Test-AzKeyVaultNameAvailability' and 'Test-AzKeyVaultManagedHsmNameAvailability'.
+* Formatted the table view of '*-AzKeyVault', '*-AzKeyVaultKey' and '*-AzKeyVaultSecret'
+* Added 'SecurityDomain' and 'Regions' properties into the output of 'New/Update/Get-AzKeyVaultManagedHsm' ('PSManagedHsm').
+* Supported Setting for Managed HSM: Added 'Get-AzKeyVaultSetting' and 'Update-AzKeyVaultSetting'.
+* Updated Azure.Core to 1.34.0.
+
+#### Az.Maintenance 1.3.1
+* Fixed breaking change information
+
+#### Az.Media 1.1.2
+* Refreshed module to ensure catalog file signed by Microsoft.
+
+#### Az.Monitor 4.6.0
+* Fixed 'Get-AzInsightsPrivateLinkScope' to support 'ResourceId' parameter [#22568]
+* Fixed 'New-AzMetricAlertRuleV2DimensionSelection' to have 'exclude' or 'include' values only [#22256]
+* Fixed 'Add-AzMetriAlertRuleV2' and 'Get-AzMetricAlertRuleV2' to support web tests criteria [#22350]
+* Added parameter 'Dimension' for 'Get-AzMetric' to easily filter metrics by dimensions [#22320]
+* Added breaking change for Data Collection Rule
+* Added breaking change for Action Group
+
+#### Az.Network 6.2.0
+* Added support for new Application Gateway SKU type, Basic SKU
+* Onboarded 'Microsoft.EventGrid/partnerNamespaces' to private link cmdlets
+* Onboarded 'Microsoft.EventGrid/namespaces' to private link cmdlets
+* Fixed bug in 'NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable' to add 'GeoLocation' as a valid input for VariableName
+* Added breaking change message for parameter 'VariableName' in 'NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable' to remove 'Geo' as a valid input.
+
+#### Az.NotificationHubs 1.1.2
+* Refreshed module to ensure catalog file signed by Microsoft.
+
+#### Az.PolicyInsights 1.6.3
+* Updated Azure.Core to 1.34.0.
+
+#### Az.RecoveryServices 6.5.1
+* Added StorageAccountName property to AzureFileShare job.
+* Added support for AFS restore to alternate storage account in different region and resource group than source storage account.
+
+#### Az.Resources 6.10.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
+
+#### Az.SecurityInsights 3.0.2
+* Added breaking change message for 'Az.SecurityInsights'.
+
+#### Az.Sql 4.10.0
+* Fixed cmdlets to use 2018-06-01-preview api version
+    - 'Set-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+    - 'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+    - 'Disable-AzSqlInstanceDatabaseSensitivityRecommendation',
+* Added 'EncryptionProtectorAutoRotation' parameter to 'New-AzSqlDatabase', 'Get-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlDatabaseCopy', 'New-AzSqlDatabaseSecondary', 'Restore-AzSqlDatabase' cmdlets
+
+#### Az.SqlVirtualMachine 2.1.0
+* Added more parameters on cmdlet 'Update-AzSqlVM'.
+
+#### Az.StackHCI 2.1.2
+* Removed device type check and only check if service already exists.
+
+#### Az.Storage 5.10.0
+* Updated Azure.Core to 1.34.0.
+* Added support for encryption context 
+    - 'New-AzDataLakeGen2Item'
+* Updated warning messages for an upcoming breaking change when creating a storage account 
+    - 'New-AzStorageAccount'
+* Updated help file of 'New-AzStorageQueueSASToken'
+
+#### Az.Synapse 3.0.3
+* Updated Azure.Core to 1.34.0.
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.18
+
+#### Az.Websites 3.1.1
+* Added support for XenonMV3 webapps
+
 ## 10.2.0 - August 2023
 #### Az.Accounts 2.12.5
 * Changed output stream from debug stream to warning stream for 'CmdletPreviewAttribute'
@@ -1997,6 +2162,7 @@ for a better powershell experience and as a result would witness breaking change
   - Update-AzFrontDoorCdnCustomDomainValidationToken
   - Update-AzFrontDoorCdnRule
 * Renamed Set cmdlets to Update cmdlets
+* Renamed 'Unpublish-AzCdnEndpointContent' cmdlets to 'Clear-AzCdnEndpointContent'
 * Added 'Object' suffix to memory object creation cmdlets
 
 #### Az.Compute

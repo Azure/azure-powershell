@@ -204,6 +204,64 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating new simple virtualNetwork and subnets.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-subnetWithDefaultOutboundAccessCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -DefaultOutboundAccess $true
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Add a subnet
+        $vnet | Add-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24 -DefaultOutboundAccess $true
+        
+        # Set VirtualNetwork
+        $vnet | Set-AzVirtualNetwork
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
+        Assert-AreEqual $true $vnetExpected.Subnets[0].DefaultOutboundAccess
+        Assert-AreEqual $true $vnetExpected.Subnets[1].DefaultOutboundAccess
+        
+        # Remove a subnet
+        Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork
+        
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating, updating & deleting a virtualNetwork with BGP Communities.
 .DESCRIPTION
 SmokeTest

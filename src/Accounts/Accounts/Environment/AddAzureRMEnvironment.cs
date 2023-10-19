@@ -225,10 +225,9 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "Microsoft Graph Url")]
         public string MicrosoftGraphUrl { get; set; }
 
-
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // do not call begin processing there is no context needed for this cmdlet
+            return false;
         }
 
         public override void ExecuteCmdlet()

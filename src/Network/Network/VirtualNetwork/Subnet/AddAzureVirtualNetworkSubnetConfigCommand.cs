@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Network
 
             subnet.Name = this.Name;
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
+            subnet.DefaultOutboundAccess = this.DefaultOutboundAccess;
 
             if (this.IpAllocation != null)
             {

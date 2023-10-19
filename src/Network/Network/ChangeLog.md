@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+* Added DefaultOutboundAccess parameter on subnet creation
+* Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
+* Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
+* Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+
+## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
 * Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
 * Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
@@ -28,6 +34,7 @@
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
+* Fixed bug in `New-AzVirtualNetworkGateway` to include only non-empty `ExtendedLocation`
 
 ## Version 6.1.0
 * Added new cmdlets to get Connection child resource of Network Virtual Appliance.

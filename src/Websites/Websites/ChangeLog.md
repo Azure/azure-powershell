@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.1
+* Added support for XenonMV3 webapps
+
 ## Version 3.1.0
 * Added AppServicePlan management support for P0V3 and P*mv3 tiers
 

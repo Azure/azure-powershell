@@ -24,3 +24,17 @@ ori001 testps-rg-da16jm
 ```
 
 Update an AzureFrontDoor origin group under the profile via identity
+
+
+### Example 3: Update an AzureFrontDoor origin group under the profile, disable the EnforceCertificateNameCheck
+```powershell
+Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -EnforceCertificateNameCheck:$false
+```
+
+```output
+Name   ResourceGroupName
+----   -----------------
+ori001 testps-rg-da16jm
+```
+
+Update an AzureFrontDoor origin group under the profile, disable the EnforceCertificateNameCheck
