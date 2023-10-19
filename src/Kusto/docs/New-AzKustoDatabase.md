@@ -259,11 +259,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
