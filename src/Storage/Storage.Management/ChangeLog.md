@@ -22,7 +22,7 @@
 * Supported creationTime filter in Blob Inventory
     - `New-AzStorageBlobInventoryPolicyRule`
 * Upgraded Azure.Core to 1.35.0.
-* Remove prefix '?' of the created SAS token
+* [Breaking Change] Removed prefix '?' of the created SAS token
     - `New-AzStorageBlobSasToken`
     - `New-AzStorageContainerSasToken`
     - `New-AzStorageAccountSasToken`
