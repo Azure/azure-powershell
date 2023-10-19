@@ -8,40 +8,28 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing the Geographic hierarchy used with the Geographic
-    /// traffic routing method.
+    /// Class representing the properties of the Geographic hierarchy used with the
+    /// Geographic traffic routing method.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TrafficManagerGeographicHierarchy : ProxyResource
+    public partial class GeographicHierarchyProperties
     {
         /// <summary>
-        /// Initializes a new instance of the TrafficManagerGeographicHierarchy class.
+        /// Initializes a new instance of the GeographicHierarchyProperties class.
         /// </summary>
-        public TrafficManagerGeographicHierarchy()
+        public GeographicHierarchyProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the TrafficManagerGeographicHierarchy class.
+        /// Initializes a new instance of the GeographicHierarchyProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-        /// </param>
 
         /// <param name="geographicHierarchy">The region at the root of the hierarchy from all the regions in the
         /// hierarchy can be retrieved.
         /// </param>
-        public TrafficManagerGeographicHierarchy(string id = default(string), string name = default(string), string type = default(string), Region geographicHierarchy = default(Region))
+        public GeographicHierarchyProperties(Region geographicHierarchy = default(Region))
 
-        : base(id, name, type)
         {
             this.GeographicHierarchy = geographicHierarchy;
             CustomInit();
@@ -57,7 +45,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// Gets or sets the region at the root of the hierarchy from all the regions
         /// in the hierarchy can be retrieved.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.geographicHierarchy")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "geographicHierarchy")]
         public Region GeographicHierarchy {get; set; }
     }
 }

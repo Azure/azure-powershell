@@ -7,17 +7,12 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 {
 
     /// <summary>
-    /// Defines values for TrafficRoutingMethod.
+    /// Defines values for HeatMapType.
     /// </summary>
 
 
-    public static class TrafficRoutingMethod
+    public static class HeatMapType
     {
-        public const string Performance = "Performance";
-        public const string Priority = "Priority";
-        public const string Weighted = "Weighted";
-        public const string Geographic = "Geographic";
-        public const string MultiValue = "MultiValue";
-        public const string Subnet = "Subnet";
+        public const string Default = "default";
     }
 }

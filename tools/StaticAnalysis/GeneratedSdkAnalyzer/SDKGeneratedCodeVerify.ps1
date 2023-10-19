@@ -39,7 +39,8 @@ $skipModules = @(
     'Az.RedisCache',
     'Az.Storage',
     'Az.Search',
-    'Az.Sql'
+    'Az.Sql',
+    'Az.TrafficManager'
 )
 
 $MissReadMe = 9000

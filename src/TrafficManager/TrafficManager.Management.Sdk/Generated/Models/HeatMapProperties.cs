@@ -8,32 +8,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing a Traffic Manager HeatMap.
+    /// Class representing a Traffic Manager HeatMap properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class HeatMapModel : ProxyResource
+    public partial class HeatMapProperties
     {
         /// <summary>
-        /// Initializes a new instance of the HeatMapModel class.
+        /// Initializes a new instance of the HeatMapProperties class.
         /// </summary>
-        public HeatMapModel()
+        public HeatMapProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the HeatMapModel class.
+        /// Initializes a new instance of the HeatMapProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-        /// </param>
 
         /// <param name="startTime">The beginning of the time window for this HeatMap, inclusive.
         /// </param>
@@ -46,9 +35,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <param name="trafficFlows">The traffic flows produced in this HeatMap calculation.
         /// </param>
-        public HeatMapModel(string id = default(string), string name = default(string), string type = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), System.Collections.Generic.IList<HeatMapEndpoint> endpoints = default(System.Collections.Generic.IList<HeatMapEndpoint>), System.Collections.Generic.IList<TrafficFlow> trafficFlows = default(System.Collections.Generic.IList<TrafficFlow>))
+        public HeatMapProperties(System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), System.Collections.Generic.IList<HeatMapEndpoint> endpoints = default(System.Collections.Generic.IList<HeatMapEndpoint>), System.Collections.Generic.IList<TrafficFlow> trafficFlows = default(System.Collections.Generic.IList<TrafficFlow>))
 
-        : base(id, name, type)
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -66,25 +54,25 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <summary>
         /// Gets or sets the beginning of the time window for this HeatMap, inclusive.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.startTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "startTime")]
         public System.DateTime? StartTime {get; set; }
 
         /// <summary>
         /// Gets or sets the ending of the time window for this HeatMap, exclusive.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endTime")]
         public System.DateTime? EndTime {get; set; }
 
         /// <summary>
         /// Gets or sets the endpoints used in this HeatMap calculation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endpoints")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpoints")]
         public System.Collections.Generic.IList<HeatMapEndpoint> Endpoints {get; set; }
 
         /// <summary>
         /// Gets or sets the traffic flows produced in this HeatMap calculation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trafficFlows")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "trafficFlows")]
         public System.Collections.Generic.IList<TrafficFlow> TrafficFlows {get; set; }
     }
 }
