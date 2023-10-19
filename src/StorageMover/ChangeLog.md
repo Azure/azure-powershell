@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*  Supported SmbFileShareEndpoint and SmbEndpoint
 
 ## Version 1.0.1
 * Fixed the issue of $Host conflicting with system parameter $Host
