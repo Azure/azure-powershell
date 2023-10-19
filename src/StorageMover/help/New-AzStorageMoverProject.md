@@ -106,7 +106,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -199,29 +199,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROJECT <IProject>`: The Project resource.
-  - `[Description <String>]`: A description for the Project.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 
