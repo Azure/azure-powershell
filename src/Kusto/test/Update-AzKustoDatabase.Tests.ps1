@@ -93,4 +93,21 @@ Describe 'Update-AzKustoDatabase' {
 
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
     }
+
+    It 'UpdateViaIdentityExpandedCMK' {
+        $clusterName = $env.kustoClusterName
+        $resourceGroupName = $env.resourceGroupName
+        $name = "testdatabase" + $env.rstr6
+        $databaseFullName = $clusterName + "/" + $name
+
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+
+        $keyVaultPropertyKeyName = $env.keyName
+        $keyVaultPropertyKeyVaultUri = $env.keyVaultUrl
+        $keyVaultPropertyKeyVersion = $env.keyVersion
+        $keyVaultPropertyUserIdentity = $env.userAssignedManagedIdentityResourceId
+
+        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $name
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadWrite" -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+    }
 }

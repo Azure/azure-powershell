@@ -14,7 +14,9 @@ Creates or updates a database.
 
 ```
 New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>] [-Location <String>]
+ [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>] [-Location <String>]
  [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -105,6 +107,66 @@ The time the data should be kept in cache for fast queries in TimeSpan.
 
 ```yaml
 Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyName
+The name of the key vault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVaultUri
+The Uri of the key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVersion
+The version of the key vault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyUserIdentity
+The user assigned identity (ARM resource id) that has access to the key.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -77,6 +77,30 @@ function New-AzKustoDatabase {
         ${SoftDeletePeriod},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The name of the key vault key.
+        ${KeyVaultPropertyKeyName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The Uri of the key vault.
+        ${KeyVaultPropertyKeyVaultUri},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The version of the key vault key.
+        ${KeyVaultPropertyKeyVersion},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The user assigned identity (ARM resource id) that has access to the key.
+        ${KeyVaultPropertyUserIdentity},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
         # By default, any user who run operation on a database become an Admin on it.
@@ -168,7 +192,27 @@ function New-AzKustoDatabase {
                 $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
                 $null = $PSBoundParameters.Remove('HotCachePeriod')
             }
-            
+
+            if ($PSBoundParameters.ContainsKey('KeyVaultPropertyKeyName')) {
+                $Parameter.KeyVaultPropertyKeyName = $PSBoundParameters['KeyVaultPropertyKeyName']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyName')
+            }
+
+            if ($PSBoundParameters.ContainsKey('KeyVaultPropertyKeyVaultUri')) {
+                $Parameter.KeyVaultPropertyKeyVaultUri = $PSBoundParameters['KeyVaultPropertyKeyVaultUri']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyVaultUri')
+            }
+
+            if ($PSBoundParameters.ContainsKey('KeyVaultPropertyKeyVersion')) {
+                $Parameter.KeyVaultPropertyKeyVersion = $PSBoundParameters['KeyVaultPropertyKeyVersion']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyVersion')
+            }
+
+            if ($PSBoundParameters.ContainsKey('KeyVaultPropertyUserIdentity')) {
+                $Parameter.KeyVaultPropertyUserIdentity = $PSBoundParameters['KeyVaultPropertyUserIdentity']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyUserIdentity')
+            }
+
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
 
             Az.Kusto.internal\New-AzKustoDatabase @PSBoundParameters

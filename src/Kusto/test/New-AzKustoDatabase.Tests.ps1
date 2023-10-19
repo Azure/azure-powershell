@@ -1,5 +1,5 @@
 Describe 'New-AzKustoDatabase' {
-    
+
     BeforeAll{
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
@@ -32,6 +32,20 @@ Describe 'New-AzKustoDatabase' {
         $databaseFullName = $env.kustoClusterName + "/" + $name
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
+        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $hotCachePeriodInDays
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
+    }
+
+    It 'CreateWithCMK' {
+        $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
+        $name = "testdatabase" + $env.rstr6
+        $databaseFullName = $env.kustoClusterName + "/" + $name
+        $keyVaultPropertyKeyName = $env.keyName
+        $keyVaultPropertyKeyVaultUri = $env.keyVaultUrl
+        $keyVaultPropertyKeyVersion = $env.keyVersion
+        $keyVaultPropertyUserIdentity = $env.userAssignedManagedIdentityResourceId
+
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
         Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $hotCachePeriodInDays
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }

@@ -88,6 +88,34 @@ function Update-AzKustoDatabase {
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
         ${SoftDeletePeriod},
 
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The name of the key vault key.
+        ${KeyVaultPropertyKeyName},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The Uri of the key vault.
+        ${KeyVaultPropertyKeyVaultUri},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The version of the key vault key.
+        ${KeyVaultPropertyKeyVersion},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The user assigned identity (ARM resource id) that has access to the key.
+        ${KeyVaultPropertyUserIdentity},
+
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
@@ -162,26 +190,55 @@ function Update-AzKustoDatabase {
     )
 
     process {
-        try {
-            if ($PSBoundParameters['Kind'] -eq 'ReadWrite') {
+        try
+        {
+            if ($PSBoundParameters['Kind'] -eq 'ReadWrite')
+            {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ReadWriteDatabase]::new()
             }
-            else {
+            else
+            {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ReadOnlyFollowingDatabase]::new()
             }
 
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')
 
-            if ($PSBoundParameters.ContainsKey('SoftDeletePeriod')) {
+            if ( $PSBoundParameters.ContainsKey('SoftDeletePeriod'))
+            {
                 $Parameter.SoftDeletePeriod = $PSBoundParameters['SoftDeletePeriod']
                 $null = $PSBoundParameters.Remove('SoftDeletePeriod')
-            } 
-            
-            if ($PSBoundParameters.ContainsKey('HotCachePeriod')) {
+            }
+
+            if ( $PSBoundParameters.ContainsKey('HotCachePeriod'))
+            {
                 $Parameter.HotCachePeriod = $PSBoundParameters['HotCachePeriod']
                 $null = $PSBoundParameters.Remove('HotCachePeriod')
-            }   
+            }
+
+            if ( $PSBoundParameters.ContainsKey('KeyVaultPropertyKeyName'))
+            {
+                $Parameter.KeyVaultPropertyKeyName = $PSBoundParameters['KeyVaultPropertyKeyName']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyName')
+            }
+
+            if ( $PSBoundParameters.ContainsKey('KeyVaultPropertyKeyVaultUri'))
+            {
+                $Parameter.KeyVaultPropertyKeyVaultUri = $PSBoundParameters['KeyVaultPropertyKeyVaultUri']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyVaultUri')
+            }
+
+            if ( $PSBoundParameters.ContainsKey('KeyVaultPropertyKeyVersion'))
+            {
+                $Parameter.KeyVaultPropertyKeyVersion = $PSBoundParameters['KeyVaultPropertyKeyVersion']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyKeyVersion')
+            }
+
+            if ( $PSBoundParameters.ContainsKey('KeyVaultPropertyUserIdentity'))
+            {
+                $Parameter.KeyVaultPropertyUserIdentity = $PSBoundParameters['KeyVaultPropertyUserIdentity']
+                $null = $PSBoundParameters.Remove('KeyVaultPropertyUserIdentity')
+            }
 
             $Parameter.Location = $PSBoundParameters['Location']
             $null = $PSBoundParameters.Remove('Location')
@@ -190,7 +247,8 @@ function Update-AzKustoDatabase {
 
             Az.Kusto.internal\Update-AzKustoDatabase @PSBoundParameters
         }
-        catch {
+        catch
+        {
             throw
         }
     }
