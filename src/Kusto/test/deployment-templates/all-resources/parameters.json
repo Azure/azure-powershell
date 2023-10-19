@@ -3,7 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "kustoApiVersion": {
-      "value": "2022-12-29"
+      "value": "2023-05-02"
+    },
+    "userAssignedManagedIdentityName": {
+      "value": "uaMizd30we"
     },
     "kustoSkuName": {
       "value": "Dev(No SLA)_Standard_E2a_v4"
@@ -12,13 +15,19 @@
       "value": "Basic"
     },
     "kustoClusterName": {
-      "value": "pssdk4cv18e"
+      "value": "pssdkzd30we"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollow4cv18e"
+      "value": "pssdkfollowzd30we"
+    },
+    "kustoMigrationClusterName": {
+      "value": "pssdkmigrzd30we"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
+    },
+    "kustoMigrationDatabaseName": {
+      "value": "DbToMigrate"
     },
     "kustoDatabaseScriptName": {
       "value": "CreateTableScript"
@@ -30,16 +39,16 @@
       "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespace4cv18e"
+      "value": "EHNamespacezd30we"
     },
     "eventHubName": {
-      "value": "eh4cv18e"
+      "value": "ehzd30we"
     },
     "iotHubName": {
-      "value": "iot4cv18e"
+      "value": "iotzd30we"
     },
     "cosmosDbAccountName": {
-      "value": "cosmos4cv18e"
+      "value": "cosmoszd30we"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -48,16 +57,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sa4cv18e"
+      "value": "sazd30we"
     },
     "virtualNetworkName": {
-      "value": "vnet4cv18e"
+      "value": "vnetzd30we"
     },
     "subnetName": {
-      "value": "subnet4cv18e"
+      "value": "subnetzd30we"
     },
     "privateEndpointName": {
-      "value": "pe4cv18e"
+      "value": "pezd30we"
+    },
+    "keyVaultName": {
+      "value": "kvPwshzd30we"
+    },
+    "keyName": {
+      "value": "byokzd30we"
     }
   }
 }

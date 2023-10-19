@@ -8,6 +8,12 @@
                 "description": "<KUSTO API Version>"
             }
         },
+        "userAssignedManagedIdentityName": {
+            "type": "string",
+            "metadata": {
+                "description": "<USER ASSIGNED IDENTITY NAME>"
+            }
+        },
         "kustoSkuName": {
             "type": "string",
             "metadata": {
@@ -32,10 +38,22 @@
                 "description": "<KUSTO FOLLOWER CLUSTER NAME>"
             }
         },
+        "kustoMigrationClusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO MIGRATION CLUSTER NAME>"
+            }
+        },
         "kustoDatabaseName": {
             "type": "string",
             "metadata": {
                 "description": "<KUSTO DATABASE NAME>"
+            }
+        },
+        "kustoMigrationDatabaseName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO DATABASE NAME IN MIGRATION CLUSTER>"
             }
         },
         "kustoDatabaseScriptName": {
@@ -115,9 +133,27 @@
             "metadata": {
                 "description": "<PRIVATE ENDPOINT NAME>"
             }
+        },
+        "keyVaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KEY VAULT NAME>"
+            }
+        },
+        "keyName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KEY NAME>"
+            }
         }
     },
     "resources": [
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "name": "[parameters('userAssignedManagedIdentityName')]",
+            "apiVersion": "2018-11-30",
+            "location": "[resourceGroup().location]"
+        },
         {
             "type": "Microsoft.Kusto/clusters",
             "apiVersion": "[parameters('kustoApiVersion')]",
@@ -129,8 +165,14 @@
                 "capacity": 1
             },
             "identity": {
-                "type": "SystemAssigned"
-            }
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]": {}
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]"
+            ]
         },
         {
             "type": "Microsoft.Kusto/clusters/databases",
@@ -184,6 +226,34 @@
             "identity": {
                 "type": "SystemAssigned"
             }
+        },
+        {
+            "type": "Microsoft.Kusto/clusters",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "name": "[parameters('kustoMigrationClusterName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('kustoSkuName')]",
+                "tier": "[parameters('kustoClusterTier')]",
+                "capacity": 1
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Kusto/clusters/databases",
+            "name": "[concat(parameters('kustoMigrationClusterName'), '/', parameters('kustoMigrationDatabaseName'))]",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "location": "[resourceGroup().location]",
+            "kind": "ReadWrite",
+            "properties": {
+                "softDeletePeriodInDays": 365,
+                "hotCachePeriodInDays": 31
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('kustoMigrationClusterName'))]"
+            ]
         },
         {
             "type": "Microsoft.EventHub/namespaces",
@@ -262,6 +332,22 @@
             ]
         },
         {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2022-04-01",
+            "name": "[guid(parameters('cosmosDbAccountName'), parameters('kustoClusterName'))]",
+            "scope": "[format('Microsoft.DocumentDb/databaseAccounts/{0}', parameters('cosmosDbAccountName'))]",
+            "properties": {
+                "description": "Granting RBAC reader permission on Cosmos DB",
+                "principalId": "[reference(parameters('kustoClusterName'), parameters('kustoApiVersion'), 'full').identity.principalId]",
+                "principalType": "ServicePrincipal",
+                "roleDefinitionId": "[format('/subscriptions/{0}/providers/Microsoft.Authorization/roleDefinitions/{1}', subscription().subscriptionId, 'fbdf93bf-df7d-467e-a4d2-9458aa1360c8')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', toLower(parameters('cosmosDbAccountName')))]",
+                "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"
+            ]
+        },
+        {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2022-05-01",
             "name": "[parameters('storageAccountName')]",
@@ -278,7 +364,9 @@
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
-                    "addressPrefixes": [ "10.0.0.0/16" ]
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
                 }
             }
         },
@@ -308,7 +396,9 @@
                         "name": "[parameters('privateEndpointName')]",
                         "properties": {
                             "privateLinkServiceId": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]",
-                            "groupIds": [ "cluster" ]
+                            "groupIds": [
+                                "cluster"
+                            ]
                         }
                     }
                 ]
@@ -318,6 +408,57 @@
                 "[resourceId('Microsoft.Kusto/clusters/databases/scripts', parameters('kustoClusterName'), parameters('kustoDatabaseName'), parameters('kustoDatabaseScriptName'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
             ]
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2022-11-01",
+            "name": "[parameters('keyVaultName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "enableSoftDelete": true,
+                "softDeleteRetentionInDays": 7,
+                "enablePurgeProtection": true,
+                "tenantId": "[subscription().tenantId]",
+                "sku": {
+                    "name": "Standard",
+                    "family": "A"
+                },
+                "accessPolicies": [
+                    {
+                        "tenantId": "[subscription().tenantId]",
+                        "objectId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))).principalId]",
+                        "permissions": {
+                            "certificates": [],
+                            "keys": [
+                                "Get",
+                                "WrapKey",
+                                "UnwrapKey"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]"
+            ]
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/keys",
+            "apiVersion": "2022-11-01",
+            "name": "[format('{0}/{1}', parameters('keyVaultName'), parameters('keyName'))]",
+            "properties": {
+                "kty": "RSA",
+                "keyOps": "[createArray('sign', 'verify', 'wrapKey', 'unwrapKey', 'encrypt', 'decrypt')]",
+                "keySize": 2048,
+                "attributes": {
+                    "enabled": true,
+                    "recoveryLevel": "Recoverable+Purgeable",
+                    "recoverableDays": 90
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
+            ]
         }
     ],
     "outputs": {
@@ -325,9 +466,13 @@
             "type": "string",
             "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"
         },
-        "kustoFolowerClusterResourceId": {
+        "kustoFollowerClusterResourceId": {
             "type": "string",
             "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoFollowerClusterName'))]"
+        },
+        "kustoMigrationClusterResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoMigrationClusterName'))]"
         },
         "eventHubNameSpaceResourceId": {
             "type": "string",
@@ -348,6 +493,18 @@
         "storageAccountResourceId": {
             "type": "string",
             "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        },
+        "userAssignedManagedIdentityResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]"
+        },
+        "keyVaultUrl": {
+            "type": "string",
+            "value": "[reference(concat('Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2022-11-01').vaultUri]"
+        },
+        "keyVersion": {
+            "type": "string",
+            "value": "[last(split(reference(resourceId('Microsoft.KeyVault/vaults/keys', parameters('keyVaultName'), parameters('keyName'))).keyUriWithVersion, '/'))]"
         }
     }
 }

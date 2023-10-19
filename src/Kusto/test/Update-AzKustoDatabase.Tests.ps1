@@ -40,7 +40,7 @@ Describe 'Update-AzKustoDatabase' {
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseFullName = $followerClusterName + "/" + $databaseName
 
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
@@ -79,7 +79,7 @@ Describe 'Update-AzKustoDatabase' {
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseFullName = $followerClusterName + "/" + $databaseName
 
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
