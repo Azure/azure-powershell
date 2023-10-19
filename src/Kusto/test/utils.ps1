@@ -14,7 +14,7 @@ function setupEnv() {
     # 4. leave only $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env 
 
     $env.subscriptionId = "fbccad30-f0ed-4ac4-9497-93bf6141062f" # Kusto_Dev_Kusto_Ilay_00
-    $env.location = 'Australia East'
+    $env.location = 'UK South'
     #$env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
     #$env.location = 'East US'
     Write-Host "Setting up and connection to subcription " $env.SubscriptionId -ForegroundColor Green
@@ -53,7 +53,9 @@ function setupEnv() {
     Update-Parameter -propertyName "kustoApiVersion" -propertyValue "2023-08-15" -params $params
     Update-Parameter -propertyName "userAssignedManagedIdentityName" -propertyValue ("uaMi" + $rstr1) -params $params
     Update-Parameter -propertyName "kustoSkuName" -propertyValue "Dev(No SLA)_Standard_E2a_v4" -params $params
+    Update-Parameter -propertyName "kustoFollowerSkuName" -propertyValue "Standard_E8as_v5+1TB_PS" -params $params #Hyper threading vm is required for sandbox custom image tests
     Update-Parameter -propertyName "kustoClusterTier" -propertyValue "Basic" -params $params
+    Update-Parameter -propertyName "kustoFollowerClusterTier" -propertyValue "Standard" -params $params
     Update-Parameter -propertyName "kustoClusterName" -propertyValue ("pssdk" + $rstr1) -params $params
     Update-Parameter -propertyName "kustoFollowerClusterName" -propertyValue ("pssdkfollow" + $rstr1) -params $params
     Update-Parameter -propertyName "kustoMigrationClusterName" -propertyValue ("pssdkmigr" + $rstr1) -params $params

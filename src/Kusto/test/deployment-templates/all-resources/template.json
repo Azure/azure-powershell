@@ -219,9 +219,9 @@
             "name": "[parameters('kustoFollowerClusterName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "[parameters('kustoSkuName')]",
-                "tier": "[parameters('kustoClusterTier')]",
-                "capacity": 1
+                "name": "[parameters('kustoFollowerSkuName')]",
+                "tier": "[parameters('kustoFollowerClusterTier')]",
+                "capacity": 2
             },
             "identity": {
                 "type": "SystemAssigned"
