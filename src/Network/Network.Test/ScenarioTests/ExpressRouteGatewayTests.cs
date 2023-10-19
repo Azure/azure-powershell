@@ -31,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.exrdev)]
         public void TestExpressRouteGatewayUpdatesForDifferentCustomerBlockTrafficPreferences()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
+            TestRunner.RunTestScript("Test-ExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
         }
     }
 }
