@@ -47,7 +47,7 @@ function setupEnv() {
     # Prepare arm template paramters
     Write-Host "Preparing parameters for ARM template deploymet" -ForegroundColor Green
     $params = Get-Content .\test\deployment-templates\all-resources\parameters.json | ConvertFrom-Json
-    $params.parameters.kustoApiVersion.value = "2022-12-29"
+    $params.parameters.kustoApiVersion.value = "2023-08-15"
     $params.parameters.kustoSkuName.value = "Dev(No SLA)_Standard_E2a_v4"
     $params.parameters.kustoClusterTier.value = "Basic"
     $params.parameters.kustoClusterName.value = "pssdk" + $rstr1
