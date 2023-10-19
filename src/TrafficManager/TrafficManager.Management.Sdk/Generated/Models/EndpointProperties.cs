@@ -8,40 +8,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing a Traffic Manager endpoint.
+    /// Class representing a Traffic Manager endpoint properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Endpoint : ProxyResource
+    public partial class EndpointProperties
     {
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointProperties class.
         /// </summary>
-        public Endpoint()
+        public EndpointProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Endpoint class.
+        /// Initializes a new instance of the EndpointProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-        /// </param>
-
-        /// <param name="endpointStatus">The status of the endpoint. If the endpoint is Enabled, it is probed for
-        /// endpoint health and is included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
-
-        /// <param name="alwaysServe">If Always Serve is enabled, probing for endpoint health will be disabled
-        /// and endpoints will be included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
 
         /// <param name="targetResourceId">The Azure Resource URI of the of the endpoint. Not applicable to endpoints
         /// of type &#39;ExternalEndpoints&#39;.
@@ -50,6 +31,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <param name="target">The fully-qualified DNS name or IP address of the endpoint. Traffic Manager
         /// returns this value in DNS responses to direct traffic to this endpoint.
         /// </param>
+
+        /// <param name="endpointStatus">The status of the endpoint. If the endpoint is Enabled, it is probed for
+        /// endpoint health and is included in the traffic routing method.
+        /// Possible values include: 'Enabled', 'Disabled'</param>
 
         /// <param name="weight">The weight of this endpoint when using the &#39;Weighted&#39; traffic routing
         /// method. Possible values are from 1 to 1000.
@@ -99,14 +84,16 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <param name="customHeaders">List of custom headers.
         /// </param>
-        public Endpoint(string id = default(string), string name = default(string), string type = default(string), string endpointStatus = default(string), string alwaysServe = default(string), string targetResourceId = default(string), string target = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), long? minChildEndpointsIPv4 = default(long?), long? minChildEndpointsIPv6 = default(long?), System.Collections.Generic.IList<string> geoMapping = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<EndpointPropertiesSubnetsItem> subnets = default(System.Collections.Generic.IList<EndpointPropertiesSubnetsItem>), System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem>))
 
-        : base(id, name, type)
+        /// <param name="alwaysServe">If Always Serve is enabled, probing for endpoint health will be disabled
+        /// and endpoints will be included in the traffic routing method.
+        /// Possible values include: 'Enabled', 'Disabled'</param>
+        public EndpointProperties(string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), long? minChildEndpointsIPv4 = default(long?), long? minChildEndpointsIPv6 = default(long?), System.Collections.Generic.IList<string> geoMapping = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<EndpointPropertiesSubnetsItem> subnets = default(System.Collections.Generic.IList<EndpointPropertiesSubnetsItem>), System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem>), string alwaysServe = default(string))
+
         {
-            this.EndpointStatus = endpointStatus;
-            this.AlwaysServe = alwaysServe;
             this.TargetResourceId = targetResourceId;
             this.Target = target;
+            this.EndpointStatus = endpointStatus;
             this.Weight = weight;
             this.Priority = priority;
             this.EndpointLocation = endpointLocation;
@@ -117,6 +104,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
             this.GeoMapping = geoMapping;
             this.Subnets = subnets;
             this.CustomHeaders = customHeaders;
+            this.AlwaysServe = alwaysServe;
             CustomInit();
         }
 
@@ -127,24 +115,10 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
 
         /// <summary>
-        /// Gets or sets the status of the endpoint. If the endpoint is Enabled, it is
-        /// probed for endpoint health and is included in the traffic routing method. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endpointStatus")]
-        public string EndpointStatus {get; set; }
-
-        /// <summary>
-        /// Gets or sets if Always Serve is enabled, probing for endpoint health will
-        /// be disabled and endpoints will be included in the traffic routing method. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.alwaysServe")]
-        public string AlwaysServe {get; set; }
-
-        /// <summary>
         /// Gets or sets the Azure Resource URI of the of the endpoint. Not applicable
         /// to endpoints of type &#39;ExternalEndpoints&#39;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetResourceId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetResourceId")]
         public string TargetResourceId {get; set; }
 
         /// <summary>
@@ -152,14 +126,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// Traffic Manager returns this value in DNS responses to direct traffic to
         /// this endpoint.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.target")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "target")]
         public string Target {get; set; }
+
+        /// <summary>
+        /// Gets or sets the status of the endpoint. If the endpoint is Enabled, it is
+        /// probed for endpoint health and is included in the traffic routing method. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpointStatus")]
+        public string EndpointStatus {get; set; }
 
         /// <summary>
         /// Gets or sets the weight of this endpoint when using the &#39;Weighted&#39; traffic
         /// routing method. Possible values are from 1 to 1000.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.weight")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "weight")]
         public long? Weight {get; set; }
 
         /// <summary>
@@ -169,20 +150,20 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// must be specified on all endpoints, and no two endpoints can share the same
         /// priority value.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.priority")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "priority")]
         public long? Priority {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the location of the external or nested endpoints
         /// when using the &#39;Performance&#39; traffic routing method.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endpointLocation")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpointLocation")]
         public string EndpointLocation {get; set; }
 
         /// <summary>
         /// Gets or sets the monitoring status of the endpoint. Possible values include: &#39;CheckingEndpoint&#39;, &#39;Online&#39;, &#39;Degraded&#39;, &#39;Disabled&#39;, &#39;Inactive&#39;, &#39;Stopped&#39;, &#39;Unmonitored&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.endpointMonitorStatus")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "endpointMonitorStatus")]
         public string EndpointMonitorStatus {get; set; }
 
         /// <summary>
@@ -190,7 +171,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// child profile in order for the parent profile to be considered available.
         /// Only applicable to endpoint of type &#39;NestedEndpoints&#39;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minChildEndpoints")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minChildEndpoints")]
         public long? MinChildEndpoints {get; set; }
 
         /// <summary>
@@ -199,7 +180,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// be considered available. Only applicable to endpoint of type
         /// &#39;NestedEndpoints&#39;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minChildEndpointsIPv4")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minChildEndpointsIPv4")]
         public long? MinChildEndpointsIPv4 {get; set; }
 
         /// <summary>
@@ -208,7 +189,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// to be considered available. Only applicable to endpoint of type
         /// &#39;NestedEndpoints&#39;.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minChildEndpointsIPv6")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minChildEndpointsIPv6")]
         public long? MinChildEndpointsIPv6 {get; set; }
 
         /// <summary>
@@ -216,7 +197,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// using the &#39;Geographic&#39; traffic routing method. Please consult Traffic
         /// Manager Geographic documentation for a full list of accepted values.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.geoMapping")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "geoMapping")]
         public System.Collections.Generic.IList<string> GeoMapping {get; set; }
 
         /// <summary>
@@ -224,13 +205,20 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// mapped to this endpoint when using the &#39;Subnet&#39; traffic routing method. An
         /// empty list will match all ranges not covered by other endpoints.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnets")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subnets")]
         public System.Collections.Generic.IList<EndpointPropertiesSubnetsItem> Subnets {get; set; }
 
         /// <summary>
         /// Gets or sets list of custom headers.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customHeaders")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "customHeaders")]
         public System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem> CustomHeaders {get; set; }
+
+        /// <summary>
+        /// Gets or sets if Always Serve is enabled, probing for endpoint health will
+        /// be disabled and endpoints will be included in the traffic routing method. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alwaysServe")]
+        public string AlwaysServe {get; set; }
     }
 }

@@ -8,38 +8,26 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
     using System.Linq;
 
     /// <summary>
-    /// Class representing Traffic Manager User Metrics.
+    /// Class representing a Traffic Manager Real User Metrics key response.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class UserMetricsModel : ProxyResource
+    public partial class UserMetricsProperties
     {
         /// <summary>
-        /// Initializes a new instance of the UserMetricsModel class.
+        /// Initializes a new instance of the UserMetricsProperties class.
         /// </summary>
-        public UserMetricsModel()
+        public UserMetricsProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UserMetricsModel class.
+        /// Initializes a new instance of the UserMetricsProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-        /// </param>
 
         /// <param name="key">The key returned by the User Metrics operation.
         /// </param>
-        public UserMetricsModel(string id = default(string), string name = default(string), string type = default(string), string key = default(string))
+        public UserMetricsProperties(string key = default(string))
 
-        : base(id, name, type)
         {
             this.Key = key;
             CustomInit();
@@ -54,7 +42,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <summary>
         /// Gets or sets the key returned by the User Metrics operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.key")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "key")]
         public string Key {get; set; }
     }
 }
