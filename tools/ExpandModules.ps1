@@ -44,14 +44,14 @@ try {
 
     if ($ModifiedModules.Length -eq 0) {
         Write-Host "ModifiedModule.txt not finded, default expand all modules."
-        $ModifiedModules = $AllPackages.BaseName
+        $ModifiedModules = $AllPackages.Name
     }
     foreach ($package in $AllPackages) {
         foreach ($module in $ModifiedModules) {
             if ($package.Name -like "*$module*") { 
-                $module_name = $package.BaseName
+                $module_name = $package.Name
                 $zip_artifact = $package.FullName -replace ".nupkg$",".zip"
-                Write-Output "Renaming $package.FullName to zip archive $zip_artifact"
+                Write-Output "Renaming $package to zip archive $zip_artifact"
                 Rename-Item $package.FullName $zip_artifact
                 Write-Output "Expanding $zip_artifact to $tmp\$module_name"
                 Expand-Archive $zip_artifact -DestinationPath "$tmp\$module_name"
