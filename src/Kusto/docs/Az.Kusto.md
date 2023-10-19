@@ -74,6 +74,9 @@ Gets a Kusto cluster database script.
 ### [Get-AzKustoSku](Get-AzKustoSku.md)
 Lists eligible region SKUs for Kusto resource provider by Azure region.
 
+### [Invoke-AzKustoClusterMigration](Invoke-AzKustoClusterMigration.md)
+Migrate data from a Kusto cluster to another cluster.
+
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
 Checks that the data connection parameters are valid.
 
@@ -85,9 +88,6 @@ Diagnoses network connectivity status for external resources on which the servic
 
 ### [Invoke-AzKustoInviteDatabaseFollower](Invoke-AzKustoInviteDatabaseFollower.md)
 Generates an invitation token that allows attaching a follower database to this database.
-
-### [Move-AzKustoCluster](Move-AzKustoCluster.md)
-Migrate data from a Kusto cluster to another cluster.
 
 ### [New-AzKustoAttachedDatabaseConfiguration](New-AzKustoAttachedDatabaseConfiguration.md)
 Creates or updates an attached database configuration.

@@ -139,6 +139,13 @@ directive:
       subject: OperationsResultLocation
       parameter-name: ^PassThru$
     hide: true
+    # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
+  - where:
+      verb: Move
+      subject: Cluster
+    set:
+      verb: Invoke
+      subject: ClusterMigration
   # Correct some generated code
   - from: source-file-csharp
     where: $
