@@ -1,0 +1,19 @@
+name: Enforce Required Reviewers  
+  
+on:  
+  pull_request:  
+  pull_request_review:
+  
+jobs:  
+  Check:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - name: Check Reviewers 
+        shell: pwsh
+        env:
+            REPOSITORY: ${{github.repository}}
+            PR_NO: ${{github.event.number || github.event.pull_request.number}}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/${env:REPOSITORY}/main/.github/workflows/script/enforce_required_reviewers_check.ps1" -OutFile "./enforce_required_reviewers_check.ps1"
+          ./enforce_required_reviewers_check.ps1
