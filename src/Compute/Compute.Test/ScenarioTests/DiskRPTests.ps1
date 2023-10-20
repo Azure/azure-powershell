@@ -1701,3 +1701,37 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
 		Clean-ResourceGroup $rgname;
 	}
 }
+
+<#
+.SYNOPSIS
+Test AcceleratedNetwork and PublicNetworkAccess parameters for 
+Disk and Snapshot objects. 
+Also tested the CopyStart and CompletionPercent features for snapshots. 
+#>
+function Test-NewDiskSecurityTypeDefaulting
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $diskname = "d" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        Assert-AreEqual $disk.SecurityProfile.securityType $securityTypeTL;
+        
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}

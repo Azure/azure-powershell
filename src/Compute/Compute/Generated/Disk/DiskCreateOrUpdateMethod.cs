@@ -80,57 +80,67 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // Will not trigger if the Gallery image is provided. 
                 // can't find where Lun is, seems to only be defined in GalleryImagereference. 
                 if (disk.CreationData?.CreateOption == "FromImage" && disk.SecurityProfile?.SecurityType == null
-                    && disk.CreationData?.GalleryImageReference?.Id != null)
+                    && disk.CreationData?.GalleryImageReference?.Id == null 
+                    && disk.CreationData?.ImageReference != null)
                     {
-                        if (disk.SecurityProfile == null)
-                        {
-                            disk.SecurityProfile = new DiskSecurityProfile();
-                        }
-                        disk.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                        // TODO find the image and if it supports v2. 
+                        
                         var imageRef = disk.CreationData?.ImageReference;
                         // Must an ImageReference have a publisher and offer and sku and version? I think so.
                         var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                             DefaultProfile.DefaultContext,
                             AzureEnvironment.Endpoint.ResourceManager);
-                        var loc = resourceClient.ResourceGroups.GetAsync(this.ResourceGroupName).Result.Location;
+                        string loc = "";
+                        if (disk.Location == null)
+                        {
+                            loc = resourceClient.ResourceGroups.GetAsync(this.ResourceGroupName).Result.Location;
+                        }
+                        else
+                        {
+                            loc = disk.Location;
+                        }
+
                         // now call the get image api
                         // assume publisher and offer ans sku are all here?
-                        /*
-                        var response = this.VirtualMachineImageClient.GetWithHttpMessagesAsync(
-                        loc.Canonicalize(),
-                        imageRef.  PublisherName,
-                        this.Offer,
-                        this.Skus,
-                        version: this.Version).GetAwaiter().GetResult();
-                        
-                        var image = new PSVirtualMachineImageDetail
-                        {
-                            RequestId = response.RequestId,
-                            StatusCode = response.Response.StatusCode,
-                            Id = response.Body.Id,
-                            Location = response.Body.Location,
-                            Name = response.Body.Name,
-                            Version = this.Version,
-                            PublisherName = this.PublisherName,
-                            Offer = this.Offer,
-                            Skus = this.Skus,
-                            OSDiskImage = response.Body.OsDiskImage,
-                            ImageDeprecationStatus = response.Body.ImageDeprecationStatus,
-                            DataDiskImages = response.Body.DataDiskImages,
-                            PurchasePlan = response.Body.Plan,
-                            AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
-                            HyperVGeneration = response.Body.HyperVGeneration
-                        };
-                        */
+                        string imageRefString = imageRef.Id.ToString();
 
-                        if (disk.HyperVGeneration == null)
+                        var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                        string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                        string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                        string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+                        
+                        var imgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
+                            DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+
+                        var response = imgClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                            loc.Canonicalize(),
+                            imagePublisher,
+                            imageOffer,
+                            imageSku,
+                            version: imageVersion).GetAwaiter().GetResult();
+
+                        if (response.Body.HyperVGeneration == "V2")
                         {
-                            disk.HyperVGeneration = HyperVGeneration.V2;
+                            // then assume this is TL supported as per design request.
+                            // If SecurityType already exists, so user set it, don't change it.
+                            if (disk.SecurityProfile == null)
+                            {
+                                disk.SecurityProfile = new DiskSecurityProfile();
+                            }
+                            if (disk.SecurityProfile.SecurityType == null)
+                            {
+                                disk.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                            }  
+                        }
+                        else
+                        {
+                            //Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch
+                            WriteInformation("Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch", new string[] { "PSHOST" });
                         }
                     }
                     
-
                     Disk result;
                     if (auxAuthHeader != null)
                     {
