@@ -19,19 +19,19 @@
 -->
 ## Upcoming Release
 * Added Private Link Cmdlets
-* Get-AzWvdPrivateEndpointConnection
-* Get-AzWvdPrivateLinkResource
-* Remove-AzWvdPrivateEndpointConnection
+    - `Get-AzWvdPrivateEndpointConnection`
+    - `Get-AzWvdPrivateLinkResource`
+    - `Remove-AzWvdPrivateEndpointConnection`
 * Added Scaling Plan Personal Schedule cmdlets
-* Get-AzWvdScalingPlanPersonalSchedule
-* New-AzWvdScalingPlanPersonalSchedule
-* Remove-AzWvdScalingPlanPersonalSchedule
-* Update-AzWvdScalingPlanPersonalSchedule
+    - `Get-AzWvdScalingPlanPersonalSchedule`
+    - `New-AzWvdScalingPlanPersonalSchedule`
+    - `Remove-AzWvdScalingPlanPersonalSchedule`
+    - `Update-AzWvdScalingPlanPersonalSchedule`
 * Added Scaling Plan Pooled Schedule cmdlets
-* Get-AzWvdScalingPlanPooledSchedule
-* New-AzWvdScalingPlanPooledSchedule
-* Remove-AzWvdScalingPlanPooledSchedule
-* Update-AzWvdScalingPlanPooledSchedule
+    - `Get-AzWvdScalingPlanPooledSchedule`
+    - `New-AzWvdScalingPlanPooledSchedule`
+    - `Remove-AzWvdScalingPlanPooledSchedule`
+    - `Update-AzWvdScalingPlanPooledSchedule`
 * Updated rampDownCapacityThresholdPct minimum value from 0 to 1 on ScalingPlanPooledSchedule cmdlets
 * Added showInFeed property to ApplicationGroups
 
