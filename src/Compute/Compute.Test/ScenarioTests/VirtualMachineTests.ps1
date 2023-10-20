@@ -6957,3 +6957,75 @@ function Test-VMDefaultsToTrustedLaunch
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+#>
+function Test-VMDefaultsToTrustedLaunchWithManagedDisk
+{
+    # Setup
+    $rgname = "adsandvmd1";#Get-ComputeTestResourceName;
+    $loc = "eastus2";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # DefaultParameterSet with VMConfig scenario
+        $domainNameLabel = "d1" + $rgname;
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'v2' + $rgname;
+        $vnetname = "myVnet2";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb2" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $diskname = $vmname + "d1";
+        $NICName = $vmname+ "n1";
+        $NSGName = $vmname + "nsg";
+        $OSDiskSizeinGB = 128;
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition-core";
+        $disable = $false;
+        $enable = $true;
+        
+        # Creating a VM using Default parameterset
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "usertest";#Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create disk to use later
+        $securityTypeTL = "TrustedLaunch";
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        
+        # Network setup
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+        Set-AzVMOSDisk -Linux -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig
+        
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        # Validate VMConfig scenario
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
