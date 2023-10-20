@@ -468,7 +468,7 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 # Option 2 - Use the cmdlet switch
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
-Set-AzVirtualNetworkGateway $gateway -AllowVirtualWanTraffic $true
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $true
 ```
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
@@ -483,7 +483,7 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 # Option 2 - Use the cmdlet switch
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
-Set-AzVirtualNetworkGateway $gateway -AllowVirtualWanTraffic $false
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $false
 ```
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
@@ -498,7 +498,7 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 # Option 2 - Use the cmdlet switch
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
-Set-AzVirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $true
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $true
 ```
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
@@ -513,7 +513,7 @@ $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 
 # Option 2 - Use the cmdlet switch
 $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
-Set-AzVirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $false
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $false
 ```
 In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
 
