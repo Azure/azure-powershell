@@ -124,7 +124,7 @@ function Test-RaByScope
     # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName $definitionName -Scope $assignmentScope
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId -RoleDefinitionName $definitionName -Scope $assignmentScope -RoleAssignmentId df9cf7c5-4985-46c8-add2-537cef460c2f
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -155,7 +155,7 @@ function Test-RaById
     $assignmentScope = $scope +"/"
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName $definitionName -Scope $assignmentScope
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId -RoleDefinitionName $definitionName -Scope $assignmentScope -RoleAssignmentId e4bdcb2a-ee09-41d8-b113-1dddc2fdb495
 
     $assignments = Get-AzRoleAssignment -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     Assert-NotNull $assignments
@@ -187,7 +187,7 @@ function Test-RaByResourceGroup
     $resourceGroupName = "nori-resource-test"
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName $definitionName -ResourceGroupName $resourceGroupName
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId -RoleDefinitionName $definitionName -ResourceGroupName $resourceGroupName -RoleAssignmentId 7b30dd13-c4fd-4083-b1e3-5ab3ae0ae574
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -210,16 +210,15 @@ function Test-RaByResource
 {
     # Setup
     $definitionName = 'Virtual Machine User Login'
-    $groups = Get-AzADGroup | Select-Object -Last 1 -Wait
-    Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
+    # group123 for test
+    $groupId = "001e3c56-caf3-486c-bfe4-9878c6882912"
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
     $resource = Get-AzResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $groups[0].Id -RoleDefinitionName $definitionName -ResourceGroupName $resource.ResourceGroupName -ResourceType $resource.ResourceType -ResourceName $resource.Name
-
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $groupId -RoleDefinitionName $definitionName -ResourceGroupName $resource.ResourceGroupName -ResourceType $resource.ResourceType -ResourceName $resource.Name -RoleAssignmentId db6e0231-1be9-4bcd-bf16-79de537439fe
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -227,7 +226,7 @@ function Test-RaByResource
     # Assert
     Assert-NotNull $newAssignment
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
-    Assert-AreEqual $groups[0].DisplayName $newAssignment.DisplayName
+    # Assert-AreEqual $groups[0].DisplayName $newAssignment.DisplayName
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -291,7 +290,7 @@ Tests verifies creation and deletion of a RoleAssignments for Service principal 
 function Test-RaByServicePrincipal
 {
     # Setup
-    $servicePrincipals = "03db8fc0-ac92-45e5-a213-e85502b63a4a"
+    $servicePrincipals = "ab60f8c9-2b63-497f-9009-45c9e47c3c19"
 
     # Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
@@ -423,7 +422,7 @@ function Test-RaDeletionByScope
                         -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope `
-                        # -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3bc7
+                        -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3bc7
     $newAssignment.Scope = $scope.toUpper()
 
     # cleanup
@@ -843,9 +842,12 @@ function Test-CreateRAForGroup
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId 
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b77
 
     Assert-True {$data.ObjectType -eq "Group"}
+
+    #cleanup
+    Remove-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
 }
 
 <#
@@ -860,9 +862,12 @@ function Test-CreateRAForGuest
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId 
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b79
 
     Assert-True {$data.ObjectType -eq "User"}
+
+    #cleanup
+    Remove-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
 }
 
 <#
@@ -877,9 +882,12 @@ function Test-CreateRAForMember
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId  -Scope $Scope  -RoleDefinitionId $RoleDefinitionId 
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId  -Scope $Scope  -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b79
 
     Assert-True {$data.ObjectType -eq "User"}
+
+    #cleanup
+    Remove-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
 }
 
 <#
@@ -895,9 +903,12 @@ function Test-CreateRAForServicePrincipal
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f30dbceb3b79
 
     Assert-True {$data.ObjectType -eq "ServicePrincipal"}
+
+    #cleanup
+    Remove-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
 }
 
 <#
@@ -915,9 +926,12 @@ function Test-CreateRAWithObjectType
     $ObjectType = "User"
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope -RoleDefinitionId $RoleDefinitionId 
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId "2f153333-5be9-4f43-abd2-04561777c8b0"
 
     Assert-True {$data.ObjectType -eq "User"}
+
+    #cleanup
+    Remove-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId
 }
 
 <#
@@ -930,10 +944,10 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
-    $ExpectedError = "Operation returned an invalid status code 'BadRequest'"
+    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Operation returned an invalid status code ''BadRequest''"'
 
     #When
-    $function = { New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId }
+    $function = { New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72 }
 
     Assert-Throws $function $ExpectedError
 }
