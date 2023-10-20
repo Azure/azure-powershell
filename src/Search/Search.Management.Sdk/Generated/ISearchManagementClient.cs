@@ -103,5 +103,39 @@ namespace Microsoft.Azure.Management.Search
         /// </summary>
         ISharedPrivateLinkResourcesOperations SharedPrivateLinkResources { get; }
 
+        /// <summary>
+        /// Gets the IUsagesOperations
+        /// </summary>
+        IUsagesOperations Usages { get; }
+
+        /// <summary>
+        /// Gets the quota usage for a search sku in the given subscription.
+        /// </summary>
+        /// <remarks>
+        /// Gets the quota usage for a search sku in the given subscription.
+        /// </remarks>
+        /// <param name='searchManagementRequestOptions'>
+        /// 
+        /// </param>
+        /// <param name='location'>
+        /// The unique location name for a Microsoft Azure geographic region.
+        /// </param>
+        /// <param name='skuName'>
+        /// The unique search service sku name supported by Azure Cognitive Search.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<QuotaUsageResult>> UsageBySubscriptionSkuWithHttpMessagesAsync(string location, string skuName, SearchManagementRequestOptions searchManagementRequestOptions = default(SearchManagementRequestOptions), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
     }
 }
