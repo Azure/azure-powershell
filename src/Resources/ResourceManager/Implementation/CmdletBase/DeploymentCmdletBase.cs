@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
             {
-                BuildAndUseBicepParameters();
+                BuildAndUseBicepParameters(emitWarnings: false);
             }
 
             if (BicepUtility.IsBicepFile(TemplateFile))
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var parameterObject = new Hashtable();
             if (bicepparamFileParameters != null)
             {
-                BuildAndUseBicepParameters();
+                BuildAndUseBicepParameters(emitWarnings: true);
                 AddToParametersHashtable(bicepparamFileParameters, parameterObject);
                 return parameterObject;
             }
@@ -487,9 +487,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 x => x.Value);
         }
 
-        protected void BuildAndUseBicepParameters()
+        protected void BuildAndUseBicepParameters(bool emitWarnings)
         {
-            var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), GetDynamicParametersDictionary(), this.WriteVerbose, this.WriteWarning);
+            var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), GetDynamicParametersDictionary(), this.WriteVerbose, emitWarnings ? this.WriteWarning : null);
             bicepparamFileParameters = GetParametersFromJson(output.parametersJson);
 
             if (TemplateObject == null && 
