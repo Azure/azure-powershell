@@ -21,16 +21,18 @@ Create an in-memory object for PlatformTelemetryDataSource.
 
 ## EXAMPLES
 
-### Example 1: Create event hub direct destination object
+### Example 1: Create platform telemetry data source object
 ```powershell
-{{ Add code here }}
+New-AzPlatformTelemetryDataSourceObject -Stream "Microsoft.Insights/autoscalesettings:Logs-AutoscaleEvaluations","Microsoft.Insights/autoscalesettings:Logs-AutoscaleScaleActions" -Name "myAutoScalePlatformTelemetryLogs"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                             Stream
+----                             ------
+myAutoScalePlatformTelemetryLogs {Microsoft.Insights/autoscalesettings:Logs-AutoscaleEvaluations, Microsoft.Insights/autoscalesettings:Logs-AutoscaleScaleActions}
 ```
 
-This command creates a windows event log data source object with XPathQuery.
+This command creates a platform telemetry data source object with XPathQuery.
 
 ## PARAMETERS
 

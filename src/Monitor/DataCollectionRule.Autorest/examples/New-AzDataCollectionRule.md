@@ -2,53 +2,53 @@
 ```powershell
 New-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\ruleTest1.json
 # Note: content of .\test\jsonfile\ruleTest1.json
-{
-    "location": "eastus",
-    "properties": {
-        "dataSources": {
-            "performanceCounters": [
-            {
-                "streams": [
-                    "Microsoft-InsightsMetrics"
-                ],
-                "samplingFrequencyInSeconds": 60,
-                "counterSpecifiers": [
-                    "\\Processor(_Total)\\% Processor Time"
-                ],
-                "name": "perfCounter01"
-            },
-            {
-                "name": "cloudTeamCoreCounters",
-                "streams": [
-                  "Microsoft-Perf"
-                ],
-                "samplingFrequencyInSeconds": 15,
-                "counterSpecifiers": [
-                  "\\Processor(_Total)\\% Processor Time",
-                  "\\Memory\\Committed Bytes",
-                  "\\LogicalDisk(_Total)\\Free Megabytes",
-                  "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"
-                ]
-              }
-            ]
-        },
-        "destinations": {
-            "azureMonitorMetrics": {
-              "name": "azureMonitorMetrics-default"
-            }
-        },
-        "dataFlows": [
-            {
-                "streams": [
-                    "Microsoft-InsightsMetrics"
-            ],
-                "destinations": [
-                    "azureMonitorMetrics-default"
-            ]
-            }
-        ]
-    }
-}
+# {
+#     "location": "eastus",
+#     "properties": {
+#         "dataSources": {
+#             "performanceCounters": [
+#             {
+#                 "streams": [
+#                     "Microsoft-InsightsMetrics"
+#                 ],
+#                 "samplingFrequencyInSeconds": 60,
+#                 "counterSpecifiers": [
+#                     "\\Processor(_Total)\\% Processor Time"
+#                 ],
+#                 "name": "perfCounter01"
+#             },
+#             {
+#                 "name": "cloudTeamCoreCounters",
+#                 "streams": [
+#                   "Microsoft-Perf"
+#                 ],
+#                 "samplingFrequencyInSeconds": 15,
+#                 "counterSpecifiers": [
+#                   "\\Processor(_Total)\\% Processor Time",
+#                   "\\Memory\\Committed Bytes",
+#                   "\\LogicalDisk(_Total)\\Free Megabytes",
+#                   "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"
+#                 ]
+#               }
+#             ]
+#         },
+#         "destinations": {
+#             "azureMonitorMetrics": {
+#               "name": "azureMonitorMetrics-default"
+#             }
+#         },
+#         "dataFlows": [
+#             {
+#                 "streams": [
+#                     "Microsoft-InsightsMetrics"
+#             ],
+#                 "destinations": [
+#                     "azureMonitorMetrics-default"
+#             ]
+#             }
+#         ]
+#     }
+# }
 ```
 
 ```output

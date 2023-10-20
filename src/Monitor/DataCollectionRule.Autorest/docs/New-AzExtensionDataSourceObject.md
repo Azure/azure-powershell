@@ -13,7 +13,7 @@ Create an in-memory object for ExtensionDataSource.
 ## SYNTAX
 
 ```
-New-AzExtensionDataSourceObject -ExtensionName <String> [-ExtensionSetting <IAny>]
+New-AzExtensionDataSourceObject -ExtensionName <String> [-ExtensionSetting <Hashtable>]
  [-InputDataSource <String[]>] [-Name <String>] [-Stream <String[]>] [<CommonParameters>]
 ```
 
@@ -24,11 +24,18 @@ Create an in-memory object for ExtensionDataSource.
 
 ### Example 1: Create extension data source object
 ```powershell
-{{ Add code here }}
+New-AzExtensionDataSourceObject -ExtensionName AzureSecurityLinuxAgent -ExtensionSetting @{auditLevel='4'; maxQueueSize='1234'} -Name "myExtensionDataSource1" -Stream "Microsoft-OperationLog"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExtensionName    : AzureSecurityLinuxAgent
+ExtensionSetting : {
+                     "maxQueueSize": "1234",
+                     "auditLevel": "4"
+                   }
+InputDataSource  : 
+Name             : myExtensionDataSource1
+Stream           : {Microsoft-OperationLog}
 ```
 
 This command creates a extension data source object.
@@ -55,7 +62,7 @@ The extension settings.
 The format is specific for particular extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

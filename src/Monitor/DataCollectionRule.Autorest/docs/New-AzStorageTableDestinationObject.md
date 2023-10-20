@@ -22,16 +22,18 @@ Create an in-memory object for StorageTableDestination.
 
 ## EXAMPLES
 
-### Example 1: Create event hub direct destination object
+### Example 1: Create storage table destination object
 ```powershell
-{{ Add code here }}
+New-AzStorageTableDestinationObject -TableName table1 -StorageAccountResourceId /subscriptions/ee63c5dc-9b88-42e3-8070-944a5226aea3/resourceGroups/rightregion/providers/Microsoft.Storage/storageAccounts/bar1 -Name storageAccountDestination2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                       StorageAccountResourceId                                                                                                        TableName
+----                       ------------------------                                                                                                        ---------
+storageAccountDestination2 /subscriptions/ee63c5dc-9b88-42e3-8070-944a5226aea3/resourceGroups/rightregion/providers/Microsoft.Storage/storageAccounts/bar1 table1
 ```
 
-This command creates a windows event log data source object with XPathQuery.
+This command creates a storage table destination object.
 
 ## PARAMETERS
 

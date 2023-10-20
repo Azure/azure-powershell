@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPrometheusForwarderData
 }
 
 Describe 'New-AzPrometheusForwarderDataSourceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzPrometheusForwarderDataSourceObject -LabelIncludeFilter @{"microsoft_metrics_include_label"="MonitoringData"} -Name "myPromDataSource1" -Stream "Microsoft-PrometheusMetrics"
+        } | Should -Not -Throw
     }
 }

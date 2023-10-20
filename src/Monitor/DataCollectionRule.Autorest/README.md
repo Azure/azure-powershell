@@ -94,14 +94,23 @@ directive:
       parameter-name: DataCollectionEndpointName
     set:
       alias: EndpointName
+  # model cmdlet
+  - from: dataCollectionRules_API.json
+    where: $.definitions.ExtensionDataSource.properties.extensionSettings
+    transform: >-
+      return {
+          "description": "The extension settings. The format is specific for particular extension.",
+          "additionalProperties": true,
+          "type": "object"
+      }
   - model-cmdlet:
     # string BuiltInTransform, List<string> Destination, string OutputStream, List<string> Stream, string TransformKql
     - model-name: DataFlow
     # string EventHubResourceId, string Name
     - model-name: EventHubDestination
     - model-name: EventHubDirectDestination
-    # string ExtensionName, List<string> InputDataSource, string Name, List<string> Stream
-    - model-name: ExtensionDataSource
+    # custom string ExtensionName, IExtensionDataSourceExtensionSettings ExtensionSetting -> hashtable, List<string> InputDataSource, string Name, List<string> Stream
+    # - model-name: ExtensionDataSource
     # List<string> LogDirectory, string Name, List<string> Stream
     - model-name: IisLogsDataSource
     # string Name, string WorkspaceId, string WorkspaceResourceId
@@ -114,7 +123,7 @@ directive:
     - model-name: PerfCounterDataSource
     # string Name, List<string> Stream
     - model-name: PlatformTelemetryDataSource
-    # IPrometheusForwarderDataSourceLabelIncludeFilter LabelIncludeFilter -> HashTable, string Name, List<string> Stream
+    # custom IPrometheusForwarderDataSourceLabelIncludeFilter LabelIncludeFilter -> HashTable, string Name, List<string> Stream
     #- model-name: PrometheusForwarderDataSource
     # string Name, List<string> Stream
     - model-name: WindowsFirewallLogsDataSource

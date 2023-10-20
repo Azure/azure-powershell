@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWindowsFirewallLogsData
 }
 
 Describe 'New-AzWindowsFirewallLogsDataSourceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzWindowsFirewallLogsDataSourceObject -Stream "Microsoft-WindowsFirewall","Microsoft-ASimNetworkSessionLogs-WindowsFirewall" -Name "myFirewallLogsDataSource1"
+        } | Should -Not -Throw
     }
 }

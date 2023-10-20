@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMonitoringAccountDestin
 }
 
 Describe 'New-AzMonitoringAccountDestinationObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzMonitoringAccountDestinationObject -AccountResourceId /subscriptions/da58aca0-2082-4f5a-85ba-27344286c17c/resourceGroups/mac-rg/providers/Microsoft.Monitor/accounts/mac-name1 -Name myMonitoringAccountDest1
+        } | Should -Not -Throw
     }
 }

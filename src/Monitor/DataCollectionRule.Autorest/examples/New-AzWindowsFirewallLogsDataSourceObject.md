@@ -1,10 +1,12 @@
-### Example 1: Create event hub direct destination object
+### Example 1: Create windows firewall logs data source object
 ```powershell
-{{ Add code here }}
+New-AzWindowsFirewallLogsDataSourceObject -Stream "Microsoft-WindowsFirewall","Microsoft-ASimNetworkSessionLogs-WindowsFirewall" -Name "myFirewallLogsDataSource1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                      Stream
+----                      ------
+myFirewallLogsDataSource1 {Microsoft-WindowsFirewall, Microsoft-ASimNetworkSessionLogs-WindowsFirewall}
 ```
 
-This command creates a windows event log data source object with XPathQuery.
+This command creates a windows firewall log data source object.

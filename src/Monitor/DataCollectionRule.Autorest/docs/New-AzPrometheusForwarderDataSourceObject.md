@@ -22,16 +22,18 @@ Create an in-memory object for PrometheusForwarderDataSource.
 
 ## EXAMPLES
 
-### Example 1: Create event hub direct destination object
+### Example 1: Create prometheus forwarder data source object
 ```powershell
-{{ Add code here }}
+New-AzPrometheusForwarderDataSourceObject -LabelIncludeFilter @{"microsoft_metrics_include_label"="MonitoringData"} -Name "myPromDataSource1" -Stream "Microsoft-PrometheusMetrics"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+LabelIncludeFilter                                          Name              Stream
+------------------                                          ----              ------
+{…                                                          myPromDataSource1 {Microsoft-PrometheusMetrics}
 ```
 
-This command creates a windows event log data source object with XPathQuery.
+This command creates a prometheus forwarder data source object.
 
 ## PARAMETERS
 

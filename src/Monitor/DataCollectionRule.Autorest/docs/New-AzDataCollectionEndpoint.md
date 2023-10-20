@@ -83,14 +83,14 @@ This command creates the endpiont with given values.
 ```powershell
 New-AzDataCollectionEndpoint -Name myCollectionEndpoint2 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\endpointTest1.json
 # Note: content of .\test\jsonfile\endpointTest1.json
-{
-    "location": "eastus",
-    "properties": {
-        "networkAcls": {
-            "publicNetworkAccess": "Enabled"
-            }
-        }
-}
+#{
+#     "location": "eastus",
+#     "properties": {
+#         "networkAcls": {
+#             "publicNetworkAccess": "Enabled"
+#             }
+#         }
+# }
 ```
 
 ```output
