@@ -19,7 +19,7 @@ Get-AzVMADDomainExtension [-ResourceGroupName] <String> [-VMName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-The **Get-AzVMADDomainExtension** cmdlet gets information about the specified Microsoft Entra ID \(AD) domain extension.
+The **Get-AzVMADDomainExtension** cmdlet gets information about the specified Microsoft Entra ID extension.
 
 ## EXAMPLES
 
