@@ -1,3 +1,12 @@
+## RunGeneration
+
+In this directory, run AutoRest:
+
+  ``` powershell 
+    autorest --reset
+    autorest --use:@autorest/powershell@4.x
+  ```
+
 ``` yaml
 
 isSdkGenerator: true
@@ -23,3 +32,5 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.ServiceFabricManagedClusters
 
 ```
+
+Follow instructions at at <https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/coding/generate-sdk-with-autorest-powershell> for further steps.
