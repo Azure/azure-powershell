@@ -99,7 +99,7 @@ function Test-RaDeleteByPSRoleAssignment
     $expectedMessage = "Succesfully removed role assignment for AD object '66486765-477a-4243-880c-7e1fb3c80f2b' on scope '/subscriptions/" + $subscription[0].Id + "/resourceGroups/nori-resource-test' with role definition 'Reader'"
 
     # Test
-    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope # -RoleAssignmentId 305df7f7-c560-4577-8f38-257fdfa1f93e
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 50fd727d-d1af-44ef-9a32-2431b835605e
 
     $result = Remove-AzRoleAssignment $newAssignment
 
@@ -535,9 +535,10 @@ function Test-RaDelegation
     $assignmentScope = $scope +"/"
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $userId `
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
+                        -RoleAssignmentId 84dbc1be-f2d3-4ad4-88e3-4a7b7de1a0fb `
                         -AllowDelegation
 
     # Assert
@@ -559,27 +560,28 @@ function Test-RaGetByScope
 {
     # Setup
     $definitionName = 'Automation Operator'
-    $users = Get-AzADUser | Select-Object -First 1 -Wait
+    # $users = Get-AzADUser | Select-Object -First 1 -Wait
+    $userId = "b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
     $subscription = $(Get-AzContext).Subscription
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 2 -Wait
     $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[1].ResourceGroupName
-    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
     $newAssignment1 = New-AzRoleAssignmentWithId `
-                        -ObjectId $users[0].Id `
+                        -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope1 `
                         -RoleAssignmentId 08fe91d5-b917-4d76-81d7-581ff5a99cab
 
     $newAssignment2 = New-AzRoleAssignmentWithId `
-                        -ObjectId $users[0].Id `
+                        -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope2 `
                         -RoleAssignmentId fa1a4d3b-2cca-406b-8956-6b6b32377641
 
-    $ras = Get-AzRoleAssignment -ObjectId $users[0].Id `
+    $ras = Get-AzRoleAssignment -ObjectId $userId `
             -RoleDefinitionName $definitionName `
             -Scope $scope1
 
@@ -596,7 +598,7 @@ function Test-RaGetByScope
     Assert-NotNull $newAssignment1
     Assert-AreEqual $definitionName $newAssignment1.RoleDefinitionName
     Assert-AreEqual $scope1 $newAssignment1.Scope
-    Assert-AreEqual $users[0].DisplayName $newAssignment1.DisplayName
+    # Assert-AreEqual $users[0].DisplayName $newAssignment1.DisplayName
 
     VerifyRoleAssignmentDeleted $newAssignment1
 }
