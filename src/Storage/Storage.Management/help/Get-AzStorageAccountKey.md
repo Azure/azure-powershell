@@ -72,7 +72,7 @@ Accept wildcard characters: False
 
 ### -ListKerbKey
 Lists the Kerberos keys (if active directory enabled) for the specified storage account.
-Kerberos key is generated per storage account for Azure Files identity based authentication either with Azure Active Directory Domain Service (Azure AD DS) or Active Directory Domain Service (AD DS). 
+Kerberos key is generated per storage account for Azure Files identity based authentication either with Microsoft Entra Domain Service (Microsoft Entra Domain Services) or Active Directory Domain Service (AD DS). 
 It is used as the password of the identity registered in the domain service that represents the storage account. 
 Kerberos key does not provide access permission to perform any control or data plane read or write operations against the storage account.
 
@@ -134,5 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzStorageAccountKey](./New-AzStorageAccountKey.md)
-
-
