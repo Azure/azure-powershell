@@ -6966,7 +6966,7 @@ Other necessary defaults also occur for TL support.
 function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 {
     # Setup
-    $rgname = "adsandvmd1";#Get-ComputeTestResourceName;
+    $rgname = "adsandvmd2";#Get-ComputeTestResourceName;
     $loc = "eastus2";#Get-ComputeVMLocation;
 
     try
@@ -7004,16 +7004,16 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         
         # Network setup
-        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress
-        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow
-        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP
-        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
 
         # VM
-        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
-        Set-AzVMOSDisk -Linux -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
         
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
