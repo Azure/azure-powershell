@@ -78,4 +78,4 @@ Task                               : {Creating or updating the protected item, I
 Type                               : Microsoft.DataReplication/replicationVaults/jobs	
 ```
 
-Update dynamic memory configuration
+Update dynamic memory configuration.
