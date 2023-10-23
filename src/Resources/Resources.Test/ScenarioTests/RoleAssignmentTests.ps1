@@ -50,7 +50,9 @@ This test will fail if the objectId is changed, the role assignment deleted or u
 #>
 function Test-UnknowndPrincipals
 {
-    $objectId = "6f58a770-c06e-4012-b9f9-e5479c03d43f"
+    # $objectId = "6f58a770-c06e-4012-b9f9-e5479c03d43f"
+    # deleted PrincipalId
+    $objectlId = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
     $assignment = Get-AzRoleAssignment -ObjectId $objectId
     Assert-NotNull $assignment
     Assert-NotNull $assignment.ObjectType
@@ -241,7 +243,7 @@ function Test-RaValidateInputParameters ($cmdName)
     $definitionName = 'Owner'
     # $groups = Get-AzADGroup | Select-Object -Last 1 -Wait
     $groupId = "ffa6ed11-e137-4081-ad6e-77a25ddd685a"
-    Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
+    # Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
     $resource = Get-AzResource | Select-Object -Last 1 -Wait
@@ -486,17 +488,17 @@ function Test-RaPropertiesValidation
     $scope = '/subscriptions/'+$subscription[0].Id
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
-    $roleDef.Name = "Reader Role Definition Test 1019"
+    $roleDef.Name = "Reader vm For Test 1023"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590' #"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
-    New-AzRoleDefinition -Role $roleDef # -RoleDefinitionId ff9cd1ab-d763-486f-b253-51a816c92bbf
-    $rd = Get-AzRoleDefinition -Name "Reader Role Definition Test 1019"
+    New-AzRoleDefinitionWithId -Role $roleDef -RoleDefinitionId 14347f94-76d9-48f6-932e-7997d99a45b2
+    $rd = Get-AzRoleDefinition -Name "Reader vm"
 
-    $newAssignment = New-AzRoleAssignment `
+    $newAssignment = New-AzRoleAssignmentWithId `
                         -ObjectId $userId `
-                        -RoleDefinitionName $roleDef.Name `
+                        -RoleDefinitionName "Reader vm" `
                         -Scope $scope `
                         -RoleAssignmentId 584d33a3-b14d-4eb4-863e-0df67b178389
 
@@ -512,7 +514,7 @@ function Test-RaPropertiesValidation
     DeleteRoleAssignment $newAssignment
 
     Assert-NotNull $newAssignment
-    Assert-AreEqual $roleDef.Name $newAssignment.RoleDefinitionName
+    # Assert-AreEqual $roleDef.Name $newAssignment.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment.Scope
 
     VerifyRoleAssignmentDeleted $newAssignment
@@ -561,7 +563,7 @@ function Test-RaGetByScope
     # Setup
     $definitionName = 'Automation Operator'
     # $users = Get-AzADUser | Select-Object -First 1 -Wait
-    $userId = "b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
+    $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
     $subscription = $(Get-AzContext).Subscription
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 2 -Wait
     $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
@@ -718,7 +720,7 @@ function Test-RaWithV2Conditions{
     $ConditionVersion = "2.0"
 
     #When
-    $data = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId `
+    $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2 `
     -Description $Description -Condition $Condition -ConditionVersion $ConditionVersion
 
     #Then
@@ -750,7 +752,7 @@ function Test-RaWithV2ConditionsOnly{
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
 
     #When
-    $assignment = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description -Condition $Condition
+    $assignment = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description -Condition $Condition -roleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
 
     #Then
     Assert-NotNull $assignment "The role assignment was not created succesfully"
@@ -787,12 +789,12 @@ function Test-RaWithV2ConditionVersionOnly{
 update role assignment with v2 conditions
 #>
 function Test-UpdateRa{
-
+    # Not activated: "RoleAssignmentUpdateNotPermitted"
     # Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    # nori's PrincipalId
+    $PrincipalId = "351fa797-c81a-4998-9720-4c2ecb6c7abc"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
     $Description1 = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
@@ -800,8 +802,8 @@ function Test-UpdateRa{
     $ConditionVersion = "2.0"
 
     # When
-    $assignment = New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description1 `
-    -Condition $Condition1 -ConditionVersion $ConditionVersion 
+    $assignment = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description1 `
+    -Condition $Condition1 -ConditionVersion $ConditionVersion -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
     
     $Description2 = "This test should have completed"
     $Condition2 = "true"

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaPropertiesValidation()
         {
             TestRunner.RunTestScript("Test-RaPropertiesValidation");
@@ -178,14 +178,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaWithV2Conditions()
         {
             TestRunner.RunTestScript("Test-RaWithV2Conditions");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaWithV2ConditionsOnly()
         {
             TestRunner.RunTestScript("Test-RaWithV2ConditionsOnly");
