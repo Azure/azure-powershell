@@ -13,31 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class TemplateFileParameterV1
+    public class TemplateFileParameter : TemplateFileTypeDefinition
     {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("value")]
-        public object Value { get; set; }
-
-        [JsonProperty("reference")]
-        public object Reference { get; set; }
-
         [JsonProperty("defaultValue")]
         public object DefaultValue { get; set; }
-
-        [JsonProperty("allowedValues")]
-        public List<object> AllowedValues { get; set; }
-
-        [JsonProperty("minLength")]
-        public string MinLength { get; set; }
-
-        [JsonProperty("maxLength")]
-        public string MaxLength { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class TemplateFile
+    public class TemplateFileDefinition
     {
-        [JsonProperty("definitions")]
-        public JObject Definitions { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
-        [JsonProperty("parameters")]
-        public IDictionary<string, TemplateFileParameter> Parameters { get; set; }
+        [JsonProperty("$ref")]
+        public string Ref { get; set; }
     }
 }
