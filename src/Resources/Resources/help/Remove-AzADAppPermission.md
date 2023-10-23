@@ -39,7 +39,7 @@ Remove delegated permission "Group.Read.All" of Microsoft Graph API from AD Appl
 ## PARAMETERS
 
 ### -ApplicationId
-The unique identifier for the application that is assigned by Azure AD.
+The unique identifier for the application that is assigned by Microsoft Entra ID.
 
 ```yaml
 Type: System.Guid
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The unique identifier in Azure AD.
+The unique identifier in Microsoft Entra ID.
 
 ```yaml
 Type: System.Guid
