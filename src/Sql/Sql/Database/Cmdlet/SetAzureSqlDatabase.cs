@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
