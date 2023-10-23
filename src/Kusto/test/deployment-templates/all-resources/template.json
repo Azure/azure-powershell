@@ -20,10 +20,22 @@
                 "description": "<KUSTO SKU NAME>"
             }
         },
+        "kustoFollowerSkuName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO FOLLOWER CLUSTER SKU NAME>"
+            }
+        },
         "kustoClusterTier": {
             "type": "string",
             "metadata": {
                 "description": "<KUSTO CLUSTER TIER>"
+            }
+        },
+        "kustoFollowerClusterTier": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO FOLLOWER CLUSTER TIER>"
             }
         },
         "kustoClusterName": {

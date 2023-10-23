@@ -3,25 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "kustoApiVersion": {
-      "value": "2023-05-02"
+      "value": "2023-08-15"
     },
     "userAssignedManagedIdentityName": {
-      "value": "uaMizd30we"
+      "value": "uaMiich4jy"
     },
     "kustoSkuName": {
       "value": "Dev(No SLA)_Standard_E2a_v4"
     },
+    "kustoFollowerSkuName": {
+      "value": "Standard_E8as_v5+1TB_PS"
+    },
     "kustoClusterTier": {
       "value": "Basic"
     },
+    "kustoFollowerClusterTier": {
+      "value": "Standard"
+    },
     "kustoClusterName": {
-      "value": "pssdkzd30we"
+      "value": "pssdkich4jy"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollowzd30we"
+      "value": "pssdkfollowich4jy"
     },
     "kustoMigrationClusterName": {
-      "value": "pssdkmigrzd30we"
+      "value": "pssdkmigrich4jy"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
@@ -39,16 +45,16 @@
       "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespacezd30we"
+      "value": "EHNamespaceich4jy"
     },
     "eventHubName": {
-      "value": "ehzd30we"
+      "value": "ehich4jy"
     },
     "iotHubName": {
-      "value": "iotzd30we"
+      "value": "iotich4jy"
     },
     "cosmosDbAccountName": {
-      "value": "cosmoszd30we"
+      "value": "cosmosich4jy"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -57,22 +63,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sazd30we"
+      "value": "saich4jy"
     },
     "virtualNetworkName": {
-      "value": "vnetzd30we"
+      "value": "vnetich4jy"
     },
     "subnetName": {
-      "value": "subnetzd30we"
+      "value": "subnetich4jy"
     },
     "privateEndpointName": {
-      "value": "pezd30we"
+      "value": "peich4jy"
     },
     "keyVaultName": {
-      "value": "kvPwshzd30we"
+      "value": "kvPwshich4jy"
     },
     "keyName": {
-      "value": "byokzd30we"
+      "value": "byokich4jy"
     }
   }
 }

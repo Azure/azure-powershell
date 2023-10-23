@@ -1,9 +1,9 @@
 {
-  "Test-AzKustoAttachedDatabaseConfigurationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-4cv18e/providers/Microsoft.Kusto/Clusters/pssdk4cv18e/attachedDatabaseConfigurationCheckNameAvailability?api-version=2022-12-29+1": {
+  "Test-AzKustoAttachedDatabaseConfigurationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/resourceGroups/PWSH-SDK-ich4jy/providers/Microsoft.Kusto/Clusters/pssdkich4jy/attachedDatabaseConfigurationCheckNameAvailability?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-4cv18e/providers/Microsoft.Kusto/Clusters/pssdk4cv18e/attachedDatabaseConfigurationCheckNameAvailability?api-version=2022-12-29",
-      "Content": "{\r\n  \"name\": \"testdatabaseyz7sod\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/attachedDatabaseConfigurations\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/resourceGroups/PWSH-SDK-ich4jy/providers/Microsoft.Kusto/Clusters/pssdkich4jy/attachedDatabaseConfigurationCheckNameAvailability?api-version=2023-08-15",
+      "Content": "{\r\n  \"name\": \"testdatabased2ko56\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/attachedDatabaseConfigurations\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6d439d9e-0bce-4638-bf4d-b3ea48fdb435" ],
+        "x-ms-request-id": [ "1af439a3-9ce0-4cab-9c89-c54d79de64ab" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "d125a9ea-fba1-44b6-b244-59e5dc70788a" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20230315T222613Z:d125a9ea-fba1-44b6-b244-59e5dc70788a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "edc322e4-a83c-491c-9b61-7d4902276c83" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231019T180059Z:edc322e4-a83c-491c-9b61-7d4902276c83" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 22:26:13 GMT" ]
+        "Date": [ "Thu, 19 Oct 2023 18:00:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "63" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testdatabaseyz7sod\",\"nameAvailable\":true,\"message\":\"\"}",
+      "Content": "{\"name\":\"testdatabased2ko56\",\"nameAvailable\":true,\"message\":\"\"}",
       "isContentBase64": false
     }
   }
