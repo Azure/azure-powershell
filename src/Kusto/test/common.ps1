@@ -156,6 +156,32 @@ function Validate_Database {
 
 <#
 .SYNOPSIS
+Validate if CMK database is valid
+#>
+function Validate_CMKDatabase {
+	Param ([Object]$Database,
+		[string]$DatabaseFullName,
+		[string]$Location,
+		[string]$ResourceType,
+		[string]$KeyVaultPropertyKeyName,
+		[string]$KeyVaultPropertyKeyVaultUri,
+		[string]$KeyVaultPropertyKeyVersion,
+		[string]$KeyVaultPropertyUserIdentity,
+		[Nullable[timespan]]$SoftDeletePeriodInDays,
+		[Nullable[timespan]]$HotCachePeriodInDays)
+	$Database.Name | Should -Be $DatabaseFullName
+	$Database.Location | Should -Be $Location
+	$Database.Type | Should -Be $ResourceType
+	$Database.SoftDeletePeriod | Should -Be $SoftDeletePeriodInDays
+	$Database.HotCachePeriod | Should -Be $HotCachePeriodInDays
+	$Database.KeyVaultPropertyKeyName | Should -Be $KeyVaultPropertyKeyName
+	$Database.KeyVaultPropertyKeyVaultUri | Should -Be $KeyVaultPropertyKeyVaultUri
+	$Database.KeyVaultPropertyKeyVersion | Should -Be $KeyVaultPropertyKeyVersion
+	$Database.KeyVaultPropertyUserIdentity | Should -Be $KeyVaultPropertyUserIdentity
+}
+
+<#
+.SYNOPSIS
 Validate if database is valid
 #>
 function Validate_PrincipalAssignment {

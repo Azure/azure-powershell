@@ -37,16 +37,17 @@ Describe 'New-AzKustoDatabase' {
     }
 
     It 'CreateWithCMK' {
-        $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
         $name = "testdatabase" + $env.rstr6
         $databaseFullName = $env.kustoClusterName + "/" + $name
         $keyVaultPropertyKeyName = $env.keyName
         $keyVaultPropertyKeyVaultUri = $env.keyVaultUrl
         $keyVaultPropertyKeyVersion = $env.keyVersion
         $keyVaultPropertyUserIdentity = $env.userAssignedManagedIdentityResourceId
+        $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
+        $softDeletePeriodInDays = Get-Soft-Delete-Period-In-Days
 
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
-        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $hotCachePeriodInDays
+        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays -SoftDeletePeriod $softDeletePeriodInDays -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+        Validate_CMKDatabase $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $keyVaultPropertyKeyName $keyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVersion $keyVaultPropertyUserIdentity $softDeletePeriodInDays $hotCachePeriodInDays
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 }

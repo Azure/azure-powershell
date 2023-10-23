@@ -97,17 +97,25 @@ Describe 'Update-AzKustoDatabase' {
     It 'UpdateViaIdentityExpandedCMK' {
         $clusterName = $env.kustoClusterName
         $resourceGroupName = $env.resourceGroupName
-        $name = "testdatabase" + $env.rstr6
-        $databaseFullName = $clusterName + "/" + $name
-
-        $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+        $databaseName = "testcmkdatabase" + $env.rstr6
+        $databaseFullName = $clusterName + "/" + $databaseName
 
         $keyVaultPropertyKeyName = $env.keyName
         $keyVaultPropertyKeyVaultUri = $env.keyVaultUrl
         $keyVaultPropertyKeyVersion = $env.keyVersion
         $keyVaultPropertyUserIdentity = $env.userAssignedManagedIdentityResourceId
 
-        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $name
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadWrite" -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+        New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Location $env.location -Kind ReadWrite -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+        
+        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        
+        $softDeletePeriodInDaysUpdated = (New-TimeSpan -Days 5)
+        $hotCachePeriodInDaysUpdated = (New-TimeSpan -Days 10)
+        
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadWrite" -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+
+        Validate_CMKDatabase $databaseUpdatedWithParameters $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $keyVaultPropertyKeyName $keyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVersion $keyVaultPropertyUserIdentity $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
+
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName } | Should -Not -Throw
     }
 }
