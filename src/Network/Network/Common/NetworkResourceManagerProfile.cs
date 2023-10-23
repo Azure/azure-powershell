@@ -1196,10 +1196,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualRouterAutoScaleConfiguration, MNM.VirtualRouterAutoScaleConfiguration>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
                 cfg.CreateMap<CNM.PSVpnGatewayNatRule, MNM.VpnGatewayNatRule>()
-                    .AfterMap((src, dest) =>
-                     {
-                        dest.PropertiesType = src.VpnGatewayNatRulePropertiesType;
-                     });
+                .ForMember(
+                        dest => dest.PropertiesType,
+                        opt => opt.MapFrom(src => src.VpnGatewayNatRulePropertiesType)
+                    );
                 cfg.CreateMap<CNM.PSVpnNatRuleMapping, MNM.VpnNatRuleMapping>();
                 cfg.CreateMap<CNM.PSVpnGatewayIpConfiguration, MNM.VpnGatewayIpConfiguration>();
                 cfg.CreateMap<CNM.PSVpnSiteLinkConnection, MNM.VpnSiteLinkConnection>();
@@ -1237,10 +1237,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualRouterAutoScaleConfiguration, CNM.PSVirtualRouterAutoScaleConfiguration>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
                 cfg.CreateMap<MNM.VpnGatewayNatRule, CNM.PSVpnGatewayNatRule>()
-                    .AfterMap((src, dest) =>
-                    {
-                        dest.VpnGatewayNatRulePropertiesType = src.PropertiesType;
-                    });
+                    .ForMember(
+                        dest => dest.VpnGatewayNatRulePropertiesType,
+                        opt => opt.MapFrom(src => src.PropertiesType)
+                    );
                 cfg.CreateMap<MNM.VpnNatRuleMapping, CNM.PSVpnNatRuleMapping>();
                 cfg.CreateMap<MNM.VpnGatewayIpConfiguration, CNM.PSVpnGatewayIpConfiguration>();
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
