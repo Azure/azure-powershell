@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PsModuleName>DataFactoryV2</PsModuleName>
+        <PsModuleName>DataFactory</PsModuleName>
     </PropertyGroup>
 
     <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
