@@ -20,20 +20,6 @@ Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -Resource
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Remove
-```
-Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
- -Body <IRoleAssignmentDetail> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RemoveViaIdentity
-```
-Remove-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity>
- -Body <IRoleAssignmentDetail> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### RemoveViaIdentityExpanded
 ```
 Remove-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity>
@@ -56,28 +42,12 @@ Remove user role from the data product.
 
 ## PARAMETERS
 
-### -Body
-The details for role assignment response.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115.IRoleAssignmentDetail
-Parameter Sets: Remove, RemoveViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DataProductName
 The data product resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: True
@@ -92,7 +62,7 @@ Data Type Scope at which the role assignment is created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -124,7 +94,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.INetworkAnalyticsIdentity
-Parameter Sets: RemoveViaIdentity, RemoveViaIdentityExpanded
+Parameter Sets: RemoveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -154,7 +124,7 @@ Object ID of the AAD principal or security-group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,7 +139,7 @@ Type of the principal Id: User, Group or ServicePrincipal
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -185,7 +155,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: True
@@ -200,7 +170,7 @@ Data Product role to be assigned to a user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Support.DataProductUserRole
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -215,7 +185,7 @@ Id of role assignment request
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -230,7 +200,7 @@ Role Id of the Built-In Role
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -245,7 +215,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, RemoveExpanded
+Parameter Sets: RemoveExpanded
 Aliases:
 
 Required: False
@@ -260,7 +230,7 @@ User name.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveExpanded, RemoveViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -305,8 +275,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115.IRoleAssignmentDetail
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.INetworkAnalyticsIdentity
 

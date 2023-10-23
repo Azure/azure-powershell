@@ -20,20 +20,6 @@ Add-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGro
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Add
-```
-Add-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
- -Body <IRoleAssignmentCommonProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentity
-```
-Add-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity>
- -Body <IRoleAssignmentCommonProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### AddViaIdentityExpanded
 ```
 Add-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity> -DataTypeScope <String[]>
@@ -61,28 +47,12 @@ Assign user role to the data product.
 
 ## PARAMETERS
 
-### -Body
-The details for role assignment common properties.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115.IRoleAssignmentCommonProperties
-Parameter Sets: Add, AddViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DataProductName
 The data product resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: True
@@ -97,7 +67,7 @@ Data Type Scope at which the role assignment is created.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -129,7 +99,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.INetworkAnalyticsIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -144,7 +114,7 @@ Object ID of the AAD principal or security-group.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -159,7 +129,7 @@ Type of the principal Id: User, Group or ServicePrincipal
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -175,7 +145,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: True
@@ -190,7 +160,7 @@ Data Product role to be assigned to a user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Support.DataProductUserRole
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -205,7 +175,7 @@ Role Id of the Built-In Role
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -220,7 +190,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded
 Aliases:
 
 Required: False
@@ -235,7 +205,7 @@ User name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -280,8 +250,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.Api20231115.IRoleAssignmentCommonProperties
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkAnalytics.Models.INetworkAnalyticsIdentity
 

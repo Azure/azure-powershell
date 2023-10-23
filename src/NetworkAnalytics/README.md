@@ -81,6 +81,10 @@ directive:
       subject: ^DataProductStorageAccountSasToken$
     remove: true
   - where:
+      subject: DataProductUserRole
+      variant: ^(Add|Remove)(?!.*?Expanded)
+    remove: true
+  - where:
       model-name: RoleAssignmentDetail
     set:
       format-table:

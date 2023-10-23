@@ -6,44 +6,6 @@
   },
   "commands": [
     {
-      "name": "Add-AzNetworkAnalyticsDataProductUserRole",
-      "description": "Assign role to the data product.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkAnalytics/dataProducts/{dataProductName}/addUserRole",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.networkanalytics/add-aznetworkanalyticsdataproductuserrole"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-DataProductName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Assign role to the data product.",
-          "parameters": [
-            {
-              "name": "-DataProductName",
-              "value": "[Path.dataProductName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Get-AzNetworkAnalyticsDataProduct",
       "description": "Retrieve data product resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkAnalytics/dataProducts/{dataProductName}",
@@ -67,44 +29,6 @@
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.dataProductName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Remove-AzNetworkAnalyticsDataProductUserRole",
-      "description": "Remove role from the data product.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkAnalytics/dataProducts/{dataProductName}/removeUserRole",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.networkanalytics/remove-aznetworkanalyticsdataproductuserrole"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-DataProductName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Remove role from the data product.",
-          "parameters": [
-            {
-              "name": "-DataProductName",
               "value": "[Path.dataProductName]"
             },
             {
