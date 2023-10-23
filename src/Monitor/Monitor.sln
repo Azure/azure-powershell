@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "Autoscale.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{755C9328-3DF6-4A7B-AA3B-4135F217F703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{C9AD915C-FCE9-4867-B1CF-46BA5E62839A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755C9328-3DF6-4A7B-AA3B-4135F217F703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9AD915C-FCE9-4867-B1CF-46BA5E62839A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9AD915C-FCE9-4867-B1CF-46BA5E62839A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9AD915C-FCE9-4867-B1CF-46BA5E62839A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9AD915C-FCE9-4867-B1CF-46BA5E62839A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

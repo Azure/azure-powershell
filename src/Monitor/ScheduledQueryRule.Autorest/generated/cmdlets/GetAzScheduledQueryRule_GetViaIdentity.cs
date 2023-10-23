@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IScheduledQueryRuleResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Description(@"Retrieve an scheduled query rule definition.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules/{ruleName}", ApiVersion = "2021-08-01")]
     public partial class GetAzScheduledQueryRule_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Runtime.IEventListener
     {
