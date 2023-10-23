@@ -52,27 +52,27 @@ Update a ScalingPlanPooledSchedule.
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
-                                        -rampUpMinimumHostsPct 20 `
-                                        -rampUpCapacityThresholdPct 20 `
-                                        -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpLoadBalancingAlgorithm BreadthFirst `
+                                        -RampUpMinimumHostsPct 20 `
+                                        -RampUpCapacityThresholdPct 20 `
+                                        -PeakStartTimeHour 8 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakLoadBalancingAlgorithm DepthFirst `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
-                                        -rampDownMinimumHostsPct 20 `
-                                        -rampDownCapacityThresholdPct 20 `
-                                        -rampDownForceLogoffUser:$true `
-                                        -rampDownWaitTimeMinute 30 `
-                                        -rampDownNotificationMessage "Log out now, please." `
-                                        -rampDownStopHostsWhen ZeroSessions `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakLoadBalancingAlgorithm DepthFirst
+                                        -RampDownLoadBalancingAlgorithm BreadthFirst `
+                                        -RampDownMinimumHostsPct 20 `
+                                        -RampDownCapacityThresholdPct 20 `
+                                        -RampDownForceLogoffUser:$true `
+                                        -RampDownWaitTimeMinute 30 `
+                                        -RampDownNotificationMessage "Log out now, please." `
+                                        -RampDownStopHostsWhen ZeroSessions `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakLoadBalancingAlgorithm DepthFirst
 ```
 
 ```output
@@ -533,7 +533,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPooledSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
 
 ## NOTES
 
@@ -551,6 +551,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
   - `[Id <String>]`: Resource identity path
   - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScalingPlanName <String>]`: The name of the scaling plan.
   - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
