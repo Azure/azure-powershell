@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Support $ref statements for user-defined types in Bicep files.
-* Avoid reporting duplicate warnings when compiling Bicep files.
+* Fixed reporting duplicate warnings when compiling Bicep files.
 
 ## Version 6.11.2
 * Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
