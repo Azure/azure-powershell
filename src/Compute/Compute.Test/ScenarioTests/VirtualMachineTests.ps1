@@ -6965,6 +6965,7 @@ Other necessary defaults also occur for TL support.
 #>
 function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 {
+    # TODO: complete this test
     # Setup
     $rgname = "adsandvmd2";#Get-ComputeTestResourceName;
     $loc = "eastus2";#Get-ComputeVMLocation;
