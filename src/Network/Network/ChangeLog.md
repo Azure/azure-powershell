@@ -23,7 +23,7 @@
 * Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
 * Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
-* Added breaking change for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU

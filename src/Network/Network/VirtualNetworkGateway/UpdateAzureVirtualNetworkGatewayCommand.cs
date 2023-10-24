@@ -247,6 +247,18 @@ namespace Microsoft.Azure.Commands.Network
         public string AdminState { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
+        public bool? AllowRemoteVnetTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other Virtual WAN networks.")]
+        public bool? AllowVirtualWanTraffic { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -537,17 +549,14 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.AdminState = AdminState;
             }
 
-            if (!string.IsNullOrEmpty(this.VirtualNetworkGateway.Sku.Name) && (this.VirtualNetworkGateway.Sku.Name.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)))
+            if (AllowRemoteVnetTraffic.HasValue)
             {
-                if (this.MinScaleUnit > this.MaxScaleUnit)
-                {
-                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
-                }
+                this.VirtualNetworkGateway.AllowRemoteVnetTraffic = AllowRemoteVnetTraffic.Value;
+            }
 
-                this.VirtualNetworkGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnit);
+            if (AllowVirtualWanTraffic.HasValue)
+            {
+                this.VirtualNetworkGateway.AllowVirtualWanTraffic = AllowVirtualWanTraffic.Value;
             }
 
             // Map to the sdk object
