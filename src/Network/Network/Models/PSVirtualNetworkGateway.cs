@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
         public List<PSVirtualNetworkGatewayPolicyGroup> VirtualNetworkGatewayPolicyGroups { get; set; }
-        
+
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
 
         public PSBgpSettings BgpSettings { get; set; }
