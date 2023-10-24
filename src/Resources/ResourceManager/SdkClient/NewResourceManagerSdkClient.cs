@@ -452,8 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    deployment.Properties.Template = 
-                        PSJsonSerializer.Serialize(parameters.TemplateObject).FromJson<JObject>();
+                    deployment.Properties.Template = parameters.TemplateObject.ToJToken();
                 }
             }
 

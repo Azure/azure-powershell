@@ -136,6 +136,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 				SourcePortRanges = this.SourcePortRange
 			});
 
+			if (string.IsNullOrEmpty(currentCluster.PublicIPPrefixId))
+			{
+				currentCluster.PublicIPPrefixId = null;
+			}
+
 			return currentCluster;
 		}
 

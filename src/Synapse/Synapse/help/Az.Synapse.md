@@ -24,7 +24,7 @@ Clears the vulnerability assessment rule baseline.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Disable-AzSynapseActiveDirectoryOnlyAuthentication](Disable-AzSynapseActiveDirectoryOnlyAuthentication.md)
-Disables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+Disables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ### [Disable-AzSynapseSqlAdvancedDataSecurity](Disable-AzSynapseSqlAdvancedDataSecurity.md)
 Disables Advanced Data Security on a workspace.
@@ -33,7 +33,7 @@ Disables Advanced Data Security on a workspace.
 Disables (dismisses) sensitivity recommendations on columns in the SQL pool.
 
 ### [Enable-AzSynapseActiveDirectoryOnlyAuthentication](Enable-AzSynapseActiveDirectoryOnlyAuthentication.md)
-Enables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+Enables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ### [Enable-AzSynapseSqlAdvancedDataSecurity](Enable-AzSynapseSqlAdvancedDataSecurity.md)
 Enables Advanced Data Security on a workspace.
@@ -54,7 +54,7 @@ Exports a sql script from a Synapse workspace.
 Exports a Synapse spark configuration to an output folder.
 
 ### [Get-AzSynapseActiveDirectoryOnlyAuthentication](Get-AzSynapseActiveDirectoryOnlyAuthentication.md)
-Gets Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+Gets Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ### [Get-AzSynapseActivityRun](Get-AzSynapseActivityRun.md)
 Gets information about activity runs for a pipeline run.
@@ -144,7 +144,7 @@ Gets a Synapse Analytics Spark session.
 Gets a Synapse Analytics Spark statement.
 
 ### [Get-AzSynapseSqlActiveDirectoryAdministrator](Get-AzSynapseSqlActiveDirectoryAdministrator.md)
-Gets information about an Azure AD administrator for Synapse Analytics Workspace.
+Gets information about a Microsoft Entra administrator for Synapse Analytics Workspace.
 
 ### [Get-AzSynapseSqlAdvancedDataSecurityPolicy](Get-AzSynapseSqlAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a workspace.
@@ -315,7 +315,7 @@ Removes a Spark job definition from workspace.
 Deletes a Apache Spark pool in Azure Synapse Analytics.
 
 ### [Remove-AzSynapseSqlActiveDirectoryAdministrator](Remove-AzSynapseSqlActiveDirectoryAdministrator.md)
-Removes an Azure AD administrator for Synapse Analytics Workspace.
+Removes a Microsoft Entra administrator for Synapse Analytics Workspace.
 
 ### [Remove-AzSynapseSqlDatabase](Remove-AzSynapseSqlDatabase.md)
 This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
@@ -405,7 +405,7 @@ Creates a pipeline in workspace.
 Creates a Spark job definition in workspace.
 
 ### [Set-AzSynapseSqlActiveDirectoryAdministrator](Set-AzSynapseSqlActiveDirectoryAdministrator.md)
-Provisions an Azure AD administrator for Synapse Analytics SQL pool.
+Provisions a Microsoft Entra administrator for Synapse Analytics SQL pool.
 
 ### [Set-AzSynapseSqlAuditSetting](Set-AzSynapseSqlAuditSetting.md)
 Changes the auditing settings of an Azure Synapse Analytics Workspace.

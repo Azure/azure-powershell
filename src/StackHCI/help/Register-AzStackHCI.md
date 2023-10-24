@@ -262,7 +262,7 @@ Accept wildcard characters: False
 
 ### -RepairRegistration
 Repair the current Azure Stack HCI registration with the cloud.
-This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Azure AD application in the cloud and generates new replacement certificates for both.
+This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Microsoft Entra application in the cloud and generates new replacement certificates for both.
 The resource group, resource name, and other registration choices are preserved.
 
 ```yaml
@@ -419,4 +419,3 @@ PortalResourceURL: Azure Portal Resource URL.
 ALIASES
 
 ## RELATED LINKS
-

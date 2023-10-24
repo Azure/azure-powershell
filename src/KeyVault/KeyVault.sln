@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "KeyVault.Aut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{46D2C182-FE70-46DD-85AD-C356275BBBFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{C7FEEB2F-EB61-49CC-914D-53B98E031E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +79,10 @@ Global
 		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7FEEB2F-EB61-49CC-914D-53B98E031E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7FEEB2F-EB61-49CC-914D-53B98E031E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7FEEB2F-EB61-49CC-914D-53B98E031E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7FEEB2F-EB61-49CC-914D-53B98E031E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
