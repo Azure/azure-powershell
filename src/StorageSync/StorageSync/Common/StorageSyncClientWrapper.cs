@@ -61,6 +61,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string BuiltInRoleDefinitionId = "c12c1c16-33a1-487b-954d-41c89c60f349";
 
         /// <summary>
+        /// Storage Account Contributor Role Definition Id
+        /// </summary>
+        public const string StorageAccountContributorRoleDefinitionId = "17d1049b-9a84-46fb-8f53-869881c3d3ab";
+
+        /// <summary>
+        /// Storage File Data Privileged Contributor Role Definition Id
+        /// </summary>
+        public const string StorageFileDataPrivilegedContributorRoleDefinitionId = "69566ab7-960f-475b-8e7c-b3118f30c6bd";
+
+        /// <summary>
         /// Gets or sets the storage sync management client.
         /// </summary>
         /// <value>The storage sync management client.</value>
@@ -176,13 +186,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             get
             {
-                    switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
-                    {
-                        case EnvironmentName.AzureUSGovernment:
-                            return AzureUSGovernmentKailaniAppId;
-                        default:
-                            return AzureCloudKailaniAppId;
-                    }
+                switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
+                {
+                    case EnvironmentName.AzureUSGovernment:
+                        return AzureUSGovernmentKailaniAppId;
+                    default:
+                        return AzureCloudKailaniAppId;
+                }
             }
         }
 
@@ -247,7 +257,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
             try
             {
-                if(hasMismatchSubscription)
+                if (hasMismatchSubscription)
                 {
                     AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
                 }
@@ -320,6 +330,68 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 ResourceManagementClient.SubscriptionId = currentSubscriptionId;
             }
+        }
+
+        public RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
+        {
+            string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
+            bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;
+
+            try
+            {
+                if (hasMismatchSubscription)
+                {
+                    AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
+                }
+
+                var resourceIdentifier = new ResourceIdentifier(scope);
+                string roleDefinitionScope = "/";
+                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, roleDefinitionId);
+
+                var serverPrincipalId = principalId.ToString();
+                var roleAssignments = AuthorizationManagementClient.RoleAssignments
+                    .ListForResource(
+                    resourceIdentifier.ResourceGroupName,
+                    ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ParentResource ?? "/",
+                    ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ResourceName,
+                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                var roleAssignmentScope = scope;
+                Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
+
+                RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
+                if (roleAssignment == null)
+                {
+                    VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
+                    var createParameters = new RoleAssignmentCreateParameters
+                    {
+                        Properties = new RoleAssignmentProperties
+                        {
+                            PrincipalId = serverPrincipalId,
+                            RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, roleDefinitionId)
+                        }
+                    };
+
+                    roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
+                    StorageSyncResourceManager.Wait();
+                    VerboseLogger.Invoke($"Successfully created role assignment {roleAssignment.Id}");
+                }
+
+                return roleAssignment;
+            }
+            catch(Exception ex)
+            {
+                VerboseLogger.Invoke($"Failed to create role assignment with exception {ex.Message}. Please create role assignment using troubleshooting documents.");
+            }
+            finally
+            {
+                if (hasMismatchSubscription)
+                {
+                    AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
+                }
+            }
+            return null;
         }
     }
 }

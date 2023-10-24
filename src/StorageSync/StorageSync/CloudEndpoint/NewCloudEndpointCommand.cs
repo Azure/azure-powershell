@@ -242,7 +242,31 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
 
-                Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
+                // Get Storage sync service
+                StorageSyncModels.StorageSyncService storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Get(resourceGroupName, storageSyncServiceName);
+
+                if (storageSyncService == null)
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                }
+
+                if (storageSyncService.Identity != null && storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) != Guid.Empty)
+                {
+                    // Identity , RoleDef, Scope
+                    var scope = StorageAccountResourceId;
+                    var identityRoleAssignmentForSAScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                        storageSyncService.Identity.PrincipalId.Value,
+                        Common.StorageSyncClientWrapper.StorageAccountContributorRoleDefinitionId,
+                        scope);
+
+                    scope = $"{StorageAccountResourceId}/fileServices/default/fileshares/{AzureFileShareName}";
+                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                       storageSyncService.Identity.PrincipalId.Value,
+                       Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                       scope);
+                }
+
+                    Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
 
                 if (ShouldProcess(Target, ActionMessage))
                 {

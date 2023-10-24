@@ -285,4 +285,7 @@
   <data name="SetRegisteredServerActionMessage" xml:space="preserve">
     <value>Set a Registered Server.</value>
   </data>
+  <data name="MissingServerResourceIdErrorMessage" xml:space="preserve">
+    <value>The given server resource id is not in the required format. Please try again.</value>
+  </data>
 </root>

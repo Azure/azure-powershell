@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given server resource id is not in the required format. Please try again..
+        /// </summary>
+        internal static string MissingServerResourceIdErrorMessage {
+            get {
+                return ResourceManager.GetString("MissingServerResourceIdErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service Principal for Azure File Sync was not found. Please contact administrator for further troubleshooting..
         /// </summary>
         internal static string MissingServicePrincipalResourceIdErrorMessage {
