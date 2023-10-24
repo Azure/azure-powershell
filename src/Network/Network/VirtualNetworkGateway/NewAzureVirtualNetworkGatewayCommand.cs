@@ -543,12 +543,12 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Any())
                 {
-                    foreach (var config in this.ClientConnectionConfiguration)
+                    foreach(var config in this.ClientConnectionConfiguration)
                     {
-                        foreach (var policyGroup in config.VirtualNetworkGatewayPolicyGroups)
+                        foreach (var policyGroup  in config.VirtualNetworkGatewayPolicyGroups)
                         {
                             policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, vnetGateway.ResourceGroupName, Name, policyGroup.Id);
-                        }
+                         }
                     }
                     vnetGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfiguration.ToList();
                 }
