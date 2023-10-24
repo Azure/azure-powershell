@@ -1719,6 +1719,7 @@ function Test-NewDiskSecurityTypeDefaulting
         
         $diskname = "d" + $rgname;
         $securityTypeTL = "TrustedLaunch";
+        $hyperVGen2 = "V2";
         
         $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
         $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
@@ -1727,6 +1728,7 @@ function Test-NewDiskSecurityTypeDefaulting
 
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         Assert-AreEqual $disk.SecurityProfile.securityType $securityTypeTL;
+        Assert-AreEqual $disk.HyperVGeneration $hyperVGen2;
         
 	}
     finally 

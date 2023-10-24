@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             imageSku,
                             version: imageVersion).GetAwaiter().GetResult();
 
-                        if (response.Body.HyperVGeneration == "V2")
+                        if (response.Body.HyperVGeneration.ToUpper() == "V2")
                         {
                             // then assume this is TL supported as per design request.
                             // If SecurityType already exists, so user set it, don't change it.
@@ -132,7 +132,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             if (disk.SecurityProfile.SecurityType == null)
                             {
                                 disk.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                            }  
+                            }
+                            disk.HyperVGeneration = "V2";
                         }
                         else
                         {
