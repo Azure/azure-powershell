@@ -482,23 +482,22 @@ Tests verifies creation and validation of RoleAssignment properties for not null
 function Test-RaPropertiesValidation
 {
     # Setup
-    # $users = Get-AzADUser | Select-Object -First 1 -Wait
     $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
     $subscription = $(Get-AzContext).Subscription
     $scope = '/subscriptions/'+$subscription[0].Id
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
-    $roleDef.Name = "Reader vm For Test 1023"
+    $roleDef.Name = "Reader vm For Test 1024"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590' #"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+    $roleDef.AssignableScopes[0] = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
-    New-AzRoleDefinitionWithId -Role $roleDef -RoleDefinitionId 14347f94-76d9-48f6-932e-7997d99a45b2
-    $rd = Get-AzRoleDefinition -Name "Reader vm"
+    New-AzRoleDefinitionWithId -Role $roleDef -RoleDefinitionId 14347f95-76d9-48f6-932e-7997d99a45b2
+    $rd = Get-AzRoleDefinition -Name "Reader vm For Test 1023"
 
     $newAssignment = New-AzRoleAssignmentWithId `
                         -ObjectId $userId `
-                        -RoleDefinitionName "Reader vm" `
+                        -RoleDefinitionName "Reader vm For Test 1023" `
                         -Scope $scope `
                         -RoleAssignmentId 584d33a3-b14d-4eb4-863e-0df67b178389
 
