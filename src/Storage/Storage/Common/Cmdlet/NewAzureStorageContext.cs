@@ -284,9 +284,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(HelpMessage = TableServiceEndPointHelpMessage, ParameterSetName = OAuthServiceEndpointParameterSet)]
         public string TableEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
-        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
-        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = "Required parameter to use with OAuth (Azure AD) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthEnvironmentParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
+        [Parameter(Mandatory = false, ParameterSetName = OAuthServiceEndpointParameterSet, HelpMessage = "Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.")]
         public SwitchParameter EnableFileBackupRequestIntent { get; set; }
 
         /// <summary>

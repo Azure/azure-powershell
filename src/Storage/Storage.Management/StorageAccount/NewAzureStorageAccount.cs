@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.",
+            HelpMessage = "Enable Azure Files Microsoft Entra Domain Service Authentication for the storage account.",
             ParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet)]
         [ValidateNotNullOrEmpty]
         public bool EnableAzureActiveDirectoryDomainServicesForFile
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " +
-            "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
+            "If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. " +
             "The default value is null, which is equivalent to true.")]
         [ValidateNotNullOrEmpty]
         public bool AllowSharedKeyAccess
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+            HelpMessage = "Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowCrossTenantReplication
         {
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ImmutabilityPolicyState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
         [PSArgumentCompleter("PrivateLink", "AAD")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
