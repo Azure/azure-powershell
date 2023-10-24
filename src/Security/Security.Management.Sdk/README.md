@@ -106,7 +106,7 @@ directive:
     where: $.definitions.AlertProperties.properties.intent['x-ms-enum'].values[1]
     transform: >
         $["description"] = $["description"].replace('Att&ck', 'Attack');
-		
+
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Security
 ```
