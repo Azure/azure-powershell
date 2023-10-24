@@ -23,7 +23,9 @@
 * Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
 * Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
 * Updated breaking change for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
+
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
@@ -31,7 +33,6 @@
 * Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
 * Fixed bug in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to add "GeoLocation" as a valid input for VariableName
 * Added breaking change message for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
-* Added min scale units and max scale units to support autoscale for Virtual Network gateways
 
 ## Version 6.1.1
 * Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
