@@ -655,3 +655,4 @@ namespace Microsoft.Azure.Commands.Network
             return getVirtualNetworkGateway;
         }
     }
+}
