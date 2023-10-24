@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------------
 
 function Set-AzVmssVMRunCommand_ScriptLocalPath {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -84,7 +84,7 @@ function Set-AzVmssVMRunCommand_ScriptLocalPath {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]]
         # The parameters used by the script.
         # To construct, see NOTES section for PARAMETER properties and create a hash table.
         ${Parameter},
@@ -92,7 +92,7 @@ function Set-AzVmssVMRunCommand_ScriptLocalPath {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]]
         # The parameters used by the script.
         # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
         ${ProtectedParameter},
