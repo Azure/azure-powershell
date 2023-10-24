@@ -1008,6 +1008,14 @@
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>AllowRemoteVnetTraffic</Label>
+                <PropertyName>AllowRemoteVnetTraffic</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowVirtualWanTraffic</Label>
+                <PropertyName>AllowVirtualWanTraffic</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5188,6 +5196,10 @@
               <ListItem>
                 <Label>ExpressRouteExpressRouteConnections</Label>
                 <PropertyName>ExpressRouteExpressRouteConnectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowNonVirtualWanTraffic</Label>
+                <PropertyName>AllowNonVirtualWanTraffic</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
