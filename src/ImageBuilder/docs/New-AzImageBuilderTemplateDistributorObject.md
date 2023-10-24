@@ -15,7 +15,7 @@ Create an in-memory object for ImageTemplateDistributor.
 ### VhdDistributor (Default)
 ```
 New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -VhdDistributor
- [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [<CommonParameters>]
+ [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-Uri <String>] [<CommonParameters>]
 ```
 
 ### ManagedImageDistributor
@@ -26,9 +26,10 @@ New-AzImageBuilderTemplateDistributorObject -ImageId <String> -Location <String>
 
 ### SharedImageDistributor
 ```
-New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -ReplicationRegion <String[]>
- -RunOutputName <String> -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>]
- [-ExcludeFromLatest <Boolean>] [-StorageAccountType <SharedImageStorageAccountType>] [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -RunOutputName <String>
+ -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-ExcludeFromLatest <Boolean>]
+ [-ReplicationRegion <String[]>] [-StorageAccountType <SharedImageStorageAccountType>]
+ [-TargetRegion <ITargetRegion[]>] [-Versioning <IDistributeVersioner>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,41 +37,41 @@ Create an in-memory object for ImageTemplateDistributor.
 
 ## EXAMPLES
 
-### Example 1: Create a managed image distributor
+### Example 1: Create a managed image distributor.
 ```powershell
-New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor -ArtifactTag @{tag='lucasManage'} -ImageId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-imageshare -RunOutputName luacas-runout -Location eastus
+New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor -ArtifactTag @{tag='azpstest'} -ImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image" -RunOutputName "runoutput-01" -Location eastus
 ```
 
 ```output
-RunOutputName ImageId
-------------- -------                                                                                                         
-luacas-runout /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Co…
+RunOutputName ImageId                                                                                                             Location
+------------- -------                                                                                                             --------
+runoutput-01  /subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/images/azps-vm-image eastus
 ```
 
 This command creates a managed image distributor.
 
-### Example 2: Create a VHD distributor
+### Example 2: Create a VHD distributor.
 ```powershell
 New-AzImageBuilderTemplateDistributorObject -ArtifactTag @{tag='vhd'} -VhdDistributor -RunOutputName image-vhd
 ```
 
 ```output
-RunOutputName
--------------
+RunOutputName Uri
+------------- ---
 image-vhd
 ```
 
 This command creates a VHD distributor.
 
-### Example 3: Create a shared image distributor
+### Example 3: Create a shared image distributor.
 ```powershell
-New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion eastus2 -RunOutputName 'outname' -ExcludeFromLatest $false 
+New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{"test"="dis-share"} -GalleryImageId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image" -ReplicationRegion "eastus" -RunOutputName "runoutput-01"
 ```
 
 ```output
-RunOutputName ExcludeFromLatest GalleryImageId
-------------- ----------------- --------------                                                                                
-outname       False             /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/prov… 
+RunOutputName ExcludeFromLatest GalleryImageId                                                        ReplicationRegion StorageAccountType
+------------- ----------------- --------------                                                        ----------------- -------
+runoutput-01                    /subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder... {eastus}
 ```
 
 This command creates a shared image distributor.
@@ -82,7 +83,7 @@ Tags that will be applied to the artifact once it has been created/updated by th
 To construct, see NOTES section for ARTIFACTTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -GalleryImageId
-Resource Id of the Shared Image Gallery image.
+Resource Id of the Azure Compute Gallery image.
 
 ```yaml
 Type: System.String
@@ -170,14 +171,16 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationRegion
-A list of regions that the image will be replicated to.
+[Deprecated] A list of regions that the image will be replicated to.
+This list can be specified only if targetRegions is not specified.
+This field is deprecated - use targetRegions instead.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: SharedImageDistributor
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,11 +218,62 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountType
-Storage account type to be used to store the shared image.
+[Deprecated] Storage account type to be used to store the shared image.
 Omit to use the default (Standard_LRS).
+This field can be specified only if replicationRegions is specified.
+This field is deprecated - use targetRegions instead.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType
+Parameter Sets: SharedImageDistributor
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetRegion
+The target regions where the distributed Image Version is going to be replicated to.
+This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+To construct, see NOTES section for TARGETREGION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]
+Parameter Sets: SharedImageDistributor
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Uri
+Optional Azure Storage URI for the distributed VHD blob.
+Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: VhdDistributor
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Versioning
+Describes how to generate new x.y.z version number for distribution.
+To construct, see NOTES section for VERSIONING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -252,11 +306,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageDistributor
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
 
 ## NOTES
 
@@ -269,6 +323,14 @@ To create the parameters described below, construct a hash table containing the 
 
 `ARTIFACTTAG <IImageTemplateDistributorArtifactTags>`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`TARGETREGION <ITargetRegion[]>`: The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
+  - `Name <String>`: The name of the region.
+  - `[ReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
+  - `[StorageAccountType <SharedImageStorageAccountType?>]`: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+
+`VERSIONING <IDistributeVersioner>`: Describes how to generate new x.y.z version number for distribution.
+  - `Scheme <String>`: Version numbering scheme to be used.
 
 ## RELATED LINKS
 

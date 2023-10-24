@@ -12,11 +12,33 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzWvdPrivateLinkResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetWorkspace' {
+        try {
+
+            New-AzWvdWorkspace -ResourceGroupName $env.ResourceGroup `
+            -Location $env.Location `
+            -Name $env.Workspace `
+            -FriendlyName 'fri' `
+            -ApplicationGroupReference $null `
+            -Description 'des'
+
+            $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroup `
+                                                                -WorkspaceName $env.Workspace
+
+            $privateLinkResource.Name | Should -Match "feed|global"
+        }
+        finally {
+            Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
+                                  -ResourceGroupName $env.ResourceGroup `
+                                  -Name $env.Workspace
+        }
+        
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetHostPool' {
+        $privateLinkResource = Get-AzWvdPrivateLinkResource -ResourceGroupName $env.ResourceGroup `
+                                                            -HostPoolName $env.HostPoolPersistent
+
+        $privateLinkResource.Name | Should -Match "connection"
     }
 }

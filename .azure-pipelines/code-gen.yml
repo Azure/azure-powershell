@@ -1,4 +1,3 @@
-# Variable 'BotAccessToken' was defined in the Variables tab
 # Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
 parameters:
 - name: TargetBranch
@@ -22,6 +21,7 @@ jobs:
   pool: pool-windows-2019
   steps:
   - checkout: self
+  - template: util/get-github-pat-steps.yml
   - task: NodeTool@0
     displayName: Use Node 14.15.5
     inputs:
@@ -31,7 +31,7 @@ jobs:
     inputs:
       command: custom
       verbose: false
-      customCommand: install -g  autorest@latest
+      customCommand: install -g autorest@latest
   - task: PowerShell@2
     displayName: Generate
     inputs:
@@ -92,13 +92,15 @@ jobs:
       git add ./src;
       git add tools/CreateMappings_rules.json;
       git commit -m "Move ${{ parameters.ServiceName }} to ${{ parameters.TargetBranch }}";
-      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
       git push origin codegen/${{ parameters.ServiceName }} --force;
     displayName: Create codegen/${{ parameters.ServiceName }} branch
   - pwsh: |
-      $Title = "Migrate ${{ parameters.ServiceName }} from generation to ${{ parameters.TargetBranch }}"
+      $SourceBranch = "$(Build.SourceBranch)"
+      $SourceBranch = $SourceBranch.Replace("refs/heads/", "")
+      $Title = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}"
       $HeadBranch = "codegen/${{ parameters.ServiceName }}"
       $BaseBranch = "${{ parameters.TargetBranch }}"
-      $Description = "Migrate ${{ parameters.ServiceName }} from generation to ${{ parameters.TargetBranch }}"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      $Description = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
     displayName: Create PR to main branch
