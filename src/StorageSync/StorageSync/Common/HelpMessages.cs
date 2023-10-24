@@ -179,6 +179,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string LocalCacheModeParameter = "Local Cache Mode Parameter.";
         /// <summary>
+        /// Server Identity Parameter
+        /// </summary>
+        public const string ServerIdentityParameter = "Registered Server Identity";
+        /// <summary>
         /// The tier files older than days parameter
         /// </summary>
         public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter.";

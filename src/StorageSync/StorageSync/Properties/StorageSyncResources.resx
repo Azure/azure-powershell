@@ -282,4 +282,7 @@
   <data name="MissingServicePrincipalResourceIdErrorMessage" xml:space="preserve">
     <value>Service Principal for Azure File Sync was not found. Please contact administrator for further troubleshooting.</value>
   </data>
+  <data name="SetRegisteredServerActionMessage" xml:space="preserve">
+    <value>Set a Registered Server.</value>
+  </data>
 </root>
