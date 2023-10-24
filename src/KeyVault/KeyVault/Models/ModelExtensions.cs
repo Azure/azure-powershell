@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return id.ToString();
         }
 
-        private static  List<PSADObject> GetObjectsByObjectIds(List<string> objectIds, IMicrosoftGraphClient graphClient)
+        private static List<PSADObject> GetObjectsByObjectIds(List<string> objectIds, IMicrosoftGraphClient graphClient)
         {
             // todo: do we want to use 1000 as batch count in msgraph API?
             List<PSADObject> result = new List<PSADObject>();
