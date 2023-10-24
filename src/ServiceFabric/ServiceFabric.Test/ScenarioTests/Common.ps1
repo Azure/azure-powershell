@@ -204,7 +204,7 @@ function WaitForManagedClusterReadyStateIfRecord($clusterName, $resourceGroupNam
 	}
 }
 
-function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 1200)
+function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 2100)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
@@ -216,14 +216,14 @@ function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $time
         }
 
         Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
-        Start-TestSleep -Seconds 15
+        Start-TestSleep -Seconds 30
     }
 
     Write-Error "WaitForClusterReadyState timed out"
     return $false
 }
 
-function WaitForAllJob($timeoutInSeconds = 1200)
+function WaitForAllJob($timeoutInSeconds = 2100)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     $allJobs = Get-Job
@@ -243,7 +243,7 @@ function WaitForAllJob($timeoutInSeconds = 1200)
             return $false
 		}
 
-        Start-TestSleep -Seconds 15
+        Start-TestSleep -Seconds 30
     } while ((Get-Date) -lt $timeoutTime)
 
     Write-Error "WaitForJob timed out"
@@ -350,12 +350,12 @@ function Get-AppTypeV2Name
 
 function Get-AppPackageV1
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.sfpkg?sp=r&st=2023-09-21T03:04:25Z&se=2023-11-01T11:04:25Z&spr=https&sv=2022-11-02&sr=b&sig=BTFecBFf5%2Bzm5eLH0XjqBt1r%2FknbbaAniftETWddh8A%3D"
 }
 
 function Get-AppPackageV2
 {
-    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.2.0.0.sfpkg?sp=r&st=2023-09-21T03:05:25Z&se=2023-09-21T11:05:25Z&spr=https&sv=2022-11-02&sr=b&sig=EDTkZPO8T0yMtB2gKJR2I%2FkbLUuQFFKHE0w2eyT%2Bn2E%3D"
 }
 
 function Get-ServiceTypeName
@@ -382,12 +382,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sfmconeboxst.blob.core.windows.net/managed-application-deployment/Voting.sfpkg"
+    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.sfpkg?sp=r&st=2023-09-21T03:04:25Z&se=2023-11-01T11:04:25Z&spr=https&sv=2022-11-02&sr=b&sig=BTFecBFf5%2Bzm5eLH0XjqBt1r%2FknbbaAniftETWddh8A%3D"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sfmconeboxst.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg"
+    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.2.0.0.sfpkg?sp=r&st=2023-09-21T21:45:34Z&se=2023-11-01T05:45:34Z&spr=https&sv=2022-11-02&sr=b&sig=K0NUrFC47kR3OTwVG5rANy88I0eVP9hQ%2F7MXUSDAtsA%3D"
 }
 
 function Get-ManagedStatelessServiceTypeName

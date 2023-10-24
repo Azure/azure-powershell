@@ -120,12 +120,12 @@ New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorag
 
 This command creates a Storage account with Hierarchical Namespace enabled, Sftp enabled, and localuser enabled.
 
-### Example 6: Create a Storage account with Azure Files AAD DS Authentication, and enable large file share.
+### Example 6: Create a Storage account with Azure Files Microsoft Entra Domain Services Authentication, and enable large file share.
 ```powershell
 New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true -EnableLargeFileShare
 ```
 
-This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share.
+This command creates a Storage account with Azure Files Microsoft Entra Domain Services Authentication, and enable large file share.
 
 ### Example 7: Create a Storage account with enable Files Active Directory Domain Service Authentication and DefaultSharePermission.
 ```powershell
@@ -539,7 +539,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCrossTenantReplication
-Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.
 
 ```yaml
 Type: System.Boolean
@@ -554,7 +554,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowedCopyScope
-Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
 
 ```yaml
 Type: System.String
@@ -569,7 +569,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowSharedKeyAccess
-Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
+Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. The default value is null, which is equivalent to true.
 
 ```yaml
 Type: System.Boolean
@@ -721,7 +721,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureActiveDirectoryDomainServicesForFile
-Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+Enable Azure Files Microsoft Entra Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
