@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"Get a list of all Activity Log Alert rules in a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts", ApiVersion = "2020-10-01")]
     public partial class GetAzActivityLogAlert_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener
     {
