@@ -26,6 +26,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The noun azure rm storage sync service
         /// </summary>
         public const string NounAzureRmStorageSyncService = StorageSyncConstants.ProductPrefix + "Service";
+
+        /// <summary>
+        /// The noun azure rm storage sync service identity
+        /// </summary>
+        public const string NounAzureRmStorageSyncServiceIdentity = StorageSyncNouns.NounAzureRmStorageSyncService + "Identity";
+
         /// <summary>
         /// The noun azure rm storage sync group
         /// </summary>
