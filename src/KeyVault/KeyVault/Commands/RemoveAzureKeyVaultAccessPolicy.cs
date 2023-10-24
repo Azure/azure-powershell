@@ -172,13 +172,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
+            HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Microsoft Entra ID.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
+            ParameterSetName = InputObjectByServicePrincipalName)]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application whose permissions you want to remove. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.")]
+            ParameterSetName = ResourceIdByServicePrincipalName)]
         [ValidateNotNullOrEmpty()]
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
@@ -204,13 +202,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Microsoft Entra ID for which to remove permissions.")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectByObjectId)]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdByObjectId)]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
 
