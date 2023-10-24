@@ -48,9 +48,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
-        [Ps1Xml(Label = "AutoScaleConfiguration", Target = ViewControl.Table)]
-        public PSVirtualNetworkGatewayAutoscaleConfiguration AutoScaleConfiguration { get; set; }
-
         public List<PSVirtualNetworkGatewayPolicyGroup> VirtualNetworkGatewayPolicyGroups { get; set; }
         
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
