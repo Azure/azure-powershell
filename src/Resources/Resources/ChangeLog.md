@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Supported $ref statements for user-defined types in Bicep files.
 * Fixed reporting duplicate warnings when compiling Bicep files.
+* Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
 * Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
 * Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
 
