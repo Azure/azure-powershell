@@ -29,7 +29,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", SupportsShouldProcess = true, DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.Network
         [PSArgumentCompleter(
             "Enabled",
             "Disabled")]
-        public string AdminState { get; set; }
+        public string AdminState  { get; set; }
 
         public override void Execute()
         {
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Commands.Network
             var isCertConfigured = (this.VpnClientRootCertificates != null && this.VpnClientRootCertificates.Count() > 0) || (this.VpnClientRevokedCertificates != null && this.VpnClientRevokedCertificates.Count() > 0);
             var isRadiusConfigured = !string.IsNullOrEmpty(this.RadiusServerAddress) && this.RadiusServerSecret != null && !string.IsNullOrEmpty(SecureStringExtensions.ConvertToString(this.RadiusServerSecret));
             var isAadConfigured = this.AadTenantUri != null && this.AadAudienceId != null && this.AadIssuerUri != null;
-
+            
             if (!string.IsNullOrEmpty(GatewaySku)
                 && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
-
+                
                 if (this.RadiusServerList != null && this.RadiusServerList.Any())
                 {
                     vnetGateway.VpnClientConfiguration.RadiusServers = this.RadiusServerList?.ToList();
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Any())
                 {
-                    foreach(var config in this.ClientConnectionConfiguration)
+                    foreach( var config in this.ClientConnectionConfiguration)
                     {
                         foreach (var policyGroup  in config.VirtualNetworkGatewayPolicyGroups)
                         {
@@ -580,12 +580,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IpConfigurationBgpPeeringAddresses != null)
             {
-                if (vnetGateway.BgpSettings == null)
+                if(vnetGateway.BgpSettings == null)
                 {
                     vnetGateway.BgpSettings = new PSBgpSettings();
                 }
 
-                if (this.IpConfigurationBgpPeeringAddresses.Any(address => address.CustomBgpIpAddresses == null || !address.CustomBgpIpAddresses.Any()))
+                if(this.IpConfigurationBgpPeeringAddresses.Any(address => address.CustomBgpIpAddresses == null || !address.CustomBgpIpAddresses.Any()))
                 {
                     throw new ArgumentException("if IpConfigurationBgpPeeringAddresses are provided, CustomBgpIpAddresses must be a provided in create gateway");
                 }
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                 }
             }
-            else if (vnetGateway.BgpSettings != null)
+            else if(vnetGateway.BgpSettings != null)
             {
                 vnetGateway.BgpSettings.BgpPeeringAddresses = null;
             }
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 vnetGateway.AdminState = this.AdminState;
             }
-
+                
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
