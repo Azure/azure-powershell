@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: List properties of verified partner.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridVerifiedPartner
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+Auth0
+MicrosoftGraphAPI
+SAP
+TribalGroup
 ```
 
-{{ Add description here }}
+List properties of verified partner.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of a verified partner.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridVerifiedPartner -Name MicrosoftGraphAPI
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+MicrosoftGraphAPI
 ```
 
-{{ Add description here }}
-
+Get properties of a verified partner.

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Synchronously updates a partner configuration with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid -DefaultMaximumExpirationTimeInDay 1 -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Synchronously updates a partner configuration with the specified parameters.

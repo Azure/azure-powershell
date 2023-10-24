@@ -8,19 +8,13 @@ schema: 2.0.0
 # Get-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Get properties of a partner configuration.
+List all the partner configurations under a resource group.
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
 Get-AzEventGridPartnerConfiguration [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -31,31 +25,35 @@ Get-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId
 ```
 
 ## DESCRIPTION
-Get properties of a partner configuration.
+List all the partner configurations under a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all the partner configurations under a resource group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerConfiguration
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List all the partner configurations under a resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all the partner configurations under a resource group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List all the partner configurations under a resource group.
 
 ## PARAMETERS
 
@@ -115,7 +113,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List
 Aliases:
 
 Required: True

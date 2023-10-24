@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously updates a partner namespace with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPartnerNamespace -Name azps-partnernamespace -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"} -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Asynchronously updates a partner namespace with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Asynchronously updates a partner namespace with the specified parameters.
 ```powershell
-{{ Add code here }}
+$partnernamespace = Get-AzEventGridPartnerNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-partnernamespace
+Update-AzEventGridPartnerNamespace -InputObject $partnernamespace -Tag @{"abc"="123"} -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Asynchronously updates a partner namespace with the specified parameters.

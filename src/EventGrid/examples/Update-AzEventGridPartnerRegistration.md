@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a partner registration with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPartnerRegistration -Name azps-registration -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"} -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
+Updates a partner registration with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a partner registration with the specified parameters.
 ```powershell
-{{ Add code here }}
+$partnerregistration = Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
+Update-AzEventGridPartnerRegistration -InputObject $partnerregistration -Tag @{"abc"="123"} -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
+Updates a partner registration with the specified parameters.

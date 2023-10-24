@@ -41,27 +41,44 @@ Gets a partner registration with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List partner registration with the specified parameters.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerRegistration
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+global   azps-registration azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List partner registration with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: List partner registration with the specified parameters.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name              ResourceGroupName
+-------- ----              -----------------
+global   azps-registration azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List partner registration with the specified parameters.
+
+### Example 3: Gets a partner registration with the specified parameters.
+```powershell
+Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+global   azps-registration azps_test_group_eventgrid
+```
+
+Gets a partner registration with the specified parameters.
 
 ## PARAMETERS
 

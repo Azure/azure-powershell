@@ -40,27 +40,45 @@ Get properties of a topic space.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of topic space.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicSpace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of topic space.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of topic space.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicSpace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-topicspace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of topic space.
+
+### Example 3: Get properties of a topic space.
+```powershell
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Get-AzEventGridTopicSpace -NamespaceInputObject $namespace -Name azps-topicspace
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
+```
+
+Get properties of a topic space.
 
 ## PARAMETERS
 

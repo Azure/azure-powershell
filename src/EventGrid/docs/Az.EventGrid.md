@@ -102,7 +102,7 @@ Get properties of an event subscription of a namespace topic.
 List the two keys used to publish to a namespace topic.
 
 ### [Get-AzEventGridPartnerConfiguration](Get-AzEventGridPartnerConfiguration.md)
-Get properties of a partner configuration.
+List all the partner configurations under a resource group.
 
 ### [Get-AzEventGridPartnerDestination](Get-AzEventGridPartnerDestination.md)
 Get properties of a partner destination.
@@ -196,6 +196,9 @@ Asynchronously creates a new event subscription or updates an existing event sub
 
 ### [New-AzEventGridDomainKey](New-AzEventGridDomainKey.md)
 Regenerate a shared access key for a domain.
+
+### [New-AzEventGridDomainTopic](New-AzEventGridDomainTopic.md)
+Asynchronously Create a new domain topic with the specified parameters.
 
 ### [New-AzEventGridDomainTopicEventSubscription](New-AzEventGridDomainTopicEventSubscription.md)
 Asynchronously creates a new event subscription or updates an existing event subscription.

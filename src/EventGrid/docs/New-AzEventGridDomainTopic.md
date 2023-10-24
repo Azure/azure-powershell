@@ -1,71 +1,40 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/az.eventgrid/update-azeventgridpartnerregistration
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgriddomaintopic
 schema: 2.0.0
 ---
 
-# Update-AzEventGridPartnerRegistration
+# New-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Updates a partner registration with the specified parameters.
+Asynchronously Create a new domain topic with the specified parameters.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzEventGridPartnerRegistration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzEventGridPartnerRegistration -InputObject <IEventGridIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzEventGridPartnerRegistration -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzEventGridPartnerRegistration -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzEventGridDomainTopic -DomainName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a partner registration with the specified parameters.
+Asynchronously Create a new domain topic with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: Updates a partner registration with the specified parameters.
+### Example 1: Asynchronously Create a new domain topic with the specified parameters.
 ```powershell
-Update-AzEventGridPartnerRegistration -Name azps-registration -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"} -PassThru
+New-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -Name azps-domaintopic
 ```
 
 ```output
-True
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-Updates a partner registration with the specified parameters.
-
-### Example 2: Updates a partner registration with the specified parameters.
-```powershell
-$partnerregistration = Get-AzEventGridPartnerRegistration -ResourceGroupName azps_test_group_eventgrid -Name azps-registration
-Update-AzEventGridPartnerRegistration -InputObject $partnerregistration -Tag @{"abc"="123"} -PassThru
-```
-
-```output
-True
-```
-
-Updates a partner registration with the specified parameters.
+Asynchronously Create a new domain topic with the specified parameters.
 
 ## PARAMETERS
 
@@ -100,43 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -DomainName
+Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -147,12 +85,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the partner registration.
+Name of the domain topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: PartnerRegistrationName
+Parameter Sets: (All)
+Aliases: DomainTopicName
 
 Required: True
 Position: Named
@@ -196,7 +134,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -212,27 +150,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Tags of the partner registration resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -273,11 +196,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDomainTopic
 
 ## NOTES
 

@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: List properties of partner namespace.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerNamespace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-partnernamespace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of partner namespace.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of partner namespace.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerNamespace -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-partnernamespace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of partner namespace.
 
+### Example 3: Get properties of a partner namespace.
+```powershell
+Get-AzEventGridPartnerNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-partnernamespace
+```
+
+```output
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-partnernamespace azps_test_group_eventgrid
+```
+
+Get properties of a partner namespace.

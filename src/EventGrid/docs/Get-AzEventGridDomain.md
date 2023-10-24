@@ -41,27 +41,44 @@ Get properties of a domain.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of domain.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomain
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of domain.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of domain.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of domain.
+
+### Example 3: Get properties of a domain.
+```powershell
+Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+westus2  azps-domain azps_test_group_eventgrid
+```
+
+Get properties of a domain.
 
 ## PARAMETERS
 

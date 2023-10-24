@@ -1,22 +1,40 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a topic space with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridTopicSpace -Name azps-topicspace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicTemplate "filter1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Create a topic space with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a topic space with the specified parameters.
 ```powershell
-{{ Add code here }}
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Update-AzEventGridTopicSpace -Name azps-topicspace -NamespaceInputObject $namespace -TopicTemplate "filter1"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Create a topic space with the specified parameters.
 
+### Example 3: Create a topic space with the specified parameters.
+```powershell
+$topicspace = Get-AzEventGridTopicSpace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-topicspace
+Update-AzEventGridTopicSpace -InputObject $topicspace -TopicTemplate "filter1"
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+azps-topicspace azps_test_group_eventgrid
+```
+
+Create a topic space with the specified parameters.

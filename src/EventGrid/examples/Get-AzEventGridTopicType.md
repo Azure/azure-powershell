@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: List information about topic type.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicType
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                            ResourceGroupName
+----                                            -----------------
+Microsoft.Eventhub.Namespaces
+......
+Microsoft.EventGrid.Namespaces
 ```
 
-{{ Add description here }}
+List information about topic type.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about a topic type.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicType -Name Microsoft.EventGrid.Namespaces
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           ResourceGroupName
+----                           -----------------
+Microsoft.EventGrid.Namespaces
 ```
 
-{{ Add description here }}
-
+Get information about a topic type.

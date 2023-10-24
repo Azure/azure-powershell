@@ -40,27 +40,46 @@ Get properties of a client group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of client group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridClientGroup -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName
+----             -----------------
+$all             azps_test_group_eventgrid
+azps-clientgroup azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of client group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of a client group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridClientGroup -Name azps-clientgroup -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName
+----             -----------------
+azps-clientgroup azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of a client group.
+
+### Example 3: Get properties of a client group.
+```powershell
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Get-AzEventGridClientGroup -Name azps-clientgroup -NamespaceInputObject $namespace
+```
+
+```output
+Name             ResourceGroupName
+----             -----------------
+azps-clientgroup azps_test_group_eventgrid
+```
+
+Get properties of a client group.
 
 ## PARAMETERS
 

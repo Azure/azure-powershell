@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List properties of permission binding.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of permission binding.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of a permission binding.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace -Name azps-pb
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of a permission binding.
 
+### Example 3: Get properties of a permission binding.
+```powershell
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Get-AzEventGridPermissionBinding -NamespaceInputObject $namespace -Name azps-pb
+```
+
+```output
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
+```
+
+Get properties of a permission binding.

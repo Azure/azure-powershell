@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously updates a namespace with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridNamespace -Name azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicSpaceConfigurationState Enabled -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                    ResourceGroupName
+-------- ----                    -----------------
+eastus   azps-eventgridnamespace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Asynchronously updates a namespace with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Asynchronously updates a namespace with the specified parameters.
 ```powershell
-{{ Add code here }}
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Update-AzEventGridNamespace -InputObject $namespace -TopicSpaceConfigurationState Enabled -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name                    ResourceGroupName
+-------- ----                    -----------------
+eastus   azps-eventgridnamespace azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
+Asynchronously updates a namespace with the specified parameters.

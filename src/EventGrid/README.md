@@ -353,6 +353,17 @@ directive:
       }
 
   - where:
+      variant: Create
+      subject: DomainTopic
+    set:
+      variant: CreateExpanded
+
+  - where:
+      variant: Get
+      subject: PartnerConfiguration
+    remove: true
+
+  - where:
       variant: ^(Create|Update|Regenerate).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
   - where:
@@ -401,28 +412,4 @@ directive:
     - model-name: AdvancedFilter
     - model-name: Partner
     - model-name: Filter
-
-    #   cmdlet-name: New-AzSpringAppDeploymentSettingEnvVariableObject
-    #   cmdlet-name: New-AzSpringAppDeploymentSettingAddonConfigObject
-    #   cmdlet-name: New-AzSpringAppActiveDeploymentCollectionObject
-    # - model-name: BuildpacksGroupProperties
-    #   cmdlet-name: New-AzSpringBuildpacksGroupObject
-    # - model-name: LoadedCertificate
-    #   cmdlet-name: New-AzSpringAppLoadedCertificateObject
-    # - model-name: BuildpackProperties
-    #   cmdlet-name: New-AzSpringBuildpackObject
-    # - model-name: DeploymentSettings
-    #   cmdlet-name: New-AzSpringAppDeploymentSettingObject
-    # - model-name: KeyVaultCertificateProperties
-    #   cmdlet-name: New-AzSpringKeyVaultCertificateObject
-    # - model-name: ContentCertificateProperties
-    #   cmdlet-name: New-AzSpringContentCertificateObject
-    # - model-name: JarUploadedUserSourceInfo
-    #   cmdlet-name: New-AzSpringAppDeploymentJarUploadedObject
-    # - model-name: NetCoreZipUploadedUserSourceInfo
-    #   cmdlet-name: New-AzSpringAppDeploymentNetCoreZipUploadedObject
-    # - model-name: SourceUploadedUserSourceInfo
-    #   cmdlet-name: New-AzSpringAppDeploymentSourceUploadedObject
-    # - model-name: BuildResultUserSourceInfo
-    #   cmdlet-name: New-AzSpringAppDeploymentBuildResultObject
 ```

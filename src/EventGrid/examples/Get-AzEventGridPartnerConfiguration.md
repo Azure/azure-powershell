@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all the partner configurations under a resource group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerConfiguration
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List all the partner configurations under a resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all the partner configurations under a resource group.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerConfiguration -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    Location ResourceGroupName
+----    -------- -----------------
+default global   azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
+List all the partner configurations under a resource group.

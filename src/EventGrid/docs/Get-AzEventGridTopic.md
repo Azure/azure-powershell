@@ -41,27 +41,44 @@ Get properties of a topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name       Kind  ResourceGroupName
+-------- ----       ----  -----------------
+eastus   azps-topic Azure azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopic -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name       Kind  ResourceGroupName
+-------- ----       ----  -----------------
+eastus   azps-topic Azure azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of topic.
+
+### Example 3: Get properties of a topic.
+```powershell
+Get-AzEventGridTopic -ResourceGroupName azps_test_group_eventgrid -Name azps-topic
+```
+
+```output
+Location Name       Kind  ResourceGroupName
+-------- ----       ----  -----------------
+eastus   azps-topic Azure azps_test_group_eventgrid
+```
+
+Get properties of a topic.
 
 ## PARAMETERS
 

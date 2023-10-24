@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: List properties of domain topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of domain topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of domain topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -Name azps-domaintopics
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of domain topic.
 
+### Example 3: Get properties of a domain topic.
+```powershell
+$domain = Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+Get-AzEventGridDomainTopic -DomainInputObject $domain -Name azps-domaintopics
+```
+
+```output
+Name             ResourceGroupName
+----             -----------------
+azps-domaintopic azps_test_group_eventgrid
+```
+
+Get properties of a domain topic.

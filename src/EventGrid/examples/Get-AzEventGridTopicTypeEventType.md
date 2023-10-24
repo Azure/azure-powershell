@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List event types for a topic type.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicTypeEventType -TopicTypeName Microsoft.Eventhub.Namespaces
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+Microsoft.EventHub.CaptureFileCreated
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List event types for a topic type.

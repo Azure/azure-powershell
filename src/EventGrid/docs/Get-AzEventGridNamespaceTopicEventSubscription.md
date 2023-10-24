@@ -50,27 +50,45 @@ Get properties of an event subscription of a namespace topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of event subscription of a namespace topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridNamespaceTopicEventSubscription -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of event subscription of a namespace topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of an event subscription of a namespace topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridNamespaceTopicEventSubscription -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription of a namespace topic.
+
+### Example 3: Get properties of an event subscription of a namespace topic.
+```powershell
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Get-AzEventGridNamespaceTopicEventSubscription -NamespaceInputObject $namespace -TopicName azps-topic -EventSubscriptionName azps-eventsubname
+```
+
+```output
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
+```
+
+Get properties of an event subscription of a namespace topic.
 
 ## PARAMETERS
 

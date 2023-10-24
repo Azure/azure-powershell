@@ -41,27 +41,44 @@ Get properties of a system topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List properties of system topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridSystemTopic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of system topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of system topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridSystemTopic -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of system topic.
+
+### Example 3: Get properties of a system topic.
+```powershell
+Get-AzEventGridSystemTopic -ResourceGroupName azps_test_group_eventgrid
+```
+
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   azps-systopic azps_test_group_eventgrid
+```
+
+Get properties of a system topic.
 
 ## PARAMETERS
 

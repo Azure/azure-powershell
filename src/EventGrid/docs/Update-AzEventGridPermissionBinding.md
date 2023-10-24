@@ -39,27 +39,46 @@ Create a permission binding with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a permission binding with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace -Name azps-pb -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Create a permission binding with the specified parameters.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a permission binding with the specified parameters.
 ```powershell
-{{ Add code here }}
+$namespace = Get-AzEventGridNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-eventgridnamespace
+Update-AzEventGridPermissionBinding -NamespaceInputObject $namespace -Name azps-pb -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Create a permission binding with the specified parameters.
+
+### Example 3: Create a permission binding with the specified parameters.
+```powershell
+$permissionbinding = Get-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace -Name azps-pb
+Update-AzEventGridPermissionBinding -InputObject $permissionbinding -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
+```
+
+```output
+Name    ResourceGroupName
+----    -----------------
+azps-pb azps_test_group_eventgrid
+```
+
+Create a permission binding with the specified parameters.
 
 ## PARAMETERS
 

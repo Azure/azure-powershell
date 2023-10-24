@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the two keys used to publish to a namespace topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridNamespaceTopicSharedAccessKey -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Key1        Key2
+----        ----
+JF0co*****= BG*****=
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List the two keys used to publish to a namespace topic.
