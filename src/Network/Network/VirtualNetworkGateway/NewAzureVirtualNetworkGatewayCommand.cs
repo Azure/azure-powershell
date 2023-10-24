@@ -144,7 +144,6 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
-            MNM.VirtualNetworkGatewaySkuTier.ErGwScale,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -313,12 +312,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
-        public Int32 MinScaleUnit { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
-        public Int32 MaxScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -647,19 +640,6 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.AdminState = this.AdminState;
             }
 
-            // set the min scale units and the max scale units
-            if (!string.IsNullOrEmpty(this.GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
-            {
-                if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
-                {
-                   throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
-                }
-
-                vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
-                vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
-                vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
-                vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);    
-            }
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
