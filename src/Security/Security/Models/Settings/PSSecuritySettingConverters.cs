@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
                     Id = value.Id,
                     Name = value.Name,
                     Type = value.Type,
-                    Enabled = ((DataExportSettings)value).Enabled
+                    Enabled = ((DataExportSettings)value).Enabled??false
                 };
             }
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
                     Id = value.Id,
                     Name = value.Name,
                     Type = value.Type,
-                    Enabled = ((AlertSyncSettings)value).Enabled
+                    Enabled = ((AlertSyncSettings)value).Enabled??false
                 };
             }
 
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.Security.Models.Settings
         {
             if (value.GetType().Name == nameof(PSSecurityDataExportSetting))
             {
-                return new DataExportSettings(((PSSecurityDataExportSetting)value).Enabled, value.Id, value.Name, value.Type);
+                return new DataExportSettings(enabled: ((PSSecurityDataExportSetting)value).Enabled, id: value.Id, name: value.Name, type: value.Type);
             }
 
             if (value.GetType().Name == nameof(PSSecurityAlertSyncSettings))
             {
-                return new AlertSyncSettings(((PSSecurityAlertSyncSettings)value).Enabled, value.Id, value.Name, value.Type);
+                return new AlertSyncSettings(enabled:((PSSecurityAlertSyncSettings)value).Enabled, id: value.Id, name: value.Name, type: value.Type);
             }
 
             return new Setting(value.Id, value.Name, value.Type);
