@@ -38,6 +38,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The noun azure rm storage sync cloud endpoint
         /// </summary>
         public const string NounAzureRmStorageSyncCloudEndpoint = StorageSyncConstants.ProductPrefix + "CloudEndpoint";
+
+        /// <summary>
+        /// The noun azure rm storage sync cloud endpoint permission
+        /// </summary>
+        public const string NounAzureRmStorageSyncCloudEndpointPermission = StorageSyncNouns.NounAzureRmStorageSyncCloudEndpoint + "Permission";
+
+        /// <summary>
+        /// The noun azure rm storage sync server endpoint permission
+        /// </summary>
+        public const string NounAzureRmStorageSyncServerEndpointPermission = StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint + "Permission";
+
         /// <summary>
         /// The noun azure rm storage sync server endpoint
         /// </summary>
