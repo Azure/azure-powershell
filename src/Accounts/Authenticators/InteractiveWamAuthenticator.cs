@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
-using Azure.Identity.BrokeredAuthentication;
+using Azure.Identity.Broker;
 
 using Hyak.Common;
 

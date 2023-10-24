@@ -17,7 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
-using Azure.Identity.BrokeredAuthentication;
+using Azure.Identity.Broker;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
