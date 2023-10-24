@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 3.3.0
-* Migrating from .Net sdk dependent sdk to autorest generated sdk
+* Fixed minor issues
 
 ## Version 3.2.0
 * Added new cmdlet `Add-AzServiceFabricManagedClusterNetworkSecurityRule` to update network security rules in managed cluster resource

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <PsModuleName>ServiceFabricManagedClusters</PsModuleName>
+        <PsModuleName>ServiceFabric</PsModuleName>
     </PropertyGroup>
     <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
     <PropertyGroup>
