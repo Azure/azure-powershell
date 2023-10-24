@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Support $ref statements for user-defined types in Bicep files.
 * Fixed reporting duplicate warnings when compiling Bicep files.
+* Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
 
 ## Version 6.11.2
 * Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
