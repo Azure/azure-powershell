@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// Azure resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// Azure resource.
         /// </param>
         /// <param name='properties'>
         /// The private endpoint connection properties.
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// Azure resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// Azure resource.
         /// </param>
         /// <param name='properties'>
         /// The private endpoint connection properties.
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </param>
         /// <param name='privateEndpointConnectionName'>
         /// The name of the private endpoint connection associated with the
-        /// Azure resource
+        /// Azure resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

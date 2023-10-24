@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
 {
@@ -97,6 +98,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <param name="subscription">subscription</param>
         /// <returns>true if request was successfully made. else false</returns>
         bool TryRegisterProvider(string currentSubscriptionId, string resourceProviderNamespace, string subscription);
+
+        /// <summary>
+        /// This function will try to create role assignment if not already created.
+        /// </summary>
+        /// <param name="subscription">Subscription id where role assignment will be created.</param>
+        /// <param name="principalId">Storage sync service identity id</param>
+        /// <param name="roleDefinitionId">Role definition id</param>
+        /// <param name="scope">Scope</param>
+        /// <returns>Role Assignment</returns>
+        RoleAssignment EnsureRoleAssignmentWithIdentity(string subscription, Guid principalId, string roleDefinitionId, string scope);
 
         /// <summary>
         /// Gets the afs agent installer path.

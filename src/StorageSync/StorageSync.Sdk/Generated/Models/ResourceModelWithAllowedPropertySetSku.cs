@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the
         /// ResourceModelWithAllowedPropertySetSku class.
         /// </summary>
-        /// <param name="name">The name of the SKU. Ex - P3. It is typically a
+        /// <param name="name">The name of the SKU. E.g. P3. It is typically a
         /// letter+number code</param>
         /// <param name="tier">Possible values include: 'Free', 'Basic',
         /// 'Standard', 'Premium'</param>

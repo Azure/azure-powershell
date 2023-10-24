@@ -179,6 +179,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string LocalCacheModeParameter = "Local Cache Mode Parameter.";
         /// <summary>
+        /// Server Identity Parameter
+        /// </summary>
+        public const string ServerIdentityParameter = "Registered Server Identity";
+        /// <summary>
         /// The tier files older than days parameter
         /// </summary>
         public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter.";
@@ -214,5 +218,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The initial upload policy parameter.
         /// </summary>
         public const string InitialUploadPolicyParameter = "Initial Upload Policy Parameter.";
+
+        /// <summary>
+        /// Storage Sync Service Assign Identity Parameter.
+        /// </summary>
+        public const string StorageSyncServiceAssignIdentityParameter = "Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this paramter without \"-IdentityType\", will use system assigned identity.";
+
+        /// <summary>
+        /// Storage Sync Service Identity Type Parameter.
+        /// </summary>
+        public const string StorageSyncServiceIdentityTypeParameter = "Set the new Storage Sync Service Identity type, the identity is for use with accessing storage account and file share.";
+
+        /// <summary>
+        /// Storage Sync Service User Assigned IdentityId Parameter.
+        /// </summary>
+        public const string StorageSyncServiceUserAssignedIdentityIdParameter = "Set resource ids for the the new Storage Sync Service user assigned Identity, the identity will be used with accessing storage account and file share.";
+        
+        /// <summary>
+        /// Storage Sync Service Use Identity Parameter.
+        /// </summary>
+        public const string StorageSyncServiceUseIdentityParameter = "Set the topology to trigger consumption if manged identity feature on both cloud and server.";
     }
 }

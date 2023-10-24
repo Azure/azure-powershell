@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Management.StorageSync
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("StorageSync", "CloudEndpoints", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "LocationOperationStatus", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "OperationStatus", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "Operations", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "PrivateEndpointConnections", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "PrivateLinkResources", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "RegisteredServers", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "ServerEndpoints", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "StorageSyncServices", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "SyncGroups", "2020-09-01"),
-                new Tuple<string, string, string>("StorageSync", "Workflows", "2020-09-01"),
+                new Tuple<string, string, string>("StorageSync", "CloudEndpoints", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "LocationOperationStatus", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "OperationStatus", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "Operations", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "PrivateEndpointConnections", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "PrivateLinkResources", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "RegisteredServers", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "ServerEndpoints", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "StorageSyncServices", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "SyncGroups", "2022-09-01"),
+                new Tuple<string, string, string>("StorageSync", "Workflows", "2022-09-01"),
               }.AsEnumerable();
           }
       }

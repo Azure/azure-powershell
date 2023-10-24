@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     /// The parameters used when creating a storage sync service.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class StorageSyncServiceCreateParameters
+    public partial class StorageSyncServiceCreateParameters : TrackedResource
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -36,26 +36,31 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the
         /// StorageSyncServiceCreateParameters class.
         /// </summary>
-        /// <param name="location">Required. Gets or sets the location of the
-        /// resource. This will be one of the supported and registered Azure
-        /// Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo
-        /// region of a resource cannot be changed once it is created, but if
-        /// an identical geo region is specified on update, the request will
-        /// succeed.</param>
-        /// <param name="tags">Gets or sets a list of key value pairs that
-        /// describe the resource. These tags can be used for viewing and
-        /// grouping this resource (across resource groups). A maximum of 15
-        /// tags can be provided for a resource. Each tag must have a key with
-        /// a length no greater than 128 characters and a value with a length
-        /// no greater than 256 characters.</param>
+        /// <param name="location">The geo-location where the resource
+        /// lives</param>
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
+        /// <param name="name">The name of the resource</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
+        /// <param name="systemData">Azure Resource Manager metadata containing
+        /// createdBy and modifiedBy information.</param>
+        /// <param name="tags">Resource tags.</param>
+        /// <param name="identity">managed identities for the Storage Sync to
+        /// interact with other Azure services without maintaining any secrets
+        /// or credentials in code.</param>
         /// <param name="incomingTrafficPolicy">Incoming Traffic Policy.
         /// Possible values include: 'AllowAllTraffic',
         /// 'AllowVirtualNetworksOnly'</param>
-        public StorageSyncServiceCreateParameters(string location, IDictionary<string, string> tags = default(IDictionary<string, string>), string incomingTrafficPolicy = default(string))
+        /// <param name="useIdentity">Use Identity authorization when customer
+        /// have finished setup RBAC permissions.</param>
+        public StorageSyncServiceCreateParameters(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string incomingTrafficPolicy = default(string), bool? useIdentity = default(bool?))
+            : base(location, id, name, type, systemData, tags)
         {
-            Location = location;
-            Tags = tags;
+            Identity = identity;
             IncomingTrafficPolicy = incomingTrafficPolicy;
+            UseIdentity = useIdentity;
             CustomInit();
         }
 
@@ -65,25 +70,12 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets required. Gets or sets the location of the resource.
-        /// This will be one of the supported and registered Azure Geo Regions
-        /// (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
-        /// resource cannot be changed once it is created, but if an identical
-        /// geo region is specified on update, the request will succeed.
+        /// Gets or sets managed identities for the Storage Sync to interact
+        /// with other Azure services without maintaining any secrets or
+        /// credentials in code.
         /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets a list of key value pairs that describe the resource.
-        /// These tags can be used for viewing and grouping this resource
-        /// (across resource groups). A maximum of 15 tags can be provided for
-        /// a resource. Each tag must have a key with a length no greater than
-        /// 128 characters and a value with a length no greater than 256
-        /// characters.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets or sets incoming Traffic Policy. Possible values include:
@@ -93,16 +85,24 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         public string IncomingTrafficPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets use Identity authorization when customer have finished
+        /// setup RBAC permissions.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.useIdentity")]
+        public bool? UseIdentity { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (Location == null)
+            base.Validate();
+            if (Identity != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Location");
+                Identity.Validate();
             }
         }
     }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// A list of private link resources
+    /// A list of private link resources.
     /// </summary>
     public partial class PrivateLinkResourceListResult
     {

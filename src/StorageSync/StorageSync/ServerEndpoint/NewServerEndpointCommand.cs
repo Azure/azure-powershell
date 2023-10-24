@@ -23,6 +23,8 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -276,6 +278,31 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
+
+                // Get Registered Server
+                var serverResourceIdentifier = new ResourceIdentifier(ServerResourceId);
+                StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverResourceIdentifier.ResourceName);
+
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
+                }
+
+                if (!String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
+                {
+                    StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
+
+                    if (cloudEndpoint == null)
+                    {
+                        throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                    }
+                    var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                    var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                    var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                       serverIdentityGuid,
+                       Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                       scope);
+                }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))

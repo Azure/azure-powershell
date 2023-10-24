@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Exceptions;
@@ -20,7 +19,7 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
-
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Commands.StorageSync.Interop.Clients
 {
@@ -44,6 +43,14 @@ namespace Commands.StorageSync.Interop.Clients
         /// The iid i unknown
         /// </summary>
         private static Guid IID_IUnknown = ManagementInteropConstants.IID_IUnknown;
+        /// <summary>
+        /// the iid stbale version deep gc progress.
+        /// </summary>
+        private static Guid IID_IStableVersionDeepGcProgress = ManagementInteropConstants.IID_IStableVersionDeepGcProgress;
+        /// <summary>
+        /// the iid stbale version deep gc progress.
+        /// </summary>
+        private static Guid IID_IScrubbingEngineConnectionPoint = ManagementInteropConstants.IID_IScrubbingEngineConnectionPoint;
 
         /// <summary>
         /// The m management object handle
@@ -53,7 +60,6 @@ namespace Commands.StorageSync.Interop.Clients
         /// The m management object
         /// </summary>
         private IEcsManagement m_managementObject;
-
         /// <summary>
         /// Gets a value indicating whether this instance has valid handle.
         /// </summary>
@@ -69,7 +75,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             m_managementObject = Initialize();
         }
-
         /// <summary>
         /// Initializes this instance.
         /// </summary>
@@ -80,39 +85,30 @@ namespace Commands.StorageSync.Interop.Clients
         protected virtual IEcsManagement Initialize()
         {
             var managementInterfacePointer = IntPtr.Zero;
-
             int hr = Win32Helper.CoCreateInstance(
                 ref CLSID_CEcsManagement,
                 null,
                 ManagementInteropConstants.CLSCTX_LOCAL_SERVER,
                 ref IID_IEcsManagement,
                 out managementInterfacePointer);
-
             //  Validations for ensuring success of creating com instance.
             if (hr != 0)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.CoCreateInstanceFailed, hr, ErrorCategory.InvalidResult);
             }
-
             if (managementInterfacePointer == IntPtr.Zero)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.CoCreateInstanceFailed, ErrorCategory.InvalidOperation);
             }
-
             m_managementObjectHandle.AttachHandle(managementInterfacePointer);
-
             m_managementObject = (IEcsManagement)Marshal.GetObjectForIUnknown(managementInterfacePointer);
-
             if (m_managementObject == null)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.CoCreateInstanceFailed, ErrorCategory.InvalidOperation);
             }
-
             CoSetProxyBlanket(managementInterfacePointer);
-
             return m_managementObject;
         }
-
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
@@ -120,7 +116,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             DisposeInternal(true);
         }
-
         /// <summary>
         /// Finalizes an instance of the <see cref="EcsManagementInteropClient" /> class.
         /// </summary>
@@ -128,7 +123,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             DisposeInternal(false);
         }
-
         /// <summary>
         /// Disposes the internal.
         /// </summary>
@@ -148,13 +142,11 @@ namespace Commands.StorageSync.Interop.Clients
                 m_managementObjectHandle.Dispose();
                 m_managementObjectHandle = null;
             }
-
             if (disposing)
             {
                 GC.SuppressFinalize(this);
             }
         }
-
         /// <summary>
         /// Validates the sync server.
         /// </summary>
@@ -167,7 +159,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.ValidateSyncServer(serviceUri, subscriptionId, storageSyncServiceName, resourceGroupName);
         }
-
         /// <summary>
         /// Ensures the sync server certificate.
         /// </summary>
@@ -183,7 +174,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.EnsureSyncServerCertificate(serviceUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength);
         }
-
         /// <summary>
         /// Registers the sync server.
         /// </summary>
@@ -200,7 +190,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.RegisterSyncServer(serviceUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, monitoringDataPath);
         }
-
         /// <summary>
         /// Resets the sync server configuration.
         /// </summary>
@@ -210,7 +199,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.ResetSyncServerConfiguration(cleanClusterRegistration);
         }
-
         /// <summary>
         /// Ghosts the path.
         /// </summary>
@@ -221,7 +209,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GhostPath(path, ref ghostingStats);
         }
-
         /// <summary>
         /// Sets the proxy setting.
         /// </summary>
@@ -230,7 +217,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             m_managementObject.SetProxySetting(proxySetting);
         }
-
         /// <summary>
         /// Gets the proxy setting.
         /// </summary>
@@ -239,7 +225,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetProxySetting();
         }
-
         /// <summary>
         /// Removes the proxy setting.
         /// </summary>
@@ -247,7 +232,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             m_managementObject.RemoveProxySetting();
         }
-
         /// <summary>
         /// Scrubs the files.
         /// </summary>
@@ -261,7 +245,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.ScrubFiles(path, mode, isDeepScan, reportPath, ref scrubbingStats);
         }
-
         /// <summary>
         /// Gets the storage sync server endpoint status.
         /// </summary>
@@ -272,7 +255,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetStorageSyncServerEndpointStatus(path, ref serverEndpointReports);
         }
-
         /// <summary>
         /// Gets the storage sync registered server status.
         /// </summary>
@@ -282,7 +264,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetStorageSyncRegisteredServerStatus(ref registeredServerStats);
         }
-
         /// <summary>
         /// Determines whether [is tiered file orphaned] [the specified path].
         /// </summary>
@@ -292,7 +273,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.IsTieredFileOrphaned(path);
         }
-
         /// <summary>
         /// Deletes the orphaned tiered file.
         /// </summary>
@@ -302,7 +282,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.DeleteOrphanedTieredFile(path);
         }
-
         /// <summary>
         /// Garbages the collect stable versions.
         /// </summary>
@@ -314,27 +293,45 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GarbageCollectStableVersions(path, mode, ref garbageCollectionStats);
         }
-
         /// <summary>
         /// Recalls the file.
         /// </summary>
         /// <param name="path">The path.</param>
+        /// <param name="retryCount"></param>
+        /// <param name="retryDelaySeconds"></param>
         /// <returns>RecallOutput.</returns>
-        public RecallOutput RecallFile([In, MarshalAs(UnmanagedType.BStr)] string path)
+        public RecallOutput RecallFile(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint retryCount,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint retryDelaySeconds
+        )
         {
-            return m_managementObject.RecallFile(path);
+            return m_managementObject.RecallFile(path, retryCount, retryDelaySeconds);
         }
-
         /// <summary>
         /// Determines whether [is path under sync share] [the specified path].
         /// </summary>
         /// <param name="path">The path.</param>
+        /// <param name="fileIdStr"></param>
+        /// <param name="isPathUnderShare"></param>
+        /// <param name="isPathShareRoot"></param>
         /// <returns><c>true</c> if [is path under sync share] [the specified path]; otherwise, <c>false</c>.</returns>
-        public bool IsPathUnderSyncShare([In, MarshalAs(UnmanagedType.BStr)] string path)
+        public void IsPathUnderSyncShare(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string fileIdStr,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isPathUnderShare,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isPathShareRoot
+        )
         {
-            return m_managementObject.IsPathUnderSyncShare(path);
+            m_managementObject.IsPathUnderSyncShare(path, out fileIdStr, out isPathUnderShare, out isPathShareRoot);
         }
-
         /// <summary>
         /// Persists the sync server registration.
         /// </summary>
@@ -373,7 +370,6 @@ namespace Commands.StorageSync.Interop.Clients
                 serviceLocation,
                 resourceLocation);
         }
-
         /// <summary>
         /// Rollovers the secondary certificate.
         /// </summary>
@@ -383,14 +379,13 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="serverCertificateThumbprint">The server certificate thumbprint.</param>
         /// <returns>System.Int32.</returns>
         public int RolloverSecondaryCertificate(
-            [In, MarshalAs(UnmanagedType.BStr)]    string certificateProviderName,
-            [In, MarshalAs(UnmanagedType.BStr)]    string certificateHashAlgorithm,
-            [In, MarshalAs(UnmanagedType.U4)]      uint certificateKeyLength,
-            [Out, MarshalAs(UnmanagedType.BStr)]   out string serverCertificateThumbprint)
+            [In, MarshalAs(UnmanagedType.BStr)] string certificateProviderName,
+            [In, MarshalAs(UnmanagedType.BStr)] string certificateHashAlgorithm,
+            [In, MarshalAs(UnmanagedType.U4)] uint certificateKeyLength,
+            [Out, MarshalAs(UnmanagedType.BStr)] out string serverCertificateThumbprint)
         {
             return m_managementObject.RolloverSecondaryCertificate(certificateProviderName, certificateHashAlgorithm, certificateKeyLength, out serverCertificateThumbprint);
         }
-
         /// <summary>
         /// Gets the server certificate thumbprints.
         /// </summary>
@@ -403,7 +398,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetServerCertificateThumbprints(out primaryCertificateThumbprint, out secondaryCertificateThumbprint);
         }
-
         /// <summary>
         /// Deletes the server certificate.
         /// </summary>
@@ -414,7 +408,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.DeleteServerCertificate(certificateThumbprint);
         }
-
         /// <summary>
         /// Switches to secondary certificate and update monitoring.
         /// </summary>
@@ -423,7 +416,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.SwitchToSecondaryCertificateAndUpdateMonitoring();
         }
-
         /// <summary>
         /// Gets the sync server certificate.
         /// </summary>
@@ -434,7 +426,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetSyncServerCertificate(isPrimary, out serverCertificate);
         }
-
         /// <summary>
         /// Gets the sync server identifier.
         /// </summary>
@@ -444,7 +435,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetSyncServerId(out serverId);
         }
-
         /// <summary>
         /// Gets the cluster information.
         /// </summary>
@@ -455,7 +445,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetClusterInfo(out clusterId, out clusterName);
         }
-
         /// <summary>
         /// Determines whether [is in cluster].
         /// </summary>
@@ -464,7 +453,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.IsInCluster();
         }
-
         /// <summary>
         /// Registers the monitoring agent.
         /// </summary>
@@ -475,7 +463,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.RegisterMonitoringAgent(serverRegistrationData, monitoringDataPath);
         }
-
         /// <summary>
         /// Creates new networklimit.
         /// </summary>
@@ -486,7 +473,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.NewNetworkLimit(config);
         }
-
         /// <summary>
         /// Gets the network limits.
         /// </summary>
@@ -496,7 +482,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetNetworkLimits();
         }
-
         /// <summary>
         /// Gets the network limit.
         /// </summary>
@@ -507,7 +492,6 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return m_managementObject.GetNetworkLimit(id);
         }
-
         /// <summary>
         /// Removes the network limit.
         /// </summary>
@@ -516,7 +500,355 @@ namespace Commands.StorageSync.Interop.Clients
         {
             m_managementObject.RemoveNetworkLimit(id);
         }
+        public void SetAutoUpdatePolicy([In, MarshalAs(UnmanagedType.Struct)] AutoUpdatePolicy autoUpdatePolicy)
+        {
+            m_managementObject.SetAutoUpdatePolicy(autoUpdatePolicy);
+        }
+        public void LogOrphanedTieredFilesTelemetry([In, MarshalAs(UnmanagedType.Struct)] OrphanedTieredFilesTelemetryReport orphanedTieredFilesTelemetryReport)
+        {
+            m_managementObject.LogOrphanedTieredFilesTelemetry(orphanedTieredFilesTelemetryReport);
+        }
 
+        public void PopulateFileInfoUsingHeatOrder(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string recallCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string recallMountPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string volumeGuid)
+        {
+            m_managementObject.PopulateFileInfoUsingHeatOrder(path, recallCmdletLogPath, out recallMountPath, out volumeGuid);
+        }
+
+        public void LogRecallFilesTelemetry([In, MarshalAs(UnmanagedType.Struct)] RecallFilesTelemetryReport recallFilesTelemetryReport)
+        {
+            m_managementObject.LogRecallFilesTelemetry(recallFilesTelemetryReport);
+        }
+
+        public AutoUpdatePolicy GetAutoUpdatePolicy()
+        {
+            return m_managementObject.GetAutoUpdatePolicy();
+        }
+        public HeatStoreSummary PopulateHeatStoreInformation([In, MarshalAs(UnmanagedType.BStr)] string volumePath, [In, MarshalAs(UnmanagedType.BStr)] string reportDirectoryPath, [In, MarshalAs(UnmanagedType.U4)] HeatStoreEnumeratorType enumeratorType, [In, MarshalAs(UnmanagedType.U8)] ulong maxRecordsLimit)
+        {
+            return m_managementObject.PopulateHeatStoreInformation(volumePath, reportDirectoryPath, enumeratorType, maxRecordsLimit);
+        }
+        public bool GetFilePathUsingId([MarshalAs(UnmanagedType.BStr), In] string volumeGuid,
+                                       [MarshalAs(UnmanagedType.U8), In] ulong fileId,
+                                       [MarshalAs(UnmanagedType.BStr), Out] out string filePath)
+        {
+            return m_managementObject.GetFilePathUsingId(volumeGuid, fileId, out filePath);
+        }
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public string GetFileLockIdUsingPath([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            return m_managementObject.GetFileLockIdUsingPath(filePath);
+        }
+        public void SetLockBypassForSyncShare([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot,
+                                              [In, MarshalAs(UnmanagedType.Bool)] bool bypassValue)
+        {
+            m_managementObject.SetLockBypassForSyncShare(syncShareRoot, bypassValue);
+        }
+        public HeatStoreFileInfo GetHeatStoreFileInformation([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            return m_managementObject.GetHeatStoreFileInformation(filePath);
+        }
+        public SelfServiceRestore EnableSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            return m_managementObject.EnableSelfServiceRestore(volume);
+        }
+        public SelfServiceRestore GetSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            return m_managementObject.GetSelfServiceRestore(volume);
+        }
+        public void DisableSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            m_managementObject.DisableSelfServiceRestore(volume);
+        }
+        public void RunNetworkConnectivityCheck([In, MarshalAs(UnmanagedType.Bool)] bool measureBandwidth,
+                                                [Out, MarshalAs(UnmanagedType.Bool)] out bool testPassed,
+                                                [Out, MarshalAs(UnmanagedType.BStr)] out string report)
+        {
+            m_managementObject.RunNetworkConnectivityCheck(measureBandwidth, out testPassed, out report);
+        }
+        public void TriggerOrphanedTieredFilesCleanup([In, MarshalAs(UnmanagedType.BStr)] string dataPath,
+                                                      [In, MarshalAs(UnmanagedType.BStr)] string context,
+                                                      [In, MarshalAs(UnmanagedType.BStr)] string clientCorrelationId)
+        {
+            m_managementObject.TriggerOrphanedTieredFilesCleanup(dataPath, context, clientCorrelationId);
+        }
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public bool DoesOrphanedTieredFilesMarkerExist([In, MarshalAs(UnmanagedType.BStr)] string dataPath,
+                                                       [In, MarshalAs(UnmanagedType.BStr)] string context,
+                                                       [In, MarshalAs(UnmanagedType.BStr)] string clientCorrelationId)
+        {
+            return m_managementObject.DoesOrphanedTieredFilesMarkerExist(dataPath, context, clientCorrelationId);
+        }
+        public void RemoveOrphanedTieredFilesMarker([In, MarshalAs(UnmanagedType.BStr)] string dataPath)
+        {
+            m_managementObject.RemoveOrphanedTieredFilesMarker(dataPath);
+        }
+        [return: MarshalAs(UnmanagedType.U4)]
+        public uint GetReparseTag([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            return m_managementObject.GetReparseTag(filePath);
+        }
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public bool IsPathUnderSVIOrRecycleBin([In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            return m_managementObject.IsPathUnderSVIOrRecycleBin(path);
+        }
+        public IFileAccessPatternStatsEnumerator GetFileAccessPattern([In, MarshalAs(UnmanagedType.BStr)] string serverEndpointPath)
+        {
+            return m_managementObject.GetFileAccessPattern(serverEndpointPath);
+        }
+        public TieringPolicyRecommendations GetTieringPolicyRecommendations(
+            [In, MarshalAs(UnmanagedType.BStr)] string serverEndpointPath,
+            [In, MarshalAs(UnmanagedType.U4)] PolicyAdvisorMode policyAdvisorMode
+        )
+        {
+            return m_managementObject.GetTieringPolicyRecommendations(serverEndpointPath, policyAdvisorMode);
+        }
+        public LockingStateInfo GetLockingStateInformationUsingFilePath([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            return m_managementObject.GetLockingStateInformationUsingFilePath(filePath);
+        }
+        public LockingStateInfo GetLockingStateInformationUsingLockId(
+            [In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.BStr)] string lockId)
+        {
+            return m_managementObject.GetLockingStateInformationUsingLockId(syncShareRoot, lockId);
+        }
+        public int InitializeCmdletGhosting(
+            [In, MarshalAs(UnmanagedType.BStr)] string path,
+            [Out, MarshalAs(UnmanagedType.BStr)] out string tieringCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.U4)] out uint totalFiles,
+            [Out, MarshalAs(UnmanagedType.BStr)] out string ghostingSessionGuid)
+        {
+            return m_managementObject.InitializeCmdletGhosting(path, out tieringCmdletLogPath, out totalFiles, out ghostingSessionGuid);
+        }
+        public int GhostBatch(
+            [In, MarshalAs(UnmanagedType.BStr)] string tieringCmdletLogPath,
+            [In, MarshalAs(UnmanagedType.BStr)] string ghostingSessionGuid,
+            [Out, MarshalAs(UnmanagedType.U4)] out uint fileCount,
+            [In, MarshalAs(UnmanagedType.Struct), Out] ref GHOSTING_STATS ghostingStats,
+            [In, MarshalAs(UnmanagedType.U4)] uint minimumFileAgeDays)
+        {
+            return m_managementObject.GhostBatch(tieringCmdletLogPath, ghostingSessionGuid, out fileCount, ref ghostingStats, minimumFileAgeDays);
+        }
+        public int FinalizeCmdletGhosting(
+            [In, MarshalAs(UnmanagedType.BStr)] string tieringCmdletLogPath,
+            [In, MarshalAs(UnmanagedType.BStr)] string ghostingSessionGuid)
+        {
+            return m_managementObject.FinalizeCmdletGhosting(tieringCmdletLogPath, ghostingSessionGuid);
+        }
+        public int AddAllowedServerEndpointPath(
+            [In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            return m_managementObject.AddAllowedServerEndpointPath(path);
+        }
+        public int GetAllowedServerEndpointPaths(
+            [In, Out, MarshalAs(UnmanagedType.LPArray)] ref string[] paths)
+        {
+            return m_managementObject.GetAllowedServerEndpointPaths(ref paths);
+        }
+        public int RemoveAllowedServerEndpointPath(
+            [In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            return m_managementObject.RemoveAllowedServerEndpointPath(path);
+        }
+        public int SetIsAuthoritativeSyncEnabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool isAuthoritativeSyncEnabled)
+        {
+            return m_managementObject.SetIsAuthoritativeSyncEnabled(syncShareRoot, isAuthoritativeSyncEnabled);
+        }
+        public int GetIsAuthoritativeSyncEnabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isAuthoritativeSyncEnabled)
+        {
+            return m_managementObject.GetIsAuthoritativeSyncEnabled(syncShareRoot, out isAuthoritativeSyncEnabled);
+        }
+        public int GetReplicaFlags(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.U4)]
+            out SyncFlags replicaFlags)
+        {
+            return m_managementObject.GetReplicaFlags(syncShareRoot, out replicaFlags);
+        }
+        public int SetIsSyncDisabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool isSyncDisabled)
+        {
+            return m_managementObject.SetIsSyncDisabled(syncShareRoot, isSyncDisabled);
+        }
+        public void PopulateFileInfoUsingRPIterator(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncGroupName,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string recallCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string volumeGuid)
+        {
+            m_managementObject.PopulateFileInfoUsingRPIterator(syncGroupName, recallCmdletLogPath, out volumeGuid);
+        }
+        public int SetMaxFileSizeLimit(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.U8)]
+            ulong maxFileSize)
+        {
+            return m_managementObject.SetMaxFileSizeLimit(syncShareRoot, maxFileSize);
+        }
+        public int GetMaxFileSizeLimit(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.U8)]
+            out ulong maxFileSize)
+        {
+            return m_managementObject.GetMaxFileSizeLimit(syncShareRoot, out maxFileSize);
+        }
+        public int GetIsSyncDisabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isSyncDisabled)
+        {
+            return m_managementObject.GetIsSyncDisabled(syncShareRoot, out isSyncDisabled);
+        }
+        public int SetServiceRootCertificateThumbprint(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string serviceRootCertificateThumbprint)
+        {
+            return m_managementObject.SetServiceRootCertificateThumbprint(serviceRootCertificateThumbprint);
+        }
+        public int GetServiceRootCertificateThumbprint(
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string serviceRootCertificateThumbprint)
+        {
+            return m_managementObject.GetServiceRootCertificateThumbprint(out serviceRootCertificateThumbprint);
+        }
+        public int NewSyncSession(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.U4)]
+            SyncDirection syncDirection,
+            [In, MarshalAs(UnmanagedType.U4)]
+            SyncScenario syncScenario,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            bool cancelExisting,
+            [In, Out, MarshalAs(UnmanagedType.Struct)]
+            ref NEW_SYNC_SESSION_SCHEDULE_RESULT newSyncSessionScheduleResult)
+        {
+            return m_managementObject.NewSyncSession(
+                syncShareRoot,
+                syncDirection,
+                syncScenario,
+                cancelExisting,
+                ref newSyncSessionScheduleResult);
+        }
+        public int GetSyncSessionStatuses(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string sessionId,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint limit,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] inProgressSyncSessionStatusList,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] completedSyncSessionStatusList)
+        {
+            return m_managementObject.GetSyncSessionStatuses(
+                syncShareRoot,
+                sessionId,
+                limit,
+                ref inProgressSyncSessionStatusList,
+                ref completedSyncSessionStatusList);
+        }
+        public int GetErrorTextDescription(
+            [In, MarshalAs(UnmanagedType.I8)]
+            long hr,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string errorText)
+        {
+            return m_managementObject.GetErrorTextDescription(hr, out errorText);
+        }
+        public VOLUME_STATUS GetVolumeStatus(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot)
+        {
+            return m_managementObject.GetVolumeStatus(syncShareRoot);
+        }
+        public TIERING_STATUS GetTieringStatusEndpoint(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot)
+        {
+            return m_managementObject.GetTieringStatusEndpoint(syncShareRoot);
+        }
+        public void DiagnoseServerIssues([Out, MarshalAs(UnmanagedType.BStr)] out string diagnosisOutputsJson)
+        {
+            m_managementObject.DiagnoseServerIssues(out diagnosisOutputsJson);
+        }
+        public int TriggerServerChangeDetection(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool deepScan)
+        {
+            return m_managementObject.TriggerServerChangeDetection(syncShareRoot, deepScan);
+        }
+        public int GetServerChangeDetectionStatuses(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] inProgressStatus,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] completedStatus)
+        {
+            return m_managementObject.GetServerChangeDetectionStatuses(
+                syncShareRoot,
+                ref inProgressStatus,
+                ref completedStatus);
+        }
+        public int StableVersionsDeepGC([In, MarshalAs(UnmanagedType.BStr)] string path,
+                                       [In, MarshalAs(UnmanagedType.U4)] uint cookie,
+                                       [In, MarshalAs(UnmanagedType.Struct), Out] ref STABLEVERSION_DEEP_GC_STATS stableVersionDeepGCStats)
+        {
+            return m_managementObject.StableVersionsDeepGC(path, cookie, ref stableVersionDeepGCStats);
+        }
+        public int GetMIConfigurationStatus(
+            [Out, MarshalAs(UnmanagedType.U4)] out uint serverType,
+            [Out, MarshalAs(UnmanagedType.U4)] out uint serverAuthType)
+        {
+            // returns HRESULT directly, serverType and serverAuthType by reference
+            // note that the c++ helper returns a full object with additional info but these are all that
+            // are currently needed in the management stack
+            return m_managementObject.GetMIConfigurationStatus(out serverType, out serverAuthType);
+        }
+        public IConnectionPoint GetScrubbingEngineConnectionPoint()
+        {
+            IConnectionPointContainer m_connectionPointContainer = (IConnectionPointContainer)m_managementObject;
+            IConnectionPoint cp;
+            m_connectionPointContainer.FindConnectionPoint(ref IID_IScrubbingEngineConnectionPoint, out cp);
+            return cp;
+        }
+        public IConnectionPoint GetStableVersionDeepGcConnectionPoint()
+        {
+            IConnectionPointContainer m_connectionPointContainer = (IConnectionPointContainer)m_managementObject;
+            IConnectionPoint cp;
+            m_connectionPointContainer.FindConnectionPoint(ref IID_IStableVersionDeepGcProgress, out cp);
+            return cp;
+        }
         /// <summary>
         /// Coes the set proxy blanket.
         /// </summary>
@@ -549,7 +881,6 @@ namespace Commands.StorageSync.Interop.Clients
                 dwCapababilities,
                 exception);
         }
-
         /// <summary>
         /// Coes the set proxy blanket.
         /// </summary>
@@ -584,14 +915,13 @@ namespace Commands.StorageSync.Interop.Clients
                 dwImpLevel,
                 pAuthInfo,
                 dwCapababilities);
-
             //expected is 0
             if (HResult.Failed(hr) && throwOnError)
             {
                 throw new COMException($"{StorageSyncResources.ComError1} {hr:X}");
             }
-
             return hr;
         }
-   }
+
+    }
 }

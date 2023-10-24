@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// A private link resource
+    /// A private link resource.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PrivateLinkResource : Resource
@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Initializes a new instance of the PrivateLinkResource class.
         /// </summary>
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"</param>
         /// <param name="name">The name of the resource</param>
         /// <param name="type">The type of the resource. E.g.
         /// "Microsoft.Compute/virtualMachines" or
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <param name="groupId">The private link resource group id.</param>
         /// <param name="requiredMembers">The private link resource required
         /// member names.</param>
-        /// <param name="requiredZoneNames">The private link resource Private
+        /// <param name="requiredZoneNames">The private link resource private
         /// link DNS zone name.</param>
         public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string groupId = default(string), IList<string> requiredMembers = default(IList<string>), IList<string> requiredZoneNames = default(IList<string>))
             : base(id, name, type, systemData)
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         public IList<string> RequiredMembers { get; private set; }
 
         /// <summary>
-        /// Gets or sets the private link resource Private link DNS zone name.
+        /// Gets or sets the private link resource private link DNS zone name.
         /// </summary>
         [JsonProperty(PropertyName = "properties.requiredZoneNames")]
         public IList<string> RequiredZoneNames { get; set; }

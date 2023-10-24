@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
-    /// The Private Endpoint resource.
+    /// The private endpoint resource.
     /// </summary>
     public partial class PrivateEndpoint
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Initializes a new instance of the PrivateEndpoint class.
         /// </summary>
-        /// <param name="id">The ARM identifier for Private Endpoint</param>
+        /// <param name="id">The ARM identifier for private endpoint.</param>
         public PrivateEndpoint(string id = default(string))
         {
             Id = id;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the ARM identifier for Private Endpoint
+        /// Gets the ARM identifier for private endpoint.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

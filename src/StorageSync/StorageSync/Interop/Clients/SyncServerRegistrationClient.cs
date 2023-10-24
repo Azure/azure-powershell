@@ -95,8 +95,10 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateProviderName">Certificate Provider Name</param>
         /// <param name="certificateHashAlgorithm">Certificate Hash Algorithm</param>
         /// <param name="certificateKeyLength">Certificate Key Length</param>
+        /// <param name="applicationId">Server Identity Id</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
+        /// <param name="serverMachineName">Server Machine name</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
         /// </exception>
@@ -104,7 +106,18 @@ namespace Commands.StorageSync.Interop.Clients
         /// or
         /// clusterId</exception>
         /// <exception cref="ServerRegistrationException"></exception>
-        public override ServerRegistrationData Setup(Uri managementEndpointUri, Guid subscriptionId, string storageSyncServiceName, string resourceGroupName, string certificateProviderName, string certificateHashAlgorithm, uint certificateKeyLength, string monitoringDataPath, string agentVersion)
+        public override ServerRegistrationData Setup(
+            Uri managementEndpointUri,
+            Guid subscriptionId,
+            string storageSyncServiceName,
+            string resourceGroupName,
+            string certificateProviderName,
+            string certificateHashAlgorithm,
+            uint certificateKeyLength,
+            Guid applicationId,
+            string monitoringDataPath,
+            string agentVersion,
+            string serverMachineName)
         {
             int hr = EcsManagementInteropClient.EnsureSyncServerCertificate(managementEndpointUri.OriginalString,
                 subscriptionId.ToString(),
@@ -132,8 +145,7 @@ namespace Commands.StorageSync.Interop.Clients
 
             hr = EcsManagementInteropClient.GetSyncServerId(out string syncServerId);
 
-            Guid serverGuid = Guid.Empty;
-            bool hasServerGuid = Guid.TryParse(syncServerId, out serverGuid);
+            bool hasServerGuid = Guid.TryParse(syncServerId, out Guid serverGuid);
             if (!hasServerGuid)
             {
                 throw new ArgumentException(nameof(Guid.Empty));
@@ -148,8 +160,8 @@ namespace Commands.StorageSync.Interop.Clients
             bool isInCluster;
             isInCluster = EcsManagementInteropClient.IsInCluster();
 
-            string clusterId = default(string);
-            string clusterName = default(string);
+            string clusterId = default;
+            string clusterName = default;
 
             if (isInCluster)
             {
@@ -174,7 +186,7 @@ namespace Commands.StorageSync.Interop.Clients
 
             string resourceId = ResourceIdFormatter.GenerateResourceId(subscriptionId, resourceGroupName, resources);
 
-            string osVersion = null;
+            string osVersion;
 
             // Get OS version using Win32_OperatingSystem WMI object
             try
@@ -204,16 +216,17 @@ namespace Commands.StorageSync.Interop.Clients
             {
                 Id = resourceId,
                 ServerId = serverGuid,
-                ServerCertificate = syncServerCertificate.ToBase64Bytes(true),
+                ServerCertificate = syncServerCertificate.ToBase64Bytes(throwException: true),
                 ServerRole = isInCluster ? ServerRoleType.ClusterNode : ServerRoleType.Standalone,
                 ServerOSVersion = osVersion,
-                AgentVersion = agentVersion
+                ApplicationId = applicationId,
+                AgentVersion = agentVersion,
+                ServerMachineName = serverMachineName
             };
 
             if (isInCluster)
             {
-                Guid clusterGuid = Guid.Empty;
-                bool clusterGuidValue = Guid.TryParse(clusterId, out clusterGuid);
+                bool clusterGuidValue = Guid.TryParse(clusterId, out Guid clusterGuid);
                 if (!clusterGuidValue)
                 {
                     throw new ArgumentException(nameof(clusterId));
