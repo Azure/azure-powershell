@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/resourceGroups/PWSH-SDK-ich4jy/providers/Microsoft.Kusto/Clusters/pssdkich4jy/listLanguageExtensions?api-version=2023-08-15+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/listLanguageExtensions?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/resourceGroups/PWSH-SDK-ich4jy/providers/Microsoft.Kusto/Clusters/pssdkich4jy/listLanguageExtensions?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/listLanguageExtensions?api-version=2023-08-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "75" ],
-        "x-ms-client-request-id": [ "d0afa085-f76f-4177-ba2a-cdc7d14aaae0" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "993669ae-e115-4f23-a245-6f980f6cbf79" ],
         "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
         "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,14 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8e166bd9-2ade-4234-9239-61b94b92f8a0" ],
+        "x-ms-request-id": [ "71eac945-c255-4523-a6ea-0711a928079e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "ed97090f-7bb3-415a-b3b5-a8a0e70d6199" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231019T155632Z:ed97090f-7bb3-415a-b3b5-a8a0e70d6199" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "bf331f2f-5dfb-4bba-9eb1-a3978ce758d0" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231023T212039Z:bf331f2f-5dfb-4bba-9eb1-a3978ce758d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 19 Oct 2023 15:56:32 GMT" ]
+        "Date": [ "Mon, 23 Oct 2023 21:20:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "76" ],

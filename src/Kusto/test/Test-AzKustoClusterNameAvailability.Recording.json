@@ -1,9 +1,9 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/providers/Microsoft.Kusto/locations/UK South/checkNameAvailability?api-version=2023-08-15+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/fbccad30-f0ed-4ac4-9497-93bf6141062f/providers/Microsoft.Kusto/locations/UK%20South/checkNameAvailability?api-version=2023-08-15",
-      "Content": "{\r\n  \"name\": \"pssdkich4jy\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2023-08-15",
+      "Content": "{\r\n  \"name\": \"pssdksxfpla\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "2b839b32-a8b0-457f-8f31-4f1a7f074e6f" ],
+        "x-ms-request-id": [ "c60cedf8-daa8-405c-a817-871dbd43a576" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
-        "x-ms-correlation-request-id": [ "9ac416a4-45ec-4b5f-a63f-18923c9f76f8" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231019T180101Z:9ac416a4-45ec-4b5f-a63f-18923c9f76f8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "4a79742a-8b5c-41b1-99c6-2e65357e0f4e" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231023T233623Z:4a79742a-8b5c-41b1-99c6-2e65357e0f4e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 19 Oct 2023 18:01:00 GMT" ]
+        "Date": [ "Mon, 23 Oct 2023 23:36:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"pssdkich4jy\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdkich4jy\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdksxfpla\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdksxfpla\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }
