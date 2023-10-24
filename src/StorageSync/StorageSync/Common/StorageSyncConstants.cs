@@ -142,5 +142,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The tenant identifier
         /// </summary>
         public const string TenantId = "TenantId";
+
+        /// <summary>
+        /// Registry key name for Server Auth Type
+        /// </summary>
+        public const string ServerAuthRegistryKeyName = "ServerAuth";
+
+        /// <summary>
+        /// Registry key name for Server Type
+        /// </summary>
+        public const string ServerTypeRegistryKeyName = "ServerType";
     }
 }

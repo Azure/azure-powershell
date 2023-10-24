@@ -42,6 +42,7 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// <param name="certificateKeyLength">Certificate Key Length</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
+        /// <param name="serverMachineName">Server Machine name</param>
         /// <param name="registerOnlineCallback">Register online callback for updating cloud service.</param>
         /// <returns>Registered Server Resource</returns>
         RegisteredServer Register(
@@ -54,6 +55,7 @@ namespace Commands.StorageSync.Interop.Interfaces
             uint certificateKeyLength,
             string monitoringDataPath,
             string agentVersion,
+            string serverMachineName,
             Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback);
 
         /// <summary>

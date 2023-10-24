@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commands.StorageSync.Interop.DataObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,11 +9,12 @@ using System.Threading.Tasks;
 namespace Commands.StorageSync.Interop.Interfaces
 {
     [ComImport]
-    [Guid("B72C2D6B-1A05-4B96-9012-91B06C793BCC"),
+    [Guid("CAA2700B-5AC3-4295-A0EE-F80EA1F05A60"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface INetworkLimitConfigurationEntryEnumeration
+    public interface IFileAccessPatternStatsEnumerator
     {
-        [return: MarshalAs(UnmanagedType.Interface)]
-        INetworkLimitConfigEntry GetNextValue();
+        FileAccessPatternStats GetNextValue();
+
+        bool HasNext();
     }
 }

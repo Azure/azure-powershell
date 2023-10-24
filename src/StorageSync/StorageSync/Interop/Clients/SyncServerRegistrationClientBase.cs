@@ -16,8 +16,15 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Common;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
+using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.Win32;
 using System;
+using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Commands.StorageSync.Interop.Clients
 {
@@ -29,6 +36,7 @@ namespace Commands.StorageSync.Interop.Clients
     /// <seealso cref="Commands.StorageSync.Interop.Interfaces.ISyncServerRegistration" />
     public abstract class SyncServerRegistrationClientBase : ISyncServerRegistration
     {
+        public bool EnableMIChecking { get; protected set; } = false; // enable it in v19 azure file sync agent
 
         /// <summary>
         /// The m is disposed
@@ -76,10 +84,23 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateProviderName">Certificate Provider Name</param>
         /// <param name="certificateHashAlgorithm">Certificate Hash Algorithm</param>
         /// <param name="certificateKeyLength">Certificate Key Length</param>
+        /// <param name="applicationId">Server Identity Id</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
+        /// <param name="serverMachineName">Server machine name.</param>
         /// <returns>Registered Server resource</returns>
-        public abstract ServerRegistrationData Setup(Uri managementEndpointUri, Guid subscriptionId, string storageSyncService, string resourceGroupName, string certificateProviderName, string certificateHashAlgorithm, uint certificateKeyLength, string monitoringDataPath, string agentVersion);
+        public abstract ServerRegistrationData Setup(
+            Uri managementEndpointUri,
+            Guid subscriptionId,
+            string storageSyncService,
+            string resourceGroupName,
+            string certificateProviderName,
+            string certificateHashAlgorithm,
+            uint certificateKeyLength,
+            Guid applicationId,
+            string monitoringDataPath,
+            string agentVersion,
+            string serverMachineName);
 
         /// <summary>
         /// Persisting the register server resource from clooud to the local service.
@@ -126,6 +147,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="certificateKeyLength">Certificate Key Length</param>
         /// <param name="monitoringDataPath">Monitoring data path</param>
         /// <param name="agentVersion">Agent Version</param>
+        /// <param name="serverMachineName">Server machine name.</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
         /// <returns>Registered Server Resource</returns>
         /// <exception cref="Commands.StorageSync.Interop.Exceptions.ServerRegistrationException">
@@ -141,14 +163,24 @@ namespace Commands.StorageSync.Interop.Clients
             uint certificateKeyLength,
             string monitoringDataPath,
             string agentVersion,
+            string serverMachineName,
             Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback)
         {
+            // Get ApplicationId
+            Guid applicationId = GetServerApplicationIdOrEmpty();
+
+            RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
+                       StorageSyncConstants.AfsAgentRegistryKey,
+                      ((applicationId == Guid.Empty) ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+                       RegistryValueKind.String,
+                       true);
+
             if (!Validate(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, monitoringDataPath))
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ValidateSyncServerFailed);
             }
 
-            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, monitoringDataPath, agentVersion);
+            var serverRegistrationData = Setup(managementEndpointUri, subscriptionId, storageSyncServiceName, resourceGroupName, certificateProviderName, certificateHashAlgorithm, certificateKeyLength, applicationId, monitoringDataPath, agentVersion, serverMachineName);
             if (null == serverRegistrationData)
             {
                 throw new ServerRegistrationException(ServerRegistrationErrorCode.ProcessSyncRegistrationFailed);
@@ -181,5 +213,50 @@ namespace Commands.StorageSync.Interop.Clients
         {
             EcsManagementInteropClient.ResetSyncServerConfiguration(cleanClusterRegistration);
         }
+
+        private Guid GetServerApplicationIdOrEmpty()
+        {
+            if (!this.EnableMIChecking)
+            {
+                return Guid.Empty;
+            }
+
+            ManagedIdentityConfigurationInfo managedIdentityConfigurationInfo;
+            try
+            {
+                managedIdentityConfigurationInfo = GetManagedIdentityConfigurationStatus();
+            }
+            catch (Exception)
+            {
+                throw new ServerRegistrationException(ServerRegistrationErrorCode.GetServerTypeFailed, ErrorCategory.MetadataError);
+            }
+
+            using (var serverMITokenProvider = new ServerManagedIdentityTokenProvider(managedIdentityConfigurationInfo.ServerType))
+            {
+                var token = Task.Run(() => serverMITokenProvider.GetManagedIdentityAccessToken(resource: "https://afs.azure.net/")).GetAwaiter().GetResult();
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    throw new ArgumentException("serverInfo");
+                }
+
+                return ServerManagedIdentityTokenHelper.GetTokenOid(token);
+            }
+        }
+        private ManagedIdentityConfigurationInfo GetManagedIdentityConfigurationStatus()
+        {
+            ManagedIdentityConfigurationInfo serverInfo;
+            int hresult = this.EcsManagementInteropClient.GetMIConfigurationStatus(out uint serverTypeUint, out uint serverAuthTypeUint);
+            if (HResult.Succeeded(hresult))
+            {
+                serverInfo = new ManagedIdentityConfigurationInfo((ServerType)serverTypeUint, (RegisteredServerAuthType)serverAuthTypeUint);
+            }
+            else
+            {
+                throw new System.Runtime.InteropServices.COMException("GetManagedIdentityConfigurationStatus", hresult);
+            }
+            return serverInfo;
+        }
+
     }
 }

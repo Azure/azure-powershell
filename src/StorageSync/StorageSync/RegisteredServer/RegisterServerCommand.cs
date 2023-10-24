@@ -14,6 +14,8 @@
 
 using Commands.StorageSync.Interop.Clients;
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Enums;
+using Commands.StorageSync.Interop.Exceptions;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
@@ -150,6 +152,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
             });
         }
 
+        private string m_serverMachineName;
+        protected string ServerMachineName
+        {
+            get
+            {
+                if (m_serverMachineName == null)
+                {
+                    m_serverMachineName = SystemUtility.GetMachineName();
+                    if (string.IsNullOrEmpty(m_serverMachineName))
+                    {
+                        throw new ServerRegistrationException(ServerRegistrationErrorCode.ServerNameIsNullOrEmpty);
+                    }
+                }
+                return m_serverMachineName;
+            }
+        }
+
         /// <summary>
         /// Performs the server registration.
         /// </summary>
@@ -177,6 +196,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     ManagementInteropConstants.CertificateKeyLength,
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
+                    ServerMachineName,
                     (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
                             StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
             }
