@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Minimized MSGraph API call for access policy.
+* Reduced number of MSGraph API calls for access policy.
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
 * Upgraded Azure.Core to 1.35.0.
 
