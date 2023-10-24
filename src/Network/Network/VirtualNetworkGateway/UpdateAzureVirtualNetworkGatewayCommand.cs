@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.RadiusServerSecret != null ||
                  this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
-                 this.AadTenantUri != null ||
+                 this.AadTenantUri != null || 
                  this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.VirtualNetworkGateway.VpnClientConfiguration?.VpnAuthenticationTypes != null && this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Count() > 0)
             {
-
+                
                 if (!this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
                 {
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = string.Empty;
@@ -480,30 +480,30 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("PeerWeight must be a positive integer");
             }
 
-            if (this.IpConfigurationBgpPeeringAddresses != null)
+            if(this.IpConfigurationBgpPeeringAddresses != null)
             {
-                if (this.VirtualNetworkGateway.BgpSettings == null)
-                {
+               if(this.VirtualNetworkGateway.BgpSettings == null)
+               {
                     this.VirtualNetworkGateway.BgpSettings = new PSBgpSettings();
-                }
+               }
 
-                if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
-                {
+               if (this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses == null)
+               {
                     this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses = new List<PSIpConfigurationBgpPeeringAddress>();
 
                     foreach (var address in this.IpConfigurationBgpPeeringAddresses)
                     {
                         this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                     }
-                }
-                else
-                {
+               }
+               else
+               {
                     foreach (var address in this.IpConfigurationBgpPeeringAddresses)
                     {
                         bool isGatewayIpConfigurationExists = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Any(
                         ipconfaddress => ipconfaddress.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
 
-                        if (isGatewayIpConfigurationExists)
+                        if(isGatewayIpConfigurationExists)
                         {
                             var bgpPeeringPropertiesInRequest = this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.FirstOrDefault(
                                 x => x.IpconfigurationId.Equals(address.IpconfigurationId, StringComparison.OrdinalIgnoreCase));
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Commands.Network
                             this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddresses.Add(address);
                         }
                     }
-                }
+               }
             }
 
             if (this.CustomRoute != null && this.CustomRoute.Any())
