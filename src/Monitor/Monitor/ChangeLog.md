@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Migrated AMCS with autorest
+    - `Breaking changes for parameter Inputobject`
+    - `Added data collection endpoint`
+    - `Used New and Update cmdlets instead of Set cmdlets`
 
 ## Version 4.6.0
 * Fixed `Get-AzInsightsPrivateLinkScope` to support `ResourceId` parameter [#22568]
