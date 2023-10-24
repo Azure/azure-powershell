@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnableRbacAuthorization = vault.Properties.EnableRbacAuthorization;
             PublicNetworkAccess = vault.Properties.PublicNetworkAccess;
             SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
-            AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient)).ToArray();
+            AccessPolicies = vault.Properties.AccessPolicies?.ToPSKeyVaultAccessPolicies(graphClient)?.ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
         }
