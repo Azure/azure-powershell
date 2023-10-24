@@ -17,31 +17,33 @@
 .Synopsis
 Stops replication for the migrated server. 
 .Description
-The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server. 
+The Remove-AzMigrateHCIServerReplication cmdlet stops the replication for a migrated server. 
 .Link
-https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratehciserverreplication
 #>
-function Remove-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
-    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
+function Remove-AzMigrateHCIServerReplication {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [CmdletBinding(DefaultParameterSetName = 'ByID', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName = 'ByID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the replication needs to be disabled. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replcating server for which the replication needs to be disabled. The ID should be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${TargetObjectID},
 
-        [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
+        [Parameter(ParameterSetName = 'ByInputObject', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
-        # Specifies the replcating server for which the replication needs to be disabled. The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+        # Specifies the replcating server for which the replication needs to be disabled. The server object can be retrieved using the Get-AzMigrateHCIServerReplication cmdlet.
         ${InputObject},
 
         [Parameter()]
+        [ValidateSet("true" , "false")]
+        [ArgumentCompleter( { "true" , "false" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
-        # Specifies whether the replication needs to be force removed.
-        ${ForceRemove},
+        # Specifies whether the replication needs to be force removed. Default to "false".
+        ${ForceRemove} = "false",
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -98,47 +100,54 @@ function Remove-AzMigrateServerReplication {
         ${ProxyUseDefaultCredentials}
     )
     
-    process {            
-        $hasDeleteOption = $PSBoundParameters.ContainsKey('ForceRemove')
+    process {
+        $shouldForceRemove = [System.Convert]::ToBoolean($ForceRemove)
         $null = $PSBoundParameters.Remove('ForceRemove')
         $null = $PSBoundParameters.Remove('TargetObjectID')
-        $null = $PSBoundParameters.Remove('ResourceGroupName')
-        $null = $PSBoundParameters.Remove('ProjectName')
-        $null = $PSBoundParameters.Remove('MachineName')
         $null = $PSBoundParameters.Remove('InputObject')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
         $parameterSet = $PSCmdlet.ParameterSetName
 
-        if ($parameterSet -eq 'ByInputObjectVMwareCbt') {
+        if ($parameterSet -eq 'ByInputObject') {            
             $TargetObjectID = $InputObject.Id
         }
-        $MachineIdArray = $TargetObjectID.Split("/")
-        $ResourceGroupName = $MachineIdArray[4]
-        $VaultName = $MachineIdArray[8]
-        $FabricName = $MachineIdArray[10]
-        $ProtectionContainerName = $MachineIdArray[12]
-        $MachineName = $MachineIdArray[14]
-            
-        $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
-        $null = $PSBoundParameters.Add("ResourceName", $VaultName)
-        $null = $PSBoundParameters.Add("FabricName", $FabricName)
-        $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
-        $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-        if ($hasDeleteOption) { $null = $PSBoundParameters.Add('DeleteOption', $ForceRemove) }
-        $null = $PSBoundParameters.Add('NoWait', $true)
-        $output = Az.Migrate.internal\Remove-AzMigrateReplicationMigrationItem @PSBoundParameters
-        $JobName = $output.Target.Split("/")[12].Split("?")[0]
-        $null = $PSBoundParameters.Remove('NoWait')
-        $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
-        $null = $PSBoundParameters.Remove("ResourceGroupName")
-        $null = $PSBoundParameters.Remove("ResourceName")
-        $null = $PSBoundParameters.Remove("FabricName")
-        $null = $PSBoundParameters.Remove("MigrationItemName")
-        $null = $PSBoundParameters.Remove("ProtectionContainerName")
+        $protectedItemIdArray = $TargetObjectID.Split("/")
+        $resourceGroupName = $protectedItemIdArray[4]
+        $vaultName = $protectedItemIdArray[8]
+        $protectedItemName = $protectedItemIdArray[10]
 
-        $null = $PSBoundParameters.Add('JobName', $JobName)
-        $null = $PSBoundParameters.Add('ResourceName', $VaultName)
-        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $null = $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
+        $null = $PSBoundParameters.Add("VaultName", $vaultName)
+        $null = $PSBoundParameters.Add("Name", $protectedItemName)
+
+        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        if ($null -eq $ProtectedItem)
+        {
+            throw "Replication item is not found with Id '$TargetObjectID'."
+        }
+
+        $null = $PSBoundParameters.Remove('Name')
+
+        if ("DisableProtection" -notin $ProtectedItem.Property.AllowedJob)
+        {
+            throw "Replication item with Id '$TargetObjectID' cannot be removed at this moment. Current protection state is '$($protectedItem.Property.ProtectionStateDescription)'."
+        }
         
-        return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
+        $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
+        $null = $PSBoundParameters.Add('NoWait', $true)
+        $null = $PSBoundParameters.Add('ForceDelete', $shouldForceRemove)
+
+        if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
+            $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
+            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+            
+            $null = $PSBoundParameters.Remove('ProtectedItemName')
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('ForceDelete')
+            $null = $PSBoundParameters.Add('JobName', $jobName)
+
+            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+        }
     }
-}   
+}
