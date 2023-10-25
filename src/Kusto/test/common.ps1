@@ -354,3 +354,11 @@ function Validate_ClusterFollowerDatabase {
 		$ClusterFollowerDatabase.ClusterResourceId | Should -Be $FollowerClusterResourceId
 		$ClusterFollowerDatabase.DatabaseName | Should -Be $DatabaseName
 }
+
+function Validate_SandboxCustomImage {
+	Param ([Object]$SandboxCustomImage,
+		[string]$LanguageVersion,
+		[string]$RequirementsFileContent)
+	$SandboxCustomImage.LanguageVersion | Should -Be $LanguageVersion
+	$SandboxCustomImage.RequirementsFileContent | Should -Be $RequirementsFileContent
+}
