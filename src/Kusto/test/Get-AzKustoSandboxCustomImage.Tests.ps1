@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKustoSandboxCustomImage
 }
 
 Describe 'Get-AzKustoSandboxCustomImage' {
-    It 'List' -skip {
+    It 'List' {
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
@@ -32,7 +32,7 @@ Describe 'Get-AzKustoSandboxCustomImage' {
         #TODO add validation
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
@@ -49,7 +49,7 @@ Describe 'Get-AzKustoSandboxCustomImage' {
         #TODO add validation
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
         $subscriptionId = $env.subscriptionId
