@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             // Set the policy
             if (noStartTime)
             {
-                signedIdentifier.AccessPolicy.PolicyStartsOn = DateTimeOffset.MinValue;
+                signedIdentifier.AccessPolicy.PolicyStartsOn = null;
             }
 
             else if (startTime != null)
